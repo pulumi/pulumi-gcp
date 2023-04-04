@@ -63,12 +63,6 @@ namespace Pulumi.Gcp.AppEngine
         [Output("codeBucket")]
         public Output<string> CodeBucket { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-        /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-        /// by the provider, but will be rejected by the API.
-        /// </summary>
         [Output("databaseType")]
         public Output<string> DatabaseType { get; private set; } = null!;
 
@@ -187,12 +181,6 @@ namespace Pulumi.Gcp.AppEngine
         [Input("authDomain")]
         public Input<string>? AuthDomain { get; set; }
 
-        /// <summary>
-        /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-        /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-        /// by the provider, but will be rejected by the API.
-        /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }
 
@@ -255,12 +243,6 @@ namespace Pulumi.Gcp.AppEngine
         [Input("codeBucket")]
         public Input<string>? CodeBucket { get; set; }
 
-        /// <summary>
-        /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-        /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-        /// by the provider, but will be rejected by the API.
-        /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }
 

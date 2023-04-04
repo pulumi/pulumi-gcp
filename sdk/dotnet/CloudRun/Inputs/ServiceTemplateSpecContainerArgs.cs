@@ -18,13 +18,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Arguments to the entrypoint.
         /// The docker image's CMD is used if this is not provided.
-        /// Variable references $(VAR_NAME) are expanded using the container's
-        /// environment. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-        /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-        /// regardless of whether the variable exists or not.
-        /// More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </summary>
         public InputList<string> Args
         {
@@ -38,13 +31,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Entrypoint array. Not executed within a shell.
         /// The docker image's ENTRYPOINT is used if this is not provided.
-        /// Variable references $(VAR_NAME) are expanded using the container's
-        /// environment. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-        /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-        /// regardless of whether the variable exists or not.
-        /// More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </summary>
         public InputList<string> Commands
         {
@@ -87,7 +73,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// Docker image name. This is most often a reference to a container located
         /// in the container registry, such as gcr.io/cloudrun/hello
-        /// More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
@@ -105,8 +90,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         /// <summary>
         /// List of open ports in the container.
-        /// More Info:
-        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTemplateSpecContainerPortArgs> Ports
@@ -117,8 +100,6 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
-        /// More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
         /// Structure is documented below.
         /// </summary>
         [Input("resources")]

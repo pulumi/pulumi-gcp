@@ -5,17 +5,22 @@ package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceClone {
     private String allocatedIpRange;
+    private List<String> databaseNames;
     private String pointInTime;
     private String sourceInstanceName;
 
     private GetDatabaseInstanceClone() {}
     public String allocatedIpRange() {
         return this.allocatedIpRange;
+    }
+    public List<String> databaseNames() {
+        return this.databaseNames;
     }
     public String pointInTime() {
         return this.pointInTime;
@@ -34,12 +39,14 @@ public final class GetDatabaseInstanceClone {
     @CustomType.Builder
     public static final class Builder {
         private String allocatedIpRange;
+        private List<String> databaseNames;
         private String pointInTime;
         private String sourceInstanceName;
         public Builder() {}
         public Builder(GetDatabaseInstanceClone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
+    	      this.databaseNames = defaults.databaseNames;
     	      this.pointInTime = defaults.pointInTime;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
@@ -48,6 +55,14 @@ public final class GetDatabaseInstanceClone {
         public Builder allocatedIpRange(String allocatedIpRange) {
             this.allocatedIpRange = Objects.requireNonNull(allocatedIpRange);
             return this;
+        }
+        @CustomType.Setter
+        public Builder databaseNames(List<String> databaseNames) {
+            this.databaseNames = Objects.requireNonNull(databaseNames);
+            return this;
+        }
+        public Builder databaseNames(String... databaseNames) {
+            return databaseNames(List.of(databaseNames));
         }
         @CustomType.Setter
         public Builder pointInTime(String pointInTime) {
@@ -62,6 +77,7 @@ public final class GetDatabaseInstanceClone {
         public GetDatabaseInstanceClone build() {
             final var o = new GetDatabaseInstanceClone();
             o.allocatedIpRange = allocatedIpRange;
+            o.databaseNames = databaseNames;
             o.pointInTime = pointInTime;
             o.sourceInstanceName = sourceInstanceName;
             return o;

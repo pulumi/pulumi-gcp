@@ -44,6 +44,13 @@ public final class ClusterIpAllocationPolicy {
      * 
      */
     private @Nullable String servicesSecondaryRangeName;
+    /**
+     * @return The IP Stack Type of the cluster.
+     * Default value is `IPV4`.
+     * Possible values are `IPV4` and `PV4_IPV6`.
+     * 
+     */
+    private @Nullable String stackType;
 
     private ClusterIpAllocationPolicy() {}
     /**
@@ -87,6 +94,15 @@ public final class ClusterIpAllocationPolicy {
     public Optional<String> servicesSecondaryRangeName() {
         return Optional.ofNullable(this.servicesSecondaryRangeName);
     }
+    /**
+     * @return The IP Stack Type of the cluster.
+     * Default value is `IPV4`.
+     * Possible values are `IPV4` and `PV4_IPV6`.
+     * 
+     */
+    public Optional<String> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -101,6 +117,7 @@ public final class ClusterIpAllocationPolicy {
         private @Nullable String clusterSecondaryRangeName;
         private @Nullable String servicesIpv4CidrBlock;
         private @Nullable String servicesSecondaryRangeName;
+        private @Nullable String stackType;
         public Builder() {}
         public Builder(ClusterIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -108,6 +125,7 @@ public final class ClusterIpAllocationPolicy {
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
     	      this.servicesIpv4CidrBlock = defaults.servicesIpv4CidrBlock;
     	      this.servicesSecondaryRangeName = defaults.servicesSecondaryRangeName;
+    	      this.stackType = defaults.stackType;
         }
 
         @CustomType.Setter
@@ -130,12 +148,18 @@ public final class ClusterIpAllocationPolicy {
             this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
+        @CustomType.Setter
+        public Builder stackType(@Nullable String stackType) {
+            this.stackType = stackType;
+            return this;
+        }
         public ClusterIpAllocationPolicy build() {
             final var o = new ClusterIpAllocationPolicy();
             o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             o.clusterSecondaryRangeName = clusterSecondaryRangeName;
             o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             o.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            o.stackType = stackType;
             return o;
         }
     }

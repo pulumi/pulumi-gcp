@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies options for controlling
+        /// advanced machine features. Structure is documented below.
+        /// </summary>
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.ClusterNodeConfigAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
+        /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
         /// </summary>
         [Input("bootDiskKmsKey")]
@@ -106,6 +113,12 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("linuxNodeConfig")]
         public Input<Inputs.ClusterNodeConfigLinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
+
+        /// <summary>
+        /// Parameters for the local NVMe SSDs. Structure is documented below.
+        /// </summary>
+        [Input("localNvmeSsdBlockConfig")]
+        public Input<Inputs.ClusterNodeConfigLocalNvmeSsdBlockConfigArgs>? LocalNvmeSsdBlockConfig { get; set; }
 
         /// <summary>
         /// The amount of local SSD disks that will be

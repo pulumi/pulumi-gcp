@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Access configurations, i.e. IPs via which this
         /// instance can be accessed via the Internet. Omit to ensure that the instance
         /// is not accessible from the Internet (this means that ssh provisioners will
-        /// not work unless you are running the prvovider can send traffic to the instance's
+        /// not work unless you are running the provider can send traffic to the instance's
         /// network (e.g. via tunnel or because it is running on another cloud instance
         /// on that network). This block can be repeated multiple times. Structure documented below.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult> Ipv6AccessConfigs;
         public readonly string Ipv6AccessType;
         /// <summary>
-        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
         public readonly string Name;
         /// <summary>

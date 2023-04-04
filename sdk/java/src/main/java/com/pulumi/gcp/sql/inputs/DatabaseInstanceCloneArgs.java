@@ -6,6 +6,7 @@ package com.pulumi.gcp.sql.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +29,21 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> allocatedIpRange() {
         return Optional.ofNullable(this.allocatedIpRange);
+    }
+
+    /**
+     * (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * 
+     */
+    @Import(name="databaseNames")
+    private @Nullable Output<List<String>> databaseNames;
+
+    /**
+     * @return (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * 
+     */
+    public Optional<Output<List<String>>> databaseNames() {
+        return Optional.ofNullable(this.databaseNames);
     }
 
     /**
@@ -64,6 +80,7 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
 
     private DatabaseInstanceCloneArgs(DatabaseInstanceCloneArgs $) {
         this.allocatedIpRange = $.allocatedIpRange;
+        this.databaseNames = $.databaseNames;
         this.pointInTime = $.pointInTime;
         this.sourceInstanceName = $.sourceInstanceName;
     }
@@ -105,6 +122,37 @@ public final class DatabaseInstanceCloneArgs extends com.pulumi.resources.Resour
          */
         public Builder allocatedIpRange(String allocatedIpRange) {
             return allocatedIpRange(Output.of(allocatedIpRange));
+        }
+
+        /**
+         * @param databaseNames (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseNames(@Nullable Output<List<String>> databaseNames) {
+            $.databaseNames = databaseNames;
+            return this;
+        }
+
+        /**
+         * @param databaseNames (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseNames(List<String> databaseNames) {
+            return databaseNames(Output.of(databaseNames));
+        }
+
+        /**
+         * @param databaseNames (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseNames(String... databaseNames) {
+            return databaseNames(List.of(databaseNames));
         }
 
         /**

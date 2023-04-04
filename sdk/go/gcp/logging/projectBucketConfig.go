@@ -83,6 +83,36 @@ import (
 //
 // ```
 //
+// # Create logging bucket with Log Analytics enabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewProjectBucketConfig(ctx, "analytics-enabled-bucket", &logging.ProjectBucketConfigArgs{
+//				BucketId:        pulumi.String("custom-bucket"),
+//				EnableAnalytics: pulumi.Bool(true),
+//				Location:        pulumi.String("global"),
+//				Project:         pulumi.String("project_id"),
+//				RetentionDays:   pulumi.Int(30),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // # Create logging bucket with customId and cmekSettings
 //
 // ```go
@@ -167,6 +197,8 @@ type ProjectBucketConfig struct {
 	CmekSettings ProjectBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+	EnableAnalytics pulumi.BoolPtrOutput `pulumi:"enableAnalytics"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// The location of the bucket.
@@ -223,6 +255,8 @@ type projectBucketConfigState struct {
 	CmekSettings *ProjectBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
+	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+	EnableAnalytics *bool `pulumi:"enableAnalytics"`
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// The location of the bucket.
@@ -242,6 +276,8 @@ type ProjectBucketConfigState struct {
 	CmekSettings ProjectBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
+	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+	EnableAnalytics pulumi.BoolPtrInput
 	// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
 	LifecycleState pulumi.StringPtrInput
 	// The location of the bucket.
@@ -265,6 +301,8 @@ type projectBucketConfigArgs struct {
 	CmekSettings *ProjectBucketConfigCmekSettings `pulumi:"cmekSettings"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
+	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+	EnableAnalytics *bool `pulumi:"enableAnalytics"`
 	// The location of the bucket.
 	Location string `pulumi:"location"`
 	// The parent resource that contains the logging bucket.
@@ -281,6 +319,8 @@ type ProjectBucketConfigArgs struct {
 	CmekSettings ProjectBucketConfigCmekSettingsPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
+	// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+	EnableAnalytics pulumi.BoolPtrInput
 	// The location of the bucket.
 	Location pulumi.StringInput
 	// The parent resource that contains the logging bucket.
@@ -389,6 +429,11 @@ func (o ProjectBucketConfigOutput) CmekSettings() ProjectBucketConfigCmekSetting
 // Describes this bucket.
 func (o ProjectBucketConfigOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+func (o ProjectBucketConfigOutput) EnableAnalytics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.BoolPtrOutput { return v.EnableAnalytics }).(pulumi.BoolPtrOutput)
 }
 
 // The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

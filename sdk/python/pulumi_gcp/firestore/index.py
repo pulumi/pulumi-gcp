@@ -264,9 +264,12 @@ class Index(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 
         > **Warning:** This resource creates a Firestore Index on a project that already has
-        Firestore enabled. If you haven't already enabled it, you can create a
+        a Firestore database. If you haven't already created it, you may
+        create a `firestore.Database` resource with `type` set to
+        `"FIRESTORE_NATIVE"` and `location_id` set to your chosen location.
+        If you wish to use App Engine, you may instead create a
         `appengine.Application` resource with `database_type` set to
-        `"CLOUD_FIRESTORE"` to do so. Your Firestore location will be the same as
+        `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
         the App Engine location specified.
 
         ## Example Usage
@@ -334,9 +337,12 @@ class Index(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 
         > **Warning:** This resource creates a Firestore Index on a project that already has
-        Firestore enabled. If you haven't already enabled it, you can create a
+        a Firestore database. If you haven't already created it, you may
+        create a `firestore.Database` resource with `type` set to
+        `"FIRESTORE_NATIVE"` and `location_id` set to your chosen location.
+        If you wish to use App Engine, you may instead create a
         `appengine.Application` resource with `database_type` set to
-        `"CLOUD_FIRESTORE"` to do so. Your Firestore location will be the same as
+        `"CLOUD_FIRESTORE"`. Your Firestore location will be the same as
         the App Engine location specified.
 
         ## Example Usage

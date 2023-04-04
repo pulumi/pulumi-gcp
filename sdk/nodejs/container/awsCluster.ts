@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     },
  *     authorization: {
  *         adminUsers: [{
- *             username: "emailAddress:my@service-account.com",
+ *             username: "my@service-account.com",
  *         }],
  *     },
  *     awsRegion: "my-aws-region",
@@ -67,7 +67,7 @@ import * as utilities from "../utilities";
  *         },
  *         subnetIds: ["subnet-00000000000000000"],
  *         tags: {
- *             owner: "emailAddress:my@service-account.com",
+ *             owner: "my@service-account.com",
  *         },
  *         version: versions.then(versions => versions.validVersions?.[0]),
  *     },

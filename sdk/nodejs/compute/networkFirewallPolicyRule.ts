@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     firewallPolicy: basicNetworkFirewallPolicy.name,
  *     priority: 1000,
  *     ruleName: "test-rule",
- *     targetServiceAccounts: ["emailAddress:my@service-account.com"],
+ *     targetServiceAccounts: ["my@service-account.com"],
  *     match: {
  *         srcIpRanges: ["10.100.0.1/32"],
  *         srcSecureTags: [{

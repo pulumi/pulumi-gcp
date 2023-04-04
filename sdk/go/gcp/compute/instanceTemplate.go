@@ -281,6 +281,9 @@ type InstanceTemplate struct {
 	Scheduling InstanceTemplateSchedulingOutput `pulumi:"scheduling"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+	// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+	SelfLinkUnique pulumi.StringOutput `pulumi:"selfLinkUnique"`
 	// Service account to attach to the instance. Structure is documented below.
 	ServiceAccount InstanceTemplateServiceAccountPtrOutput `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
@@ -403,6 +406,9 @@ type instanceTemplateState struct {
 	Scheduling *InstanceTemplateScheduling `pulumi:"scheduling"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+	// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+	SelfLinkUnique *string `pulumi:"selfLinkUnique"`
 	// Service account to attach to the instance. Structure is documented below.
 	ServiceAccount *InstanceTemplateServiceAccount `pulumi:"serviceAccount"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
@@ -491,6 +497,9 @@ type InstanceTemplateState struct {
 	Scheduling InstanceTemplateSchedulingPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+	// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+	SelfLinkUnique pulumi.StringPtrInput
 	// Service account to attach to the instance. Structure is documented below.
 	ServiceAccount InstanceTemplateServiceAccountPtrInput
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
@@ -910,6 +919,12 @@ func (o InstanceTemplateOutput) Scheduling() InstanceTemplateSchedulingOutput {
 // The URI of the created resource.
 func (o InstanceTemplateOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+func (o InstanceTemplateOutput) SelfLinkUnique() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.SelfLinkUnique }).(pulumi.StringOutput)
 }
 
 // Service account to attach to the instance. Structure is documented below.

@@ -13,6 +13,7 @@ public final class GetClusterIpAllocationPolicy {
     private String clusterSecondaryRangeName;
     private String servicesIpv4CidrBlock;
     private String servicesSecondaryRangeName;
+    private String stackType;
 
     private GetClusterIpAllocationPolicy() {}
     public String clusterIpv4CidrBlock() {
@@ -26,6 +27,9 @@ public final class GetClusterIpAllocationPolicy {
     }
     public String servicesSecondaryRangeName() {
         return this.servicesSecondaryRangeName;
+    }
+    public String stackType() {
+        return this.stackType;
     }
 
     public static Builder builder() {
@@ -41,6 +45,7 @@ public final class GetClusterIpAllocationPolicy {
         private String clusterSecondaryRangeName;
         private String servicesIpv4CidrBlock;
         private String servicesSecondaryRangeName;
+        private String stackType;
         public Builder() {}
         public Builder(GetClusterIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -48,6 +53,7 @@ public final class GetClusterIpAllocationPolicy {
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
     	      this.servicesIpv4CidrBlock = defaults.servicesIpv4CidrBlock;
     	      this.servicesSecondaryRangeName = defaults.servicesSecondaryRangeName;
+    	      this.stackType = defaults.stackType;
         }
 
         @CustomType.Setter
@@ -70,12 +76,18 @@ public final class GetClusterIpAllocationPolicy {
             this.servicesSecondaryRangeName = Objects.requireNonNull(servicesSecondaryRangeName);
             return this;
         }
+        @CustomType.Setter
+        public Builder stackType(String stackType) {
+            this.stackType = Objects.requireNonNull(stackType);
+            return this;
+        }
         public GetClusterIpAllocationPolicy build() {
             final var o = new GetClusterIpAllocationPolicy();
             o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             o.clusterSecondaryRangeName = clusterSecondaryRangeName;
             o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             o.servicesSecondaryRangeName = servicesSecondaryRangeName;
+            o.stackType = stackType;
             return o;
         }
     }

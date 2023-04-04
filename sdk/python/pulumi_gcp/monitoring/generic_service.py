@@ -26,7 +26,7 @@ class GenericServiceArgs:
         :param pulumi.Input[str] service_id: An optional service ID to use. If not given, the server will generate a
                service ID.
         :param pulumi.Input['GenericServiceBasicServiceArgs'] basic_service: A well-known service type, defined by its service type and service labels.
-               Valid values are described at
+               Valid values of service types and services labels are described at
                https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
                Structure is documented below.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
@@ -67,7 +67,7 @@ class GenericServiceArgs:
     def basic_service(self) -> Optional[pulumi.Input['GenericServiceBasicServiceArgs']]:
         """
         A well-known service type, defined by its service type and service labels.
-        Valid values are described at
+        Valid values of service types and services labels are described at
         https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
         Structure is documented below.
         """
@@ -133,7 +133,7 @@ class _GenericServiceState:
         """
         Input properties used for looking up and filtering GenericService resources.
         :param pulumi.Input['GenericServiceBasicServiceArgs'] basic_service: A well-known service type, defined by its service type and service labels.
-               Valid values are described at
+               Valid values of service types and services labels are described at
                https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
                Structure is documented below.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
@@ -172,7 +172,7 @@ class _GenericServiceState:
     def basic_service(self) -> Optional[pulumi.Input['GenericServiceBasicServiceArgs']]:
         """
         A well-known service type, defined by its service type and service labels.
-        Valid values are described at
+        Valid values of service types and services labels are described at
         https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
         Structure is documented below.
         """
@@ -329,7 +329,7 @@ class GenericService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GenericServiceBasicServiceArgs']] basic_service: A well-known service type, defined by its service type and service labels.
-               Valid values are described at
+               Valid values of service types and services labels are described at
                https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
                Structure is documented below.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
@@ -464,7 +464,7 @@ class GenericService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GenericServiceBasicServiceArgs']] basic_service: A well-known service type, defined by its service type and service labels.
-               Valid values are described at
+               Valid values of service types and services labels are described at
                https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
                Structure is documented below.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this Service.
@@ -501,7 +501,7 @@ class GenericService(pulumi.CustomResource):
     def basic_service(self) -> pulumi.Output[Optional['outputs.GenericServiceBasicService']]:
         """
         A well-known service type, defined by its service type and service labels.
-        Valid values are described at
+        Valid values of service types and services labels are described at
         https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
         Structure is documented below.
         """

@@ -23,10 +23,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:dataplex/asset:Asset":
 		r = &Asset{}
+	case "gcp:dataplex/assetIamBinding:AssetIamBinding":
+		r = &AssetIamBinding{}
+	case "gcp:dataplex/assetIamMember:AssetIamMember":
+		r = &AssetIamMember{}
+	case "gcp:dataplex/assetIamPolicy:AssetIamPolicy":
+		r = &AssetIamPolicy{}
 	case "gcp:dataplex/lake:Lake":
 		r = &Lake{}
+	case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
+		r = &LakeIamBinding{}
+	case "gcp:dataplex/lakeIamMember:LakeIamMember":
+		r = &LakeIamMember{}
+	case "gcp:dataplex/lakeIamPolicy:LakeIamPolicy":
+		r = &LakeIamPolicy{}
 	case "gcp:dataplex/zone:Zone":
 		r = &Zone{}
+	case "gcp:dataplex/zoneIamBinding:ZoneIamBinding":
+		r = &ZoneIamBinding{}
+	case "gcp:dataplex/zoneIamMember:ZoneIamMember":
+		r = &ZoneIamMember{}
+	case "gcp:dataplex/zoneIamPolicy:ZoneIamPolicy":
+		r = &ZoneIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -47,12 +65,57 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"dataplex/assetIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/assetIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/assetIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"dataplex/lake",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"dataplex/lakeIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/lakeIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/lakeIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"dataplex/zone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/zoneIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/zoneIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/zoneIamPolicy",
 		&module{version},
 	)
 }

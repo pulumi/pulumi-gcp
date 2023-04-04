@@ -16,25 +16,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// <summary>
         /// Arguments to the entrypoint.
         /// The docker image's CMD is used if this is not provided.
-        /// Variable references $(VAR_NAME) are expanded using the container's
-        /// environment. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-        /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-        /// regardless of whether the variable exists or not.
-        /// More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
         /// Entrypoint array. Not executed within a shell.
         /// The docker image's ENTRYPOINT is used if this is not provided.
-        /// Variable references $(VAR_NAME) are expanded using the container's
-        /// environment. If a variable cannot be resolved, the reference in the input
-        /// string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-        /// double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-        /// regardless of whether the variable exists or not.
-        /// More info:
-        /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         /// </summary>
         public readonly ImmutableArray<string> Commands;
         /// <summary>
@@ -55,7 +41,6 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// <summary>
         /// Docker image name. This is most often a reference to a container located
         /// in the container registry, such as gcr.io/cloudrun/hello
-        /// More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         public readonly string Image;
         /// <summary>
@@ -66,15 +51,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly Outputs.ServiceTemplateSpecContainerLivenessProbe? LivenessProbe;
         /// <summary>
         /// List of open ports in the container.
-        /// More Info:
-        /// https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> Ports;
         /// <summary>
         /// Compute Resources required by this container. Used to set values such as max memory
-        /// More info:
-        /// https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerResources? Resources;

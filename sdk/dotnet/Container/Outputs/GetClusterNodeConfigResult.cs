@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodeConfigResult
     {
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigAdvancedMachineFeatureResult> AdvancedMachineFeatures;
         public readonly string BootDiskKmsKey;
         public readonly int DiskSizeGb;
         public readonly string DiskType;
@@ -24,6 +25,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigKubeletConfigResult> KubeletConfigs;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigResult> LinuxNodeConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigLocalNvmeSsdBlockConfigResult> LocalNvmeSsdBlockConfigs;
         public readonly int LocalSsdCount;
         public readonly string LoggingVariant;
         public readonly string MachineType;
@@ -44,6 +46,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterNodeConfigResult(
+            ImmutableArray<Outputs.GetClusterNodeConfigAdvancedMachineFeatureResult> advancedMachineFeatures,
+
             string bootDiskKmsKey,
 
             int diskSizeGb,
@@ -65,6 +69,8 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableDictionary<string, string> labels,
 
             ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigResult> linuxNodeConfigs,
+
+            ImmutableArray<Outputs.GetClusterNodeConfigLocalNvmeSsdBlockConfigResult> localNvmeSsdBlockConfigs,
 
             int localSsdCount,
 
@@ -100,6 +106,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterNodeConfigWorkloadMetadataConfigResult> workloadMetadataConfigs)
         {
+            AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
@@ -111,6 +118,7 @@ namespace Pulumi.Gcp.Container.Outputs
             KubeletConfigs = kubeletConfigs;
             Labels = labels;
             LinuxNodeConfigs = linuxNodeConfigs;
+            LocalNvmeSsdBlockConfigs = localNvmeSsdBlockConfigs;
             LocalSsdCount = localSsdCount;
             LoggingVariant = loggingVariant;
             MachineType = machineType;

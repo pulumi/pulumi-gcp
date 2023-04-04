@@ -82,6 +82,8 @@ class DatabaseInstanceClone(dict):
             suggest = "source_instance_name"
         elif key == "allocatedIpRange":
             suggest = "allocated_ip_range"
+        elif key == "databaseNames":
+            suggest = "database_names"
         elif key == "pointInTime":
             suggest = "point_in_time"
 
@@ -99,15 +101,19 @@ class DatabaseInstanceClone(dict):
     def __init__(__self__, *,
                  source_instance_name: str,
                  allocated_ip_range: Optional[str] = None,
+                 database_names: Optional[Sequence[str]] = None,
                  point_in_time: Optional[str] = None):
         """
         :param str source_instance_name: Name of the source instance which will be cloned.
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param Sequence[str] database_names: (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
         :param str point_in_time: The timestamp of the point in time that should be restored.
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        if database_names is not None:
+            pulumi.set(__self__, "database_names", database_names)
         if point_in_time is not None:
             pulumi.set(__self__, "point_in_time", point_in_time)
 
@@ -126,6 +132,14 @@ class DatabaseInstanceClone(dict):
         The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         """
         return pulumi.get(self, "allocated_ip_range")
+
+    @property
+    @pulumi.getter(name="databaseNames")
+    def database_names(self) -> Optional[Sequence[str]]:
+        """
+        (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+        """
+        return pulumi.get(self, "database_names")
 
     @property
     @pulumi.getter(name="pointInTime")
@@ -1911,9 +1925,11 @@ class GetCaCertsCertResult(dict):
 class GetDatabaseInstanceCloneResult(dict):
     def __init__(__self__, *,
                  allocated_ip_range: str,
+                 database_names: Sequence[str],
                  point_in_time: str,
                  source_instance_name: str):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
 
@@ -1921,6 +1937,11 @@ class GetDatabaseInstanceCloneResult(dict):
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
         return pulumi.get(self, "allocated_ip_range")
+
+    @property
+    @pulumi.getter(name="databaseNames")
+    def database_names(self) -> Sequence[str]:
+        return pulumi.get(self, "database_names")
 
     @property
     @pulumi.getter(name="pointInTime")
@@ -2850,9 +2871,11 @@ class GetDatabaseInstancesInstanceResult(dict):
 class GetDatabaseInstancesInstanceCloneResult(dict):
     def __init__(__self__, *,
                  allocated_ip_range: str,
+                 database_names: Sequence[str],
                  point_in_time: str,
                  source_instance_name: str):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
         pulumi.set(__self__, "source_instance_name", source_instance_name)
 
@@ -2860,6 +2883,11 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
         return pulumi.get(self, "allocated_ip_range")
+
+    @property
+    @pulumi.getter(name="databaseNames")
+    def database_names(self) -> Sequence[str]:
+        return pulumi.get(self, "database_names")
 
     @property
     @pulumi.getter(name="pointInTime")

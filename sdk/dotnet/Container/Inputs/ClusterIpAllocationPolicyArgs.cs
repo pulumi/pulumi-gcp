@@ -49,6 +49,14 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("servicesSecondaryRangeName")]
         public Input<string>? ServicesSecondaryRangeName { get; set; }
 
+        /// <summary>
+        /// The IP Stack Type of the cluster. 
+        /// Default value is `IPV4`.
+        /// Possible values are `IPV4` and `PV4_IPV6`.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
+
         public ClusterIpAllocationPolicyArgs()
         {
         }

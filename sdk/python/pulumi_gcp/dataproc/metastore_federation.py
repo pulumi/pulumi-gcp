@@ -335,7 +335,7 @@ class MetastoreFederation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_metastore_service = gcp.dataproc.MetastoreService("defaultMetastoreService",
-            service_id="fed-1",
+            service_id="",
             location="us-central1",
             tier="DEVELOPER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
@@ -345,7 +345,7 @@ class MetastoreFederation(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_metastore_federation = gcp.dataproc.MetastoreFederation("defaultMetastoreFederation",
             location="us-central1",
-            federation_id="fed-1",
+            federation_id="",
             version="3.1.2",
             backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
                 rank="1",
@@ -361,7 +361,7 @@ class MetastoreFederation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_metastore_service = gcp.dataproc.MetastoreService("defaultMetastoreService",
-            service_id="fed-2",
+            service_id="",
             location="us-central1",
             tier="DEVELOPER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
@@ -372,7 +372,7 @@ class MetastoreFederation(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         default_metastore_federation = gcp.dataproc.MetastoreFederation("defaultMetastoreFederation",
             location="us-central1",
-            federation_id="fed-2",
+            federation_id="",
             version="3.1.2",
             backend_metastores=[
                 gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
@@ -433,7 +433,7 @@ class MetastoreFederation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_metastore_service = gcp.dataproc.MetastoreService("defaultMetastoreService",
-            service_id="fed-1",
+            service_id="",
             location="us-central1",
             tier="DEVELOPER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
@@ -443,7 +443,7 @@ class MetastoreFederation(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_metastore_federation = gcp.dataproc.MetastoreFederation("defaultMetastoreFederation",
             location="us-central1",
-            federation_id="fed-1",
+            federation_id="",
             version="3.1.2",
             backend_metastores=[gcp.dataproc.MetastoreFederationBackendMetastoreArgs(
                 rank="1",
@@ -459,7 +459,7 @@ class MetastoreFederation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_metastore_service = gcp.dataproc.MetastoreService("defaultMetastoreService",
-            service_id="fed-2",
+            service_id="",
             location="us-central1",
             tier="DEVELOPER",
             hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
@@ -470,7 +470,7 @@ class MetastoreFederation(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         default_metastore_federation = gcp.dataproc.MetastoreFederation("defaultMetastoreFederation",
             location="us-central1",
-            federation_id="fed-2",
+            federation_id="",
             version="3.1.2",
             backend_metastores=[
                 gcp.dataproc.MetastoreFederationBackendMetastoreArgs(

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceGroupManagerVersion
     {
         /// <summary>
-        /// The full URL to an instance template from which all new instances of this version will be created.
+        /// The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         /// </summary>
         public readonly string InstanceTemplate;
         /// <summary>

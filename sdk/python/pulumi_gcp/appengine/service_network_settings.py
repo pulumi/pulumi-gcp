@@ -158,9 +158,9 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
-        liveapp_v1 = gcp.appengine.StandardAppVersion("liveappV1",
+        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
             version_id="v1",
-            service="liveapp",
+            service="internalapp",
             delete_service_on_destroy=True,
             runtime="nodejs10",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
@@ -174,8 +174,8 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             })
-        liveapp = gcp.appengine.ServiceNetworkSettings("liveapp",
-            service=liveapp_v1.service,
+        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
+            service=internalapp_standard_app_version.service,
             network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))
@@ -229,9 +229,9 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
             source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
-        liveapp_v1 = gcp.appengine.StandardAppVersion("liveappV1",
+        internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
             version_id="v1",
-            service="liveapp",
+            service="internalapp",
             delete_service_on_destroy=True,
             runtime="nodejs10",
             entrypoint=gcp.appengine.StandardAppVersionEntrypointArgs(
@@ -245,8 +245,8 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             })
-        liveapp = gcp.appengine.ServiceNetworkSettings("liveapp",
-            service=liveapp_v1.service,
+        internalapp_service_network_settings = gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings",
+            service=internalapp_standard_app_version.service,
             network_settings=gcp.appengine.ServiceNetworkSettingsNetworkSettingsArgs(
                 ingress_traffic_allowed="INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
             ))

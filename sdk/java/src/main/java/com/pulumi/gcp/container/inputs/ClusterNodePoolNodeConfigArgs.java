@@ -5,12 +5,14 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGvnicArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigLinuxNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigShieldedInstanceConfigArgs;
@@ -29,6 +31,23 @@ import javax.annotation.Nullable;
 public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolNodeConfigArgs Empty = new ClusterNodePoolNodeConfigArgs();
+
+    /**
+     * Specifies options for controlling
+     * advanced machine features. Structure is documented below.
+     * 
+     */
+    @Import(name="advancedMachineFeatures")
+    private @Nullable Output<ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs> advancedMachineFeatures;
+
+    /**
+     * @return Specifies options for controlling
+     * advanced machine features. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs>> advancedMachineFeatures() {
+        return Optional.ofNullable(this.advancedMachineFeatures);
+    }
 
     /**
      * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
@@ -227,6 +246,21 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<ClusterNodePoolNodeConfigLinuxNodeConfigArgs>> linuxNodeConfig() {
         return Optional.ofNullable(this.linuxNodeConfig);
+    }
+
+    /**
+     * Parameters for the local NVMe SSDs. Structure is documented below.
+     * 
+     */
+    @Import(name="localNvmeSsdBlockConfig")
+    private @Nullable Output<ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs> localNvmeSsdBlockConfig;
+
+    /**
+     * @return Parameters for the local NVMe SSDs. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs>> localNvmeSsdBlockConfig() {
+        return Optional.ofNullable(this.localNvmeSsdBlockConfig);
     }
 
     /**
@@ -535,6 +569,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     private ClusterNodePoolNodeConfigArgs() {}
 
     private ClusterNodePoolNodeConfigArgs(ClusterNodePoolNodeConfigArgs $) {
+        this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
@@ -546,6 +581,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.kubeletConfig = $.kubeletConfig;
         this.labels = $.labels;
         this.linuxNodeConfig = $.linuxNodeConfig;
+        this.localNvmeSsdBlockConfig = $.localNvmeSsdBlockConfig;
         this.localSsdCount = $.localSsdCount;
         this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
@@ -581,6 +617,29 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
 
         public Builder(ClusterNodePoolNodeConfigArgs defaults) {
             $ = new ClusterNodePoolNodeConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedMachineFeatures Specifies options for controlling
+         * advanced machine features. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedMachineFeatures(@Nullable Output<ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs> advancedMachineFeatures) {
+            $.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
+
+        /**
+         * @param advancedMachineFeatures Specifies options for controlling
+         * advanced machine features. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedMachineFeatures(ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs advancedMachineFeatures) {
+            return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
         /**
@@ -857,6 +916,27 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder linuxNodeConfig(ClusterNodePoolNodeConfigLinuxNodeConfigArgs linuxNodeConfig) {
             return linuxNodeConfig(Output.of(linuxNodeConfig));
+        }
+
+        /**
+         * @param localNvmeSsdBlockConfig Parameters for the local NVMe SSDs. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localNvmeSsdBlockConfig(@Nullable Output<ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs> localNvmeSsdBlockConfig) {
+            $.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
+            return this;
+        }
+
+        /**
+         * @param localNvmeSsdBlockConfig Parameters for the local NVMe SSDs. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localNvmeSsdBlockConfig(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs localNvmeSsdBlockConfig) {
+            return localNvmeSsdBlockConfig(Output.of(localNvmeSsdBlockConfig));
         }
 
         /**

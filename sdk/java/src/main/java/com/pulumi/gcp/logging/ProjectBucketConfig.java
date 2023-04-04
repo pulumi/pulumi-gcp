@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
 import com.pulumi.gcp.logging.inputs.ProjectBucketConfigState;
 import com.pulumi.gcp.logging.outputs.ProjectBucketConfigCmekSettings;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -87,6 +88,40 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new ProjectBucketConfig(&#34;basic&#34;, ProjectBucketConfigArgs.builder()        
  *             .bucketId(&#34;custom-bucket&#34;)
+ *             .location(&#34;global&#34;)
+ *             .project(&#34;project_id&#34;)
+ *             .retentionDays(30)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * Create logging bucket with Log Analytics enabled
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.logging.ProjectBucketConfig;
+ * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var analytics_enabled_bucket = new ProjectBucketConfig(&#34;analytics-enabled-bucket&#34;, ProjectBucketConfigArgs.builder()        
+ *             .bucketId(&#34;custom-bucket&#34;)
+ *             .enableAnalytics(true)
  *             .location(&#34;global&#34;)
  *             .project(&#34;project_id&#34;)
  *             .retentionDays(30)
@@ -215,6 +250,20 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+     * 
+     */
+    @Export(name="enableAnalytics", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableAnalytics;
+
+    /**
+     * @return Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> enableAnalytics() {
+        return Codegen.optional(this.enableAnalytics);
     }
     /**
      * The bucket&#39;s lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

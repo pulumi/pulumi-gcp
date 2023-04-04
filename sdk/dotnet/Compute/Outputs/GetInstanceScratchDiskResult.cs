@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
         /// </summary>
         public readonly string Interface;
+        /// <summary>
+        /// The size of the image in gigabytes.
+        /// </summary>
+        public readonly int Size;
 
         [OutputConstructor]
-        private GetInstanceScratchDiskResult(string @interface)
+        private GetInstanceScratchDiskResult(
+            string @interface,
+
+            int size)
         {
             Interface = @interface;
+            Size = size;
         }
     }
 }

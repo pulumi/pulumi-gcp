@@ -101,6 +101,25 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.servicesSecondaryRangeName);
     }
 
+    /**
+     * The IP Stack Type of the cluster.
+     * Default value is `IPV4`.
+     * Possible values are `IPV4` and `PV4_IPV6`.
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return The IP Stack Type of the cluster.
+     * Default value is `IPV4`.
+     * Possible values are `IPV4` and `PV4_IPV6`.
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
     private ClusterIpAllocationPolicyArgs() {}
 
     private ClusterIpAllocationPolicyArgs(ClusterIpAllocationPolicyArgs $) {
@@ -108,6 +127,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         this.clusterSecondaryRangeName = $.clusterSecondaryRangeName;
         this.servicesIpv4CidrBlock = $.servicesIpv4CidrBlock;
         this.servicesSecondaryRangeName = $.servicesSecondaryRangeName;
+        this.stackType = $.stackType;
     }
 
     public static Builder builder() {
@@ -236,6 +256,31 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
          */
         public Builder servicesSecondaryRangeName(String servicesSecondaryRangeName) {
             return servicesSecondaryRangeName(Output.of(servicesSecondaryRangeName));
+        }
+
+        /**
+         * @param stackType The IP Stack Type of the cluster.
+         * Default value is `IPV4`.
+         * Possible values are `IPV4` and `PV4_IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType The IP Stack Type of the cluster.
+         * Default value is `IPV4`.
+         * Possible values are `IPV4` and `PV4_IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
         }
 
         public ClusterIpAllocationPolicyArgs build() {

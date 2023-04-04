@@ -6,7 +6,16 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .asset import *
+from .asset_iam_binding import *
+from .asset_iam_member import *
+from .asset_iam_policy import *
 from .lake import *
+from .lake_iam_binding import *
+from .lake_iam_member import *
+from .lake_iam_policy import *
 from .zone import *
+from .zone_iam_binding import *
+from .zone_iam_member import *
+from .zone_iam_policy import *
 from ._inputs import *
 from . import outputs

@@ -28,10 +28,6 @@ class ApplicationArgs:
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
                to serve the app from.
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
-        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-               Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-               instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-               by the provider, but will be rejected by the API.
         :param pulumi.Input['ApplicationFeatureSettingsArgs'] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input['ApplicationIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] project: The project ID to create the application under.
@@ -81,12 +77,6 @@ class ApplicationArgs:
     @property
     @pulumi.getter(name="databaseType")
     def database_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-        instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-        by the provider, but will be rejected by the API.
-        """
         return pulumi.get(self, "database_type")
 
     @database_type.setter
@@ -166,10 +156,6 @@ class _ApplicationState:
         :param pulumi.Input[str] app_id: Identifier of the app, usually `{PROJECT_ID}`
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[str] code_bucket: The GCS bucket code is being stored in for this app.
-        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-               Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-               instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-               by the provider, but will be rejected by the API.
         :param pulumi.Input[str] default_bucket: The GCS bucket content is being stored in for this app.
         :param pulumi.Input[str] default_hostname: The default hostname for this app.
         :param pulumi.Input['ApplicationFeatureSettingsArgs'] feature_settings: A block of optional settings to configure specific App Engine features:
@@ -252,12 +238,6 @@ class _ApplicationState:
     @property
     @pulumi.getter(name="databaseType")
     def database_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-        instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-        by the provider, but will be rejected by the API.
-        """
         return pulumi.get(self, "database_type")
 
     @database_type.setter
@@ -427,10 +407,6 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
-        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-               Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-               instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-               by the provider, but will be rejected by the API.
         :param pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']] feature_settings: A block of optional settings to configure specific App Engine features:
         :param pulumi.Input[pulumi.InputType['ApplicationIapArgs']] iap: Settings for enabling Cloud Identity Aware Proxy
         :param pulumi.Input[str] location_id: The [location](https://cloud.google.com/appengine/docs/locations)
@@ -550,10 +526,6 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: Identifier of the app, usually `{PROJECT_ID}`
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.
         :param pulumi.Input[str] code_bucket: The GCS bucket code is being stored in for this app.
-        :param pulumi.Input[str] database_type: The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-               Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-               instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-               by the provider, but will be rejected by the API.
         :param pulumi.Input[str] default_bucket: The GCS bucket content is being stored in for this app.
         :param pulumi.Input[str] default_hostname: The default hostname for this app.
         :param pulumi.Input[pulumi.InputType['ApplicationFeatureSettingsArgs']] feature_settings: A block of optional settings to configure specific App Engine features:
@@ -615,12 +587,6 @@ class Application(pulumi.CustomResource):
     @property
     @pulumi.getter(name="databaseType")
     def database_type(self) -> pulumi.Output[str]:
-        """
-        The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-        Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-        instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-        by the provider, but will be rejected by the API.
-        """
         return pulumi.get(self, "database_type")
 
     @property

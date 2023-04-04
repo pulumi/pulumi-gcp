@@ -30,11 +30,6 @@ export const getAppleApp: typeof import("./getAppleApp").getAppleApp = null as a
 export const getAppleAppOutput: typeof import("./getAppleApp").getAppleAppOutput = null as any;
 utilities.lazyLoad(exports, ["getAppleApp","getAppleAppOutput"], () => require("./getAppleApp"));
 
-export { GetAppleAppConfigArgs, GetAppleAppConfigResult, GetAppleAppConfigOutputArgs } from "./getAppleAppConfig";
-export const getAppleAppConfig: typeof import("./getAppleAppConfig").getAppleAppConfig = null as any;
-export const getAppleAppConfigOutput: typeof import("./getAppleAppConfig").getAppleAppConfigOutput = null as any;
-utilities.lazyLoad(exports, ["getAppleAppConfig","getAppleAppConfigOutput"], () => require("./getAppleAppConfig"));
-
 export { GetHostingChannelArgs, GetHostingChannelResult, GetHostingChannelOutputArgs } from "./getHostingChannel";
 export const getHostingChannel: typeof import("./getHostingChannel").getHostingChannel = null as any;
 export const getHostingChannelOutput: typeof import("./getHostingChannel").getHostingChannelOutput = null as any;

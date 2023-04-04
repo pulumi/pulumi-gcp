@@ -96,7 +96,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name must be unique within a namespace, within a Cloud Run region.
+     * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
      * More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -106,7 +106,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Name must be unique within a namespace, within a Cloud Run region.
+     * @return Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
      * More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -297,7 +297,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name must be unique within a namespace, within a Cloud Run region.
+         * @param name Name must be unique within a Google Cloud project and region.
          * Is required when creating resources. Name is primarily intended
          * for creation idempotence and configuration definition. Cannot be updated.
          * More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -311,7 +311,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name must be unique within a namespace, within a Cloud Run region.
+         * @param name Name must be unique within a Google Cloud project and region.
          * Is required when creating resources. Name is primarily intended
          * for creation idempotence and configuration definition. Cannot be updated.
          * More info: http://kubernetes.io/docs/user-guide/identifiers#names

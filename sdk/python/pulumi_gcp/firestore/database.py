@@ -32,7 +32,7 @@ class DatabaseArgs:
                Possible values are `ENABLED` and `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[str] name: Required. The ID to use for the database, which will become the final
+        :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
                a letter and the last a letter or a number. Must not be
@@ -110,7 +110,7 @@ class DatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The ID to use for the database, which will become the final
+        The ID to use for the database, which will become the final
         component of the database's resource name. This value should be 4-63
         characters. Valid characters are /[a-z][0-9]-/ with first character
         a letter and the last a letter or a number. Must not be
@@ -165,7 +165,7 @@ class _DatabaseState:
                This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
         :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
                https://cloud.google.com/firestore/docs/locations.
-        :param pulumi.Input[str] name: Required. The ID to use for the database, which will become the final
+        :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
                a letter and the last a letter or a number. Must not be
@@ -281,7 +281,7 @@ class _DatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. The ID to use for the database, which will become the final
+        The ID to use for the database, which will become the final
         component of the database's resource name. This value should be 4-63
         characters. Valid characters are /[a-z][0-9]-/ with first character
         a letter and the last a letter or a number. Must not be
@@ -336,15 +336,6 @@ class Database(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A Cloud Firestore Database. Currently only one database is allowed per
-        cloud project; this database must have a `database_id` of '(default)'.
-
-        To get more information about Database, see:
-
-        * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/)
-
         ## Example Usage
 
         ## Import
@@ -371,7 +362,7 @@ class Database(pulumi.CustomResource):
                Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
                https://cloud.google.com/firestore/docs/locations.
-        :param pulumi.Input[str] name: Required. The ID to use for the database, which will become the final
+        :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
                a letter and the last a letter or a number. Must not be
@@ -391,15 +382,6 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Cloud Firestore Database. Currently only one database is allowed per
-        cloud project; this database must have a `database_id` of '(default)'.
-
-        To get more information about Database, see:
-
-        * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/firestore/docs/)
-
         ## Example Usage
 
         ## Import
@@ -501,7 +483,7 @@ class Database(pulumi.CustomResource):
                This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
         :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
                https://cloud.google.com/firestore/docs/locations.
-        :param pulumi.Input[str] name: Required. The ID to use for the database, which will become the final
+        :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
                a letter and the last a letter or a number. Must not be
@@ -589,7 +571,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The ID to use for the database, which will become the final
+        The ID to use for the database, which will become the final
         component of the database's resource name. This value should be 4-63
         characters. Valid characters are /[a-z][0-9]-/ with first character
         a letter and the last a letter or a number. Must not be

@@ -64,23 +64,9 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.codeBucket);
     }
 
-    /**
-     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-     * by the provider, but will be rejected by the API.
-     * 
-     */
     @Import(name="databaseType")
     private @Nullable Output<String> databaseType;
 
-    /**
-     * @return The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-     * by the provider, but will be rejected by the API.
-     * 
-     */
     public Optional<Output<String>> databaseType() {
         return Optional.ofNullable(this.databaseType);
     }
@@ -341,29 +327,11 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
             return codeBucket(Output.of(codeBucket));
         }
 
-        /**
-         * @param databaseType The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-         * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-         * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-         * by the provider, but will be rejected by the API.
-         * 
-         * @return builder
-         * 
-         */
         public Builder databaseType(@Nullable Output<String> databaseType) {
             $.databaseType = databaseType;
             return this;
         }
 
-        /**
-         * @param databaseType The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-         * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-         * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-         * by the provider, but will be rejected by the API.
-         * 
-         * @return builder
-         * 
-         */
         public Builder databaseType(String databaseType) {
             return databaseType(Output.of(databaseType));
         }

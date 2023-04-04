@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("interface", required: true)]
         public Input<string> Interface { get; set; } = null!;
 
+        [Input("size")]
+        public Input<int>? Size { get; set; }
+
         public InstanceFromTemplateScratchDiskGetArgs()
         {
         }

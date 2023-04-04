@@ -313,10 +313,11 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. A subnetwork with purpose set to
-        /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        /// reserved for Internal HTTP(S) Load Balancing.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+        /// A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+        /// A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        /// The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -328,11 +329,11 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The role of subnetwork. Currently, this field is only used when
-        /// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-        /// or BACKUP. An ACTIVE subnetwork is one that is currently being used
-        /// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-        /// is ready to be promoted to ACTIVE or is currently draining.
+        /// The role of subnetwork.
+        /// The value can be set to `ACTIVE` or `BACKUP`.
+        /// An `ACTIVE` subnetwork is one that is currently being used.
+        /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+        /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         /// Possible values are `ACTIVE` and `BACKUP`.
         /// </summary>
         [Output("role")]
@@ -483,10 +484,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. A subnetwork with purpose set to
-        /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        /// reserved for Internal HTTP(S) Load Balancing.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+        /// A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+        /// A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        /// The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -498,11 +500,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The role of subnetwork. Currently, this field is only used when
-        /// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-        /// or BACKUP. An ACTIVE subnetwork is one that is currently being used
-        /// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-        /// is ready to be promoted to ACTIVE or is currently draining.
+        /// The role of subnetwork.
+        /// The value can be set to `ACTIVE` or `BACKUP`.
+        /// An `ACTIVE` subnetwork is one that is currently being used.
+        /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+        /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         /// Possible values are `ACTIVE` and `BACKUP`.
         /// </summary>
         [Input("role")]
@@ -646,10 +648,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. A subnetwork with purpose set to
-        /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        /// reserved for Internal HTTP(S) Load Balancing.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+        /// A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+        /// A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        /// The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -661,11 +664,11 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The role of subnetwork. Currently, this field is only used when
-        /// purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-        /// or BACKUP. An ACTIVE subnetwork is one that is currently being used
-        /// for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-        /// is ready to be promoted to ACTIVE or is currently draining.
+        /// The role of subnetwork.
+        /// The value can be set to `ACTIVE` or `BACKUP`.
+        /// An `ACTIVE` subnetwork is one that is currently being used.
+        /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+        /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         /// Possible values are `ACTIVE` and `BACKUP`.
         /// </summary>
         [Input("role")]

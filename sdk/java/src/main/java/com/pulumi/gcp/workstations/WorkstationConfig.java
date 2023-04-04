@@ -419,7 +419,6 @@ import javax.annotation.Nullable;
  * 
  *         var defaultCryptoKey = new CryptoKey(&#34;defaultCryptoKey&#34;, CryptoKeyArgs.builder()        
  *             .keyRing(defaultKeyRing.id())
- *             .rotationPeriod(&#34;100000s&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());

@@ -10,14 +10,16 @@ import java.util.Objects;
 @CustomType
 public final class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
     /**
-     * @return Dataset ID in the format projects/{project}/datasets/{dataset_id}
+     * @return Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+     * {project}:{dataset_id}
      * 
      */
     private String datasetId;
 
     private StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset() {}
     /**
-     * @return Dataset ID in the format projects/{project}/datasets/{dataset_id}
+     * @return Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+     * {project}:{dataset_id}
      * 
      */
     public String datasetId() {

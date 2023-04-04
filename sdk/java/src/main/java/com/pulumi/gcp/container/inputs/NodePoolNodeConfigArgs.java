@@ -5,12 +5,14 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGvnicArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigShieldedInstanceConfigArgs;
@@ -29,6 +31,13 @@ import javax.annotation.Nullable;
 public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNodeConfigArgs Empty = new NodePoolNodeConfigArgs();
+
+    @Import(name="advancedMachineFeatures")
+    private @Nullable Output<NodePoolNodeConfigAdvancedMachineFeaturesArgs> advancedMachineFeatures;
+
+    public Optional<Output<NodePoolNodeConfigAdvancedMachineFeaturesArgs>> advancedMachineFeatures() {
+        return Optional.ofNullable(this.advancedMachineFeatures);
+    }
 
     @Import(name="bootDiskKmsKey")
     private @Nullable Output<String> bootDiskKmsKey;
@@ -105,6 +114,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<NodePoolNodeConfigLinuxNodeConfigArgs>> linuxNodeConfig() {
         return Optional.ofNullable(this.linuxNodeConfig);
+    }
+
+    @Import(name="localNvmeSsdBlockConfig")
+    private @Nullable Output<NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs> localNvmeSsdBlockConfig;
+
+    public Optional<Output<NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs>> localNvmeSsdBlockConfig() {
+        return Optional.ofNullable(this.localNvmeSsdBlockConfig);
     }
 
     @Import(name="localSsdCount")
@@ -229,6 +245,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     private NodePoolNodeConfigArgs() {}
 
     private NodePoolNodeConfigArgs(NodePoolNodeConfigArgs $) {
+        this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
@@ -240,6 +257,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.kubeletConfig = $.kubeletConfig;
         this.labels = $.labels;
         this.linuxNodeConfig = $.linuxNodeConfig;
+        this.localNvmeSsdBlockConfig = $.localNvmeSsdBlockConfig;
         this.localSsdCount = $.localSsdCount;
         this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
@@ -275,6 +293,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder(NodePoolNodeConfigArgs defaults) {
             $ = new NodePoolNodeConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder advancedMachineFeatures(@Nullable Output<NodePoolNodeConfigAdvancedMachineFeaturesArgs> advancedMachineFeatures) {
+            $.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
+
+        public Builder advancedMachineFeatures(NodePoolNodeConfigAdvancedMachineFeaturesArgs advancedMachineFeatures) {
+            return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
         public Builder bootDiskKmsKey(@Nullable Output<String> bootDiskKmsKey) {
@@ -378,6 +405,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder linuxNodeConfig(NodePoolNodeConfigLinuxNodeConfigArgs linuxNodeConfig) {
             return linuxNodeConfig(Output.of(linuxNodeConfig));
+        }
+
+        public Builder localNvmeSsdBlockConfig(@Nullable Output<NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs> localNvmeSsdBlockConfig) {
+            $.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
+            return this;
+        }
+
+        public Builder localNvmeSsdBlockConfig(NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs localNvmeSsdBlockConfig) {
+            return localNvmeSsdBlockConfig(Output.of(localNvmeSsdBlockConfig));
         }
 
         public Builder localSsdCount(@Nullable Output<Integer> localSsdCount) {

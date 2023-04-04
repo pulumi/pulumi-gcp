@@ -20,6 +20,8 @@ __all__ = [
     'EnvironmentIamBindingCondition',
     'EnvironmentIamMemberCondition',
     'EnvironmentNodeConfig',
+    'KeystoresAliasesKeyCertFileCertsInfo',
+    'KeystoresAliasesKeyCertFileCertsInfoCertInfo',
     'OrganizationProperties',
     'OrganizationPropertiesProperty',
     'SharedflowMetaData',
@@ -412,6 +414,160 @@ class EnvironmentNodeConfig(dict):
         recommended minimum number of nodes for that gateway.
         """
         return pulumi.get(self, "min_node_count")
+
+
+@pulumi.output_type
+class KeystoresAliasesKeyCertFileCertsInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certInfos":
+            suggest = "cert_infos"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeystoresAliasesKeyCertFileCertsInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeystoresAliasesKeyCertFileCertsInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeystoresAliasesKeyCertFileCertsInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_infos: Optional[Sequence['outputs.KeystoresAliasesKeyCertFileCertsInfoCertInfo']] = None):
+        if cert_infos is not None:
+            pulumi.set(__self__, "cert_infos", cert_infos)
+
+    @property
+    @pulumi.getter(name="certInfos")
+    def cert_infos(self) -> Optional[Sequence['outputs.KeystoresAliasesKeyCertFileCertsInfoCertInfo']]:
+        return pulumi.get(self, "cert_infos")
+
+
+@pulumi.output_type
+class KeystoresAliasesKeyCertFileCertsInfoCertInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicConstraints":
+            suggest = "basic_constraints"
+        elif key == "expiryDate":
+            suggest = "expiry_date"
+        elif key == "isValid":
+            suggest = "is_valid"
+        elif key == "publicKey":
+            suggest = "public_key"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "sigAlgName":
+            suggest = "sig_alg_name"
+        elif key == "subjectAlternativeNames":
+            suggest = "subject_alternative_names"
+        elif key == "validFrom":
+            suggest = "valid_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeystoresAliasesKeyCertFileCertsInfoCertInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeystoresAliasesKeyCertFileCertsInfoCertInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeystoresAliasesKeyCertFileCertsInfoCertInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 basic_constraints: Optional[str] = None,
+                 expiry_date: Optional[str] = None,
+                 is_valid: Optional[str] = None,
+                 issuer: Optional[str] = None,
+                 public_key: Optional[str] = None,
+                 serial_number: Optional[str] = None,
+                 sig_alg_name: Optional[str] = None,
+                 subject: Optional[str] = None,
+                 subject_alternative_names: Optional[Sequence[str]] = None,
+                 valid_from: Optional[str] = None,
+                 version: Optional[int] = None):
+        if basic_constraints is not None:
+            pulumi.set(__self__, "basic_constraints", basic_constraints)
+        if expiry_date is not None:
+            pulumi.set(__self__, "expiry_date", expiry_date)
+        if is_valid is not None:
+            pulumi.set(__self__, "is_valid", is_valid)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
+        if sig_alg_name is not None:
+            pulumi.set(__self__, "sig_alg_name", sig_alg_name)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if subject_alternative_names is not None:
+            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+        if valid_from is not None:
+            pulumi.set(__self__, "valid_from", valid_from)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="basicConstraints")
+    def basic_constraints(self) -> Optional[str]:
+        return pulumi.get(self, "basic_constraints")
+
+    @property
+    @pulumi.getter(name="expiryDate")
+    def expiry_date(self) -> Optional[str]:
+        return pulumi.get(self, "expiry_date")
+
+    @property
+    @pulumi.getter(name="isValid")
+    def is_valid(self) -> Optional[str]:
+        return pulumi.get(self, "is_valid")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[str]:
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[str]:
+        return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[str]:
+        return pulumi.get(self, "serial_number")
+
+    @property
+    @pulumi.getter(name="sigAlgName")
+    def sig_alg_name(self) -> Optional[str]:
+        return pulumi.get(self, "sig_alg_name")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[str]:
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter(name="subjectAlternativeNames")
+    def subject_alternative_names(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "subject_alternative_names")
+
+    @property
+    @pulumi.getter(name="validFrom")
+    def valid_from(self) -> Optional[str]:
+        return pulumi.get(self, "valid_from")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[int]:
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

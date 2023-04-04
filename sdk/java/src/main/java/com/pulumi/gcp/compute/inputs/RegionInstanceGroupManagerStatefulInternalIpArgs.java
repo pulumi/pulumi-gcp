@@ -31,14 +31,14 @@ public final class RegionInstanceGroupManagerStatefulInternalIpArgs extends com.
     }
 
     /**
-     * , The network interface name of the internal Ip.
+     * , The network interface name of the internal Ip. Possible value: `nic0`.
      * 
      */
     @Import(name="interfaceName")
     private @Nullable Output<String> interfaceName;
 
     /**
-     * @return , The network interface name of the internal Ip.
+     * @return , The network interface name of the internal Ip. Possible value: `nic0`.
      * 
      */
     public Optional<Output<String>> interfaceName() {
@@ -92,7 +92,7 @@ public final class RegionInstanceGroupManagerStatefulInternalIpArgs extends com.
         }
 
         /**
-         * @param interfaceName , The network interface name of the internal Ip.
+         * @param interfaceName , The network interface name of the internal Ip. Possible value: `nic0`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RegionInstanceGroupManagerStatefulInternalIpArgs extends com.
         }
 
         /**
-         * @param interfaceName , The network interface name of the internal Ip.
+         * @param interfaceName , The network interface name of the internal Ip. Possible value: `nic0`.
          * 
          * @return builder
          * 

@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Compute
     ///     var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tplInstanceFromTemplate", new()
     ///     {
     ///         Zone = "us-central1-a",
-    ///         SourceInstanceTemplate = tplInstanceTemplate.Id,
+    ///         SourceInstanceTemplate = tplInstanceTemplate.SelfLinkUnique,
     ///         CanIpForward = false,
     ///         Labels = 
     ///         {
@@ -283,7 +283,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name or self link of an instance
-        /// template to create the instance based on.
+        /// template to create the instance based on. It is recommended to reference
+        /// instance templates through their unique id (`self_link_unique` attribute).
         /// </summary>
         [Output("sourceInstanceTemplate")]
         public Output<string> SourceInstanceTemplate { get; private set; } = null!;
@@ -560,7 +561,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name or self link of an instance
-        /// template to create the instance based on.
+        /// template to create the instance based on. It is recommended to reference
+        /// instance templates through their unique id (`self_link_unique` attribute).
         /// </summary>
         [Input("sourceInstanceTemplate", required: true)]
         public Input<string> SourceInstanceTemplate { get; set; } = null!;
@@ -835,7 +837,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Name or self link of an instance
-        /// template to create the instance based on.
+        /// template to create the instance based on. It is recommended to reference
+        /// instance templates through their unique id (`self_link_unique` attribute).
         /// </summary>
         [Input("sourceInstanceTemplate")]
         public Input<string>? SourceInstanceTemplate { get; set; }

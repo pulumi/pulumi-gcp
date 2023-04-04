@@ -48,9 +48,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			liveappV1, err := appengine.NewStandardAppVersion(ctx, "liveappV1", &appengine.StandardAppVersionArgs{
+//			internalappStandardAppVersion, err := appengine.NewStandardAppVersion(ctx, "internalappStandardAppVersion", &appengine.StandardAppVersionArgs{
 //				VersionId:              pulumi.String("v1"),
-//				Service:                pulumi.String("liveapp"),
+//				Service:                pulumi.String("internalapp"),
 //				DeleteServiceOnDestroy: pulumi.Bool(true),
 //				Runtime:                pulumi.String("nodejs10"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
@@ -72,8 +72,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = appengine.NewServiceNetworkSettings(ctx, "liveapp", &appengine.ServiceNetworkSettingsArgs{
-//				Service: liveappV1.Service,
+//			_, err = appengine.NewServiceNetworkSettings(ctx, "internalappServiceNetworkSettings", &appengine.ServiceNetworkSettingsArgs{
+//				Service: internalappStandardAppVersion.Service,
 //				NetworkSettings: &appengine.ServiceNetworkSettingsNetworkSettingsArgs{
 //					IngressTrafficAllowed: pulumi.String("INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"),
 //				},

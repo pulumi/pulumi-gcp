@@ -4,12 +4,14 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigGvnic;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigShieldedInstanceConfig;
@@ -26,6 +28,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodeConfig {
+    /**
+     * @return Specifies options for controlling
+     * advanced machine features. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
     /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
@@ -98,6 +106,11 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable ClusterNodeConfigLinuxNodeConfig linuxNodeConfig;
+    /**
+     * @return Parameters for the local NVMe SSDs. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig;
     /**
      * @return The amount of local SSD disks that will be
      * attached to each cluster node. Defaults to 0.
@@ -210,6 +223,14 @@ public final class ClusterNodeConfig {
 
     private ClusterNodeConfig() {}
     /**
+     * @return Specifies options for controlling
+     * advanced machine features. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigAdvancedMachineFeatures> advancedMachineFeatures() {
+        return Optional.ofNullable(this.advancedMachineFeatures);
+    }
+    /**
      * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
      * 
      */
@@ -302,6 +323,13 @@ public final class ClusterNodeConfig {
      */
     public Optional<ClusterNodeConfigLinuxNodeConfig> linuxNodeConfig() {
         return Optional.ofNullable(this.linuxNodeConfig);
+    }
+    /**
+     * @return Parameters for the local NVMe SSDs. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfig() {
+        return Optional.ofNullable(this.localNvmeSsdBlockConfig);
     }
     /**
      * @return The amount of local SSD disks that will be
@@ -456,6 +484,7 @@ public final class ClusterNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
         private @Nullable String bootDiskKmsKey;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
@@ -467,6 +496,7 @@ public final class ClusterNodeConfig {
         private @Nullable ClusterNodeConfigKubeletConfig kubeletConfig;
         private @Nullable Map<String,String> labels;
         private @Nullable ClusterNodeConfigLinuxNodeConfig linuxNodeConfig;
+        private @Nullable ClusterNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig;
         private @Nullable Integer localSsdCount;
         private @Nullable String loggingVariant;
         private @Nullable String machineType;
@@ -487,6 +517,7 @@ public final class ClusterNodeConfig {
         public Builder() {}
         public Builder(ClusterNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
@@ -498,6 +529,7 @@ public final class ClusterNodeConfig {
     	      this.kubeletConfig = defaults.kubeletConfig;
     	      this.labels = defaults.labels;
     	      this.linuxNodeConfig = defaults.linuxNodeConfig;
+    	      this.localNvmeSsdBlockConfig = defaults.localNvmeSsdBlockConfig;
     	      this.localSsdCount = defaults.localSsdCount;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
@@ -517,6 +549,11 @@ public final class ClusterNodeConfig {
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
         }
 
+        @CustomType.Setter
+        public Builder advancedMachineFeatures(@Nullable ClusterNodeConfigAdvancedMachineFeatures advancedMachineFeatures) {
+            this.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
         @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
@@ -573,6 +610,11 @@ public final class ClusterNodeConfig {
         @CustomType.Setter
         public Builder linuxNodeConfig(@Nullable ClusterNodeConfigLinuxNodeConfig linuxNodeConfig) {
             this.linuxNodeConfig = linuxNodeConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localNvmeSsdBlockConfig(@Nullable ClusterNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig) {
+            this.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             return this;
         }
         @CustomType.Setter
@@ -671,6 +713,7 @@ public final class ClusterNodeConfig {
         }
         public ClusterNodeConfig build() {
             final var o = new ClusterNodeConfig();
+            o.advancedMachineFeatures = advancedMachineFeatures;
             o.bootDiskKmsKey = bootDiskKmsKey;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
@@ -682,6 +725,7 @@ public final class ClusterNodeConfig {
             o.kubeletConfig = kubeletConfig;
             o.labels = labels;
             o.linuxNodeConfig = linuxNodeConfig;
+            o.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             o.localSsdCount = localSsdCount;
             o.loggingVariant = loggingVariant;
             o.machineType = machineType;

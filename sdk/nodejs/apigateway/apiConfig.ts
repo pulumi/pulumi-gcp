@@ -23,12 +23,12 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  *
- * const apiCfgApi = new gcp.apigateway.Api("apiCfgApi", {apiId: "api-cfg"}, {
+ * const apiCfgApi = new gcp.apigateway.Api("apiCfgApi", {apiId: "my-api"}, {
  *     provider: google_beta,
  * });
  * const apiCfgApiConfig = new gcp.apigateway.ApiConfig("apiCfgApiConfig", {
  *     api: apiCfgApi.apiId,
- *     apiConfigId: "cfg",
+ *     apiConfigId: "my-config",
  *     openapiDocuments: [{
  *         document: {
  *             path: "spec.yaml",

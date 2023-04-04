@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolNodeConfig
     {
         /// <summary>
+        /// Specifies options for controlling
+        /// advanced machine features. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures? AdvancedMachineFeatures;
+        /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
         /// </summary>
         public readonly string? BootDiskKmsKey;
@@ -74,6 +79,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigLinuxNodeConfig? LinuxNodeConfig;
+        /// <summary>
+        /// Parameters for the local NVMe SSDs. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig? LocalNvmeSsdBlockConfig;
         /// <summary>
         /// The amount of local SSD disks that will be
         /// attached to each cluster node. Defaults to 0.
@@ -170,6 +179,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterNodePoolNodeConfig(
+            Outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures? advancedMachineFeatures,
+
             string? bootDiskKmsKey,
 
             int? diskSizeGb,
@@ -191,6 +202,8 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableDictionary<string, string>? labels,
 
             Outputs.ClusterNodePoolNodeConfigLinuxNodeConfig? linuxNodeConfig,
+
+            Outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig? localNvmeSsdBlockConfig,
 
             int? localSsdCount,
 
@@ -226,6 +239,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig? workloadMetadataConfig)
         {
+            AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
@@ -237,6 +251,7 @@ namespace Pulumi.Gcp.Container.Outputs
             KubeletConfig = kubeletConfig;
             Labels = labels;
             LinuxNodeConfig = linuxNodeConfig;
+            LocalNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             LocalSsdCount = localSsdCount;
             LoggingVariant = loggingVariant;
             MachineType = machineType;

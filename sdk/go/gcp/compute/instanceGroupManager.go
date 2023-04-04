@@ -51,7 +51,7 @@ import (
 //				Zone:             pulumi.String("us-central1-a"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Self_link_unique),
 //					},
 //				},
 //				AllInstancesConfig: &compute.InstanceGroupManagerAllInstancesConfigArgs{
@@ -105,11 +105,11 @@ import (
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
 //						Name:             pulumi.String("appserver"),
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Self_link_unique),
 //					},
 //					&compute.InstanceGroupManagerVersionArgs{
 //						Name:             pulumi.String("appserver-canary"),
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.AppserverCanary.Id),
+//						InstanceTemplate: pulumi.Any(google_compute_instance_template.AppserverCanary.Self_link_unique),
 //						TargetSize: &compute.InstanceGroupManagerVersionTargetSizeArgs{
 //							Fixed: pulumi.Int(1),
 //						},

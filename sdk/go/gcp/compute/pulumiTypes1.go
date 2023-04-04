@@ -5194,6 +5194,8 @@ func (o GetInstanceSchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) G
 type GetInstanceScratchDisk struct {
 	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
 	Interface string `pulumi:"interface"`
+	// The size of the image in gigabytes.
+	Size int `pulumi:"size"`
 }
 
 // GetInstanceScratchDiskInput is an input type that accepts GetInstanceScratchDiskArgs and GetInstanceScratchDiskOutput values.
@@ -5210,6 +5212,8 @@ type GetInstanceScratchDiskInput interface {
 type GetInstanceScratchDiskArgs struct {
 	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
 	Interface pulumi.StringInput `pulumi:"interface"`
+	// The size of the image in gigabytes.
+	Size pulumi.IntInput `pulumi:"size"`
 }
 
 func (GetInstanceScratchDiskArgs) ElementType() reflect.Type {
@@ -5266,6 +5270,11 @@ func (o GetInstanceScratchDiskOutput) ToGetInstanceScratchDiskOutputWithContext(
 // The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
 func (o GetInstanceScratchDiskOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceScratchDisk) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+// The size of the image in gigabytes.
+func (o GetInstanceScratchDiskOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceScratchDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
 type GetInstanceScratchDiskArrayOutput struct{ *pulumi.OutputState }
@@ -6426,7 +6435,7 @@ type GetInstanceTemplateNetworkInterface struct {
 	// Access configurations, i.e. IPs via which this
 	// instance can be accessed via the Internet. Omit to ensure that the instance
 	// is not accessible from the Internet (this means that ssh provisioners will
-	// not work unless you are running the prvovider can send traffic to the instance's
+	// not work unless you are running the provider can send traffic to the instance's
 	// network (e.g. via tunnel or because it is running on another cloud instance
 	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs []GetInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
@@ -6436,7 +6445,7 @@ type GetInstanceTemplateNetworkInterface struct {
 	AliasIpRanges     []GetInstanceTemplateNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
 	Ipv6AccessConfigs []GetInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
 	Ipv6AccessType    string                                                `pulumi:"ipv6AccessType"`
-	// The name of the instance template. One of `name` or `filter` must be provided.
+	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
 	// Use `network` attribute for Legacy or Auto subnetted networks and
@@ -6472,7 +6481,7 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// Access configurations, i.e. IPs via which this
 	// instance can be accessed via the Internet. Omit to ensure that the instance
 	// is not accessible from the Internet (this means that ssh provisioners will
-	// not work unless you are running the prvovider can send traffic to the instance's
+	// not work unless you are running the provider can send traffic to the instance's
 	// network (e.g. via tunnel or because it is running on another cloud instance
 	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
@@ -6482,7 +6491,7 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	AliasIpRanges     GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
 	Ipv6AccessConfigs GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
 	Ipv6AccessType    pulumi.StringInput                                            `pulumi:"ipv6AccessType"`
-	// The name of the instance template. One of `name` or `filter` must be provided.
+	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
 	// Use `network` attribute for Legacy or Auto subnetted networks and
@@ -6557,7 +6566,7 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) ToGetInstanceTemplateNetworkI
 // Access configurations, i.e. IPs via which this
 // instance can be accessed via the Internet. Omit to ensure that the instance
 // is not accessible from the Internet (this means that ssh provisioners will
-// not work unless you are running the prvovider can send traffic to the instance's
+// not work unless you are running the provider can send traffic to the instance's
 // network (e.g. via tunnel or because it is running on another cloud instance
 // on that network). This block can be repeated multiple times. Structure documented below.
 func (o GetInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
@@ -6585,7 +6594,7 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.Strin
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
-// The name of the instance template. One of `name` or `filter` must be provided.
+// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 func (o GetInstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -439,14 +439,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook.
+     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
+     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
      * 
      */
     @Import(name="proxyUri")
     private @Nullable Output<String> proxyUri;
 
     /**
-     * @return The proxy endpoint that is used to access the Jupyter notebook.
+     * @return The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
+     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
      * 
      */
     public Optional<Output<String>> proxyUri() {
@@ -1242,7 +1244,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook.
+         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
+         * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
          * 
          * @return builder
          * 
@@ -1253,7 +1256,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook.
+         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
+         * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
          * 
          * @return builder
          * 

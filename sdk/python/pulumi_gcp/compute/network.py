@@ -21,6 +21,7 @@ class NetworkArgs:
                  internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -53,6 +54,9 @@ class NetworkArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+               Default value is `AFTER_CLASSIC_FIREWALL`.
+               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -76,6 +80,8 @@ class NetworkArgs:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_firewall_policy_enforcement_order is not None:
+            pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routing_mode is not None:
@@ -187,6 +193,20 @@ class NetworkArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
+    def network_firewall_policy_enforcement_order(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        Default value is `AFTER_CLASSIC_FIREWALL`.
+        Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        """
+        return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @network_firewall_policy_enforcement_order.setter
+    def network_firewall_policy_enforcement_order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_firewall_policy_enforcement_order", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -228,6 +248,7 @@ class _NetworkState:
                  internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
@@ -263,6 +284,9 @@ class _NetworkState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+               Default value is `AFTER_CLASSIC_FIREWALL`.
+               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -289,6 +313,8 @@ class _NetworkState:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_firewall_policy_enforcement_order is not None:
+            pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routing_mode is not None:
@@ -415,6 +441,20 @@ class _NetworkState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
+    def network_firewall_policy_enforcement_order(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        Default value is `AFTER_CLASSIC_FIREWALL`.
+        Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        """
+        return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @network_firewall_policy_enforcement_order.setter
+    def network_firewall_policy_enforcement_order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_firewall_policy_enforcement_order", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -469,6 +509,7 @@ class Network(pulumi.CustomResource):
                  internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -499,6 +540,17 @@ class Network(pulumi.CustomResource):
         vpc_network = gcp.compute.Network("vpcNetwork",
             auto_create_subnetworks=True,
             mtu=1460,
+            project="my-project-name")
+        ```
+        ### Network Custom Firewall Enforcement Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL",
             project="my-project-name")
         ```
 
@@ -548,6 +600,9 @@ class Network(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+               Default value is `AFTER_CLASSIC_FIREWALL`.
+               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -592,6 +647,17 @@ class Network(pulumi.CustomResource):
             mtu=1460,
             project="my-project-name")
         ```
+        ### Network Custom Firewall Enforcement Order
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork",
+            auto_create_subnetworks=True,
+            network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL",
+            project="my-project-name")
+        ```
 
         ## Import
 
@@ -631,6 +697,7 @@ class Network(pulumi.CustomResource):
                  internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -649,6 +716,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
             __props__.__dict__["project"] = project
             __props__.__dict__["routing_mode"] = routing_mode
             __props__.__dict__["gateway_ipv4"] = None
@@ -671,6 +739,7 @@ class Network(pulumi.CustomResource):
             internal_ipv6_range: Optional[pulumi.Input[str]] = None,
             mtu: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             routing_mode: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Network':
@@ -711,6 +780,9 @@ class Network(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+               Default value is `AFTER_CLASSIC_FIREWALL`.
+               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -733,6 +805,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
         __props__.__dict__["project"] = project
         __props__.__dict__["routing_mode"] = routing_mode
         __props__.__dict__["self_link"] = self_link
@@ -823,6 +896,16 @@ class Network(pulumi.CustomResource):
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
+    def network_firewall_policy_enforcement_order(self) -> pulumi.Output[Optional[str]]:
+        """
+        Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        Default value is `AFTER_CLASSIC_FIREWALL`.
+        Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        """
+        return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
     @property
     @pulumi.getter

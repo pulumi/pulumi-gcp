@@ -62,6 +62,27 @@ namespace Pulumi.Gcp.Logging
     /// });
     /// ```
     /// 
+    /// Create logging bucket with Log Analytics enabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var analytics_enabled_bucket = new Gcp.Logging.ProjectBucketConfig("analytics-enabled-bucket", new()
+    ///     {
+    ///         BucketId = "custom-bucket",
+    ///         EnableAnalytics = true,
+    ///         Location = "global",
+    ///         Project = "project_id",
+    ///         RetentionDays = 30,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// Create logging bucket with customId and cmekSettings
     /// 
     /// ```csharp
@@ -146,6 +167,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+        /// </summary>
+        [Output("enableAnalytics")]
+        public Output<bool?> EnableAnalytics { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -242,6 +269,12 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+        /// </summary>
+        [Input("enableAnalytics")]
+        public Input<bool>? EnableAnalytics { get; set; }
+
+        /// <summary>
         /// The location of the bucket.
         /// </summary>
         [Input("location", required: true)]
@@ -284,6 +317,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+        /// </summary>
+        [Input("enableAnalytics")]
+        public Input<bool>? EnableAnalytics { get; set; }
 
         /// <summary>
         /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).

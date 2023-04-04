@@ -372,7 +372,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the repository, for example:
-     * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+     * &#34;repo1&#34;
      * 
      */
     @Export(name="name", type=String.class, parameters={})
@@ -380,7 +380,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the repository, for example:
-     * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+     * &#34;repo1&#34;
      * 
      */
     public Output<String> name() {

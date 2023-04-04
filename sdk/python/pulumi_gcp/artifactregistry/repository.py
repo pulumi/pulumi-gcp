@@ -269,7 +269,7 @@ class _RepositoryState:
         :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
                Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
         :param pulumi.Input[str] name: The name of the repository, for example:
-               "projects/p1/locations/us-central1/repositories/repo1"
+               "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
@@ -422,7 +422,7 @@ class _RepositoryState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the repository, for example:
-        "projects/p1/locations/us-central1/repositories/repo1"
+        "repo1"
         """
         return pulumi.get(self, "name")
 
@@ -873,7 +873,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
                Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
         :param pulumi.Input[str] name: The name of the repository, for example:
-               "projects/p1/locations/us-central1/repositories/repo1"
+               "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
@@ -985,7 +985,7 @@ class Repository(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the repository, for example:
-        "projects/p1/locations/us-central1/repositories/repo1"
+        "repo1"
         """
         return pulumi.get(self, "name")
 

@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var api = new Api(&#34;api&#34;, ApiArgs.builder()        
- *             .apiId(&#34;api&#34;)
+ *             .apiId(&#34;my-api&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());

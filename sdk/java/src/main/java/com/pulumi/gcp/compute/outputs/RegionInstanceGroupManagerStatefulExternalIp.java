@@ -17,7 +17,7 @@ public final class RegionInstanceGroupManagerStatefulExternalIp {
      */
     private @Nullable String deleteRule;
     /**
-     * @return , The network interface name of the external Ip.
+     * @return , The network interface name of the external Ip. Possible value: `nic0`.
      * 
      */
     private @Nullable String interfaceName;
@@ -31,7 +31,7 @@ public final class RegionInstanceGroupManagerStatefulExternalIp {
         return Optional.ofNullable(this.deleteRule);
     }
     /**
-     * @return , The network interface name of the external Ip.
+     * @return , The network interface name of the external Ip. Possible value: `nic0`.
      * 
      */
     public Optional<String> interfaceName() {

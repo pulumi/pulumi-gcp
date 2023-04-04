@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstanceCloneResult
     {
         public readonly string AllocatedIpRange;
+        public readonly ImmutableArray<string> DatabaseNames;
         public readonly string PointInTime;
         public readonly string SourceInstanceName;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstanceCloneResult(
             string allocatedIpRange,
 
+            ImmutableArray<string> databaseNames,
+
             string pointInTime,
 
             string sourceInstanceName)
         {
             AllocatedIpRange = allocatedIpRange;
+            DatabaseNames = databaseNames;
             PointInTime = pointInTime;
             SourceInstanceName = sourceInstanceName;
         }

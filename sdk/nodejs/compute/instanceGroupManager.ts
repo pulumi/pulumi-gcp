@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     baseInstanceName: "app",
  *     zone: "us-central1-a",
  *     versions: [{
- *         instanceTemplate: google_compute_instance_template.appserver.id,
+ *         instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
  *     }],
  *     allInstancesConfig: {
  *         metadata: {
@@ -69,11 +69,11 @@ import * as utilities from "../utilities";
  *     versions: [
  *         {
  *             name: "appserver",
- *             instanceTemplate: google_compute_instance_template.appserver.id,
+ *             instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
  *         },
  *         {
  *             name: "appserver-canary",
- *             instanceTemplate: google_compute_instance_template["appserver-canary"].id,
+ *             instanceTemplate: google_compute_instance_template["appserver-canary"].self_link_unique,
  *             targetSize: {
  *                 fixed: 1,
  *             },

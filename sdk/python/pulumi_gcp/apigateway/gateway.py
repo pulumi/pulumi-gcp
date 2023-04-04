@@ -286,11 +286,11 @@ class Gateway(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="api-gw",
+        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="my-api",
         opts=pulumi.ResourceOptions(provider=google_beta))
         api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
             api=api_gw_api.api_id,
-            api_config_id="config",
+            api_config_id="my-config",
             openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
                 document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
                     path="spec.yaml",
@@ -300,7 +300,7 @@ class Gateway(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         api_gw_gateway = gcp.apigateway.Gateway("apiGwGateway",
             api_config=api_gw_api_config.id,
-            gateway_id="api-gw",
+            gateway_id="my-gateway",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -358,11 +358,11 @@ class Gateway(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="api-gw",
+        api_gw_api = gcp.apigateway.Api("apiGwApi", api_id="my-api",
         opts=pulumi.ResourceOptions(provider=google_beta))
         api_gw_api_config = gcp.apigateway.ApiConfig("apiGwApiConfig",
             api=api_gw_api.api_id,
-            api_config_id="config",
+            api_config_id="my-config",
             openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
                 document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
                     path="spec.yaml",
@@ -372,7 +372,7 @@ class Gateway(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         api_gw_gateway = gcp.apigateway.Gateway("apiGwGateway",
             api_config=api_gw_api_config.id,
-            gateway_id="api-gw",
+            gateway_id="my-gateway",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 

@@ -1648,7 +1648,8 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] dataset_id: Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        :param pulumi.Input[str] dataset_id: Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+               {project}:{dataset_id}
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
 
@@ -1656,7 +1657,8 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs:
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> pulumi.Input[str]:
         """
-        Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+        {project}:{dataset_id}
         """
         return pulumi.get(self, "dataset_id")
 

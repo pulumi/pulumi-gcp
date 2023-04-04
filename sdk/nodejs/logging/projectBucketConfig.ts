@@ -45,6 +45,21 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Create logging bucket with Log Analytics enabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const analytics_enabled_bucket = new gcp.logging.ProjectBucketConfig("analytics-enabled-bucket", {
+ *     bucketId: "custom-bucket",
+ *     enableAnalytics: true,
+ *     location: "global",
+ *     project: "project_id",
+ *     retentionDays: 30,
+ * });
+ * ```
+ *
  * Create logging bucket with customId and cmekSettings
  *
  * ```typescript
@@ -126,6 +141,10 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+     */
+    public readonly enableAnalytics!: pulumi.Output<boolean | undefined>;
+    /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
     public /*out*/ readonly lifecycleState!: pulumi.Output<string>;
@@ -162,6 +181,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             resourceInputs["bucketId"] = state ? state.bucketId : undefined;
             resourceInputs["cmekSettings"] = state ? state.cmekSettings : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableAnalytics"] = state ? state.enableAnalytics : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -181,6 +201,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
             resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableAnalytics"] = args ? args.enableAnalytics : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
@@ -208,6 +229,10 @@ export interface ProjectBucketConfigState {
      * Describes this bucket.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+     */
+    enableAnalytics?: pulumi.Input<boolean>;
     /**
      * The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
      */
@@ -246,6 +271,10 @@ export interface ProjectBucketConfigArgs {
      * Describes this bucket.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+     */
+    enableAnalytics?: pulumi.Input<boolean>;
     /**
      * The location of the bucket.
      */

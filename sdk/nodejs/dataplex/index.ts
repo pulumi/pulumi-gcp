@@ -10,15 +10,60 @@ export type Asset = import("./asset").Asset;
 export const Asset: typeof import("./asset").Asset = null as any;
 utilities.lazyLoad(exports, ["Asset"], () => require("./asset"));
 
+export { AssetIamBindingArgs, AssetIamBindingState } from "./assetIamBinding";
+export type AssetIamBinding = import("./assetIamBinding").AssetIamBinding;
+export const AssetIamBinding: typeof import("./assetIamBinding").AssetIamBinding = null as any;
+utilities.lazyLoad(exports, ["AssetIamBinding"], () => require("./assetIamBinding"));
+
+export { AssetIamMemberArgs, AssetIamMemberState } from "./assetIamMember";
+export type AssetIamMember = import("./assetIamMember").AssetIamMember;
+export const AssetIamMember: typeof import("./assetIamMember").AssetIamMember = null as any;
+utilities.lazyLoad(exports, ["AssetIamMember"], () => require("./assetIamMember"));
+
+export { AssetIamPolicyArgs, AssetIamPolicyState } from "./assetIamPolicy";
+export type AssetIamPolicy = import("./assetIamPolicy").AssetIamPolicy;
+export const AssetIamPolicy: typeof import("./assetIamPolicy").AssetIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AssetIamPolicy"], () => require("./assetIamPolicy"));
+
 export { LakeArgs, LakeState } from "./lake";
 export type Lake = import("./lake").Lake;
 export const Lake: typeof import("./lake").Lake = null as any;
 utilities.lazyLoad(exports, ["Lake"], () => require("./lake"));
 
+export { LakeIamBindingArgs, LakeIamBindingState } from "./lakeIamBinding";
+export type LakeIamBinding = import("./lakeIamBinding").LakeIamBinding;
+export const LakeIamBinding: typeof import("./lakeIamBinding").LakeIamBinding = null as any;
+utilities.lazyLoad(exports, ["LakeIamBinding"], () => require("./lakeIamBinding"));
+
+export { LakeIamMemberArgs, LakeIamMemberState } from "./lakeIamMember";
+export type LakeIamMember = import("./lakeIamMember").LakeIamMember;
+export const LakeIamMember: typeof import("./lakeIamMember").LakeIamMember = null as any;
+utilities.lazyLoad(exports, ["LakeIamMember"], () => require("./lakeIamMember"));
+
+export { LakeIamPolicyArgs, LakeIamPolicyState } from "./lakeIamPolicy";
+export type LakeIamPolicy = import("./lakeIamPolicy").LakeIamPolicy;
+export const LakeIamPolicy: typeof import("./lakeIamPolicy").LakeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["LakeIamPolicy"], () => require("./lakeIamPolicy"));
+
 export { ZoneArgs, ZoneState } from "./zone";
 export type Zone = import("./zone").Zone;
 export const Zone: typeof import("./zone").Zone = null as any;
 utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
+
+export { ZoneIamBindingArgs, ZoneIamBindingState } from "./zoneIamBinding";
+export type ZoneIamBinding = import("./zoneIamBinding").ZoneIamBinding;
+export const ZoneIamBinding: typeof import("./zoneIamBinding").ZoneIamBinding = null as any;
+utilities.lazyLoad(exports, ["ZoneIamBinding"], () => require("./zoneIamBinding"));
+
+export { ZoneIamMemberArgs, ZoneIamMemberState } from "./zoneIamMember";
+export type ZoneIamMember = import("./zoneIamMember").ZoneIamMember;
+export const ZoneIamMember: typeof import("./zoneIamMember").ZoneIamMember = null as any;
+utilities.lazyLoad(exports, ["ZoneIamMember"], () => require("./zoneIamMember"));
+
+export { ZoneIamPolicyArgs, ZoneIamPolicyState } from "./zoneIamPolicy";
+export type ZoneIamPolicy = import("./zoneIamPolicy").ZoneIamPolicy;
+export const ZoneIamPolicy: typeof import("./zoneIamPolicy").ZoneIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ZoneIamPolicy"], () => require("./zoneIamPolicy"));
 
 
 const _module = {
@@ -27,15 +72,42 @@ const _module = {
         switch (type) {
             case "gcp:dataplex/asset:Asset":
                 return new Asset(name, <any>undefined, { urn })
+            case "gcp:dataplex/assetIamBinding:AssetIamBinding":
+                return new AssetIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/assetIamMember:AssetIamMember":
+                return new AssetIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/assetIamPolicy:AssetIamPolicy":
+                return new AssetIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/lake:Lake":
                 return new Lake(name, <any>undefined, { urn })
+            case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
+                return new LakeIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/lakeIamMember:LakeIamMember":
+                return new LakeIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/lakeIamPolicy:LakeIamPolicy":
+                return new LakeIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
+            case "gcp:dataplex/zoneIamBinding:ZoneIamBinding":
+                return new ZoneIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/zoneIamMember:ZoneIamMember":
+                return new ZoneIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/zoneIamPolicy:ZoneIamPolicy":
+                return new ZoneIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "dataplex/asset", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/zone", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/zoneIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/zoneIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/zoneIamPolicy", _module)

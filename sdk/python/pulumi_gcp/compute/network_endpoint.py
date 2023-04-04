@@ -30,6 +30,8 @@ class NetworkEndpointArgs:
                This is required for network endpoints of type GCE_VM_IP_PORT.
                The instance must be in the same zone of network endpoint group.
         :param pulumi.Input[int] port: Port number of network endpoint.
+               **Note** `port` is required unless the Network Endpoint Group is created
+               with the type of `GCE_VM_IP`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
@@ -90,6 +92,8 @@ class NetworkEndpointArgs:
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port number of network endpoint.
+        **Note** `port` is required unless the Network Endpoint Group is created
+        with the type of `GCE_VM_IP`
         """
         return pulumi.get(self, "port")
 
@@ -142,6 +146,8 @@ class _NetworkEndpointState:
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[int] port: Port number of network endpoint.
+               **Note** `port` is required unless the Network Endpoint Group is created
+               with the type of `GCE_VM_IP`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
@@ -204,6 +210,8 @@ class _NetworkEndpointState:
     def port(self) -> Optional[pulumi.Input[int]]:
         """
         Port number of network endpoint.
+        **Note** `port` is required unless the Network Endpoint Group is created
+        with the type of `GCE_VM_IP`
         """
         return pulumi.get(self, "port")
 
@@ -329,6 +337,8 @@ class NetworkEndpoint(pulumi.CustomResource):
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[int] port: Port number of network endpoint.
+               **Note** `port` is required unless the Network Endpoint Group is created
+               with the type of `GCE_VM_IP`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
@@ -480,6 +490,8 @@ class NetworkEndpoint(pulumi.CustomResource):
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
         :param pulumi.Input[int] port: Port number of network endpoint.
+               **Note** `port` is required unless the Network Endpoint Group is created
+               with the type of `GCE_VM_IP`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: Zone where the containing network endpoint group is located.
@@ -529,6 +541,8 @@ class NetworkEndpoint(pulumi.CustomResource):
     def port(self) -> pulumi.Output[Optional[int]]:
         """
         Port number of network endpoint.
+        **Note** `port` is required unless the Network Endpoint Group is created
+        with the type of `GCE_VM_IP`
         """
         return pulumi.get(self, "port")
 

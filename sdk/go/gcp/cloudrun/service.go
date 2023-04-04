@@ -11,19 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Service acts as a top-level container that manages a set of Routes and
-// Configurations which implement a network service. Service exists to provide a
-// singular abstraction which can be access controlled, reasoned about, and
-// which encapsulates software lifecycle decisions such as rollout policy and
-// team resource ownership. Service acts only as an orchestrator of the
-// underlying Routes and Configurations (much as a kubernetes Deployment
-// orchestrates ReplicaSets).
-//
-// The Service's controller will track the statuses of its owned Configuration
-// and Route, reflecting their statuses and conditions as its own.
-//
-// See also:
-// https://github.com/knative/specs/blob/main/specs/serving/overview.md
+// A Cloud Run service has a unique endpoint and autoscales containers.
 //
 // To get more information about Service, see:
 //
@@ -31,9 +19,8 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://cloud.google.com/run/docs/)
 //
-// > **Warning:** `googleCloudrunService` creates a Managed Google Cloud Run Service. If you need to create
-// a Cloud Run Service on Anthos(GKE/VMWare) then you will need to create it using the kubernetes alpha provider.
-// Have a look at the Cloud Run Anthos example below.
+// > **Warning:** We recommend using the `cloudrunv2.Service` resource which offers a better
+// developer experience and broader support of Cloud Run features.
 //
 // ## Example Usage
 // ### Cloud Run Service Pubsub
@@ -389,7 +376,7 @@ type Service struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata ServiceMetadataOutput `pulumi:"metadata"`
-	// Name must be unique within a namespace, within a Cloud Run region.
+	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
 	// More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -464,7 +451,7 @@ type serviceState struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name must be unique within a namespace, within a Cloud Run region.
+	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
 	// More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -508,7 +495,7 @@ type ServiceState struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name must be unique within a namespace, within a Cloud Run region.
+	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
 	// More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -556,7 +543,7 @@ type serviceArgs struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata *ServiceMetadata `pulumi:"metadata"`
-	// Name must be unique within a namespace, within a Cloud Run region.
+	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
 	// More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -598,7 +585,7 @@ type ServiceArgs struct {
 	// and annotations.
 	// Structure is documented below.
 	Metadata ServiceMetadataPtrInput
-	// Name must be unique within a namespace, within a Cloud Run region.
+	// Name must be unique within a Google Cloud project and region.
 	// Is required when creating resources. Name is primarily intended
 	// for creation idempotence and configuration definition. Cannot be updated.
 	// More info: http://kubernetes.io/docs/user-guide/identifiers#names
@@ -734,7 +721,7 @@ func (o ServiceOutput) Metadata() ServiceMetadataOutput {
 	return o.ApplyT(func(v *Service) ServiceMetadataOutput { return v.Metadata }).(ServiceMetadataOutput)
 }
 
-// Name must be unique within a namespace, within a Cloud Run region.
+// Name must be unique within a Google Cloud project and region.
 // Is required when creating resources. Name is primarily intended
 // for creation idempotence and configuration definition. Cannot be updated.
 // More info: http://kubernetes.io/docs/user-guide/identifiers#names

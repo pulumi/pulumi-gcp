@@ -35,8 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				LaunchStage: pulumi.String("BETA"),
 //				Location:    pulumi.String("us-central1"),
+//				LaunchStage: pulumi.String("BETA"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{

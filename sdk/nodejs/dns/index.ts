@@ -20,21 +20,6 @@ export type DnsManagedZoneIamPolicy = import("./dnsManagedZoneIamPolicy").DnsMan
 export const DnsManagedZoneIamPolicy: typeof import("./dnsManagedZoneIamPolicy").DnsManagedZoneIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DnsManagedZoneIamPolicy"], () => require("./dnsManagedZoneIamPolicy"));
 
-export { GetKeysArgs, GetKeysResult, GetKeysOutputArgs } from "./getKeys";
-export const getKeys: typeof import("./getKeys").getKeys = null as any;
-export const getKeysOutput: typeof import("./getKeys").getKeysOutput = null as any;
-utilities.lazyLoad(exports, ["getKeys","getKeysOutput"], () => require("./getKeys"));
-
-export { GetManagedZoneArgs, GetManagedZoneResult, GetManagedZoneOutputArgs } from "./getManagedZone";
-export const getManagedZone: typeof import("./getManagedZone").getManagedZone = null as any;
-export const getManagedZoneOutput: typeof import("./getManagedZone").getManagedZoneOutput = null as any;
-utilities.lazyLoad(exports, ["getManagedZone","getManagedZoneOutput"], () => require("./getManagedZone"));
-
-export { GetRecordSetArgs, GetRecordSetResult, GetRecordSetOutputArgs } from "./getRecordSet";
-export const getRecordSet: typeof import("./getRecordSet").getRecordSet = null as any;
-export const getRecordSetOutput: typeof import("./getRecordSet").getRecordSetOutput = null as any;
-utilities.lazyLoad(exports, ["getRecordSet","getRecordSetOutput"], () => require("./getRecordSet"));
-
 export { ManagedZoneArgs, ManagedZoneState } from "./managedZone";
 export type ManagedZone = import("./managedZone").ManagedZone;
 export const ManagedZone: typeof import("./managedZone").ManagedZone = null as any;

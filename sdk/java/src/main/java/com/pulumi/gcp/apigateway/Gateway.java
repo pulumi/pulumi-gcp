@@ -55,14 +55,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var apiGwApi = new Api(&#34;apiGwApi&#34;, ApiArgs.builder()        
- *             .apiId(&#34;api-gw&#34;)
+ *             .apiId(&#34;my-api&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
  * 
  *         var apiGwApiConfig = new ApiConfig(&#34;apiGwApiConfig&#34;, ApiConfigArgs.builder()        
  *             .api(apiGwApi.apiId())
- *             .apiConfigId(&#34;config&#34;)
+ *             .apiConfigId(&#34;my-config&#34;)
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
  *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
  *                     .path(&#34;spec.yaml&#34;)
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  *         var apiGwGateway = new Gateway(&#34;apiGwGateway&#34;, GatewayArgs.builder()        
  *             .apiConfig(apiGwApiConfig.id())
- *             .gatewayId(&#34;api-gw&#34;)
+ *             .gatewayId(&#34;my-gateway&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());

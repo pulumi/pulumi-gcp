@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Container
     ///             {
     ///                 new Gcp.Container.Inputs.AwsClusterAuthorizationAdminUserArgs
     ///                 {
-    ///                     Username = "emailAddress:my@service-account.com",
+    ///                     Username = "my@service-account.com",
     ///                 },
     ///             },
     ///         },
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Container
     ///             },
     ///             Tags = 
     ///             {
-    ///                 { "owner", "emailAddress:my@service-account.com" },
+    ///                 { "owner", "my@service-account.com" },
     ///             },
     ///             Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
     ///         },

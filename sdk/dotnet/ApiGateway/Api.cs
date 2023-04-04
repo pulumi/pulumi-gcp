@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// {
     ///     var api = new Gcp.ApiGateway.Api("api", new()
     ///     {
-    ///         ApiId = "api",
+    ///         ApiId = "my-api",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

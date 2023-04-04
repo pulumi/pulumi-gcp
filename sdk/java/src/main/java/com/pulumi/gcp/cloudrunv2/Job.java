@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .launchStage(&#34;BETA&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .launchStage(&#34;BETA&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()

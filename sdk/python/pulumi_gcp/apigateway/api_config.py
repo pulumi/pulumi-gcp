@@ -445,11 +445,11 @@ class ApiConfig(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="api-cfg",
+        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="my-api",
         opts=pulumi.ResourceOptions(provider=google_beta))
         api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
             api=api_cfg_api.api_id,
-            api_config_id="cfg",
+            api_config_id="my-config",
             openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
                 document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
                     path="spec.yaml",
@@ -519,11 +519,11 @@ class ApiConfig(pulumi.CustomResource):
         import base64
         import pulumi_gcp as gcp
 
-        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="api-cfg",
+        api_cfg_api = gcp.apigateway.Api("apiCfgApi", api_id="my-api",
         opts=pulumi.ResourceOptions(provider=google_beta))
         api_cfg_api_config = gcp.apigateway.ApiConfig("apiCfgApiConfig",
             api=api_cfg_api.api_id,
-            api_config_id="cfg",
+            api_config_id="my-config",
             openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
                 document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
                     path="spec.yaml",

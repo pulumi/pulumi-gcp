@@ -20,6 +20,11 @@ export type EdgeCacheService = import("./edgeCacheService").EdgeCacheService;
 export const EdgeCacheService: typeof import("./edgeCacheService").EdgeCacheService = null as any;
 utilities.lazyLoad(exports, ["EdgeCacheService"], () => require("./edgeCacheService"));
 
+export { GatewayArgs, GatewayState } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -31,6 +36,8 @@ const _module = {
                 return new EdgeCacheOrigin(name, <any>undefined, { urn })
             case "gcp:networkservices/edgeCacheService:EdgeCacheService":
                 return new EdgeCacheService(name, <any>undefined, { urn })
+            case "gcp:networkservices/gateway:Gateway":
+                return new Gateway(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -39,3 +46,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheKeyset", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheOrigin", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheService", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/gateway", _module)

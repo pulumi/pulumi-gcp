@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.BigQuery
     ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
     ///             {
     ///                 Role = "OWNER",
-    ///                 UserByEmail = "emailAddress:my@service-account.com",
+    ///                 UserByEmail = "my@service-account.com",
     ///             },
     ///             new Gcp.BigQuery.Inputs.DatasetAccessArgs
     ///             {
@@ -290,6 +290,20 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the default collation specification of future tables created
+        /// in the dataset. If a table is created in this dataset without table-level
+        /// default collation, then the table inherits the dataset default collation,
+        /// which is applied to the string fields that do not have explicit collation
+        /// specified. A change to this field affects only tables created afterwards,
+        /// and does not alter the existing tables.
+        /// The following values are supported:
+        /// - 'und:ci': undetermined locale, case insensitive.
+        /// - '': empty string. Default to case-sensitive behavior.
+        /// </summary>
+        [Output("defaultCollation")]
+        public Output<string> DefaultCollation { get; private set; } = null!;
+
+        /// <summary>
         /// The default encryption key for all tables in the dataset. Once this property is set,
         /// all newly-created partitioned tables in the dataset will have encryption key set to
         /// this value, unless table creation request (or query) overrides the key.
@@ -337,6 +351,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("friendlyName")]
         public Output<string?> FriendlyName { get; private set; } = null!;
+
+        /// <summary>
+        /// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+        /// By default, this is FALSE, which means the dataset and its table names are
+        /// case-sensitive. This field does not affect routine references.
+        /// </summary>
+        [Output("isCaseInsensitive")]
+        public Output<bool> IsCaseInsensitive { get; private set; } = null!;
 
         /// <summary>
         /// The labels associated with this dataset. You can use these to
@@ -446,6 +468,20 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
+        /// Defines the default collation specification of future tables created
+        /// in the dataset. If a table is created in this dataset without table-level
+        /// default collation, then the table inherits the dataset default collation,
+        /// which is applied to the string fields that do not have explicit collation
+        /// specified. A change to this field affects only tables created afterwards,
+        /// and does not alter the existing tables.
+        /// The following values are supported:
+        /// - 'und:ci': undetermined locale, case insensitive.
+        /// - '': empty string. Default to case-sensitive behavior.
+        /// </summary>
+        [Input("defaultCollation")]
+        public Input<string>? DefaultCollation { get; set; }
+
+        /// <summary>
         /// The default encryption key for all tables in the dataset. Once this property is set,
         /// all newly-created partitioned tables in the dataset will have encryption key set to
         /// this value, unless table creation request (or query) overrides the key.
@@ -487,6 +523,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        /// <summary>
+        /// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+        /// By default, this is FALSE, which means the dataset and its table names are
+        /// case-sensitive. This field does not affect routine references.
+        /// </summary>
+        [Input("isCaseInsensitive")]
+        public Input<bool>? IsCaseInsensitive { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -558,6 +602,20 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? DatasetId { get; set; }
 
         /// <summary>
+        /// Defines the default collation specification of future tables created
+        /// in the dataset. If a table is created in this dataset without table-level
+        /// default collation, then the table inherits the dataset default collation,
+        /// which is applied to the string fields that do not have explicit collation
+        /// specified. A change to this field affects only tables created afterwards,
+        /// and does not alter the existing tables.
+        /// The following values are supported:
+        /// - 'und:ci': undetermined locale, case insensitive.
+        /// - '': empty string. Default to case-sensitive behavior.
+        /// </summary>
+        [Input("defaultCollation")]
+        public Input<string>? DefaultCollation { get; set; }
+
+        /// <summary>
         /// The default encryption key for all tables in the dataset. Once this property is set,
         /// all newly-created partitioned tables in the dataset will have encryption key set to
         /// this value, unless table creation request (or query) overrides the key.
@@ -605,6 +663,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
+
+        /// <summary>
+        /// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+        /// By default, this is FALSE, which means the dataset and its table names are
+        /// case-sensitive. This field does not affect routine references.
+        /// </summary>
+        [Input("isCaseInsensitive")]
+        public Input<bool>? IsCaseInsensitive { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

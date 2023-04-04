@@ -49,7 +49,8 @@ class InstanceFromTemplateArgs:
         """
         The set of arguments for constructing a InstanceFromTemplate resource.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
-               template to create the instance based on.
+               template to create the instance based on. It is recommended to reference
+               instance templates through their unique id (`self_link_unique` attribute).
         :param pulumi.Input['InstanceFromTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires
                stopping the instance without setting this field, the update will fail.
@@ -153,7 +154,8 @@ class InstanceFromTemplateArgs:
     def source_instance_template(self) -> pulumi.Input[str]:
         """
         Name or self link of an instance
-        template to create the instance based on.
+        template to create the instance based on. It is recommended to reference
+        instance templates through their unique id (`self_link_unique` attribute).
         """
         return pulumi.get(self, "source_instance_template")
 
@@ -601,7 +603,8 @@ class _InstanceFromTemplateState:
         :param pulumi.Input['InstanceFromTemplateServiceAccountArgs'] service_account: The service account to attach to the instance.
         :param pulumi.Input['InstanceFromTemplateShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
-               template to create the instance based on.
+               template to create the instance based on. It is recommended to reference
+               instance templates through their unique id (`self_link_unique` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -1090,7 +1093,8 @@ class _InstanceFromTemplateState:
     def source_instance_template(self) -> Optional[pulumi.Input[str]]:
         """
         Name or self link of an instance
-        template to create the instance based on.
+        template to create the instance based on. It is recommended to reference
+        instance templates through their unique id (`self_link_unique` attribute).
         """
         return pulumi.get(self, "source_instance_template")
 
@@ -1205,7 +1209,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             can_ip_forward=True)
         tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate",
             zone="us-central1-a",
-            source_instance_template=tpl_instance_template.id,
+            source_instance_template=tpl_instance_template.self_link_unique,
             can_ip_forward=False,
             labels={
                 "my_key": "my_value",
@@ -1253,7 +1257,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateServiceAccountArgs']] service_account: The service account to attach to the instance.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateShieldedInstanceConfigArgs']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
-               template to create the instance based on.
+               template to create the instance based on. It is recommended to reference
+               instance templates through their unique id (`self_link_unique` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
@@ -1297,7 +1302,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             can_ip_forward=True)
         tpl_instance_from_template = gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate",
             zone="us-central1-a",
-            source_instance_template=tpl_instance_template.id,
+            source_instance_template=tpl_instance_template.self_link_unique,
             can_ip_forward=False,
             labels={
                 "my_key": "my_value",
@@ -1496,7 +1501,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateServiceAccountArgs']] service_account: The service account to attach to the instance.
         :param pulumi.Input[pulumi.InputType['InstanceFromTemplateShieldedInstanceConfigArgs']] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input[str] source_instance_template: Name or self link of an instance
-               template to create the instance based on.
+               template to create the instance based on. It is recommended to reference
+               instance templates through their unique id (`self_link_unique` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
         :param pulumi.Input[str] zone: The zone that the machine should be created in. If not
@@ -1821,7 +1827,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
     def source_instance_template(self) -> pulumi.Output[str]:
         """
         Name or self link of an instance
-        template to create the instance based on.
+        template to create the instance based on. It is recommended to reference
+        instance templates through their unique id (`self_link_unique` attribute).
         """
         return pulumi.get(self, "source_instance_template")
 

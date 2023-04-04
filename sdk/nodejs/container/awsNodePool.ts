@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const primaryAwsCluster = new gcp.container.AwsCluster("primaryAwsCluster", {
  *     authorization: {
  *         adminUsers: [{
- *             username: "emailAddress:my@service-account.com",
+ *             username: "my@service-account.com",
  *         }],
  *     },
  *     awsRegion: "my-aws-region",
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *             ec2KeyPair: "my--1p-dev-ssh",
  *         },
  *         tags: {
- *             owner: "emailAddress:my@service-account.com",
+ *             owner: "my@service-account.com",
  *         },
  *     },
  *     fleet: {

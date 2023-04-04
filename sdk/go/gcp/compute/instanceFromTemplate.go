@@ -59,7 +59,7 @@ import (
 //			}
 //			_, err = compute.NewInstanceFromTemplate(ctx, "tplInstanceFromTemplate", &compute.InstanceFromTemplateArgs{
 //				Zone:                   pulumi.String("us-central1-a"),
-//				SourceInstanceTemplate: tplInstanceTemplate.ID(),
+//				SourceInstanceTemplate: tplInstanceTemplate.SelfLinkUnique,
 //				CanIpForward:           pulumi.Bool(false),
 //				Labels: pulumi.StringMap{
 //					"my_key": pulumi.String("my_value"),
@@ -154,7 +154,8 @@ type InstanceFromTemplate struct {
 	// The shielded vm config being used by the instance.
 	ShieldedInstanceConfig InstanceFromTemplateShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of an instance
-	// template to create the instance based on.
+	// template to create the instance based on. It is recommended to reference
+	// instance templates through their unique id (`selfLinkUnique` attribute).
 	SourceInstanceTemplate pulumi.StringOutput `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -271,7 +272,8 @@ type instanceFromTemplateState struct {
 	// The shielded vm config being used by the instance.
 	ShieldedInstanceConfig *InstanceFromTemplateShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of an instance
-	// template to create the instance based on.
+	// template to create the instance based on. It is recommended to reference
+	// instance templates through their unique id (`selfLinkUnique` attribute).
 	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -357,7 +359,8 @@ type InstanceFromTemplateState struct {
 	// The shielded vm config being used by the instance.
 	ShieldedInstanceConfig InstanceFromTemplateShieldedInstanceConfigPtrInput
 	// Name or self link of an instance
-	// template to create the instance based on.
+	// template to create the instance based on. It is recommended to reference
+	// instance templates through their unique id (`selfLinkUnique` attribute).
 	SourceInstanceTemplate pulumi.StringPtrInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -435,7 +438,8 @@ type instanceFromTemplateArgs struct {
 	// The shielded vm config being used by the instance.
 	ShieldedInstanceConfig *InstanceFromTemplateShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of an instance
-	// template to create the instance based on.
+	// template to create the instance based on. It is recommended to reference
+	// instance templates through their unique id (`selfLinkUnique` attribute).
 	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -508,7 +512,8 @@ type InstanceFromTemplateArgs struct {
 	// The shielded vm config being used by the instance.
 	ShieldedInstanceConfig InstanceFromTemplateShieldedInstanceConfigPtrInput
 	// Name or self link of an instance
-	// template to create the instance based on.
+	// template to create the instance based on. It is recommended to reference
+	// instance templates through their unique id (`selfLinkUnique` attribute).
 	SourceInstanceTemplate pulumi.StringInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -791,7 +796,8 @@ func (o InstanceFromTemplateOutput) ShieldedInstanceConfig() InstanceFromTemplat
 }
 
 // Name or self link of an instance
-// template to create the instance based on.
+// template to create the instance based on. It is recommended to reference
+// instance templates through their unique id (`selfLinkUnique` attribute).
 func (o InstanceFromTemplateOutput) SourceInstanceTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
 }

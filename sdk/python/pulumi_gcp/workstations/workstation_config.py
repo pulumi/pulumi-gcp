@@ -730,10 +730,8 @@ class WorkstationConfig(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_key_ring = gcp.kms.KeyRing("defaultKeyRing", location="global",
         opts=pulumi.ResourceOptions(provider=google_beta))
-        default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey",
-            key_ring=default_key_ring.id,
-            rotation_period="100000s",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey", key_ring=default_key_ring.id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         default_account = gcp.service_account.Account("defaultAccount",
             account_id="my-account",
             display_name="Service Account",
@@ -1007,10 +1005,8 @@ class WorkstationConfig(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta))
         default_key_ring = gcp.kms.KeyRing("defaultKeyRing", location="global",
         opts=pulumi.ResourceOptions(provider=google_beta))
-        default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey",
-            key_ring=default_key_ring.id,
-            rotation_period="100000s",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_crypto_key = gcp.kms.CryptoKey("defaultCryptoKey", key_ring=default_key_ring.id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
         default_account = gcp.service_account.Account("defaultAccount",
             account_id="my-account",
             display_name="Service Account",

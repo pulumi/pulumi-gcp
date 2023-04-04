@@ -202,7 +202,7 @@ export class Repository extends pulumi.CustomResource {
     public readonly mode!: pulumi.Output<string | undefined>;
     /**
      * The name of the repository, for example:
-     * "projects/p1/locations/us-central1/repositories/repo1"
+     * "repo1"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -335,7 +335,7 @@ export interface RepositoryState {
     mode?: pulumi.Input<string>;
     /**
      * The name of the repository, for example:
-     * "projects/p1/locations/us-central1/repositories/repo1"
+     * "repo1"
      */
     name?: pulumi.Input<string>;
     /**

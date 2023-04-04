@@ -606,7 +606,7 @@ func (o EdgeCacheOriginOriginOverrideActionPtrOutput) UrlRewrite() EdgeCacheOrig
 
 type EdgeCacheOriginOriginOverrideActionHeaderAction struct {
 	// Describes a header to add.
-	// You may add a maximum of 5 request headers.
+	// You may add a maximum of 25 request headers.
 	// Structure is documented below.
 	RequestHeadersToAdds []EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
 }
@@ -624,7 +624,7 @@ type EdgeCacheOriginOriginOverrideActionHeaderActionInput interface {
 
 type EdgeCacheOriginOriginOverrideActionHeaderActionArgs struct {
 	// Describes a header to add.
-	// You may add a maximum of 5 request headers.
+	// You may add a maximum of 25 request headers.
 	// Structure is documented below.
 	RequestHeadersToAdds EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
 }
@@ -707,7 +707,7 @@ func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) ToEdgeCacheOrigin
 }
 
 // Describes a header to add.
-// You may add a maximum of 5 request headers.
+// You may add a maximum of 25 request headers.
 // Structure is documented below.
 func (o EdgeCacheOriginOriginOverrideActionHeaderActionOutput) RequestHeadersToAdds() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v EdgeCacheOriginOriginOverrideActionHeaderAction) []EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {
@@ -740,7 +740,7 @@ func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) Elem() EdgeCac
 }
 
 // Describes a header to add.
-// You may add a maximum of 5 request headers.
+// You may add a maximum of 25 request headers.
 // Structure is documented below.
 func (o EdgeCacheOriginOriginOverrideActionHeaderActionPtrOutput) RequestHeadersToAdds() EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheOriginOriginOverrideActionHeaderAction) []EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd {

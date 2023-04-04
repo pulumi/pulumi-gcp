@@ -23,8 +23,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Job("default", {
- *     launchStage: "BETA",
  *     location: "us-central1",
+ *     launchStage: "BETA",
  *     template: {
  *         template: {
  *             containers: [{

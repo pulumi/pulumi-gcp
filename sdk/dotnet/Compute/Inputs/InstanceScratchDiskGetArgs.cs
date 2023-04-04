@@ -18,6 +18,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("interface", required: true)]
         public Input<string> Interface { get; set; } = null!;
 
+        /// <summary>
+        /// The size of the image in gigabytes. If not specified, it
+        /// will inherit the size of its base image.
+        /// </summary>
+        [Input("size")]
+        public Input<int>? Size { get; set; }
+
         public InstanceScratchDiskGetArgs()
         {
         }

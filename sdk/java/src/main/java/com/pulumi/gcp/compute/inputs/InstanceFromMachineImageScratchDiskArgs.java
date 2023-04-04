@@ -5,8 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceFromMachineImageScratchDiskArgs extends com.pulumi.resources.ResourceArgs {
@@ -20,10 +23,18 @@ public final class InstanceFromMachineImageScratchDiskArgs extends com.pulumi.re
         return this.interface_;
     }
 
+    @Import(name="size")
+    private @Nullable Output<Integer> size;
+
+    public Optional<Output<Integer>> size() {
+        return Optional.ofNullable(this.size);
+    }
+
     private InstanceFromMachineImageScratchDiskArgs() {}
 
     private InstanceFromMachineImageScratchDiskArgs(InstanceFromMachineImageScratchDiskArgs $) {
         this.interface_ = $.interface_;
+        this.size = $.size;
     }
 
     public static Builder builder() {
@@ -51,6 +62,15 @@ public final class InstanceFromMachineImageScratchDiskArgs extends com.pulumi.re
 
         public Builder interface_(String interface_) {
             return interface_(Output.of(interface_));
+        }
+
+        public Builder size(@Nullable Output<Integer> size) {
+            $.size = size;
+            return this;
+        }
+
+        public Builder size(Integer size) {
+            return size(Output.of(size));
         }
 
         public InstanceFromMachineImageScratchDiskArgs build() {

@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Compute
     ///         RuleName = "test-rule",
     ///         TargetServiceAccounts = new[]
     ///         {
-    ///             "emailAddress:my@service-account.com",
+    ///             "my@service-account.com",
     ///         },
     ///         Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchArgs
     ///         {

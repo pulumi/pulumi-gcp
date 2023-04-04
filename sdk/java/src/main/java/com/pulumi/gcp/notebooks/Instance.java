@@ -191,8 +191,8 @@ import javax.annotation.Nullable;
  *                 .project(&#34;deeplearning-platform-release&#34;)
  *                 .imageFamily(&#34;tf-latest-cpu&#34;)
  *                 .build())
- *             .instanceOwners(&#34;admin@hashicorptest.com&#34;)
- *             .serviceAccount(&#34;emailAddress:my@service-account.com&#34;)
+ *             .instanceOwners(&#34;my@service-account.com&#34;)
+ *             .serviceAccount(&#34;my@service-account.com&#34;)
  *             .installGpuDriver(true)
  *             .bootDiskType(&#34;PD_SSD&#34;)
  *             .bootDiskSizeGb(110)
@@ -617,14 +617,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook.
+     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
+     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
      * 
      */
     @Export(name="proxyUri", type=String.class, parameters={})
     private Output<String> proxyUri;
 
     /**
-     * @return The proxy endpoint that is used to access the Jupyter notebook.
+     * @return The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
+     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
      * 
      */
     public Output<String> proxyUri() {

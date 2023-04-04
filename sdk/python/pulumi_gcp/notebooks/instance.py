@@ -699,7 +699,8 @@ class _InstanceState:
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
+        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+               state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -1110,7 +1111,8 @@ class _InstanceState:
     @pulumi.getter(name="proxyUri")
     def proxy_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The proxy endpoint that is used to access the Jupyter notebook.
+        The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+        state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
         """
         return pulumi.get(self, "proxy_uri")
 
@@ -1357,8 +1359,8 @@ class Instance(pulumi.CustomResource):
                 project="deeplearning-platform-release",
                 image_family="tf-latest-cpu",
             ),
-            instance_owners=["admin@hashicorptest.com"],
-            service_account="emailAddress:my@service-account.com",
+            instance_owners=["my@service-account.com"],
+            service_account="my@service-account.com",
             install_gpu_driver=True,
             boot_disk_type="PD_SSD",
             boot_disk_size_gb=110,
@@ -1547,8 +1549,8 @@ class Instance(pulumi.CustomResource):
                 project="deeplearning-platform-release",
                 image_family="tf-latest-cpu",
             ),
-            instance_owners=["admin@hashicorptest.com"],
-            service_account="emailAddress:my@service-account.com",
+            instance_owners=["my@service-account.com"],
+            service_account="my@service-account.com",
             install_gpu_driver=True,
             boot_disk_type="PD_SSD",
             boot_disk_size_gb=110,
@@ -1773,7 +1775,8 @@ class Instance(pulumi.CustomResource):
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
+        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+               state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -2059,7 +2062,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="proxyUri")
     def proxy_uri(self) -> pulumi.Output[str]:
         """
-        The proxy endpoint that is used to access the Jupyter notebook.
+        The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+        state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
         """
         return pulumi.get(self, "proxy_uri")
 

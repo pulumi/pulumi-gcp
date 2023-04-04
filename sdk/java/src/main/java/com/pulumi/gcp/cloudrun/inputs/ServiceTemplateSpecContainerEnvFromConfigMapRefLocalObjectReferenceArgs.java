@@ -15,8 +15,6 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
 
     /**
      * Name of the referent.
-     * More info:
-     * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     @Import(name="name", required=true)
@@ -24,8 +22,6 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
 
     /**
      * @return Name of the referent.
-     * More info:
-     * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     public Output<String> name() {
@@ -58,8 +54,6 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
 
         /**
          * @param name Name of the referent.
-         * More info:
-         * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
          * 
          * @return builder
          * 
@@ -71,8 +65,6 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
 
         /**
          * @param name Name of the referent.
-         * More info:
-         * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
          * 
          * @return builder
          * 

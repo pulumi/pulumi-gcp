@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  *         var tplInstanceFromTemplate = new InstanceFromTemplate(&#34;tplInstanceFromTemplate&#34;, InstanceFromTemplateArgs.builder()        
  *             .zone(&#34;us-central1-a&#34;)
- *             .sourceInstanceTemplate(tplInstanceTemplate.id())
+ *             .sourceInstanceTemplate(tplInstanceTemplate.selfLinkUnique())
  *             .canIpForward(false)
  *             .labels(Map.of(&#34;my_key&#34;, &#34;my_value&#34;))
  *             .build());
@@ -575,7 +575,8 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
     }
     /**
      * Name or self link of an instance
-     * template to create the instance based on.
+     * template to create the instance based on. It is recommended to reference
+     * instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     @Export(name="sourceInstanceTemplate", type=String.class, parameters={})
@@ -583,7 +584,8 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Name or self link of an instance
-     * template to create the instance based on.
+     * template to create the instance based on. It is recommended to reference
+     * instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     public Output<String> sourceInstanceTemplate() {

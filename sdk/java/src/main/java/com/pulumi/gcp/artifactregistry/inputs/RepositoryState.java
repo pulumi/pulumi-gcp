@@ -169,7 +169,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The name of the repository, for example:
-     * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+     * &#34;repo1&#34;
      * 
      */
     @Import(name="name")
@@ -177,7 +177,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The name of the repository, for example:
-     * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+     * &#34;repo1&#34;
      * 
      */
     public Optional<Output<String>> name() {
@@ -498,7 +498,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the repository, for example:
-         * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+         * &#34;repo1&#34;
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the repository, for example:
-         * &#34;projects/p1/locations/us-central1/repositories/repo1&#34;
+         * &#34;repo1&#34;
          * 
          * @return builder
          * 

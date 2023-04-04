@@ -11,6 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A BigQuery Data Policy
+//
+// To get more information about DataPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+//
 // ## Example Usage
 // ### Bigquery Datapolicy Data Policy Basic
 //
@@ -34,7 +42,7 @@ import (
 //				ActivatedPolicyTypes: pulumi.StringArray{
 //					pulumi.String("FINE_GRAINED_ACCESS_CONTROL"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -42,7 +50,7 @@ import (
 //				Taxonomy:    taxonomy.ID(),
 //				DisplayName: pulumi.String("Low security"),
 //				Description: pulumi.String("A policy tag normally associated with low security items"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -51,7 +59,7 @@ import (
 //				DataPolicyId:   pulumi.String("data_policy"),
 //				PolicyTag:      policyTag.Name,
 //				DataPolicyType: pulumi.String("COLUMN_LEVEL_SECURITY_POLICY"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

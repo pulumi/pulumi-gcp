@@ -218,7 +218,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     /**
      * If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
-     * must be expressed in CIDR format. Only IPv4 is supported.
+     * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      * 
      */
     @Export(name="destinationRanges", type=List.class, parameters={String.class})
@@ -227,7 +227,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     /**
      * @return If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
-     * must be expressed in CIDR format. Only IPv4 is supported.
+     * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      * 
      */
     public Output<List<String>> destinationRanges() {
@@ -417,8 +417,8 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-     * `source_tags` or `source_service_accounts` is required.
+     * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+     * `source_ranges`, `source_tags` or `source_service_accounts` is required.
      * 
      */
     @Export(name="sourceRanges", type=List.class, parameters={String.class})
@@ -432,8 +432,8 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-     * `source_tags` or `source_service_accounts` is required.
+     * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+     * `source_ranges`, `source_tags` or `source_service_accounts` is required.
      * 
      */
     public Output<Optional<List<String>>> sourceRanges() {

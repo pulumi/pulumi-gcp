@@ -22,26 +22,12 @@ public final class ServiceTemplateSpecContainer {
     /**
      * @return Arguments to the entrypoint.
      * The docker image&#39;s CMD is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     private @Nullable List<String> args;
     /**
      * @return Entrypoint array. Not executed within a shell.
      * The docker image&#39;s ENTRYPOINT is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     private @Nullable List<String> commands;
@@ -69,7 +55,6 @@ public final class ServiceTemplateSpecContainer {
     /**
      * @return Docker image name. This is most often a reference to a container located
      * in the container registry, such as gcr.io/cloudrun/hello
-     * More info: https://kubernetes.io/docs/concepts/containers/images
      * 
      */
     private String image;
@@ -82,16 +67,12 @@ public final class ServiceTemplateSpecContainer {
     private @Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe;
     /**
      * @return List of open ports in the container.
-     * More Info:
-     * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
      * Structure is documented below.
      * 
      */
     private @Nullable List<ServiceTemplateSpecContainerPort> ports;
     /**
      * @return Compute Resources required by this container. Used to set values such as max memory
-     * More info:
-     * https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
      * Structure is documented below.
      * 
      */
@@ -121,13 +102,6 @@ public final class ServiceTemplateSpecContainer {
     /**
      * @return Arguments to the entrypoint.
      * The docker image&#39;s CMD is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     public List<String> args() {
@@ -136,13 +110,6 @@ public final class ServiceTemplateSpecContainer {
     /**
      * @return Entrypoint array. Not executed within a shell.
      * The docker image&#39;s ENTRYPOINT is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     public List<String> commands() {
@@ -176,7 +143,6 @@ public final class ServiceTemplateSpecContainer {
     /**
      * @return Docker image name. This is most often a reference to a container located
      * in the container registry, such as gcr.io/cloudrun/hello
-     * More info: https://kubernetes.io/docs/concepts/containers/images
      * 
      */
     public String image() {
@@ -193,8 +159,6 @@ public final class ServiceTemplateSpecContainer {
     }
     /**
      * @return List of open ports in the container.
-     * More Info:
-     * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
      * Structure is documented below.
      * 
      */
@@ -203,8 +167,6 @@ public final class ServiceTemplateSpecContainer {
     }
     /**
      * @return Compute Resources required by this container. Used to set values such as max memory
-     * More info:
-     * https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
      * Structure is documented below.
      * 
      */

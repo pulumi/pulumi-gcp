@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *             .accesses(            
  *                 DatasetAccessArgs.builder()
  *                     .role(&#34;OWNER&#34;)
- *                     .userByEmail(&#34;emailAddress:my@service-account.com&#34;)
+ *                     .userByEmail(&#34;my@service-account.com&#34;)
  *                     .build(),
  *                 DatasetAccessArgs.builder()
  *                     .routine(DatasetAccessRoutineArgs.builder()
@@ -349,6 +349,36 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> datasetId() {
         return this.datasetId;
+    }
+    /**
+     * Defines the default collation specification of future tables created
+     * in the dataset. If a table is created in this dataset without table-level
+     * default collation, then the table inherits the dataset default collation,
+     * which is applied to the string fields that do not have explicit collation
+     * specified. A change to this field affects only tables created afterwards,
+     * and does not alter the existing tables.
+     * The following values are supported:
+     * - &#39;und:ci&#39;: undetermined locale, case insensitive.
+     * - &#39;&#39;: empty string. Default to case-sensitive behavior.
+     * 
+     */
+    @Export(name="defaultCollation", type=String.class, parameters={})
+    private Output<String> defaultCollation;
+
+    /**
+     * @return Defines the default collation specification of future tables created
+     * in the dataset. If a table is created in this dataset without table-level
+     * default collation, then the table inherits the dataset default collation,
+     * which is applied to the string fields that do not have explicit collation
+     * specified. A change to this field affects only tables created afterwards,
+     * and does not alter the existing tables.
+     * The following values are supported:
+     * - &#39;und:ci&#39;: undetermined locale, case insensitive.
+     * - &#39;&#39;: empty string. Default to case-sensitive behavior.
+     * 
+     */
+    public Output<String> defaultCollation() {
+        return this.defaultCollation;
     }
     /**
      * The default encryption key for all tables in the dataset. Once this property is set,
@@ -461,6 +491,24 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> friendlyName() {
         return Codegen.optional(this.friendlyName);
+    }
+    /**
+     * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+     * By default, this is FALSE, which means the dataset and its table names are
+     * case-sensitive. This field does not affect routine references.
+     * 
+     */
+    @Export(name="isCaseInsensitive", type=Boolean.class, parameters={})
+    private Output<Boolean> isCaseInsensitive;
+
+    /**
+     * @return TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+     * By default, this is FALSE, which means the dataset and its table names are
+     * case-sensitive. This field does not affect routine references.
+     * 
+     */
+    public Output<Boolean> isCaseInsensitive() {
+        return this.isCaseInsensitive;
     }
     /**
      * The labels associated with this dataset. You can use these to

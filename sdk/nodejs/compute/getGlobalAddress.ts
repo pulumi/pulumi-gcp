@@ -59,12 +59,17 @@ export interface GetGlobalAddressResult {
      * The IP of the created resource.
      */
     readonly address: string;
+    readonly addressType: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
+    readonly network: string;
+    readonly networkTier: string;
+    readonly prefixLength: number;
     readonly project: string;
+    readonly purpose: string;
     /**
      * The URI of the created resource.
      */
@@ -73,6 +78,8 @@ export interface GetGlobalAddressResult {
      * Indicates if the address is used. Possible values are: RESERVED or IN_USE.
      */
     readonly status: string;
+    readonly subnetwork: string;
+    readonly users: string;
 }
 /**
  * Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see

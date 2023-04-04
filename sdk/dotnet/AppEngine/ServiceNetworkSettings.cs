@@ -37,10 +37,10 @@ namespace Pulumi.Gcp.AppEngine
     ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
     ///     });
     /// 
-    ///     var liveappV1 = new Gcp.AppEngine.StandardAppVersion("liveappV1", new()
+    ///     var internalappStandardAppVersion = new Gcp.AppEngine.StandardAppVersion("internalappStandardAppVersion", new()
     ///     {
     ///         VersionId = "v1",
-    ///         Service = "liveapp",
+    ///         Service = "internalapp",
     ///         DeleteServiceOnDestroy = true,
     ///         Runtime = "nodejs10",
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
@@ -65,9 +65,9 @@ namespace Pulumi.Gcp.AppEngine
     ///         },
     ///     });
     /// 
-    ///     var liveapp = new Gcp.AppEngine.ServiceNetworkSettings("liveapp", new()
+    ///     var internalappServiceNetworkSettings = new Gcp.AppEngine.ServiceNetworkSettings("internalappServiceNetworkSettings", new()
     ///     {
-    ///         Service = liveappV1.Service,
+    ///         Service = internalappStandardAppVersion.Service,
     ///         NetworkSettings = new Gcp.AppEngine.Inputs.ServiceNetworkSettingsNetworkSettingsArgs
     ///         {
     ///             IngressTrafficAllowed = "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",

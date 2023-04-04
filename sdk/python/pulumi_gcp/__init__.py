@@ -655,6 +655,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/keystoresAliasesKeyCertFile",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile": "KeystoresAliasesKeyCertFile"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/natAddress",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -3007,6 +3015,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/assetIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/assetIamBinding:AssetIamBinding": "AssetIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/assetIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/assetIamMember:AssetIamMember": "AssetIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/assetIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/assetIamPolicy:AssetIamPolicy": "AssetIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/lake",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -3015,10 +3047,58 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/lakeIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/lakeIamBinding:LakeIamBinding": "LakeIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/lakeIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/lakeIamMember:LakeIamMember": "LakeIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/lakeIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/lakeIamPolicy:LakeIamPolicy": "LakeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/zone",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
    "gcp:dataplex/zone:Zone": "Zone"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/zoneIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/zoneIamBinding:ZoneIamBinding": "ZoneIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/zoneIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/zoneIamMember:ZoneIamMember": "ZoneIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/zoneIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/zoneIamPolicy:ZoneIamPolicy": "ZoneIamPolicy"
   }
  },
  {
@@ -4691,6 +4771,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/edgeCacheService:EdgeCacheService": "EdgeCacheService"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/gateway",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/gateway:Gateway": "Gateway"
   }
  },
  {

@@ -227,7 +227,6 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-west2&#34;)
  *             .subnetwork(&#34;default&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
- *             .address(&#34;10.168.1.17&#34;)
  *             .build());
  * 
  *         var pscIlbConsumer = new ForwardingRule(&#34;pscIlbConsumer&#34;, ForwardingRuleArgs.builder()        

@@ -324,6 +324,32 @@ class Certificate(pulumi.CustomResource):
                  __props__=None):
         """
         ## Example Usage
+        ### Certificate Manager Google Managed Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
+        default = gcp.certificatemanager.Certificate("default",
+            description="The default cert",
+            scope="EDGE_CACHE",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
+            ))
+        ```
         ### Certificate Manager Certificate Basic
 
         ```python
@@ -399,6 +425,32 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
+        ### Certificate Manager Google Managed Certificate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.certificatemanager.DnsAuthorization("instance",
+            description="The default dnss",
+            domain="subdomain.hashicorptest.com")
+        instance2 = gcp.certificatemanager.DnsAuthorization("instance2",
+            description="The default dnss",
+            domain="subdomain2.hashicorptest.com")
+        default = gcp.certificatemanager.Certificate("default",
+            description="The default cert",
+            scope="EDGE_CACHE",
+            managed=gcp.certificatemanager.CertificateManagedArgs(
+                domains=[
+                    instance.domain,
+                    instance2.domain,
+                ],
+                dns_authorizations=[
+                    instance.id,
+                    instance2.id,
+                ],
+            ))
+        ```
         ### Certificate Manager Certificate Basic
 
         ```python

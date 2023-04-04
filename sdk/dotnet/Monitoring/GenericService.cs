@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// A well-known service type, defined by its service type and service labels.
-        /// Valid values are described at
+        /// Valid values of service types and services labels are described at
         /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
         /// Structure is documented below.
         /// </summary>
@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// A well-known service type, defined by its service type and service labels.
-        /// Valid values are described at
+        /// Valid values of service types and services labels are described at
         /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
         /// Structure is documented below.
         /// </summary>
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// A well-known service type, defined by its service type and service labels.
-        /// Valid values are described at
+        /// Valid values of service types and services labels are described at
         /// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
         /// Structure is documented below.
         /// </summary>

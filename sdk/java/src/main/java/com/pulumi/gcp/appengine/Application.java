@@ -109,23 +109,9 @@ public class Application extends com.pulumi.resources.CustomResource {
     public Output<String> codeBucket() {
         return this.codeBucket;
     }
-    /**
-     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-     * by the provider, but will be rejected by the API.
-     * 
-     */
     @Export(name="databaseType", type=String.class, parameters={})
     private Output<String> databaseType;
 
-    /**
-     * @return The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-     * by the provider, but will be rejected by the API.
-     * 
-     */
     public Output<String> databaseType() {
         return this.databaseType;
     }

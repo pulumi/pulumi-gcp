@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *         "us-central1-f",
  *     ],
  *     versions: [{
- *         instanceTemplate: google_compute_instance_template.appserver.id,
+ *         instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
  *     }],
  *     allInstancesConfig: {
  *         metadata: {
@@ -77,10 +77,10 @@ import * as utilities from "../utilities";
  *     targetSize: 5,
  *     versions: [
  *         {
- *             instanceTemplate: google_compute_instance_template.appserver.id,
+ *             instanceTemplate: google_compute_instance_template.appserver.self_link_unique,
  *         },
  *         {
- *             instanceTemplate: google_compute_instance_template["appserver-canary"].id,
+ *             instanceTemplate: google_compute_instance_template["appserver-canary"].self_link_unique,
  *             targetSize: {
  *                 fixed: 1,
  *             },

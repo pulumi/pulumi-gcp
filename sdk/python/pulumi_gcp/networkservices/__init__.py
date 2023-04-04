@@ -8,5 +8,6 @@ import typing
 from .edge_cache_keyset import *
 from .edge_cache_origin import *
 from .edge_cache_service import *
+from .gateway import *
 from ._inputs import *
 from . import outputs

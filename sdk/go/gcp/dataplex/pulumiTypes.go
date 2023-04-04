@@ -834,6 +834,332 @@ func (o AssetDiscoveryStatusStatArrayOutput) Index(i pulumi.IntInput) AssetDisco
 	}).(AssetDiscoveryStatusStatOutput)
 }
 
+type AssetIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AssetIamBindingConditionInput is an input type that accepts AssetIamBindingConditionArgs and AssetIamBindingConditionOutput values.
+// You can construct a concrete instance of `AssetIamBindingConditionInput` via:
+//
+//	AssetIamBindingConditionArgs{...}
+type AssetIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAssetIamBindingConditionOutput() AssetIamBindingConditionOutput
+	ToAssetIamBindingConditionOutputWithContext(context.Context) AssetIamBindingConditionOutput
+}
+
+type AssetIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AssetIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetIamBindingCondition)(nil)).Elem()
+}
+
+func (i AssetIamBindingConditionArgs) ToAssetIamBindingConditionOutput() AssetIamBindingConditionOutput {
+	return i.ToAssetIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AssetIamBindingConditionArgs) ToAssetIamBindingConditionOutputWithContext(ctx context.Context) AssetIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetIamBindingConditionOutput)
+}
+
+func (i AssetIamBindingConditionArgs) ToAssetIamBindingConditionPtrOutput() AssetIamBindingConditionPtrOutput {
+	return i.ToAssetIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AssetIamBindingConditionArgs) ToAssetIamBindingConditionPtrOutputWithContext(ctx context.Context) AssetIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetIamBindingConditionOutput).ToAssetIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AssetIamBindingConditionPtrInput is an input type that accepts AssetIamBindingConditionArgs, AssetIamBindingConditionPtr and AssetIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AssetIamBindingConditionPtrInput` via:
+//
+//	        AssetIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAssetIamBindingConditionPtrOutput() AssetIamBindingConditionPtrOutput
+	ToAssetIamBindingConditionPtrOutputWithContext(context.Context) AssetIamBindingConditionPtrOutput
+}
+
+type assetIamBindingConditionPtrType AssetIamBindingConditionArgs
+
+func AssetIamBindingConditionPtr(v *AssetIamBindingConditionArgs) AssetIamBindingConditionPtrInput {
+	return (*assetIamBindingConditionPtrType)(v)
+}
+
+func (*assetIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetIamBindingCondition)(nil)).Elem()
+}
+
+func (i *assetIamBindingConditionPtrType) ToAssetIamBindingConditionPtrOutput() AssetIamBindingConditionPtrOutput {
+	return i.ToAssetIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *assetIamBindingConditionPtrType) ToAssetIamBindingConditionPtrOutputWithContext(ctx context.Context) AssetIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetIamBindingConditionPtrOutput)
+}
+
+type AssetIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AssetIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetIamBindingCondition)(nil)).Elem()
+}
+
+func (o AssetIamBindingConditionOutput) ToAssetIamBindingConditionOutput() AssetIamBindingConditionOutput {
+	return o
+}
+
+func (o AssetIamBindingConditionOutput) ToAssetIamBindingConditionOutputWithContext(ctx context.Context) AssetIamBindingConditionOutput {
+	return o
+}
+
+func (o AssetIamBindingConditionOutput) ToAssetIamBindingConditionPtrOutput() AssetIamBindingConditionPtrOutput {
+	return o.ToAssetIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AssetIamBindingConditionOutput) ToAssetIamBindingConditionPtrOutputWithContext(ctx context.Context) AssetIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetIamBindingCondition) *AssetIamBindingCondition {
+		return &v
+	}).(AssetIamBindingConditionPtrOutput)
+}
+
+func (o AssetIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AssetIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AssetIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetIamBindingCondition)(nil)).Elem()
+}
+
+func (o AssetIamBindingConditionPtrOutput) ToAssetIamBindingConditionPtrOutput() AssetIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AssetIamBindingConditionPtrOutput) ToAssetIamBindingConditionPtrOutputWithContext(ctx context.Context) AssetIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AssetIamBindingConditionPtrOutput) Elem() AssetIamBindingConditionOutput {
+	return o.ApplyT(func(v *AssetIamBindingCondition) AssetIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AssetIamBindingCondition
+		return ret
+	}).(AssetIamBindingConditionOutput)
+}
+
+func (o AssetIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AssetIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AssetIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssetIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AssetIamMemberConditionInput is an input type that accepts AssetIamMemberConditionArgs and AssetIamMemberConditionOutput values.
+// You can construct a concrete instance of `AssetIamMemberConditionInput` via:
+//
+//	AssetIamMemberConditionArgs{...}
+type AssetIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAssetIamMemberConditionOutput() AssetIamMemberConditionOutput
+	ToAssetIamMemberConditionOutputWithContext(context.Context) AssetIamMemberConditionOutput
+}
+
+type AssetIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AssetIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetIamMemberCondition)(nil)).Elem()
+}
+
+func (i AssetIamMemberConditionArgs) ToAssetIamMemberConditionOutput() AssetIamMemberConditionOutput {
+	return i.ToAssetIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AssetIamMemberConditionArgs) ToAssetIamMemberConditionOutputWithContext(ctx context.Context) AssetIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetIamMemberConditionOutput)
+}
+
+func (i AssetIamMemberConditionArgs) ToAssetIamMemberConditionPtrOutput() AssetIamMemberConditionPtrOutput {
+	return i.ToAssetIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AssetIamMemberConditionArgs) ToAssetIamMemberConditionPtrOutputWithContext(ctx context.Context) AssetIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetIamMemberConditionOutput).ToAssetIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AssetIamMemberConditionPtrInput is an input type that accepts AssetIamMemberConditionArgs, AssetIamMemberConditionPtr and AssetIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AssetIamMemberConditionPtrInput` via:
+//
+//	        AssetIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AssetIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAssetIamMemberConditionPtrOutput() AssetIamMemberConditionPtrOutput
+	ToAssetIamMemberConditionPtrOutputWithContext(context.Context) AssetIamMemberConditionPtrOutput
+}
+
+type assetIamMemberConditionPtrType AssetIamMemberConditionArgs
+
+func AssetIamMemberConditionPtr(v *AssetIamMemberConditionArgs) AssetIamMemberConditionPtrInput {
+	return (*assetIamMemberConditionPtrType)(v)
+}
+
+func (*assetIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetIamMemberCondition)(nil)).Elem()
+}
+
+func (i *assetIamMemberConditionPtrType) ToAssetIamMemberConditionPtrOutput() AssetIamMemberConditionPtrOutput {
+	return i.ToAssetIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *assetIamMemberConditionPtrType) ToAssetIamMemberConditionPtrOutputWithContext(ctx context.Context) AssetIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AssetIamMemberConditionPtrOutput)
+}
+
+type AssetIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AssetIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssetIamMemberCondition)(nil)).Elem()
+}
+
+func (o AssetIamMemberConditionOutput) ToAssetIamMemberConditionOutput() AssetIamMemberConditionOutput {
+	return o
+}
+
+func (o AssetIamMemberConditionOutput) ToAssetIamMemberConditionOutputWithContext(ctx context.Context) AssetIamMemberConditionOutput {
+	return o
+}
+
+func (o AssetIamMemberConditionOutput) ToAssetIamMemberConditionPtrOutput() AssetIamMemberConditionPtrOutput {
+	return o.ToAssetIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AssetIamMemberConditionOutput) ToAssetIamMemberConditionPtrOutputWithContext(ctx context.Context) AssetIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssetIamMemberCondition) *AssetIamMemberCondition {
+		return &v
+	}).(AssetIamMemberConditionPtrOutput)
+}
+
+func (o AssetIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AssetIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AssetIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AssetIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AssetIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AssetIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssetIamMemberCondition)(nil)).Elem()
+}
+
+func (o AssetIamMemberConditionPtrOutput) ToAssetIamMemberConditionPtrOutput() AssetIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AssetIamMemberConditionPtrOutput) ToAssetIamMemberConditionPtrOutputWithContext(ctx context.Context) AssetIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AssetIamMemberConditionPtrOutput) Elem() AssetIamMemberConditionOutput {
+	return o.ApplyT(func(v *AssetIamMemberCondition) AssetIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AssetIamMemberCondition
+		return ret
+	}).(AssetIamMemberConditionOutput)
+}
+
+func (o AssetIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AssetIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AssetIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AssetResourceSpec struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
 	Name *string `pulumi:"name"`
@@ -1321,6 +1647,332 @@ func (o LakeAssetStatusArrayOutput) Index(i pulumi.IntInput) LakeAssetStatusOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LakeAssetStatus {
 		return vs[0].([]LakeAssetStatus)[vs[1].(int)]
 	}).(LakeAssetStatusOutput)
+}
+
+type LakeIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// LakeIamBindingConditionInput is an input type that accepts LakeIamBindingConditionArgs and LakeIamBindingConditionOutput values.
+// You can construct a concrete instance of `LakeIamBindingConditionInput` via:
+//
+//	LakeIamBindingConditionArgs{...}
+type LakeIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToLakeIamBindingConditionOutput() LakeIamBindingConditionOutput
+	ToLakeIamBindingConditionOutputWithContext(context.Context) LakeIamBindingConditionOutput
+}
+
+type LakeIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (LakeIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeIamBindingCondition)(nil)).Elem()
+}
+
+func (i LakeIamBindingConditionArgs) ToLakeIamBindingConditionOutput() LakeIamBindingConditionOutput {
+	return i.ToLakeIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i LakeIamBindingConditionArgs) ToLakeIamBindingConditionOutputWithContext(ctx context.Context) LakeIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeIamBindingConditionOutput)
+}
+
+func (i LakeIamBindingConditionArgs) ToLakeIamBindingConditionPtrOutput() LakeIamBindingConditionPtrOutput {
+	return i.ToLakeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i LakeIamBindingConditionArgs) ToLakeIamBindingConditionPtrOutputWithContext(ctx context.Context) LakeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeIamBindingConditionOutput).ToLakeIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// LakeIamBindingConditionPtrInput is an input type that accepts LakeIamBindingConditionArgs, LakeIamBindingConditionPtr and LakeIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `LakeIamBindingConditionPtrInput` via:
+//
+//	        LakeIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LakeIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToLakeIamBindingConditionPtrOutput() LakeIamBindingConditionPtrOutput
+	ToLakeIamBindingConditionPtrOutputWithContext(context.Context) LakeIamBindingConditionPtrOutput
+}
+
+type lakeIamBindingConditionPtrType LakeIamBindingConditionArgs
+
+func LakeIamBindingConditionPtr(v *LakeIamBindingConditionArgs) LakeIamBindingConditionPtrInput {
+	return (*lakeIamBindingConditionPtrType)(v)
+}
+
+func (*lakeIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LakeIamBindingCondition)(nil)).Elem()
+}
+
+func (i *lakeIamBindingConditionPtrType) ToLakeIamBindingConditionPtrOutput() LakeIamBindingConditionPtrOutput {
+	return i.ToLakeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *lakeIamBindingConditionPtrType) ToLakeIamBindingConditionPtrOutputWithContext(ctx context.Context) LakeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeIamBindingConditionPtrOutput)
+}
+
+type LakeIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (LakeIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeIamBindingCondition)(nil)).Elem()
+}
+
+func (o LakeIamBindingConditionOutput) ToLakeIamBindingConditionOutput() LakeIamBindingConditionOutput {
+	return o
+}
+
+func (o LakeIamBindingConditionOutput) ToLakeIamBindingConditionOutputWithContext(ctx context.Context) LakeIamBindingConditionOutput {
+	return o
+}
+
+func (o LakeIamBindingConditionOutput) ToLakeIamBindingConditionPtrOutput() LakeIamBindingConditionPtrOutput {
+	return o.ToLakeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o LakeIamBindingConditionOutput) ToLakeIamBindingConditionPtrOutputWithContext(ctx context.Context) LakeIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LakeIamBindingCondition) *LakeIamBindingCondition {
+		return &v
+	}).(LakeIamBindingConditionPtrOutput)
+}
+
+func (o LakeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o LakeIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LakeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o LakeIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LakeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type LakeIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (LakeIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LakeIamBindingCondition)(nil)).Elem()
+}
+
+func (o LakeIamBindingConditionPtrOutput) ToLakeIamBindingConditionPtrOutput() LakeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o LakeIamBindingConditionPtrOutput) ToLakeIamBindingConditionPtrOutputWithContext(ctx context.Context) LakeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o LakeIamBindingConditionPtrOutput) Elem() LakeIamBindingConditionOutput {
+	return o.ApplyT(func(v *LakeIamBindingCondition) LakeIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret LakeIamBindingCondition
+		return ret
+	}).(LakeIamBindingConditionOutput)
+}
+
+func (o LakeIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LakeIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LakeIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type LakeIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// LakeIamMemberConditionInput is an input type that accepts LakeIamMemberConditionArgs and LakeIamMemberConditionOutput values.
+// You can construct a concrete instance of `LakeIamMemberConditionInput` via:
+//
+//	LakeIamMemberConditionArgs{...}
+type LakeIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToLakeIamMemberConditionOutput() LakeIamMemberConditionOutput
+	ToLakeIamMemberConditionOutputWithContext(context.Context) LakeIamMemberConditionOutput
+}
+
+type LakeIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (LakeIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeIamMemberCondition)(nil)).Elem()
+}
+
+func (i LakeIamMemberConditionArgs) ToLakeIamMemberConditionOutput() LakeIamMemberConditionOutput {
+	return i.ToLakeIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i LakeIamMemberConditionArgs) ToLakeIamMemberConditionOutputWithContext(ctx context.Context) LakeIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeIamMemberConditionOutput)
+}
+
+func (i LakeIamMemberConditionArgs) ToLakeIamMemberConditionPtrOutput() LakeIamMemberConditionPtrOutput {
+	return i.ToLakeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i LakeIamMemberConditionArgs) ToLakeIamMemberConditionPtrOutputWithContext(ctx context.Context) LakeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeIamMemberConditionOutput).ToLakeIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// LakeIamMemberConditionPtrInput is an input type that accepts LakeIamMemberConditionArgs, LakeIamMemberConditionPtr and LakeIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `LakeIamMemberConditionPtrInput` via:
+//
+//	        LakeIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type LakeIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToLakeIamMemberConditionPtrOutput() LakeIamMemberConditionPtrOutput
+	ToLakeIamMemberConditionPtrOutputWithContext(context.Context) LakeIamMemberConditionPtrOutput
+}
+
+type lakeIamMemberConditionPtrType LakeIamMemberConditionArgs
+
+func LakeIamMemberConditionPtr(v *LakeIamMemberConditionArgs) LakeIamMemberConditionPtrInput {
+	return (*lakeIamMemberConditionPtrType)(v)
+}
+
+func (*lakeIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LakeIamMemberCondition)(nil)).Elem()
+}
+
+func (i *lakeIamMemberConditionPtrType) ToLakeIamMemberConditionPtrOutput() LakeIamMemberConditionPtrOutput {
+	return i.ToLakeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *lakeIamMemberConditionPtrType) ToLakeIamMemberConditionPtrOutputWithContext(ctx context.Context) LakeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LakeIamMemberConditionPtrOutput)
+}
+
+type LakeIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (LakeIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakeIamMemberCondition)(nil)).Elem()
+}
+
+func (o LakeIamMemberConditionOutput) ToLakeIamMemberConditionOutput() LakeIamMemberConditionOutput {
+	return o
+}
+
+func (o LakeIamMemberConditionOutput) ToLakeIamMemberConditionOutputWithContext(ctx context.Context) LakeIamMemberConditionOutput {
+	return o
+}
+
+func (o LakeIamMemberConditionOutput) ToLakeIamMemberConditionPtrOutput() LakeIamMemberConditionPtrOutput {
+	return o.ToLakeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o LakeIamMemberConditionOutput) ToLakeIamMemberConditionPtrOutputWithContext(ctx context.Context) LakeIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LakeIamMemberCondition) *LakeIamMemberCondition {
+		return &v
+	}).(LakeIamMemberConditionPtrOutput)
+}
+
+func (o LakeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LakeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o LakeIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v LakeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o LakeIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v LakeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type LakeIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (LakeIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LakeIamMemberCondition)(nil)).Elem()
+}
+
+func (o LakeIamMemberConditionPtrOutput) ToLakeIamMemberConditionPtrOutput() LakeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o LakeIamMemberConditionPtrOutput) ToLakeIamMemberConditionPtrOutputWithContext(ctx context.Context) LakeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o LakeIamMemberConditionPtrOutput) Elem() LakeIamMemberConditionOutput {
+	return o.ApplyT(func(v *LakeIamMemberCondition) LakeIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret LakeIamMemberCondition
+		return ret
+	}).(LakeIamMemberConditionOutput)
+}
+
+func (o LakeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LakeIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LakeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LakeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type LakeMetastore struct {
@@ -2269,6 +2921,332 @@ func (o ZoneDiscoverySpecJsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type ZoneIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ZoneIamBindingConditionInput is an input type that accepts ZoneIamBindingConditionArgs and ZoneIamBindingConditionOutput values.
+// You can construct a concrete instance of `ZoneIamBindingConditionInput` via:
+//
+//	ZoneIamBindingConditionArgs{...}
+type ZoneIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToZoneIamBindingConditionOutput() ZoneIamBindingConditionOutput
+	ToZoneIamBindingConditionOutputWithContext(context.Context) ZoneIamBindingConditionOutput
+}
+
+type ZoneIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ZoneIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (i ZoneIamBindingConditionArgs) ToZoneIamBindingConditionOutput() ZoneIamBindingConditionOutput {
+	return i.ToZoneIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ZoneIamBindingConditionArgs) ToZoneIamBindingConditionOutputWithContext(ctx context.Context) ZoneIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamBindingConditionOutput)
+}
+
+func (i ZoneIamBindingConditionArgs) ToZoneIamBindingConditionPtrOutput() ZoneIamBindingConditionPtrOutput {
+	return i.ToZoneIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneIamBindingConditionArgs) ToZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) ZoneIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamBindingConditionOutput).ToZoneIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ZoneIamBindingConditionPtrInput is an input type that accepts ZoneIamBindingConditionArgs, ZoneIamBindingConditionPtr and ZoneIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ZoneIamBindingConditionPtrInput` via:
+//
+//	        ZoneIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToZoneIamBindingConditionPtrOutput() ZoneIamBindingConditionPtrOutput
+	ToZoneIamBindingConditionPtrOutputWithContext(context.Context) ZoneIamBindingConditionPtrOutput
+}
+
+type zoneIamBindingConditionPtrType ZoneIamBindingConditionArgs
+
+func ZoneIamBindingConditionPtr(v *ZoneIamBindingConditionArgs) ZoneIamBindingConditionPtrInput {
+	return (*zoneIamBindingConditionPtrType)(v)
+}
+
+func (*zoneIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (i *zoneIamBindingConditionPtrType) ToZoneIamBindingConditionPtrOutput() ZoneIamBindingConditionPtrOutput {
+	return i.ToZoneIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneIamBindingConditionPtrType) ToZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) ZoneIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamBindingConditionPtrOutput)
+}
+
+type ZoneIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ZoneIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (o ZoneIamBindingConditionOutput) ToZoneIamBindingConditionOutput() ZoneIamBindingConditionOutput {
+	return o
+}
+
+func (o ZoneIamBindingConditionOutput) ToZoneIamBindingConditionOutputWithContext(ctx context.Context) ZoneIamBindingConditionOutput {
+	return o
+}
+
+func (o ZoneIamBindingConditionOutput) ToZoneIamBindingConditionPtrOutput() ZoneIamBindingConditionPtrOutput {
+	return o.ToZoneIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneIamBindingConditionOutput) ToZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) ZoneIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneIamBindingCondition) *ZoneIamBindingCondition {
+		return &v
+	}).(ZoneIamBindingConditionPtrOutput)
+}
+
+func (o ZoneIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ZoneIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ZoneIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneIamBindingCondition)(nil)).Elem()
+}
+
+func (o ZoneIamBindingConditionPtrOutput) ToZoneIamBindingConditionPtrOutput() ZoneIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ZoneIamBindingConditionPtrOutput) ToZoneIamBindingConditionPtrOutputWithContext(ctx context.Context) ZoneIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ZoneIamBindingConditionPtrOutput) Elem() ZoneIamBindingConditionOutput {
+	return o.ApplyT(func(v *ZoneIamBindingCondition) ZoneIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneIamBindingCondition
+		return ret
+	}).(ZoneIamBindingConditionOutput)
+}
+
+func (o ZoneIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ZoneIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ZoneIamMemberConditionInput is an input type that accepts ZoneIamMemberConditionArgs and ZoneIamMemberConditionOutput values.
+// You can construct a concrete instance of `ZoneIamMemberConditionInput` via:
+//
+//	ZoneIamMemberConditionArgs{...}
+type ZoneIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToZoneIamMemberConditionOutput() ZoneIamMemberConditionOutput
+	ToZoneIamMemberConditionOutputWithContext(context.Context) ZoneIamMemberConditionOutput
+}
+
+type ZoneIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ZoneIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (i ZoneIamMemberConditionArgs) ToZoneIamMemberConditionOutput() ZoneIamMemberConditionOutput {
+	return i.ToZoneIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ZoneIamMemberConditionArgs) ToZoneIamMemberConditionOutputWithContext(ctx context.Context) ZoneIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamMemberConditionOutput)
+}
+
+func (i ZoneIamMemberConditionArgs) ToZoneIamMemberConditionPtrOutput() ZoneIamMemberConditionPtrOutput {
+	return i.ToZoneIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneIamMemberConditionArgs) ToZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) ZoneIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamMemberConditionOutput).ToZoneIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ZoneIamMemberConditionPtrInput is an input type that accepts ZoneIamMemberConditionArgs, ZoneIamMemberConditionPtr and ZoneIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ZoneIamMemberConditionPtrInput` via:
+//
+//	        ZoneIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToZoneIamMemberConditionPtrOutput() ZoneIamMemberConditionPtrOutput
+	ToZoneIamMemberConditionPtrOutputWithContext(context.Context) ZoneIamMemberConditionPtrOutput
+}
+
+type zoneIamMemberConditionPtrType ZoneIamMemberConditionArgs
+
+func ZoneIamMemberConditionPtr(v *ZoneIamMemberConditionArgs) ZoneIamMemberConditionPtrInput {
+	return (*zoneIamMemberConditionPtrType)(v)
+}
+
+func (*zoneIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (i *zoneIamMemberConditionPtrType) ToZoneIamMemberConditionPtrOutput() ZoneIamMemberConditionPtrOutput {
+	return i.ToZoneIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneIamMemberConditionPtrType) ToZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) ZoneIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneIamMemberConditionPtrOutput)
+}
+
+type ZoneIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ZoneIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (o ZoneIamMemberConditionOutput) ToZoneIamMemberConditionOutput() ZoneIamMemberConditionOutput {
+	return o
+}
+
+func (o ZoneIamMemberConditionOutput) ToZoneIamMemberConditionOutputWithContext(ctx context.Context) ZoneIamMemberConditionOutput {
+	return o
+}
+
+func (o ZoneIamMemberConditionOutput) ToZoneIamMemberConditionPtrOutput() ZoneIamMemberConditionPtrOutput {
+	return o.ToZoneIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneIamMemberConditionOutput) ToZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) ZoneIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneIamMemberCondition) *ZoneIamMemberCondition {
+		return &v
+	}).(ZoneIamMemberConditionPtrOutput)
+}
+
+func (o ZoneIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ZoneIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ZoneIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneIamMemberCondition)(nil)).Elem()
+}
+
+func (o ZoneIamMemberConditionPtrOutput) ToZoneIamMemberConditionPtrOutput() ZoneIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ZoneIamMemberConditionPtrOutput) ToZoneIamMemberConditionPtrOutputWithContext(ctx context.Context) ZoneIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ZoneIamMemberConditionPtrOutput) Elem() ZoneIamMemberConditionOutput {
+	return o.ApplyT(func(v *ZoneIamMemberCondition) ZoneIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneIamMemberCondition
+		return ret
+	}).(ZoneIamMemberConditionOutput)
+}
+
+func (o ZoneIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZoneResourceSpec struct {
 	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
 	LocationType string `pulumi:"locationType"`
@@ -2417,6 +3395,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoveryStatusArrayInput)(nil)).Elem(), AssetDiscoveryStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoveryStatusStatInput)(nil)).Elem(), AssetDiscoveryStatusStatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetDiscoveryStatusStatArrayInput)(nil)).Elem(), AssetDiscoveryStatusStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetIamBindingConditionInput)(nil)).Elem(), AssetIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetIamBindingConditionPtrInput)(nil)).Elem(), AssetIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetIamMemberConditionInput)(nil)).Elem(), AssetIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AssetIamMemberConditionPtrInput)(nil)).Elem(), AssetIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceSpecInput)(nil)).Elem(), AssetResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceSpecPtrInput)(nil)).Elem(), AssetResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceStatusInput)(nil)).Elem(), AssetResourceStatusArgs{})
@@ -2425,6 +3407,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusArrayInput)(nil)).Elem(), AssetSecurityStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusInput)(nil)).Elem(), LakeAssetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusArrayInput)(nil)).Elem(), LakeAssetStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeIamBindingConditionInput)(nil)).Elem(), LakeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeIamBindingConditionPtrInput)(nil)).Elem(), LakeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeIamMemberConditionInput)(nil)).Elem(), LakeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LakeIamMemberConditionPtrInput)(nil)).Elem(), LakeIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreInput)(nil)).Elem(), LakeMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastorePtrInput)(nil)).Elem(), LakeMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreStatusInput)(nil)).Elem(), LakeMetastoreStatusArgs{})
@@ -2437,6 +3423,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecCsvOptionsPtrInput)(nil)).Elem(), ZoneDiscoverySpecCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecJsonOptionsInput)(nil)).Elem(), ZoneDiscoverySpecJsonOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecJsonOptionsPtrInput)(nil)).Elem(), ZoneDiscoverySpecJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneIamBindingConditionInput)(nil)).Elem(), ZoneIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneIamBindingConditionPtrInput)(nil)).Elem(), ZoneIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneIamMemberConditionInput)(nil)).Elem(), ZoneIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneIamMemberConditionPtrInput)(nil)).Elem(), ZoneIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneResourceSpecInput)(nil)).Elem(), ZoneResourceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneResourceSpecPtrInput)(nil)).Elem(), ZoneResourceSpecArgs{})
 	pulumi.RegisterOutputType(AssetDiscoverySpecOutput{})
@@ -2449,6 +3439,10 @@ func init() {
 	pulumi.RegisterOutputType(AssetDiscoveryStatusArrayOutput{})
 	pulumi.RegisterOutputType(AssetDiscoveryStatusStatOutput{})
 	pulumi.RegisterOutputType(AssetDiscoveryStatusStatArrayOutput{})
+	pulumi.RegisterOutputType(AssetIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AssetIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AssetIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AssetIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AssetResourceSpecOutput{})
 	pulumi.RegisterOutputType(AssetResourceSpecPtrOutput{})
 	pulumi.RegisterOutputType(AssetResourceStatusOutput{})
@@ -2457,6 +3451,10 @@ func init() {
 	pulumi.RegisterOutputType(AssetSecurityStatusArrayOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusArrayOutput{})
+	pulumi.RegisterOutputType(LakeIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(LakeIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(LakeIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(LakeIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreOutput{})
 	pulumi.RegisterOutputType(LakeMetastorePtrOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreStatusOutput{})
@@ -2469,6 +3467,10 @@ func init() {
 	pulumi.RegisterOutputType(ZoneDiscoverySpecCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ZoneDiscoverySpecJsonOptionsOutput{})
 	pulumi.RegisterOutputType(ZoneDiscoverySpecJsonOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ZoneIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ZoneIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ZoneIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ZoneIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ZoneResourceSpecOutput{})
 	pulumi.RegisterOutputType(ZoneResourceSpecPtrOutput{})
 }

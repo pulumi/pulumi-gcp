@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * });
  * const tplInstanceFromTemplate = new gcp.compute.InstanceFromTemplate("tplInstanceFromTemplate", {
  *     zone: "us-central1-a",
- *     sourceInstanceTemplate: tplInstanceTemplate.id,
+ *     sourceInstanceTemplate: tplInstanceTemplate.selfLinkUnique,
  *     canIpForward: false,
  *     labels: {
  *         my_key: "my_value",
@@ -221,7 +221,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
-     * template to create the instance based on.
+     * template to create the instance based on. It is recommended to reference
+     * instance templates through their unique id (`selfLinkUnique` attribute).
      */
     public readonly sourceInstanceTemplate!: pulumi.Output<string>;
     /**
@@ -481,7 +482,8 @@ export interface InstanceFromTemplateState {
     shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
-     * template to create the instance based on.
+     * template to create the instance based on. It is recommended to reference
+     * instance templates through their unique id (`selfLinkUnique` attribute).
      */
     sourceInstanceTemplate?: pulumi.Input<string>;
     /**
@@ -620,7 +622,8 @@ export interface InstanceFromTemplateArgs {
     shieldedInstanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateShieldedInstanceConfig>;
     /**
      * Name or self link of an instance
-     * template to create the instance based on.
+     * template to create the instance based on. It is recommended to reference
+     * instance templates through their unique id (`selfLinkUnique` attribute).
      */
     sourceInstanceTemplate: pulumi.Input<string>;
     /**

@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  *             .priority(1000)
  *             .region(&#34;us-west1&#34;)
  *             .ruleName(&#34;test-rule&#34;)
- *             .targetServiceAccounts(&#34;emailAddress:my@service-account.com&#34;)
+ *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
  *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
  *                 .srcIpRanges(&#34;10.100.0.1/32&#34;)
  *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()

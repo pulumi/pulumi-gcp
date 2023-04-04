@@ -144,7 +144,7 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
-     * must be expressed in CIDR format. Only IPv4 is supported.
+     * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      */
     public readonly destinationRanges!: pulumi.Output<string[]>;
     /**
@@ -216,8 +216,8 @@ export class Firewall extends pulumi.CustomResource {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-     * `sourceTags` or `sourceServiceAccounts` is required.
+     * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+     * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     public readonly sourceRanges!: pulumi.Output<string[] | undefined>;
     /**
@@ -356,7 +356,7 @@ export interface FirewallState {
     /**
      * If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
-     * must be expressed in CIDR format. Only IPv4 is supported.
+     * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      */
     destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -428,8 +428,8 @@ export interface FirewallState {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-     * `sourceTags` or `sourceServiceAccounts` is required.
+     * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+     * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -503,7 +503,7 @@ export interface FirewallArgs {
     /**
      * If destination ranges are specified, the firewall will apply only to
      * traffic that has destination IP address in these ranges. These ranges
-     * must be expressed in CIDR format. Only IPv4 is supported.
+     * must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
      */
     destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -571,8 +571,8 @@ export interface FirewallArgs {
      * apply to traffic that has source IP address within sourceRanges OR the
      * source IP that belongs to a tag listed in the sourceTags property. The
      * connection does not need to match both properties for the firewall to
-     * apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-     * `sourceTags` or `sourceServiceAccounts` is required.
+     * apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+     * `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
      */
     sourceRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**

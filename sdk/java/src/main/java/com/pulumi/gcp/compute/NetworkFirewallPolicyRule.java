@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .firewallPolicy(basicNetworkFirewallPolicy.name())
  *             .priority(1000)
  *             .ruleName(&#34;test-rule&#34;)
- *             .targetServiceAccounts(&#34;emailAddress:my@service-account.com&#34;)
+ *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
  *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
  *                 .srcIpRanges(&#34;10.100.0.1/32&#34;)
  *                 .srcSecureTags(NetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()

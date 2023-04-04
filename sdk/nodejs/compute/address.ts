@@ -165,6 +165,7 @@ export class Address extends pulumi.CustomResource {
     public readonly address!: pulumi.Output<string>;
     /**
      * The type of address to reserve.
+     * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
      * Possible values are `INTERNAL` and `EXTERNAL`.
      */
@@ -203,6 +204,7 @@ export class Address extends pulumi.CustomResource {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
      * Possible values are `PREMIUM` and `STANDARD`.
      */
     public readonly networkTier!: pulumi.Output<string>;
@@ -317,6 +319,7 @@ export interface AddressState {
     address?: pulumi.Input<string>;
     /**
      * The type of address to reserve.
+     * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
      * Possible values are `INTERNAL` and `EXTERNAL`.
      */
@@ -355,6 +358,7 @@ export interface AddressState {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
      * Possible values are `PREMIUM` and `STANDARD`.
      */
     networkTier?: pulumi.Input<string>;
@@ -417,6 +421,7 @@ export interface AddressArgs {
     address?: pulumi.Input<string>;
     /**
      * The type of address to reserve.
+     * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
      * Possible values are `INTERNAL` and `EXTERNAL`.
      */
@@ -447,6 +452,7 @@ export interface AddressArgs {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
+     * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
      * Possible values are `PREMIUM` and `STANDARD`.
      */
     networkTier?: pulumi.Input<string>;

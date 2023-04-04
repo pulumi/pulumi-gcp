@@ -548,7 +548,7 @@ class AwsCluster(pulumi.CustomResource):
             },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="emailAddress:my@service-account.com",
+                    username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
@@ -587,7 +587,7 @@ class AwsCluster(pulumi.CustomResource):
                 ),
                 subnet_ids=["subnet-00000000000000000"],
                 tags={
-                    "owner": "emailAddress:my@service-account.com",
+                    "owner": "my@service-account.com",
                 },
                 version=versions.valid_versions[0],
             ),
@@ -662,7 +662,7 @@ class AwsCluster(pulumi.CustomResource):
             },
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="emailAddress:my@service-account.com",
+                    username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
@@ -701,7 +701,7 @@ class AwsCluster(pulumi.CustomResource):
                 ),
                 subnet_ids=["subnet-00000000000000000"],
                 tags={
-                    "owner": "emailAddress:my@service-account.com",
+                    "owner": "my@service-account.com",
                 },
                 version=versions.valid_versions[0],
             ),

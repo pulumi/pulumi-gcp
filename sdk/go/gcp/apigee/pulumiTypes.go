@@ -1509,6 +1509,295 @@ func (o EnvironmentNodeConfigPtrOutput) MinNodeCount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type KeystoresAliasesKeyCertFileCertsInfo struct {
+	CertInfos []KeystoresAliasesKeyCertFileCertsInfoCertInfo `pulumi:"certInfos"`
+}
+
+// KeystoresAliasesKeyCertFileCertsInfoInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoArgs and KeystoresAliasesKeyCertFileCertsInfoOutput values.
+// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoInput` via:
+//
+//	KeystoresAliasesKeyCertFileCertsInfoArgs{...}
+type KeystoresAliasesKeyCertFileCertsInfoInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesKeyCertFileCertsInfoOutput() KeystoresAliasesKeyCertFileCertsInfoOutput
+	ToKeystoresAliasesKeyCertFileCertsInfoOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoOutput
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoArgs struct {
+	CertInfos KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput `pulumi:"certInfos"`
+}
+
+func (KeystoresAliasesKeyCertFileCertsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoOutput() KeystoresAliasesKeyCertFileCertsInfoOutput {
+	return i.ToKeystoresAliasesKeyCertFileCertsInfoOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoOutput)
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return i.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoOutput).ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx)
+}
+
+// KeystoresAliasesKeyCertFileCertsInfoPtrInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoArgs, KeystoresAliasesKeyCertFileCertsInfoPtr and KeystoresAliasesKeyCertFileCertsInfoPtrOutput values.
+// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoPtrInput` via:
+//
+//	        KeystoresAliasesKeyCertFileCertsInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeystoresAliasesKeyCertFileCertsInfoPtrInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput
+	ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput
+}
+
+type keystoresAliasesKeyCertFileCertsInfoPtrType KeystoresAliasesKeyCertFileCertsInfoArgs
+
+func KeystoresAliasesKeyCertFileCertsInfoPtr(v *KeystoresAliasesKeyCertFileCertsInfoArgs) KeystoresAliasesKeyCertFileCertsInfoPtrInput {
+	return (*keystoresAliasesKeyCertFileCertsInfoPtrType)(v)
+}
+
+func (*keystoresAliasesKeyCertFileCertsInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
+}
+
+func (i *keystoresAliasesKeyCertFileCertsInfoPtrType) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return i.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *keystoresAliasesKeyCertFileCertsInfoPtrType) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoPtrOutput)
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesKeyCertFileCertsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoOutput() KeystoresAliasesKeyCertFileCertsInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return o.ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(context.Background())
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeystoresAliasesKeyCertFileCertsInfo) *KeystoresAliasesKeyCertFileCertsInfo {
+		return &v
+	}).(KeystoresAliasesKeyCertFileCertsInfoPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoOutput) CertInfos() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) []KeystoresAliasesKeyCertFileCertsInfoCertInfo {
+		return v.CertInfos
+	}).(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput)
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesKeyCertFileCertsInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutput() KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) ToKeystoresAliasesKeyCertFileCertsInfoPtrOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) Elem() KeystoresAliasesKeyCertFileCertsInfoOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileCertsInfo) KeystoresAliasesKeyCertFileCertsInfo {
+		if v != nil {
+			return *v
+		}
+		var ret KeystoresAliasesKeyCertFileCertsInfo
+		return ret
+	}).(KeystoresAliasesKeyCertFileCertsInfoOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) CertInfos() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileCertsInfo) []KeystoresAliasesKeyCertFileCertsInfoCertInfo {
+		if v == nil {
+			return nil
+		}
+		return v.CertInfos
+	}).(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput)
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoCertInfo struct {
+	BasicConstraints        *string  `pulumi:"basicConstraints"`
+	ExpiryDate              *string  `pulumi:"expiryDate"`
+	IsValid                 *string  `pulumi:"isValid"`
+	Issuer                  *string  `pulumi:"issuer"`
+	PublicKey               *string  `pulumi:"publicKey"`
+	SerialNumber            *string  `pulumi:"serialNumber"`
+	SigAlgName              *string  `pulumi:"sigAlgName"`
+	Subject                 *string  `pulumi:"subject"`
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
+	ValidFrom               *string  `pulumi:"validFrom"`
+	Version                 *int     `pulumi:"version"`
+}
+
+// KeystoresAliasesKeyCertFileCertsInfoCertInfoInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs and KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput values.
+// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoCertInfoInput` via:
+//
+//	KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{...}
+type KeystoresAliasesKeyCertFileCertsInfoCertInfoInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput
+	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs struct {
+	BasicConstraints        pulumi.StringPtrInput   `pulumi:"basicConstraints"`
+	ExpiryDate              pulumi.StringPtrInput   `pulumi:"expiryDate"`
+	IsValid                 pulumi.StringPtrInput   `pulumi:"isValid"`
+	Issuer                  pulumi.StringPtrInput   `pulumi:"issuer"`
+	PublicKey               pulumi.StringPtrInput   `pulumi:"publicKey"`
+	SerialNumber            pulumi.StringPtrInput   `pulumi:"serialNumber"`
+	SigAlgName              pulumi.StringPtrInput   `pulumi:"sigAlgName"`
+	Subject                 pulumi.StringPtrInput   `pulumi:"subject"`
+	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
+	ValidFrom               pulumi.StringPtrInput   `pulumi:"validFrom"`
+	Version                 pulumi.IntPtrInput      `pulumi:"version"`
+}
+
+func (KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
+	return i.ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput)
+}
+
+// KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoCertInfoArray and KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput values.
+// You can construct a concrete instance of `KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput` via:
+//
+//	KeystoresAliasesKeyCertFileCertsInfoCertInfoArray{ KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{...} }
+type KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput
+	ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoCertInfoArray []KeystoresAliasesKeyCertFileCertsInfoCertInfoInput
+
+func (KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+	return i.ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesKeyCertFileCertsInfoCertInfoArray) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput)
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) BasicConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.BasicConstraints }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ExpiryDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.ExpiryDate }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) IsValid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.IsValid }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SigAlgName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.SigAlgName }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ValidFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.ValidFrom }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesKeyCertFileCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) ToKeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesKeyCertFileCertsInfoCertInfo {
+		return vs[0].([]KeystoresAliasesKeyCertFileCertsInfoCertInfo)[vs[1].(int)]
+	}).(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput)
+}
+
 type OrganizationProperties struct {
 	// List of all properties in the object.
 	// Structure is documented below.
@@ -1890,6 +2179,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionPtrInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentNodeConfigInput)(nil)).Elem(), EnvironmentNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentNodeConfigPtrInput)(nil)).Elem(), EnvironmentNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoPtrInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
@@ -1914,6 +2207,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentNodeConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoPtrOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyOutput{})

@@ -4,12 +4,14 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGvnic;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigShieldedInstanceConfig;
@@ -26,6 +28,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfig {
+    private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
     private @Nullable String bootDiskKmsKey;
     private @Nullable Integer diskSizeGb;
     private @Nullable String diskType;
@@ -37,6 +40,7 @@ public final class NodePoolNodeConfig {
     private @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig;
     private @Nullable Map<String,String> labels;
     private @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
+    private @Nullable NodePoolNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig;
     private @Nullable Integer localSsdCount;
     private @Nullable String loggingVariant;
     private @Nullable String machineType;
@@ -56,6 +60,9 @@ public final class NodePoolNodeConfig {
     private @Nullable NodePoolNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
 
     private NodePoolNodeConfig() {}
+    public Optional<NodePoolNodeConfigAdvancedMachineFeatures> advancedMachineFeatures() {
+        return Optional.ofNullable(this.advancedMachineFeatures);
+    }
     public Optional<String> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
     }
@@ -88,6 +95,9 @@ public final class NodePoolNodeConfig {
     }
     public Optional<NodePoolNodeConfigLinuxNodeConfig> linuxNodeConfig() {
         return Optional.ofNullable(this.linuxNodeConfig);
+    }
+    public Optional<NodePoolNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfig() {
+        return Optional.ofNullable(this.localNvmeSsdBlockConfig);
     }
     public Optional<Integer> localSsdCount() {
         return Optional.ofNullable(this.localSsdCount);
@@ -150,6 +160,7 @@ public final class NodePoolNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
         private @Nullable String bootDiskKmsKey;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
@@ -161,6 +172,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig;
         private @Nullable Map<String,String> labels;
         private @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
+        private @Nullable NodePoolNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig;
         private @Nullable Integer localSsdCount;
         private @Nullable String loggingVariant;
         private @Nullable String machineType;
@@ -181,6 +193,7 @@ public final class NodePoolNodeConfig {
         public Builder() {}
         public Builder(NodePoolNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
@@ -192,6 +205,7 @@ public final class NodePoolNodeConfig {
     	      this.kubeletConfig = defaults.kubeletConfig;
     	      this.labels = defaults.labels;
     	      this.linuxNodeConfig = defaults.linuxNodeConfig;
+    	      this.localNvmeSsdBlockConfig = defaults.localNvmeSsdBlockConfig;
     	      this.localSsdCount = defaults.localSsdCount;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
@@ -211,6 +225,11 @@ public final class NodePoolNodeConfig {
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
         }
 
+        @CustomType.Setter
+        public Builder advancedMachineFeatures(@Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures) {
+            this.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
         @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
@@ -267,6 +286,11 @@ public final class NodePoolNodeConfig {
         @CustomType.Setter
         public Builder linuxNodeConfig(@Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig) {
             this.linuxNodeConfig = linuxNodeConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localNvmeSsdBlockConfig(@Nullable NodePoolNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig) {
+            this.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             return this;
         }
         @CustomType.Setter
@@ -365,6 +389,7 @@ public final class NodePoolNodeConfig {
         }
         public NodePoolNodeConfig build() {
             final var o = new NodePoolNodeConfig();
+            o.advancedMachineFeatures = advancedMachineFeatures;
             o.bootDiskKmsKey = bootDiskKmsKey;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
@@ -376,6 +401,7 @@ public final class NodePoolNodeConfig {
             o.kubeletConfig = kubeletConfig;
             o.labels = labels;
             o.linuxNodeConfig = linuxNodeConfig;
+            o.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             o.localSsdCount = localSsdCount;
             o.loggingVariant = loggingVariant;
             o.machineType = machineType;

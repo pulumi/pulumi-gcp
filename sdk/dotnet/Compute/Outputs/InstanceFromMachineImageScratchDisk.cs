@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceFromMachineImageScratchDisk
     {
         public readonly string Interface;
+        public readonly int? Size;
 
         [OutputConstructor]
-        private InstanceFromMachineImageScratchDisk(string @interface)
+        private InstanceFromMachineImageScratchDisk(
+            string @interface,
+
+            int? size)
         {
             Interface = @interface;
+            Size = size;
         }
     }
 }

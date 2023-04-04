@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     priority: 1000,
  *     region: "us-west1",
  *     ruleName: "test-rule",
- *     targetServiceAccounts: ["emailAddress:my@service-account.com"],
+ *     targetServiceAccounts: ["my@service-account.com"],
  *     match: {
  *         srcIpRanges: ["10.100.0.1/32"],
  *         layer4Configs: [{

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class EdgeCacheOriginOriginOverrideActionHeaderAction {
     /**
      * @return Describes a header to add.
-     * You may add a maximum of 5 request headers.
+     * You may add a maximum of 25 request headers.
      * Structure is documented below.
      * 
      */
@@ -22,7 +22,7 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderAction {
     private EdgeCacheOriginOriginOverrideActionHeaderAction() {}
     /**
      * @return Describes a header to add.
-     * You may add a maximum of 5 request headers.
+     * You may add a maximum of 25 request headers.
      * Structure is documented below.
      * 
      */

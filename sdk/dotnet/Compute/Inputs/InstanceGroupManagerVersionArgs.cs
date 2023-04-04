@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceGroupManagerVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The full URL to an instance template from which all new instances of this version will be created.
+        /// The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         /// </summary>
         [Input("instanceTemplate", required: true)]
         public Input<string> InstanceTemplate { get; set; } = null!;

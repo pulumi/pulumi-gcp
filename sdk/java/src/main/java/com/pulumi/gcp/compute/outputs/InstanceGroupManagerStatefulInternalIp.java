@@ -17,7 +17,7 @@ public final class InstanceGroupManagerStatefulInternalIp {
      */
     private @Nullable String deleteRule;
     /**
-     * @return , The network interface name of the internal Ip.
+     * @return , The network interface name of the internal Ip. Possible value: `nic0`
      * 
      */
     private @Nullable String interfaceName;
@@ -31,7 +31,7 @@ public final class InstanceGroupManagerStatefulInternalIp {
         return Optional.ofNullable(this.deleteRule);
     }
     /**
-     * @return , The network interface name of the internal Ip.
+     * @return , The network interface name of the internal Ip. Possible value: `nic0`
      * 
      */
     public Optional<String> interfaceName() {

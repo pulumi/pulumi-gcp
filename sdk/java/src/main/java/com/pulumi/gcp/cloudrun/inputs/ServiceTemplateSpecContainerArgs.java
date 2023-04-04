@@ -26,13 +26,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     /**
      * Arguments to the entrypoint.
      * The docker image&#39;s CMD is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     @Import(name="args")
@@ -41,13 +34,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     /**
      * @return Arguments to the entrypoint.
      * The docker image&#39;s CMD is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -57,13 +43,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     /**
      * Entrypoint array. Not executed within a shell.
      * The docker image&#39;s ENTRYPOINT is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     @Import(name="commands")
@@ -72,13 +51,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     /**
      * @return Entrypoint array. Not executed within a shell.
      * The docker image&#39;s ENTRYPOINT is used if this is not provided.
-     * Variable references $(VAR_NAME) are expanded using the container&#39;s
-     * environment. If a variable cannot be resolved, the reference in the input
-     * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-     * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-     * regardless of whether the variable exists or not.
-     * More info:
-     * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
      * 
      */
     public Optional<Output<List<String>>> commands() {
@@ -140,7 +112,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     /**
      * Docker image name. This is most often a reference to a container located
      * in the container registry, such as gcr.io/cloudrun/hello
-     * More info: https://kubernetes.io/docs/concepts/containers/images
      * 
      */
     @Import(name="image", required=true)
@@ -149,7 +120,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     /**
      * @return Docker image name. This is most often a reference to a container located
      * in the container registry, such as gcr.io/cloudrun/hello
-     * More info: https://kubernetes.io/docs/concepts/containers/images
      * 
      */
     public Output<String> image() {
@@ -177,8 +147,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
     /**
      * List of open ports in the container.
-     * More Info:
-     * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
      * Structure is documented below.
      * 
      */
@@ -187,8 +155,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
     /**
      * @return List of open ports in the container.
-     * More Info:
-     * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
      * Structure is documented below.
      * 
      */
@@ -198,8 +164,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
     /**
      * Compute Resources required by this container. Used to set values such as max memory
-     * More info:
-     * https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
      * Structure is documented below.
      * 
      */
@@ -208,8 +172,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
     /**
      * @return Compute Resources required by this container. Used to set values such as max memory
-     * More info:
-     * https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
      * Structure is documented below.
      * 
      */
@@ -309,13 +271,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param args Arguments to the entrypoint.
          * The docker image&#39;s CMD is used if this is not provided.
-         * Variable references $(VAR_NAME) are expanded using the container&#39;s
-         * environment. If a variable cannot be resolved, the reference in the input
-         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-         * regardless of whether the variable exists or not.
-         * More info:
-         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          * 
          * @return builder
          * 
@@ -328,13 +283,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param args Arguments to the entrypoint.
          * The docker image&#39;s CMD is used if this is not provided.
-         * Variable references $(VAR_NAME) are expanded using the container&#39;s
-         * environment. If a variable cannot be resolved, the reference in the input
-         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-         * regardless of whether the variable exists or not.
-         * More info:
-         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          * 
          * @return builder
          * 
@@ -346,13 +294,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param args Arguments to the entrypoint.
          * The docker image&#39;s CMD is used if this is not provided.
-         * Variable references $(VAR_NAME) are expanded using the container&#39;s
-         * environment. If a variable cannot be resolved, the reference in the input
-         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-         * regardless of whether the variable exists or not.
-         * More info:
-         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          * 
          * @return builder
          * 
@@ -364,13 +305,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param commands Entrypoint array. Not executed within a shell.
          * The docker image&#39;s ENTRYPOINT is used if this is not provided.
-         * Variable references $(VAR_NAME) are expanded using the container&#39;s
-         * environment. If a variable cannot be resolved, the reference in the input
-         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-         * regardless of whether the variable exists or not.
-         * More info:
-         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          * 
          * @return builder
          * 
@@ -383,13 +317,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param commands Entrypoint array. Not executed within a shell.
          * The docker image&#39;s ENTRYPOINT is used if this is not provided.
-         * Variable references $(VAR_NAME) are expanded using the container&#39;s
-         * environment. If a variable cannot be resolved, the reference in the input
-         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-         * regardless of whether the variable exists or not.
-         * More info:
-         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          * 
          * @return builder
          * 
@@ -401,13 +328,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param commands Entrypoint array. Not executed within a shell.
          * The docker image&#39;s ENTRYPOINT is used if this is not provided.
-         * Variable references $(VAR_NAME) are expanded using the container&#39;s
-         * environment. If a variable cannot be resolved, the reference in the input
-         * string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
-         * double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
-         * regardless of whether the variable exists or not.
-         * More info:
-         * https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          * 
          * @return builder
          * 
@@ -514,7 +434,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param image Docker image name. This is most often a reference to a container located
          * in the container registry, such as gcr.io/cloudrun/hello
-         * More info: https://kubernetes.io/docs/concepts/containers/images
          * 
          * @return builder
          * 
@@ -527,7 +446,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         /**
          * @param image Docker image name. This is most often a reference to a container located
          * in the container registry, such as gcr.io/cloudrun/hello
-         * More info: https://kubernetes.io/docs/concepts/containers/images
          * 
          * @return builder
          * 
@@ -563,8 +481,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
         /**
          * @param ports List of open ports in the container.
-         * More Info:
-         * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
          * Structure is documented below.
          * 
          * @return builder
@@ -577,8 +493,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
         /**
          * @param ports List of open ports in the container.
-         * More Info:
-         * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
          * Structure is documented below.
          * 
          * @return builder
@@ -590,8 +504,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
         /**
          * @param ports List of open ports in the container.
-         * More Info:
-         * https://cloud.google.com/run/docs/reference/rest/v1/RevisionSpec#ContainerPort
          * Structure is documented below.
          * 
          * @return builder
@@ -603,8 +515,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
         /**
          * @param resources Compute Resources required by this container. Used to set values such as max memory
-         * More info:
-         * https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
          * Structure is documented below.
          * 
          * @return builder
@@ -617,8 +527,6 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
 
         /**
          * @param resources Compute Resources required by this container. Used to set values such as max memory
-         * More info:
-         * https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
          * Structure is documented below.
          * 
          * @return builder

@@ -14,14 +14,16 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSingleTargetD
     public static final StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs Empty = new StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs();
 
     /**
-     * Dataset ID in the format projects/{project}/datasets/{dataset_id}
+     * Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+     * {project}:{dataset_id}
      * 
      */
     @Import(name="datasetId", required=true)
     private Output<String> datasetId;
 
     /**
-     * @return Dataset ID in the format projects/{project}/datasets/{dataset_id}
+     * @return Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+     * {project}:{dataset_id}
      * 
      */
     public Output<String> datasetId() {
@@ -53,7 +55,8 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSingleTargetD
         }
 
         /**
-         * @param datasetId Dataset ID in the format projects/{project}/datasets/{dataset_id}
+         * @param datasetId Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+         * {project}:{dataset_id}
          * 
          * @return builder
          * 
@@ -64,7 +67,8 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSingleTargetD
         }
 
         /**
-         * @param datasetId Dataset ID in the format projects/{project}/datasets/{dataset_id}
+         * @param datasetId Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+         * {project}:{dataset_id}
          * 
          * @return builder
          * 

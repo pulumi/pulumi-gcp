@@ -527,7 +527,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             priority=1000,
             region="us-west1",
             rule_name="test-rule",
-            target_service_accounts=["emailAddress:my@service-account.com"],
+            target_service_accounts=["my@service-account.com"],
             match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
                 src_ip_ranges=["10.100.0.1/32"],
                 layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
@@ -617,7 +617,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             priority=1000,
             region="us-west1",
             rule_name="test-rule",
-            target_service_accounts=["emailAddress:my@service-account.com"],
+            target_service_accounts=["my@service-account.com"],
             match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
                 src_ip_ranges=["10.100.0.1/32"],
                 layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
