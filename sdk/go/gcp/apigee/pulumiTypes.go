@@ -1510,6 +1510,9 @@ func (o EnvironmentNodeConfigPtrOutput) MinNodeCount() pulumi.StringPtrOutput {
 }
 
 type KeystoresAliasesKeyCertFileCertsInfo struct {
+	// (Output)
+	// List of all properties in the object.
+	// Structure is documented below.
 	CertInfos []KeystoresAliasesKeyCertFileCertsInfoCertInfo `pulumi:"certInfos"`
 }
 
@@ -1525,6 +1528,9 @@ type KeystoresAliasesKeyCertFileCertsInfoInput interface {
 }
 
 type KeystoresAliasesKeyCertFileCertsInfoArgs struct {
+	// (Output)
+	// List of all properties in the object.
+	// Structure is documented below.
 	CertInfos KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput `pulumi:"certInfos"`
 }
 
@@ -1605,6 +1611,9 @@ func (o KeystoresAliasesKeyCertFileCertsInfoOutput) ToKeystoresAliasesKeyCertFil
 	}).(KeystoresAliasesKeyCertFileCertsInfoPtrOutput)
 }
 
+// (Output)
+// List of all properties in the object.
+// Structure is documented below.
 func (o KeystoresAliasesKeyCertFileCertsInfoOutput) CertInfos() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfo) []KeystoresAliasesKeyCertFileCertsInfoCertInfo {
 		return v.CertInfos
@@ -1635,6 +1644,9 @@ func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) Elem() KeystoresAliasesKe
 	}).(KeystoresAliasesKeyCertFileCertsInfoOutput)
 }
 
+// (Output)
+// List of all properties in the object.
+// Structure is documented below.
 func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) CertInfos() KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput {
 	return o.ApplyT(func(v *KeystoresAliasesKeyCertFileCertsInfo) []KeystoresAliasesKeyCertFileCertsInfoCertInfo {
 		if v == nil {
@@ -1645,17 +1657,40 @@ func (o KeystoresAliasesKeyCertFileCertsInfoPtrOutput) CertInfos() KeystoresAlia
 }
 
 type KeystoresAliasesKeyCertFileCertsInfoCertInfo struct {
-	BasicConstraints        *string  `pulumi:"basicConstraints"`
-	ExpiryDate              *string  `pulumi:"expiryDate"`
-	IsValid                 *string  `pulumi:"isValid"`
-	Issuer                  *string  `pulumi:"issuer"`
-	PublicKey               *string  `pulumi:"publicKey"`
-	SerialNumber            *string  `pulumi:"serialNumber"`
-	SigAlgName              *string  `pulumi:"sigAlgName"`
-	Subject                 *string  `pulumi:"subject"`
+	// (Output)
+	// X.509 basic constraints extension.
+	BasicConstraints *string `pulumi:"basicConstraints"`
+	// (Output)
+	// X.509 notAfter validity period in milliseconds since epoch.
+	ExpiryDate *string `pulumi:"expiryDate"`
+	// (Output)
+	// Flag that specifies whether the certificate is valid.
+	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+	IsValid *string `pulumi:"isValid"`
+	// (Output)
+	// X.509 issuer.
+	Issuer *string `pulumi:"issuer"`
+	// (Output)
+	// Public key component of the X.509 subject public key info.
+	PublicKey *string `pulumi:"publicKey"`
+	// (Output)
+	// X.509 serial number.
+	SerialNumber *string `pulumi:"serialNumber"`
+	// (Output)
+	// X.509 signatureAlgorithm.
+	SigAlgName *string `pulumi:"sigAlgName"`
+	// (Output)
+	// X.509 subject.
+	Subject *string `pulumi:"subject"`
+	// (Output)
+	// X.509 subject alternative names (SANs) extension.
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
-	ValidFrom               *string  `pulumi:"validFrom"`
-	Version                 *int     `pulumi:"version"`
+	// (Output)
+	// X.509 notBefore validity period in milliseconds since epoch.
+	ValidFrom *string `pulumi:"validFrom"`
+	// (Output)
+	// X.509 version.
+	Version *int `pulumi:"version"`
 }
 
 // KeystoresAliasesKeyCertFileCertsInfoCertInfoInput is an input type that accepts KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs and KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput values.
@@ -1670,17 +1705,40 @@ type KeystoresAliasesKeyCertFileCertsInfoCertInfoInput interface {
 }
 
 type KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs struct {
-	BasicConstraints        pulumi.StringPtrInput   `pulumi:"basicConstraints"`
-	ExpiryDate              pulumi.StringPtrInput   `pulumi:"expiryDate"`
-	IsValid                 pulumi.StringPtrInput   `pulumi:"isValid"`
-	Issuer                  pulumi.StringPtrInput   `pulumi:"issuer"`
-	PublicKey               pulumi.StringPtrInput   `pulumi:"publicKey"`
-	SerialNumber            pulumi.StringPtrInput   `pulumi:"serialNumber"`
-	SigAlgName              pulumi.StringPtrInput   `pulumi:"sigAlgName"`
-	Subject                 pulumi.StringPtrInput   `pulumi:"subject"`
+	// (Output)
+	// X.509 basic constraints extension.
+	BasicConstraints pulumi.StringPtrInput `pulumi:"basicConstraints"`
+	// (Output)
+	// X.509 notAfter validity period in milliseconds since epoch.
+	ExpiryDate pulumi.StringPtrInput `pulumi:"expiryDate"`
+	// (Output)
+	// Flag that specifies whether the certificate is valid.
+	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+	IsValid pulumi.StringPtrInput `pulumi:"isValid"`
+	// (Output)
+	// X.509 issuer.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// (Output)
+	// Public key component of the X.509 subject public key info.
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// (Output)
+	// X.509 serial number.
+	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
+	// (Output)
+	// X.509 signatureAlgorithm.
+	SigAlgName pulumi.StringPtrInput `pulumi:"sigAlgName"`
+	// (Output)
+	// X.509 subject.
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
+	// (Output)
+	// X.509 subject alternative names (SANs) extension.
 	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
-	ValidFrom               pulumi.StringPtrInput   `pulumi:"validFrom"`
-	Version                 pulumi.IntPtrInput      `pulumi:"version"`
+	// (Output)
+	// X.509 notBefore validity period in milliseconds since epoch.
+	ValidFrom pulumi.StringPtrInput `pulumi:"validFrom"`
+	// (Output)
+	// X.509 version.
+	Version pulumi.IntPtrInput `pulumi:"version"`
 }
 
 func (KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs) ElementType() reflect.Type {
@@ -1734,46 +1792,69 @@ func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ToKeystoresAliasesKe
 	return o
 }
 
+// (Output)
+// X.509 basic constraints extension.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) BasicConstraints() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.BasicConstraints }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// X.509 notAfter validity period in milliseconds since epoch.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ExpiryDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.ExpiryDate }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// Flag that specifies whether the certificate is valid.
+// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) IsValid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.IsValid }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// X.509 issuer.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// Public key component of the X.509 subject public key info.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// X.509 serial number.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SerialNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// X.509 signatureAlgorithm.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SigAlgName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.SigAlgName }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// X.509 subject.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Subject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.Subject }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// X.509 subject alternative names (SANs) extension.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
 }
 
+// (Output)
+// X.509 notBefore validity period in milliseconds since epoch.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) ValidFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *string { return v.ValidFrom }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// X.509 version.
 func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesKeyCertFileCertsInfoCertInfo) *int { return v.Version }).(pulumi.IntPtrOutput)
 }

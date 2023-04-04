@@ -26,6 +26,12 @@ class AssetIamMemberArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AssetIamMember resource.
+        :param pulumi.Input[str] asset: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
         pulumi.set(__self__, "asset", asset)
         pulumi.set(__self__, "dataplex_zone", dataplex_zone)
@@ -42,6 +48,9 @@ class AssetIamMemberArgs:
     @property
     @pulumi.getter
     def asset(self) -> pulumi.Input[str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "asset")
 
     @asset.setter
@@ -78,6 +87,11 @@ class AssetIamMemberArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -105,6 +119,10 @@ class AssetIamMemberArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -126,6 +144,13 @@ class _AssetIamMemberState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AssetIamMember resources.
+        :param pulumi.Input[str] asset: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if asset is not None:
             pulumi.set(__self__, "asset", asset)
@@ -149,6 +174,9 @@ class _AssetIamMemberState:
     @property
     @pulumi.getter
     def asset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "asset")
 
     @asset.setter
@@ -176,6 +204,9 @@ class _AssetIamMemberState:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -212,6 +243,10 @@ class _AssetIamMemberState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -221,6 +256,11 @@ class _AssetIamMemberState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -243,9 +283,99 @@ class AssetIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AssetIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Cloud Dataplex Asset. Each of these resources serves a different use case:
+
+        * `dataplex.AssetIamPolicy`: Authoritative. Sets the IAM policy for the asset and replaces any existing policy already attached.
+        * `dataplex.AssetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the asset are preserved.
+        * `dataplex.AssetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the asset are preserved.
+
+        > **Note:** `dataplex.AssetIamPolicy` **cannot** be used in conjunction with `dataplex.AssetIamBinding` and `dataplex.AssetIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataplex.AssetIamBinding` resources **can be** used in conjunction with `dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataplex\\_asset\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataplex.AssetIamPolicy("policy",
+            project=google_dataplex_asset["example"]["project"],
+            location=google_dataplex_asset["example"]["location"],
+            lake=google_dataplex_asset["example"]["lake"],
+            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+            asset=google_dataplex_asset["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataplex\\_asset\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataplex.AssetIamBinding("binding",
+            project=google_dataplex_asset["example"]["project"],
+            location=google_dataplex_asset["example"]["location"],
+            lake=google_dataplex_asset["example"]["lake"],
+            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+            asset=google_dataplex_asset["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataplex\\_asset\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataplex.AssetIamMember("member",
+            project=google_dataplex_asset["example"]["project"],
+            location=google_dataplex_asset["example"]["location"],
+            lake=google_dataplex_asset["example"]["lake"],
+            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+            asset=google_dataplex_asset["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}} * {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex asset IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/assetIamMember:AssetIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{asset}} roles/viewer user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/assetIamMember:AssetIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{asset}} roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/assetIamMember:AssetIamMember editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{asset}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] asset: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
@@ -254,7 +384,91 @@ class AssetIamMember(pulumi.CustomResource):
                  args: AssetIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AssetIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Cloud Dataplex Asset. Each of these resources serves a different use case:
+
+        * `dataplex.AssetIamPolicy`: Authoritative. Sets the IAM policy for the asset and replaces any existing policy already attached.
+        * `dataplex.AssetIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the asset are preserved.
+        * `dataplex.AssetIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the asset are preserved.
+
+        > **Note:** `dataplex.AssetIamPolicy` **cannot** be used in conjunction with `dataplex.AssetIamBinding` and `dataplex.AssetIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataplex.AssetIamBinding` resources **can be** used in conjunction with `dataplex.AssetIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataplex\\_asset\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataplex.AssetIamPolicy("policy",
+            project=google_dataplex_asset["example"]["project"],
+            location=google_dataplex_asset["example"]["location"],
+            lake=google_dataplex_asset["example"]["lake"],
+            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+            asset=google_dataplex_asset["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataplex\\_asset\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataplex.AssetIamBinding("binding",
+            project=google_dataplex_asset["example"]["project"],
+            location=google_dataplex_asset["example"]["location"],
+            lake=google_dataplex_asset["example"]["lake"],
+            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+            asset=google_dataplex_asset["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataplex\\_asset\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataplex.AssetIamMember("member",
+            project=google_dataplex_asset["example"]["project"],
+            location=google_dataplex_asset["example"]["location"],
+            lake=google_dataplex_asset["example"]["lake"],
+            dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+            asset=google_dataplex_asset["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{name}} * {{project}}/{{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{location}}/{{lake}}/{{dataplex_zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex asset IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/assetIamMember:AssetIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{asset}} roles/viewer user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/assetIamMember:AssetIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{asset}} roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/assetIamMember:AssetIamMember editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{dataplex_zone}}/assets/{{asset}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param AssetIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -332,6 +546,13 @@ class AssetIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] asset: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,6 +572,9 @@ class AssetIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def asset(self) -> pulumi.Output[str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "asset")
 
     @property
@@ -366,6 +590,9 @@ class AssetIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @property
@@ -386,10 +613,19 @@ class AssetIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The role that should be applied. Only one
+        `dataplex.AssetIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 

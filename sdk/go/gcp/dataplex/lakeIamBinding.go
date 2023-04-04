@@ -11,16 +11,167 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Cloud Dataplex Lake. Each of these resources serves a different use case:
+//
+// * `dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
+// * `dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
+// * `dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved.
+//
+// > **Note:** `dataplex.LakeIamPolicy` **cannot** be used in conjunction with `dataplex.LakeIamBinding` and `dataplex.LakeIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_dataplex\_lake\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewLakeIamPolicy(ctx, "policy", &dataplex.LakeIamPolicyArgs{
+//				Project:    pulumi.Any(google_dataplex_lake.Example.Project),
+//				Location:   pulumi.Any(google_dataplex_lake.Example.Location),
+//				Lake:       pulumi.Any(google_dataplex_lake.Example.Name),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_dataplex\_lake\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewLakeIamBinding(ctx, "binding", &dataplex.LakeIamBindingArgs{
+//				Project:  pulumi.Any(google_dataplex_lake.Example.Project),
+//				Location: pulumi.Any(google_dataplex_lake.Example.Location),
+//				Lake:     pulumi.Any(google_dataplex_lake.Example.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_dataplex\_lake\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewLakeIamMember(ctx, "member", &dataplex.LakeIamMemberArgs{
+//				Project:  pulumi.Any(google_dataplex_lake.Example.Project),
+//				Location: pulumi.Any(google_dataplex_lake.Example.Location),
+//				Lake:     pulumi.Any(google_dataplex_lake.Example.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
+//
+// ```
+//
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
+//
+// ```
+//
+//	IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
+//
+// ```
+//
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type LakeIamBinding struct {
 	pulumi.CustomResourceState
 
 	Condition LakeIamBindingConditionPtrOutput `pulumi:"condition"`
-	Etag      pulumi.StringOutput              `pulumi:"etag"`
-	Lake      pulumi.StringOutput              `pulumi:"lake"`
-	Location  pulumi.StringOutput              `pulumi:"location"`
-	Members   pulumi.StringArrayOutput         `pulumi:"members"`
-	Project   pulumi.StringOutput              `pulumi:"project"`
-	Role      pulumi.StringOutput              `pulumi:"role"`
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     pulumi.StringOutput      `pulumi:"lake"`
+	Location pulumi.StringOutput      `pulumi:"location"`
+	Members  pulumi.StringArrayOutput `pulumi:"members"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringOutput `pulumi:"role"`
 }
 
 // NewLakeIamBinding registers a new resource with the given unique name, arguments, and options.
@@ -62,22 +213,36 @@ func GetLakeIamBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering LakeIamBinding resources.
 type lakeIamBindingState struct {
 	Condition *LakeIamBindingCondition `pulumi:"condition"`
-	Etag      *string                  `pulumi:"etag"`
-	Lake      *string                  `pulumi:"lake"`
-	Location  *string                  `pulumi:"location"`
-	Members   []string                 `pulumi:"members"`
-	Project   *string                  `pulumi:"project"`
-	Role      *string                  `pulumi:"role"`
+	// (Computed) The etag of the IAM policy.
+	Etag *string `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     *string  `pulumi:"lake"`
+	Location *string  `pulumi:"location"`
+	Members  []string `pulumi:"members"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role *string `pulumi:"role"`
 }
 
 type LakeIamBindingState struct {
 	Condition LakeIamBindingConditionPtrInput
-	Etag      pulumi.StringPtrInput
-	Lake      pulumi.StringPtrInput
-	Location  pulumi.StringPtrInput
-	Members   pulumi.StringArrayInput
-	Project   pulumi.StringPtrInput
-	Role      pulumi.StringPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
+	Members  pulumi.StringArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringPtrInput
 }
 
 func (LakeIamBindingState) ElementType() reflect.Type {
@@ -86,21 +251,33 @@ func (LakeIamBindingState) ElementType() reflect.Type {
 
 type lakeIamBindingArgs struct {
 	Condition *LakeIamBindingCondition `pulumi:"condition"`
-	Lake      string                   `pulumi:"lake"`
-	Location  *string                  `pulumi:"location"`
-	Members   []string                 `pulumi:"members"`
-	Project   *string                  `pulumi:"project"`
-	Role      string                   `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     string   `pulumi:"lake"`
+	Location *string  `pulumi:"location"`
+	Members  []string `pulumi:"members"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a LakeIamBinding resource.
 type LakeIamBindingArgs struct {
 	Condition LakeIamBindingConditionPtrInput
-	Lake      pulumi.StringInput
-	Location  pulumi.StringPtrInput
-	Members   pulumi.StringArrayInput
-	Project   pulumi.StringPtrInput
-	Role      pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     pulumi.StringInput
+	Location pulumi.StringPtrInput
+	Members  pulumi.StringArrayInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringInput
 }
 
 func (LakeIamBindingArgs) ElementType() reflect.Type {
@@ -194,10 +371,12 @@ func (o LakeIamBindingOutput) Condition() LakeIamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *LakeIamBinding) LakeIamBindingConditionPtrOutput { return v.Condition }).(LakeIamBindingConditionPtrOutput)
 }
 
+// (Computed) The etag of the IAM policy.
 func (o LakeIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o LakeIamBindingOutput) Lake() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamBinding) pulumi.StringOutput { return v.Lake }).(pulumi.StringOutput)
 }
@@ -210,10 +389,15 @@ func (o LakeIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LakeIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (o LakeIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The role that should be applied. Only one
+// `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o LakeIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

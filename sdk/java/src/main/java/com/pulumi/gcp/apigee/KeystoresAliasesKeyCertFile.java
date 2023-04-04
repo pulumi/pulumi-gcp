@@ -16,6 +16,28 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * An alias from a key/certificate pair.
+ * 
+ * To get more information about KeysotresAliasesKeyCertFile, see:
+ * 
+ * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ * * How-to Guides
+ *     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ * 
+ * ## Import
+ * 
+ * KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+ * ```
+ * 
+ */
 @ResourceType(type="gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile")
 public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomResource {
     /**
@@ -48,6 +70,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
     }
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      * 
      */
     @Export(name="certsInfo", type=KeystoresAliasesKeyCertFileCertsInfo.class, parameters={})
@@ -55,6 +78,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
 
     /**
      * @return Chain of certificates under this alias.
+     * Structure is documented below.
      * 
      */
     public Output<KeystoresAliasesKeyCertFileCertsInfo> certsInfo() {
@@ -103,14 +127,14 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
         return this.keystore;
     }
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return Organization ID associated with the alias
+     * @return Organization ID associated with the alias, without organization/ prefix
      * 
      */
     public Output<String> orgId() {

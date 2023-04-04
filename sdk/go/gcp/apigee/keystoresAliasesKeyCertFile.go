@@ -11,6 +11,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An alias from a key/certificate pair.
+//
+// To get more information about KeysotresAliasesKeyCertFile, see:
+//
+// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+// * How-to Guides
+//   - [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+//
+// ## Import
+//
+// # KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+//
+// ```
 type KeystoresAliasesKeyCertFile struct {
 	pulumi.CustomResourceState
 
@@ -19,6 +42,7 @@ type KeystoresAliasesKeyCertFile struct {
 	// Cert content
 	Cert pulumi.StringOutput `pulumi:"cert"`
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfo KeystoresAliasesKeyCertFileCertsInfoOutput `pulumi:"certsInfo"`
 	// Environment associated with the alias
 	Environment pulumi.StringOutput `pulumi:"environment"`
@@ -26,7 +50,7 @@ type KeystoresAliasesKeyCertFile struct {
 	Key pulumi.StringPtrOutput `pulumi:"key"`
 	// Keystore Name
 	Keystore pulumi.StringOutput `pulumi:"keystore"`
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Password for the Private Key if it's encrypted
 	Password pulumi.StringPtrOutput `pulumi:"password"`
@@ -94,6 +118,7 @@ type keystoresAliasesKeyCertFileState struct {
 	// Cert content
 	Cert *string `pulumi:"cert"`
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfo *KeystoresAliasesKeyCertFileCertsInfo `pulumi:"certsInfo"`
 	// Environment associated with the alias
 	Environment *string `pulumi:"environment"`
@@ -101,7 +126,7 @@ type keystoresAliasesKeyCertFileState struct {
 	Key *string `pulumi:"key"`
 	// Keystore Name
 	Keystore *string `pulumi:"keystore"`
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId *string `pulumi:"orgId"`
 	// Password for the Private Key if it's encrypted
 	Password *string `pulumi:"password"`
@@ -115,6 +140,7 @@ type KeystoresAliasesKeyCertFileState struct {
 	// Cert content
 	Cert pulumi.StringPtrInput
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfo KeystoresAliasesKeyCertFileCertsInfoPtrInput
 	// Environment associated with the alias
 	Environment pulumi.StringPtrInput
@@ -122,7 +148,7 @@ type KeystoresAliasesKeyCertFileState struct {
 	Key pulumi.StringPtrInput
 	// Keystore Name
 	Keystore pulumi.StringPtrInput
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId pulumi.StringPtrInput
 	// Password for the Private Key if it's encrypted
 	Password pulumi.StringPtrInput
@@ -140,6 +166,7 @@ type keystoresAliasesKeyCertFileArgs struct {
 	// Cert content
 	Cert string `pulumi:"cert"`
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfo *KeystoresAliasesKeyCertFileCertsInfo `pulumi:"certsInfo"`
 	// Environment associated with the alias
 	Environment string `pulumi:"environment"`
@@ -147,7 +174,7 @@ type keystoresAliasesKeyCertFileArgs struct {
 	Key *string `pulumi:"key"`
 	// Keystore Name
 	Keystore string `pulumi:"keystore"`
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId string `pulumi:"orgId"`
 	// Password for the Private Key if it's encrypted
 	Password *string `pulumi:"password"`
@@ -160,6 +187,7 @@ type KeystoresAliasesKeyCertFileArgs struct {
 	// Cert content
 	Cert pulumi.StringInput
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfo KeystoresAliasesKeyCertFileCertsInfoPtrInput
 	// Environment associated with the alias
 	Environment pulumi.StringInput
@@ -167,7 +195,7 @@ type KeystoresAliasesKeyCertFileArgs struct {
 	Key pulumi.StringPtrInput
 	// Keystore Name
 	Keystore pulumi.StringInput
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId pulumi.StringInput
 	// Password for the Private Key if it's encrypted
 	Password pulumi.StringPtrInput
@@ -271,6 +299,7 @@ func (o KeystoresAliasesKeyCertFileOutput) Cert() pulumi.StringOutput {
 }
 
 // Chain of certificates under this alias.
+// Structure is documented below.
 func (o KeystoresAliasesKeyCertFileOutput) CertsInfo() KeystoresAliasesKeyCertFileCertsInfoOutput {
 	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) KeystoresAliasesKeyCertFileCertsInfoOutput { return v.CertsInfo }).(KeystoresAliasesKeyCertFileCertsInfoOutput)
 }
@@ -290,7 +319,7 @@ func (o KeystoresAliasesKeyCertFileOutput) Keystore() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) pulumi.StringOutput { return v.Keystore }).(pulumi.StringOutput)
 }
 
-// Organization ID associated with the alias
+// Organization ID associated with the alias, without organization/ prefix
 func (o KeystoresAliasesKeyCertFileOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

@@ -30,8 +30,9 @@ class KeystoresAliasesKeyCertFileArgs:
         :param pulumi.Input[str] cert: Cert content
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] keystore: Keystore Name
-        :param pulumi.Input[str] org_id: Organization ID associated with the alias
+        :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
         :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs'] certs_info: Chain of certificates under this alias.
+               Structure is documented below.
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         """
@@ -99,7 +100,7 @@ class KeystoresAliasesKeyCertFileArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        Organization ID associated with the alias
+        Organization ID associated with the alias, without organization/ prefix
         """
         return pulumi.get(self, "org_id")
 
@@ -112,6 +113,7 @@ class KeystoresAliasesKeyCertFileArgs:
     def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]:
         """
         Chain of certificates under this alias.
+        Structure is documented below.
         """
         return pulumi.get(self, "certs_info")
 
@@ -161,10 +163,11 @@ class _KeystoresAliasesKeyCertFileState:
         :param pulumi.Input[str] alias: Alias Name
         :param pulumi.Input[str] cert: Cert content
         :param pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs'] certs_info: Chain of certificates under this alias.
+               Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[str] keystore: Keystore Name
-        :param pulumi.Input[str] org_id: Organization ID associated with the alias
+        :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         :param pulumi.Input[str] type: Optional.Type of Alias
         """
@@ -216,6 +219,7 @@ class _KeystoresAliasesKeyCertFileState:
     def certs_info(self) -> Optional[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]:
         """
         Chain of certificates under this alias.
+        Structure is documented below.
         """
         return pulumi.get(self, "certs_info")
 
@@ -263,7 +267,7 @@ class _KeystoresAliasesKeyCertFileState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Organization ID associated with the alias
+        Organization ID associated with the alias, without organization/ prefix
         """
         return pulumi.get(self, "org_id")
 
@@ -311,16 +315,36 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a KeystoresAliasesKeyCertFile resource with the given unique name, props, and options.
+        An alias from a key/certificate pair.
+
+        To get more information about KeysotresAliasesKeyCertFile, see:
+
+        * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+        * How-to Guides
+            * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+
+        ## Import
+
+        KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias: Alias Name
         :param pulumi.Input[str] cert: Cert content
         :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']] certs_info: Chain of certificates under this alias.
+               Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[str] keystore: Keystore Name
-        :param pulumi.Input[str] org_id: Organization ID associated with the alias
+        :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         """
         ...
@@ -330,7 +354,26 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
                  args: KeystoresAliasesKeyCertFileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a KeystoresAliasesKeyCertFile resource with the given unique name, props, and options.
+        An alias from a key/certificate pair.
+
+        To get more information about KeysotresAliasesKeyCertFile, see:
+
+        * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+        * How-to Guides
+            * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+
+        ## Import
+
+        KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param KeystoresAliasesKeyCertFileArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -413,10 +456,11 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         :param pulumi.Input[str] alias: Alias Name
         :param pulumi.Input[str] cert: Cert content
         :param pulumi.Input[pulumi.InputType['KeystoresAliasesKeyCertFileCertsInfoArgs']] certs_info: Chain of certificates under this alias.
+               Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[str] keystore: Keystore Name
-        :param pulumi.Input[str] org_id: Organization ID associated with the alias
+        :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
         :param pulumi.Input[str] password: Password for the Private Key if it's encrypted
         :param pulumi.Input[str] type: Optional.Type of Alias
         """
@@ -456,6 +500,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
     def certs_info(self) -> pulumi.Output['outputs.KeystoresAliasesKeyCertFileCertsInfo']:
         """
         Chain of certificates under this alias.
+        Structure is documented below.
         """
         return pulumi.get(self, "certs_info")
 
@@ -487,7 +532,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        Organization ID associated with the alias
+        Organization ID associated with the alias, without organization/ prefix
         """
         return pulumi.get(self, "org_id")
 

@@ -6,6 +6,27 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * An alias from a key/certificate pair.
+ *
+ * To get more information about KeysotresAliasesKeyCertFile, see:
+ *
+ * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ * * How-to Guides
+ *     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ *
+ * ## Import
+ *
+ * KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+ * ```
+ */
 export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     /**
      * Get an existing KeystoresAliasesKeyCertFile resource's state with the given name, ID, and optional extra
@@ -44,6 +65,7 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     public readonly cert!: pulumi.Output<string>;
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      */
     public readonly certsInfo!: pulumi.Output<outputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
     /**
@@ -59,7 +81,7 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
      */
     public readonly keystore!: pulumi.Output<string>;
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -141,6 +163,7 @@ export interface KeystoresAliasesKeyCertFileState {
     cert?: pulumi.Input<string>;
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      */
     certsInfo?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
     /**
@@ -156,7 +179,7 @@ export interface KeystoresAliasesKeyCertFileState {
      */
     keystore?: pulumi.Input<string>;
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -183,6 +206,7 @@ export interface KeystoresAliasesKeyCertFileArgs {
     cert: pulumi.Input<string>;
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      */
     certsInfo?: pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfo>;
     /**
@@ -198,7 +222,7 @@ export interface KeystoresAliasesKeyCertFileArgs {
      */
     keystore: pulumi.Input<string>;
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      */
     orgId: pulumi.Input<string>;
     /**

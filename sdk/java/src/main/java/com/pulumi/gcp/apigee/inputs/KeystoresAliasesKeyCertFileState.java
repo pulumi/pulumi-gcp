@@ -48,6 +48,7 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
 
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      * 
      */
     @Import(name="certsInfo")
@@ -55,6 +56,7 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
 
     /**
      * @return Chain of certificates under this alias.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<KeystoresAliasesKeyCertFileCertsInfoArgs>> certsInfo() {
@@ -107,14 +109,14 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
     }
 
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return Organization ID associated with the alias
+     * @return Organization ID associated with the alias, without organization/ prefix
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -227,6 +229,7 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
 
         /**
          * @param certsInfo Chain of certificates under this alias.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -238,6 +241,7 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
 
         /**
          * @param certsInfo Chain of certificates under this alias.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -310,7 +314,7 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
         }
 
         /**
-         * @param orgId Organization ID associated with the alias
+         * @param orgId Organization ID associated with the alias, without organization/ prefix
          * 
          * @return builder
          * 
@@ -321,7 +325,7 @@ public final class KeystoresAliasesKeyCertFileState extends com.pulumi.resources
         }
 
         /**
-         * @param orgId Organization ID associated with the alias
+         * @param orgId Organization ID associated with the alias, without organization/ prefix
          * 
          * @return builder
          * 

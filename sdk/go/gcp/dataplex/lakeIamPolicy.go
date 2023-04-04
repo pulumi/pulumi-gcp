@@ -11,14 +11,164 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Cloud Dataplex Lake. Each of these resources serves a different use case:
+//
+// * `dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
+// * `dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
+// * `dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved.
+//
+// > **Note:** `dataplex.LakeIamPolicy` **cannot** be used in conjunction with `dataplex.LakeIamBinding` and `dataplex.LakeIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_dataplex\_lake\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewLakeIamPolicy(ctx, "policy", &dataplex.LakeIamPolicyArgs{
+//				Project:    pulumi.Any(google_dataplex_lake.Example.Project),
+//				Location:   pulumi.Any(google_dataplex_lake.Example.Location),
+//				Lake:       pulumi.Any(google_dataplex_lake.Example.Name),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_dataplex\_lake\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewLakeIamBinding(ctx, "binding", &dataplex.LakeIamBindingArgs{
+//				Project:  pulumi.Any(google_dataplex_lake.Example.Project),
+//				Location: pulumi.Any(google_dataplex_lake.Example.Location),
+//				Lake:     pulumi.Any(google_dataplex_lake.Example.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_dataplex\_lake\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataplex.NewLakeIamMember(ctx, "member", &dataplex.LakeIamMemberArgs{
+//				Project:  pulumi.Any(google_dataplex_lake.Example.Project),
+//				Location: pulumi.Any(google_dataplex_lake.Example.Location),
+//				Lake:     pulumi.Any(google_dataplex_lake.Example.Name),
+//				Role:     pulumi.String("roles/viewer"),
+//				Member:   pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataplex/lakeIamPolicy:LakeIamPolicy editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
+//
+// ```
+//
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataplex/lakeIamPolicy:LakeIamPolicy editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
+//
+// ```
+//
+//	IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:dataplex/lakeIamPolicy:LakeIamPolicy editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
+//
+// ```
+//
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type LakeIamPolicy struct {
 	pulumi.CustomResourceState
 
-	Etag       pulumi.StringOutput `pulumi:"etag"`
-	Lake       pulumi.StringOutput `pulumi:"lake"`
-	Location   pulumi.StringOutput `pulumi:"location"`
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     pulumi.StringOutput `pulumi:"lake"`
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
-	Project    pulumi.StringOutput `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 }
 
 // NewLakeIamPolicy registers a new resource with the given unique name, arguments, and options.
@@ -56,19 +206,31 @@ func GetLakeIamPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LakeIamPolicy resources.
 type lakeIamPolicyState struct {
-	Etag       *string `pulumi:"etag"`
-	Lake       *string `pulumi:"lake"`
-	Location   *string `pulumi:"location"`
+	// (Computed) The etag of the IAM policy.
+	Etag *string `pulumi:"etag"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     *string `pulumi:"lake"`
+	Location *string `pulumi:"location"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
-	Project    *string `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 type LakeIamPolicyState struct {
-	Etag       pulumi.StringPtrInput
-	Lake       pulumi.StringPtrInput
-	Location   pulumi.StringPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (LakeIamPolicyState) ElementType() reflect.Type {
@@ -76,18 +238,28 @@ func (LakeIamPolicyState) ElementType() reflect.Type {
 }
 
 type lakeIamPolicyArgs struct {
-	Lake       string  `pulumi:"lake"`
-	Location   *string `pulumi:"location"`
-	PolicyData string  `pulumi:"policyData"`
-	Project    *string `pulumi:"project"`
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     string  `pulumi:"lake"`
+	Location *string `pulumi:"location"`
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
+	PolicyData string `pulumi:"policyData"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a LakeIamPolicy resource.
 type LakeIamPolicyArgs struct {
-	Lake       pulumi.StringInput
-	Location   pulumi.StringPtrInput
+	// Used to find the parent resource to bind the IAM policy to
+	Lake     pulumi.StringInput
+	Location pulumi.StringPtrInput
+	// The policy data generated by
+	// a `organizations.getIAMPolicy` data source.
 	PolicyData pulumi.StringInput
-	Project    pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
 }
 
 func (LakeIamPolicyArgs) ElementType() reflect.Type {
@@ -177,10 +349,12 @@ func (o LakeIamPolicyOutput) ToLakeIamPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
+// (Computed) The etag of the IAM policy.
 func (o LakeIamPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o LakeIamPolicyOutput) Lake() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamPolicy) pulumi.StringOutput { return v.Lake }).(pulumi.StringOutput)
 }
@@ -189,10 +363,14 @@ func (o LakeIamPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
+// The policy data generated by
+// a `organizations.getIAMPolicy` data source.
 func (o LakeIamPolicyOutput) PolicyData() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (o LakeIamPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *LakeIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

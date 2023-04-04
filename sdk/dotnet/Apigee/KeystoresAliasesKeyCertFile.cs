@@ -9,6 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Apigee
 {
+    /// <summary>
+    /// An alias from a key/certificate pair.
+    /// 
+    /// To get more information about KeysotresAliasesKeyCertFile, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+    /// * How-to Guides
+    ///     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+    /// 
+    /// ## Import
+    /// 
+    /// KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+    /// ```
+    /// </summary>
     [GcpResourceType("gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile")]
     public partial class KeystoresAliasesKeyCertFile : global::Pulumi.CustomResource
     {
@@ -26,6 +47,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Chain of certificates under this alias.
+        /// Structure is documented below.
         /// </summary>
         [Output("certsInfo")]
         public Output<Outputs.KeystoresAliasesKeyCertFileCertsInfo> CertsInfo { get; private set; } = null!;
@@ -49,7 +71,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Keystore { get; private set; } = null!;
 
         /// <summary>
-        /// Organization ID associated with the alias
+        /// Organization ID associated with the alias, without organization/ prefix
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -131,6 +153,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Chain of certificates under this alias.
+        /// Structure is documented below.
         /// </summary>
         [Input("certsInfo")]
         public Input<Inputs.KeystoresAliasesKeyCertFileCertsInfoArgs>? CertsInfo { get; set; }
@@ -164,7 +187,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> Keystore { get; set; } = null!;
 
         /// <summary>
-        /// Organization ID associated with the alias
+        /// Organization ID associated with the alias, without organization/ prefix
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -207,6 +230,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Chain of certificates under this alias.
+        /// Structure is documented below.
         /// </summary>
         [Input("certsInfo")]
         public Input<Inputs.KeystoresAliasesKeyCertFileCertsInfoGetArgs>? CertsInfo { get; set; }
@@ -240,7 +264,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Keystore { get; set; }
 
         /// <summary>
-        /// Organization ID associated with the alias
+        /// Organization ID associated with the alias, without organization/ prefix
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

@@ -1867,20 +1867,70 @@ export namespace apigee {
     }
 
     export interface KeystoresAliasesKeyCertFileCertsInfo {
+        /**
+         * (Output)
+         * List of all properties in the object.
+         * Structure is documented below.
+         */
         certInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesKeyCertFileCertsInfoCertInfo>[]>;
     }
 
     export interface KeystoresAliasesKeyCertFileCertsInfoCertInfo {
+        /**
+         * (Output)
+         * X.509 basic constraints extension.
+         */
         basicConstraints?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * X.509 notAfter validity period in milliseconds since epoch.
+         */
         expiryDate?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Flag that specifies whether the certificate is valid.
+         * Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+         */
         isValid?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * X.509 issuer.
+         */
         issuer?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Public key component of the X.509 subject public key info.
+         */
         publicKey?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * X.509 serial number.
+         */
         serialNumber?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * X.509 signatureAlgorithm.
+         */
         sigAlgName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * X.509 subject.
+         */
         subject?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * X.509 subject alternative names (SANs) extension.
+         */
         subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * X.509 notBefore validity period in milliseconds since epoch.
+         */
         validFrom?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * X.509 version.
+         */
         version?: pulumi.Input<number>;
     }
 

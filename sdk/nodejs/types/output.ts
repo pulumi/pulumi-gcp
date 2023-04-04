@@ -1866,20 +1866,70 @@ export namespace apigee {
     }
 
     export interface KeystoresAliasesKeyCertFileCertsInfo {
+        /**
+         * (Output)
+         * List of all properties in the object.
+         * Structure is documented below.
+         */
         certInfos: outputs.apigee.KeystoresAliasesKeyCertFileCertsInfoCertInfo[];
     }
 
     export interface KeystoresAliasesKeyCertFileCertsInfoCertInfo {
+        /**
+         * (Output)
+         * X.509 basic constraints extension.
+         */
         basicConstraints: string;
+        /**
+         * (Output)
+         * X.509 notAfter validity period in milliseconds since epoch.
+         */
         expiryDate: string;
+        /**
+         * (Output)
+         * Flag that specifies whether the certificate is valid.
+         * Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+         */
         isValid: string;
+        /**
+         * (Output)
+         * X.509 issuer.
+         */
         issuer: string;
+        /**
+         * (Output)
+         * Public key component of the X.509 subject public key info.
+         */
         publicKey: string;
+        /**
+         * (Output)
+         * X.509 serial number.
+         */
         serialNumber: string;
+        /**
+         * (Output)
+         * X.509 signatureAlgorithm.
+         */
         sigAlgName: string;
+        /**
+         * (Output)
+         * X.509 subject.
+         */
         subject: string;
+        /**
+         * (Output)
+         * X.509 subject alternative names (SANs) extension.
+         */
         subjectAlternativeNames: string[];
+        /**
+         * (Output)
+         * X.509 notBefore validity period in milliseconds since epoch.
+         */
         validFrom: string;
+        /**
+         * (Output)
+         * X.509 version.
+         */
         version: number;
     }
 

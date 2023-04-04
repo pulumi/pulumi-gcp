@@ -24,6 +24,12 @@ class LakeIamMemberArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LakeIamMember resource.
+        :param pulumi.Input[str] lake: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         """
         pulumi.set(__self__, "lake", lake)
         pulumi.set(__self__, "member", member)
@@ -38,6 +44,9 @@ class LakeIamMemberArgs:
     @property
     @pulumi.getter
     def lake(self) -> pulumi.Input[str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "lake")
 
     @lake.setter
@@ -56,6 +65,11 @@ class LakeIamMemberArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -83,6 +97,10 @@ class LakeIamMemberArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -102,6 +120,13 @@ class _LakeIamMemberState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LakeIamMember resources.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] lake: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -130,6 +155,9 @@ class _LakeIamMemberState:
     @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -139,6 +167,9 @@ class _LakeIamMemberState:
     @property
     @pulumi.getter
     def lake(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "lake")
 
     @lake.setter
@@ -166,6 +197,10 @@ class _LakeIamMemberState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -175,6 +210,11 @@ class _LakeIamMemberState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -195,9 +235,93 @@ class LakeIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a LakeIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Cloud Dataplex Lake. Each of these resources serves a different use case:
+
+        * `dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
+        * `dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
+        * `dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved.
+
+        > **Note:** `dataplex.LakeIamPolicy` **cannot** be used in conjunction with `dataplex.LakeIamBinding` and `dataplex.LakeIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataplex\\_lake\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataplex.LakeIamPolicy("policy",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataplex.LakeIamBinding("binding",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataplex.LakeIamMember("member",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] lake: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
@@ -206,7 +330,85 @@ class LakeIamMember(pulumi.CustomResource):
                  args: LakeIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a LakeIamMember resource with the given unique name, props, and options.
+        Three different resources help you manage your IAM policy for Cloud Dataplex Lake. Each of these resources serves a different use case:
+
+        * `dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
+        * `dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
+        * `dataplex.LakeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the lake are preserved.
+
+        > **Note:** `dataplex.LakeIamPolicy` **cannot** be used in conjunction with `dataplex.LakeIamBinding` and `dataplex.LakeIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `dataplex.LakeIamBinding` resources **can be** used in conjunction with `dataplex.LakeIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\\_dataplex\\_lake\\_iam\\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.dataplex.LakeIamPolicy("policy",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.dataplex.LakeIamBinding("binding",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\\_dataplex\\_lake\\_iam\\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.dataplex.LakeIamMember("member",
+            project=google_dataplex_lake["example"]["project"],
+            location=google_dataplex_lake["example"]["location"],
+            lake=google_dataplex_lake["example"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param LakeIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -274,6 +476,13 @@ class LakeIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
+        :param pulumi.Input[str] lake: Used to find the parent resource to bind the IAM policy to
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -296,11 +505,17 @@ class LakeIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
+        """
+        (Computed) The etag of the IAM policy.
+        """
         return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
     def lake(self) -> pulumi.Output[str]:
+        """
+        Used to find the parent resource to bind the IAM policy to
+        """
         return pulumi.get(self, "lake")
 
     @property
@@ -316,10 +531,19 @@ class LakeIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The role that should be applied. Only one
+        `dataplex.LakeIamBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
         return pulumi.get(self, "role")
 

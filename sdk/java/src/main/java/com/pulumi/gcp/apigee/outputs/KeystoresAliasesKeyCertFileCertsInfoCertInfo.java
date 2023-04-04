@@ -13,49 +13,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KeystoresAliasesKeyCertFileCertsInfoCertInfo {
+    /**
+     * @return (Output)
+     * X.509 basic constraints extension.
+     * 
+     */
     private @Nullable String basicConstraints;
+    /**
+     * @return (Output)
+     * X.509 notAfter validity period in milliseconds since epoch.
+     * 
+     */
     private @Nullable String expiryDate;
+    /**
+     * @return (Output)
+     * Flag that specifies whether the certificate is valid.
+     * Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+     * 
+     */
     private @Nullable String isValid;
+    /**
+     * @return (Output)
+     * X.509 issuer.
+     * 
+     */
     private @Nullable String issuer;
+    /**
+     * @return (Output)
+     * Public key component of the X.509 subject public key info.
+     * 
+     */
     private @Nullable String publicKey;
+    /**
+     * @return (Output)
+     * X.509 serial number.
+     * 
+     */
     private @Nullable String serialNumber;
+    /**
+     * @return (Output)
+     * X.509 signatureAlgorithm.
+     * 
+     */
     private @Nullable String sigAlgName;
+    /**
+     * @return (Output)
+     * X.509 subject.
+     * 
+     */
     private @Nullable String subject;
+    /**
+     * @return (Output)
+     * X.509 subject alternative names (SANs) extension.
+     * 
+     */
     private @Nullable List<String> subjectAlternativeNames;
+    /**
+     * @return (Output)
+     * X.509 notBefore validity period in milliseconds since epoch.
+     * 
+     */
     private @Nullable String validFrom;
+    /**
+     * @return (Output)
+     * X.509 version.
+     * 
+     */
     private @Nullable Integer version;
 
     private KeystoresAliasesKeyCertFileCertsInfoCertInfo() {}
+    /**
+     * @return (Output)
+     * X.509 basic constraints extension.
+     * 
+     */
     public Optional<String> basicConstraints() {
         return Optional.ofNullable(this.basicConstraints);
     }
+    /**
+     * @return (Output)
+     * X.509 notAfter validity period in milliseconds since epoch.
+     * 
+     */
     public Optional<String> expiryDate() {
         return Optional.ofNullable(this.expiryDate);
     }
+    /**
+     * @return (Output)
+     * Flag that specifies whether the certificate is valid.
+     * Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+     * 
+     */
     public Optional<String> isValid() {
         return Optional.ofNullable(this.isValid);
     }
+    /**
+     * @return (Output)
+     * X.509 issuer.
+     * 
+     */
     public Optional<String> issuer() {
         return Optional.ofNullable(this.issuer);
     }
+    /**
+     * @return (Output)
+     * Public key component of the X.509 subject public key info.
+     * 
+     */
     public Optional<String> publicKey() {
         return Optional.ofNullable(this.publicKey);
     }
+    /**
+     * @return (Output)
+     * X.509 serial number.
+     * 
+     */
     public Optional<String> serialNumber() {
         return Optional.ofNullable(this.serialNumber);
     }
+    /**
+     * @return (Output)
+     * X.509 signatureAlgorithm.
+     * 
+     */
     public Optional<String> sigAlgName() {
         return Optional.ofNullable(this.sigAlgName);
     }
+    /**
+     * @return (Output)
+     * X.509 subject.
+     * 
+     */
     public Optional<String> subject() {
         return Optional.ofNullable(this.subject);
     }
+    /**
+     * @return (Output)
+     * X.509 subject alternative names (SANs) extension.
+     * 
+     */
     public List<String> subjectAlternativeNames() {
         return this.subjectAlternativeNames == null ? List.of() : this.subjectAlternativeNames;
     }
+    /**
+     * @return (Output)
+     * X.509 notBefore validity period in milliseconds since epoch.
+     * 
+     */
     public Optional<String> validFrom() {
         return Optional.ofNullable(this.validFrom);
     }
+    /**
+     * @return (Output)
+     * X.509 version.
+     * 
+     */
     public Optional<Integer> version() {
         return Optional.ofNullable(this.version);
     }

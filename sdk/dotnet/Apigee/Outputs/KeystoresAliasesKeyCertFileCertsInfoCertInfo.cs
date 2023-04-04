@@ -13,16 +13,61 @@ namespace Pulumi.Gcp.Apigee.Outputs
     [OutputType]
     public sealed class KeystoresAliasesKeyCertFileCertsInfoCertInfo
     {
+        /// <summary>
+        /// (Output)
+        /// X.509 basic constraints extension.
+        /// </summary>
         public readonly string? BasicConstraints;
+        /// <summary>
+        /// (Output)
+        /// X.509 notAfter validity period in milliseconds since epoch.
+        /// </summary>
         public readonly string? ExpiryDate;
+        /// <summary>
+        /// (Output)
+        /// Flag that specifies whether the certificate is valid.
+        /// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        /// </summary>
         public readonly string? IsValid;
+        /// <summary>
+        /// (Output)
+        /// X.509 issuer.
+        /// </summary>
         public readonly string? Issuer;
+        /// <summary>
+        /// (Output)
+        /// Public key component of the X.509 subject public key info.
+        /// </summary>
         public readonly string? PublicKey;
+        /// <summary>
+        /// (Output)
+        /// X.509 serial number.
+        /// </summary>
         public readonly string? SerialNumber;
+        /// <summary>
+        /// (Output)
+        /// X.509 signatureAlgorithm.
+        /// </summary>
         public readonly string? SigAlgName;
+        /// <summary>
+        /// (Output)
+        /// X.509 subject.
+        /// </summary>
         public readonly string? Subject;
+        /// <summary>
+        /// (Output)
+        /// X.509 subject alternative names (SANs) extension.
+        /// </summary>
         public readonly ImmutableArray<string> SubjectAlternativeNames;
+        /// <summary>
+        /// (Output)
+        /// X.509 notBefore validity period in milliseconds since epoch.
+        /// </summary>
         public readonly string? ValidFrom;
+        /// <summary>
+        /// (Output)
+        /// X.509 version.
+        /// </summary>
         public readonly int? Version;
 
         [OutputConstructor]
