@@ -71,6 +71,8 @@ public final class NetworkEndpointState extends com.pulumi.resources.ResourceArg
 
     /**
      * Port number of network endpoint.
+     * **Note** `port` is required unless the Network Endpoint Group is created
+     * with the type of `GCE_VM_IP`
      * 
      */
     @Import(name="port")
@@ -78,6 +80,8 @@ public final class NetworkEndpointState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Port number of network endpoint.
+     * **Note** `port` is required unless the Network Endpoint Group is created
+     * with the type of `GCE_VM_IP`
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -218,6 +222,8 @@ public final class NetworkEndpointState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param port Port number of network endpoint.
+         * **Note** `port` is required unless the Network Endpoint Group is created
+         * with the type of `GCE_VM_IP`
          * 
          * @return builder
          * 
@@ -229,6 +235,8 @@ public final class NetworkEndpointState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param port Port number of network endpoint.
+         * **Note** `port` is required unless the Network Endpoint Group is created
+         * with the type of `GCE_VM_IP`
          * 
          * @return builder
          * 

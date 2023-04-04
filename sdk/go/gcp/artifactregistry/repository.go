@@ -239,7 +239,7 @@ type Repository struct {
 	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
 	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// The name of the repository, for example:
-	// "projects/p1/locations/us-central1/repositories/repo1"
+	// "repo1"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -321,7 +321,7 @@ type repositoryState struct {
 	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
 	Mode *string `pulumi:"mode"`
 	// The name of the repository, for example:
-	// "projects/p1/locations/us-central1/repositories/repo1"
+	// "repo1"
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -369,7 +369,7 @@ type RepositoryState struct {
 	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
 	Mode pulumi.StringPtrInput
 	// The name of the repository, for example:
-	// "projects/p1/locations/us-central1/repositories/repo1"
+	// "repo1"
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -614,7 +614,7 @@ func (o RepositoryOutput) Mode() pulumi.StringPtrOutput {
 }
 
 // The name of the repository, for example:
-// "projects/p1/locations/us-central1/repositories/repo1"
+// "repo1"
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -71,12 +71,6 @@ export class Application extends pulumi.CustomResource {
      * The GCS bucket code is being stored in for this app.
      */
     public /*out*/ readonly codeBucket!: pulumi.Output<string>;
-    /**
-     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-     * by the provider, but will be rejected by the API.
-     */
     public readonly databaseType!: pulumi.Output<string>;
     /**
      * The GCS bucket content is being stored in for this app.
@@ -190,12 +184,6 @@ export interface ApplicationState {
      * The GCS bucket code is being stored in for this app.
      */
     codeBucket?: pulumi.Input<string>;
-    /**
-     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-     * by the provider, but will be rejected by the API.
-     */
     databaseType?: pulumi.Input<string>;
     /**
      * The GCS bucket content is being stored in for this app.
@@ -250,12 +238,6 @@ export interface ApplicationArgs {
      * The domain to authenticate users with when using App Engine's User API.
      */
     authDomain?: pulumi.Input<string>;
-    /**
-     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
-     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
-     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted
-     * by the provider, but will be rejected by the API.
-     */
     databaseType?: pulumi.Input<string>;
     /**
      * A block of optional settings to configure specific App Engine features:

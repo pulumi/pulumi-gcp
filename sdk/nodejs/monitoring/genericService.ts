@@ -88,7 +88,7 @@ export class GenericService extends pulumi.CustomResource {
 
     /**
      * A well-known service type, defined by its service type and service labels.
-     * Valid values are described at
+     * Valid values of service types and services labels are described at
      * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
      * Structure is documented below.
      */
@@ -171,7 +171,7 @@ export class GenericService extends pulumi.CustomResource {
 export interface GenericServiceState {
     /**
      * A well-known service type, defined by its service type and service labels.
-     * Valid values are described at
+     * Valid values of service types and services labels are described at
      * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
      * Structure is documented below.
      */
@@ -217,7 +217,7 @@ export interface GenericServiceState {
 export interface GenericServiceArgs {
     /**
      * A well-known service type, defined by its service type and service labels.
-     * Valid values are described at
+     * Valid values of service types and services labels are described at
      * https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
      * Structure is documented below.
      */

@@ -25,9 +25,9 @@ import * as utilities from "../utilities";
  *     bucket: bucket.name,
  *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
  * });
- * const liveappV1 = new gcp.appengine.StandardAppVersion("liveappV1", {
+ * const internalappStandardAppVersion = new gcp.appengine.StandardAppVersion("internalappStandardAppVersion", {
  *     versionId: "v1",
- *     service: "liveapp",
+ *     service: "internalapp",
  *     deleteServiceOnDestroy: true,
  *     runtime: "nodejs10",
  *     entrypoint: {
@@ -42,8 +42,8 @@ import * as utilities from "../utilities";
  *         port: "8080",
  *     },
  * });
- * const liveapp = new gcp.appengine.ServiceNetworkSettings("liveapp", {
- *     service: liveappV1.service,
+ * const internalappServiceNetworkSettings = new gcp.appengine.ServiceNetworkSettings("internalappServiceNetworkSettings", {
+ *     service: internalappStandardAppVersion.service,
  *     networkSettings: {
  *         ingressTrafficAllowed: "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY",
  *     },

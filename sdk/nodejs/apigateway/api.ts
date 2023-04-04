@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const api = new gcp.apigateway.Api("api", {apiId: "api"}, {
+ * const api = new gcp.apigateway.Api("api", {apiId: "my-api"}, {
  *     provider: google_beta,
  * });
  * ```

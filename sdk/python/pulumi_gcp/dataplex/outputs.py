@@ -16,16 +16,22 @@ __all__ = [
     'AssetDiscoverySpecJsonOptions',
     'AssetDiscoveryStatus',
     'AssetDiscoveryStatusStat',
+    'AssetIamBindingCondition',
+    'AssetIamMemberCondition',
     'AssetResourceSpec',
     'AssetResourceStatus',
     'AssetSecurityStatus',
     'LakeAssetStatus',
+    'LakeIamBindingCondition',
+    'LakeIamMemberCondition',
     'LakeMetastore',
     'LakeMetastoreStatus',
     'ZoneAssetStatus',
     'ZoneDiscoverySpec',
     'ZoneDiscoverySpecCsvOptions',
     'ZoneDiscoverySpecJsonOptions',
+    'ZoneIamBindingCondition',
+    'ZoneIamMemberCondition',
     'ZoneResourceSpec',
 ]
 
@@ -393,6 +399,60 @@ class AssetDiscoveryStatusStat(dict):
 
 
 @pulumi.output_type
+class AssetIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AssetIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class AssetResourceSpec(dict):
     def __init__(__self__, *,
                  type: str,
@@ -588,6 +648,60 @@ class LakeAssetStatus(dict):
         Output only. The time when the lake was last updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class LakeIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class LakeIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -950,6 +1064,60 @@ class ZoneDiscoverySpecJsonOptions(dict):
         Optional. The character encoding of the data. The default is UTF-8.
         """
         return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
+class ZoneIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ZoneIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

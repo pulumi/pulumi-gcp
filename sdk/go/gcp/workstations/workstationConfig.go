@@ -345,8 +345,7 @@ import (
 //				return err
 //			}
 //			defaultCryptoKey, err := kms.NewCryptoKey(ctx, "defaultCryptoKey", &kms.CryptoKeyArgs{
-//				KeyRing:        defaultKeyRing.ID(),
-//				RotationPeriod: pulumi.String("100000s"),
+//				KeyRing: defaultKeyRing.ID(),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err

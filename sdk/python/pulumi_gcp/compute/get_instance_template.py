@@ -22,7 +22,7 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -104,6 +104,9 @@ class GetInstanceTemplateResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if self_link_unique and not isinstance(self_link_unique, str):
+            raise TypeError("Expected argument 'self_link_unique' to be a str")
+        pulumi.set(__self__, "self_link_unique", self_link_unique)
         if service_accounts and not isinstance(service_accounts, list):
             raise TypeError("Expected argument 'service_accounts' to be a list")
         pulumi.set(__self__, "service_accounts", service_accounts)
@@ -345,6 +348,15 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="selfLinkUnique")
+    def self_link_unique(self) -> Optional[str]:
+        """
+        A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+        Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+        """
+        return pulumi.get(self, "self_link_unique")
+
+    @property
     @pulumi.getter(name="serviceAccounts")
     def service_accounts(self) -> Sequence['outputs.GetInstanceTemplateServiceAccountResult']:
         """
@@ -411,6 +423,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             resource_policies=self.resource_policies,
             schedulings=self.schedulings,
             self_link=self.self_link,
+            self_link_unique=self.self_link_unique,
             service_accounts=self.service_accounts,
             shielded_instance_configs=self.shielded_instance_configs,
             tags=self.tags,
@@ -421,6 +434,7 @@ def get_instance_template(filter: Optional[str] = None,
                           most_recent: Optional[bool] = None,
                           name: Optional[str] = None,
                           project: Optional[str] = None,
+                          self_link_unique: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTemplateResult:
     """
     Get information about a VM instance template resource within GCE. For more information see
@@ -434,25 +448,28 @@ def get_instance_template(filter: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    generic = gcp.compute.get_instance_template(name="generic-tpl-20200107")
     generic_regex = gcp.compute.get_instance_template(filter="name != generic-tpl-20200107",
         most_recent=True)
+    generic = gcp.compute.get_instance_template(self_link_unique="https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234")
     ```
 
 
     :param str filter: A filter to retrieve the instance templates.
            See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-           If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
-    :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
-    :param str name: The name of the instance template. One of `name` or `filter` must be provided.
+           If multiple instance templates match, either adjust the filter or specify `most_recent`.
+           One of `name`, `filter` or `self_link_unique` must be provided.
+    :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
+    :param str name: The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If `project` is not provided, the provider project is used.
+    :param str self_link_unique: The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
     """
     __args__ = dict()
     __args__['filter'] = filter
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
     __args__['project'] = project
+    __args__['selfLinkUnique'] = self_link_unique
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceTemplate:getInstanceTemplate', __args__, opts=opts, typ=GetInstanceTemplateResult).value
 
@@ -484,6 +501,7 @@ def get_instance_template(filter: Optional[str] = None,
         resource_policies=__ret__.resource_policies,
         schedulings=__ret__.schedulings,
         self_link=__ret__.self_link,
+        self_link_unique=__ret__.self_link_unique,
         service_accounts=__ret__.service_accounts,
         shielded_instance_configs=__ret__.shielded_instance_configs,
         tags=__ret__.tags,
@@ -495,6 +513,7 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
                                  most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
+                                 self_link_unique: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
     """
     Get information about a VM instance template resource within GCE. For more information see
@@ -508,18 +527,20 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_gcp as gcp
 
-    generic = gcp.compute.get_instance_template(name="generic-tpl-20200107")
     generic_regex = gcp.compute.get_instance_template(filter="name != generic-tpl-20200107",
         most_recent=True)
+    generic = gcp.compute.get_instance_template(self_link_unique="https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234")
     ```
 
 
     :param str filter: A filter to retrieve the instance templates.
            See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-           If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
-    :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
-    :param str name: The name of the instance template. One of `name` or `filter` must be provided.
+           If multiple instance templates match, either adjust the filter or specify `most_recent`.
+           One of `name`, `filter` or `self_link_unique` must be provided.
+    :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
+    :param str name: The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If `project` is not provided, the provider project is used.
+    :param str self_link_unique: The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
     """
     ...

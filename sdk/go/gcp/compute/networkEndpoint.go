@@ -145,6 +145,8 @@ type NetworkEndpoint struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringOutput `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
+	// **Note** `port` is required unless the Network Endpoint Group is created
+	// with the type of `GCE_VM_IP`
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -199,6 +201,8 @@ type networkEndpointState struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup *string `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
+	// **Note** `port` is required unless the Network Endpoint Group is created
+	// with the type of `GCE_VM_IP`
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -219,6 +223,8 @@ type NetworkEndpointState struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringPtrInput
 	// Port number of network endpoint.
+	// **Note** `port` is required unless the Network Endpoint Group is created
+	// with the type of `GCE_VM_IP`
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -243,6 +249,8 @@ type networkEndpointArgs struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup string `pulumi:"networkEndpointGroup"`
 	// Port number of network endpoint.
+	// **Note** `port` is required unless the Network Endpoint Group is created
+	// with the type of `GCE_VM_IP`
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -264,6 +272,8 @@ type NetworkEndpointArgs struct {
 	// The network endpoint group this endpoint is part of.
 	NetworkEndpointGroup pulumi.StringInput
 	// Port number of network endpoint.
+	// **Note** `port` is required unless the Network Endpoint Group is created
+	// with the type of `GCE_VM_IP`
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -379,6 +389,8 @@ func (o NetworkEndpointOutput) NetworkEndpointGroup() pulumi.StringOutput {
 }
 
 // Port number of network endpoint.
+// **Note** `port` is required unless the Network Endpoint Group is created
+// with the type of `GCE_VM_IP`
 func (o NetworkEndpointOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpoint) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
 }

@@ -61,16 +61,17 @@ class SubnetworkArgs:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
-               INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+               A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+               A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
-        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
-               purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-               or BACKUP. An ACTIVE subnetwork is one that is currently being used
-               for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-               is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[str] role: The role of subnetwork.
+               The value can be set to `ACTIVE` or `BACKUP`.
+               An `ACTIVE` subnetwork is one that is currently being used.
+               A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+               Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
                Possible values are `ACTIVE` and `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
@@ -240,10 +241,11 @@ class SubnetworkArgs:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. A subnetwork with purpose set to
-        INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        reserved for Internal HTTP(S) Load Balancing.
-        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+        A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+        A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         """
         return pulumi.get(self, "purpose")
 
@@ -267,11 +269,11 @@ class SubnetworkArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role of subnetwork. Currently, this field is only used when
-        purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-        or BACKUP. An ACTIVE subnetwork is one that is currently being used
-        for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-        is ready to be promoted to ACTIVE or is currently draining.
+        The role of subnetwork.
+        The value can be set to `ACTIVE` or `BACKUP`.
+        An `ACTIVE` subnetwork is one that is currently being used.
+        A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+        Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         Possible values are `ACTIVE` and `BACKUP`.
         """
         return pulumi.get(self, "role")
@@ -371,16 +373,17 @@ class _SubnetworkState:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
-               INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+               A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+               A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
-        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
-               purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-               or BACKUP. An ACTIVE subnetwork is one that is currently being used
-               for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-               is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[str] role: The role of subnetwork.
+               The value can be set to `ACTIVE` or `BACKUP`.
+               An `ACTIVE` subnetwork is one that is currently being used.
+               A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+               Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
                Possible values are `ACTIVE` and `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
@@ -629,10 +632,11 @@ class _SubnetworkState:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. A subnetwork with purpose set to
-        INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        reserved for Internal HTTP(S) Load Balancing.
-        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+        A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+        A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         """
         return pulumi.get(self, "purpose")
 
@@ -656,11 +660,11 @@ class _SubnetworkState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role of subnetwork. Currently, this field is only used when
-        purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-        or BACKUP. An ACTIVE subnetwork is one that is currently being used
-        for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-        is ready to be promoted to ACTIVE or is currently draining.
+        The role of subnetwork.
+        The value can be set to `ACTIVE` or `BACKUP`.
+        An `ACTIVE` subnetwork is one that is currently being used.
+        A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+        Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         Possible values are `ACTIVE` and `BACKUP`.
         """
         return pulumi.get(self, "role")
@@ -895,16 +899,17 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
-               INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+               A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+               A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
-        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
-               purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-               or BACKUP. An ACTIVE subnetwork is one that is currently being used
-               for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-               is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[str] role: The role of subnetwork.
+               The value can be set to `ACTIVE` or `BACKUP`.
+               An `ACTIVE` subnetwork is one that is currently being used.
+               A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+               Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
                Possible values are `ACTIVE` and `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
@@ -1187,16 +1192,17 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. A subnetwork with purpose set to
-               INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-               reserved for Internal HTTP(S) Load Balancing.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+               A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+               A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
-        :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
-               purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-               or BACKUP. An ACTIVE subnetwork is one that is currently being used
-               for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-               is ready to be promoted to ACTIVE or is currently draining.
+        :param pulumi.Input[str] role: The role of subnetwork.
+               The value can be set to `ACTIVE` or `BACKUP`.
+               An `ACTIVE` subnetwork is one that is currently being used.
+               A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+               Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
                Possible values are `ACTIVE` and `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
@@ -1371,10 +1377,11 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
-        The purpose of the resource. A subnetwork with purpose set to
-        INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
-        reserved for Internal HTTP(S) Load Balancing.
-        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the `role` field.
+        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+        A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
+        A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
+        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
         """
         return pulumi.get(self, "purpose")
 
@@ -1390,11 +1397,11 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[Optional[str]]:
         """
-        The role of subnetwork. Currently, this field is only used when
-        purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
-        or BACKUP. An ACTIVE subnetwork is one that is currently being used
-        for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that
-        is ready to be promoted to ACTIVE or is currently draining.
+        The role of subnetwork.
+        The value can be set to `ACTIVE` or `BACKUP`.
+        An `ACTIVE` subnetwork is one that is currently being used.
+        A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
+        Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         Possible values are `ACTIVE` and `BACKUP`.
         """
         return pulumi.get(self, "role")

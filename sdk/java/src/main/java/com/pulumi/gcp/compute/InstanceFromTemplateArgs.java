@@ -451,7 +451,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
 
     /**
      * Name or self link of an instance
-     * template to create the instance based on.
+     * template to create the instance based on. It is recommended to reference
+     * instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     @Import(name="sourceInstanceTemplate", required=true)
@@ -459,7 +460,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Name or self link of an instance
-     * template to create the instance based on.
+     * template to create the instance based on. It is recommended to reference
+     * instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     public Output<String> sourceInstanceTemplate() {
@@ -1174,7 +1176,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param sourceInstanceTemplate Name or self link of an instance
-         * template to create the instance based on.
+         * template to create the instance based on. It is recommended to reference
+         * instance templates through their unique id (`self_link_unique` attribute).
          * 
          * @return builder
          * 
@@ -1186,7 +1189,8 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param sourceInstanceTemplate Name or self link of an instance
-         * template to create the instance based on.
+         * template to create the instance based on. It is recommended to reference
+         * instance templates through their unique id (`self_link_unique` attribute).
          * 
          * @return builder
          * 

@@ -18,14 +18,7 @@ public final class ServiceTemplateSpecContainerEnv {
      */
     private @Nullable String name;
     /**
-     * @return Variable references $(VAR_NAME) are expanded
-     * using the previous defined environment variables in the container and
-     * any route environment variables. If a variable cannot be resolved,
-     * the reference in the input string will be unchanged. The $(VAR_NAME)
-     * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-     * references will never be expanded, regardless of whether the variable
-     * exists or not.
-     * Defaults to &#34;&#34;.
+     * @return Defaults to &#34;&#34;.
      * 
      */
     private @Nullable String value;
@@ -45,14 +38,7 @@ public final class ServiceTemplateSpecContainerEnv {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Variable references $(VAR_NAME) are expanded
-     * using the previous defined environment variables in the container and
-     * any route environment variables. If a variable cannot be resolved,
-     * the reference in the input string will be unchanged. The $(VAR_NAME)
-     * syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped
-     * references will never be expanded, regardless of whether the variable
-     * exists or not.
-     * Defaults to &#34;&#34;.
+     * @return Defaults to &#34;&#34;.
      * 
      */
     public Optional<String> value() {

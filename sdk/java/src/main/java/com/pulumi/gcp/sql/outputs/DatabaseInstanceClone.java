@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,11 @@ public final class DatabaseInstanceClone {
      * 
      */
     private @Nullable String allocatedIpRange;
+    /**
+     * @return (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * 
+     */
+    private @Nullable List<String> databaseNames;
     /**
      * @return The timestamp of the point in time that should be restored.
      * 
@@ -34,6 +40,13 @@ public final class DatabaseInstanceClone {
      */
     public Optional<String> allocatedIpRange() {
         return Optional.ofNullable(this.allocatedIpRange);
+    }
+    /**
+     * @return (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+     * 
+     */
+    public List<String> databaseNames() {
+        return this.databaseNames == null ? List.of() : this.databaseNames;
     }
     /**
      * @return The timestamp of the point in time that should be restored.
@@ -60,12 +73,14 @@ public final class DatabaseInstanceClone {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String allocatedIpRange;
+        private @Nullable List<String> databaseNames;
         private @Nullable String pointInTime;
         private String sourceInstanceName;
         public Builder() {}
         public Builder(DatabaseInstanceClone defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedIpRange = defaults.allocatedIpRange;
+    	      this.databaseNames = defaults.databaseNames;
     	      this.pointInTime = defaults.pointInTime;
     	      this.sourceInstanceName = defaults.sourceInstanceName;
         }
@@ -74,6 +89,14 @@ public final class DatabaseInstanceClone {
         public Builder allocatedIpRange(@Nullable String allocatedIpRange) {
             this.allocatedIpRange = allocatedIpRange;
             return this;
+        }
+        @CustomType.Setter
+        public Builder databaseNames(@Nullable List<String> databaseNames) {
+            this.databaseNames = databaseNames;
+            return this;
+        }
+        public Builder databaseNames(String... databaseNames) {
+            return databaseNames(List.of(databaseNames));
         }
         @CustomType.Setter
         public Builder pointInTime(@Nullable String pointInTime) {
@@ -88,6 +111,7 @@ public final class DatabaseInstanceClone {
         public DatabaseInstanceClone build() {
             final var o = new DatabaseInstanceClone();
             o.allocatedIpRange = allocatedIpRange;
+            o.databaseNames = databaseNames;
             o.pointInTime = pointInTime;
             o.sourceInstanceName = sourceInstanceName;
             return o;

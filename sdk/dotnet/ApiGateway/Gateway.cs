@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// {
     ///     var apiGwApi = new Gcp.ApiGateway.Api("apiGwApi", new()
     ///     {
-    ///         ApiId = "api-gw",
+    ///         ApiId = "my-api",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.ApiGateway
     ///     var apiGwApiConfig = new Gcp.ApiGateway.ApiConfig("apiGwApiConfig", new()
     ///     {
     ///         Api = apiGwApi.ApiId,
-    ///         ApiConfigId = "config",
+    ///         ApiConfigId = "my-config",
     ///         OpenapiDocuments = new[]
     ///         {
     ///             new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs
@@ -65,7 +65,7 @@ namespace Pulumi.Gcp.ApiGateway
     ///     var apiGwGateway = new Gcp.ApiGateway.Gateway("apiGwGateway", new()
     ///     {
     ///         ApiConfig = apiGwApiConfig.Id,
-    ///         GatewayId = "api-gw",
+    ///         GatewayId = "my-gateway",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

@@ -4,16 +4,23 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateScratchDisk {
     private String interface_;
+    private @Nullable Integer size;
 
     private InstanceFromTemplateScratchDisk() {}
     public String interface_() {
         return this.interface_;
+    }
+    public Optional<Integer> size() {
+        return Optional.ofNullable(this.size);
     }
 
     public static Builder builder() {
@@ -26,10 +33,12 @@ public final class InstanceFromTemplateScratchDisk {
     @CustomType.Builder
     public static final class Builder {
         private String interface_;
+        private @Nullable Integer size;
         public Builder() {}
         public Builder(InstanceFromTemplateScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interface_ = defaults.interface_;
+    	      this.size = defaults.size;
         }
 
         @CustomType.Setter("interface")
@@ -37,9 +46,15 @@ public final class InstanceFromTemplateScratchDisk {
             this.interface_ = Objects.requireNonNull(interface_);
             return this;
         }
+        @CustomType.Setter
+        public Builder size(@Nullable Integer size) {
+            this.size = size;
+            return this;
+        }
         public InstanceFromTemplateScratchDisk build() {
             final var o = new InstanceFromTemplateScratchDisk();
             o.interface_ = interface_;
+            o.size = size;
             return o;
         }
     }

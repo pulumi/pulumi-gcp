@@ -11,8 +11,6 @@ import java.util.Objects;
 public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference {
     /**
      * @return Name of the referent.
-     * More info:
-     * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     private String name;
@@ -20,8 +18,6 @@ public final class ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectRef
     private ServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference() {}
     /**
      * @return Name of the referent.
-     * More info:
-     * https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     public String name() {

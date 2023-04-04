@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -14,6 +15,11 @@ public final class GetInstanceScratchDisk {
      * 
      */
     private String interface_;
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
+    private Integer size;
 
     private GetInstanceScratchDisk() {}
     /**
@@ -22,6 +28,13 @@ public final class GetInstanceScratchDisk {
      */
     public String interface_() {
         return this.interface_;
+    }
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
+    public Integer size() {
+        return this.size;
     }
 
     public static Builder builder() {
@@ -34,10 +47,12 @@ public final class GetInstanceScratchDisk {
     @CustomType.Builder
     public static final class Builder {
         private String interface_;
+        private Integer size;
         public Builder() {}
         public Builder(GetInstanceScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interface_ = defaults.interface_;
+    	      this.size = defaults.size;
         }
 
         @CustomType.Setter("interface")
@@ -45,9 +60,15 @@ public final class GetInstanceScratchDisk {
             this.interface_ = Objects.requireNonNull(interface_);
             return this;
         }
+        @CustomType.Setter
+        public Builder size(Integer size) {
+            this.size = Objects.requireNonNull(size);
+            return this;
+        }
         public GetInstanceScratchDisk build() {
             final var o = new GetInstanceScratchDisk();
             o.interface_ = interface_;
+            o.size = size;
             return o;
         }
     }

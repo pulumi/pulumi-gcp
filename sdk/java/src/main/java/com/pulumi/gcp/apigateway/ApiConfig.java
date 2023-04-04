@@ -58,14 +58,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var apiCfgApi = new Api(&#34;apiCfgApi&#34;, ApiArgs.builder()        
- *             .apiId(&#34;api-cfg&#34;)
+ *             .apiId(&#34;my-api&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
  * 
  *         var apiCfgApiConfig = new ApiConfig(&#34;apiCfgApiConfig&#34;, ApiConfigArgs.builder()        
  *             .api(apiCfgApi.apiId())
- *             .apiConfigId(&#34;cfg&#34;)
+ *             .apiConfigId(&#34;my-config&#34;)
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
  *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
  *                     .path(&#34;spec.yaml&#34;)

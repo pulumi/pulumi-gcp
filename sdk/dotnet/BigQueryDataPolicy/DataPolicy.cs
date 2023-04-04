@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQueryDataPolicy
 {
     /// <summary>
+    /// A BigQuery Data Policy
+    /// 
+    /// To get more information about DataPolicy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+    /// 
     /// ## Example Usage
     /// ### Bigquery Datapolicy Data Policy Basic
     /// 
@@ -29,9 +37,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     ///         {
     ///             "FINE_GRAINED_ACCESS_CONTROL",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var policyTag = new Gcp.DataCatalog.PolicyTag("policyTag", new()
@@ -39,9 +44,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     ///         Taxonomy = taxonomy.Id,
     ///         DisplayName = "Low security",
     ///         Description = "A policy tag normally associated with low security items",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var dataPolicy = new Gcp.BigQueryDataPolicy.DataPolicy("dataPolicy", new()
@@ -50,9 +52,6 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
     ///         DataPolicyId = "data_policy",
     ///         PolicyTag = policyTag.Name,
     ///         DataPolicyType = "COLUMN_LEVEL_SECURITY_POLICY",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

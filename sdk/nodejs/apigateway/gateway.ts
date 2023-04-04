@@ -21,12 +21,12 @@ import * as utilities from "../utilities";
  * import * as fs from "fs";
  * import * as gcp from "@pulumi/gcp";
  *
- * const apiGwApi = new gcp.apigateway.Api("apiGwApi", {apiId: "api-gw"}, {
+ * const apiGwApi = new gcp.apigateway.Api("apiGwApi", {apiId: "my-api"}, {
  *     provider: google_beta,
  * });
  * const apiGwApiConfig = new gcp.apigateway.ApiConfig("apiGwApiConfig", {
  *     api: apiGwApi.apiId,
- *     apiConfigId: "config",
+ *     apiConfigId: "my-config",
  *     openapiDocuments: [{
  *         document: {
  *             path: "spec.yaml",
@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * const apiGwGateway = new gcp.apigateway.Gateway("apiGwGateway", {
  *     apiConfig: apiGwApiConfig.id,
- *     gatewayId: "api-gw",
+ *     gatewayId: "my-gateway",
  * }, {
  *     provider: google_beta,
  * });

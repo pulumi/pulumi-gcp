@@ -114,6 +114,7 @@ __all__ = [
     'ClusterMonitoringConfigManagedPrometheus',
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
+    'ClusterNodeConfigAdvancedMachineFeatures',
     'ClusterNodeConfigEphemeralStorageConfig',
     'ClusterNodeConfigGcfsConfig',
     'ClusterNodeConfigGuestAccelerator',
@@ -121,6 +122,7 @@ __all__ = [
     'ClusterNodeConfigGvnic',
     'ClusterNodeConfigKubeletConfig',
     'ClusterNodeConfigLinuxNodeConfig',
+    'ClusterNodeConfigLocalNvmeSsdBlockConfig',
     'ClusterNodeConfigReservationAffinity',
     'ClusterNodeConfigSandboxConfig',
     'ClusterNodeConfigShieldedInstanceConfig',
@@ -136,6 +138,7 @@ __all__ = [
     'ClusterNodePoolManagement',
     'ClusterNodePoolNetworkConfig',
     'ClusterNodePoolNodeConfig',
+    'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigGcfsConfig',
     'ClusterNodePoolNodeConfigGuestAccelerator',
@@ -143,6 +146,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigGvnic',
     'ClusterNodePoolNodeConfigKubeletConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
+    'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig',
     'ClusterNodePoolNodeConfigReservationAffinity',
     'ClusterNodePoolNodeConfigSandboxConfig',
     'ClusterNodePoolNodeConfigShieldedInstanceConfig',
@@ -171,6 +175,7 @@ __all__ = [
     'NodePoolManagement',
     'NodePoolNetworkConfig',
     'NodePoolNodeConfig',
+    'NodePoolNodeConfigAdvancedMachineFeatures',
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigGcfsConfig',
     'NodePoolNodeConfigGuestAccelerator',
@@ -178,6 +183,7 @@ __all__ = [
     'NodePoolNodeConfigGvnic',
     'NodePoolNodeConfigKubeletConfig',
     'NodePoolNodeConfigLinuxNodeConfig',
+    'NodePoolNodeConfigLocalNvmeSsdBlockConfig',
     'NodePoolNodeConfigReservationAffinity',
     'NodePoolNodeConfigSandboxConfig',
     'NodePoolNodeConfigShieldedInstanceConfig',
@@ -234,6 +240,7 @@ __all__ = [
     'GetClusterMonitoringConfigManagedPrometheusResult',
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
+    'GetClusterNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodeConfigGcfsConfigResult',
     'GetClusterNodeConfigGuestAcceleratorResult',
@@ -241,6 +248,7 @@ __all__ = [
     'GetClusterNodeConfigGvnicResult',
     'GetClusterNodeConfigKubeletConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
+    'GetClusterNodeConfigLocalNvmeSsdBlockConfigResult',
     'GetClusterNodeConfigReservationAffinityResult',
     'GetClusterNodeConfigSandboxConfigResult',
     'GetClusterNodeConfigShieldedInstanceConfigResult',
@@ -256,6 +264,7 @@ __all__ = [
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNetworkConfigResult',
     'GetClusterNodePoolNodeConfigResult',
+    'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigGcfsConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorResult',
@@ -263,6 +272,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigGvnicResult',
     'GetClusterNodePoolNodeConfigKubeletConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
+    'GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult',
     'GetClusterNodePoolNodeConfigReservationAffinityResult',
     'GetClusterNodePoolNodeConfigSandboxConfigResult',
     'GetClusterNodePoolNodeConfigShieldedInstanceConfigResult',
@@ -4541,6 +4551,8 @@ class ClusterIpAllocationPolicy(dict):
             suggest = "services_ipv4_cidr_block"
         elif key == "servicesSecondaryRangeName":
             suggest = "services_secondary_range_name"
+        elif key == "stackType":
+            suggest = "stack_type"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterIpAllocationPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -4557,7 +4569,8 @@ class ClusterIpAllocationPolicy(dict):
                  cluster_ipv4_cidr_block: Optional[str] = None,
                  cluster_secondary_range_name: Optional[str] = None,
                  services_ipv4_cidr_block: Optional[str] = None,
-                 services_secondary_range_name: Optional[str] = None):
+                 services_secondary_range_name: Optional[str] = None,
+                 stack_type: Optional[str] = None):
         """
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -4576,6 +4589,9 @@ class ClusterIpAllocationPolicy(dict):
                secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
                Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
                GKE-managed one.
+        :param str stack_type: The IP Stack Type of the cluster. 
+               Default value is `IPV4`.
+               Possible values are `IPV4` and `PV4_IPV6`.
         """
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
@@ -4585,6 +4601,8 @@ class ClusterIpAllocationPolicy(dict):
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -4630,6 +4648,16 @@ class ClusterIpAllocationPolicy(dict):
         GKE-managed one.
         """
         return pulumi.get(self, "services_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[str]:
+        """
+        The IP Stack Type of the cluster. 
+        Default value is `IPV4`.
+        Possible values are `IPV4` and `PV4_IPV6`.
+        """
+        return pulumi.get(self, "stack_type")
 
 
 @pulumi.output_type
@@ -5237,7 +5265,9 @@ class ClusterNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskKmsKey":
+        if key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
+        elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
@@ -5255,6 +5285,8 @@ class ClusterNodeConfig(dict):
             suggest = "kubelet_config"
         elif key == "linuxNodeConfig":
             suggest = "linux_node_config"
+        elif key == "localNvmeSsdBlockConfig":
+            suggest = "local_nvme_ssd_block_config"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
         elif key == "loggingVariant":
@@ -5292,6 +5324,7 @@ class ClusterNodeConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 advanced_machine_features: Optional['outputs.ClusterNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
@@ -5303,6 +5336,7 @@ class ClusterNodeConfig(dict):
                  kubelet_config: Optional['outputs.ClusterNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  linux_node_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfig'] = None,
+                 local_nvme_ssd_block_config: Optional['outputs.ClusterNodeConfigLocalNvmeSsdBlockConfig'] = None,
                  local_ssd_count: Optional[int] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
@@ -5321,6 +5355,8 @@ class ClusterNodeConfig(dict):
                  taints: Optional[Sequence['outputs.ClusterNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodeConfigWorkloadMetadataConfig'] = None):
         """
+        :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
+               advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -5349,6 +5385,7 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigLinuxNodeConfigArgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
+        :param 'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param int local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -5394,6 +5431,8 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if disk_size_gb is not None:
@@ -5416,6 +5455,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "labels", labels)
         if linux_node_config is not None:
             pulumi.set(__self__, "linux_node_config", linux_node_config)
+        if local_nvme_ssd_block_config is not None:
+            pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if logging_variant is not None:
@@ -5450,6 +5491,15 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "taints", taints)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional['outputs.ClusterNodeConfigAdvancedMachineFeatures']:
+        """
+        Specifies options for controlling
+        advanced machine features. Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -5555,6 +5605,14 @@ class ClusterNodeConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "linux_node_config")
+
+    @property
+    @pulumi.getter(name="localNvmeSsdBlockConfig")
+    def local_nvme_ssd_block_config(self) -> Optional['outputs.ClusterNodeConfigLocalNvmeSsdBlockConfig']:
+        """
+        Parameters for the local NVMe SSDs. Structure is documented below.
+        """
+        return pulumi.get(self, "local_nvme_ssd_block_config")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -5716,6 +5774,41 @@ class ClusterNodeConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "workload_metadata_config")
+
+
+@pulumi.output_type
+class ClusterNodeConfigAdvancedMachineFeatures(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threadsPerCore":
+            suggest = "threads_per_core"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigAdvancedMachineFeatures.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigAdvancedMachineFeatures.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        """
+        :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -6022,6 +6115,43 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         `net.core.wmem_max`, to a string value.
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class ClusterNodeConfigLocalNvmeSsdBlockConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigLocalNvmeSsdBlockConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigLocalNvmeSsdBlockConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigLocalNvmeSsdBlockConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        """
+        :param int local_ssd_count: Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+               > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        """
+        Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+        > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+        """
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -6826,7 +6956,9 @@ class ClusterNodePoolNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskKmsKey":
+        if key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
+        elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
@@ -6844,6 +6976,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "kubelet_config"
         elif key == "linuxNodeConfig":
             suggest = "linux_node_config"
+        elif key == "localNvmeSsdBlockConfig":
+            suggest = "local_nvme_ssd_block_config"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
         elif key == "loggingVariant":
@@ -6881,6 +7015,7 @@ class ClusterNodePoolNodeConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 advanced_machine_features: Optional['outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
@@ -6892,6 +7027,7 @@ class ClusterNodePoolNodeConfig(dict):
                  kubelet_config: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  linux_node_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfig'] = None,
+                 local_nvme_ssd_block_config: Optional['outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig'] = None,
                  local_ssd_count: Optional[int] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
@@ -6910,6 +7046,8 @@ class ClusterNodePoolNodeConfig(dict):
                  taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig'] = None):
         """
+        :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
+               advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -6938,6 +7076,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param int local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
         :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -6983,6 +7122,8 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs' workload_metadata_config: Metadata configuration to expose to workloads on the node pool.
                Structure is documented below.
         """
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if disk_size_gb is not None:
@@ -7005,6 +7146,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "labels", labels)
         if linux_node_config is not None:
             pulumi.set(__self__, "linux_node_config", linux_node_config)
+        if local_nvme_ssd_block_config is not None:
+            pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if logging_variant is not None:
@@ -7039,6 +7182,15 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "taints", taints)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional['outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures']:
+        """
+        Specifies options for controlling
+        advanced machine features. Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -7144,6 +7296,14 @@ class ClusterNodePoolNodeConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "linux_node_config")
+
+    @property
+    @pulumi.getter(name="localNvmeSsdBlockConfig")
+    def local_nvme_ssd_block_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig']:
+        """
+        Parameters for the local NVMe SSDs. Structure is documented below.
+        """
+        return pulumi.get(self, "local_nvme_ssd_block_config")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -7305,6 +7465,41 @@ class ClusterNodePoolNodeConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "workload_metadata_config")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threadsPerCore":
+            suggest = "threads_per_core"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigAdvancedMachineFeatures.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigAdvancedMachineFeatures.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        """
+        :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -7611,6 +7806,43 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         `net.core.wmem_max`, to a string value.
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        """
+        :param int local_ssd_count: Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+               > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        """
+        Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+        > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+        """
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -8918,7 +9150,9 @@ class NodePoolNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskKmsKey":
+        if key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
+        elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
@@ -8936,6 +9170,8 @@ class NodePoolNodeConfig(dict):
             suggest = "kubelet_config"
         elif key == "linuxNodeConfig":
             suggest = "linux_node_config"
+        elif key == "localNvmeSsdBlockConfig":
+            suggest = "local_nvme_ssd_block_config"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
         elif key == "loggingVariant":
@@ -8973,6 +9209,7 @@ class NodePoolNodeConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 advanced_machine_features: Optional['outputs.NodePoolNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
@@ -8984,6 +9221,7 @@ class NodePoolNodeConfig(dict):
                  kubelet_config: Optional['outputs.NodePoolNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  linux_node_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfig'] = None,
+                 local_nvme_ssd_block_config: Optional['outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig'] = None,
                  local_ssd_count: Optional[int] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
@@ -9001,6 +9239,8 @@ class NodePoolNodeConfig(dict):
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.NodePoolNodeConfigTaint']] = None,
                  workload_metadata_config: Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig'] = None):
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         if disk_size_gb is not None:
@@ -9023,6 +9263,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "labels", labels)
         if linux_node_config is not None:
             pulumi.set(__self__, "linux_node_config", linux_node_config)
+        if local_nvme_ssd_block_config is not None:
+            pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if logging_variant is not None:
@@ -9057,6 +9299,11 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "taints", taints)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional['outputs.NodePoolNodeConfigAdvancedMachineFeatures']:
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -9112,6 +9359,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="linuxNodeConfig")
     def linux_node_config(self) -> Optional['outputs.NodePoolNodeConfigLinuxNodeConfig']:
         return pulumi.get(self, "linux_node_config")
+
+    @property
+    @pulumi.getter(name="localNvmeSsdBlockConfig")
+    def local_nvme_ssd_block_config(self) -> Optional['outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig']:
+        return pulumi.get(self, "local_nvme_ssd_block_config")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -9197,6 +9449,35 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="workloadMetadataConfig")
     def workload_metadata_config(self) -> Optional['outputs.NodePoolNodeConfigWorkloadMetadataConfig']:
         return pulumi.get(self, "workload_metadata_config")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigAdvancedMachineFeatures(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threadsPerCore":
+            suggest = "threads_per_core"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigAdvancedMachineFeatures.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigAdvancedMachineFeatures.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -9423,6 +9704,35 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigLocalNvmeSsdBlockConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigLocalNvmeSsdBlockConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigLocalNvmeSsdBlockConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigLocalNvmeSsdBlockConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -10458,11 +10768,13 @@ class GetClusterIpAllocationPolicyResult(dict):
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
                  services_ipv4_cidr_block: str,
-                 services_secondary_range_name: str):
+                 services_secondary_range_name: str,
+                 stack_type: str):
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+        pulumi.set(__self__, "stack_type", stack_type)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -10483,6 +10795,11 @@ class GetClusterIpAllocationPolicyResult(dict):
     @pulumi.getter(name="servicesSecondaryRangeName")
     def services_secondary_range_name(self) -> str:
         return pulumi.get(self, "services_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        return pulumi.get(self, "stack_type")
 
 
 @pulumi.output_type
@@ -10761,6 +11078,7 @@ class GetClusterNetworkPolicyResult(dict):
 @pulumi.output_type
 class GetClusterNodeConfigResult(dict):
     def __init__(__self__, *,
+                 advanced_machine_features: Sequence['outputs.GetClusterNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
                  disk_size_gb: int,
                  disk_type: str,
@@ -10772,6 +11090,7 @@ class GetClusterNodeConfigResult(dict):
                  kubelet_configs: Sequence['outputs.GetClusterNodeConfigKubeletConfigResult'],
                  labels: Mapping[str, str],
                  linux_node_configs: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigResult'],
+                 local_nvme_ssd_block_configs: Sequence['outputs.GetClusterNodeConfigLocalNvmeSsdBlockConfigResult'],
                  local_ssd_count: int,
                  logging_variant: str,
                  machine_type: str,
@@ -10789,6 +11108,7 @@ class GetClusterNodeConfigResult(dict):
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodeConfigTaintResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodeConfigWorkloadMetadataConfigResult']):
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
@@ -10800,6 +11120,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "kubelet_configs", kubelet_configs)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "linux_node_configs", linux_node_configs)
+        pulumi.set(__self__, "local_nvme_ssd_block_configs", local_nvme_ssd_block_configs)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         pulumi.set(__self__, "logging_variant", logging_variant)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -10817,6 +11138,11 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Sequence['outputs.GetClusterNodeConfigAdvancedMachineFeatureResult']:
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -10872,6 +11198,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="linuxNodeConfigs")
     def linux_node_configs(self) -> Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigResult']:
         return pulumi.get(self, "linux_node_configs")
+
+    @property
+    @pulumi.getter(name="localNvmeSsdBlockConfigs")
+    def local_nvme_ssd_block_configs(self) -> Sequence['outputs.GetClusterNodeConfigLocalNvmeSsdBlockConfigResult']:
+        return pulumi.get(self, "local_nvme_ssd_block_configs")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -10957,6 +11288,18 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="workloadMetadataConfigs")
     def workload_metadata_configs(self) -> Sequence['outputs.GetClusterNodeConfigWorkloadMetadataConfigResult']:
         return pulumi.get(self, "workload_metadata_configs")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -11090,6 +11433,18 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigLocalNvmeSsdBlockConfigResult(dict):
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -11465,6 +11820,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigResult(dict):
     def __init__(__self__, *,
+                 advanced_machine_features: Sequence['outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
                  disk_size_gb: int,
                  disk_type: str,
@@ -11476,6 +11832,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  kubelet_configs: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigResult'],
                  labels: Mapping[str, str],
                  linux_node_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigResult'],
+                 local_nvme_ssd_block_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult'],
                  local_ssd_count: int,
                  logging_variant: str,
                  machine_type: str,
@@ -11493,6 +11850,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodePoolNodeConfigTaintResult'],
                  workload_metadata_configs: Sequence['outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult']):
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
@@ -11504,6 +11862,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "kubelet_configs", kubelet_configs)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "linux_node_configs", linux_node_configs)
+        pulumi.set(__self__, "local_nvme_ssd_block_configs", local_nvme_ssd_block_configs)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         pulumi.set(__self__, "logging_variant", logging_variant)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -11521,6 +11880,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "workload_metadata_configs", workload_metadata_configs)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult']:
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="bootDiskKmsKey")
@@ -11576,6 +11940,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="linuxNodeConfigs")
     def linux_node_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigResult']:
         return pulumi.get(self, "linux_node_configs")
+
+    @property
+    @pulumi.getter(name="localNvmeSsdBlockConfigs")
+    def local_nvme_ssd_block_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult']:
+        return pulumi.get(self, "local_nvme_ssd_block_configs")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -11661,6 +12030,18 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="workloadMetadataConfigs")
     def workload_metadata_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult']:
         return pulumi.get(self, "workload_metadata_configs")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -11794,6 +12175,18 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult(dict):
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type

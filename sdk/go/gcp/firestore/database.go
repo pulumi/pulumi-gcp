@@ -11,15 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Cloud Firestore Database. Currently only one database is allowed per
-// cloud project; this database must have a `databaseId` of '(default)'.
-//
-// To get more information about Database, see:
-//
-// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/firestore/docs/)
-//
 // ## Example Usage
 //
 // ## Import
@@ -66,7 +57,7 @@ type Database struct {
 	// The location of the database. Available databases are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
-	// Required. The ID to use for the database, which will become the final
+	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
 	// a letter and the last a letter or a number. Must not be
@@ -138,7 +129,7 @@ type databaseState struct {
 	// The location of the database. Available databases are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId *string `pulumi:"locationId"`
-	// Required. The ID to use for the database, which will become the final
+	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
 	// a letter and the last a letter or a number. Must not be
@@ -176,7 +167,7 @@ type DatabaseState struct {
 	// The location of the database. Available databases are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringPtrInput
-	// Required. The ID to use for the database, which will become the final
+	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
 	// a letter and the last a letter or a number. Must not be
@@ -207,7 +198,7 @@ type databaseArgs struct {
 	// The location of the database. Available databases are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId string `pulumi:"locationId"`
-	// Required. The ID to use for the database, which will become the final
+	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
 	// a letter and the last a letter or a number. Must not be
@@ -235,7 +226,7 @@ type DatabaseArgs struct {
 	// The location of the database. Available databases are listed at
 	// https://cloud.google.com/firestore/docs/locations.
 	LocationId pulumi.StringInput
-	// Required. The ID to use for the database, which will become the final
+	// The ID to use for the database, which will become the final
 	// component of the database's resource name. This value should be 4-63
 	// characters. Valid characters are /[a-z][0-9]-/ with first character
 	// a letter and the last a letter or a number. Must not be
@@ -377,7 +368,7 @@ func (o DatabaseOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.LocationId }).(pulumi.StringOutput)
 }
 
-// Required. The ID to use for the database, which will become the final
+// The ID to use for the database, which will become the final
 // component of the database's resource name. This value should be 4-63
 // characters. Valid characters are /[a-z][0-9]-/ with first character
 // a letter and the last a letter or a number. Must not be

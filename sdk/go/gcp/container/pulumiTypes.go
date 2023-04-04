@@ -13897,6 +13897,10 @@ type ClusterIpAllocationPolicy struct {
 	// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
 	// GKE-managed one.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
+	// The IP Stack Type of the cluster.
+	// Default value is `IPV4`.
+	// Possible values are `IPV4` and `PV4_IPV6`.
+	StackType *string `pulumi:"stackType"`
 }
 
 // ClusterIpAllocationPolicyInput is an input type that accepts ClusterIpAllocationPolicyArgs and ClusterIpAllocationPolicyOutput values.
@@ -13932,6 +13936,10 @@ type ClusterIpAllocationPolicyArgs struct {
 	// Alternatively, `servicesIpv4CidrBlock` can be used to automatically create a
 	// GKE-managed one.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
+	// The IP Stack Type of the cluster.
+	// Default value is `IPV4`.
+	// Possible values are `IPV4` and `PV4_IPV6`.
+	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 }
 
 func (ClusterIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -14044,6 +14052,13 @@ func (o ClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.Str
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+// The IP Stack Type of the cluster.
+// Default value is `IPV4`.
+// Possible values are `IPV4` and `PV4_IPV6`.
+func (o ClusterIpAllocationPolicyOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.StackType }).(pulumi.StringPtrOutput)
+}
+
 type ClusterIpAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterIpAllocationPolicyPtrOutput) ElementType() reflect.Type {
@@ -14118,6 +14133,18 @@ func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.
 			return nil
 		}
 		return v.ServicesSecondaryRangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP Stack Type of the cluster.
+// Default value is `IPV4`.
+// Possible values are `IPV4` and `PV4_IPV6`.
+func (o ClusterIpAllocationPolicyPtrOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StackType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16191,6 +16218,9 @@ func (o ClusterNetworkPolicyPtrOutput) Provider() pulumi.StringPtrOutput {
 }
 
 type ClusterNodeConfig struct {
+	// Specifies options for controlling
+	// advanced machine features. Structure is documented below.
+	AdvancedMachineFeatures *ClusterNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
@@ -16230,6 +16260,8 @@ type ClusterNodeConfig struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig *ClusterNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
+	// Parameters for the local NVMe SSDs. Structure is documented below.
+	LocalNvmeSsdBlockConfig *ClusterNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
@@ -16305,6 +16337,9 @@ type ClusterNodeConfigInput interface {
 }
 
 type ClusterNodeConfigArgs struct {
+	// Specifies options for controlling
+	// advanced machine features. Structure is documented below.
+	AdvancedMachineFeatures ClusterNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
@@ -16344,6 +16379,8 @@ type ClusterNodeConfigArgs struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig ClusterNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
+	// Parameters for the local NVMe SSDs. Structure is documented below.
+	LocalNvmeSsdBlockConfig ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput `pulumi:"localNvmeSsdBlockConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
@@ -16484,6 +16521,12 @@ func (o ClusterNodeConfigOutput) ToClusterNodeConfigPtrOutputWithContext(ctx con
 	}).(ClusterNodeConfigPtrOutput)
 }
 
+// Specifies options for controlling
+// advanced machine features. Structure is documented below.
+func (o ClusterNodeConfigOutput) AdvancedMachineFeatures() ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigAdvancedMachineFeatures { return v.AdvancedMachineFeatures }).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
@@ -16554,6 +16597,11 @@ func (o ClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ClusterNodeConfigOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+// Parameters for the local NVMe SSDs. Structure is documented below.
+func (o ClusterNodeConfigOutput) LocalNvmeSsdBlockConfig() ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigLocalNvmeSsdBlockConfig { return v.LocalNvmeSsdBlockConfig }).(ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -16692,6 +16740,17 @@ func (o ClusterNodeConfigPtrOutput) Elem() ClusterNodeConfigOutput {
 	}).(ClusterNodeConfigOutput)
 }
 
+// Specifies options for controlling
+// advanced machine features. Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) AdvancedMachineFeatures() ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigAdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
@@ -16817,6 +16876,16 @@ func (o ClusterNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNode
 		}
 		return v.LinuxNodeConfig
 	}).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+// Parameters for the local NVMe SSDs. Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) LocalNvmeSsdBlockConfig() ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigLocalNvmeSsdBlockConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LocalNvmeSsdBlockConfig
+	}).(ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -17014,6 +17083,143 @@ func (o ClusterNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodeConfigWo
 		}
 		return v.WorkloadMetadataConfig
 	}).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
+}
+
+type ClusterNodeConfigAdvancedMachineFeatures struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// ClusterNodeConfigAdvancedMachineFeaturesInput is an input type that accepts ClusterNodeConfigAdvancedMachineFeaturesArgs and ClusterNodeConfigAdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigAdvancedMachineFeaturesInput` via:
+//
+//	ClusterNodeConfigAdvancedMachineFeaturesArgs{...}
+type ClusterNodeConfigAdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigAdvancedMachineFeaturesOutput() ClusterNodeConfigAdvancedMachineFeaturesOutput
+	ToClusterNodeConfigAdvancedMachineFeaturesOutputWithContext(context.Context) ClusterNodeConfigAdvancedMachineFeaturesOutput
+}
+
+type ClusterNodeConfigAdvancedMachineFeaturesArgs struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (ClusterNodeConfigAdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodeConfigAdvancedMachineFeaturesOutput() ClusterNodeConfigAdvancedMachineFeaturesOutput {
+	return i.ToClusterNodeConfigAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodeConfigAdvancedMachineFeaturesOutputWithContext(ctx context.Context) ClusterNodeConfigAdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+func (i ClusterNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return i.ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigAdvancedMachineFeaturesOutput).ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigAdvancedMachineFeaturesPtrInput is an input type that accepts ClusterNodeConfigAdvancedMachineFeaturesArgs, ClusterNodeConfigAdvancedMachineFeaturesPtr and ClusterNodeConfigAdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigAdvancedMachineFeaturesPtrInput` via:
+//
+//	        ClusterNodeConfigAdvancedMachineFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigAdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodeConfigAdvancedMachineFeaturesPtrOutput
+	ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Context) ClusterNodeConfigAdvancedMachineFeaturesPtrOutput
+}
+
+type clusterNodeConfigAdvancedMachineFeaturesPtrType ClusterNodeConfigAdvancedMachineFeaturesArgs
+
+func ClusterNodeConfigAdvancedMachineFeaturesPtr(v *ClusterNodeConfigAdvancedMachineFeaturesArgs) ClusterNodeConfigAdvancedMachineFeaturesPtrInput {
+	return (*clusterNodeConfigAdvancedMachineFeaturesPtrType)(v)
+}
+
+func (*clusterNodeConfigAdvancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigAdvancedMachineFeaturesPtrType) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return i.ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigAdvancedMachineFeaturesPtrType) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+type ClusterNodeConfigAdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigAdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodeConfigAdvancedMachineFeaturesOutput() ClusterNodeConfigAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodeConfigAdvancedMachineFeaturesOutputWithContext(ctx context.Context) ClusterNodeConfigAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigAdvancedMachineFeatures) *ClusterNodeConfigAdvancedMachineFeatures {
+		return &v
+	}).(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o ClusterNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type ClusterNodeConfigAdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ToClusterNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) Elem() ClusterNodeConfigAdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigAdvancedMachineFeatures) ClusterNodeConfigAdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigAdvancedMachineFeatures
+		return ret
+	}).(ClusterNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigAdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodeConfigEphemeralStorageConfig struct {
@@ -18078,6 +18284,147 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOut
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+type ClusterNodeConfigLocalNvmeSsdBlockConfig struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+	// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// ClusterNodeConfigLocalNvmeSsdBlockConfigInput is an input type that accepts ClusterNodeConfigLocalNvmeSsdBlockConfigArgs and ClusterNodeConfigLocalNvmeSsdBlockConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigLocalNvmeSsdBlockConfigInput` via:
+//
+//	ClusterNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+type ClusterNodeConfigLocalNvmeSsdBlockConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigLocalNvmeSsdBlockConfigOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigOutput
+	ToClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigOutput
+}
+
+type ClusterNodeConfigLocalNvmeSsdBlockConfigArgs struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+	// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (ClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodeConfigLocalNvmeSsdBlockConfigOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return i.ToClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+func (i ClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLocalNvmeSsdBlockConfigOutput).ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput is an input type that accepts ClusterNodeConfigLocalNvmeSsdBlockConfigArgs, ClusterNodeConfigLocalNvmeSsdBlockConfigPtr and ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput` via:
+//
+//	        ClusterNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput
+	ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput
+}
+
+type clusterNodeConfigLocalNvmeSsdBlockConfigPtrType ClusterNodeConfigLocalNvmeSsdBlockConfigArgs
+
+func ClusterNodeConfigLocalNvmeSsdBlockConfigPtr(v *ClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput {
+	return (*clusterNodeConfigLocalNvmeSsdBlockConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigLocalNvmeSsdBlockConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigLocalNvmeSsdBlockConfigPtrType) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigLocalNvmeSsdBlockConfigPtrType) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
+}
+
+type ClusterNodeConfigLocalNvmeSsdBlockConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodeConfigLocalNvmeSsdBlockConfigOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigLocalNvmeSsdBlockConfig) *ClusterNodeConfigLocalNvmeSsdBlockConfig {
+		return &v
+	}).(ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
+}
+
+// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeConfigLocalNvmeSsdBlockConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ToClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput) Elem() ClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLocalNvmeSsdBlockConfig) ClusterNodeConfigLocalNvmeSsdBlockConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigLocalNvmeSsdBlockConfig
+		return ret
+	}).(ClusterNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+func (o ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLocalNvmeSsdBlockConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodeConfigReservationAffinity struct {
@@ -20329,6 +20676,9 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 }
 
 type ClusterNodePoolNodeConfig struct {
+	// Specifies options for controlling
+	// advanced machine features. Structure is documented below.
+	AdvancedMachineFeatures *ClusterNodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
@@ -20368,6 +20718,8 @@ type ClusterNodePoolNodeConfig struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig *ClusterNodePoolNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
+	// Parameters for the local NVMe SSDs. Structure is documented below.
+	LocalNvmeSsdBlockConfig *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
@@ -20443,6 +20795,9 @@ type ClusterNodePoolNodeConfigInput interface {
 }
 
 type ClusterNodePoolNodeConfigArgs struct {
+	// Specifies options for controlling
+	// advanced machine features. Structure is documented below.
+	AdvancedMachineFeatures ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified
@@ -20482,6 +20837,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
+	// Parameters for the local NVMe SSDs. Structure is documented below.
+	LocalNvmeSsdBlockConfig ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput `pulumi:"localNvmeSsdBlockConfig"`
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
@@ -20622,6 +20979,14 @@ func (o ClusterNodePoolNodeConfigOutput) ToClusterNodePoolNodeConfigPtrOutputWit
 	}).(ClusterNodePoolNodeConfigPtrOutput)
 }
 
+// Specifies options for controlling
+// advanced machine features. Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigAdvancedMachineFeatures {
+		return v.AdvancedMachineFeatures
+	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
@@ -20696,6 +21061,13 @@ func (o ClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ClusterNodePoolNodeConfigOutput) LinuxNodeConfig() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+// Parameters for the local NVMe SSDs. Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) LocalNvmeSsdBlockConfig() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		return v.LocalNvmeSsdBlockConfig
+	}).(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -20840,6 +21212,17 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Elem() ClusterNodePoolNodeConfigOutp
 	}).(ClusterNodePoolNodeConfigOutput)
 }
 
+// Specifies options for controlling
+// advanced machine features. Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) AdvancedMachineFeatures() ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigAdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
@@ -20965,6 +21348,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodePoolNod
 		}
 		return v.LinuxNodeConfig
 	}).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+// Parameters for the local NVMe SSDs. Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) LocalNvmeSsdBlockConfig() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LocalNvmeSsdBlockConfig
+	}).(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
 }
 
 // The amount of local SSD disks that will be
@@ -21162,6 +21555,143 @@ func (o ClusterNodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNode
 		}
 		return v.WorkloadMetadataConfig
 	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigAdvancedMachineFeatures struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput is an input type that accepts ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs and ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput` via:
+//
+//	ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{...}
+type ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput
+	ToClusterNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput
+}
+
+type ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return i.ToClusterNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+func (i ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return i.ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput).ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput is an input type that accepts ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs, ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtr and ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput
+	ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput
+}
+
+type clusterNodePoolNodeConfigAdvancedMachineFeaturesPtrType ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs
+
+func ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtr(v *ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs) ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput {
+	return (*clusterNodePoolNodeConfigAdvancedMachineFeaturesPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigAdvancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigAdvancedMachineFeaturesPtrType) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return i.ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigAdvancedMachineFeaturesPtrType) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigAdvancedMachineFeatures) *ClusterNodePoolNodeConfigAdvancedMachineFeatures {
+		return &v
+	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ToClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) Elem() ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigAdvancedMachineFeatures) ClusterNodePoolNodeConfigAdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigAdvancedMachineFeatures
+		return ret
+	}).(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigAdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigEphemeralStorageConfig struct {
@@ -22226,6 +22756,147 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.Stri
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+type ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+	// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput is an input type that accepts ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs and ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+type ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput
+	ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput
+}
+
+type ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs struct {
+	// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+	// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return i.ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput).ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs, ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtr and ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput
+	ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs
+
+func ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtr(v *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput {
+	return (*clusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig) *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
+}
+
+// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ToClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) Elem() ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig) ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node.
+// > Note: Local NVMe SSD storage available in GKE versions v1.25.3-gke.1800 and later.
+func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigReservationAffinity struct {
@@ -26677,34 +27348,36 @@ func (o NodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 }
 
 type NodePoolNodeConfig struct {
-	BootDiskKmsKey         *string                                   `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb             *int                                      `pulumi:"diskSizeGb"`
-	DiskType               *string                                   `pulumi:"diskType"`
-	EphemeralStorageConfig *NodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
-	GcfsConfig             *NodePoolNodeConfigGcfsConfig             `pulumi:"gcfsConfig"`
-	GuestAccelerators      []NodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
-	Gvnic                  *NodePoolNodeConfigGvnic                  `pulumi:"gvnic"`
-	ImageType              *string                                   `pulumi:"imageType"`
-	KubeletConfig          *NodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfig"`
-	Labels                 map[string]string                         `pulumi:"labels"`
-	LinuxNodeConfig        *NodePoolNodeConfigLinuxNodeConfig        `pulumi:"linuxNodeConfig"`
-	LocalSsdCount          *int                                      `pulumi:"localSsdCount"`
-	LoggingVariant         *string                                   `pulumi:"loggingVariant"`
-	MachineType            *string                                   `pulumi:"machineType"`
-	Metadata               map[string]string                         `pulumi:"metadata"`
-	MinCpuPlatform         *string                                   `pulumi:"minCpuPlatform"`
-	NodeGroup              *string                                   `pulumi:"nodeGroup"`
-	OauthScopes            []string                                  `pulumi:"oauthScopes"`
-	Preemptible            *bool                                     `pulumi:"preemptible"`
-	ReservationAffinity    *NodePoolNodeConfigReservationAffinity    `pulumi:"reservationAffinity"`
-	ResourceLabels         map[string]string                         `pulumi:"resourceLabels"`
-	SandboxConfig          *NodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfig"`
-	ServiceAccount         *string                                   `pulumi:"serviceAccount"`
-	ShieldedInstanceConfig *NodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
-	Spot                   *bool                                     `pulumi:"spot"`
-	Tags                   []string                                  `pulumi:"tags"`
-	Taints                 []NodePoolNodeConfigTaint                 `pulumi:"taints"`
-	WorkloadMetadataConfig *NodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
+	AdvancedMachineFeatures *NodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey          *string                                    `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb              *int                                       `pulumi:"diskSizeGb"`
+	DiskType                *string                                    `pulumi:"diskType"`
+	EphemeralStorageConfig  *NodePoolNodeConfigEphemeralStorageConfig  `pulumi:"ephemeralStorageConfig"`
+	GcfsConfig              *NodePoolNodeConfigGcfsConfig              `pulumi:"gcfsConfig"`
+	GuestAccelerators       []NodePoolNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
+	Gvnic                   *NodePoolNodeConfigGvnic                   `pulumi:"gvnic"`
+	ImageType               *string                                    `pulumi:"imageType"`
+	KubeletConfig           *NodePoolNodeConfigKubeletConfig           `pulumi:"kubeletConfig"`
+	Labels                  map[string]string                          `pulumi:"labels"`
+	LinuxNodeConfig         *NodePoolNodeConfigLinuxNodeConfig         `pulumi:"linuxNodeConfig"`
+	LocalNvmeSsdBlockConfig *NodePoolNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfig"`
+	LocalSsdCount           *int                                       `pulumi:"localSsdCount"`
+	LoggingVariant          *string                                    `pulumi:"loggingVariant"`
+	MachineType             *string                                    `pulumi:"machineType"`
+	Metadata                map[string]string                          `pulumi:"metadata"`
+	MinCpuPlatform          *string                                    `pulumi:"minCpuPlatform"`
+	NodeGroup               *string                                    `pulumi:"nodeGroup"`
+	OauthScopes             []string                                   `pulumi:"oauthScopes"`
+	Preemptible             *bool                                      `pulumi:"preemptible"`
+	ReservationAffinity     *NodePoolNodeConfigReservationAffinity     `pulumi:"reservationAffinity"`
+	ResourceLabels          map[string]string                          `pulumi:"resourceLabels"`
+	SandboxConfig           *NodePoolNodeConfigSandboxConfig           `pulumi:"sandboxConfig"`
+	ServiceAccount          *string                                    `pulumi:"serviceAccount"`
+	ShieldedInstanceConfig  *NodePoolNodeConfigShieldedInstanceConfig  `pulumi:"shieldedInstanceConfig"`
+	Spot                    *bool                                      `pulumi:"spot"`
+	Tags                    []string                                   `pulumi:"tags"`
+	Taints                  []NodePoolNodeConfigTaint                  `pulumi:"taints"`
+	WorkloadMetadataConfig  *NodePoolNodeConfigWorkloadMetadataConfig  `pulumi:"workloadMetadataConfig"`
 }
 
 // NodePoolNodeConfigInput is an input type that accepts NodePoolNodeConfigArgs and NodePoolNodeConfigOutput values.
@@ -26719,34 +27392,36 @@ type NodePoolNodeConfigInput interface {
 }
 
 type NodePoolNodeConfigArgs struct {
-	BootDiskKmsKey         pulumi.StringPtrInput                            `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb             pulumi.IntPtrInput                               `pulumi:"diskSizeGb"`
-	DiskType               pulumi.StringPtrInput                            `pulumi:"diskType"`
-	EphemeralStorageConfig NodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
-	GcfsConfig             NodePoolNodeConfigGcfsConfigPtrInput             `pulumi:"gcfsConfig"`
-	GuestAccelerators      NodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
-	Gvnic                  NodePoolNodeConfigGvnicPtrInput                  `pulumi:"gvnic"`
-	ImageType              pulumi.StringPtrInput                            `pulumi:"imageType"`
-	KubeletConfig          NodePoolNodeConfigKubeletConfigPtrInput          `pulumi:"kubeletConfig"`
-	Labels                 pulumi.StringMapInput                            `pulumi:"labels"`
-	LinuxNodeConfig        NodePoolNodeConfigLinuxNodeConfigPtrInput        `pulumi:"linuxNodeConfig"`
-	LocalSsdCount          pulumi.IntPtrInput                               `pulumi:"localSsdCount"`
-	LoggingVariant         pulumi.StringPtrInput                            `pulumi:"loggingVariant"`
-	MachineType            pulumi.StringPtrInput                            `pulumi:"machineType"`
-	Metadata               pulumi.StringMapInput                            `pulumi:"metadata"`
-	MinCpuPlatform         pulumi.StringPtrInput                            `pulumi:"minCpuPlatform"`
-	NodeGroup              pulumi.StringPtrInput                            `pulumi:"nodeGroup"`
-	OauthScopes            pulumi.StringArrayInput                          `pulumi:"oauthScopes"`
-	Preemptible            pulumi.BoolPtrInput                              `pulumi:"preemptible"`
-	ReservationAffinity    NodePoolNodeConfigReservationAffinityPtrInput    `pulumi:"reservationAffinity"`
-	ResourceLabels         pulumi.StringMapInput                            `pulumi:"resourceLabels"`
-	SandboxConfig          NodePoolNodeConfigSandboxConfigPtrInput          `pulumi:"sandboxConfig"`
-	ServiceAccount         pulumi.StringPtrInput                            `pulumi:"serviceAccount"`
-	ShieldedInstanceConfig NodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
-	Spot                   pulumi.BoolPtrInput                              `pulumi:"spot"`
-	Tags                   pulumi.StringArrayInput                          `pulumi:"tags"`
-	Taints                 NodePoolNodeConfigTaintArrayInput                `pulumi:"taints"`
-	WorkloadMetadataConfig NodePoolNodeConfigWorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
+	AdvancedMachineFeatures NodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey          pulumi.StringPtrInput                             `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb              pulumi.IntPtrInput                                `pulumi:"diskSizeGb"`
+	DiskType                pulumi.StringPtrInput                             `pulumi:"diskType"`
+	EphemeralStorageConfig  NodePoolNodeConfigEphemeralStorageConfigPtrInput  `pulumi:"ephemeralStorageConfig"`
+	GcfsConfig              NodePoolNodeConfigGcfsConfigPtrInput              `pulumi:"gcfsConfig"`
+	GuestAccelerators       NodePoolNodeConfigGuestAcceleratorArrayInput      `pulumi:"guestAccelerators"`
+	Gvnic                   NodePoolNodeConfigGvnicPtrInput                   `pulumi:"gvnic"`
+	ImageType               pulumi.StringPtrInput                             `pulumi:"imageType"`
+	KubeletConfig           NodePoolNodeConfigKubeletConfigPtrInput           `pulumi:"kubeletConfig"`
+	Labels                  pulumi.StringMapInput                             `pulumi:"labels"`
+	LinuxNodeConfig         NodePoolNodeConfigLinuxNodeConfigPtrInput         `pulumi:"linuxNodeConfig"`
+	LocalNvmeSsdBlockConfig NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput `pulumi:"localNvmeSsdBlockConfig"`
+	LocalSsdCount           pulumi.IntPtrInput                                `pulumi:"localSsdCount"`
+	LoggingVariant          pulumi.StringPtrInput                             `pulumi:"loggingVariant"`
+	MachineType             pulumi.StringPtrInput                             `pulumi:"machineType"`
+	Metadata                pulumi.StringMapInput                             `pulumi:"metadata"`
+	MinCpuPlatform          pulumi.StringPtrInput                             `pulumi:"minCpuPlatform"`
+	NodeGroup               pulumi.StringPtrInput                             `pulumi:"nodeGroup"`
+	OauthScopes             pulumi.StringArrayInput                           `pulumi:"oauthScopes"`
+	Preemptible             pulumi.BoolPtrInput                               `pulumi:"preemptible"`
+	ReservationAffinity     NodePoolNodeConfigReservationAffinityPtrInput     `pulumi:"reservationAffinity"`
+	ResourceLabels          pulumi.StringMapInput                             `pulumi:"resourceLabels"`
+	SandboxConfig           NodePoolNodeConfigSandboxConfigPtrInput           `pulumi:"sandboxConfig"`
+	ServiceAccount          pulumi.StringPtrInput                             `pulumi:"serviceAccount"`
+	ShieldedInstanceConfig  NodePoolNodeConfigShieldedInstanceConfigPtrInput  `pulumi:"shieldedInstanceConfig"`
+	Spot                    pulumi.BoolPtrInput                               `pulumi:"spot"`
+	Tags                    pulumi.StringArrayInput                           `pulumi:"tags"`
+	Taints                  NodePoolNodeConfigTaintArrayInput                 `pulumi:"taints"`
+	WorkloadMetadataConfig  NodePoolNodeConfigWorkloadMetadataConfigPtrInput  `pulumi:"workloadMetadataConfig"`
 }
 
 func (NodePoolNodeConfigArgs) ElementType() reflect.Type {
@@ -26826,6 +27501,12 @@ func (o NodePoolNodeConfigOutput) ToNodePoolNodeConfigPtrOutputWithContext(ctx c
 	}).(NodePoolNodeConfigPtrOutput)
 }
 
+func (o NodePoolNodeConfigOutput) AdvancedMachineFeatures() NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigAdvancedMachineFeatures {
+		return v.AdvancedMachineFeatures
+	}).(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
 func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
 }
@@ -26868,6 +27549,12 @@ func (o NodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 
 func (o NodePoolNodeConfigOutput) LinuxNodeConfig() NodePoolNodeConfigLinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(NodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) LocalNvmeSsdBlockConfig() NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		return v.LocalNvmeSsdBlockConfig
+	}).(NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
@@ -26960,6 +27647,15 @@ func (o NodePoolNodeConfigPtrOutput) Elem() NodePoolNodeConfigOutput {
 		var ret NodePoolNodeConfig
 		return ret
 	}).(NodePoolNodeConfigOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) AdvancedMachineFeatures() NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigAdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
@@ -27059,6 +27755,15 @@ func (o NodePoolNodeConfigPtrOutput) LinuxNodeConfig() NodePoolNodeConfigLinuxNo
 		}
 		return v.LinuxNodeConfig
 	}).(NodePoolNodeConfigLinuxNodeConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) LocalNvmeSsdBlockConfig() NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LocalNvmeSsdBlockConfig
+	}).(NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
@@ -27212,6 +27917,139 @@ func (o NodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() NodePoolNodeConfig
 		}
 		return v.WorkloadMetadataConfig
 	}).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+}
+
+type NodePoolNodeConfigAdvancedMachineFeatures struct {
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// NodePoolNodeConfigAdvancedMachineFeaturesInput is an input type that accepts NodePoolNodeConfigAdvancedMachineFeaturesArgs and NodePoolNodeConfigAdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigAdvancedMachineFeaturesInput` via:
+//
+//	NodePoolNodeConfigAdvancedMachineFeaturesArgs{...}
+type NodePoolNodeConfigAdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigAdvancedMachineFeaturesOutput() NodePoolNodeConfigAdvancedMachineFeaturesOutput
+	ToNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(context.Context) NodePoolNodeConfigAdvancedMachineFeaturesOutput
+}
+
+type NodePoolNodeConfigAdvancedMachineFeaturesArgs struct {
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (NodePoolNodeConfigAdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigAdvancedMachineFeaturesArgs) ToNodePoolNodeConfigAdvancedMachineFeaturesOutput() NodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return i.ToNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigAdvancedMachineFeaturesArgs) ToNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(ctx context.Context) NodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+func (i NodePoolNodeConfigAdvancedMachineFeaturesArgs) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return i.ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigAdvancedMachineFeaturesArgs) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigAdvancedMachineFeaturesOutput).ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigAdvancedMachineFeaturesPtrInput is an input type that accepts NodePoolNodeConfigAdvancedMachineFeaturesArgs, NodePoolNodeConfigAdvancedMachineFeaturesPtr and NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigAdvancedMachineFeaturesPtrInput` via:
+//
+//	        NodePoolNodeConfigAdvancedMachineFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigAdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput
+	ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Context) NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput
+}
+
+type nodePoolNodeConfigAdvancedMachineFeaturesPtrType NodePoolNodeConfigAdvancedMachineFeaturesArgs
+
+func NodePoolNodeConfigAdvancedMachineFeaturesPtr(v *NodePoolNodeConfigAdvancedMachineFeaturesArgs) NodePoolNodeConfigAdvancedMachineFeaturesPtrInput {
+	return (*nodePoolNodeConfigAdvancedMachineFeaturesPtrType)(v)
+}
+
+func (*nodePoolNodeConfigAdvancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigAdvancedMachineFeaturesPtrType) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return i.ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigAdvancedMachineFeaturesPtrType) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+type NodePoolNodeConfigAdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigAdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ToNodePoolNodeConfigAdvancedMachineFeaturesOutput() NodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ToNodePoolNodeConfigAdvancedMachineFeaturesOutputWithContext(ctx context.Context) NodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigAdvancedMachineFeatures) *NodePoolNodeConfigAdvancedMachineFeatures {
+		return &v
+	}).(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput)
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigAdvancedMachineFeatures) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput() NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ToNodePoolNodeConfigAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) Elem() NodePoolNodeConfigAdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigAdvancedMachineFeatures) NodePoolNodeConfigAdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigAdvancedMachineFeatures
+		return ret
+	}).(NodePoolNodeConfigAdvancedMachineFeaturesOutput)
+}
+
+func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigAdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
 }
 
 type NodePoolNodeConfigEphemeralStorageConfig struct {
@@ -28193,6 +29031,139 @@ func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOu
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+type NodePoolNodeConfigLocalNvmeSsdBlockConfig struct {
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// NodePoolNodeConfigLocalNvmeSsdBlockConfigInput is an input type that accepts NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs and NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigLocalNvmeSsdBlockConfigInput` via:
+//
+//	NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+type NodePoolNodeConfigLocalNvmeSsdBlockConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput
+	ToNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput
+}
+
+type NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs struct {
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return i.ToNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+func (i NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput).ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput is an input type that accepts NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs, NodePoolNodeConfigLocalNvmeSsdBlockConfigPtr and NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput
+	ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput
+}
+
+type nodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs
+
+func NodePoolNodeConfigLocalNvmeSsdBlockConfigPtr(v *NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput {
+	return (*nodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigLocalNvmeSsdBlockConfigPtrType) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
+}
+
+type NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigLocalNvmeSsdBlockConfig) *NodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		return &v
+	}).(NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigLocalNvmeSsdBlockConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput() NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) ToNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) Elem() NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLocalNvmeSsdBlockConfig) NodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigLocalNvmeSsdBlockConfig
+		return ret
+	}).(NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+func (o NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLocalNvmeSsdBlockConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type NodePoolNodeConfigReservationAffinity struct {
@@ -32781,6 +33752,7 @@ type GetClusterIpAllocationPolicy struct {
 	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
 	ServicesIpv4CidrBlock      string `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
+	StackType                  string `pulumi:"stackType"`
 }
 
 // GetClusterIpAllocationPolicyInput is an input type that accepts GetClusterIpAllocationPolicyArgs and GetClusterIpAllocationPolicyOutput values.
@@ -32799,6 +33771,7 @@ type GetClusterIpAllocationPolicyArgs struct {
 	ClusterSecondaryRangeName  pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
 	ServicesIpv4CidrBlock      pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
+	StackType                  pulumi.StringInput `pulumi:"stackType"`
 }
 
 func (GetClusterIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -32866,6 +33839,10 @@ func (o GetClusterIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.Strin
 
 func (o GetClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
+}
+
+func (o GetClusterIpAllocationPolicyOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 type GetClusterIpAllocationPolicyArrayOutput struct{ *pulumi.OutputState }
@@ -34309,34 +35286,36 @@ func (o GetClusterNetworkPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterN
 }
 
 type GetClusterNodeConfig struct {
-	BootDiskKmsKey          string                                       `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb              int                                          `pulumi:"diskSizeGb"`
-	DiskType                string                                       `pulumi:"diskType"`
-	EphemeralStorageConfigs []GetClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
-	GcfsConfigs             []GetClusterNodeConfigGcfsConfig             `pulumi:"gcfsConfigs"`
-	GuestAccelerators       []GetClusterNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
-	Gvnics                  []GetClusterNodeConfigGvnic                  `pulumi:"gvnics"`
-	ImageType               string                                       `pulumi:"imageType"`
-	KubeletConfigs          []GetClusterNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
-	Labels                  map[string]string                            `pulumi:"labels"`
-	LinuxNodeConfigs        []GetClusterNodeConfigLinuxNodeConfig        `pulumi:"linuxNodeConfigs"`
-	LocalSsdCount           int                                          `pulumi:"localSsdCount"`
-	LoggingVariant          string                                       `pulumi:"loggingVariant"`
-	MachineType             string                                       `pulumi:"machineType"`
-	Metadata                map[string]string                            `pulumi:"metadata"`
-	MinCpuPlatform          string                                       `pulumi:"minCpuPlatform"`
-	NodeGroup               string                                       `pulumi:"nodeGroup"`
-	OauthScopes             []string                                     `pulumi:"oauthScopes"`
-	Preemptible             bool                                         `pulumi:"preemptible"`
-	ReservationAffinities   []GetClusterNodeConfigReservationAffinity    `pulumi:"reservationAffinities"`
-	ResourceLabels          map[string]string                            `pulumi:"resourceLabels"`
-	SandboxConfigs          []GetClusterNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
-	ServiceAccount          string                                       `pulumi:"serviceAccount"`
-	ShieldedInstanceConfigs []GetClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
-	Spot                    bool                                         `pulumi:"spot"`
-	Tags                    []string                                     `pulumi:"tags"`
-	Taints                  []GetClusterNodeConfigTaint                  `pulumi:"taints"`
-	WorkloadMetadataConfigs []GetClusterNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
+	AdvancedMachineFeatures  []GetClusterNodeConfigAdvancedMachineFeature  `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey           string                                        `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb               int                                           `pulumi:"diskSizeGb"`
+	DiskType                 string                                        `pulumi:"diskType"`
+	EphemeralStorageConfigs  []GetClusterNodeConfigEphemeralStorageConfig  `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs              []GetClusterNodeConfigGcfsConfig              `pulumi:"gcfsConfigs"`
+	GuestAccelerators        []GetClusterNodeConfigGuestAccelerator        `pulumi:"guestAccelerators"`
+	Gvnics                   []GetClusterNodeConfigGvnic                   `pulumi:"gvnics"`
+	ImageType                string                                        `pulumi:"imageType"`
+	KubeletConfigs           []GetClusterNodeConfigKubeletConfig           `pulumi:"kubeletConfigs"`
+	Labels                   map[string]string                             `pulumi:"labels"`
+	LinuxNodeConfigs         []GetClusterNodeConfigLinuxNodeConfig         `pulumi:"linuxNodeConfigs"`
+	LocalNvmeSsdBlockConfigs []GetClusterNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfigs"`
+	LocalSsdCount            int                                           `pulumi:"localSsdCount"`
+	LoggingVariant           string                                        `pulumi:"loggingVariant"`
+	MachineType              string                                        `pulumi:"machineType"`
+	Metadata                 map[string]string                             `pulumi:"metadata"`
+	MinCpuPlatform           string                                        `pulumi:"minCpuPlatform"`
+	NodeGroup                string                                        `pulumi:"nodeGroup"`
+	OauthScopes              []string                                      `pulumi:"oauthScopes"`
+	Preemptible              bool                                          `pulumi:"preemptible"`
+	ReservationAffinities    []GetClusterNodeConfigReservationAffinity     `pulumi:"reservationAffinities"`
+	ResourceLabels           map[string]string                             `pulumi:"resourceLabels"`
+	SandboxConfigs           []GetClusterNodeConfigSandboxConfig           `pulumi:"sandboxConfigs"`
+	ServiceAccount           string                                        `pulumi:"serviceAccount"`
+	ShieldedInstanceConfigs  []GetClusterNodeConfigShieldedInstanceConfig  `pulumi:"shieldedInstanceConfigs"`
+	Spot                     bool                                          `pulumi:"spot"`
+	Tags                     []string                                      `pulumi:"tags"`
+	Taints                   []GetClusterNodeConfigTaint                   `pulumi:"taints"`
+	WorkloadMetadataConfigs  []GetClusterNodeConfigWorkloadMetadataConfig  `pulumi:"workloadMetadataConfigs"`
 }
 
 // GetClusterNodeConfigInput is an input type that accepts GetClusterNodeConfigArgs and GetClusterNodeConfigOutput values.
@@ -34351,34 +35330,36 @@ type GetClusterNodeConfigInput interface {
 }
 
 type GetClusterNodeConfigArgs struct {
-	BootDiskKmsKey          pulumi.StringInput                                   `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb              pulumi.IntInput                                      `pulumi:"diskSizeGb"`
-	DiskType                pulumi.StringInput                                   `pulumi:"diskType"`
-	EphemeralStorageConfigs GetClusterNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
-	GcfsConfigs             GetClusterNodeConfigGcfsConfigArrayInput             `pulumi:"gcfsConfigs"`
-	GuestAccelerators       GetClusterNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
-	Gvnics                  GetClusterNodeConfigGvnicArrayInput                  `pulumi:"gvnics"`
-	ImageType               pulumi.StringInput                                   `pulumi:"imageType"`
-	KubeletConfigs          GetClusterNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
-	Labels                  pulumi.StringMapInput                                `pulumi:"labels"`
-	LinuxNodeConfigs        GetClusterNodeConfigLinuxNodeConfigArrayInput        `pulumi:"linuxNodeConfigs"`
-	LocalSsdCount           pulumi.IntInput                                      `pulumi:"localSsdCount"`
-	LoggingVariant          pulumi.StringInput                                   `pulumi:"loggingVariant"`
-	MachineType             pulumi.StringInput                                   `pulumi:"machineType"`
-	Metadata                pulumi.StringMapInput                                `pulumi:"metadata"`
-	MinCpuPlatform          pulumi.StringInput                                   `pulumi:"minCpuPlatform"`
-	NodeGroup               pulumi.StringInput                                   `pulumi:"nodeGroup"`
-	OauthScopes             pulumi.StringArrayInput                              `pulumi:"oauthScopes"`
-	Preemptible             pulumi.BoolInput                                     `pulumi:"preemptible"`
-	ReservationAffinities   GetClusterNodeConfigReservationAffinityArrayInput    `pulumi:"reservationAffinities"`
-	ResourceLabels          pulumi.StringMapInput                                `pulumi:"resourceLabels"`
-	SandboxConfigs          GetClusterNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
-	ServiceAccount          pulumi.StringInput                                   `pulumi:"serviceAccount"`
-	ShieldedInstanceConfigs GetClusterNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
-	Spot                    pulumi.BoolInput                                     `pulumi:"spot"`
-	Tags                    pulumi.StringArrayInput                              `pulumi:"tags"`
-	Taints                  GetClusterNodeConfigTaintArrayInput                  `pulumi:"taints"`
-	WorkloadMetadataConfigs GetClusterNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
+	AdvancedMachineFeatures  GetClusterNodeConfigAdvancedMachineFeatureArrayInput  `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey           pulumi.StringInput                                    `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb               pulumi.IntInput                                       `pulumi:"diskSizeGb"`
+	DiskType                 pulumi.StringInput                                    `pulumi:"diskType"`
+	EphemeralStorageConfigs  GetClusterNodeConfigEphemeralStorageConfigArrayInput  `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs              GetClusterNodeConfigGcfsConfigArrayInput              `pulumi:"gcfsConfigs"`
+	GuestAccelerators        GetClusterNodeConfigGuestAcceleratorArrayInput        `pulumi:"guestAccelerators"`
+	Gvnics                   GetClusterNodeConfigGvnicArrayInput                   `pulumi:"gvnics"`
+	ImageType                pulumi.StringInput                                    `pulumi:"imageType"`
+	KubeletConfigs           GetClusterNodeConfigKubeletConfigArrayInput           `pulumi:"kubeletConfigs"`
+	Labels                   pulumi.StringMapInput                                 `pulumi:"labels"`
+	LinuxNodeConfigs         GetClusterNodeConfigLinuxNodeConfigArrayInput         `pulumi:"linuxNodeConfigs"`
+	LocalNvmeSsdBlockConfigs GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayInput `pulumi:"localNvmeSsdBlockConfigs"`
+	LocalSsdCount            pulumi.IntInput                                       `pulumi:"localSsdCount"`
+	LoggingVariant           pulumi.StringInput                                    `pulumi:"loggingVariant"`
+	MachineType              pulumi.StringInput                                    `pulumi:"machineType"`
+	Metadata                 pulumi.StringMapInput                                 `pulumi:"metadata"`
+	MinCpuPlatform           pulumi.StringInput                                    `pulumi:"minCpuPlatform"`
+	NodeGroup                pulumi.StringInput                                    `pulumi:"nodeGroup"`
+	OauthScopes              pulumi.StringArrayInput                               `pulumi:"oauthScopes"`
+	Preemptible              pulumi.BoolInput                                      `pulumi:"preemptible"`
+	ReservationAffinities    GetClusterNodeConfigReservationAffinityArrayInput     `pulumi:"reservationAffinities"`
+	ResourceLabels           pulumi.StringMapInput                                 `pulumi:"resourceLabels"`
+	SandboxConfigs           GetClusterNodeConfigSandboxConfigArrayInput           `pulumi:"sandboxConfigs"`
+	ServiceAccount           pulumi.StringInput                                    `pulumi:"serviceAccount"`
+	ShieldedInstanceConfigs  GetClusterNodeConfigShieldedInstanceConfigArrayInput  `pulumi:"shieldedInstanceConfigs"`
+	Spot                     pulumi.BoolInput                                      `pulumi:"spot"`
+	Tags                     pulumi.StringArrayInput                               `pulumi:"tags"`
+	Taints                   GetClusterNodeConfigTaintArrayInput                   `pulumi:"taints"`
+	WorkloadMetadataConfigs  GetClusterNodeConfigWorkloadMetadataConfigArrayInput  `pulumi:"workloadMetadataConfigs"`
 }
 
 func (GetClusterNodeConfigArgs) ElementType() reflect.Type {
@@ -34432,6 +35413,12 @@ func (o GetClusterNodeConfigOutput) ToGetClusterNodeConfigOutputWithContext(ctx 
 	return o
 }
 
+func (o GetClusterNodeConfigOutput) AdvancedMachineFeatures() GetClusterNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigAdvancedMachineFeature {
+		return v.AdvancedMachineFeatures
+	}).(GetClusterNodeConfigAdvancedMachineFeatureArrayOutput)
+}
+
 func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
@@ -34476,6 +35463,12 @@ func (o GetClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 
 func (o GetClusterNodeConfigOutput) LinuxNodeConfigs() GetClusterNodeConfigLinuxNodeConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigLinuxNodeConfig { return v.LinuxNodeConfigs }).(GetClusterNodeConfigLinuxNodeConfigArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) LocalNvmeSsdBlockConfigs() GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigLocalNvmeSsdBlockConfig {
+		return v.LocalNvmeSsdBlockConfigs
+	}).(GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
@@ -34568,6 +35561,100 @@ func (o GetClusterNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNode
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfig {
 		return vs[0].([]GetClusterNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigOutput)
+}
+
+type GetClusterNodeConfigAdvancedMachineFeature struct {
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// GetClusterNodeConfigAdvancedMachineFeatureInput is an input type that accepts GetClusterNodeConfigAdvancedMachineFeatureArgs and GetClusterNodeConfigAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigAdvancedMachineFeatureInput` via:
+//
+//	GetClusterNodeConfigAdvancedMachineFeatureArgs{...}
+type GetClusterNodeConfigAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigAdvancedMachineFeatureOutput() GetClusterNodeConfigAdvancedMachineFeatureOutput
+	ToGetClusterNodeConfigAdvancedMachineFeatureOutputWithContext(context.Context) GetClusterNodeConfigAdvancedMachineFeatureOutput
+}
+
+type GetClusterNodeConfigAdvancedMachineFeatureArgs struct {
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (GetClusterNodeConfigAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigAdvancedMachineFeatureArgs) ToGetClusterNodeConfigAdvancedMachineFeatureOutput() GetClusterNodeConfigAdvancedMachineFeatureOutput {
+	return i.ToGetClusterNodeConfigAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigAdvancedMachineFeatureArgs) ToGetClusterNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodeConfigAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigAdvancedMachineFeatureOutput)
+}
+
+// GetClusterNodeConfigAdvancedMachineFeatureArrayInput is an input type that accepts GetClusterNodeConfigAdvancedMachineFeatureArray and GetClusterNodeConfigAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigAdvancedMachineFeatureArrayInput` via:
+//
+//	GetClusterNodeConfigAdvancedMachineFeatureArray{ GetClusterNodeConfigAdvancedMachineFeatureArgs{...} }
+type GetClusterNodeConfigAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodeConfigAdvancedMachineFeatureArrayOutput
+	ToGetClusterNodeConfigAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetClusterNodeConfigAdvancedMachineFeatureArrayOutput
+}
+
+type GetClusterNodeConfigAdvancedMachineFeatureArray []GetClusterNodeConfigAdvancedMachineFeatureInput
+
+func (GetClusterNodeConfigAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigAdvancedMachineFeatureArray) ToGetClusterNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodeConfigAdvancedMachineFeatureArrayOutput {
+	return i.ToGetClusterNodeConfigAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigAdvancedMachineFeatureArray) ToGetClusterNodeConfigAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigAdvancedMachineFeatureArrayOutput)
+}
+
+type GetClusterNodeConfigAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodeConfigAdvancedMachineFeatureOutput() GetClusterNodeConfigAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodeConfigAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigAdvancedMachineFeatureArrayOutput) ToGetClusterNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigAdvancedMachineFeatureArrayOutput) ToGetClusterNodeConfigAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigAdvancedMachineFeature {
+		return vs[0].([]GetClusterNodeConfigAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetClusterNodeConfigAdvancedMachineFeatureOutput)
 }
 
 type GetClusterNodeConfigEphemeralStorageConfig struct {
@@ -35270,6 +36357,100 @@ func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfig {
 		return vs[0].([]GetClusterNodeConfigLinuxNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigLinuxNodeConfigOutput)
+}
+
+type GetClusterNodeConfigLocalNvmeSsdBlockConfig struct {
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// GetClusterNodeConfigLocalNvmeSsdBlockConfigInput is an input type that accepts GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs and GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLocalNvmeSsdBlockConfigInput` via:
+//
+//	GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+type GetClusterNodeConfigLocalNvmeSsdBlockConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLocalNvmeSsdBlockConfigOutput() GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput
+	ToGetClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Context) GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput
+}
+
+type GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs struct {
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigOutput() GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return i.ToGetClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+// GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayInput is an input type that accepts GetClusterNodeConfigLocalNvmeSsdBlockConfigArray and GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayInput` via:
+//
+//	GetClusterNodeConfigLocalNvmeSsdBlockConfigArray{ GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs{...} }
+type GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput() GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput
+	ToGetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput
+}
+
+type GetClusterNodeConfigLocalNvmeSsdBlockConfigArray []GetClusterNodeConfigLocalNvmeSsdBlockConfigInput
+
+func (GetClusterNodeConfigLocalNvmeSsdBlockConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLocalNvmeSsdBlockConfigArray) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput() GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLocalNvmeSsdBlockConfigArray) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigOutput() GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLocalNvmeSsdBlockConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput() GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput) ToGetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLocalNvmeSsdBlockConfig {
+		return vs[0].([]GetClusterNodeConfigLocalNvmeSsdBlockConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput)
 }
 
 type GetClusterNodeConfigReservationAffinity struct {
@@ -36764,34 +37945,36 @@ func (o GetClusterNodePoolNetworkConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClusterNodePoolNodeConfig struct {
-	BootDiskKmsKey          string                                               `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb              int                                                  `pulumi:"diskSizeGb"`
-	DiskType                string                                               `pulumi:"diskType"`
-	EphemeralStorageConfigs []GetClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
-	GcfsConfigs             []GetClusterNodePoolNodeConfigGcfsConfig             `pulumi:"gcfsConfigs"`
-	GuestAccelerators       []GetClusterNodePoolNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
-	Gvnics                  []GetClusterNodePoolNodeConfigGvnic                  `pulumi:"gvnics"`
-	ImageType               string                                               `pulumi:"imageType"`
-	KubeletConfigs          []GetClusterNodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
-	Labels                  map[string]string                                    `pulumi:"labels"`
-	LinuxNodeConfigs        []GetClusterNodePoolNodeConfigLinuxNodeConfig        `pulumi:"linuxNodeConfigs"`
-	LocalSsdCount           int                                                  `pulumi:"localSsdCount"`
-	LoggingVariant          string                                               `pulumi:"loggingVariant"`
-	MachineType             string                                               `pulumi:"machineType"`
-	Metadata                map[string]string                                    `pulumi:"metadata"`
-	MinCpuPlatform          string                                               `pulumi:"minCpuPlatform"`
-	NodeGroup               string                                               `pulumi:"nodeGroup"`
-	OauthScopes             []string                                             `pulumi:"oauthScopes"`
-	Preemptible             bool                                                 `pulumi:"preemptible"`
-	ReservationAffinities   []GetClusterNodePoolNodeConfigReservationAffinity    `pulumi:"reservationAffinities"`
-	ResourceLabels          map[string]string                                    `pulumi:"resourceLabels"`
-	SandboxConfigs          []GetClusterNodePoolNodeConfigSandboxConfig          `pulumi:"sandboxConfigs"`
-	ServiceAccount          string                                               `pulumi:"serviceAccount"`
-	ShieldedInstanceConfigs []GetClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfigs"`
-	Spot                    bool                                                 `pulumi:"spot"`
-	Tags                    []string                                             `pulumi:"tags"`
-	Taints                  []GetClusterNodePoolNodeConfigTaint                  `pulumi:"taints"`
-	WorkloadMetadataConfigs []GetClusterNodePoolNodeConfigWorkloadMetadataConfig `pulumi:"workloadMetadataConfigs"`
+	AdvancedMachineFeatures  []GetClusterNodePoolNodeConfigAdvancedMachineFeature  `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey           string                                                `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb               int                                                   `pulumi:"diskSizeGb"`
+	DiskType                 string                                                `pulumi:"diskType"`
+	EphemeralStorageConfigs  []GetClusterNodePoolNodeConfigEphemeralStorageConfig  `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs              []GetClusterNodePoolNodeConfigGcfsConfig              `pulumi:"gcfsConfigs"`
+	GuestAccelerators        []GetClusterNodePoolNodeConfigGuestAccelerator        `pulumi:"guestAccelerators"`
+	Gvnics                   []GetClusterNodePoolNodeConfigGvnic                   `pulumi:"gvnics"`
+	ImageType                string                                                `pulumi:"imageType"`
+	KubeletConfigs           []GetClusterNodePoolNodeConfigKubeletConfig           `pulumi:"kubeletConfigs"`
+	Labels                   map[string]string                                     `pulumi:"labels"`
+	LinuxNodeConfigs         []GetClusterNodePoolNodeConfigLinuxNodeConfig         `pulumi:"linuxNodeConfigs"`
+	LocalNvmeSsdBlockConfigs []GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfigs"`
+	LocalSsdCount            int                                                   `pulumi:"localSsdCount"`
+	LoggingVariant           string                                                `pulumi:"loggingVariant"`
+	MachineType              string                                                `pulumi:"machineType"`
+	Metadata                 map[string]string                                     `pulumi:"metadata"`
+	MinCpuPlatform           string                                                `pulumi:"minCpuPlatform"`
+	NodeGroup                string                                                `pulumi:"nodeGroup"`
+	OauthScopes              []string                                              `pulumi:"oauthScopes"`
+	Preemptible              bool                                                  `pulumi:"preemptible"`
+	ReservationAffinities    []GetClusterNodePoolNodeConfigReservationAffinity     `pulumi:"reservationAffinities"`
+	ResourceLabels           map[string]string                                     `pulumi:"resourceLabels"`
+	SandboxConfigs           []GetClusterNodePoolNodeConfigSandboxConfig           `pulumi:"sandboxConfigs"`
+	ServiceAccount           string                                                `pulumi:"serviceAccount"`
+	ShieldedInstanceConfigs  []GetClusterNodePoolNodeConfigShieldedInstanceConfig  `pulumi:"shieldedInstanceConfigs"`
+	Spot                     bool                                                  `pulumi:"spot"`
+	Tags                     []string                                              `pulumi:"tags"`
+	Taints                   []GetClusterNodePoolNodeConfigTaint                   `pulumi:"taints"`
+	WorkloadMetadataConfigs  []GetClusterNodePoolNodeConfigWorkloadMetadataConfig  `pulumi:"workloadMetadataConfigs"`
 }
 
 // GetClusterNodePoolNodeConfigInput is an input type that accepts GetClusterNodePoolNodeConfigArgs and GetClusterNodePoolNodeConfigOutput values.
@@ -36806,34 +37989,36 @@ type GetClusterNodePoolNodeConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigArgs struct {
-	BootDiskKmsKey          pulumi.StringInput                                           `pulumi:"bootDiskKmsKey"`
-	DiskSizeGb              pulumi.IntInput                                              `pulumi:"diskSizeGb"`
-	DiskType                pulumi.StringInput                                           `pulumi:"diskType"`
-	EphemeralStorageConfigs GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
-	GcfsConfigs             GetClusterNodePoolNodeConfigGcfsConfigArrayInput             `pulumi:"gcfsConfigs"`
-	GuestAccelerators       GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
-	Gvnics                  GetClusterNodePoolNodeConfigGvnicArrayInput                  `pulumi:"gvnics"`
-	ImageType               pulumi.StringInput                                           `pulumi:"imageType"`
-	KubeletConfigs          GetClusterNodePoolNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
-	Labels                  pulumi.StringMapInput                                        `pulumi:"labels"`
-	LinuxNodeConfigs        GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput        `pulumi:"linuxNodeConfigs"`
-	LocalSsdCount           pulumi.IntInput                                              `pulumi:"localSsdCount"`
-	LoggingVariant          pulumi.StringInput                                           `pulumi:"loggingVariant"`
-	MachineType             pulumi.StringInput                                           `pulumi:"machineType"`
-	Metadata                pulumi.StringMapInput                                        `pulumi:"metadata"`
-	MinCpuPlatform          pulumi.StringInput                                           `pulumi:"minCpuPlatform"`
-	NodeGroup               pulumi.StringInput                                           `pulumi:"nodeGroup"`
-	OauthScopes             pulumi.StringArrayInput                                      `pulumi:"oauthScopes"`
-	Preemptible             pulumi.BoolInput                                             `pulumi:"preemptible"`
-	ReservationAffinities   GetClusterNodePoolNodeConfigReservationAffinityArrayInput    `pulumi:"reservationAffinities"`
-	ResourceLabels          pulumi.StringMapInput                                        `pulumi:"resourceLabels"`
-	SandboxConfigs          GetClusterNodePoolNodeConfigSandboxConfigArrayInput          `pulumi:"sandboxConfigs"`
-	ServiceAccount          pulumi.StringInput                                           `pulumi:"serviceAccount"`
-	ShieldedInstanceConfigs GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput `pulumi:"shieldedInstanceConfigs"`
-	Spot                    pulumi.BoolInput                                             `pulumi:"spot"`
-	Tags                    pulumi.StringArrayInput                                      `pulumi:"tags"`
-	Taints                  GetClusterNodePoolNodeConfigTaintArrayInput                  `pulumi:"taints"`
-	WorkloadMetadataConfigs GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput `pulumi:"workloadMetadataConfigs"`
+	AdvancedMachineFeatures  GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput  `pulumi:"advancedMachineFeatures"`
+	BootDiskKmsKey           pulumi.StringInput                                            `pulumi:"bootDiskKmsKey"`
+	DiskSizeGb               pulumi.IntInput                                               `pulumi:"diskSizeGb"`
+	DiskType                 pulumi.StringInput                                            `pulumi:"diskType"`
+	EphemeralStorageConfigs  GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput  `pulumi:"ephemeralStorageConfigs"`
+	GcfsConfigs              GetClusterNodePoolNodeConfigGcfsConfigArrayInput              `pulumi:"gcfsConfigs"`
+	GuestAccelerators        GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput        `pulumi:"guestAccelerators"`
+	Gvnics                   GetClusterNodePoolNodeConfigGvnicArrayInput                   `pulumi:"gvnics"`
+	ImageType                pulumi.StringInput                                            `pulumi:"imageType"`
+	KubeletConfigs           GetClusterNodePoolNodeConfigKubeletConfigArrayInput           `pulumi:"kubeletConfigs"`
+	Labels                   pulumi.StringMapInput                                         `pulumi:"labels"`
+	LinuxNodeConfigs         GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput         `pulumi:"linuxNodeConfigs"`
+	LocalNvmeSsdBlockConfigs GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput `pulumi:"localNvmeSsdBlockConfigs"`
+	LocalSsdCount            pulumi.IntInput                                               `pulumi:"localSsdCount"`
+	LoggingVariant           pulumi.StringInput                                            `pulumi:"loggingVariant"`
+	MachineType              pulumi.StringInput                                            `pulumi:"machineType"`
+	Metadata                 pulumi.StringMapInput                                         `pulumi:"metadata"`
+	MinCpuPlatform           pulumi.StringInput                                            `pulumi:"minCpuPlatform"`
+	NodeGroup                pulumi.StringInput                                            `pulumi:"nodeGroup"`
+	OauthScopes              pulumi.StringArrayInput                                       `pulumi:"oauthScopes"`
+	Preemptible              pulumi.BoolInput                                              `pulumi:"preemptible"`
+	ReservationAffinities    GetClusterNodePoolNodeConfigReservationAffinityArrayInput     `pulumi:"reservationAffinities"`
+	ResourceLabels           pulumi.StringMapInput                                         `pulumi:"resourceLabels"`
+	SandboxConfigs           GetClusterNodePoolNodeConfigSandboxConfigArrayInput           `pulumi:"sandboxConfigs"`
+	ServiceAccount           pulumi.StringInput                                            `pulumi:"serviceAccount"`
+	ShieldedInstanceConfigs  GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput  `pulumi:"shieldedInstanceConfigs"`
+	Spot                     pulumi.BoolInput                                              `pulumi:"spot"`
+	Tags                     pulumi.StringArrayInput                                       `pulumi:"tags"`
+	Taints                   GetClusterNodePoolNodeConfigTaintArrayInput                   `pulumi:"taints"`
+	WorkloadMetadataConfigs  GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput  `pulumi:"workloadMetadataConfigs"`
 }
 
 func (GetClusterNodePoolNodeConfigArgs) ElementType() reflect.Type {
@@ -36887,6 +38072,12 @@ func (o GetClusterNodePoolNodeConfigOutput) ToGetClusterNodePoolNodeConfigOutput
 	return o
 }
 
+func (o GetClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigAdvancedMachineFeature {
+		return v.AdvancedMachineFeatures
+	}).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput)
+}
+
 func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
 }
@@ -36937,6 +38128,12 @@ func (o GetClusterNodePoolNodeConfigOutput) LinuxNodeConfigs() GetClusterNodePoo
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfig {
 		return v.LinuxNodeConfigs
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) LocalNvmeSsdBlockConfigs() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		return v.LocalNvmeSsdBlockConfigs
+	}).(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
@@ -37033,6 +38230,100 @@ func (o GetClusterNodePoolNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeature struct {
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput is an input type that accepts GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs and GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput` via:
+//
+//	GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{...}
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs struct {
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return i.ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput)
+}
+
+// GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput is an input type that accepts GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray and GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{ GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{...} }
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput
+	ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray []GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput() GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) ToGetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigAdvancedMachineFeature {
+		return vs[0].([]GetClusterNodePoolNodeConfigAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput)
 }
 
 type GetClusterNodePoolNodeConfigEphemeralStorageConfig struct {
@@ -37739,6 +39030,100 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig struct {
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput is an input type that accepts GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs and GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{...}
+type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput
+	ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs struct {
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray and GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray{ GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{...} }
+type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray []GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput
+
+func (GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput() GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput) ToGetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigReservationAffinity struct {
@@ -40370,6 +41755,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyPtrInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigInput)(nil)).Elem(), ClusterNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
@@ -40384,6 +41771,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), ClusterNodeConfigLocalNvmeSsdBlockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput)(nil)).Elem(), ClusterNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigReservationAffinityInput)(nil)).Elem(), ClusterNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigReservationAffinityPtrInput)(nil)).Elem(), ClusterNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSandboxConfigInput)(nil)).Elem(), ClusterNodeConfigSandboxConfigArgs{})
@@ -40414,6 +41803,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPtrInput)(nil)).Elem(), ClusterNodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
@@ -40428,6 +41819,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), ClusterNodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinityPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigSandboxConfigArgs{})
@@ -40484,6 +41877,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPtrInput)(nil)).Elem(), NodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
@@ -40498,6 +41893,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), NodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigReservationAffinityPtrInput)(nil)).Elem(), NodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), NodePoolNodeConfigSandboxConfigArgs{})
@@ -40610,6 +42007,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyArrayInput)(nil)).Elem(), GetClusterNetworkPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArgs{})
@@ -40624,6 +42023,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLocalNvmeSsdBlockConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigReservationAffinityInput)(nil)).Elem(), GetClusterNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigReservationAffinityArrayInput)(nil)).Elem(), GetClusterNodeConfigReservationAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSandboxConfigInput)(nil)).Elem(), GetClusterNodeConfigSandboxConfigArgs{})
@@ -40654,6 +42055,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArgs{})
@@ -40668,6 +42071,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), GetClusterNodePoolNodeConfigReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinityArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigReservationAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSandboxConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSandboxConfigArgs{})
@@ -40922,6 +42327,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigOutput{})
@@ -40936,6 +42343,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigLocalNvmeSsdBlockConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigReservationAffinityOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigOutput{})
@@ -40966,6 +42375,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigOutput{})
@@ -40980,6 +42391,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigReservationAffinityOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigOutput{})
@@ -41036,6 +42449,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigOutput{})
@@ -41050,6 +42465,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigReservationAffinityOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigReservationAffinityPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigOutput{})
@@ -41162,6 +42579,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigOutput{})
@@ -41176,6 +42595,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigReservationAffinityOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigOutput{})
@@ -41206,6 +42627,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigOutput{})
@@ -41220,6 +42643,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigReservationAffinityOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigOutput{})

@@ -42,6 +42,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// GKE-managed one.
         /// </summary>
         public readonly string? ServicesSecondaryRangeName;
+        /// <summary>
+        /// The IP Stack Type of the cluster. 
+        /// Default value is `IPV4`.
+        /// Possible values are `IPV4` and `PV4_IPV6`.
+        /// </summary>
+        public readonly string? StackType;
 
         [OutputConstructor]
         private ClusterIpAllocationPolicy(
@@ -51,12 +57,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? servicesIpv4CidrBlock,
 
-            string? servicesSecondaryRangeName)
+            string? servicesSecondaryRangeName,
+
+            string? stackType)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
+            StackType = stackType;
         }
     }
 }

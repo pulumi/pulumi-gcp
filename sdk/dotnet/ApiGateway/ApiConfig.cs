@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// {
     ///     var apiCfgApi = new Gcp.ApiGateway.Api("apiCfgApi", new()
     ///     {
-    ///         ApiId = "api-cfg",
+    ///         ApiId = "my-api",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.ApiGateway
     ///     var apiCfgApiConfig = new Gcp.ApiGateway.ApiConfig("apiCfgApiConfig", new()
     ///     {
     ///         Api = apiCfgApi.ApiId,
-    ///         ApiConfigId = "cfg",
+    ///         ApiConfigId = "my-config",
     ///         OpenapiDocuments = new[]
     ///         {
     ///             new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentArgs

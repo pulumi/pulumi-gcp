@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     {
         /// <summary>
         /// Describes a header to add.
-        /// You may add a maximum of 5 request headers.
+        /// You may add a maximum of 25 request headers.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd> RequestHeadersToAdds;

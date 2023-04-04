@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
     ///             {
-    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Id,
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Self_link_unique,
     ///             },
     ///         },
     ///         AllInstancesConfig = new Gcp.Compute.Inputs.InstanceGroupManagerAllInstancesConfigArgs
@@ -102,12 +102,12 @@ namespace Pulumi.Gcp.Compute
     ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
     ///             {
     ///                 Name = "appserver",
-    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Id,
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver.Self_link_unique,
     ///             },
     ///             new Gcp.Compute.Inputs.InstanceGroupManagerVersionArgs
     ///             {
     ///                 Name = "appserver-canary",
-    ///                 InstanceTemplate = google_compute_instance_template.Appserver_canary.Id,
+    ///                 InstanceTemplate = google_compute_instance_template.Appserver_canary.Self_link_unique,
     ///                 TargetSize = new Gcp.Compute.Inputs.InstanceGroupManagerVersionTargetSizeArgs
     ///                 {
     ///                     Fixed = 1,

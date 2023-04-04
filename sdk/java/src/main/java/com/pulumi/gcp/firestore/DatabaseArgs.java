@@ -67,7 +67,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The ID to use for the database, which will become the final
+     * The ID to use for the database, which will become the final
      * component of the database&#39;s resource name. This value should be 4-63
      * characters. Valid characters are /[a-z][0-9]-/ with first character
      * a letter and the last a letter or a number. Must not be
@@ -79,7 +79,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Required. The ID to use for the database, which will become the final
+     * @return The ID to use for the database, which will become the final
      * component of the database&#39;s resource name. This value should be 4-63
      * characters. Valid characters are /[a-z][0-9]-/ with first character
      * a letter and the last a letter or a number. Must not be
@@ -228,7 +228,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required. The ID to use for the database, which will become the final
+         * @param name The ID to use for the database, which will become the final
          * component of the database&#39;s resource name. This value should be 4-63
          * characters. Valid characters are /[a-z][0-9]-/ with first character
          * a letter and the last a letter or a number. Must not be
@@ -244,7 +244,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Required. The ID to use for the database, which will become the final
+         * @param name The ID to use for the database, which will become the final
          * component of the database&#39;s resource name. This value should be 4-63
          * characters. Valid characters are /[a-z][0-9]-/ with first character
          * a letter and the last a letter or a number. Must not be

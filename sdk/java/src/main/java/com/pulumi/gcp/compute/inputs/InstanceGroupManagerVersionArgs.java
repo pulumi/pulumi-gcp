@@ -17,14 +17,14 @@ public final class InstanceGroupManagerVersionArgs extends com.pulumi.resources.
     public static final InstanceGroupManagerVersionArgs Empty = new InstanceGroupManagerVersionArgs();
 
     /**
-     * The full URL to an instance template from which all new instances of this version will be created.
+     * The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     @Import(name="instanceTemplate", required=true)
     private Output<String> instanceTemplate;
 
     /**
-     * @return The full URL to an instance template from which all new instances of this version will be created.
+     * @return The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     public Output<String> instanceTemplate() {
@@ -88,7 +88,7 @@ public final class InstanceGroupManagerVersionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceTemplate The full URL to an instance template from which all new instances of this version will be created.
+         * @param instanceTemplate The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class InstanceGroupManagerVersionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param instanceTemplate The full URL to an instance template from which all new instances of this version will be created.
+         * @param instanceTemplate The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
          * 
          * @return builder
          * 

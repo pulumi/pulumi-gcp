@@ -30,8 +30,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// {
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
-    ///         LaunchStage = "BETA",
     ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs

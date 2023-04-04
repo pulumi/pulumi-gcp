@@ -185,6 +185,8 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * Port number of network endpoint.
+     * **Note** `port` is required unless the Network Endpoint Group is created
+     * with the type of `GCE_VM_IP`
      * 
      */
     @Export(name="port", type=Integer.class, parameters={})
@@ -192,6 +194,8 @@ public class NetworkEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Port number of network endpoint.
+     * **Note** `port` is required unless the Network Endpoint Group is created
+     * with the type of `GCE_VM_IP`
      * 
      */
     public Output<Optional<Integer>> port() {

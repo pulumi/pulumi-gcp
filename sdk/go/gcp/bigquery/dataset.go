@@ -257,7 +257,7 @@ import (
 //				Accesses: bigquery.DatasetAccessTypeArray{
 //					&bigquery.DatasetAccessTypeArgs{
 //						Role:        pulumi.String("OWNER"),
-//						UserByEmail: pulumi.String("emailAddress:my@service-account.com"),
+//						UserByEmail: pulumi.String("my@service-account.com"),
 //					},
 //					&bigquery.DatasetAccessTypeArgs{
 //						Routine: &bigquery.DatasetAccessRoutineArgs{
@@ -311,6 +311,16 @@ type Dataset struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
+	// Defines the default collation specification of future tables created
+	// in the dataset. If a table is created in this dataset without table-level
+	// default collation, then the table inherits the dataset default collation,
+	// which is applied to the string fields that do not have explicit collation
+	// specified. A change to this field affects only tables created afterwards,
+	// and does not alter the existing tables.
+	// The following values are supported:
+	// - 'und:ci': undetermined locale, case insensitive.
+	// - '': empty string. Default to case-sensitive behavior.
+	DefaultCollation pulumi.StringOutput `pulumi:"defaultCollation"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
 	// this value, unless table creation request (or query) overrides the key.
@@ -332,6 +342,10 @@ type Dataset struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
+	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+	// By default, this is FALSE, which means the dataset and its table names are
+	// case-sensitive. This field does not affect routine references.
+	IsCaseInsensitive pulumi.BoolOutput `pulumi:"isCaseInsensitive"`
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -392,6 +406,16 @@ type datasetState struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId *string `pulumi:"datasetId"`
+	// Defines the default collation specification of future tables created
+	// in the dataset. If a table is created in this dataset without table-level
+	// default collation, then the table inherits the dataset default collation,
+	// which is applied to the string fields that do not have explicit collation
+	// specified. A change to this field affects only tables created afterwards,
+	// and does not alter the existing tables.
+	// The following values are supported:
+	// - 'und:ci': undetermined locale, case insensitive.
+	// - '': empty string. Default to case-sensitive behavior.
+	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
 	// this value, unless table creation request (or query) overrides the key.
@@ -413,6 +437,10 @@ type datasetState struct {
 	Etag *string `pulumi:"etag"`
 	// A descriptive name for the dataset
 	FriendlyName *string `pulumi:"friendlyName"`
+	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+	// By default, this is FALSE, which means the dataset and its table names are
+	// case-sensitive. This field does not affect routine references.
+	IsCaseInsensitive *bool `pulumi:"isCaseInsensitive"`
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels map[string]string `pulumi:"labels"`
@@ -442,6 +470,16 @@ type DatasetState struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringPtrInput
+	// Defines the default collation specification of future tables created
+	// in the dataset. If a table is created in this dataset without table-level
+	// default collation, then the table inherits the dataset default collation,
+	// which is applied to the string fields that do not have explicit collation
+	// specified. A change to this field affects only tables created afterwards,
+	// and does not alter the existing tables.
+	// The following values are supported:
+	// - 'und:ci': undetermined locale, case insensitive.
+	// - '': empty string. Default to case-sensitive behavior.
+	DefaultCollation pulumi.StringPtrInput
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
 	// this value, unless table creation request (or query) overrides the key.
@@ -463,6 +501,10 @@ type DatasetState struct {
 	Etag pulumi.StringPtrInput
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrInput
+	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+	// By default, this is FALSE, which means the dataset and its table names are
+	// case-sensitive. This field does not affect routine references.
+	IsCaseInsensitive pulumi.BoolPtrInput
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels pulumi.StringMapInput
@@ -493,6 +535,16 @@ type datasetArgs struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId string `pulumi:"datasetId"`
+	// Defines the default collation specification of future tables created
+	// in the dataset. If a table is created in this dataset without table-level
+	// default collation, then the table inherits the dataset default collation,
+	// which is applied to the string fields that do not have explicit collation
+	// specified. A change to this field affects only tables created afterwards,
+	// and does not alter the existing tables.
+	// The following values are supported:
+	// - 'und:ci': undetermined locale, case insensitive.
+	// - '': empty string. Default to case-sensitive behavior.
+	DefaultCollation *string `pulumi:"defaultCollation"`
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
 	// this value, unless table creation request (or query) overrides the key.
@@ -512,6 +564,10 @@ type datasetArgs struct {
 	Description *string `pulumi:"description"`
 	// A descriptive name for the dataset
 	FriendlyName *string `pulumi:"friendlyName"`
+	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+	// By default, this is FALSE, which means the dataset and its table names are
+	// case-sensitive. This field does not affect routine references.
+	IsCaseInsensitive *bool `pulumi:"isCaseInsensitive"`
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels map[string]string `pulumi:"labels"`
@@ -534,6 +590,16 @@ type DatasetArgs struct {
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringInput
+	// Defines the default collation specification of future tables created
+	// in the dataset. If a table is created in this dataset without table-level
+	// default collation, then the table inherits the dataset default collation,
+	// which is applied to the string fields that do not have explicit collation
+	// specified. A change to this field affects only tables created afterwards,
+	// and does not alter the existing tables.
+	// The following values are supported:
+	// - 'und:ci': undetermined locale, case insensitive.
+	// - '': empty string. Default to case-sensitive behavior.
+	DefaultCollation pulumi.StringPtrInput
 	// The default encryption key for all tables in the dataset. Once this property is set,
 	// all newly-created partitioned tables in the dataset will have encryption key set to
 	// this value, unless table creation request (or query) overrides the key.
@@ -553,6 +619,10 @@ type DatasetArgs struct {
 	Description pulumi.StringPtrInput
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrInput
+	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+	// By default, this is FALSE, which means the dataset and its table names are
+	// case-sensitive. This field does not affect routine references.
+	IsCaseInsensitive pulumi.BoolPtrInput
 	// The labels associated with this dataset. You can use these to
 	// organize and group your datasets
 	Labels pulumi.StringMapInput
@@ -672,6 +742,19 @@ func (o DatasetOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
 
+// Defines the default collation specification of future tables created
+// in the dataset. If a table is created in this dataset without table-level
+// default collation, then the table inherits the dataset default collation,
+// which is applied to the string fields that do not have explicit collation
+// specified. A change to this field affects only tables created afterwards,
+// and does not alter the existing tables.
+// The following values are supported:
+// - 'und:ci': undetermined locale, case insensitive.
+// - ”: empty string. Default to case-sensitive behavior.
+func (o DatasetOutput) DefaultCollation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DefaultCollation }).(pulumi.StringOutput)
+}
+
 // The default encryption key for all tables in the dataset. Once this property is set,
 // all newly-created partitioned tables in the dataset will have encryption key set to
 // this value, unless table creation request (or query) overrides the key.
@@ -714,6 +797,13 @@ func (o DatasetOutput) Etag() pulumi.StringOutput {
 // A descriptive name for the dataset
 func (o DatasetOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringPtrOutput { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+// By default, this is FALSE, which means the dataset and its table names are
+// case-sensitive. This field does not affect routine references.
+func (o DatasetOutput) IsCaseInsensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.BoolOutput { return v.IsCaseInsensitive }).(pulumi.BoolOutput)
 }
 
 // The labels associated with this dataset. You can use these to

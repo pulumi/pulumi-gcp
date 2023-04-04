@@ -18,7 +18,7 @@ public final class GetInstanceTemplateNetworkInterface {
      * @return Access configurations, i.e. IPs via which this
      * instance can be accessed via the Internet. Omit to ensure that the instance
      * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you are running the prvovider can send traffic to the instance&#39;s
+     * not work unless you are running the provider can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
      * on that network). This block can be repeated multiple times. Structure documented below.
      * 
@@ -34,7 +34,7 @@ public final class GetInstanceTemplateNetworkInterface {
     private List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
     private String ipv6AccessType;
     /**
-     * @return The name of the instance template. One of `name` or `filter` must be provided.
+     * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
      * 
      */
     private String name;
@@ -73,7 +73,7 @@ public final class GetInstanceTemplateNetworkInterface {
      * @return Access configurations, i.e. IPs via which this
      * instance can be accessed via the Internet. Omit to ensure that the instance
      * is not accessible from the Internet (this means that ssh provisioners will
-     * not work unless you are running the prvovider can send traffic to the instance&#39;s
+     * not work unless you are running the provider can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
      * on that network). This block can be repeated multiple times. Structure documented below.
      * 
@@ -97,7 +97,7 @@ public final class GetInstanceTemplateNetworkInterface {
         return this.ipv6AccessType;
     }
     /**
-     * @return The name of the instance template. One of `name` or `filter` must be provided.
+     * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
      * 
      */
     public String name() {

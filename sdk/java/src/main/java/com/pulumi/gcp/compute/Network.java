@@ -83,6 +83,37 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Network Custom Firewall Enforcement Order
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpcNetwork = new Network(&#34;vpcNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(true)
+ *             .networkFirewallPolicyEnforcementOrder(&#34;BEFORE_CLASSIC_FIREWALL&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -258,6 +289,24 @@ public class Network extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+     * Default value is `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * 
+     */
+    @Export(name="networkFirewallPolicyEnforcementOrder", type=String.class, parameters={})
+    private Output</* @Nullable */ String> networkFirewallPolicyEnforcementOrder;
+
+    /**
+     * @return Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+     * Default value is `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * 
+     */
+    public Output<Optional<String>> networkFirewallPolicyEnforcementOrder() {
+        return Codegen.optional(this.networkFirewallPolicyEnforcementOrder);
     }
     /**
      * The ID of the project in which the resource belongs.

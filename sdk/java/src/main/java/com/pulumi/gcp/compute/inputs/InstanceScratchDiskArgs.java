@@ -5,8 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceScratchDiskArgs extends com.pulumi.resources.ResourceArgs {
@@ -28,10 +31,28 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
         return this.interface_;
     }
 
+    /**
+     * The size of the image in gigabytes. If not specified, it
+     * will inherit the size of its base image.
+     * 
+     */
+    @Import(name="size")
+    private @Nullable Output<Integer> size;
+
+    /**
+     * @return The size of the image in gigabytes. If not specified, it
+     * will inherit the size of its base image.
+     * 
+     */
+    public Optional<Output<Integer>> size() {
+        return Optional.ofNullable(this.size);
+    }
+
     private InstanceScratchDiskArgs() {}
 
     private InstanceScratchDiskArgs(InstanceScratchDiskArgs $) {
         this.interface_ = $.interface_;
+        this.size = $.size;
     }
 
     public static Builder builder() {
@@ -71,6 +92,29 @@ public final class InstanceScratchDiskArgs extends com.pulumi.resources.Resource
          */
         public Builder interface_(String interface_) {
             return interface_(Output.of(interface_));
+        }
+
+        /**
+         * @param size The size of the image in gigabytes. If not specified, it
+         * will inherit the size of its base image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder size(@Nullable Output<Integer> size) {
+            $.size = size;
+            return this;
+        }
+
+        /**
+         * @param size The size of the image in gigabytes. If not specified, it
+         * will inherit the size of its base image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder size(Integer size) {
+            return size(Output.of(size));
         }
 
         public InstanceScratchDiskArgs build() {

@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     {
         /// <summary>
         /// Name of the referent.
-        /// More info:
-        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         public readonly string Name;
 

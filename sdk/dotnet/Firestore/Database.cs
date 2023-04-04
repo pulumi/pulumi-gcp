@@ -10,15 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firestore
 {
     /// <summary>
-    /// A Cloud Firestore Database. Currently only one database is allowed per
-    /// cloud project; this database must have a `database_id` of '(default)'.
-    /// 
-    /// To get more information about Database, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/firestore/docs/)
-    /// 
     /// ## Example Usage
     /// 
     /// ## Import
@@ -85,7 +76,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> LocationId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The ID to use for the database, which will become the final
+        /// The ID to use for the database, which will become the final
         /// component of the database's resource name. This value should be 4-63
         /// characters. Valid characters are /[a-z][0-9]-/ with first character
         /// a letter and the last a letter or a number. Must not be
@@ -179,7 +170,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string> LocationId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The ID to use for the database, which will become the final
+        /// The ID to use for the database, which will become the final
         /// component of the database's resource name. This value should be 4-63
         /// characters. Valid characters are /[a-z][0-9]-/ with first character
         /// a letter and the last a letter or a number. Must not be
@@ -258,7 +249,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? LocationId { get; set; }
 
         /// <summary>
-        /// Required. The ID to use for the database, which will become the final
+        /// The ID to use for the database, which will become the final
         /// component of the database's resource name. This value should be 4-63
         /// characters. Valid characters are /[a-z][0-9]-/ with first character
         /// a letter and the last a letter or a number. Must not be

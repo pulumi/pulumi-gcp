@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset
     {
         /// <summary>
-        /// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        /// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+        /// {project}:{dataset_id}
         /// </summary>
         public readonly string DatasetId;
 

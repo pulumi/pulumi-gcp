@@ -64,9 +64,9 @@ import javax.annotation.Nullable;
  *             .source(new FileAsset(&#34;./test-fixtures/appengine/hello-world.zip&#34;))
  *             .build());
  * 
- *         var liveappV1 = new StandardAppVersion(&#34;liveappV1&#34;, StandardAppVersionArgs.builder()        
+ *         var internalappStandardAppVersion = new StandardAppVersion(&#34;internalappStandardAppVersion&#34;, StandardAppVersionArgs.builder()        
  *             .versionId(&#34;v1&#34;)
- *             .service(&#34;liveapp&#34;)
+ *             .service(&#34;internalapp&#34;)
  *             .deleteServiceOnDestroy(true)
  *             .runtime(&#34;nodejs10&#34;)
  *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
@@ -84,8 +84,8 @@ import javax.annotation.Nullable;
  *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
  *             .build());
  * 
- *         var liveapp = new ServiceNetworkSettings(&#34;liveapp&#34;, ServiceNetworkSettingsArgs.builder()        
- *             .service(liveappV1.service())
+ *         var internalappServiceNetworkSettings = new ServiceNetworkSettings(&#34;internalappServiceNetworkSettings&#34;, ServiceNetworkSettingsArgs.builder()        
+ *             .service(internalappStandardAppVersion.service())
  *             .networkSettings(ServiceNetworkSettingsNetworkSettingsArgs.builder()
  *                 .ingressTrafficAllowed(&#34;INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY&#34;)
  *                 .build())

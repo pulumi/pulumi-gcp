@@ -14,15 +14,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * A Cloud Firestore Database. Currently only one database is allowed per
- * cloud project; this database must have a `database_id` of &#39;(default)&#39;.
- * 
- * To get more information about Database, see:
- * 
- * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
- * 
  * ## Example Usage
  * 
  * ## Import
@@ -145,7 +136,7 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.locationId;
     }
     /**
-     * Required. The ID to use for the database, which will become the final
+     * The ID to use for the database, which will become the final
      * component of the database&#39;s resource name. This value should be 4-63
      * characters. Valid characters are /[a-z][0-9]-/ with first character
      * a letter and the last a letter or a number. Must not be
@@ -157,7 +148,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Required. The ID to use for the database, which will become the final
+     * @return The ID to use for the database, which will become the final
      * component of the database&#39;s resource name. This value should be 4-63
      * characters. Valid characters are /[a-z][0-9]-/ with first character
      * a letter and the last a letter or a number. Must not be

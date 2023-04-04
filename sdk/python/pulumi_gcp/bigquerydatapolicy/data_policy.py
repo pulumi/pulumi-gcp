@@ -258,6 +258,14 @@ class DataPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A BigQuery Data Policy
+
+        To get more information about DataPolicy, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+
         ## Example Usage
         ### Bigquery Datapolicy Data Policy Basic
 
@@ -269,19 +277,16 @@ class DataPolicy(pulumi.CustomResource):
             region="us-central1",
             display_name="taxonomy",
             description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         policy_tag = gcp.datacatalog.PolicyTag("policyTag",
             taxonomy=taxonomy.id,
             display_name="Low security",
-            description="A policy tag normally associated with low security items",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="A policy tag normally associated with low security items")
         data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
             location="us-central1",
             data_policy_id="data_policy",
             policy_tag=policy_tag.name,
-            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
         ```
 
         ## Import
@@ -319,6 +324,14 @@ class DataPolicy(pulumi.CustomResource):
                  args: DataPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A BigQuery Data Policy
+
+        To get more information about DataPolicy, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+
         ## Example Usage
         ### Bigquery Datapolicy Data Policy Basic
 
@@ -330,19 +343,16 @@ class DataPolicy(pulumi.CustomResource):
             region="us-central1",
             display_name="taxonomy",
             description="A collection of policy tags",
-            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"])
         policy_tag = gcp.datacatalog.PolicyTag("policyTag",
             taxonomy=taxonomy.id,
             display_name="Low security",
-            description="A policy tag normally associated with low security items",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="A policy tag normally associated with low security items")
         data_policy = gcp.bigquerydatapolicy.DataPolicy("dataPolicy",
             location="us-central1",
             data_policy_id="data_policy",
             policy_tag=policy_tag.name,
-            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            data_policy_type="COLUMN_LEVEL_SECURITY_POLICY")
         ```
 
         ## Import

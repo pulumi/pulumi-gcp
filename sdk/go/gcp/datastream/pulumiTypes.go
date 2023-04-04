@@ -4219,7 +4219,8 @@ func (o StreamDestinationConfigBigqueryDestinationConfigPtrOutput) SourceHierarc
 }
 
 type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset struct {
-	// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+	// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+	// {project}:{dataset_id}
 	DatasetId string `pulumi:"datasetId"`
 }
 
@@ -4235,7 +4236,8 @@ type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetInput in
 }
 
 type StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs struct {
-	// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+	// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+	// {project}:{dataset_id}
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 }
 
@@ -4316,7 +4318,8 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutpu
 	}).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput)
 }
 
-// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+// {project}:{dataset_id}
 func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset) string { return v.DatasetId }).(pulumi.StringOutput)
 }
@@ -4345,7 +4348,8 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOu
 	}).(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetOutput)
 }
 
-// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+// {project}:{dataset_id}
 func (o StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset) *string {
 		if v == nil {

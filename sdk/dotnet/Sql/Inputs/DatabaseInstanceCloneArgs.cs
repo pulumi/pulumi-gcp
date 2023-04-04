@@ -18,6 +18,18 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("allocatedIpRange")]
         public Input<string>? AllocatedIpRange { get; set; }
 
+        [Input("databaseNames")]
+        private InputList<string>? _databaseNames;
+
+        /// <summary>
+        /// (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+        /// </summary>
+        public InputList<string> DatabaseNames
+        {
+            get => _databaseNames ?? (_databaseNames = new InputList<string>());
+            set => _databaseNames = value;
+        }
+
         /// <summary>
         /// The timestamp of the point in time that should be restored.
         /// </summary>

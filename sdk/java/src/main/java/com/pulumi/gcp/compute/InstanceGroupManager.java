@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .baseInstanceName(&#34;app&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .versions(InstanceGroupManagerVersionArgs.builder()
- *                 .instanceTemplate(google_compute_instance_template.appserver().id())
+ *                 .instanceTemplate(google_compute_instance_template.appserver().self_link_unique())
  *                 .build())
  *             .allInstancesConfig(InstanceGroupManagerAllInstancesConfigArgs.builder()
  *                 .metadata(Map.of(&#34;metadata_key&#34;, &#34;metadata_value&#34;))
@@ -133,11 +133,11 @@ import javax.annotation.Nullable;
  *             .versions(            
  *                 InstanceGroupManagerVersionArgs.builder()
  *                     .name(&#34;appserver&#34;)
- *                     .instanceTemplate(google_compute_instance_template.appserver().id())
+ *                     .instanceTemplate(google_compute_instance_template.appserver().self_link_unique())
  *                     .build(),
  *                 InstanceGroupManagerVersionArgs.builder()
  *                     .name(&#34;appserver-canary&#34;)
- *                     .instanceTemplate(google_compute_instance_template.appserver-canary().id())
+ *                     .instanceTemplate(google_compute_instance_template.appserver-canary().self_link_unique())
  *                     .targetSize(InstanceGroupManagerVersionTargetSizeArgs.builder()
  *                         .fixed(1)
  *                         .build())

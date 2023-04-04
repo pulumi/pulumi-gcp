@@ -50,6 +50,24 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Network Custom Firewall Enforcement Order
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpcNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = true,
+    ///         NetworkFirewallPolicyEnforcementOrder = "BEFORE_CLASSIC_FIREWALL",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -139,6 +157,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        /// Default value is `AFTER_CLASSIC_FIREWALL`.
+        /// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        /// </summary>
+        [Output("networkFirewallPolicyEnforcementOrder")]
+        public Output<string?> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -274,6 +300,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        /// Default value is `AFTER_CLASSIC_FIREWALL`.
+        /// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        /// </summary>
+        [Input("networkFirewallPolicyEnforcementOrder")]
+        public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -368,6 +402,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        /// Default value is `AFTER_CLASSIC_FIREWALL`.
+        /// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        /// </summary>
+        [Input("networkFirewallPolicyEnforcementOrder")]
+        public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

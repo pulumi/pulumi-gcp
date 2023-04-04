@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceGroupManagerVersion {
     /**
-     * @return The full URL to an instance template from which all new instances of this version will be created.
+     * @return The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     private String instanceTemplate;
@@ -30,7 +30,7 @@ public final class InstanceGroupManagerVersion {
 
     private InstanceGroupManagerVersion() {}
     /**
-     * @return The full URL to an instance template from which all new instances of this version will be created.
+     * @return The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
      * 
      */
     public String instanceTemplate() {

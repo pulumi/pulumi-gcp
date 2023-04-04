@@ -446,6 +446,23 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     * 
+     */
+    @Import(name="selfLinkUnique")
+    private @Nullable Output<String> selfLinkUnique;
+
+    /**
+     * @return A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     * 
+     */
+    public Optional<Output<String>> selfLinkUnique() {
+        return Optional.ofNullable(this.selfLinkUnique);
+    }
+
+    /**
      * Service account to attach to the instance. Structure is documented below.
      * 
      */
@@ -534,6 +551,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         this.resourcePolicies = $.resourcePolicies;
         this.scheduling = $.scheduling;
         this.selfLink = $.selfLink;
+        this.selfLinkUnique = $.selfLinkUnique;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
@@ -1150,6 +1168,29 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param selfLinkUnique A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+         * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfLinkUnique(@Nullable Output<String> selfLinkUnique) {
+            $.selfLinkUnique = selfLinkUnique;
+            return this;
+        }
+
+        /**
+         * @param selfLinkUnique A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+         * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfLinkUnique(String selfLinkUnique) {
+            return selfLinkUnique(Output.of(selfLinkUnique));
         }
 
         /**

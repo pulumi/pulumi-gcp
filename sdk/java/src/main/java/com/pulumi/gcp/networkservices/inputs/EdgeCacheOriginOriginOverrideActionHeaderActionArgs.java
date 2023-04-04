@@ -18,7 +18,7 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderActionArgs extends c
 
     /**
      * Describes a header to add.
-     * You may add a maximum of 5 request headers.
+     * You may add a maximum of 25 request headers.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderActionArgs extends c
 
     /**
      * @return Describes a header to add.
-     * You may add a maximum of 5 request headers.
+     * You may add a maximum of 25 request headers.
      * Structure is documented below.
      * 
      */
@@ -61,7 +61,7 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderActionArgs extends c
 
         /**
          * @param requestHeadersToAdds Describes a header to add.
-         * You may add a maximum of 5 request headers.
+         * You may add a maximum of 25 request headers.
          * Structure is documented below.
          * 
          * @return builder
@@ -74,7 +74,7 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderActionArgs extends c
 
         /**
          * @param requestHeadersToAdds Describes a header to add.
-         * You may add a maximum of 5 request headers.
+         * You may add a maximum of 25 request headers.
          * Structure is documented below.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class EdgeCacheOriginOriginOverrideActionHeaderActionArgs extends c
 
         /**
          * @param requestHeadersToAdds Describes a header to add.
-         * You may add a maximum of 5 request headers.
+         * You may add a maximum of 25 request headers.
          * Structure is documented below.
          * 
          * @return builder

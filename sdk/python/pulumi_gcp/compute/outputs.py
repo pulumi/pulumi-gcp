@@ -7495,13 +7495,21 @@ class InstanceFromMachineImageSchedulingNodeAffinity(dict):
 @pulumi.output_type
 class InstanceFromMachineImageScratchDisk(dict):
     def __init__(__self__, *,
-                 interface: str):
+                 interface: str,
+                 size: Optional[int] = None):
         pulumi.set(__self__, "interface", interface)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
     def interface(self) -> str:
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -8412,13 +8420,21 @@ class InstanceFromTemplateSchedulingNodeAffinity(dict):
 @pulumi.output_type
 class InstanceFromTemplateScratchDisk(dict):
     def __init__(__self__, *,
-                 interface: str):
+                 interface: str,
+                 size: Optional[int] = None):
         pulumi.set(__self__, "interface", interface)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
     def interface(self) -> str:
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -8714,7 +8730,7 @@ class InstanceGroupManagerStatefulExternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
-        :param str interface_name: , The network interface name of the external Ip.
+        :param str interface_name: , The network interface name of the external Ip. Possible value: `nic0`
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8733,7 +8749,7 @@ class InstanceGroupManagerStatefulExternalIp(dict):
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
         """
-        , The network interface name of the external Ip.
+        , The network interface name of the external Ip. Possible value: `nic0`
         """
         return pulumi.get(self, "interface_name")
 
@@ -8764,7 +8780,7 @@ class InstanceGroupManagerStatefulInternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
-        :param str interface_name: , The network interface name of the internal Ip.
+        :param str interface_name: , The network interface name of the internal Ip. Possible value: `nic0`
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8783,7 +8799,7 @@ class InstanceGroupManagerStatefulInternalIp(dict):
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
         """
-        , The network interface name of the internal Ip.
+        , The network interface name of the internal Ip. Possible value: `nic0`
         """
         return pulumi.get(self, "interface_name")
 
@@ -9171,7 +9187,7 @@ class InstanceGroupManagerVersion(dict):
                  name: Optional[str] = None,
                  target_size: Optional['outputs.InstanceGroupManagerVersionTargetSize'] = None):
         """
-        :param str instance_template: The full URL to an instance template from which all new instances of this version will be created.
+        :param str instance_template: The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         :param str name: Version name.
         :param 'InstanceGroupManagerVersionTargetSizeArgs' target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         """
@@ -9185,7 +9201,7 @@ class InstanceGroupManagerVersion(dict):
     @pulumi.getter(name="instanceTemplate")
     def instance_template(self) -> str:
         """
-        The full URL to an instance template from which all new instances of this version will be created.
+        The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         """
         return pulumi.get(self, "instance_template")
 
@@ -10173,11 +10189,16 @@ class InstanceSchedulingNodeAffinity(dict):
 @pulumi.output_type
 class InstanceScratchDisk(dict):
     def __init__(__self__, *,
-                 interface: str):
+                 interface: str,
+                 size: Optional[int] = None):
         """
         :param str interface: The disk interface to use for attaching this disk; either SCSI or NVME.
+        :param int size: The size of the image in gigabytes. If not specified, it
+               will inherit the size of its base image.
         """
         pulumi.set(__self__, "interface", interface)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -10186,6 +10207,15 @@ class InstanceScratchDisk(dict):
         The disk interface to use for attaching this disk; either SCSI or NVME.
         """
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        """
+        The size of the image in gigabytes. If not specified, it
+        will inherit the size of its base image.
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -17042,7 +17072,7 @@ class RegionInstanceGroupManagerStatefulExternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
-        :param str interface_name: , The network interface name of the external Ip.
+        :param str interface_name: , The network interface name of the external Ip. Possible value: `nic0`.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -17061,7 +17091,7 @@ class RegionInstanceGroupManagerStatefulExternalIp(dict):
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
         """
-        , The network interface name of the external Ip.
+        , The network interface name of the external Ip. Possible value: `nic0`.
         """
         return pulumi.get(self, "interface_name")
 
@@ -17092,7 +17122,7 @@ class RegionInstanceGroupManagerStatefulInternalIp(dict):
                  interface_name: Optional[str] = None):
         """
         :param str delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
-        :param str interface_name: , The network interface name of the internal Ip.
+        :param str interface_name: , The network interface name of the internal Ip. Possible value: `nic0`.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -17111,7 +17141,7 @@ class RegionInstanceGroupManagerStatefulInternalIp(dict):
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[str]:
         """
-        , The network interface name of the internal Ip.
+        , The network interface name of the internal Ip. Possible value: `nic0`.
         """
         return pulumi.get(self, "interface_name")
 
@@ -36183,11 +36213,14 @@ class GetInstanceSchedulingNodeAffinityResult(dict):
 @pulumi.output_type
 class GetInstanceScratchDiskResult(dict):
     def __init__(__self__, *,
-                 interface: str):
+                 interface: str,
+                 size: int):
         """
         :param str interface: The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+        :param int size: The size of the image in gigabytes.
         """
         pulumi.set(__self__, "interface", interface)
+        pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -36196,6 +36229,14 @@ class GetInstanceScratchDiskResult(dict):
         The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
         """
         return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def size(self) -> int:
+        """
+        The size of the image in gigabytes.
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -36651,13 +36692,13 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         :param Sequence['GetInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
                instance can be accessed via the Internet. Omit to ensure that the instance
                is not accessible from the Internet (this means that ssh provisioners will
-               not work unless you are running the prvovider can send traffic to the instance's
+               not work unless you are running the provider can send traffic to the instance's
                network (e.g. via tunnel or because it is running on another cloud instance
                on that network). This block can be repeated multiple times. Structure documented below.
         :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
-        :param str name: The name of the instance template. One of `name` or `filter` must be provided.
+        :param str name: The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
         :param str network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
@@ -36689,7 +36730,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         Access configurations, i.e. IPs via which this
         instance can be accessed via the Internet. Omit to ensure that the instance
         is not accessible from the Internet (this means that ssh provisioners will
-        not work unless you are running the prvovider can send traffic to the instance's
+        not work unless you are running the provider can send traffic to the instance's
         network (e.g. via tunnel or because it is running on another cloud instance
         on that network). This block can be repeated multiple times. Structure documented below.
         """
@@ -36719,7 +36760,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the instance template. One of `name` or `filter` must be provided.
+        The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
         """
         return pulumi.get(self, "name")
 

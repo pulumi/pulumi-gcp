@@ -158,9 +158,9 @@ import (
 //					ImageFamily: pulumi.String("tf-latest-cpu"),
 //				},
 //				InstanceOwners: pulumi.StringArray{
-//					pulumi.String("admin@hashicorptest.com"),
+//					pulumi.String("my@service-account.com"),
 //				},
-//				ServiceAccount:   pulumi.String("emailAddress:my@service-account.com"),
+//				ServiceAccount:   pulumi.String("my@service-account.com"),
 //				InstallGpuDriver: pulumi.Bool(true),
 //				BootDiskType:     pulumi.String("PD_SSD"),
 //				BootDiskSizeGb:   pulumi.Int(110),
@@ -280,7 +280,8 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The proxy endpoint that is used to access the Jupyter notebook.
+	// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+	// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -424,7 +425,8 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The proxy endpoint that is used to access the Jupyter notebook.
+	// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+	// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
 	ProxyUri *string `pulumi:"proxyUri"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -534,7 +536,8 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The proxy endpoint that is used to access the Jupyter notebook.
+	// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+	// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
 	ProxyUri pulumi.StringPtrInput
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -1019,7 +1022,8 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The proxy endpoint that is used to access the Jupyter notebook.
+// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
 func (o InstanceOutput) ProxyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProxyUri }).(pulumi.StringOutput)
 }

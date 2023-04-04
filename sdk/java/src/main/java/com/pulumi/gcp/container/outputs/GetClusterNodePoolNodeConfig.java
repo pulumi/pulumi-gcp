@@ -4,12 +4,14 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeature;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGvnic;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfig;
@@ -24,6 +26,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfig {
+    private List<GetClusterNodePoolNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
     private String bootDiskKmsKey;
     private Integer diskSizeGb;
     private String diskType;
@@ -35,6 +38,7 @@ public final class GetClusterNodePoolNodeConfig {
     private List<GetClusterNodePoolNodeConfigKubeletConfig> kubeletConfigs;
     private Map<String,String> labels;
     private List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs;
+    private List<GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs;
     private Integer localSsdCount;
     private String loggingVariant;
     private String machineType;
@@ -54,6 +58,9 @@ public final class GetClusterNodePoolNodeConfig {
     private List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
 
     private GetClusterNodePoolNodeConfig() {}
+    public List<GetClusterNodePoolNodeConfigAdvancedMachineFeature> advancedMachineFeatures() {
+        return this.advancedMachineFeatures;
+    }
     public String bootDiskKmsKey() {
         return this.bootDiskKmsKey;
     }
@@ -86,6 +93,9 @@ public final class GetClusterNodePoolNodeConfig {
     }
     public List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs() {
         return this.linuxNodeConfigs;
+    }
+    public List<GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs() {
+        return this.localNvmeSsdBlockConfigs;
     }
     public Integer localSsdCount() {
         return this.localSsdCount;
@@ -148,6 +158,7 @@ public final class GetClusterNodePoolNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterNodePoolNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
         private String bootDiskKmsKey;
         private Integer diskSizeGb;
         private String diskType;
@@ -159,6 +170,7 @@ public final class GetClusterNodePoolNodeConfig {
         private List<GetClusterNodePoolNodeConfigKubeletConfig> kubeletConfigs;
         private Map<String,String> labels;
         private List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs;
+        private List<GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs;
         private Integer localSsdCount;
         private String loggingVariant;
         private String machineType;
@@ -179,6 +191,7 @@ public final class GetClusterNodePoolNodeConfig {
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
@@ -190,6 +203,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.kubeletConfigs = defaults.kubeletConfigs;
     	      this.labels = defaults.labels;
     	      this.linuxNodeConfigs = defaults.linuxNodeConfigs;
+    	      this.localNvmeSsdBlockConfigs = defaults.localNvmeSsdBlockConfigs;
     	      this.localSsdCount = defaults.localSsdCount;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
@@ -209,6 +223,14 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.workloadMetadataConfigs = defaults.workloadMetadataConfigs;
         }
 
+        @CustomType.Setter
+        public Builder advancedMachineFeatures(List<GetClusterNodePoolNodeConfigAdvancedMachineFeature> advancedMachineFeatures) {
+            this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
+            return this;
+        }
+        public Builder advancedMachineFeatures(GetClusterNodePoolNodeConfigAdvancedMachineFeature... advancedMachineFeatures) {
+            return advancedMachineFeatures(List.of(advancedMachineFeatures));
+        }
         @CustomType.Setter
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
             this.bootDiskKmsKey = Objects.requireNonNull(bootDiskKmsKey);
@@ -281,6 +303,14 @@ public final class GetClusterNodePoolNodeConfig {
         }
         public Builder linuxNodeConfigs(GetClusterNodePoolNodeConfigLinuxNodeConfig... linuxNodeConfigs) {
             return linuxNodeConfigs(List.of(linuxNodeConfigs));
+        }
+        @CustomType.Setter
+        public Builder localNvmeSsdBlockConfigs(List<GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs) {
+            this.localNvmeSsdBlockConfigs = Objects.requireNonNull(localNvmeSsdBlockConfigs);
+            return this;
+        }
+        public Builder localNvmeSsdBlockConfigs(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig... localNvmeSsdBlockConfigs) {
+            return localNvmeSsdBlockConfigs(List.of(localNvmeSsdBlockConfigs));
         }
         @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
@@ -390,6 +420,7 @@ public final class GetClusterNodePoolNodeConfig {
         }
         public GetClusterNodePoolNodeConfig build() {
             final var o = new GetClusterNodePoolNodeConfig();
+            o.advancedMachineFeatures = advancedMachineFeatures;
             o.bootDiskKmsKey = bootDiskKmsKey;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
@@ -401,6 +432,7 @@ public final class GetClusterNodePoolNodeConfig {
             o.kubeletConfigs = kubeletConfigs;
             o.labels = labels;
             o.linuxNodeConfigs = linuxNodeConfigs;
+            o.localNvmeSsdBlockConfigs = localNvmeSsdBlockConfigs;
             o.localSsdCount = localSsdCount;
             o.loggingVariant = loggingVariant;
             o.machineType = machineType;

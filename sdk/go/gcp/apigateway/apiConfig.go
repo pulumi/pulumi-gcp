@@ -46,14 +46,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			apiCfgApi, err := apigateway.NewApi(ctx, "apiCfgApi", &apigateway.ApiArgs{
-//				ApiId: pulumi.String("api-cfg"),
+//				ApiId: pulumi.String("my-api"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
 //			_, err = apigateway.NewApiConfig(ctx, "apiCfgApiConfig", &apigateway.ApiConfigArgs{
 //				Api:         apiCfgApi.ApiId,
-//				ApiConfigId: pulumi.String("cfg"),
+//				ApiConfigId: pulumi.String("my-config"),
 //				OpenapiDocuments: apigateway.ApiConfigOpenapiDocumentArray{
 //					&apigateway.ApiConfigOpenapiDocumentArgs{
 //						Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{

@@ -168,6 +168,12 @@ public final class GetInstanceTemplateResult {
      */
     private String selfLink;
     /**
+     * @return A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     * 
+     */
+    private @Nullable String selfLinkUnique;
+    /**
      * @return Service account to attach to the instance. Structure is documented below.
      * 
      */
@@ -387,6 +393,14 @@ public final class GetInstanceTemplateResult {
         return this.selfLink;
     }
     /**
+     * @return A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     * 
+     */
+    public Optional<String> selfLinkUnique() {
+        return Optional.ofNullable(this.selfLinkUnique);
+    }
+    /**
      * @return Service account to attach to the instance. Structure is documented below.
      * 
      */
@@ -452,6 +466,7 @@ public final class GetInstanceTemplateResult {
         private List<String> resourcePolicies;
         private List<GetInstanceTemplateScheduling> schedulings;
         private String selfLink;
+        private @Nullable String selfLinkUnique;
         private List<GetInstanceTemplateServiceAccount> serviceAccounts;
         private List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
@@ -486,6 +501,7 @@ public final class GetInstanceTemplateResult {
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.schedulings = defaults.schedulings;
     	      this.selfLink = defaults.selfLink;
+    	      this.selfLinkUnique = defaults.selfLinkUnique;
     	      this.serviceAccounts = defaults.serviceAccounts;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
@@ -655,6 +671,11 @@ public final class GetInstanceTemplateResult {
             return this;
         }
         @CustomType.Setter
+        public Builder selfLinkUnique(@Nullable String selfLinkUnique) {
+            this.selfLinkUnique = selfLinkUnique;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceAccounts(List<GetInstanceTemplateServiceAccount> serviceAccounts) {
             this.serviceAccounts = Objects.requireNonNull(serviceAccounts);
             return this;
@@ -712,6 +733,7 @@ public final class GetInstanceTemplateResult {
             o.resourcePolicies = resourcePolicies;
             o.schedulings = schedulings;
             o.selfLink = selfLink;
+            o.selfLinkUnique = selfLinkUnique;
             o.serviceAccounts = serviceAccounts;
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
             o.tags = tags;

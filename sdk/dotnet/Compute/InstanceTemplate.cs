@@ -382,6 +382,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+        /// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+        /// </summary>
+        [Output("selfLinkUnique")]
+        public Output<string> SelfLinkUnique { get; private set; } = null!;
+
+        /// <summary>
         /// Service account to attach to the instance. Structure is documented below.
         /// </summary>
         [Output("serviceAccount")]
@@ -876,6 +883,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+        /// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+        /// </summary>
+        [Input("selfLinkUnique")]
+        public Input<string>? SelfLinkUnique { get; set; }
 
         /// <summary>
         /// Service account to attach to the instance. Structure is documented below.

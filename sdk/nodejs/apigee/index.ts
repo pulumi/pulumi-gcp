@@ -70,6 +70,11 @@ export type InstanceAttachment = import("./instanceAttachment").InstanceAttachme
 export const InstanceAttachment: typeof import("./instanceAttachment").InstanceAttachment = null as any;
 utilities.lazyLoad(exports, ["InstanceAttachment"], () => require("./instanceAttachment"));
 
+export { KeystoresAliasesKeyCertFileArgs, KeystoresAliasesKeyCertFileState } from "./keystoresAliasesKeyCertFile";
+export type KeystoresAliasesKeyCertFile = import("./keystoresAliasesKeyCertFile").KeystoresAliasesKeyCertFile;
+export const KeystoresAliasesKeyCertFile: typeof import("./keystoresAliasesKeyCertFile").KeystoresAliasesKeyCertFile = null as any;
+utilities.lazyLoad(exports, ["KeystoresAliasesKeyCertFile"], () => require("./keystoresAliasesKeyCertFile"));
+
 export { NatAddressArgs, NatAddressState } from "./natAddress";
 export type NatAddress = import("./natAddress").NatAddress;
 export const NatAddress: typeof import("./natAddress").NatAddress = null as any;
@@ -126,6 +131,8 @@ const _module = {
                 return new Instance(name, <any>undefined, { urn })
             case "gcp:apigee/instanceAttachment:InstanceAttachment":
                 return new InstanceAttachment(name, <any>undefined, { urn })
+            case "gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile":
+                return new KeystoresAliasesKeyCertFile(name, <any>undefined, { urn })
             case "gcp:apigee/natAddress:NatAddress":
                 return new NatAddress(name, <any>undefined, { urn })
             case "gcp:apigee/organization:Organization":
@@ -154,6 +161,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamPolicy", _mod
 pulumi.runtime.registerResourceModule("gcp", "apigee/flowhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instanceAttachment", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesKeyCertFile", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/natAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)

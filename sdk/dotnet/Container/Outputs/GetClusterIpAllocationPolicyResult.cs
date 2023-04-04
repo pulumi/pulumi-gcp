@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string ClusterSecondaryRangeName;
         public readonly string ServicesIpv4CidrBlock;
         public readonly string ServicesSecondaryRangeName;
+        public readonly string StackType;
 
         [OutputConstructor]
         private GetClusterIpAllocationPolicyResult(
@@ -26,12 +27,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string servicesIpv4CidrBlock,
 
-            string servicesSecondaryRangeName)
+            string servicesSecondaryRangeName,
+
+            string stackType)
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
+            StackType = stackType;
         }
     }
 }

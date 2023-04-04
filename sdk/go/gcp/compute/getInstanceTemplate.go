@@ -30,14 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-//				Name: pulumi.StringRef("generic-tpl-20200107"),
+//				Filter:     pulumi.StringRef("name != generic-tpl-20200107"),
+//				MostRecent: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.LookupInstanceTemplate(ctx, &compute.LookupInstanceTemplateArgs{
-//				Filter:     pulumi.StringRef("name != generic-tpl-20200107"),
-//				MostRecent: pulumi.BoolRef(true),
+//				SelfLinkUnique: pulumi.StringRef("https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -60,15 +60,18 @@ func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArg
 type LookupInstanceTemplateArgs struct {
 	// A filter to retrieve the instance templates.
 	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-	// If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
+	// If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+	// One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Filter *string `pulumi:"filter"`
-	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	MostRecent *bool `pulumi:"mostRecent"`
-	// The name of the instance template. One of `name` or `filter` must be provided.
+	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If `project` is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
+	SelfLinkUnique *string `pulumi:"selfLinkUnique"`
 }
 
 // A collection of values returned by getInstanceTemplate.
@@ -146,6 +149,9 @@ type LookupInstanceTemplateResult struct {
 	Schedulings []GetInstanceTemplateScheduling `pulumi:"schedulings"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
+	// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+	// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+	SelfLinkUnique *string `pulumi:"selfLinkUnique"`
 	// Service account to attach to the instance. Structure is documented below.
 	ServiceAccounts []GetInstanceTemplateServiceAccount `pulumi:"serviceAccounts"`
 	// Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
@@ -174,15 +180,18 @@ func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTempla
 type LookupInstanceTemplateOutputArgs struct {
 	// A filter to retrieve the instance templates.
 	// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-	// If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
+	// If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+	// One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+	// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
-	// The name of the instance template. One of `name` or `filter` must be provided.
+	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If `project` is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
+	SelfLinkUnique pulumi.StringPtrInput `pulumi:"selfLinkUnique"`
 }
 
 func (LookupInstanceTemplateOutputArgs) ElementType() reflect.Type {
@@ -364,6 +373,12 @@ func (o LookupInstanceTemplateResultOutput) Schedulings() GetInstanceTemplateSch
 // The URI of the created resource.
 func (o LookupInstanceTemplateResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+func (o LookupInstanceTemplateResultOutput) SelfLinkUnique() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) *string { return v.SelfLinkUnique }).(pulumi.StringPtrOutput)
 }
 
 // Service account to attach to the instance. Structure is documented below.

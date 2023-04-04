@@ -47,7 +47,7 @@ class FirewallArgs:
                you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall will apply only to
                traffic that has destination IP address in these ranges. These ranges
-               must be expressed in CIDR format. Only IPv4 is supported.
+               must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
@@ -85,8 +85,8 @@ class FirewallArgs:
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-               `source_tags` or `source_service_accounts` is required.
+               apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+               `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -217,7 +217,7 @@ class FirewallArgs:
         """
         If destination ranges are specified, the firewall will apply only to
         traffic that has destination IP address in these ranges. These ranges
-        must be expressed in CIDR format. Only IPv4 is supported.
+        must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         """
         return pulumi.get(self, "destination_ranges")
 
@@ -343,8 +343,8 @@ class FirewallArgs:
         apply to traffic that has source IP address within sourceRanges OR the
         source IP that belongs to a tag listed in the sourceTags property. The
         connection does not need to match both properties for the firewall to
-        apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-        `source_tags` or `source_service_accounts` is required.
+        apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+        `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_ranges")
 
@@ -465,7 +465,7 @@ class _FirewallState:
                you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall will apply only to
                traffic that has destination IP address in these ranges. These ranges
-               must be expressed in CIDR format. Only IPv4 is supported.
+               must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
@@ -505,8 +505,8 @@ class _FirewallState:
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-               `source_tags` or `source_service_accounts` is required.
+               apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+               `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -642,7 +642,7 @@ class _FirewallState:
         """
         If destination ranges are specified, the firewall will apply only to
         traffic that has destination IP address in these ranges. These ranges
-        must be expressed in CIDR format. Only IPv4 is supported.
+        must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         """
         return pulumi.get(self, "destination_ranges")
 
@@ -792,8 +792,8 @@ class _FirewallState:
         apply to traffic that has source IP address within sourceRanges OR the
         source IP that belongs to a tag listed in the sourceTags property. The
         connection does not need to match both properties for the firewall to
-        apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-        `source_tags` or `source_service_accounts` is required.
+        apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+        `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_ranges")
 
@@ -997,7 +997,7 @@ class Firewall(pulumi.CustomResource):
                you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall will apply only to
                traffic that has destination IP address in these ranges. These ranges
-               must be expressed in CIDR format. Only IPv4 is supported.
+               must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
@@ -1036,8 +1036,8 @@ class Firewall(pulumi.CustomResource):
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-               `source_tags` or `source_service_accounts` is required.
+               apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+               `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -1273,7 +1273,7 @@ class Firewall(pulumi.CustomResource):
                you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall will apply only to
                traffic that has destination IP address in these ranges. These ranges
-               must be expressed in CIDR format. Only IPv4 is supported.
+               must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
                INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
@@ -1313,8 +1313,8 @@ class Firewall(pulumi.CustomResource):
                apply to traffic that has source IP address within sourceRanges OR the
                source IP that belongs to a tag listed in the sourceTags property. The
                connection does not need to match both properties for the firewall to
-               apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-               `source_tags` or `source_service_accounts` is required.
+               apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+               `source_ranges`, `source_tags` or `source_service_accounts` is required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_service_accounts: If source service accounts are specified, the firewall will apply only
                to traffic originating from an instance with a service account in this
                list. Source service accounts cannot be used to control traffic to an
@@ -1417,7 +1417,7 @@ class Firewall(pulumi.CustomResource):
         """
         If destination ranges are specified, the firewall will apply only to
         traffic that has destination IP address in these ranges. These ranges
-        must be expressed in CIDR format. Only IPv4 is supported.
+        must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         """
         return pulumi.get(self, "destination_ranges")
 
@@ -1527,8 +1527,8 @@ class Firewall(pulumi.CustomResource):
         apply to traffic that has source IP address within sourceRanges OR the
         source IP that belongs to a tag listed in the sourceTags property. The
         connection does not need to match both properties for the firewall to
-        apply. Only IPv4 is supported. For INGRESS traffic, one of `source_ranges`,
-        `source_tags` or `source_service_accounts` is required.
+        apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+        `source_ranges`, `source_tags` or `source_service_accounts` is required.
         """
         return pulumi.get(self, "source_ranges")
 

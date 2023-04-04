@@ -7504,8 +7504,11 @@ class InstanceFromMachineImageSchedulingNodeAffinityArgs:
 @pulumi.input_type
 class InstanceFromMachineImageScratchDiskArgs:
     def __init__(__self__, *,
-                 interface: pulumi.Input[str]):
+                 interface: pulumi.Input[str],
+                 size: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "interface", interface)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -7515,6 +7518,15 @@ class InstanceFromMachineImageScratchDiskArgs:
     @interface.setter
     def interface(self, value: pulumi.Input[str]):
         pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
 
 @pulumi.input_type
@@ -8431,8 +8443,11 @@ class InstanceFromTemplateSchedulingNodeAffinityArgs:
 @pulumi.input_type
 class InstanceFromTemplateScratchDiskArgs:
     def __init__(__self__, *,
-                 interface: pulumi.Input[str]):
+                 interface: pulumi.Input[str],
+                 size: Optional[pulumi.Input[int]] = None):
         pulumi.set(__self__, "interface", interface)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -8442,6 +8457,15 @@ class InstanceFromTemplateScratchDiskArgs:
     @interface.setter
     def interface(self, value: pulumi.Input[str]):
         pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
 
 @pulumi.input_type
@@ -8698,7 +8722,7 @@ class InstanceGroupManagerStatefulExternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
-        :param pulumi.Input[str] interface_name: , The network interface name of the external Ip.
+        :param pulumi.Input[str] interface_name: , The network interface name of the external Ip. Possible value: `nic0`
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8721,7 +8745,7 @@ class InstanceGroupManagerStatefulExternalIpArgs:
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
         """
-        , The network interface name of the external Ip.
+        , The network interface name of the external Ip. Possible value: `nic0`
         """
         return pulumi.get(self, "interface_name")
 
@@ -8737,7 +8761,7 @@ class InstanceGroupManagerStatefulInternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
-        :param pulumi.Input[str] interface_name: , The network interface name of the internal Ip.
+        :param pulumi.Input[str] interface_name: , The network interface name of the internal Ip. Possible value: `nic0`
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -8760,7 +8784,7 @@ class InstanceGroupManagerStatefulInternalIpArgs:
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
         """
-        , The network interface name of the internal Ip.
+        , The network interface name of the internal Ip. Possible value: `nic0`
         """
         return pulumi.get(self, "interface_name")
 
@@ -9100,7 +9124,7 @@ class InstanceGroupManagerVersionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  target_size: Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs']] = None):
         """
-        :param pulumi.Input[str] instance_template: The full URL to an instance template from which all new instances of this version will be created.
+        :param pulumi.Input[str] instance_template: The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         :param pulumi.Input[str] name: Version name.
         :param pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs'] target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
         """
@@ -9114,7 +9138,7 @@ class InstanceGroupManagerVersionArgs:
     @pulumi.getter(name="instanceTemplate")
     def instance_template(self) -> pulumi.Input[str]:
         """
-        The full URL to an instance template from which all new instances of this version will be created.
+        The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         """
         return pulumi.get(self, "instance_template")
 
@@ -10161,11 +10185,16 @@ class InstanceSchedulingNodeAffinityArgs:
 @pulumi.input_type
 class InstanceScratchDiskArgs:
     def __init__(__self__, *,
-                 interface: pulumi.Input[str]):
+                 interface: pulumi.Input[str],
+                 size: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] interface: The disk interface to use for attaching this disk; either SCSI or NVME.
+        :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
+               will inherit the size of its base image.
         """
         pulumi.set(__self__, "interface", interface)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @property
     @pulumi.getter
@@ -10178,6 +10207,19 @@ class InstanceScratchDiskArgs:
     @interface.setter
     def interface(self, value: pulumi.Input[str]):
         pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the image in gigabytes. If not specified, it
+        will inherit the size of its base image.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
 
 
 @pulumi.input_type
@@ -17041,7 +17083,7 @@ class RegionInstanceGroupManagerStatefulExternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the external ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the external ip when the VM is permanently deleted from the instance group.
-        :param pulumi.Input[str] interface_name: , The network interface name of the external Ip.
+        :param pulumi.Input[str] interface_name: , The network interface name of the external Ip. Possible value: `nic0`.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -17064,7 +17106,7 @@ class RegionInstanceGroupManagerStatefulExternalIpArgs:
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
         """
-        , The network interface name of the external Ip.
+        , The network interface name of the external Ip. Possible value: `nic0`.
         """
         return pulumi.get(self, "interface_name")
 
@@ -17080,7 +17122,7 @@ class RegionInstanceGroupManagerStatefulInternalIpArgs:
                  interface_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] delete_rule: , A value that prescribes what should happen to the internal ip when the VM instance is deleted. The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`. `NEVER` - detach the ip when the VM is deleted, but do not delete the ip. `ON_PERMANENT_INSTANCE_DELETION` will delete the internal ip when the VM is permanently deleted from the instance group.
-        :param pulumi.Input[str] interface_name: , The network interface name of the internal Ip.
+        :param pulumi.Input[str] interface_name: , The network interface name of the internal Ip. Possible value: `nic0`.
         """
         if delete_rule is not None:
             pulumi.set(__self__, "delete_rule", delete_rule)
@@ -17103,7 +17145,7 @@ class RegionInstanceGroupManagerStatefulInternalIpArgs:
     @pulumi.getter(name="interfaceName")
     def interface_name(self) -> Optional[pulumi.Input[str]]:
         """
-        , The network interface name of the internal Ip.
+        , The network interface name of the internal Ip. Possible value: `nic0`.
         """
         return pulumi.get(self, "interface_name")
 

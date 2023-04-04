@@ -6,6 +6,7 @@ package com.pulumi.gcp.logging;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -63,6 +64,21 @@ public final class ProjectBucketConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+     * 
+     */
+    @Import(name="enableAnalytics")
+    private @Nullable Output<Boolean> enableAnalytics;
+
+    /**
+     * @return Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enableAnalytics() {
+        return Optional.ofNullable(this.enableAnalytics);
+    }
+
+    /**
      * The location of the bucket.
      * 
      */
@@ -113,6 +129,7 @@ public final class ProjectBucketConfigArgs extends com.pulumi.resources.Resource
         this.bucketId = $.bucketId;
         this.cmekSettings = $.cmekSettings;
         this.description = $.description;
+        this.enableAnalytics = $.enableAnalytics;
         this.location = $.location;
         this.project = $.project;
         this.retentionDays = $.retentionDays;
@@ -197,6 +214,27 @@ public final class ProjectBucketConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param enableAnalytics Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAnalytics(@Nullable Output<Boolean> enableAnalytics) {
+            $.enableAnalytics = enableAnalytics;
+            return this;
+        }
+
+        /**
+         * @param enableAnalytics Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableAnalytics(Boolean enableAnalytics) {
+            return enableAnalytics(Output.of(enableAnalytics));
         }
 
         /**

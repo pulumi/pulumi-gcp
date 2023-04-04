@@ -10,6 +10,96 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQueryDataPolicy
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for BigQuery Data Policy DataPolicy. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.bigquerydatapolicy.DataPolicyIamPolicy`: Authoritative. Sets the IAM policy for the datapolicy and replaces any existing policy already attached.
+    /// * `gcp.bigquerydatapolicy.DataPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the datapolicy are preserved.
+    /// * `gcp.bigquerydatapolicy.DataPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the datapolicy are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.bigquerydatapolicy.DataPolicyIamPolicy` **cannot** be used in conjunction with `gcp.bigquerydatapolicy.DataPolicyIamBinding` and `gcp.bigquerydatapolicy.DataPolicyIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.bigquerydatapolicy.DataPolicyIamBinding` resources **can be** used in conjunction with `gcp.bigquerydatapolicy.DataPolicyIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.BigQueryDataPolicy.DataPolicyIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
+    ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
+    ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.BigQueryDataPolicy.DataPolicyIamBinding("binding", new()
+    ///     {
+    ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
+    ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
+    ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_bigquery\_datapolicy\_data\_policy\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.BigQueryDataPolicy.DataPolicyIamMember("member", new()
+    ///     {
+    ///         Project = google_bigquery_datapolicy_data_policy.Data_policy.Project,
+    ///         Location = google_bigquery_datapolicy_data_policy.Data_policy.Location,
+    ///         DataPolicyId = google_bigquery_datapolicy_data_policy.Data_policy.Data_policy_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}} * {{project}}/{{location}}/{{data_policy_id}} * {{location}}/{{data_policy_id}} * {{data_policy_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery Data Policy datapolicy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

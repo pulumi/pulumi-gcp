@@ -504,6 +504,7 @@ class _InstanceTemplateState:
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input['InstanceTemplateSchedulingArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 self_link_unique: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input['InstanceTemplateServiceAccountArgs']] = None,
                  shielded_instance_config: Optional[pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -562,6 +563,8 @@ class _InstanceTemplateState:
         :param pulumi.Input['InstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] self_link_unique: A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+               Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
         :param pulumi.Input['InstanceTemplateServiceAccountArgs'] service_account: Service account to attach to the instance. Structure is documented below.
         :param pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -616,6 +619,8 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "scheduling", scheduling)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if self_link_unique is not None:
+            pulumi.set(__self__, "self_link_unique", self_link_unique)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
@@ -940,6 +945,19 @@ class _InstanceTemplateState:
     @self_link.setter
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter(name="selfLinkUnique")
+    def self_link_unique(self) -> Optional[pulumi.Input[str]]:
+        """
+        A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+        Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+        """
+        return pulumi.get(self, "self_link_unique")
+
+    @self_link_unique.setter
+    def self_link_unique(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link_unique", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1451,6 +1469,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["metadata_fingerprint"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_unique"] = None
             __props__.__dict__["tags_fingerprint"] = None
         super(InstanceTemplate, __self__).__init__(
             'gcp:compute/instanceTemplate:InstanceTemplate',
@@ -1486,6 +1505,7 @@ class InstanceTemplate(pulumi.CustomResource):
             resource_policies: Optional[pulumi.Input[str]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            self_link_unique: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']]] = None,
             shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1549,6 +1569,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] self_link_unique: A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+               Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateServiceAccountArgs']] service_account: Service account to attach to the instance. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['InstanceTemplateShieldedInstanceConfigArgs']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
@@ -1583,6 +1605,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["self_link_unique"] = self_link_unique
         __props__.__dict__["service_account"] = service_account
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["tags"] = tags
@@ -1808,6 +1831,15 @@ class InstanceTemplate(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkUnique")
+    def self_link_unique(self) -> pulumi.Output[str]:
+        """
+        A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+        Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+        """
+        return pulumi.get(self, "self_link_unique")
 
     @property
     @pulumi.getter(name="serviceAccount")

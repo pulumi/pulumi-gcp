@@ -38,15 +38,19 @@ class DatabaseInstanceCloneArgs:
     def __init__(__self__, *,
                  source_instance_name: pulumi.Input[str],
                  allocated_ip_range: Optional[pulumi.Input[str]] = None,
+                 database_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  point_in_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] source_instance_name: Name of the source instance which will be cloned.
         :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] database_names: (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
         :param pulumi.Input[str] point_in_time: The timestamp of the point in time that should be restored.
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
+        if database_names is not None:
+            pulumi.set(__self__, "database_names", database_names)
         if point_in_time is not None:
             pulumi.set(__self__, "point_in_time", point_in_time)
 
@@ -73,6 +77,18 @@ class DatabaseInstanceCloneArgs:
     @allocated_ip_range.setter
     def allocated_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "allocated_ip_range", value)
+
+    @property
+    @pulumi.getter(name="databaseNames")
+    def database_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
+        """
+        return pulumi.get(self, "database_names")
+
+    @database_names.setter
+    def database_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "database_names", value)
 
     @property
     @pulumi.getter(name="pointInTime")

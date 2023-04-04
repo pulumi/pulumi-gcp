@@ -25,8 +25,6 @@ public final class ServiceTemplateSpec {
      * @return Container defines the unit of execution for this Revision.
      * In the context of a Revision, we disallow a number of the fields of
      * this Container, including: name, ports, and volumeMounts.
-     * The runtime contract is documented here:
-     * https://github.com/knative/serving/blob/main/docs/runtime-contract.md
      * Structure is documented below.
      * 
      */
@@ -77,8 +75,6 @@ public final class ServiceTemplateSpec {
      * @return Container defines the unit of execution for this Revision.
      * In the context of a Revision, we disallow a number of the fields of
      * this Container, including: name, ports, and volumeMounts.
-     * The runtime contract is documented here:
-     * https://github.com/knative/serving/blob/main/docs/runtime-contract.md
      * Structure is documented below.
      * 
      */

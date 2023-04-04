@@ -60,7 +60,7 @@ import (
 //				},
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Self_link_unique),
 //					},
 //				},
 //				AllInstancesConfig: &compute.RegionInstanceGroupManagerAllInstancesConfigArgs{
@@ -113,10 +113,10 @@ import (
 //				TargetSize:       pulumi.Int(5),
 //				Versions: compute.RegionInstanceGroupManagerVersionArray{
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+//						InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Self_link_unique),
 //					},
 //					&compute.RegionInstanceGroupManagerVersionArgs{
-//						InstanceTemplate: pulumi.Any(google_compute_instance_template.AppserverCanary.Id),
+//						InstanceTemplate: pulumi.Any(google_compute_instance_template.AppserverCanary.Self_link_unique),
 //						TargetSize: &compute.RegionInstanceGroupManagerVersionTargetSizeArgs{
 //							Fixed: pulumi.Int(1),
 //						},

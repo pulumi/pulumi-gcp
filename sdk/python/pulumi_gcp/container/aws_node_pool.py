@@ -471,7 +471,7 @@ class AwsNodePool(pulumi.CustomResource):
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="emailAddress:my@service-account.com",
+                    username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
@@ -511,7 +511,7 @@ class AwsNodePool(pulumi.CustomResource):
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
-                    "owner": "emailAddress:my@service-account.com",
+                    "owner": "my@service-account.com",
                 },
             ),
             fleet=gcp.container.AwsClusterFleetArgs(
@@ -630,7 +630,7 @@ class AwsNodePool(pulumi.CustomResource):
         primary_aws_cluster = gcp.container.AwsCluster("primaryAwsCluster",
             authorization=gcp.container.AwsClusterAuthorizationArgs(
                 admin_users=[gcp.container.AwsClusterAuthorizationAdminUserArgs(
-                    username="emailAddress:my@service-account.com",
+                    username="my@service-account.com",
                 )],
             ),
             aws_region="my-aws-region",
@@ -670,7 +670,7 @@ class AwsNodePool(pulumi.CustomResource):
                     ec2_key_pair="my--1p-dev-ssh",
                 ),
                 tags={
-                    "owner": "emailAddress:my@service-account.com",
+                    "owner": "my@service-account.com",
                 },
             ),
             fleet=gcp.container.AwsClusterFleetArgs(

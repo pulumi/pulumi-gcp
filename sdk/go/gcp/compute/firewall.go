@@ -160,7 +160,7 @@ type Firewall struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If destination ranges are specified, the firewall will apply only to
 	// traffic that has destination IP address in these ranges. These ranges
-	// must be expressed in CIDR format. Only IPv4 is supported.
+	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges pulumi.StringArrayOutput `pulumi:"destinationRanges"`
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
@@ -212,8 +212,8 @@ type Firewall struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-	// `sourceTags` or `sourceServiceAccounts` is required.
+	// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+	// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges pulumi.StringArrayOutput `pulumi:"sourceRanges"`
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -301,7 +301,7 @@ type firewallState struct {
 	Description *string `pulumi:"description"`
 	// If destination ranges are specified, the firewall will apply only to
 	// traffic that has destination IP address in these ranges. These ranges
-	// must be expressed in CIDR format. Only IPv4 is supported.
+	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges []string `pulumi:"destinationRanges"`
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
@@ -353,8 +353,8 @@ type firewallState struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-	// `sourceTags` or `sourceServiceAccounts` is required.
+	// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+	// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges []string `pulumi:"sourceRanges"`
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -411,7 +411,7 @@ type FirewallState struct {
 	Description pulumi.StringPtrInput
 	// If destination ranges are specified, the firewall will apply only to
 	// traffic that has destination IP address in these ranges. These ranges
-	// must be expressed in CIDR format. Only IPv4 is supported.
+	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges pulumi.StringArrayInput
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
@@ -463,8 +463,8 @@ type FirewallState struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-	// `sourceTags` or `sourceServiceAccounts` is required.
+	// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+	// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges pulumi.StringArrayInput
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -523,7 +523,7 @@ type firewallArgs struct {
 	Description *string `pulumi:"description"`
 	// If destination ranges are specified, the firewall will apply only to
 	// traffic that has destination IP address in these ranges. These ranges
-	// must be expressed in CIDR format. Only IPv4 is supported.
+	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges []string `pulumi:"destinationRanges"`
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
@@ -573,8 +573,8 @@ type firewallArgs struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-	// `sourceTags` or `sourceServiceAccounts` is required.
+	// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+	// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges []string `pulumi:"sourceRanges"`
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -630,7 +630,7 @@ type FirewallArgs struct {
 	Description pulumi.StringPtrInput
 	// If destination ranges are specified, the firewall will apply only to
 	// traffic that has destination IP address in these ranges. These ranges
-	// must be expressed in CIDR format. Only IPv4 is supported.
+	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges pulumi.StringArrayInput
 	// Direction of traffic to which this firewall applies; default is
 	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
@@ -680,8 +680,8 @@ type FirewallArgs struct {
 	// apply to traffic that has source IP address within sourceRanges OR the
 	// source IP that belongs to a tag listed in the sourceTags property. The
 	// connection does not need to match both properties for the firewall to
-	// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-	// `sourceTags` or `sourceServiceAccounts` is required.
+	// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+	// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 	SourceRanges pulumi.StringArrayInput
 	// If source service accounts are specified, the firewall will apply only
 	// to traffic originating from an instance with a service account in this
@@ -836,7 +836,7 @@ func (o FirewallOutput) Description() pulumi.StringPtrOutput {
 
 // If destination ranges are specified, the firewall will apply only to
 // traffic that has destination IP address in these ranges. These ranges
-// must be expressed in CIDR format. Only IPv4 is supported.
+// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 func (o FirewallOutput) DestinationRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.DestinationRanges }).(pulumi.StringArrayOutput)
 }
@@ -918,8 +918,8 @@ func (o FirewallOutput) SelfLink() pulumi.StringOutput {
 // apply to traffic that has source IP address within sourceRanges OR the
 // source IP that belongs to a tag listed in the sourceTags property. The
 // connection does not need to match both properties for the firewall to
-// apply. Only IPv4 is supported. For INGRESS traffic, one of `sourceRanges`,
-// `sourceTags` or `sourceServiceAccounts` is required.
+// apply. IPv4 or IPv6 ranges are supported. For INGRESS traffic, one of
+// `sourceRanges`, `sourceTags` or `sourceServiceAccounts` is required.
 func (o FirewallOutput) SourceRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringArrayOutput { return v.SourceRanges }).(pulumi.StringArrayOutput)
 }

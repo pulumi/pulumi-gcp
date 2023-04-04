@@ -13,6 +13,8 @@ import (
 type DatabaseInstanceClone struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange *string `pulumi:"allocatedIpRange"`
+	// (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
+	DatabaseNames []string `pulumi:"databaseNames"`
 	// The timestamp of the point in time that should be restored.
 	PointInTime *string `pulumi:"pointInTime"`
 	// Name of the source instance which will be cloned.
@@ -33,6 +35,8 @@ type DatabaseInstanceCloneInput interface {
 type DatabaseInstanceCloneArgs struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
 	AllocatedIpRange pulumi.StringPtrInput `pulumi:"allocatedIpRange"`
+	// (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
+	DatabaseNames pulumi.StringArrayInput `pulumi:"databaseNames"`
 	// The timestamp of the point in time that should be restored.
 	PointInTime pulumi.StringPtrInput `pulumi:"pointInTime"`
 	// Name of the source instance which will be cloned.
@@ -121,6 +125,11 @@ func (o DatabaseInstanceCloneOutput) AllocatedIpRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.AllocatedIpRange }).(pulumi.StringPtrOutput)
 }
 
+// (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
+func (o DatabaseInstanceCloneOutput) DatabaseNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) []string { return v.DatabaseNames }).(pulumi.StringArrayOutput)
+}
+
 // The timestamp of the point in time that should be restored.
 func (o DatabaseInstanceCloneOutput) PointInTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceClone) *string { return v.PointInTime }).(pulumi.StringPtrOutput)
@@ -163,6 +172,16 @@ func (o DatabaseInstanceClonePtrOutput) AllocatedIpRange() pulumi.StringPtrOutpu
 		}
 		return v.AllocatedIpRange
 	}).(pulumi.StringPtrOutput)
+}
+
+// (SQL Server only, use with `pointInTime`) Clone only the specified databases from the source instance. Clone all databases if empty.
+func (o DatabaseInstanceClonePtrOutput) DatabaseNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseNames
+	}).(pulumi.StringArrayOutput)
 }
 
 // The timestamp of the point in time that should be restored.
@@ -4287,9 +4306,10 @@ func (o GetCaCertsCertArrayOutput) Index(i pulumi.IntInput) GetCaCertsCertOutput
 }
 
 type GetDatabaseInstanceClone struct {
-	AllocatedIpRange   string `pulumi:"allocatedIpRange"`
-	PointInTime        string `pulumi:"pointInTime"`
-	SourceInstanceName string `pulumi:"sourceInstanceName"`
+	AllocatedIpRange   string   `pulumi:"allocatedIpRange"`
+	DatabaseNames      []string `pulumi:"databaseNames"`
+	PointInTime        string   `pulumi:"pointInTime"`
+	SourceInstanceName string   `pulumi:"sourceInstanceName"`
 }
 
 // GetDatabaseInstanceCloneInput is an input type that accepts GetDatabaseInstanceCloneArgs and GetDatabaseInstanceCloneOutput values.
@@ -4304,9 +4324,10 @@ type GetDatabaseInstanceCloneInput interface {
 }
 
 type GetDatabaseInstanceCloneArgs struct {
-	AllocatedIpRange   pulumi.StringInput `pulumi:"allocatedIpRange"`
-	PointInTime        pulumi.StringInput `pulumi:"pointInTime"`
-	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
+	AllocatedIpRange   pulumi.StringInput      `pulumi:"allocatedIpRange"`
+	DatabaseNames      pulumi.StringArrayInput `pulumi:"databaseNames"`
+	PointInTime        pulumi.StringInput      `pulumi:"pointInTime"`
+	SourceInstanceName pulumi.StringInput      `pulumi:"sourceInstanceName"`
 }
 
 func (GetDatabaseInstanceCloneArgs) ElementType() reflect.Type {
@@ -4362,6 +4383,10 @@ func (o GetDatabaseInstanceCloneOutput) ToGetDatabaseInstanceCloneOutputWithCont
 
 func (o GetDatabaseInstanceCloneOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceCloneOutput) DatabaseNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceClone) []string { return v.DatabaseNames }).(pulumi.StringArrayOutput)
 }
 
 func (o GetDatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {
@@ -6707,9 +6732,10 @@ func (o GetDatabaseInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDat
 }
 
 type GetDatabaseInstancesInstanceClone struct {
-	AllocatedIpRange   string `pulumi:"allocatedIpRange"`
-	PointInTime        string `pulumi:"pointInTime"`
-	SourceInstanceName string `pulumi:"sourceInstanceName"`
+	AllocatedIpRange   string   `pulumi:"allocatedIpRange"`
+	DatabaseNames      []string `pulumi:"databaseNames"`
+	PointInTime        string   `pulumi:"pointInTime"`
+	SourceInstanceName string   `pulumi:"sourceInstanceName"`
 }
 
 // GetDatabaseInstancesInstanceCloneInput is an input type that accepts GetDatabaseInstancesInstanceCloneArgs and GetDatabaseInstancesInstanceCloneOutput values.
@@ -6724,9 +6750,10 @@ type GetDatabaseInstancesInstanceCloneInput interface {
 }
 
 type GetDatabaseInstancesInstanceCloneArgs struct {
-	AllocatedIpRange   pulumi.StringInput `pulumi:"allocatedIpRange"`
-	PointInTime        pulumi.StringInput `pulumi:"pointInTime"`
-	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
+	AllocatedIpRange   pulumi.StringInput      `pulumi:"allocatedIpRange"`
+	DatabaseNames      pulumi.StringArrayInput `pulumi:"databaseNames"`
+	PointInTime        pulumi.StringInput      `pulumi:"pointInTime"`
+	SourceInstanceName pulumi.StringInput      `pulumi:"sourceInstanceName"`
 }
 
 func (GetDatabaseInstancesInstanceCloneArgs) ElementType() reflect.Type {
@@ -6782,6 +6809,10 @@ func (o GetDatabaseInstancesInstanceCloneOutput) ToGetDatabaseInstancesInstanceC
 
 func (o GetDatabaseInstancesInstanceCloneOutput) AllocatedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) string { return v.AllocatedIpRange }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceCloneOutput) DatabaseNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceClone) []string { return v.DatabaseNames }).(pulumi.StringArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceCloneOutput) PointInTime() pulumi.StringOutput {

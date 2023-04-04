@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfig
     {
+        public readonly Outputs.NodePoolNodeConfigAdvancedMachineFeatures? AdvancedMachineFeatures;
         public readonly string? BootDiskKmsKey;
         public readonly int? DiskSizeGb;
         public readonly string? DiskType;
@@ -24,6 +25,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly Outputs.NodePoolNodeConfigKubeletConfig? KubeletConfig;
         public readonly ImmutableDictionary<string, string>? Labels;
         public readonly Outputs.NodePoolNodeConfigLinuxNodeConfig? LinuxNodeConfig;
+        public readonly Outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig? LocalNvmeSsdBlockConfig;
         public readonly int? LocalSsdCount;
         public readonly string? LoggingVariant;
         public readonly string? MachineType;
@@ -44,6 +46,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private NodePoolNodeConfig(
+            Outputs.NodePoolNodeConfigAdvancedMachineFeatures? advancedMachineFeatures,
+
             string? bootDiskKmsKey,
 
             int? diskSizeGb,
@@ -65,6 +69,8 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableDictionary<string, string>? labels,
 
             Outputs.NodePoolNodeConfigLinuxNodeConfig? linuxNodeConfig,
+
+            Outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig? localNvmeSsdBlockConfig,
 
             int? localSsdCount,
 
@@ -100,6 +106,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.NodePoolNodeConfigWorkloadMetadataConfig? workloadMetadataConfig)
         {
+            AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
@@ -111,6 +118,7 @@ namespace Pulumi.Gcp.Container.Outputs
             KubeletConfig = kubeletConfig;
             Labels = labels;
             LinuxNodeConfig = linuxNodeConfig;
+            LocalNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             LocalSsdCount = localSsdCount;
             LoggingVariant = loggingVariant;
             MachineType = machineType;

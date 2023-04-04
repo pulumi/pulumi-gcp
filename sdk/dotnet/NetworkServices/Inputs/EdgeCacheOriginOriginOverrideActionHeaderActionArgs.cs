@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
 
         /// <summary>
         /// Describes a header to add.
-        /// You may add a maximum of 5 request headers.
+        /// You may add a maximum of 25 request headers.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs> RequestHeadersToAdds

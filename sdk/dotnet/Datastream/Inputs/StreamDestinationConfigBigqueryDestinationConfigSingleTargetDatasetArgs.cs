@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Dataset ID in the format projects/{project}/datasets/{dataset_id}
+        /// Dataset ID in the format projects/{project}/datasets/{dataset_id} or
+        /// {project}:{dataset_id}
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;

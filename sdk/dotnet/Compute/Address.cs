@@ -196,6 +196,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
+        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
         /// Default value is `EXTERNAL`.
         /// Possible values are `INTERNAL` and `EXTERNAL`.
         /// </summary>
@@ -248,6 +249,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
         /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Output("networkTier")]
@@ -368,6 +370,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
+        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
         /// Default value is `EXTERNAL`.
         /// Possible values are `INTERNAL` and `EXTERNAL`.
         /// </summary>
@@ -414,6 +417,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
         /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]
@@ -484,6 +488,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The type of address to reserve.
+        /// Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
         /// Default value is `EXTERNAL`.
         /// Possible values are `INTERNAL` and `EXTERNAL`.
         /// </summary>
@@ -542,6 +547,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The networking tier used for configuring this address. If this field is not
         /// specified, it is assumed to be PREMIUM.
+        /// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
         /// Possible values are `PREMIUM` and `STANDARD`.
         /// </summary>
         [Input("networkTier")]

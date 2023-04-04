@@ -18,6 +18,7 @@ from .environment_iam_policy import *
 from .flowhook import *
 from .instance import *
 from .instance_attachment import *
+from .keystores_aliases_key_cert_file import *
 from .nat_address import *
 from .organization import *
 from .sharedflow import *

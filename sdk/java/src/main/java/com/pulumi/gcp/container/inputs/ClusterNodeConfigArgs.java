@@ -5,12 +5,14 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGvnicArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigLocalNvmeSsdBlockConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigShieldedInstanceConfigArgs;
@@ -29,6 +31,23 @@ import javax.annotation.Nullable;
 public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodeConfigArgs Empty = new ClusterNodeConfigArgs();
+
+    /**
+     * Specifies options for controlling
+     * advanced machine features. Structure is documented below.
+     * 
+     */
+    @Import(name="advancedMachineFeatures")
+    private @Nullable Output<ClusterNodeConfigAdvancedMachineFeaturesArgs> advancedMachineFeatures;
+
+    /**
+     * @return Specifies options for controlling
+     * advanced machine features. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigAdvancedMachineFeaturesArgs>> advancedMachineFeatures() {
+        return Optional.ofNullable(this.advancedMachineFeatures);
+    }
 
     /**
      * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: &lt;https://cloud.google.com/compute/docs/disks/customer-managed-encryption&gt;
@@ -227,6 +246,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<ClusterNodeConfigLinuxNodeConfigArgs>> linuxNodeConfig() {
         return Optional.ofNullable(this.linuxNodeConfig);
+    }
+
+    /**
+     * Parameters for the local NVMe SSDs. Structure is documented below.
+     * 
+     */
+    @Import(name="localNvmeSsdBlockConfig")
+    private @Nullable Output<ClusterNodeConfigLocalNvmeSsdBlockConfigArgs> localNvmeSsdBlockConfig;
+
+    /**
+     * @return Parameters for the local NVMe SSDs. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigLocalNvmeSsdBlockConfigArgs>> localNvmeSsdBlockConfig() {
+        return Optional.ofNullable(this.localNvmeSsdBlockConfig);
     }
 
     /**
@@ -535,6 +569,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     private ClusterNodeConfigArgs() {}
 
     private ClusterNodeConfigArgs(ClusterNodeConfigArgs $) {
+        this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
@@ -546,6 +581,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.kubeletConfig = $.kubeletConfig;
         this.labels = $.labels;
         this.linuxNodeConfig = $.linuxNodeConfig;
+        this.localNvmeSsdBlockConfig = $.localNvmeSsdBlockConfig;
         this.localSsdCount = $.localSsdCount;
         this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
@@ -581,6 +617,29 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(ClusterNodeConfigArgs defaults) {
             $ = new ClusterNodeConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedMachineFeatures Specifies options for controlling
+         * advanced machine features. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedMachineFeatures(@Nullable Output<ClusterNodeConfigAdvancedMachineFeaturesArgs> advancedMachineFeatures) {
+            $.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
+
+        /**
+         * @param advancedMachineFeatures Specifies options for controlling
+         * advanced machine features. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedMachineFeatures(ClusterNodeConfigAdvancedMachineFeaturesArgs advancedMachineFeatures) {
+            return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
         /**
@@ -857,6 +916,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder linuxNodeConfig(ClusterNodeConfigLinuxNodeConfigArgs linuxNodeConfig) {
             return linuxNodeConfig(Output.of(linuxNodeConfig));
+        }
+
+        /**
+         * @param localNvmeSsdBlockConfig Parameters for the local NVMe SSDs. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localNvmeSsdBlockConfig(@Nullable Output<ClusterNodeConfigLocalNvmeSsdBlockConfigArgs> localNvmeSsdBlockConfig) {
+            $.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
+            return this;
+        }
+
+        /**
+         * @param localNvmeSsdBlockConfig Parameters for the local NVMe SSDs. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localNvmeSsdBlockConfig(ClusterNodeConfigLocalNvmeSsdBlockConfigArgs localNvmeSsdBlockConfig) {
+            return localNvmeSsdBlockConfig(Output.of(localNvmeSsdBlockConfig));
         }
 
         /**

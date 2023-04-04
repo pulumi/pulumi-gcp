@@ -18,12 +18,14 @@ class DatasetArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
@@ -35,6 +37,15 @@ class DatasetArgs:
                underscores (_). The maximum length is 1,024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
+        :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
+               in the dataset. If a table is created in this dataset without table-level
+               default collation, then the table inherits the dataset default collation,
+               which is applied to the string fields that do not have explicit collation
+               specified. A change to this field affects only tables created afterwards,
+               and does not alter the existing tables.
+               The following values are supported:
+               - 'und:ci': undetermined locale, case insensitive.
+               - '': empty string. Default to case-sensitive behavior.
         :param pulumi.Input['DatasetDefaultEncryptionConfigurationArgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
@@ -48,6 +59,9 @@ class DatasetArgs:
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
+        :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+               By default, this is FALSE, which means the dataset and its table names are
+               case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
@@ -59,6 +73,8 @@ class DatasetArgs:
         pulumi.set(__self__, "dataset_id", dataset_id)
         if accesses is not None:
             pulumi.set(__self__, "accesses", accesses)
+        if default_collation is not None:
+            pulumi.set(__self__, "default_collation", default_collation)
         if default_encryption_configuration is not None:
             pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
         if default_partition_expiration_ms is not None:
@@ -71,6 +87,8 @@ class DatasetArgs:
             pulumi.set(__self__, "description", description)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if is_case_insensitive is not None:
+            pulumi.set(__self__, "is_case_insensitive", is_case_insensitive)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -106,6 +124,26 @@ class DatasetArgs:
     @accesses.setter
     def accesses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]]):
         pulumi.set(self, "accesses", value)
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the default collation specification of future tables created
+        in the dataset. If a table is created in this dataset without table-level
+        default collation, then the table inherits the dataset default collation,
+        which is applied to the string fields that do not have explicit collation
+        specified. A change to this field affects only tables created afterwards,
+        and does not alter the existing tables.
+        The following values are supported:
+        - 'und:ci': undetermined locale, case insensitive.
+        - '': empty string. Default to case-sensitive behavior.
+        """
+        return pulumi.get(self, "default_collation")
+
+    @default_collation.setter
+    def default_collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_collation", value)
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
@@ -187,6 +225,20 @@ class DatasetArgs:
         pulumi.set(self, "friendly_name", value)
 
     @property
+    @pulumi.getter(name="isCaseInsensitive")
+    def is_case_insensitive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+        By default, this is FALSE, which means the dataset and its table names are
+        case-sensitive. This field does not affect routine references.
+        """
+        return pulumi.get(self, "is_case_insensitive")
+
+    @is_case_insensitive.setter
+    def is_case_insensitive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_case_insensitive", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -244,6 +296,7 @@ class _DatasetState:
                  accesses: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[int]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input['DatasetDefaultEncryptionConfigurationArgs']] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
@@ -251,6 +304,7 @@ class _DatasetState:
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -266,6 +320,15 @@ class _DatasetState:
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
+               in the dataset. If a table is created in this dataset without table-level
+               default collation, then the table inherits the dataset default collation,
+               which is applied to the string fields that do not have explicit collation
+               specified. A change to this field affects only tables created afterwards,
+               and does not alter the existing tables.
+               The following values are supported:
+               - 'und:ci': undetermined locale, case insensitive.
+               - '': empty string. Default to case-sensitive behavior.
         :param pulumi.Input['DatasetDefaultEncryptionConfigurationArgs'] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
@@ -280,6 +343,9 @@ class _DatasetState:
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[str] etag: A hash of the resource.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
+        :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+               By default, this is FALSE, which means the dataset and its table names are
+               case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets
         :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in
@@ -297,6 +363,8 @@ class _DatasetState:
             pulumi.set(__self__, "creation_time", creation_time)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
+        if default_collation is not None:
+            pulumi.set(__self__, "default_collation", default_collation)
         if default_encryption_configuration is not None:
             pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
         if default_partition_expiration_ms is not None:
@@ -311,6 +379,8 @@ class _DatasetState:
             pulumi.set(__self__, "etag", etag)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
+        if is_case_insensitive is not None:
+            pulumi.set(__self__, "is_case_insensitive", is_case_insensitive)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if last_modified_time is not None:
@@ -363,6 +433,26 @@ class _DatasetState:
     @dataset_id.setter
     def dataset_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the default collation specification of future tables created
+        in the dataset. If a table is created in this dataset without table-level
+        default collation, then the table inherits the dataset default collation,
+        which is applied to the string fields that do not have explicit collation
+        specified. A change to this field affects only tables created afterwards,
+        and does not alter the existing tables.
+        The following values are supported:
+        - 'und:ci': undetermined locale, case insensitive.
+        - '': empty string. Default to case-sensitive behavior.
+        """
+        return pulumi.get(self, "default_collation")
+
+    @default_collation.setter
+    def default_collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_collation", value)
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
@@ -456,6 +546,20 @@ class _DatasetState:
         pulumi.set(self, "friendly_name", value)
 
     @property
+    @pulumi.getter(name="isCaseInsensitive")
+    def is_case_insensitive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+        By default, this is FALSE, which means the dataset and its table names are
+        case-sensitive. This field does not affect routine references.
+        """
+        return pulumi.get(self, "is_case_insensitive")
+
+    @is_case_insensitive.setter
+    def is_case_insensitive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_case_insensitive", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -539,12 +643,14 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
@@ -689,7 +795,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 gcp.bigquery.DatasetAccessArgs(
                     role="OWNER",
-                    user_by_email="emailAddress:my@service-account.com",
+                    user_by_email="my@service-account.com",
                 ),
                 gcp.bigquery.DatasetAccessArgs(
                     routine=gcp.bigquery.DatasetAccessRoutineArgs(
@@ -724,6 +830,15 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
+               in the dataset. If a table is created in this dataset without table-level
+               default collation, then the table inherits the dataset default collation,
+               which is applied to the string fields that do not have explicit collation
+               specified. A change to this field affects only tables created afterwards,
+               and does not alter the existing tables.
+               The following values are supported:
+               - 'und:ci': undetermined locale, case insensitive.
+               - '': empty string. Default to case-sensitive behavior.
         :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
@@ -737,6 +852,9 @@ class Dataset(pulumi.CustomResource):
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
+        :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+               By default, this is FALSE, which means the dataset and its table names are
+               case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
@@ -890,7 +1008,7 @@ class Dataset(pulumi.CustomResource):
             accesses=[
                 gcp.bigquery.DatasetAccessArgs(
                     role="OWNER",
-                    user_by_email="emailAddress:my@service-account.com",
+                    user_by_email="my@service-account.com",
                 ),
                 gcp.bigquery.DatasetAccessArgs(
                     routine=gcp.bigquery.DatasetAccessRoutineArgs(
@@ -935,12 +1053,14 @@ class Dataset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
+                 default_collation: Optional[pulumi.Input[str]] = None,
                  default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
                  default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
+                 is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
@@ -958,12 +1078,14 @@ class Dataset(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
+            __props__.__dict__["default_collation"] = default_collation
             __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
             __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
             __props__.__dict__["description"] = description
             __props__.__dict__["friendly_name"] = friendly_name
+            __props__.__dict__["is_case_insensitive"] = is_case_insensitive
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
@@ -985,6 +1107,7 @@ class Dataset(pulumi.CustomResource):
             accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessArgs']]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
+            default_collation: Optional[pulumi.Input[str]] = None,
             default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']]] = None,
             default_partition_expiration_ms: Optional[pulumi.Input[int]] = None,
             default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
@@ -992,6 +1115,7 @@ class Dataset(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
+            is_case_insensitive: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_modified_time: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1012,6 +1136,15 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+        :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
+               in the dataset. If a table is created in this dataset without table-level
+               default collation, then the table inherits the dataset default collation,
+               which is applied to the string fields that do not have explicit collation
+               specified. A change to this field affects only tables created afterwards,
+               and does not alter the existing tables.
+               The following values are supported:
+               - 'und:ci': undetermined locale, case insensitive.
+               - '': empty string. Default to case-sensitive behavior.
         :param pulumi.Input[pulumi.InputType['DatasetDefaultEncryptionConfigurationArgs']] default_encryption_configuration: The default encryption key for all tables in the dataset. Once this property is set,
                all newly-created partitioned tables in the dataset will have encryption key set to
                this value, unless table creation request (or query) overrides the key.
@@ -1026,6 +1159,9 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[str] etag: A hash of the resource.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
+        :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+               By default, this is FALSE, which means the dataset and its table names are
+               case-sensitive. This field does not affect routine references.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to
                organize and group your datasets
         :param pulumi.Input[int] last_modified_time: The date when this dataset or any of its tables was last modified, in
@@ -1044,6 +1180,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["accesses"] = accesses
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["dataset_id"] = dataset_id
+        __props__.__dict__["default_collation"] = default_collation
         __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
         __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
         __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
@@ -1051,6 +1188,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
         __props__.__dict__["friendly_name"] = friendly_name
+        __props__.__dict__["is_case_insensitive"] = is_case_insensitive
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["location"] = location
@@ -1086,6 +1224,22 @@ class Dataset(pulumi.CustomResource):
         underscores (_). The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="defaultCollation")
+    def default_collation(self) -> pulumi.Output[str]:
+        """
+        Defines the default collation specification of future tables created
+        in the dataset. If a table is created in this dataset without table-level
+        default collation, then the table inherits the dataset default collation,
+        which is applied to the string fields that do not have explicit collation
+        specified. A change to this field affects only tables created afterwards,
+        and does not alter the existing tables.
+        The following values are supported:
+        - 'und:ci': undetermined locale, case insensitive.
+        - '': empty string. Default to case-sensitive behavior.
+        """
+        return pulumi.get(self, "default_collation")
 
     @property
     @pulumi.getter(name="defaultEncryptionConfiguration")
@@ -1149,6 +1303,16 @@ class Dataset(pulumi.CustomResource):
         A descriptive name for the dataset
         """
         return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter(name="isCaseInsensitive")
+    def is_case_insensitive(self) -> pulumi.Output[bool]:
+        """
+        TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+        By default, this is FALSE, which means the dataset and its table names are
+        case-sensitive. This field does not affect routine references.
+        """
+        return pulumi.get(self, "is_case_insensitive")
 
     @property
     @pulumi.getter

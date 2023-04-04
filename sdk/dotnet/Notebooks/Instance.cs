@@ -130,9 +130,9 @@ namespace Pulumi.Gcp.Notebooks
     ///         },
     ///         InstanceOwners = new[]
     ///         {
-    ///             "admin@hashicorptest.com",
+    ///             "my@service-account.com",
     ///         },
-    ///         ServiceAccount = "emailAddress:my@service-account.com",
+    ///         ServiceAccount = "my@service-account.com",
     ///         InstallGpuDriver = true,
     ///         BootDiskType = "PD_SSD",
     ///         BootDiskSizeGb = 110,
@@ -340,7 +340,8 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The proxy endpoint that is used to access the Jupyter notebook.
+        /// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+        /// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
         /// </summary>
         [Output("proxyUri")]
         public Output<string> ProxyUri { get; private set; } = null!;
@@ -916,7 +917,8 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The proxy endpoint that is used to access the Jupyter notebook.
+        /// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+        /// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
         /// </summary>
         [Input("proxyUri")]
         public Input<string>? ProxyUri { get; set; }

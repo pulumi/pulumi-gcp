@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -14,13 +15,18 @@ public final class GetGlobalAddressResult {
      * 
      */
     private String address;
+    private String addressType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     private String name;
+    private String network;
+    private String networkTier;
+    private Integer prefixLength;
     private String project;
+    private String purpose;
     /**
      * @return The URI of the created resource.
      * 
@@ -31,6 +37,8 @@ public final class GetGlobalAddressResult {
      * 
      */
     private String status;
+    private String subnetwork;
+    private String users;
 
     private GetGlobalAddressResult() {}
     /**
@@ -39,6 +47,9 @@ public final class GetGlobalAddressResult {
      */
     public String address() {
         return this.address;
+    }
+    public String addressType() {
+        return this.addressType;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -50,8 +61,20 @@ public final class GetGlobalAddressResult {
     public String name() {
         return this.name;
     }
+    public String network() {
+        return this.network;
+    }
+    public String networkTier() {
+        return this.networkTier;
+    }
+    public Integer prefixLength() {
+        return this.prefixLength;
+    }
     public String project() {
         return this.project;
+    }
+    public String purpose() {
+        return this.purpose;
     }
     /**
      * @return The URI of the created resource.
@@ -67,6 +90,12 @@ public final class GetGlobalAddressResult {
     public String status() {
         return this.status;
     }
+    public String subnetwork() {
+        return this.subnetwork;
+    }
+    public String users() {
+        return this.users;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,25 +107,44 @@ public final class GetGlobalAddressResult {
     @CustomType.Builder
     public static final class Builder {
         private String address;
+        private String addressType;
         private String id;
         private String name;
+        private String network;
+        private String networkTier;
+        private Integer prefixLength;
         private String project;
+        private String purpose;
         private String selfLink;
         private String status;
+        private String subnetwork;
+        private String users;
         public Builder() {}
         public Builder(GetGlobalAddressResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
+    	      this.addressType = defaults.addressType;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.network = defaults.network;
+    	      this.networkTier = defaults.networkTier;
+    	      this.prefixLength = defaults.prefixLength;
     	      this.project = defaults.project;
+    	      this.purpose = defaults.purpose;
     	      this.selfLink = defaults.selfLink;
     	      this.status = defaults.status;
+    	      this.subnetwork = defaults.subnetwork;
+    	      this.users = defaults.users;
         }
 
         @CustomType.Setter
         public Builder address(String address) {
             this.address = Objects.requireNonNull(address);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder addressType(String addressType) {
+            this.addressType = Objects.requireNonNull(addressType);
             return this;
         }
         @CustomType.Setter
@@ -110,8 +158,28 @@ public final class GetGlobalAddressResult {
             return this;
         }
         @CustomType.Setter
+        public Builder network(String network) {
+            this.network = Objects.requireNonNull(network);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder networkTier(String networkTier) {
+            this.networkTier = Objects.requireNonNull(networkTier);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder prefixLength(Integer prefixLength) {
+            this.prefixLength = Objects.requireNonNull(prefixLength);
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder purpose(String purpose) {
+            this.purpose = Objects.requireNonNull(purpose);
             return this;
         }
         @CustomType.Setter
@@ -124,14 +192,31 @@ public final class GetGlobalAddressResult {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
+        public Builder subnetwork(String subnetwork) {
+            this.subnetwork = Objects.requireNonNull(subnetwork);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder users(String users) {
+            this.users = Objects.requireNonNull(users);
+            return this;
+        }
         public GetGlobalAddressResult build() {
             final var o = new GetGlobalAddressResult();
             o.address = address;
+            o.addressType = addressType;
             o.id = id;
             o.name = name;
+            o.network = network;
+            o.networkTier = networkTier;
+            o.prefixLength = prefixLength;
             o.project = project;
+            o.purpose = purpose;
             o.selfLink = selfLink;
             o.status = status;
+            o.subnetwork = subnetwork;
+            o.users = users;
             return o;
         }
     }

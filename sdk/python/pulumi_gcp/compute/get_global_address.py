@@ -21,25 +21,46 @@ class GetGlobalAddressResult:
     """
     A collection of values returned by getGlobalAddress.
     """
-    def __init__(__self__, address=None, id=None, name=None, project=None, self_link=None, status=None):
+    def __init__(__self__, address=None, address_type=None, id=None, name=None, network=None, network_tier=None, prefix_length=None, project=None, purpose=None, self_link=None, status=None, subnetwork=None, users=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
+        if address_type and not isinstance(address_type, str):
+            raise TypeError("Expected argument 'address_type' to be a str")
+        pulumi.set(__self__, "address_type", address_type)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, str):
+            raise TypeError("Expected argument 'network' to be a str")
+        pulumi.set(__self__, "network", network)
+        if network_tier and not isinstance(network_tier, str):
+            raise TypeError("Expected argument 'network_tier' to be a str")
+        pulumi.set(__self__, "network_tier", network_tier)
+        if prefix_length and not isinstance(prefix_length, int):
+            raise TypeError("Expected argument 'prefix_length' to be a int")
+        pulumi.set(__self__, "prefix_length", prefix_length)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if purpose and not isinstance(purpose, str):
+            raise TypeError("Expected argument 'purpose' to be a str")
+        pulumi.set(__self__, "purpose", purpose)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if subnetwork and not isinstance(subnetwork, str):
+            raise TypeError("Expected argument 'subnetwork' to be a str")
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        if users and not isinstance(users, str):
+            raise TypeError("Expected argument 'users' to be a str")
+        pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
@@ -48,6 +69,11 @@ class GetGlobalAddressResult:
         The IP of the created resource.
         """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="addressType")
+    def address_type(self) -> str:
+        return pulumi.get(self, "address_type")
 
     @property
     @pulumi.getter
@@ -64,8 +90,28 @@ class GetGlobalAddressResult:
 
     @property
     @pulumi.getter
+    def network(self) -> str:
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> str:
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="prefixLength")
+    def prefix_length(self) -> int:
+        return pulumi.get(self, "prefix_length")
+
+    @property
+    @pulumi.getter
     def project(self) -> str:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> str:
+        return pulumi.get(self, "purpose")
 
     @property
     @pulumi.getter(name="selfLink")
@@ -83,6 +129,16 @@ class GetGlobalAddressResult:
         """
         return pulumi.get(self, "status")
 
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def users(self) -> str:
+        return pulumi.get(self, "users")
+
 
 class AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
     # pylint: disable=using-constant-test
@@ -91,11 +147,18 @@ class AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
             yield self
         return GetGlobalAddressResult(
             address=self.address,
+            address_type=self.address_type,
             id=self.id,
             name=self.name,
+            network=self.network,
+            network_tier=self.network_tier,
+            prefix_length=self.prefix_length,
             project=self.project,
+            purpose=self.purpose,
             self_link=self.self_link,
-            status=self.status)
+            status=self.status,
+            subnetwork=self.subnetwork,
+            users=self.users)
 
 
 def get_global_address(name: Optional[str] = None,
@@ -134,11 +197,18 @@ def get_global_address(name: Optional[str] = None,
 
     return AwaitableGetGlobalAddressResult(
         address=__ret__.address,
+        address_type=__ret__.address_type,
         id=__ret__.id,
         name=__ret__.name,
+        network=__ret__.network,
+        network_tier=__ret__.network_tier,
+        prefix_length=__ret__.prefix_length,
         project=__ret__.project,
+        purpose=__ret__.purpose,
         self_link=__ret__.self_link,
-        status=__ret__.status)
+        status=__ret__.status,
+        subnetwork=__ret__.subnetwork,
+        users=__ret__.users)
 
 
 @_utilities.lift_output_func(get_global_address)

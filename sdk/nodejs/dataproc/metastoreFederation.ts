@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const defaultMetastoreService = new gcp.dataproc.MetastoreService("defaultMetastoreService", {
- *     serviceId: "fed-1",
+ *     serviceId: "",
  *     location: "us-central1",
  *     tier: "DEVELOPER",
  *     hiveMetastoreConfig: {
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultMetastoreFederation = new gcp.dataproc.MetastoreFederation("defaultMetastoreFederation", {
  *     location: "us-central1",
- *     federationId: "fed-1",
+ *     federationId: "",
  *     version: "3.1.2",
  *     backendMetastores: [{
  *         rank: "1",
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const defaultMetastoreService = new gcp.dataproc.MetastoreService("defaultMetastoreService", {
- *     serviceId: "fed-2",
+ *     serviceId: "",
  *     location: "us-central1",
  *     tier: "DEVELOPER",
  *     hiveMetastoreConfig: {
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const defaultMetastoreFederation = new gcp.dataproc.MetastoreFederation("defaultMetastoreFederation", {
  *     location: "us-central1",
- *     federationId: "fed-2",
+ *     federationId: "",
  *     version: "3.1.2",
  *     backendMetastores: [
  *         {

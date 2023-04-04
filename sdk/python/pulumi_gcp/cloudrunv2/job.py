@@ -528,8 +528,8 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
-            launch_stage="BETA",
             location="us-central1",
+            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
@@ -740,8 +740,8 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
-            launch_stage="BETA",
             location="us-central1",
+            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(

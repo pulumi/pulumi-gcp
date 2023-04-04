@@ -3482,13 +3482,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build());
-     * 
      *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
+     *             .build());
+     * 
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
      *             .build());
      * 
      *     }
@@ -3527,13 +3527,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build());
-     * 
      *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
+     *             .build());
+     * 
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
      *             .build());
      * 
      *     }
@@ -3572,13 +3572,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build());
-     * 
      *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
+     *             .build());
+     * 
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
      *             .build());
      * 
      *     }
@@ -3617,13 +3617,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build());
-     * 
      *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
+     *             .build());
+     * 
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
      *             .build());
      * 
      *     }
@@ -3662,13 +3662,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build());
-     * 
      *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
+     *             .build());
+     * 
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
      *             .build());
      * 
      *     }
@@ -3707,13 +3707,13 @@ public final class ComputeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
-     *             .name(&#34;generic-tpl-20200107&#34;)
-     *             .build());
-     * 
      *         final var generic-regex = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
      *             .filter(&#34;name != generic-tpl-20200107&#34;)
      *             .mostRecent(true)
+     *             .build());
+     * 
+     *         final var generic = ComputeFunctions.getInstanceTemplate(GetInstanceTemplateArgs.builder()
+     *             .selfLinkUnique(&#34;https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234&#34;)
      *             .build());
      * 
      *     }

@@ -139,6 +139,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Port number of network endpoint.
+        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// with the type of `GCE_VM_IP`
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
@@ -226,6 +228,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Port number of network endpoint.
+        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// with the type of `GCE_VM_IP`
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -275,6 +279,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Port number of network endpoint.
+        /// **Note** `port` is required unless the Network Endpoint Group is created
+        /// with the type of `GCE_VM_IP`
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

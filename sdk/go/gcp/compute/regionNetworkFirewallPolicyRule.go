@@ -77,7 +77,7 @@ import (
 //				Region:         pulumi.String("us-west1"),
 //				RuleName:       pulumi.String("test-rule"),
 //				TargetServiceAccounts: pulumi.StringArray{
-//					pulumi.String("emailAddress:my@service-account.com"),
+//					pulumi.String("my@service-account.com"),
 //				},
 //				Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
 //					SrcIpRanges: pulumi.StringArray{

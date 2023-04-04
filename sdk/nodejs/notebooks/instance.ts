@@ -93,8 +93,8 @@ import * as utilities from "../utilities";
  *         project: "deeplearning-platform-release",
  *         imageFamily: "tf-latest-cpu",
  *     },
- *     instanceOwners: ["admin@hashicorptest.com"],
- *     serviceAccount: "emailAddress:my@service-account.com",
+ *     instanceOwners: ["my@service-account.com"],
+ *     serviceAccount: "my@service-account.com",
  *     installGpuDriver: true,
  *     bootDiskType: "PD_SSD",
  *     bootDiskSizeGb: 110,
@@ -276,7 +276,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook.
+     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+     * state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
      */
     public /*out*/ readonly proxyUri!: pulumi.Output<string>;
     /**
@@ -551,7 +552,8 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook.
+     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
+     * state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
      */
     proxyUri?: pulumi.Input<string>;
     /**

@@ -75,7 +75,7 @@ import (
 //				Priority:       pulumi.Int(1000),
 //				RuleName:       pulumi.String("test-rule"),
 //				TargetServiceAccounts: pulumi.StringArray{
-//					pulumi.String("emailAddress:my@service-account.com"),
+//					pulumi.String("my@service-account.com"),
 //				},
 //				Match: &compute.NetworkFirewallPolicyRuleMatchArgs{
 //					SrcIpRanges: pulumi.StringArray{

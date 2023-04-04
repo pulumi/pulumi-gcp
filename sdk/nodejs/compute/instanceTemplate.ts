@@ -309,6 +309,11 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     */
+    public /*out*/ readonly selfLinkUnique!: pulumi.Output<string>;
+    /**
      * Service account to attach to the instance. Structure is documented below.
      */
     public readonly serviceAccount!: pulumi.Output<outputs.compute.InstanceTemplateServiceAccount | undefined>;
@@ -363,6 +368,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["scheduling"] = state ? state.scheduling : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["selfLinkUnique"] = state ? state.selfLinkUnique : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -402,6 +408,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkUnique"] = undefined /*out*/;
             resourceInputs["tagsFingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -537,6 +544,11 @@ export interface InstanceTemplateState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     */
+    selfLinkUnique?: pulumi.Input<string>;
     /**
      * Service account to attach to the instance. Structure is documented below.
      */

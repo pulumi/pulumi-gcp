@@ -69,6 +69,33 @@ import (
 //	}
 //
 // ```
+// ### Network Custom Firewall Enforcement Order
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "vpcNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks:                 pulumi.Bool(true),
+//				NetworkFirewallPolicyEnforcementOrder: pulumi.String("BEFORE_CLASSIC_FIREWALL"),
+//				Project:                               pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -132,6 +159,10 @@ type Network struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Default value is `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -213,6 +244,10 @@ type networkState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Default value is `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -266,6 +301,10 @@ type NetworkState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Default value is `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -320,6 +359,10 @@ type networkArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Default value is `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -369,6 +412,10 @@ type NetworkArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Default value is `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -528,6 +575,13 @@ func (o NetworkOutput) Mtu() pulumi.IntOutput {
 // character, which cannot be a dash.
 func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+// Default value is `AFTER_CLASSIC_FIREWALL`.
+// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

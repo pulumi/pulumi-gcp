@@ -19,6 +19,57 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ### Certificate Manager Google Managed Certificate
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorization;
+ * import com.pulumi.gcp.certificatemanager.DnsAuthorizationArgs;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateManagedArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DnsAuthorization(&#34;instance&#34;, DnsAuthorizationArgs.builder()        
+ *             .description(&#34;The default dnss&#34;)
+ *             .domain(&#34;subdomain.hashicorptest.com&#34;)
+ *             .build());
+ * 
+ *         var instance2 = new DnsAuthorization(&#34;instance2&#34;, DnsAuthorizationArgs.builder()        
+ *             .description(&#34;The default dnss&#34;)
+ *             .domain(&#34;subdomain2.hashicorptest.com&#34;)
+ *             .build());
+ * 
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .description(&#34;The default cert&#34;)
+ *             .scope(&#34;EDGE_CACHE&#34;)
+ *             .managed(CertificateManagedArgs.builder()
+ *                 .domains(                
+ *                     instance.domain(),
+ *                     instance2.domain())
+ *                 .dnsAuthorizations(                
+ *                     instance.id(),
+ *                     instance2.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Certificate Manager Certificate Basic
  * ```java
  * package generated_program;

@@ -126,6 +126,8 @@ export class NetworkEndpoint extends pulumi.CustomResource {
     public readonly networkEndpointGroup!: pulumi.Output<string>;
     /**
      * Port number of network endpoint.
+     * **Note** `port` is required unless the Network Endpoint Group is created
+     * with the type of `GCE_VM_IP`
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -199,6 +201,8 @@ export interface NetworkEndpointState {
     networkEndpointGroup?: pulumi.Input<string>;
     /**
      * Port number of network endpoint.
+     * **Note** `port` is required unless the Network Endpoint Group is created
+     * with the type of `GCE_VM_IP`
      */
     port?: pulumi.Input<number>;
     /**
@@ -234,6 +238,8 @@ export interface NetworkEndpointArgs {
     networkEndpointGroup: pulumi.Input<string>;
     /**
      * Port number of network endpoint.
+     * **Note** `port` is required unless the Network Endpoint Group is created
+     * with the type of `GCE_VM_IP`
      */
     port?: pulumi.Input<number>;
     /**

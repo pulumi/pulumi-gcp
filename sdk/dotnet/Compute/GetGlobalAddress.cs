@@ -153,12 +153,17 @@ namespace Pulumi.Gcp.Compute
         /// The IP of the created resource.
         /// </summary>
         public readonly string Address;
+        public readonly string AddressType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
+        public readonly string Network;
+        public readonly string NetworkTier;
+        public readonly int PrefixLength;
         public readonly string Project;
+        public readonly string Purpose;
         /// <summary>
         /// The URI of the created resource.
         /// </summary>
@@ -167,27 +172,50 @@ namespace Pulumi.Gcp.Compute
         /// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
         /// </summary>
         public readonly string Status;
+        public readonly string Subnetwork;
+        public readonly string Users;
 
         [OutputConstructor]
         private GetGlobalAddressResult(
             string address,
 
+            string addressType,
+
             string id,
 
             string name,
 
+            string network,
+
+            string networkTier,
+
+            int prefixLength,
+
             string project,
+
+            string purpose,
 
             string selfLink,
 
-            string status)
+            string status,
+
+            string subnetwork,
+
+            string users)
         {
             Address = address;
+            AddressType = addressType;
             Id = id;
             Name = name;
+            Network = network;
+            NetworkTier = networkTier;
+            PrefixLength = prefixLength;
             Project = project;
+            Purpose = purpose;
             SelfLink = selfLink;
             Status = status;
+            Subnetwork = subnetwork;
+            Users = users;
         }
     }
 }

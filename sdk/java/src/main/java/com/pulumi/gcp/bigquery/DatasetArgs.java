@@ -58,6 +58,37 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the default collation specification of future tables created
+     * in the dataset. If a table is created in this dataset without table-level
+     * default collation, then the table inherits the dataset default collation,
+     * which is applied to the string fields that do not have explicit collation
+     * specified. A change to this field affects only tables created afterwards,
+     * and does not alter the existing tables.
+     * The following values are supported:
+     * - &#39;und:ci&#39;: undetermined locale, case insensitive.
+     * - &#39;&#39;: empty string. Default to case-sensitive behavior.
+     * 
+     */
+    @Import(name="defaultCollation")
+    private @Nullable Output<String> defaultCollation;
+
+    /**
+     * @return Defines the default collation specification of future tables created
+     * in the dataset. If a table is created in this dataset without table-level
+     * default collation, then the table inherits the dataset default collation,
+     * which is applied to the string fields that do not have explicit collation
+     * specified. A change to this field affects only tables created afterwards,
+     * and does not alter the existing tables.
+     * The following values are supported:
+     * - &#39;und:ci&#39;: undetermined locale, case insensitive.
+     * - &#39;&#39;: empty string. Default to case-sensitive behavior.
+     * 
+     */
+    public Optional<Output<String>> defaultCollation() {
+        return Optional.ofNullable(this.defaultCollation);
+    }
+
+    /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
@@ -162,6 +193,25 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+     * By default, this is FALSE, which means the dataset and its table names are
+     * case-sensitive. This field does not affect routine references.
+     * 
+     */
+    @Import(name="isCaseInsensitive")
+    private @Nullable Output<Boolean> isCaseInsensitive;
+
+    /**
+     * @return TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+     * By default, this is FALSE, which means the dataset and its table names are
+     * case-sensitive. This field does not affect routine references.
+     * 
+     */
+    public Optional<Output<Boolean>> isCaseInsensitive() {
+        return Optional.ofNullable(this.isCaseInsensitive);
+    }
+
+    /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets
      * 
@@ -232,12 +282,14 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     private DatasetArgs(DatasetArgs $) {
         this.accesses = $.accesses;
         this.datasetId = $.datasetId;
+        this.defaultCollation = $.defaultCollation;
         this.defaultEncryptionConfiguration = $.defaultEncryptionConfiguration;
         this.defaultPartitionExpirationMs = $.defaultPartitionExpirationMs;
         this.defaultTableExpirationMs = $.defaultTableExpirationMs;
         this.deleteContentsOnDestroy = $.deleteContentsOnDestroy;
         this.description = $.description;
         this.friendlyName = $.friendlyName;
+        this.isCaseInsensitive = $.isCaseInsensitive;
         this.labels = $.labels;
         this.location = $.location;
         this.maxTimeTravelHours = $.maxTimeTravelHours;
@@ -319,6 +371,43 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder datasetId(String datasetId) {
             return datasetId(Output.of(datasetId));
+        }
+
+        /**
+         * @param defaultCollation Defines the default collation specification of future tables created
+         * in the dataset. If a table is created in this dataset without table-level
+         * default collation, then the table inherits the dataset default collation,
+         * which is applied to the string fields that do not have explicit collation
+         * specified. A change to this field affects only tables created afterwards,
+         * and does not alter the existing tables.
+         * The following values are supported:
+         * - &#39;und:ci&#39;: undetermined locale, case insensitive.
+         * - &#39;&#39;: empty string. Default to case-sensitive behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultCollation(@Nullable Output<String> defaultCollation) {
+            $.defaultCollation = defaultCollation;
+            return this;
+        }
+
+        /**
+         * @param defaultCollation Defines the default collation specification of future tables created
+         * in the dataset. If a table is created in this dataset without table-level
+         * default collation, then the table inherits the dataset default collation,
+         * which is applied to the string fields that do not have explicit collation
+         * specified. A change to this field affects only tables created afterwards,
+         * and does not alter the existing tables.
+         * The following values are supported:
+         * - &#39;und:ci&#39;: undetermined locale, case insensitive.
+         * - &#39;&#39;: empty string. Default to case-sensitive behavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultCollation(String defaultCollation) {
+            return defaultCollation(Output.of(defaultCollation));
         }
 
         /**
@@ -459,6 +548,31 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder friendlyName(String friendlyName) {
             return friendlyName(Output.of(friendlyName));
+        }
+
+        /**
+         * @param isCaseInsensitive TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+         * By default, this is FALSE, which means the dataset and its table names are
+         * case-sensitive. This field does not affect routine references.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isCaseInsensitive(@Nullable Output<Boolean> isCaseInsensitive) {
+            $.isCaseInsensitive = isCaseInsensitive;
+            return this;
+        }
+
+        /**
+         * @param isCaseInsensitive TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+         * By default, this is FALSE, which means the dataset and its table names are
+         * case-sensitive. This field does not affect routine references.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isCaseInsensitive(Boolean isCaseInsensitive) {
+            return isCaseInsensitive(Output.of(isCaseInsensitive));
         }
 
         /**

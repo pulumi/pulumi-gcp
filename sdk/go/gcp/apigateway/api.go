@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigateway.NewApi(ctx, "api", &apigateway.ApiArgs{
-//				ApiId: pulumi.String("api"),
+//				ApiId: pulumi.String("my-api"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err

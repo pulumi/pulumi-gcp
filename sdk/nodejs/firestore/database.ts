@@ -5,15 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A Cloud Firestore Database. Currently only one database is allowed per
- * cloud project; this database must have a `databaseId` of '(default)'.
- *
- * To get more information about Database, see:
- *
- * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
- *
  * ## Example Usage
  *
  * ## Import
@@ -93,7 +84,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly locationId!: pulumi.Output<string>;
     /**
-     * Required. The ID to use for the database, which will become the final
+     * The ID to use for the database, which will become the final
      * component of the database's resource name. This value should be 4-63
      * characters. Valid characters are /[a-z][0-9]-/ with first character
      * a letter and the last a letter or a number. Must not be
@@ -196,7 +187,7 @@ export interface DatabaseState {
      */
     locationId?: pulumi.Input<string>;
     /**
-     * Required. The ID to use for the database, which will become the final
+     * The ID to use for the database, which will become the final
      * component of the database's resource name. This value should be 4-63
      * characters. Valid characters are /[a-z][0-9]-/ with first character
      * a letter and the last a letter or a number. Must not be
@@ -238,7 +229,7 @@ export interface DatabaseArgs {
      */
     locationId: pulumi.Input<string>;
     /**
-     * Required. The ID to use for the database, which will become the final
+     * The ID to use for the database, which will become the final
      * component of the database's resource name. This value should be 4-63
      * characters. Valid characters are /[a-z][0-9]-/ with first character
      * a letter and the last a letter or a number. Must not be

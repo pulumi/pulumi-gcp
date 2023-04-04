@@ -222,6 +222,50 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Region Backend Service External Weighted
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var healthCheck = new RegionHealthCheck(&#34;healthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .healthChecks(healthCheck.id())
+ *             .protocol(&#34;TCP&#34;)
+ *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *             .localityLbPolicy(&#34;WEIGHTED_MAGLEV&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Region Backend Service Ilb Ring Hash
  * 
  * ```java

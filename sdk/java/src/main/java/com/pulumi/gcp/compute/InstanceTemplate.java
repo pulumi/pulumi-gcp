@@ -805,6 +805,22 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     * 
+     */
+    @Export(name="selfLinkUnique", type=String.class, parameters={})
+    private Output<String> selfLinkUnique;
+
+    /**
+     * @return A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     * 
+     */
+    public Output<String> selfLinkUnique() {
+        return this.selfLinkUnique;
+    }
+    /**
      * Service account to attach to the instance. Structure is documented below.
      * 
      */

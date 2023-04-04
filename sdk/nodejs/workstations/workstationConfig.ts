@@ -243,10 +243,7 @@ import * as utilities from "../utilities";
  * const defaultKeyRing = new gcp.kms.KeyRing("defaultKeyRing", {location: "global"}, {
  *     provider: google_beta,
  * });
- * const defaultCryptoKey = new gcp.kms.CryptoKey("defaultCryptoKey", {
- *     keyRing: defaultKeyRing.id,
- *     rotationPeriod: "100000s",
- * }, {
+ * const defaultCryptoKey = new gcp.kms.CryptoKey("defaultCryptoKey", {keyRing: defaultKeyRing.id}, {
  *     provider: google_beta,
  * });
  * const defaultAccount = new gcp.serviceaccount.Account("defaultAccount", {

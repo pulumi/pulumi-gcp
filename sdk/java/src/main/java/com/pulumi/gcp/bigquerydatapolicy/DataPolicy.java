@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A BigQuery Data Policy
+ * 
+ * To get more information about DataPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+ * 
  * ## Example Usage
  * ### Bigquery Datapolicy Data Policy Basic
  * ```java
@@ -30,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
  * import com.pulumi.gcp.bigquerydatapolicy.DataPolicy;
  * import com.pulumi.gcp.bigquerydatapolicy.DataPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,26 +56,20 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;taxonomy&#34;)
  *             .description(&#34;A collection of policy tags&#34;)
  *             .activatedPolicyTypes(&#34;FINE_GRAINED_ACCESS_CONTROL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policyTag = new PolicyTag(&#34;policyTag&#34;, PolicyTagArgs.builder()        
  *             .taxonomy(taxonomy.id())
  *             .displayName(&#34;Low security&#34;)
  *             .description(&#34;A policy tag normally associated with low security items&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var dataPolicy = new DataPolicy(&#34;dataPolicy&#34;, DataPolicyArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .dataPolicyId(&#34;data_policy&#34;)
  *             .policyTag(policyTag.name())
  *             .dataPolicyType(&#34;COLUMN_LEVEL_SECURITY_POLICY&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

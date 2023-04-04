@@ -150,7 +150,7 @@ import * as utilities from "../utilities";
  *     accesses: [
  *         {
  *             role: "OWNER",
- *             userByEmail: "emailAddress:my@service-account.com",
+ *             userByEmail: "my@service-account.com",
  *         },
  *         {
  *             routine: {
@@ -224,6 +224,18 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
+     * Defines the default collation specification of future tables created
+     * in the dataset. If a table is created in this dataset without table-level
+     * default collation, then the table inherits the dataset default collation,
+     * which is applied to the string fields that do not have explicit collation
+     * specified. A change to this field affects only tables created afterwards,
+     * and does not alter the existing tables.
+     * The following values are supported:
+     * - 'und:ci': undetermined locale, case insensitive.
+     * - '': empty string. Default to case-sensitive behavior.
+     */
+    public readonly defaultCollation!: pulumi.Output<string>;
+    /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
@@ -258,6 +270,12 @@ export class Dataset extends pulumi.CustomResource {
      * A descriptive name for the dataset
      */
     public readonly friendlyName!: pulumi.Output<string | undefined>;
+    /**
+     * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+     * By default, this is FALSE, which means the dataset and its table names are
+     * case-sensitive. This field does not affect routine references.
+     */
+    public readonly isCaseInsensitive!: pulumi.Output<boolean>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets
@@ -303,6 +321,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["accesses"] = state ? state.accesses : undefined;
             resourceInputs["creationTime"] = state ? state.creationTime : undefined;
             resourceInputs["datasetId"] = state ? state.datasetId : undefined;
+            resourceInputs["defaultCollation"] = state ? state.defaultCollation : undefined;
             resourceInputs["defaultEncryptionConfiguration"] = state ? state.defaultEncryptionConfiguration : undefined;
             resourceInputs["defaultPartitionExpirationMs"] = state ? state.defaultPartitionExpirationMs : undefined;
             resourceInputs["defaultTableExpirationMs"] = state ? state.defaultTableExpirationMs : undefined;
@@ -310,6 +329,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
+            resourceInputs["isCaseInsensitive"] = state ? state.isCaseInsensitive : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -323,12 +343,14 @@ export class Dataset extends pulumi.CustomResource {
             }
             resourceInputs["accesses"] = args ? args.accesses : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
+            resourceInputs["defaultCollation"] = args ? args.defaultCollation : undefined;
             resourceInputs["defaultEncryptionConfiguration"] = args ? args.defaultEncryptionConfiguration : undefined;
             resourceInputs["defaultPartitionExpirationMs"] = args ? args.defaultPartitionExpirationMs : undefined;
             resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             resourceInputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
+            resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
@@ -364,6 +386,18 @@ export interface DatasetState {
      */
     datasetId?: pulumi.Input<string>;
     /**
+     * Defines the default collation specification of future tables created
+     * in the dataset. If a table is created in this dataset without table-level
+     * default collation, then the table inherits the dataset default collation,
+     * which is applied to the string fields that do not have explicit collation
+     * specified. A change to this field affects only tables created afterwards,
+     * and does not alter the existing tables.
+     * The following values are supported:
+     * - 'und:ci': undetermined locale, case insensitive.
+     * - '': empty string. Default to case-sensitive behavior.
+     */
+    defaultCollation?: pulumi.Input<string>;
+    /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
@@ -398,6 +432,12 @@ export interface DatasetState {
      * A descriptive name for the dataset
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+     * By default, this is FALSE, which means the dataset and its table names are
+     * case-sensitive. This field does not affect routine references.
+     */
+    isCaseInsensitive?: pulumi.Input<boolean>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets
@@ -444,6 +484,18 @@ export interface DatasetArgs {
      */
     datasetId: pulumi.Input<string>;
     /**
+     * Defines the default collation specification of future tables created
+     * in the dataset. If a table is created in this dataset without table-level
+     * default collation, then the table inherits the dataset default collation,
+     * which is applied to the string fields that do not have explicit collation
+     * specified. A change to this field affects only tables created afterwards,
+     * and does not alter the existing tables.
+     * The following values are supported:
+     * - 'und:ci': undetermined locale, case insensitive.
+     * - '': empty string. Default to case-sensitive behavior.
+     */
+    defaultCollation?: pulumi.Input<string>;
+    /**
      * The default encryption key for all tables in the dataset. Once this property is set,
      * all newly-created partitioned tables in the dataset will have encryption key set to
      * this value, unless table creation request (or query) overrides the key.
@@ -474,6 +526,12 @@ export interface DatasetArgs {
      * A descriptive name for the dataset
      */
     friendlyName?: pulumi.Input<string>;
+    /**
+     * TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
+     * By default, this is FALSE, which means the dataset and its table names are
+     * case-sensitive. This field does not affect routine references.
+     */
+    isCaseInsensitive?: pulumi.Input<boolean>;
     /**
      * The labels associated with this dataset. You can use these to
      * organize and group your datasets

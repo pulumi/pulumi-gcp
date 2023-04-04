@@ -34,6 +34,18 @@ import * as utilities from "../utilities";
  *     project: "my-project-name",
  * });
  * ```
+ * ### Network Custom Firewall Enforcement Order
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpcNetwork", {
+ *     autoCreateSubnetworks: true,
+ *     networkFirewallPolicyEnforcementOrder: "BEFORE_CLASSIC_FIREWALL",
+ *     project: "my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -134,6 +146,12 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+     * Default value is `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     */
+    public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -173,6 +191,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["internalIpv6Range"] = state ? state.internalIpv6Range : undefined;
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkFirewallPolicyEnforcementOrder"] = state ? state.networkFirewallPolicyEnforcementOrder : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["routingMode"] = state ? state.routingMode : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -185,6 +204,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["internalIpv6Range"] = args ? args.internalIpv6Range : undefined;
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routingMode"] = args ? args.routingMode : undefined;
             resourceInputs["gatewayIpv4"] = undefined /*out*/;
@@ -253,6 +273,12 @@ export interface NetworkState {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+     * Default value is `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     */
+    networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -326,6 +352,12 @@ export interface NetworkArgs {
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+     * Default value is `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     */
+    networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

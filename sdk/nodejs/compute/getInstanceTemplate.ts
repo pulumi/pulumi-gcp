@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const generic = gcp.compute.getInstanceTemplate({
- *     name: "generic-tpl-20200107",
- * });
  * const generic-regex = gcp.compute.getInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
+ * });
+ * const generic = gcp.compute.getInstanceTemplate({
+ *     selfLinkUnique: "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
  * });
  * ```
  */
@@ -36,6 +36,7 @@ export function getInstanceTemplate(args?: GetInstanceTemplateArgs, opts?: pulum
         "mostRecent": args.mostRecent,
         "name": args.name,
         "project": args.project,
+        "selfLinkUnique": args.selfLinkUnique,
     }, opts);
 }
 
@@ -46,15 +47,16 @@ export interface GetInstanceTemplateArgs {
     /**
      * A filter to retrieve the instance templates.
      * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-     * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
+     * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+     * One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
     filter?: string;
     /**
-     * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+     * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
     mostRecent?: boolean;
     /**
-     * The name of the instance template. One of `name` or `filter` must be provided.
+     * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
     name?: string;
     /**
@@ -62,6 +64,10 @@ export interface GetInstanceTemplateArgs {
      * If `project` is not provided, the provider project is used.
      */
     project?: string;
+    /**
+     * The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
+     */
+    selfLinkUnique?: string;
 }
 
 /**
@@ -188,6 +194,11 @@ export interface GetInstanceTemplateResult {
      */
     readonly selfLink: string;
     /**
+     * A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+     * Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+     */
+    readonly selfLinkUnique?: string;
+    /**
      * Service account to attach to the instance. Structure is documented below.
      */
     readonly serviceAccounts: outputs.compute.GetInstanceTemplateServiceAccount[];
@@ -217,12 +228,12 @@ export interface GetInstanceTemplateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const generic = gcp.compute.getInstanceTemplate({
- *     name: "generic-tpl-20200107",
- * });
  * const generic-regex = gcp.compute.getInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
+ * });
+ * const generic = gcp.compute.getInstanceTemplate({
+ *     selfLinkUnique: "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
  * });
  * ```
  */
@@ -237,15 +248,16 @@ export interface GetInstanceTemplateOutputArgs {
     /**
      * A filter to retrieve the instance templates.
      * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-     * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
+     * If multiple instance templates match, either adjust the filter or specify `mostRecent`.
+     * One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
     filter?: pulumi.Input<string>;
     /**
-     * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+     * If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
     mostRecent?: pulumi.Input<boolean>;
     /**
-     * The name of the instance template. One of `name` or `filter` must be provided.
+     * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
      */
     name?: pulumi.Input<string>;
     /**
@@ -253,4 +265,8 @@ export interface GetInstanceTemplateOutputArgs {
      * If `project` is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
+     */
+    selfLinkUnique?: pulumi.Input<string>;
 }

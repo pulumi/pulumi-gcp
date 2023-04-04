@@ -282,7 +282,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
                  request_headers_to_adds: Optional[Sequence['outputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd']] = None):
         """
         :param Sequence['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: Describes a header to add.
-               You may add a maximum of 5 request headers.
+               You may add a maximum of 25 request headers.
                Structure is documented below.
         """
         if request_headers_to_adds is not None:
@@ -293,7 +293,7 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction(dict):
     def request_headers_to_adds(self) -> Optional[Sequence['outputs.EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd']]:
         """
         Describes a header to add.
-        You may add a maximum of 5 request headers.
+        You may add a maximum of 25 request headers.
         Structure is documented below.
         """
         return pulumi.get(self, "request_headers_to_adds")

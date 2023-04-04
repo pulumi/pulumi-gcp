@@ -82,15 +82,22 @@ type LookupGlobalAddressArgs struct {
 // A collection of values returned by getGlobalAddress.
 type LookupGlobalAddressResult struct {
 	// The IP of the created resource.
-	Address string `pulumi:"address"`
+	Address     string `pulumi:"address"`
+	AddressType string `pulumi:"addressType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string `pulumi:"id"`
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Id           string `pulumi:"id"`
+	Name         string `pulumi:"name"`
+	Network      string `pulumi:"network"`
+	NetworkTier  string `pulumi:"networkTier"`
+	PrefixLength int    `pulumi:"prefixLength"`
+	Project      string `pulumi:"project"`
+	Purpose      string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
-	Status string `pulumi:"status"`
+	Status     string `pulumi:"status"`
+	Subnetwork string `pulumi:"subnetwork"`
+	Users      string `pulumi:"users"`
 }
 
 func LookupGlobalAddressOutput(ctx *pulumi.Context, args LookupGlobalAddressOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalAddressResultOutput {
@@ -139,6 +146,10 @@ func (o LookupGlobalAddressResultOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Address }).(pulumi.StringOutput)
 }
 
+func (o LookupGlobalAddressResultOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.AddressType }).(pulumi.StringOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupGlobalAddressResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Id }).(pulumi.StringOutput)
@@ -148,8 +159,24 @@ func (o LookupGlobalAddressResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupGlobalAddressResultOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalAddressResultOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalAddressResultOutput) PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) int { return v.PrefixLength }).(pulumi.IntOutput)
+}
+
 func (o LookupGlobalAddressResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalAddressResultOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Purpose }).(pulumi.StringOutput)
 }
 
 // The URI of the created resource.
@@ -160,6 +187,14 @@ func (o LookupGlobalAddressResultOutput) SelfLink() pulumi.StringOutput {
 // Indicates if the address is used. Possible values are: RESERVED or IN_USE.
 func (o LookupGlobalAddressResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalAddressResultOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupGlobalAddressResultOutput) Users() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalAddressResult) string { return v.Users }).(pulumi.StringOutput)
 }
 
 func init() {

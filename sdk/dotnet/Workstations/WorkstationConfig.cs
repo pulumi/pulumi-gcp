@@ -367,7 +367,6 @@ namespace Pulumi.Gcp.Workstations
     ///     var defaultCryptoKey = new Gcp.Kms.CryptoKey("defaultCryptoKey", new()
     ///     {
     ///         KeyRing = defaultKeyRing.Id,
-    ///         RotationPeriod = "100000s",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

@@ -86,7 +86,7 @@ type GenericService struct {
 	pulumi.CustomResourceState
 
 	// A well-known service type, defined by its service type and service labels.
-	// Valid values are described at
+	// Valid values of service types and services labels are described at
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrOutput `pulumi:"basicService"`
@@ -146,7 +146,7 @@ func GetGenericService(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GenericService resources.
 type genericServiceState struct {
 	// A well-known service type, defined by its service type and service labels.
-	// Valid values are described at
+	// Valid values of service types and services labels are described at
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService *GenericServiceBasicService `pulumi:"basicService"`
@@ -175,7 +175,7 @@ type genericServiceState struct {
 
 type GenericServiceState struct {
 	// A well-known service type, defined by its service type and service labels.
-	// Valid values are described at
+	// Valid values of service types and services labels are described at
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrInput
@@ -208,7 +208,7 @@ func (GenericServiceState) ElementType() reflect.Type {
 
 type genericServiceArgs struct {
 	// A well-known service type, defined by its service type and service labels.
-	// Valid values are described at
+	// Valid values of service types and services labels are described at
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService *GenericServiceBasicService `pulumi:"basicService"`
@@ -232,7 +232,7 @@ type genericServiceArgs struct {
 // The set of arguments for constructing a GenericService resource.
 type GenericServiceArgs struct {
 	// A well-known service type, defined by its service type and service labels.
-	// Valid values are described at
+	// Valid values of service types and services labels are described at
 	// https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 	// Structure is documented below.
 	BasicService GenericServiceBasicServicePtrInput
@@ -341,7 +341,7 @@ func (o GenericServiceOutput) ToGenericServiceOutputWithContext(ctx context.Cont
 }
 
 // A well-known service type, defined by its service type and service labels.
-// Valid values are described at
+// Valid values of service types and services labels are described at
 // https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli
 // Structure is documented below.
 func (o GenericServiceOutput) BasicService() GenericServiceBasicServicePtrOutput {

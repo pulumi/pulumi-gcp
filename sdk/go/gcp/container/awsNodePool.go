@@ -41,7 +41,7 @@ import (
 //				Authorization: &container.AwsClusterAuthorizationArgs{
 //					AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
 //						&container.AwsClusterAuthorizationAdminUserArgs{
-//							Username: pulumi.String("emailAddress:my@service-account.com"),
+//							Username: pulumi.String("my@service-account.com"),
 //						},
 //					},
 //				},
@@ -86,7 +86,7 @@ import (
 //						Ec2KeyPair: pulumi.String("my--1p-dev-ssh"),
 //					},
 //					Tags: pulumi.StringMap{
-//						"owner": pulumi.String("emailAddress:my@service-account.com"),
+//						"owner": pulumi.String("my@service-account.com"),
 //					},
 //				},
 //				Fleet: &container.AwsClusterFleetArgs{

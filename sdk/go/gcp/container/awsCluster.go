@@ -44,7 +44,7 @@ import (
 //				Authorization: &container.AwsClusterAuthorizationArgs{
 //					AdminUsers: container.AwsClusterAuthorizationAdminUserArray{
 //						&container.AwsClusterAuthorizationAdminUserArgs{
-//							Username: pulumi.String("emailAddress:my@service-account.com"),
+//							Username: pulumi.String("my@service-account.com"),
 //						},
 //					},
 //				},
@@ -88,7 +88,7 @@ import (
 //						pulumi.String("subnet-00000000000000000"),
 //					},
 //					Tags: pulumi.StringMap{
-//						"owner": pulumi.String("emailAddress:my@service-account.com"),
+//						"owner": pulumi.String("my@service-account.com"),
 //					},
 //					Version: *pulumi.String(versions.ValidVersions[0]),
 //				},

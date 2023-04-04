@@ -7,6 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A BigQuery Data Policy
+ *
+ * To get more information about DataPolicy, see:
+ *
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigquerydatapolicy/rest/v1beta1/projects.locations.dataPolicies/create)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/column-data-masking-intro)
+ *
  * ## Example Usage
  * ### Bigquery Datapolicy Data Policy Basic
  *
@@ -19,23 +27,17 @@ import * as utilities from "../utilities";
  *     displayName: "taxonomy",
  *     description: "A collection of policy tags",
  *     activatedPolicyTypes: ["FINE_GRAINED_ACCESS_CONTROL"],
- * }, {
- *     provider: google_beta,
  * });
  * const policyTag = new gcp.datacatalog.PolicyTag("policyTag", {
  *     taxonomy: taxonomy.id,
  *     displayName: "Low security",
  *     description: "A policy tag normally associated with low security items",
- * }, {
- *     provider: google_beta,
  * });
  * const dataPolicy = new gcp.bigquerydatapolicy.DataPolicy("dataPolicy", {
  *     location: "us-central1",
  *     dataPolicyId: "data_policy",
  *     policyTag: policyTag.name,
  *     dataPolicyType: "COLUMN_LEVEL_SECURITY_POLICY",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

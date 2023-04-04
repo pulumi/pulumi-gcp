@@ -28,15 +28,15 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
-        ///     {
-        ///         Name = "generic-tpl-20200107",
-        ///     });
-        /// 
         ///     var generic_regex = Gcp.Compute.GetInstanceTemplate.Invoke(new()
         ///     {
         ///         Filter = "name != generic-tpl-20200107",
         ///         MostRecent = true,
+        ///     });
+        /// 
+        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
+        ///     {
+        ///         SelfLinkUnique = "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
         ///     });
         /// 
         /// });
@@ -64,15 +64,15 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
-        ///     {
-        ///         Name = "generic-tpl-20200107",
-        ///     });
-        /// 
         ///     var generic_regex = Gcp.Compute.GetInstanceTemplate.Invoke(new()
         ///     {
         ///         Filter = "name != generic-tpl-20200107",
         ///         MostRecent = true,
+        ///     });
+        /// 
+        ///     var generic = Gcp.Compute.GetInstanceTemplate.Invoke(new()
+        ///     {
+        ///         SelfLinkUnique = "https://www.googleapis.com/compute/v1/projects/your-project-name/global/instanceTemplates/example-template-custom?uniqueId=1234",
         ///     });
         /// 
         /// });
@@ -90,19 +90,20 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A filter to retrieve the instance templates.
         /// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-        /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+        /// If multiple instance templates match, either adjust the filter or specify `most_recent`.
+        /// One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
         /// <summary>
-        /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+        /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -113,6 +114,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
+
+        /// <summary>
+        /// The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+        /// </summary>
+        [Input("selfLinkUnique")]
+        public string? SelfLinkUnique { get; set; }
 
         public GetInstanceTemplateArgs()
         {
@@ -125,19 +132,20 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// A filter to retrieve the instance templates.
         /// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
-        /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
+        /// If multiple instance templates match, either adjust the filter or specify `most_recent`.
+        /// One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.
+        /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }
 
         /// <summary>
-        /// The name of the instance template. One of `name` or `filter` must be provided.
+        /// The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -148,6 +156,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+        /// </summary>
+        [Input("selfLinkUnique")]
+        public Input<string>? SelfLinkUnique { get; set; }
 
         public GetInstanceTemplateInvokeArgs()
         {
@@ -279,6 +293,11 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
+        /// A special URI of the created resource that uniquely identifies this instance template with the following format: `projects/{{project}}/global/instanceTemplates/{{name}}?uniqueId={{uniqueId}}`
+        /// Referencing an instance template via this attribute prevents Time of Check to Time of Use attacks when the instance template resides in a shared/untrusted environment.
+        /// </summary>
+        public readonly string? SelfLinkUnique;
+        /// <summary>
         /// Service account to attach to the instance. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateServiceAccountResult> ServiceAccounts;
@@ -352,6 +371,8 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            string? selfLinkUnique,
+
             ImmutableArray<Outputs.GetInstanceTemplateServiceAccountResult> serviceAccounts,
 
             ImmutableArray<Outputs.GetInstanceTemplateShieldedInstanceConfigResult> shieldedInstanceConfigs,
@@ -387,6 +408,7 @@ namespace Pulumi.Gcp.Compute
             ResourcePolicies = resourcePolicies;
             Schedulings = schedulings;
             SelfLink = selfLink;
+            SelfLinkUnique = selfLinkUnique;
             ServiceAccounts = serviceAccounts;
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
             Tags = tags;

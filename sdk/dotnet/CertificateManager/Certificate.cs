@@ -11,6 +11,48 @@ namespace Pulumi.Gcp.CertificateManager
 {
     /// <summary>
     /// ## Example Usage
+    /// ### Certificate Manager Google Managed Certificate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.CertificateManager.DnsAuthorization("instance", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var instance2 = new Gcp.CertificateManager.DnsAuthorization("instance2", new()
+    ///     {
+    ///         Description = "The default dnss",
+    ///         Domain = "subdomain2.hashicorptest.com",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Description = "The default cert",
+    ///         Scope = "EDGE_CACHE",
+    ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
+    ///         {
+    ///             Domains = new[]
+    ///             {
+    ///                 instance.Domain,
+    ///                 instance2.Domain,
+    ///             },
+    ///             DnsAuthorizations = new[]
+    ///             {
+    ///                 instance.Id,
+    ///                 instance2.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Certificate Manager Certificate Basic
     /// 
     /// ```csharp

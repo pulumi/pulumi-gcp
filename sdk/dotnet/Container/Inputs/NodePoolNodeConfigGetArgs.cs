@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.NodePoolNodeConfigAdvancedMachineFeaturesGetArgs>? AdvancedMachineFeatures { get; set; }
+
         [Input("bootDiskKmsKey")]
         public Input<string>? BootDiskKmsKey { get; set; }
 
@@ -54,6 +57,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("linuxNodeConfig")]
         public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigGetArgs>? LinuxNodeConfig { get; set; }
+
+        [Input("localNvmeSsdBlockConfig")]
+        public Input<Inputs.NodePoolNodeConfigLocalNvmeSsdBlockConfigGetArgs>? LocalNvmeSsdBlockConfig { get; set; }
 
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }

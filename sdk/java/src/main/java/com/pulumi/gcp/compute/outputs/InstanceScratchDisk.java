@@ -4,8 +4,11 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceScratchDisk {
@@ -14,6 +17,12 @@ public final class InstanceScratchDisk {
      * 
      */
     private String interface_;
+    /**
+     * @return The size of the image in gigabytes. If not specified, it
+     * will inherit the size of its base image.
+     * 
+     */
+    private @Nullable Integer size;
 
     private InstanceScratchDisk() {}
     /**
@@ -22,6 +31,14 @@ public final class InstanceScratchDisk {
      */
     public String interface_() {
         return this.interface_;
+    }
+    /**
+     * @return The size of the image in gigabytes. If not specified, it
+     * will inherit the size of its base image.
+     * 
+     */
+    public Optional<Integer> size() {
+        return Optional.ofNullable(this.size);
     }
 
     public static Builder builder() {
@@ -34,10 +51,12 @@ public final class InstanceScratchDisk {
     @CustomType.Builder
     public static final class Builder {
         private String interface_;
+        private @Nullable Integer size;
         public Builder() {}
         public Builder(InstanceScratchDisk defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.interface_ = defaults.interface_;
+    	      this.size = defaults.size;
         }
 
         @CustomType.Setter("interface")
@@ -45,9 +64,15 @@ public final class InstanceScratchDisk {
             this.interface_ = Objects.requireNonNull(interface_);
             return this;
         }
+        @CustomType.Setter
+        public Builder size(@Nullable Integer size) {
+            this.size = size;
+            return this;
+        }
         public InstanceScratchDisk build() {
             final var o = new InstanceScratchDisk();
             o.interface_ = interface_;
+            o.size = size;
             return o;
         }
     }

@@ -165,6 +165,25 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+     * Default value is `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * 
+     */
+    @Import(name="networkFirewallPolicyEnforcementOrder")
+    private @Nullable Output<String> networkFirewallPolicyEnforcementOrder;
+
+    /**
+     * @return Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+     * Default value is `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * 
+     */
+    public Optional<Output<String>> networkFirewallPolicyEnforcementOrder() {
+        return Optional.ofNullable(this.networkFirewallPolicyEnforcementOrder);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -216,6 +235,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         this.internalIpv6Range = $.internalIpv6Range;
         this.mtu = $.mtu;
         this.name = $.name;
+        this.networkFirewallPolicyEnforcementOrder = $.networkFirewallPolicyEnforcementOrder;
         this.project = $.project;
         this.routingMode = $.routingMode;
     }
@@ -425,6 +445,31 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkFirewallPolicyEnforcementOrder Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+         * Default value is `AFTER_CLASSIC_FIREWALL`.
+         * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkFirewallPolicyEnforcementOrder(@Nullable Output<String> networkFirewallPolicyEnforcementOrder) {
+            $.networkFirewallPolicyEnforcementOrder = networkFirewallPolicyEnforcementOrder;
+            return this;
+        }
+
+        /**
+         * @param networkFirewallPolicyEnforcementOrder Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+         * Default value is `AFTER_CLASSIC_FIREWALL`.
+         * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkFirewallPolicyEnforcementOrder(String networkFirewallPolicyEnforcementOrder) {
+            return networkFirewallPolicyEnforcementOrder(Output.of(networkFirewallPolicyEnforcementOrder));
         }
 
         /**
