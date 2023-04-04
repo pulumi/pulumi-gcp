@@ -4868,6 +4868,565 @@ func (o ResponsePolicyRuleLocalDataLocalDataArrayOutput) Index(i pulumi.IntInput
 	}).(ResponsePolicyRuleLocalDataLocalDataOutput)
 }
 
+type GetKeysKeySigningKey struct {
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm string `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime string `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description string `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	Digests []GetKeysKeySigningKeyDigest `pulumi:"digests"`
+	// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+	DsRecord string `pulumi:"dsRecord"`
+	// Unique identifier for the resource; defined by the server.
+	Id string `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive bool `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength int `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag int `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// GetKeysKeySigningKeyInput is an input type that accepts GetKeysKeySigningKeyArgs and GetKeysKeySigningKeyOutput values.
+// You can construct a concrete instance of `GetKeysKeySigningKeyInput` via:
+//
+//	GetKeysKeySigningKeyArgs{...}
+type GetKeysKeySigningKeyInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput
+	ToGetKeysKeySigningKeyOutputWithContext(context.Context) GetKeysKeySigningKeyOutput
+}
+
+type GetKeysKeySigningKeyArgs struct {
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	Digests GetKeysKeySigningKeyDigestArrayInput `pulumi:"digests"`
+	// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+	DsRecord pulumi.StringInput `pulumi:"dsRecord"`
+	// Unique identifier for the resource; defined by the server.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive pulumi.BoolInput `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength pulumi.IntInput `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag pulumi.IntInput `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (GetKeysKeySigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput {
+	return i.ToGetKeysKeySigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyArgs) ToGetKeysKeySigningKeyOutputWithContext(ctx context.Context) GetKeysKeySigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyOutput)
+}
+
+// GetKeysKeySigningKeyArrayInput is an input type that accepts GetKeysKeySigningKeyArray and GetKeysKeySigningKeyArrayOutput values.
+// You can construct a concrete instance of `GetKeysKeySigningKeyArrayInput` via:
+//
+//	GetKeysKeySigningKeyArray{ GetKeysKeySigningKeyArgs{...} }
+type GetKeysKeySigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput
+	ToGetKeysKeySigningKeyArrayOutputWithContext(context.Context) GetKeysKeySigningKeyArrayOutput
+}
+
+type GetKeysKeySigningKeyArray []GetKeysKeySigningKeyInput
+
+func (GetKeysKeySigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyArray) ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput {
+	return i.ToGetKeysKeySigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyArray) ToGetKeysKeySigningKeyArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyArrayOutput)
+}
+
+type GetKeysKeySigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutput() GetKeysKeySigningKeyOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyOutput) ToGetKeysKeySigningKeyOutputWithContext(ctx context.Context) GetKeysKeySigningKeyOutput {
+	return o
+}
+
+// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+func (o GetKeysKeySigningKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The time that this resource was created in the control plane. This is in RFC3339 text format.
+func (o GetKeysKeySigningKeyOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+func (o GetKeysKeySigningKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+func (o GetKeysKeySigningKeyOutput) Digests() GetKeysKeySigningKeyDigestArrayOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) []GetKeysKeySigningKeyDigest { return v.Digests }).(GetKeysKeySigningKeyDigestArrayOutput)
+}
+
+// The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+func (o GetKeysKeySigningKeyOutput) DsRecord() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.DsRecord }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the resource; defined by the server.
+func (o GetKeysKeySigningKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+func (o GetKeysKeySigningKeyOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+// Length of the key in bits. Specified at creation time then immutable.
+func (o GetKeysKeySigningKeyOutput) KeyLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
+}
+
+// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+func (o GetKeysKeySigningKeyOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+// Base64 encoded public half of this key.
+func (o GetKeysKeySigningKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetKeysKeySigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKey)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) ToGetKeysKeySigningKeyArrayOutput() GetKeysKeySigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) ToGetKeysKeySigningKeyArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKeySigningKey {
+		return vs[0].([]GetKeysKeySigningKey)[vs[1].(int)]
+	}).(GetKeysKeySigningKeyOutput)
+}
+
+type GetKeysKeySigningKeyDigest struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	Digest *string `pulumi:"digest"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type *string `pulumi:"type"`
+}
+
+// GetKeysKeySigningKeyDigestInput is an input type that accepts GetKeysKeySigningKeyDigestArgs and GetKeysKeySigningKeyDigestOutput values.
+// You can construct a concrete instance of `GetKeysKeySigningKeyDigestInput` via:
+//
+//	GetKeysKeySigningKeyDigestArgs{...}
+type GetKeysKeySigningKeyDigestInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput
+	ToGetKeysKeySigningKeyDigestOutputWithContext(context.Context) GetKeysKeySigningKeyDigestOutput
+}
+
+type GetKeysKeySigningKeyDigestArgs struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetKeysKeySigningKeyDigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput {
+	return i.ToGetKeysKeySigningKeyDigestOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyDigestArgs) ToGetKeysKeySigningKeyDigestOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestOutput)
+}
+
+// GetKeysKeySigningKeyDigestArrayInput is an input type that accepts GetKeysKeySigningKeyDigestArray and GetKeysKeySigningKeyDigestArrayOutput values.
+// You can construct a concrete instance of `GetKeysKeySigningKeyDigestArrayInput` via:
+//
+//	GetKeysKeySigningKeyDigestArray{ GetKeysKeySigningKeyDigestArgs{...} }
+type GetKeysKeySigningKeyDigestArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput
+	ToGetKeysKeySigningKeyDigestArrayOutputWithContext(context.Context) GetKeysKeySigningKeyDigestArrayOutput
+}
+
+type GetKeysKeySigningKeyDigestArray []GetKeysKeySigningKeyDigestInput
+
+func (GetKeysKeySigningKeyDigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysKeySigningKeyDigestArray) ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput {
+	return i.ToGetKeysKeySigningKeyDigestArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysKeySigningKeyDigestArray) ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysKeySigningKeyDigestArrayOutput)
+}
+
+type GetKeysKeySigningKeyDigestOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyDigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutput() GetKeysKeySigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestOutput {
+	return o
+}
+
+// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetKeysKeySigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysKeySigningKeyDigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysKeySigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArrayOutput() GetKeysKeySigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) ToGetKeysKeySigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysKeySigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysKeySigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysKeySigningKeyDigestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysKeySigningKeyDigest {
+		return vs[0].([]GetKeysKeySigningKeyDigest)[vs[1].(int)]
+	}).(GetKeysKeySigningKeyDigestOutput)
+}
+
+type GetKeysZoneSigningKey struct {
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm string `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime string `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description string `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	Digests []GetKeysZoneSigningKeyDigest `pulumi:"digests"`
+	// Unique identifier for the resource; defined by the server.
+	Id string `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive bool `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength int `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag int `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// GetKeysZoneSigningKeyInput is an input type that accepts GetKeysZoneSigningKeyArgs and GetKeysZoneSigningKeyOutput values.
+// You can construct a concrete instance of `GetKeysZoneSigningKeyInput` via:
+//
+//	GetKeysZoneSigningKeyArgs{...}
+type GetKeysZoneSigningKeyInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput
+	ToGetKeysZoneSigningKeyOutputWithContext(context.Context) GetKeysZoneSigningKeyOutput
+}
+
+type GetKeysZoneSigningKeyArgs struct {
+	// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The time that this resource was created in the control plane. This is in RFC3339 text format.
+	CreationTime pulumi.StringInput `pulumi:"creationTime"`
+	// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+	Digests GetKeysZoneSigningKeyDigestArrayInput `pulumi:"digests"`
+	// Unique identifier for the resource; defined by the server.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+	IsActive pulumi.BoolInput `pulumi:"isActive"`
+	// Length of the key in bits. Specified at creation time then immutable.
+	KeyLength pulumi.IntInput `pulumi:"keyLength"`
+	// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+	KeyTag pulumi.IntInput `pulumi:"keyTag"`
+	// Base64 encoded public half of this key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (GetKeysZoneSigningKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput {
+	return i.ToGetKeysZoneSigningKeyOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyArgs) ToGetKeysZoneSigningKeyOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyOutput)
+}
+
+// GetKeysZoneSigningKeyArrayInput is an input type that accepts GetKeysZoneSigningKeyArray and GetKeysZoneSigningKeyArrayOutput values.
+// You can construct a concrete instance of `GetKeysZoneSigningKeyArrayInput` via:
+//
+//	GetKeysZoneSigningKeyArray{ GetKeysZoneSigningKeyArgs{...} }
+type GetKeysZoneSigningKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput
+	ToGetKeysZoneSigningKeyArrayOutputWithContext(context.Context) GetKeysZoneSigningKeyArrayOutput
+}
+
+type GetKeysZoneSigningKeyArray []GetKeysZoneSigningKeyInput
+
+func (GetKeysZoneSigningKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyArray) ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput {
+	return i.ToGetKeysZoneSigningKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyArray) ToGetKeysZoneSigningKeyArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyArrayOutput)
+}
+
+type GetKeysZoneSigningKeyOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutput() GetKeysZoneSigningKeyOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyOutput) ToGetKeysZoneSigningKeyOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyOutput {
+	return o
+}
+
+// String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+func (o GetKeysZoneSigningKeyOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The time that this resource was created in the control plane. This is in RFC3339 text format.
+func (o GetKeysZoneSigningKeyOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+func (o GetKeysZoneSigningKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+func (o GetKeysZoneSigningKeyOutput) Digests() GetKeysZoneSigningKeyDigestArrayOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) []GetKeysZoneSigningKeyDigest { return v.Digests }).(GetKeysZoneSigningKeyDigestArrayOutput)
+}
+
+// Unique identifier for the resource; defined by the server.
+func (o GetKeysZoneSigningKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+func (o GetKeysZoneSigningKeyOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+// Length of the key in bits. Specified at creation time then immutable.
+func (o GetKeysZoneSigningKeyOutput) KeyLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) int { return v.KeyLength }).(pulumi.IntOutput)
+}
+
+// The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+func (o GetKeysZoneSigningKeyOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+// Base64 encoded public half of this key.
+func (o GetKeysZoneSigningKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetKeysZoneSigningKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKey)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) ToGetKeysZoneSigningKeyArrayOutput() GetKeysZoneSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) ToGetKeysZoneSigningKeyArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysZoneSigningKey {
+		return vs[0].([]GetKeysZoneSigningKey)[vs[1].(int)]
+	}).(GetKeysZoneSigningKeyOutput)
+}
+
+type GetKeysZoneSigningKeyDigest struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	Digest *string `pulumi:"digest"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type *string `pulumi:"type"`
+}
+
+// GetKeysZoneSigningKeyDigestInput is an input type that accepts GetKeysZoneSigningKeyDigestArgs and GetKeysZoneSigningKeyDigestOutput values.
+// You can construct a concrete instance of `GetKeysZoneSigningKeyDigestInput` via:
+//
+//	GetKeysZoneSigningKeyDigestArgs{...}
+type GetKeysZoneSigningKeyDigestInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput
+	ToGetKeysZoneSigningKeyDigestOutputWithContext(context.Context) GetKeysZoneSigningKeyDigestOutput
+}
+
+type GetKeysZoneSigningKeyDigestArgs struct {
+	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GetKeysZoneSigningKeyDigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput {
+	return i.ToGetKeysZoneSigningKeyDigestOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyDigestArgs) ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestOutput)
+}
+
+// GetKeysZoneSigningKeyDigestArrayInput is an input type that accepts GetKeysZoneSigningKeyDigestArray and GetKeysZoneSigningKeyDigestArrayOutput values.
+// You can construct a concrete instance of `GetKeysZoneSigningKeyDigestArrayInput` via:
+//
+//	GetKeysZoneSigningKeyDigestArray{ GetKeysZoneSigningKeyDigestArgs{...} }
+type GetKeysZoneSigningKeyDigestArrayInput interface {
+	pulumi.Input
+
+	ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput
+	ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(context.Context) GetKeysZoneSigningKeyDigestArrayOutput
+}
+
+type GetKeysZoneSigningKeyDigestArray []GetKeysZoneSigningKeyDigestInput
+
+func (GetKeysZoneSigningKeyDigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (i GetKeysZoneSigningKeyDigestArray) ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput {
+	return i.ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeysZoneSigningKeyDigestArray) ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeysZoneSigningKeyDigestArrayOutput)
+}
+
+type GetKeysZoneSigningKeyDigestOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyDigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutput() GetKeysZoneSigningKeyDigestOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestOutput {
+	return o
+}
+
+// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GetKeysZoneSigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeysZoneSigningKeyDigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeysZoneSigningKeyDigest)(nil)).Elem()
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArrayOutput() GetKeysZoneSigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) ToGetKeysZoneSigningKeyDigestArrayOutputWithContext(ctx context.Context) GetKeysZoneSigningKeyDigestArrayOutput {
+	return o
+}
+
+func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSigningKeyDigestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeysZoneSigningKeyDigest {
+		return vs[0].([]GetKeysZoneSigningKeyDigest)[vs[1].(int)]
+	}).(GetKeysZoneSigningKeyDigestOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionPtrInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
@@ -4937,6 +5496,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataPtrInput)(nil)).Elem(), ResponsePolicyRuleLocalDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataLocalDataInput)(nil)).Elem(), ResponsePolicyRuleLocalDataLocalDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleLocalDataLocalDataArrayInput)(nil)).Elem(), ResponsePolicyRuleLocalDataLocalDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeySigningKeyInput)(nil)).Elem(), GetKeysKeySigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeySigningKeyArrayInput)(nil)).Elem(), GetKeysKeySigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeySigningKeyDigestInput)(nil)).Elem(), GetKeysKeySigningKeyDigestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysKeySigningKeyDigestArrayInput)(nil)).Elem(), GetKeysKeySigningKeyDigestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyInput)(nil)).Elem(), GetKeysZoneSigningKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArray{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamMemberConditionOutput{})
@@ -5005,4 +5572,12 @@ func init() {
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataPtrOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataLocalDataOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataLocalDataArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyDigestOutput{})
+	pulumi.RegisterOutputType(GetKeysKeySigningKeyDigestArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestOutput{})
+	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestArrayOutput{})
 }

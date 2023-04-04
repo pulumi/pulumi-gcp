@@ -24,11 +24,14 @@ import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 import com.pulumi.gcp.organizations.inputs.GetProjectPlainArgs;
 import com.pulumi.gcp.organizations.outputs.GetActiveFolderResult;
 import com.pulumi.gcp.organizations.outputs.GetBillingAccountResult;
+import com.pulumi.gcp.organizations.outputs.GetClientConfigResult;
+import com.pulumi.gcp.organizations.outputs.GetClientOpenIdUserInfoResult;
 import com.pulumi.gcp.organizations.outputs.GetFolderResult;
 import com.pulumi.gcp.organizations.outputs.GetFoldersResult;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyResult;
 import com.pulumi.gcp.organizations.outputs.GetOrganizationResult;
 import com.pulumi.gcp.organizations.outputs.GetProjectResult;
+import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class OrganizationsFunctions {
@@ -447,6 +450,480 @@ public final class OrganizationsFunctions {
      */
     public static CompletableFuture<GetBillingAccountResult> getBillingAccountPlain(GetBillingAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getBillingAccount:getBillingAccount", TypeShape.of(GetBillingAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClientConfigResult> getClientConfig() {
+        return getClientConfig(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClientConfigResult> getClientConfigPlain() {
+        return getClientConfigPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args) {
+        return getClientConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args) {
+        return getClientConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export(&#34;project&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get OpenID userinfo about the credentials used with the Google provider,
+     * specifically the email.
+     * 
+     * This datasource enables you to export the email of the account you&#39;ve
+     * authenticated the provider with; this can be used alongside
+     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * authentication with GKE and configure an RBAC role for the email used.
+     * 
+     * &gt; This resource will only work as expected if the provider is configured to
+     * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+     * receive an error otherwise. The provider uses this scope by default.
+     * 
+     * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo() {
+        return getClientOpenIdUserInfo(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get OpenID userinfo about the credentials used with the Google provider,
+     * specifically the email.
+     * 
+     * This datasource enables you to export the email of the account you&#39;ve
+     * authenticated the provider with; this can be used alongside
+     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * authentication with GKE and configure an RBAC role for the email used.
+     * 
+     * &gt; This resource will only work as expected if the provider is configured to
+     * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+     * receive an error otherwise. The provider uses this scope by default.
+     * 
+     * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain() {
+        return getClientOpenIdUserInfoPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get OpenID userinfo about the credentials used with the Google provider,
+     * specifically the email.
+     * 
+     * This datasource enables you to export the email of the account you&#39;ve
+     * authenticated the provider with; this can be used alongside
+     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * authentication with GKE and configure an RBAC role for the email used.
+     * 
+     * &gt; This resource will only work as expected if the provider is configured to
+     * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+     * receive an error otherwise. The provider uses this scope by default.
+     * 
+     * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args) {
+        return getClientOpenIdUserInfo(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get OpenID userinfo about the credentials used with the Google provider,
+     * specifically the email.
+     * 
+     * This datasource enables you to export the email of the account you&#39;ve
+     * authenticated the provider with; this can be used alongside
+     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * authentication with GKE and configure an RBAC role for the email used.
+     * 
+     * &gt; This resource will only work as expected if the provider is configured to
+     * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+     * receive an error otherwise. The provider uses this scope by default.
+     * 
+     * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args) {
+        return getClientOpenIdUserInfoPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get OpenID userinfo about the credentials used with the Google provider,
+     * specifically the email.
+     * 
+     * This datasource enables you to export the email of the account you&#39;ve
+     * authenticated the provider with; this can be used alongside
+     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * authentication with GKE and configure an RBAC role for the email used.
+     * 
+     * &gt; This resource will only work as expected if the provider is configured to
+     * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+     * receive an error otherwise. The provider uses this scope by default.
+     * 
+     * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", TypeShape.of(GetClientOpenIdUserInfoResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get OpenID userinfo about the credentials used with the Google provider,
+     * specifically the email.
+     * 
+     * This datasource enables you to export the email of the account you&#39;ve
+     * authenticated the provider with; this can be used alongside
+     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * authentication with GKE and configure an RBAC role for the email used.
+     * 
+     * &gt; This resource will only work as expected if the provider is configured to
+     * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+     * receive an error otherwise. The provider uses this scope by default.
+     * 
+     * ## Example Usage
+     * ### Exporting An Email
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;my-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", TypeShape.of(GetClientOpenIdUserInfoResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a Google Cloud Folder.

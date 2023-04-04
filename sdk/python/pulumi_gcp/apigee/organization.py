@@ -478,6 +478,68 @@ class Organization(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
+        ### Apigee Organization Cloud Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigeeNetwork")
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+        ```
+        ### Apigee Organization Cloud Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigeeNetwork")
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
+        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
+        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
+            project=google_project["project"]["project_id"],
+            service=google_project_service["apigee"]["service"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+            crypto_key_id=apigee_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            display_name="apigee-org",
+            description="Auto-provisioned Apigee Org.",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
+        ```
 
         ## Import
 
@@ -533,6 +595,68 @@ class Organization(pulumi.CustomResource):
             * [Creating an API organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org)
 
         ## Example Usage
+        ### Apigee Organization Cloud Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigeeNetwork")
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
+        ```
+        ### Apigee Organization Cloud Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigeeNetwork")
+        apigee_range = gcp.compute.GlobalAddress("apigeeRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigeeVpcConnection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
+        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
+        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
+            project=google_project["project"]["project_id"],
+            service=google_project_service["apigee"]["service"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+            crypto_key_id=apigee_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            display_name="apigee-org",
+            description="Auto-provisioned Apigee Org.",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
+        ```
 
         ## Import
 

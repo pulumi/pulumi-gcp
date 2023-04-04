@@ -9,6 +9,8 @@ from .access_approval_settings import *
 from .folder import *
 from .get_active_folder import *
 from .get_billing_account import *
+from .get_client_config import *
+from .get_client_open_id_user_info import *
 from .get_folder import *
 from .get_folders import *
 from .get_iam_policy import *

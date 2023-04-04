@@ -10,6 +10,7 @@ from .apple_app import *
 from .database_instance import *
 from .get_android_app import *
 from .get_apple_app import *
+from .get_apple_app_config import *
 from .get_hosting_channel import *
 from .get_web_app import *
 from .get_web_app_config import *

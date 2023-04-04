@@ -20,6 +20,47 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 //
 // ## Example Usage
+// ### Os Login Ssh Key Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/oslogin"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			me, err := organizations.GetClientOpenIdUserInfo(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oslogin.NewSshPublicKey(ctx, "cache", &oslogin.SshPublicKeyArgs{
+//				User: *pulumi.String(me.Email),
+//				Key:  readFileOrPanic("path/to/id_rsa.pub"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

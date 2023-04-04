@@ -65,6 +65,118 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Apigee Addons Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.gcp.apigee.AddonsConfig;
+ * import com.pulumi.gcp.apigee.AddonsConfigArgs;
+ * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigArgs;
+ * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigIntegrationConfigArgs;
+ * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigApiSecurityConfigArgs;
+ * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigConnectorsPlatformConfigArgs;
+ * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigMonetizationConfigArgs;
+ * import com.pulumi.gcp.apigee.inputs.AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig();
+ * 
+ *         var apigee = new Service(&#34;apigee&#34;, ServiceArgs.builder()        
+ *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .service(&#34;apigee.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
+ *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .service(&#34;compute.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
+ *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
+ *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(compute)
+ *                 .build());
+ * 
+ *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .prefixLength(16)
+ *             .network(apigeeNetwork.id())
+ *             .project(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .build());
+ * 
+ *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(apigeeNetwork.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(apigeeRange.name())
+ *             .build());
+ * 
+ *         var org = new Organization(&#34;org&#34;, OrganizationArgs.builder()        
+ *             .analyticsRegion(&#34;us-central1&#34;)
+ *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .authorizedNetwork(apigeeNetwork.id())
+ *             .billingType(&#34;EVALUATION&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigee)
+ *                 .build());
+ * 
+ *         var testOrganization = new AddonsConfig(&#34;testOrganization&#34;, AddonsConfigArgs.builder()        
+ *             .org(org.name())
+ *             .addonsConfig(AddonsConfigAddonsConfigArgs.builder()
+ *                 .integrationConfig(AddonsConfigAddonsConfigIntegrationConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .apiSecurityConfig(AddonsConfigAddonsConfigApiSecurityConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .connectorsPlatformConfig(AddonsConfigAddonsConfigConnectorsPlatformConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .monetizationConfig(AddonsConfigAddonsConfigMonetizationConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .advancedApiOpsConfig(AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

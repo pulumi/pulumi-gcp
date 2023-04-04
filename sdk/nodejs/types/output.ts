@@ -33329,6 +33329,110 @@ export namespace dns {
         title: string;
     }
 
+    export interface GetKeysKeySigningKey {
+        /**
+         * String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+         */
+        algorithm: string;
+        /**
+         * The time that this resource was created in the control plane. This is in RFC3339 text format.
+         */
+        creationTime: string;
+        /**
+         * A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+         */
+        description: string;
+        /**
+         * A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+         */
+        digests: outputs.dns.GetKeysKeySigningKeyDigest[];
+        /**
+         * The DS record based on the KSK record. This is used when [delegating](https://cloud.google.com/dns/docs/dnssec-advanced#subdelegation) DNSSEC-signed subdomains.
+         */
+        dsRecord: string;
+        /**
+         * Unique identifier for the resource; defined by the server.
+         */
+        id: string;
+        /**
+         * Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+         */
+        isActive: boolean;
+        /**
+         * Length of the key in bits. Specified at creation time then immutable.
+         */
+        keyLength: number;
+        /**
+         * The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+         */
+        keyTag: number;
+        /**
+         * Base64 encoded public half of this key.
+         */
+        publicKey: string;
+    }
+
+    export interface GetKeysKeySigningKeyDigest {
+        /**
+         * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+         */
+        digest?: string;
+        /**
+         * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+         */
+        type?: string;
+    }
+
+    export interface GetKeysZoneSigningKey {
+        /**
+         * String mnemonic specifying the DNSSEC algorithm of this key. Immutable after creation time. Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+         */
+        algorithm: string;
+        /**
+         * The time that this resource was created in the control plane. This is in RFC3339 text format.
+         */
+        creationTime: string;
+        /**
+         * A mutable string of at most 1024 characters associated with this resource for the user's convenience.
+         */
+        description: string;
+        /**
+         * A list of cryptographic hashes of the DNSKEY resource record associated with this DnsKey. These digests are needed to construct a DS record that points at this DNS key. Each contains:
+         */
+        digests: outputs.dns.GetKeysZoneSigningKeyDigest[];
+        /**
+         * Unique identifier for the resource; defined by the server.
+         */
+        id: string;
+        /**
+         * Active keys will be used to sign subsequent changes to the ManagedZone. Inactive keys will still be present as DNSKEY Resource Records for the use of resolvers validating existing signatures.
+         */
+        isActive: boolean;
+        /**
+         * Length of the key in bits. Specified at creation time then immutable.
+         */
+        keyLength: number;
+        /**
+         * The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
+         */
+        keyTag: number;
+        /**
+         * Base64 encoded public half of this key.
+         */
+        publicKey: string;
+    }
+
+    export interface GetKeysZoneSigningKeyDigest {
+        /**
+         * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
+         */
+        digest?: string;
+        /**
+         * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
+         */
+        type?: string;
+    }
+
     export interface ManagedZoneCloudLoggingConfig {
         /**
          * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
