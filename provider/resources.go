@@ -98,6 +98,7 @@ const (
 	gcpMonitoring           = "Monitoring"           // Monitoring resources
 	gcpNetworkConnectivity  = "NetworkConnectivity"  // Network Connectivity resources
 	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
+	gcpNetworkSecurity      = "NetworkSecurity"      // Network Security resources
 	gcpNetworkServices      = "NetworkServices"      // Network Services resources
 	gcpNotebooks            = "Notebooks"            // Notebooks resources
 	gcpOrganization         = "Organizations"        // Organization resources
@@ -2500,11 +2501,17 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
+			// Network Security
+			"google_network_security_gateway_security_policy":      {Tok: gcpResource(gcpNetworkSecurity, "GatewaySecurityPolicy")},
+			"google_network_security_gateway_security_policy_rule": {Tok: gcpResource(gcpNetworkSecurity, "GatewaySecurityPolicyRule")},
+			"google_network_security_url_lists":                    {Tok: gcpResource(gcpNetworkSecurity, "UrlList")},
+
 			// Network Services
 			"google_network_services_edge_cache_keyset":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheKeyset")},
 			"google_network_services_edge_cache_origin":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheOrigin")},
 			"google_network_services_edge_cache_service": {Tok: gcpResource(gcpNetworkServices, "EdgeCacheService")},
 			"google_network_services_gateway":            {Tok: gcpResource(gcpNetworkServices, "Gateway")},
+			"google_network_services_mesh":               {Tok: gcpResource(gcpNetworkServices, "Mesh")},
 
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
@@ -2702,6 +2709,12 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "apigee_keysotres_aliases_key_cert_file.html.markdown",
 				},
+			},
+			"google_apigee_keystores_aliases_pkcs12": {
+				Tok: gcpResource(gcpApigee, "KeystoresAliasesPkcs12"),
+			},
+			"google_apigee_keystores_aliases_self_signed_cert": {
+				Tok: gcpResource(gcpApigee, "KeystoresAliasesSelfSignedCert"),
 			},
 
 			// API Gateway
