@@ -157,7 +157,7 @@ export class Routine extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The determinism level of the JavaScript UDF if defined.
-     * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+     * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      */
     public readonly determinismLevel!: pulumi.Output<string | undefined>;
     /**
@@ -167,7 +167,7 @@ export class Routine extends pulumi.CustomResource {
     public readonly importedLibraries!: pulumi.Output<string[] | undefined>;
     /**
      * The language of the routine.
-     * Possible values are `SQL` and `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`.
      */
     public readonly language!: pulumi.Output<string | undefined>;
     /**
@@ -205,7 +205,7 @@ export class Routine extends pulumi.CustomResource {
     public readonly routineId!: pulumi.Output<string>;
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+     * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
     public readonly routineType!: pulumi.Output<string | undefined>;
 
@@ -296,7 +296,7 @@ export interface RoutineState {
     description?: pulumi.Input<string>;
     /**
      * The determinism level of the JavaScript UDF if defined.
-     * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+     * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      */
     determinismLevel?: pulumi.Input<string>;
     /**
@@ -306,7 +306,7 @@ export interface RoutineState {
     importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The language of the routine.
-     * Possible values are `SQL` and `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`.
      */
     language?: pulumi.Input<string>;
     /**
@@ -344,7 +344,7 @@ export interface RoutineState {
     routineId?: pulumi.Input<string>;
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+     * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
     routineType?: pulumi.Input<string>;
 }
@@ -373,7 +373,7 @@ export interface RoutineArgs {
     description?: pulumi.Input<string>;
     /**
      * The determinism level of the JavaScript UDF if defined.
-     * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+     * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      */
     determinismLevel?: pulumi.Input<string>;
     /**
@@ -383,7 +383,7 @@ export interface RoutineArgs {
     importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The language of the routine.
-     * Possible values are `SQL` and `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`.
      */
     language?: pulumi.Input<string>;
     /**
@@ -416,7 +416,7 @@ export interface RoutineArgs {
     routineId: pulumi.Input<string>;
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+     * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
     routineType?: pulumi.Input<string>;
 }

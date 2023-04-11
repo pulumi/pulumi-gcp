@@ -32,7 +32,7 @@ class DeviceArgs:
         :param pulumi.Input['DeviceGatewayConfigArgs'] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         """
@@ -105,7 +105,7 @@ class DeviceArgs:
     def log_level(self) -> Optional[pulumi.Input[str]]:
         """
         The logging verbosity for device activity.
-        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         """
         return pulumi.get(self, "log_level")
 
@@ -176,7 +176,7 @@ class _DeviceState:
         :param pulumi.Input[str] last_heartbeat_time: The last time an MQTT PINGREQ was received.
         :param pulumi.Input[str] last_state_time: The last time a state event was received.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device.
@@ -361,7 +361,7 @@ class _DeviceState:
     def log_level(self) -> Optional[pulumi.Input[str]]:
         """
         The logging verbosity for device activity.
-        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         """
         return pulumi.get(self, "log_level")
 
@@ -505,7 +505,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DeviceGatewayConfigArgs']] gateway_config: Gateway-related configuration and state.
                Structure is documented below.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
@@ -668,7 +668,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] last_heartbeat_time: The last time an MQTT PINGREQ was received.
         :param pulumi.Input[str] last_state_time: The last time a state event was received.
         :param pulumi.Input[str] log_level: The logging verbosity for device activity.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device.
@@ -797,7 +797,7 @@ class Device(pulumi.CustomResource):
     def log_level(self) -> pulumi.Output[Optional[str]]:
         """
         The logging verbosity for device activity.
-        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         """
         return pulumi.get(self, "log_level")
 

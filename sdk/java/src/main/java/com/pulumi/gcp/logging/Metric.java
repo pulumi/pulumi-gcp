@@ -12,6 +12,7 @@ import com.pulumi.gcp.logging.MetricArgs;
 import com.pulumi.gcp.logging.inputs.MetricState;
 import com.pulumi.gcp.logging.outputs.MetricBucketOptions;
 import com.pulumi.gcp.logging.outputs.MetricMetricDescriptor;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
@@ -202,6 +203,41 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Logging Metric Disabled
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.logging.Metric;
+ * import com.pulumi.gcp.logging.MetricArgs;
+ * import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var loggingMetric = new Metric(&#34;loggingMetric&#34;, MetricArgs.builder()        
+ *             .disabled(true)
+ *             .filter(&#34;resource.type=gae_app AND severity&gt;=ERROR&#34;)
+ *             .metricDescriptor(MetricMetricDescriptorArgs.builder()
+ *                 .metricKind(&#34;DELTA&#34;)
+ *                 .valueType(&#34;INT64&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -267,6 +303,20 @@ public class Metric extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * If set to True, then this metric is disabled and it does not generate any points.
+     * 
+     */
+    @Export(name="disabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> disabled;
+
+    /**
+     * @return If set to True, then this metric is disabled and it does not generate any points.
+     * 
+     */
+    public Output<Optional<Boolean>> disabled() {
+        return Codegen.optional(this.disabled);
     }
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which

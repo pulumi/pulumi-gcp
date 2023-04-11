@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         /// for an explanation of load balancing modes.
         /// Default value is `CONNECTION`.
-        /// Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+        /// Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         /// </summary>
         [Input("balancingMode")]
         public Input<string>? BalancingMode { get; set; }

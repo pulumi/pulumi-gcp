@@ -1237,7 +1237,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Forwarding Rule VPC Psc
+ * ### Forwarding Rule Vpc Psc
  * 
  * ```java
  * package generated_program;
@@ -1525,7 +1525,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      * 
      */
     @Export(name="ipProtocol", type=String.class, parameters={})
@@ -1535,7 +1535,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * @return The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      * 
      */
     public Output<String> ipProtocol() {
@@ -1668,7 +1668,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     @Export(name="networkTier", type=String.class, parameters={})
@@ -1677,7 +1677,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
     /**
      * @return The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     public Output<String> networkTier() {

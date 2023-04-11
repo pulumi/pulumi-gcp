@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Apigee
         /// operation completes. During this period, the Organization may be restored to its last known state.
         /// After this period, the Organization will no longer be able to be restored.
         /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        /// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         /// </summary>
         [Output("retention")]
         public Output<string?> Retention { get; private set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Runtime type of the Apigee organization based on the Apigee subscription purchased.
         /// Default value is `CLOUD`.
-        /// Possible values are `CLOUD` and `HYBRID`.
+        /// Possible values are: `CLOUD`, `HYBRID`.
         /// </summary>
         [Output("runtimeType")]
         public Output<string?> RuntimeType { get; private set; } = null!;
@@ -350,7 +350,7 @@ namespace Pulumi.Gcp.Apigee
         /// operation completes. During this period, the Organization may be restored to its last known state.
         /// After this period, the Organization will no longer be able to be restored.
         /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        /// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
@@ -367,7 +367,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Runtime type of the Apigee organization based on the Apigee subscription purchased.
         /// Default value is `CLOUD`.
-        /// Possible values are `CLOUD` and `HYBRID`.
+        /// Possible values are: `CLOUD`, `HYBRID`.
         /// </summary>
         [Input("runtimeType")]
         public Input<string>? RuntimeType { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.Gcp.Apigee
         /// operation completes. During this period, the Organization may be restored to its last known state.
         /// After this period, the Organization will no longer be able to be restored.
         /// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        /// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        /// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
@@ -461,7 +461,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Runtime type of the Apigee organization based on the Apigee subscription purchased.
         /// Default value is `CLOUD`.
-        /// Possible values are `CLOUD` and `HYBRID`.
+        /// Possible values are: `CLOUD`, `HYBRID`.
         /// </summary>
         [Input("runtimeType")]
         public Input<string>? RuntimeType { get; set; }

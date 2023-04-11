@@ -20,7 +20,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
     private @Nullable String minimumVersion;
     /**
      * @return The operating system type of the device.
-     * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+     * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
      * 
      */
     private String osType;
@@ -37,7 +37,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
     }
     /**
      * @return The operating system type of the device.
-     * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+     * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
      * 
      */
     public String osType() {

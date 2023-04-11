@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  *
  * ## Example Usage
- * ### VPC Access Connector
+ * ### Vpc Access Connector
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     network: "default",
  * });
  * ```
- * ### VPC Access Connector Shared VPC
+ * ### Vpc Access Connector Shared Vpc
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

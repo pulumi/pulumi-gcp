@@ -101,7 +101,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
      * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     @Export(name="createPolicy", type=String.class, parameters={})
@@ -114,7 +114,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
      * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     public Output<Optional<String>> createPolicy() {
@@ -128,7 +128,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
      * Default value is `DELETE`.
-     * Possible values are `ABANDON` and `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     @Export(name="deletePolicy", type=String.class, parameters={})
@@ -142,7 +142,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
      * Default value is `DELETE`.
-     * Possible values are `ABANDON` and `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     public Output<Optional<String>> deletePolicy() {

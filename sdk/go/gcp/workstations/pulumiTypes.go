@@ -1705,7 +1705,7 @@ type WorkstationConfigPersistentDirectoryGcePd struct {
 	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
 	FsType *string `pulumi:"fsType"`
 	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-	// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+	// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
 	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
 	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
 	SizeGb *int `pulumi:"sizeGb"`
@@ -1728,7 +1728,7 @@ type WorkstationConfigPersistentDirectoryGcePdArgs struct {
 	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
 	FsType pulumi.StringPtrInput `pulumi:"fsType"`
 	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-	// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+	// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
 	ReclaimPolicy pulumi.StringPtrInput `pulumi:"reclaimPolicy"`
 	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
@@ -1822,7 +1822,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdOutput) FsType() pulumi.StringP
 }
 
 // What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) ReclaimPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
 }
@@ -1877,7 +1877,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) FsType() pulumi.Stri
 }
 
 // What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ReclaimPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
 		if v == nil {

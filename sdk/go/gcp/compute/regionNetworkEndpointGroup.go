@@ -310,7 +310,7 @@ type RegionNetworkEndpointGroup struct {
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -391,7 +391,7 @@ type regionNetworkEndpointGroupState struct {
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -441,7 +441,7 @@ type RegionNetworkEndpointGroupState struct {
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -495,7 +495,7 @@ type regionNetworkEndpointGroupArgs struct {
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -544,7 +544,7 @@ type RegionNetworkEndpointGroupArgs struct {
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 	// Default value is `SERVERLESS`.
-	// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -698,7 +698,7 @@ func (o RegionNetworkEndpointGroupOutput) Network() pulumi.StringPtrOutput {
 
 // Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
 // Default value is `SERVERLESS`.
-// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
 func (o RegionNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.NetworkEndpointType }).(pulumi.StringPtrOutput)
 }

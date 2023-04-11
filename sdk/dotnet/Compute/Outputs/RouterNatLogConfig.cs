@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly bool Enable;
         /// <summary>
         /// Specifies the desired filtering of logs on this NAT.
-        /// Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+        /// Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
         /// </summary>
         public readonly string Filter;
 

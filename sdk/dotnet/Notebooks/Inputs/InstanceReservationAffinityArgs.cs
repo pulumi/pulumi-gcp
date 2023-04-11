@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
     {
         /// <summary>
         /// The type of Compute Reservation.
-        /// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+        /// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
         /// </summary>
         [Input("consumeReservationType", required: true)]
         public Input<string> ConsumeReservationType { get; set; } = null!;

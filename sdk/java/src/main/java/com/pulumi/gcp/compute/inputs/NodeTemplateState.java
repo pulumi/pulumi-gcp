@@ -21,7 +21,7 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
     /**
      * CPU overcommit.
      * Default value is `NONE`.
-     * Possible values are `ENABLED` and `NONE`.
+     * Possible values are: `ENABLED`, `NONE`.
      * 
      */
     @Import(name="cpuOvercommitType")
@@ -30,7 +30,7 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return CPU overcommit.
      * Default value is `NONE`.
-     * Possible values are `ENABLED` and `NONE`.
+     * Possible values are: `ENABLED`, `NONE`.
      * 
      */
     public Optional<Output<String>> cpuOvercommitType() {
@@ -244,7 +244,7 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cpuOvercommitType CPU overcommit.
          * Default value is `NONE`.
-         * Possible values are `ENABLED` and `NONE`.
+         * Possible values are: `ENABLED`, `NONE`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cpuOvercommitType CPU overcommit.
          * Default value is `NONE`.
-         * Possible values are `ENABLED` and `NONE`.
+         * Possible values are: `ENABLED`, `NONE`.
          * 
          * @return builder
          * 

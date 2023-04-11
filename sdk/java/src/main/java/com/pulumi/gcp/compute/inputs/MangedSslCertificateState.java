@@ -175,7 +175,7 @@ public final class MangedSslCertificateState extends com.pulumi.resources.Resour
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
-     * Possible values are `MANAGED`.
+     * Possible values are: `MANAGED`.
      * 
      */
     @Import(name="type")
@@ -185,7 +185,7 @@ public final class MangedSslCertificateState extends com.pulumi.resources.Resour
      * @return Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
-     * Possible values are `MANAGED`.
+     * Possible values are: `MANAGED`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -446,7 +446,7 @@ public final class MangedSslCertificateState extends com.pulumi.resources.Resour
          * @param type Enum field whose value is always `MANAGED` - used to signal to the API
          * which type this is.
          * Default value is `MANAGED`.
-         * Possible values are `MANAGED`.
+         * Possible values are: `MANAGED`.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class MangedSslCertificateState extends com.pulumi.resources.Resour
          * @param type Enum field whose value is always `MANAGED` - used to signal to the API
          * which type this is.
          * Default value is `MANAGED`.
-         * Possible values are `MANAGED`.
+         * Possible values are: `MANAGED`.
          * 
          * @return builder
          * 

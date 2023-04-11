@@ -424,9 +424,9 @@ class PolicyClusterAdmissionRule(dict):
         """
         :param str cluster: The identifier for this object. Format specified above.
         :param str enforcement_mode: The action when a pod creation is denied by the admission rule.
-               Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+               Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
         :param str evaluation_mode: How this admission rule will be evaluated.
-               Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+               Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
         :param Sequence[str] require_attestations_bies: The resource names of the attestors that must attest to a
                container image. If the attestor is in a different project from the
                policy, it should be specified in the format `projects/*/attestors/*`.
@@ -455,7 +455,7 @@ class PolicyClusterAdmissionRule(dict):
     def enforcement_mode(self) -> str:
         """
         The action when a pod creation is denied by the admission rule.
-        Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+        Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
         """
         return pulumi.get(self, "enforcement_mode")
 
@@ -464,7 +464,7 @@ class PolicyClusterAdmissionRule(dict):
     def evaluation_mode(self) -> str:
         """
         How this admission rule will be evaluated.
-        Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+        Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -513,9 +513,9 @@ class PolicyDefaultAdmissionRule(dict):
                  require_attestations_bies: Optional[Sequence[str]] = None):
         """
         :param str enforcement_mode: The action when a pod creation is denied by the admission rule.
-               Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+               Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
         :param str evaluation_mode: How this admission rule will be evaluated.
-               Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+               Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
         :param Sequence[str] require_attestations_bies: The resource names of the attestors that must attest to a
                container image. If the attestor is in a different project from the
                policy, it should be specified in the format `projects/*/attestors/*`.
@@ -535,7 +535,7 @@ class PolicyDefaultAdmissionRule(dict):
     def enforcement_mode(self) -> str:
         """
         The action when a pod creation is denied by the admission rule.
-        Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+        Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
         """
         return pulumi.get(self, "enforcement_mode")
 
@@ -544,7 +544,7 @@ class PolicyDefaultAdmissionRule(dict):
     def evaluation_mode(self) -> str:
         """
         How this admission rule will be evaluated.
-        Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+        Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
         """
         return pulumi.get(self, "evaluation_mode")
 

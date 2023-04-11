@@ -33,14 +33,14 @@ namespace Pulumi.Gcp.Firestore
     {
         /// <summary>
         /// The App Engine integration mode to use for this database.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Output("appEngineIntegrationMode")]
         public Output<string> AppEngineIntegrationMode { get; private set; } = null!;
 
         /// <summary>
         /// The concurrency control mode to use for this database.
-        /// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         /// </summary>
         [Output("concurrencyMode")]
         public Output<string> ConcurrencyMode { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Firestore
         /// The type of the database.
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
         /// for information about how to choose.
-        /// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+        /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -150,14 +150,14 @@ namespace Pulumi.Gcp.Firestore
     {
         /// <summary>
         /// The App Engine integration mode to use for this database.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("appEngineIntegrationMode")]
         public Input<string>? AppEngineIntegrationMode { get; set; }
 
         /// <summary>
         /// The concurrency control mode to use for this database.
-        /// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         /// </summary>
         [Input("concurrencyMode")]
         public Input<string>? ConcurrencyMode { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.Firestore
         /// The type of the database.
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
         /// for information about how to choose.
-        /// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+        /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -206,14 +206,14 @@ namespace Pulumi.Gcp.Firestore
     {
         /// <summary>
         /// The App Engine integration mode to use for this database.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("appEngineIntegrationMode")]
         public Input<string>? AppEngineIntegrationMode { get; set; }
 
         /// <summary>
         /// The concurrency control mode to use for this database.
-        /// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        /// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         /// </summary>
         [Input("concurrencyMode")]
         public Input<string>? ConcurrencyMode { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.Firestore
         /// The type of the database.
         /// See https://cloud.google.com/datastore/docs/firestore-or-datastore
         /// for information about how to choose.
-        /// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+        /// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -46,7 +46,7 @@ class NetworkEndpointGroupArgs:
                CONNECTION balancing modes.
                Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
                Default value is `GCE_VM_IP_PORT`.
-               Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+               Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnetwork: Optional subnetwork to which all network endpoints in the NEG belong.
@@ -138,7 +138,7 @@ class NetworkEndpointGroupArgs:
         CONNECTION balancing modes.
         Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
         Default value is `GCE_VM_IP_PORT`.
-        Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+        Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -221,7 +221,7 @@ class _NetworkEndpointGroupState:
                CONNECTION balancing modes.
                Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
                Default value is `GCE_VM_IP_PORT`.
-               Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+               Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -320,7 +320,7 @@ class _NetworkEndpointGroupState:
         CONNECTION balancing modes.
         Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
         Default value is `GCE_VM_IP_PORT`.
-        Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+        Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -506,7 +506,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                CONNECTION balancing modes.
                Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
                Default value is `GCE_VM_IP_PORT`.
-               Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+               Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnetwork: Optional subnetwork to which all network endpoints in the NEG belong.
@@ -689,7 +689,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
                CONNECTION balancing modes.
                Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
                Default value is `GCE_VM_IP_PORT`.
-               Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+               Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -767,7 +767,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
         CONNECTION balancing modes.
         Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
         Default value is `GCE_VM_IP_PORT`.
-        Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+        Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 

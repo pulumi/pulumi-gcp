@@ -95,7 +95,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The minimum alert severity level that is reported by the endpoint.
-     * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+     * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      * 
      */
     @Import(name="severity", required=true)
@@ -103,7 +103,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The minimum alert severity level that is reported by the endpoint.
-     * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+     * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      * 
      */
     public Output<String> severity() {
@@ -264,7 +264,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param severity The minimum alert severity level that is reported by the endpoint.
-         * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+         * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param severity The minimum alert severity level that is reported by the endpoint.
-         * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+         * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
          * 
          * @return builder
          * 

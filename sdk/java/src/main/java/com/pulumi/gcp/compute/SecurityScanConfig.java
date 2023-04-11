@@ -141,7 +141,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
      * Default value is `ENABLED`.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     @Export(name="exportToSecurityCommandCenter", type=String.class, parameters={})
@@ -150,7 +150,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return Controls export of scan configurations and results to Cloud Security Command Center.
      * Default value is `ENABLED`.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     public Output<Optional<String>> exportToSecurityCommandCenter() {
@@ -236,7 +236,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
+     * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      * 
      */
     @Export(name="targetPlatforms", type=List.class, parameters={String.class})
@@ -244,7 +244,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
+     * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      * 
      */
     public Output<Optional<List<String>>> targetPlatforms() {
@@ -253,7 +253,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     /**
      * Type of the user agents used for scanning
      * Default value is `CHROME_LINUX`.
-     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+     * Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
      * 
      */
     @Export(name="userAgent", type=String.class, parameters={})
@@ -262,7 +262,7 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return Type of the user agents used for scanning
      * Default value is `CHROME_LINUX`.
-     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+     * Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
      * 
      */
     public Output<Optional<String>> userAgent() {

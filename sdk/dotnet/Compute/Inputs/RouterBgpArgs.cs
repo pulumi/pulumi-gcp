@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `CUSTOM`.
+        /// Possible values are: `DEFAULT`, `CUSTOM`.
         /// </summary>
         [Input("advertiseMode")]
         public Input<string>? AdvertiseMode { get; set; }

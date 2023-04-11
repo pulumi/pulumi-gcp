@@ -202,7 +202,7 @@ type BackendService struct {
 	// Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrOutput `pulumi:"circuitBreakers"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode pulumi.StringPtrOutput `pulumi:"compressionMode"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -251,7 +251,7 @@ type BackendService struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -291,7 +291,7 @@ type BackendService struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
@@ -305,7 +305,7 @@ type BackendService struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -358,7 +358,7 @@ type backendServiceState struct {
 	// Structure is documented below.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode *string `pulumi:"compressionMode"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -407,7 +407,7 @@ type backendServiceState struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -447,7 +447,7 @@ type backendServiceState struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
@@ -461,7 +461,7 @@ type backendServiceState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -486,7 +486,7 @@ type BackendServiceState struct {
 	// Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode pulumi.StringPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -535,7 +535,7 @@ type BackendServiceState struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -575,7 +575,7 @@ type BackendServiceState struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
@@ -589,7 +589,7 @@ type BackendServiceState struct {
 	SelfLink pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
 	SessionAffinity pulumi.StringPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -618,7 +618,7 @@ type backendServiceArgs struct {
 	// Structure is documented below.
 	CircuitBreakers *BackendServiceCircuitBreakers `pulumi:"circuitBreakers"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode *string `pulumi:"compressionMode"`
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -660,7 +660,7 @@ type backendServiceArgs struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -700,7 +700,7 @@ type backendServiceArgs struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
@@ -712,7 +712,7 @@ type backendServiceArgs struct {
 	SecuritySettings *BackendServiceSecuritySettings `pulumi:"securitySettings"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -738,7 +738,7 @@ type BackendServiceArgs struct {
 	// Structure is documented below.
 	CircuitBreakers BackendServiceCircuitBreakersPtrInput
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode pulumi.StringPtrInput
 	// Time for which instance will be drained (not accept new
 	// connections, but still work to finish started).
@@ -780,7 +780,7 @@ type BackendServiceArgs struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -820,7 +820,7 @@ type BackendServiceArgs struct {
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 	// types and may result in errors if used with the GA API.
-	// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
@@ -832,7 +832,7 @@ type BackendServiceArgs struct {
 	SecuritySettings BackendServiceSecuritySettingsPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
 	SessionAffinity pulumi.StringPtrInput
 	// How many seconds to wait for the backend before considering it a
 	// failed request. Default is 30 seconds. Valid range is [1, 86400].
@@ -955,7 +955,7 @@ func (o BackendServiceOutput) CircuitBreakers() BackendServiceCircuitBreakersPtr
 }
 
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-// Possible values are `AUTOMATIC` and `DISABLED`.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
 func (o BackendServiceOutput) CompressionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.CompressionMode }).(pulumi.StringPtrOutput)
 }
@@ -1043,7 +1043,7 @@ func (o BackendServiceOutput) Iap() BackendServiceIapPtrOutput {
 // load balancing cannot be used with the other. For more information, refer to
 // [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 // Default value is `EXTERNAL`.
-// Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
 func (o BackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
@@ -1107,7 +1107,7 @@ func (o BackendServiceOutput) Project() pulumi.StringOutput {
 // The protocol this BackendService uses to communicate with backends.
 // The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
 // types and may result in errors if used with the GA API.
-// Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
 func (o BackendServiceOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1133,7 +1133,7 @@ func (o BackendServiceOutput) SelfLink() pulumi.StringOutput {
 
 // Type of session affinity to use. The default is NONE. Session affinity is
 // not applicable if the protocol is UDP.
-// Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
 func (o BackendServiceOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.SessionAffinity }).(pulumi.StringOutput)
 }

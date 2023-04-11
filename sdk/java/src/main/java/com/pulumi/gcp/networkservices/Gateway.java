@@ -267,7 +267,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -275,7 +275,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     public Output<String> type() {

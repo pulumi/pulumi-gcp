@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         public readonly string? Body;
         /// <summary>
         /// The content type to use for the check.
-        /// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
         /// </summary>
         public readonly string? ContentType;
         /// <summary>
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// <summary>
         /// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
         /// Default value is `GET`.
-        /// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+        /// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
         /// </summary>
         public readonly string? RequestMethod;
         /// <summary>

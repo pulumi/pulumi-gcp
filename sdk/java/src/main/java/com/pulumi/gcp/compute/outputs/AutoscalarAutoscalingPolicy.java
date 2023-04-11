@@ -71,7 +71,7 @@ public final class AutoscalarAutoscalingPolicy {
     /**
      * @return Defines operating mode for this policy.
      * Default value is `ON`.
-     * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+     * Possible values are: `OFF`, `ONLY_UP`, `ON`.
      * 
      */
     private @Nullable String mode;
@@ -161,7 +161,7 @@ public final class AutoscalarAutoscalingPolicy {
     /**
      * @return Defines operating mode for this policy.
      * Default value is `ON`.
-     * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+     * Possible values are: `OFF`, `ONLY_UP`, `ON`.
      * 
      */
     public Optional<String> mode() {

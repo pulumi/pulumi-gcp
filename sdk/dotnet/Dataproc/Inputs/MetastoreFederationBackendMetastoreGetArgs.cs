@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         /// <summary>
         /// The type of the backend metastore.
-        /// Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+        /// Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
         /// </summary>
         [Input("metastoreType", required: true)]
         public Input<string> MetastoreType { get; set; } = null!;

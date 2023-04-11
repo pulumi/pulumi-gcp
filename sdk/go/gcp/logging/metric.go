@@ -179,6 +179,36 @@ import (
 //	}
 //
 // ```
+// ### Logging Metric Disabled
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := logging.NewMetric(ctx, "loggingMetric", &logging.MetricArgs{
+//				Disabled: pulumi.Bool(true),
+//				Filter:   pulumi.String("resource.type=gae_app AND severity>=ERROR"),
+//				MetricDescriptor: &logging.MetricMetricDescriptorArgs{
+//					MetricKind: pulumi.String("DELTA"),
+//					ValueType:  pulumi.String("INT64"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -208,6 +238,8 @@ type Metric struct {
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If set to True, then this metric is disabled and it does not generate any points.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
 	Filter pulumi.StringOutput `pulumi:"filter"`
@@ -283,6 +315,8 @@ type metricState struct {
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
 	Description *string `pulumi:"description"`
+	// If set to True, then this metric is disabled and it does not generate any points.
+	Disabled *bool `pulumi:"disabled"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
 	Filter *string `pulumi:"filter"`
@@ -327,6 +361,8 @@ type MetricState struct {
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
 	Description pulumi.StringPtrInput
+	// If set to True, then this metric is disabled and it does not generate any points.
+	Disabled pulumi.BoolPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
 	Filter pulumi.StringPtrInput
@@ -375,6 +411,8 @@ type metricArgs struct {
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
 	Description *string `pulumi:"description"`
+	// If set to True, then this metric is disabled and it does not generate any points.
+	Disabled *bool `pulumi:"disabled"`
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
 	Filter string `pulumi:"filter"`
@@ -420,6 +458,8 @@ type MetricArgs struct {
 	// A description of this metric, which is used in documentation. The maximum length of the
 	// description is 8000 characters.
 	Description pulumi.StringPtrInput
+	// If set to True, then this metric is disabled and it does not generate any points.
+	Disabled pulumi.BoolPtrInput
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
 	// is used to match log entries.
 	Filter pulumi.StringInput
@@ -557,6 +597,11 @@ func (o MetricOutput) BucketOptions() MetricBucketOptionsPtrOutput {
 // description is 8000 characters.
 func (o MetricOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Metric) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// If set to True, then this metric is disabled and it does not generate any points.
+func (o MetricOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Metric) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
 // An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which

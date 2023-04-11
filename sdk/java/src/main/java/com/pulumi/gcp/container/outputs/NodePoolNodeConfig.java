@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGvnic;
@@ -33,6 +34,7 @@ public final class NodePoolNodeConfig {
     private @Nullable Integer diskSizeGb;
     private @Nullable String diskType;
     private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
+    private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
     private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
     private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
     private @Nullable NodePoolNodeConfigGvnic gvnic;
@@ -74,6 +76,9 @@ public final class NodePoolNodeConfig {
     }
     public Optional<NodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfig() {
         return Optional.ofNullable(this.ephemeralStorageConfig);
+    }
+    public Optional<NodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfig() {
+        return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
     }
     public Optional<NodePoolNodeConfigGcfsConfig> gcfsConfig() {
         return Optional.ofNullable(this.gcfsConfig);
@@ -165,6 +170,7 @@ public final class NodePoolNodeConfig {
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
+        private @Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable NodePoolNodeConfigGvnic gvnic;
@@ -198,6 +204,7 @@ public final class NodePoolNodeConfig {
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
+    	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
@@ -248,6 +255,11 @@ public final class NodePoolNodeConfig {
         @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
             this.ephemeralStorageConfig = ephemeralStorageConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ephemeralStorageLocalSsdConfig(@Nullable NodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig) {
+            this.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             return this;
         }
         @CustomType.Setter
@@ -394,6 +406,7 @@ public final class NodePoolNodeConfig {
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
+            o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             o.gcfsConfig = gcfsConfig;
             o.guestAccelerators = guestAccelerators;
             o.gvnic = gvnic;

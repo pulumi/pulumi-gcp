@@ -150,6 +150,8 @@ if typing.TYPE_CHECKING:
     networkconnectivity = __networkconnectivity
     import pulumi_gcp.networkmanagement as __networkmanagement
     networkmanagement = __networkmanagement
+    import pulumi_gcp.networksecurity as __networksecurity
+    networksecurity = __networksecurity
     import pulumi_gcp.networkservices as __networkservices
     networkservices = __networkservices
     import pulumi_gcp.notebooks as __notebooks
@@ -277,6 +279,7 @@ else:
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
     networkconnectivity = _utilities.lazy_import('pulumi_gcp.networkconnectivity')
     networkmanagement = _utilities.lazy_import('pulumi_gcp.networkmanagement')
+    networksecurity = _utilities.lazy_import('pulumi_gcp.networksecurity')
     networkservices = _utilities.lazy_import('pulumi_gcp.networkservices')
     notebooks = _utilities.lazy_import('pulumi_gcp.notebooks')
     organizations = _utilities.lazy_import('pulumi_gcp.organizations')
@@ -659,6 +662,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile": "KeystoresAliasesKeyCertFile"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/keystoresAliasesPkcs12",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12": "KeystoresAliasesPkcs12"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/keystoresAliasesSelfSignedCert",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert": "KeystoresAliasesSelfSignedCert"
   }
  },
  {
@@ -4751,6 +4770,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/gatewaySecurityPolicy",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": "GatewaySecurityPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/gatewaySecurityPolicyRule",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": "GatewaySecurityPolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/urlList",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/urlList:UrlList": "UrlList"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/edgeCacheKeyset",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
@@ -4779,6 +4822,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/mesh",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/mesh:Mesh": "Mesh"
   }
  },
  {

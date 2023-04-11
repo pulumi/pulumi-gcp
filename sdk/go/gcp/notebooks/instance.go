@@ -215,7 +215,7 @@ type Instance struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrOutput `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	BootDiskType pulumi.StringPtrOutput `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -231,10 +231,10 @@ type Instance struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrOutput `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrOutput `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
-	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrOutput `pulumi:"diskEncryption"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -265,7 +265,7 @@ type Instance struct {
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The type of vNIC driver.
-	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 	NicType pulumi.StringPtrOutput `pulumi:"nicType"`
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrOutput `pulumi:"noProxyAccess"`
@@ -360,7 +360,7 @@ type instanceState struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -376,10 +376,10 @@ type instanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
-	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -410,7 +410,7 @@ type instanceState struct {
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network *string `pulumi:"network"`
 	// The type of vNIC driver.
-	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 	NicType *string `pulumi:"nicType"`
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
@@ -471,7 +471,7 @@ type InstanceState struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	BootDiskType pulumi.StringPtrInput
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -487,10 +487,10 @@ type InstanceState struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
-	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -521,7 +521,7 @@ type InstanceState struct {
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringPtrInput
 	// The type of vNIC driver.
-	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 	NicType pulumi.StringPtrInput
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrInput
@@ -586,7 +586,7 @@ type instanceArgs struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	BootDiskType *string `pulumi:"bootDiskType"`
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -602,10 +602,10 @@ type instanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb *int `pulumi:"dataDiskSizeGb"`
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType *string `pulumi:"dataDiskType"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
-	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -636,7 +636,7 @@ type instanceArgs struct {
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network *string `pulumi:"network"`
 	// The type of vNIC driver.
-	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 	NicType *string `pulumi:"nicType"`
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
@@ -693,7 +693,7 @@ type InstanceArgs struct {
 	// If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	BootDiskType pulumi.StringPtrInput
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
@@ -709,10 +709,10 @@ type InstanceArgs struct {
 	// If not specified, this defaults to 100.
 	DataDiskSizeGb pulumi.IntPtrInput
 	// Possible disk types for notebook instances.
-	// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
-	// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
 	// Whether the end user authorizes Google Cloud to install GPU driver
 	// on this instance. If this field is empty or set to false, the GPU driver
@@ -743,7 +743,7 @@ type InstanceArgs struct {
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringPtrInput
 	// The type of vNIC driver.
-	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 	NicType pulumi.StringPtrInput
 	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrInput
@@ -891,7 +891,7 @@ func (o InstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Possible disk types for notebook instances.
-// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 func (o InstanceOutput) BootDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
@@ -922,13 +922,13 @@ func (o InstanceOutput) DataDiskSizeGb() pulumi.IntPtrOutput {
 }
 
 // Possible disk types for notebook instances.
-// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 func (o InstanceOutput) DataDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DataDiskType }).(pulumi.StringPtrOutput)
 }
 
 // Disk encryption method used on the boot and data disks, defaults to GMEK.
-// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 func (o InstanceOutput) DiskEncryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DiskEncryption }).(pulumi.StringPtrOutput)
 }
@@ -989,7 +989,7 @@ func (o InstanceOutput) Network() pulumi.StringOutput {
 }
 
 // The type of vNIC driver.
-// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 func (o InstanceOutput) NicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.NicType }).(pulumi.StringPtrOutput)
 }

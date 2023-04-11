@@ -47,6 +47,36 @@ public final class TransferJobTransferSpecObjectConditionsArgs extends com.pulum
     }
 
     /**
+     * If specified, only objects with a &#34;last modification time&#34; before this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="lastModifiedBefore")
+    private @Nullable Output<String> lastModifiedBefore;
+
+    /**
+     * @return If specified, only objects with a &#34;last modification time&#34; before this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> lastModifiedBefore() {
+        return Optional.ofNullable(this.lastModifiedBefore);
+    }
+
+    /**
+     * If specified, only objects with a &#34;last modification time&#34; on or after this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="lastModifiedSince")
+    private @Nullable Output<String> lastModifiedSince;
+
+    /**
+     * @return If specified, only objects with a &#34;last modification time&#34; on or after this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> lastModifiedSince() {
+        return Optional.ofNullable(this.lastModifiedSince);
+    }
+
+    /**
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
@@ -81,6 +111,8 @@ public final class TransferJobTransferSpecObjectConditionsArgs extends com.pulum
     private TransferJobTransferSpecObjectConditionsArgs(TransferJobTransferSpecObjectConditionsArgs $) {
         this.excludePrefixes = $.excludePrefixes;
         this.includePrefixes = $.includePrefixes;
+        this.lastModifiedBefore = $.lastModifiedBefore;
+        this.lastModifiedSince = $.lastModifiedSince;
         this.maxTimeElapsedSinceLastModification = $.maxTimeElapsedSinceLastModification;
         this.minTimeElapsedSinceLastModification = $.minTimeElapsedSinceLastModification;
     }
@@ -163,6 +195,48 @@ public final class TransferJobTransferSpecObjectConditionsArgs extends com.pulum
          */
         public Builder includePrefixes(String... includePrefixes) {
             return includePrefixes(List.of(includePrefixes));
+        }
+
+        /**
+         * @param lastModifiedBefore If specified, only objects with a &#34;last modification time&#34; before this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedBefore(@Nullable Output<String> lastModifiedBefore) {
+            $.lastModifiedBefore = lastModifiedBefore;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedBefore If specified, only objects with a &#34;last modification time&#34; before this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedBefore(String lastModifiedBefore) {
+            return lastModifiedBefore(Output.of(lastModifiedBefore));
+        }
+
+        /**
+         * @param lastModifiedSince If specified, only objects with a &#34;last modification time&#34; on or after this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedSince(@Nullable Output<String> lastModifiedSince) {
+            $.lastModifiedSince = lastModifiedSince;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedSince If specified, only objects with a &#34;last modification time&#34; on or after this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedSince(String lastModifiedSince) {
+            return lastModifiedSince(Output.of(lastModifiedSince));
         }
 
         /**

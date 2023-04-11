@@ -111,7 +111,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      * 
      */
     @Import(name="queryScope")
@@ -120,7 +120,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      * 
      */
     public Optional<Output<String>> queryScope() {
@@ -296,7 +296,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param queryScope The scope at which a query is run.
          * Default value is `COLLECTION`.
-         * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class IndexState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param queryScope The scope at which a query is run.
          * Default value is `COLLECTION`.
-         * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
          * 
          * @return builder
          * 

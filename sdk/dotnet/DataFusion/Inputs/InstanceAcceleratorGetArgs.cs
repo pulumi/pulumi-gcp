@@ -14,14 +14,14 @@ namespace Pulumi.Gcp.DataFusion.Inputs
     {
         /// <summary>
         /// The type of an accelator for a CDF instance.
-        /// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+        /// Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
         /// </summary>
         [Input("acceleratorType", required: true)]
         public Input<string> AcceleratorType { get; set; } = null!;
 
         /// <summary>
         /// The type of an accelator for a CDF instance.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;

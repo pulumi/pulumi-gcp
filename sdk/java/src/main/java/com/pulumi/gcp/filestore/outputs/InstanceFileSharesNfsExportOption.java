@@ -17,7 +17,7 @@ public final class InstanceFileSharesNfsExportOption {
      * @return Either READ_ONLY, for allowing only read requests on the exported directory,
      * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     private @Nullable String accessMode;
@@ -46,7 +46,7 @@ public final class InstanceFileSharesNfsExportOption {
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
      * Default value is `NO_ROOT_SQUASH`.
-     * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
      * 
      */
     private @Nullable String squashMode;
@@ -56,7 +56,7 @@ public final class InstanceFileSharesNfsExportOption {
      * @return Either READ_ONLY, for allowing only read requests on the exported directory,
      * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     public Optional<String> accessMode() {
@@ -93,7 +93,7 @@ public final class InstanceFileSharesNfsExportOption {
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
      * Default value is `NO_ROOT_SQUASH`.
-     * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
      * 
      */
     public Optional<String> squashMode() {

@@ -20,7 +20,7 @@ public final class AccessLevelsAccessLevelBasic {
      * OR is used, at least one Condition in conditions must be satisfied
      * for the AccessLevel to be applied.
      * Default value is `AND`.
-     * Possible values are `AND` and `OR`.
+     * Possible values are: `AND`, `OR`.
      * 
      */
     private @Nullable String combiningFunction;
@@ -39,7 +39,7 @@ public final class AccessLevelsAccessLevelBasic {
      * OR is used, at least one Condition in conditions must be satisfied
      * for the AccessLevel to be applied.
      * Default value is `AND`.
-     * Possible values are `AND` and `OR`.
+     * Possible values are: `AND`, `OR`.
      * 
      */
     public Optional<String> combiningFunction() {

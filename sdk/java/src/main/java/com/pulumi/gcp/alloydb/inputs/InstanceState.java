@@ -36,7 +36,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-     * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+     * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      * 
      */
     @Import(name="availabilityType")
@@ -44,7 +44,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-     * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+     * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      * 
      */
     public Optional<Output<String>> availabilityType() {
@@ -145,7 +145,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the instance.
-     * Possible values are `PRIMARY` and `READ_POOL`.
+     * Possible values are: `PRIMARY`, `READ_POOL`.
      * 
      */
     @Import(name="instanceType")
@@ -153,7 +153,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the instance.
-     * Possible values are `PRIMARY` and `READ_POOL`.
+     * Possible values are: `PRIMARY`, `READ_POOL`.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -363,7 +363,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param availabilityType Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-         * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+         * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param availabilityType Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-         * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+         * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
          * 
          * @return builder
          * 
@@ -514,7 +514,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceType The type of the instance.
-         * Possible values are `PRIMARY` and `READ_POOL`.
+         * Possible values are: `PRIMARY`, `READ_POOL`.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceType The type of the instance.
-         * Possible values are `PRIMARY` and `READ_POOL`.
+         * Possible values are: `PRIMARY`, `READ_POOL`.
          * 
          * @return builder
          * 

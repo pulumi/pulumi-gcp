@@ -21,7 +21,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The dialect of the Cloud Spanner Database.
      * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
-     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+     * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      * 
      */
     @Import(name="databaseDialect")
@@ -30,7 +30,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The dialect of the Cloud Spanner Database.
      * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
-     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+     * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      * 
      */
     public Optional<Output<String>> databaseDialect() {
@@ -198,7 +198,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param databaseDialect The dialect of the Cloud Spanner Database.
          * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
-         * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+         * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param databaseDialect The dialect of the Cloud Spanner Database.
          * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
-         * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+         * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
          * 
          * @return builder
          * 

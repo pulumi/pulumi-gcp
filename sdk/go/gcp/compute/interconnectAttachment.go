@@ -154,7 +154,7 @@ type InterconnectAttachment struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
-	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -193,7 +193,7 @@ type InterconnectAttachment struct {
 	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
 	//   attachment must be created with this option.
 	//   Default value is `NONE`.
-	//   Possible values are `NONE` and `IPSEC`.
+	//   Possible values are: `NONE`, `IPSEC`.
 	Encryption pulumi.StringPtrOutput `pulumi:"encryption"`
 	// Google reference ID, to be used when raising support tickets with
 	// Google or otherwise to debug backend connectivity issues.
@@ -256,7 +256,7 @@ type InterconnectAttachment struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
-	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -303,7 +303,7 @@ type interconnectAttachmentState struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
-	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -342,7 +342,7 @@ type interconnectAttachmentState struct {
 	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
 	//   attachment must be created with this option.
 	//   Default value is `NONE`.
-	//   Possible values are `NONE` and `IPSEC`.
+	//   Possible values are: `NONE`, `IPSEC`.
 	Encryption *string `pulumi:"encryption"`
 	// Google reference ID, to be used when raising support tickets with
 	// Google or otherwise to debug backend connectivity issues.
@@ -405,7 +405,7 @@ type interconnectAttachmentState struct {
 	State *string `pulumi:"state"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
-	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
 	Type *string `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -421,7 +421,7 @@ type InterconnectAttachmentState struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
-	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
 	Bandwidth pulumi.StringPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -460,7 +460,7 @@ type InterconnectAttachmentState struct {
 	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
 	//   attachment must be created with this option.
 	//   Default value is `NONE`.
-	//   Possible values are `NONE` and `IPSEC`.
+	//   Possible values are: `NONE`, `IPSEC`.
 	Encryption pulumi.StringPtrInput
 	// Google reference ID, to be used when raising support tickets with
 	// Google or otherwise to debug backend connectivity issues.
@@ -523,7 +523,7 @@ type InterconnectAttachmentState struct {
 	State pulumi.StringPtrInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
-	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
 	Type pulumi.StringPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -543,7 +543,7 @@ type interconnectAttachmentArgs struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
-	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -574,7 +574,7 @@ type interconnectAttachmentArgs struct {
 	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
 	//   attachment must be created with this option.
 	//   Default value is `NONE`.
-	//   Possible values are `NONE` and `IPSEC`.
+	//   Possible values are: `NONE`, `IPSEC`.
 	Encryption *string `pulumi:"encryption"`
 	// URL of the underlying Interconnect object that this attachment's
 	// traffic will traverse through. Required if type is DEDICATED, must not
@@ -618,7 +618,7 @@ type interconnectAttachmentArgs struct {
 	Router string `pulumi:"router"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
-	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
 	Type *string `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -635,7 +635,7 @@ type InterconnectAttachmentArgs struct {
 	// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 	// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 	// Defaults to BPS_10G
-	// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+	// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
 	Bandwidth pulumi.StringPtrInput
 	// Up to 16 candidate prefixes that can be used to restrict the allocation
 	// of cloudRouterIpAddress and customerRouterIpAddress for this attachment.
@@ -666,7 +666,7 @@ type InterconnectAttachmentArgs struct {
 	//   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
 	//   attachment must be created with this option.
 	//   Default value is `NONE`.
-	//   Possible values are `NONE` and `IPSEC`.
+	//   Possible values are: `NONE`, `IPSEC`.
 	Encryption pulumi.StringPtrInput
 	// URL of the underlying Interconnect object that this attachment's
 	// traffic will traverse through. Required if type is DEDICATED, must not
@@ -710,7 +710,7 @@ type InterconnectAttachmentArgs struct {
 	Router pulumi.StringInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
-	// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
 	Type pulumi.StringPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
 	// using PARTNER type this will be managed upstream.
@@ -815,7 +815,7 @@ func (o InterconnectAttachmentOutput) AdminEnabled() pulumi.BoolPtrOutput {
 // For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
 // Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
 // Defaults to BPS_10G
-// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
 func (o InterconnectAttachmentOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
@@ -875,7 +875,7 @@ func (o InterconnectAttachmentOutput) EdgeAvailabilityDomain() pulumi.StringOutp
 //     such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
 //     attachment must be created with this option.
 //     Default value is `NONE`.
-//     Possible values are `NONE` and `IPSEC`.
+//     Possible values are: `NONE`, `IPSEC`.
 func (o InterconnectAttachmentOutput) Encryption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.Encryption }).(pulumi.StringPtrOutput)
 }
@@ -982,7 +982,7 @@ func (o InterconnectAttachmentOutput) State() pulumi.StringOutput {
 
 // The type of InterconnectAttachment you wish to create. Defaults to
 // DEDICATED.
-// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
 func (o InterconnectAttachmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -485,7 +485,7 @@ func (o GuestPoliciesAssignmentOsTypeArrayOutput) Index(i pulumi.IntInput) Guest
 
 type GuestPoliciesPackage struct {
 	// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+	// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
 	DesiredState *string `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager,
 	// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
@@ -493,7 +493,7 @@ type GuestPoliciesPackage struct {
 	// This is useful when creating a policy that applies to different types of systems.
 	// The default behavior is ANY.
 	// Default value is `ANY`.
-	// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+	// Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
 	Manager *string `pulumi:"manager"`
 	// The name of the package. A package is uniquely identified for conflict validation
 	// by checking the package name and the manager(s) that the package targets.
@@ -513,7 +513,7 @@ type GuestPoliciesPackageInput interface {
 
 type GuestPoliciesPackageArgs struct {
 	// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+	// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
 	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager,
 	// the package is not installed or removed no error message is returned. By default, or if you specify ANY,
@@ -521,7 +521,7 @@ type GuestPoliciesPackageArgs struct {
 	// This is useful when creating a policy that applies to different types of systems.
 	// The default behavior is ANY.
 	// Default value is `ANY`.
-	// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+	// Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
 	Manager pulumi.StringPtrInput `pulumi:"manager"`
 	// The name of the package. A package is uniquely identified for conflict validation
 	// by checking the package name and the manager(s) that the package targets.
@@ -580,7 +580,7 @@ func (o GuestPoliciesPackageOutput) ToGuestPoliciesPackageOutputWithContext(ctx 
 }
 
 // The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
 func (o GuestPoliciesPackageOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
@@ -591,7 +591,7 @@ func (o GuestPoliciesPackageOutput) DesiredState() pulumi.StringPtrOutput {
 // This is useful when creating a policy that applies to different types of systems.
 // The default behavior is ANY.
 // Default value is `ANY`.
-// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+// Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
 func (o GuestPoliciesPackageOutput) Manager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackage) *string { return v.Manager }).(pulumi.StringPtrOutput)
 }
@@ -761,7 +761,7 @@ func (o GuestPoliciesPackageRepositoryArrayOutput) Index(i pulumi.IntInput) Gues
 type GuestPoliciesPackageRepositoryApt struct {
 	// Type of archive files in this repository. The default behavior is DEB.
 	// Default value is `DEB`.
-	// Possible values are `DEB` and `DEB_SRC`.
+	// Possible values are: `DEB`, `DEB_SRC`.
 	ArchiveType *string `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components []string `pulumi:"components"`
@@ -788,7 +788,7 @@ type GuestPoliciesPackageRepositoryAptInput interface {
 type GuestPoliciesPackageRepositoryAptArgs struct {
 	// Type of archive files in this repository. The default behavior is DEB.
 	// Default value is `DEB`.
-	// Possible values are `DEB` and `DEB_SRC`.
+	// Possible values are: `DEB`, `DEB_SRC`.
 	ArchiveType pulumi.StringPtrInput `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
@@ -880,7 +880,7 @@ func (o GuestPoliciesPackageRepositoryAptOutput) ToGuestPoliciesPackageRepositor
 
 // Type of archive files in this repository. The default behavior is DEB.
 // Default value is `DEB`.
-// Possible values are `DEB` and `DEB_SRC`.
+// Possible values are: `DEB`, `DEB_SRC`.
 func (o GuestPoliciesPackageRepositoryAptOutput) ArchiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesPackageRepositoryApt) *string { return v.ArchiveType }).(pulumi.StringPtrOutput)
 }
@@ -932,7 +932,7 @@ func (o GuestPoliciesPackageRepositoryAptPtrOutput) Elem() GuestPoliciesPackageR
 
 // Type of archive files in this repository. The default behavior is DEB.
 // Default value is `DEB`.
-// Possible values are `DEB` and `DEB_SRC`.
+// Possible values are: `DEB`, `DEB_SRC`.
 func (o GuestPoliciesPackageRepositoryAptPtrOutput) ArchiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesPackageRepositoryApt) *string {
 		if v == nil {
@@ -1545,7 +1545,7 @@ type GuestPoliciesRecipe struct {
 	// if a higher version of the recipe is assigned to this instance.
 	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
 	// Default value is `INSTALLED`.
-	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+	// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
 	DesiredState *string `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
 	// Any steps taken (including partially completed steps) are not rolled back.
@@ -1585,7 +1585,7 @@ type GuestPoliciesRecipeArgs struct {
 	// if a higher version of the recipe is assigned to this instance.
 	// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
 	// Default value is `INSTALLED`.
-	// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+	// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
 	DesiredState pulumi.StringPtrInput `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
 	// Any steps taken (including partially completed steps) are not rolled back.
@@ -1667,7 +1667,7 @@ func (o GuestPoliciesRecipeOutput) Artifacts() GuestPoliciesRecipeArtifactArrayO
 // if a higher version of the recipe is assigned to this instance.
 // REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
 // Default value is `INSTALLED`.
-// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
 func (o GuestPoliciesRecipeOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipe) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
@@ -2395,7 +2395,7 @@ type GuestPoliciesRecipeInstallStepArchiveExtraction struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination *string `pulumi:"destination"`
 	// The type of the archive to extract.
-	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+	// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 	Type string `pulumi:"type"`
 }
 
@@ -2416,7 +2416,7 @@ type GuestPoliciesRecipeInstallStepArchiveExtractionArgs struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// The type of the archive to extract.
-	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+	// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2508,7 +2508,7 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) Destination() pul
 }
 
 // The type of the archive to extract.
-// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepArchiveExtraction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2558,7 +2558,7 @@ func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Destination() 
 }
 
 // The type of the archive to extract.
-// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 func (o GuestPoliciesRecipeInstallStepArchiveExtractionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepArchiveExtraction) *string {
 		if v == nil {
@@ -3434,7 +3434,7 @@ type GuestPoliciesRecipeInstallStepScriptRun struct {
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script string `pulumi:"script"`
@@ -3456,7 +3456,7 @@ type GuestPoliciesRecipeInstallStepScriptRunArgs struct {
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script pulumi.StringInput `pulumi:"script"`
@@ -3546,7 +3546,7 @@ func (o GuestPoliciesRecipeInstallStepScriptRunOutput) AllowedExitCodes() pulumi
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o GuestPoliciesRecipeInstallStepScriptRunOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeInstallStepScriptRun) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -3592,7 +3592,7 @@ func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) AllowedExitCodes() pul
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o GuestPoliciesRecipeInstallStepScriptRunPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeInstallStepScriptRun) *string {
 		if v == nil {
@@ -3798,7 +3798,7 @@ type GuestPoliciesRecipeUpdateStepArchiveExtraction struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination *string `pulumi:"destination"`
 	// The type of the archive to extract.
-	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+	// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 	Type string `pulumi:"type"`
 }
 
@@ -3819,7 +3819,7 @@ type GuestPoliciesRecipeUpdateStepArchiveExtractionArgs struct {
 	// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// The type of the archive to extract.
-	// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+	// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3911,7 +3911,7 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) Destination() pulu
 }
 
 // The type of the archive to extract.
-// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepArchiveExtraction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3961,7 +3961,7 @@ func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Destination() p
 }
 
 // The type of the archive to extract.
-// Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
 func (o GuestPoliciesRecipeUpdateStepArchiveExtractionPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepArchiveExtraction) *string {
 		if v == nil {
@@ -4837,7 +4837,7 @@ type GuestPoliciesRecipeUpdateStepScriptRun struct {
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script string `pulumi:"script"`
@@ -4859,7 +4859,7 @@ type GuestPoliciesRecipeUpdateStepScriptRunArgs struct {
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 	// which likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script pulumi.StringInput `pulumi:"script"`
@@ -4949,7 +4949,7 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) AllowedExitCodes() pulumi.
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o GuestPoliciesRecipeUpdateStepScriptRunOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesRecipeUpdateStepScriptRun) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -4995,7 +4995,7 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) AllowedExitCodes() pulu
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
 // which likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestPoliciesRecipeUpdateStepScriptRun) *string {
 		if v == nil {
@@ -13054,7 +13054,7 @@ type PatchDeploymentPatchConfig struct {
 	// Structure is documented below.
 	PreStep *PatchDeploymentPatchConfigPreStep `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+	// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
 	RebootConfig *string `pulumi:"rebootConfig"`
 	// Windows update settings. Use this setting to override the default Windows patch rules.
 	// Structure is documented below.
@@ -13094,7 +13094,7 @@ type PatchDeploymentPatchConfigArgs struct {
 	// Structure is documented below.
 	PreStep PatchDeploymentPatchConfigPreStepPtrInput `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+	// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
 	RebootConfig pulumi.StringPtrInput `pulumi:"rebootConfig"`
 	// Windows update settings. Use this setting to override the default Windows patch rules.
 	// Structure is documented below.
@@ -13214,7 +13214,7 @@ func (o PatchDeploymentPatchConfigOutput) PreStep() PatchDeploymentPatchConfigPr
 }
 
 // Post-patch reboot settings.
-// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
 func (o PatchDeploymentPatchConfigOutput) RebootConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfig) *string { return v.RebootConfig }).(pulumi.StringPtrOutput)
 }
@@ -13316,7 +13316,7 @@ func (o PatchDeploymentPatchConfigPtrOutput) PreStep() PatchDeploymentPatchConfi
 }
 
 // Post-patch reboot settings.
-// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
 func (o PatchDeploymentPatchConfigPtrOutput) RebootConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfig) *string {
 		if v == nil {
@@ -13367,7 +13367,7 @@ type PatchDeploymentPatchConfigApt struct {
 	// any other patch configuration fields.
 	ExclusivePackages []string `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-	// Possible values are `DIST` and `UPGRADE`.
+	// Possible values are: `DIST`, `UPGRADE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -13390,7 +13390,7 @@ type PatchDeploymentPatchConfigAptArgs struct {
 	// any other patch configuration fields.
 	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-	// Possible values are `DIST` and `UPGRADE`.
+	// Possible values are: `DIST`, `UPGRADE`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -13484,7 +13484,7 @@ func (o PatchDeploymentPatchConfigAptOutput) ExclusivePackages() pulumi.StringAr
 }
 
 // By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-// Possible values are `DIST` and `UPGRADE`.
+// Possible values are: `DIST`, `UPGRADE`.
 func (o PatchDeploymentPatchConfigAptOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigApt) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -13536,7 +13536,7 @@ func (o PatchDeploymentPatchConfigAptPtrOutput) ExclusivePackages() pulumi.Strin
 }
 
 // By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-// Possible values are `DIST` and `UPGRADE`.
+// Possible values are: `DIST`, `UPGRADE`.
 func (o PatchDeploymentPatchConfigAptPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigApt) *string {
 		if v == nil {
@@ -13859,7 +13859,7 @@ type PatchDeploymentPatchConfigPostStepLinuxExecStepConfig struct {
 	GcsObject *PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -13884,7 +13884,7 @@ type PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs struct {
 	GcsObject PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -13982,7 +13982,7 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) GcsObject()
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -14039,7 +14039,7 @@ func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) GcsObjec
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepLinuxExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepLinuxExecStepConfig) *string {
 		if v == nil {
@@ -14244,7 +14244,7 @@ type PatchDeploymentPatchConfigPostStepWindowsExecStepConfig struct {
 	GcsObject *PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -14269,7 +14269,7 @@ type PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs struct {
 	GcsObject PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -14367,7 +14367,7 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) GcsObject
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -14424,7 +14424,7 @@ func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) GcsObj
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPostStepWindowsExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPostStepWindowsExecStepConfig) *string {
 		if v == nil {
@@ -14797,7 +14797,7 @@ type PatchDeploymentPatchConfigPreStepLinuxExecStepConfig struct {
 	GcsObject *PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -14822,7 +14822,7 @@ type PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs struct {
 	GcsObject PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -14920,7 +14920,7 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) GcsObject() 
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -14977,7 +14977,7 @@ func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) GcsObject
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepLinuxExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepLinuxExecStepConfig) *string {
 		if v == nil {
@@ -15182,7 +15182,7 @@ type PatchDeploymentPatchConfigPreStepWindowsExecStepConfig struct {
 	GcsObject *PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter *string `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
@@ -15207,7 +15207,7 @@ type PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs struct {
 	GcsObject PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will
 	// be executed directly, which will likely only succeed for scripts with shebang lines.
-	// Possible values are `SHELL` and `POWERSHELL`.
+	// Possible values are: `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
@@ -15305,7 +15305,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) GcsObject(
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
@@ -15362,7 +15362,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) GcsObje
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will
 // be executed directly, which will likely only succeed for scripts with shebang lines.
-// Possible values are `SHELL` and `POWERSHELL`.
+// Possible values are: `SHELL`, `POWERSHELL`.
 func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigPreStepWindowsExecStepConfig) *string {
 		if v == nil {
@@ -15561,7 +15561,7 @@ func (o PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectPtrOutput
 
 type PatchDeploymentPatchConfigWindowsUpdate struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+	// Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
 	Classifications []string `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes []string `pulumi:"excludes"`
@@ -15583,7 +15583,7 @@ type PatchDeploymentPatchConfigWindowsUpdateInput interface {
 
 type PatchDeploymentPatchConfigWindowsUpdateArgs struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+	// Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
 	Classifications pulumi.StringArrayInput `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
@@ -15670,7 +15670,7 @@ func (o PatchDeploymentPatchConfigWindowsUpdateOutput) ToPatchDeploymentPatchCon
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+// Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
 func (o PatchDeploymentPatchConfigWindowsUpdateOutput) Classifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PatchDeploymentPatchConfigWindowsUpdate) []string { return v.Classifications }).(pulumi.StringArrayOutput)
 }
@@ -15711,7 +15711,7 @@ func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Elem() PatchDeployment
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-// Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+// Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
 func (o PatchDeploymentPatchConfigWindowsUpdatePtrOutput) Classifications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PatchDeploymentPatchConfigWindowsUpdate) []string {
 		if v == nil {
@@ -16666,7 +16666,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyPtrOutput) WeekDayOfMonth() Patch
 
 type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth struct {
 	// A day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek string `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
@@ -16685,7 +16685,7 @@ type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthInput interface {
 
 type PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs struct {
 	// A day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
@@ -16769,7 +16769,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) ToPatchDepl
 }
 
 // A day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
@@ -16804,7 +16804,7 @@ func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) Elem() P
 }
 
 // A day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth) *string {
 		if v == nil {
@@ -17180,7 +17180,7 @@ func (o PatchDeploymentRecurringScheduleTimeZonePtrOutput) Version() pulumi.Stri
 
 type PatchDeploymentRecurringScheduleWeekly struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek string `pulumi:"dayOfWeek"`
 }
 
@@ -17197,7 +17197,7 @@ type PatchDeploymentRecurringScheduleWeeklyInput interface {
 
 type PatchDeploymentRecurringScheduleWeeklyArgs struct {
 	// IANA Time Zone Database time zone, e.g. "America/New_York".
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
 }
 
@@ -17279,7 +17279,7 @@ func (o PatchDeploymentRecurringScheduleWeeklyOutput) ToPatchDeploymentRecurring
 }
 
 // IANA Time Zone Database time zone, e.g. "America/New_York".
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleWeeklyOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchDeploymentRecurringScheduleWeekly) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
@@ -17309,7 +17309,7 @@ func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) Elem() PatchDeploymentR
 }
 
 // IANA Time Zone Database time zone, e.g. "America/New_York".
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PatchDeploymentRecurringScheduleWeeklyPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRecurringScheduleWeekly) *string {
 		if v == nil {
@@ -17328,7 +17328,7 @@ type PatchDeploymentRollout struct {
 	// Structure is documented below.
 	DisruptionBudget PatchDeploymentRolloutDisruptionBudget `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+	// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
 	Mode string `pulumi:"mode"`
 }
 
@@ -17352,7 +17352,7 @@ type PatchDeploymentRolloutArgs struct {
 	// Structure is documented below.
 	DisruptionBudget PatchDeploymentRolloutDisruptionBudgetInput `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+	// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
 	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
@@ -17444,7 +17444,7 @@ func (o PatchDeploymentRolloutOutput) DisruptionBudget() PatchDeploymentRolloutD
 }
 
 // Mode of the patch rollout.
-// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
 func (o PatchDeploymentRolloutOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v PatchDeploymentRollout) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -17489,7 +17489,7 @@ func (o PatchDeploymentRolloutPtrOutput) DisruptionBudget() PatchDeploymentRollo
 }
 
 // Mode of the patch rollout.
-// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
 func (o PatchDeploymentRolloutPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PatchDeploymentRollout) *string {
 		if v == nil {

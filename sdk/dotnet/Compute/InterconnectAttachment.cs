@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Compute
         /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
         /// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
         /// Defaults to BPS_10G
-        /// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Compute
         /// such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
         /// attachment must be created with this option.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `IPSEC`.
+        /// Possible values are: `NONE`, `IPSEC`.
         /// </summary>
         [Output("encryption")]
         public Output<string?> Encryption { get; private set; } = null!;
@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The type of InterconnectAttachment you wish to create. Defaults to
         /// DEDICATED.
-        /// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+        /// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -388,7 +388,7 @@ namespace Pulumi.Gcp.Compute
         /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
         /// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
         /// Defaults to BPS_10G
-        /// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
@@ -441,7 +441,7 @@ namespace Pulumi.Gcp.Compute
         /// such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
         /// attachment must be created with this option.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `IPSEC`.
+        /// Possible values are: `NONE`, `IPSEC`.
         /// </summary>
         [Input("encryption")]
         public Input<string>? Encryption { get; set; }
@@ -523,7 +523,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The type of InterconnectAttachment you wish to create. Defaults to
         /// DEDICATED.
-        /// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+        /// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -556,7 +556,7 @@ namespace Pulumi.Gcp.Compute
         /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
         /// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
         /// Defaults to BPS_10G
-        /// Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
@@ -629,7 +629,7 @@ namespace Pulumi.Gcp.Compute
         /// such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
         /// attachment must be created with this option.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `IPSEC`.
+        /// Possible values are: `NONE`, `IPSEC`.
         /// </summary>
         [Input("encryption")]
         public Input<string>? Encryption { get; set; }
@@ -760,7 +760,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The type of InterconnectAttachment you wish to create. Defaults to
         /// DEDICATED.
-        /// Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+        /// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

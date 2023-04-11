@@ -247,7 +247,7 @@ type Address struct {
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
-	// Possible values are `INTERNAL` and `EXTERNAL`.
+	// Possible values are: `INTERNAL`, `EXTERNAL`.
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -271,7 +271,7 @@ type Address struct {
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrOutput `pulumi:"prefixLength"`
@@ -342,7 +342,7 @@ type addressState struct {
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
-	// Possible values are `INTERNAL` and `EXTERNAL`.
+	// Possible values are: `INTERNAL`, `EXTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -366,7 +366,7 @@ type addressState struct {
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
 	PrefixLength *int `pulumi:"prefixLength"`
@@ -409,7 +409,7 @@ type AddressState struct {
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
-	// Possible values are `INTERNAL` and `EXTERNAL`.
+	// Possible values are: `INTERNAL`, `EXTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -433,7 +433,7 @@ type AddressState struct {
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrInput
@@ -480,7 +480,7 @@ type addressArgs struct {
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
-	// Possible values are `INTERNAL` and `EXTERNAL`.
+	// Possible values are: `INTERNAL`, `EXTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -500,7 +500,7 @@ type addressArgs struct {
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
 	PrefixLength *int `pulumi:"prefixLength"`
@@ -540,7 +540,7 @@ type AddressArgs struct {
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
-	// Possible values are `INTERNAL` and `EXTERNAL`.
+	// Possible values are: `INTERNAL`, `EXTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -560,7 +560,7 @@ type AddressArgs struct {
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
 	// This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrInput
@@ -688,7 +688,7 @@ func (o AddressOutput) Address() pulumi.StringOutput {
 // The type of address to reserve.
 // Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 // Default value is `EXTERNAL`.
-// Possible values are `INTERNAL` and `EXTERNAL`.
+// Possible values are: `INTERNAL`, `EXTERNAL`.
 func (o AddressOutput) AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.AddressType }).(pulumi.StringPtrOutput)
 }
@@ -733,7 +733,7 @@ func (o AddressOutput) Network() pulumi.StringPtrOutput {
 // The networking tier used for configuring this address. If this field is not
 // specified, it is assumed to be PREMIUM.
 // This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-// Possible values are `PREMIUM` and `STANDARD`.
+// Possible values are: `PREMIUM`, `STANDARD`.
 func (o AddressOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.NetworkTier }).(pulumi.StringOutput)
 }

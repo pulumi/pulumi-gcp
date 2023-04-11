@@ -38,10 +38,10 @@ type Database struct {
 	pulumi.CustomResourceState
 
 	// The App Engine integration mode to use for this database.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode pulumi.StringOutput `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
-	// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
 	// The timestamp at which this database was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -70,7 +70,7 @@ type Database struct {
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
-	// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -110,10 +110,10 @@ func GetDatabase(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
 	// The App Engine integration mode to use for this database.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode *string `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
-	// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
 	// The timestamp at which this database was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -142,16 +142,16 @@ type databaseState struct {
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
-	// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
 	Type *string `pulumi:"type"`
 }
 
 type DatabaseState struct {
 	// The App Engine integration mode to use for this database.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode pulumi.StringPtrInput
 	// The concurrency control mode to use for this database.
-	// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
 	// The timestamp at which this database was created.
 	CreateTime pulumi.StringPtrInput
@@ -180,7 +180,7 @@ type DatabaseState struct {
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
-	// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
 	Type pulumi.StringPtrInput
 }
 
@@ -190,10 +190,10 @@ func (DatabaseState) ElementType() reflect.Type {
 
 type databaseArgs struct {
 	// The App Engine integration mode to use for this database.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode *string `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
-	// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode *string `pulumi:"concurrencyMode"`
 	// The location of the database. Available databases are listed at
 	// https://cloud.google.com/firestore/docs/locations.
@@ -211,17 +211,17 @@ type databaseArgs struct {
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
-	// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
 	// The App Engine integration mode to use for this database.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	AppEngineIntegrationMode pulumi.StringPtrInput
 	// The concurrency control mode to use for this database.
-	// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+	// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 	ConcurrencyMode pulumi.StringPtrInput
 	// The location of the database. Available databases are listed at
 	// https://cloud.google.com/firestore/docs/locations.
@@ -239,7 +239,7 @@ type DatabaseArgs struct {
 	// The type of the database.
 	// See https://cloud.google.com/datastore/docs/firestore-or-datastore
 	// for information about how to choose.
-	// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+	// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
 	Type pulumi.StringInput
 }
 
@@ -331,13 +331,13 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 }
 
 // The App Engine integration mode to use for this database.
-// Possible values are `ENABLED` and `DISABLED`.
+// Possible values are: `ENABLED`, `DISABLED`.
 func (o DatabaseOutput) AppEngineIntegrationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AppEngineIntegrationMode }).(pulumi.StringOutput)
 }
 
 // The concurrency control mode to use for this database.
-// Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+// Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
 func (o DatabaseOutput) ConcurrencyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.ConcurrencyMode }).(pulumi.StringOutput)
 }
@@ -387,7 +387,7 @@ func (o DatabaseOutput) Project() pulumi.StringOutput {
 // The type of the database.
 // See https://cloud.google.com/datastore/docs/firestore-or-datastore
 // for information about how to choose.
-// Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+// Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

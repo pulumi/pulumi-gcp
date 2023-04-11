@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.OrgPolicy
     {
         /// <summary>
         /// The action to take if the condition is met.
-        /// Possible values are `ALLOW` and `DENY`.
+        /// Possible values are: `ALLOW`, `DENY`.
         /// </summary>
         [Output("actionType")]
         public Output<string> ActionType { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.OrgPolicy
     {
         /// <summary>
         /// The action to take if the condition is met.
-        /// Possible values are `ALLOW` and `DENY`.
+        /// Possible values are: `ALLOW`, `DENY`.
         /// </summary>
         [Input("actionType", required: true)]
         public Input<string> ActionType { get; set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Gcp.OrgPolicy
     {
         /// <summary>
         /// The action to take if the condition is met.
-        /// Possible values are `ALLOW` and `DENY`.
+        /// Possible values are: `ALLOW`, `DENY`.
         /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }

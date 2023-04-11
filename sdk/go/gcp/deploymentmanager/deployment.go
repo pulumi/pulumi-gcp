@@ -102,7 +102,7 @@ type Deployment struct {
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
 	// Default value is `CREATE_OR_ACQUIRE`.
-	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+	// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
 	CreatePolicy pulumi.StringPtrOutput `pulumi:"createPolicy"`
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -111,7 +111,7 @@ type Deployment struct {
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
 	// Default value is `DELETE`.
-	// Possible values are `ABANDON` and `DELETE`.
+	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy pulumi.StringPtrOutput `pulumi:"deletePolicy"`
 	// Unique identifier for deployment. Output only.
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
@@ -183,7 +183,7 @@ type deploymentState struct {
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
 	// Default value is `CREATE_OR_ACQUIRE`.
-	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+	// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
 	CreatePolicy *string `pulumi:"createPolicy"`
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -192,7 +192,7 @@ type deploymentState struct {
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
 	// Default value is `DELETE`.
-	// Possible values are `ABANDON` and `DELETE`.
+	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy *string `pulumi:"deletePolicy"`
 	// Unique identifier for deployment. Output only.
 	DeploymentId *string `pulumi:"deploymentId"`
@@ -233,7 +233,7 @@ type DeploymentState struct {
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
 	// Default value is `CREATE_OR_ACQUIRE`.
-	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+	// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
 	CreatePolicy pulumi.StringPtrInput
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -242,7 +242,7 @@ type DeploymentState struct {
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
 	// Default value is `DELETE`.
-	// Possible values are `ABANDON` and `DELETE`.
+	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy pulumi.StringPtrInput
 	// Unique identifier for deployment. Output only.
 	DeploymentId pulumi.StringPtrInput
@@ -287,7 +287,7 @@ type deploymentArgs struct {
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
 	// Default value is `CREATE_OR_ACQUIRE`.
-	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+	// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
 	CreatePolicy *string `pulumi:"createPolicy"`
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -296,7 +296,7 @@ type deploymentArgs struct {
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
 	// Default value is `DELETE`.
-	// Possible values are `ABANDON` and `DELETE`.
+	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy *string `pulumi:"deletePolicy"`
 	// Optional user-provided description of deployment.
 	Description *string `pulumi:"description"`
@@ -331,7 +331,7 @@ type DeploymentArgs struct {
 	// the deployment will fail. Note that updating this field does not
 	// actually affect the deployment, just how it is updated.
 	// Default value is `CREATE_OR_ACQUIRE`.
-	// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+	// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
 	CreatePolicy pulumi.StringPtrInput
 	// Set the policy to use for deleting new resources on update/delete.
 	// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
@@ -340,7 +340,7 @@ type DeploymentArgs struct {
 	// and is not actually deleted. Note that updating this field does not
 	// actually change the deployment, just how it is updated.
 	// Default value is `DELETE`.
-	// Possible values are `ABANDON` and `DELETE`.
+	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy pulumi.StringPtrInput
 	// Optional user-provided description of deployment.
 	Description pulumi.StringPtrInput
@@ -460,7 +460,7 @@ func (o DeploymentOutput) ToDeploymentOutputWithContext(ctx context.Context) Dep
 // the deployment will fail. Note that updating this field does not
 // actually affect the deployment, just how it is updated.
 // Default value is `CREATE_OR_ACQUIRE`.
-// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
 func (o DeploymentOutput) CreatePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringPtrOutput { return v.CreatePolicy }).(pulumi.StringPtrOutput)
 }
@@ -472,7 +472,7 @@ func (o DeploymentOutput) CreatePolicy() pulumi.StringPtrOutput {
 // and is not actually deleted. Note that updating this field does not
 // actually change the deployment, just how it is updated.
 // Default value is `DELETE`.
-// Possible values are `ABANDON` and `DELETE`.
+// Possible values are: `ABANDON`, `DELETE`.
 func (o DeploymentOutput) DeletePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringPtrOutput { return v.DeletePolicy }).(pulumi.StringPtrOutput)
 }

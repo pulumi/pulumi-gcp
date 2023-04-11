@@ -138,7 +138,7 @@ type Slo struct {
 	BasicSli SloBasicSliPtrOutput `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
-	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod pulumi.StringPtrOutput `pulumi:"calendarPeriod"`
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -230,7 +230,7 @@ type sloState struct {
 	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
-	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
 	// Name used for UI elements listing this SLO.
 	DisplayName *string `pulumi:"displayName"`
@@ -288,7 +288,7 @@ type SloState struct {
 	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
-	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod pulumi.StringPtrInput
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrInput
@@ -350,7 +350,7 @@ type sloArgs struct {
 	BasicSli *SloBasicSli `pulumi:"basicSli"`
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
-	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
 	// Name used for UI elements listing this SLO.
 	DisplayName *string `pulumi:"displayName"`
@@ -406,7 +406,7 @@ type SloArgs struct {
 	BasicSli SloBasicSliPtrInput
 	// A calendar period, semantically "since the start of the current
 	// <calendarPeriod>".
-	// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod pulumi.StringPtrInput
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrInput
@@ -550,7 +550,7 @@ func (o SloOutput) BasicSli() SloBasicSliPtrOutput {
 
 // A calendar period, semantically "since the start of the current
 // <calendarPeriod>".
-// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 func (o SloOutput) CalendarPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Slo) pulumi.StringPtrOutput { return v.CalendarPeriod }).(pulumi.StringPtrOutput)
 }

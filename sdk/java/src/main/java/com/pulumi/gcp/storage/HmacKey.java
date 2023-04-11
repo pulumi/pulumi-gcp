@@ -151,7 +151,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
-     * Possible values are `ACTIVE` and `INACTIVE`.
+     * Possible values are: `ACTIVE`, `INACTIVE`.
      * 
      */
     @Export(name="state", type=String.class, parameters={})
@@ -160,7 +160,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
     /**
      * @return The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
-     * Possible values are `ACTIVE` and `INACTIVE`.
+     * Possible values are: `ACTIVE`, `INACTIVE`.
      * 
      */
     public Output<Optional<String>> state() {

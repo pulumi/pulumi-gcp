@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Folder.Outputs
         /// <summary>
         /// The enrollment level of the service.
         /// Default value is `BLOCK_ALL`.
-        /// Possible values are `BLOCK_ALL`.
+        /// Possible values are: `BLOCK_ALL`.
         /// </summary>
         public readonly string? EnrollmentLevel;
 

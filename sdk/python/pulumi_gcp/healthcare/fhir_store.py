@@ -77,7 +77,7 @@ class FhirStoreArgs:
                Structure is documented below.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
-               Possible values are `DSTU2`, `STU3`, and `R4`.
+               Possible values are: `DSTU2`, `STU3`, `R4`.
         """
         pulumi.set(__self__, "dataset", dataset)
         if disable_referential_integrity is not None:
@@ -263,7 +263,7 @@ class FhirStoreArgs:
         """
         The FHIR specification version.
         Default value is `STU3`.
-        Possible values are `DSTU2`, `STU3`, and `R4`.
+        Possible values are: `DSTU2`, `STU3`, `R4`.
         """
         return pulumi.get(self, "version")
 
@@ -338,7 +338,7 @@ class _FhirStoreState:
                Structure is documented below.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
-               Possible values are `DSTU2`, `STU3`, and `R4`.
+               Possible values are: `DSTU2`, `STU3`, `R4`.
         """
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
@@ -539,7 +539,7 @@ class _FhirStoreState:
         """
         The FHIR specification version.
         Default value is `STU3`.
-        Possible values are `DSTU2`, `STU3`, and `R4`.
+        Possible values are: `DSTU2`, `STU3`, `R4`.
         """
         return pulumi.get(self, "version")
 
@@ -742,7 +742,7 @@ class FhirStore(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
-               Possible values are `DSTU2`, `STU3`, and `R4`.
+               Possible values are: `DSTU2`, `STU3`, `R4`.
         """
         ...
     @overload
@@ -1004,7 +1004,7 @@ class FhirStore(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] version: The FHIR specification version.
                Default value is `STU3`.
-               Possible values are `DSTU2`, `STU3`, and `R4`.
+               Possible values are: `DSTU2`, `STU3`, `R4`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1154,7 +1154,7 @@ class FhirStore(pulumi.CustomResource):
         """
         The FHIR specification version.
         Default value is `STU3`.
-        Possible values are `DSTU2`, `STU3`, and `R4`.
+        Possible values are: `DSTU2`, `STU3`, `R4`.
         """
         return pulumi.get(self, "version")
 

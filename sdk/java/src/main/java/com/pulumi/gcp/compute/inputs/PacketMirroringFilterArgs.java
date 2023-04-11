@@ -36,7 +36,7 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
     /**
      * Direction of traffic to mirror.
      * Default value is `BOTH`.
-     * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+     * Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
      * 
      */
     @Import(name="direction")
@@ -45,7 +45,7 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
     /**
      * @return Direction of traffic to mirror.
      * Default value is `BOTH`.
-     * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+     * Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -130,7 +130,7 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
         /**
          * @param direction Direction of traffic to mirror.
          * Default value is `BOTH`.
-         * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+         * Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class PacketMirroringFilterArgs extends com.pulumi.resources.Resour
         /**
          * @param direction Direction of traffic to mirror.
          * Default value is `BOTH`.
-         * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+         * Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
          * 
          * @return builder
          * 

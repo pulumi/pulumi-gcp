@@ -67,7 +67,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The launch stage of the metric definition.
-     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
     @Import(name="launchStage")
@@ -75,7 +75,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The launch stage of the metric definition.
-     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
     public Optional<Output<String>> launchStage() {
@@ -101,7 +101,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+     * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      * 
      */
     @Import(name="metricKind", required=true)
@@ -109,7 +109,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+     * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      * 
      */
     public Output<String> metricKind() {
@@ -197,7 +197,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
      */
     @Import(name="valueType", required=true)
@@ -205,7 +205,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
      */
     public Output<String> valueType() {
@@ -323,7 +323,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param launchStage The launch stage of the metric definition.
-         * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+         * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param launchStage The launch stage of the metric definition.
-         * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+         * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param metricKind Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-         * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+         * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param metricKind Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-         * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+         * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
          * 
          * @return builder
          * 
@@ -489,7 +489,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+         * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param valueType Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+         * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
          * 
          * @return builder
          * 

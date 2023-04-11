@@ -23,7 +23,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
      * Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
      * with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
      * attached.
-     * Possible values are `COLLOCATED`.
+     * Possible values are: `COLLOCATED`.
      * 
      */
     private @Nullable String collocation;
@@ -50,7 +50,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
      * Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
      * with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
      * attached.
-     * Possible values are `COLLOCATED`.
+     * Possible values are: `COLLOCATED`.
      * 
      */
     public Optional<String> collocation() {

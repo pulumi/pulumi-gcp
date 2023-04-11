@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class DeviceCredentialPublicKey {
     /**
      * @return The format of the key.
-     * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+     * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
      * 
      */
     private String format;
@@ -24,7 +24,7 @@ public final class DeviceCredentialPublicKey {
     private DeviceCredentialPublicKey() {}
     /**
      * @return The format of the key.
-     * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+     * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
      * 
      */
     public String format() {

@@ -69,7 +69,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
      * 
      */
     @Import(name="type")
@@ -78,7 +78,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of the schema definition
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -184,7 +184,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The type of the schema definition
          * Default value is `TYPE_UNSPECIFIED`.
-         * Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class SchemaState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The type of the schema definition
          * Default value is `TYPE_UNSPECIFIED`.
-         * Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
          * 
          * @return builder
          * 

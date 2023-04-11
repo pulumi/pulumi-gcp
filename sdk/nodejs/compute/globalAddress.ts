@@ -97,7 +97,7 @@ export class GlobalAddress extends pulumi.CustomResource {
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL` and `INTERNAL`.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     public readonly addressType!: pulumi.Output<string | undefined>;
     /**
@@ -110,7 +110,7 @@ export class GlobalAddress extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
@@ -223,7 +223,7 @@ export interface GlobalAddressState {
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL` and `INTERNAL`.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     addressType?: pulumi.Input<string>;
     /**
@@ -236,7 +236,7 @@ export interface GlobalAddressState {
     description?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -303,7 +303,7 @@ export interface GlobalAddressArgs {
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL` and `INTERNAL`.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
      */
     addressType?: pulumi.Input<string>;
     /**
@@ -312,7 +312,7 @@ export interface GlobalAddressArgs {
     description?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      */
     ipVersion?: pulumi.Input<string>;
     /**

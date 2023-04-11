@@ -684,6 +684,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.networkManagementCustomEndpoint);
     }
 
+    @Import(name="networkSecurityCustomEndpoint")
+    private @Nullable Output<String> networkSecurityCustomEndpoint;
+
+    public Optional<Output<String>> networkSecurityCustomEndpoint() {
+        return Optional.ofNullable(this.networkSecurityCustomEndpoint);
+    }
+
     @Import(name="networkServicesCustomEndpoint")
     private @Nullable Output<String> networkServicesCustomEndpoint;
 
@@ -1062,6 +1069,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.monitoringCustomEndpoint = $.monitoringCustomEndpoint;
         this.networkConnectivityCustomEndpoint = $.networkConnectivityCustomEndpoint;
         this.networkManagementCustomEndpoint = $.networkManagementCustomEndpoint;
+        this.networkSecurityCustomEndpoint = $.networkSecurityCustomEndpoint;
         this.networkServicesCustomEndpoint = $.networkServicesCustomEndpoint;
         this.notebooksCustomEndpoint = $.notebooksCustomEndpoint;
         this.orgPolicyCustomEndpoint = $.orgPolicyCustomEndpoint;
@@ -1979,6 +1987,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder networkManagementCustomEndpoint(String networkManagementCustomEndpoint) {
             return networkManagementCustomEndpoint(Output.of(networkManagementCustomEndpoint));
+        }
+
+        public Builder networkSecurityCustomEndpoint(@Nullable Output<String> networkSecurityCustomEndpoint) {
+            $.networkSecurityCustomEndpoint = networkSecurityCustomEndpoint;
+            return this;
+        }
+
+        public Builder networkSecurityCustomEndpoint(String networkSecurityCustomEndpoint) {
+            return networkSecurityCustomEndpoint(Output.of(networkSecurityCustomEndpoint));
         }
 
         public Builder networkServicesCustomEndpoint(@Nullable Output<String> networkServicesCustomEndpoint) {

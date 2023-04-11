@@ -15,49 +15,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Logging LogView resource
+ * Describes a view over log entries in a bucket.
+ * 
+ * To get more information about LogView, see:
+ * 
+ * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  * 
  * ## Example Usage
- * ### Basic
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.logging.ProjectBucketConfig;
- * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
- * import com.pulumi.gcp.logging.LogView;
- * import com.pulumi.gcp.logging.LogViewArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var basic = new ProjectBucketConfig(&#34;basic&#34;, ProjectBucketConfigArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .location(&#34;global&#34;)
- *             .retentionDays(30)
- *             .bucketId(&#34;_Default&#34;)
- *             .build());
- * 
- *         var primary = new LogView(&#34;primary&#34;, LogViewArgs.builder()        
- *             .bucket(basic.id())
- *             .description(&#34;A logging view configured with Terraform&#34;)
- *             .filter(&#34;SOURCE(\&#34;projects/myproject\&#34;) AND resource.type = \&#34;gce_instance\&#34; AND LOG_ID(\&#34;stdout\&#34;)&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * 
  * ## Import
  * 
@@ -141,14 +107,14 @@ public class LogView extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+     * The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+     * @return The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
      * 
      */
     public Output<String> name() {

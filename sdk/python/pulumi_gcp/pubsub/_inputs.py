@@ -35,7 +35,7 @@ class LiteSubscriptionDeliveryConfigArgs:
                  delivery_requirement: pulumi.Input[str]):
         """
         :param pulumi.Input[str] delivery_requirement: When this subscription should send messages to subscribers relative to messages persistence in storage.
-               Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+               Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
         """
         pulumi.set(__self__, "delivery_requirement", delivery_requirement)
 
@@ -44,7 +44,7 @@ class LiteSubscriptionDeliveryConfigArgs:
     def delivery_requirement(self) -> pulumi.Input[str]:
         """
         When this subscription should send messages to subscribers relative to messages persistence in storage.
-        Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+        Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
         """
         return pulumi.get(self, "delivery_requirement")
 
@@ -351,7 +351,7 @@ class SubscriptionExpirationPolicyArgs:
         """
         :param pulumi.Input[str] ttl: Specifies the "time-to-live" duration for an associated resource. The
                resource expires if it is not active for a period of ttl.
-               If ttl is not set, the associated resource never expires.
+               If ttl is set to "", the associated resource never expires.
                A duration in seconds with up to nine fractional digits, terminated by 's'.
                Example - "3.5s".
         """
@@ -363,7 +363,7 @@ class SubscriptionExpirationPolicyArgs:
         """
         Specifies the "time-to-live" duration for an associated resource. The
         resource expires if it is not active for a period of ttl.
-        If ttl is not set, the associated resource never expires.
+        If ttl is set to "", the associated resource never expires.
         A duration in seconds with up to nine fractional digits, terminated by 's'.
         Example - "3.5s".
         """
@@ -767,7 +767,7 @@ class TopicSchemaSettingsArgs:
                if the schema has been deleted.
         :param pulumi.Input[str] encoding: The encoding of messages validated against schema.
                Default value is `ENCODING_UNSPECIFIED`.
-               Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+               Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
         """
         pulumi.set(__self__, "schema", schema)
         if encoding is not None:
@@ -794,7 +794,7 @@ class TopicSchemaSettingsArgs:
         """
         The encoding of messages validated against schema.
         Default value is `ENCODING_UNSPECIFIED`.
-        Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+        Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
         """
         return pulumi.get(self, "encoding")
 

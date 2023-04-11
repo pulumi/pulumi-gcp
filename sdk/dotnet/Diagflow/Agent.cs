@@ -72,7 +72,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * API_VERSION_V1: Legacy V1 API.
         /// * API_VERSION_V2: V2 API.
         /// * API_VERSION_V2_BETA_1: V2beta1 API.
-        /// Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+        /// Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
         /// </summary>
         [Output("apiVersion")]
         public Output<string> ApiVersion { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Diagflow
         /// syntax and composite entities.
         /// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
         /// using @sys.any or very large developer entities.
-        /// Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+        /// Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
         /// </summary>
         [Output("matchMode")]
         public Output<string> MatchMode { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * API_VERSION_V1: Legacy V1 API.
         /// * API_VERSION_V2: V2 API.
         /// * API_VERSION_V2_BETA_1: V2beta1 API.
-        /// Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+        /// Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.Diagflow
         /// syntax and composite entities.
         /// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
         /// using @sys.any or very large developer entities.
-        /// Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+        /// Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
         /// </summary>
         [Input("matchMode")]
         public Input<string>? MatchMode { get; set; }
@@ -333,7 +333,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * API_VERSION_V1: Legacy V1 API.
         /// * API_VERSION_V2: V2 API.
         /// * API_VERSION_V2_BETA_1: V2beta1 API.
-        /// Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+        /// Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -394,7 +394,7 @@ namespace Pulumi.Gcp.Diagflow
         /// syntax and composite entities.
         /// * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
         /// using @sys.any or very large developer entities.
-        /// Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+        /// Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
         /// </summary>
         [Input("matchMode")]
         public Input<string>? MatchMode { get; set; }

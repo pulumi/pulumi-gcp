@@ -172,7 +172,7 @@ type Policy struct {
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
-	// Possible values are `ENABLE` and `DISABLE`.
+	// Possible values are: `ENABLE`, `DISABLE`.
 	GlobalPolicyEvaluationMode pulumi.StringOutput `pulumi:"globalPolicyEvaluationMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -231,7 +231,7 @@ type policyState struct {
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
-	// Possible values are `ENABLE` and `DISABLE`.
+	// Possible values are: `ENABLE`, `DISABLE`.
 	GlobalPolicyEvaluationMode *string `pulumi:"globalPolicyEvaluationMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -259,7 +259,7 @@ type PolicyState struct {
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
-	// Possible values are `ENABLE` and `DISABLE`.
+	// Possible values are: `ENABLE`, `DISABLE`.
 	GlobalPolicyEvaluationMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -291,7 +291,7 @@ type policyArgs struct {
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
-	// Possible values are `ENABLE` and `DISABLE`.
+	// Possible values are: `ENABLE`, `DISABLE`.
 	GlobalPolicyEvaluationMode *string `pulumi:"globalPolicyEvaluationMode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -320,7 +320,7 @@ type PolicyArgs struct {
 	// Controls the evaluation of a Google-maintained global admission policy
 	// for common system-level images. Images not covered by the global
 	// policy will be subject to the project admission policy.
-	// Possible values are `ENABLE` and `DISABLE`.
+	// Possible values are: `ENABLE`, `DISABLE`.
 	GlobalPolicyEvaluationMode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -446,7 +446,7 @@ func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 // Controls the evaluation of a Google-maintained global admission policy
 // for common system-level images. Images not covered by the global
 // policy will be subject to the project admission policy.
-// Possible values are `ENABLE` and `DISABLE`.
+// Possible values are: `ENABLE`, `DISABLE`.
 func (o PolicyOutput) GlobalPolicyEvaluationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.GlobalPolicyEvaluationMode }).(pulumi.StringOutput)
 }

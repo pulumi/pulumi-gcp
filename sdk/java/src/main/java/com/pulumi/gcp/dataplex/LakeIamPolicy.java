@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Three different resources help you manage your IAM policy for Cloud Dataplex Lake. Each of these resources serves a different use case:
+ * Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
  * 
  * * `gcp.dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
  * * `gcp.dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+ * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
  *  $ pulumi import gcp:dataplex/lakeIamPolicy:LakeIamPolicy editor &#34;projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com&#34;

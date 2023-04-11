@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.NodeGroupShareSettingsProjectMap> ProjectMaps;
         /// <summary>
         /// Node group sharing type.
-        /// Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+        /// Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
         /// </summary>
         public readonly string ShareType;
 

@@ -66,7 +66,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
-     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      * 
      */
     @Import(name="minTlsVersion")
@@ -76,7 +76,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
      * @return The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
-     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      * 
      */
     public Optional<Output<String>> minTlsVersion() {
@@ -119,7 +119,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `custom_features` attribute **must be set**.
      * Default value is `COMPATIBLE`.
-     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      * 
      */
     @Import(name="profile")
@@ -134,7 +134,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `custom_features` attribute **must be set**.
      * Default value is `COMPATIBLE`.
-     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      * 
      */
     public Optional<Output<String>> profile() {
@@ -267,7 +267,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * @param minTlsVersion The minimum version of SSL protocol that can be used by the clients
          * to establish a connection with the load balancer.
          * Default value is `TLS_1_0`.
-         * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+         * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * @param minTlsVersion The minimum version of SSL protocol that can be used by the clients
          * to establish a connection with the load balancer.
          * Default value is `TLS_1_0`.
-         * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+         * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * for information on what cipher suites each profile provides. If
          * `CUSTOM` is used, the `custom_features` attribute **must be set**.
          * Default value is `COMPATIBLE`.
-         * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+         * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class SSLPolicyArgs extends com.pulumi.resources.ResourceArgs {
          * for information on what cipher suites each profile provides. If
          * `CUSTOM` is used, the `custom_features` attribute **must be set**.
          * Default value is `COMPATIBLE`.
-         * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+         * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
          * 
          * @return builder
          * 

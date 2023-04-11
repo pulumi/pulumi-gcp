@@ -109,7 +109,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
     /**
      * Optional. API Proxy type supported by the environment. The type can be set when creating
      * the Environment and cannot be changed.
-     * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+     * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      * 
      */
     @Export(name="apiProxyType", type=String.class, parameters={})
@@ -118,7 +118,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. API Proxy type supported by the environment. The type can be set when creating
      * the Environment and cannot be changed.
-     * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+     * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      * 
      */
     public Output<String> apiProxyType() {
@@ -132,7 +132,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Managing the deployment of API proxy or shared flow revisions;
      * Creating, updating, or deleting resource files;
      * Creating, updating, or deleting target servers.
-     * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+     * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      * 
      */
     @Export(name="deploymentType", type=String.class, parameters={})
@@ -146,7 +146,7 @@ public class Environment extends com.pulumi.resources.CustomResource {
      * Managing the deployment of API proxy or shared flow revisions;
      * Creating, updating, or deleting resource files;
      * Creating, updating, or deleting target servers.
-     * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+     * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      * 
      */
     public Output<String> deploymentType() {

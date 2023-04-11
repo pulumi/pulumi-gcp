@@ -70,7 +70,7 @@ class TriggerArgs:
         :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
-               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+               Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -304,7 +304,7 @@ class TriggerArgs:
         Build logs will be sent back to GitHub as part of the checkrun
         result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
         INCLUDE_BUILD_LOGS_WITH_STATUS
-        Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         """
         return pulumi.get(self, "include_build_logs")
 
@@ -547,7 +547,7 @@ class _TriggerState:
         :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
-               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+               Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -798,7 +798,7 @@ class _TriggerState:
         Build logs will be sent back to GitHub as part of the checkrun
         result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
         INCLUDE_BUILD_LOGS_WITH_STATUS
-        Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         """
         return pulumi.get(self, "include_build_logs")
 
@@ -1353,7 +1353,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
-               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+               Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -1847,7 +1847,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] include_build_logs: Build logs will be sent back to GitHub as part of the checkrun
                result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
                INCLUDE_BUILD_LOGS_WITH_STATUS
-               Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+               Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
                extended with support for `**`.
                If any of the files altered in the commit pass the ignoredFiles filter
@@ -2034,7 +2034,7 @@ class Trigger(pulumi.CustomResource):
         Build logs will be sent back to GitHub as part of the checkrun
         result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
         INCLUDE_BUILD_LOGS_WITH_STATUS
-        Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         """
         return pulumi.get(self, "include_build_logs")
 

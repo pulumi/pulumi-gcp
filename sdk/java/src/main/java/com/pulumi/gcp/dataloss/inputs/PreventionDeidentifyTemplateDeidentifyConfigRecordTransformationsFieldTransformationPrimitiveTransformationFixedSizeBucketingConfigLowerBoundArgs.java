@@ -53,7 +53,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     /**
      * Represents a day of the week.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     @Import(name="dayOfWeekValue")
@@ -61,7 +61,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     /**
      * @return Represents a day of the week.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public Optional<Output<String>> dayOfWeekValue() {
@@ -222,7 +222,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         /**
          * @param dayOfWeekValue Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         /**
          * @param dayOfWeekValue Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 

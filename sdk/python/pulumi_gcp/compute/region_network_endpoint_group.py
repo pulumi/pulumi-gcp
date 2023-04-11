@@ -54,7 +54,7 @@ class RegionNetworkEndpointGroupArgs:
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
@@ -193,7 +193,7 @@ class RegionNetworkEndpointGroupArgs:
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         Default value is `SERVERLESS`.
-        Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -295,7 +295,7 @@ class _RegionNetworkEndpointGroupState:
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
@@ -427,7 +427,7 @@ class _RegionNetworkEndpointGroupState:
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         Default value is `SERVERLESS`.
-        Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 
@@ -708,7 +708,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
@@ -982,7 +982,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                "default" project network if unspecified.
         :param pulumi.Input[str] network_endpoint_type: Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
                Default value is `SERVERLESS`.
-               Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+               Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
@@ -1082,7 +1082,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         """
         Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         Default value is `SERVERLESS`.
-        Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+        Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         """
         return pulumi.get(self, "network_endpoint_type")
 

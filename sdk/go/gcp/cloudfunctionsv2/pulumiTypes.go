@@ -906,7 +906,7 @@ type FunctionEventTrigger struct {
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// Describes the retry policy in case of function's execution failure.
 	// Retried execution is charged as any other execution.
-	// Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+	// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
 	RetryPolicy *string `pulumi:"retryPolicy"`
 	// The email of the service account for this function.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -942,7 +942,7 @@ type FunctionEventTriggerArgs struct {
 	PubsubTopic pulumi.StringPtrInput `pulumi:"pubsubTopic"`
 	// Describes the retry policy in case of function's execution failure.
 	// Retried execution is charged as any other execution.
-	// Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+	// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
 	RetryPolicy pulumi.StringPtrInput `pulumi:"retryPolicy"`
 	// The email of the service account for this function.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
@@ -1052,7 +1052,7 @@ func (o FunctionEventTriggerOutput) PubsubTopic() pulumi.StringPtrOutput {
 
 // Describes the retry policy in case of function's execution failure.
 // Retried execution is charged as any other execution.
-// Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
 func (o FunctionEventTriggerOutput) RetryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.RetryPolicy }).(pulumi.StringPtrOutput)
 }
@@ -1134,7 +1134,7 @@ func (o FunctionEventTriggerPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 
 // Describes the retry policy in case of function's execution failure.
 // Retried execution is charged as any other execution.
-// Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
 func (o FunctionEventTriggerPtrOutput) RetryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionEventTrigger) *string {
 		if v == nil {
@@ -1656,7 +1656,7 @@ type FunctionServiceConfig struct {
 	GcfUri *string `pulumi:"gcfUri"`
 	// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
 	// Default value is `ALLOW_ALL`.
-	// Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+	// Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a
 	// given time.
@@ -1686,7 +1686,7 @@ type FunctionServiceConfig struct {
 	// The Serverless VPC Access connector that this cloud function can connect to.
 	VpcConnector *string `pulumi:"vpcConnector"`
 	// Available egress settings.
-	// Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+	// Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
 	VpcConnectorEgressSettings *string `pulumi:"vpcConnectorEgressSettings"`
 }
 
@@ -1717,7 +1717,7 @@ type FunctionServiceConfigArgs struct {
 	GcfUri pulumi.StringPtrInput `pulumi:"gcfUri"`
 	// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
 	// Default value is `ALLOW_ALL`.
-	// Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+	// Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
 	IngressSettings pulumi.StringPtrInput `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a
 	// given time.
@@ -1747,7 +1747,7 @@ type FunctionServiceConfigArgs struct {
 	// The Serverless VPC Access connector that this cloud function can connect to.
 	VpcConnector pulumi.StringPtrInput `pulumi:"vpcConnector"`
 	// Available egress settings.
-	// Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+	// Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
 	VpcConnectorEgressSettings pulumi.StringPtrInput `pulumi:"vpcConnectorEgressSettings"`
 }
 
@@ -1858,7 +1858,7 @@ func (o FunctionServiceConfigOutput) GcfUri() pulumi.StringPtrOutput {
 
 // Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
 // Default value is `ALLOW_ALL`.
-// Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+// Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
 func (o FunctionServiceConfigOutput) IngressSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.IngressSettings }).(pulumi.StringPtrOutput)
 }
@@ -1923,7 +1923,7 @@ func (o FunctionServiceConfigOutput) VpcConnector() pulumi.StringPtrOutput {
 }
 
 // Available egress settings.
-// Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+// Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
 func (o FunctionServiceConfigOutput) VpcConnectorEgressSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionServiceConfig) *string { return v.VpcConnectorEgressSettings }).(pulumi.StringPtrOutput)
 }
@@ -2007,7 +2007,7 @@ func (o FunctionServiceConfigPtrOutput) GcfUri() pulumi.StringPtrOutput {
 
 // Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
 // Default value is `ALLOW_ALL`.
-// Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+// Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
 func (o FunctionServiceConfigPtrOutput) IngressSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {
 		if v == nil {
@@ -2125,7 +2125,7 @@ func (o FunctionServiceConfigPtrOutput) VpcConnector() pulumi.StringPtrOutput {
 }
 
 // Available egress settings.
-// Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+// Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
 func (o FunctionServiceConfigPtrOutput) VpcConnectorEgressSettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionServiceConfig) *string {
 		if v == nil {

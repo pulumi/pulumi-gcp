@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// CPU overcommit.
         /// Default value is `NONE`.
-        /// Possible values are `ENABLED` and `NONE`.
+        /// Possible values are: `ENABLED`, `NONE`.
         /// </summary>
         [Output("cpuOvercommitType")]
         public Output<string?> CpuOvercommitType { get; private set; } = null!;
@@ -219,7 +219,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// CPU overcommit.
         /// Default value is `NONE`.
-        /// Possible values are `ENABLED` and `NONE`.
+        /// Possible values are: `ENABLED`, `NONE`.
         /// </summary>
         [Input("cpuOvercommitType")]
         public Input<string>? CpuOvercommitType { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// CPU overcommit.
         /// Default value is `NONE`.
-        /// Possible values are `ENABLED` and `NONE`.
+        /// Possible values are: `ENABLED`, `NONE`.
         /// </summary>
         [Input("cpuOvercommitType")]
         public Input<string>? CpuOvercommitType { get; set; }

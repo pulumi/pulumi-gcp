@@ -15,7 +15,7 @@ public final class InstancePersistenceConfig {
      * @return Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
      * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
      * - RDB: RDB based Persistence is enabled.
-     *   Possible values are `DISABLED` and `RDB`.
+     *   Possible values are: `DISABLED`, `RDB`.
      * 
      */
     private @Nullable String persistenceMode;
@@ -34,7 +34,7 @@ public final class InstancePersistenceConfig {
      * - SIX_HOURS:	Snapshot every 6 hours.
      * - TWELVE_HOURS:	Snapshot every 12 hours.
      * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-     *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+     *   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
      * 
      */
     private @Nullable String rdbSnapshotPeriod;
@@ -54,7 +54,7 @@ public final class InstancePersistenceConfig {
      * @return Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
      * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
      * - RDB: RDB based Persistence is enabled.
-     *   Possible values are `DISABLED` and `RDB`.
+     *   Possible values are: `DISABLED`, `RDB`.
      * 
      */
     public Optional<String> persistenceMode() {
@@ -77,7 +77,7 @@ public final class InstancePersistenceConfig {
      * - SIX_HOURS:	Snapshot every 6 hours.
      * - TWELVE_HOURS:	Snapshot every 12 hours.
      * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-     *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+     *   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
      * 
      */
     public Optional<String> rdbSnapshotPeriod() {

@@ -31,7 +31,7 @@ public final class DomainMappingStatusCondition {
     private @Nullable String status;
     /**
      * @return Resource record type. Example: `AAAA`.
-     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * Possible values are: `A`, `AAAA`, `CNAME`.
      * 
      */
     private @Nullable String type;
@@ -63,7 +63,7 @@ public final class DomainMappingStatusCondition {
     }
     /**
      * @return Resource record type. Example: `AAAA`.
-     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * Possible values are: `A`, `AAAA`, `CNAME`.
      * 
      */
     public Optional<String> type() {

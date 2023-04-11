@@ -105,7 +105,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     /**
      * @return The type of vNIC to be used on this interface. This may be gVNIC
      * or VirtioNet.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      * 
      */
     private @Nullable String nicType;
@@ -252,7 +252,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
     /**
      * @return The type of vNIC to be used on this interface. This may be gVNIC
      * or VirtioNet.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      * 
      */
     public Optional<String> nicType() {

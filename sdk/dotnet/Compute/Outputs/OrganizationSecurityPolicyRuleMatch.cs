@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Preconfigured versioned expression. For organization security policy rules,
         /// the only supported type is "FIREWALL".
         /// Default value is `FIREWALL`.
-        /// Possible values are `FIREWALL`.
+        /// Possible values are: `FIREWALL`.
         /// </summary>
         public readonly string? VersionedExpr;
 

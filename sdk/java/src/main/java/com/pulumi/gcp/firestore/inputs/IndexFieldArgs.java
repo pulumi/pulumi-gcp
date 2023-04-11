@@ -18,7 +18,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
      * be specified.
-     * Possible values are `CONTAINS`.
+     * Possible values are: `CONTAINS`.
      * 
      */
     @Import(name="arrayConfig")
@@ -27,7 +27,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
      * be specified.
-     * Possible values are `CONTAINS`.
+     * Possible values are: `CONTAINS`.
      * 
      */
     public Optional<Output<String>> arrayConfig() {
@@ -52,7 +52,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
      * Only one of `order` and `arrayConfig` can be specified.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     @Import(name="order")
@@ -61,7 +61,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
      * Only one of `order` and `arrayConfig` can be specified.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     public Optional<Output<String>> order() {
@@ -97,7 +97,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param arrayConfig Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
          * be specified.
-         * Possible values are `CONTAINS`.
+         * Possible values are: `CONTAINS`.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param arrayConfig Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
          * be specified.
-         * Possible values are `CONTAINS`.
+         * Possible values are: `CONTAINS`.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param order Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
          * Only one of `order` and `arrayConfig` can be specified.
-         * Possible values are `ASCENDING` and `DESCENDING`.
+         * Possible values are: `ASCENDING`, `DESCENDING`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param order Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
          * Only one of `order` and `arrayConfig` can be specified.
-         * Possible values are `ASCENDING` and `DESCENDING`.
+         * Possible values are: `ASCENDING`, `DESCENDING`.
          * 
          * @return builder
          * 

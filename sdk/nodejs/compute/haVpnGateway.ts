@@ -31,6 +31,19 @@ import * as utilities from "../utilities";
  *     network: network1.id,
  * });
  * ```
+ * ### Ha Vpn Gateway Ipv6
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network1 = new gcp.compute.Network("network1", {autoCreateSubnetworks: false});
+ * const haGateway1 = new gcp.compute.HaVpnGateway("haGateway1", {
+ *     region: "us-central1",
+ *     network: network1.id,
+ *     stackType: "IPV4_IPV6",
+ * });
+ * ```
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  *
  * ```typescript
@@ -168,6 +181,13 @@ export class HaVpnGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * If not specified, IPV4_ONLY will be used.
+     * Default value is `IPV4_ONLY`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     */
+    public readonly stackType!: pulumi.Output<string | undefined>;
+    /**
      * A list of interfaces on this VPN gateway.
      * Structure is documented below.
      */
@@ -192,6 +212,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["stackType"] = state ? state.stackType : undefined;
             resourceInputs["vpnInterfaces"] = state ? state.vpnInterfaces : undefined;
         } else {
             const args = argsOrState as HaVpnGatewayArgs | undefined;
@@ -203,6 +224,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["vpnInterfaces"] = args ? args.vpnInterfaces : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
@@ -247,6 +269,13 @@ export interface HaVpnGatewayState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * If not specified, IPV4_ONLY will be used.
+     * Default value is `IPV4_ONLY`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     */
+    stackType?: pulumi.Input<string>;
+    /**
      * A list of interfaces on this VPN gateway.
      * Structure is documented below.
      */
@@ -284,6 +313,13 @@ export interface HaVpnGatewayArgs {
      * The region this gateway should sit in.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * If not specified, IPV4_ONLY will be used.
+     * Default value is `IPV4_ONLY`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     */
+    stackType?: pulumi.Input<string>;
     /**
      * A list of interfaces on this VPN gateway.
      * Structure is documented below.

@@ -101,7 +101,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-     * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+     * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
     public readonly availabilityType!: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The type of the instance.
-     * Possible values are `PRIMARY` and `READ_POOL`.
+     * Possible values are: `PRIMARY`, `READ_POOL`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -249,7 +249,7 @@ export interface InstanceState {
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-     * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+     * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
     availabilityType?: pulumi.Input<string>;
     /**
@@ -279,7 +279,7 @@ export interface InstanceState {
     instanceId?: pulumi.Input<string>;
     /**
      * The type of the instance.
-     * Possible values are `PRIMARY` and `READ_POOL`.
+     * Possible values are: `PRIMARY`, `READ_POOL`.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -332,7 +332,7 @@ export interface InstanceArgs {
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-     * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+     * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      */
     availabilityType?: pulumi.Input<string>;
     /**
@@ -358,7 +358,7 @@ export interface InstanceArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The type of the instance.
-     * Possible values are `PRIMARY` and `READ_POOL`.
+     * Possible values are: `PRIMARY`, `READ_POOL`.
      */
     instanceType: pulumi.Input<string>;
     /**

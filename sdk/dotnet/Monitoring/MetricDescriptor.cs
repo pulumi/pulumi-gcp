@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The launch stage of the metric definition.
-        /// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Output("launchStage")]
         public Output<string?> LaunchStage { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-        /// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+        /// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
         /// </summary>
         [Output("metricKind")]
         public Output<string> MetricKind { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+        /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
         /// </summary>
         [Output("valueType")]
         public Output<string> ValueType { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The launch stage of the metric definition.
-        /// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-        /// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+        /// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
         /// </summary>
         [Input("metricKind", required: true)]
         public Input<string> MetricKind { get; set; } = null!;
@@ -330,7 +330,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+        /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;
@@ -370,7 +370,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The launch stage of the metric definition.
-        /// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
@@ -384,7 +384,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-        /// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+        /// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
         /// </summary>
         [Input("metricKind")]
         public Input<string>? MetricKind { get; set; }
@@ -444,7 +444,7 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+        /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
         /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }

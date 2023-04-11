@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// unhealthy backends regardless of protocol and session affinity. It is
         /// generally not recommended to use this mode overriding the default.
         /// Default value is `DEFAULT_FOR_PROTOCOL`.
-        /// Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+        /// Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
         /// </summary>
         public readonly string? ConnectionPersistenceOnUnhealthyBackends;
         /// <summary>
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// `PER_SESSION`: The Connection Tracking is performed as per the
         /// configured Session Affinity. It matches the configured Session Affinity.
         /// Default value is `PER_CONNECTION`.
-        /// Possible values are `PER_CONNECTION` and `PER_SESSION`.
+        /// Possible values are: `PER_CONNECTION`, `PER_SESSION`.
         /// </summary>
         public readonly string? TrackingMode;
 

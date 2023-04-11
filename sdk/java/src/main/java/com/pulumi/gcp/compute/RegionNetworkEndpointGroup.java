@@ -509,7 +509,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     @Export(name="networkEndpointType", type=String.class, parameters={})
@@ -518,7 +518,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     public Output<Optional<String>> networkEndpointType() {

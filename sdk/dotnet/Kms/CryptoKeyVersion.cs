@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The current state of the CryptoKeyVersion.
-        /// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+        /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The current state of the CryptoKeyVersion.
-        /// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+        /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The current state of the CryptoKeyVersion.
-        /// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+        /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

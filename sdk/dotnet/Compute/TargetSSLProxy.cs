@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the type of proxy header to append before sending data to
         /// the backend.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `PROXY_V1`.
+        /// Possible values are: `NONE`, `PROXY_V1`.
         /// </summary>
         [Output("proxyHeader")]
         public Output<string?> ProxyHeader { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the type of proxy header to append before sending data to
         /// the backend.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `PROXY_V1`.
+        /// Possible values are: `NONE`, `PROXY_V1`.
         /// </summary>
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the type of proxy header to append before sending data to
         /// the backend.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `PROXY_V1`.
+        /// Possible values are: `NONE`, `PROXY_V1`.
         /// </summary>
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }

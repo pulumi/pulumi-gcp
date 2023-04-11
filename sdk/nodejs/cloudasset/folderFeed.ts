@@ -89,7 +89,7 @@ export class FolderFeed extends pulumi.CustomResource {
     public readonly condition!: pulumi.Output<outputs.cloudasset.FolderFeedCondition | undefined>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     /**
@@ -204,7 +204,7 @@ export interface FolderFeedState {
     condition?: pulumi.Input<inputs.cloudasset.FolderFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
      */
     contentType?: pulumi.Input<string>;
     /**
@@ -267,7 +267,7 @@ export interface FolderFeedArgs {
     condition?: pulumi.Input<inputs.cloudasset.FolderFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
      */
     contentType?: pulumi.Input<string>;
     /**

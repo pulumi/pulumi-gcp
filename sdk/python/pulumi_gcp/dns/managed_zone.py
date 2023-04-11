@@ -62,7 +62,7 @@ class ManagedZoneArgs:
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
-               Possible values are `private` and `public`.
+               Possible values are: `private`, `public`.
         """
         pulumi.set(__self__, "dns_name", dns_name)
         if cloud_logging_config is not None:
@@ -271,7 +271,7 @@ class ManagedZoneArgs:
         The zone's visibility: public zones are exposed to the Internet,
         while private zones are visible only to Virtual Private Cloud resources.
         Default value is `public`.
-        Possible values are `private` and `public`.
+        Possible values are: `private`, `public`.
         """
         return pulumi.get(self, "visibility")
 
@@ -337,7 +337,7 @@ class _ManagedZoneState:
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
-               Possible values are `private` and `public`.
+               Possible values are: `private`, `public`.
         """
         if cloud_logging_config is not None:
             pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
@@ -591,7 +591,7 @@ class _ManagedZoneState:
         The zone's visibility: public zones are exposed to the Internet,
         while private zones are visible only to Virtual Private Cloud resources.
         Default value is `public`.
-        Possible values are `private` and `public`.
+        Possible values are: `private`, `public`.
         """
         return pulumi.get(self, "visibility")
 
@@ -878,7 +878,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
-               Possible values are `private` and `public`.
+               Possible values are: `private`, `public`.
         """
         ...
     @overload
@@ -1240,7 +1240,7 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] visibility: The zone's visibility: public zones are exposed to the Internet,
                while private zones are visible only to Virtual Private Cloud resources.
                Default value is `public`.
-               Possible values are `private` and `public`.
+               Possible values are: `private`, `public`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1416,7 +1416,7 @@ class ManagedZone(pulumi.CustomResource):
         The zone's visibility: public zones are exposed to the Internet,
         while private zones are visible only to Virtual Private Cloud resources.
         Default value is `public`.
-        Possible values are `private` and `public`.
+        Possible values are: `private`, `public`.
         """
         return pulumi.get(self, "visibility")
 

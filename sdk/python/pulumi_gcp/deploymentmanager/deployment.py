@@ -35,7 +35,7 @@ class DeploymentArgs:
                the deployment will fail. Note that updating this field does not
                actually affect the deployment, just how it is updated.
                Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
                Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
                resource is deleted after removal from Deployment Manager. If
@@ -43,7 +43,7 @@ class DeploymentArgs:
                and is not actually deleted. Note that updating this field does not
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
-               Possible values are `ABANDON` and `DELETE`.
+               Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
@@ -99,7 +99,7 @@ class DeploymentArgs:
         the deployment will fail. Note that updating this field does not
         actually affect the deployment, just how it is updated.
         Default value is `CREATE_OR_ACQUIRE`.
-        Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+        Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         """
         return pulumi.get(self, "create_policy")
 
@@ -118,7 +118,7 @@ class DeploymentArgs:
         and is not actually deleted. Note that updating this field does not
         actually change the deployment, just how it is updated.
         Default value is `DELETE`.
-        Possible values are `ABANDON` and `DELETE`.
+        Possible values are: `ABANDON`, `DELETE`.
         """
         return pulumi.get(self, "delete_policy")
 
@@ -218,7 +218,7 @@ class _DeploymentState:
                the deployment will fail. Note that updating this field does not
                actually affect the deployment, just how it is updated.
                Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
                Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
                resource is deleted after removal from Deployment Manager. If
@@ -226,7 +226,7 @@ class _DeploymentState:
                and is not actually deleted. Note that updating this field does not
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
-               Possible values are `ABANDON` and `DELETE`.
+               Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input['DeploymentLabelArgs']]] labels: Key-value pairs to apply to this labels.
@@ -282,7 +282,7 @@ class _DeploymentState:
         the deployment will fail. Note that updating this field does not
         actually affect the deployment, just how it is updated.
         Default value is `CREATE_OR_ACQUIRE`.
-        Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+        Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         """
         return pulumi.get(self, "create_policy")
 
@@ -301,7 +301,7 @@ class _DeploymentState:
         and is not actually deleted. Note that updating this field does not
         actually change the deployment, just how it is updated.
         Default value is `DELETE`.
-        Possible values are `ABANDON` and `DELETE`.
+        Possible values are: `ABANDON`, `DELETE`.
         """
         return pulumi.get(self, "delete_policy")
 
@@ -502,7 +502,7 @@ class Deployment(pulumi.CustomResource):
                the deployment will fail. Note that updating this field does not
                actually affect the deployment, just how it is updated.
                Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
                Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
                resource is deleted after removal from Deployment Manager. If
@@ -510,7 +510,7 @@ class Deployment(pulumi.CustomResource):
                and is not actually deleted. Note that updating this field does not
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
-               Possible values are `ABANDON` and `DELETE`.
+               Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
                Structure is documented below.
@@ -664,7 +664,7 @@ class Deployment(pulumi.CustomResource):
                the deployment will fail. Note that updating this field does not
                actually affect the deployment, just how it is updated.
                Default value is `CREATE_OR_ACQUIRE`.
-               Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+               Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         :param pulumi.Input[str] delete_policy: Set the policy to use for deleting new resources on update/delete.
                Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
                resource is deleted after removal from Deployment Manager. If
@@ -672,7 +672,7 @@ class Deployment(pulumi.CustomResource):
                and is not actually deleted. Note that updating this field does not
                actually change the deployment, just how it is updated.
                Default value is `DELETE`.
-               Possible values are `ABANDON` and `DELETE`.
+               Possible values are: `ABANDON`, `DELETE`.
         :param pulumi.Input[str] deployment_id: Unique identifier for deployment. Output only.
         :param pulumi.Input[str] description: Optional user-provided description of deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentLabelArgs']]]] labels: Key-value pairs to apply to this labels.
@@ -722,7 +722,7 @@ class Deployment(pulumi.CustomResource):
         the deployment will fail. Note that updating this field does not
         actually affect the deployment, just how it is updated.
         Default value is `CREATE_OR_ACQUIRE`.
-        Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+        Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         """
         return pulumi.get(self, "create_policy")
 
@@ -737,7 +737,7 @@ class Deployment(pulumi.CustomResource):
         and is not actually deleted. Note that updating this field does not
         actually change the deployment, just how it is updated.
         Default value is `DELETE`.
-        Possible values are `ABANDON` and `DELETE`.
+        Possible values are: `ABANDON`, `DELETE`.
         """
         return pulumi.get(self, "delete_policy")
 

@@ -138,7 +138,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
     }
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Export(name="direction", type=String.class, parameters={})
@@ -146,7 +146,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
 
     /**
      * @return The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Output<Optional<String>> direction() {

@@ -18,7 +18,7 @@ public final class ClusterProtectConfig {
      */
     private @Nullable ClusterProtectConfigWorkloadConfig workloadConfig;
     /**
-     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     private @Nullable String workloadVulnerabilityMode;
@@ -32,7 +32,7 @@ public final class ClusterProtectConfig {
         return Optional.ofNullable(this.workloadConfig);
     }
     /**
-     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     public Optional<String> workloadVulnerabilityMode() {

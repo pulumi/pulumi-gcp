@@ -42,7 +42,7 @@ class RouterPeerArgs:
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
                Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `CUSTOM`.
+               Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which can take one of the following options:
         :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
@@ -161,7 +161,7 @@ class RouterPeerArgs:
         User-specified flag to indicate which mode to use for advertisement.
         Valid values of this enum field are: `DEFAULT`, `CUSTOM`
         Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `CUSTOM`.
+        Possible values are: `DEFAULT`, `CUSTOM`.
         """
         return pulumi.get(self, "advertise_mode")
 
@@ -337,7 +337,7 @@ class _RouterPeerState:
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
                Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `CUSTOM`.
+               Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which can take one of the following options:
         :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
@@ -419,7 +419,7 @@ class _RouterPeerState:
         User-specified flag to indicate which mode to use for advertisement.
         Valid values of this enum field are: `DEFAULT`, `CUSTOM`
         Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `CUSTOM`.
+        Possible values are: `DEFAULT`, `CUSTOM`.
         """
         return pulumi.get(self, "advertise_mode")
 
@@ -814,7 +814,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
                Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `CUSTOM`.
+               Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which can take one of the following options:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
@@ -1115,7 +1115,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Valid values of this enum field are: `DEFAULT`, `CUSTOM`
                Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `CUSTOM`.
+               Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
                mode, which can take one of the following options:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
@@ -1186,7 +1186,7 @@ class RouterPeer(pulumi.CustomResource):
         User-specified flag to indicate which mode to use for advertisement.
         Valid values of this enum field are: `DEFAULT`, `CUSTOM`
         Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `CUSTOM`.
+        Possible values are: `DEFAULT`, `CUSTOM`.
         """
         return pulumi.get(self, "advertise_mode")
 

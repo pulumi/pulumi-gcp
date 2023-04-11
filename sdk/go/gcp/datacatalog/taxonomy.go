@@ -64,7 +64,7 @@ type Taxonomy struct {
 
 	// A list of policy types that are activated for this taxonomy. If not set,
 	// defaults to an empty list.
-	// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes pulumi.StringArrayOutput `pulumi:"activatedPolicyTypes"`
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
@@ -119,7 +119,7 @@ func GetTaxonomy(ctx *pulumi.Context,
 type taxonomyState struct {
 	// A list of policy types that are activated for this taxonomy. If not set,
 	// defaults to an empty list.
-	// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
@@ -143,7 +143,7 @@ type taxonomyState struct {
 type TaxonomyState struct {
 	// A list of policy types that are activated for this taxonomy. If not set,
 	// defaults to an empty list.
-	// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes pulumi.StringArrayInput
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
@@ -171,7 +171,7 @@ func (TaxonomyState) ElementType() reflect.Type {
 type taxonomyArgs struct {
 	// A list of policy types that are activated for this taxonomy. If not set,
 	// defaults to an empty list.
-	// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
@@ -193,7 +193,7 @@ type taxonomyArgs struct {
 type TaxonomyArgs struct {
 	// A list of policy types that are activated for this taxonomy. If not set,
 	// defaults to an empty list.
-	// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+	// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 	ActivatedPolicyTypes pulumi.StringArrayInput
 	// Description of this taxonomy. It must: contain only unicode characters,
 	// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
@@ -300,7 +300,7 @@ func (o TaxonomyOutput) ToTaxonomyOutputWithContext(ctx context.Context) Taxonom
 
 // A list of policy types that are activated for this taxonomy. If not set,
 // defaults to an empty list.
-// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
 func (o TaxonomyOutput) ActivatedPolicyTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringArrayOutput { return v.ActivatedPolicyTypes }).(pulumi.StringArrayOutput)
 }

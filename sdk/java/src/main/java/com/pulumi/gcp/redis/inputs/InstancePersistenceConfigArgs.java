@@ -19,7 +19,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
      * Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
      * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
      * - RDB: RDB based Persistence is enabled.
-     *   Possible values are `DISABLED` and `RDB`.
+     *   Possible values are: `DISABLED`, `RDB`.
      * 
      */
     @Import(name="persistenceMode")
@@ -29,7 +29,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
      * @return Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
      * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
      * - RDB: RDB based Persistence is enabled.
-     *   Possible values are `DISABLED` and `RDB`.
+     *   Possible values are: `DISABLED`, `RDB`.
      * 
      */
     public Optional<Output<String>> persistenceMode() {
@@ -65,7 +65,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
      * - SIX_HOURS:	Snapshot every 6 hours.
      * - TWELVE_HOURS:	Snapshot every 12 hours.
      * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-     *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+     *   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
      * 
      */
     @Import(name="rdbSnapshotPeriod")
@@ -77,7 +77,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
      * - SIX_HOURS:	Snapshot every 6 hours.
      * - TWELVE_HOURS:	Snapshot every 12 hours.
      * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-     *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+     *   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
      * 
      */
     public Optional<Output<String>> rdbSnapshotPeriod() {
@@ -140,7 +140,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
          * @param persistenceMode Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
          * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
          * - RDB: RDB based Persistence is enabled.
-         *   Possible values are `DISABLED` and `RDB`.
+         *   Possible values are: `DISABLED`, `RDB`.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
          * @param persistenceMode Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
          * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
          * - RDB: RDB based Persistence is enabled.
-         *   Possible values are `DISABLED` and `RDB`.
+         *   Possible values are: `DISABLED`, `RDB`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
          * - SIX_HOURS:	Snapshot every 6 hours.
          * - TWELVE_HOURS:	Snapshot every 12 hours.
          * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-         *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+         *   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class InstancePersistenceConfigArgs extends com.pulumi.resources.Re
          * - SIX_HOURS:	Snapshot every 6 hours.
          * - TWELVE_HOURS:	Snapshot every 12 hours.
          * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-         *   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+         *   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
          * 
          * @return builder
          * 

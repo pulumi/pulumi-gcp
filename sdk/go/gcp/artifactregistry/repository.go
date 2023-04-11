@@ -48,6 +48,37 @@ import (
 //	}
 //
 // ```
+// ### Artifact Registry Repository Docker
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Description: pulumi.String("example docker repository"),
+//				DockerConfig: &artifactregistry.RepositoryDockerConfigArgs{
+//					ImmutableTags: pulumi.Bool(true),
+//				},
+//				Format:       pulumi.String("DOCKER"),
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("my-repository"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Artifact Registry Repository Cmek
 //
 // ```go
@@ -114,7 +145,7 @@ import (
 //				RepositoryId: pulumi.String("my-repository-upstream"),
 //				Description:  pulumi.String("example docker repository (upstream source)"),
 //				Format:       pulumi.String("DOCKER"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -133,7 +164,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]interface{}{}))
+//			}, pulumi.DependsOn([]interface{}{}))
 //			if err != nil {
 //				return err
 //			}
@@ -157,18 +188,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Location:     pulumi.String("us-central1"),
-//				RepositoryId: pulumi.String("my-repository"),
-//				Description:  pulumi.String("example remote docker repository"),
-//				Format:       pulumi.String("DOCKER"),
-//				Mode:         pulumi.String("REMOTE_REPOSITORY"),
+//				Description: pulumi.String("example remote docker repository"),
+//				Format:      pulumi.String("DOCKER"),
+//				Location:    pulumi.String("us-central1"),
+//				Mode:        pulumi.String("REMOTE_REPOSITORY"),
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
 //					Description: pulumi.String("docker hub"),
 //					DockerRepository: &artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs{
 //						PublicRepository: pulumi.String("DOCKER_HUB"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//				RepositoryId: pulumi.String("my-repository"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -212,6 +243,9 @@ type Repository struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	// Structure is documented below.
+	DockerConfig RepositoryDockerConfigPtrOutput `pulumi:"dockerConfig"`
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -235,8 +269,9 @@ type Repository struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig RepositoryMavenConfigPtrOutput `pulumi:"mavenConfig"`
-	// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+	// The mode configures the repository to serve artifacts from different sources.
+	// Default value is `STANDARD_REPOSITORY`.
+	// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// The name of the repository, for example:
 	// "repo1"
@@ -245,6 +280,7 @@ type Repository struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Configuration specific for a Remote Repository.
+	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrOutput `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
@@ -252,6 +288,7 @@ type Repository struct {
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Configuration specific for a Virtual Repository.
+	// Structure is documented below.
 	VirtualRepositoryConfig RepositoryVirtualRepositoryConfigPtrOutput `pulumi:"virtualRepositoryConfig"`
 }
 
@@ -294,6 +331,9 @@ type repositoryState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	// Structure is documented below.
+	DockerConfig *RepositoryDockerConfig `pulumi:"dockerConfig"`
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -317,8 +357,9 @@ type repositoryState struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig *RepositoryMavenConfig `pulumi:"mavenConfig"`
-	// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+	// The mode configures the repository to serve artifacts from different sources.
+	// Default value is `STANDARD_REPOSITORY`.
+	// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 	Mode *string `pulumi:"mode"`
 	// The name of the repository, for example:
 	// "repo1"
@@ -327,6 +368,7 @@ type repositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Configuration specific for a Remote Repository.
+	// Structure is documented below.
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
@@ -334,6 +376,7 @@ type repositoryState struct {
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Configuration specific for a Virtual Repository.
+	// Structure is documented below.
 	VirtualRepositoryConfig *RepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfig"`
 }
 
@@ -342,6 +385,9 @@ type RepositoryState struct {
 	CreateTime pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	// Structure is documented below.
+	DockerConfig RepositoryDockerConfigPtrInput
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -365,8 +411,9 @@ type RepositoryState struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig RepositoryMavenConfigPtrInput
-	// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+	// The mode configures the repository to serve artifacts from different sources.
+	// Default value is `STANDARD_REPOSITORY`.
+	// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 	Mode pulumi.StringPtrInput
 	// The name of the repository, for example:
 	// "repo1"
@@ -375,6 +422,7 @@ type RepositoryState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Configuration specific for a Remote Repository.
+	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
 	// The last part of the repository name, for example:
 	// "repo1"
@@ -382,6 +430,7 @@ type RepositoryState struct {
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// Configuration specific for a Virtual Repository.
+	// Structure is documented below.
 	VirtualRepositoryConfig RepositoryVirtualRepositoryConfigPtrInput
 }
 
@@ -392,6 +441,9 @@ func (RepositoryState) ElementType() reflect.Type {
 type repositoryArgs struct {
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	// Structure is documented below.
+	DockerConfig *RepositoryDockerConfig `pulumi:"dockerConfig"`
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -415,18 +467,21 @@ type repositoryArgs struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig *RepositoryMavenConfig `pulumi:"mavenConfig"`
-	// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+	// The mode configures the repository to serve artifacts from different sources.
+	// Default value is `STANDARD_REPOSITORY`.
+	// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 	Mode *string `pulumi:"mode"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Configuration specific for a Remote Repository.
+	// Structure is documented below.
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
 	RepositoryId string `pulumi:"repositoryId"`
 	// Configuration specific for a Virtual Repository.
+	// Structure is documented below.
 	VirtualRepositoryConfig *RepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfig"`
 }
 
@@ -434,6 +489,9 @@ type repositoryArgs struct {
 type RepositoryArgs struct {
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	// Structure is documented below.
+	DockerConfig RepositoryDockerConfigPtrInput
 	// The format of packages that are stored in the repository. Supported formats
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
@@ -457,18 +515,21 @@ type RepositoryArgs struct {
 	// format type.
 	// Structure is documented below.
 	MavenConfig RepositoryMavenConfigPtrInput
-	// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-	// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+	// The mode configures the repository to serve artifacts from different sources.
+	// Default value is `STANDARD_REPOSITORY`.
+	// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 	Mode pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Configuration specific for a Remote Repository.
+	// Structure is documented below.
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
 	// The last part of the repository name, for example:
 	// "repo1"
 	RepositoryId pulumi.StringInput
 	// Configuration specific for a Virtual Repository.
+	// Structure is documented below.
 	VirtualRepositoryConfig RepositoryVirtualRepositoryConfigPtrInput
 }
 
@@ -569,6 +630,12 @@ func (o RepositoryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Docker repository config contains repository level configuration for the repositories of docker type.
+// Structure is documented below.
+func (o RepositoryOutput) DockerConfig() RepositoryDockerConfigPtrOutput {
+	return o.ApplyT(func(v *Repository) RepositoryDockerConfigPtrOutput { return v.DockerConfig }).(RepositoryDockerConfigPtrOutput)
+}
+
 // The format of packages that are stored in the repository. Supported formats
 // can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 // You can only create alpha formats if you are a member of the
@@ -607,8 +674,9 @@ func (o RepositoryOutput) MavenConfig() RepositoryMavenConfigPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryMavenConfigPtrOutput { return v.MavenConfig }).(RepositoryMavenConfigPtrOutput)
 }
 
-// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+// The mode configures the repository to serve artifacts from different sources.
+// Default value is `STANDARD_REPOSITORY`.
+// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
 func (o RepositoryOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -626,6 +694,7 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 }
 
 // Configuration specific for a Remote Repository.
+// Structure is documented below.
 func (o RepositoryOutput) RemoteRepositoryConfig() RepositoryRemoteRepositoryConfigPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryRemoteRepositoryConfigPtrOutput { return v.RemoteRepositoryConfig }).(RepositoryRemoteRepositoryConfigPtrOutput)
 }
@@ -642,6 +711,7 @@ func (o RepositoryOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Configuration specific for a Virtual Repository.
+// Structure is documented below.
 func (o RepositoryOutput) VirtualRepositoryConfig() RepositoryVirtualRepositoryConfigPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryVirtualRepositoryConfigPtrOutput { return v.VirtualRepositoryConfig }).(RepositoryVirtualRepositoryConfigPtrOutput)
 }

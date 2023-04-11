@@ -49,7 +49,7 @@ public final class ServicePerimetersServicePerimeter {
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      * 
      */
     private @Nullable String perimeterType;
@@ -137,7 +137,7 @@ public final class ServicePerimetersServicePerimeter {
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      * 
      */
     public Optional<String> perimeterType() {

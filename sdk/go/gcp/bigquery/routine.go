@@ -206,13 +206,13 @@ type Routine struct {
 	// The description of the routine if defined.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The determinism level of the JavaScript UDF if defined.
-	// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrOutput `pulumi:"determinismLevel"`
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries pulumi.StringArrayOutput `pulumi:"importedLibraries"`
 	// The language of the routine.
-	// Possible values are `SQL` and `JAVASCRIPT`.
+	// Possible values are: `SQL`, `JAVASCRIPT`.
 	Language pulumi.StringPtrOutput `pulumi:"language"`
 	// The time when this routine was modified, in milliseconds since the
 	// epoch.
@@ -238,7 +238,7 @@ type Routine struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringOutput `pulumi:"routineId"`
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
 	RoutineType pulumi.StringPtrOutput `pulumi:"routineType"`
 }
 
@@ -294,13 +294,13 @@ type routineState struct {
 	// The description of the routine if defined.
 	Description *string `pulumi:"description"`
 	// The determinism level of the JavaScript UDF if defined.
-	// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel *string `pulumi:"determinismLevel"`
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries []string `pulumi:"importedLibraries"`
 	// The language of the routine.
-	// Possible values are `SQL` and `JAVASCRIPT`.
+	// Possible values are: `SQL`, `JAVASCRIPT`.
 	Language *string `pulumi:"language"`
 	// The time when this routine was modified, in milliseconds since the
 	// epoch.
@@ -326,7 +326,7 @@ type routineState struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId *string `pulumi:"routineId"`
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
 	RoutineType *string `pulumi:"routineType"`
 }
 
@@ -345,13 +345,13 @@ type RoutineState struct {
 	// The description of the routine if defined.
 	Description pulumi.StringPtrInput
 	// The determinism level of the JavaScript UDF if defined.
-	// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrInput
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries pulumi.StringArrayInput
 	// The language of the routine.
-	// Possible values are `SQL` and `JAVASCRIPT`.
+	// Possible values are: `SQL`, `JAVASCRIPT`.
 	Language pulumi.StringPtrInput
 	// The time when this routine was modified, in milliseconds since the
 	// epoch.
@@ -377,7 +377,7 @@ type RoutineState struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringPtrInput
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
 	RoutineType pulumi.StringPtrInput
 }
 
@@ -397,13 +397,13 @@ type routineArgs struct {
 	// The description of the routine if defined.
 	Description *string `pulumi:"description"`
 	// The determinism level of the JavaScript UDF if defined.
-	// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel *string `pulumi:"determinismLevel"`
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries []string `pulumi:"importedLibraries"`
 	// The language of the routine.
-	// Possible values are `SQL` and `JAVASCRIPT`.
+	// Possible values are: `SQL`, `JAVASCRIPT`.
 	Language *string `pulumi:"language"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -426,7 +426,7 @@ type routineArgs struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId string `pulumi:"routineId"`
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
 	RoutineType *string `pulumi:"routineType"`
 }
 
@@ -443,13 +443,13 @@ type RoutineArgs struct {
 	// The description of the routine if defined.
 	Description pulumi.StringPtrInput
 	// The determinism level of the JavaScript UDF if defined.
-	// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+	// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 	DeterminismLevel pulumi.StringPtrInput
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the
 	// imported JAVASCRIPT libraries.
 	ImportedLibraries pulumi.StringArrayInput
 	// The language of the routine.
-	// Possible values are `SQL` and `JAVASCRIPT`.
+	// Possible values are: `SQL`, `JAVASCRIPT`.
 	Language pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -472,7 +472,7 @@ type RoutineArgs struct {
 	// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringInput
 	// The type of routine.
-	// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+	// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
 	RoutineType pulumi.StringPtrInput
 }
 
@@ -592,7 +592,7 @@ func (o RoutineOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The determinism level of the JavaScript UDF if defined.
-// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
 func (o RoutineOutput) DeterminismLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.DeterminismLevel }).(pulumi.StringPtrOutput)
 }
@@ -604,7 +604,7 @@ func (o RoutineOutput) ImportedLibraries() pulumi.StringArrayOutput {
 }
 
 // The language of the routine.
-// Possible values are `SQL` and `JAVASCRIPT`.
+// Possible values are: `SQL`, `JAVASCRIPT`.
 func (o RoutineOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.Language }).(pulumi.StringPtrOutput)
 }
@@ -648,7 +648,7 @@ func (o RoutineOutput) RoutineId() pulumi.StringOutput {
 }
 
 // The type of routine.
-// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
 func (o RoutineOutput) RoutineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringPtrOutput { return v.RoutineType }).(pulumi.StringPtrOutput)
 }

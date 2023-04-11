@@ -107,7 +107,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
      * determined by our system based on the latest supported minor version.
      * Default value is `MEMCACHE_1_5`.
-     * Possible values are `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`.
      * 
      */
     @Import(name="memcacheVersion")
@@ -118,7 +118,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
      * determined by our system based on the latest supported minor version.
      * Default value is `MEMCACHE_1_5`.
-     * Possible values are `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`.
      * 
      */
     public Optional<Output<String>> memcacheVersion() {
@@ -372,7 +372,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
          * determined by our system based on the latest supported minor version.
          * Default value is `MEMCACHE_1_5`.
-         * Possible values are `MEMCACHE_1_5`.
+         * Possible values are: `MEMCACHE_1_5`.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
          * determined by our system based on the latest supported minor version.
          * Default value is `MEMCACHE_1_5`.
-         * Possible values are `MEMCACHE_1_5`.
+         * Possible values are: `MEMCACHE_1_5`.
          * 
          * @return builder
          * 

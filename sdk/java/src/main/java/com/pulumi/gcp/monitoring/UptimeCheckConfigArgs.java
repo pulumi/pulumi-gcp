@@ -23,7 +23,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
     @Import(name="checkerType")
@@ -31,7 +31,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
     public Optional<Output<String>> checkerType() {
@@ -236,7 +236,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param checkerType The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-         * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+         * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param checkerType The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-         * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+         * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
          * 
          * @return builder
          * 

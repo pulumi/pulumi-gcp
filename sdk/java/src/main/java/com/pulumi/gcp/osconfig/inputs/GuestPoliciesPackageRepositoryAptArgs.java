@@ -19,7 +19,7 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
     /**
      * Type of archive files in this repository. The default behavior is DEB.
      * Default value is `DEB`.
-     * Possible values are `DEB` and `DEB_SRC`.
+     * Possible values are: `DEB`, `DEB_SRC`.
      * 
      */
     @Import(name="archiveType")
@@ -28,7 +28,7 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
     /**
      * @return Type of archive files in this repository. The default behavior is DEB.
      * Default value is `DEB`.
-     * Possible values are `DEB` and `DEB_SRC`.
+     * Possible values are: `DEB`, `DEB_SRC`.
      * 
      */
     public Optional<Output<String>> archiveType() {
@@ -128,7 +128,7 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
         /**
          * @param archiveType Type of archive files in this repository. The default behavior is DEB.
          * Default value is `DEB`.
-         * Possible values are `DEB` and `DEB_SRC`.
+         * Possible values are: `DEB`, `DEB_SRC`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
         /**
          * @param archiveType Type of archive files in this repository. The default behavior is DEB.
          * Default value is `DEB`.
-         * Possible values are `DEB` and `DEB_SRC`.
+         * Possible values are: `DEB`, `DEB_SRC`.
          * 
          * @return builder
          * 

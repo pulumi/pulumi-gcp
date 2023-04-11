@@ -23,7 +23,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
      * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
      * Exactly one of `calendar_period`, `custom_period` must be provided.
-     * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+     * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
      * 
      */
     @Import(name="calendarPeriod")
@@ -34,7 +34,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
      * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
      * Exactly one of `calendar_period`, `custom_period` must be provided.
-     * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+     * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
      * 
      */
     public Optional<Output<String>> calendarPeriod() {
@@ -66,7 +66,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * Specifies how credits should be treated when determining spend
      * for threshold calculations.
      * Default value is `INCLUDE_ALL_CREDITS`.
-     * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+     * Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
      * 
      */
     @Import(name="creditTypesTreatment")
@@ -76,7 +76,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * @return Specifies how credits should be treated when determining spend
      * for threshold calculations.
      * Default value is `INCLUDE_ALL_CREDITS`.
-     * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+     * Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
      * 
      */
     public Optional<Output<String>> creditTypesTreatment() {
@@ -232,7 +232,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
          * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
          * Exactly one of `calendar_period`, `custom_period` must be provided.
-         * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+         * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
          * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
          * Exactly one of `calendar_period`, `custom_period` must be provided.
-         * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+         * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * @param creditTypesTreatment Specifies how credits should be treated when determining spend
          * for threshold calculations.
          * Default value is `INCLUDE_ALL_CREDITS`.
-         * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+         * Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * @param creditTypesTreatment Specifies how credits should be treated when determining spend
          * for threshold calculations.
          * Default value is `INCLUDE_ALL_CREDITS`.
-         * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+         * Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
          * 
          * @return builder
          * 

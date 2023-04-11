@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? ServiceAccountId;
         /// <summary>
         /// Type of the Cloud SQL database.
-        /// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+        /// Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
         /// </summary>
         public readonly string Type;
 

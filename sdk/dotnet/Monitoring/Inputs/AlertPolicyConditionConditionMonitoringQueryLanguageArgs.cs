@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// A condition control that determines how
         /// metric-threshold conditions are evaluated when
         /// data stops arriving.
-        /// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        /// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
         /// </summary>
         [Input("evaluationMissingData")]
         public Input<string>? EvaluationMissingData { get; set; }

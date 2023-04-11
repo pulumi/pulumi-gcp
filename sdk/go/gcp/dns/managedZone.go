@@ -473,7 +473,7 @@ type ManagedZone struct {
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
-	// Possible values are `private` and `public`.
+	// Possible values are: `private`, `public`.
 	Visibility pulumi.StringPtrOutput `pulumi:"visibility"`
 }
 
@@ -563,7 +563,7 @@ type managedZoneState struct {
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
-	// Possible values are `private` and `public`.
+	// Possible values are: `private`, `public`.
 	Visibility *string `pulumi:"visibility"`
 }
 
@@ -619,7 +619,7 @@ type ManagedZoneState struct {
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
-	// Possible values are `private` and `public`.
+	// Possible values are: `private`, `public`.
 	Visibility pulumi.StringPtrInput
 }
 
@@ -671,7 +671,7 @@ type managedZoneArgs struct {
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
-	// Possible values are `private` and `public`.
+	// Possible values are: `private`, `public`.
 	Visibility *string `pulumi:"visibility"`
 }
 
@@ -720,7 +720,7 @@ type ManagedZoneArgs struct {
 	// The zone's visibility: public zones are exposed to the Internet,
 	// while private zones are visible only to Virtual Private Cloud resources.
 	// Default value is `public`.
-	// Possible values are `private` and `public`.
+	// Possible values are: `private`, `public`.
 	Visibility pulumi.StringPtrInput
 }
 
@@ -910,7 +910,7 @@ func (o ManagedZoneOutput) ServiceDirectoryConfig() ManagedZoneServiceDirectoryC
 // The zone's visibility: public zones are exposed to the Internet,
 // while private zones are visible only to Virtual Private Cloud resources.
 // Default value is `public`.
-// Possible values are `private` and `public`.
+// Possible values are: `private`, `public`.
 func (o ManagedZoneOutput) Visibility() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) pulumi.StringPtrOutput { return v.Visibility }).(pulumi.StringPtrOutput)
 }

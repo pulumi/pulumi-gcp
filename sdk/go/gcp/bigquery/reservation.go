@@ -35,9 +35,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
+//				Autoscale: &bigquery.ReservationAutoscaleArgs{
+//					MaxSlots: pulumi.Int(100),
+//				},
 //				Concurrency:     pulumi.Int(0),
-//				IgnoreIdleSlots: pulumi.Bool(false),
-//				Location:        pulumi.String("asia-northeast1"),
+//				Edition:         pulumi.String("STANDARD"),
+//				IgnoreIdleSlots: pulumi.Bool(true),
+//				Location:        pulumi.String("us-west2"),
 //				SlotCapacity:    pulumi.Int(0),
 //			})
 //			if err != nil {
@@ -73,8 +77,13 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
+	// The configuration parameters for the auto scaling feature.
+	// Structure is documented below.
+	Autoscale ReservationAutoscalePtrOutput `pulumi:"autoscale"`
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency pulumi.IntPtrOutput `pulumi:"concurrency"`
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition pulumi.StringPtrOutput `pulumi:"edition"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -127,8 +136,13 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
+	// The configuration parameters for the auto scaling feature.
+	// Structure is documented below.
+	Autoscale *ReservationAutoscale `pulumi:"autoscale"`
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency *int `pulumi:"concurrency"`
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition *string `pulumi:"edition"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -150,8 +164,13 @@ type reservationState struct {
 }
 
 type ReservationState struct {
+	// The configuration parameters for the auto scaling feature.
+	// Structure is documented below.
+	Autoscale ReservationAutoscalePtrInput
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency pulumi.IntPtrInput
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition pulumi.StringPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -177,8 +196,13 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
+	// The configuration parameters for the auto scaling feature.
+	// Structure is documented below.
+	Autoscale *ReservationAutoscale `pulumi:"autoscale"`
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency *int `pulumi:"concurrency"`
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition *string `pulumi:"edition"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -201,8 +225,13 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
+	// The configuration parameters for the auto scaling feature.
+	// Structure is documented below.
+	Autoscale ReservationAutoscalePtrInput
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency pulumi.IntPtrInput
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition pulumi.StringPtrInput
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -310,9 +339,20 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
+// The configuration parameters for the auto scaling feature.
+// Structure is documented below.
+func (o ReservationOutput) Autoscale() ReservationAutoscalePtrOutput {
+	return o.ApplyT(func(v *Reservation) ReservationAutoscalePtrOutput { return v.Autoscale }).(ReservationAutoscalePtrOutput)
+}
+
 // Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 func (o ReservationOutput) Concurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.IntPtrOutput { return v.Concurrency }).(pulumi.IntPtrOutput)
+}
+
+// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+func (o ReservationOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
 // If false, any query using this reservation will use idle slots from other reservations within

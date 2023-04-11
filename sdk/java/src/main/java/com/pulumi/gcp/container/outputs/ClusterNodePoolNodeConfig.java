@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGvnic;
@@ -56,6 +57,11 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
+    /**
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
     /**
      * @return Parameters for the Google Container Filesystem (GCFS).
      * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = &#34;COS_CONTAINERD&#34;` and `node_version` from GKE versions 1.19 or later to use it.
@@ -259,6 +265,13 @@ public final class ClusterNodePoolNodeConfig {
      */
     public Optional<ClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfig() {
         return Optional.ofNullable(this.ephemeralStorageConfig);
+    }
+    /**
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfig() {
+        return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
     }
     /**
      * @return Parameters for the Google Container Filesystem (GCFS).
@@ -489,6 +502,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
+        private @Nullable ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig;
         private @Nullable ClusterNodePoolNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
@@ -522,6 +536,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
+    	      this.ephemeralStorageLocalSsdConfig = defaults.ephemeralStorageLocalSsdConfig;
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
@@ -572,6 +587,11 @@ public final class ClusterNodePoolNodeConfig {
         @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
             this.ephemeralStorageConfig = ephemeralStorageConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ephemeralStorageLocalSsdConfig(@Nullable ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig) {
+            this.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             return this;
         }
         @CustomType.Setter
@@ -718,6 +738,7 @@ public final class ClusterNodePoolNodeConfig {
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.ephemeralStorageConfig = ephemeralStorageConfig;
+            o.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             o.gcfsConfig = gcfsConfig;
             o.guestAccelerators = guestAccelerators;
             o.gvnic = gvnic;

@@ -82,8 +82,7 @@ export class Sharedflow extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The Apigee Organization associated with the Apigee instance,
-     * in the format `organizations/{{org_name}}`.
+     * The Apigee Organization name associated with the Apigee instance.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -165,8 +164,7 @@ export interface SharedflowState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Apigee Organization associated with the Apigee instance,
-     * in the format `organizations/{{org_name}}`.
+     * The Apigee Organization name associated with the Apigee instance.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -193,8 +191,7 @@ export interface SharedflowArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The Apigee Organization associated with the Apigee instance,
-     * in the format `organizations/{{org_name}}`.
+     * The Apigee Organization name associated with the Apigee instance.
      */
     orgId: pulumi.Input<string>;
 }

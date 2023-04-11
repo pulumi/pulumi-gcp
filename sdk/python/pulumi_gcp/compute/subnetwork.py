@@ -44,7 +44,7 @@ class SubnetworkArgs:
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -72,7 +72,7 @@ class SubnetworkArgs:
                An `ACTIVE` subnetwork is one that is currently being used.
                A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
                Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-               Possible values are `ACTIVE` and `BACKUP`.
+               Possible values are: `ACTIVE`, `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
@@ -80,7 +80,7 @@ class SubnetworkArgs:
                Structure is documented below.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         pulumi.set(__self__, "network", network)
@@ -158,7 +158,7 @@ class SubnetworkArgs:
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         cannot enable direct path.
-        Possible values are `EXTERNAL` and `INTERNAL`.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -274,7 +274,7 @@ class SubnetworkArgs:
         An `ACTIVE` subnetwork is one that is currently being used.
         A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
         Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-        Possible values are `ACTIVE` and `BACKUP`.
+        Possible values are: `ACTIVE`, `BACKUP`.
         """
         return pulumi.get(self, "role")
 
@@ -304,7 +304,7 @@ class SubnetworkArgs:
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
-        Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
 
@@ -353,7 +353,7 @@ class _SubnetworkState:
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -384,7 +384,7 @@ class _SubnetworkState:
                An `ACTIVE` subnetwork is one that is currently being used.
                A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
                Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-               Possible values are `ACTIVE` and `BACKUP`.
+               Possible values are: `ACTIVE`, `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
@@ -393,7 +393,7 @@ class _SubnetworkState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -524,7 +524,7 @@ class _SubnetworkState:
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         cannot enable direct path.
-        Possible values are `EXTERNAL` and `INTERNAL`.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -665,7 +665,7 @@ class _SubnetworkState:
         An `ACTIVE` subnetwork is one that is currently being used.
         A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
         Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-        Possible values are `ACTIVE` and `BACKUP`.
+        Possible values are: `ACTIVE`, `BACKUP`.
         """
         return pulumi.get(self, "role")
 
@@ -707,7 +707,7 @@ class _SubnetworkState:
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
-        Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
 
@@ -880,7 +880,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
                subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
@@ -910,7 +910,7 @@ class Subnetwork(pulumi.CustomResource):
                An `ACTIVE` subnetwork is one that is currently being used.
                A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
                Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-               Possible values are `ACTIVE` and `BACKUP`.
+               Possible values are: `ACTIVE`, `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
@@ -918,7 +918,7 @@ class Subnetwork(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         ...
     @overload
@@ -1172,7 +1172,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
                or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
                cannot enable direct path.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
@@ -1203,7 +1203,7 @@ class Subnetwork(pulumi.CustomResource):
                An `ACTIVE` subnetwork is one that is currently being used.
                A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
                Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-               Possible values are `ACTIVE` and `BACKUP`.
+               Possible values are: `ACTIVE`, `BACKUP`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryIpRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances
                contained in this subnetwork. The primary IP of such VM must belong
                to the primary ipCidrRange of the subnetwork. The alias IPs may belong
@@ -1212,7 +1212,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1301,7 +1301,7 @@ class Subnetwork(pulumi.CustomResource):
         The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         cannot enable direct path.
-        Possible values are `EXTERNAL` and `INTERNAL`.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -1402,7 +1402,7 @@ class Subnetwork(pulumi.CustomResource):
         An `ACTIVE` subnetwork is one that is currently being used.
         A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
         Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-        Possible values are `ACTIVE` and `BACKUP`.
+        Possible values are: `ACTIVE`, `BACKUP`.
         """
         return pulumi.get(self, "role")
 
@@ -1432,7 +1432,7 @@ class Subnetwork(pulumi.CustomResource):
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
-        Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
 

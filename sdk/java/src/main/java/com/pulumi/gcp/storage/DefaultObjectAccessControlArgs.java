@@ -78,7 +78,7 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
 
     /**
      * The access permission for the entity.
-     * Possible values are `OWNER` and `READER`.
+     * Possible values are: `OWNER`, `READER`.
      * 
      */
     @Import(name="role", required=true)
@@ -86,7 +86,7 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
 
     /**
      * @return The access permission for the entity.
-     * Possible values are `OWNER` and `READER`.
+     * Possible values are: `OWNER`, `READER`.
      * 
      */
     public Output<String> role() {
@@ -201,7 +201,7 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
 
         /**
          * @param role The access permission for the entity.
-         * Possible values are `OWNER` and `READER`.
+         * Possible values are: `OWNER`, `READER`.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class DefaultObjectAccessControlArgs extends com.pulumi.resources.R
 
         /**
          * @param role The access permission for the entity.
-         * Possible values are `OWNER` and `READER`.
+         * Possible values are: `OWNER`, `READER`.
          * 
          * @return builder
          * 

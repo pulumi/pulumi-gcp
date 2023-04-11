@@ -26,7 +26,7 @@ class DomainMappingArgs:
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
-               Possible values are `STRICT` and `OVERRIDE`.
+               Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['DomainMappingSslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -59,7 +59,7 @@ class DomainMappingArgs:
         Whether the domain creation should override any existing mappings for this domain.
         By default, overrides are rejected.
         Default value is `STRICT`.
-        Possible values are `STRICT` and `OVERRIDE`.
+        Possible values are: `STRICT`, `OVERRIDE`.
         """
         return pulumi.get(self, "override_strategy")
 
@@ -110,7 +110,7 @@ class _DomainMappingState:
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
-               Possible values are `STRICT` and `OVERRIDE`.
+               Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['DomainMappingResourceRecordArgs']]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
@@ -163,7 +163,7 @@ class _DomainMappingState:
         Whether the domain creation should override any existing mappings for this domain.
         By default, overrides are rejected.
         Default value is `STRICT`.
-        Possible values are `STRICT` and `OVERRIDE`.
+        Possible values are: `STRICT`, `OVERRIDE`.
         """
         return pulumi.get(self, "override_strategy")
 
@@ -267,7 +267,7 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
-               Possible values are `STRICT` and `OVERRIDE`.
+               Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['DomainMappingSslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -382,7 +382,7 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain.
                By default, overrides are rejected.
                Default value is `STRICT`.
-               Possible values are `STRICT` and `OVERRIDE`.
+               Possible values are: `STRICT`, `OVERRIDE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainMappingResourceRecordArgs']]]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS
@@ -426,7 +426,7 @@ class DomainMapping(pulumi.CustomResource):
         Whether the domain creation should override any existing mappings for this domain.
         By default, overrides are rejected.
         Default value is `STRICT`.
-        Possible values are `STRICT` and `OVERRIDE`.
+        Possible values are: `STRICT`, `OVERRIDE`.
         """
         return pulumi.get(self, "override_strategy")
 

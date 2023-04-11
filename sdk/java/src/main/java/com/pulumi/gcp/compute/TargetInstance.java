@@ -254,7 +254,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * NAT option controlling how IPs are NAT&#39;ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
-     * Possible values are `NO_NAT`.
+     * Possible values are: `NO_NAT`.
      * 
      */
     @Export(name="natPolicy", type=String.class, parameters={})
@@ -264,7 +264,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
      * @return NAT option controlling how IPs are NAT&#39;ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
-     * Possible values are `NO_NAT`.
+     * Possible values are: `NO_NAT`.
      * 
      */
     public Output<Optional<String>> natPolicy() {

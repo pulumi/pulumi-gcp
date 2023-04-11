@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The output format of the Dataproc Metastore service's logs.
         /// Default value is `JSON`.
-        /// Possible values are `LEGACY` and `JSON`.
+        /// Possible values are: `LEGACY`, `JSON`.
         /// </summary>
         [Input("logFormat")]
         public Input<string>? LogFormat { get; set; }

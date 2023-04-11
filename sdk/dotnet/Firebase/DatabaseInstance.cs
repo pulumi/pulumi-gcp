@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.Firebase
         /// Creating user Databases is only available for projects on the Blaze plan.
         /// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
         /// Default value is `USER_DATABASE`.
-        /// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+        /// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.Firebase
         /// Creating user Databases is only available for projects on the Blaze plan.
         /// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
         /// Default value is `USER_DATABASE`.
-        /// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+        /// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.Gcp.Firebase
         /// Creating user Databases is only available for projects on the Blaze plan.
         /// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
         /// Default value is `USER_DATABASE`.
-        /// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+        /// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

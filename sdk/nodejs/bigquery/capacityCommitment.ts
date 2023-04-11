@@ -24,8 +24,9 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.bigquery.CapacityCommitment("example", {
  *     capacityCommitmentId: "example-commitment",
- *     location: "us-west1",
- *     plan: "FLEX",
+ *     edition: "ENTERPRISE",
+ *     location: "us-west2",
+ *     plan: "FLEX_FLAT_RATE",
  *     slotCount: 100,
  * });
  * ```
@@ -35,7 +36,15 @@ import * as utilities from "../utilities";
  * CapacityCommitment can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{name}}
+ *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
  * ```
  */
 export class CapacityCommitment extends pulumi.CustomResource {
@@ -82,6 +91,10 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly commitmentStartTime!: pulumi.Output<string>;
     /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     */
+    public readonly edition!: pulumi.Output<string | undefined>;
+    /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
     public readonly enforceSingleAdminProjectPerOrg!: pulumi.Output<string | undefined>;
@@ -95,7 +108,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+     * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -104,7 +117,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      */
     public readonly renewalPlan!: pulumi.Output<string | undefined>;
     /**
@@ -132,6 +145,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["capacityCommitmentId"] = state ? state.capacityCommitmentId : undefined;
             resourceInputs["commitmentEndTime"] = state ? state.commitmentEndTime : undefined;
             resourceInputs["commitmentStartTime"] = state ? state.commitmentStartTime : undefined;
+            resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = state ? state.enforceSingleAdminProjectPerOrg : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -149,6 +163,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'slotCount'");
             }
             resourceInputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
+            resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -185,6 +200,10 @@ export interface CapacityCommitmentState {
      */
     commitmentStartTime?: pulumi.Input<string>;
     /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     */
+    edition?: pulumi.Input<string>;
+    /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
     enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
@@ -198,7 +217,7 @@ export interface CapacityCommitmentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+     * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      */
     plan?: pulumi.Input<string>;
     /**
@@ -207,7 +226,7 @@ export interface CapacityCommitmentState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      */
     renewalPlan?: pulumi.Input<string>;
     /**
@@ -232,6 +251,10 @@ export interface CapacityCommitmentArgs {
      */
     capacityCommitmentId?: pulumi.Input<string>;
     /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     */
+    edition?: pulumi.Input<string>;
+    /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
     enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
@@ -241,7 +264,7 @@ export interface CapacityCommitmentArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+     * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      */
     plan: pulumi.Input<string>;
     /**
@@ -250,7 +273,7 @@ export interface CapacityCommitmentArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      */
     renewalPlan?: pulumi.Input<string>;
     /**

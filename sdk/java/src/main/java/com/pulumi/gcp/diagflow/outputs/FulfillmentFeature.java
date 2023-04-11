@@ -12,7 +12,7 @@ public final class FulfillmentFeature {
     /**
      * @return The type of the feature that enabled for fulfillment.
      * * SMALLTALK: Fulfillment is enabled for SmallTalk.
-     *   Possible values are `SMALLTALK`.
+     *   Possible values are: `SMALLTALK`.
      * 
      */
     private String type;
@@ -21,7 +21,7 @@ public final class FulfillmentFeature {
     /**
      * @return The type of the feature that enabled for fulfillment.
      * * SMALLTALK: Fulfillment is enabled for SmallTalk.
-     *   Possible values are `SMALLTALK`.
+     *   Possible values are: `SMALLTALK`.
      * 
      */
     public String type() {

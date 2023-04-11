@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// provided metadata.
         /// - MATCH_ALL: All filterLabels must have matching labels in
         /// the provided metadata.
-        /// Possible values are `MATCH_ALL` and `MATCH_ANY`.
+        /// Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         /// </summary>
         public readonly string FilterMatchCriteria;
 

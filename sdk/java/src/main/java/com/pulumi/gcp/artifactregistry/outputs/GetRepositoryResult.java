@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryMavenConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVirtualRepositoryConfig;
@@ -18,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetRepositoryResult {
     private String createTime;
     private String description;
+    private List<GetRepositoryDockerConfig> dockerConfigs;
     private String format;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -42,6 +44,9 @@ public final class GetRepositoryResult {
     }
     public String description() {
         return this.description;
+    }
+    public List<GetRepositoryDockerConfig> dockerConfigs() {
+        return this.dockerConfigs;
     }
     public String format() {
         return this.format;
@@ -98,6 +103,7 @@ public final class GetRepositoryResult {
     public static final class Builder {
         private String createTime;
         private String description;
+        private List<GetRepositoryDockerConfig> dockerConfigs;
         private String format;
         private String id;
         private String kmsKeyName;
@@ -116,6 +122,7 @@ public final class GetRepositoryResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.dockerConfigs = defaults.dockerConfigs;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
     	      this.kmsKeyName = defaults.kmsKeyName;
@@ -140,6 +147,14 @@ public final class GetRepositoryResult {
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
+        }
+        @CustomType.Setter
+        public Builder dockerConfigs(List<GetRepositoryDockerConfig> dockerConfigs) {
+            this.dockerConfigs = Objects.requireNonNull(dockerConfigs);
+            return this;
+        }
+        public Builder dockerConfigs(GetRepositoryDockerConfig... dockerConfigs) {
+            return dockerConfigs(List.of(dockerConfigs));
         }
         @CustomType.Setter
         public Builder format(String format) {
@@ -219,6 +234,7 @@ public final class GetRepositoryResult {
             final var o = new GetRepositoryResult();
             o.createTime = createTime;
             o.description = description;
+            o.dockerConfigs = dockerConfigs;
             o.format = format;
             o.id = id;
             o.kmsKeyName = kmsKeyName;

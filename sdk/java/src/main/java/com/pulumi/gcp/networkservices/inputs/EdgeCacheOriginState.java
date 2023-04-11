@@ -232,7 +232,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
     /**
      * The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security &amp; performance.
      * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-     * Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+     * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
      * 
      */
     @Import(name="protocol")
@@ -241,7 +241,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
     /**
      * @return The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security &amp; performance.
      * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-     * Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+     * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -262,7 +262,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
      * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-     *   Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+     *   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      * 
      */
     @Import(name="retryConditions")
@@ -282,7 +282,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
      * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-     *   Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+     *   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      * 
      */
     public Optional<Output<List<String>>> retryConditions() {
@@ -619,7 +619,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
         /**
          * @param protocol The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security &amp; performance.
          * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-         * Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+         * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
          * 
          * @return builder
          * 
@@ -632,7 +632,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
         /**
          * @param protocol The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security &amp; performance.
          * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-         * Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+         * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
          * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
          * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
          * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-         *   Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+         *   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
          * 
          * @return builder
          * 
@@ -679,7 +679,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
          * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
          * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
          * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-         *   Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+         *   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
          * 
          * @return builder
          * 
@@ -702,7 +702,7 @@ public final class EdgeCacheOriginState extends com.pulumi.resources.ResourceArg
          * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
          * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
          * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-         *   Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+         *   Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
          * 
          * @return builder
          * 

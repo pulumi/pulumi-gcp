@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const organization = new gcp.organizations.IAMPolicy("organization", {
- *     orgId: "your-organization-id",
+ *     orgId: "1234567890",
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const organization = new gcp.organizations.IAMPolicy("organization", {
- *     orgId: "your-organization-id",
+ *     orgId: "1234567890",
  *     policyData: admin.then(admin => admin.policyData),
  * });
  * ```
@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *
  * const organization = new gcp.organizations.IAMBinding("organization", {
  *     members: ["user:jane@example.com"],
- *     orgId: "your-organization-id",
+ *     orgId: "1234567890",
  *     role: "roles/editor",
  * });
  * ```
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  *         title: "expires_after_2019_12_31",
  *     },
  *     members: ["user:jane@example.com"],
- *     orgId: "your-organization-id",
+ *     orgId: "1234567890",
  *     role: "roles/editor",
  * });
  * ```
@@ -112,7 +112,7 @@ import * as utilities from "../utilities";
  *
  * const organization = new gcp.organizations.IAMMember("organization", {
  *     member: "user:jane@example.com",
- *     orgId: "your-organization-id",
+ *     orgId: "1234567890",
  *     role: "roles/editor",
  * });
  * ```
@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  *         title: "expires_after_2019_12_31",
  *     },
  *     member: "user:jane@example.com",
- *     orgId: "your-organization-id",
+ *     orgId: "1234567890",
  *     role: "roles/editor",
  * });
  * ```
@@ -151,7 +151,7 @@ import * as utilities from "../utilities";
  *             logType: "DATA_READ",
  *         },
  *     ],
- *     orgId: "your-organization-id",
+ *     orgId: "1234567890",
  *     service: "allServices",
  * });
  * ```
@@ -235,9 +235,7 @@ export class IAMMember extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
     /**
-     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-     * will not be inferred from the provider.
+     * The organization id of the target organization.
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
@@ -302,9 +300,7 @@ export interface IAMMemberState {
     etag?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
     /**
-     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-     * will not be inferred from the provider.
+     * The organization id of the target organization.
      */
     orgId?: pulumi.Input<string>;
     /**
@@ -326,9 +322,7 @@ export interface IAMMemberArgs {
     condition?: pulumi.Input<inputs.organizations.IAMMemberCondition>;
     member: pulumi.Input<string>;
     /**
-     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-     * will not be inferred from the provider.
+     * The organization id of the target organization.
      */
     orgId: pulumi.Input<string>;
     /**

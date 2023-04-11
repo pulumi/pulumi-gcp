@@ -298,7 +298,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The connection mode of the Redis instance.
         /// Default value is `DIRECT_PEERING`.
-        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         /// </summary>
         [Output("connectMode")]
         public Output<string?> ConnectMode { get; private set; } = null!;
@@ -442,7 +442,7 @@ namespace Pulumi.Gcp.Redis
         /// instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         /// can scale up and down the number of replicas.
-        /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+        /// Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Output("readReplicasMode")]
         public Output<string> ReadReplicasMode { get; private set; } = null!;
@@ -509,7 +509,7 @@ namespace Pulumi.Gcp.Redis
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
         /// Default value is `BASIC`.
-        /// Possible values are `BASIC` and `STANDARD_HA`.
+        /// Possible values are: `BASIC`, `STANDARD_HA`.
         /// </summary>
         [Output("tier")]
         public Output<string?> Tier { get; private set; } = null!;
@@ -518,7 +518,7 @@ namespace Pulumi.Gcp.Redis
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         /// Default value is `DISABLED`.
-        /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        /// Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         /// </summary>
         [Output("transitEncryptionMode")]
         public Output<string?> TransitEncryptionMode { get; private set; } = null!;
@@ -601,7 +601,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The connection mode of the Redis instance.
         /// Default value is `DIRECT_PEERING`.
-        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         /// </summary>
         [Input("connectMode")]
         public Input<string>? ConnectMode { get; set; }
@@ -688,7 +688,7 @@ namespace Pulumi.Gcp.Redis
         /// instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         /// can scale up and down the number of replicas.
-        /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+        /// Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]
         public Input<string>? ReadReplicasMode { get; set; }
@@ -754,7 +754,7 @@ namespace Pulumi.Gcp.Redis
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
         /// Default value is `BASIC`.
-        /// Possible values are `BASIC` and `STANDARD_HA`.
+        /// Possible values are: `BASIC`, `STANDARD_HA`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -763,7 +763,7 @@ namespace Pulumi.Gcp.Redis
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         /// Default value is `DISABLED`.
-        /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        /// Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }
@@ -820,7 +820,7 @@ namespace Pulumi.Gcp.Redis
         /// <summary>
         /// The connection mode of the Redis instance.
         /// Default value is `DIRECT_PEERING`.
-        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         /// </summary>
         [Input("connectMode")]
         public Input<string>? ConnectMode { get; set; }
@@ -976,7 +976,7 @@ namespace Pulumi.Gcp.Redis
         /// instance cannot scale up or down the number of replicas.
         /// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         /// can scale up and down the number of replicas.
-        /// Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+        /// Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         /// </summary>
         [Input("readReplicasMode")]
         public Input<string>? ReadReplicasMode { get; set; }
@@ -1055,7 +1055,7 @@ namespace Pulumi.Gcp.Redis
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
         /// Default value is `BASIC`.
-        /// Possible values are `BASIC` and `STANDARD_HA`.
+        /// Possible values are: `BASIC`, `STANDARD_HA`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -1064,7 +1064,7 @@ namespace Pulumi.Gcp.Redis
         /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         /// Default value is `DISABLED`.
-        /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        /// Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }

@@ -17,7 +17,7 @@ public final class RouterBgp {
     /**
      * @return User-specified flag to indicate which mode to use for advertisement.
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      * 
      */
     private @Nullable String advertiseMode;
@@ -67,7 +67,7 @@ public final class RouterBgp {
     /**
      * @return User-specified flag to indicate which mode to use for advertisement.
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      * 
      */
     public Optional<String> advertiseMode() {

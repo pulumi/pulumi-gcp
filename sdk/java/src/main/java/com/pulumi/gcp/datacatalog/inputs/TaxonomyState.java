@@ -19,7 +19,7 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
     /**
      * A list of policy types that are activated for this taxonomy. If not set,
      * defaults to an empty list.
-     * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+     * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      * 
      */
     @Import(name="activatedPolicyTypes")
@@ -28,7 +28,7 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A list of policy types that are activated for this taxonomy. If not set,
      * defaults to an empty list.
-     * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+     * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      * 
      */
     public Optional<Output<List<String>>> activatedPolicyTypes() {
@@ -156,7 +156,7 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param activatedPolicyTypes A list of policy types that are activated for this taxonomy. If not set,
          * defaults to an empty list.
-         * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+         * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param activatedPolicyTypes A list of policy types that are activated for this taxonomy. If not set,
          * defaults to an empty list.
-         * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+         * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class TaxonomyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param activatedPolicyTypes A list of policy types that are activated for this taxonomy. If not set,
          * defaults to an empty list.
-         * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+         * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
          * 
          * @return builder
          * 

@@ -15,7 +15,7 @@ public final class LiteSubscriptionDeliveryConfigArgs extends com.pulumi.resourc
 
     /**
      * When this subscription should send messages to subscribers relative to messages persistence in storage.
-     * Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+     * Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
      * 
      */
     @Import(name="deliveryRequirement", required=true)
@@ -23,7 +23,7 @@ public final class LiteSubscriptionDeliveryConfigArgs extends com.pulumi.resourc
 
     /**
      * @return When this subscription should send messages to subscribers relative to messages persistence in storage.
-     * Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+     * Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
      * 
      */
     public Output<String> deliveryRequirement() {
@@ -56,7 +56,7 @@ public final class LiteSubscriptionDeliveryConfigArgs extends com.pulumi.resourc
 
         /**
          * @param deliveryRequirement When this subscription should send messages to subscribers relative to messages persistence in storage.
-         * Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+         * Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
          * 
          * @return builder
          * 
@@ -68,7 +68,7 @@ public final class LiteSubscriptionDeliveryConfigArgs extends com.pulumi.resourc
 
         /**
          * @param deliveryRequirement When this subscription should send messages to subscribers relative to messages persistence in storage.
-         * Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+         * Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
          * 
          * @return builder
          * 

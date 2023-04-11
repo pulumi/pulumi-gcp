@@ -47,7 +47,7 @@ class InstanceArgs:
                - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
-               Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+               Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceAcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
                created with the Options field. Users will need to either manually update their state file to include these diffed
                options, or include the field in a [lifecycle ignore changes
@@ -129,7 +129,7 @@ class InstanceArgs:
         - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
-        Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         """
         return pulumi.get(self, "type")
 
@@ -431,7 +431,7 @@ class _InstanceState:
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -444,7 +444,7 @@ class _InstanceState:
                - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
-               Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+               Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
@@ -790,7 +790,7 @@ class _InstanceState:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The type of an accelator for a CDF instance.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "state")
 
@@ -836,7 +836,7 @@ class _InstanceState:
         - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
-        Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         """
         return pulumi.get(self, "type")
 
@@ -1077,7 +1077,7 @@ class Instance(pulumi.CustomResource):
                - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
-               Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+               Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
         """
@@ -1373,7 +1373,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[str] tenant_project_id: The name of the tenant project.
         :param pulumi.Input[str] type: Represents the type of Data Fusion instance. Each type is configured with
@@ -1386,7 +1386,7 @@ class Instance(pulumi.CustomResource):
                - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
                with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
                pipelines at low cost.
-               Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+               Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         :param pulumi.Input[str] update_time: The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         :param pulumi.Input[str] version: Current version of the Data Fusion.
         :param pulumi.Input[str] zone: Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
@@ -1617,7 +1617,7 @@ class Instance(pulumi.CustomResource):
     def state(self) -> pulumi.Output[str]:
         """
         The type of an accelator for a CDF instance.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "state")
 
@@ -1651,7 +1651,7 @@ class Instance(pulumi.CustomResource):
         - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         pipelines at low cost.
-        Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         """
         return pulumi.get(self, "type")
 

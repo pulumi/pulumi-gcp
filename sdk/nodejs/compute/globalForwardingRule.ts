@@ -165,12 +165,12 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
      * global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
      * and addressType of INTERNAL
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
@@ -193,7 +193,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * Note: This field must be set "" if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -365,12 +365,12 @@ export interface GlobalForwardingRuleState {
      * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
      * global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
      * and addressType of INTERNAL
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -393,7 +393,7 @@ export interface GlobalForwardingRuleState {
      * Note: This field must be set "" if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -510,12 +510,12 @@ export interface GlobalForwardingRuleArgs {
      * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
      * global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
      * and addressType of INTERNAL
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
      * The IP Version that will be used by this global forwarding rule.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      */
     ipVersion?: pulumi.Input<string>;
     /**
@@ -534,7 +534,7 @@ export interface GlobalForwardingRuleArgs {
      * Note: This field must be set "" if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**

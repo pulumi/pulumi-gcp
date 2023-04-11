@@ -16,7 +16,7 @@ public final class FulfillmentFeatureArgs extends com.pulumi.resources.ResourceA
     /**
      * The type of the feature that enabled for fulfillment.
      * * SMALLTALK: Fulfillment is enabled for SmallTalk.
-     *   Possible values are `SMALLTALK`.
+     *   Possible values are: `SMALLTALK`.
      * 
      */
     @Import(name="type", required=true)
@@ -25,7 +25,7 @@ public final class FulfillmentFeatureArgs extends com.pulumi.resources.ResourceA
     /**
      * @return The type of the feature that enabled for fulfillment.
      * * SMALLTALK: Fulfillment is enabled for SmallTalk.
-     *   Possible values are `SMALLTALK`.
+     *   Possible values are: `SMALLTALK`.
      * 
      */
     public Output<String> type() {
@@ -59,7 +59,7 @@ public final class FulfillmentFeatureArgs extends com.pulumi.resources.ResourceA
         /**
          * @param type The type of the feature that enabled for fulfillment.
          * * SMALLTALK: Fulfillment is enabled for SmallTalk.
-         *   Possible values are `SMALLTALK`.
+         *   Possible values are: `SMALLTALK`.
          * 
          * @return builder
          * 
@@ -72,7 +72,7 @@ public final class FulfillmentFeatureArgs extends com.pulumi.resources.ResourceA
         /**
          * @param type The type of the feature that enabled for fulfillment.
          * * SMALLTALK: Fulfillment is enabled for SmallTalk.
-         *   Possible values are `SMALLTALK`.
+         *   Possible values are: `SMALLTALK`.
          * 
          * @return builder
          * 

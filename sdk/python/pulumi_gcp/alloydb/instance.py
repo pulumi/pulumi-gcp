@@ -33,10 +33,10 @@ class InstanceArgs:
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
         :param pulumi.Input[str] instance_type: The type of the instance.
-               Possible values are `PRIMARY` and `READ_POOL`.
+               Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
         :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-               Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+               Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
@@ -96,7 +96,7 @@ class InstanceArgs:
     def instance_type(self) -> pulumi.Input[str]:
         """
         The type of the instance.
-        Possible values are `PRIMARY` and `READ_POOL`.
+        Possible values are: `PRIMARY`, `READ_POOL`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -121,7 +121,7 @@ class InstanceArgs:
     def availability_type(self) -> Optional[pulumi.Input[str]]:
         """
         Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-        Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+        Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         """
         return pulumi.get(self, "availability_type")
 
@@ -229,7 +229,7 @@ class _InstanceState:
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
         :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-               Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+               Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
@@ -238,7 +238,7 @@ class _InstanceState:
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
         :param pulumi.Input[str] instance_type: The type of the instance.
-               Possible values are `PRIMARY` and `READ_POOL`.
+               Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
         :param pulumi.Input['InstanceMachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
@@ -305,7 +305,7 @@ class _InstanceState:
     def availability_type(self) -> Optional[pulumi.Input[str]]:
         """
         Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-        Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+        Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         """
         return pulumi.get(self, "availability_type")
 
@@ -391,7 +391,7 @@ class _InstanceState:
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the instance.
-        Possible values are `PRIMARY` and `READ_POOL`.
+        Possible values are: `PRIMARY`, `READ_POOL`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -587,7 +587,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
         :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-               Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+               Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
@@ -595,7 +595,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
         :param pulumi.Input[str] instance_type: The type of the instance.
-               Possible values are `PRIMARY` and `READ_POOL`.
+               Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
         :param pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
@@ -760,7 +760,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
         :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-               Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+               Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
@@ -769,7 +769,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
         :param pulumi.Input[str] instance_type: The type of the instance.
-               Possible values are `PRIMARY` and `READ_POOL`.
+               Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
         :param pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
@@ -819,7 +819,7 @@ class Instance(pulumi.CustomResource):
     def availability_type(self) -> pulumi.Output[str]:
         """
         Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-        Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+        Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         """
         return pulumi.get(self, "availability_type")
 
@@ -877,7 +877,7 @@ class Instance(pulumi.CustomResource):
     def instance_type(self) -> pulumi.Output[str]:
         """
         The type of the instance.
-        Possible values are `PRIMARY` and `READ_POOL`.
+        Possible values are: `PRIMARY`, `READ_POOL`.
         """
         return pulumi.get(self, "instance_type")
 

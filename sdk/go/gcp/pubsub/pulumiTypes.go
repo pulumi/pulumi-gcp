@@ -12,7 +12,7 @@ import (
 
 type LiteSubscriptionDeliveryConfig struct {
 	// When this subscription should send messages to subscribers relative to messages persistence in storage.
-	// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+	// Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
 	DeliveryRequirement string `pulumi:"deliveryRequirement"`
 }
 
@@ -29,7 +29,7 @@ type LiteSubscriptionDeliveryConfigInput interface {
 
 type LiteSubscriptionDeliveryConfigArgs struct {
 	// When this subscription should send messages to subscribers relative to messages persistence in storage.
-	// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+	// Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
 	DeliveryRequirement pulumi.StringInput `pulumi:"deliveryRequirement"`
 }
 
@@ -111,7 +111,7 @@ func (o LiteSubscriptionDeliveryConfigOutput) ToLiteSubscriptionDeliveryConfigPt
 }
 
 // When this subscription should send messages to subscribers relative to messages persistence in storage.
-// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+// Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
 func (o LiteSubscriptionDeliveryConfigOutput) DeliveryRequirement() pulumi.StringOutput {
 	return o.ApplyT(func(v LiteSubscriptionDeliveryConfig) string { return v.DeliveryRequirement }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o LiteSubscriptionDeliveryConfigPtrOutput) Elem() LiteSubscriptionDelivery
 }
 
 // When this subscription should send messages to subscribers relative to messages persistence in storage.
-// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+// Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
 func (o LiteSubscriptionDeliveryConfigPtrOutput) DeliveryRequirement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LiteSubscriptionDeliveryConfig) *string {
 		if v == nil {
@@ -1201,7 +1201,7 @@ func (o SubscriptionDeadLetterPolicyPtrOutput) MaxDeliveryAttempts() pulumi.IntP
 type SubscriptionExpirationPolicy struct {
 	// Specifies the "time-to-live" duration for an associated resource. The
 	// resource expires if it is not active for a period of ttl.
-	// If ttl is not set, the associated resource never expires.
+	// If ttl is set to "", the associated resource never expires.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'.
 	// Example - "3.5s".
 	Ttl string `pulumi:"ttl"`
@@ -1221,7 +1221,7 @@ type SubscriptionExpirationPolicyInput interface {
 type SubscriptionExpirationPolicyArgs struct {
 	// Specifies the "time-to-live" duration for an associated resource. The
 	// resource expires if it is not active for a period of ttl.
-	// If ttl is not set, the associated resource never expires.
+	// If ttl is set to "", the associated resource never expires.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'.
 	// Example - "3.5s".
 	Ttl pulumi.StringInput `pulumi:"ttl"`
@@ -1306,7 +1306,7 @@ func (o SubscriptionExpirationPolicyOutput) ToSubscriptionExpirationPolicyPtrOut
 
 // Specifies the "time-to-live" duration for an associated resource. The
 // resource expires if it is not active for a period of ttl.
-// If ttl is not set, the associated resource never expires.
+// If ttl is set to "", the associated resource never expires.
 // A duration in seconds with up to nine fractional digits, terminated by 's'.
 // Example - "3.5s".
 func (o SubscriptionExpirationPolicyOutput) Ttl() pulumi.StringOutput {
@@ -1339,7 +1339,7 @@ func (o SubscriptionExpirationPolicyPtrOutput) Elem() SubscriptionExpirationPoli
 
 // Specifies the "time-to-live" duration for an associated resource. The
 // resource expires if it is not active for a period of ttl.
-// If ttl is not set, the associated resource never expires.
+// If ttl is set to "", the associated resource never expires.
 // A duration in seconds with up to nine fractional digits, terminated by 's'.
 // Example - "3.5s".
 func (o SubscriptionExpirationPolicyPtrOutput) Ttl() pulumi.StringPtrOutput {
@@ -2774,7 +2774,7 @@ func (o TopicMessageStoragePolicyPtrOutput) AllowedPersistenceRegions() pulumi.S
 type TopicSchemaSettings struct {
 	// The encoding of messages validated against schema.
 	// Default value is `ENCODING_UNSPECIFIED`.
-	// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+	// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
 	Encoding *string `pulumi:"encoding"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
@@ -2797,7 +2797,7 @@ type TopicSchemaSettingsInput interface {
 type TopicSchemaSettingsArgs struct {
 	// The encoding of messages validated against schema.
 	// Default value is `ENCODING_UNSPECIFIED`.
-	// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+	// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// The name of the schema that messages published should be
 	// validated against. Format is projects/{project}/schemas/{schema}.
@@ -2885,7 +2885,7 @@ func (o TopicSchemaSettingsOutput) ToTopicSchemaSettingsPtrOutputWithContext(ctx
 
 // The encoding of messages validated against schema.
 // Default value is `ENCODING_UNSPECIFIED`.
-// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
 func (o TopicSchemaSettingsOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TopicSchemaSettings) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
@@ -2924,7 +2924,7 @@ func (o TopicSchemaSettingsPtrOutput) Elem() TopicSchemaSettingsOutput {
 
 // The encoding of messages validated against schema.
 // Default value is `ENCODING_UNSPECIFIED`.
-// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
 func (o TopicSchemaSettingsPtrOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TopicSchemaSettings) *string {
 		if v == nil {

@@ -104,7 +104,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
      * CONNECTION balancing modes.
      * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
      * 
      */
     @Import(name="networkEndpointType")
@@ -120,7 +120,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
      * CONNECTION balancing modes.
      * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
      * 
      */
     public Optional<Output<String>> networkEndpointType() {
@@ -349,7 +349,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
          * CONNECTION balancing modes.
          * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
          * Default value is `GCE_VM_IP_PORT`.
-         * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+         * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class NetworkEndpointGroupState extends com.pulumi.resources.Resour
          * CONNECTION balancing modes.
          * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
          * Default value is `GCE_VM_IP_PORT`.
-         * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+         * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
          * 
          * @return builder
          * 

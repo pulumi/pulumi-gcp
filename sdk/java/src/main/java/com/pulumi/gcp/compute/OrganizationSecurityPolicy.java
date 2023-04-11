@@ -152,7 +152,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * For organization security policies, the only supported type
      * is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -163,7 +163,7 @@ public class OrganizationSecurityPolicy extends com.pulumi.resources.CustomResou
      * For organization security policies, the only supported type
      * is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     public Output<Optional<String>> type() {

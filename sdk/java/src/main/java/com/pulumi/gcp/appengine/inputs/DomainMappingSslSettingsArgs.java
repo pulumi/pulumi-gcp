@@ -68,7 +68,7 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
     /**
      * SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
      * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-     * Possible values are `AUTOMATIC` and `MANUAL`.
+     * Possible values are: `AUTOMATIC`, `MANUAL`.
      * 
      */
     @Import(name="sslManagementType", required=true)
@@ -77,7 +77,7 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
     /**
      * @return SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
      * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-     * Possible values are `AUTOMATIC` and `MANUAL`.
+     * Possible values are: `AUTOMATIC`, `MANUAL`.
      * 
      */
     public Output<String> sslManagementType() {
@@ -175,7 +175,7 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
         /**
          * @param sslManagementType SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
          * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-         * Possible values are `AUTOMATIC` and `MANUAL`.
+         * Possible values are: `AUTOMATIC`, `MANUAL`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
         /**
          * @param sslManagementType SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
          * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-         * Possible values are `AUTOMATIC` and `MANUAL`.
+         * Possible values are: `AUTOMATIC`, `MANUAL`.
          * 
          * @return builder
          * 

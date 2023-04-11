@@ -25,7 +25,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     *   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+     *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      * 
      */
     @Import(name="apiVersion")
@@ -38,7 +38,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     *   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+     *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      * 
      */
     public Optional<Output<String>> apiVersion() {
@@ -155,7 +155,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
      *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
      *   using @sys.any or very large developer entities.
-     *   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+     *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      * 
      */
     @Import(name="matchMode")
@@ -167,7 +167,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
      *   syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
      *   using @sys.any or very large developer entities.
-     *   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+     *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      * 
      */
     public Optional<Output<String>> matchMode() {
@@ -290,7 +290,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
          * * API_VERSION_V1: Legacy V1 API.
          * * API_VERSION_V2: V2 API.
          * * API_VERSION_V2_BETA_1: V2beta1 API.
-         *   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+         *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
          * * API_VERSION_V1: Legacy V1 API.
          * * API_VERSION_V2: V2 API.
          * * API_VERSION_V2_BETA_1: V2beta1 API.
-         *   Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+         *   Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
          *   syntax and composite entities.
          * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
          *   using @sys.any or very large developer entities.
-         *   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+         *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
          *   syntax and composite entities.
          * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
          *   using @sys.any or very large developer entities.
-         *   Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+         *   Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
          * 
          * @return builder
          * 

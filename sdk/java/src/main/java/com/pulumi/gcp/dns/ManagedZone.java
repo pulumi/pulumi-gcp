@@ -705,7 +705,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * The zone&#39;s visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
      * Default value is `public`.
-     * Possible values are `private` and `public`.
+     * Possible values are: `private`, `public`.
      * 
      */
     @Export(name="visibility", type=String.class, parameters={})
@@ -715,7 +715,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * @return The zone&#39;s visibility: public zones are exposed to the Internet,
      * while private zones are visible only to Virtual Private Cloud resources.
      * Default value is `public`.
-     * Possible values are `private` and `public`.
+     * Possible values are: `private`, `public`.
      * 
      */
     public Output<Optional<String>> visibility() {

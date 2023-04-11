@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterProtectConfigWorkloadConfigGetArgs>? WorkloadConfig { get; set; }
 
         /// <summary>
-        /// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+        /// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         /// </summary>
         [Input("workloadVulnerabilityMode")]
         public Input<string>? WorkloadVulnerabilityMode { get; set; }

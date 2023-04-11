@@ -106,7 +106,7 @@ export class EntityType extends pulumi.CustomResource {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -182,7 +182,7 @@ export interface EntityTypeState {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -220,7 +220,7 @@ export interface EntityTypeArgs {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
     kind: pulumi.Input<string>;
     /**

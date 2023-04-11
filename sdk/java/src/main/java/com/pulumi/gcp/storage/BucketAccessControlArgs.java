@@ -75,7 +75,7 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
 
     /**
      * The access permission for the entity.
-     * Possible values are `OWNER`, `READER`, and `WRITER`.
+     * Possible values are: `OWNER`, `READER`, `WRITER`.
      * 
      */
     @Import(name="role")
@@ -83,7 +83,7 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The access permission for the entity.
-     * Possible values are `OWNER`, `READER`, and `WRITER`.
+     * Possible values are: `OWNER`, `READER`, `WRITER`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -188,7 +188,7 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
 
         /**
          * @param role The access permission for the entity.
-         * Possible values are `OWNER`, `READER`, and `WRITER`.
+         * Possible values are: `OWNER`, `READER`, `WRITER`.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
 
         /**
          * @param role The access permission for the entity.
-         * Possible values are `OWNER`, `READER`, and `WRITER`.
+         * Possible values are: `OWNER`, `READER`, `WRITER`.
          * 
          * @return builder
          * 

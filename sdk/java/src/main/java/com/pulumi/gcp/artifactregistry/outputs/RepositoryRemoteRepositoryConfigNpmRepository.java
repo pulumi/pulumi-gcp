@@ -14,7 +14,7 @@ public final class RepositoryRemoteRepositoryConfigNpmRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `NPMJS`.
-     * Possible values are `NPMJS`.
+     * Possible values are: `NPMJS`.
      * 
      */
     private @Nullable String publicRepository;
@@ -23,7 +23,7 @@ public final class RepositoryRemoteRepositoryConfigNpmRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `NPMJS`.
-     * Possible values are `NPMJS`.
+     * Possible values are: `NPMJS`.
      * 
      */
     public Optional<String> publicRepository() {

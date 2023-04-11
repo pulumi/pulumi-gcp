@@ -167,7 +167,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
      * Default value is `AFTER_CLASSIC_FIREWALL`.
-     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      * 
      */
     @Import(name="networkFirewallPolicyEnforcementOrder")
@@ -176,7 +176,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
      * Default value is `AFTER_CLASSIC_FIREWALL`.
-     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      * 
      */
     public Optional<Output<String>> networkFirewallPolicyEnforcementOrder() {
@@ -206,7 +206,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network&#39;s cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
-     * Possible values are `REGIONAL` and `GLOBAL`.
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      */
     @Import(name="routingMode")
@@ -218,7 +218,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network&#39;s cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
-     * Possible values are `REGIONAL` and `GLOBAL`.
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      */
     public Optional<Output<String>> routingMode() {
@@ -450,7 +450,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param networkFirewallPolicyEnforcementOrder Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
          * Default value is `AFTER_CLASSIC_FIREWALL`.
-         * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+         * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param networkFirewallPolicyEnforcementOrder Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
          * Default value is `AFTER_CLASSIC_FIREWALL`.
-         * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+         * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          * of this network in the same region as the router. If set to `GLOBAL`,
          * this network&#39;s cloud routers will advertise routes with all
          * subnetworks of this network, across regions.
-         * Possible values are `REGIONAL` and `GLOBAL`.
+         * Possible values are: `REGIONAL`, `GLOBAL`.
          * 
          * @return builder
          * 
@@ -517,7 +517,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          * of this network in the same region as the router. If set to `GLOBAL`,
          * this network&#39;s cloud routers will advertise routes with all
          * subnetworks of this network, across regions.
-         * Possible values are `REGIONAL` and `GLOBAL`.
+         * Possible values are: `REGIONAL`, `GLOBAL`.
          * 
          * @return builder
          * 

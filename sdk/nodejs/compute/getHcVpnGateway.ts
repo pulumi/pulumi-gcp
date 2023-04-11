@@ -64,6 +64,7 @@ export interface GetHcVpnGatewayResult {
     readonly project?: string;
     readonly region?: string;
     readonly selfLink: string;
+    readonly stackType: string;
     readonly vpnInterfaces: outputs.compute.GetHcVpnGatewayVpnInterface[];
 }
 /**

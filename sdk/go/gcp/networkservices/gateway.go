@@ -128,7 +128,7 @@ type Gateway struct {
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-	// Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -201,7 +201,7 @@ type gatewayState struct {
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-	// Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type *string `pulumi:"type"`
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -237,7 +237,7 @@ type GatewayState struct {
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-	// Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringPtrInput
 	// Time the AccessPolicy was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
@@ -273,7 +273,7 @@ type gatewayArgs struct {
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-	// Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type string `pulumi:"type"`
 }
 
@@ -304,7 +304,7 @@ type GatewayArgs struct {
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrInput
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-	// Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringInput
 }
 
@@ -454,7 +454,7 @@ func (o GatewayOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 }
 
 // Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-// Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 func (o GatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -133,7 +133,7 @@ export class Gateway extends pulumi.CustomResource {
     public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -249,7 +249,7 @@ export interface GatewayState {
     serverTlsPolicy?: pulumi.Input<string>;
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -304,7 +304,7 @@ export interface GatewayArgs {
     serverTlsPolicy?: pulumi.Input<string>;
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      */
     type: pulumi.Input<string>;
 }

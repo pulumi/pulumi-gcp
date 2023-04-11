@@ -230,7 +230,7 @@ type FlexibleAppVersion struct {
 	// Structure is documented below.
 	Handlers FlexibleAppVersionHandlerArrayOutput `pulumi:"handlers"`
 	// A list of the types of messages that this application is able to receive.
-	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayOutput `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -285,7 +285,7 @@ type FlexibleAppVersion struct {
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
-	// Possible values are `SERVING` and `STOPPED`.
+	// Possible values are: `SERVING`, `STOPPED`.
 	ServingStatus pulumi.StringPtrOutput `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -365,7 +365,7 @@ type flexibleAppVersionState struct {
 	// Structure is documented below.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
 	// A list of the types of messages that this application is able to receive.
-	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -420,7 +420,7 @@ type flexibleAppVersionState struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
-	// Possible values are `SERVING` and `STOPPED`.
+	// Possible values are: `SERVING`, `STOPPED`.
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -460,7 +460,7 @@ type FlexibleAppVersionState struct {
 	// Structure is documented below.
 	Handlers FlexibleAppVersionHandlerArrayInput
 	// A list of the types of messages that this application is able to receive.
-	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -515,7 +515,7 @@ type FlexibleAppVersionState struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
-	// Possible values are `SERVING` and `STOPPED`.
+	// Possible values are: `SERVING`, `STOPPED`.
 	ServingStatus pulumi.StringPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -559,7 +559,7 @@ type flexibleAppVersionArgs struct {
 	// Structure is documented below.
 	Handlers []FlexibleAppVersionHandler `pulumi:"handlers"`
 	// A list of the types of messages that this application is able to receive.
-	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices []string `pulumi:"inboundServices"`
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -605,7 +605,7 @@ type flexibleAppVersionArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
-	// Possible values are `SERVING` and `STOPPED`.
+	// Possible values are: `SERVING`, `STOPPED`.
 	ServingStatus *string `pulumi:"servingStatus"`
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -646,7 +646,7 @@ type FlexibleAppVersionArgs struct {
 	// Structure is documented below.
 	Handlers FlexibleAppVersionHandlerArrayInput
 	// A list of the types of messages that this application is able to receive.
-	// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+	// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 	InboundServices pulumi.StringArrayInput
 	// Instance class that is used to run this version. Valid values are
 	// AutomaticScaling: F1, F2, F4, F4_1G
@@ -692,7 +692,7 @@ type FlexibleAppVersionArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 	// Default value is `SERVING`.
-	// Possible values are `SERVING` and `STOPPED`.
+	// Possible values are: `SERVING`, `STOPPED`.
 	ServingStatus pulumi.StringPtrInput
 	// Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
 	// Reserved names,"default", "latest", and any name with the prefix "ah-".
@@ -850,7 +850,7 @@ func (o FlexibleAppVersionOutput) Handlers() FlexibleAppVersionHandlerArrayOutpu
 }
 
 // A list of the types of messages that this application is able to receive.
-// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
 func (o FlexibleAppVersionOutput) InboundServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringArrayOutput { return v.InboundServices }).(pulumi.StringArrayOutput)
 }
@@ -956,7 +956,7 @@ func (o FlexibleAppVersionOutput) ServiceAccount() pulumi.StringOutput {
 
 // Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
 // Default value is `SERVING`.
-// Possible values are `SERVING` and `STOPPED`.
+// Possible values are: `SERVING`, `STOPPED`.
 func (o FlexibleAppVersionOutput) ServingStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringPtrOutput { return v.ServingStatus }).(pulumi.StringPtrOutput)
 }

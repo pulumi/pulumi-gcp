@@ -52,7 +52,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
     @Import(name="compressionMode")
@@ -60,7 +60,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
     public Optional<Output<String>> compressionMode() {
@@ -251,7 +251,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param compressionMode Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-         * Possible values are `AUTOMATIC` and `DISABLED`.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param compressionMode Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-         * Possible values are `AUTOMATIC` and `DISABLED`.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
          * 
          * @return builder
          * 

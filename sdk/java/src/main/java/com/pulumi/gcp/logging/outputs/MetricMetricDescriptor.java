@@ -33,7 +33,7 @@ public final class MetricMetricDescriptor {
      * @return Whether the metric records instantaneous values, changes to a value, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to DELTA.
-     * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+     * Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
      * 
      */
     private String metricKind;
@@ -48,7 +48,7 @@ public final class MetricMetricDescriptor {
      * @return Whether the measurement is an integer, a floating-point number, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to INT64.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
      * 
      */
     private String valueType;
@@ -78,7 +78,7 @@ public final class MetricMetricDescriptor {
      * @return Whether the metric records instantaneous values, changes to a value, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to DELTA.
-     * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+     * Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
      * 
      */
     public String metricKind() {
@@ -97,7 +97,7 @@ public final class MetricMetricDescriptor {
      * @return Whether the measurement is an integer, a floating-point number, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to INT64.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
      * 
      */
     public String valueType() {

@@ -87,7 +87,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
      * for possible values.
      * Default value is `EMPTY`.
-     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      * 
      */
     @Import(name="initialGroupConfig")
@@ -99,7 +99,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
      * for possible values.
      * Default value is `EMPTY`.
-     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      * 
      */
     public Optional<Output<String>> initialGroupConfig() {
@@ -308,7 +308,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
          * for possible values.
          * Default value is `EMPTY`.
-         * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+         * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
          * for possible values.
          * Default value is `EMPTY`.
-         * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+         * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
          * 
          * @return builder
          * 

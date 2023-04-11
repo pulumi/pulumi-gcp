@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Logging.Inputs
         /// Whether the metric records instantaneous values, changes to a value, etc.
         /// Some combinations of metricKind and valueType might not be supported.
         /// For counter metrics, set this to DELTA.
-        /// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+        /// Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
         /// </summary>
         [Input("metricKind", required: true)]
         public Input<string> MetricKind { get; set; } = null!;
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Logging.Inputs
         /// Whether the measurement is an integer, a floating-point number, etc.
         /// Some combinations of metricKind and valueType might not be supported.
         /// For counter metrics, set this to INT64.
-        /// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+        /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
         /// </summary>
         [Input("valueType", required: true)]
         public Input<string> ValueType { get; set; } = null!;

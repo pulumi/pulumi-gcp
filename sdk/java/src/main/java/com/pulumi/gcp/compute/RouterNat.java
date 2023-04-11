@@ -401,7 +401,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+     * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      * 
      */
     @Export(name="natIpAllocateOption", type=String.class, parameters={})
@@ -411,7 +411,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * @return How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+     * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      * 
      */
     public Output<String> natIpAllocateOption() {
@@ -504,7 +504,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
-     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+     * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      * 
      */
     @Export(name="sourceSubnetworkIpRangesToNat", type=String.class, parameters={})
@@ -521,7 +521,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
-     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+     * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      * 
      */
     public Output<String> sourceSubnetworkIpRangesToNat() {

@@ -175,7 +175,7 @@ export class HostingRelease extends pulumi.CustomResource {
      * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
      * ROLLBACK: The release points back to a previously deployed version. Output only.
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-     * Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+     * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -257,7 +257,7 @@ export interface HostingReleaseState {
      * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
      * ROLLBACK: The release points back to a previously deployed version. Output only.
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-     * Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+     * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -292,7 +292,7 @@ export interface HostingReleaseArgs {
      * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
      * ROLLBACK: The release points back to a previously deployed version. Output only.
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-     * Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+     * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      */
     type?: pulumi.Input<string>;
     /**

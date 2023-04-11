@@ -19,7 +19,7 @@ import (
 //   - [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 //
 // ## Example Usage
-// ### VPC Access Connector
+// ### Vpc Access Connector
 //
 // ```go
 // package main
@@ -45,7 +45,7 @@ import (
 //	}
 //
 // ```
-// ### VPC Access Connector Shared VPC
+// ### Vpc Access Connector Shared Vpc
 //
 // ```go
 // package main

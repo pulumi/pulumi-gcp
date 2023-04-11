@@ -140,7 +140,7 @@ export class MetastoreService extends pulumi.CustomResource {
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
-     * Possible values are `MYSQL` and `SPANNER`.
+     * Possible values are: `MYSQL`, `SPANNER`.
      */
     public readonly databaseType!: pulumi.Output<string | undefined>;
     /**
@@ -205,7 +205,7 @@ export class MetastoreService extends pulumi.CustomResource {
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
-     * Possible values are `CANARY` and `STABLE`.
+     * Possible values are: `CANARY`, `STABLE`.
      */
     public readonly releaseChannel!: pulumi.Output<string | undefined>;
     /**
@@ -229,7 +229,7 @@ export class MetastoreService extends pulumi.CustomResource {
     public readonly telemetryConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceTelemetryConfig>;
     /**
      * The tier of the service.
-     * Possible values are `DEVELOPER` and `ENTERPRISE`.
+     * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      */
     public readonly tier!: pulumi.Output<string>;
     /**
@@ -314,7 +314,7 @@ export interface MetastoreServiceState {
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
-     * Possible values are `MYSQL` and `SPANNER`.
+     * Possible values are: `MYSQL`, `SPANNER`.
      */
     databaseType?: pulumi.Input<string>;
     /**
@@ -379,7 +379,7 @@ export interface MetastoreServiceState {
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
-     * Possible values are `CANARY` and `STABLE`.
+     * Possible values are: `CANARY`, `STABLE`.
      */
     releaseChannel?: pulumi.Input<string>;
     /**
@@ -403,7 +403,7 @@ export interface MetastoreServiceState {
     telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig>;
     /**
      * The tier of the service.
-     * Possible values are `DEVELOPER` and `ENTERPRISE`.
+     * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      */
     tier?: pulumi.Input<string>;
     /**
@@ -419,7 +419,7 @@ export interface MetastoreServiceArgs {
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
-     * Possible values are `MYSQL` and `SPANNER`.
+     * Possible values are: `MYSQL`, `SPANNER`.
      */
     databaseType?: pulumi.Input<string>;
     /**
@@ -475,7 +475,7 @@ export interface MetastoreServiceArgs {
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
-     * Possible values are `CANARY` and `STABLE`.
+     * Possible values are: `CANARY`, `STABLE`.
      */
     releaseChannel?: pulumi.Input<string>;
     /**
@@ -491,7 +491,7 @@ export interface MetastoreServiceArgs {
     telemetryConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceTelemetryConfig>;
     /**
      * The tier of the service.
-     * Possible values are `DEVELOPER` and `ENTERPRISE`.
+     * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      */
     tier?: pulumi.Input<string>;
 }

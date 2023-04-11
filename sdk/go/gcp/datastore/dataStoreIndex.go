@@ -88,7 +88,7 @@ type DataStoreIndex struct {
 
 	// Policy for including ancestors in the index.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `ALL_ANCESTORS`.
+	// Possible values are: `NONE`, `ALL_ANCESTORS`.
 	Ancestor pulumi.StringPtrOutput `pulumi:"ancestor"`
 	// The index id.
 	IndexId pulumi.StringOutput `pulumi:"indexId"`
@@ -136,7 +136,7 @@ func GetDataStoreIndex(ctx *pulumi.Context,
 type dataStoreIndexState struct {
 	// Policy for including ancestors in the index.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `ALL_ANCESTORS`.
+	// Possible values are: `NONE`, `ALL_ANCESTORS`.
 	Ancestor *string `pulumi:"ancestor"`
 	// The index id.
 	IndexId *string `pulumi:"indexId"`
@@ -153,7 +153,7 @@ type dataStoreIndexState struct {
 type DataStoreIndexState struct {
 	// Policy for including ancestors in the index.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `ALL_ANCESTORS`.
+	// Possible values are: `NONE`, `ALL_ANCESTORS`.
 	Ancestor pulumi.StringPtrInput
 	// The index id.
 	IndexId pulumi.StringPtrInput
@@ -174,7 +174,7 @@ func (DataStoreIndexState) ElementType() reflect.Type {
 type dataStoreIndexArgs struct {
 	// Policy for including ancestors in the index.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `ALL_ANCESTORS`.
+	// Possible values are: `NONE`, `ALL_ANCESTORS`.
 	Ancestor *string `pulumi:"ancestor"`
 	// The entity kind which the index applies to.
 	Kind string `pulumi:"kind"`
@@ -190,7 +190,7 @@ type dataStoreIndexArgs struct {
 type DataStoreIndexArgs struct {
 	// Policy for including ancestors in the index.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `ALL_ANCESTORS`.
+	// Possible values are: `NONE`, `ALL_ANCESTORS`.
 	Ancestor pulumi.StringPtrInput
 	// The entity kind which the index applies to.
 	Kind pulumi.StringInput
@@ -291,7 +291,7 @@ func (o DataStoreIndexOutput) ToDataStoreIndexOutputWithContext(ctx context.Cont
 
 // Policy for including ancestors in the index.
 // Default value is `NONE`.
-// Possible values are `NONE` and `ALL_ANCESTORS`.
+// Possible values are: `NONE`, `ALL_ANCESTORS`.
 func (o DataStoreIndexOutput) Ancestor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataStoreIndex) pulumi.StringPtrOutput { return v.Ancestor }).(pulumi.StringPtrOutput)
 }

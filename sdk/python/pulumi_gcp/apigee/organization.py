@@ -43,14 +43,14 @@ class OrganizationArgs:
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
                Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
         :param pulumi.Input[str] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
                Default value is `CLOUD`.
-               Possible values are `CLOUD` and `HYBRID`.
+               Possible values are: `CLOUD`, `HYBRID`.
         """
         pulumi.set(__self__, "project_id", project_id)
         if analytics_region is not None:
@@ -168,7 +168,7 @@ class OrganizationArgs:
         operation completes. During this period, the Organization may be restored to its last known state.
         After this period, the Organization will no longer be able to be restored.
         Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         """
         return pulumi.get(self, "retention")
 
@@ -197,7 +197,7 @@ class OrganizationArgs:
         """
         Runtime type of the Apigee organization based on the Apigee subscription purchased.
         Default value is `CLOUD`.
-        Possible values are `CLOUD` and `HYBRID`.
+        Possible values are: `CLOUD`, `HYBRID`.
         """
         return pulumi.get(self, "runtime_type")
 
@@ -242,14 +242,14 @@ class _OrganizationState:
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
                Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
         :param pulumi.Input[str] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
                Default value is `CLOUD`.
-               Possible values are `CLOUD` and `HYBRID`.
+               Possible values are: `CLOUD`, `HYBRID`.
         :param pulumi.Input[str] subscription_type: Output only. Subscription type of the Apigee organization.
                Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
         """
@@ -401,7 +401,7 @@ class _OrganizationState:
         operation completes. During this period, the Organization may be restored to its last known state.
         After this period, the Organization will no longer be able to be restored.
         Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         """
         return pulumi.get(self, "retention")
 
@@ -430,7 +430,7 @@ class _OrganizationState:
         """
         Runtime type of the Apigee organization based on the Apigee subscription purchased.
         Default value is `CLOUD`.
-        Possible values are `CLOUD` and `HYBRID`.
+        Possible values are: `CLOUD`, `HYBRID`.
         """
         return pulumi.get(self, "runtime_type")
 
@@ -570,14 +570,14 @@ class Organization(pulumi.CustomResource):
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
                Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
         :param pulumi.Input[str] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
                Default value is `CLOUD`.
-               Possible values are `CLOUD` and `HYBRID`.
+               Possible values are: `CLOUD`, `HYBRID`.
         """
         ...
     @overload
@@ -767,14 +767,14 @@ class Organization(pulumi.CustomResource):
                operation completes. During this period, the Organization may be restored to its last known state.
                After this period, the Organization will no longer be able to be restored.
                Default value is `DELETION_RETENTION_UNSPECIFIED`.
-               Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+               Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
                Update is not allowed after the organization is created.
                If not specified, a Google-Managed encryption key will be used.
                Valid only when `RuntimeType` is CLOUD. For example: `projects/foo/locations/us/keyRings/bar/cryptoKeys/baz`.
         :param pulumi.Input[str] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
                Default value is `CLOUD`.
-               Possible values are `CLOUD` and `HYBRID`.
+               Possible values are: `CLOUD`, `HYBRID`.
         :param pulumi.Input[str] subscription_type: Output only. Subscription type of the Apigee organization.
                Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
         """
@@ -882,7 +882,7 @@ class Organization(pulumi.CustomResource):
         operation completes. During this period, the Organization may be restored to its last known state.
         After this period, the Organization will no longer be able to be restored.
         Default value is `DELETION_RETENTION_UNSPECIFIED`.
-        Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+        Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
         """
         return pulumi.get(self, "retention")
 
@@ -903,7 +903,7 @@ class Organization(pulumi.CustomResource):
         """
         Runtime type of the Apigee organization based on the Apigee subscription purchased.
         Default value is `CLOUD`.
-        Possible values are `CLOUD` and `HYBRID`.
+        Possible values are: `CLOUD`, `HYBRID`.
         """
         return pulumi.get(self, "runtime_type")
 

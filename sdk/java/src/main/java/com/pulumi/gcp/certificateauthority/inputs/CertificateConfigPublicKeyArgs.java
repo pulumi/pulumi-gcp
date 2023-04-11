@@ -17,7 +17,7 @@ public final class CertificateConfigPublicKeyArgs extends com.pulumi.resources.R
 
     /**
      * The format of the public key. Currently, only PEM format is supported.
-     * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+     * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
      * 
      */
     @Import(name="format", required=true)
@@ -25,7 +25,7 @@ public final class CertificateConfigPublicKeyArgs extends com.pulumi.resources.R
 
     /**
      * @return The format of the public key. Currently, only PEM format is supported.
-     * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+     * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
      * 
      */
     public Output<String> format() {
@@ -74,7 +74,7 @@ public final class CertificateConfigPublicKeyArgs extends com.pulumi.resources.R
 
         /**
          * @param format The format of the public key. Currently, only PEM format is supported.
-         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class CertificateConfigPublicKeyArgs extends com.pulumi.resources.R
 
         /**
          * @param format The format of the public key. Currently, only PEM format is supported.
-         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
          * 
          * @return builder
          * 

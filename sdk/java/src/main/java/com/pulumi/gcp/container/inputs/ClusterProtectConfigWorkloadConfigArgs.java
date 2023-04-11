@@ -13,9 +13,17 @@ public final class ClusterProtectConfigWorkloadConfigArgs extends com.pulumi.res
 
     public static final ClusterProtectConfigWorkloadConfigArgs Empty = new ClusterProtectConfigWorkloadConfigArgs();
 
+    /**
+     * ) Sets which mode of auditing should be used for the cluster&#39;s workloads. Accepted values are DISABLED, BASIC.
+     * 
+     */
     @Import(name="auditMode", required=true)
     private Output<String> auditMode;
 
+    /**
+     * @return ) Sets which mode of auditing should be used for the cluster&#39;s workloads. Accepted values are DISABLED, BASIC.
+     * 
+     */
     public Output<String> auditMode() {
         return this.auditMode;
     }
@@ -44,11 +52,23 @@ public final class ClusterProtectConfigWorkloadConfigArgs extends com.pulumi.res
             $ = new ClusterProtectConfigWorkloadConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param auditMode ) Sets which mode of auditing should be used for the cluster&#39;s workloads. Accepted values are DISABLED, BASIC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder auditMode(Output<String> auditMode) {
             $.auditMode = auditMode;
             return this;
         }
 
+        /**
+         * @param auditMode ) Sets which mode of auditing should be used for the cluster&#39;s workloads. Accepted values are DISABLED, BASIC.
+         * 
+         * @return builder
+         * 
+         */
         public Builder auditMode(String auditMode) {
             return auditMode(Output.of(auditMode));
         }

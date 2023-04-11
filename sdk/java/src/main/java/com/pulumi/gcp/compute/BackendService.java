@@ -564,7 +564,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     }
     /**
      * Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
     @Export(name="compressionMode", type=String.class, parameters={})
@@ -572,7 +572,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
     public Output<Optional<String>> compressionMode() {
@@ -788,7 +788,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     @Export(name="loadBalancingScheme", type=String.class, parameters={})
@@ -800,7 +800,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     public Output<Optional<String>> loadBalancingScheme() {
@@ -950,7 +950,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
-     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
      * 
      */
     @Export(name="protocol", type=String.class, parameters={})
@@ -960,7 +960,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * @return The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
-     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
      * 
      */
     public Output<String> protocol() {
@@ -1019,7 +1019,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      * 
      */
     @Export(name="sessionAffinity", type=String.class, parameters={})
@@ -1028,7 +1028,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     /**
      * @return Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      * 
      */
     public Output<String> sessionAffinity() {

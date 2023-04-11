@@ -30,9 +30,14 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var reservation = new Gcp.BigQuery.Reservation("reservation", new()
     ///     {
+    ///         Autoscale = new Gcp.BigQuery.Inputs.ReservationAutoscaleArgs
+    ///         {
+    ///             MaxSlots = 100,
+    ///         },
     ///         Concurrency = 0,
-    ///         IgnoreIdleSlots = false,
-    ///         Location = "asia-northeast1",
+    ///         Edition = "STANDARD",
+    ///         IgnoreIdleSlots = true,
+    ///         Location = "us-west2",
     ///         SlotCapacity = 0,
     ///     });
     /// 
@@ -59,10 +64,23 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The configuration parameters for the auto scaling feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("autoscale")]
+        public Output<Outputs.ReservationAutoscale?> Autoscale { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         /// </summary>
         [Output("concurrency")]
         public Output<int?> Concurrency { get; private set; } = null!;
+
+        /// <summary>
+        /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        /// </summary>
+        [Output("edition")]
+        public Output<string?> Edition { get; private set; } = null!;
 
         /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
@@ -153,10 +171,23 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configuration parameters for the auto scaling feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscale")]
+        public Input<Inputs.ReservationAutoscaleArgs>? Autoscale { get; set; }
+
+        /// <summary>
         /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         /// </summary>
         [Input("concurrency")]
         public Input<int>? Concurrency { get; set; }
+
+        /// <summary>
+        /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within
@@ -209,10 +240,23 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class ReservationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configuration parameters for the auto scaling feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscale")]
+        public Input<Inputs.ReservationAutoscaleGetArgs>? Autoscale { get; set; }
+
+        /// <summary>
         /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         /// </summary>
         [Input("concurrency")]
         public Input<int>? Concurrency { get; set; }
+
+        /// <summary>
+        /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within

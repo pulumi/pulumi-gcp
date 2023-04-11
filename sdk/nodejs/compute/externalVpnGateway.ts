@@ -174,7 +174,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Indicates the redundancy type of this external VPN gateway
-     * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+     * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      */
     public readonly redundancyType!: pulumi.Output<string | undefined>;
     /**
@@ -251,7 +251,7 @@ export interface ExternalVpnGatewayState {
     project?: pulumi.Input<string>;
     /**
      * Indicates the redundancy type of this external VPN gateway
-     * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+     * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      */
     redundancyType?: pulumi.Input<string>;
     /**
@@ -294,7 +294,7 @@ export interface ExternalVpnGatewayArgs {
     project?: pulumi.Input<string>;
     /**
      * Indicates the redundancy type of this external VPN gateway
-     * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+     * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      */
     redundancyType?: pulumi.Input<string>;
 }

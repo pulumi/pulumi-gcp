@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Compute
         /// CONNECTION balancing modes.
         /// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
         /// Default value is `GCE_VM_IP_PORT`.
-        /// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+        /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string?> NetworkEndpointType { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.Gcp.Compute
         /// CONNECTION balancing modes.
         /// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
         /// Default value is `GCE_VM_IP_PORT`.
-        /// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+        /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -358,7 +358,7 @@ namespace Pulumi.Gcp.Compute
         /// CONNECTION balancing modes.
         /// Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
         /// Default value is `GCE_VM_IP_PORT`.
-        /// Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+        /// Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }

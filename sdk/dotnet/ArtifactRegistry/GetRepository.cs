@@ -133,6 +133,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     {
         public readonly string CreateTime;
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetRepositoryDockerConfigResult> DockerConfigs;
         public readonly string Format;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -155,6 +156,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
             string createTime,
 
             string description,
+
+            ImmutableArray<Outputs.GetRepositoryDockerConfigResult> dockerConfigs,
 
             string format,
 
@@ -184,6 +187,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         {
             CreateTime = createTime;
             Description = description;
+            DockerConfigs = dockerConfigs;
             Format = format;
             Id = id;
             KmsKeyName = kmsKeyName;

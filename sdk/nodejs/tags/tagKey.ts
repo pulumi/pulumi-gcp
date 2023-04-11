@@ -91,7 +91,7 @@ export class TagKey extends pulumi.CustomResource {
     /**
      * Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-     * Possible values are `GCE_FIREWALL`.
+     * Possible values are: `GCE_FIREWALL`.
      */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
@@ -183,7 +183,7 @@ export interface TagKeyState {
     /**
      * Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-     * Possible values are `GCE_FIREWALL`.
+     * Possible values are: `GCE_FIREWALL`.
      */
     purpose?: pulumi.Input<string>;
     /**
@@ -218,7 +218,7 @@ export interface TagKeyArgs {
     /**
      * Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-     * Possible values are `GCE_FIREWALL`.
+     * Possible values are: `GCE_FIREWALL`.
      */
     purpose?: pulumi.Input<string>;
     /**

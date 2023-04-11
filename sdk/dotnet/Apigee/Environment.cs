@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating
         /// the Environment and cannot be changed.
-        /// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        /// Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         /// </summary>
         [Output("apiProxyType")]
         public Output<string> ApiProxyType { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.Apigee
         /// Managing the deployment of API proxy or shared flow revisions;
         /// Creating, updating, or deleting resource files;
         /// Creating, updating, or deleting target servers.
-        /// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        /// Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         /// </summary>
         [Output("deploymentType")]
         public Output<string> DeploymentType { get; private set; } = null!;
@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating
         /// the Environment and cannot be changed.
-        /// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        /// Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         /// </summary>
         [Input("apiProxyType")]
         public Input<string>? ApiProxyType { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.Gcp.Apigee
         /// Managing the deployment of API proxy or shared flow revisions;
         /// Creating, updating, or deleting resource files;
         /// Creating, updating, or deleting target servers.
-        /// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        /// Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating
         /// the Environment and cannot be changed.
-        /// Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        /// Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         /// </summary>
         [Input("apiProxyType")]
         public Input<string>? ApiProxyType { get; set; }
@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.Apigee
         /// Managing the deployment of API proxy or shared flow revisions;
         /// Creating, updating, or deleting resource files;
         /// Creating, updating, or deleting target servers.
-        /// Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        /// Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         /// </summary>
         [Input("deploymentType")]
         public Input<string>? DeploymentType { get; set; }

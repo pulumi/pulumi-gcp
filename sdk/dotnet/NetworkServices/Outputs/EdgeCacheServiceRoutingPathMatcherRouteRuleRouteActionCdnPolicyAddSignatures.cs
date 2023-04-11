@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
     {
         /// <summary>
         /// The actions to take to add signatures to responses.
-        /// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+        /// Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
         /// </summary>
         public readonly string Actions;
         /// <summary>

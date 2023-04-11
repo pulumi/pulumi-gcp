@@ -18,7 +18,7 @@ public final class CustomConstraintArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      * 
      */
     @Import(name="actionType", required=true)
@@ -26,7 +26,7 @@ public final class CustomConstraintArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      * 
      */
     public Output<String> actionType() {
@@ -171,7 +171,7 @@ public final class CustomConstraintArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param actionType The action to take if the condition is met.
-         * Possible values are `ALLOW` and `DENY`.
+         * Possible values are: `ALLOW`, `DENY`.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class CustomConstraintArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param actionType The action to take if the condition is met.
-         * Possible values are `ALLOW` and `DENY`.
+         * Possible values are: `ALLOW`, `DENY`.
          * 
          * @return builder
          * 

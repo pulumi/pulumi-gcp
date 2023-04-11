@@ -439,7 +439,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        /// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
         /// </summary>
         [Output("ingress")]
         public Output<string> Ingress { get; private set; } = null!;
@@ -466,7 +466,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-        /// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Output("launchStage")]
         public Output<string> LaunchStage { get; private set; } = null!;
@@ -633,7 +633,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        /// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
         /// </summary>
         [Input("ingress")]
         public Input<string>? Ingress { get; set; }
@@ -654,7 +654,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-        /// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
@@ -772,7 +772,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-        /// Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+        /// Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
         /// </summary>
         [Input("ingress")]
         public Input<string>? Ingress { get; set; }
@@ -805,7 +805,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-        /// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }

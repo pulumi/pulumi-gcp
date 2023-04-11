@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// Common characters to not transform when masking. Useful to avoid removing punctuation.
-        /// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+        /// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         /// </summary>
         [Input("commonCharactersToIgnore")]
         public Input<string>? CommonCharactersToIgnore { get; set; }

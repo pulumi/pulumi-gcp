@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class PatchDeploymentPatchConfigWindowsUpdate {
     /**
      * @return Only apply updates of these windows update classifications. If empty, all updates are applied.
-     * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+     * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
      * 
      */
     private @Nullable List<String> classifications;
@@ -32,7 +32,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
     private PatchDeploymentPatchConfigWindowsUpdate() {}
     /**
      * @return Only apply updates of these windows update classifications. If empty, all updates are applied.
-     * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+     * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
      * 
      */
     public List<String> classifications() {

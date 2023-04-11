@@ -270,7 +270,7 @@ import (
 //	}
 //
 // ```
-// ### Access Context Manager Service Perimeter Dry Run
+// ### Access Context Manager Service Perimeter Dry-Run
 //
 // ```go
 // package main
@@ -358,7 +358,7 @@ type ServicePerimeter struct {
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
 	// Default value is `PERIMETER_TYPE_REGULAR`.
-	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType pulumi.StringPtrOutput `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
@@ -449,7 +449,7 @@ type servicePerimeterState struct {
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
 	// Default value is `PERIMETER_TYPE_REGULAR`.
-	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType *string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
@@ -506,7 +506,7 @@ type ServicePerimeterState struct {
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
 	// Default value is `PERIMETER_TYPE_REGULAR`.
-	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType pulumi.StringPtrInput
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
@@ -565,7 +565,7 @@ type servicePerimeterArgs struct {
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
 	// Default value is `PERIMETER_TYPE_REGULAR`.
-	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType *string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
@@ -619,7 +619,7 @@ type ServicePerimeterArgs struct {
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
 	// Default value is `PERIMETER_TYPE_REGULAR`.
-	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType pulumi.StringPtrInput
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
@@ -772,7 +772,7 @@ func (o ServicePerimeterOutput) Parent() pulumi.StringOutput {
 // with a common perimeter, but should not be able to share data among
 // themselves.
 // Default value is `PERIMETER_TYPE_REGULAR`.
-// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 func (o ServicePerimeterOutput) PerimeterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringPtrOutput { return v.PerimeterType }).(pulumi.StringPtrOutput)
 }

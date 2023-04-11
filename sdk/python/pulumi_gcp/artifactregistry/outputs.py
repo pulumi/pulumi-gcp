@@ -11,6 +11,7 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'RepositoryDockerConfig',
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
     'RepositoryMavenConfig',
@@ -21,6 +22,7 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigPythonRepository',
     'RepositoryVirtualRepositoryConfig',
     'RepositoryVirtualRepositoryConfigUpstreamPolicy',
+    'GetRepositoryDockerConfigResult',
     'GetRepositoryMavenConfigResult',
     'GetRepositoryRemoteRepositoryConfigResult',
     'GetRepositoryRemoteRepositoryConfigDockerRepositoryResult',
@@ -30,6 +32,42 @@ __all__ = [
     'GetRepositoryVirtualRepositoryConfigResult',
     'GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult',
 ]
+
+@pulumi.output_type
+class RepositoryDockerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "immutableTags":
+            suggest = "immutable_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryDockerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryDockerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryDockerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 immutable_tags: Optional[bool] = None):
+        """
+        :param bool immutable_tags: The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        if immutable_tags is not None:
+            pulumi.set(__self__, "immutable_tags", immutable_tags)
+
+    @property
+    @pulumi.getter(name="immutableTags")
+    def immutable_tags(self) -> Optional[bool]:
+        """
+        The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        return pulumi.get(self, "immutable_tags")
+
 
 @pulumi.output_type
 class RepositoryIamBindingCondition(dict):
@@ -114,7 +152,7 @@ class RepositoryMavenConfig(dict):
                snapshot versions.
         :param str version_policy: Version policy defines the versions that the registry will accept.
                Default value is `VERSION_POLICY_UNSPECIFIED`.
-               Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+               Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
         """
         if allow_snapshot_overwrites is not None:
             pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
@@ -136,7 +174,7 @@ class RepositoryMavenConfig(dict):
         """
         Version policy defines the versions that the registry will accept.
         Default value is `VERSION_POLICY_UNSPECIFIED`.
-        Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+        Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
         """
         return pulumi.get(self, "version_policy")
 
@@ -263,7 +301,7 @@ class RepositoryRemoteRepositoryConfigDockerRepository(dict):
         """
         :param str public_repository: Address of the remote repository.
                Default value is `DOCKER_HUB`.
-               Possible values are `DOCKER_HUB`.
+               Possible values are: `DOCKER_HUB`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -274,7 +312,7 @@ class RepositoryRemoteRepositoryConfigDockerRepository(dict):
         """
         Address of the remote repository.
         Default value is `DOCKER_HUB`.
-        Possible values are `DOCKER_HUB`.
+        Possible values are: `DOCKER_HUB`.
         """
         return pulumi.get(self, "public_repository")
 
@@ -303,7 +341,7 @@ class RepositoryRemoteRepositoryConfigMavenRepository(dict):
         """
         :param str public_repository: Address of the remote repository.
                Default value is `MAVEN_CENTRAL`.
-               Possible values are `MAVEN_CENTRAL`.
+               Possible values are: `MAVEN_CENTRAL`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -314,7 +352,7 @@ class RepositoryRemoteRepositoryConfigMavenRepository(dict):
         """
         Address of the remote repository.
         Default value is `MAVEN_CENTRAL`.
-        Possible values are `MAVEN_CENTRAL`.
+        Possible values are: `MAVEN_CENTRAL`.
         """
         return pulumi.get(self, "public_repository")
 
@@ -343,7 +381,7 @@ class RepositoryRemoteRepositoryConfigNpmRepository(dict):
         """
         :param str public_repository: Address of the remote repository.
                Default value is `NPMJS`.
-               Possible values are `NPMJS`.
+               Possible values are: `NPMJS`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -354,7 +392,7 @@ class RepositoryRemoteRepositoryConfigNpmRepository(dict):
         """
         Address of the remote repository.
         Default value is `NPMJS`.
-        Possible values are `NPMJS`.
+        Possible values are: `NPMJS`.
         """
         return pulumi.get(self, "public_repository")
 
@@ -383,7 +421,7 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
         """
         :param str public_repository: Address of the remote repository.
                Default value is `PYPI`.
-               Possible values are `PYPI`.
+               Possible values are: `PYPI`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -394,7 +432,7 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
         """
         Address of the remote repository.
         Default value is `PYPI`.
-        Possible values are `PYPI`.
+        Possible values are: `PYPI`.
         """
         return pulumi.get(self, "public_repository")
 
@@ -482,6 +520,18 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
         "projects/p1/locations/us-central1/repository/repo1".
         """
         return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class GetRepositoryDockerConfigResult(dict):
+    def __init__(__self__, *,
+                 immutable_tags: bool):
+        pulumi.set(__self__, "immutable_tags", immutable_tags)
+
+    @property
+    @pulumi.getter(name="immutableTags")
+    def immutable_tags(self) -> bool:
+        return pulumi.get(self, "immutable_tags")
 
 
 @pulumi.output_type

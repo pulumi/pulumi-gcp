@@ -226,7 +226,7 @@ type RouterNat struct {
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
 	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-	// Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+	// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
 	NatIpAllocateOption pulumi.StringOutput `pulumi:"natIpAllocateOption"`
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
@@ -251,7 +251,7 @@ type RouterNat struct {
 	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
 	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
 	// other RouterNat section in any Router for this network in this region.
-	// Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+	// Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 	SourceSubnetworkIpRangesToNat pulumi.StringOutput `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// One or more subnetwork NAT configurations. Only used if
 	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
@@ -337,7 +337,7 @@ type routerNatState struct {
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
 	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-	// Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+	// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
 	NatIpAllocateOption *string `pulumi:"natIpAllocateOption"`
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
@@ -362,7 +362,7 @@ type routerNatState struct {
 	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
 	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
 	// other RouterNat section in any Router for this network in this region.
-	// Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+	// Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 	SourceSubnetworkIpRangesToNat *string `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// One or more subnetwork NAT configurations. Only used if
 	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
@@ -411,7 +411,7 @@ type RouterNatState struct {
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
 	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-	// Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+	// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
 	NatIpAllocateOption pulumi.StringPtrInput
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
@@ -436,7 +436,7 @@ type RouterNatState struct {
 	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
 	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
 	// other RouterNat section in any Router for this network in this region.
-	// Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+	// Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 	SourceSubnetworkIpRangesToNat pulumi.StringPtrInput
 	// One or more subnetwork NAT configurations. Only used if
 	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
@@ -489,7 +489,7 @@ type routerNatArgs struct {
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
 	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-	// Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+	// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
 	NatIpAllocateOption string `pulumi:"natIpAllocateOption"`
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
@@ -514,7 +514,7 @@ type routerNatArgs struct {
 	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
 	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
 	// other RouterNat section in any Router for this network in this region.
-	// Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+	// Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 	SourceSubnetworkIpRangesToNat string `pulumi:"sourceSubnetworkIpRangesToNat"`
 	// One or more subnetwork NAT configurations. Only used if
 	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
@@ -564,7 +564,7 @@ type RouterNatArgs struct {
 	// How external IPs should be allocated for this NAT. Valid values are
 	// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
 	// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-	// Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+	// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
 	NatIpAllocateOption pulumi.StringInput
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
@@ -589,7 +589,7 @@ type RouterNatArgs struct {
 	// contains ALL_SUBNETWORKS_ALL_IP_RANGES or
 	// ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
 	// other RouterNat section in any Router for this network in this region.
-	// Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+	// Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 	SourceSubnetworkIpRangesToNat pulumi.StringInput
 	// One or more subnetwork NAT configurations. Only used if
 	// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
@@ -748,7 +748,7 @@ func (o RouterNatOutput) Name() pulumi.StringOutput {
 // How external IPs should be allocated for this NAT. Valid values are
 // `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
 // Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-// Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+// Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
 func (o RouterNatOutput) NatIpAllocateOption() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.NatIpAllocateOption }).(pulumi.StringOutput)
 }
@@ -791,7 +791,7 @@ func (o RouterNatOutput) Rules() RouterNatRuleArrayOutput {
 // contains ALL_SUBNETWORKS_ALL_IP_RANGES or
 // ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
 // other RouterNat section in any Router for this network in this region.
-// Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+// Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
 func (o RouterNatOutput) SourceSubnetworkIpRangesToNat() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.SourceSubnetworkIpRangesToNat }).(pulumi.StringOutput)
 }

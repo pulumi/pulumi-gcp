@@ -183,7 +183,7 @@ type TargetInstance struct {
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
 	// Default value is `NO_NAT`.
-	// Possible values are `NO_NAT`.
+	// Possible values are: `NO_NAT`.
 	NatPolicy pulumi.StringPtrOutput `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
@@ -250,7 +250,7 @@ type targetInstanceState struct {
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
 	// Default value is `NO_NAT`.
-	// Possible values are `NO_NAT`.
+	// Possible values are: `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network *string `pulumi:"network"`
@@ -286,7 +286,7 @@ type TargetInstanceState struct {
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
 	// Default value is `NO_NAT`.
-	// Possible values are `NO_NAT`.
+	// Possible values are: `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringPtrInput
@@ -324,7 +324,7 @@ type targetInstanceArgs struct {
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
 	// Default value is `NO_NAT`.
-	// Possible values are `NO_NAT`.
+	// Possible values are: `NO_NAT`.
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network *string `pulumi:"network"`
@@ -357,7 +357,7 @@ type TargetInstanceArgs struct {
 	// NAT option controlling how IPs are NAT'ed to the instance.
 	// Currently only NO_NAT (default value) is supported.
 	// Default value is `NO_NAT`.
-	// Possible values are `NO_NAT`.
+	// Possible values are: `NO_NAT`.
 	NatPolicy pulumi.StringPtrInput
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
 	Network pulumi.StringPtrInput
@@ -489,7 +489,7 @@ func (o TargetInstanceOutput) Name() pulumi.StringOutput {
 // NAT option controlling how IPs are NAT'ed to the instance.
 // Currently only NO_NAT (default value) is supported.
 // Default value is `NO_NAT`.
-// Possible values are `NO_NAT`.
+// Possible values are: `NO_NAT`.
 func (o TargetInstanceOutput) NatPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.NatPolicy }).(pulumi.StringPtrOutput)
 }

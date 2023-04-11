@@ -119,7 +119,7 @@ type Schema struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -163,7 +163,7 @@ type schemaState struct {
 	Project *string `pulumi:"project"`
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
 	Type *string `pulumi:"type"`
 }
 
@@ -179,7 +179,7 @@ type SchemaState struct {
 	Project pulumi.StringPtrInput
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
 	Type pulumi.StringPtrInput
 }
 
@@ -199,7 +199,7 @@ type schemaArgs struct {
 	Project *string `pulumi:"project"`
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
 	Type *string `pulumi:"type"`
 }
 
@@ -216,7 +216,7 @@ type SchemaArgs struct {
 	Project pulumi.StringPtrInput
 	// The type of the schema definition
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
 	Type pulumi.StringPtrInput
 }
 
@@ -327,7 +327,7 @@ func (o SchemaOutput) Project() pulumi.StringOutput {
 
 // The type of the schema definition
 // Default value is `TYPE_UNSPECIFIED`.
-// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
 func (o SchemaOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

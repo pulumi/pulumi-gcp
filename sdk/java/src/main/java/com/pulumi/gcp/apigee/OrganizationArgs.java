@@ -133,7 +133,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      * 
      */
     @Import(name="retention")
@@ -145,7 +145,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      * 
      */
     public Optional<Output<String>> retention() {
@@ -176,7 +176,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
-     * Possible values are `CLOUD` and `HYBRID`.
+     * Possible values are: `CLOUD`, `HYBRID`.
      * 
      */
     @Import(name="runtimeType")
@@ -185,7 +185,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
-     * Possible values are `CLOUD` and `HYBRID`.
+     * Possible values are: `CLOUD`, `HYBRID`.
      * 
      */
     public Optional<Output<String>> runtimeType() {
@@ -384,7 +384,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
          * operation completes. During this period, the Organization may be restored to its last known state.
          * After this period, the Organization will no longer be able to be restored.
          * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-         * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+         * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
          * operation completes. During this period, the Organization may be restored to its last known state.
          * After this period, the Organization will no longer be able to be restored.
          * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-         * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+         * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runtimeType Runtime type of the Apigee organization based on the Apigee subscription purchased.
          * Default value is `CLOUD`.
-         * Possible values are `CLOUD` and `HYBRID`.
+         * Possible values are: `CLOUD`, `HYBRID`.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param runtimeType Runtime type of the Apigee organization based on the Apigee subscription purchased.
          * Default value is `CLOUD`.
-         * Possible values are `CLOUD` and `HYBRID`.
+         * Possible values are: `CLOUD`, `HYBRID`.
          * 
          * @return builder
          * 

@@ -128,7 +128,7 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
-     * Possible values are `MANAGED`.
+     * Possible values are: `MANAGED`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -228,7 +228,7 @@ export interface ManagedSslCertificateState {
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
-     * Possible values are `MANAGED`.
+     * Possible values are: `MANAGED`.
      */
     type?: pulumi.Input<string>;
 }
@@ -270,7 +270,7 @@ export interface ManagedSslCertificateArgs {
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
-     * Possible values are `MANAGED`.
+     * Possible values are: `MANAGED`.
      */
     type?: pulumi.Input<string>;
 }

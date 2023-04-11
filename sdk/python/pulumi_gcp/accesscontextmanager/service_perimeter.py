@@ -49,7 +49,7 @@ class ServicePerimeterArgs:
                with a common perimeter, but should not be able to share data among
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
-               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+               Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         :param pulumi.Input['ServicePerimeterSpecArgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
@@ -155,7 +155,7 @@ class ServicePerimeterArgs:
         with a common perimeter, but should not be able to share data among
         themselves.
         Default value is `PERIMETER_TYPE_REGULAR`.
-        Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         """
         return pulumi.get(self, "perimeter_type")
 
@@ -253,7 +253,7 @@ class _ServicePerimeterState:
                with a common perimeter, but should not be able to share data among
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
-               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+               Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         :param pulumi.Input['ServicePerimeterSpecArgs'] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
@@ -367,7 +367,7 @@ class _ServicePerimeterState:
         with a common perimeter, but should not be able to share data among
         themselves.
         Default value is `PERIMETER_TYPE_REGULAR`.
-        Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         """
         return pulumi.get(self, "perimeter_type")
 
@@ -629,7 +629,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         ```
-        ### Access Context Manager Service Perimeter Dry Run
+        ### Access Context Manager Service Perimeter Dry-Run
 
         ```python
         import pulumi
@@ -682,7 +682,7 @@ class ServicePerimeter(pulumi.CustomResource):
                with a common perimeter, but should not be able to share data among
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
-               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+               Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         :param pulumi.Input[pulumi.InputType['ServicePerimeterSpecArgs']] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
@@ -873,7 +873,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 )],
             ))
         ```
-        ### Access Context Manager Service Perimeter Dry Run
+        ### Access Context Manager Service Perimeter Dry-Run
 
         ```python
         import pulumi
@@ -998,7 +998,7 @@ class ServicePerimeter(pulumi.CustomResource):
                with a common perimeter, but should not be able to share data among
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
-               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+               Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         :param pulumi.Input[pulumi.InputType['ServicePerimeterSpecArgs']] spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
@@ -1091,7 +1091,7 @@ class ServicePerimeter(pulumi.CustomResource):
         with a common perimeter, but should not be able to share data among
         themselves.
         Default value is `PERIMETER_TYPE_REGULAR`.
-        Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         """
         return pulumi.get(self, "perimeter_type")
 

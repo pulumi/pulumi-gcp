@@ -20,7 +20,7 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsd {
     /**
      * @return The disk interface to use for attaching this disk.
      * Default value is `SCSI`.
-     * Possible values are `SCSI` and `NVME`.
+     * Possible values are: `SCSI`, `NVME`.
      * 
      */
     private @Nullable String interface_;
@@ -36,7 +36,7 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsd {
     /**
      * @return The disk interface to use for attaching this disk.
      * Default value is `SCSI`.
-     * Possible values are `SCSI` and `NVME`.
+     * Possible values are: `SCSI`, `NVME`.
      * 
      */
     public Optional<String> interface_() {

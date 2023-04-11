@@ -68,6 +68,7 @@ type GetHcVpnGatewayResult struct {
 	Project       *string                       `pulumi:"project"`
 	Region        *string                       `pulumi:"region"`
 	SelfLink      string                        `pulumi:"selfLink"`
+	StackType     string                        `pulumi:"stackType"`
 	VpnInterfaces []GetHcVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
 }
 
@@ -142,6 +143,10 @@ func (o GetHcVpnGatewayResultOutput) Region() pulumi.StringPtrOutput {
 
 func (o GetHcVpnGatewayResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o GetHcVpnGatewayResultOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 func (o GetHcVpnGatewayResultOutput) VpnInterfaces() GetHcVpnGatewayVpnInterfaceArrayOutput {

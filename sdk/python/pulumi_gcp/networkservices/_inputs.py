@@ -1419,7 +1419,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
                For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-               Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+               Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
         :param pulumi.Input[str] client_ttl: Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
                - The TTL must be > 0 and <= 86400s (1 day)
                - The clientTtl cannot be larger than the defaultTtl (if set)
@@ -1465,7 +1465,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         :param pulumi.Input[str] signed_request_mode: Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
                You must also set a signedRequestKeyset to enable signed requests.
                When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-               Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+               Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
         :param pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs'] signed_token_options: Additional options for signed tokens.
                signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
                Structure is documented below.
@@ -1528,7 +1528,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         """
         Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
         For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-        Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+        Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -1662,7 +1662,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs:
         Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
         You must also set a signedRequestKeyset to enable signed requests.
         When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-        Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+        Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
         """
         return pulumi.get(self, "signed_request_mode")
 
@@ -1695,7 +1695,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
                  token_ttl: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] actions: The actions to take to add signatures to responses.
-               Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+               Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] copied_parameters: The parameters to copy from the verified token to the generated token.
                Only the following parameters may be copied:
         :param pulumi.Input[str] keyset: The keyset to use for signature generation.
@@ -1726,7 +1726,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatur
     def actions(self) -> pulumi.Input[str]:
         """
         The actions to take to add signatures to responses.
-        Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+        Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
         """
         return pulumi.get(self, "actions")
 
@@ -1957,7 +1957,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_signature_algorithms: The allowed signature algorithms to use.
                Defaults to using only ED25519.
                You may specify up to 3 signature algorithms to use.
-               Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+               Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
         :param pulumi.Input[str] token_query_parameter: The query parameter in which to find the token.
                The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
                Defaults to `edge-cache-token`.
@@ -1974,7 +1974,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedToken
         The allowed signature algorithms to use.
         Defaults to using only ED25519.
         You may specify up to 3 signature algorithms to use.
-        Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+        Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
         """
         return pulumi.get(self, "allowed_signature_algorithms")
 

@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.ReservationShareSettingsProjectMap> ProjectMaps;
         /// <summary>
         /// Type of sharing for this shared-reservation
-        /// Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+        /// Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
         /// </summary>
         public readonly string? ShareType;
 

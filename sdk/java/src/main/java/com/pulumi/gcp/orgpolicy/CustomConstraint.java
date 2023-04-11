@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
 public class CustomConstraint extends com.pulumi.resources.CustomResource {
     /**
      * The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      * 
      */
     @Export(name="actionType", type=String.class, parameters={})
@@ -131,7 +131,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      * 
      */
     public Output<String> actionType() {

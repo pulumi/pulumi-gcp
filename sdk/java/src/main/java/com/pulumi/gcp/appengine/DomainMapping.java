@@ -112,7 +112,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
      * Default value is `STRICT`.
-     * Possible values are `STRICT` and `OVERRIDE`.
+     * Possible values are: `STRICT`, `OVERRIDE`.
      * 
      */
     @Export(name="overrideStrategy", type=String.class, parameters={})
@@ -122,7 +122,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * @return Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
      * Default value is `STRICT`.
-     * Possible values are `STRICT` and `OVERRIDE`.
+     * Possible values are: `STRICT`, `OVERRIDE`.
      * 
      */
     public Output<Optional<String>> overrideStrategy() {

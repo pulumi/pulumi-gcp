@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     {
         /// <summary>
         /// IANA Time Zone Database time zone, e.g. "America/New_York".
-        /// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         public readonly string DayOfWeek;
 

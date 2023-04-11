@@ -30,13 +30,13 @@ public final class ManagedZoneDnssecConfig {
     /**
      * @return Specifies the mechanism used to provide authenticated denial-of-existence responses.
      * non_existence can only be updated when the state is `off`.
-     * Possible values are `nsec` and `nsec3`.
+     * Possible values are: `nsec`, `nsec3`.
      * 
      */
     private @Nullable String nonExistence;
     /**
      * @return Specifies whether DNSSEC is enabled, and what mode it is in
-     * Possible values are `off`, `on`, and `transfer`.
+     * Possible values are: `off`, `on`, `transfer`.
      * 
      */
     private @Nullable String state;
@@ -63,7 +63,7 @@ public final class ManagedZoneDnssecConfig {
     /**
      * @return Specifies the mechanism used to provide authenticated denial-of-existence responses.
      * non_existence can only be updated when the state is `off`.
-     * Possible values are `nsec` and `nsec3`.
+     * Possible values are: `nsec`, `nsec3`.
      * 
      */
     public Optional<String> nonExistence() {
@@ -71,7 +71,7 @@ public final class ManagedZoneDnssecConfig {
     }
     /**
      * @return Specifies whether DNSSEC is enabled, and what mode it is in
-     * Possible values are `off`, `on`, and `transfer`.
+     * Possible values are: `off`, `on`, `transfer`.
      * 
      */
     public Optional<String> state() {

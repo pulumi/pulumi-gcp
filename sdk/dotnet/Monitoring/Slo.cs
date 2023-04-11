@@ -127,7 +127,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A calendar period, semantically "since the start of the current
         /// &lt;calendarPeriod&gt;".
-        /// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+        /// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         /// </summary>
         [Output("calendarPeriod")]
         public Output<string?> CalendarPeriod { get; private set; } = null!;
@@ -276,7 +276,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A calendar period, semantically "since the start of the current
         /// &lt;calendarPeriod&gt;".
-        /// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+        /// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         /// </summary>
         [Input("calendarPeriod")]
         public Input<string>? CalendarPeriod { get; set; }
@@ -386,7 +386,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// A calendar period, semantically "since the start of the current
         /// &lt;calendarPeriod&gt;".
-        /// Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+        /// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         /// </summary>
         [Input("calendarPeriod")]
         public Input<string>? CalendarPeriod { get; set; }

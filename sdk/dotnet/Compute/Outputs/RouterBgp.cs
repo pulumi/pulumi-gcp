@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `CUSTOM`.
+        /// Possible values are: `DEFAULT`, `CUSTOM`.
         /// </summary>
         public readonly string? AdvertiseMode;
         /// <summary>

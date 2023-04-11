@@ -43,7 +43,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * the left-hand side and the threshold on the
      * right-hand side. Only COMPARISON_LT and
      * COMPARISON_GT are supported currently.
-     * Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+     * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
      * 
      */
     private String comparison;
@@ -110,7 +110,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * @return A condition control that determines how
      * metric-threshold conditions are evaluated when
      * data stops arriving.
-     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
     private @Nullable String evaluationMissingData;
@@ -180,7 +180,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * the left-hand side and the threshold on the
      * right-hand side. Only COMPARISON_LT and
      * COMPARISON_GT are supported currently.
-     * Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+     * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
      * 
      */
     public String comparison() {
@@ -255,7 +255,7 @@ public final class AlertPolicyConditionConditionThreshold {
      * @return A condition control that determines how
      * metric-threshold conditions are evaluated when
      * data stops arriving.
-     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
     public Optional<String> evaluationMissingData() {

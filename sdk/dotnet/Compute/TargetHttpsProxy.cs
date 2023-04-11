@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// specified, uses the QUIC policy with no user overrides, which is
         /// equivalent to DISABLE.
         /// Default value is `NONE`.
-        /// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+        /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         /// </summary>
         [Output("quicOverride")]
         public Output<string?> QuicOverride { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Compute
         /// specified, uses the QUIC policy with no user overrides, which is
         /// equivalent to DISABLE.
         /// Default value is `NONE`.
-        /// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+        /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         /// </summary>
         [Input("quicOverride")]
         public Input<string>? QuicOverride { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.Gcp.Compute
         /// specified, uses the QUIC policy with no user overrides, which is
         /// equivalent to DISABLE.
         /// Default value is `NONE`.
-        /// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+        /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         /// </summary>
         [Input("quicOverride")]
         public Input<string>? QuicOverride { get; set; }

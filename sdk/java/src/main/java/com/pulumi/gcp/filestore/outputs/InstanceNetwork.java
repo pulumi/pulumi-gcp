@@ -17,7 +17,7 @@ public final class InstanceNetwork {
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
      */
     private @Nullable String connectMode;
@@ -30,7 +30,7 @@ public final class InstanceNetwork {
     /**
      * @return IP versions for which the instance has
      * IP addresses assigned.
-     * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+     * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
      * 
      */
     private List<String> modes;
@@ -53,7 +53,7 @@ public final class InstanceNetwork {
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
      */
     public Optional<String> connectMode() {
@@ -70,7 +70,7 @@ public final class InstanceNetwork {
     /**
      * @return IP versions for which the instance has
      * IP addresses assigned.
-     * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+     * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
      * 
      */
     public List<String> modes() {

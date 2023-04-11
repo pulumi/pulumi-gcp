@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         public readonly Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary? Dictionary;
         /// <summary>
         /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-        /// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+        /// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
         /// </summary>
         public readonly string? ExclusionType;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
         /// specified by the rule.
         /// Default value is `VERY_LIKELY`.
-        /// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         /// </summary>
         public readonly string? Likelihood;
         /// <summary>

@@ -109,7 +109,7 @@ export class CxEntityType extends pulumi.CustomResource {
      * Represents kinds of entities.
      * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
      * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+     * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      */
     public readonly autoExpansionMode!: pulumi.Output<string | undefined>;
     /**
@@ -136,7 +136,7 @@ export class CxEntityType extends pulumi.CustomResource {
      * * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
      * * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -220,7 +220,7 @@ export interface CxEntityTypeState {
      * Represents kinds of entities.
      * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
      * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+     * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      */
     autoExpansionMode?: pulumi.Input<string>;
     /**
@@ -247,7 +247,7 @@ export interface CxEntityTypeState {
      * * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
      * * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
     kind?: pulumi.Input<string>;
     /**
@@ -282,7 +282,7 @@ export interface CxEntityTypeArgs {
      * Represents kinds of entities.
      * * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
      * * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-     * Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+     * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      */
     autoExpansionMode?: pulumi.Input<string>;
     /**
@@ -309,7 +309,7 @@ export interface CxEntityTypeArgs {
      * * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
      * * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     * Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      */
     kind: pulumi.Input<string>;
     /**

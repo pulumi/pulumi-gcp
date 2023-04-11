@@ -201,7 +201,7 @@ type Registry struct {
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel pulumi.StringPtrOutput `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -264,7 +264,7 @@ type registryState struct {
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -299,7 +299,7 @@ type RegistryState struct {
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -338,7 +338,7 @@ type registryArgs struct {
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -374,7 +374,7 @@ type RegistryArgs struct {
 	// errors will be logged. LogLevel is inclusive; enabling INFO logging
 	// will also enable ERROR logging.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// Activate or deactivate MQTT.
 	// The structure is documented below.
@@ -504,7 +504,7 @@ func (o RegistryOutput) HttpConfig() pulumi.MapOutput {
 // errors will be logged. LogLevel is inclusive; enabling INFO logging
 // will also enable ERROR logging.
 // Default value is `NONE`.
-// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 func (o RegistryOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringPtrOutput { return v.LogLevel }).(pulumi.StringPtrOutput)
 }

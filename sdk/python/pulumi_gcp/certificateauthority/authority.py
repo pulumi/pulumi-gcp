@@ -74,7 +74,7 @@ class AuthorityArgs:
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
-               Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         """
         pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
         pulumi.set(__self__, "config", config)
@@ -313,7 +313,7 @@ class AuthorityArgs:
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
         be activated before they can issue certificates.
         Default value is `SELF_SIGNED`.
-        Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+        Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         """
         return pulumi.get(self, "type")
 
@@ -401,7 +401,7 @@ class _AuthorityState:
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
-               Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -727,7 +727,7 @@ class _AuthorityState:
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
         be activated before they can issue certificates.
         Default value is `SELF_SIGNED`.
-        Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+        Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         """
         return pulumi.get(self, "type")
 
@@ -1038,7 +1038,7 @@ class Authority(pulumi.CustomResource):
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
-               Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         """
         ...
     @overload
@@ -1433,7 +1433,7 @@ class Authority(pulumi.CustomResource):
                > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
                be activated before they can issue certificates.
                Default value is `SELF_SIGNED`.
-               Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+               Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         :param pulumi.Input[str] update_time: The time at which this CertificateAuthority was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -1662,7 +1662,7 @@ class Authority(pulumi.CustomResource):
         > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
         be activated before they can issue certificates.
         Default value is `SELF_SIGNED`.
-        Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+        Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
         """
         return pulumi.get(self, "type")
 

@@ -26,7 +26,7 @@ class AuthorizedOrgsDescArgs:
         :param pulumi.Input[str] asset_type: The type of entities that need to use the authorization relationship during
                evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
                "ASSET_TYPE_CREDENTIAL_STRENGTH".
-               Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+               Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         :param pulumi.Input[str] authorization_direction: The direction of the authorization relationship between this organization
                and the organizations listed in the "orgs" field. The valid values for this
                field include the following:
@@ -41,9 +41,9 @@ class AuthorizedOrgsDescArgs:
                direction, organizations B and C must specify
                "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
                "AuthorizedOrgsDesc" resource.
-               Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+               Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         :param pulumi.Input[str] authorization_type: A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-               Possible values are `AUTHORIZATION_TYPE_TRUST`.
+               Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         :param pulumi.Input[str] name: Resource name for the `AuthorizedOrgsDesc`. Format:
                `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
                The `authorized_orgs_desc` component must begin with a letter, followed by
@@ -84,7 +84,7 @@ class AuthorizedOrgsDescArgs:
         The type of entities that need to use the authorization relationship during
         evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
         "ASSET_TYPE_CREDENTIAL_STRENGTH".
-        Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         """
         return pulumi.get(self, "asset_type")
 
@@ -110,7 +110,7 @@ class AuthorizedOrgsDescArgs:
         direction, organizations B and C must specify
         "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
         "AuthorizedOrgsDesc" resource.
-        Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+        Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         """
         return pulumi.get(self, "authorization_direction")
 
@@ -123,7 +123,7 @@ class AuthorizedOrgsDescArgs:
     def authorization_type(self) -> Optional[pulumi.Input[str]]:
         """
         A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-        Possible values are `AUTHORIZATION_TYPE_TRUST`.
+        Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         """
         return pulumi.get(self, "authorization_type")
 
@@ -178,7 +178,7 @@ class _AuthorizedOrgsDescState:
         :param pulumi.Input[str] asset_type: The type of entities that need to use the authorization relationship during
                evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
                "ASSET_TYPE_CREDENTIAL_STRENGTH".
-               Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+               Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         :param pulumi.Input[str] authorization_direction: The direction of the authorization relationship between this organization
                and the organizations listed in the "orgs" field. The valid values for this
                field include the following:
@@ -193,9 +193,9 @@ class _AuthorizedOrgsDescState:
                direction, organizations B and C must specify
                "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
                "AuthorizedOrgsDesc" resource.
-               Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+               Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         :param pulumi.Input[str] authorization_type: A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-               Possible values are `AUTHORIZATION_TYPE_TRUST`.
+               Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         :param pulumi.Input[str] create_time: Time the AuthorizedOrgsDesc was created in UTC.
         :param pulumi.Input[str] name: Resource name for the `AuthorizedOrgsDesc`. Format:
                `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -232,7 +232,7 @@ class _AuthorizedOrgsDescState:
         The type of entities that need to use the authorization relationship during
         evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
         "ASSET_TYPE_CREDENTIAL_STRENGTH".
-        Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         """
         return pulumi.get(self, "asset_type")
 
@@ -258,7 +258,7 @@ class _AuthorizedOrgsDescState:
         direction, organizations B and C must specify
         "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
         "AuthorizedOrgsDesc" resource.
-        Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+        Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         """
         return pulumi.get(self, "authorization_direction")
 
@@ -271,7 +271,7 @@ class _AuthorizedOrgsDescState:
     def authorization_type(self) -> Optional[pulumi.Input[str]]:
         """
         A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-        Possible values are `AUTHORIZATION_TYPE_TRUST`.
+        Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         """
         return pulumi.get(self, "authorization_type")
 
@@ -411,7 +411,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         :param pulumi.Input[str] asset_type: The type of entities that need to use the authorization relationship during
                evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
                "ASSET_TYPE_CREDENTIAL_STRENGTH".
-               Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+               Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         :param pulumi.Input[str] authorization_direction: The direction of the authorization relationship between this organization
                and the organizations listed in the "orgs" field. The valid values for this
                field include the following:
@@ -426,9 +426,9 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                direction, organizations B and C must specify
                "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
                "AuthorizedOrgsDesc" resource.
-               Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+               Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         :param pulumi.Input[str] authorization_type: A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-               Possible values are `AUTHORIZATION_TYPE_TRUST`.
+               Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         :param pulumi.Input[str] name: Resource name for the `AuthorizedOrgsDesc`. Format:
                `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
                The `authorized_orgs_desc` component must begin with a letter, followed by
@@ -561,7 +561,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         :param pulumi.Input[str] asset_type: The type of entities that need to use the authorization relationship during
                evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
                "ASSET_TYPE_CREDENTIAL_STRENGTH".
-               Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+               Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         :param pulumi.Input[str] authorization_direction: The direction of the authorization relationship between this organization
                and the organizations listed in the "orgs" field. The valid values for this
                field include the following:
@@ -576,9 +576,9 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                direction, organizations B and C must specify
                "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
                "AuthorizedOrgsDesc" resource.
-               Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+               Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         :param pulumi.Input[str] authorization_type: A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-               Possible values are `AUTHORIZATION_TYPE_TRUST`.
+               Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         :param pulumi.Input[str] create_time: Time the AuthorizedOrgsDesc was created in UTC.
         :param pulumi.Input[str] name: Resource name for the `AuthorizedOrgsDesc`. Format:
                `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -612,7 +612,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         The type of entities that need to use the authorization relationship during
         evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
         "ASSET_TYPE_CREDENTIAL_STRENGTH".
-        Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         """
         return pulumi.get(self, "asset_type")
 
@@ -634,7 +634,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
         direction, organizations B and C must specify
         "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
         "AuthorizedOrgsDesc" resource.
-        Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+        Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         """
         return pulumi.get(self, "authorization_direction")
 
@@ -643,7 +643,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     def authorization_type(self) -> pulumi.Output[Optional[str]]:
         """
         A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-        Possible values are `AUTHORIZATION_TYPE_TRUST`.
+        Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         """
         return pulumi.get(self, "authorization_type")
 

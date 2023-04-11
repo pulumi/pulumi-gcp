@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// List of file type groups to include in the scan. If empty, all files are scanned and available data
         /// format processors are applied. In addition, the binary content of the selected files is always scanned as well.
         /// Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-        /// Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+        /// Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
         /// </summary>
         public InputList<string> FileTypes
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// <summary>
         /// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
         /// If not specified, scanning would start from the top.
-        /// Possible values are `TOP` and `RANDOM_START`.
+        /// Possible values are: `TOP`, `RANDOM_START`.
         /// </summary>
         [Input("sampleMethod")]
         public Input<string>? SampleMethod { get; set; }

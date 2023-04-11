@@ -27,7 +27,7 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * unhealthy backends regardless of protocol and session affinity. It is
      * generally not recommended to use this mode overriding the default.
      * Default value is `DEFAULT_FOR_PROTOCOL`.
-     * Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+     * Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
      * 
      */
     private @Nullable String connectionPersistenceOnUnhealthyBackends;
@@ -46,7 +46,7 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * `PER_SESSION`: The Connection Tracking is performed as per the
      * configured Session Affinity. It matches the configured Session Affinity.
      * Default value is `PER_CONNECTION`.
-     * Possible values are `PER_CONNECTION` and `PER_SESSION`.
+     * Possible values are: `PER_CONNECTION`, `PER_SESSION`.
      * 
      */
     private @Nullable String trackingMode;
@@ -67,7 +67,7 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * unhealthy backends regardless of protocol and session affinity. It is
      * generally not recommended to use this mode overriding the default.
      * Default value is `DEFAULT_FOR_PROTOCOL`.
-     * Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+     * Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
      * 
      */
     public Optional<String> connectionPersistenceOnUnhealthyBackends() {
@@ -90,7 +90,7 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * `PER_SESSION`: The Connection Tracking is performed as per the
      * configured Session Affinity. It matches the configured Session Affinity.
      * Default value is `PER_CONNECTION`.
-     * Possible values are `PER_CONNECTION` and `PER_SESSION`.
+     * Possible values are: `PER_CONNECTION`, `PER_SESSION`.
      * 
      */
     public Optional<String> trackingMode() {

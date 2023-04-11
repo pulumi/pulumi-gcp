@@ -258,7 +258,7 @@ class DomainMappingResourceRecord(dict):
         :param str name: Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
         :param str rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
         :param str type: Resource record type. Example: `AAAA`.
-               Possible values are `A`, `AAAA`, and `CNAME`.
+               Possible values are: `A`, `AAAA`, `CNAME`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -288,7 +288,7 @@ class DomainMappingResourceRecord(dict):
     def type(self) -> Optional[str]:
         """
         Resource record type. Example: `AAAA`.
-        Possible values are `A`, `AAAA`, and `CNAME`.
+        Possible values are: `A`, `AAAA`, `CNAME`.
         """
         return pulumi.get(self, "type")
 
@@ -323,7 +323,7 @@ class DomainMappingSslSettings(dict):
         """
         :param str ssl_management_type: SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
                If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-               Possible values are `AUTOMATIC` and `MANUAL`.
+               Possible values are: `AUTOMATIC`, `MANUAL`.
         :param str certificate_id: ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
                remove SSL support.
                By default, a managed certificate is automatically created for every domain mapping. To omit SSL support
@@ -349,7 +349,7 @@ class DomainMappingSslSettings(dict):
         """
         SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
         If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-        Possible values are `AUTOMATIC` and `MANUAL`.
+        Possible values are: `AUTOMATIC`, `MANUAL`.
         """
         return pulumi.get(self, "ssl_management_type")
 
@@ -405,7 +405,7 @@ class EngineSplitTrafficSplit(dict):
         """
         :param Mapping[str, str] allocations: Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
         :param str shard_by: Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-               Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+               Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
         """
         pulumi.set(__self__, "allocations", allocations)
         if shard_by is not None:
@@ -424,7 +424,7 @@ class EngineSplitTrafficSplit(dict):
     def shard_by(self) -> Optional[str]:
         """
         Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-        Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+        Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
         """
         return pulumi.get(self, "shard_by")
 
@@ -460,12 +460,12 @@ class FlexibleAppVersionApiConfig(dict):
         :param str script: Path to the script from the application root directory.
         :param str auth_fail_action: Action to take when users access resources that require authentication.
                Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-               Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+               Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         :param str login: Level of login required to access this resource.
                Default value is `LOGIN_OPTIONAL`.
-               Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+               Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         :param str security_level: Security (HTTPS) enforcement for this URL.
-               Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+               Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
         :param str url: URL to serve the endpoint at.
         """
         pulumi.set(__self__, "script", script)
@@ -492,7 +492,7 @@ class FlexibleAppVersionApiConfig(dict):
         """
         Action to take when users access resources that require authentication.
         Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-        Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+        Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         """
         return pulumi.get(self, "auth_fail_action")
 
@@ -502,7 +502,7 @@ class FlexibleAppVersionApiConfig(dict):
         """
         Level of login required to access this resource.
         Default value is `LOGIN_OPTIONAL`.
-        Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+        Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         """
         return pulumi.get(self, "login")
 
@@ -511,7 +511,7 @@ class FlexibleAppVersionApiConfig(dict):
     def security_level(self) -> Optional[str]:
         """
         Security (HTTPS) enforcement for this URL.
-        Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+        Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
         """
         return pulumi.get(self, "security_level")
 
@@ -1284,7 +1284,7 @@ class FlexibleAppVersionEndpointsApiService(dict):
         :param bool disable_trace_sampling: Enable or disable trace sampling. By default, this is set to false for enabled.
         :param str rollout_strategy: Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
                Default value is `FIXED`.
-               Possible values are `FIXED` and `MANAGED`.
+               Possible values are: `FIXED`, `MANAGED`.
         """
         pulumi.set(__self__, "name", name)
         if config_id is not None:
@@ -1330,7 +1330,7 @@ class FlexibleAppVersionEndpointsApiService(dict):
         """
         Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
         Default value is `FIXED`.
-        Possible values are `FIXED` and `MANAGED`.
+        Possible values are: `FIXED`, `MANAGED`.
         """
         return pulumi.get(self, "rollout_strategy")
 
@@ -1390,16 +1390,16 @@ class FlexibleAppVersionHandler(dict):
                  url_regex: Optional[str] = None):
         """
         :param str auth_fail_action: Actions to take when the user is not logged in.
-               Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+               Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         :param str login: Methods to restrict access to a URL based on login status.
-               Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+               Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         :param str redirect_http_response_code: 30x code to use when performing redirects for the secure field.
-               Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+               Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
         :param 'FlexibleAppVersionHandlerScriptArgs' script: Executes a script to handle the requests that match this URL pattern.
                Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
                Structure is documented below.
         :param str security_level: Security (HTTPS) enforcement for this URL.
-               Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+               Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
         :param 'FlexibleAppVersionHandlerStaticFilesArgs' static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
                Static file handlers describe which files in the application directory are static files, and which URLs serve them.
                Structure is documented below.
@@ -1426,7 +1426,7 @@ class FlexibleAppVersionHandler(dict):
     def auth_fail_action(self) -> Optional[str]:
         """
         Actions to take when the user is not logged in.
-        Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+        Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         """
         return pulumi.get(self, "auth_fail_action")
 
@@ -1435,7 +1435,7 @@ class FlexibleAppVersionHandler(dict):
     def login(self) -> Optional[str]:
         """
         Methods to restrict access to a URL based on login status.
-        Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+        Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         """
         return pulumi.get(self, "login")
 
@@ -1444,7 +1444,7 @@ class FlexibleAppVersionHandler(dict):
     def redirect_http_response_code(self) -> Optional[str]:
         """
         30x code to use when performing redirects for the secure field.
-        Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+        Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
         """
         return pulumi.get(self, "redirect_http_response_code")
 
@@ -1463,7 +1463,7 @@ class FlexibleAppVersionHandler(dict):
     def security_level(self) -> Optional[str]:
         """
         Security (HTTPS) enforcement for this URL.
-        Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+        Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
         """
         return pulumi.get(self, "security_level")
 
@@ -2174,7 +2174,7 @@ class ServiceNetworkSettingsNetworkSettings(dict):
         """
         :param str ingress_traffic_allowed: The ingress settings for version or service.
                Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-               Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+               Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
         """
         if ingress_traffic_allowed is not None:
             pulumi.set(__self__, "ingress_traffic_allowed", ingress_traffic_allowed)
@@ -2185,7 +2185,7 @@ class ServiceNetworkSettingsNetworkSettings(dict):
         """
         The ingress settings for version or service.
         Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-        Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+        Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
         """
         return pulumi.get(self, "ingress_traffic_allowed")
 
@@ -2634,16 +2634,16 @@ class StandardAppVersionHandler(dict):
                  url_regex: Optional[str] = None):
         """
         :param str auth_fail_action: Actions to take when the user is not logged in.
-               Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+               Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         :param str login: Methods to restrict access to a URL based on login status.
-               Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+               Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         :param str redirect_http_response_code: 30x code to use when performing redirects for the secure field.
-               Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+               Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
         :param 'StandardAppVersionHandlerScriptArgs' script: Executes a script to handle the requests that match this URL pattern.
                Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
                Structure is documented below.
         :param str security_level: Security (HTTPS) enforcement for this URL.
-               Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+               Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
         :param 'StandardAppVersionHandlerStaticFilesArgs' static_files: Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
                Structure is documented below.
         :param str url_regex: URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
@@ -2669,7 +2669,7 @@ class StandardAppVersionHandler(dict):
     def auth_fail_action(self) -> Optional[str]:
         """
         Actions to take when the user is not logged in.
-        Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+        Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
         """
         return pulumi.get(self, "auth_fail_action")
 
@@ -2678,7 +2678,7 @@ class StandardAppVersionHandler(dict):
     def login(self) -> Optional[str]:
         """
         Methods to restrict access to a URL based on login status.
-        Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+        Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
         """
         return pulumi.get(self, "login")
 
@@ -2687,7 +2687,7 @@ class StandardAppVersionHandler(dict):
     def redirect_http_response_code(self) -> Optional[str]:
         """
         30x code to use when performing redirects for the secure field.
-        Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+        Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
         """
         return pulumi.get(self, "redirect_http_response_code")
 
@@ -2706,7 +2706,7 @@ class StandardAppVersionHandler(dict):
     def security_level(self) -> Optional[str]:
         """
         Security (HTTPS) enforcement for this URL.
-        Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+        Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
         """
         return pulumi.get(self, "security_level")
 

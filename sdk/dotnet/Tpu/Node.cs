@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Tpu
     ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
     /// 
     /// ## Example Usage
-    /// ### TPU Node Basic
+    /// ### Tpu Node Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Tpu
     /// 
     /// });
     /// ```
-    /// ### TPU Node Full
+    /// ### Tpu Node Full
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

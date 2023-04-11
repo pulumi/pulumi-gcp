@@ -353,7 +353,7 @@ type InstanceAcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount int `pulumi:"coreCount"`
 	// Type of this accelerator.
-	// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
+	// Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
 	Type string `pulumi:"type"`
 }
 
@@ -372,7 +372,7 @@ type InstanceAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.IntInput `pulumi:"coreCount"`
 	// Type of this accelerator.
-	// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
+	// Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -459,7 +459,7 @@ func (o InstanceAcceleratorConfigOutput) CoreCount() pulumi.IntOutput {
 }
 
 // Type of this accelerator.
-// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
+// Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
 func (o InstanceAcceleratorConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAcceleratorConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -499,7 +499,7 @@ func (o InstanceAcceleratorConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
 }
 
 // Type of this accelerator.
-// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
+// Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
 func (o InstanceAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceAcceleratorConfig) *string {
 		if v == nil {
@@ -997,7 +997,7 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type InstanceReservationAffinity struct {
 	// The type of Compute Reservation.
-	// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+	// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
 	ConsumeReservationType string `pulumi:"consumeReservationType"`
 	// Corresponds to the label key of reservation resource.
 	Key *string `pulumi:"key"`
@@ -1018,7 +1018,7 @@ type InstanceReservationAffinityInput interface {
 
 type InstanceReservationAffinityArgs struct {
 	// The type of Compute Reservation.
-	// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+	// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
 	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
 	// Corresponds to the label key of reservation resource.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -1104,7 +1104,7 @@ func (o InstanceReservationAffinityOutput) ToInstanceReservationAffinityPtrOutpu
 }
 
 // The type of Compute Reservation.
-// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
 func (o InstanceReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
 }
@@ -1144,7 +1144,7 @@ func (o InstanceReservationAffinityPtrOutput) Elem() InstanceReservationAffinity
 }
 
 // The type of Compute Reservation.
-// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
 func (o InstanceReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceReservationAffinity) *string {
 		if v == nil {
@@ -2201,7 +2201,7 @@ type RuntimeSoftwareConfig struct {
 	// Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
 	// Behavior for the post startup script.
-	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+	// Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
 	PostStartupScriptBehavior *string `pulumi:"postStartupScriptBehavior"`
 	// (Output)
 	// Bool indicating whether an newer image is available in an image family.
@@ -2244,7 +2244,7 @@ type RuntimeSoftwareConfigArgs struct {
 	// Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput `pulumi:"postStartupScript"`
 	// Behavior for the post startup script.
-	// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+	// Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
 	PostStartupScriptBehavior pulumi.StringPtrInput `pulumi:"postStartupScriptBehavior"`
 	// (Output)
 	// Bool indicating whether an newer image is available in an image family.
@@ -2376,7 +2376,7 @@ func (o RuntimeSoftwareConfigOutput) PostStartupScript() pulumi.StringPtrOutput 
 }
 
 // Behavior for the post startup script.
-// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+// Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
 func (o RuntimeSoftwareConfigOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.PostStartupScriptBehavior }).(pulumi.StringPtrOutput)
 }
@@ -2499,7 +2499,7 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScript() pulumi.StringPtrOutp
 }
 
 // Behavior for the post startup script.
-// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+// Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
 func (o RuntimeSoftwareConfigPtrOutput) PostStartupScriptBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeSoftwareConfig) *string {
 		if v == nil {
@@ -2874,7 +2874,7 @@ type RuntimeVirtualMachineVirtualMachineConfig struct {
 	Network *string `pulumi:"network"`
 	// The type of vNIC to be used on this interface. This may be gVNIC
 	// or VirtioNet.
-	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 	NicType *string `pulumi:"nicType"`
 	// Reserved IP Range name is used for VPC Peering. The
 	// subnetwork allocation will use the range *name* if it's assigned.
@@ -2965,7 +2965,7 @@ type RuntimeVirtualMachineVirtualMachineConfigArgs struct {
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// The type of vNIC to be used on this interface. This may be gVNIC
 	// or VirtioNet.
-	// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+	// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 	NicType pulumi.StringPtrInput `pulumi:"nicType"`
 	// Reserved IP Range name is used for VPC Peering. The
 	// subnetwork allocation will use the range *name* if it's assigned.
@@ -3159,7 +3159,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigOutput) Network() pulumi.String
 
 // The type of vNIC to be used on this interface. This may be gVNIC
 // or VirtioNet.
-// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 func (o RuntimeVirtualMachineVirtualMachineConfigOutput) NicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeVirtualMachineVirtualMachineConfig) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
@@ -3360,7 +3360,7 @@ func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) Network() pulumi.Str
 
 // The type of vNIC to be used on this interface. This may be gVNIC
 // or VirtioNet.
-// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
 func (o RuntimeVirtualMachineVirtualMachineConfigPtrOutput) NicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeVirtualMachineVirtualMachineConfig) *string {
 		if v == nil {

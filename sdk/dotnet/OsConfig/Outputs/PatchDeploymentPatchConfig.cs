@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly Outputs.PatchDeploymentPatchConfigPreStep? PreStep;
         /// <summary>
         /// Post-patch reboot settings.
-        /// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+        /// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
         /// </summary>
         public readonly string? RebootConfig;
         /// <summary>

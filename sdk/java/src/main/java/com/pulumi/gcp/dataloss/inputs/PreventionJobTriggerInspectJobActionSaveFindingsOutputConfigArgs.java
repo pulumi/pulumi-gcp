@@ -24,7 +24,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigA
      * If unspecified, then all available columns will be used for a new table or an (existing)
      * table with no schema, and no changes will be made to an existing table that has a schema.
      * Only for use with external storage.
-     * Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+     * Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
      * 
      */
     @Import(name="outputSchema")
@@ -38,7 +38,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigA
      * If unspecified, then all available columns will be used for a new table or an (existing)
      * table with no schema, and no changes will be made to an existing table that has a schema.
      * Only for use with external storage.
-     * Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+     * Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
      * 
      */
     public Optional<Output<String>> outputSchema() {
@@ -95,7 +95,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigA
          * If unspecified, then all available columns will be used for a new table or an (existing)
          * table with no schema, and no changes will be made to an existing table that has a schema.
          * Only for use with external storage.
-         * Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+         * Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigA
          * If unspecified, then all available columns will be used for a new table or an (existing)
          * table with no schema, and no changes will be made to an existing table that has a schema.
          * Only for use with external storage.
-         * Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+         * Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
          * 
          * @return builder
          * 

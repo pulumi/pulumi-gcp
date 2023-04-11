@@ -229,7 +229,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
     @Export(name="logLevel", type=String.class, parameters={})
@@ -242,7 +242,7 @@ public class Registry extends com.pulumi.resources.CustomResource {
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
     public Output<Optional<String>> logLevel() {

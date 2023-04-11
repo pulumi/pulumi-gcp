@@ -35,7 +35,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
      * @return A condition control that determines how
      * metric-threshold conditions are evaluated when
      * data stops arriving.
-     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
     private @Nullable String evaluationMissingData;
@@ -84,7 +84,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
      * @return A condition control that determines how
      * metric-threshold conditions are evaluated when
      * data stops arriving.
-     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
     public Optional<String> evaluationMissingData() {

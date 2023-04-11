@@ -182,7 +182,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The launch stage of the metric definition.
-     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
     @Export(name="launchStage", type=String.class, parameters={})
@@ -190,7 +190,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The launch stage of the metric definition.
-     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
     public Output<Optional<String>> launchStage() {
@@ -214,7 +214,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+     * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      * 
      */
     @Export(name="metricKind", type=String.class, parameters={})
@@ -222,7 +222,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+     * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      * 
      */
     public Output<String> metricKind() {
@@ -334,7 +334,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
      */
     @Export(name="valueType", type=String.class, parameters={})
@@ -342,7 +342,7 @@ public class MetricDescriptor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      * 
      */
     public Output<String> valueType() {

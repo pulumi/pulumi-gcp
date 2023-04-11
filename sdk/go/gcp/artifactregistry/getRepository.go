@@ -62,9 +62,10 @@ type LookupRepositoryArgs struct {
 
 // A collection of values returned by getRepository.
 type LookupRepositoryResult struct {
-	CreateTime  string `pulumi:"createTime"`
-	Description string `pulumi:"description"`
-	Format      string `pulumi:"format"`
+	CreateTime    string                      `pulumi:"createTime"`
+	Description   string                      `pulumi:"description"`
+	DockerConfigs []GetRepositoryDockerConfig `pulumi:"dockerConfigs"`
+	Format        string                      `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                                 `pulumi:"id"`
 	KmsKeyName               string                                 `pulumi:"kmsKeyName"`
@@ -129,6 +130,10 @@ func (o LookupRepositoryResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupRepositoryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupRepositoryResultOutput) DockerConfigs() GetRepositoryDockerConfigArrayOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryDockerConfig { return v.DockerConfigs }).(GetRepositoryDockerConfigArrayOutput)
 }
 
 func (o LookupRepositoryResultOutput) Format() pulumi.StringOutput {

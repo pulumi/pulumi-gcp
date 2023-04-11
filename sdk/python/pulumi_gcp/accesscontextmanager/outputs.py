@@ -114,7 +114,7 @@ class AccessLevelBasic(dict):
                OR is used, at least one Condition in conditions must be satisfied
                for the AccessLevel to be applied.
                Default value is `AND`.
-               Possible values are `AND` and `OR`.
+               Possible values are: `AND`, `OR`.
         """
         pulumi.set(__self__, "conditions", conditions)
         if combining_function is not None:
@@ -139,7 +139,7 @@ class AccessLevelBasic(dict):
         OR is used, at least one Condition in conditions must be satisfied
         for the AccessLevel to be applied.
         Default value is `AND`.
-        Possible values are `AND` and `OR`.
+        Possible values are: `AND`, `OR`.
         """
         return pulumi.get(self, "combining_function")
 
@@ -335,10 +335,10 @@ class AccessLevelBasicConditionDevicePolicy(dict):
         """
         :param Sequence[str] allowed_device_management_levels: A list of allowed device management levels.
                An empty list allows all management levels.
-               Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+               Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
         :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
-               Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+               Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
         :param Sequence['AccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
@@ -366,7 +366,7 @@ class AccessLevelBasicConditionDevicePolicy(dict):
         """
         A list of allowed device management levels.
         An empty list allows all management levels.
-        Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+        Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
         """
         return pulumi.get(self, "allowed_device_management_levels")
 
@@ -376,7 +376,7 @@ class AccessLevelBasicConditionDevicePolicy(dict):
         """
         A list of allowed encryptions statuses.
         An empty list allows all statuses.
-        Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+        Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
         """
         return pulumi.get(self, "allowed_encryption_statuses")
 
@@ -445,7 +445,7 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
                  require_verified_chrome_os: Optional[bool] = None):
         """
         :param str os_type: The operating system type of the device.
-               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+               Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
         :param str minimum_version: The minimum allowed OS version. If not set, any version
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
@@ -462,7 +462,7 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint(dict):
     def os_type(self) -> str:
         """
         The operating system type of the device.
-        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+        Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
         """
         return pulumi.get(self, "os_type")
 
@@ -524,10 +524,10 @@ class AccessLevelConditionDevicePolicy(dict):
         """
         :param Sequence[str] allowed_device_management_levels: A list of allowed device management levels.
                An empty list allows all management levels.
-               Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+               Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
         :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
-               Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+               Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
         :param Sequence['AccessLevelConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
@@ -555,7 +555,7 @@ class AccessLevelConditionDevicePolicy(dict):
         """
         A list of allowed device management levels.
         An empty list allows all management levels.
-        Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+        Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
         """
         return pulumi.get(self, "allowed_device_management_levels")
 
@@ -565,7 +565,7 @@ class AccessLevelConditionDevicePolicy(dict):
         """
         A list of allowed encryptions statuses.
         An empty list allows all statuses.
-        Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+        Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
         """
         return pulumi.get(self, "allowed_encryption_statuses")
 
@@ -631,7 +631,7 @@ class AccessLevelConditionDevicePolicyOsConstraint(dict):
                  minimum_version: Optional[str] = None):
         """
         :param str os_type: The operating system type of the device.
-               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+               Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
         :param str minimum_version: The minimum allowed OS version. If not set, any version
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
@@ -645,7 +645,7 @@ class AccessLevelConditionDevicePolicyOsConstraint(dict):
     def os_type(self) -> str:
         """
         The operating system type of the device.
-        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+        Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
         """
         return pulumi.get(self, "os_type")
 
@@ -844,7 +844,7 @@ class AccessLevelsAccessLevelBasic(dict):
                OR is used, at least one Condition in conditions must be satisfied
                for the AccessLevel to be applied.
                Default value is `AND`.
-               Possible values are `AND` and `OR`.
+               Possible values are: `AND`, `OR`.
         """
         pulumi.set(__self__, "conditions", conditions)
         if combining_function is not None:
@@ -869,7 +869,7 @@ class AccessLevelsAccessLevelBasic(dict):
         OR is used, at least one Condition in conditions must be satisfied
         for the AccessLevel to be applied.
         Default value is `AND`.
-        Possible values are `AND` and `OR`.
+        Possible values are: `AND`, `OR`.
         """
         return pulumi.get(self, "combining_function")
 
@@ -1065,10 +1065,10 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
         """
         :param Sequence[str] allowed_device_management_levels: A list of allowed device management levels.
                An empty list allows all management levels.
-               Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+               Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
         :param Sequence[str] allowed_encryption_statuses: A list of allowed encryptions statuses.
                An empty list allows all statuses.
-               Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+               Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
         :param Sequence['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs'] os_constraints: A list of allowed OS versions.
                An empty list allows all types and all versions.
                Structure is documented below.
@@ -1096,7 +1096,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
         """
         A list of allowed device management levels.
         An empty list allows all management levels.
-        Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+        Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
         """
         return pulumi.get(self, "allowed_device_management_levels")
 
@@ -1106,7 +1106,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicy(dict):
         """
         A list of allowed encryptions statuses.
         An empty list allows all statuses.
-        Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+        Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
         """
         return pulumi.get(self, "allowed_encryption_statuses")
 
@@ -1172,7 +1172,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
                  minimum_version: Optional[str] = None):
         """
         :param str os_type: The operating system type of the device.
-               Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+               Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
         :param str minimum_version: The minimum allowed OS version. If not set, any version
                of this OS satisfies the constraint.
                Format: "major.minor.patch" such as "10.5.301", "9.2.1".
@@ -1186,7 +1186,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint(dict):
     def os_type(self) -> str:
         """
         The operating system type of the device.
-        Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+        Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
         """
         return pulumi.get(self, "os_type")
 
@@ -1570,7 +1570,7 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
@@ -1594,7 +1594,7 @@ class ServicePerimeterSpecEgressPolicyEgressFrom(dict):
         Specifies the type of identities that are allowed access to outside the
         perimeter. If left unspecified, then members of `identities` field will
         be allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 
@@ -1862,7 +1862,7 @@ class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param Sequence['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
@@ -1890,7 +1890,7 @@ class ServicePerimeterSpecIngressPolicyIngressFrom(dict):
         Specifies the type of identities that are allowed access from outside the
         perimeter. If left unspecified, then members of `identities` field will be
         allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 
@@ -2415,7 +2415,7 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
@@ -2439,7 +2439,7 @@ class ServicePerimeterStatusEgressPolicyEgressFrom(dict):
         Specifies the type of identities that are allowed access to outside the
         perimeter. If left unspecified, then members of `identities` field will
         be allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 
@@ -2707,7 +2707,7 @@ class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param Sequence['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
@@ -2735,7 +2735,7 @@ class ServicePerimeterStatusIngressPolicyIngressFrom(dict):
         Specifies the type of identities that are allowed access from outside the
         perimeter. If left unspecified, then members of `identities` field will be
         allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 
@@ -3082,7 +3082,7 @@ class ServicePerimetersServicePerimeter(dict):
                with a common perimeter, but should not be able to share data among
                themselves.
                Default value is `PERIMETER_TYPE_REGULAR`.
-               Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+               Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         :param 'ServicePerimetersServicePerimeterSpecArgs' spec: Proposed (or dry run) ServicePerimeter configuration.
                This configuration allows to specify and test ServicePerimeter configuration
                without enforcing actual access restrictions. Only allowed to be set when
@@ -3176,7 +3176,7 @@ class ServicePerimetersServicePerimeter(dict):
         with a common perimeter, but should not be able to share data among
         themselves.
         Default value is `PERIMETER_TYPE_REGULAR`.
-        Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         """
         return pulumi.get(self, "perimeter_type")
 
@@ -3466,7 +3466,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
@@ -3490,7 +3490,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
         Specifies the type of identities that are allowed access to outside the
         perimeter. If left unspecified, then members of `identities` field will
         be allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 
@@ -3758,7 +3758,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param Sequence['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
@@ -3786,7 +3786,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom(dict):
         Specifies the type of identities that are allowed access from outside the
         perimeter. If left unspecified, then members of `identities` field will be
         allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 
@@ -4311,7 +4311,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
@@ -4335,7 +4335,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
         Specifies the type of identities that are allowed access to outside the
         perimeter. If left unspecified, then members of `identities` field will
         be allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 
@@ -4603,7 +4603,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
         :param str identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
-               Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+               Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         :param Sequence['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs'] sources: Sources that this `IngressPolicy` authorizes access from.
                Structure is documented below.
         """
@@ -4631,7 +4631,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom(dict):
         Specifies the type of identities that are allowed access from outside the
         perimeter. If left unspecified, then members of `identities` field will be
         allowed access.
-        Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         """
         return pulumi.get(self, "identity_type")
 

@@ -2865,7 +2865,7 @@ func (o AuthorityConfigX509ConfigPolicyIdArrayOutput) Index(i pulumi.IntInput) A
 type AuthorityKeySpec struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
-	// Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
+	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
 	Algorithm *string `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -2886,7 +2886,7 @@ type AuthorityKeySpecInput interface {
 type AuthorityKeySpecArgs struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
-	// Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
+	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -2972,7 +2972,7 @@ func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx conte
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
-// Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
+// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
 func (o AuthorityKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -3009,7 +3009,7 @@ func (o AuthorityKeySpecPtrOutput) Elem() AuthorityKeySpecOutput {
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
-// Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
+// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
 func (o AuthorityKeySpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorityKeySpec) *string {
 		if v == nil {
@@ -4218,7 +4218,7 @@ func (o CaPoolIssuancePolicyAllowedKeyTypeArrayOutput) Index(i pulumi.IntInput) 
 
 type CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve struct {
 	// The algorithm used.
-	// Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+	// Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
 	SignatureAlgorithm string `pulumi:"signatureAlgorithm"`
 }
 
@@ -4235,7 +4235,7 @@ type CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveInput interface {
 
 type CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs struct {
 	// The algorithm used.
-	// Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+	// Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
 	SignatureAlgorithm pulumi.StringInput `pulumi:"signatureAlgorithm"`
 }
 
@@ -4317,7 +4317,7 @@ func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveOutput) ToCaPoolIssuanceP
 }
 
 // The algorithm used.
-// Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+// Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
 func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveOutput) SignatureAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve) string { return v.SignatureAlgorithm }).(pulumi.StringOutput)
 }
@@ -4347,7 +4347,7 @@ func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutput) Elem() CaPoolI
 }
 
 // The algorithm used.
-// Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+// Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
 func (o CaPoolIssuancePolicyAllowedKeyTypeEllipticCurvePtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve) *string {
 		if v == nil {
@@ -8364,7 +8364,7 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 
 type CertificateCertificateDescriptionPublicKey struct {
 	// The format of the public key. Currently, only PEM format is supported.
-	// Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+	// Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
 	Format *string `pulumi:"format"`
 	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
 	Key *string `pulumi:"key"`
@@ -8383,7 +8383,7 @@ type CertificateCertificateDescriptionPublicKeyInput interface {
 
 type CertificateCertificateDescriptionPublicKeyArgs struct {
 	// The format of the public key. Currently, only PEM format is supported.
-	// Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+	// Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -8441,7 +8441,7 @@ func (o CertificateCertificateDescriptionPublicKeyOutput) ToCertificateCertifica
 }
 
 // The format of the public key. Currently, only PEM format is supported.
-// Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+// Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
 func (o CertificateCertificateDescriptionPublicKeyOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionPublicKey) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
@@ -10900,7 +10900,7 @@ func (o CertificateConfigPtrOutput) X509Config() CertificateConfigX509ConfigPtrO
 
 type CertificateConfigPublicKey struct {
 	// The format of the public key. Currently, only PEM format is supported.
-	// Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+	// Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
 	Format string `pulumi:"format"`
 	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
 	Key *string `pulumi:"key"`
@@ -10919,7 +10919,7 @@ type CertificateConfigPublicKeyInput interface {
 
 type CertificateConfigPublicKeyArgs struct {
 	// The format of the public key. Currently, only PEM format is supported.
-	// Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+	// Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
 	Format pulumi.StringInput `pulumi:"format"`
 	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -11003,7 +11003,7 @@ func (o CertificateConfigPublicKeyOutput) ToCertificateConfigPublicKeyPtrOutputW
 }
 
 // The format of the public key. Currently, only PEM format is supported.
-// Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+// Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
 func (o CertificateConfigPublicKeyOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateConfigPublicKey) string { return v.Format }).(pulumi.StringOutput)
 }
@@ -11038,7 +11038,7 @@ func (o CertificateConfigPublicKeyPtrOutput) Elem() CertificateConfigPublicKeyOu
 }
 
 // The format of the public key. Currently, only PEM format is supported.
-// Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+// Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
 func (o CertificateConfigPublicKeyPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateConfigPublicKey) *string {
 		if v == nil {

@@ -22,6 +22,14 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IncludePrefixes;
         /// <summary>
+        /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        public readonly string? LastModifiedBefore;
+        /// <summary>
+        /// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        public readonly string? LastModifiedSince;
+        /// <summary>
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         public readonly string? MaxTimeElapsedSinceLastModification;
@@ -36,12 +44,18 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             ImmutableArray<string> includePrefixes,
 
+            string? lastModifiedBefore,
+
+            string? lastModifiedSince,
+
             string? maxTimeElapsedSinceLastModification,
 
             string? minTimeElapsedSinceLastModification)
         {
             ExcludePrefixes = excludePrefixes;
             IncludePrefixes = includePrefixes;
+            LastModifiedBefore = lastModifiedBefore;
+            LastModifiedSince = lastModifiedSince;
             MaxTimeElapsedSinceLastModification = maxTimeElapsedSinceLastModification;
             MinTimeElapsedSinceLastModification = minTimeElapsedSinceLastModification;
         }

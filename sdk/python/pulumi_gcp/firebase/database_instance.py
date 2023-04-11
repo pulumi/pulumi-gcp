@@ -33,7 +33,7 @@ class DatabaseInstanceArgs:
                Creating user Databases is only available for projects on the Blaze plan.
                Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
                Default value is `USER_DATABASE`.
-               Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+               Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "region", region)
@@ -104,7 +104,7 @@ class DatabaseInstanceArgs:
         Creating user Databases is only available for projects on the Blaze plan.
         Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
         Default value is `USER_DATABASE`.
-        Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+        Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
         return pulumi.get(self, "type")
 
@@ -145,7 +145,7 @@ class _DatabaseInstanceState:
                Creating user Databases is only available for projects on the Blaze plan.
                Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
                Default value is `USER_DATABASE`.
-               Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+               Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
         if database_url is not None:
             pulumi.set(__self__, "database_url", database_url)
@@ -264,7 +264,7 @@ class _DatabaseInstanceState:
         Creating user Databases is only available for projects on the Blaze plan.
         Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
         Default value is `USER_DATABASE`.
-        Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+        Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
         return pulumi.get(self, "type")
 
@@ -374,7 +374,7 @@ class DatabaseInstance(pulumi.CustomResource):
                Creating user Databases is only available for projects on the Blaze plan.
                Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
                Default value is `USER_DATABASE`.
-               Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+               Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
         ...
     @overload
@@ -543,7 +543,7 @@ class DatabaseInstance(pulumi.CustomResource):
                Creating user Databases is only available for projects on the Blaze plan.
                Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
                Default value is `USER_DATABASE`.
-               Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+               Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -631,7 +631,7 @@ class DatabaseInstance(pulumi.CustomResource):
         Creating user Databases is only available for projects on the Blaze plan.
         Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
         Default value is `USER_DATABASE`.
-        Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+        Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
         """
         return pulumi.get(self, "type")
 

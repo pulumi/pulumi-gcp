@@ -266,7 +266,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      * 
      */
     @Export(name="bootDiskType", type=String.class, parameters={})
@@ -274,7 +274,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      * 
      */
     public Output<Optional<String>> bootDiskType() {
@@ -348,7 +348,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      * 
      */
     @Export(name="dataDiskType", type=String.class, parameters={})
@@ -356,7 +356,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      * 
      */
     public Output<Optional<String>> dataDiskType() {
@@ -364,7 +364,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
-     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+     * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      * 
      */
     @Export(name="diskEncryption", type=String.class, parameters={})
@@ -372,7 +372,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Disk encryption method used on the boot and data disks, defaults to GMEK.
-     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+     * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      * 
      */
     public Output<Optional<String>> diskEncryption() {
@@ -526,7 +526,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of vNIC driver.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      * 
      */
     @Export(name="nicType", type=String.class, parameters={})
@@ -534,7 +534,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of vNIC driver.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      * 
      */
     public Output<Optional<String>> nicType() {

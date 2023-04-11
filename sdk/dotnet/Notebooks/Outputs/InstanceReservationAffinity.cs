@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
     {
         /// <summary>
         /// The type of Compute Reservation.
-        /// Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+        /// Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
         /// </summary>
         public readonly string ConsumeReservationType;
         /// <summary>

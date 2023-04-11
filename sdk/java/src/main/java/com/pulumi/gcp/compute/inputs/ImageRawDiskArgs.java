@@ -21,7 +21,7 @@ public final class ImageRawDiskArgs extends com.pulumi.resources.ResourceArgs {
      * and not a runtime format. Provided by the client when the disk
      * image is created.
      * Default value is `TAR`.
-     * Possible values are `TAR`.
+     * Possible values are: `TAR`.
      * 
      */
     @Import(name="containerType")
@@ -33,7 +33,7 @@ public final class ImageRawDiskArgs extends com.pulumi.resources.ResourceArgs {
      * and not a runtime format. Provided by the client when the disk
      * image is created.
      * Default value is `TAR`.
-     * Possible values are `TAR`.
+     * Possible values are: `TAR`.
      * 
      */
     public Optional<Output<String>> containerType() {
@@ -108,7 +108,7 @@ public final class ImageRawDiskArgs extends com.pulumi.resources.ResourceArgs {
          * and not a runtime format. Provided by the client when the disk
          * image is created.
          * Default value is `TAR`.
-         * Possible values are `TAR`.
+         * Possible values are: `TAR`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ImageRawDiskArgs extends com.pulumi.resources.ResourceArgs {
          * and not a runtime format. Provided by the client when the disk
          * image is created.
          * Default value is `TAR`.
-         * Possible values are `TAR`.
+         * Possible values are: `TAR`.
          * 
          * @return builder
          * 

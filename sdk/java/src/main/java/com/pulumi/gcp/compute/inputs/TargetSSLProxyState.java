@@ -129,7 +129,7 @@ public final class TargetSSLProxyState extends com.pulumi.resources.ResourceArgs
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     @Import(name="proxyHeader")
@@ -139,7 +139,7 @@ public final class TargetSSLProxyState extends com.pulumi.resources.ResourceArgs
      * @return Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     public Optional<Output<String>> proxyHeader() {
@@ -396,7 +396,7 @@ public final class TargetSSLProxyState extends com.pulumi.resources.ResourceArgs
          * @param proxyHeader Specifies the type of proxy header to append before sending data to
          * the backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class TargetSSLProxyState extends com.pulumi.resources.ResourceArgs
          * @param proxyHeader Specifies the type of proxy header to append before sending data to
          * the backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * 
          * @return builder
          * 

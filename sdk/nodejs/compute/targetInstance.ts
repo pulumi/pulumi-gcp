@@ -157,7 +157,7 @@ export class TargetInstance extends pulumi.CustomResource {
      * NAT option controlling how IPs are NAT'ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
-     * Possible values are `NO_NAT`.
+     * Possible values are: `NO_NAT`.
      */
     public readonly natPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -255,7 +255,7 @@ export interface TargetInstanceState {
      * NAT option controlling how IPs are NAT'ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
-     * Possible values are `NO_NAT`.
+     * Possible values are: `NO_NAT`.
      */
     natPolicy?: pulumi.Input<string>;
     /**
@@ -308,7 +308,7 @@ export interface TargetInstanceArgs {
      * NAT option controlling how IPs are NAT'ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
-     * Possible values are `NO_NAT`.
+     * Possible values are: `NO_NAT`.
      */
     natPolicy?: pulumi.Input<string>;
     /**

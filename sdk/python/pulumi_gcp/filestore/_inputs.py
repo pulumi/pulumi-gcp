@@ -106,7 +106,7 @@ class InstanceFileSharesNfsExportOptionArgs:
         :param pulumi.Input[str] access_mode: Either READ_ONLY, for allowing only read requests on the exported directory,
                or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
                Default value is `READ_WRITE`.
-               Possible values are `READ_ONLY` and `READ_WRITE`.
+               Possible values are: `READ_ONLY`, `READ_WRITE`.
         :param pulumi.Input[int] anon_gid: An integer representing the anonymous group id with a default value of 65534.
                Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
                if this field is specified for other squashMode settings.
@@ -119,7 +119,7 @@ class InstanceFileSharesNfsExportOptionArgs:
         :param pulumi.Input[str] squash_mode: Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
                for not allowing root access. The default is NO_ROOT_SQUASH.
                Default value is `NO_ROOT_SQUASH`.
-               Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+               Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
         """
         if access_mode is not None:
             pulumi.set(__self__, "access_mode", access_mode)
@@ -139,7 +139,7 @@ class InstanceFileSharesNfsExportOptionArgs:
         Either READ_ONLY, for allowing only read requests on the exported directory,
         or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
         Default value is `READ_WRITE`.
-        Possible values are `READ_ONLY` and `READ_WRITE`.
+        Possible values are: `READ_ONLY`, `READ_WRITE`.
         """
         return pulumi.get(self, "access_mode")
 
@@ -196,7 +196,7 @@ class InstanceFileSharesNfsExportOptionArgs:
         Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
         for not allowing root access. The default is NO_ROOT_SQUASH.
         Default value is `NO_ROOT_SQUASH`.
-        Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+        Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
         """
         return pulumi.get(self, "squash_mode")
 
@@ -216,14 +216,14 @@ class InstanceNetworkArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] modes: IP versions for which the instance has
                IP addresses assigned.
-               Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+               Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
         :param pulumi.Input[str] network: The name of the GCE VPC network to which the
                instance is connected.
         :param pulumi.Input[str] connect_mode: The network connect mode of the Filestore instance.
                If not provided, the connect mode defaults to
                DIRECT_PEERING.
                Default value is `DIRECT_PEERING`.
-               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+               Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: (Output)
                A list of IPv4 or IPv6 addresses.
         :param pulumi.Input[str] reserved_ip_range: A /29 CIDR block that identifies the range of IP
@@ -244,7 +244,7 @@ class InstanceNetworkArgs:
         """
         IP versions for which the instance has
         IP addresses assigned.
-        Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+        Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
         """
         return pulumi.get(self, "modes")
 
@@ -273,7 +273,7 @@ class InstanceNetworkArgs:
         If not provided, the connect mode defaults to
         DIRECT_PEERING.
         Default value is `DIRECT_PEERING`.
-        Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         """
         return pulumi.get(self, "connect_mode")
 

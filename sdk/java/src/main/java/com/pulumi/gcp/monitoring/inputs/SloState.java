@@ -51,7 +51,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
     /**
      * A calendar period, semantically &#34;since the start of the current
      * &lt;calendarPeriod&gt;&#34;.
-     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+     * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      * 
      */
     @Import(name="calendarPeriod")
@@ -60,7 +60,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A calendar period, semantically &#34;since the start of the current
      * &lt;calendarPeriod&gt;&#34;.
-     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+     * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      * 
      */
     public Optional<Output<String>> calendarPeriod() {
@@ -334,7 +334,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param calendarPeriod A calendar period, semantically &#34;since the start of the current
          * &lt;calendarPeriod&gt;&#34;.
-         * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+         * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param calendarPeriod A calendar period, semantically &#34;since the start of the current
          * &lt;calendarPeriod&gt;&#34;.
-         * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+         * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
          * 
          * @return builder
          * 

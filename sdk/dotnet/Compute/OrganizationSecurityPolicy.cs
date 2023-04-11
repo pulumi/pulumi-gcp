@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Compute
         /// For organization security policies, the only supported type
         /// is "FIREWALL".
         /// Default value is `FIREWALL`.
-        /// Possible values are `FIREWALL`.
+        /// Possible values are: `FIREWALL`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// For organization security policies, the only supported type
         /// is "FIREWALL".
         /// Default value is `FIREWALL`.
-        /// Possible values are `FIREWALL`.
+        /// Possible values are: `FIREWALL`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.Gcp.Compute
         /// For organization security policies, the only supported type
         /// is "FIREWALL".
         /// Default value is `FIREWALL`.
-        /// Possible values are `FIREWALL`.
+        /// Possible values are: `FIREWALL`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Specifies the cache setting for all responses from this backend.
         /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-        /// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        /// Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
         /// </summary>
         public readonly string? CacheMode;
         /// <summary>

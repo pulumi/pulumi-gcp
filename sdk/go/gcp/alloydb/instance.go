@@ -119,7 +119,7 @@ type Instance struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-	// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringOutput `pulumi:"availabilityType"`
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -135,7 +135,7 @@ type Instance struct {
 	// The ID of the alloydb instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The type of the instance.
-	// Possible values are `PRIMARY` and `READ_POOL`.
+	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
@@ -200,7 +200,7 @@ type instanceState struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-	// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -216,7 +216,7 @@ type instanceState struct {
 	// The ID of the alloydb instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// The type of the instance.
-	// Possible values are `PRIMARY` and `READ_POOL`.
+	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -244,7 +244,7 @@ type InstanceState struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations pulumi.StringMapInput
 	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-	// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -260,7 +260,7 @@ type InstanceState struct {
 	// The ID of the alloydb instance.
 	InstanceId pulumi.StringPtrInput
 	// The type of the instance.
-	// Possible values are `PRIMARY` and `READ_POOL`.
+	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType pulumi.StringPtrInput
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
 	IpAddress pulumi.StringPtrInput
@@ -292,7 +292,7 @@ type instanceArgs struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-	// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -306,7 +306,7 @@ type instanceArgs struct {
 	// The ID of the alloydb instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The type of the instance.
-	// Possible values are `PRIMARY` and `READ_POOL`.
+	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType string `pulumi:"instanceType"`
 	// User-defined labels for the alloydb instance.
 	Labels map[string]string `pulumi:"labels"`
@@ -323,7 +323,7 @@ type InstanceArgs struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations pulumi.StringMapInput
 	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-	// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
 	// Identifies the alloydb cluster. Must be in the format
 	// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -337,7 +337,7 @@ type InstanceArgs struct {
 	// The ID of the alloydb instance.
 	InstanceId pulumi.StringInput
 	// The type of the instance.
-	// Possible values are `PRIMARY` and `READ_POOL`.
+	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType pulumi.StringInput
 	// User-defined labels for the alloydb instance.
 	Labels pulumi.StringMapInput
@@ -442,7 +442,7 @@ func (o InstanceOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 func (o InstanceOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityType }).(pulumi.StringOutput)
 }
@@ -479,7 +479,7 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The type of the instance.
-// Possible values are `PRIMARY` and `READ_POOL`.
+// Possible values are: `PRIMARY`, `READ_POOL`.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }

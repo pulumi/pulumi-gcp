@@ -22,7 +22,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
      * - FRIDAY: Friday
      * - SATURDAY: Saturday
      * - SUNDAY: Sunday
-     *   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     *   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     private String day;
@@ -53,7 +53,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
      * - FRIDAY: Friday
      * - SATURDAY: Saturday
      * - SUNDAY: Sunday
-     *   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     *   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public String day() {

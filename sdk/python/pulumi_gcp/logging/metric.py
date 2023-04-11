@@ -20,6 +20,7 @@ class MetricArgs:
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metric_descriptor: Optional[pulumi.Input['MetricMetricDescriptorArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,7 @@ class MetricArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
+        :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -67,6 +69,8 @@ class MetricArgs:
             pulumi.set(__self__, "bucket_options", bucket_options)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if label_extractors is not None:
             pulumi.set(__self__, "label_extractors", label_extractors)
         if metric_descriptor is not None:
@@ -130,6 +134,18 @@ class MetricArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to True, then this metric is disabled and it does not generate any points.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
     @property
     @pulumi.getter(name="labelExtractors")
@@ -216,6 +232,7 @@ class _MetricState:
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input['MetricBucketOptionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metric_descriptor: Optional[pulumi.Input['MetricMetricDescriptorArgs']] = None,
@@ -231,6 +248,7 @@ class _MetricState:
                Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
+        :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
@@ -263,6 +281,8 @@ class _MetricState:
             pulumi.set(__self__, "bucket_options", bucket_options)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
         if label_extractors is not None:
@@ -315,6 +335,18 @@ class _MetricState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to True, then this metric is disabled and it does not generate any points.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
 
     @property
     @pulumi.getter
@@ -416,6 +448,7 @@ class Metric(pulumi.CustomResource):
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']]] = None,
@@ -522,6 +555,20 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric_project_bucket_config.id)
         ```
+        ### Logging Metric Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_metric = gcp.logging.Metric("loggingMetric",
+            disabled=True,
+            filter="resource.type=gae_app AND severity>=ERROR",
+            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
+                metric_kind="DELTA",
+                value_type="INT64",
+            ))
+        ```
 
         ## Import
 
@@ -544,6 +591,7 @@ class Metric(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
+        :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
@@ -675,6 +723,20 @@ class Metric(pulumi.CustomResource):
             filter="resource.type=gae_app AND severity>=ERROR",
             bucket_name=logging_metric_project_bucket_config.id)
         ```
+        ### Logging Metric Disabled
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        logging_metric = gcp.logging.Metric("loggingMetric",
+            disabled=True,
+            filter="resource.type=gae_app AND severity>=ERROR",
+            metric_descriptor=gcp.logging.MetricMetricDescriptorArgs(
+                metric_kind="DELTA",
+                value_type="INT64",
+            ))
+        ```
 
         ## Import
 
@@ -706,6 +768,7 @@ class Metric(pulumi.CustomResource):
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']]] = None,
@@ -724,6 +787,7 @@ class Metric(pulumi.CustomResource):
             __props__.__dict__["bucket_name"] = bucket_name
             __props__.__dict__["bucket_options"] = bucket_options
             __props__.__dict__["description"] = description
+            __props__.__dict__["disabled"] = disabled
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
@@ -745,6 +809,7 @@ class Metric(pulumi.CustomResource):
             bucket_name: Optional[pulumi.Input[str]] = None,
             bucket_options: Optional[pulumi.Input[pulumi.InputType['MetricBucketOptionsArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disabled: Optional[pulumi.Input[bool]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricMetricDescriptorArgs']]] = None,
@@ -765,6 +830,7 @@ class Metric(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: A description of this metric, which is used in documentation. The maximum length of the
                description is 8000 characters.
+        :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
@@ -798,6 +864,7 @@ class Metric(pulumi.CustomResource):
         __props__.__dict__["bucket_name"] = bucket_name
         __props__.__dict__["bucket_options"] = bucket_options
         __props__.__dict__["description"] = description
+        __props__.__dict__["disabled"] = disabled
         __props__.__dict__["filter"] = filter
         __props__.__dict__["label_extractors"] = label_extractors
         __props__.__dict__["metric_descriptor"] = metric_descriptor
@@ -833,6 +900,14 @@ class Metric(pulumi.CustomResource):
         description is 8000 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to True, then this metric is disabled and it does not generate any points.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter

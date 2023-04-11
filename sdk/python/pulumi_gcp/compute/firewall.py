@@ -53,7 +53,7 @@ class FirewallArgs:
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
                `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
@@ -234,7 +234,7 @@ class FirewallArgs:
         destinationRanges; For EGRESS traffic, it is NOT supported to specify
         `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
         `source_tags` or `source_service_accounts` is required.
-        Possible values are `INGRESS` and `EGRESS`.
+        Possible values are: `INGRESS`, `EGRESS`.
         """
         return pulumi.get(self, "direction")
 
@@ -471,7 +471,7 @@ class _FirewallState:
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
                `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
@@ -659,7 +659,7 @@ class _FirewallState:
         destinationRanges; For EGRESS traffic, it is NOT supported to specify
         `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
         `source_tags` or `source_service_accounts` is required.
-        Possible values are `INGRESS` and `EGRESS`.
+        Possible values are: `INGRESS`, `EGRESS`.
         """
         return pulumi.get(self, "direction")
 
@@ -1003,7 +1003,7 @@ class Firewall(pulumi.CustomResource):
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
                `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
@@ -1279,7 +1279,7 @@ class Firewall(pulumi.CustomResource):
                destinationRanges; For EGRESS traffic, it is NOT supported to specify
                `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
                network it is associated with. When set to true, the firewall rule is
                not enforced and the network behaves as if it did not exist. If this
@@ -1430,7 +1430,7 @@ class Firewall(pulumi.CustomResource):
         destinationRanges; For EGRESS traffic, it is NOT supported to specify
         `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
         `source_tags` or `source_service_accounts` is required.
-        Possible values are `INGRESS` and `EGRESS`.
+        Possible values are: `INGRESS`, `EGRESS`.
         """
         return pulumi.get(self, "direction")
 

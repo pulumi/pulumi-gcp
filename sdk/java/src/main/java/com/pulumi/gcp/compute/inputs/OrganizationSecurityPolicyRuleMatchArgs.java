@@ -52,7 +52,7 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
      * Preconfigured versioned expression. For organization security policy rules,
      * the only supported type is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     @Import(name="versionedExpr")
@@ -62,7 +62,7 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
      * @return Preconfigured versioned expression. For organization security policy rules,
      * the only supported type is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     public Optional<Output<String>> versionedExpr() {
@@ -143,7 +143,7 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
          * @param versionedExpr Preconfigured versioned expression. For organization security policy rules,
          * the only supported type is &#34;FIREWALL&#34;.
          * Default value is `FIREWALL`.
-         * Possible values are `FIREWALL`.
+         * Possible values are: `FIREWALL`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
          * @param versionedExpr Preconfigured versioned expression. For organization security policy rules,
          * the only supported type is &#34;FIREWALL&#34;.
          * Default value is `FIREWALL`.
-         * Possible values are `FIREWALL`.
+         * Possible values are: `FIREWALL`.
          * 
          * @return builder
          * 

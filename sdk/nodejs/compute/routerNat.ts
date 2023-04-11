@@ -216,7 +216,7 @@ export class RouterNat extends pulumi.CustomResource {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+     * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
     public readonly natIpAllocateOption!: pulumi.Output<string>;
     /**
@@ -253,7 +253,7 @@ export class RouterNat extends pulumi.CustomResource {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
-     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+     * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
     public readonly sourceSubnetworkIpRangesToNat!: pulumi.Output<string>;
     /**
@@ -402,7 +402,7 @@ export interface RouterNatState {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+     * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
     natIpAllocateOption?: pulumi.Input<string>;
     /**
@@ -439,7 +439,7 @@ export interface RouterNatState {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
-     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+     * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
     sourceSubnetworkIpRangesToNat?: pulumi.Input<string>;
     /**
@@ -519,7 +519,7 @@ export interface RouterNatArgs {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+     * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      */
     natIpAllocateOption: pulumi.Input<string>;
     /**
@@ -556,7 +556,7 @@ export interface RouterNatArgs {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
-     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+     * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      */
     sourceSubnetworkIpRangesToNat: pulumi.Input<string>;
     /**

@@ -422,7 +422,7 @@ export class Trigger extends pulumi.CustomResource {
      * Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
-     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      */
     public readonly includeBuildLogs!: pulumi.Output<string | undefined>;
     /**
@@ -647,7 +647,7 @@ export interface TriggerState {
      * Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
-     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      */
     includeBuildLogs?: pulumi.Input<string>;
     /**
@@ -798,7 +798,7 @@ export interface TriggerArgs {
      * Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
-     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      */
     includeBuildLogs?: pulumi.Input<string>;
     /**

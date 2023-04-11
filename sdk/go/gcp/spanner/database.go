@@ -94,7 +94,7 @@ type Database struct {
 
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 	DatabaseDialect pulumi.StringOutput `pulumi:"databaseDialect"`
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -159,7 +159,7 @@ func GetDatabase(ctx *pulumi.Context,
 type databaseState struct {
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 	DatabaseDialect *string `pulumi:"databaseDialect"`
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -193,7 +193,7 @@ type databaseState struct {
 type DatabaseState struct {
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 	DatabaseDialect pulumi.StringPtrInput
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -231,7 +231,7 @@ func (DatabaseState) ElementType() reflect.Type {
 type databaseArgs struct {
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 	DatabaseDialect *string `pulumi:"databaseDialect"`
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -264,7 +264,7 @@ type databaseArgs struct {
 type DatabaseArgs struct {
 	// The dialect of the Cloud Spanner Database.
 	// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-	// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+	// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 	DatabaseDialect pulumi.StringPtrInput
 	// An optional list of DDL statements to run inside the newly created
 	// database. Statements can create tables, indexes, etc. These statements
@@ -382,7 +382,7 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 
 // The dialect of the Cloud Spanner Database.
 // If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
 func (o DatabaseOutput) DatabaseDialect() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseDialect }).(pulumi.StringOutput)
 }

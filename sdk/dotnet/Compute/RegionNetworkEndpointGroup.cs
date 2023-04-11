@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
-        /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string?> NetworkEndpointType { get; private set; } = null!;
@@ -446,7 +446,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
-        /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -547,7 +547,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
         /// Default value is `SERVERLESS`.
-        /// Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }

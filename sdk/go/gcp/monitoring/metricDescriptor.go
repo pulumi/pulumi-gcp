@@ -134,13 +134,13 @@ type MetricDescriptor struct {
 	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayOutput `pulumi:"labels"`
 	// The launch stage of the metric definition.
-	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+	// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrOutput `pulumi:"launchStage"`
 	// Metadata which can be used to guide usage of the metric.
 	// Structure is documented below.
 	Metadata MetricDescriptorMetadataPtrOutput `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+	// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
 	MetricKind pulumi.StringOutput `pulumi:"metricKind"`
 	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
 	MonitoredResourceTypes pulumi.StringArrayOutput `pulumi:"monitoredResourceTypes"`
@@ -170,7 +170,7 @@ type MetricDescriptor struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrOutput `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
 	ValueType pulumi.StringOutput `pulumi:"valueType"`
 }
 
@@ -226,13 +226,13 @@ type metricDescriptorState struct {
 	// Structure is documented below.
 	Labels []MetricDescriptorLabel `pulumi:"labels"`
 	// The launch stage of the metric definition.
-	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+	// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// Metadata which can be used to guide usage of the metric.
 	// Structure is documented below.
 	Metadata *MetricDescriptorMetadata `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+	// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
 	MetricKind *string `pulumi:"metricKind"`
 	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
 	MonitoredResourceTypes []string `pulumi:"monitoredResourceTypes"`
@@ -262,7 +262,7 @@ type metricDescriptorState struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -275,13 +275,13 @@ type MetricDescriptorState struct {
 	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayInput
 	// The launch stage of the metric definition.
-	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+	// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// Metadata which can be used to guide usage of the metric.
 	// Structure is documented below.
 	Metadata MetricDescriptorMetadataPtrInput
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+	// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
 	MetricKind pulumi.StringPtrInput
 	// If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here. This field allows time series to be associated with the intersection of this metric type and the monitored resource types in this list.
 	MonitoredResourceTypes pulumi.StringArrayInput
@@ -311,7 +311,7 @@ type MetricDescriptorState struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
 	ValueType pulumi.StringPtrInput
 }
 
@@ -328,13 +328,13 @@ type metricDescriptorArgs struct {
 	// Structure is documented below.
 	Labels []MetricDescriptorLabel `pulumi:"labels"`
 	// The launch stage of the metric definition.
-	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+	// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// Metadata which can be used to guide usage of the metric.
 	// Structure is documented below.
 	Metadata *MetricDescriptorMetadata `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+	// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
 	MetricKind string `pulumi:"metricKind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -360,7 +360,7 @@ type metricDescriptorArgs struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -374,13 +374,13 @@ type MetricDescriptorArgs struct {
 	// Structure is documented below.
 	Labels MetricDescriptorLabelArrayInput
 	// The launch stage of the metric definition.
-	// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+	// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// Metadata which can be used to guide usage of the metric.
 	// Structure is documented below.
 	Metadata MetricDescriptorMetadataPtrInput
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+	// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
 	MetricKind pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -406,7 +406,7 @@ type MetricDescriptorArgs struct {
 	// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
 	Unit pulumi.StringPtrInput
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
 	ValueType pulumi.StringInput
 }
 
@@ -514,7 +514,7 @@ func (o MetricDescriptorOutput) Labels() MetricDescriptorLabelArrayOutput {
 }
 
 // The launch stage of the metric definition.
-// Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 func (o MetricDescriptorOutput) LaunchStage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringPtrOutput { return v.LaunchStage }).(pulumi.StringPtrOutput)
 }
@@ -526,7 +526,7 @@ func (o MetricDescriptorOutput) Metadata() MetricDescriptorMetadataPtrOutput {
 }
 
 // Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-// Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
 func (o MetricDescriptorOutput) MetricKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.MetricKind }).(pulumi.StringOutput)
 }
@@ -574,7 +574,7 @@ func (o MetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
 func (o MetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricDescriptor) pulumi.StringOutput { return v.ValueType }).(pulumi.StringOutput)
 }

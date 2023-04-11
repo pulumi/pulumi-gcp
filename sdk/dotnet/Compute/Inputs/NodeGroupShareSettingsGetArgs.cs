@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Node group sharing type.
-        /// Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+        /// Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
         /// </summary>
         [Input("shareType", required: true)]
         public Input<string> ShareType { get; set; } = null!;

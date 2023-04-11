@@ -157,7 +157,7 @@ type GroupMembership struct {
 	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyOutput `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// EntityKey of the member.
 	// Structure is documented below.
@@ -215,7 +215,7 @@ type groupMembershipState struct {
 	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
 	Name *string `pulumi:"name"`
 	// EntityKey of the member.
 	// Structure is documented below.
@@ -239,7 +239,7 @@ type GroupMembershipState struct {
 	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
 	Name pulumi.StringPtrInput
 	// EntityKey of the member.
 	// Structure is documented below.
@@ -393,7 +393,7 @@ func (o GroupMembershipOutput) MemberKey() GroupMembershipMemberKeyOutput {
 }
 
 // The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
 func (o GroupMembershipOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

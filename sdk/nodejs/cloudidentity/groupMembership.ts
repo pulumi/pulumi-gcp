@@ -141,7 +141,7 @@ export class GroupMembership extends pulumi.CustomResource {
     public readonly memberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipMemberKey>;
     /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -226,7 +226,7 @@ export interface GroupMembershipState {
     memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
      */
     name?: pulumi.Input<string>;
     /**

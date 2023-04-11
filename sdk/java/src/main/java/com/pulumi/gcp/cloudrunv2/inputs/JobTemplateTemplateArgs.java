@@ -54,7 +54,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
 
     /**
      * The execution environment being used to host this Task.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     @Import(name="executionEnvironment")
@@ -62,7 +62,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The execution environment being used to host this Task.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     public Optional<Output<String>> executionEnvironment() {
@@ -238,7 +238,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param executionEnvironment The execution environment being used to host this Task.
-         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class JobTemplateTemplateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param executionEnvironment The execution environment being used to host this Task.
-         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
          * 
          * @return builder
          * 

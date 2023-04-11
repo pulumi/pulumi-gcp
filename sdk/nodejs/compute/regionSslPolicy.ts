@@ -84,7 +84,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
-     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      */
     public readonly minTlsVersion!: pulumi.Output<string | undefined>;
     /**
@@ -106,7 +106,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
      * Default value is `COMPATIBLE`.
-     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      */
     public readonly profile!: pulumi.Output<string | undefined>;
     /**
@@ -204,7 +204,7 @@ export interface RegionSslPolicyState {
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
-     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      */
     minTlsVersion?: pulumi.Input<string>;
     /**
@@ -226,7 +226,7 @@ export interface RegionSslPolicyState {
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
      * Default value is `COMPATIBLE`.
-     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      */
     profile?: pulumi.Input<string>;
     /**
@@ -266,7 +266,7 @@ export interface RegionSslPolicyArgs {
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
-     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      */
     minTlsVersion?: pulumi.Input<string>;
     /**
@@ -288,7 +288,7 @@ export interface RegionSslPolicyArgs {
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `customFeatures` attribute **must be set**.
      * Default value is `COMPATIBLE`.
-     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      */
     profile?: pulumi.Input<string>;
     /**

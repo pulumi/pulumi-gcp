@@ -24,7 +24,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
      * - FRIDAY: Friday
      * - SATURDAY: Saturday
      * - SUNDAY: Sunday
-     *   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     *   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     @Import(name="day", required=true)
@@ -40,7 +40,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
      * - FRIDAY: Friday
      * - SATURDAY: Saturday
      * - SUNDAY: Sunday
-     *   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     *   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public Output<String> day() {
@@ -119,7 +119,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
          * - FRIDAY: Friday
          * - SATURDAY: Saturday
          * - SUNDAY: Sunday
-         *   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         *   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs extends 
          * - FRIDAY: Friday
          * - SATURDAY: Saturday
          * - SUNDAY: Sunday
-         *   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         *   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 

@@ -348,7 +348,7 @@ func (o DomainMappingMetadataPtrOutput) Uid() pulumi.StringPtrOutput {
 type DomainMappingSpec struct {
 	// The mode of the certificate.
 	// Default value is `AUTOMATIC`.
-	// Possible values are `NONE` and `AUTOMATIC`.
+	// Possible values are: `NONE`, `AUTOMATIC`.
 	CertificateMode *string `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -374,7 +374,7 @@ type DomainMappingSpecInput interface {
 type DomainMappingSpecArgs struct {
 	// The mode of the certificate.
 	// Default value is `AUTOMATIC`.
-	// Possible values are `NONE` and `AUTOMATIC`.
+	// Possible values are: `NONE`, `AUTOMATIC`.
 	CertificateMode pulumi.StringPtrInput `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set.
 	// It is recommended that the user leaves this empty to receive an error
@@ -465,7 +465,7 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx con
 
 // The mode of the certificate.
 // Default value is `AUTOMATIC`.
-// Possible values are `NONE` and `AUTOMATIC`.
+// Possible values are: `NONE`, `AUTOMATIC`.
 func (o DomainMappingSpecOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
 }
@@ -510,7 +510,7 @@ func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
 
 // The mode of the certificate.
 // Default value is `AUTOMATIC`.
-// Possible values are `NONE` and `AUTOMATIC`.
+// Possible values are: `NONE`, `AUTOMATIC`.
 func (o DomainMappingSpecPtrOutput) CertificateMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingSpec) *string {
 		if v == nil {
@@ -706,7 +706,7 @@ type DomainMappingStatusCondition struct {
 	// Status of the condition, one of True, False, Unknown.
 	Status *string `pulumi:"status"`
 	// Resource record type. Example: `AAAA`.
-	// Possible values are `A`, `AAAA`, and `CNAME`.
+	// Possible values are: `A`, `AAAA`, `CNAME`.
 	Type *string `pulumi:"type"`
 }
 
@@ -732,7 +732,7 @@ type DomainMappingStatusConditionArgs struct {
 	// Status of the condition, one of True, False, Unknown.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Resource record type. Example: `AAAA`.
-	// Possible values are `A`, `AAAA`, and `CNAME`.
+	// Possible values are: `A`, `AAAA`, `CNAME`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -806,7 +806,7 @@ func (o DomainMappingStatusConditionOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Resource record type. Example: `AAAA`.
-// Possible values are `A`, `AAAA`, and `CNAME`.
+// Possible values are: `A`, `AAAA`, `CNAME`.
 func (o DomainMappingStatusConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -839,7 +839,7 @@ type DomainMappingStatusResourceRecord struct {
 	// (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata *string `pulumi:"rrdata"`
 	// Resource record type. Example: `AAAA`.
-	// Possible values are `A`, `AAAA`, and `CNAME`.
+	// Possible values are: `A`, `AAAA`, `CNAME`.
 	Type *string `pulumi:"type"`
 }
 
@@ -862,7 +862,7 @@ type DomainMappingStatusResourceRecordArgs struct {
 	// (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
 	// Resource record type. Example: `AAAA`.
-	// Possible values are `A`, `AAAA`, and `CNAME`.
+	// Possible values are: `A`, `AAAA`, `CNAME`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -930,7 +930,7 @@ func (o DomainMappingStatusResourceRecordOutput) Rrdata() pulumi.StringPtrOutput
 }
 
 // Resource record type. Example: `AAAA`.
-// Possible values are `A`, `AAAA`, and `CNAME`.
+// Possible values are: `A`, `AAAA`, `CNAME`.
 func (o DomainMappingStatusResourceRecordOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingStatusResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

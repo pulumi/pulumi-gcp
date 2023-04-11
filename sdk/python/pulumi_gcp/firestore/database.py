@@ -27,11 +27,11 @@ class DatabaseArgs:
         :param pulumi.Input[str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
-               Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+               Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
-               Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+               Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -72,7 +72,7 @@ class DatabaseArgs:
         The type of the database.
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
-        Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+        Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         """
         return pulumi.get(self, "type")
 
@@ -85,7 +85,7 @@ class DatabaseArgs:
     def app_engine_integration_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The App Engine integration mode to use for this database.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "app_engine_integration_mode")
 
@@ -98,7 +98,7 @@ class DatabaseArgs:
     def concurrency_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The concurrency control mode to use for this database.
-        Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         """
         return pulumi.get(self, "concurrency_mode")
 
@@ -152,9 +152,9 @@ class _DatabaseState:
         """
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
-               Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+               Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] create_time: The timestamp at which this database was created.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields,
                and may be sent on update and delete requests to ensure the client has an
@@ -176,7 +176,7 @@ class _DatabaseState:
         :param pulumi.Input[str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
-               Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+               Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         """
         if app_engine_integration_mode is not None:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
@@ -202,7 +202,7 @@ class _DatabaseState:
     def app_engine_integration_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The App Engine integration mode to use for this database.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "app_engine_integration_mode")
 
@@ -215,7 +215,7 @@ class _DatabaseState:
     def concurrency_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The concurrency control mode to use for this database.
-        Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         """
         return pulumi.get(self, "concurrency_mode")
 
@@ -314,7 +314,7 @@ class _DatabaseState:
         The type of the database.
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
-        Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+        Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         """
         return pulumi.get(self, "type")
 
@@ -357,9 +357,9 @@ class Database(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
-               Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+               Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] location_id: The location of the database. Available databases are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
@@ -373,7 +373,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
-               Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+               Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         """
         ...
     @overload
@@ -470,9 +470,9 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
-               Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+               Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] create_time: The timestamp at which this database was created.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields,
                and may be sent on update and delete requests to ensure the client has an
@@ -494,7 +494,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the database.
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
-               Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+               Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -516,7 +516,7 @@ class Database(pulumi.CustomResource):
     def app_engine_integration_mode(self) -> pulumi.Output[str]:
         """
         The App Engine integration mode to use for this database.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "app_engine_integration_mode")
 
@@ -525,7 +525,7 @@ class Database(pulumi.CustomResource):
     def concurrency_mode(self) -> pulumi.Output[str]:
         """
         The concurrency control mode to use for this database.
-        Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+        Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         """
         return pulumi.get(self, "concurrency_mode")
 
@@ -596,7 +596,7 @@ class Database(pulumi.CustomResource):
         The type of the database.
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
-        Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+        Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
         """
         return pulumi.get(self, "type")
 

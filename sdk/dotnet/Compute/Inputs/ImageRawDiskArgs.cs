@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// and not a runtime format. Provided by the client when the disk
         /// image is created.
         /// Default value is `TAR`.
-        /// Possible values are `TAR`.
+        /// Possible values are: `TAR`.
         /// </summary>
         [Input("containerType")]
         public Input<string>? ContainerType { get; set; }

@@ -101,7 +101,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
      * NAT option controlling how IPs are NAT&#39;ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
-     * Possible values are `NO_NAT`.
+     * Possible values are: `NO_NAT`.
      * 
      */
     @Import(name="natPolicy")
@@ -111,7 +111,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
      * @return NAT option controlling how IPs are NAT&#39;ed to the instance.
      * Currently only NO_NAT (default value) is supported.
      * Default value is `NO_NAT`.
-     * Possible values are `NO_NAT`.
+     * Possible values are: `NO_NAT`.
      * 
      */
     public Optional<Output<String>> natPolicy() {
@@ -322,7 +322,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
          * @param natPolicy NAT option controlling how IPs are NAT&#39;ed to the instance.
          * Currently only NO_NAT (default value) is supported.
          * Default value is `NO_NAT`.
-         * Possible values are `NO_NAT`.
+         * Possible values are: `NO_NAT`.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
          * @param natPolicy NAT option controlling how IPs are NAT&#39;ed to the instance.
          * Currently only NO_NAT (default value) is supported.
          * Default value is `NO_NAT`.
-         * Possible values are `NO_NAT`.
+         * Possible values are: `NO_NAT`.
          * 
          * @return builder
          * 

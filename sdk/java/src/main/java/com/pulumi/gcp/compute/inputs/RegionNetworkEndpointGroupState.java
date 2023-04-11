@@ -142,7 +142,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     @Import(name="networkEndpointType")
@@ -151,7 +151,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     /**
      * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      * 
      */
     public Optional<Output<String>> networkEndpointType() {
@@ -451,7 +451,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
          * Default value is `SERVERLESS`.
-         * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
          * Default value is `SERVERLESS`.
-         * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
          * 
          * @return builder
          * 

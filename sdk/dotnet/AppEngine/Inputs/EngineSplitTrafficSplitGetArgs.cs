@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.AppEngine.Inputs
 
         /// <summary>
         /// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-        /// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+        /// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
         /// </summary>
         [Input("shardBy")]
         public Input<string>? ShardBy { get; set; }

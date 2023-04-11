@@ -29,7 +29,7 @@ class EnvironmentArgs:
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
-               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+               Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -37,7 +37,7 @@ class EnvironmentArgs:
                Managing the deployment of API proxy or shared flow revisions;
                Creating, updating, or deleting resource files;
                Creating, updating, or deleting target servers.
-               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+               Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
@@ -77,7 +77,7 @@ class EnvironmentArgs:
         """
         Optional. API Proxy type supported by the environment. The type can be set when creating
         the Environment and cannot be changed.
-        Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         """
         return pulumi.get(self, "api_proxy_type")
 
@@ -96,7 +96,7 @@ class EnvironmentArgs:
         Managing the deployment of API proxy or shared flow revisions;
         Creating, updating, or deleting resource files;
         Creating, updating, or deleting target servers.
-        Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         """
         return pulumi.get(self, "deployment_type")
 
@@ -168,7 +168,7 @@ class _EnvironmentState:
         Input properties used for looking up and filtering Environment resources.
         :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
-               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+               Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -176,7 +176,7 @@ class _EnvironmentState:
                Managing the deployment of API proxy or shared flow revisions;
                Creating, updating, or deleting resource files;
                Creating, updating, or deleting target servers.
-               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+               Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
@@ -206,7 +206,7 @@ class _EnvironmentState:
         """
         Optional. API Proxy type supported by the environment. The type can be set when creating
         the Environment and cannot be changed.
-        Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         """
         return pulumi.get(self, "api_proxy_type")
 
@@ -225,7 +225,7 @@ class _EnvironmentState:
         Managing the deployment of API proxy or shared flow revisions;
         Creating, updating, or deleting resource files;
         Creating, updating, or deleting target servers.
-        Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         """
         return pulumi.get(self, "deployment_type")
 
@@ -363,7 +363,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
-               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+               Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -371,7 +371,7 @@ class Environment(pulumi.CustomResource):
                Managing the deployment of API proxy or shared flow revisions;
                Creating, updating, or deleting resource files;
                Creating, updating, or deleting target servers.
-               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+               Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
@@ -502,7 +502,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_proxy_type: Optional. API Proxy type supported by the environment. The type can be set when creating
                the Environment and cannot be changed.
-               Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+               Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input[str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -510,7 +510,7 @@ class Environment(pulumi.CustomResource):
                Managing the deployment of API proxy or shared flow revisions;
                Creating, updating, or deleting resource files;
                Creating, updating, or deleting target servers.
-               Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+               Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         :param pulumi.Input[str] description: Description of the environment.
         :param pulumi.Input[str] display_name: Display name of the environment.
         :param pulumi.Input[str] name: The resource ID of the environment.
@@ -538,7 +538,7 @@ class Environment(pulumi.CustomResource):
         """
         Optional. API Proxy type supported by the environment. The type can be set when creating
         the Environment and cannot be changed.
-        Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+        Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         """
         return pulumi.get(self, "api_proxy_type")
 
@@ -553,7 +553,7 @@ class Environment(pulumi.CustomResource):
         Managing the deployment of API proxy or shared flow revisions;
         Creating, updating, or deleting resource files;
         Creating, updating, or deleting target servers.
-        Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+        Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
         """
         return pulumi.get(self, "deployment_type")
 

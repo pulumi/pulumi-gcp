@@ -24,7 +24,7 @@ public final class MetricDescriptorLabel {
     /**
      * @return The type of data that can be assigned to the label.
      * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Possible values are: `STRING`, `BOOL`, `INT64`.
      * 
      */
     private @Nullable String valueType;
@@ -47,7 +47,7 @@ public final class MetricDescriptorLabel {
     /**
      * @return The type of data that can be assigned to the label.
      * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Possible values are: `STRING`, `BOOL`, `INT64`.
      * 
      */
     public Optional<String> valueType() {

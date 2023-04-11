@@ -38,8 +38,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := bigquery.NewCapacityCommitment(ctx, "example", &bigquery.CapacityCommitmentArgs{
 //				CapacityCommitmentId: pulumi.String("example-commitment"),
-//				Location:             pulumi.String("us-west1"),
-//				Plan:                 pulumi.String("FLEX"),
+//				Edition:              pulumi.String("ENTERPRISE"),
+//				Location:             pulumi.String("us-west2"),
+//				Plan:                 pulumi.String("FLEX_FLAT_RATE"),
 //				SlotCount:            pulumi.Int(100),
 //			})
 //			if err != nil {
@@ -57,7 +58,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{name}}
+//	$ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
 //
 // ```
 type CapacityCommitment struct {
@@ -72,6 +85,8 @@ type CapacityCommitment struct {
 	CommitmentEndTime pulumi.StringOutput `pulumi:"commitmentEndTime"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime pulumi.StringOutput `pulumi:"commitmentStartTime"`
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition pulumi.StringPtrOutput `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrOutput `pulumi:"enforceSingleAdminProjectPerOrg"`
 	// The geographic location where the transfer config should reside.
@@ -79,12 +94,12 @@ type CapacityCommitment struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
 	RenewalPlan pulumi.StringPtrOutput `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
 	SlotCount pulumi.IntOutput `pulumi:"slotCount"`
@@ -136,6 +151,8 @@ type capacityCommitmentState struct {
 	CommitmentEndTime *string `pulumi:"commitmentEndTime"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime *string `pulumi:"commitmentStartTime"`
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition *string `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
 	// The geographic location where the transfer config should reside.
@@ -143,12 +160,12 @@ type capacityCommitmentState struct {
 	Location *string `pulumi:"location"`
 	// The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
 	Name *string `pulumi:"name"`
-	// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
 	Plan *string `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
 	RenewalPlan *string `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
 	SlotCount *int `pulumi:"slotCount"`
@@ -166,6 +183,8 @@ type CapacityCommitmentState struct {
 	CommitmentEndTime pulumi.StringPtrInput
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime pulumi.StringPtrInput
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition pulumi.StringPtrInput
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
 	// The geographic location where the transfer config should reside.
@@ -173,12 +192,12 @@ type CapacityCommitmentState struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
 	Name pulumi.StringPtrInput
-	// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
 	Plan pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
 	RenewalPlan pulumi.StringPtrInput
 	// Number of slots in this commitment.
 	SlotCount pulumi.IntPtrInput
@@ -196,17 +215,19 @@ type capacityCommitmentArgs struct {
 	// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
 	// or merged.
 	CapacityCommitmentId *string `pulumi:"capacityCommitmentId"`
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition *string `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
-	// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
 	Plan string `pulumi:"plan"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
 	RenewalPlan *string `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
 	SlotCount int `pulumi:"slotCount"`
@@ -219,17 +240,19 @@ type CapacityCommitmentArgs struct {
 	// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
 	// or merged.
 	CapacityCommitmentId pulumi.StringPtrInput
+	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+	Edition pulumi.StringPtrInput
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
-	// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+	// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
 	Plan pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+	// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
 	RenewalPlan pulumi.StringPtrInput
 	// Number of slots in this commitment.
 	SlotCount pulumi.IntInput
@@ -340,6 +363,11 @@ func (o CapacityCommitmentOutput) CommitmentStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.CommitmentStartTime }).(pulumi.StringOutput)
 }
 
+// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+func (o CapacityCommitmentOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
+}
+
 // If true, fail the request if another project in the organization has a capacity commitment.
 func (o CapacityCommitmentOutput) EnforceSingleAdminProjectPerOrg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringPtrOutput { return v.EnforceSingleAdminProjectPerOrg }).(pulumi.StringPtrOutput)
@@ -356,7 +384,7 @@ func (o CapacityCommitmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
 func (o CapacityCommitmentOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
@@ -367,7 +395,7 @@ func (o CapacityCommitmentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
 func (o CapacityCommitmentOutput) RenewalPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringPtrOutput { return v.RenewalPlan }).(pulumi.StringPtrOutput)
 }

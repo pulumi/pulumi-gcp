@@ -76,7 +76,7 @@ type TargetHttpsProxy struct {
 	// specified, uses the QUIC policy with no user overrides, which is
 	// equivalent to DISABLE.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrOutput `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -155,7 +155,7 @@ type targetHttpsProxyState struct {
 	// specified, uses the QUIC policy with no user overrides, which is
 	// equivalent to DISABLE.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride *string `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -203,7 +203,7 @@ type TargetHttpsProxyState struct {
 	// specified, uses the QUIC policy with no user overrides, which is
 	// equivalent to DISABLE.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -251,7 +251,7 @@ type targetHttpsProxyArgs struct {
 	// specified, uses the QUIC policy with no user overrides, which is
 	// equivalent to DISABLE.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride *string `pulumi:"quicOverride"`
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one SSL
@@ -294,7 +294,7 @@ type TargetHttpsProxyArgs struct {
 	// specified, uses the QUIC policy with no user overrides, which is
 	// equivalent to DISABLE.
 	// Default value is `NONE`.
-	// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrInput
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one SSL
@@ -447,7 +447,7 @@ func (o TargetHttpsProxyOutput) ProxyId() pulumi.IntOutput {
 // specified, uses the QUIC policy with no user overrides, which is
 // equivalent to DISABLE.
 // Default value is `NONE`.
-// Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 func (o TargetHttpsProxyOutput) QuicOverride() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringPtrOutput { return v.QuicOverride }).(pulumi.StringPtrOutput)
 }

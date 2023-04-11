@@ -68,7 +68,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
     /**
      * The version of the unschematized parser to be used when a custom `schema` is not set.
      * Default value is `V1`.
-     * Possible values are `V1`, `V2`, and `V3`.
+     * Possible values are: `V1`, `V2`, `V3`.
      * 
      */
     @Import(name="version")
@@ -77,7 +77,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
     /**
      * @return The version of the unschematized parser to be used when a custom `schema` is not set.
      * Default value is `V1`.
-     * Possible values are `V1`, `V2`, and `V3`.
+     * Possible values are: `V1`, `V2`, `V3`.
      * 
      */
     public Optional<Output<String>> version() {
@@ -181,7 +181,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param version The version of the unschematized parser to be used when a custom `schema` is not set.
          * Default value is `V1`.
-         * Possible values are `V1`, `V2`, and `V3`.
+         * Possible values are: `V1`, `V2`, `V3`.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class Hl7StoreParserConfigArgs extends com.pulumi.resources.Resourc
         /**
          * @param version The version of the unschematized parser to be used when a custom `schema` is not set.
          * Default value is `V1`.
-         * Possible values are `V1`, `V2`, and `V3`.
+         * Possible values are: `V1`, `V2`, `V3`.
          * 
          * @return builder
          * 

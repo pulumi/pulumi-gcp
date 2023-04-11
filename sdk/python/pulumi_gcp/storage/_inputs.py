@@ -740,7 +740,7 @@ class DefaultObjectAccessControlProjectTeamArgs:
         """
         :param pulumi.Input[str] project_number: The project team associated with the entity
         :param pulumi.Input[str] team: The team.
-               Possible values are `editors`, `owners`, and `viewers`.
+               Possible values are: `editors`, `owners`, `viewers`.
         """
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
@@ -764,7 +764,7 @@ class DefaultObjectAccessControlProjectTeamArgs:
     def team(self) -> Optional[pulumi.Input[str]]:
         """
         The team.
-        Possible values are `editors`, `owners`, and `viewers`.
+        Possible values are: `editors`, `owners`, `viewers`.
         """
         return pulumi.get(self, "team")
 
@@ -781,7 +781,7 @@ class ObjectAccessControlProjectTeamArgs:
         """
         :param pulumi.Input[str] project_number: The project team associated with the entity
         :param pulumi.Input[str] team: The team.
-               Possible values are `editors`, `owners`, and `viewers`.
+               Possible values are: `editors`, `owners`, `viewers`.
         """
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
@@ -805,7 +805,7 @@ class ObjectAccessControlProjectTeamArgs:
     def team(self) -> Optional[pulumi.Input[str]]:
         """
         The team.
-        Possible values are `editors`, `owners`, and `viewers`.
+        Possible values are: `editors`, `owners`, `viewers`.
         """
         return pulumi.get(self, "team")
 
@@ -1597,11 +1597,15 @@ class TransferJobTransferSpecObjectConditionsArgs:
     def __init__(__self__, *,
                  exclude_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  include_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 last_modified_before: Optional[pulumi.Input[str]] = None,
+                 last_modified_since: Optional[pulumi.Input[str]] = None,
                  max_time_elapsed_since_last_modification: Optional[pulumi.Input[str]] = None,
                  min_time_elapsed_since_last_modification: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_prefixes: `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_prefixes: If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        :param pulumi.Input[str] last_modified_before: If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] last_modified_since: If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] max_time_elapsed_since_last_modification: A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[str] min_time_elapsed_since_last_modification: A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
@@ -1609,6 +1613,10 @@ class TransferJobTransferSpecObjectConditionsArgs:
             pulumi.set(__self__, "exclude_prefixes", exclude_prefixes)
         if include_prefixes is not None:
             pulumi.set(__self__, "include_prefixes", include_prefixes)
+        if last_modified_before is not None:
+            pulumi.set(__self__, "last_modified_before", last_modified_before)
+        if last_modified_since is not None:
+            pulumi.set(__self__, "last_modified_since", last_modified_since)
         if max_time_elapsed_since_last_modification is not None:
             pulumi.set(__self__, "max_time_elapsed_since_last_modification", max_time_elapsed_since_last_modification)
         if min_time_elapsed_since_last_modification is not None:
@@ -1637,6 +1645,30 @@ class TransferJobTransferSpecObjectConditionsArgs:
     @include_prefixes.setter
     def include_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "include_prefixes", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedBefore")
+    def last_modified_before(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "last_modified_before")
+
+    @last_modified_before.setter
+    def last_modified_before(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_before", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedSince")
+    def last_modified_since(self) -> Optional[pulumi.Input[str]]:
+        """
+        If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "last_modified_since")
+
+    @last_modified_since.setter
+    def last_modified_since(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_since", value)
 
     @property
     @pulumi.getter(name="maxTimeElapsedSinceLastModification")

@@ -40,7 +40,7 @@ class RegistryArgs:
                errors will be logged. LogLevel is inclusive; enabling INFO logging
                will also enable ERROR logging.
                Default value is `NONE`.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
@@ -120,7 +120,7 @@ class RegistryArgs:
         errors will be logged. LogLevel is inclusive; enabling INFO logging
         will also enable ERROR logging.
         Default value is `NONE`.
-        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         """
         return pulumi.get(self, "log_level")
 
@@ -220,7 +220,7 @@ class _RegistryState:
                errors will be logged. LogLevel is inclusive; enabling INFO logging
                will also enable ERROR logging.
                Default value is `NONE`.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
@@ -300,7 +300,7 @@ class _RegistryState:
         errors will be logged. LogLevel is inclusive; enabling INFO logging
         will also enable ERROR logging.
         Default value is `NONE`.
-        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         """
         return pulumi.get(self, "log_level")
 
@@ -496,7 +496,7 @@ class Registry(pulumi.CustomResource):
                errors will be logged. LogLevel is inclusive; enabling INFO logging
                will also enable ERROR logging.
                Default value is `NONE`.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
@@ -683,7 +683,7 @@ class Registry(pulumi.CustomResource):
                errors will be logged. LogLevel is inclusive; enabling INFO logging
                will also enable ERROR logging.
                Default value is `NONE`.
-               Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+               Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
@@ -747,7 +747,7 @@ class Registry(pulumi.CustomResource):
         errors will be logged. LogLevel is inclusive; enabling INFO logging
         will also enable ERROR logging.
         Default value is `NONE`.
-        Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         """
         return pulumi.get(self, "log_level")
 

@@ -29,7 +29,7 @@ class NodeTemplateArgs:
         The set of arguments for constructing a NodeTemplate resource.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
-               Possible values are `ENABLED` and `NONE`.
+               Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
@@ -74,7 +74,7 @@ class NodeTemplateArgs:
         """
         CPU overcommit.
         Default value is `NONE`.
-        Possible values are `ENABLED` and `NONE`.
+        Possible values are: `ENABLED`, `NONE`.
         """
         return pulumi.get(self, "cpu_overcommit_type")
 
@@ -207,7 +207,7 @@ class _NodeTemplateState:
         Input properties used for looking up and filtering NodeTemplate resources.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
-               Possible values are `ENABLED` and `NONE`.
+               Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -258,7 +258,7 @@ class _NodeTemplateState:
         """
         CPU overcommit.
         Default value is `NONE`.
-        Possible values are `ENABLED` and `NONE`.
+        Possible values are: `ENABLED`, `NONE`.
         """
         return pulumi.get(self, "cpu_overcommit_type")
 
@@ -476,7 +476,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
-               Possible values are `ENABLED` and `NONE`.
+               Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
@@ -636,7 +636,7 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cpu_overcommit_type: CPU overcommit.
                Default value is `NONE`.
-               Possible values are `ENABLED` and `NONE`.
+               Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
         :param pulumi.Input[str] name: Name of the resource.
@@ -681,7 +681,7 @@ class NodeTemplate(pulumi.CustomResource):
         """
         CPU overcommit.
         Default value is `NONE`.
-        Possible values are `ENABLED` and `NONE`.
+        Possible values are: `ENABLED`, `NONE`.
         """
         return pulumi.get(self, "cpu_overcommit_type")
 

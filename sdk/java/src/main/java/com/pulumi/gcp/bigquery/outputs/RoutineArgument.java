@@ -14,7 +14,7 @@ public final class RoutineArgument {
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
      * 
      */
     private @Nullable String argumentKind;
@@ -31,7 +31,7 @@ public final class RoutineArgument {
     private @Nullable String dataType;
     /**
      * @return Specifies whether the argument is input or output. Can be set for procedures only.
-     * Possible values are `IN`, `OUT`, and `INOUT`.
+     * Possible values are: `IN`, `OUT`, `INOUT`.
      * 
      */
     private @Nullable String mode;
@@ -45,7 +45,7 @@ public final class RoutineArgument {
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
      * 
      */
     public Optional<String> argumentKind() {
@@ -66,7 +66,7 @@ public final class RoutineArgument {
     }
     /**
      * @return Specifies whether the argument is input or output. Can be set for procedures only.
-     * Possible values are `IN`, `OUT`, and `INOUT`.
+     * Possible values are: `IN`, `OUT`, `INOUT`.
      * 
      */
     public Optional<String> mode() {

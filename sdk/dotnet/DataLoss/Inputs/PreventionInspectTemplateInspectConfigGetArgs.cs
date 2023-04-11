@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// List of options defining data content to scan. If empty, text, images, and other content will be included.
-        /// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+        /// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
         /// </summary>
         public InputList<string> ContentOptions
         {
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// <summary>
         /// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
         /// Default value is `POSSIBLE`.
-        /// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         /// </summary>
         [Input("minLikelihood")]
         public Input<string>? MinLikelihood { get; set; }

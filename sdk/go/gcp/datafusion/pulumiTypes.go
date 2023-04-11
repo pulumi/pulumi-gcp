@@ -12,10 +12,10 @@ import (
 
 type InstanceAccelerator struct {
 	// The type of an accelator for a CDF instance.
-	// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+	// Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The type of an accelator for a CDF instance.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	State string `pulumi:"state"`
 }
 
@@ -32,10 +32,10 @@ type InstanceAcceleratorInput interface {
 
 type InstanceAcceleratorArgs struct {
 	// The type of an accelator for a CDF instance.
-	// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+	// Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
 	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
 	// The type of an accelator for a CDF instance.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	State pulumi.StringInput `pulumi:"state"`
 }
 
@@ -91,13 +91,13 @@ func (o InstanceAcceleratorOutput) ToInstanceAcceleratorOutputWithContext(ctx co
 }
 
 // The type of an accelator for a CDF instance.
-// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+// Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
 func (o InstanceAcceleratorOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAccelerator) string { return v.AcceleratorType }).(pulumi.StringOutput)
 }
 
 // The type of an accelator for a CDF instance.
-// Possible values are `ENABLED` and `DISABLED`.
+// Possible values are: `ENABLED`, `DISABLED`.
 func (o InstanceAcceleratorOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAccelerator) string { return v.State }).(pulumi.StringOutput)
 }

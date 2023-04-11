@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
-//				OrgId:      pulumi.String("your-organization-id"),
+//				OrgId:      pulumi.String("1234567890"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			_, err = organizations.NewIAMPolicy(ctx, "organization", &organizations.IAMPolicyArgs{
-//				OrgId:      pulumi.String("your-organization-id"),
+//				OrgId:      pulumi.String("1234567890"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
@@ -140,7 +140,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				OrgId: pulumi.String("your-organization-id"),
+//				OrgId: pulumi.String("1234567890"),
 //				Role:  pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
@@ -175,7 +175,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				OrgId: pulumi.String("your-organization-id"),
+//				OrgId: pulumi.String("1234567890"),
 //				Role:  pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
@@ -203,7 +203,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := organizations.NewIAMMember(ctx, "organization", &organizations.IAMMemberArgs{
 //				Member: pulumi.String("user:jane@example.com"),
-//				OrgId:  pulumi.String("your-organization-id"),
+//				OrgId:  pulumi.String("1234567890"),
 //				Role:   pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
@@ -236,7 +236,7 @@ import (
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //				},
 //				Member: pulumi.String("user:jane@example.com"),
-//				OrgId:  pulumi.String("your-organization-id"),
+//				OrgId:  pulumi.String("1234567890"),
 //				Role:   pulumi.String("roles/editor"),
 //			})
 //			if err != nil {
@@ -274,7 +274,7 @@ import (
 //						LogType: pulumi.String("DATA_READ"),
 //					},
 //				},
-//				OrgId:   pulumi.String("your-organization-id"),
+//				OrgId:   pulumi.String("1234567890"),
 //				Service: pulumi.String("allServices"),
 //			})
 //			if err != nil {
@@ -340,9 +340,7 @@ type IAMPolicy struct {
 
 	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-	// Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-	// will not be inferred from the provider.
+	// The organization id of the target organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
@@ -387,9 +385,7 @@ func GetIAMPolicy(ctx *pulumi.Context,
 type iampolicyState struct {
 	// (Computed) The etag of the organization's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-	// Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-	// will not be inferred from the provider.
+	// The organization id of the target organization.
 	OrgId *string `pulumi:"orgId"`
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
@@ -400,9 +396,7 @@ type iampolicyState struct {
 type IAMPolicyState struct {
 	// (Computed) The etag of the organization's IAM policy.
 	Etag pulumi.StringPtrInput
-	// The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-	// Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-	// will not be inferred from the provider.
+	// The organization id of the target organization.
 	OrgId pulumi.StringPtrInput
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
@@ -415,9 +409,7 @@ func (IAMPolicyState) ElementType() reflect.Type {
 }
 
 type iampolicyArgs struct {
-	// The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-	// Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-	// will not be inferred from the provider.
+	// The organization id of the target organization.
 	OrgId string `pulumi:"orgId"`
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
@@ -427,9 +419,7 @@ type iampolicyArgs struct {
 
 // The set of arguments for constructing a IAMPolicy resource.
 type IAMPolicyArgs struct {
-	// The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-	// Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-	// will not be inferred from the provider.
+	// The organization id of the target organization.
 	OrgId pulumi.StringInput
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
@@ -529,9 +519,7 @@ func (o IAMPolicyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-// Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-// will not be inferred from the provider.
+// The organization id of the target organization.
 func (o IAMPolicyOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMPolicy) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

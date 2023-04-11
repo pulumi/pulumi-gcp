@@ -1070,7 +1070,7 @@ type ConnectionCloudSql struct {
 	// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 	// Type of the Cloud SQL database.
-	// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+	// Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
 	Type string `pulumi:"type"`
 }
 
@@ -1097,7 +1097,7 @@ type ConnectionCloudSqlArgs struct {
 	// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 	// Type of the Cloud SQL database.
-	// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+	// Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1201,7 +1201,7 @@ func (o ConnectionCloudSqlOutput) ServiceAccountId() pulumi.StringPtrOutput {
 }
 
 // Type of the Cloud SQL database.
-// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+// Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
 func (o ConnectionCloudSqlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionCloudSql) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1273,7 +1273,7 @@ func (o ConnectionCloudSqlPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
 }
 
 // Type of the Cloud SQL database.
-// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+// Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
 func (o ConnectionCloudSqlPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionCloudSql) *string {
 		if v == nil {
@@ -4310,7 +4310,7 @@ type JobCopy struct {
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
 	// Default value is `CREATE_IF_NEEDED`.
-	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+	// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 	CreateDisposition *string `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
@@ -4328,7 +4328,7 @@ type JobCopy struct {
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	// Default value is `WRITE_EMPTY`.
-	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+	// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
@@ -4349,7 +4349,7 @@ type JobCopyArgs struct {
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
 	// Default value is `CREATE_IF_NEEDED`.
-	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+	// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
@@ -4367,7 +4367,7 @@ type JobCopyArgs struct {
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	// Default value is `WRITE_EMPTY`.
-	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+	// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
@@ -4453,7 +4453,7 @@ func (o JobCopyOutput) ToJobCopyPtrOutputWithContext(ctx context.Context) JobCop
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
 // Default value is `CREATE_IF_NEEDED`.
-// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 func (o JobCopyOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopy) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
@@ -4485,7 +4485,7 @@ func (o JobCopyOutput) SourceTables() JobCopySourceTableArrayOutput {
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 // Default value is `WRITE_EMPTY`.
-// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 func (o JobCopyOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCopy) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
@@ -4519,7 +4519,7 @@ func (o JobCopyPtrOutput) Elem() JobCopyOutput {
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
 // Default value is `CREATE_IF_NEEDED`.
-// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 func (o JobCopyPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopy) *string {
 		if v == nil {
@@ -4569,7 +4569,7 @@ func (o JobCopyPtrOutput) SourceTables() JobCopySourceTableArrayOutput {
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 // Default value is `WRITE_EMPTY`.
-// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 func (o JobCopyPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobCopy) *string {
 		if v == nil {
@@ -5703,7 +5703,7 @@ type JobLoad struct {
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
 	// Default value is `CREATE_IF_NEEDED`.
-	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+	// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 	CreateDisposition *string `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
@@ -5787,7 +5787,7 @@ type JobLoad struct {
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	// Default value is `WRITE_EMPTY`.
-	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+	// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
@@ -5817,7 +5817,7 @@ type JobLoadArgs struct {
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
 	// Default value is `CREATE_IF_NEEDED`.
-	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+	// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
 	// Custom encryption configuration (e.g., Cloud KMS keys)
 	// Structure is documented below.
@@ -5901,7 +5901,7 @@ type JobLoadArgs struct {
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	// Default value is `WRITE_EMPTY`.
-	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+	// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
@@ -6005,7 +6005,7 @@ func (o JobLoadOutput) Autodetect() pulumi.BoolPtrOutput {
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
 // Default value is `CREATE_IF_NEEDED`.
-// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 func (o JobLoadOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
@@ -6139,7 +6139,7 @@ func (o JobLoadOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 // Default value is `WRITE_EMPTY`.
-// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 func (o JobLoadOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
@@ -6206,7 +6206,7 @@ func (o JobLoadPtrOutput) Autodetect() pulumi.BoolPtrOutput {
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
 // Default value is `CREATE_IF_NEEDED`.
-// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 func (o JobLoadPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
 		if v == nil {
@@ -6418,7 +6418,7 @@ func (o JobLoadPtrOutput) TimePartitioning() JobLoadTimePartitioningPtrOutput {
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 // Default value is `WRITE_EMPTY`.
-// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 func (o JobLoadPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobLoad) *string {
 		if v == nil {
@@ -6968,7 +6968,7 @@ type JobQuery struct {
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
 	// Default value is `CREATE_IF_NEEDED`.
-	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+	// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 	CreateDisposition *string `pulumi:"createDisposition"`
 	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
 	// Structure is documented below.
@@ -6994,7 +6994,7 @@ type JobQuery struct {
 	ParameterMode *string `pulumi:"parameterMode"`
 	// Specifies a priority for the query.
 	// Default value is `INTERACTIVE`.
-	// Possible values are `INTERACTIVE` and `BATCH`.
+	// Possible values are: `INTERACTIVE`, `BATCH`.
 	Priority *string `pulumi:"priority"`
 	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
 	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
@@ -7028,7 +7028,7 @@ type JobQuery struct {
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	// Default value is `WRITE_EMPTY`.
-	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+	// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
@@ -7053,7 +7053,7 @@ type JobQueryArgs struct {
 	// CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 	// Creation, truncation and append actions occur as one atomic update upon job completion
 	// Default value is `CREATE_IF_NEEDED`.
-	// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+	// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
 	// Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
 	// Structure is documented below.
@@ -7079,7 +7079,7 @@ type JobQueryArgs struct {
 	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
 	// Specifies a priority for the query.
 	// Default value is `INTERACTIVE`.
-	// Possible values are `INTERACTIVE` and `BATCH`.
+	// Possible values are: `INTERACTIVE`, `BATCH`.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 	// SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
 	// *NOTE*: queries containing [DML language](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language)
@@ -7113,7 +7113,7 @@ type JobQueryArgs struct {
 	// Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 	// Creation, truncation and append actions occur as one atomic update upon job completion.
 	// Default value is `WRITE_EMPTY`.
-	// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+	// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
@@ -7206,7 +7206,7 @@ func (o JobQueryOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
 // Default value is `CREATE_IF_NEEDED`.
-// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 func (o JobQueryOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.CreateDisposition }).(pulumi.StringPtrOutput)
 }
@@ -7258,7 +7258,7 @@ func (o JobQueryOutput) ParameterMode() pulumi.StringPtrOutput {
 
 // Specifies a priority for the query.
 // Default value is `INTERACTIVE`.
-// Possible values are `INTERACTIVE` and `BATCH`.
+// Possible values are: `INTERACTIVE`, `BATCH`.
 func (o JobQueryOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -7313,7 +7313,7 @@ func (o JobQueryOutput) UserDefinedFunctionResources() JobQueryUserDefinedFuncti
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 // Default value is `WRITE_EMPTY`.
-// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 func (o JobQueryOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQuery) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
@@ -7359,7 +7359,7 @@ func (o JobQueryPtrOutput) AllowLargeResults() pulumi.BoolPtrOutput {
 // CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
 // Creation, truncation and append actions occur as one atomic update upon job completion
 // Default value is `CREATE_IF_NEEDED`.
-// Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+// Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
 func (o JobQueryPtrOutput) CreateDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -7449,7 +7449,7 @@ func (o JobQueryPtrOutput) ParameterMode() pulumi.StringPtrOutput {
 
 // Specifies a priority for the query.
 // Default value is `INTERACTIVE`.
-// Possible values are `INTERACTIVE` and `BATCH`.
+// Possible values are: `INTERACTIVE`, `BATCH`.
 func (o JobQueryPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -7539,7 +7539,7 @@ func (o JobQueryPtrOutput) UserDefinedFunctionResources() JobQueryUserDefinedFun
 // Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
 // Creation, truncation and append actions occur as one atomic update upon job completion.
 // Default value is `WRITE_EMPTY`.
-// Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+// Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
 func (o JobQueryPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQuery) *string {
 		if v == nil {
@@ -8055,7 +8055,7 @@ func (o JobQueryDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 type JobQueryScriptOptions struct {
 	// Determines which statement in the script represents the "key result",
 	// used to populate the schema and query results of the script job.
-	// Possible values are `LAST` and `FIRST_SELECT`.
+	// Possible values are: `LAST`, `FIRST_SELECT`.
 	KeyResultStatement *string `pulumi:"keyResultStatement"`
 	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
 	StatementByteBudget *string `pulumi:"statementByteBudget"`
@@ -8077,7 +8077,7 @@ type JobQueryScriptOptionsInput interface {
 type JobQueryScriptOptionsArgs struct {
 	// Determines which statement in the script represents the "key result",
 	// used to populate the schema and query results of the script job.
-	// Possible values are `LAST` and `FIRST_SELECT`.
+	// Possible values are: `LAST`, `FIRST_SELECT`.
 	KeyResultStatement pulumi.StringPtrInput `pulumi:"keyResultStatement"`
 	// Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
 	StatementByteBudget pulumi.StringPtrInput `pulumi:"statementByteBudget"`
@@ -8164,7 +8164,7 @@ func (o JobQueryScriptOptionsOutput) ToJobQueryScriptOptionsPtrOutputWithContext
 
 // Determines which statement in the script represents the "key result",
 // used to populate the schema and query results of the script job.
-// Possible values are `LAST` and `FIRST_SELECT`.
+// Possible values are: `LAST`, `FIRST_SELECT`.
 func (o JobQueryScriptOptionsOutput) KeyResultStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobQueryScriptOptions) *string { return v.KeyResultStatement }).(pulumi.StringPtrOutput)
 }
@@ -8205,7 +8205,7 @@ func (o JobQueryScriptOptionsPtrOutput) Elem() JobQueryScriptOptionsOutput {
 
 // Determines which statement in the script represents the "key result",
 // used to populate the schema and query results of the script job.
-// Possible values are `LAST` and `FIRST_SELECT`.
+// Possible values are: `LAST`, `FIRST_SELECT`.
 func (o JobQueryScriptOptionsPtrOutput) KeyResultStatement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobQueryScriptOptions) *string {
 		if v == nil {
@@ -8710,10 +8710,170 @@ func (o JobStatusErrorResultArrayOutput) Index(i pulumi.IntInput) JobStatusError
 	}).(JobStatusErrorResultOutput)
 }
 
+type ReservationAutoscale struct {
+	// (Output)
+	// The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
+	CurrentSlots *int `pulumi:"currentSlots"`
+	// Number of slots to be scaled when needed.
+	MaxSlots *int `pulumi:"maxSlots"`
+}
+
+// ReservationAutoscaleInput is an input type that accepts ReservationAutoscaleArgs and ReservationAutoscaleOutput values.
+// You can construct a concrete instance of `ReservationAutoscaleInput` via:
+//
+//	ReservationAutoscaleArgs{...}
+type ReservationAutoscaleInput interface {
+	pulumi.Input
+
+	ToReservationAutoscaleOutput() ReservationAutoscaleOutput
+	ToReservationAutoscaleOutputWithContext(context.Context) ReservationAutoscaleOutput
+}
+
+type ReservationAutoscaleArgs struct {
+	// (Output)
+	// The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
+	CurrentSlots pulumi.IntPtrInput `pulumi:"currentSlots"`
+	// Number of slots to be scaled when needed.
+	MaxSlots pulumi.IntPtrInput `pulumi:"maxSlots"`
+}
+
+func (ReservationAutoscaleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAutoscale)(nil)).Elem()
+}
+
+func (i ReservationAutoscaleArgs) ToReservationAutoscaleOutput() ReservationAutoscaleOutput {
+	return i.ToReservationAutoscaleOutputWithContext(context.Background())
+}
+
+func (i ReservationAutoscaleArgs) ToReservationAutoscaleOutputWithContext(ctx context.Context) ReservationAutoscaleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAutoscaleOutput)
+}
+
+func (i ReservationAutoscaleArgs) ToReservationAutoscalePtrOutput() ReservationAutoscalePtrOutput {
+	return i.ToReservationAutoscalePtrOutputWithContext(context.Background())
+}
+
+func (i ReservationAutoscaleArgs) ToReservationAutoscalePtrOutputWithContext(ctx context.Context) ReservationAutoscalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAutoscaleOutput).ToReservationAutoscalePtrOutputWithContext(ctx)
+}
+
+// ReservationAutoscalePtrInput is an input type that accepts ReservationAutoscaleArgs, ReservationAutoscalePtr and ReservationAutoscalePtrOutput values.
+// You can construct a concrete instance of `ReservationAutoscalePtrInput` via:
+//
+//	        ReservationAutoscaleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ReservationAutoscalePtrInput interface {
+	pulumi.Input
+
+	ToReservationAutoscalePtrOutput() ReservationAutoscalePtrOutput
+	ToReservationAutoscalePtrOutputWithContext(context.Context) ReservationAutoscalePtrOutput
+}
+
+type reservationAutoscalePtrType ReservationAutoscaleArgs
+
+func ReservationAutoscalePtr(v *ReservationAutoscaleArgs) ReservationAutoscalePtrInput {
+	return (*reservationAutoscalePtrType)(v)
+}
+
+func (*reservationAutoscalePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationAutoscale)(nil)).Elem()
+}
+
+func (i *reservationAutoscalePtrType) ToReservationAutoscalePtrOutput() ReservationAutoscalePtrOutput {
+	return i.ToReservationAutoscalePtrOutputWithContext(context.Background())
+}
+
+func (i *reservationAutoscalePtrType) ToReservationAutoscalePtrOutputWithContext(ctx context.Context) ReservationAutoscalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationAutoscalePtrOutput)
+}
+
+type ReservationAutoscaleOutput struct{ *pulumi.OutputState }
+
+func (ReservationAutoscaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAutoscale)(nil)).Elem()
+}
+
+func (o ReservationAutoscaleOutput) ToReservationAutoscaleOutput() ReservationAutoscaleOutput {
+	return o
+}
+
+func (o ReservationAutoscaleOutput) ToReservationAutoscaleOutputWithContext(ctx context.Context) ReservationAutoscaleOutput {
+	return o
+}
+
+func (o ReservationAutoscaleOutput) ToReservationAutoscalePtrOutput() ReservationAutoscalePtrOutput {
+	return o.ToReservationAutoscalePtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAutoscaleOutput) ToReservationAutoscalePtrOutputWithContext(ctx context.Context) ReservationAutoscalePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAutoscale) *ReservationAutoscale {
+		return &v
+	}).(ReservationAutoscalePtrOutput)
+}
+
+// (Output)
+// The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
+func (o ReservationAutoscaleOutput) CurrentSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReservationAutoscale) *int { return v.CurrentSlots }).(pulumi.IntPtrOutput)
+}
+
+// Number of slots to be scaled when needed.
+func (o ReservationAutoscaleOutput) MaxSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ReservationAutoscale) *int { return v.MaxSlots }).(pulumi.IntPtrOutput)
+}
+
+type ReservationAutoscalePtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationAutoscalePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationAutoscale)(nil)).Elem()
+}
+
+func (o ReservationAutoscalePtrOutput) ToReservationAutoscalePtrOutput() ReservationAutoscalePtrOutput {
+	return o
+}
+
+func (o ReservationAutoscalePtrOutput) ToReservationAutoscalePtrOutputWithContext(ctx context.Context) ReservationAutoscalePtrOutput {
+	return o
+}
+
+func (o ReservationAutoscalePtrOutput) Elem() ReservationAutoscaleOutput {
+	return o.ApplyT(func(v *ReservationAutoscale) ReservationAutoscale {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationAutoscale
+		return ret
+	}).(ReservationAutoscaleOutput)
+}
+
+// (Output)
+// The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
+func (o ReservationAutoscalePtrOutput) CurrentSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReservationAutoscale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentSlots
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of slots to be scaled when needed.
+func (o ReservationAutoscalePtrOutput) MaxSlots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ReservationAutoscale) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSlots
+	}).(pulumi.IntPtrOutput)
+}
+
 type RoutineArgument struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
-	// Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
 	ArgumentKind *string `pulumi:"argumentKind"`
 	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
 	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -8724,7 +8884,7 @@ type RoutineArgument struct {
 	// the schema as returned by the API.
 	DataType *string `pulumi:"dataType"`
 	// Specifies whether the argument is input or output. Can be set for procedures only.
-	// Possible values are `IN`, `OUT`, and `INOUT`.
+	// Possible values are: `IN`, `OUT`, `INOUT`.
 	Mode *string `pulumi:"mode"`
 	// The name of this argument. Can be absent for function return argument.
 	Name *string `pulumi:"name"`
@@ -8744,7 +8904,7 @@ type RoutineArgumentInput interface {
 type RoutineArgumentArgs struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
-	// Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
 	ArgumentKind pulumi.StringPtrInput `pulumi:"argumentKind"`
 	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
 	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -8755,7 +8915,7 @@ type RoutineArgumentArgs struct {
 	// the schema as returned by the API.
 	DataType pulumi.StringPtrInput `pulumi:"dataType"`
 	// Specifies whether the argument is input or output. Can be set for procedures only.
-	// Possible values are `IN`, `OUT`, and `INOUT`.
+	// Possible values are: `IN`, `OUT`, `INOUT`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The name of this argument. Can be absent for function return argument.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -8814,7 +8974,7 @@ func (o RoutineArgumentOutput) ToRoutineArgumentOutputWithContext(ctx context.Co
 
 // Defaults to FIXED_TYPE.
 // Default value is `FIXED_TYPE`.
-// Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
 func (o RoutineArgumentOutput) ArgumentKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutineArgument) *string { return v.ArgumentKind }).(pulumi.StringPtrOutput)
 }
@@ -8831,7 +8991,7 @@ func (o RoutineArgumentOutput) DataType() pulumi.StringPtrOutput {
 }
 
 // Specifies whether the argument is input or output. Can be set for procedures only.
-// Possible values are `IN`, `OUT`, and `INOUT`.
+// Possible values are: `IN`, `OUT`, `INOUT`.
 func (o RoutineArgumentOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutineArgument) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -11363,6 +11523,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusErrorArrayInput)(nil)).Elem(), JobStatusErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusErrorResultInput)(nil)).Elem(), JobStatusErrorResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobStatusErrorResultArrayInput)(nil)).Elem(), JobStatusErrorResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscaleInput)(nil)).Elem(), ReservationAutoscaleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscalePtrInput)(nil)).Elem(), ReservationAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentInput)(nil)).Elem(), RoutineArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentArrayInput)(nil)).Elem(), RoutineArgumentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
@@ -11477,6 +11639,8 @@ func init() {
 	pulumi.RegisterOutputType(JobStatusErrorArrayOutput{})
 	pulumi.RegisterOutputType(JobStatusErrorResultOutput{})
 	pulumi.RegisterOutputType(JobStatusErrorResultArrayOutput{})
+	pulumi.RegisterOutputType(ReservationAutoscaleOutput{})
+	pulumi.RegisterOutputType(ReservationAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})

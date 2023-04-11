@@ -510,7 +510,7 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
-        ### TPU Node Basic
+        ### Tpu Node Basic
 
         ```python
         import pulumi
@@ -523,7 +523,7 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
-        ### TPU Node Full
+        ### Tpu Node Full
 
         ```python
         import pulumi
@@ -620,7 +620,7 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
-        ### TPU Node Basic
+        ### Tpu Node Basic
 
         ```python
         import pulumi
@@ -633,7 +633,7 @@ class Node(pulumi.CustomResource):
             tensorflow_version=available.versions[0],
             cidr_block="10.2.0.0/29")
         ```
-        ### TPU Node Full
+        ### Tpu Node Full
 
         ```python
         import pulumi

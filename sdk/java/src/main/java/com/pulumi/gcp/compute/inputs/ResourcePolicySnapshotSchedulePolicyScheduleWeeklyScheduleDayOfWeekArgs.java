@@ -15,7 +15,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
 
     /**
      * The day of the week to create the snapshot. e.g. MONDAY
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     @Import(name="day", required=true)
@@ -23,7 +23,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
 
     /**
      * @return The day of the week to create the snapshot. e.g. MONDAY
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public Output<String> day() {
@@ -74,7 +74,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
 
         /**
          * @param day The day of the week to create the snapshot. e.g. MONDAY
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
 
         /**
          * @param day The day of the week to create the snapshot. e.g. MONDAY
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 

@@ -217,7 +217,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-     * Possible values are `FILESET`.
+     * Possible values are: `FILESET`.
      * 
      */
     @Import(name="type")
@@ -226,7 +226,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-     * Possible values are `FILESET`.
+     * Possible values are: `FILESET`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -599,7 +599,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The type of the entry. Only used for Entries with types in the EntryType enum.
          * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-         * Possible values are `FILESET`.
+         * Possible values are: `FILESET`.
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class EntryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The type of the entry. Only used for Entries with types in the EntryType enum.
          * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-         * Possible values are `FILESET`.
+         * Possible values are: `FILESET`.
          * 
          * @return builder
          * 

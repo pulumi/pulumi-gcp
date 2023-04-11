@@ -93,7 +93,7 @@ export class Deployment extends pulumi.CustomResource {
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
      * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      */
     public readonly createPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -104,7 +104,7 @@ export class Deployment extends pulumi.CustomResource {
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
      * Default value is `DELETE`.
-     * Possible values are `ABANDON` and `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      */
     public readonly deletePolicy!: pulumi.Output<string | undefined>;
     /**
@@ -213,7 +213,7 @@ export interface DeploymentState {
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
      * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      */
     createPolicy?: pulumi.Input<string>;
     /**
@@ -224,7 +224,7 @@ export interface DeploymentState {
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
      * Default value is `DELETE`.
-     * Possible values are `ABANDON` and `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      */
     deletePolicy?: pulumi.Input<string>;
     /**
@@ -288,7 +288,7 @@ export interface DeploymentArgs {
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
      * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      */
     createPolicy?: pulumi.Input<string>;
     /**
@@ -299,7 +299,7 @@ export interface DeploymentArgs {
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
      * Default value is `DELETE`.
-     * Possible values are `ABANDON` and `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      */
     deletePolicy?: pulumi.Input<string>;
     /**

@@ -93,7 +93,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * The type of entities that need to use the authorization relationship during
      * evaluation, such as a device. Valid values are &#34;ASSET_TYPE_DEVICE&#34; and
      * &#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;.
-     * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+     * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      * 
      */
     @Export(name="assetType", type=String.class, parameters={})
@@ -103,7 +103,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * @return The type of entities that need to use the authorization relationship during
      * evaluation, such as a device. Valid values are &#34;ASSET_TYPE_DEVICE&#34; and
      * &#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;.
-     * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+     * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      * 
      */
     public Output<Optional<String>> assetType() {
@@ -124,7 +124,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * direction, organizations B and C must specify
      * &#34;AUTHORIZATION_DIRECTION_FROM&#34; as the authorization direction in their
      * &#34;AuthorizedOrgsDesc&#34; resource.
-     * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+     * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      * 
      */
     @Export(name="authorizationDirection", type=String.class, parameters={})
@@ -145,7 +145,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
      * direction, organizations B and C must specify
      * &#34;AUTHORIZATION_DIRECTION_FROM&#34; as the authorization direction in their
      * &#34;AuthorizedOrgsDesc&#34; resource.
-     * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+     * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      * 
      */
     public Output<Optional<String>> authorizationDirection() {
@@ -153,7 +153,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
     }
     /**
      * A granular control type for authorization levels. Valid value is &#34;AUTHORIZATION_TYPE_TRUST&#34;.
-     * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+     * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      * 
      */
     @Export(name="authorizationType", type=String.class, parameters={})
@@ -161,7 +161,7 @@ public class AuthorizedOrgsDesc extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A granular control type for authorization levels. Valid value is &#34;AUTHORIZATION_TYPE_TRUST&#34;.
-     * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+     * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      * 
      */
     public Output<Optional<String>> authorizationType() {

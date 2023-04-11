@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// <summary>
         /// Type of archive files in this repository. The default behavior is DEB.
         /// Default value is `DEB`.
-        /// Possible values are `DEB` and `DEB_SRC`.
+        /// Possible values are: `DEB`, `DEB_SRC`.
         /// </summary>
         [Input("archiveType")]
         public Input<string>? ArchiveType { get; set; }

@@ -101,7 +101,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
-     * Possible values are `ENABLE` and `DISABLE`.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     @Import(name="globalPolicyEvaluationMode")
@@ -111,7 +111,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
      * @return Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
-     * Possible values are `ENABLE` and `DISABLE`.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     public Optional<Output<String>> globalPolicyEvaluationMode() {
@@ -297,7 +297,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * @param globalPolicyEvaluationMode Controls the evaluation of a Google-maintained global admission policy
          * for common system-level images. Images not covered by the global
          * policy will be subject to the project admission policy.
-         * Possible values are `ENABLE` and `DISABLE`.
+         * Possible values are: `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          * @param globalPolicyEvaluationMode Controls the evaluation of a Google-maintained global admission policy
          * for common system-level images. Images not covered by the global
          * policy will be subject to the project admission policy.
-         * Possible values are `ENABLE` and `DISABLE`.
+         * Possible values are: `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 

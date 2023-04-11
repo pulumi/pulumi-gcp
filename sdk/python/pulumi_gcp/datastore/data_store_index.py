@@ -25,7 +25,7 @@ class DataStoreIndexArgs:
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
                Default value is `NONE`.
-               Possible values are `NONE` and `ALL_ANCESTORS`.
+               Possible values are: `NONE`, `ALL_ANCESTORS`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['DataStoreIndexPropertyArgs']]] properties: An ordered list of properties to index on.
@@ -57,7 +57,7 @@ class DataStoreIndexArgs:
         """
         Policy for including ancestors in the index.
         Default value is `NONE`.
-        Possible values are `NONE` and `ALL_ANCESTORS`.
+        Possible values are: `NONE`, `ALL_ANCESTORS`.
         """
         return pulumi.get(self, "ancestor")
 
@@ -104,7 +104,7 @@ class _DataStoreIndexState:
         Input properties used for looking up and filtering DataStoreIndex resources.
         :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
                Default value is `NONE`.
-               Possible values are `NONE` and `ALL_ANCESTORS`.
+               Possible values are: `NONE`, `ALL_ANCESTORS`.
         :param pulumi.Input[str] index_id: The index id.
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -129,7 +129,7 @@ class _DataStoreIndexState:
         """
         Policy for including ancestors in the index.
         Default value is `NONE`.
-        Possible values are `NONE` and `ALL_ANCESTORS`.
+        Possible values are: `NONE`, `ALL_ANCESTORS`.
         """
         return pulumi.get(self, "ancestor")
 
@@ -254,7 +254,7 @@ class DataStoreIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
                Default value is `NONE`.
-               Possible values are `NONE` and `ALL_ANCESTORS`.
+               Possible values are: `NONE`, `ALL_ANCESTORS`.
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -378,7 +378,7 @@ class DataStoreIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ancestor: Policy for including ancestors in the index.
                Default value is `NONE`.
-               Possible values are `NONE` and `ALL_ANCESTORS`.
+               Possible values are: `NONE`, `ALL_ANCESTORS`.
         :param pulumi.Input[str] index_id: The index id.
         :param pulumi.Input[str] kind: The entity kind which the index applies to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -403,7 +403,7 @@ class DataStoreIndex(pulumi.CustomResource):
         """
         Policy for including ancestors in the index.
         Default value is `NONE`.
-        Possible values are `NONE` and `ALL_ANCESTORS`.
+        Possible values are: `NONE`, `ALL_ANCESTORS`.
         """
         return pulumi.get(self, "ancestor")
 

@@ -24,7 +24,7 @@ public final class AccessLevelsAccessLevelBasicArgs extends com.pulumi.resources
      * OR is used, at least one Condition in conditions must be satisfied
      * for the AccessLevel to be applied.
      * Default value is `AND`.
-     * Possible values are `AND` and `OR`.
+     * Possible values are: `AND`, `OR`.
      * 
      */
     @Import(name="combiningFunction")
@@ -37,7 +37,7 @@ public final class AccessLevelsAccessLevelBasicArgs extends com.pulumi.resources
      * OR is used, at least one Condition in conditions must be satisfied
      * for the AccessLevel to be applied.
      * Default value is `AND`.
-     * Possible values are `AND` and `OR`.
+     * Possible values are: `AND`, `OR`.
      * 
      */
     public Optional<Output<String>> combiningFunction() {
@@ -93,7 +93,7 @@ public final class AccessLevelsAccessLevelBasicArgs extends com.pulumi.resources
          * OR is used, at least one Condition in conditions must be satisfied
          * for the AccessLevel to be applied.
          * Default value is `AND`.
-         * Possible values are `AND` and `OR`.
+         * Possible values are: `AND`, `OR`.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class AccessLevelsAccessLevelBasicArgs extends com.pulumi.resources
          * OR is used, at least one Condition in conditions must be satisfied
          * for the AccessLevel to be applied.
          * Default value is `AND`.
-         * Possible values are `AND` and `OR`.
+         * Possible values are: `AND`, `OR`.
          * 
          * @return builder
          * 

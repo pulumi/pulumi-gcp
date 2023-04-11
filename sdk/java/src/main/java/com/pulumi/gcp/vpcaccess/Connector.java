@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
  *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  * 
  * ## Example Usage
- * ### VPC Access Connector
+ * ### Vpc Access Connector
  * ```java
  * package generated_program;
  * 
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### VPC Access Connector Shared VPC
+ * ### Vpc Access Connector Shared Vpc
  * ```java
  * package generated_program;
  * 

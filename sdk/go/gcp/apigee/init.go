@@ -49,6 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceAttachment{}
 	case "gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile":
 		r = &KeystoresAliasesKeyCertFile{}
+	case "gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12":
+		r = &KeystoresAliasesPkcs12{}
+	case "gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert":
+		r = &KeystoresAliasesSelfSignedCert{}
 	case "gcp:apigee/natAddress:NatAddress":
 		r = &NatAddress{}
 	case "gcp:apigee/organization:Organization":
@@ -140,6 +144,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/keystoresAliasesKeyCertFile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/keystoresAliasesPkcs12",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/keystoresAliasesSelfSignedCert",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

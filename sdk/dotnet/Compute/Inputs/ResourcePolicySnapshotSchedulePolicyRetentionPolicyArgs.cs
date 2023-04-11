@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Specifies the behavior to apply to scheduled snapshots when
         /// the source disk is deleted.
         /// Default value is `KEEP_AUTO_SNAPSHOTS`.
-        /// Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+        /// Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
         /// </summary>
         [Input("onSourceDiskDelete")]
         public Input<string>? OnSourceDiskDelete { get; set; }

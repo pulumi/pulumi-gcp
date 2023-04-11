@@ -17,7 +17,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
 
     /**
      * The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-     * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+     * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
      * 
      */
     @Import(name="desiredState")
@@ -25,7 +25,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-     * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+     * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -39,7 +39,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
      * This is useful when creating a policy that applies to different types of systems.
      * The default behavior is ANY.
      * Default value is `ANY`.
-     * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+     * Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
      * 
      */
     @Import(name="manager")
@@ -52,7 +52,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
      * This is useful when creating a policy that applies to different types of systems.
      * The default behavior is ANY.
      * Default value is `ANY`.
-     * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+     * Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
      * 
      */
     public Optional<Output<String>> manager() {
@@ -104,7 +104,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param desiredState The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+         * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param desiredState The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+         * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
          * This is useful when creating a policy that applies to different types of systems.
          * The default behavior is ANY.
          * Default value is `ANY`.
-         * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+         * Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class GuestPoliciesPackageArgs extends com.pulumi.resources.Resourc
          * This is useful when creating a policy that applies to different types of systems.
          * The default behavior is ANY.
          * Default value is `ANY`.
-         * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+         * Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
          * 
          * @return builder
          * 

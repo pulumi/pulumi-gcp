@@ -41,7 +41,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
      * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
      * Defaults to BPS_10G
-     * Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+     * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
      * 
      */
     @Import(name="bandwidth")
@@ -53,7 +53,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
      * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
      * Defaults to BPS_10G
-     * Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+     * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -140,7 +140,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
      *   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
      *   attachment must be created with this option.
      *   Default value is `NONE`.
-     *   Possible values are `NONE` and `IPSEC`.
+     *   Possible values are: `NONE`, `IPSEC`.
      * 
      */
     @Import(name="encryption")
@@ -159,7 +159,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
      *   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
      *   attachment must be created with this option.
      *   Default value is `NONE`.
-     *   Possible values are `NONE` and `IPSEC`.
+     *   Possible values are: `NONE`, `IPSEC`.
      * 
      */
     public Optional<Output<String>> encryption() {
@@ -326,7 +326,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
-     * Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+     * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
      * 
      */
     @Import(name="type")
@@ -335,7 +335,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     /**
      * @return The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.
-     * Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+     * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -426,7 +426,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
          * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
          * Defaults to BPS_10G
-         * Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+         * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
          * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
          * Defaults to BPS_10G
-         * Possible values are `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, and `BPS_50G`.
+         * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          *   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
          *   attachment must be created with this option.
          *   Default value is `NONE`.
-         *   Possible values are `NONE` and `IPSEC`.
+         *   Possible values are: `NONE`, `IPSEC`.
          * 
          * @return builder
          * 
@@ -588,7 +588,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          *   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
          *   attachment must be created with this option.
          *   Default value is `NONE`.
-         *   Possible values are `NONE` and `IPSEC`.
+         *   Possible values are: `NONE`, `IPSEC`.
          * 
          * @return builder
          * 
@@ -823,7 +823,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         /**
          * @param type The type of InterconnectAttachment you wish to create. Defaults to
          * DEDICATED.
-         * Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+         * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
          * 
          * @return builder
          * 
@@ -836,7 +836,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         /**
          * @param type The type of InterconnectAttachment you wish to create. Defaults to
          * DEDICATED.
-         * Possible values are `DEDICATED`, `PARTNER`, and `PARTNER_PROVIDER`.
+         * Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
          * 
          * @return builder
          * 

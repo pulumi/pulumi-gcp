@@ -161,7 +161,7 @@ type Network struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
-	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -171,7 +171,7 @@ type Network struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
-	// Possible values are `REGIONAL` and `GLOBAL`.
+	// Possible values are: `REGIONAL`, `GLOBAL`.
 	RoutingMode pulumi.StringOutput `pulumi:"routingMode"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -246,7 +246,7 @@ type networkState struct {
 	Name *string `pulumi:"name"`
 	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
-	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -256,7 +256,7 @@ type networkState struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
-	// Possible values are `REGIONAL` and `GLOBAL`.
+	// Possible values are: `REGIONAL`, `GLOBAL`.
 	RoutingMode *string `pulumi:"routingMode"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -303,7 +303,7 @@ type NetworkState struct {
 	Name pulumi.StringPtrInput
 	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
-	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -313,7 +313,7 @@ type NetworkState struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
-	// Possible values are `REGIONAL` and `GLOBAL`.
+	// Possible values are: `REGIONAL`, `GLOBAL`.
 	RoutingMode pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -361,7 +361,7 @@ type networkArgs struct {
 	Name *string `pulumi:"name"`
 	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
-	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -371,7 +371,7 @@ type networkArgs struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
-	// Possible values are `REGIONAL` and `GLOBAL`.
+	// Possible values are: `REGIONAL`, `GLOBAL`.
 	RoutingMode *string `pulumi:"routingMode"`
 }
 
@@ -414,7 +414,7 @@ type NetworkArgs struct {
 	Name pulumi.StringPtrInput
 	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
-	// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -424,7 +424,7 @@ type NetworkArgs struct {
 	// of this network in the same region as the router. If set to `GLOBAL`,
 	// this network's cloud routers will advertise routes with all
 	// subnetworks of this network, across regions.
-	// Possible values are `REGIONAL` and `GLOBAL`.
+	// Possible values are: `REGIONAL`, `GLOBAL`.
 	RoutingMode pulumi.StringPtrInput
 }
 
@@ -579,7 +579,7 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 
 // Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
 // Default value is `AFTER_CLASSIC_FIREWALL`.
-// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringPtrOutput)
 }
@@ -595,7 +595,7 @@ func (o NetworkOutput) Project() pulumi.StringOutput {
 // of this network in the same region as the router. If set to `GLOBAL`,
 // this network's cloud routers will advertise routes with all
 // subnetworks of this network, across regions.
-// Possible values are `REGIONAL` and `GLOBAL`.
+// Possible values are: `REGIONAL`, `GLOBAL`.
 func (o NetworkOutput) RoutingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RoutingMode }).(pulumi.StringOutput)
 }

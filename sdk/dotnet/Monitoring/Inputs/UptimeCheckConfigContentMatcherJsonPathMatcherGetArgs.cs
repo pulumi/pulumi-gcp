@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// <summary>
         /// Options to perform JSONPath content matching.
         /// Default value is `EXACT_MATCH`.
-        /// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+        /// Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
         /// </summary>
         [Input("jsonMatcher")]
         public Input<string>? JsonMatcher { get; set; }

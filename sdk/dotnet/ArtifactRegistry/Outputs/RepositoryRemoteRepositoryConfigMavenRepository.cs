@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// <summary>
         /// Address of the remote repository.
         /// Default value is `MAVEN_CENTRAL`.
-        /// Possible values are `MAVEN_CENTRAL`.
+        /// Possible values are: `MAVEN_CENTRAL`.
         /// </summary>
         public readonly string? PublicRepository;
 

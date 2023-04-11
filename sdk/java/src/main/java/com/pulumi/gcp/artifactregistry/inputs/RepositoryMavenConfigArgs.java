@@ -36,7 +36,7 @@ public final class RepositoryMavenConfigArgs extends com.pulumi.resources.Resour
     /**
      * Version policy defines the versions that the registry will accept.
      * Default value is `VERSION_POLICY_UNSPECIFIED`.
-     * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+     * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
      * 
      */
     @Import(name="versionPolicy")
@@ -45,7 +45,7 @@ public final class RepositoryMavenConfigArgs extends com.pulumi.resources.Resour
     /**
      * @return Version policy defines the versions that the registry will accept.
      * Default value is `VERSION_POLICY_UNSPECIFIED`.
-     * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+     * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
      * 
      */
     public Optional<Output<String>> versionPolicy() {
@@ -103,7 +103,7 @@ public final class RepositoryMavenConfigArgs extends com.pulumi.resources.Resour
         /**
          * @param versionPolicy Version policy defines the versions that the registry will accept.
          * Default value is `VERSION_POLICY_UNSPECIFIED`.
-         * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+         * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class RepositoryMavenConfigArgs extends com.pulumi.resources.Resour
         /**
          * @param versionPolicy Version policy defines the versions that the registry will accept.
          * Default value is `VERSION_POLICY_UNSPECIFIED`.
-         * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+         * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
          * 
          * @return builder
          * 

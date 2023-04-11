@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.DataLoss
         /// <summary>
         /// Whether the trigger is currently active.
         /// Default value is `HEALTHY`.
-        /// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         /// </summary>
         [Output("status")]
         public Output<string?> Status { get; private set; } = null!;
@@ -357,7 +357,7 @@ namespace Pulumi.Gcp.DataLoss
         /// <summary>
         /// Whether the trigger is currently active.
         /// Default value is `HEALTHY`.
-        /// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.Gcp.DataLoss
         /// <summary>
         /// Whether the trigger is currently active.
         /// Default value is `HEALTHY`.
-        /// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        /// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -14,7 +14,7 @@ public final class RepositoryRemoteRepositoryConfigPythonRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `PYPI`.
-     * Possible values are `PYPI`.
+     * Possible values are: `PYPI`.
      * 
      */
     private @Nullable String publicRepository;
@@ -23,7 +23,7 @@ public final class RepositoryRemoteRepositoryConfigPythonRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `PYPI`.
-     * Possible values are `PYPI`.
+     * Possible values are: `PYPI`.
      * 
      */
     public Optional<String> publicRepository() {

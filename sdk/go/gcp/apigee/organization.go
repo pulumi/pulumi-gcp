@@ -223,7 +223,7 @@ type Organization struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
 	Retention pulumi.StringPtrOutput `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -232,7 +232,7 @@ type Organization struct {
 	RuntimeDatabaseEncryptionKeyName pulumi.StringPtrOutput `pulumi:"runtimeDatabaseEncryptionKeyName"`
 	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	// Default value is `CLOUD`.
-	// Possible values are `CLOUD` and `HYBRID`.
+	// Possible values are: `CLOUD`, `HYBRID`.
 	RuntimeType pulumi.StringPtrOutput `pulumi:"runtimeType"`
 	// Output only. Subscription type of the Apigee organization.
 	// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
@@ -298,7 +298,7 @@ type organizationState struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
 	Retention *string `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -307,7 +307,7 @@ type organizationState struct {
 	RuntimeDatabaseEncryptionKeyName *string `pulumi:"runtimeDatabaseEncryptionKeyName"`
 	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	// Default value is `CLOUD`.
-	// Possible values are `CLOUD` and `HYBRID`.
+	// Possible values are: `CLOUD`, `HYBRID`.
 	RuntimeType *string `pulumi:"runtimeType"`
 	// Output only. Subscription type of the Apigee organization.
 	// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
@@ -342,7 +342,7 @@ type OrganizationState struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
 	Retention pulumi.StringPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -351,7 +351,7 @@ type OrganizationState struct {
 	RuntimeDatabaseEncryptionKeyName pulumi.StringPtrInput
 	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	// Default value is `CLOUD`.
-	// Possible values are `CLOUD` and `HYBRID`.
+	// Possible values are: `CLOUD`, `HYBRID`.
 	RuntimeType pulumi.StringPtrInput
 	// Output only. Subscription type of the Apigee organization.
 	// Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased).
@@ -385,7 +385,7 @@ type organizationArgs struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
 	Retention *string `pulumi:"retention"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -394,7 +394,7 @@ type organizationArgs struct {
 	RuntimeDatabaseEncryptionKeyName *string `pulumi:"runtimeDatabaseEncryptionKeyName"`
 	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	// Default value is `CLOUD`.
-	// Possible values are `CLOUD` and `HYBRID`.
+	// Possible values are: `CLOUD`, `HYBRID`.
 	RuntimeType *string `pulumi:"runtimeType"`
 }
 
@@ -422,7 +422,7 @@ type OrganizationArgs struct {
 	// operation completes. During this period, the Organization may be restored to its last known state.
 	// After this period, the Organization will no longer be able to be restored.
 	// Default value is `DELETION_RETENTION_UNSPECIFIED`.
-	// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+	// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
 	Retention pulumi.StringPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
 	// Update is not allowed after the organization is created.
@@ -431,7 +431,7 @@ type OrganizationArgs struct {
 	RuntimeDatabaseEncryptionKeyName pulumi.StringPtrInput
 	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	// Default value is `CLOUD`.
-	// Possible values are `CLOUD` and `HYBRID`.
+	// Possible values are: `CLOUD`, `HYBRID`.
 	RuntimeType pulumi.StringPtrInput
 }
 
@@ -576,7 +576,7 @@ func (o OrganizationOutput) Properties() OrganizationPropertiesOutput {
 // operation completes. During this period, the Organization may be restored to its last known state.
 // After this period, the Organization will no longer be able to be restored.
 // Default value is `DELETION_RETENTION_UNSPECIFIED`.
-// Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+// Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
 func (o OrganizationOutput) Retention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Retention }).(pulumi.StringPtrOutput)
 }
@@ -591,7 +591,7 @@ func (o OrganizationOutput) RuntimeDatabaseEncryptionKeyName() pulumi.StringPtrO
 
 // Runtime type of the Apigee organization based on the Apigee subscription purchased.
 // Default value is `CLOUD`.
-// Possible values are `CLOUD` and `HYBRID`.
+// Possible values are: `CLOUD`, `HYBRID`.
 func (o OrganizationOutput) RuntimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.RuntimeType }).(pulumi.StringPtrOutput)
 }

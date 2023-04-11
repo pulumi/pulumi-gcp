@@ -36,7 +36,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     /**
      * Operator used to compare the field or infoType to the value.
-     * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+     * Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
      * 
      */
     @Import(name="operator", required=true)
@@ -44,7 +44,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     /**
      * @return Operator used to compare the field or infoType to the value.
-     * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+     * Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
      * 
      */
     public Output<String> operator() {
@@ -119,7 +119,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         /**
          * @param operator Operator used to compare the field or infoType to the value.
-         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         * Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         /**
          * @param operator Operator used to compare the field or infoType to the value.
-         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         * Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
          * 
          * @return builder
          * 

@@ -280,7 +280,7 @@ public class Address extends com.pulumi.resources.CustomResource {
      * The type of address to reserve.
      * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
-     * Possible values are `INTERNAL` and `EXTERNAL`.
+     * Possible values are: `INTERNAL`, `EXTERNAL`.
      * 
      */
     @Export(name="addressType", type=String.class, parameters={})
@@ -290,7 +290,7 @@ public class Address extends com.pulumi.resources.CustomResource {
      * @return The type of address to reserve.
      * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
-     * Possible values are `INTERNAL` and `EXTERNAL`.
+     * Possible values are: `INTERNAL`, `EXTERNAL`.
      * 
      */
     public Output<Optional<String>> addressType() {
@@ -398,7 +398,7 @@ public class Address extends com.pulumi.resources.CustomResource {
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it&#39;s always Premium](https://cloud.google.com/network-tiers/docs/overview).
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     @Export(name="networkTier", type=String.class, parameters={})
@@ -408,7 +408,7 @@ public class Address extends com.pulumi.resources.CustomResource {
      * @return The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it&#39;s always Premium](https://cloud.google.com/network-tiers/docs/overview).
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     public Output<String> networkTier() {

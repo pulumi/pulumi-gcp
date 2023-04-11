@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'RepositoryDockerConfigArgs',
     'RepositoryIamBindingConditionArgs',
     'RepositoryIamMemberConditionArgs',
     'RepositoryMavenConfigArgs',
@@ -21,6 +22,29 @@ __all__ = [
     'RepositoryVirtualRepositoryConfigArgs',
     'RepositoryVirtualRepositoryConfigUpstreamPolicyArgs',
 ]
+
+@pulumi.input_type
+class RepositoryDockerConfigArgs:
+    def __init__(__self__, *,
+                 immutable_tags: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] immutable_tags: The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        if immutable_tags is not None:
+            pulumi.set(__self__, "immutable_tags", immutable_tags)
+
+    @property
+    @pulumi.getter(name="immutableTags")
+    def immutable_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
+        return pulumi.get(self, "immutable_tags")
+
+    @immutable_tags.setter
+    def immutable_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "immutable_tags", value)
+
 
 @pulumi.input_type
 class RepositoryIamBindingConditionArgs:
@@ -110,7 +134,7 @@ class RepositoryMavenConfigArgs:
                snapshot versions.
         :param pulumi.Input[str] version_policy: Version policy defines the versions that the registry will accept.
                Default value is `VERSION_POLICY_UNSPECIFIED`.
-               Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+               Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
         """
         if allow_snapshot_overwrites is not None:
             pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
@@ -136,7 +160,7 @@ class RepositoryMavenConfigArgs:
         """
         Version policy defines the versions that the registry will accept.
         Default value is `VERSION_POLICY_UNSPECIFIED`.
-        Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+        Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
         """
         return pulumi.get(self, "version_policy")
 
@@ -247,7 +271,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
         """
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `DOCKER_HUB`.
-               Possible values are `DOCKER_HUB`.
+               Possible values are: `DOCKER_HUB`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -258,7 +282,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
         """
         Address of the remote repository.
         Default value is `DOCKER_HUB`.
-        Possible values are `DOCKER_HUB`.
+        Possible values are: `DOCKER_HUB`.
         """
         return pulumi.get(self, "public_repository")
 
@@ -274,7 +298,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
         """
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `MAVEN_CENTRAL`.
-               Possible values are `MAVEN_CENTRAL`.
+               Possible values are: `MAVEN_CENTRAL`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -285,7 +309,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
         """
         Address of the remote repository.
         Default value is `MAVEN_CENTRAL`.
-        Possible values are `MAVEN_CENTRAL`.
+        Possible values are: `MAVEN_CENTRAL`.
         """
         return pulumi.get(self, "public_repository")
 
@@ -301,7 +325,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
         """
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `NPMJS`.
-               Possible values are `NPMJS`.
+               Possible values are: `NPMJS`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -312,7 +336,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
         """
         Address of the remote repository.
         Default value is `NPMJS`.
-        Possible values are `NPMJS`.
+        Possible values are: `NPMJS`.
         """
         return pulumi.get(self, "public_repository")
 
@@ -328,7 +352,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
         """
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `PYPI`.
-               Possible values are `PYPI`.
+               Possible values are: `PYPI`.
         """
         if public_repository is not None:
             pulumi.set(__self__, "public_repository", public_repository)
@@ -339,7 +363,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
         """
         Address of the remote repository.
         Default value is `PYPI`.
-        Possible values are `PYPI`.
+        Possible values are: `PYPI`.
         """
         return pulumi.get(self, "public_repository")
 

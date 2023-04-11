@@ -36,7 +36,7 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
 
     /**
      * Type of sharing for this shared-reservation
-     * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+     * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
      * 
      */
     @Import(name="shareType")
@@ -44,7 +44,7 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
 
     /**
      * @return Type of sharing for this shared-reservation
-     * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+     * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
      * 
      */
     public Optional<Output<String>> shareType() {
@@ -112,7 +112,7 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
 
         /**
          * @param shareType Type of sharing for this shared-reservation
-         * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+         * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ReservationShareSettingsArgs extends com.pulumi.resources.Res
 
         /**
          * @param shareType Type of sharing for this shared-reservation
-         * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+         * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
          * 
          * @return builder
          * 

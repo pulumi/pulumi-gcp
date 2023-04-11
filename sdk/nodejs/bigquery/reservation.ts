@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -21,9 +23,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const reservation = new gcp.bigquery.Reservation("reservation", {
+ *     autoscale: {
+ *         maxSlots: 100,
+ *     },
  *     concurrency: 0,
- *     ignoreIdleSlots: false,
- *     location: "asia-northeast1",
+ *     edition: "STANDARD",
+ *     ignoreIdleSlots: true,
+ *     location: "us-west2",
  *     slotCapacity: 0,
  * });
  * ```
@@ -73,9 +79,18 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
+     * The configuration parameters for the auto scaling feature.
+     * Structure is documented below.
+     */
+    public readonly autoscale!: pulumi.Output<outputs.bigquery.ReservationAutoscale | undefined>;
+    /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
     public readonly concurrency!: pulumi.Output<number | undefined>;
+    /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     */
+    public readonly edition!: pulumi.Output<string | undefined>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
@@ -120,7 +135,9 @@ export class Reservation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
+            resourceInputs["autoscale"] = state ? state.autoscale : undefined;
             resourceInputs["concurrency"] = state ? state.concurrency : undefined;
+            resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["ignoreIdleSlots"] = state ? state.ignoreIdleSlots : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["multiRegionAuxiliary"] = state ? state.multiRegionAuxiliary : undefined;
@@ -132,7 +149,9 @@ export class Reservation extends pulumi.CustomResource {
             if ((!args || args.slotCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slotCapacity'");
             }
+            resourceInputs["autoscale"] = args ? args.autoscale : undefined;
             resourceInputs["concurrency"] = args ? args.concurrency : undefined;
+            resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
@@ -150,9 +169,18 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationState {
     /**
+     * The configuration parameters for the auto scaling feature.
+     * Structure is documented below.
+     */
+    autoscale?: pulumi.Input<inputs.bigquery.ReservationAutoscale>;
+    /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
     concurrency?: pulumi.Input<number>;
+    /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     */
+    edition?: pulumi.Input<string>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
@@ -190,9 +218,18 @@ export interface ReservationState {
  */
 export interface ReservationArgs {
     /**
+     * The configuration parameters for the auto scaling feature.
+     * Structure is documented below.
+     */
+    autoscale?: pulumi.Input<inputs.bigquery.ReservationAutoscale>;
+    /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      */
     concurrency?: pulumi.Input<number>;
+    /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     */
+    edition?: pulumi.Input<string>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot

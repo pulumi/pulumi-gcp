@@ -124,7 +124,7 @@ namespace Pulumi.Gcp.Compute
         /// Enum field whose value is always `MANAGED` - used to signal to the API
         /// which type this is.
         /// Default value is `MANAGED`.
-        /// Possible values are `MANAGED`.
+        /// Possible values are: `MANAGED`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.Compute
         /// Enum field whose value is always `MANAGED` - used to signal to the API
         /// which type this is.
         /// Default value is `MANAGED`.
-        /// Possible values are `MANAGED`.
+        /// Possible values are: `MANAGED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.Gcp.Compute
         /// Enum field whose value is always `MANAGED` - used to signal to the API
         /// which type this is.
         /// Default value is `MANAGED`.
-        /// Possible values are `MANAGED`.
+        /// Possible values are: `MANAGED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

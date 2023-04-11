@@ -32,7 +32,7 @@ public final class ServiceTemplateVpcAccessArgs extends com.pulumi.resources.Res
 
     /**
      * Traffic VPC egress settings.
-     * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
      */
     @Import(name="egress")
@@ -40,7 +40,7 @@ public final class ServiceTemplateVpcAccessArgs extends com.pulumi.resources.Res
 
     /**
      * @return Traffic VPC egress settings.
-     * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
      */
     public Optional<Output<String>> egress() {
@@ -95,7 +95,7 @@ public final class ServiceTemplateVpcAccessArgs extends com.pulumi.resources.Res
 
         /**
          * @param egress Traffic VPC egress settings.
-         * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ServiceTemplateVpcAccessArgs extends com.pulumi.resources.Res
 
         /**
          * @param egress Traffic VPC egress settings.
-         * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          * 
          * @return builder
          * 

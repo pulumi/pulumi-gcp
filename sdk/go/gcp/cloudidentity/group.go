@@ -87,7 +87,7 @@ type Group struct {
 	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
 	// for possible values.
 	// Default value is `EMPTY`.
-	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
 	InitialGroupConfig pulumi.StringPtrOutput `pulumi:"initialGroupConfig"`
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
 	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -160,7 +160,7 @@ type groupState struct {
 	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
 	// for possible values.
 	// Default value is `EMPTY`.
-	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
 	InitialGroupConfig *string `pulumi:"initialGroupConfig"`
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
 	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -196,7 +196,7 @@ type GroupState struct {
 	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
 	// for possible values.
 	// Default value is `EMPTY`.
-	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
 	InitialGroupConfig pulumi.StringPtrInput
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
 	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -234,7 +234,7 @@ type groupArgs struct {
 	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
 	// for possible values.
 	// Default value is `EMPTY`.
-	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
 	InitialGroupConfig *string `pulumi:"initialGroupConfig"`
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
 	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -264,7 +264,7 @@ type GroupArgs struct {
 	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
 	// for possible values.
 	// Default value is `EMPTY`.
-	// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+	// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
 	InitialGroupConfig pulumi.StringPtrInput
 	// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
 	// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
@@ -393,7 +393,7 @@ func (o GroupOutput) GroupKey() GroupGroupKeyOutput {
 // [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
 // for possible values.
 // Default value is `EMPTY`.
-// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
 func (o GroupOutput) InitialGroupConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.InitialGroupConfig }).(pulumi.StringPtrOutput)
 }

@@ -530,7 +530,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         """
         :param str characters_to_skip: Characters to not transform when masking.
         :param str common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation.
-               Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+               Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         """
         if characters_to_skip is not None:
             pulumi.set(__self__, "characters_to_skip", characters_to_skip)
@@ -550,7 +550,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def common_characters_to_ignore(self) -> Optional[str]:
         """
         Common characters to not transform when masking. Useful to avoid removing punctuation.
-        Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+        Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         """
         return pulumi.get(self, "common_characters_to_ignore")
 
@@ -891,7 +891,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType'] = None):
         """
         :param str common_alphabet: Common alphabets.
-               Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+               Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
                1.  there is no record present when transforming a given value or
@@ -931,7 +931,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def common_alphabet(self) -> Optional[str]:
         """
         Common alphabets.
-        Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+        Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         """
         return pulumi.get(self, "common_alphabet")
 
@@ -1287,7 +1287,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         :param 'PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param int integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -1334,7 +1334,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -1654,7 +1654,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Structure is documented below.
         :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
                Default value is `AND`.
-               Possible values are `AND`.
+               Possible values are: `AND`.
         """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -1676,7 +1676,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         The operator to apply to the result of conditions. Default and currently only supported value is AND.
         Default value is `AND`.
-        Possible values are `AND`.
+        Possible values are: `AND`.
         """
         return pulumi.get(self, "logical_operator")
 
@@ -1712,7 +1712,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldArgs' field: Field within the record this condition is evaluated against.
                Structure is documented below.
         :param str operator: Operator used to compare the field or infoType to the value.
-               Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+               Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
                Structure is documented below.
         """
@@ -1735,7 +1735,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def operator(self) -> str:
         """
         Operator used to compare the field or infoType to the value.
-        Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+        Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
         """
         return pulumi.get(self, "operator")
 
@@ -1815,7 +1815,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -1862,7 +1862,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -2384,7 +2384,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -2431,7 +2431,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -2622,7 +2622,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -2669,7 +2669,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -2860,7 +2860,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -2907,7 +2907,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -3160,7 +3160,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         """
         :param str characters_to_skip: Characters to not transform when masking.
         :param str common_characters_to_ignore: Common characters to not transform when masking. Useful to avoid removing punctuation.
-               Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+               Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         """
         if characters_to_skip is not None:
             pulumi.set(__self__, "characters_to_skip", characters_to_skip)
@@ -3180,7 +3180,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def common_characters_to_ignore(self) -> Optional[str]:
         """
         Common characters to not transform when masking. Useful to avoid removing punctuation.
-        Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+        Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
         """
         return pulumi.get(self, "common_characters_to_ignore")
 
@@ -3719,7 +3719,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  surrogate_info_type: Optional['outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType'] = None):
         """
         :param str common_alphabet: Common alphabets.
-               Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+               Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
                If the context is set but:
                1.  there is no record present when transforming a given value or
@@ -3759,7 +3759,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def common_alphabet(self) -> Optional[str]:
         """
         Common alphabets.
-        Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+        Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         """
         return pulumi.get(self, "common_alphabet")
 
@@ -4414,7 +4414,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -4461,7 +4461,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -4652,7 +4652,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -4699,7 +4699,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -4935,7 +4935,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -4982,7 +4982,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -5205,7 +5205,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  part_to_extract: Optional[str] = None):
         """
         :param str part_to_extract: The part of the time to keep.
-               Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+               Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
         """
         if part_to_extract is not None:
             pulumi.set(__self__, "part_to_extract", part_to_extract)
@@ -5215,7 +5215,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def part_to_extract(self) -> Optional[str]:
         """
         The part of the time to keep.
-        Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+        Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
         """
         return pulumi.get(self, "part_to_extract")
 
@@ -5289,7 +5289,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                Structure is documented below.
         :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is AND.
                Default value is `AND`.
-               Possible values are `AND`.
+               Possible values are: `AND`.
         """
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
@@ -5311,7 +5311,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         """
         The operator to apply to the result of conditions. Default and currently only supported value is AND.
         Default value is `AND`.
-        Possible values are `AND`.
+        Possible values are: `AND`.
         """
         return pulumi.get(self, "logical_operator")
 
@@ -5347,7 +5347,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldArgs' field: Field within the record this condition is evaluated against.
                Structure is documented below.
         :param str operator: Operator used to compare the field or infoType to the value.
-               Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+               Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs' value: Value to compare against. [Mandatory, except for EXISTS tests.]
                Structure is documented below.
         """
@@ -5370,7 +5370,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def operator(self) -> str:
         """
         Operator used to compare the field or infoType to the value.
-        Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+        Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
         """
         return pulumi.get(self, "operator")
 
@@ -5450,7 +5450,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
         :param 'PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs' date_value: Represents a whole or partial calendar date.
                Structure is documented below.
         :param str day_of_week_value: Represents a day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param float float_value: A float value.
         :param str integer_value: An integer value (int64 format)
         :param str string_value: A string value.
@@ -5497,7 +5497,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def day_of_week_value(self) -> Optional[str]:
         """
         Represents a day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week_value")
 
@@ -5683,7 +5683,7 @@ class PreventionInspectTemplateInspectConfig(dict):
                  rule_sets: Optional[Sequence['outputs.PreventionInspectTemplateInspectConfigRuleSet']] = None):
         """
         :param Sequence[str] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
-               Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+               Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
         :param Sequence['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs'] custom_info_types: Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
                Structure is documented below.
         :param bool exclude_info_types: When true, excludes type information of the findings.
@@ -5697,7 +5697,7 @@ class PreventionInspectTemplateInspectConfig(dict):
                Structure is documented below.
         :param str min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
                Default value is `POSSIBLE`.
-               Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         :param Sequence['PreventionInspectTemplateInspectConfigRuleSetArgs'] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
                other rules are executed in the order they are specified for each info type.
                Structure is documented below.
@@ -5724,7 +5724,7 @@ class PreventionInspectTemplateInspectConfig(dict):
     def content_options(self) -> Optional[Sequence[str]]:
         """
         List of options defining data content to scan. If empty, text, images, and other content will be included.
-        Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+        Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
         """
         return pulumi.get(self, "content_options")
 
@@ -5780,7 +5780,7 @@ class PreventionInspectTemplateInspectConfig(dict):
         """
         Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
         Default value is `POSSIBLE`.
-        Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
         return pulumi.get(self, "min_likelihood")
 
@@ -5834,11 +5834,11 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
         :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs' dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param str exclusion_type: If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-               Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+               Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
         :param str likelihood: Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
                specified by the rule.
                Default value is `VERY_LIKELY`.
-               Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs' regex: Regular expression which defines the rule.
                Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs' stored_type: A reference to a StoredInfoType to use with scanning.
@@ -5882,7 +5882,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
     def exclusion_type(self) -> Optional[str]:
         """
         If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-        Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+        Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
         """
         return pulumi.get(self, "exclusion_type")
 
@@ -5893,7 +5893,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType(dict):
         Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
         specified by the rule.
         Default value is `VERY_LIKELY`.
-        Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
         return pulumi.get(self, "likelihood")
 
@@ -6419,7 +6419,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
                  regex: Optional['outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex'] = None):
         """
         :param str matching_type: How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-               Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+               Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs' dictionary: Dictionary which defines the rule.
                Structure is documented below.
         :param 'PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs' exclude_info_types: Set of infoTypes for which findings would affect this rule.
@@ -6440,7 +6440,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(dict):
     def matching_type(self) -> str:
         """
         How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-        Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+        Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
         """
         return pulumi.get(self, "matching_type")
 
@@ -6820,7 +6820,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
                  relative_likelihood: Optional[int] = None):
         """
         :param str fixed_likelihood: Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-               Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         :param int relative_likelihood: Increase or decrease the likelihood by the specified number of levels. For example,
                if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
                then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
@@ -6838,7 +6838,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
     def fixed_likelihood(self) -> Optional[str]:
         """
         Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-        Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         """
         return pulumi.get(self, "fixed_likelihood")
 
@@ -7150,7 +7150,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
                If unspecified, then all available columns will be used for a new table or an (existing)
                table with no schema, and no changes will be made to an existing table that has a schema.
                Only for use with external storage.
-               Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+               Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
         """
         pulumi.set(__self__, "table", table)
         if output_schema is not None:
@@ -7176,7 +7176,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig(dict):
         If unspecified, then all available columns will be used for a new table or an (existing)
         table with no schema, and no changes will be made to an existing table that has a schema.
         Only for use with external storage.
-        Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+        Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
         """
         return pulumi.get(self, "output_schema")
 
@@ -7379,7 +7379,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
         :param str sample_method: How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
                rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
                Default value is `TOP`.
-               Possible values are `TOP` and `RANDOM_START`.
+               Possible values are: `TOP`, `RANDOM_START`.
         """
         pulumi.set(__self__, "table_reference", table_reference)
         if identifying_fields is not None:
@@ -7437,7 +7437,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(dict):
         How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
         rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
         Default value is `TOP`.
-        Possible values are `TOP` and `RANDOM_START`.
+        Possible values are: `TOP`, `RANDOM_START`.
         """
         return pulumi.get(self, "sample_method")
 
@@ -7567,12 +7567,12 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
         :param Sequence[str] file_types: List of file type groups to include in the scan. If empty, all files are scanned and available data
                format processors are applied. In addition, the binary content of the selected files is always scanned as well.
                Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-               Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+               Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
         :param int files_limit_percent: Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
                Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
         :param str sample_method: How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
                If not specified, scanning would start from the top.
-               Possible values are `TOP` and `RANDOM_START`.
+               Possible values are: `TOP`, `RANDOM_START`.
         """
         pulumi.set(__self__, "file_set", file_set)
         if bytes_limit_per_file is not None:
@@ -7620,7 +7620,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
         List of file type groups to include in the scan. If empty, all files are scanned and available data
         format processors are applied. In addition, the binary content of the selected files is always scanned as well.
         Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-        Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+        Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
         """
         return pulumi.get(self, "file_types")
 
@@ -7639,7 +7639,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(dict):
         """
         How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
         If not specified, scanning would start from the top.
-        Possible values are `TOP` and `RANDOM_START`.
+        Possible values are: `TOP`, `RANDOM_START`.
         """
         return pulumi.get(self, "sample_method")
 

@@ -118,7 +118,7 @@ export class Endpoint extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The minimum alert severity level that is reported by the endpoint.
-     * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+     * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      */
     public readonly severity!: pulumi.Output<string>;
     /**
@@ -221,7 +221,7 @@ export interface EndpointState {
     project?: pulumi.Input<string>;
     /**
      * The minimum alert severity level that is reported by the endpoint.
-     * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+     * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      */
     severity?: pulumi.Input<string>;
     /**
@@ -261,7 +261,7 @@ export interface EndpointArgs {
     project?: pulumi.Input<string>;
     /**
      * The minimum alert severity level that is reported by the endpoint.
-     * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+     * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      */
     severity: pulumi.Input<string>;
     /**

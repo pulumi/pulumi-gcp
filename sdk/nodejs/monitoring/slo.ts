@@ -125,7 +125,7 @@ export class Slo extends pulumi.CustomResource {
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
-     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+     * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      */
     public readonly calendarPeriod!: pulumi.Output<string | undefined>;
     /**
@@ -260,7 +260,7 @@ export interface SloState {
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
-     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+     * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      */
     calendarPeriod?: pulumi.Input<string>;
     /**
@@ -345,7 +345,7 @@ export interface SloArgs {
     /**
      * A calendar period, semantically "since the start of the current
      * <calendarPeriod>".
-     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+     * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      */
     calendarPeriod?: pulumi.Input<string>;
     /**

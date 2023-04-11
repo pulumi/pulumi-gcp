@@ -108,7 +108,7 @@ public final class OrganizationFeedState extends com.pulumi.resources.ResourceAr
 
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
      * 
      */
     @Import(name="contentType")
@@ -116,7 +116,7 @@ public final class OrganizationFeedState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -358,7 +358,7 @@ public final class OrganizationFeedState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned.
-         * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class OrganizationFeedState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned.
-         * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
          * 
          * @return builder
          * 

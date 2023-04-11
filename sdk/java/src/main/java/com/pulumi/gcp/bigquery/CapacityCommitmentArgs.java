@@ -38,6 +38,21 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+
+    /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      * 
      */
@@ -70,14 +85,14 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+     * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      * 
      */
     @Import(name="plan", required=true)
     private Output<String> plan;
 
     /**
-     * @return Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+     * @return Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      * 
      */
     public Output<String> plan() {
@@ -102,14 +117,14 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      * 
      */
     @Import(name="renewalPlan")
     private @Nullable Output<String> renewalPlan;
 
     /**
-     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      * 
      */
     public Optional<Output<String>> renewalPlan() {
@@ -135,6 +150,7 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
 
     private CapacityCommitmentArgs(CapacityCommitmentArgs $) {
         this.capacityCommitmentId = $.capacityCommitmentId;
+        this.edition = $.edition;
         this.enforceSingleAdminProjectPerOrg = $.enforceSingleAdminProjectPerOrg;
         this.location = $.location;
         this.plan = $.plan;
@@ -189,6 +205,27 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param edition The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
+        }
+
+        /**
          * @param enforceSingleAdminProjectPerOrg If true, fail the request if another project in the organization has a capacity commitment.
          * 
          * @return builder
@@ -233,7 +270,7 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param plan Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+         * @param plan Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
          * 
          * @return builder
          * 
@@ -244,7 +281,7 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param plan Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+         * @param plan Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
          * 
          * @return builder
          * 
@@ -277,7 +314,7 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
          * 
          * @return builder
          * 
@@ -288,7 +325,7 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+         * @param renewalPlan The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
          * 
          * @return builder
          * 

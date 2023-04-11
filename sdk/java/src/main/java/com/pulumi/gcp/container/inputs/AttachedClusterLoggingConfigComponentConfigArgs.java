@@ -18,7 +18,7 @@ public final class AttachedClusterLoggingConfigComponentConfigArgs extends com.p
 
     /**
      * The components to be enabled.
-     * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+     * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
      * 
      */
     @Import(name="enableComponents")
@@ -26,7 +26,7 @@ public final class AttachedClusterLoggingConfigComponentConfigArgs extends com.p
 
     /**
      * @return The components to be enabled.
-     * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+     * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
      * 
      */
     public Optional<Output<List<String>>> enableComponents() {
@@ -59,7 +59,7 @@ public final class AttachedClusterLoggingConfigComponentConfigArgs extends com.p
 
         /**
          * @param enableComponents The components to be enabled.
-         * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+         * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
          * 
          * @return builder
          * 
@@ -71,7 +71,7 @@ public final class AttachedClusterLoggingConfigComponentConfigArgs extends com.p
 
         /**
          * @param enableComponents The components to be enabled.
-         * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+         * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class AttachedClusterLoggingConfigComponentConfigArgs extends com.p
 
         /**
          * @param enableComponents The components to be enabled.
-         * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+         * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
          * 
          * @return builder
          * 

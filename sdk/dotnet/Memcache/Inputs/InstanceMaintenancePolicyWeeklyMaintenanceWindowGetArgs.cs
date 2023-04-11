@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Memcache.Inputs
         /// - FRIDAY: Friday
         /// - SATURDAY: Saturday
         /// - SUNDAY: Sunday
-        /// Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         [Input("day", required: true)]
         public Input<string> Day { get; set; } = null!;

@@ -182,7 +182,7 @@ type MetastoreService struct {
 	ArtifactGcsUri pulumi.StringOutput `pulumi:"artifactGcsUri"`
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
-	// Possible values are `MYSQL` and `SPANNER`.
+	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrOutput `pulumi:"databaseType"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -221,7 +221,7 @@ type MetastoreService struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
-	// Possible values are `CANARY` and `STABLE`.
+	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel pulumi.StringPtrOutput `pulumi:"releaseChannel"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -235,7 +235,7 @@ type MetastoreService struct {
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigOutput `pulumi:"telemetryConfig"`
 	// The tier of the service.
-	// Possible values are `DEVELOPER` and `ENTERPRISE`.
+	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// The globally unique resource identifier of the metastore service.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -277,7 +277,7 @@ type metastoreServiceState struct {
 	ArtifactGcsUri *string `pulumi:"artifactGcsUri"`
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
-	// Possible values are `MYSQL` and `SPANNER`.
+	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -316,7 +316,7 @@ type metastoreServiceState struct {
 	Project *string `pulumi:"project"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
-	// Possible values are `CANARY` and `STABLE`.
+	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -330,7 +330,7 @@ type metastoreServiceState struct {
 	// Structure is documented below.
 	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
 	// The tier of the service.
-	// Possible values are `DEVELOPER` and `ENTERPRISE`.
+	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier *string `pulumi:"tier"`
 	// The globally unique resource identifier of the metastore service.
 	Uid *string `pulumi:"uid"`
@@ -341,7 +341,7 @@ type MetastoreServiceState struct {
 	ArtifactGcsUri pulumi.StringPtrInput
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
-	// Possible values are `MYSQL` and `SPANNER`.
+	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -380,7 +380,7 @@ type MetastoreServiceState struct {
 	Project pulumi.StringPtrInput
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
-	// Possible values are `CANARY` and `STABLE`.
+	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel pulumi.StringPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -394,7 +394,7 @@ type MetastoreServiceState struct {
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput
 	// The tier of the service.
-	// Possible values are `DEVELOPER` and `ENTERPRISE`.
+	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier pulumi.StringPtrInput
 	// The globally unique resource identifier of the metastore service.
 	Uid pulumi.StringPtrInput
@@ -407,7 +407,7 @@ func (MetastoreServiceState) ElementType() reflect.Type {
 type metastoreServiceArgs struct {
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
-	// Possible values are `MYSQL` and `SPANNER`.
+	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -441,7 +441,7 @@ type metastoreServiceArgs struct {
 	Project *string `pulumi:"project"`
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
-	// Possible values are `CANARY` and `STABLE`.
+	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -451,7 +451,7 @@ type metastoreServiceArgs struct {
 	// Structure is documented below.
 	TelemetryConfig *MetastoreServiceTelemetryConfig `pulumi:"telemetryConfig"`
 	// The tier of the service.
-	// Possible values are `DEVELOPER` and `ENTERPRISE`.
+	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier *string `pulumi:"tier"`
 }
 
@@ -459,7 +459,7 @@ type metastoreServiceArgs struct {
 type MetastoreServiceArgs struct {
 	// The database type that the Metastore service stores its data.
 	// Default value is `MYSQL`.
-	// Possible values are `MYSQL` and `SPANNER`.
+	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
@@ -493,7 +493,7 @@ type MetastoreServiceArgs struct {
 	Project pulumi.StringPtrInput
 	// The release channel of the service. If unspecified, defaults to `STABLE`.
 	// Default value is `STABLE`.
-	// Possible values are `CANARY` and `STABLE`.
+	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel pulumi.StringPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -503,7 +503,7 @@ type MetastoreServiceArgs struct {
 	// Structure is documented below.
 	TelemetryConfig MetastoreServiceTelemetryConfigPtrInput
 	// The tier of the service.
-	// Possible values are `DEVELOPER` and `ENTERPRISE`.
+	// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 	Tier pulumi.StringPtrInput
 }
 
@@ -601,7 +601,7 @@ func (o MetastoreServiceOutput) ArtifactGcsUri() pulumi.StringOutput {
 
 // The database type that the Metastore service stores its data.
 // Default value is `MYSQL`.
-// Possible values are `MYSQL` and `SPANNER`.
+// Possible values are: `MYSQL`, `SPANNER`.
 func (o MetastoreServiceOutput) DatabaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.DatabaseType }).(pulumi.StringPtrOutput)
 }
@@ -679,7 +679,7 @@ func (o MetastoreServiceOutput) Project() pulumi.StringOutput {
 
 // The release channel of the service. If unspecified, defaults to `STABLE`.
 // Default value is `STABLE`.
-// Possible values are `CANARY` and `STABLE`.
+// Possible values are: `CANARY`, `STABLE`.
 func (o MetastoreServiceOutput) ReleaseChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.ReleaseChannel }).(pulumi.StringPtrOutput)
 }
@@ -708,7 +708,7 @@ func (o MetastoreServiceOutput) TelemetryConfig() MetastoreServiceTelemetryConfi
 }
 
 // The tier of the service.
-// Possible values are `DEVELOPER` and `ENTERPRISE`.
+// Possible values are: `DEVELOPER`, `ENTERPRISE`.
 func (o MetastoreServiceOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }

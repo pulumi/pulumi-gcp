@@ -63,7 +63,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
      * A condition control that determines how
      * metric-threshold conditions are evaluated when
      * data stops arriving.
-     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
     @Import(name="evaluationMissingData")
@@ -73,7 +73,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
      * @return A condition control that determines how
      * metric-threshold conditions are evaluated when
      * data stops arriving.
-     * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+     * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
      * 
      */
     public Optional<Output<String>> evaluationMissingData() {
@@ -206,7 +206,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
          * @param evaluationMissingData A condition control that determines how
          * metric-threshold conditions are evaluated when
          * data stops arriving.
-         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
          * @param evaluationMissingData A condition control that determines how
          * metric-threshold conditions are evaluated when
          * data stops arriving.
-         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
          * 
          * @return builder
          * 

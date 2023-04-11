@@ -38,7 +38,7 @@ class ExternalVpnGatewayArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
-               Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+               Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -126,7 +126,7 @@ class ExternalVpnGatewayArgs:
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
         Indicates the redundancy type of this external VPN gateway
-        Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+        Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -161,7 +161,7 @@ class _ExternalVpnGatewayState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
-               Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+               Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         if description is not None:
@@ -252,7 +252,7 @@ class _ExternalVpnGatewayState:
     def redundancy_type(self) -> Optional[pulumi.Input[str]]:
         """
         Indicates the redundancy type of this external VPN gateway
-        Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+        Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         """
         return pulumi.get(self, "redundancy_type")
 
@@ -399,7 +399,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
-               Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+               Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         """
         ...
     @overload
@@ -580,7 +580,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] redundancy_type: Indicates the redundancy type of this external VPN gateway
-               Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+               Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -649,7 +649,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
     def redundancy_type(self) -> pulumi.Output[Optional[str]]:
         """
         Indicates the redundancy type of this external VPN gateway
-        Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+        Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         """
         return pulumi.get(self, "redundancy_type")
 

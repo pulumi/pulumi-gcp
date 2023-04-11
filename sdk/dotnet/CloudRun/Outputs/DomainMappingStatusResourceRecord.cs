@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly string? Rrdata;
         /// <summary>
         /// Resource record type. Example: `AAAA`.
-        /// Possible values are `A`, `AAAA`, and `CNAME`.
+        /// Possible values are: `A`, `AAAA`, `CNAME`.
         /// </summary>
         public readonly string? Type;
 

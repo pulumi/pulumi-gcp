@@ -55,6 +55,39 @@ import (
 //	}
 //
 // ```
+// ### Ha Vpn Gateway Ipv6
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network1, err := compute.NewNetwork(ctx, "network1", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewHaVpnGateway(ctx, "haGateway1", &compute.HaVpnGatewayArgs{
+//				Region:    pulumi.String("us-central1"),
+//				Network:   network1.ID(),
+//				StackType: pulumi.String("IPV4_IPV6"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Compute Ha Vpn Gateway Encrypted Interconnect
 //
 // ```go
@@ -200,6 +233,11 @@ type HaVpnGateway struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// If not specified, IPV4_ONLY will be used.
+	// Default value is `IPV4_ONLY`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	StackType pulumi.StringPtrOutput `pulumi:"stackType"`
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
 	VpnInterfaces HaVpnGatewayVpnInterfaceArrayOutput `pulumi:"vpnInterfaces"`
@@ -256,6 +294,11 @@ type haVpnGatewayState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// If not specified, IPV4_ONLY will be used.
+	// Default value is `IPV4_ONLY`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	StackType *string `pulumi:"stackType"`
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
 	VpnInterfaces []HaVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
@@ -281,6 +324,11 @@ type HaVpnGatewayState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// If not specified, IPV4_ONLY will be used.
+	// Default value is `IPV4_ONLY`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	StackType pulumi.StringPtrInput
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
 	VpnInterfaces HaVpnGatewayVpnInterfaceArrayInput
@@ -308,6 +356,11 @@ type haVpnGatewayArgs struct {
 	Project *string `pulumi:"project"`
 	// The region this gateway should sit in.
 	Region *string `pulumi:"region"`
+	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// If not specified, IPV4_ONLY will be used.
+	// Default value is `IPV4_ONLY`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	StackType *string `pulumi:"stackType"`
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
 	VpnInterfaces []HaVpnGatewayVpnInterface `pulumi:"vpnInterfaces"`
@@ -332,6 +385,11 @@ type HaVpnGatewayArgs struct {
 	Project pulumi.StringPtrInput
 	// The region this gateway should sit in.
 	Region pulumi.StringPtrInput
+	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// If not specified, IPV4_ONLY will be used.
+	// Default value is `IPV4_ONLY`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	StackType pulumi.StringPtrInput
 	// A list of interfaces on this VPN gateway.
 	// Structure is documented below.
 	VpnInterfaces HaVpnGatewayVpnInterfaceArrayInput
@@ -459,6 +517,14 @@ func (o HaVpnGatewayOutput) Region() pulumi.StringOutput {
 // The URI of the created resource.
 func (o HaVpnGatewayOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+// If not specified, IPV4_ONLY will be used.
+// Default value is `IPV4_ONLY`.
+// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+func (o HaVpnGatewayOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringPtrOutput { return v.StackType }).(pulumi.StringPtrOutput)
 }
 
 // A list of interfaces on this VPN gateway.

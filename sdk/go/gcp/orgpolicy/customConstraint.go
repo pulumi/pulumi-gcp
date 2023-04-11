@@ -109,7 +109,7 @@ type CustomConstraint struct {
 	pulumi.CustomResourceState
 
 	// The action to take if the condition is met.
-	// Possible values are `ALLOW` and `DENY`.
+	// Possible values are: `ALLOW`, `DENY`.
 	ActionType pulumi.StringOutput `pulumi:"actionType"`
 	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 	Condition pulumi.StringOutput `pulumi:"condition"`
@@ -174,7 +174,7 @@ func GetCustomConstraint(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CustomConstraint resources.
 type customConstraintState struct {
 	// The action to take if the condition is met.
-	// Possible values are `ALLOW` and `DENY`.
+	// Possible values are: `ALLOW`, `DENY`.
 	ActionType *string `pulumi:"actionType"`
 	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 	Condition *string `pulumi:"condition"`
@@ -196,7 +196,7 @@ type customConstraintState struct {
 
 type CustomConstraintState struct {
 	// The action to take if the condition is met.
-	// Possible values are `ALLOW` and `DENY`.
+	// Possible values are: `ALLOW`, `DENY`.
 	ActionType pulumi.StringPtrInput
 	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 	Condition pulumi.StringPtrInput
@@ -222,7 +222,7 @@ func (CustomConstraintState) ElementType() reflect.Type {
 
 type customConstraintArgs struct {
 	// The action to take if the condition is met.
-	// Possible values are `ALLOW` and `DENY`.
+	// Possible values are: `ALLOW`, `DENY`.
 	ActionType string `pulumi:"actionType"`
 	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 	Condition string `pulumi:"condition"`
@@ -243,7 +243,7 @@ type customConstraintArgs struct {
 // The set of arguments for constructing a CustomConstraint resource.
 type CustomConstraintArgs struct {
 	// The action to take if the condition is met.
-	// Possible values are `ALLOW` and `DENY`.
+	// Possible values are: `ALLOW`, `DENY`.
 	ActionType pulumi.StringInput
 	// A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
 	Condition pulumi.StringInput
@@ -349,7 +349,7 @@ func (o CustomConstraintOutput) ToCustomConstraintOutputWithContext(ctx context.
 }
 
 // The action to take if the condition is met.
-// Possible values are `ALLOW` and `DENY`.
+// Possible values are: `ALLOW`, `DENY`.
 func (o CustomConstraintOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomConstraint) pulumi.StringOutput { return v.ActionType }).(pulumi.StringOutput)
 }

@@ -14,14 +14,14 @@ namespace Pulumi.Gcp.Datastream.Inputs
     {
         /// <summary>
         /// Compression of the loaded JSON file.
-        /// Possible values are `NO_COMPRESSION` and `GZIP`.
+        /// Possible values are: `NO_COMPRESSION`, `GZIP`.
         /// </summary>
         [Input("compression")]
         public Input<string>? Compression { get; set; }
 
         /// <summary>
         /// The schema file format along JSON data files.
-        /// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+        /// Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
         /// </summary>
         [Input("schemaFileFormat")]
         public Input<string>? SchemaFileFormat { get; set; }

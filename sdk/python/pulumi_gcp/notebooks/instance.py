@@ -60,7 +60,7 @@ class InstanceArgs:
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input['InstanceContainerImageArgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
@@ -71,9 +71,9 @@ class InstanceArgs:
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
-               Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+               Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
@@ -92,7 +92,7 @@ class InstanceArgs:
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
         :param pulumi.Input[str] nic_type: The type of vNIC driver.
-               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+               Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -243,7 +243,7 @@ class InstanceArgs:
     def boot_disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -309,7 +309,7 @@ class InstanceArgs:
     def data_disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         """
         return pulumi.get(self, "data_disk_type")
 
@@ -322,7 +322,7 @@ class InstanceArgs:
     def disk_encryption(self) -> Optional[pulumi.Input[str]]:
         """
         Disk encryption method used on the boot and data disks, defaults to GMEK.
-        Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+        Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         """
         return pulumi.get(self, "disk_encryption")
 
@@ -429,7 +429,7 @@ class InstanceArgs:
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of vNIC driver.
-        Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 
@@ -656,7 +656,7 @@ class _InstanceState:
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input['InstanceContainerImageArgs'] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
@@ -667,9 +667,9 @@ class _InstanceState:
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
-               Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+               Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
@@ -690,7 +690,7 @@ class _InstanceState:
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
         :param pulumi.Input[str] nic_type: The type of vNIC driver.
-               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+               Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -826,7 +826,7 @@ class _InstanceState:
     def boot_disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -892,7 +892,7 @@ class _InstanceState:
     def data_disk_type(self) -> Optional[pulumi.Input[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         """
         return pulumi.get(self, "data_disk_type")
 
@@ -905,7 +905,7 @@ class _InstanceState:
     def disk_encryption(self) -> Optional[pulumi.Input[str]]:
         """
         Disk encryption method used on the boot and data disks, defaults to GMEK.
-        Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+        Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         """
         return pulumi.get(self, "disk_encryption")
 
@@ -1036,7 +1036,7 @@ class _InstanceState:
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of vNIC driver.
-        Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 
@@ -1399,7 +1399,7 @@ class Instance(pulumi.CustomResource):
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
@@ -1410,9 +1410,9 @@ class Instance(pulumi.CustomResource):
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
-               Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+               Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
@@ -1433,7 +1433,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
         :param pulumi.Input[str] nic_type: The type of vNIC driver.
-               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+               Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -1732,7 +1732,7 @@ class Instance(pulumi.CustomResource):
                up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] boot_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[pulumi.InputType['InstanceContainerImageArgs']] container_image: Use a container image to start the notebook instance.
                Structure is documented below.
         :param pulumi.Input[str] create_time: Instance creation time
@@ -1743,9 +1743,9 @@ class Instance(pulumi.CustomResource):
                You can choose the size of the data disk based on how big your notebooks and data are.
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
-               Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+               Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
-               Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+               Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
                on this instance. If this field is empty or set to false, the GPU driver
                won't be installed. Only applicable to instances with GPUs.
@@ -1766,7 +1766,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
         :param pulumi.Input[str] nic_type: The type of vNIC driver.
-               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+               Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
         :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
@@ -1865,7 +1865,7 @@ class Instance(pulumi.CustomResource):
     def boot_disk_type(self) -> pulumi.Output[Optional[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -1911,7 +1911,7 @@ class Instance(pulumi.CustomResource):
     def data_disk_type(self) -> pulumi.Output[Optional[str]]:
         """
         Possible disk types for notebook instances.
-        Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         """
         return pulumi.get(self, "data_disk_type")
 
@@ -1920,7 +1920,7 @@ class Instance(pulumi.CustomResource):
     def disk_encryption(self) -> pulumi.Output[Optional[str]]:
         """
         Disk encryption method used on the boot and data disks, defaults to GMEK.
-        Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+        Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         """
         return pulumi.get(self, "disk_encryption")
 
@@ -2011,7 +2011,7 @@ class Instance(pulumi.CustomResource):
     def nic_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of vNIC driver.
-        Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 

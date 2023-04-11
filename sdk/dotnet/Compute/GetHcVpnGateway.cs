@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly string? Region;
         public readonly string SelfLink;
+        public readonly string StackType;
         public readonly ImmutableArray<Outputs.GetHcVpnGatewayVpnInterfaceResult> VpnInterfaces;
 
         [OutputConstructor]
@@ -155,6 +156,8 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            string stackType,
+
             ImmutableArray<Outputs.GetHcVpnGatewayVpnInterfaceResult> vpnInterfaces)
         {
             Description = description;
@@ -164,6 +167,7 @@ namespace Pulumi.Gcp.Compute
             Project = project;
             Region = region;
             SelfLink = selfLink;
+            StackType = stackType;
             VpnInterfaces = vpnInterfaces;
         }
     }

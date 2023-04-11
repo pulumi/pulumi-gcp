@@ -36,7 +36,7 @@ public final class ConnectionCloudSql {
     private @Nullable String serviceAccountId;
     /**
      * @return Type of the Cloud SQL database.
-     * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+     * Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
      * 
      */
     private String type;
@@ -74,7 +74,7 @@ public final class ConnectionCloudSql {
     }
     /**
      * @return Type of the Cloud SQL database.
-     * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+     * Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
      * 
      */
     public String type() {

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// OR is used, at least one Condition in conditions must be satisfied
         /// for the AccessLevel to be applied.
         /// Default value is `AND`.
-        /// Possible values are `AND` and `OR`.
+        /// Possible values are: `AND`, `OR`.
         /// </summary>
         [Input("combiningFunction")]
         public Input<string>? CombiningFunction { get; set; }

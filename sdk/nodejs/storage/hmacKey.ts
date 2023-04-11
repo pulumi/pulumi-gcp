@@ -99,7 +99,7 @@ export class HmacKey extends pulumi.CustomResource {
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
-     * Possible values are `ACTIVE` and `INACTIVE`.
+     * Possible values are: `ACTIVE`, `INACTIVE`.
      */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
@@ -176,7 +176,7 @@ export interface HmacKeyState {
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
-     * Possible values are `ACTIVE` and `INACTIVE`.
+     * Possible values are: `ACTIVE`, `INACTIVE`.
      */
     state?: pulumi.Input<string>;
     /**
@@ -205,7 +205,7 @@ export interface HmacKeyArgs {
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
-     * Possible values are `ACTIVE` and `INACTIVE`.
+     * Possible values are: `ACTIVE`, `INACTIVE`.
      */
     state?: pulumi.Input<string>;
 }

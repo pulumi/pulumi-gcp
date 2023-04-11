@@ -44,6 +44,29 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Ha Vpn Gateway Ipv6
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network1 = new Gcp.Compute.Network("network1", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var haGateway1 = new Gcp.Compute.HaVpnGateway("haGateway1", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = network1.Id,
+    ///         StackType = "IPV4_IPV6",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Compute Ha Vpn Gateway Encrypted Interconnect
     /// 
     /// ```csharp
@@ -198,6 +221,15 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        /// If not specified, IPV4_ONLY will be used.
+        /// Default value is `IPV4_ONLY`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// </summary>
+        [Output("stackType")]
+        public Output<string?> StackType { get; private set; } = null!;
+
+        /// <summary>
         /// A list of interfaces on this VPN gateway.
         /// Structure is documented below.
         /// </summary>
@@ -287,6 +319,15 @@ namespace Pulumi.Gcp.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        /// If not specified, IPV4_ONLY will be used.
+        /// Default value is `IPV4_ONLY`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
+
         [Input("vpnInterfaces")]
         private InputList<Inputs.HaVpnGatewayVpnInterfaceArgs>? _vpnInterfaces;
 
@@ -350,6 +391,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        /// If not specified, IPV4_ONLY will be used.
+        /// Default value is `IPV4_ONLY`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
 
         [Input("vpnInterfaces")]
         private InputList<Inputs.HaVpnGatewayVpnInterfaceGetArgs>? _vpnInterfaces;

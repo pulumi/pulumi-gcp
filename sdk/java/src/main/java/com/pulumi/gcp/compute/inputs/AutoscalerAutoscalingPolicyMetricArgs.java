@@ -175,7 +175,7 @@ public final class AutoscalerAutoscalingPolicyMetricArgs extends com.pulumi.reso
     /**
      * Defines how target utilization value is expressed for a
      * Stackdriver Monitoring metric.
-     * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+     * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
      * 
      */
     @Import(name="type")
@@ -184,7 +184,7 @@ public final class AutoscalerAutoscalingPolicyMetricArgs extends com.pulumi.reso
     /**
      * @return Defines how target utilization value is expressed for a
      * Stackdriver Monitoring metric.
-     * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+     * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -402,7 +402,7 @@ public final class AutoscalerAutoscalingPolicyMetricArgs extends com.pulumi.reso
         /**
          * @param type Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
-         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+         * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class AutoscalerAutoscalingPolicyMetricArgs extends com.pulumi.reso
         /**
          * @param type Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
-         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+         * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
          * 
          * @return builder
          * 

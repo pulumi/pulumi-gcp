@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// The algorithm used for subsetting.
-        /// Possible values are `CONSISTENT_HASH_SUBSETTING`.
+        /// Possible values are: `CONSISTENT_HASH_SUBSETTING`.
         /// </summary>
         [Input("policy", required: true)]
         public Input<string> Policy { get; set; } = null!;

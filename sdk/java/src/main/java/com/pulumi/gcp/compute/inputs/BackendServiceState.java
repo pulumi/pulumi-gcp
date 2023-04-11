@@ -105,7 +105,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
     @Import(name="compressionMode")
@@ -113,7 +113,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
     public Optional<Output<String>> compressionMode() {
@@ -342,7 +342,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -354,7 +354,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -512,7 +512,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
-     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
      * 
      */
     @Import(name="protocol")
@@ -522,7 +522,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      * @return The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
-     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -585,7 +585,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      * 
      */
     @Import(name="sessionAffinity")
@@ -594,7 +594,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     /**
      * @return Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      * 
      */
     public Optional<Output<String>> sessionAffinity() {
@@ -785,7 +785,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param compressionMode Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-         * Possible values are `AUTOMATIC` and `DISABLED`.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -797,7 +797,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param compressionMode Compress text responses using Brotli or gzip compression, based on the client&#39;s Accept-Encoding header.
-         * Possible values are `AUTOMATIC` and `DISABLED`.
+         * Possible values are: `AUTOMATIC`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -1122,7 +1122,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `EXTERNAL`.
-         * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
          * 
          * @return builder
          * 
@@ -1138,7 +1138,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `EXTERNAL`.
-         * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
          * 
          * @return builder
          * 
@@ -1356,7 +1356,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          * @param protocol The protocol this BackendService uses to communicate with backends.
          * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
          * types and may result in errors if used with the GA API.
-         * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
          * 
          * @return builder
          * 
@@ -1370,7 +1370,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          * @param protocol The protocol this BackendService uses to communicate with backends.
          * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
          * types and may result in errors if used with the GA API.
-         * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
          * 
          * @return builder
          * 
@@ -1453,7 +1453,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param sessionAffinity Type of session affinity to use. The default is NONE. Session affinity is
          * not applicable if the protocol is UDP.
-         * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+         * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
          * 
          * @return builder
          * 
@@ -1466,7 +1466,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param sessionAffinity Type of session affinity to use. The default is NONE. Session affinity is
          * not applicable if the protocol is UDP.
-         * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+         * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
          * 
          * @return builder
          * 

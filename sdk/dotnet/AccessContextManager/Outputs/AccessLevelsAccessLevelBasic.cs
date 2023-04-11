@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// OR is used, at least one Condition in conditions must be satisfied
         /// for the AccessLevel to be applied.
         /// Default value is `AND`.
-        /// Possible values are `AND` and `OR`.
+        /// Possible values are: `AND`, `OR`.
         /// </summary>
         public readonly string? CombiningFunction;
         /// <summary>

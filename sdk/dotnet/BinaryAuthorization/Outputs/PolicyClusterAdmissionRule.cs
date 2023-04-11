@@ -19,12 +19,12 @@ namespace Pulumi.Gcp.BinaryAuthorization.Outputs
         public readonly string Cluster;
         /// <summary>
         /// The action when a pod creation is denied by the admission rule.
-        /// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+        /// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
         /// </summary>
         public readonly string EnforcementMode;
         /// <summary>
         /// How this admission rule will be evaluated.
-        /// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+        /// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
         /// </summary>
         public readonly string EvaluationMode;
         /// <summary>

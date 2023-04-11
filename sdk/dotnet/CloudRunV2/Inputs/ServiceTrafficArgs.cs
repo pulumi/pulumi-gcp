@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
         /// <summary>
         /// The allocation type for this traffic target.
-        /// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        /// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

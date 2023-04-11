@@ -215,7 +215,7 @@ type BackendBucket struct {
 	// Structure is documented below.
 	CdnPolicy BackendBucketCdnPolicyOutput `pulumi:"cdnPolicy"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode pulumi.StringPtrOutput `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -281,7 +281,7 @@ type backendBucketState struct {
 	// Structure is documented below.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode *string `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -316,7 +316,7 @@ type BackendBucketState struct {
 	// Structure is documented below.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -355,7 +355,7 @@ type backendBucketArgs struct {
 	// Structure is documented below.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode *string `pulumi:"compressionMode"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
@@ -387,7 +387,7 @@ type BackendBucketArgs struct {
 	// Structure is documented below.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	// Possible values are `AUTOMATIC` and `DISABLED`.
+	// Possible values are: `AUTOMATIC`, `DISABLED`.
 	CompressionMode pulumi.StringPtrInput
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
@@ -510,7 +510,7 @@ func (o BackendBucketOutput) CdnPolicy() BackendBucketCdnPolicyOutput {
 }
 
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-// Possible values are `AUTOMATIC` and `DISABLED`.
+// Possible values are: `AUTOMATIC`, `DISABLED`.
 func (o BackendBucketOutput) CompressionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.StringPtrOutput { return v.CompressionMode }).(pulumi.StringPtrOutput)
 }

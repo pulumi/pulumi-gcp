@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterProtectConfigWorkloadConfig
     {
+        /// <summary>
+        /// ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        /// </summary>
         public readonly string AuditMode;
 
         [OutputConstructor]

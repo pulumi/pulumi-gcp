@@ -87,7 +87,7 @@ public final class RouterPeerBfdArgs extends com.pulumi.resources.ResourceArgs {
      * for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
      * for the peer router to initiate the BFD session for this BGP peer.
      * If set to `DISABLED`, BFD is disabled for this BGP peer.
-     * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+     * Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
      * 
      */
     @Import(name="sessionInitializationMode", required=true)
@@ -99,7 +99,7 @@ public final class RouterPeerBfdArgs extends com.pulumi.resources.ResourceArgs {
      * for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
      * for the peer router to initiate the BFD session for this BGP peer.
      * If set to `DISABLED`, BFD is disabled for this BGP peer.
-     * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+     * Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
      * 
      */
     public Output<String> sessionInitializationMode() {
@@ -222,7 +222,7 @@ public final class RouterPeerBfdArgs extends com.pulumi.resources.ResourceArgs {
          * for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
          * for the peer router to initiate the BFD session for this BGP peer.
          * If set to `DISABLED`, BFD is disabled for this BGP peer.
-         * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+         * Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class RouterPeerBfdArgs extends com.pulumi.resources.ResourceArgs {
          * for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
          * for the peer router to initiate the BFD session for this BGP peer.
          * If set to `DISABLED`, BFD is disabled for this BGP peer.
-         * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+         * Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
          * 
          * @return builder
          * 

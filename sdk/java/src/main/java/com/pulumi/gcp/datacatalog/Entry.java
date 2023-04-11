@@ -390,7 +390,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-     * Possible values are `FILESET`.
+     * Possible values are: `FILESET`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -399,7 +399,7 @@ public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-     * Possible values are `FILESET`.
+     * Possible values are: `FILESET`.
      * 
      */
     public Output<Optional<String>> type() {

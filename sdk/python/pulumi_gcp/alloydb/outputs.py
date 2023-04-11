@@ -232,7 +232,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule(dict):
         :param Sequence['ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs'] start_times: The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
                Structure is documented below.
         :param Sequence[str] days_of_weeks: The days of the week to perform a backup. At least one day of the week must be provided.
-               Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         pulumi.set(__self__, "start_times", start_times)
         if days_of_weeks is not None:
@@ -252,7 +252,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule(dict):
     def days_of_weeks(self) -> Optional[Sequence[str]]:
         """
         The days of the week to perform a backup. At least one day of the week must be provided.
-        Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "days_of_weeks")
 

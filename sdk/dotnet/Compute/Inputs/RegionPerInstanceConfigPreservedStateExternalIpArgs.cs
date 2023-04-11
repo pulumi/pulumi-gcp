@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
         /// Default value is `NEVER`.
-        /// Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         /// </summary>
         [Input("autoDelete")]
         public Input<string>? AutoDelete { get; set; }

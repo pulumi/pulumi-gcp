@@ -253,7 +253,7 @@ export class FhirStore extends pulumi.CustomResource {
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
-     * Possible values are `DSTU2`, `STU3`, and `R4`.
+     * Possible values are: `DSTU2`, `STU3`, `R4`.
      */
     public readonly version!: pulumi.Output<string | undefined>;
 
@@ -392,7 +392,7 @@ export interface FhirStoreState {
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
-     * Possible values are `DSTU2`, `STU3`, and `R4`.
+     * Possible values are: `DSTU2`, `STU3`, `R4`.
      */
     version?: pulumi.Input<string>;
 }
@@ -480,7 +480,7 @@ export interface FhirStoreArgs {
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
-     * Possible values are `DSTU2`, `STU3`, and `R4`.
+     * Possible values are: `DSTU2`, `STU3`, `R4`.
      */
     version?: pulumi.Input<string>;
 }

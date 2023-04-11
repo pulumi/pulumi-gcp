@@ -29,6 +29,22 @@ import * as utilities from "../utilities";
  *     repositoryId: "my-repository",
  * });
  * ```
+ * ### Artifact Registry Repository Docker
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     description: "example docker repository",
+ *     dockerConfig: {
+ *         immutableTags: true,
+ *     },
+ *     format: "DOCKER",
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ * });
+ * ```
  * ### Artifact Registry Repository Cmek
  *
  * ```typescript
@@ -62,8 +78,6 @@ import * as utilities from "../utilities";
  *     repositoryId: "my-repository-upstream",
  *     description: "example docker repository (upstream source)",
  *     format: "DOCKER",
- * }, {
- *     provider: google_beta,
  * });
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
  *     location: "us-central1",
@@ -79,7 +93,6 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [],
  * });
  * ```
@@ -90,10 +103,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
- *     location: "us-central1",
- *     repositoryId: "my-repository",
  *     description: "example remote docker repository",
  *     format: "DOCKER",
+ *     location: "us-central1",
  *     mode: "REMOTE_REPOSITORY",
  *     remoteRepositoryConfig: {
  *         description: "docker hub",
@@ -101,8 +113,7 @@ import * as utilities from "../utilities";
  *             publicRepository: "DOCKER_HUB",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
+ *     repositoryId: "my-repository",
  * });
  * ```
  *
@@ -163,6 +174,11 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     * Structure is documented below.
+     */
+    public readonly dockerConfig!: pulumi.Output<outputs.artifactregistry.RepositoryDockerConfig | undefined>;
+    /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
@@ -196,8 +212,9 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.RepositoryMavenConfig | undefined>;
     /**
-     * The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-     * Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+     * The mode configures the repository to serve artifacts from different sources.
+     * Default value is `STANDARD_REPOSITORY`.
+     * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      */
     public readonly mode!: pulumi.Output<string | undefined>;
     /**
@@ -212,6 +229,7 @@ export class Repository extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Configuration specific for a Remote Repository.
+     * Structure is documented below.
      */
     public readonly remoteRepositoryConfig!: pulumi.Output<outputs.artifactregistry.RepositoryRemoteRepositoryConfig | undefined>;
     /**
@@ -225,6 +243,7 @@ export class Repository extends pulumi.CustomResource {
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Configuration specific for a Virtual Repository.
+     * Structure is documented below.
      */
     public readonly virtualRepositoryConfig!: pulumi.Output<outputs.artifactregistry.RepositoryVirtualRepositoryConfig | undefined>;
 
@@ -243,6 +262,7 @@ export class Repository extends pulumi.CustomResource {
             const state = argsOrState as RepositoryState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dockerConfig"] = state ? state.dockerConfig : undefined;
             resourceInputs["format"] = state ? state.format : undefined;
             resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -264,6 +284,7 @@ export class Repository extends pulumi.CustomResource {
                 throw new Error("Missing required property 'repositoryId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dockerConfig"] = args ? args.dockerConfig : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -295,6 +316,11 @@ export interface RepositoryState {
      * The user-provided description of the repository.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     * Structure is documented below.
+     */
+    dockerConfig?: pulumi.Input<inputs.artifactregistry.RepositoryDockerConfig>;
     /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -329,8 +355,9 @@ export interface RepositoryState {
      */
     mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
     /**
-     * The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-     * Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+     * The mode configures the repository to serve artifacts from different sources.
+     * Default value is `STANDARD_REPOSITORY`.
+     * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -345,6 +372,7 @@ export interface RepositoryState {
     project?: pulumi.Input<string>;
     /**
      * Configuration specific for a Remote Repository.
+     * Structure is documented below.
      */
     remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig>;
     /**
@@ -358,6 +386,7 @@ export interface RepositoryState {
     updateTime?: pulumi.Input<string>;
     /**
      * Configuration specific for a Virtual Repository.
+     * Structure is documented below.
      */
     virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
 }
@@ -370,6 +399,11 @@ export interface RepositoryArgs {
      * The user-provided description of the repository.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     * Structure is documented below.
+     */
+    dockerConfig?: pulumi.Input<inputs.artifactregistry.RepositoryDockerConfig>;
     /**
      * The format of packages that are stored in the repository. Supported formats
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
@@ -404,8 +438,9 @@ export interface RepositoryArgs {
      */
     mavenConfig?: pulumi.Input<inputs.artifactregistry.RepositoryMavenConfig>;
     /**
-     * The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-     * Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+     * The mode configures the repository to serve artifacts from different sources.
+     * Default value is `STANDARD_REPOSITORY`.
+     * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -415,6 +450,7 @@ export interface RepositoryArgs {
     project?: pulumi.Input<string>;
     /**
      * Configuration specific for a Remote Repository.
+     * Structure is documented below.
      */
     remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfig>;
     /**
@@ -424,6 +460,7 @@ export interface RepositoryArgs {
     repositoryId: pulumi.Input<string>;
     /**
      * Configuration specific for a Virtual Repository.
+     * Structure is documented below.
      */
     virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
 }

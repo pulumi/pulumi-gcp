@@ -35,7 +35,7 @@ class IntentArgs:
                Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
                (i.e. default platform).
-               Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+               Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
                [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
@@ -58,7 +58,7 @@ class IntentArgs:
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
-               Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         pulumi.set(__self__, "display_name", display_name)
         if action is not None:
@@ -115,7 +115,7 @@ class IntentArgs:
         """
         The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         (i.e. default platform).
-        Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+        Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         """
         return pulumi.get(self, "default_response_platforms")
 
@@ -237,7 +237,7 @@ class IntentArgs:
         * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
         filling prompt is forwarded to the webhook.
-        Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         return pulumi.get(self, "webhook_state")
 
@@ -270,7 +270,7 @@ class _IntentState:
                Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
                (i.e. default platform).
-               Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+               Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -302,7 +302,7 @@ class _IntentState:
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
-               Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -354,7 +354,7 @@ class _IntentState:
         """
         The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         (i.e. default platform).
-        Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+        Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         """
         return pulumi.get(self, "default_response_platforms")
 
@@ -529,7 +529,7 @@ class _IntentState:
         * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
         filling prompt is forwarded to the webhook.
-        Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         return pulumi.get(self, "webhook_state")
 
@@ -635,7 +635,7 @@ class Intent(pulumi.CustomResource):
                Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
                (i.e. default platform).
-               Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+               Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -659,7 +659,7 @@ class Intent(pulumi.CustomResource):
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
-               Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         ...
     @overload
@@ -829,7 +829,7 @@ class Intent(pulumi.CustomResource):
                Note: The action name must not contain whitespaces.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
                (i.e. default platform).
-               Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+               Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         :param pulumi.Input[str] display_name: The name of this intent to be displayed on the console.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
                the contexts must be present in the active user session for an event to trigger this intent. See the
@@ -861,7 +861,7 @@ class Intent(pulumi.CustomResource):
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
                filling prompt is forwarded to the webhook.
-               Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -899,7 +899,7 @@ class Intent(pulumi.CustomResource):
         """
         The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
         (i.e. default platform).
-        Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+        Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
         """
         return pulumi.get(self, "default_response_platforms")
 
@@ -1022,7 +1022,7 @@ class Intent(pulumi.CustomResource):
         * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
         filling prompt is forwarded to the webhook.
-        Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+        Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         return pulumi.get(self, "webhook_state")
 

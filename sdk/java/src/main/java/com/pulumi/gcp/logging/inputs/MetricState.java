@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.logging.inputs.MetricBucketOptionsArgs;
 import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -69,6 +70,21 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * If set to True, then this metric is disabled and it does not generate any points.
+     * 
+     */
+    @Import(name="disabled")
+    private @Nullable Output<Boolean> disabled;
+
+    /**
+     * @return If set to True, then this metric is disabled and it does not generate any points.
+     * 
+     */
+    public Optional<Output<Boolean>> disabled() {
+        return Optional.ofNullable(this.disabled);
     }
 
     /**
@@ -205,6 +221,7 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
         this.bucketName = $.bucketName;
         this.bucketOptions = $.bucketOptions;
         this.description = $.description;
+        this.disabled = $.disabled;
         this.filter = $.filter;
         this.labelExtractors = $.labelExtractors;
         this.metricDescriptor = $.metricDescriptor;
@@ -300,6 +317,27 @@ public final class MetricState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disabled If set to True, then this metric is disabled and it does not generate any points.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(@Nullable Output<Boolean> disabled) {
+            $.disabled = disabled;
+            return this;
+        }
+
+        /**
+         * @param disabled If set to True, then this metric is disabled and it does not generate any points.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disabled(Boolean disabled) {
+            return disabled(Output.of(disabled));
         }
 
         /**

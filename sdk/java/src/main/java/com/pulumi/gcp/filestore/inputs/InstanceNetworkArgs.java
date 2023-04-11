@@ -21,7 +21,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
      */
     @Import(name="connectMode")
@@ -32,7 +32,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
      * If not provided, the connect mode defaults to
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
      */
     public Optional<Output<String>> connectMode() {
@@ -59,7 +59,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     /**
      * IP versions for which the instance has
      * IP addresses assigned.
-     * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+     * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
      * 
      */
     @Import(name="modes", required=true)
@@ -68,7 +68,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return IP versions for which the instance has
      * IP addresses assigned.
-     * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+     * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
      * 
      */
     public Output<List<String>> modes() {
@@ -142,7 +142,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * If not provided, the connect mode defaults to
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
-         * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * If not provided, the connect mode defaults to
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
-         * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param modes IP versions for which the instance has
          * IP addresses assigned.
-         * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+         * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param modes IP versions for which the instance has
          * IP addresses assigned.
-         * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+         * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param modes IP versions for which the instance has
          * IP addresses assigned.
-         * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+         * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
          * 
          * @return builder
          * 

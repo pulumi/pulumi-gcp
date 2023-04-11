@@ -178,7 +178,7 @@ public class Index extends com.pulumi.resources.CustomResource {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      * 
      */
     @Export(name="queryScope", type=String.class, parameters={})
@@ -187,7 +187,7 @@ public class Index extends com.pulumi.resources.CustomResource {
     /**
      * @return The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      * 
      */
     public Output<Optional<String>> queryScope() {

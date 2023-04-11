@@ -32,7 +32,7 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
         :param pulumi.Input[str] checker_type: The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-               Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+               Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
@@ -98,7 +98,7 @@ class UptimeCheckConfigArgs:
     def checker_type(self) -> Optional[pulumi.Input[str]]:
         """
         The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-        Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         """
         return pulumi.get(self, "checker_type")
 
@@ -228,7 +228,7 @@ class _UptimeCheckConfigState:
         """
         Input properties used for looking up and filtering UptimeCheckConfig resources.
         :param pulumi.Input[str] checker_type: The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-               Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+               Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
@@ -280,7 +280,7 @@ class _UptimeCheckConfigState:
     def checker_type(self) -> Optional[pulumi.Input[str]]:
         """
         The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-        Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         """
         return pulumi.get(self, "checker_type")
 
@@ -609,7 +609,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] checker_type: The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-               Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+               Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
@@ -866,7 +866,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] checker_type: The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-               Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+               Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UptimeCheckConfigContentMatcherArgs']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
         :param pulumi.Input[str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
@@ -910,7 +910,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     def checker_type(self) -> pulumi.Output[str]:
         """
         The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-        Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         """
         return pulumi.get(self, "checker_type")
 

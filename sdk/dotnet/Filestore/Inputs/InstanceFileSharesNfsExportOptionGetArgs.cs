@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Filestore.Inputs
         /// Either READ_ONLY, for allowing only read requests on the exported directory,
         /// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
         /// Default value is `READ_WRITE`.
-        /// Possible values are `READ_ONLY` and `READ_WRITE`.
+        /// Possible values are: `READ_ONLY`, `READ_WRITE`.
         /// </summary>
         [Input("accessMode")]
         public Input<string>? AccessMode { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Filestore.Inputs
         /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
         /// for not allowing root access. The default is NO_ROOT_SQUASH.
         /// Default value is `NO_ROOT_SQUASH`.
-        /// Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+        /// Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
         /// </summary>
         [Input("squashMode")]
         public Input<string>? SquashMode { get; set; }

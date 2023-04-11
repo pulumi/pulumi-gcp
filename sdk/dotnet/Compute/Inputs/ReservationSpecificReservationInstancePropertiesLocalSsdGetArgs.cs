@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The disk interface to use for attaching this disk.
         /// Default value is `SCSI`.
-        /// Possible values are `SCSI` and `NVME`.
+        /// Possible values are: `SCSI`, `NVME`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }

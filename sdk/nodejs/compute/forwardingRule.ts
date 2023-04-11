@@ -128,7 +128,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
     /**
@@ -178,7 +178,7 @@ export class ForwardingRule extends pulumi.CustomResource {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      */
     public readonly networkTier!: pulumi.Output<string>;
     /**
@@ -400,7 +400,7 @@ export interface ForwardingRuleState {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
@@ -450,7 +450,7 @@ export interface ForwardingRuleState {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      */
     networkTier?: pulumi.Input<string>;
     /**
@@ -596,7 +596,7 @@ export interface ForwardingRuleArgs {
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      */
     ipProtocol?: pulumi.Input<string>;
     /**
@@ -642,7 +642,7 @@ export interface ForwardingRuleArgs {
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      */
     networkTier?: pulumi.Input<string>;
     /**

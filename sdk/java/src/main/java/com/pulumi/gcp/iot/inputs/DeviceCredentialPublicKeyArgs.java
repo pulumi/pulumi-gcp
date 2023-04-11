@@ -15,7 +15,7 @@ public final class DeviceCredentialPublicKeyArgs extends com.pulumi.resources.Re
 
     /**
      * The format of the key.
-     * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+     * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
      * 
      */
     @Import(name="format", required=true)
@@ -23,7 +23,7 @@ public final class DeviceCredentialPublicKeyArgs extends com.pulumi.resources.Re
 
     /**
      * @return The format of the key.
-     * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+     * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
      * 
      */
     public Output<String> format() {
@@ -72,7 +72,7 @@ public final class DeviceCredentialPublicKeyArgs extends com.pulumi.resources.Re
 
         /**
          * @param format The format of the key.
-         * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+         * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class DeviceCredentialPublicKeyArgs extends com.pulumi.resources.Re
 
         /**
          * @param format The format of the key.
-         * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+         * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
          * 
          * @return builder
          * 

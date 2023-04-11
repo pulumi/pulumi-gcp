@@ -26,7 +26,7 @@ class DataPolicyArgs:
         The set of arguments for constructing a DataPolicy resource.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.
-               Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+               Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         :param pulumi.Input[str] location: The name of the location of the data policy.
         :param pulumi.Input[str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
         :param pulumi.Input['DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The data masking policy that specifies the data masking rule to use.
@@ -60,7 +60,7 @@ class DataPolicyArgs:
     def data_policy_type(self) -> pulumi.Input[str]:
         """
         The enrollment level of the service.
-        Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+        Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         """
         return pulumi.get(self, "data_policy_type")
 
@@ -135,7 +135,7 @@ class _DataPolicyState:
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.
-               Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+               Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         :param pulumi.Input[str] location: The name of the location of the data policy.
         :param pulumi.Input[str] name: Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
         :param pulumi.Input[str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
@@ -187,7 +187,7 @@ class _DataPolicyState:
     def data_policy_type(self) -> Optional[pulumi.Input[str]]:
         """
         The enrollment level of the service.
-        Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+        Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         """
         return pulumi.get(self, "data_policy_type")
 
@@ -311,7 +311,7 @@ class DataPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.
-               Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+               Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         :param pulumi.Input[str] location: The name of the location of the data policy.
         :param pulumi.Input[str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -444,7 +444,7 @@ class DataPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
         :param pulumi.Input[str] data_policy_type: The enrollment level of the service.
-               Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+               Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         :param pulumi.Input[str] location: The name of the location of the data policy.
         :param pulumi.Input[str] name: Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
         :param pulumi.Input[str] policy_tag: Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
@@ -486,7 +486,7 @@ class DataPolicy(pulumi.CustomResource):
     def data_policy_type(self) -> pulumi.Output[str]:
         """
         The enrollment level of the service.
-        Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+        Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
         """
         return pulumi.get(self, "data_policy_type")
 

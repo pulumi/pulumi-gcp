@@ -28,7 +28,7 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
     /**
      * @return The script interpreter to use to run the script. If no interpreter is specified the script will
      * be executed directly, which will likely only succeed for scripts with shebang lines.
-     * Possible values are `SHELL` and `POWERSHELL`.
+     * Possible values are: `SHELL`, `POWERSHELL`.
      * 
      */
     private @Nullable String interpreter;
@@ -57,7 +57,7 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
     /**
      * @return The script interpreter to use to run the script. If no interpreter is specified the script will
      * be executed directly, which will likely only succeed for scripts with shebang lines.
-     * Possible values are `SHELL` and `POWERSHELL`.
+     * Possible values are: `SHELL`, `POWERSHELL`.
      * 
      */
     public Optional<String> interpreter() {

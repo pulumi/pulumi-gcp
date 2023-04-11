@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigquery.inputs.ReservationAutoscaleArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,6 +17,23 @@ import javax.annotation.Nullable;
 public final class ReservationState extends com.pulumi.resources.ResourceArgs {
 
     public static final ReservationState Empty = new ReservationState();
+
+    /**
+     * The configuration parameters for the auto scaling feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoscale")
+    private @Nullable Output<ReservationAutoscaleArgs> autoscale;
+
+    /**
+     * @return The configuration parameters for the auto scaling feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ReservationAutoscaleArgs>> autoscale() {
+        return Optional.ofNullable(this.autoscale);
+    }
 
     /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
@@ -30,6 +48,21 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> concurrency() {
         return Optional.ofNullable(this.concurrency);
+    }
+
+    /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
     }
 
     /**
@@ -137,7 +170,9 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
     private ReservationState() {}
 
     private ReservationState(ReservationState $) {
+        this.autoscale = $.autoscale;
         this.concurrency = $.concurrency;
+        this.edition = $.edition;
         this.ignoreIdleSlots = $.ignoreIdleSlots;
         this.location = $.location;
         this.multiRegionAuxiliary = $.multiRegionAuxiliary;
@@ -165,6 +200,29 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param autoscale The configuration parameters for the auto scaling feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscale(@Nullable Output<ReservationAutoscaleArgs> autoscale) {
+            $.autoscale = autoscale;
+            return this;
+        }
+
+        /**
+         * @param autoscale The configuration parameters for the auto scaling feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscale(ReservationAutoscaleArgs autoscale) {
+            return autoscale(Output.of(autoscale));
+        }
+
+        /**
          * @param concurrency Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
          * 
          * @return builder
@@ -183,6 +241,27 @@ public final class ReservationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder concurrency(Integer concurrency) {
             return concurrency(Output.of(concurrency));
+        }
+
+        /**
+         * @param edition The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
         }
 
         /**

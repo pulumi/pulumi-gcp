@@ -155,7 +155,7 @@ type Instance struct {
 	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
 	// determined by our system based on the latest supported minor version.
 	// Default value is `MEMCACHE_1_5`.
-	// Possible values are `MEMCACHE_1_5`.
+	// Possible values are: `MEMCACHE_1_5`.
 	MemcacheVersion pulumi.StringPtrOutput `pulumi:"memcacheVersion"`
 	// The resource name of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -241,7 +241,7 @@ type instanceState struct {
 	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
 	// determined by our system based on the latest supported minor version.
 	// Default value is `MEMCACHE_1_5`.
-	// Possible values are `MEMCACHE_1_5`.
+	// Possible values are: `MEMCACHE_1_5`.
 	MemcacheVersion *string `pulumi:"memcacheVersion"`
 	// The resource name of the instance.
 	Name *string `pulumi:"name"`
@@ -293,7 +293,7 @@ type InstanceState struct {
 	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
 	// determined by our system based on the latest supported minor version.
 	// Default value is `MEMCACHE_1_5`.
-	// Possible values are `MEMCACHE_1_5`.
+	// Possible values are: `MEMCACHE_1_5`.
 	MemcacheVersion pulumi.StringPtrInput
 	// The resource name of the instance.
 	Name pulumi.StringPtrInput
@@ -334,7 +334,7 @@ type instanceArgs struct {
 	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
 	// determined by our system based on the latest supported minor version.
 	// Default value is `MEMCACHE_1_5`.
-	// Possible values are `MEMCACHE_1_5`.
+	// Possible values are: `MEMCACHE_1_5`.
 	MemcacheVersion *string `pulumi:"memcacheVersion"`
 	// The resource name of the instance.
 	Name *string `pulumi:"name"`
@@ -372,7 +372,7 @@ type InstanceArgs struct {
 	// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
 	// determined by our system based on the latest supported minor version.
 	// Default value is `MEMCACHE_1_5`.
-	// Possible values are `MEMCACHE_1_5`.
+	// Possible values are: `MEMCACHE_1_5`.
 	MemcacheVersion pulumi.StringPtrInput
 	// The resource name of the instance.
 	Name pulumi.StringPtrInput
@@ -540,7 +540,7 @@ func (o InstanceOutput) MemcacheParameters() InstanceMemcacheParametersPtrOutput
 // Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
 // determined by our system based on the latest supported minor version.
 // Default value is `MEMCACHE_1_5`.
-// Possible values are `MEMCACHE_1_5`.
+// Possible values are: `MEMCACHE_1_5`.
 func (o InstanceOutput) MemcacheVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MemcacheVersion }).(pulumi.StringPtrOutput)
 }

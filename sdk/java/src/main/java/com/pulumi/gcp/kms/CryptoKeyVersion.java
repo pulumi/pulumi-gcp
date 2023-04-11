@@ -173,7 +173,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
     }
     /**
      * The current state of the CryptoKeyVersion.
-     * Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+     * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
      */
     @Export(name="state", type=String.class, parameters={})
@@ -181,7 +181,7 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The current state of the CryptoKeyVersion.
-     * Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+     * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
      */
     public Output<String> state() {

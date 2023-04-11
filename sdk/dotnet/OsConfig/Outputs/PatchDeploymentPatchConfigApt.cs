@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly ImmutableArray<string> ExclusivePackages;
         /// <summary>
         /// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-        /// Possible values are `DIST` and `UPGRADE`.
+        /// Possible values are: `DIST`, `UPGRADE`.
         /// </summary>
         public readonly string? Type;
 

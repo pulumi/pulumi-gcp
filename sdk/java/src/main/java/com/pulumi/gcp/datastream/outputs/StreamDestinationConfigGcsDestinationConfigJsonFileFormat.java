@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
     /**
      * @return Compression of the loaded JSON file.
-     * Possible values are `NO_COMPRESSION` and `GZIP`.
+     * Possible values are: `NO_COMPRESSION`, `GZIP`.
      * 
      */
     private @Nullable String compression;
     /**
      * @return The schema file format along JSON data files.
-     * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+     * Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
      * 
      */
     private @Nullable String schemaFileFormat;
@@ -27,7 +27,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
     private StreamDestinationConfigGcsDestinationConfigJsonFileFormat() {}
     /**
      * @return Compression of the loaded JSON file.
-     * Possible values are `NO_COMPRESSION` and `GZIP`.
+     * Possible values are: `NO_COMPRESSION`, `GZIP`.
      * 
      */
     public Optional<String> compression() {
@@ -35,7 +35,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
     }
     /**
      * @return The schema file format along JSON data files.
-     * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+     * Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
      * 
      */
     public Optional<String> schemaFileFormat() {

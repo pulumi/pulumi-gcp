@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Redis.Outputs
         /// - FRIDAY: Friday
         /// - SATURDAY: Saturday
         /// - SUNDAY: Sunday
-        /// Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         public readonly string Day;
         /// <summary>

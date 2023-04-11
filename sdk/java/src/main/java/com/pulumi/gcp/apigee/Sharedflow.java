@@ -129,16 +129,14 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The Apigee Organization associated with the Apigee instance,
-     * in the format `organizations/{{org_name}}`.
+     * The Apigee Organization name associated with the Apigee instance.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return The Apigee Organization associated with the Apigee instance,
-     * in the format `organizations/{{org_name}}`.
+     * @return The Apigee Organization name associated with the Apigee instance.
      * 
      */
     public Output<String> orgId() {

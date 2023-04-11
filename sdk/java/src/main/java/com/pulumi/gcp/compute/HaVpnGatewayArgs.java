@@ -107,6 +107,27 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * If not specified, IPV4_ONLY will be used.
+     * Default value is `IPV4_ONLY`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * If not specified, IPV4_ONLY will be used.
+     * Default value is `IPV4_ONLY`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
+    /**
      * A list of interfaces on this VPN gateway.
      * Structure is documented below.
      * 
@@ -131,6 +152,7 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
         this.network = $.network;
         this.project = $.project;
         this.region = $.region;
+        this.stackType = $.stackType;
         this.vpnInterfaces = $.vpnInterfaces;
     }
 
@@ -269,6 +291,33 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+         * If not specified, IPV4_ONLY will be used.
+         * Default value is `IPV4_ONLY`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+         * If not specified, IPV4_ONLY will be used.
+         * Default value is `IPV4_ONLY`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
         }
 
         /**

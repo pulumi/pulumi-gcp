@@ -346,7 +346,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     /**
      * Whether the trigger is currently active.
      * Default value is `HEALTHY`.
-     * Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      * 
      */
     @Export(name="status", type=String.class, parameters={})
@@ -355,7 +355,7 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether the trigger is currently active.
      * Default value is `HEALTHY`.
-     * Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      * 
      */
     public Output<Optional<String>> status() {

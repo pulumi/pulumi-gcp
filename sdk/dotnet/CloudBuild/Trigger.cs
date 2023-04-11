@@ -556,7 +556,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// Build logs will be sent back to GitHub as part of the checkrun
         /// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
         /// INCLUDE_BUILD_LOGS_WITH_STATUS
-        /// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        /// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         /// </summary>
         [Output("includeBuildLogs")]
         public Output<string?> IncludeBuildLogs { get; private set; } = null!;
@@ -801,7 +801,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// Build logs will be sent back to GitHub as part of the checkrun
         /// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
         /// INCLUDE_BUILD_LOGS_WITH_STATUS
-        /// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        /// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         /// </summary>
         [Input("includeBuildLogs")]
         public Input<string>? IncludeBuildLogs { get; set; }
@@ -1026,7 +1026,7 @@ namespace Pulumi.Gcp.CloudBuild
         /// Build logs will be sent back to GitHub as part of the checkrun
         /// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
         /// INCLUDE_BUILD_LOGS_WITH_STATUS
-        /// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+        /// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
         /// </summary>
         [Input("includeBuildLogs")]
         public Input<string>? IncludeBuildLogs { get; set; }

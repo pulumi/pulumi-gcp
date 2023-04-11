@@ -14,7 +14,7 @@ public final class MetastoreServiceTelemetryConfig {
     /**
      * @return The output format of the Dataproc Metastore service&#39;s logs.
      * Default value is `JSON`.
-     * Possible values are `LEGACY` and `JSON`.
+     * Possible values are: `LEGACY`, `JSON`.
      * 
      */
     private @Nullable String logFormat;
@@ -23,7 +23,7 @@ public final class MetastoreServiceTelemetryConfig {
     /**
      * @return The output format of the Dataproc Metastore service&#39;s logs.
      * Default value is `JSON`.
-     * Possible values are `LEGACY` and `JSON`.
+     * Possible values are: `LEGACY`, `JSON`.
      * 
      */
     public Optional<String> logFormat() {

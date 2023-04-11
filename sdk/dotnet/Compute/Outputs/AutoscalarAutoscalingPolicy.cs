@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Defines operating mode for this policy.
         /// Default value is `ON`.
-        /// Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        /// Possible values are: `OFF`, `ONLY_UP`, `ON`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

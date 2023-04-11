@@ -48,7 +48,7 @@ public final class MetricDescriptorLabelArgs extends com.pulumi.resources.Resour
     /**
      * The type of data that can be assigned to the label.
      * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Possible values are: `STRING`, `BOOL`, `INT64`.
      * 
      */
     @Import(name="valueType")
@@ -57,7 +57,7 @@ public final class MetricDescriptorLabelArgs extends com.pulumi.resources.Resour
     /**
      * @return The type of data that can be assigned to the label.
      * Default value is `STRING`.
-     * Possible values are `STRING`, `BOOL`, and `INT64`.
+     * Possible values are: `STRING`, `BOOL`, `INT64`.
      * 
      */
     public Optional<Output<String>> valueType() {
@@ -135,7 +135,7 @@ public final class MetricDescriptorLabelArgs extends com.pulumi.resources.Resour
         /**
          * @param valueType The type of data that can be assigned to the label.
          * Default value is `STRING`.
-         * Possible values are `STRING`, `BOOL`, and `INT64`.
+         * Possible values are: `STRING`, `BOOL`, `INT64`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class MetricDescriptorLabelArgs extends com.pulumi.resources.Resour
         /**
          * @param valueType The type of data that can be assigned to the label.
          * Default value is `STRING`.
-         * Possible values are `STRING`, `BOOL`, and `INT64`.
+         * Possible values are: `STRING`, `BOOL`, `INT64`.
          * 
          * @return builder
          * 

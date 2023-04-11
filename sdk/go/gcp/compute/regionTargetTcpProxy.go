@@ -76,7 +76,7 @@ type RegionTargetTcpProxy struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrOutput `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
@@ -142,7 +142,7 @@ type regionTargetTcpProxyState struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
@@ -177,7 +177,7 @@ type RegionTargetTcpProxyState struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
@@ -214,7 +214,7 @@ type regionTargetTcpProxyArgs struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The Region in which the created target TCP proxy should reside.
 	// If it is not provided, the provider region is used.
@@ -244,7 +244,7 @@ type RegionTargetTcpProxyArgs struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput
 	// The Region in which the created target TCP proxy should reside.
 	// If it is not provided, the provider region is used.
@@ -379,7 +379,7 @@ func (o RegionTargetTcpProxyOutput) ProxyBind() pulumi.BoolOutput {
 // Specifies the type of proxy header to append before sending data to
 // the backend.
 // Default value is `NONE`.
-// Possible values are `NONE` and `PROXY_V1`.
+// Possible values are: `NONE`, `PROXY_V1`.
 func (o RegionTargetTcpProxyOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringPtrOutput { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }

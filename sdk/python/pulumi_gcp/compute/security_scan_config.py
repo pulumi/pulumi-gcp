@@ -37,7 +37,7 @@ class SecurityScanConfigArgs:
                https://cloud.google.com/security-scanner/docs/excluded-urls
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -45,10 +45,10 @@ class SecurityScanConfigArgs:
         :param pulumi.Input['SecurityScanConfigScheduleArgs'] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-               Each value may be one of `APP_ENGINE` and `COMPUTE`.
+               Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
-               Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+               Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "starting_urls", starting_urls)
@@ -126,7 +126,7 @@ class SecurityScanConfigArgs:
         """
         Controls export of scan configurations and results to Cloud Security Command Center.
         Default value is `ENABLED`.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "export_to_security_command_center")
 
@@ -178,7 +178,7 @@ class SecurityScanConfigArgs:
     def target_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-        Each value may be one of `APP_ENGINE` and `COMPUTE`.
+        Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         """
         return pulumi.get(self, "target_platforms")
 
@@ -192,7 +192,7 @@ class SecurityScanConfigArgs:
         """
         Type of the user agents used for scanning
         Default value is `CHROME_LINUX`.
-        Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+        Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
         return pulumi.get(self, "user_agent")
 
@@ -225,7 +225,7 @@ class _SecurityScanConfigState:
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
@@ -236,10 +236,10 @@ class _SecurityScanConfigState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-               Each value may be one of `APP_ENGINE` and `COMPUTE`.
+               Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
-               Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+               Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -309,7 +309,7 @@ class _SecurityScanConfigState:
         """
         Controls export of scan configurations and results to Cloud Security Command Center.
         Default value is `ENABLED`.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "export_to_security_command_center")
 
@@ -386,7 +386,7 @@ class _SecurityScanConfigState:
     def target_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-        Each value may be one of `APP_ENGINE` and `COMPUTE`.
+        Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         """
         return pulumi.get(self, "target_platforms")
 
@@ -400,7 +400,7 @@ class _SecurityScanConfigState:
         """
         Type of the user agents used for scanning
         Default value is `CHROME_LINUX`.
-        Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+        Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
         return pulumi.get(self, "user_agent")
 
@@ -477,7 +477,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -486,10 +486,10 @@ class SecurityScanConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-               Each value may be one of `APP_ENGINE` and `COMPUTE`.
+               Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
-               Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+               Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
         ...
     @overload
@@ -624,7 +624,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
                Defaults to 15.
         :param pulumi.Input[str] name: A server defined name for this index. Format:
@@ -635,10 +635,10 @@ class SecurityScanConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] starting_urls: The starting URLs from which the scanner finds site pages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-               Each value may be one of `APP_ENGINE` and `COMPUTE`.
+               Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[str] user_agent: Type of the user agents used for scanning
                Default value is `CHROME_LINUX`.
-               Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+               Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -690,7 +690,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         """
         Controls export of scan configurations and results to Cloud Security Command Center.
         Default value is `ENABLED`.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "export_to_security_command_center")
 
@@ -743,7 +743,7 @@ class SecurityScanConfig(pulumi.CustomResource):
     def target_platforms(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-        Each value may be one of `APP_ENGINE` and `COMPUTE`.
+        Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         """
         return pulumi.get(self, "target_platforms")
 
@@ -753,7 +753,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         """
         Type of the user agents used for scanning
         Default value is `CHROME_LINUX`.
-        Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+        Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         """
         return pulumi.get(self, "user_agent")
 

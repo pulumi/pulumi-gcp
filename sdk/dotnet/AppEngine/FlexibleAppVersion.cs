@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// A list of the types of messages that this application is able to receive.
-        /// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+        /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         [Output("inboundServices")]
         public Output<ImmutableArray<string>> InboundServices { get; private set; } = null!;
@@ -370,7 +370,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         /// Default value is `SERVING`.
-        /// Possible values are `SERVING` and `STOPPED`.
+        /// Possible values are: `SERVING`, `STOPPED`.
         /// </summary>
         [Output("servingStatus")]
         public Output<string?> ServingStatus { get; private set; } = null!;
@@ -526,7 +526,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// A list of the types of messages that this application is able to receive.
-        /// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+        /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         public InputList<string> InboundServices
         {
@@ -639,7 +639,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         /// Default value is `SERVING`.
-        /// Possible values are `SERVING` and `STOPPED`.
+        /// Possible values are: `SERVING`, `STOPPED`.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }
@@ -757,7 +757,7 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// A list of the types of messages that this application is able to receive.
-        /// Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+        /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         /// </summary>
         public InputList<string> InboundServices
         {
@@ -883,7 +883,7 @@ namespace Pulumi.Gcp.AppEngine
         /// <summary>
         /// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         /// Default value is `SERVING`.
-        /// Possible values are `SERVING` and `STOPPED`.
+        /// Possible values are: `SERVING`, `STOPPED`.
         /// </summary>
         [Input("servingStatus")]
         public Input<string>? ServingStatus { get; set; }

@@ -64,7 +64,7 @@ public final class RuntimeSoftwareConfig {
     private @Nullable String postStartupScript;
     /**
      * @return Behavior for the post startup script.
-     * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+     * Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
      * 
      */
     private @Nullable String postStartupScriptBehavior;
@@ -141,7 +141,7 @@ public final class RuntimeSoftwareConfig {
     }
     /**
      * @return Behavior for the post startup script.
-     * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+     * Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
      * 
      */
     public Optional<String> postStartupScriptBehavior() {

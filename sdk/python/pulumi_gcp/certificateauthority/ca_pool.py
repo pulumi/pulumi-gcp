@@ -28,7 +28,7 @@ class CaPoolArgs:
         :param pulumi.Input[str] location: Location of the CaPool. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
-               Possible values are `ENTERPRISE` and `DEVOPS`.
+               Possible values are: `ENTERPRISE`, `DEVOPS`.
         :param pulumi.Input['CaPoolIssuancePolicyArgs'] issuance_policy: The IssuancePolicy to control how Certificates will be issued from this CaPool.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
@@ -71,7 +71,7 @@ class CaPoolArgs:
     def tier(self) -> pulumi.Input[str]:
         """
         The Tier of this CaPool.
-        Possible values are `ENTERPRISE` and `DEVOPS`.
+        Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
         return pulumi.get(self, "tier")
 
@@ -170,7 +170,7 @@ class _CaPoolState:
         :param pulumi.Input['CaPoolPublishingOptionsArgs'] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
-               Possible values are `ENTERPRISE` and `DEVOPS`.
+               Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
         if issuance_policy is not None:
             pulumi.set(__self__, "issuance_policy", issuance_policy)
@@ -270,7 +270,7 @@ class _CaPoolState:
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
         The Tier of this CaPool.
-        Possible values are `ENTERPRISE` and `DEVOPS`.
+        Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
         return pulumi.get(self, "tier")
 
@@ -347,7 +347,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
-               Possible values are `ENTERPRISE` and `DEVOPS`.
+               Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
         ...
     @overload
@@ -474,7 +474,7 @@ class CaPool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CaPoolPublishingOptionsArgs']] publishing_options: The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
                Structure is documented below.
         :param pulumi.Input[str] tier: The Tier of this CaPool.
-               Possible values are `ENTERPRISE` and `DEVOPS`.
+               Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -548,7 +548,7 @@ class CaPool(pulumi.CustomResource):
     def tier(self) -> pulumi.Output[str]:
         """
         The Tier of this CaPool.
-        Possible values are `ENTERPRISE` and `DEVOPS`.
+        Possible values are: `ENTERPRISE`, `DEVOPS`.
         """
         return pulumi.get(self, "tier")
 

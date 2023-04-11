@@ -195,7 +195,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates the redundancy type of this external VPN gateway
-        /// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+        /// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         /// </summary>
         [Output("redundancyType")]
         public Output<string?> RedundancyType { get; private set; } = null!;
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates the redundancy type of this external VPN gateway
-        /// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+        /// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
@@ -369,7 +369,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates the redundancy type of this external VPN gateway
-        /// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+        /// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
         /// </summary>
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }

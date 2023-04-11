@@ -38,7 +38,7 @@ class MetastoreServiceArgs:
                3 and 63 characters.
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
-               Possible values are `MYSQL` and `SPANNER`.
+               Possible values are: `MYSQL`, `SPANNER`.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -61,11 +61,11 @@ class MetastoreServiceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
-               Possible values are `CANARY` and `STABLE`.
+               Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
-               Possible values are `DEVELOPER` and `ENTERPRISE`.
+               Possible values are: `DEVELOPER`, `ENTERPRISE`.
         """
         pulumi.set(__self__, "service_id", service_id)
         if database_type is not None:
@@ -117,7 +117,7 @@ class MetastoreServiceArgs:
         """
         The database type that the Metastore service stores its data.
         Default value is `MYSQL`.
-        Possible values are `MYSQL` and `SPANNER`.
+        Possible values are: `MYSQL`, `SPANNER`.
         """
         return pulumi.get(self, "database_type")
 
@@ -261,7 +261,7 @@ class MetastoreServiceArgs:
         """
         The release channel of the service. If unspecified, defaults to `STABLE`.
         Default value is `STABLE`.
-        Possible values are `CANARY` and `STABLE`.
+        Possible values are: `CANARY`, `STABLE`.
         """
         return pulumi.get(self, "release_channel")
 
@@ -287,7 +287,7 @@ class MetastoreServiceArgs:
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
         The tier of the service.
-        Possible values are `DEVELOPER` and `ENTERPRISE`.
+        Possible values are: `DEVELOPER`, `ENTERPRISE`.
         """
         return pulumi.get(self, "tier")
 
@@ -325,7 +325,7 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
-               Possible values are `MYSQL` and `SPANNER`.
+               Possible values are: `MYSQL`, `SPANNER`.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -351,7 +351,7 @@ class _MetastoreServiceState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
-               Possible values are `CANARY` and `STABLE`.
+               Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
@@ -360,7 +360,7 @@ class _MetastoreServiceState:
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
-               Possible values are `DEVELOPER` and `ENTERPRISE`.
+               Possible values are: `DEVELOPER`, `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
         """
         if artifact_gcs_uri is not None:
@@ -424,7 +424,7 @@ class _MetastoreServiceState:
         """
         The database type that the Metastore service stores its data.
         Default value is `MYSQL`.
-        Possible values are `MYSQL` and `SPANNER`.
+        Possible values are: `MYSQL`, `SPANNER`.
         """
         return pulumi.get(self, "database_type")
 
@@ -593,7 +593,7 @@ class _MetastoreServiceState:
         """
         The release channel of the service. If unspecified, defaults to `STABLE`.
         Default value is `STABLE`.
-        Possible values are `CANARY` and `STABLE`.
+        Possible values are: `CANARY`, `STABLE`.
         """
         return pulumi.get(self, "release_channel")
 
@@ -657,7 +657,7 @@ class _MetastoreServiceState:
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
         The tier of the service.
-        Possible values are `DEVELOPER` and `ENTERPRISE`.
+        Possible values are: `DEVELOPER`, `ENTERPRISE`.
         """
         return pulumi.get(self, "tier")
 
@@ -795,7 +795,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
-               Possible values are `MYSQL` and `SPANNER`.
+               Possible values are: `MYSQL`, `SPANNER`.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -818,14 +818,14 @@ class MetastoreService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
-               Possible values are `CANARY` and `STABLE`.
+               Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
-               Possible values are `DEVELOPER` and `ENTERPRISE`.
+               Possible values are: `DEVELOPER`, `ENTERPRISE`.
         """
         ...
     @overload
@@ -1028,7 +1028,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
-               Possible values are `MYSQL` and `SPANNER`.
+               Possible values are: `MYSQL`, `SPANNER`.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceEncryptionConfigArgs']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -1054,7 +1054,7 @@ class MetastoreService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
-               Possible values are `CANARY` and `STABLE`.
+               Possible values are: `CANARY`, `STABLE`.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
@@ -1063,7 +1063,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
-               Possible values are `DEVELOPER` and `ENTERPRISE`.
+               Possible values are: `DEVELOPER`, `ENTERPRISE`.
         :param pulumi.Input[str] uid: The globally unique resource identifier of the metastore service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1107,7 +1107,7 @@ class MetastoreService(pulumi.CustomResource):
         """
         The database type that the Metastore service stores its data.
         Default value is `MYSQL`.
-        Possible values are `MYSQL` and `SPANNER`.
+        Possible values are: `MYSQL`, `SPANNER`.
         """
         return pulumi.get(self, "database_type")
 
@@ -1224,7 +1224,7 @@ class MetastoreService(pulumi.CustomResource):
         """
         The release channel of the service. If unspecified, defaults to `STABLE`.
         Default value is `STABLE`.
-        Possible values are `CANARY` and `STABLE`.
+        Possible values are: `CANARY`, `STABLE`.
         """
         return pulumi.get(self, "release_channel")
 
@@ -1268,7 +1268,7 @@ class MetastoreService(pulumi.CustomResource):
     def tier(self) -> pulumi.Output[str]:
         """
         The tier of the service.
-        Possible values are `DEVELOPER` and `ENTERPRISE`.
+        Possible values are: `DEVELOPER`, `ENTERPRISE`.
         """
         return pulumi.get(self, "tier")
 

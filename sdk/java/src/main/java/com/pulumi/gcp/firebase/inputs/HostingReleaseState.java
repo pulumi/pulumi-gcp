@@ -102,7 +102,7 @@ public final class HostingReleaseState extends com.pulumi.resources.ResourceArgs
      * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
      * ROLLBACK: The release points back to a previously deployed version. Output only.
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-     * Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+     * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      * 
      */
     @Import(name="type")
@@ -114,7 +114,7 @@ public final class HostingReleaseState extends com.pulumi.resources.ResourceArgs
      * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
      * ROLLBACK: The release points back to a previously deployed version. Output only.
      * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-     * Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+     * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -289,7 +289,7 @@ public final class HostingReleaseState extends com.pulumi.resources.ResourceArgs
          * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
          * ROLLBACK: The release points back to a previously deployed version. Output only.
          * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-         * Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+         * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class HostingReleaseState extends com.pulumi.resources.ResourceArgs
          * DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
          * ROLLBACK: The release points back to a previously deployed version. Output only.
          * SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-         * Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+         * Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
          * 
          * @return builder
          * 

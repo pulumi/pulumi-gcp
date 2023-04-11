@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
         /// for the peer router to initiate the BFD session for this BGP peer.
         /// If set to `DISABLED`, BFD is disabled for this BGP peer.
-        /// Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+        /// Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
         /// </summary>
         public readonly string SessionInitializationMode;
 

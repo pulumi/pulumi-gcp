@@ -98,7 +98,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
      * Default value is `ENABLED`.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     public readonly exportToSecurityCommandCenter!: pulumi.Output<string | undefined>;
     /**
@@ -127,13 +127,13 @@ export class SecurityScanConfig extends pulumi.CustomResource {
     public readonly startingUrls!: pulumi.Output<string[]>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
+     * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      */
     public readonly targetPlatforms!: pulumi.Output<string[] | undefined>;
     /**
      * Type of the user agents used for scanning
      * Default value is `CHROME_LINUX`.
-     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+     * Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
      */
     public readonly userAgent!: pulumi.Output<string | undefined>;
 
@@ -208,7 +208,7 @@ export interface SecurityScanConfigState {
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
      * Default value is `ENABLED`.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     exportToSecurityCommandCenter?: pulumi.Input<string>;
     /**
@@ -237,13 +237,13 @@ export interface SecurityScanConfigState {
     startingUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
+     * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      */
     targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of the user agents used for scanning
      * Default value is `CHROME_LINUX`.
-     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+     * Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
      */
     userAgent?: pulumi.Input<string>;
 }
@@ -270,7 +270,7 @@ export interface SecurityScanConfigArgs {
     /**
      * Controls export of scan configurations and results to Cloud Security Command Center.
      * Default value is `ENABLED`.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     exportToSecurityCommandCenter?: pulumi.Input<string>;
     /**
@@ -294,13 +294,13 @@ export interface SecurityScanConfigArgs {
     startingUrls: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-     * Each value may be one of `APP_ENGINE` and `COMPUTE`.
+     * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      */
     targetPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of the user agents used for scanning
      * Default value is `CHROME_LINUX`.
-     * Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+     * Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
      */
     userAgent?: pulumi.Input<string>;
 }

@@ -214,7 +214,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
     /**
      * Whether the trigger is currently active.
      * Default value is `HEALTHY`.
-     * Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
@@ -308,7 +308,7 @@ export interface PreventionJobTriggerState {
     /**
      * Whether the trigger is currently active.
      * Default value is `HEALTHY`.
-     * Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -343,7 +343,7 @@ export interface PreventionJobTriggerArgs {
     /**
      * Whether the trigger is currently active.
      * Default value is `HEALTHY`.
-     * Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+     * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
     status?: pulumi.Input<string>;
     /**

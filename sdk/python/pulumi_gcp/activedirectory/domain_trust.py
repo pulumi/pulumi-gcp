@@ -29,11 +29,11 @@ class DomainTrustArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
-               Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+               Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         :param pulumi.Input[str] trust_handshake_secret: The trust secret used for the handshake with the target domain. This will not be stored.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
-               Possible values are `FOREST` and `EXTERNAL`.
+               Possible values are: `FOREST`, `EXTERNAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -91,7 +91,7 @@ class DomainTrustArgs:
     def trust_direction(self) -> pulumi.Input[str]:
         """
         The trust direction, which decides if the current domain is trusted, trusting, or both.
-        Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+        Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         """
         return pulumi.get(self, "trust_direction")
 
@@ -117,7 +117,7 @@ class DomainTrustArgs:
     def trust_type(self) -> pulumi.Input[str]:
         """
         The type of trust represented by the trust resource.
-        Possible values are `FOREST` and `EXTERNAL`.
+        Possible values are: `FOREST`, `EXTERNAL`.
         """
         return pulumi.get(self, "trust_type")
 
@@ -172,11 +172,11 @@ class _DomainTrustState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
-               Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+               Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         :param pulumi.Input[str] trust_handshake_secret: The trust secret used for the handshake with the target domain. This will not be stored.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
-               Possible values are `FOREST` and `EXTERNAL`.
+               Possible values are: `FOREST`, `EXTERNAL`.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -262,7 +262,7 @@ class _DomainTrustState:
     def trust_direction(self) -> Optional[pulumi.Input[str]]:
         """
         The trust direction, which decides if the current domain is trusted, trusting, or both.
-        Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+        Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         """
         return pulumi.get(self, "trust_direction")
 
@@ -288,7 +288,7 @@ class _DomainTrustState:
     def trust_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of trust represented by the trust resource.
-        Possible values are `FOREST` and `EXTERNAL`.
+        Possible values are: `FOREST`, `EXTERNAL`.
         """
         return pulumi.get(self, "trust_type")
 
@@ -354,11 +354,11 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
-               Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+               Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         :param pulumi.Input[str] trust_handshake_secret: The trust secret used for the handshake with the target domain. This will not be stored.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
-               Possible values are `FOREST` and `EXTERNAL`.
+               Possible values are: `FOREST`, `EXTERNAL`.
         """
         ...
     @overload
@@ -486,11 +486,11 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
-               Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+               Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         :param pulumi.Input[str] trust_handshake_secret: The trust secret used for the handshake with the target domain. This will not be stored.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[str] trust_type: The type of trust represented by the trust resource.
-               Possible values are `FOREST` and `EXTERNAL`.
+               Possible values are: `FOREST`, `EXTERNAL`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -553,7 +553,7 @@ class DomainTrust(pulumi.CustomResource):
     def trust_direction(self) -> pulumi.Output[str]:
         """
         The trust direction, which decides if the current domain is trusted, trusting, or both.
-        Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+        Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         """
         return pulumi.get(self, "trust_direction")
 
@@ -571,7 +571,7 @@ class DomainTrust(pulumi.CustomResource):
     def trust_type(self) -> pulumi.Output[str]:
         """
         The type of trust represented by the trust resource.
-        Possible values are `FOREST` and `EXTERNAL`.
+        Possible values are: `FOREST`, `EXTERNAL`.
         """
         return pulumi.get(self, "trust_type")
 

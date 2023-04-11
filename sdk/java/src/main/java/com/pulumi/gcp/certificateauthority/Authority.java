@@ -694,7 +694,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
-     * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -705,7 +705,7 @@ public class Authority extends com.pulumi.resources.CustomResource {
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
-     * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     public Output<Optional<String>> type() {

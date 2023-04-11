@@ -43,7 +43,7 @@ public final class GlobalForwardingRuleMetadataFilterArgs extends com.pulumi.res
      * label in the provided metadata.
      * MATCH_ALL - All filterLabels must have matching labels in the
      * provided metadata.
-     * Possible values are `MATCH_ANY` and `MATCH_ALL`.
+     * Possible values are: `MATCH_ANY`, `MATCH_ALL`.
      * 
      */
     @Import(name="filterMatchCriteria", required=true)
@@ -56,7 +56,7 @@ public final class GlobalForwardingRuleMetadataFilterArgs extends com.pulumi.res
      * label in the provided metadata.
      * MATCH_ALL - All filterLabels must have matching labels in the
      * provided metadata.
-     * Possible values are `MATCH_ANY` and `MATCH_ALL`.
+     * Possible values are: `MATCH_ANY`, `MATCH_ALL`.
      * 
      */
     public Output<String> filterMatchCriteria() {
@@ -135,7 +135,7 @@ public final class GlobalForwardingRuleMetadataFilterArgs extends com.pulumi.res
          * label in the provided metadata.
          * MATCH_ALL - All filterLabels must have matching labels in the
          * provided metadata.
-         * Possible values are `MATCH_ANY` and `MATCH_ALL`.
+         * Possible values are: `MATCH_ANY`, `MATCH_ALL`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GlobalForwardingRuleMetadataFilterArgs extends com.pulumi.res
          * label in the provided metadata.
          * MATCH_ALL - All filterLabels must have matching labels in the
          * provided metadata.
-         * Possible values are `MATCH_ANY` and `MATCH_ALL`.
+         * Possible values are: `MATCH_ANY`, `MATCH_ALL`.
          * 
          * @return builder
          * 

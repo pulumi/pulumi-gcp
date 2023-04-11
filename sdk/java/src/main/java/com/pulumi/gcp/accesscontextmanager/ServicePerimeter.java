@@ -242,7 +242,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Access Context Manager Service Perimeter Dry Run
+ * ### Access Context Manager Service Perimeter Dry-Run
  * ```java
  * package generated_program;
  * 
@@ -380,7 +380,7 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      * 
      */
     @Export(name="perimeterType", type=String.class, parameters={})
@@ -402,7 +402,7 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      * 
      */
     public Output<Optional<String>> perimeterType() {

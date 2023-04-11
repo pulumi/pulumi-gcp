@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Controls export of scan configurations and results to Cloud Security Command Center.
         /// Default value is `ENABLED`.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Output("exportToSecurityCommandCenter")]
         public Output<string?> ExportToSecurityCommandCenter { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-        /// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+        /// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         /// </summary>
         [Output("targetPlatforms")]
         public Output<ImmutableArray<string>> TargetPlatforms { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of the user agents used for scanning
         /// Default value is `CHROME_LINUX`.
-        /// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+        /// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         /// </summary>
         [Output("userAgent")]
         public Output<string?> UserAgent { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Controls export of scan configurations and results to Cloud Security Command Center.
         /// Default value is `ENABLED`.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-        /// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+        /// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         /// </summary>
         public InputList<string> TargetPlatforms
         {
@@ -283,7 +283,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of the user agents used for scanning
         /// Default value is `CHROME_LINUX`.
-        /// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+        /// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         /// </summary>
         [Input("userAgent")]
         public Input<string>? UserAgent { get; set; }
@@ -326,7 +326,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Controls export of scan configurations and results to Cloud Security Command Center.
         /// Default value is `ENABLED`.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
@@ -376,7 +376,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-        /// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+        /// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         /// </summary>
         public InputList<string> TargetPlatforms
         {
@@ -387,7 +387,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of the user agents used for scanning
         /// Default value is `CHROME_LINUX`.
-        /// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+        /// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
         /// </summary>
         [Input("userAgent")]
         public Input<string>? UserAgent { get; set; }

@@ -94,7 +94,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
     /**
      * Policy for including ancestors in the index.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `ALL_ANCESTORS`.
+     * Possible values are: `NONE`, `ALL_ANCESTORS`.
      * 
      */
     @Export(name="ancestor", type=String.class, parameters={})
@@ -103,7 +103,7 @@ public class DataStoreIndex extends com.pulumi.resources.CustomResource {
     /**
      * @return Policy for including ancestors in the index.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `ALL_ANCESTORS`.
+     * Possible values are: `NONE`, `ALL_ANCESTORS`.
      * 
      */
     public Output<Optional<String>> ancestor() {

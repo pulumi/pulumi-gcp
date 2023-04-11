@@ -51,8 +51,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new CapacityCommitment(&#34;example&#34;, CapacityCommitmentArgs.builder()        
  *             .capacityCommitmentId(&#34;example-commitment&#34;)
- *             .location(&#34;us-west1&#34;)
- *             .plan(&#34;FLEX&#34;)
+ *             .edition(&#34;ENTERPRISE&#34;)
+ *             .location(&#34;us-west2&#34;)
+ *             .plan(&#34;FLEX_FLAT_RATE&#34;)
  *             .slotCount(100)
  *             .build());
  * 
@@ -65,7 +66,15 @@ import javax.annotation.Nullable;
  * CapacityCommitment can be imported using any of these accepted formats
  * 
  * ```sh
- *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{name}}
+ *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
  * ```
  * 
  */
@@ -120,6 +129,20 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
         return this.commitmentStartTime;
     }
     /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    @Export(name="edition", type=String.class, parameters={})
+    private Output</* @Nullable */ String> edition;
+
+    /**
+     * @return The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    public Output<Optional<String>> edition() {
+        return Codegen.optional(this.edition);
+    }
+    /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      * 
      */
@@ -164,14 +187,14 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+     * Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      * 
      */
     @Export(name="plan", type=String.class, parameters={})
     private Output<String> plan;
 
     /**
-     * @return Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+     * @return Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
      * 
      */
     public Output<String> plan() {
@@ -194,14 +217,14 @@ public class CapacityCommitment extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     * The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      * 
      */
     @Export(name="renewalPlan", type=String.class, parameters={})
     private Output</* @Nullable */ String> renewalPlan;
 
     /**
-     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+     * @return The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
      * 
      */
     public Output<Optional<String>> renewalPlan() {

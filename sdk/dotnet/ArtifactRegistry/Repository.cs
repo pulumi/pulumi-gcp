@@ -38,6 +38,29 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Docker
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Description = "example docker repository",
+    ///         DockerConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryDockerConfigArgs
+    ///         {
+    ///             ImmutableTags = true,
+    ///         },
+    ///         Format = "DOCKER",
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Artifact Registry Repository Cmek
     /// 
     /// ```csharp
@@ -88,9 +111,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         RepositoryId = "my-repository-upstream",
     ///         Description = "example docker repository (upstream source)",
     ///         Format = "DOCKER",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
@@ -114,7 +134,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[] {},
     ///     });
     /// 
@@ -131,10 +150,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
-    ///         Location = "us-central1",
-    ///         RepositoryId = "my-repository",
     ///         Description = "example remote docker repository",
     ///         Format = "DOCKER",
+    ///         Location = "us-central1",
     ///         Mode = "REMOTE_REPOSITORY",
     ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
     ///         {
@@ -144,9 +162,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                 PublicRepository = "DOCKER_HUB",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         RepositoryId = "my-repository",
     ///     });
     /// 
     /// });
@@ -186,6 +202,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Docker repository config contains repository level configuration for the repositories of docker type.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dockerConfig")]
+        public Output<Outputs.RepositoryDockerConfig?> DockerConfig { get; private set; } = null!;
 
         /// <summary>
         /// The format of packages that are stored in the repository. Supported formats
@@ -231,8 +254,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<Outputs.RepositoryMavenConfig?> MavenConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-        /// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        /// The mode configures the repository to serve artifacts from different sources.
+        /// Default value is `STANDARD_REPOSITORY`.
+        /// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         /// </summary>
         [Output("mode")]
         public Output<string?> Mode { get; private set; } = null!;
@@ -253,6 +277,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// Configuration specific for a Remote Repository.
+        /// Structure is documented below.
         /// </summary>
         [Output("remoteRepositoryConfig")]
         public Output<Outputs.RepositoryRemoteRepositoryConfig?> RemoteRepositoryConfig { get; private set; } = null!;
@@ -272,6 +297,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// Configuration specific for a Virtual Repository.
+        /// Structure is documented below.
         /// </summary>
         [Output("virtualRepositoryConfig")]
         public Output<Outputs.RepositoryVirtualRepositoryConfig?> VirtualRepositoryConfig { get; private set; } = null!;
@@ -329,6 +355,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Docker repository config contains repository level configuration for the repositories of docker type.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dockerConfig")]
+        public Input<Inputs.RepositoryDockerConfigArgs>? DockerConfig { get; set; }
+
+        /// <summary>
         /// The format of packages that are stored in the repository. Supported formats
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
@@ -378,8 +411,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<Inputs.RepositoryMavenConfigArgs>? MavenConfig { get; set; }
 
         /// <summary>
-        /// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-        /// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        /// The mode configures the repository to serve artifacts from different sources.
+        /// Default value is `STANDARD_REPOSITORY`.
+        /// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -393,6 +427,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// Configuration specific for a Remote Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("remoteRepositoryConfig")]
         public Input<Inputs.RepositoryRemoteRepositoryConfigArgs>? RemoteRepositoryConfig { get; set; }
@@ -406,6 +441,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// Configuration specific for a Virtual Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("virtualRepositoryConfig")]
         public Input<Inputs.RepositoryVirtualRepositoryConfigArgs>? VirtualRepositoryConfig { get; set; }
@@ -429,6 +465,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Docker repository config contains repository level configuration for the repositories of docker type.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dockerConfig")]
+        public Input<Inputs.RepositoryDockerConfigGetArgs>? DockerConfig { get; set; }
 
         /// <summary>
         /// The format of packages that are stored in the repository. Supported formats
@@ -480,8 +523,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Input<Inputs.RepositoryMavenConfigGetArgs>? MavenConfig { get; set; }
 
         /// <summary>
-        /// The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-        /// Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        /// The mode configures the repository to serve artifacts from different sources.
+        /// Default value is `STANDARD_REPOSITORY`.
+        /// Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -502,6 +546,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// Configuration specific for a Remote Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("remoteRepositoryConfig")]
         public Input<Inputs.RepositoryRemoteRepositoryConfigGetArgs>? RemoteRepositoryConfig { get; set; }
@@ -521,6 +566,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// Configuration specific for a Virtual Repository.
+        /// Structure is documented below.
         /// </summary>
         [Input("virtualRepositoryConfig")]
         public Input<Inputs.RepositoryVirtualRepositoryConfigGetArgs>? VirtualRepositoryConfig { get; set; }

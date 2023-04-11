@@ -41,7 +41,7 @@ class ManagedSslCertificateArgs:
         :param pulumi.Input[str] type: Enum field whose value is always `MANAGED` - used to signal to the API
                which type this is.
                Default value is `MANAGED`.
-               Possible values are `MANAGED`.
+               Possible values are: `MANAGED`.
         """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
@@ -132,7 +132,7 @@ class ManagedSslCertificateArgs:
         Enum field whose value is always `MANAGED` - used to signal to the API
         which type this is.
         Default value is `MANAGED`.
-        Possible values are `MANAGED`.
+        Possible values are: `MANAGED`.
         """
         return pulumi.get(self, "type")
 
@@ -177,7 +177,7 @@ class _ManagedSslCertificateState:
         :param pulumi.Input[str] type: Enum field whose value is always `MANAGED` - used to signal to the API
                which type this is.
                Default value is `MANAGED`.
-               Possible values are `MANAGED`.
+               Possible values are: `MANAGED`.
         """
         if certificate_id is not None:
             pulumi.set(__self__, "certificate_id", certificate_id)
@@ -324,7 +324,7 @@ class _ManagedSslCertificateState:
         Enum field whose value is always `MANAGED` - used to signal to the API
         which type this is.
         Default value is `MANAGED`.
-        Possible values are `MANAGED`.
+        Possible values are: `MANAGED`.
         """
         return pulumi.get(self, "type")
 
@@ -409,7 +409,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] type: Enum field whose value is always `MANAGED` - used to signal to the API
                which type this is.
                Default value is `MANAGED`.
-               Possible values are `MANAGED`.
+               Possible values are: `MANAGED`.
         """
         ...
     @overload
@@ -552,7 +552,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] type: Enum field whose value is always `MANAGED` - used to signal to the API
                which type this is.
                Default value is `MANAGED`.
-               Possible values are `MANAGED`.
+               Possible values are: `MANAGED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -658,7 +658,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
         Enum field whose value is always `MANAGED` - used to signal to the API
         which type this is.
         Default value is `MANAGED`.
-        Possible values are `MANAGED`.
+        Possible values are: `MANAGED`.
         """
         return pulumi.get(self, "type")
 

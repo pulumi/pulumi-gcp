@@ -50,7 +50,7 @@ public final class HmacKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
-     * Possible values are `ACTIVE` and `INACTIVE`.
+     * Possible values are: `ACTIVE`, `INACTIVE`.
      * 
      */
     @Import(name="state")
@@ -59,7 +59,7 @@ public final class HmacKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The state of the key. Can be set to one of ACTIVE, INACTIVE.
      * Default value is `ACTIVE`.
-     * Possible values are `ACTIVE` and `INACTIVE`.
+     * Possible values are: `ACTIVE`, `INACTIVE`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -139,7 +139,7 @@ public final class HmacKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param state The state of the key. Can be set to one of ACTIVE, INACTIVE.
          * Default value is `ACTIVE`.
-         * Possible values are `ACTIVE` and `INACTIVE`.
+         * Possible values are: `ACTIVE`, `INACTIVE`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class HmacKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param state The state of the key. Can be set to one of ACTIVE, INACTIVE.
          * Default value is `ACTIVE`.
-         * Possible values are `ACTIVE` and `INACTIVE`.
+         * Possible values are: `ACTIVE`, `INACTIVE`.
          * 
          * @return builder
          * 

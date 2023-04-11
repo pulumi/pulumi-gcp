@@ -293,7 +293,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
      * Default value is `AFTER_CLASSIC_FIREWALL`.
-     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      * 
      */
     @Export(name="networkFirewallPolicyEnforcementOrder", type=String.class, parameters={})
@@ -302,7 +302,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     /**
      * @return Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
      * Default value is `AFTER_CLASSIC_FIREWALL`.
-     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      * 
      */
     public Output<Optional<String>> networkFirewallPolicyEnforcementOrder() {
@@ -330,7 +330,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network&#39;s cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
-     * Possible values are `REGIONAL` and `GLOBAL`.
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      */
     @Export(name="routingMode", type=String.class, parameters={})
@@ -342,7 +342,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network&#39;s cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
-     * Possible values are `REGIONAL` and `GLOBAL`.
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      */
     public Output<String> routingMode() {

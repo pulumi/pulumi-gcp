@@ -647,7 +647,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     @Export(name="state", type=String.class, parameters={})
@@ -655,7 +655,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     public Output<String> state() {
@@ -700,7 +700,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
-     *   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+     *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -717,7 +717,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
-     *   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+     *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
      */
     public Output<String> type() {

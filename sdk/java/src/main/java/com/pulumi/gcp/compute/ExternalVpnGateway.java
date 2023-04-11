@@ -264,7 +264,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * Indicates the redundancy type of this external VPN gateway
-     * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+     * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      * 
      */
     @Export(name="redundancyType", type=String.class, parameters={})
@@ -272,7 +272,7 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicates the redundancy type of this external VPN gateway
-     * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+     * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      * 
      */
     public Output<Optional<String>> redundancyType() {

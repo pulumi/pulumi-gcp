@@ -120,7 +120,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<outputs.monitoring.MetricDescriptorLabel[] | undefined>;
     /**
      * The launch stage of the metric definition.
-     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
     public readonly launchStage!: pulumi.Output<string | undefined>;
     /**
@@ -130,7 +130,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
     public readonly metadata!: pulumi.Output<outputs.monitoring.MetricDescriptorMetadata | undefined>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+     * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      */
     public readonly metricKind!: pulumi.Output<string>;
     /**
@@ -172,7 +172,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
     public readonly unit!: pulumi.Output<string | undefined>;
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      */
     public readonly valueType!: pulumi.Output<string>;
 
@@ -255,7 +255,7 @@ export interface MetricDescriptorState {
     labels?: pulumi.Input<pulumi.Input<inputs.monitoring.MetricDescriptorLabel>[]>;
     /**
      * The launch stage of the metric definition.
-     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
     launchStage?: pulumi.Input<string>;
     /**
@@ -265,7 +265,7 @@ export interface MetricDescriptorState {
     metadata?: pulumi.Input<inputs.monitoring.MetricDescriptorMetadata>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+     * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      */
     metricKind?: pulumi.Input<string>;
     /**
@@ -307,7 +307,7 @@ export interface MetricDescriptorState {
     unit?: pulumi.Input<string>;
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      */
     valueType?: pulumi.Input<string>;
 }
@@ -331,7 +331,7 @@ export interface MetricDescriptorArgs {
     labels?: pulumi.Input<pulumi.Input<inputs.monitoring.MetricDescriptorLabel>[]>;
     /**
      * The launch stage of the metric definition.
-     * Possible values are `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
     launchStage?: pulumi.Input<string>;
     /**
@@ -341,7 +341,7 @@ export interface MetricDescriptorArgs {
     metadata?: pulumi.Input<inputs.monitoring.MetricDescriptorMetadata>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, and `CUMULATIVE`.
+     * Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
      */
     metricKind: pulumi.Input<string>;
     /**
@@ -375,7 +375,7 @@ export interface MetricDescriptorArgs {
     unit?: pulumi.Input<string>;
     /**
      * Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, and `DISTRIBUTION`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
      */
     valueType: pulumi.Input<string>;
 }

@@ -5125,19 +5125,7 @@ type ClusterClusterConfigSoftwareConfig struct {
 	// latest version. For a list of valid versions see
 	// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
 	ImageVersion *string `pulumi:"imageVersion"`
-	// The set of optional components to activate on the cluster.
-	// Accepted values are:
-	// * ANACONDA
-	// * DRUID
-	// * FLINK
-	// * HBASE
-	// * HIVE_WEBHCAT
-	// * JUPYTER
-	// * PRESTO
-	// * RANGER
-	// * SOLR
-	// * ZEPPELIN
-	// * ZOOKEEPER
+	// The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
 	OptionalComponents []string `pulumi:"optionalComponents"`
 	// A list of override and additional properties (key/value pairs)
 	// used to modify various aspects of the common configuration files used when creating
@@ -5167,19 +5155,7 @@ type ClusterClusterConfigSoftwareConfigArgs struct {
 	// latest version. For a list of valid versions see
 	// [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
-	// The set of optional components to activate on the cluster.
-	// Accepted values are:
-	// * ANACONDA
-	// * DRUID
-	// * FLINK
-	// * HBASE
-	// * HIVE_WEBHCAT
-	// * JUPYTER
-	// * PRESTO
-	// * RANGER
-	// * SOLR
-	// * ZEPPELIN
-	// * ZOOKEEPER
+	// The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
 	OptionalComponents pulumi.StringArrayInput `pulumi:"optionalComponents"`
 	// A list of override and additional properties (key/value pairs)
 	// used to modify various aspects of the common configuration files used when creating
@@ -5277,19 +5253,7 @@ func (o ClusterClusterConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPt
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
-// The set of optional components to activate on the cluster.
-// Accepted values are:
-// * ANACONDA
-// * DRUID
-// * FLINK
-// * HBASE
-// * HIVE_WEBHCAT
-// * JUPYTER
-// * PRESTO
-// * RANGER
-// * SOLR
-// * ZEPPELIN
-// * ZOOKEEPER
+// The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
 func (o ClusterClusterConfigSoftwareConfigOutput) OptionalComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigSoftwareConfig) []string { return v.OptionalComponents }).(pulumi.StringArrayOutput)
 }
@@ -5346,19 +5310,7 @@ func (o ClusterClusterConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The set of optional components to activate on the cluster.
-// Accepted values are:
-// * ANACONDA
-// * DRUID
-// * FLINK
-// * HBASE
-// * HIVE_WEBHCAT
-// * JUPYTER
-// * PRESTO
-// * RANGER
-// * SOLR
-// * ZEPPELIN
-// * ZOOKEEPER
+// The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
 func (o ClusterClusterConfigSoftwareConfigPtrOutput) OptionalComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigSoftwareConfig) []string {
 		if v == nil {
@@ -11782,7 +11734,7 @@ func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
 
 type MetastoreFederationBackendMetastore struct {
 	// The type of the backend metastore.
-	// Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+	// Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
 	MetastoreType string `pulumi:"metastoreType"`
 	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 	Name string `pulumi:"name"`
@@ -11803,7 +11755,7 @@ type MetastoreFederationBackendMetastoreInput interface {
 
 type MetastoreFederationBackendMetastoreArgs struct {
 	// The type of the backend metastore.
-	// Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+	// Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
 	MetastoreType pulumi.StringInput `pulumi:"metastoreType"`
 	// The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
 	Name pulumi.StringInput `pulumi:"name"`
@@ -11863,7 +11815,7 @@ func (o MetastoreFederationBackendMetastoreOutput) ToMetastoreFederationBackendM
 }
 
 // The type of the backend metastore.
-// Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+// Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
 func (o MetastoreFederationBackendMetastoreOutput) MetastoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreFederationBackendMetastore) string { return v.MetastoreType }).(pulumi.StringOutput)
 }
@@ -13352,7 +13304,7 @@ func (o MetastoreServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOut
 
 type MetastoreServiceMaintenanceWindow struct {
 	// The day of week, when the window starts.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek string `pulumi:"dayOfWeek"`
 	// The hour of day (0-23) when the window starts.
 	HourOfDay int `pulumi:"hourOfDay"`
@@ -13371,7 +13323,7 @@ type MetastoreServiceMaintenanceWindowInput interface {
 
 type MetastoreServiceMaintenanceWindowArgs struct {
 	// The day of week, when the window starts.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
 	// The hour of day (0-23) when the window starts.
 	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
@@ -13455,7 +13407,7 @@ func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWi
 }
 
 // The day of week, when the window starts.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o MetastoreServiceMaintenanceWindowOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreServiceMaintenanceWindow) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
@@ -13490,7 +13442,7 @@ func (o MetastoreServiceMaintenanceWindowPtrOutput) Elem() MetastoreServiceMaint
 }
 
 // The day of week, when the window starts.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o MetastoreServiceMaintenanceWindowPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreServiceMaintenanceWindow) *string {
 		if v == nil {
@@ -14052,7 +14004,7 @@ func (o MetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntInpu
 type MetastoreServiceTelemetryConfig struct {
 	// The output format of the Dataproc Metastore service's logs.
 	// Default value is `JSON`.
-	// Possible values are `LEGACY` and `JSON`.
+	// Possible values are: `LEGACY`, `JSON`.
 	LogFormat *string `pulumi:"logFormat"`
 }
 
@@ -14070,7 +14022,7 @@ type MetastoreServiceTelemetryConfigInput interface {
 type MetastoreServiceTelemetryConfigArgs struct {
 	// The output format of the Dataproc Metastore service's logs.
 	// Default value is `JSON`.
-	// Possible values are `LEGACY` and `JSON`.
+	// Possible values are: `LEGACY`, `JSON`.
 	LogFormat pulumi.StringPtrInput `pulumi:"logFormat"`
 }
 
@@ -14153,7 +14105,7 @@ func (o MetastoreServiceTelemetryConfigOutput) ToMetastoreServiceTelemetryConfig
 
 // The output format of the Dataproc Metastore service's logs.
 // Default value is `JSON`.
-// Possible values are `LEGACY` and `JSON`.
+// Possible values are: `LEGACY`, `JSON`.
 func (o MetastoreServiceTelemetryConfigOutput) LogFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetastoreServiceTelemetryConfig) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
 }
@@ -14184,7 +14136,7 @@ func (o MetastoreServiceTelemetryConfigPtrOutput) Elem() MetastoreServiceTelemet
 
 // The output format of the Dataproc Metastore service's logs.
 // Default value is `JSON`.
-// Possible values are `LEGACY` and `JSON`.
+// Possible values are: `LEGACY`, `JSON`.
 func (o MetastoreServiceTelemetryConfigPtrOutput) LogFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreServiceTelemetryConfig) *string {
 		if v == nil {

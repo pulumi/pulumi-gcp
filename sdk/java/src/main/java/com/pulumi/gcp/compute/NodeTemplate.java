@@ -127,7 +127,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
     /**
      * CPU overcommit.
      * Default value is `NONE`.
-     * Possible values are `ENABLED` and `NONE`.
+     * Possible values are: `ENABLED`, `NONE`.
      * 
      */
     @Export(name="cpuOvercommitType", type=String.class, parameters={})
@@ -136,7 +136,7 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return CPU overcommit.
      * Default value is `NONE`.
-     * Possible values are `ENABLED` and `NONE`.
+     * Possible values are: `ENABLED`, `NONE`.
      * 
      */
     public Output<Optional<String>> cpuOvercommitType() {

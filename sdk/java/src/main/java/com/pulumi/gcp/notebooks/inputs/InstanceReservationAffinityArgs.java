@@ -18,7 +18,7 @@ public final class InstanceReservationAffinityArgs extends com.pulumi.resources.
 
     /**
      * The type of Compute Reservation.
-     * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+     * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
      * 
      */
     @Import(name="consumeReservationType", required=true)
@@ -26,7 +26,7 @@ public final class InstanceReservationAffinityArgs extends com.pulumi.resources.
 
     /**
      * @return The type of Compute Reservation.
-     * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+     * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
      * 
      */
     public Output<String> consumeReservationType() {
@@ -91,7 +91,7 @@ public final class InstanceReservationAffinityArgs extends com.pulumi.resources.
 
         /**
          * @param consumeReservationType The type of Compute Reservation.
-         * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+         * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class InstanceReservationAffinityArgs extends com.pulumi.resources.
 
         /**
          * @param consumeReservationType The type of Compute Reservation.
-         * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+         * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
          * 
          * @return builder
          * 

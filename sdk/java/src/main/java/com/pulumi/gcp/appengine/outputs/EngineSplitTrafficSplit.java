@@ -19,7 +19,7 @@ public final class EngineSplitTrafficSplit {
     private Map<String,String> allocations;
     /**
      * @return Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-     * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+     * Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
      * 
      */
     private @Nullable String shardBy;
@@ -34,7 +34,7 @@ public final class EngineSplitTrafficSplit {
     }
     /**
      * @return Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-     * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+     * Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
      * 
      */
     public Optional<String> shardBy() {

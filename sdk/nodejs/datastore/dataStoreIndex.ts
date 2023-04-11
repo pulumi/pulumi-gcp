@@ -90,7 +90,7 @@ export class DataStoreIndex extends pulumi.CustomResource {
     /**
      * Policy for including ancestors in the index.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `ALL_ANCESTORS`.
+     * Possible values are: `NONE`, `ALL_ANCESTORS`.
      */
     public readonly ancestor!: pulumi.Output<string | undefined>;
     /**
@@ -153,7 +153,7 @@ export interface DataStoreIndexState {
     /**
      * Policy for including ancestors in the index.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `ALL_ANCESTORS`.
+     * Possible values are: `NONE`, `ALL_ANCESTORS`.
      */
     ancestor?: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface DataStoreIndexArgs {
     /**
      * Policy for including ancestors in the index.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `ALL_ANCESTORS`.
+     * Possible values are: `NONE`, `ALL_ANCESTORS`.
      */
     ancestor?: pulumi.Input<string>;
     /**

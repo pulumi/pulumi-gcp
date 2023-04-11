@@ -221,7 +221,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
-     * Possible values are `MYSQL` and `SPANNER`.
+     * Possible values are: `MYSQL`, `SPANNER`.
      * 
      */
     @Export(name="databaseType", type=String.class, parameters={})
@@ -230,7 +230,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     /**
      * @return The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
-     * Possible values are `MYSQL` and `SPANNER`.
+     * Possible values are: `MYSQL`, `SPANNER`.
      * 
      */
     public Output<Optional<String>> databaseType() {
@@ -429,7 +429,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
-     * Possible values are `CANARY` and `STABLE`.
+     * Possible values are: `CANARY`, `STABLE`.
      * 
      */
     @Export(name="releaseChannel", type=String.class, parameters={})
@@ -438,7 +438,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     /**
      * @return The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
-     * Possible values are `CANARY` and `STABLE`.
+     * Possible values are: `CANARY`, `STABLE`.
      * 
      */
     public Output<Optional<String>> releaseChannel() {
@@ -508,7 +508,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     }
     /**
      * The tier of the service.
-     * Possible values are `DEVELOPER` and `ENTERPRISE`.
+     * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      * 
      */
     @Export(name="tier", type=String.class, parameters={})
@@ -516,7 +516,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The tier of the service.
-     * Possible values are `DEVELOPER` and `ENTERPRISE`.
+     * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      * 
      */
     public Output<String> tier() {

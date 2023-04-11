@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public final class PreventionInspectTemplateInspectConfig {
     /**
      * @return List of options defining data content to scan. If empty, text, images, and other content will be included.
-     * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+     * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
      * 
      */
     private @Nullable List<String> contentOptions;
@@ -57,7 +57,7 @@ public final class PreventionInspectTemplateInspectConfig {
     /**
      * @return Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
      * Default value is `POSSIBLE`.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     private @Nullable String minLikelihood;
@@ -72,7 +72,7 @@ public final class PreventionInspectTemplateInspectConfig {
     private PreventionInspectTemplateInspectConfig() {}
     /**
      * @return List of options defining data content to scan. If empty, text, images, and other content will be included.
-     * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+     * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
      * 
      */
     public List<String> contentOptions() {
@@ -122,7 +122,7 @@ public final class PreventionInspectTemplateInspectConfig {
     /**
      * @return Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
      * Default value is `POSSIBLE`.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     public Optional<String> minLikelihood() {

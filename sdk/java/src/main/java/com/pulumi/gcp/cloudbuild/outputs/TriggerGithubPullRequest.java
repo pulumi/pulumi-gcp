@@ -20,7 +20,7 @@ public final class TriggerGithubPullRequest {
     private String branch;
     /**
      * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-     * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+     * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
     private @Nullable String commentControl;
@@ -41,7 +41,7 @@ public final class TriggerGithubPullRequest {
     }
     /**
      * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-     * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+     * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
     public Optional<String> commentControl() {

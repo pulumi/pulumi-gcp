@@ -32,7 +32,7 @@ public final class ObjectAccessControlProjectTeamArgs extends com.pulumi.resourc
 
     /**
      * The team.
-     * Possible values are `editors`, `owners`, and `viewers`.
+     * Possible values are: `editors`, `owners`, `viewers`.
      * 
      */
     @Import(name="team")
@@ -40,7 +40,7 @@ public final class ObjectAccessControlProjectTeamArgs extends com.pulumi.resourc
 
     /**
      * @return The team.
-     * Possible values are `editors`, `owners`, and `viewers`.
+     * Possible values are: `editors`, `owners`, `viewers`.
      * 
      */
     public Optional<Output<String>> team() {
@@ -95,7 +95,7 @@ public final class ObjectAccessControlProjectTeamArgs extends com.pulumi.resourc
 
         /**
          * @param team The team.
-         * Possible values are `editors`, `owners`, and `viewers`.
+         * Possible values are: `editors`, `owners`, `viewers`.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ObjectAccessControlProjectTeamArgs extends com.pulumi.resourc
 
         /**
          * @param team The team.
-         * Possible values are `editors`, `owners`, and `viewers`.
+         * Possible values are: `editors`, `owners`, `viewers`.
          * 
          * @return builder
          * 

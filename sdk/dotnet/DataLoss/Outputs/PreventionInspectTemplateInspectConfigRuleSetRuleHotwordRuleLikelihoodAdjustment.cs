@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     {
         /// <summary>
         /// Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-        /// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         /// </summary>
         public readonly string? FixedLikelihood;
         /// <summary>

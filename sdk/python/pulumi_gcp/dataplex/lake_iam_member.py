@@ -235,7 +235,7 @@ class LakeIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Three different resources help you manage your IAM policy for Cloud Dataplex Lake. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
 
         * `dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
         * `dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
@@ -292,7 +292,7 @@ class LakeIamMember(pulumi.CustomResource):
 
         ## Import
 
-        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
          $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"
@@ -330,7 +330,7 @@ class LakeIamMember(pulumi.CustomResource):
                  args: LakeIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Three different resources help you manage your IAM policy for Cloud Dataplex Lake. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Dataplex Lake. Each of these resources serves a different use case:
 
         * `dataplex.LakeIamPolicy`: Authoritative. Sets the IAM policy for the lake and replaces any existing policy already attached.
         * `dataplex.LakeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the lake are preserved.
@@ -387,7 +387,7 @@ class LakeIamMember(pulumi.CustomResource):
 
         ## Import
 
-        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex lake IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
          $ pulumi import gcp:dataplex/lakeIamMember:LakeIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}} roles/viewer user:jane@example.com"

@@ -55,6 +55,7 @@ __all__ = [
     'JobStatusArgs',
     'JobStatusErrorArgs',
     'JobStatusErrorResultArgs',
+    'ReservationAutoscaleArgs',
     'RoutineArgumentArgs',
     'TableEncryptionConfigurationArgs',
     'TableExternalDataConfigurationArgs',
@@ -394,7 +395,7 @@ class ConnectionCloudSqlArgs:
         :param pulumi.Input[str] database: Database name.
         :param pulumi.Input[str] instance_id: Cloud SQL instance ID in the form project:location:instance.
         :param pulumi.Input[str] type: Type of the Cloud SQL database.
-               Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+               Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
         :param pulumi.Input[str] service_account_id: (Output)
                When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
         """
@@ -447,7 +448,7 @@ class ConnectionCloudSqlArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Type of the Cloud SQL database.
-        Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+        Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
         """
         return pulumi.get(self, "type")
 
@@ -1372,7 +1373,7 @@ class JobCopyArgs:
                CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
-               Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+               Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
         :param pulumi.Input['JobCopyDestinationEncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
         :param pulumi.Input['JobCopyDestinationTableArgs'] destination_table: The destination table.
@@ -1384,7 +1385,7 @@ class JobCopyArgs:
                Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
                Creation, truncation and append actions occur as one atomic update upon job completion.
                Default value is `WRITE_EMPTY`.
-               Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+               Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
         pulumi.set(__self__, "source_tables", source_tables)
         if create_disposition is not None:
@@ -1418,7 +1419,7 @@ class JobCopyArgs:
         CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
         Creation, truncation and append actions occur as one atomic update upon job completion
         Default value is `CREATE_IF_NEEDED`.
-        Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+        Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
         """
         return pulumi.get(self, "create_disposition")
 
@@ -1463,7 +1464,7 @@ class JobCopyArgs:
         Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         Creation, truncation and append actions occur as one atomic update upon job completion.
         Default value is `WRITE_EMPTY`.
-        Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+        Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
         return pulumi.get(self, "write_disposition")
 
@@ -1923,7 +1924,7 @@ class JobLoadArgs:
                CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
-               Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+               Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
         :param pulumi.Input['JobLoadDestinationEncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
                Structure is documented below.
         :param pulumi.Input[str] encoding: The character encoding of the data. The supported values are UTF-8 or ISO-8859-1.
@@ -1983,7 +1984,7 @@ class JobLoadArgs:
                Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
                Creation, truncation and append actions occur as one atomic update upon job completion.
                Default value is `WRITE_EMPTY`.
-               Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+               Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
         pulumi.set(__self__, "destination_table", destination_table)
         pulumi.set(__self__, "source_uris", source_uris)
@@ -2102,7 +2103,7 @@ class JobLoadArgs:
         CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
         Creation, truncation and append actions occur as one atomic update upon job completion
         Default value is `CREATE_IF_NEEDED`.
-        Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+        Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
         """
         return pulumi.get(self, "create_disposition")
 
@@ -2316,7 +2317,7 @@ class JobLoadArgs:
         Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         Creation, truncation and append actions occur as one atomic update upon job completion.
         Default value is `WRITE_EMPTY`.
-        Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+        Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
         return pulumi.get(self, "write_disposition")
 
@@ -2515,7 +2516,7 @@ class JobQueryArgs:
                CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
                Creation, truncation and append actions occur as one atomic update upon job completion
                Default value is `CREATE_IF_NEEDED`.
-               Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+               Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
         :param pulumi.Input['JobQueryDefaultDatasetArgs'] default_dataset: Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
                Structure is documented below.
         :param pulumi.Input['JobQueryDestinationEncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys)
@@ -2533,7 +2534,7 @@ class JobQueryArgs:
         :param pulumi.Input[str] parameter_mode: Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
         :param pulumi.Input[str] priority: Specifies a priority for the query.
                Default value is `INTERACTIVE`.
-               Possible values are `INTERACTIVE` and `BATCH`.
+               Possible values are: `INTERACTIVE`, `BATCH`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the query job.
                Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND;
                when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table,
@@ -2557,7 +2558,7 @@ class JobQueryArgs:
                Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
                Creation, truncation and append actions occur as one atomic update upon job completion.
                Default value is `WRITE_EMPTY`.
-               Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+               Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
         pulumi.set(__self__, "query", query)
         if allow_large_results is not None:
@@ -2630,7 +2631,7 @@ class JobQueryArgs:
         CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
         Creation, truncation and append actions occur as one atomic update upon job completion
         Default value is `CREATE_IF_NEEDED`.
-        Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+        Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
         """
         return pulumi.get(self, "create_disposition")
 
@@ -2736,7 +2737,7 @@ class JobQueryArgs:
         """
         Specifies a priority for the query.
         Default value is `INTERACTIVE`.
-        Possible values are `INTERACTIVE` and `BATCH`.
+        Possible values are: `INTERACTIVE`, `BATCH`.
         """
         return pulumi.get(self, "priority")
 
@@ -2826,7 +2827,7 @@ class JobQueryArgs:
         Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
         Creation, truncation and append actions occur as one atomic update upon job completion.
         Default value is `WRITE_EMPTY`.
-        Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+        Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
         """
         return pulumi.get(self, "write_disposition")
 
@@ -2982,7 +2983,7 @@ class JobQueryScriptOptionsArgs:
         """
         :param pulumi.Input[str] key_result_statement: Determines which statement in the script represents the "key result",
                used to populate the schema and query results of the script job.
-               Possible values are `LAST` and `FIRST_SELECT`.
+               Possible values are: `LAST`, `FIRST_SELECT`.
         :param pulumi.Input[str] statement_byte_budget: Limit on the number of bytes billed per statement. Exceeding this budget results in an error.
         :param pulumi.Input[str] statement_timeout_ms: Timeout period for each statement in a script.
         """
@@ -2999,7 +3000,7 @@ class JobQueryScriptOptionsArgs:
         """
         Determines which statement in the script represents the "key result",
         used to populate the schema and query results of the script job.
-        Possible values are `LAST` and `FIRST_SELECT`.
+        Possible values are: `LAST`, `FIRST_SELECT`.
         """
         return pulumi.get(self, "key_result_statement")
 
@@ -3253,6 +3254,47 @@ class JobStatusErrorResultArgs:
 
 
 @pulumi.input_type
+class ReservationAutoscaleArgs:
+    def __init__(__self__, *,
+                 current_slots: Optional[pulumi.Input[int]] = None,
+                 max_slots: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] current_slots: (Output)
+               The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+        :param pulumi.Input[int] max_slots: Number of slots to be scaled when needed.
+        """
+        if current_slots is not None:
+            pulumi.set(__self__, "current_slots", current_slots)
+        if max_slots is not None:
+            pulumi.set(__self__, "max_slots", max_slots)
+
+    @property
+    @pulumi.getter(name="currentSlots")
+    def current_slots(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
+        """
+        return pulumi.get(self, "current_slots")
+
+    @current_slots.setter
+    def current_slots(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "current_slots", value)
+
+    @property
+    @pulumi.getter(name="maxSlots")
+    def max_slots(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of slots to be scaled when needed.
+        """
+        return pulumi.get(self, "max_slots")
+
+    @max_slots.setter
+    def max_slots(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_slots", value)
+
+
+@pulumi.input_type
 class RoutineArgumentArgs:
     def __init__(__self__, *,
                  argument_kind: Optional[pulumi.Input[str]] = None,
@@ -3262,7 +3304,7 @@ class RoutineArgumentArgs:
         """
         :param pulumi.Input[str] argument_kind: Defaults to FIXED_TYPE.
                Default value is `FIXED_TYPE`.
-               Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+               Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
         :param pulumi.Input[str] data_type: A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
                ~>**NOTE**: Because this field expects a JSON string, any changes to the string
                will create a diff, even if the JSON itself hasn't changed. If the API returns
@@ -3271,7 +3313,7 @@ class RoutineArgumentArgs:
                suppress the recurring diff this causes. As a workaround, we recommend using
                the schema as returned by the API.
         :param pulumi.Input[str] mode: Specifies whether the argument is input or output. Can be set for procedures only.
-               Possible values are `IN`, `OUT`, and `INOUT`.
+               Possible values are: `IN`, `OUT`, `INOUT`.
         :param pulumi.Input[str] name: The name of this argument. Can be absent for function return argument.
         """
         if argument_kind is not None:
@@ -3289,7 +3331,7 @@ class RoutineArgumentArgs:
         """
         Defaults to FIXED_TYPE.
         Default value is `FIXED_TYPE`.
-        Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+        Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
         """
         return pulumi.get(self, "argument_kind")
 
@@ -3320,7 +3362,7 @@ class RoutineArgumentArgs:
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies whether the argument is input or output. Can be set for procedures only.
-        Possible values are `IN`, `OUT`, and `INOUT`.
+        Possible values are: `IN`, `OUT`, `INOUT`.
         """
         return pulumi.get(self, "mode")
 

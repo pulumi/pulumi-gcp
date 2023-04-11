@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Firestore.Outputs
         /// <summary>
         /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
         /// be specified.
-        /// Possible values are `CONTAINS`.
+        /// Possible values are: `CONTAINS`.
         /// </summary>
         public readonly string? ArrayConfig;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Firestore.Outputs
         /// <summary>
         /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
         /// Only one of `order` and `arrayConfig` can be specified.
-        /// Possible values are `ASCENDING` and `DESCENDING`.
+        /// Possible values are: `ASCENDING`, `DESCENDING`.
         /// </summary>
         public readonly string? Order;
 

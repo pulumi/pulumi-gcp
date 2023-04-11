@@ -32,14 +32,14 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+     * ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     @Import(name="workloadVulnerabilityMode")
     private @Nullable Output<String> workloadVulnerabilityMode;
 
     /**
-     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+     * @return ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
      * 
      */
     public Optional<Output<String>> workloadVulnerabilityMode() {
@@ -93,7 +93,7 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workloadVulnerabilityMode ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+         * @param workloadVulnerabilityMode ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ClusterProtectConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param workloadVulnerabilityMode ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+         * @param workloadVulnerabilityMode ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
          * 
          * @return builder
          * 

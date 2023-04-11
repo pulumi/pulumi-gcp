@@ -257,7 +257,7 @@ func (o DeviceCredentialArrayOutput) Index(i pulumi.IntInput) DeviceCredentialOu
 
 type DeviceCredentialPublicKey struct {
 	// The format of the key.
-	// Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+	// Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
 	Format string `pulumi:"format"`
 	// The key data.
 	Key string `pulumi:"key"`
@@ -276,7 +276,7 @@ type DeviceCredentialPublicKeyInput interface {
 
 type DeviceCredentialPublicKeyArgs struct {
 	// The format of the key.
-	// Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+	// Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
 	Format pulumi.StringInput `pulumi:"format"`
 	// The key data.
 	Key pulumi.StringInput `pulumi:"key"`
@@ -309,7 +309,7 @@ func (o DeviceCredentialPublicKeyOutput) ToDeviceCredentialPublicKeyOutputWithCo
 }
 
 // The format of the key.
-// Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+// Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
 func (o DeviceCredentialPublicKeyOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v DeviceCredentialPublicKey) string { return v.Format }).(pulumi.StringOutput)
 }
@@ -321,11 +321,11 @@ func (o DeviceCredentialPublicKeyOutput) Key() pulumi.StringOutput {
 
 type DeviceGatewayConfig struct {
 	// Indicates whether the device is a gateway.
-	// Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+	// Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
 	GatewayAuthMethod *string `pulumi:"gatewayAuthMethod"`
 	// Indicates whether the device is a gateway.
 	// Default value is `NON_GATEWAY`.
-	// Possible values are `GATEWAY` and `NON_GATEWAY`.
+	// Possible values are: `GATEWAY`, `NON_GATEWAY`.
 	GatewayType *string `pulumi:"gatewayType"`
 	// (Output)
 	// The ID of the gateway the device accessed most recently.
@@ -348,11 +348,11 @@ type DeviceGatewayConfigInput interface {
 
 type DeviceGatewayConfigArgs struct {
 	// Indicates whether the device is a gateway.
-	// Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+	// Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
 	GatewayAuthMethod pulumi.StringPtrInput `pulumi:"gatewayAuthMethod"`
 	// Indicates whether the device is a gateway.
 	// Default value is `NON_GATEWAY`.
-	// Possible values are `GATEWAY` and `NON_GATEWAY`.
+	// Possible values are: `GATEWAY`, `NON_GATEWAY`.
 	GatewayType pulumi.StringPtrInput `pulumi:"gatewayType"`
 	// (Output)
 	// The ID of the gateway the device accessed most recently.
@@ -440,14 +440,14 @@ func (o DeviceGatewayConfigOutput) ToDeviceGatewayConfigPtrOutputWithContext(ctx
 }
 
 // Indicates whether the device is a gateway.
-// Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+// Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
 func (o DeviceGatewayConfigOutput) GatewayAuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.GatewayAuthMethod }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether the device is a gateway.
 // Default value is `NON_GATEWAY`.
-// Possible values are `GATEWAY` and `NON_GATEWAY`.
+// Possible values are: `GATEWAY`, `NON_GATEWAY`.
 func (o DeviceGatewayConfigOutput) GatewayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeviceGatewayConfig) *string { return v.GatewayType }).(pulumi.StringPtrOutput)
 }
@@ -489,7 +489,7 @@ func (o DeviceGatewayConfigPtrOutput) Elem() DeviceGatewayConfigOutput {
 }
 
 // Indicates whether the device is a gateway.
-// Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+// Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
 func (o DeviceGatewayConfigPtrOutput) GatewayAuthMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
 		if v == nil {
@@ -501,7 +501,7 @@ func (o DeviceGatewayConfigPtrOutput) GatewayAuthMethod() pulumi.StringPtrOutput
 
 // Indicates whether the device is a gateway.
 // Default value is `NON_GATEWAY`.
-// Possible values are `GATEWAY` and `NON_GATEWAY`.
+// Possible values are: `GATEWAY`, `NON_GATEWAY`.
 func (o DeviceGatewayConfigPtrOutput) GatewayType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGatewayConfig) *string {
 		if v == nil {

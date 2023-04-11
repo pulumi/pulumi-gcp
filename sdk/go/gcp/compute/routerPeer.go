@@ -154,7 +154,7 @@ type RouterPeer struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `CUSTOM`.
+	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrOutput `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -257,7 +257,7 @@ type routerPeerState struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `CUSTOM`.
+	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -320,7 +320,7 @@ type RouterPeerState struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `CUSTOM`.
+	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -387,7 +387,7 @@ type routerPeerArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `CUSTOM`.
+	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -449,7 +449,7 @@ type RouterPeerArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 	// Default value is `DEFAULT`.
-	// Possible values are `DEFAULT` and `CUSTOM`.
+	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
 	// mode, which can take one of the following options:
@@ -596,7 +596,7 @@ func (o RouterPeerOutput) ToRouterPeerOutputWithContext(ctx context.Context) Rou
 // User-specified flag to indicate which mode to use for advertisement.
 // Valid values of this enum field are: `DEFAULT`, `CUSTOM`
 // Default value is `DEFAULT`.
-// Possible values are `DEFAULT` and `CUSTOM`.
+// Possible values are: `DEFAULT`, `CUSTOM`.
 func (o RouterPeerOutput) AdvertiseMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringPtrOutput { return v.AdvertiseMode }).(pulumi.StringPtrOutput)
 }

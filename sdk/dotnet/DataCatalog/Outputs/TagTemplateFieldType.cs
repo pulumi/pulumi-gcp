@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.DataCatalog.Outputs
         /// <summary>
         /// Represents primitive types - string, bool etc.
         /// Exactly one of `primitive_type` or `enum_type` must be set
-        /// Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
+        /// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
         /// </summary>
         public readonly string? PrimitiveType;
 

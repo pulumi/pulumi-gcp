@@ -58,6 +58,7 @@ export interface GetRepositoryArgs {
 export interface GetRepositoryResult {
     readonly createTime: string;
     readonly description: string;
+    readonly dockerConfigs: outputs.artifactregistry.GetRepositoryDockerConfig[];
     readonly format: string;
     /**
      * The provider-assigned unique ID for this managed resource.

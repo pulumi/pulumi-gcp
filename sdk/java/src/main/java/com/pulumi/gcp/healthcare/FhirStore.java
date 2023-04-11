@@ -498,7 +498,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
-     * Possible values are `DSTU2`, `STU3`, and `R4`.
+     * Possible values are: `DSTU2`, `STU3`, `R4`.
      * 
      */
     @Export(name="version", type=String.class, parameters={})
@@ -507,7 +507,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
     /**
      * @return The FHIR specification version.
      * Default value is `STU3`.
-     * Possible values are `DSTU2`, `STU3`, and `R4`.
+     * Possible values are: `DSTU2`, `STU3`, `R4`.
      * 
      */
     public Output<Optional<String>> version() {

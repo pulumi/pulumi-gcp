@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class CertificateCertificateDescriptionPublicKey {
     /**
      * @return The format of the public key. Currently, only PEM format is supported.
-     * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+     * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
      * 
      */
     private @Nullable String format;
@@ -26,7 +26,7 @@ public final class CertificateCertificateDescriptionPublicKey {
     private CertificateCertificateDescriptionPublicKey() {}
     /**
      * @return The format of the public key. Currently, only PEM format is supported.
-     * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+     * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
      * 
      */
     public Optional<String> format() {

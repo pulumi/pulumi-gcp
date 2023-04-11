@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The Tier of this CaPool.
-        /// Possible values are `ENTERPRISE` and `DEVOPS`.
+        /// Possible values are: `ENTERPRISE`, `DEVOPS`.
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The Tier of this CaPool.
-        /// Possible values are `ENTERPRISE` and `DEVOPS`.
+        /// Possible values are: `ENTERPRISE`, `DEVOPS`.
         /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// The Tier of this CaPool.
-        /// Possible values are `ENTERPRISE` and `DEVOPS`.
+        /// Possible values are: `ENTERPRISE`, `DEVOPS`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

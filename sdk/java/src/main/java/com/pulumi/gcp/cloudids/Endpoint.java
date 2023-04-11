@@ -213,7 +213,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * The minimum alert severity level that is reported by the endpoint.
-     * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+     * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      * 
      */
     @Export(name="severity", type=String.class, parameters={})
@@ -221,7 +221,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The minimum alert severity level that is reported by the endpoint.
-     * Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+     * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      * 
      */
     public Output<String> severity() {

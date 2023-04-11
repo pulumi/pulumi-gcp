@@ -38,7 +38,7 @@ class TargetTCPProxyArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         """
         pulumi.set(__self__, "backend_service", backend_service)
         if description is not None:
@@ -127,7 +127,7 @@ class TargetTCPProxyArgs:
         Specifies the type of proxy header to append before sending data to
         the backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -167,7 +167,7 @@ class _TargetTCPProxyState:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
@@ -277,7 +277,7 @@ class _TargetTCPProxyState:
         Specifies the type of proxy header to append before sending data to
         the backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -369,7 +369,7 @@ class TargetTCPProxy(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         """
         ...
     @overload
@@ -490,7 +490,7 @@ class TargetTCPProxy(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
@@ -572,7 +572,7 @@ class TargetTCPProxy(pulumi.CustomResource):
         Specifies the type of proxy header to append before sending data to
         the backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 

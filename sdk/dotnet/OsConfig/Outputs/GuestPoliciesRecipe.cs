@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// if a higher version of the recipe is assigned to this instance.
         /// REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
         /// Default value is `INSTALLED`.
-        /// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+        /// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
         /// </summary>
         public readonly string? DesiredState;
         /// <summary>

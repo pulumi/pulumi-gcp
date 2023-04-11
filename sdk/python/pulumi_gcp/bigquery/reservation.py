@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ReservationArgs', 'Reservation']
 
@@ -15,7 +17,9 @@ __all__ = ['ReservationArgs', 'Reservation']
 class ReservationArgs:
     def __init__(__self__, *,
                  slot_capacity: pulumi.Input[int],
+                 autoscale: Optional[pulumi.Input['ReservationAutoscaleArgs']] = None,
                  concurrency: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -25,7 +29,10 @@ class ReservationArgs:
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
+        :param pulumi.Input['ReservationAutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
+               Structure is documented below.
         :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
@@ -38,8 +45,12 @@ class ReservationArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "slot_capacity", slot_capacity)
+        if autoscale is not None:
+            pulumi.set(__self__, "autoscale", autoscale)
         if concurrency is not None:
             pulumi.set(__self__, "concurrency", concurrency)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
@@ -66,6 +77,19 @@ class ReservationArgs:
 
     @property
     @pulumi.getter
+    def autoscale(self) -> Optional[pulumi.Input['ReservationAutoscaleArgs']]:
+        """
+        The configuration parameters for the auto scaling feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscale")
+
+    @autoscale.setter
+    def autoscale(self, value: Optional[pulumi.Input['ReservationAutoscaleArgs']]):
+        pulumi.set(self, "autoscale", value)
+
+    @property
+    @pulumi.getter
     def concurrency(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
@@ -75,6 +99,18 @@ class ReservationArgs:
     @concurrency.setter
     def concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "concurrency", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")
@@ -145,7 +181,9 @@ class ReservationArgs:
 @pulumi.input_type
 class _ReservationState:
     def __init__(__self__, *,
+                 autoscale: Optional[pulumi.Input['ReservationAutoscaleArgs']] = None,
                  concurrency: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -154,7 +192,10 @@ class _ReservationState:
                  slot_capacity: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Reservation resources.
+        :param pulumi.Input['ReservationAutoscaleArgs'] autoscale: The configuration parameters for the auto scaling feature.
+               Structure is documented below.
         :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
@@ -168,8 +209,12 @@ class _ReservationState:
         :param pulumi.Input[int] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the
                unit of parallelism. Queries using this reservation might use more slots during runtime if ignoreIdleSlots is set to false.
         """
+        if autoscale is not None:
+            pulumi.set(__self__, "autoscale", autoscale)
         if concurrency is not None:
             pulumi.set(__self__, "concurrency", concurrency)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if location is not None:
@@ -185,6 +230,19 @@ class _ReservationState:
 
     @property
     @pulumi.getter
+    def autoscale(self) -> Optional[pulumi.Input['ReservationAutoscaleArgs']]:
+        """
+        The configuration parameters for the auto scaling feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscale")
+
+    @autoscale.setter
+    def autoscale(self, value: Optional[pulumi.Input['ReservationAutoscaleArgs']]):
+        pulumi.set(self, "autoscale", value)
+
+    @property
+    @pulumi.getter
     def concurrency(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
@@ -194,6 +252,18 @@ class _ReservationState:
     @concurrency.setter
     def concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "concurrency", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")
@@ -279,7 +349,9 @@ class Reservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscale: Optional[pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']]] = None,
                  concurrency: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -304,9 +376,13 @@ class Reservation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         reservation = gcp.bigquery.Reservation("reservation",
+            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
+                max_slots=100,
+            ),
             concurrency=0,
-            ignore_idle_slots=False,
-            location="asia-northeast1",
+            edition="STANDARD",
+            ignore_idle_slots=True,
+            location="us-west2",
             slot_capacity=0)
         ```
 
@@ -328,7 +404,10 @@ class Reservation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature.
+               Structure is documented below.
         :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
@@ -365,9 +444,13 @@ class Reservation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         reservation = gcp.bigquery.Reservation("reservation",
+            autoscale=gcp.bigquery.ReservationAutoscaleArgs(
+                max_slots=100,
+            ),
             concurrency=0,
-            ignore_idle_slots=False,
-            location="asia-northeast1",
+            edition="STANDARD",
+            ignore_idle_slots=True,
+            location="us-west2",
             slot_capacity=0)
         ```
 
@@ -402,7 +485,9 @@ class Reservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscale: Optional[pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']]] = None,
                  concurrency: Optional[pulumi.Input[int]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -418,7 +503,9 @@ class Reservation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ReservationArgs.__new__(ReservationArgs)
 
+            __props__.__dict__["autoscale"] = autoscale
             __props__.__dict__["concurrency"] = concurrency
+            __props__.__dict__["edition"] = edition
             __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
             __props__.__dict__["location"] = location
             __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
@@ -437,7 +524,9 @@ class Reservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            autoscale: Optional[pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']]] = None,
             concurrency: Optional[pulumi.Input[int]] = None,
+            edition: Optional[pulumi.Input[str]] = None,
             ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
             multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -451,7 +540,10 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ReservationAutoscaleArgs']] autoscale: The configuration parameters for the auto scaling feature.
+               Structure is documented below.
         :param pulumi.Input[int] concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
@@ -469,7 +561,9 @@ class Reservation(pulumi.CustomResource):
 
         __props__ = _ReservationState.__new__(_ReservationState)
 
+        __props__.__dict__["autoscale"] = autoscale
         __props__.__dict__["concurrency"] = concurrency
+        __props__.__dict__["edition"] = edition
         __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
         __props__.__dict__["location"] = location
         __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
@@ -480,11 +574,28 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def autoscale(self) -> pulumi.Output[Optional['outputs.ReservationAutoscale']]:
+        """
+        The configuration parameters for the auto scaling feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscale")
+
+    @property
+    @pulumi.getter
     def concurrency(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
         """
         return pulumi.get(self, "concurrency")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")

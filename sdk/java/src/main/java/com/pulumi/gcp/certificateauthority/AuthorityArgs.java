@@ -292,7 +292,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
-     * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     @Import(name="type")
@@ -303,7 +303,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
      * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
-     * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -711,7 +711,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
          * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
          * be activated before they can issue certificates.
          * Default value is `SELF_SIGNED`.
-         * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+         * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
          * &gt; **Note:** For `SUBORDINATE` Certificate Authorities, they need to
          * be activated before they can issue certificates.
          * Default value is `SELF_SIGNED`.
-         * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+         * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
          * 
          * @return builder
          * 

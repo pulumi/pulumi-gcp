@@ -176,7 +176,7 @@ export class Organization extends pulumi.CustomResource {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      */
     public readonly retention!: pulumi.Output<string | undefined>;
     /**
@@ -189,7 +189,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
-     * Possible values are `CLOUD` and `HYBRID`.
+     * Possible values are: `CLOUD`, `HYBRID`.
      */
     public readonly runtimeType!: pulumi.Output<string | undefined>;
     /**
@@ -298,7 +298,7 @@ export interface OrganizationState {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      */
     retention?: pulumi.Input<string>;
     /**
@@ -311,7 +311,7 @@ export interface OrganizationState {
     /**
      * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
-     * Possible values are `CLOUD` and `HYBRID`.
+     * Possible values are: `CLOUD`, `HYBRID`.
      */
     runtimeType?: pulumi.Input<string>;
     /**
@@ -362,7 +362,7 @@ export interface OrganizationArgs {
      * operation completes. During this period, the Organization may be restored to its last known state.
      * After this period, the Organization will no longer be able to be restored.
      * Default value is `DELETION_RETENTION_UNSPECIFIED`.
-     * Possible values are `DELETION_RETENTION_UNSPECIFIED` and `MINIMUM`.
+     * Possible values are: `DELETION_RETENTION_UNSPECIFIED`, `MINIMUM`.
      */
     retention?: pulumi.Input<string>;
     /**
@@ -375,7 +375,7 @@ export interface OrganizationArgs {
     /**
      * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      * Default value is `CLOUD`.
-     * Possible values are `CLOUD` and `HYBRID`.
+     * Possible values are: `CLOUD`, `HYBRID`.
      */
     runtimeType?: pulumi.Input<string>;
 }

@@ -53,12 +53,12 @@ export class Database extends pulumi.CustomResource {
 
     /**
      * The App Engine integration mode to use for this database.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     public readonly appEngineIntegrationMode!: pulumi.Output<string>;
     /**
      * The concurrency control mode to use for this database.
-     * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+     * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      */
     public readonly concurrencyMode!: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export class Database extends pulumi.CustomResource {
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
-     * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+     * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -156,12 +156,12 @@ export class Database extends pulumi.CustomResource {
 export interface DatabaseState {
     /**
      * The App Engine integration mode to use for this database.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     appEngineIntegrationMode?: pulumi.Input<string>;
     /**
      * The concurrency control mode to use for this database.
-     * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+     * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      */
     concurrencyMode?: pulumi.Input<string>;
     /**
@@ -204,7 +204,7 @@ export interface DatabaseState {
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
-     * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+     * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      */
     type?: pulumi.Input<string>;
 }
@@ -215,12 +215,12 @@ export interface DatabaseState {
 export interface DatabaseArgs {
     /**
      * The App Engine integration mode to use for this database.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     appEngineIntegrationMode?: pulumi.Input<string>;
     /**
      * The concurrency control mode to use for this database.
-     * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+     * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      */
     concurrencyMode?: pulumi.Input<string>;
     /**
@@ -246,7 +246,7 @@ export interface DatabaseArgs {
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
-     * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+     * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      */
     type: pulumi.Input<string>;
 }

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class GuestPoliciesPackage {
     /**
      * @return The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-     * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+     * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
      * 
      */
     private @Nullable String desiredState;
@@ -24,7 +24,7 @@ public final class GuestPoliciesPackage {
      * This is useful when creating a policy that applies to different types of systems.
      * The default behavior is ANY.
      * Default value is `ANY`.
-     * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+     * Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
      * 
      */
     private @Nullable String manager;
@@ -38,7 +38,7 @@ public final class GuestPoliciesPackage {
     private GuestPoliciesPackage() {}
     /**
      * @return The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-     * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+     * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
      * 
      */
     public Optional<String> desiredState() {
@@ -51,7 +51,7 @@ public final class GuestPoliciesPackage {
      * This is useful when creating a policy that applies to different types of systems.
      * The default behavior is ANY.
      * Default value is `ANY`.
-     * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+     * Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
      * 
      */
     public Optional<String> manager() {

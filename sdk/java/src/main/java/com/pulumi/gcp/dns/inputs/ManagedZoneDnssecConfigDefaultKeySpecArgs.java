@@ -18,7 +18,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
 
     /**
      * String mnemonic specifying the DNSSEC algorithm of this key
-     * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+     * Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
      * 
      */
     @Import(name="algorithm")
@@ -26,7 +26,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
 
     /**
      * @return String mnemonic specifying the DNSSEC algorithm of this key
-     * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+     * Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
      * 
      */
     public Optional<Output<String>> algorithm() {
@@ -55,7 +55,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
      * resource record sets of type DNSKEY. Zone signing keys do
      * not have the Secure Entry Point flag set and will be used
      * to sign all other types of resource record sets.
-     * Possible values are `keySigning` and `zoneSigning`.
+     * Possible values are: `keySigning`, `zoneSigning`.
      * 
      */
     @Import(name="keyType")
@@ -68,7 +68,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
      * resource record sets of type DNSKEY. Zone signing keys do
      * not have the Secure Entry Point flag set and will be used
      * to sign all other types of resource record sets.
-     * Possible values are `keySigning` and `zoneSigning`.
+     * Possible values are: `keySigning`, `zoneSigning`.
      * 
      */
     public Optional<Output<String>> keyType() {
@@ -119,7 +119,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
 
         /**
          * @param algorithm String mnemonic specifying the DNSSEC algorithm of this key
-         * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+         * Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
 
         /**
          * @param algorithm String mnemonic specifying the DNSSEC algorithm of this key
-         * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+         * Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
          * resource record sets of type DNSKEY. Zone signing keys do
          * not have the Secure Entry Point flag set and will be used
          * to sign all other types of resource record sets.
-         * Possible values are `keySigning` and `zoneSigning`.
+         * Possible values are: `keySigning`, `zoneSigning`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class ManagedZoneDnssecConfigDefaultKeySpecArgs extends com.pulumi.
          * resource record sets of type DNSKEY. Zone signing keys do
          * not have the Secure Entry Point flag set and will be used
          * to sign all other types of resource record sets.
-         * Possible values are `keySigning` and `zoneSigning`.
+         * Possible values are: `keySigning`, `zoneSigning`.
          * 
          * @return builder
          * 

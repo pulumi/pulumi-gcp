@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 public final class PolicyDefaultAdmissionRule {
     /**
      * @return The action when a pod creation is denied by the admission rule.
-     * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+     * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
      * 
      */
     private String enforcementMode;
     /**
      * @return How this admission rule will be evaluated.
-     * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+     * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
      * 
      */
     private String evaluationMode;
@@ -39,7 +39,7 @@ public final class PolicyDefaultAdmissionRule {
     private PolicyDefaultAdmissionRule() {}
     /**
      * @return The action when a pod creation is denied by the admission rule.
-     * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+     * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
      * 
      */
     public String enforcementMode() {
@@ -47,7 +47,7 @@ public final class PolicyDefaultAdmissionRule {
     }
     /**
      * @return How this admission rule will be evaluated.
-     * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+     * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
      * 
      */
     public String evaluationMode() {

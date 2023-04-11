@@ -28,7 +28,7 @@ class SchemaArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the schema definition
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+               Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         """
         if definition is not None:
             pulumi.set(__self__, "definition", definition)
@@ -84,7 +84,7 @@ class SchemaArgs:
         """
         The type of the schema definition
         Default value is `TYPE_UNSPECIFIED`.
-        Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+        Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         """
         return pulumi.get(self, "type")
 
@@ -110,7 +110,7 @@ class _SchemaState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the schema definition
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+               Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         """
         if definition is not None:
             pulumi.set(__self__, "definition", definition)
@@ -166,7 +166,7 @@ class _SchemaState:
         """
         The type of the schema definition
         Default value is `TYPE_UNSPECIFIED`.
-        Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+        Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         """
         return pulumi.get(self, "type")
 
@@ -269,7 +269,7 @@ class Schema(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the schema definition
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+               Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         """
         ...
     @overload
@@ -412,7 +412,7 @@ class Schema(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: The type of the schema definition
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+               Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -457,7 +457,7 @@ class Schema(pulumi.CustomResource):
         """
         The type of the schema definition
         Default value is `TYPE_UNSPECIFIED`.
-        Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+        Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         """
         return pulumi.get(self, "type")
 

@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// <summary>
         /// The operator to apply to the result of conditions. Default and currently only supported value is AND.
         /// Default value is `AND`.
-        /// Possible values are `AND`.
+        /// Possible values are: `AND`.
         /// </summary>
         [Input("logicalOperator")]
         public Input<string>? LogicalOperator { get; set; }

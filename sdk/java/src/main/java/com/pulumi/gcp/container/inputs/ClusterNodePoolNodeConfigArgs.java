@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigEphemeralStorageConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGvnicArgs;
@@ -111,6 +112,21 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<ClusterNodePoolNodeConfigEphemeralStorageConfigArgs>> ephemeralStorageConfig() {
         return Optional.ofNullable(this.ephemeralStorageConfig);
+    }
+
+    /**
+     * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * 
+     */
+    @Import(name="ephemeralStorageLocalSsdConfig")
+    private @Nullable Output<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs> ephemeralStorageLocalSsdConfig;
+
+    /**
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs>> ephemeralStorageLocalSsdConfig() {
+        return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
     }
 
     /**
@@ -574,6 +590,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
+        this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
@@ -728,6 +745,27 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder ephemeralStorageConfig(ClusterNodePoolNodeConfigEphemeralStorageConfigArgs ephemeralStorageConfig) {
             return ephemeralStorageConfig(Output.of(ephemeralStorageConfig));
+        }
+
+        /**
+         * @param ephemeralStorageLocalSsdConfig Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralStorageLocalSsdConfig(@Nullable Output<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs> ephemeralStorageLocalSsdConfig) {
+            $.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
+            return this;
+        }
+
+        /**
+         * @param ephemeralStorageLocalSsdConfig Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ephemeralStorageLocalSsdConfig(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs ephemeralStorageLocalSsdConfig) {
+            return ephemeralStorageLocalSsdConfig(Output.of(ephemeralStorageLocalSsdConfig));
         }
 
         /**

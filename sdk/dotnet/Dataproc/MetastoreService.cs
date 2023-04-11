@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The database type that the Metastore service stores its data.
         /// Default value is `MYSQL`.
-        /// Possible values are `MYSQL` and `SPANNER`.
+        /// Possible values are: `MYSQL`, `SPANNER`.
         /// </summary>
         [Output("databaseType")]
         public Output<string?> DatabaseType { get; private set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The release channel of the service. If unspecified, defaults to `STABLE`.
         /// Default value is `STABLE`.
-        /// Possible values are `CANARY` and `STABLE`.
+        /// Possible values are: `CANARY`, `STABLE`.
         /// </summary>
         [Output("releaseChannel")]
         public Output<string?> ReleaseChannel { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The tier of the service.
-        /// Possible values are `DEVELOPER` and `ENTERPRISE`.
+        /// Possible values are: `DEVELOPER`, `ENTERPRISE`.
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -347,7 +347,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The database type that the Metastore service stores its data.
         /// Default value is `MYSQL`.
-        /// Possible values are `MYSQL` and `SPANNER`.
+        /// Possible values are: `MYSQL`, `SPANNER`.
         /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }
@@ -431,7 +431,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The release channel of the service. If unspecified, defaults to `STABLE`.
         /// Default value is `STABLE`.
-        /// Possible values are `CANARY` and `STABLE`.
+        /// Possible values are: `CANARY`, `STABLE`.
         /// </summary>
         [Input("releaseChannel")]
         public Input<string>? ReleaseChannel { get; set; }
@@ -453,7 +453,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The tier of the service.
-        /// Possible values are `DEVELOPER` and `ENTERPRISE`.
+        /// Possible values are: `DEVELOPER`, `ENTERPRISE`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
@@ -475,7 +475,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The database type that the Metastore service stores its data.
         /// Default value is `MYSQL`.
-        /// Possible values are `MYSQL` and `SPANNER`.
+        /// Possible values are: `MYSQL`, `SPANNER`.
         /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }
@@ -572,7 +572,7 @@ namespace Pulumi.Gcp.Dataproc
         /// <summary>
         /// The release channel of the service. If unspecified, defaults to `STABLE`.
         /// Default value is `STABLE`.
-        /// Possible values are `CANARY` and `STABLE`.
+        /// Possible values are: `CANARY`, `STABLE`.
         /// </summary>
         [Input("releaseChannel")]
         public Input<string>? ReleaseChannel { get; set; }
@@ -606,7 +606,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The tier of the service.
-        /// Possible values are `DEVELOPER` and `ENTERPRISE`.
+        /// Possible values are: `DEVELOPER`, `ENTERPRISE`.
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

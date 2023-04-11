@@ -128,7 +128,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         :param pulumi.Input[str] duration: (Output)
@@ -155,7 +155,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -397,7 +397,7 @@ class InstancePersistenceConfigArgs:
         :param pulumi.Input[str] persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
                - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
                - RDB: RDB based Persistence is enabled.
-               Possible values are `DISABLED` and `RDB`.
+               Possible values are: `DISABLED`, `RDB`.
         :param pulumi.Input[str] rdb_next_snapshot_time: (Output)
                Output only. The next time that a snapshot attempt is scheduled to occur.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
@@ -408,7 +408,7 @@ class InstancePersistenceConfigArgs:
                - SIX_HOURS:	Snapshot every 6 hours.
                - TWELVE_HOURS:	Snapshot every 12 hours.
                - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-               Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+               Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         :param pulumi.Input[str] rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted,
                and to which future snapshots will be aligned. If not provided,
                the current time will be used.
@@ -432,7 +432,7 @@ class InstancePersistenceConfigArgs:
         Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
         - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
         - RDB: RDB based Persistence is enabled.
-        Possible values are `DISABLED` and `RDB`.
+        Possible values are: `DISABLED`, `RDB`.
         """
         return pulumi.get(self, "persistence_mode")
 
@@ -465,7 +465,7 @@ class InstancePersistenceConfigArgs:
         - SIX_HOURS:	Snapshot every 6 hours.
         - TWELVE_HOURS:	Snapshot every 12 hours.
         - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-        Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+        Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         """
         return pulumi.get(self, "rdb_snapshot_period")
 

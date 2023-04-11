@@ -423,7 +423,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The connection mode of the Redis instance.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
      */
     @Export(name="connectMode", type=String.class, parameters={})
@@ -432,7 +432,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The connection mode of the Redis instance.
      * Default value is `DIRECT_PEERING`.
-     * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+     * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
      */
     public Output<Optional<String>> connectMode() {
@@ -745,7 +745,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *   instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
      *   can scale up and down the number of replicas.
-     *   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+     *   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
      * 
      */
     @Export(name="readReplicasMode", type=String.class, parameters={})
@@ -758,7 +758,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *   instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
      *   can scale up and down the number of replicas.
-     *   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+     *   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
      * 
      */
     public Output<String> readReplicasMode() {
@@ -897,7 +897,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
      *   Default value is `BASIC`.
-     *   Possible values are `BASIC` and `STANDARD_HA`.
+     *   Possible values are: `BASIC`, `STANDARD_HA`.
      * 
      */
     @Export(name="tier", type=String.class, parameters={})
@@ -908,7 +908,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
      *   Default value is `BASIC`.
-     *   Possible values are `BASIC` and `STANDARD_HA`.
+     *   Possible values are: `BASIC`, `STANDARD_HA`.
      * 
      */
     public Output<Optional<String>> tier() {
@@ -918,7 +918,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
      * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
      *   Default value is `DISABLED`.
-     *   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+     *   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
      * 
      */
     @Export(name="transitEncryptionMode", type=String.class, parameters={})
@@ -928,7 +928,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
      * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
      *   Default value is `DISABLED`.
-     *   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+     *   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
      * 
      */
     public Output<Optional<String>> transitEncryptionMode() {

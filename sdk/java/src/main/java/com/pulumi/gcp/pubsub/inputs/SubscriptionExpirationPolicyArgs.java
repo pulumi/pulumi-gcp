@@ -16,7 +16,7 @@ public final class SubscriptionExpirationPolicyArgs extends com.pulumi.resources
     /**
      * Specifies the &#34;time-to-live&#34; duration for an associated resource. The
      * resource expires if it is not active for a period of ttl.
-     * If ttl is not set, the associated resource never expires.
+     * If ttl is set to &#34;&#34;, the associated resource never expires.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
      * Example - &#34;3.5s&#34;.
      * 
@@ -27,7 +27,7 @@ public final class SubscriptionExpirationPolicyArgs extends com.pulumi.resources
     /**
      * @return Specifies the &#34;time-to-live&#34; duration for an associated resource. The
      * resource expires if it is not active for a period of ttl.
-     * If ttl is not set, the associated resource never expires.
+     * If ttl is set to &#34;&#34;, the associated resource never expires.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
      * Example - &#34;3.5s&#34;.
      * 
@@ -63,7 +63,7 @@ public final class SubscriptionExpirationPolicyArgs extends com.pulumi.resources
         /**
          * @param ttl Specifies the &#34;time-to-live&#34; duration for an associated resource. The
          * resource expires if it is not active for a period of ttl.
-         * If ttl is not set, the associated resource never expires.
+         * If ttl is set to &#34;&#34;, the associated resource never expires.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
          * Example - &#34;3.5s&#34;.
          * 
@@ -78,7 +78,7 @@ public final class SubscriptionExpirationPolicyArgs extends com.pulumi.resources
         /**
          * @param ttl Specifies the &#34;time-to-live&#34; duration for an associated resource. The
          * resource expires if it is not active for a period of ttl.
-         * If ttl is not set, the associated resource never expires.
+         * If ttl is set to &#34;&#34;, the associated resource never expires.
          * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;.
          * Example - &#34;3.5s&#34;.
          * 

@@ -769,6 +769,14 @@ Object.defineProperty(exports, "networkManagementCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const networkSecurityCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "networkSecurityCustomEndpoint", {
+    get() {
+        return __config.get("networkSecurityCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const networkServicesCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "networkServicesCustomEndpoint", {
     get() {

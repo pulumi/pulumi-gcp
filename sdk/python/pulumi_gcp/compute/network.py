@@ -56,7 +56,7 @@ class NetworkArgs:
                character, which cannot be a dash.
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
-               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+               Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -64,7 +64,7 @@ class NetworkArgs:
                of this network in the same region as the router. If set to `GLOBAL`,
                this network's cloud routers will advertise routes with all
                subnetworks of this network, across regions.
-               Possible values are `REGIONAL` and `GLOBAL`.
+               Possible values are: `REGIONAL`, `GLOBAL`.
         """
         if auto_create_subnetworks is not None:
             pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
@@ -198,7 +198,7 @@ class NetworkArgs:
         """
         Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
         Default value is `AFTER_CLASSIC_FIREWALL`.
-        Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
@@ -228,7 +228,7 @@ class NetworkArgs:
         of this network in the same region as the router. If set to `GLOBAL`,
         this network's cloud routers will advertise routes with all
         subnetworks of this network, across regions.
-        Possible values are `REGIONAL` and `GLOBAL`.
+        Possible values are: `REGIONAL`, `GLOBAL`.
         """
         return pulumi.get(self, "routing_mode")
 
@@ -286,7 +286,7 @@ class _NetworkState:
                character, which cannot be a dash.
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
-               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+               Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -294,7 +294,7 @@ class _NetworkState:
                of this network in the same region as the router. If set to `GLOBAL`,
                this network's cloud routers will advertise routes with all
                subnetworks of this network, across regions.
-               Possible values are `REGIONAL` and `GLOBAL`.
+               Possible values are: `REGIONAL`, `GLOBAL`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         if auto_create_subnetworks is not None:
@@ -446,7 +446,7 @@ class _NetworkState:
         """
         Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
         Default value is `AFTER_CLASSIC_FIREWALL`.
-        Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
@@ -476,7 +476,7 @@ class _NetworkState:
         of this network in the same region as the router. If set to `GLOBAL`,
         this network's cloud routers will advertise routes with all
         subnetworks of this network, across regions.
-        Possible values are `REGIONAL` and `GLOBAL`.
+        Possible values are: `REGIONAL`, `GLOBAL`.
         """
         return pulumi.get(self, "routing_mode")
 
@@ -602,7 +602,7 @@ class Network(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
-               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+               Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -610,7 +610,7 @@ class Network(pulumi.CustomResource):
                of this network in the same region as the router. If set to `GLOBAL`,
                this network's cloud routers will advertise routes with all
                subnetworks of this network, across regions.
-               Possible values are `REGIONAL` and `GLOBAL`.
+               Possible values are: `REGIONAL`, `GLOBAL`.
         """
         ...
     @overload
@@ -782,7 +782,7 @@ class Network(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
-               Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+               Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -790,7 +790,7 @@ class Network(pulumi.CustomResource):
                of this network in the same region as the router. If set to `GLOBAL`,
                this network's cloud routers will advertise routes with all
                subnetworks of this network, across regions.
-               Possible values are `REGIONAL` and `GLOBAL`.
+               Possible values are: `REGIONAL`, `GLOBAL`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -903,7 +903,7 @@ class Network(pulumi.CustomResource):
         """
         Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
         Default value is `AFTER_CLASSIC_FIREWALL`.
-        Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
 
@@ -925,7 +925,7 @@ class Network(pulumi.CustomResource):
         of this network in the same region as the router. If set to `GLOBAL`,
         this network's cloud routers will advertise routes with all
         subnetworks of this network, across regions.
-        Possible values are `REGIONAL` and `GLOBAL`.
+        Possible values are: `REGIONAL`, `GLOBAL`.
         """
         return pulumi.get(self, "routing_mode")
 

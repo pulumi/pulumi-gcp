@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.Iot
         /// errors will be logged. LogLevel is inclusive; enabling INFO logging
         /// will also enable ERROR logging.
         /// Default value is `NONE`.
-        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        /// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         /// </summary>
         [Output("logLevel")]
         public Output<string?> LogLevel { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.Gcp.Iot
         /// errors will be logged. LogLevel is inclusive; enabling INFO logging
         /// will also enable ERROR logging.
         /// Default value is `NONE`.
-        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        /// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
@@ -411,7 +411,7 @@ namespace Pulumi.Gcp.Iot
         /// errors will be logged. LogLevel is inclusive; enabling INFO logging
         /// will also enable ERROR logging.
         /// Default value is `NONE`.
-        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        /// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }

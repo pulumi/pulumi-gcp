@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Defines operating mode for this policy.
         /// Default value is `ON`.
-        /// Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        /// Possible values are: `OFF`, `ONLY_UP`, `ON`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

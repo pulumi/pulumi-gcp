@@ -354,7 +354,7 @@ type Instance struct {
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringOutput `pulumi:"serviceEndpoint"`
 	// The type of an accelator for a CDF instance.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
@@ -370,7 +370,7 @@ type Instance struct {
 	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
-	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -469,7 +469,7 @@ type instanceState struct {
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
 	// The type of an accelator for a CDF instance.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	State *string `pulumi:"state"`
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage *string `pulumi:"stateMessage"`
@@ -485,7 +485,7 @@ type instanceState struct {
 	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
-	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
 	Type *string `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -553,7 +553,7 @@ type InstanceState struct {
 	// Endpoint on which the Data Fusion UI and REST APIs are accessible.
 	ServiceEndpoint pulumi.StringPtrInput
 	// The type of an accelator for a CDF instance.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	State pulumi.StringPtrInput
 	// Additional information about the current state of this Data Fusion instance if available.
 	StateMessage pulumi.StringPtrInput
@@ -569,7 +569,7 @@ type InstanceState struct {
 	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
-	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
 	Type pulumi.StringPtrInput
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringPtrInput
@@ -636,7 +636,7 @@ type instanceArgs struct {
 	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
-	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
 	Type string `pulumi:"type"`
 	// Current version of the Data Fusion.
 	Version *string `pulumi:"version"`
@@ -698,7 +698,7 @@ type InstanceArgs struct {
 	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
 	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 	//   pipelines at low cost.
-	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+	//   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
 	Type pulumi.StringInput
 	// Current version of the Data Fusion.
 	Version pulumi.StringPtrInput
@@ -916,7 +916,7 @@ func (o InstanceOutput) ServiceEndpoint() pulumi.StringOutput {
 }
 
 // The type of an accelator for a CDF instance.
-// Possible values are `ENABLED` and `DISABLED`.
+// Possible values are: `ENABLED`, `DISABLED`.
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -941,7 +941,7 @@ func (o InstanceOutput) TenantProjectId() pulumi.StringOutput {
 //   - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
 //     with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
 //     pipelines at low cost.
-//     Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+//     Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
 func (o InstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

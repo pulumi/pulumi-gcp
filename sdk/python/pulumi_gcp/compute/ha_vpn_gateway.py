@@ -21,6 +21,7 @@ class HaVpnGatewayArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
         """
         The set of arguments for constructing a HaVpnGateway resource.
@@ -36,6 +37,10 @@ class HaVpnGatewayArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+               If not specified, IPV4_ONLY will be used.
+               Default value is `IPV4_ONLY`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
@@ -48,6 +53,8 @@ class HaVpnGatewayArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if vpn_interfaces is not None:
             pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
 
@@ -119,6 +126,21 @@ class HaVpnGatewayArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        If not specified, IPV4_ONLY will be used.
+        Default value is `IPV4_ONLY`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter(name="vpnInterfaces")
     def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]:
         """
@@ -141,6 +163,7 @@ class _HaVpnGatewayState:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]] = None):
         """
         Input properties used for looking up and filtering HaVpnGateway resources.
@@ -157,6 +180,10 @@ class _HaVpnGatewayState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+               If not specified, IPV4_ONLY will be used.
+               Default value is `IPV4_ONLY`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         :param pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
@@ -172,6 +199,8 @@ class _HaVpnGatewayState:
             pulumi.set(__self__, "region", region)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if vpn_interfaces is not None:
             pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
 
@@ -255,6 +284,21 @@ class _HaVpnGatewayState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        If not specified, IPV4_ONLY will be used.
+        Default value is `IPV4_ONLY`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter(name="vpnInterfaces")
     def vpn_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HaVpnGatewayVpnInterfaceArgs']]]]:
         """
@@ -278,6 +322,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None,
                  __props__=None):
         """
@@ -303,6 +348,18 @@ class HaVpnGateway(pulumi.CustomResource):
         ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
             region="us-central1",
             network=network1.id)
+        ```
+        ### Ha Vpn Gateway Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+            region="us-central1",
+            network=network1.id,
+            stack_type="IPV4_IPV6")
         ```
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
@@ -389,6 +446,10 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+               If not specified, IPV4_ONLY will be used.
+               Default value is `IPV4_ONLY`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
@@ -421,6 +482,18 @@ class HaVpnGateway(pulumi.CustomResource):
         ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
             region="us-central1",
             network=network1.id)
+        ```
+        ### Ha Vpn Gateway Ipv6
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network1 = gcp.compute.Network("network1", auto_create_subnetworks=False)
+        ha_gateway1 = gcp.compute.HaVpnGateway("haGateway1",
+            region="us-central1",
+            network=network1.id,
+            stack_type="IPV4_IPV6")
         ```
         ### Compute Ha Vpn Gateway Encrypted Interconnect
 
@@ -513,6 +586,7 @@ class HaVpnGateway(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -530,6 +604,7 @@ class HaVpnGateway(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["vpn_interfaces"] = vpn_interfaces
             __props__.__dict__["self_link"] = None
         super(HaVpnGateway, __self__).__init__(
@@ -548,6 +623,7 @@ class HaVpnGateway(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            stack_type: Optional[pulumi.Input[str]] = None,
             vpn_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]]] = None) -> 'HaVpnGateway':
         """
         Get an existing HaVpnGateway resource's state with the given name, id, and optional extra
@@ -569,6 +645,10 @@ class HaVpnGateway(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+               If not specified, IPV4_ONLY will be used.
+               Default value is `IPV4_ONLY`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HaVpnGatewayVpnInterfaceArgs']]]] vpn_interfaces: A list of interfaces on this VPN gateway.
                Structure is documented below.
         """
@@ -582,6 +662,7 @@ class HaVpnGateway(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["stack_type"] = stack_type
         __props__.__dict__["vpn_interfaces"] = vpn_interfaces
         return HaVpnGateway(resource_name, opts=opts, __props__=__props__)
 
@@ -639,6 +720,17 @@ class HaVpnGateway(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        If not specified, IPV4_ONLY will be used.
+        Default value is `IPV4_ONLY`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        """
+        return pulumi.get(self, "stack_type")
 
     @property
     @pulumi.getter(name="vpnInterfaces")

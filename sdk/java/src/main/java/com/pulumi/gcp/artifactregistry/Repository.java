@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryState;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryMavenConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryVirtualRepositoryConfig;
@@ -52,6 +53,42 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
  *             .description(&#34;example docker repository&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Artifact Registry Repository Docker
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryDockerConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .description(&#34;example docker repository&#34;)
+ *             .dockerConfig(RepositoryDockerConfigArgs.builder()
+ *                 .immutableTags(true)
+ *                 .build())
  *             .format(&#34;DOCKER&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .repositoryId(&#34;my-repository&#34;)
@@ -137,9 +174,7 @@ import javax.annotation.Nullable;
  *             .repositoryId(&#34;my-repository-upstream&#34;)
  *             .description(&#34;example docker repository (upstream source)&#34;)
  *             .format(&#34;DOCKER&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -155,7 +190,6 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn()
  *                 .build());
  * 
@@ -173,7 +207,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -188,10 +221,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
  *             .description(&#34;example remote docker repository&#34;)
  *             .format(&#34;DOCKER&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .mode(&#34;REMOTE_REPOSITORY&#34;)
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
  *                 .description(&#34;docker hub&#34;)
@@ -199,9 +231,8 @@ import javax.annotation.Nullable;
  *                     .publicRepository(&#34;DOCKER_HUB&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .repositoryId(&#34;my-repository&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -257,6 +288,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dockerConfig", type=RepositoryDockerConfig.class, parameters={})
+    private Output</* @Nullable */ RepositoryDockerConfig> dockerConfig;
+
+    /**
+     * @return Docker repository config contains repository level configuration for the repositories of docker type.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RepositoryDockerConfig>> dockerConfig() {
+        return Codegen.optional(this.dockerConfig);
     }
     /**
      * The format of packages that are stored in the repository. Supported formats
@@ -355,16 +402,18 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mavenConfig);
     }
     /**
-     * The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
-     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * The mode configures the repository to serve artifacts from different sources.
+     * Default value is `STANDARD_REPOSITORY`.
+     * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      * 
      */
     @Export(name="mode", type=String.class, parameters={})
     private Output</* @Nullable */ String> mode;
 
     /**
-     * @return The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
-     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * @return The mode configures the repository to serve artifacts from different sources.
+     * Default value is `STANDARD_REPOSITORY`.
+     * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      * 
      */
     public Output<Optional<String>> mode() {
@@ -404,6 +453,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration specific for a Remote Repository.
+     * Structure is documented below.
      * 
      */
     @Export(name="remoteRepositoryConfig", type=RepositoryRemoteRepositoryConfig.class, parameters={})
@@ -411,6 +461,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration specific for a Remote Repository.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RepositoryRemoteRepositoryConfig>> remoteRepositoryConfig() {
@@ -448,6 +499,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration specific for a Virtual Repository.
+     * Structure is documented below.
      * 
      */
     @Export(name="virtualRepositoryConfig", type=RepositoryVirtualRepositoryConfig.class, parameters={})
@@ -455,6 +507,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration specific for a Virtual Repository.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RepositoryVirtualRepositoryConfig>> virtualRepositoryConfig() {

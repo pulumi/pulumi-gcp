@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.CloudIdentity
         /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
         /// for possible values.
         /// Default value is `EMPTY`.
-        /// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
         /// </summary>
         [Output("initialGroupConfig")]
         public Output<string?> InitialGroupConfig { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.CloudIdentity
         /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
         /// for possible values.
         /// Default value is `EMPTY`.
-        /// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
         /// </summary>
         [Input("initialGroupConfig")]
         public Input<string>? InitialGroupConfig { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.CloudIdentity
         /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
         /// for possible values.
         /// Default value is `EMPTY`.
-        /// Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+        /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
         /// </summary>
         [Input("initialGroupConfig")]
         public Input<string>? InitialGroupConfig { get; set; }

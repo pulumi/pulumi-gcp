@@ -155,7 +155,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
-     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+     * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      * 
      */
     @Export(name="combiner", type=String.class, parameters={})
@@ -164,7 +164,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return How to combine the results of multiple conditions to
      * determine if an incident should be opened.
-     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+     * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      * 
      */
     public Output<String> combiner() {

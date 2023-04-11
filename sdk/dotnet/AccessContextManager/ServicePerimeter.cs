@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// });
     /// ```
-    /// ### Access Context Manager Service Perimeter Dry Run
+    /// ### Access Context Manager Service Perimeter Dry-Run
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -373,7 +373,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// with a common perimeter, but should not be able to share data among
         /// themselves.
         /// Default value is `PERIMETER_TYPE_REGULAR`.
-        /// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         /// </summary>
         [Output("perimeterType")]
         public Output<string?> PerimeterType { get; private set; } = null!;
@@ -507,7 +507,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// with a common perimeter, but should not be able to share data among
         /// themselves.
         /// Default value is `PERIMETER_TYPE_REGULAR`.
-        /// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         /// </summary>
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }
@@ -603,7 +603,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// with a common perimeter, but should not be able to share data among
         /// themselves.
         /// Default value is `PERIMETER_TYPE_REGULAR`.
-        /// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         /// </summary>
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }

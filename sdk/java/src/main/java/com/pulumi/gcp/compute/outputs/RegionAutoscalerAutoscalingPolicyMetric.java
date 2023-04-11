@@ -83,7 +83,7 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
     /**
      * @return Defines how target utilization value is expressed for a
      * Stackdriver Monitoring metric.
-     * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+     * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
      * 
      */
     private @Nullable String type;
@@ -168,7 +168,7 @@ public final class RegionAutoscalerAutoscalingPolicyMetric {
     /**
      * @return Defines how target utilization value is expressed for a
      * Stackdriver Monitoring metric.
-     * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+     * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
      * 
      */
     public Optional<String> type() {

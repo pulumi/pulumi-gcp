@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
         /// <summary>
         /// The sandbox environment to host this Revision.
-        /// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+        /// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         /// </summary>
         [Input("executionEnvironment")]
         public Input<string>? ExecutionEnvironment { get; set; }

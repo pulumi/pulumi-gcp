@@ -19,7 +19,7 @@ public final class BudgetBudgetFilter {
      * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
      * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
      * Exactly one of `calendar_period`, `custom_period` must be provided.
-     * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+     * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
      * 
      */
     private @Nullable String calendarPeriod;
@@ -35,7 +35,7 @@ public final class BudgetBudgetFilter {
      * @return Specifies how credits should be treated when determining spend
      * for threshold calculations.
      * Default value is `INCLUDE_ALL_CREDITS`.
-     * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+     * Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
      * 
      */
     private @Nullable String creditTypesTreatment;
@@ -90,7 +90,7 @@ public final class BudgetBudgetFilter {
      * canonical start. Grammatically, &#34;the start of the current CalendarPeriod&#34;.
      * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
      * Exactly one of `calendar_period`, `custom_period` must be provided.
-     * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+     * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
      * 
      */
     public Optional<String> calendarPeriod() {
@@ -110,7 +110,7 @@ public final class BudgetBudgetFilter {
      * @return Specifies how credits should be treated when determining spend
      * for threshold calculations.
      * Default value is `INCLUDE_ALL_CREDITS`.
-     * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+     * Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
      * 
      */
     public Optional<String> creditTypesTreatment() {

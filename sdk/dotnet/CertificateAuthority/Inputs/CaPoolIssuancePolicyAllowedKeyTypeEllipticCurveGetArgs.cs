@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     {
         /// <summary>
         /// The algorithm used.
-        /// Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+        /// Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
         /// </summary>
         [Input("signatureAlgorithm", required: true)]
         public Input<string> SignatureAlgorithm { get; set; } = null!;

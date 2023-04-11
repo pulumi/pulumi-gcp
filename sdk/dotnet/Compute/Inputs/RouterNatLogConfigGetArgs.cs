@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Specifies the desired filtering of logs on this NAT.
-        /// Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+        /// Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
         /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;

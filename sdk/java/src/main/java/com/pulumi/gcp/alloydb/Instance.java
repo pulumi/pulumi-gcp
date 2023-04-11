@@ -134,7 +134,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-     * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+     * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      * 
      */
     @Export(name="availabilityType", type=String.class, parameters={})
@@ -142,7 +142,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-     * Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+     * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      * 
      */
     public Output<String> availabilityType() {
@@ -236,7 +236,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the instance.
-     * Possible values are `PRIMARY` and `READ_POOL`.
+     * Possible values are: `PRIMARY`, `READ_POOL`.
      * 
      */
     @Export(name="instanceType", type=String.class, parameters={})
@@ -244,7 +244,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the instance.
-     * Possible values are `PRIMARY` and `READ_POOL`.
+     * Possible values are: `PRIMARY`, `READ_POOL`.
      * 
      */
     public Output<String> instanceType() {

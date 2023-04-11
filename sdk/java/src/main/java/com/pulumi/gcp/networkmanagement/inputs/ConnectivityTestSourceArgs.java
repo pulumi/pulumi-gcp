@@ -67,7 +67,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
 
     /**
      * Type of the network where the endpoint is located.
-     * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
      * 
      */
     @Import(name="networkType")
@@ -75,7 +75,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Type of the network where the endpoint is located.
-     * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -228,7 +228,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
 
         /**
          * @param networkType Type of the network where the endpoint is located.
-         * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+         * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ConnectivityTestSourceArgs extends com.pulumi.resources.Resou
 
         /**
          * @param networkType Type of the network where the endpoint is located.
-         * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+         * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
          * 
          * @return builder
          * 

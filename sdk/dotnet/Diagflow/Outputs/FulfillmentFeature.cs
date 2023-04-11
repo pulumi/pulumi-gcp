@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// <summary>
         /// The type of the feature that enabled for fulfillment.
         /// * SMALLTALK: Fulfillment is enabled for SmallTalk.
-        /// Possible values are `SMALLTALK`.
+        /// Possible values are: `SMALLTALK`.
         /// </summary>
         public readonly string Type;
 

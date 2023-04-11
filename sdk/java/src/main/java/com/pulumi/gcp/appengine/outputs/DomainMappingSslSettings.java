@@ -34,7 +34,7 @@ public final class DomainMappingSslSettings {
     /**
      * @return SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
      * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-     * Possible values are `AUTOMATIC` and `MANUAL`.
+     * Possible values are: `AUTOMATIC`, `MANUAL`.
      * 
      */
     private String sslManagementType;
@@ -67,7 +67,7 @@ public final class DomainMappingSslSettings {
     /**
      * @return SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
      * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-     * Possible values are `AUTOMATIC` and `MANUAL`.
+     * Possible values are: `AUTOMATIC`, `MANUAL`.
      * 
      */
     public String sslManagementType() {

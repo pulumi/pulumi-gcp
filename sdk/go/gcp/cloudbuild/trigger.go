@@ -600,7 +600,7 @@ type Trigger struct {
 	// Build logs will be sent back to GitHub as part of the checkrun
 	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
-	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs pulumi.StringPtrOutput `pulumi:"includeBuildLogs"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -730,7 +730,7 @@ type triggerState struct {
 	// Build logs will be sent back to GitHub as part of the checkrun
 	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
-	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs *string `pulumi:"includeBuildLogs"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -832,7 +832,7 @@ type TriggerState struct {
 	// Build logs will be sent back to GitHub as part of the checkrun
 	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
-	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs pulumi.StringPtrInput
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -936,7 +936,7 @@ type triggerArgs struct {
 	// Build logs will be sent back to GitHub as part of the checkrun
 	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
-	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs *string `pulumi:"includeBuildLogs"`
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -1035,7 +1035,7 @@ type TriggerArgs struct {
 	// Build logs will be sent back to GitHub as part of the checkrun
 	// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
 	// INCLUDE_BUILD_LOGS_WITH_STATUS
-	// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+	// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 	IncludeBuildLogs pulumi.StringPtrInput
 	// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
 	// extended with support for `**`.
@@ -1254,7 +1254,7 @@ func (o TriggerOutput) IgnoredFiles() pulumi.StringArrayOutput {
 // Build logs will be sent back to GitHub as part of the checkrun
 // result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
 // INCLUDE_BUILD_LOGS_WITH_STATUS
-// Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
 func (o TriggerOutput) IncludeBuildLogs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.IncludeBuildLogs }).(pulumi.StringPtrOutput)
 }

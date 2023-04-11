@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Compute
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Output("addressType")]
         public Output<string?> AddressType { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
-        /// Possible values are `IPV4` and `IPV6`.
+        /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
         [Output("ipVersion")]
         public Output<string?> IpVersion { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Compute
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
-        /// Possible values are `IPV4` and `IPV6`.
+        /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -338,7 +338,7 @@ namespace Pulumi.Gcp.Compute
         /// * EXTERNAL indicates public/external single IP address.
         /// * INTERNAL indicates internal IP ranges belonging to some network.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP Version that will be used by this address. The default value is `IPV4`.
-        /// Possible values are `IPV4` and `IPV6`.
+        /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }

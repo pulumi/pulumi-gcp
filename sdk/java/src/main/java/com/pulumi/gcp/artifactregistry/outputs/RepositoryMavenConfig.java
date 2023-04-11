@@ -21,7 +21,7 @@ public final class RepositoryMavenConfig {
     /**
      * @return Version policy defines the versions that the registry will accept.
      * Default value is `VERSION_POLICY_UNSPECIFIED`.
-     * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+     * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
      * 
      */
     private @Nullable String versionPolicy;
@@ -38,7 +38,7 @@ public final class RepositoryMavenConfig {
     /**
      * @return Version policy defines the versions that the registry will accept.
      * Default value is `VERSION_POLICY_UNSPECIFIED`.
-     * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+     * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
      * 
      */
     public Optional<String> versionPolicy() {

@@ -58,7 +58,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
     /**
      * Specifies the mechanism used to provide authenticated denial-of-existence responses.
      * non_existence can only be updated when the state is `off`.
-     * Possible values are `nsec` and `nsec3`.
+     * Possible values are: `nsec`, `nsec3`.
      * 
      */
     @Import(name="nonExistence")
@@ -67,7 +67,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
     /**
      * @return Specifies the mechanism used to provide authenticated denial-of-existence responses.
      * non_existence can only be updated when the state is `off`.
-     * Possible values are `nsec` and `nsec3`.
+     * Possible values are: `nsec`, `nsec3`.
      * 
      */
     public Optional<Output<String>> nonExistence() {
@@ -76,7 +76,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * Specifies whether DNSSEC is enabled, and what mode it is in
-     * Possible values are `off`, `on`, and `transfer`.
+     * Possible values are: `off`, `on`, `transfer`.
      * 
      */
     @Import(name="state")
@@ -84,7 +84,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Specifies whether DNSSEC is enabled, and what mode it is in
-     * Possible values are `off`, `on`, and `transfer`.
+     * Possible values are: `off`, `on`, `transfer`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -185,7 +185,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
         /**
          * @param nonExistence Specifies the mechanism used to provide authenticated denial-of-existence responses.
          * non_existence can only be updated when the state is `off`.
-         * Possible values are `nsec` and `nsec3`.
+         * Possible values are: `nsec`, `nsec3`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
         /**
          * @param nonExistence Specifies the mechanism used to provide authenticated denial-of-existence responses.
          * non_existence can only be updated when the state is `off`.
-         * Possible values are `nsec` and `nsec3`.
+         * Possible values are: `nsec`, `nsec3`.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param state Specifies whether DNSSEC is enabled, and what mode it is in
-         * Possible values are `off`, `on`, and `transfer`.
+         * Possible values are: `off`, `on`, `transfer`.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ManagedZoneDnssecConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param state Specifies whether DNSSEC is enabled, and what mode it is in
-         * Possible values are `off`, `on`, and `transfer`.
+         * Possible values are: `off`, `on`, `transfer`.
          * 
          * @return builder
          * 

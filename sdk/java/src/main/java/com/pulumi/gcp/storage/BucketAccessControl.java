@@ -174,7 +174,7 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
     }
     /**
      * The access permission for the entity.
-     * Possible values are `OWNER`, `READER`, and `WRITER`.
+     * Possible values are: `OWNER`, `READER`, `WRITER`.
      * 
      */
     @Export(name="role", type=String.class, parameters={})
@@ -182,7 +182,7 @@ public class BucketAccessControl extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The access permission for the entity.
-     * Possible values are `OWNER`, `READER`, and `WRITER`.
+     * Possible values are: `OWNER`, `READER`, `WRITER`.
      * 
      */
     public Output<Optional<String>> role() {

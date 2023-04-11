@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class MetastoreServiceMaintenanceWindow {
     /**
      * @return The day of week, when the window starts.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     private String dayOfWeek;
@@ -25,7 +25,7 @@ public final class MetastoreServiceMaintenanceWindow {
     private MetastoreServiceMaintenanceWindow() {}
     /**
      * @return The day of week, when the window starts.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public String dayOfWeek() {

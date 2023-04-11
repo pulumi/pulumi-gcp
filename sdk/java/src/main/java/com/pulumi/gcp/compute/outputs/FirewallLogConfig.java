@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class FirewallLogConfig {
     /**
      * @return This field denotes whether to include or exclude metadata for firewall logs.
-     * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
      * 
      */
     private String metadata;
@@ -19,7 +19,7 @@ public final class FirewallLogConfig {
     private FirewallLogConfig() {}
     /**
      * @return This field denotes whether to include or exclude metadata for firewall logs.
-     * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
      * 
      */
     public String metadata() {

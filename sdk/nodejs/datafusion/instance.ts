@@ -278,7 +278,7 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly serviceEndpoint!: pulumi.Output<string>;
     /**
      * The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -300,7 +300,7 @@ export class Instance extends pulumi.CustomResource {
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
-     * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+     * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -504,7 +504,7 @@ export interface InstanceState {
     serviceEndpoint?: pulumi.Input<string>;
     /**
      * The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      */
     state?: pulumi.Input<string>;
     /**
@@ -526,7 +526,7 @@ export interface InstanceState {
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
-     * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+     * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -632,7 +632,7 @@ export interface InstanceArgs {
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
      * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      * pipelines at low cost.
-     * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+     * Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      */
     type: pulumi.Input<string>;
     /**

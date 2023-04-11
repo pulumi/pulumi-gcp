@@ -219,7 +219,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
     /**
      * The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
      * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-     * Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+     * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export class EdgeCacheOrigin extends pulumi.CustomResource {
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
      * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+     * Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      */
     public readonly retryConditions!: pulumi.Output<string[]>;
     /**
@@ -369,7 +369,7 @@ export interface EdgeCacheOriginState {
     /**
      * The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
      * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-     * Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+     * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -386,7 +386,7 @@ export interface EdgeCacheOriginState {
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
      * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+     * Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      */
     retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -468,7 +468,7 @@ export interface EdgeCacheOriginArgs {
     /**
      * The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
      * When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-     * Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+     * Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -485,7 +485,7 @@ export interface EdgeCacheOriginArgs {
      * - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
      * - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
      * - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-     * Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+     * Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
      */
     retryConditions?: pulumi.Input<pulumi.Input<string>[]>;
     /**

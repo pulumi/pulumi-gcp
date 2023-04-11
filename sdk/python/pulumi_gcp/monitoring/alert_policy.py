@@ -29,7 +29,7 @@ class AlertPolicyArgs:
         The set of arguments for constructing a AlertPolicy resource.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
-               Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+               Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
@@ -85,7 +85,7 @@ class AlertPolicyArgs:
         """
         How to combine the results of multiple conditions to
         determine if an incident should be opened.
-        Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+        Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         """
         return pulumi.get(self, "combiner")
 
@@ -234,7 +234,7 @@ class _AlertPolicyState:
                Structure is documented below.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
-               Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+               Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
@@ -319,7 +319,7 @@ class _AlertPolicyState:
         """
         How to combine the results of multiple conditions to
         determine if an incident should be opened.
-        Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+        Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         """
         return pulumi.get(self, "combiner")
 
@@ -561,7 +561,7 @@ class AlertPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
-               Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+               Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
@@ -753,7 +753,7 @@ class AlertPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] combiner: How to combine the results of multiple conditions to
                determine if an incident should be opened.
-               Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+               Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AlertPolicyConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by
                AND or OR according to the combiner field. If the combined conditions
                evaluate to true, then an incident is created. A policy can have from
@@ -828,7 +828,7 @@ class AlertPolicy(pulumi.CustomResource):
         """
         How to combine the results of multiple conditions to
         determine if an incident should be opened.
-        Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+        Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         """
         return pulumi.get(self, "combiner")
 

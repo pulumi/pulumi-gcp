@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
-        /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+        /// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         /// </summary>
         [Output("combiner")]
         public Output<string> Combiner { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
-        /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+        /// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         /// </summary>
         [Input("combiner", required: true)]
         public Input<string> Combiner { get; set; } = null!;
@@ -381,7 +381,7 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// How to combine the results of multiple conditions to
         /// determine if an incident should be opened.
-        /// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+        /// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
         /// </summary>
         [Input("combiner")]
         public Input<string>? Combiner { get; set; }

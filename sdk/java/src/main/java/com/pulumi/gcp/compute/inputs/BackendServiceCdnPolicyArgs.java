@@ -40,7 +40,7 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
     /**
      * Specifies the cache setting for all responses from this backend.
      * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-     * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+     * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
      * 
      */
     @Import(name="cacheMode")
@@ -49,7 +49,7 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
     /**
      * @return Specifies the cache setting for all responses from this backend.
      * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-     * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+     * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
      * 
      */
     public Optional<Output<String>> cacheMode() {
@@ -241,7 +241,7 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
         /**
          * @param cacheMode Specifies the cache setting for all responses from this backend.
          * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
         /**
          * @param cacheMode Specifies the cache setting for all responses from this backend.
          * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
          * 
          * @return builder
          * 

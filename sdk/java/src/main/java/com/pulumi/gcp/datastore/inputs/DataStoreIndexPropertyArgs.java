@@ -15,7 +15,7 @@ public final class DataStoreIndexPropertyArgs extends com.pulumi.resources.Resou
 
     /**
      * The direction the index should optimize for sorting.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     @Import(name="direction", required=true)
@@ -23,7 +23,7 @@ public final class DataStoreIndexPropertyArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The direction the index should optimize for sorting.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     public Output<String> direction() {
@@ -72,7 +72,7 @@ public final class DataStoreIndexPropertyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param direction The direction the index should optimize for sorting.
-         * Possible values are `ASCENDING` and `DESCENDING`.
+         * Possible values are: `ASCENDING`, `DESCENDING`.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class DataStoreIndexPropertyArgs extends com.pulumi.resources.Resou
 
         /**
          * @param direction The direction the index should optimize for sorting.
-         * Possible values are `ASCENDING` and `DESCENDING`.
+         * Possible values are: `ASCENDING`, `DESCENDING`.
          * 
          * @return builder
          * 

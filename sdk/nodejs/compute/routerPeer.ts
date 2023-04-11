@@ -206,7 +206,7 @@ export class RouterPeer extends pulumi.CustomResource {
      * User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      */
     public readonly advertiseMode!: pulumi.Output<string | undefined>;
     /**
@@ -368,7 +368,7 @@ export interface RouterPeerState {
      * User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      */
     advertiseMode?: pulumi.Input<string>;
     /**
@@ -466,7 +466,7 @@ export interface RouterPeerArgs {
      * User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      */
     advertiseMode?: pulumi.Input<string>;
     /**

@@ -17,7 +17,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The App Engine integration mode to use for this database.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     @Import(name="appEngineIntegrationMode")
@@ -25,7 +25,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The App Engine integration mode to use for this database.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     public Optional<Output<String>> appEngineIntegrationMode() {
@@ -34,7 +34,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The concurrency control mode to use for this database.
-     * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+     * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      * 
      */
     @Import(name="concurrencyMode")
@@ -42,7 +42,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The concurrency control mode to use for this database.
-     * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+     * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      * 
      */
     public Optional<Output<String>> concurrencyMode() {
@@ -167,7 +167,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
-     * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+     * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      * 
      */
     @Import(name="type")
@@ -177,7 +177,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      * @return The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
-     * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+     * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -218,7 +218,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param appEngineIntegrationMode The App Engine integration mode to use for this database.
-         * Possible values are `ENABLED` and `DISABLED`.
+         * Possible values are: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param appEngineIntegrationMode The App Engine integration mode to use for this database.
-         * Possible values are `ENABLED` and `DISABLED`.
+         * Possible values are: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param concurrencyMode The concurrency control mode to use for this database.
-         * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+         * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param concurrencyMode The concurrency control mode to use for this database.
-         * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+         * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          * @param type The type of the database.
          * See https://cloud.google.com/datastore/docs/firestore-or-datastore
          * for information about how to choose.
-         * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+         * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          * @param type The type of the database.
          * See https://cloud.google.com/datastore/docs/firestore-or-datastore
          * for information about how to choose.
-         * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+         * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
          * 
          * @return builder
          * 

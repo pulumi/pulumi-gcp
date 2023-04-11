@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// <summary>
         /// The mode of the certificate.
         /// Default value is `AUTOMATIC`.
-        /// Possible values are `NONE` and `AUTOMATIC`.
+        /// Possible values are: `NONE`, `AUTOMATIC`.
         /// </summary>
         [Input("certificateMode")]
         public Input<string>? CertificateMode { get; set; }

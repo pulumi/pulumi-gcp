@@ -139,7 +139,7 @@ export class Policy extends pulumi.CustomResource {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
-     * Possible values are `ENABLE` and `DISABLE`.
+     * Possible values are: `ENABLE`, `DISABLE`.
      */
     public readonly globalPolicyEvaluationMode!: pulumi.Output<string>;
     /**
@@ -217,7 +217,7 @@ export interface PolicyState {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
-     * Possible values are `ENABLE` and `DISABLE`.
+     * Possible values are: `ENABLE`, `DISABLE`.
      */
     globalPolicyEvaluationMode?: pulumi.Input<string>;
     /**
@@ -260,7 +260,7 @@ export interface PolicyArgs {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
-     * Possible values are `ENABLE` and `DISABLE`.
+     * Possible values are: `ENABLE`, `DISABLE`.
      */
     globalPolicyEvaluationMode?: pulumi.Input<string>;
     /**

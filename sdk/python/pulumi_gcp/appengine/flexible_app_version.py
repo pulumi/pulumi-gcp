@@ -72,7 +72,7 @@ class FlexibleAppVersionArgs:
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
-               Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+               Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
@@ -96,7 +96,7 @@ class FlexibleAppVersionArgs:
                default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
-               Possible values are `SERVING` and `STOPPED`.
+               Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -340,7 +340,7 @@ class FlexibleAppVersionArgs:
     def inbound_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of the types of messages that this application is able to receive.
-        Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+        Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         """
         return pulumi.get(self, "inbound_services")
 
@@ -496,7 +496,7 @@ class FlexibleAppVersionArgs:
         """
         Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         Default value is `SERVING`.
-        Possible values are `SERVING` and `STOPPED`.
+        Possible values are: `SERVING`, `STOPPED`.
         """
         return pulumi.get(self, "serving_status")
 
@@ -585,7 +585,7 @@ class _FlexibleAppVersionState:
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
-               Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+               Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
@@ -623,7 +623,7 @@ class _FlexibleAppVersionState:
                default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
-               Possible values are `SERVING` and `STOPPED`.
+               Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input['FlexibleAppVersionVpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -823,7 +823,7 @@ class _FlexibleAppVersionState:
     def inbound_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of the types of messages that this application is able to receive.
-        Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+        Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         """
         return pulumi.get(self, "inbound_services")
 
@@ -1048,7 +1048,7 @@ class _FlexibleAppVersionState:
         """
         Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         Default value is `SERVING`.
-        Possible values are `SERVING` and `STOPPED`.
+        Possible values are: `SERVING`, `STOPPED`.
         """
         return pulumi.get(self, "serving_status")
 
@@ -1252,7 +1252,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
-               Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+               Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
@@ -1282,7 +1282,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
-               Possible values are `SERVING` and `STOPPED`.
+               Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -1564,7 +1564,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                The first matching URL handles the request and other request handlers are not attempted.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inbound_services: A list of the types of messages that this application is able to receive.
-               Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+               Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         :param pulumi.Input[str] instance_class: Instance class that is used to run this version. Valid values are
                AutomaticScaling: F1, F2, F4, F4_1G
                ManualScaling: B1, B2, B4, B8, B4_1G
@@ -1602,7 +1602,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
                default if this field is neither provided in app.yaml file nor through CLI flag.
         :param pulumi.Input[str] serving_status: Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
                Default value is `SERVING`.
-               Possible values are `SERVING` and `STOPPED`.
+               Possible values are: `SERVING`, `STOPPED`.
         :param pulumi.Input[str] version_id: Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens.
                Reserved names,"default", "latest", and any name with the prefix "ah-".
         :param pulumi.Input[pulumi.InputType['FlexibleAppVersionVpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
@@ -1737,7 +1737,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
     def inbound_services(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of the types of messages that this application is able to receive.
-        Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+        Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
         """
         return pulumi.get(self, "inbound_services")
 
@@ -1894,7 +1894,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
         """
         Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
         Default value is `SERVING`.
-        Possible values are `SERVING` and `STOPPED`.
+        Possible values are: `SERVING`, `STOPPED`.
         """
         return pulumi.get(self, "serving_status")
 

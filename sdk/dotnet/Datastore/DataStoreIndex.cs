@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.Datastore
         /// <summary>
         /// Policy for including ancestors in the index.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `ALL_ANCESTORS`.
+        /// Possible values are: `NONE`, `ALL_ANCESTORS`.
         /// </summary>
         [Output("ancestor")]
         public Output<string?> Ancestor { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Gcp.Datastore
         /// <summary>
         /// Policy for including ancestors in the index.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `ALL_ANCESTORS`.
+        /// Possible values are: `NONE`, `ALL_ANCESTORS`.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.Gcp.Datastore
         /// <summary>
         /// Policy for including ancestors in the index.
         /// Default value is `NONE`.
-        /// Possible values are `NONE` and `ALL_ANCESTORS`.
+        /// Possible values are: `NONE`, `ALL_ANCESTORS`.
         /// </summary>
         [Input("ancestor")]
         public Input<string>? Ancestor { get; set; }

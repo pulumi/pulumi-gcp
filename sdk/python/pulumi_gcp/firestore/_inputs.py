@@ -22,11 +22,11 @@ class IndexFieldArgs:
         """
         :param pulumi.Input[str] array_config: Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
                be specified.
-               Possible values are `CONTAINS`.
+               Possible values are: `CONTAINS`.
         :param pulumi.Input[str] field_path: Name of the field.
         :param pulumi.Input[str] order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
                Only one of `order` and `arrayConfig` can be specified.
-               Possible values are `ASCENDING` and `DESCENDING`.
+               Possible values are: `ASCENDING`, `DESCENDING`.
         """
         if array_config is not None:
             pulumi.set(__self__, "array_config", array_config)
@@ -41,7 +41,7 @@ class IndexFieldArgs:
         """
         Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
         be specified.
-        Possible values are `CONTAINS`.
+        Possible values are: `CONTAINS`.
         """
         return pulumi.get(self, "array_config")
 
@@ -67,7 +67,7 @@ class IndexFieldArgs:
         """
         Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
         Only one of `order` and `arrayConfig` can be specified.
-        Possible values are `ASCENDING` and `DESCENDING`.
+        Possible values are: `ASCENDING`, `DESCENDING`.
         """
         return pulumi.get(self, "order")
 

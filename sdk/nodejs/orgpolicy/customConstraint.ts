@@ -95,7 +95,7 @@ export class CustomConstraint extends pulumi.CustomResource {
 
     /**
      * The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      */
     public readonly actionType!: pulumi.Output<string>;
     /**
@@ -191,7 +191,7 @@ export class CustomConstraint extends pulumi.CustomResource {
 export interface CustomConstraintState {
     /**
      * The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      */
     actionType?: pulumi.Input<string>;
     /**
@@ -234,7 +234,7 @@ export interface CustomConstraintState {
 export interface CustomConstraintArgs {
     /**
      * The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      */
     actionType: pulumi.Input<string>;
     /**

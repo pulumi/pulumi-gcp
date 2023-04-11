@@ -19,7 +19,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleArgs extends com.pu
 
     /**
      * The days of the week to perform a backup. At least one day of the week must be provided.
-     * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     @Import(name="daysOfWeeks")
@@ -27,7 +27,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleArgs extends com.pu
 
     /**
      * @return The days of the week to perform a backup. At least one day of the week must be provided.
-     * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public Optional<Output<List<String>>> daysOfWeeks() {
@@ -78,7 +78,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleArgs extends com.pu
 
         /**
          * @param daysOfWeeks The days of the week to perform a backup. At least one day of the week must be provided.
-         * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleArgs extends com.pu
 
         /**
          * @param daysOfWeeks The days of the week to perform a backup. At least one day of the week must be provided.
-         * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleArgs extends com.pu
 
         /**
          * @param daysOfWeeks The days of the week to perform a backup. At least one day of the week must be provided.
-         * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 

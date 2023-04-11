@@ -238,7 +238,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      */
     public readonly networkEndpointType!: pulumi.Output<string | undefined>;
     /**
@@ -366,7 +366,7 @@ export interface RegionNetworkEndpointGroupState {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -445,7 +445,7 @@ export interface RegionNetworkEndpointGroupArgs {
     /**
      * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
      * Default value is `SERVERLESS`.
-     * Possible values are `SERVERLESS` and `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**

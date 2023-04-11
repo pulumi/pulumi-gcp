@@ -214,7 +214,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
      * Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
-     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      * 
      */
     @Import(name="includeBuildLogs")
@@ -224,7 +224,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
      * @return Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
-     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      * 
      */
     public Optional<Output<String>> includeBuildLogs() {
@@ -779,7 +779,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
          * @param includeBuildLogs Build logs will be sent back to GitHub as part of the checkrun
          * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
          * INCLUDE_BUILD_LOGS_WITH_STATUS
-         * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+         * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
          * @param includeBuildLogs Build logs will be sent back to GitHub as part of the checkrun
          * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
          * INCLUDE_BUILD_LOGS_WITH_STATUS
-         * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+         * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
          * 
          * @return builder
          * 

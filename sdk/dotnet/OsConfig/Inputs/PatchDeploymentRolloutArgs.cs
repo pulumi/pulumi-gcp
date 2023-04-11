@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// Mode of the patch rollout.
-        /// Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+        /// Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

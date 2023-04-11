@@ -32,7 +32,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * Common characters to not transform when masking. Useful to avoid removing punctuation.
-     * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+     * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
      * 
      */
     @Import(name="commonCharactersToIgnore")
@@ -40,7 +40,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     /**
      * @return Common characters to not transform when masking. Useful to avoid removing punctuation.
-     * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+     * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
      * 
      */
     public Optional<Output<String>> commonCharactersToIgnore() {
@@ -95,7 +95,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param commonCharactersToIgnore Common characters to not transform when masking. Useful to avoid removing punctuation.
-         * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+         * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         /**
          * @param commonCharactersToIgnore Common characters to not transform when masking. Useful to avoid removing punctuation.
-         * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+         * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
          * 
          * @return builder
          * 

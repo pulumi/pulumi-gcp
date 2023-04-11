@@ -214,7 +214,7 @@ namespace Pulumi.Gcp.Firebase
         /// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
         /// ROLLBACK: The release points back to a previously deployed version. Output only.
         /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-        /// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+        /// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.Firebase
         /// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
         /// ROLLBACK: The release points back to a previously deployed version. Output only.
         /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-        /// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+        /// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.Firebase
         /// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
         /// ROLLBACK: The release points back to a previously deployed version. Output only.
         /// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-        /// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+        /// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -40,7 +40,7 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
      * Specifies the type of identities that are allowed access from outside the
      * perimeter. If left unspecified, then members of `identities` field will be
      * allowed access.
-     * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+     * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
      * 
      */
     @Import(name="identityType")
@@ -50,7 +50,7 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
      * @return Specifies the type of identities that are allowed access from outside the
      * perimeter. If left unspecified, then members of `identities` field will be
      * allowed access.
-     * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+     * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
      * 
      */
     public Optional<Output<String>> identityType() {
@@ -141,7 +141,7 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
          * @param identityType Specifies the type of identities that are allowed access from outside the
          * perimeter. If left unspecified, then members of `identities` field will be
          * allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFr
          * @param identityType Specifies the type of identities that are allowed access from outside the
          * perimeter. If left unspecified, then members of `identities` field will be
          * allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          * 
          * @return builder
          * 
