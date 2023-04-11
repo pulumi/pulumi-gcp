@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.Apigee.Outputs
     [OutputType]
     public sealed class KeystoresAliasesPkcs12CertsInfo
     {
+        /// <summary>
+        /// (Output)
+        /// List of all properties in the object.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.KeystoresAliasesPkcs12CertsInfoCertInfo> CertInfos;
 
         [OutputConstructor]

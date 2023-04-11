@@ -9,6 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Apigee
 {
+    /// <summary>
+    /// An alias from a pkcs12 file.
+    /// 
+    /// To get more information about KeystoresAliasesPkcs12, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+    /// * How-to Guides
+    ///     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+    /// 
+    /// ## Import
+    /// 
+    /// KeystoresAliasesPkcs12 can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+    /// ```
+    /// </summary>
     [GcpResourceType("gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12")]
     public partial class KeystoresAliasesPkcs12 : global::Pulumi.CustomResource
     {
@@ -20,6 +41,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Chain of certificates under this alias.
+        /// Structure is documented below.
         /// </summary>
         [Output("certsInfos")]
         public Output<ImmutableArray<Outputs.KeystoresAliasesPkcs12CertsInfo>> CertsInfos { get; private set; } = null!;
@@ -31,7 +53,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Environment { get; private set; } = null!;
 
         /// <summary>
-        /// Cert content
+        /// PKCS12 file content
         /// </summary>
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
@@ -49,13 +71,13 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Keystore { get; private set; } = null!;
 
         /// <summary>
-        /// Organization ID associated with the alias
+        /// Organization ID associated with the alias, without organization/ prefix
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// Password for the Private Key if it's encrypted
+        /// Password for the PKCS12 file if it's encrypted
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -125,7 +147,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> Environment { get; set; } = null!;
 
         /// <summary>
-        /// Cert content
+        /// PKCS12 file content
         /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
@@ -143,13 +165,13 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> Keystore { get; set; } = null!;
 
         /// <summary>
-        /// Organization ID associated with the alias
+        /// Organization ID associated with the alias, without organization/ prefix
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// Password for the Private Key if it's encrypted
+        /// Password for the PKCS12 file if it's encrypted
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -173,6 +195,7 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// Chain of certificates under this alias.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.KeystoresAliasesPkcs12CertsInfoGetArgs> CertsInfos
         {
@@ -187,7 +210,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Cert content
+        /// PKCS12 file content
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }
@@ -205,13 +228,13 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Keystore { get; set; }
 
         /// <summary>
-        /// Organization ID associated with the alias
+        /// Organization ID associated with the alias, without organization/ prefix
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// Password for the Private Key if it's encrypted
+        /// Password for the PKCS12 file if it's encrypted
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }

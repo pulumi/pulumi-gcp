@@ -15,6 +15,28 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * An alias from a pkcs12 file.
+ * 
+ * To get more information about KeystoresAliasesPkcs12, see:
+ * 
+ * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ * * How-to Guides
+ *     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ * 
+ * ## Import
+ * 
+ * KeystoresAliasesPkcs12 can be imported using any of these accepted formats
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+ * ```
+ * 
+ */
 @ResourceType(type="gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12")
 public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource {
     /**
@@ -33,6 +55,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
     }
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      * 
      */
     @Export(name="certsInfos", type=List.class, parameters={KeystoresAliasesPkcs12CertsInfo.class})
@@ -40,6 +63,7 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
 
     /**
      * @return Chain of certificates under this alias.
+     * Structure is documented below.
      * 
      */
     public Output<List<KeystoresAliasesPkcs12CertsInfo>> certsInfos() {
@@ -60,14 +84,14 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
         return this.environment;
     }
     /**
-     * Cert content
+     * PKCS12 file content
      * 
      */
     @Export(name="file", type=String.class, parameters={})
     private Output<String> file;
 
     /**
-     * @return Cert content
+     * @return PKCS12 file content
      * 
      */
     public Output<String> file() {
@@ -102,28 +126,28 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
         return this.keystore;
     }
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return Organization ID associated with the alias
+     * @return Organization ID associated with the alias, without organization/ prefix
      * 
      */
     public Output<String> orgId() {
         return this.orgId;
     }
     /**
-     * Password for the Private Key if it&#39;s encrypted
+     * Password for the PKCS12 file if it&#39;s encrypted
      * 
      */
     @Export(name="password", type=String.class, parameters={})
     private Output<String> password;
 
     /**
-     * @return Password for the Private Key if it&#39;s encrypted
+     * @return Password for the PKCS12 file if it&#39;s encrypted
      * 
      */
     public Output<String> password() {

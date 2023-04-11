@@ -16,9 +16,21 @@ public final class KeystoresAliasesPkcs12CertsInfoArgs extends com.pulumi.resour
 
     public static final KeystoresAliasesPkcs12CertsInfoArgs Empty = new KeystoresAliasesPkcs12CertsInfoArgs();
 
+    /**
+     * (Output)
+     * List of all properties in the object.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="certInfos")
     private @Nullable Output<List<KeystoresAliasesPkcs12CertsInfoCertInfoArgs>> certInfos;
 
+    /**
+     * @return (Output)
+     * List of all properties in the object.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<KeystoresAliasesPkcs12CertsInfoCertInfoArgs>>> certInfos() {
         return Optional.ofNullable(this.certInfos);
     }
@@ -47,15 +59,39 @@ public final class KeystoresAliasesPkcs12CertsInfoArgs extends com.pulumi.resour
             $ = new KeystoresAliasesPkcs12CertsInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param certInfos (Output)
+         * List of all properties in the object.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certInfos(@Nullable Output<List<KeystoresAliasesPkcs12CertsInfoCertInfoArgs>> certInfos) {
             $.certInfos = certInfos;
             return this;
         }
 
+        /**
+         * @param certInfos (Output)
+         * List of all properties in the object.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certInfos(List<KeystoresAliasesPkcs12CertsInfoCertInfoArgs> certInfos) {
             return certInfos(Output.of(certInfos));
         }
 
+        /**
+         * @param certInfos (Output)
+         * List of all properties in the object.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder certInfos(KeystoresAliasesPkcs12CertsInfoCertInfoArgs... certInfos) {
             return certInfos(List.of(certInfos));
         }

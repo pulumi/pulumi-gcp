@@ -663,12 +663,22 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
 class KeystoresAliasesPkcs12CertsInfoArgs:
     def __init__(__self__, *,
                  cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]] cert_infos: (Output)
+               List of all properties in the object.
+               Structure is documented below.
+        """
         if cert_infos is not None:
             pulumi.set(__self__, "cert_infos", cert_infos)
 
     @property
     @pulumi.getter(name="certInfos")
     def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]]:
+        """
+        (Output)
+        List of all properties in the object.
+        Structure is documented below.
+        """
         return pulumi.get(self, "cert_infos")
 
     @cert_infos.setter
@@ -690,6 +700,31 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  valid_from: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] basic_constraints: (Output)
+               X.509 basic constraints extension.
+        :param pulumi.Input[str] expiry_date: (Output)
+               X.509 notAfter validity period in milliseconds since epoch.
+        :param pulumi.Input[str] is_valid: (Output)
+               Flag that specifies whether the certificate is valid.
+               Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        :param pulumi.Input[str] issuer: (Output)
+               X.509 issuer.
+        :param pulumi.Input[str] public_key: (Output)
+               Public key component of the X.509 subject public key info.
+        :param pulumi.Input[str] serial_number: (Output)
+               X.509 serial number.
+        :param pulumi.Input[str] sig_alg_name: (Output)
+               X.509 signatureAlgorithm.
+        :param pulumi.Input[str] subject: (Output)
+               X.509 subject.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: (Output)
+               X.509 subject alternative names (SANs) extension.
+        :param pulumi.Input[str] valid_from: (Output)
+               X.509 notBefore validity period in milliseconds since epoch.
+        :param pulumi.Input[int] version: (Output)
+               X.509 version.
+        """
         if basic_constraints is not None:
             pulumi.set(__self__, "basic_constraints", basic_constraints)
         if expiry_date is not None:
@@ -716,6 +751,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="basicConstraints")
     def basic_constraints(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 basic constraints extension.
+        """
         return pulumi.get(self, "basic_constraints")
 
     @basic_constraints.setter
@@ -725,6 +764,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="expiryDate")
     def expiry_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 notAfter validity period in milliseconds since epoch.
+        """
         return pulumi.get(self, "expiry_date")
 
     @expiry_date.setter
@@ -734,6 +777,11 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="isValid")
     def is_valid(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Flag that specifies whether the certificate is valid.
+        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        """
         return pulumi.get(self, "is_valid")
 
     @is_valid.setter
@@ -743,6 +791,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 issuer.
+        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -752,6 +804,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Public key component of the X.509 subject public key info.
+        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -761,6 +817,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 serial number.
+        """
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
@@ -770,6 +830,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="sigAlgName")
     def sig_alg_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 signatureAlgorithm.
+        """
         return pulumi.get(self, "sig_alg_name")
 
     @sig_alg_name.setter
@@ -779,6 +843,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter
     def subject(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 subject.
+        """
         return pulumi.get(self, "subject")
 
     @subject.setter
@@ -788,6 +856,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="subjectAlternativeNames")
     def subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        X.509 subject alternative names (SANs) extension.
+        """
         return pulumi.get(self, "subject_alternative_names")
 
     @subject_alternative_names.setter
@@ -797,6 +869,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter(name="validFrom")
     def valid_from(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 notBefore validity period in milliseconds since epoch.
+        """
         return pulumi.get(self, "valid_from")
 
     @valid_from.setter
@@ -806,6 +882,10 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        X.509 version.
+        """
         return pulumi.get(self, "version")
 
     @version.setter

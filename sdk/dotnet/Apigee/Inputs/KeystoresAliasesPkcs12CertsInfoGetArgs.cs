@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Apigee.Inputs
     {
         [Input("certInfos")]
         private InputList<Inputs.KeystoresAliasesPkcs12CertsInfoCertInfoGetArgs>? _certInfos;
+
+        /// <summary>
+        /// (Output)
+        /// List of all properties in the object.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.KeystoresAliasesPkcs12CertsInfoCertInfoGetArgs> CertInfos
         {
             get => _certInfos ?? (_certInfos = new InputList<Inputs.KeystoresAliasesPkcs12CertsInfoCertInfoGetArgs>());

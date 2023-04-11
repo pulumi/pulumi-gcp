@@ -6,6 +6,27 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * An alias from a pkcs12 file.
+ *
+ * To get more information about KeystoresAliasesPkcs12, see:
+ *
+ * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ * * How-to Guides
+ *     * [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+ *
+ * ## Import
+ *
+ * KeystoresAliasesPkcs12 can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+ * ```
+ */
 export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
     /**
      * Get an existing KeystoresAliasesPkcs12 resource's state with the given name, ID, and optional extra
@@ -40,6 +61,7 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
     public readonly alias!: pulumi.Output<string>;
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      */
     public /*out*/ readonly certsInfos!: pulumi.Output<outputs.apigee.KeystoresAliasesPkcs12CertsInfo[]>;
     /**
@@ -47,7 +69,7 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
      */
     public readonly environment!: pulumi.Output<string>;
     /**
-     * Cert content
+     * PKCS12 file content
      */
     public readonly file!: pulumi.Output<string>;
     /**
@@ -59,11 +81,11 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
      */
     public readonly keystore!: pulumi.Output<string>;
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
-     * Password for the Private Key if it's encrypted
+     * Password for the PKCS12 file if it's encrypted
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -138,6 +160,7 @@ export interface KeystoresAliasesPkcs12State {
     alias?: pulumi.Input<string>;
     /**
      * Chain of certificates under this alias.
+     * Structure is documented below.
      */
     certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesPkcs12CertsInfo>[]>;
     /**
@@ -145,7 +168,7 @@ export interface KeystoresAliasesPkcs12State {
      */
     environment?: pulumi.Input<string>;
     /**
-     * Cert content
+     * PKCS12 file content
      */
     file?: pulumi.Input<string>;
     /**
@@ -157,11 +180,11 @@ export interface KeystoresAliasesPkcs12State {
      */
     keystore?: pulumi.Input<string>;
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      */
     orgId?: pulumi.Input<string>;
     /**
-     * Password for the Private Key if it's encrypted
+     * Password for the PKCS12 file if it's encrypted
      */
     password?: pulumi.Input<string>;
     /**
@@ -183,7 +206,7 @@ export interface KeystoresAliasesPkcs12Args {
      */
     environment: pulumi.Input<string>;
     /**
-     * Cert content
+     * PKCS12 file content
      */
     file: pulumi.Input<string>;
     /**
@@ -195,11 +218,11 @@ export interface KeystoresAliasesPkcs12Args {
      */
     keystore: pulumi.Input<string>;
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      */
     orgId: pulumi.Input<string>;
     /**
-     * Password for the Private Key if it's encrypted
+     * Password for the PKCS12 file if it's encrypted
      */
     password?: pulumi.Input<string>;
 }

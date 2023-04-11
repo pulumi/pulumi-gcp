@@ -11,9 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KeystoresAliasesPkcs12CertsInfo {
+    /**
+     * @return (Output)
+     * List of all properties in the object.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<KeystoresAliasesPkcs12CertsInfoCertInfo> certInfos;
 
     private KeystoresAliasesPkcs12CertsInfo() {}
+    /**
+     * @return (Output)
+     * List of all properties in the object.
+     * Structure is documented below.
+     * 
+     */
     public List<KeystoresAliasesPkcs12CertsInfoCertInfo> certInfos() {
         return this.certInfos == null ? List.of() : this.certInfos;
     }

@@ -46,14 +46,14 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * Cert content
+     * PKCS12 file content
      * 
      */
     @Import(name="file", required=true)
     private Output<String> file;
 
     /**
-     * @return Cert content
+     * @return PKCS12 file content
      * 
      */
     public Output<String> file() {
@@ -91,14 +91,14 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * Organization ID associated with the alias
+     * Organization ID associated with the alias, without organization/ prefix
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return Organization ID associated with the alias
+     * @return Organization ID associated with the alias, without organization/ prefix
      * 
      */
     public Output<String> orgId() {
@@ -106,14 +106,14 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * Password for the Private Key if it&#39;s encrypted
+     * Password for the PKCS12 file if it&#39;s encrypted
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password for the Private Key if it&#39;s encrypted
+     * @return Password for the PKCS12 file if it&#39;s encrypted
      * 
      */
     public Optional<Output<String>> password() {
@@ -193,7 +193,7 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param file Cert content
+         * @param file PKCS12 file content
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param file Cert content
+         * @param file PKCS12 file content
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param orgId Organization ID associated with the alias
+         * @param orgId Organization ID associated with the alias, without organization/ prefix
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param orgId Organization ID associated with the alias
+         * @param orgId Organization ID associated with the alias, without organization/ prefix
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password Password for the Private Key if it&#39;s encrypted
+         * @param password Password for the PKCS12 file if it&#39;s encrypted
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param password Password for the Private Key if it&#39;s encrypted
+         * @param password Password for the PKCS12 file if it&#39;s encrypted
          * 
          * @return builder
          * 

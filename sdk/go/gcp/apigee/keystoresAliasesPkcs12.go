@@ -11,24 +11,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An alias from a pkcs12 file.
+//
+// To get more information about KeystoresAliasesPkcs12, see:
+//
+// * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+// * How-to Guides
+//   - [Keystores Aliases](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
+//
+// ## Import
+//
+// # KeystoresAliasesPkcs12 can be imported using any of these accepted formats
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 default {{org_id}}/{{environment}}/{{keystore}}/{{alias}}
+//
+// ```
 type KeystoresAliasesPkcs12 struct {
 	pulumi.CustomResourceState
 
 	// Alias Name
 	Alias pulumi.StringOutput `pulumi:"alias"`
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfos KeystoresAliasesPkcs12CertsInfoArrayOutput `pulumi:"certsInfos"`
 	// Environment associated with the alias
 	Environment pulumi.StringOutput `pulumi:"environment"`
-	// Cert content
+	// PKCS12 file content
 	File pulumi.StringOutput `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash pulumi.StringOutput `pulumi:"filehash"`
 	// Keystore Name
 	Keystore pulumi.StringOutput `pulumi:"keystore"`
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
-	// Password for the Private Key if it's encrypted
+	// Password for the PKCS12 file if it's encrypted
 	Password pulumi.StringOutput `pulumi:"password"`
 	// Optional.Type of Alias
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -84,18 +108,19 @@ type keystoresAliasesPkcs12State struct {
 	// Alias Name
 	Alias *string `pulumi:"alias"`
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfos []KeystoresAliasesPkcs12CertsInfo `pulumi:"certsInfos"`
 	// Environment associated with the alias
 	Environment *string `pulumi:"environment"`
-	// Cert content
+	// PKCS12 file content
 	File *string `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash *string `pulumi:"filehash"`
 	// Keystore Name
 	Keystore *string `pulumi:"keystore"`
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId *string `pulumi:"orgId"`
-	// Password for the Private Key if it's encrypted
+	// Password for the PKCS12 file if it's encrypted
 	Password *string `pulumi:"password"`
 	// Optional.Type of Alias
 	Type *string `pulumi:"type"`
@@ -105,18 +130,19 @@ type KeystoresAliasesPkcs12State struct {
 	// Alias Name
 	Alias pulumi.StringPtrInput
 	// Chain of certificates under this alias.
+	// Structure is documented below.
 	CertsInfos KeystoresAliasesPkcs12CertsInfoArrayInput
 	// Environment associated with the alias
 	Environment pulumi.StringPtrInput
-	// Cert content
+	// PKCS12 file content
 	File pulumi.StringPtrInput
 	// Hash of the pkcs file
 	Filehash pulumi.StringPtrInput
 	// Keystore Name
 	Keystore pulumi.StringPtrInput
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId pulumi.StringPtrInput
-	// Password for the Private Key if it's encrypted
+	// Password for the PKCS12 file if it's encrypted
 	Password pulumi.StringPtrInput
 	// Optional.Type of Alias
 	Type pulumi.StringPtrInput
@@ -131,15 +157,15 @@ type keystoresAliasesPkcs12Args struct {
 	Alias string `pulumi:"alias"`
 	// Environment associated with the alias
 	Environment string `pulumi:"environment"`
-	// Cert content
+	// PKCS12 file content
 	File string `pulumi:"file"`
 	// Hash of the pkcs file
 	Filehash string `pulumi:"filehash"`
 	// Keystore Name
 	Keystore string `pulumi:"keystore"`
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId string `pulumi:"orgId"`
-	// Password for the Private Key if it's encrypted
+	// Password for the PKCS12 file if it's encrypted
 	Password *string `pulumi:"password"`
 }
 
@@ -149,15 +175,15 @@ type KeystoresAliasesPkcs12Args struct {
 	Alias pulumi.StringInput
 	// Environment associated with the alias
 	Environment pulumi.StringInput
-	// Cert content
+	// PKCS12 file content
 	File pulumi.StringInput
 	// Hash of the pkcs file
 	Filehash pulumi.StringInput
 	// Keystore Name
 	Keystore pulumi.StringInput
-	// Organization ID associated with the alias
+	// Organization ID associated with the alias, without organization/ prefix
 	OrgId pulumi.StringInput
-	// Password for the Private Key if it's encrypted
+	// Password for the PKCS12 file if it's encrypted
 	Password pulumi.StringPtrInput
 }
 
@@ -254,6 +280,7 @@ func (o KeystoresAliasesPkcs12Output) Alias() pulumi.StringOutput {
 }
 
 // Chain of certificates under this alias.
+// Structure is documented below.
 func (o KeystoresAliasesPkcs12Output) CertsInfos() KeystoresAliasesPkcs12CertsInfoArrayOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) KeystoresAliasesPkcs12CertsInfoArrayOutput { return v.CertsInfos }).(KeystoresAliasesPkcs12CertsInfoArrayOutput)
 }
@@ -263,7 +290,7 @@ func (o KeystoresAliasesPkcs12Output) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }
 
-// Cert content
+// PKCS12 file content
 func (o KeystoresAliasesPkcs12Output) File() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.File }).(pulumi.StringOutput)
 }
@@ -278,12 +305,12 @@ func (o KeystoresAliasesPkcs12Output) Keystore() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.Keystore }).(pulumi.StringOutput)
 }
 
-// Organization ID associated with the alias
+// Organization ID associated with the alias, without organization/ prefix
 func (o KeystoresAliasesPkcs12Output) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
-// Password for the Private Key if it's encrypted
+// Password for the PKCS12 file if it's encrypted
 func (o KeystoresAliasesPkcs12Output) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesPkcs12) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
