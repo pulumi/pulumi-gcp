@@ -40,25 +40,25 @@ public final class TriggerBuildOptions {
     private @Nullable List<String> envs;
     /**
      * @return Option to define build log streaming behavior to Google Cloud Storage.
-     * Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+     * Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
      * 
      */
     private @Nullable String logStreamingOption;
     /**
      * @return Option to specify the logging mode, which determines if and where build logs are stored.
-     * Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+     * Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
      * 
      */
     private @Nullable String logging;
     /**
      * @return Compute Engine machine type on which to run the build.
-     * Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+     * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
      * 
      */
     private @Nullable String machineType;
     /**
      * @return Requested verifiability options.
-     * Possible values are `NOT_VERIFIED` and `VERIFIED`.
+     * Possible values are: `NOT_VERIFIED`, `VERIFIED`.
      * 
      */
     private @Nullable String requestedVerifyOption;
@@ -71,7 +71,7 @@ public final class TriggerBuildOptions {
     private @Nullable List<String> secretEnvs;
     /**
      * @return Requested hash for SourceProvenance.
-     * Each value may be one of `NONE`, `SHA256`, and `MD5`.
+     * Each value may be one of: `NONE`, `SHA256`, `MD5`.
      * 
      */
     private @Nullable List<String> sourceProvenanceHashes;
@@ -79,7 +79,7 @@ public final class TriggerBuildOptions {
      * @return Option to specify behavior when there is an error in the substitution checks.
      * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
      * in the build configuration file.
-     * Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+     * Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
      * 
      */
     private @Nullable String substitutionOption;
@@ -133,7 +133,7 @@ public final class TriggerBuildOptions {
     }
     /**
      * @return Option to define build log streaming behavior to Google Cloud Storage.
-     * Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+     * Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
      * 
      */
     public Optional<String> logStreamingOption() {
@@ -141,7 +141,7 @@ public final class TriggerBuildOptions {
     }
     /**
      * @return Option to specify the logging mode, which determines if and where build logs are stored.
-     * Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+     * Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
      * 
      */
     public Optional<String> logging() {
@@ -149,7 +149,7 @@ public final class TriggerBuildOptions {
     }
     /**
      * @return Compute Engine machine type on which to run the build.
-     * Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+     * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
      * 
      */
     public Optional<String> machineType() {
@@ -157,7 +157,7 @@ public final class TriggerBuildOptions {
     }
     /**
      * @return Requested verifiability options.
-     * Possible values are `NOT_VERIFIED` and `VERIFIED`.
+     * Possible values are: `NOT_VERIFIED`, `VERIFIED`.
      * 
      */
     public Optional<String> requestedVerifyOption() {
@@ -174,7 +174,7 @@ public final class TriggerBuildOptions {
     }
     /**
      * @return Requested hash for SourceProvenance.
-     * Each value may be one of `NONE`, `SHA256`, and `MD5`.
+     * Each value may be one of: `NONE`, `SHA256`, `MD5`.
      * 
      */
     public List<String> sourceProvenanceHashes() {
@@ -184,7 +184,7 @@ public final class TriggerBuildOptions {
      * @return Option to specify behavior when there is an error in the substitution checks.
      * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
      * in the build configuration file.
-     * Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+     * Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
      * 
      */
     public Optional<String> substitutionOption() {

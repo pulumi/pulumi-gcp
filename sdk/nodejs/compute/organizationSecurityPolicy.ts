@@ -95,7 +95,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
      * For organization security policies, the only supported type
      * is "FIREWALL".
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -169,7 +169,7 @@ export interface OrganizationSecurityPolicyState {
      * For organization security policies, the only supported type
      * is "FIREWALL".
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      */
     type?: pulumi.Input<string>;
 }
@@ -196,7 +196,7 @@ export interface OrganizationSecurityPolicyArgs {
      * For organization security policies, the only supported type
      * is "FIREWALL".
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      */
     type?: pulumi.Input<string>;
 }

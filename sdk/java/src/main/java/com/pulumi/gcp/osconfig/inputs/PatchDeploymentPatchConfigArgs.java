@@ -108,7 +108,7 @@ public final class PatchDeploymentPatchConfigArgs extends com.pulumi.resources.R
 
     /**
      * Post-patch reboot settings.
-     * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+     * Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
      * 
      */
     @Import(name="rebootConfig")
@@ -116,7 +116,7 @@ public final class PatchDeploymentPatchConfigArgs extends com.pulumi.resources.R
 
     /**
      * @return Post-patch reboot settings.
-     * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+     * Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
      * 
      */
     public Optional<Output<String>> rebootConfig() {
@@ -321,7 +321,7 @@ public final class PatchDeploymentPatchConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param rebootConfig Post-patch reboot settings.
-         * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+         * Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class PatchDeploymentPatchConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param rebootConfig Post-patch reboot settings.
-         * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+         * Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
          * 
          * @return builder
          * 

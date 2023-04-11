@@ -79,7 +79,7 @@ public final class GlobalNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * Type of network endpoints in this network endpoint group.
-     * Possible values are `INTERNET_IP_PORT` and `INTERNET_FQDN_PORT`.
+     * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
      */
     @Import(name="networkEndpointType")
@@ -87,7 +87,7 @@ public final class GlobalNetworkEndpointGroupState extends com.pulumi.resources.
 
     /**
      * @return Type of network endpoints in this network endpoint group.
-     * Possible values are `INTERNET_IP_PORT` and `INTERNET_FQDN_PORT`.
+     * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
      */
     public Optional<Output<String>> networkEndpointType() {
@@ -236,7 +236,7 @@ public final class GlobalNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group.
-         * Possible values are `INTERNET_IP_PORT` and `INTERNET_FQDN_PORT`.
+         * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GlobalNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group.
-         * Possible values are `INTERNET_IP_PORT` and `INTERNET_FQDN_PORT`.
+         * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
          * 
          * @return builder
          * 

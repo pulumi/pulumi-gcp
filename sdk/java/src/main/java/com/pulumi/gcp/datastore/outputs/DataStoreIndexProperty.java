@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class DataStoreIndexProperty {
     /**
      * @return The direction the index should optimize for sorting.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     private String direction;
@@ -24,7 +24,7 @@ public final class DataStoreIndexProperty {
     private DataStoreIndexProperty() {}
     /**
      * @return The direction the index should optimize for sorting.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     public String direction() {

@@ -160,7 +160,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * Creating user Databases is only available for projects on the Blaze plan.
      * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
      * Default value is `USER_DATABASE`.
-     * Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+     * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -252,7 +252,7 @@ export interface DatabaseInstanceState {
      * Creating user Databases is only available for projects on the Blaze plan.
      * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
      * Default value is `USER_DATABASE`.
-     * Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+     * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
     type?: pulumi.Input<string>;
 }
@@ -286,7 +286,7 @@ export interface DatabaseInstanceArgs {
      * Creating user Databases is only available for projects on the Blaze plan.
      * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
      * Default value is `USER_DATABASE`.
-     * Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+     * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      */
     type?: pulumi.Input<string>;
 }

@@ -589,7 +589,7 @@ type DomainMappingResourceRecord struct {
 	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata *string `pulumi:"rrdata"`
 	// Resource record type. Example: `AAAA`.
-	// Possible values are `A`, `AAAA`, and `CNAME`.
+	// Possible values are: `A`, `AAAA`, `CNAME`.
 	Type *string `pulumi:"type"`
 }
 
@@ -610,7 +610,7 @@ type DomainMappingResourceRecordArgs struct {
 	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
 	// Resource record type. Example: `AAAA`.
-	// Possible values are `A`, `AAAA`, and `CNAME`.
+	// Possible values are: `A`, `AAAA`, `CNAME`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -676,7 +676,7 @@ func (o DomainMappingResourceRecordOutput) Rrdata() pulumi.StringPtrOutput {
 }
 
 // Resource record type. Example: `AAAA`.
-// Possible values are `A`, `AAAA`, and `CNAME`.
+// Possible values are: `A`, `AAAA`, `CNAME`.
 func (o DomainMappingResourceRecordOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainMappingResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -718,7 +718,7 @@ type DomainMappingSslSettings struct {
 	PendingManagedCertificateId *string `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 	// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-	// Possible values are `AUTOMATIC` and `MANUAL`.
+	// Possible values are: `AUTOMATIC`, `MANUAL`.
 	SslManagementType string `pulumi:"sslManagementType"`
 }
 
@@ -750,7 +750,7 @@ type DomainMappingSslSettingsArgs struct {
 	PendingManagedCertificateId pulumi.StringPtrInput `pulumi:"pendingManagedCertificateId"`
 	// SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 	// If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-	// Possible values are `AUTOMATIC` and `MANUAL`.
+	// Possible values are: `AUTOMATIC`, `MANUAL`.
 	SslManagementType pulumi.StringInput `pulumi:"sslManagementType"`
 }
 
@@ -853,7 +853,7 @@ func (o DomainMappingSslSettingsOutput) PendingManagedCertificateId() pulumi.Str
 
 // SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 // If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-// Possible values are `AUTOMATIC` and `MANUAL`.
+// Possible values are: `AUTOMATIC`, `MANUAL`.
 func (o DomainMappingSslSettingsOutput) SslManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainMappingSslSettings) string { return v.SslManagementType }).(pulumi.StringOutput)
 }
@@ -914,7 +914,7 @@ func (o DomainMappingSslSettingsPtrOutput) PendingManagedCertificateId() pulumi.
 
 // SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
 // If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-// Possible values are `AUTOMATIC` and `MANUAL`.
+// Possible values are: `AUTOMATIC`, `MANUAL`.
 func (o DomainMappingSslSettingsPtrOutput) SslManagementType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMappingSslSettings) *string {
 		if v == nil {
@@ -928,7 +928,7 @@ type EngineSplitTrafficSplit struct {
 	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 	Allocations map[string]string `pulumi:"allocations"`
 	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-	// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+	// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
 	ShardBy *string `pulumi:"shardBy"`
 }
 
@@ -947,7 +947,7 @@ type EngineSplitTrafficSplitArgs struct {
 	// Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
 	Allocations pulumi.StringMapInput `pulumi:"allocations"`
 	// Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-	// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+	// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
 	ShardBy pulumi.StringPtrInput `pulumi:"shardBy"`
 }
 
@@ -1034,7 +1034,7 @@ func (o EngineSplitTrafficSplitOutput) Allocations() pulumi.StringMapOutput {
 }
 
 // Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
 func (o EngineSplitTrafficSplitOutput) ShardBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EngineSplitTrafficSplit) *string { return v.ShardBy }).(pulumi.StringPtrOutput)
 }
@@ -1074,7 +1074,7 @@ func (o EngineSplitTrafficSplitPtrOutput) Allocations() pulumi.StringMapOutput {
 }
 
 // Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-// Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+// Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
 func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EngineSplitTrafficSplit) *string {
 		if v == nil {
@@ -1087,16 +1087,16 @@ func (o EngineSplitTrafficSplitPtrOutput) ShardBy() pulumi.StringPtrOutput {
 type FlexibleAppVersionApiConfig struct {
 	// Action to take when users access resources that require authentication.
 	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+	// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction *string `pulumi:"authFailAction"`
 	// Level of login required to access this resource.
 	// Default value is `LOGIN_OPTIONAL`.
-	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+	// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 	Login *string `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script string `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+	// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 	SecurityLevel *string `pulumi:"securityLevel"`
 	// URL to serve the endpoint at.
 	Url *string `pulumi:"url"`
@@ -1116,16 +1116,16 @@ type FlexibleAppVersionApiConfigInput interface {
 type FlexibleAppVersionApiConfigArgs struct {
 	// Action to take when users access resources that require authentication.
 	// Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+	// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
 	// Level of login required to access this resource.
 	// Default value is `LOGIN_OPTIONAL`.
-	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+	// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script pulumi.StringInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+	// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
 	// URL to serve the endpoint at.
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -1210,14 +1210,14 @@ func (o FlexibleAppVersionApiConfigOutput) ToFlexibleAppVersionApiConfigPtrOutpu
 
 // Action to take when users access resources that require authentication.
 // Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o FlexibleAppVersionApiConfigOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
 // Level of login required to access this resource.
 // Default value is `LOGIN_OPTIONAL`.
-// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 func (o FlexibleAppVersionApiConfigOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
@@ -1228,7 +1228,7 @@ func (o FlexibleAppVersionApiConfigOutput) Script() pulumi.StringOutput {
 }
 
 // Security (HTTPS) enforcement for this URL.
-// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 func (o FlexibleAppVersionApiConfigOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionApiConfig) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
@@ -1264,7 +1264,7 @@ func (o FlexibleAppVersionApiConfigPtrOutput) Elem() FlexibleAppVersionApiConfig
 
 // Action to take when users access resources that require authentication.
 // Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -1276,7 +1276,7 @@ func (o FlexibleAppVersionApiConfigPtrOutput) AuthFailAction() pulumi.StringPtrO
 
 // Level of login required to access this resource.
 // Default value is `LOGIN_OPTIONAL`.
-// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 func (o FlexibleAppVersionApiConfigPtrOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -1297,7 +1297,7 @@ func (o FlexibleAppVersionApiConfigPtrOutput) Script() pulumi.StringPtrOutput {
 }
 
 // Security (HTTPS) enforcement for this URL.
-// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 func (o FlexibleAppVersionApiConfigPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionApiConfig) *string {
 		if v == nil {
@@ -3210,7 +3210,7 @@ type FlexibleAppVersionEndpointsApiService struct {
 	Name string `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 	// Default value is `FIXED`.
-	// Possible values are `FIXED` and `MANAGED`.
+	// Possible values are: `FIXED`, `MANAGED`.
 	RolloutStrategy *string `pulumi:"rolloutStrategy"`
 }
 
@@ -3240,7 +3240,7 @@ type FlexibleAppVersionEndpointsApiServiceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 	// Default value is `FIXED`.
-	// Possible values are `FIXED` and `MANAGED`.
+	// Possible values are: `FIXED`, `MANAGED`.
 	RolloutStrategy pulumi.StringPtrInput `pulumi:"rolloutStrategy"`
 }
 
@@ -3344,7 +3344,7 @@ func (o FlexibleAppVersionEndpointsApiServiceOutput) Name() pulumi.StringOutput 
 
 // Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 // Default value is `FIXED`.
-// Possible values are `FIXED` and `MANAGED`.
+// Possible values are: `FIXED`, `MANAGED`.
 func (o FlexibleAppVersionEndpointsApiServiceOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionEndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
 }
@@ -3411,7 +3411,7 @@ func (o FlexibleAppVersionEndpointsApiServicePtrOutput) Name() pulumi.StringPtrO
 
 // Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
 // Default value is `FIXED`.
-// Possible values are `FIXED` and `MANAGED`.
+// Possible values are: `FIXED`, `MANAGED`.
 func (o FlexibleAppVersionEndpointsApiServicePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersionEndpointsApiService) *string {
 		if v == nil {
@@ -3560,20 +3560,20 @@ func (o FlexibleAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 
 type FlexibleAppVersionHandler struct {
 	// Actions to take when the user is not logged in.
-	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+	// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction *string `pulumi:"authFailAction"`
 	// Methods to restrict access to a URL based on login status.
-	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+	// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 	Login *string `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
-	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+	// Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern.
 	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
 	// Structure is documented below.
 	Script *FlexibleAppVersionHandlerScript `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+	// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 	SecurityLevel *string `pulumi:"securityLevel"`
 	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
 	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.
@@ -3597,20 +3597,20 @@ type FlexibleAppVersionHandlerInput interface {
 
 type FlexibleAppVersionHandlerArgs struct {
 	// Actions to take when the user is not logged in.
-	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+	// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
 	// Methods to restrict access to a URL based on login status.
-	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+	// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
-	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+	// Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern.
 	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
 	// Structure is documented below.
 	Script FlexibleAppVersionHandlerScriptPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+	// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
 	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
 	// Static file handlers describe which files in the application directory are static files, and which URLs serve them.
@@ -3673,19 +3673,19 @@ func (o FlexibleAppVersionHandlerOutput) ToFlexibleAppVersionHandlerOutputWithCo
 }
 
 // Actions to take when the user is not logged in.
-// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o FlexibleAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
 // Methods to restrict access to a URL based on login status.
-// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 func (o FlexibleAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
 // 30x code to use when performing redirects for the secure field.
-// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+// Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
 func (o FlexibleAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
 }
@@ -3698,7 +3698,7 @@ func (o FlexibleAppVersionHandlerOutput) Script() FlexibleAppVersionHandlerScrip
 }
 
 // Security (HTTPS) enforcement for this URL.
-// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 func (o FlexibleAppVersionHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlexibleAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
@@ -5485,7 +5485,7 @@ func (o FlexibleAppVersionVpcAccessConnectorPtrOutput) Name() pulumi.StringPtrOu
 type ServiceNetworkSettingsNetworkSettings struct {
 	// The ingress settings for version or service.
 	// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-	// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+	// Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
 	IngressTrafficAllowed *string `pulumi:"ingressTrafficAllowed"`
 }
 
@@ -5503,7 +5503,7 @@ type ServiceNetworkSettingsNetworkSettingsInput interface {
 type ServiceNetworkSettingsNetworkSettingsArgs struct {
 	// The ingress settings for version or service.
 	// Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-	// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+	// Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
 	IngressTrafficAllowed pulumi.StringPtrInput `pulumi:"ingressTrafficAllowed"`
 }
 
@@ -5586,7 +5586,7 @@ func (o ServiceNetworkSettingsNetworkSettingsOutput) ToServiceNetworkSettingsNet
 
 // The ingress settings for version or service.
 // Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+// Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
 func (o ServiceNetworkSettingsNetworkSettingsOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceNetworkSettingsNetworkSettings) *string { return v.IngressTrafficAllowed }).(pulumi.StringPtrOutput)
 }
@@ -5617,7 +5617,7 @@ func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) Elem() ServiceNetworkSet
 
 // The ingress settings for version or service.
 // Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-// Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+// Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
 func (o ServiceNetworkSettingsNetworkSettingsPtrOutput) IngressTrafficAllowed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceNetworkSettingsNetworkSettings) *string {
 		if v == nil {
@@ -6813,20 +6813,20 @@ func (o StandardAppVersionEntrypointPtrOutput) Shell() pulumi.StringPtrOutput {
 
 type StandardAppVersionHandler struct {
 	// Actions to take when the user is not logged in.
-	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+	// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction *string `pulumi:"authFailAction"`
 	// Methods to restrict access to a URL based on login status.
-	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+	// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 	Login *string `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
-	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+	// Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern.
 	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
 	// Structure is documented below.
 	Script *StandardAppVersionHandlerScript `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+	// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 	SecurityLevel *string `pulumi:"securityLevel"`
 	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
 	// Structure is documented below.
@@ -6849,20 +6849,20 @@ type StandardAppVersionHandlerInput interface {
 
 type StandardAppVersionHandlerArgs struct {
 	// Actions to take when the user is not logged in.
-	// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+	// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 	AuthFailAction pulumi.StringPtrInput `pulumi:"authFailAction"`
 	// Methods to restrict access to a URL based on login status.
-	// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+	// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 	Login pulumi.StringPtrInput `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field.
-	// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+	// Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
 	RedirectHttpResponseCode pulumi.StringPtrInput `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern.
 	// Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
 	// Structure is documented below.
 	Script StandardAppVersionHandlerScriptPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+	// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 	SecurityLevel pulumi.StringPtrInput `pulumi:"securityLevel"`
 	// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
 	// Structure is documented below.
@@ -6924,19 +6924,19 @@ func (o StandardAppVersionHandlerOutput) ToStandardAppVersionHandlerOutputWithCo
 }
 
 // Actions to take when the user is not logged in.
-// Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+// Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
 func (o StandardAppVersionHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
 }
 
 // Methods to restrict access to a URL based on login status.
-// Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+// Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
 func (o StandardAppVersionHandlerOutput) Login() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
 }
 
 // 30x code to use when performing redirects for the secure field.
-// Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+// Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
 func (o StandardAppVersionHandlerOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
 }
@@ -6949,7 +6949,7 @@ func (o StandardAppVersionHandlerOutput) Script() StandardAppVersionHandlerScrip
 }
 
 // Security (HTTPS) enforcement for this URL.
-// Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+// Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
 func (o StandardAppVersionHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StandardAppVersionHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }

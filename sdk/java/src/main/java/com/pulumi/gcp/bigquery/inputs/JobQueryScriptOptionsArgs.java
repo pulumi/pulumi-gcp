@@ -18,7 +18,7 @@ public final class JobQueryScriptOptionsArgs extends com.pulumi.resources.Resour
     /**
      * Determines which statement in the script represents the &#34;key result&#34;,
      * used to populate the schema and query results of the script job.
-     * Possible values are `LAST` and `FIRST_SELECT`.
+     * Possible values are: `LAST`, `FIRST_SELECT`.
      * 
      */
     @Import(name="keyResultStatement")
@@ -27,7 +27,7 @@ public final class JobQueryScriptOptionsArgs extends com.pulumi.resources.Resour
     /**
      * @return Determines which statement in the script represents the &#34;key result&#34;,
      * used to populate the schema and query results of the script job.
-     * Possible values are `LAST` and `FIRST_SELECT`.
+     * Possible values are: `LAST`, `FIRST_SELECT`.
      * 
      */
     public Optional<Output<String>> keyResultStatement() {
@@ -93,7 +93,7 @@ public final class JobQueryScriptOptionsArgs extends com.pulumi.resources.Resour
         /**
          * @param keyResultStatement Determines which statement in the script represents the &#34;key result&#34;,
          * used to populate the schema and query results of the script job.
-         * Possible values are `LAST` and `FIRST_SELECT`.
+         * Possible values are: `LAST`, `FIRST_SELECT`.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class JobQueryScriptOptionsArgs extends com.pulumi.resources.Resour
         /**
          * @param keyResultStatement Determines which statement in the script represents the &#34;key result&#34;,
          * used to populate the schema and query results of the script job.
-         * Possible values are `LAST` and `FIRST_SELECT`.
+         * Possible values are: `LAST`, `FIRST_SELECT`.
          * 
          * @return builder
          * 

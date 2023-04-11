@@ -26,7 +26,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
     /**
      * The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
-     * Possible values are `MYSQL` and `SPANNER`.
+     * Possible values are: `MYSQL`, `SPANNER`.
      * 
      */
     @Import(name="databaseType")
@@ -35,7 +35,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The database type that the Metastore service stores its data.
      * Default value is `MYSQL`.
-     * Possible values are `MYSQL` and `SPANNER`.
+     * Possible values are: `MYSQL`, `SPANNER`.
      * 
      */
     public Optional<Output<String>> databaseType() {
@@ -215,7 +215,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
     /**
      * The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
-     * Possible values are `CANARY` and `STABLE`.
+     * Possible values are: `CANARY`, `STABLE`.
      * 
      */
     @Import(name="releaseChannel")
@@ -224,7 +224,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The release channel of the service. If unspecified, defaults to `STABLE`.
      * Default value is `STABLE`.
-     * Possible values are `CANARY` and `STABLE`.
+     * Possible values are: `CANARY`, `STABLE`.
      * 
      */
     public Optional<Output<String>> releaseChannel() {
@@ -269,7 +269,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The tier of the service.
-     * Possible values are `DEVELOPER` and `ENTERPRISE`.
+     * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      * 
      */
     @Import(name="tier")
@@ -277,7 +277,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The tier of the service.
-     * Possible values are `DEVELOPER` and `ENTERPRISE`.
+     * Possible values are: `DEVELOPER`, `ENTERPRISE`.
      * 
      */
     public Optional<Output<String>> tier() {
@@ -325,7 +325,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param databaseType The database type that the Metastore service stores its data.
          * Default value is `MYSQL`.
-         * Possible values are `MYSQL` and `SPANNER`.
+         * Possible values are: `MYSQL`, `SPANNER`.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param databaseType The database type that the Metastore service stores its data.
          * Default value is `MYSQL`.
-         * Possible values are `MYSQL` and `SPANNER`.
+         * Possible values are: `MYSQL`, `SPANNER`.
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param releaseChannel The release channel of the service. If unspecified, defaults to `STABLE`.
          * Default value is `STABLE`.
-         * Possible values are `CANARY` and `STABLE`.
+         * Possible values are: `CANARY`, `STABLE`.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param releaseChannel The release channel of the service. If unspecified, defaults to `STABLE`.
          * Default value is `STABLE`.
-         * Possible values are `CANARY` and `STABLE`.
+         * Possible values are: `CANARY`, `STABLE`.
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param tier The tier of the service.
-         * Possible values are `DEVELOPER` and `ENTERPRISE`.
+         * Possible values are: `DEVELOPER`, `ENTERPRISE`.
          * 
          * @return builder
          * 
@@ -664,7 +664,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param tier The tier of the service.
-         * Possible values are `DEVELOPER` and `ENTERPRISE`.
+         * Possible values are: `DEVELOPER`, `ENTERPRISE`.
          * 
          * @return builder
          * 

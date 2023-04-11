@@ -260,7 +260,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
 	// - FRIDAY: Friday
 	// - SATURDAY: Saturday
 	// - SUNDAY: Sunday
-	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	//   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	Day string `pulumi:"day"`
 	// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
 	// A duration in seconds with up to nine fractional digits,
@@ -292,7 +292,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
 	// - FRIDAY: Friday
 	// - SATURDAY: Saturday
 	// - SUNDAY: Sunday
-	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	//   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	Day pulumi.StringInput `pulumi:"day"`
 	// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
 	// A duration in seconds with up to nine fractional digits,
@@ -363,7 +363,7 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToInstanceMainte
 //   - FRIDAY: Friday
 //   - SATURDAY: Saturday
 //   - SUNDAY: Sunday
-//     Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+//     Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }

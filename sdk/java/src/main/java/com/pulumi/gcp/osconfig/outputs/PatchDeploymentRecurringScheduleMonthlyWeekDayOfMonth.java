@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
     /**
      * @return A day of the week.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     private String dayOfWeek;
@@ -25,7 +25,7 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
     private PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth() {}
     /**
      * @return A day of the week.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public String dayOfWeek() {

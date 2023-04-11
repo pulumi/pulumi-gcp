@@ -242,7 +242,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     /**
      * The type of vNIC to be used on this interface. This may be gVNIC
      * or VirtioNet.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      * 
      */
     @Import(name="nicType")
@@ -251,7 +251,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
     /**
      * @return The type of vNIC to be used on this interface. This may be gVNIC
      * or VirtioNet.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      * 
      */
     public Optional<Output<String>> nicType() {
@@ -682,7 +682,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         /**
          * @param nicType The type of vNIC to be used on this interface. This may be gVNIC
          * or VirtioNet.
-         * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+         * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         /**
          * @param nicType The type of vNIC to be used on this interface. This may be gVNIC
          * or VirtioNet.
-         * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+         * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
          * 
          * @return builder
          * 

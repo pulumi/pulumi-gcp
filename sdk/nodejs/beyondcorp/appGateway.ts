@@ -108,7 +108,7 @@ export class AppGateway extends pulumi.CustomResource {
     /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
-     * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+     * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      */
     public readonly hostType!: pulumi.Output<string | undefined>;
     /**
@@ -135,7 +135,7 @@ export class AppGateway extends pulumi.CustomResource {
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -200,7 +200,7 @@ export interface AppGatewayState {
     /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
-     * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+     * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      */
     hostType?: pulumi.Input<string>;
     /**
@@ -227,7 +227,7 @@ export interface AppGatewayState {
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -247,7 +247,7 @@ export interface AppGatewayArgs {
     /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
-     * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+     * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      */
     hostType?: pulumi.Input<string>;
     /**
@@ -270,7 +270,7 @@ export interface AppGatewayArgs {
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      */
     type?: pulumi.Input<string>;
 }

@@ -180,7 +180,7 @@ type DatabaseInstance struct {
 	// Creating user Databases is only available for projects on the Blaze plan.
 	// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
 	// Default value is `USER_DATABASE`.
-	// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+	// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -245,7 +245,7 @@ type databaseInstanceState struct {
 	// Creating user Databases is only available for projects on the Blaze plan.
 	// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
 	// Default value is `USER_DATABASE`.
-	// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+	// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -276,7 +276,7 @@ type DatabaseInstanceState struct {
 	// Creating user Databases is only available for projects on the Blaze plan.
 	// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
 	// Default value is `USER_DATABASE`.
-	// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+	// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
 	Type pulumi.StringPtrInput
 }
 
@@ -301,7 +301,7 @@ type databaseInstanceArgs struct {
 	// Creating user Databases is only available for projects on the Blaze plan.
 	// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
 	// Default value is `USER_DATABASE`.
-	// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+	// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -323,7 +323,7 @@ type DatabaseInstanceArgs struct {
 	// Creating user Databases is only available for projects on the Blaze plan.
 	// Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
 	// Default value is `USER_DATABASE`.
-	// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+	// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
 	Type pulumi.StringPtrInput
 }
 
@@ -461,7 +461,7 @@ func (o DatabaseInstanceOutput) State() pulumi.StringOutput {
 // Creating user Databases is only available for projects on the Blaze plan.
 // Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
 // Default value is `USER_DATABASE`.
-// Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+// Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
 func (o DatabaseInstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

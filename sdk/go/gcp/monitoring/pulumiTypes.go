@@ -859,7 +859,7 @@ type AlertPolicyConditionConditionAbsentAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+	// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -904,7 +904,7 @@ type AlertPolicyConditionConditionAbsentAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+	// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
 }
 
@@ -952,7 +952,7 @@ type AlertPolicyConditionConditionAbsentAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+	// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -997,7 +997,7 @@ type AlertPolicyConditionConditionAbsentAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+	// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
 }
 
@@ -1087,7 +1087,7 @@ func (o AlertPolicyConditionConditionAbsentAggregationOutput) AlignmentPeriod() 
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
-// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
 }
@@ -1138,7 +1138,7 @@ func (o AlertPolicyConditionConditionAbsentAggregationOutput) GroupByFields() pu
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
-// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 func (o AlertPolicyConditionConditionAbsentAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionAbsentAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
 }
@@ -1535,7 +1535,7 @@ type AlertPolicyConditionConditionMonitoringQueryLanguage struct {
 	// A condition control that determines how
 	// metric-threshold conditions are evaluated when
 	// data stops arriving.
-	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 	EvaluationMissingData *string `pulumi:"evaluationMissingData"`
 	// Monitoring Query Language query that outputs a boolean stream.
 	Query string `pulumi:"query"`
@@ -1582,7 +1582,7 @@ type AlertPolicyConditionConditionMonitoringQueryLanguageArgs struct {
 	// A condition control that determines how
 	// metric-threshold conditions are evaluated when
 	// data stops arriving.
-	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 	EvaluationMissingData pulumi.StringPtrInput `pulumi:"evaluationMissingData"`
 	// Monitoring Query Language query that outputs a boolean stream.
 	Query pulumi.StringInput `pulumi:"query"`
@@ -1697,7 +1697,7 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) Duration() p
 // A condition control that determines how
 // metric-threshold conditions are evaluated when
 // data stops arriving.
-// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 func (o AlertPolicyConditionConditionMonitoringQueryLanguageOutput) EvaluationMissingData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionMonitoringQueryLanguage) *string { return v.EvaluationMissingData }).(pulumi.StringPtrOutput)
 }
@@ -1773,7 +1773,7 @@ func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) Duration(
 // A condition control that determines how
 // metric-threshold conditions are evaluated when
 // data stops arriving.
-// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 func (o AlertPolicyConditionConditionMonitoringQueryLanguagePtrOutput) EvaluationMissingData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionMonitoringQueryLanguage) *string {
 		if v == nil {
@@ -2007,7 +2007,7 @@ type AlertPolicyConditionConditionThreshold struct {
 	// the left-hand side and the threshold on the
 	// right-hand side. Only COMPARISON_LT and
 	// COMPARISON_GT are supported currently.
-	// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+	// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
 	Comparison string `pulumi:"comparison"`
 	// Specifies the alignment of data points in
 	// individual time series selected by
@@ -2062,7 +2062,7 @@ type AlertPolicyConditionConditionThreshold struct {
 	// A condition control that determines how
 	// metric-threshold conditions are evaluated when
 	// data stops arriving.
-	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 	EvaluationMissingData *string `pulumi:"evaluationMissingData"`
 	// A filter that identifies which time series
 	// should be compared with the threshold.The
@@ -2127,7 +2127,7 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// the left-hand side and the threshold on the
 	// right-hand side. Only COMPARISON_LT and
 	// COMPARISON_GT are supported currently.
-	// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+	// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
 	Comparison pulumi.StringInput `pulumi:"comparison"`
 	// Specifies the alignment of data points in
 	// individual time series selected by
@@ -2182,7 +2182,7 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// A condition control that determines how
 	// metric-threshold conditions are evaluated when
 	// data stops arriving.
-	// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+	// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 	EvaluationMissingData pulumi.StringPtrInput `pulumi:"evaluationMissingData"`
 	// A filter that identifies which time series
 	// should be compared with the threshold.The
@@ -2317,7 +2317,7 @@ func (o AlertPolicyConditionConditionThresholdOutput) Aggregations() AlertPolicy
 // the left-hand side and the threshold on the
 // right-hand side. Only COMPARISON_LT and
 // COMPARISON_GT are supported currently.
-// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
 func (o AlertPolicyConditionConditionThresholdOutput) Comparison() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) string { return v.Comparison }).(pulumi.StringOutput)
 }
@@ -2386,7 +2386,7 @@ func (o AlertPolicyConditionConditionThresholdOutput) Duration() pulumi.StringOu
 // A condition control that determines how
 // metric-threshold conditions are evaluated when
 // data stops arriving.
-// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 func (o AlertPolicyConditionConditionThresholdOutput) EvaluationMissingData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.EvaluationMissingData }).(pulumi.StringPtrOutput)
 }
@@ -2483,7 +2483,7 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Aggregations() AlertPol
 // the left-hand side and the threshold on the
 // right-hand side. Only COMPARISON_LT and
 // COMPARISON_GT are supported currently.
-// Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+// Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) Comparison() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *string {
 		if v == nil {
@@ -2570,7 +2570,7 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Duration() pulumi.Strin
 // A condition control that determines how
 // metric-threshold conditions are evaluated when
 // data stops arriving.
-// Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
 func (o AlertPolicyConditionConditionThresholdPtrOutput) EvaluationMissingData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *string {
 		if v == nil {
@@ -2663,7 +2663,7 @@ type AlertPolicyConditionConditionThresholdAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+	// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -2708,7 +2708,7 @@ type AlertPolicyConditionConditionThresholdAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+	// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
 }
 
@@ -2756,7 +2756,7 @@ type AlertPolicyConditionConditionThresholdAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+	// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -2801,7 +2801,7 @@ type AlertPolicyConditionConditionThresholdAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+	// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
 }
 
@@ -2891,7 +2891,7 @@ func (o AlertPolicyConditionConditionThresholdAggregationOutput) AlignmentPeriod
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
-// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
 }
@@ -2942,7 +2942,7 @@ func (o AlertPolicyConditionConditionThresholdAggregationOutput) GroupByFields()
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
-// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 func (o AlertPolicyConditionConditionThresholdAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdAggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
 }
@@ -3000,7 +3000,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+	// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -3045,7 +3045,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregation struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+	// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
 }
 
@@ -3093,7 +3093,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+	// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 	CrossSeriesReducer pulumi.StringPtrInput `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when
 	// crossSeriesReducer is specified.
@@ -3138,7 +3138,7 @@ type AlertPolicyConditionConditionThresholdDenominatorAggregationArgs struct {
 	// and alignmentPeriod must be
 	// specified; otherwise, an error is
 	// returned.
-	// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+	// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 	PerSeriesAligner pulumi.StringPtrInput `pulumi:"perSeriesAligner"`
 }
 
@@ -3228,7 +3228,7 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) Alig
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
-// Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+// Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
 		return v.CrossSeriesReducer
@@ -3281,7 +3281,7 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) Grou
 // and alignmentPeriod must be
 // specified; otherwise, an error is
 // returned.
-// Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+// Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
 func (o AlertPolicyConditionConditionThresholdDenominatorAggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdDenominatorAggregation) *string {
 		return v.PerSeriesAligner
@@ -4183,7 +4183,7 @@ type MetricDescriptorLabel struct {
 	Key string `pulumi:"key"`
 	// The type of data that can be assigned to the label.
 	// Default value is `STRING`.
-	// Possible values are `STRING`, `BOOL`, and `INT64`.
+	// Possible values are: `STRING`, `BOOL`, `INT64`.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -4205,7 +4205,7 @@ type MetricDescriptorLabelArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
 	// The type of data that can be assigned to the label.
 	// Default value is `STRING`.
-	// Possible values are `STRING`, `BOOL`, and `INT64`.
+	// Possible values are: `STRING`, `BOOL`, `INT64`.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
@@ -4272,7 +4272,7 @@ func (o MetricDescriptorLabelOutput) Key() pulumi.StringOutput {
 
 // The type of data that can be assigned to the label.
 // Default value is `STRING`.
-// Possible values are `STRING`, `BOOL`, and `INT64`.
+// Possible values are: `STRING`, `BOOL`, `INT64`.
 func (o MetricDescriptorLabelOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
@@ -8658,7 +8658,7 @@ type UptimeCheckConfigContentMatcher struct {
 	JsonPathMatcher *UptimeCheckConfigContentMatcherJsonPathMatcher `pulumi:"jsonPathMatcher"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	// Default value is `CONTAINS_STRING`.
-	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
+	// Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
 	Matcher *string `pulumi:"matcher"`
 }
 
@@ -8681,7 +8681,7 @@ type UptimeCheckConfigContentMatcherArgs struct {
 	JsonPathMatcher UptimeCheckConfigContentMatcherJsonPathMatcherPtrInput `pulumi:"jsonPathMatcher"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	// Default value is `CONTAINS_STRING`.
-	// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
+	// Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
 	Matcher pulumi.StringPtrInput `pulumi:"matcher"`
 }
 
@@ -8751,7 +8751,7 @@ func (o UptimeCheckConfigContentMatcherOutput) JsonPathMatcher() UptimeCheckConf
 
 // The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 // Default value is `CONTAINS_STRING`.
-// Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
+// Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
 func (o UptimeCheckConfigContentMatcherOutput) Matcher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigContentMatcher) *string { return v.Matcher }).(pulumi.StringPtrOutput)
 }
@@ -8779,7 +8779,7 @@ func (o UptimeCheckConfigContentMatcherArrayOutput) Index(i pulumi.IntInput) Upt
 type UptimeCheckConfigContentMatcherJsonPathMatcher struct {
 	// Options to perform JSONPath content matching.
 	// Default value is `EXACT_MATCH`.
-	// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+	// Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
 	JsonMatcher *string `pulumi:"jsonMatcher"`
 	// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
 	JsonPath string `pulumi:"jsonPath"`
@@ -8799,7 +8799,7 @@ type UptimeCheckConfigContentMatcherJsonPathMatcherInput interface {
 type UptimeCheckConfigContentMatcherJsonPathMatcherArgs struct {
 	// Options to perform JSONPath content matching.
 	// Default value is `EXACT_MATCH`.
-	// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+	// Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
 	JsonMatcher pulumi.StringPtrInput `pulumi:"jsonMatcher"`
 	// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
 	JsonPath pulumi.StringInput `pulumi:"jsonPath"`
@@ -8884,7 +8884,7 @@ func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) ToUptimeCheckConfi
 
 // Options to perform JSONPath content matching.
 // Default value is `EXACT_MATCH`.
-// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+// Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
 func (o UptimeCheckConfigContentMatcherJsonPathMatcherOutput) JsonMatcher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigContentMatcherJsonPathMatcher) *string { return v.JsonMatcher }).(pulumi.StringPtrOutput)
 }
@@ -8920,7 +8920,7 @@ func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) Elem() UptimeCh
 
 // Options to perform JSONPath content matching.
 // Default value is `EXACT_MATCH`.
-// Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+// Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
 func (o UptimeCheckConfigContentMatcherJsonPathMatcherPtrOutput) JsonMatcher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigContentMatcherJsonPathMatcher) *string {
 		if v == nil {
@@ -8950,7 +8950,7 @@ type UptimeCheckConfigHttpCheck struct {
 	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
 	Body *string `pulumi:"body"`
 	// The content type to use for the check.
-	// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
 	ContentType *string `pulumi:"contentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers map[string]string `pulumi:"headers"`
@@ -8962,7 +8962,7 @@ type UptimeCheckConfigHttpCheck struct {
 	Port *int `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
 	// Default value is `GET`.
-	// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+	// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 	RequestMethod *string `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl *bool `pulumi:"useSsl"`
@@ -8991,7 +8991,7 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	// The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// The content type to use for the check.
-	// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
 	// The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
@@ -9003,7 +9003,7 @@ type UptimeCheckConfigHttpCheckArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
 	// Default value is `GET`.
-	// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+	// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 	RequestMethod pulumi.StringPtrInput `pulumi:"requestMethod"`
 	// If true, use HTTPS instead of HTTP to run the check.
 	UseSsl pulumi.BoolPtrInput `pulumi:"useSsl"`
@@ -9108,7 +9108,7 @@ func (o UptimeCheckConfigHttpCheckOutput) Body() pulumi.StringPtrOutput {
 }
 
 // The content type to use for the check.
-// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
 func (o UptimeCheckConfigHttpCheckOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -9135,7 +9135,7 @@ func (o UptimeCheckConfigHttpCheckOutput) Port() pulumi.IntPtrOutput {
 
 // The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
 // Default value is `GET`.
-// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 func (o UptimeCheckConfigHttpCheckOutput) RequestMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheck) *string { return v.RequestMethod }).(pulumi.StringPtrOutput)
 }
@@ -9207,7 +9207,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Body() pulumi.StringPtrOutput {
 }
 
 // The content type to use for the check.
-// Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+// Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {
@@ -9259,7 +9259,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 
 // The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
 // Default value is `GET`.
-// Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+// Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
 func (o UptimeCheckConfigHttpCheckPtrOutput) RequestMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigHttpCheck) *string {
 		if v == nil {
@@ -9291,7 +9291,7 @@ func (o UptimeCheckConfigHttpCheckPtrOutput) ValidateSsl() pulumi.BoolPtrOutput 
 
 type UptimeCheckConfigHttpCheckAcceptedResponseStatusCode struct {
 	// A class of status codes to accept.
-	// Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+	// Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
 	StatusClass *string `pulumi:"statusClass"`
 	// A status code to accept.
 	StatusValue *int `pulumi:"statusValue"`
@@ -9310,7 +9310,7 @@ type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeInput interface {
 
 type UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs struct {
 	// A class of status codes to accept.
-	// Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+	// Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
 	StatusClass pulumi.StringPtrInput `pulumi:"statusClass"`
 	// A status code to accept.
 	StatusValue pulumi.IntPtrInput `pulumi:"statusValue"`
@@ -9368,7 +9368,7 @@ func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) ToUptimeChec
 }
 
 // A class of status codes to accept.
-// Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+// Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
 func (o UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeOutput) StatusClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigHttpCheckAcceptedResponseStatusCode) *string { return v.StatusClass }).(pulumi.StringPtrOutput)
 }
@@ -9718,7 +9718,7 @@ type UptimeCheckConfigResourceGroup struct {
 	// The group of resources being monitored. Should be the `name` of a group
 	GroupId *string `pulumi:"groupId"`
 	// The resource type of the group members.
-	// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+	// Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -9737,7 +9737,7 @@ type UptimeCheckConfigResourceGroupArgs struct {
 	// The group of resources being monitored. Should be the `name` of a group
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
 	// The resource type of the group members.
-	// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+	// Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
@@ -9824,7 +9824,7 @@ func (o UptimeCheckConfigResourceGroupOutput) GroupId() pulumi.StringPtrOutput {
 }
 
 // The resource type of the group members.
-// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+// Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
 func (o UptimeCheckConfigResourceGroupOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UptimeCheckConfigResourceGroup) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
@@ -9864,7 +9864,7 @@ func (o UptimeCheckConfigResourceGroupPtrOutput) GroupId() pulumi.StringPtrOutpu
 }
 
 // The resource type of the group members.
-// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+// Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
 func (o UptimeCheckConfigResourceGroupPtrOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigResourceGroup) *string {
 		if v == nil {

@@ -27,7 +27,7 @@ public final class OrganizationSecurityPolicyRuleMatch {
      * @return Preconfigured versioned expression. For organization security policy rules,
      * the only supported type is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     private @Nullable String versionedExpr;
@@ -52,7 +52,7 @@ public final class OrganizationSecurityPolicyRuleMatch {
      * @return Preconfigured versioned expression. For organization security policy rules,
      * the only supported type is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     public Optional<String> versionedExpr() {

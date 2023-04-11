@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
         /// <summary>
         /// Type of the Cloud SQL database.
-        /// Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+        /// Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

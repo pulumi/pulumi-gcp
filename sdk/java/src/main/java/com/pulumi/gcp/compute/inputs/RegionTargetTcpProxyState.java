@@ -127,7 +127,7 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     @Import(name="proxyHeader")
@@ -137,7 +137,7 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
      * @return Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     public Optional<Output<String>> proxyHeader() {
@@ -370,7 +370,7 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
          * @param proxyHeader Specifies the type of proxy header to append before sending data to
          * the backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class RegionTargetTcpProxyState extends com.pulumi.resources.Resour
          * @param proxyHeader Specifies the type of proxy header to append before sending data to
          * the backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * 
          * @return builder
          * 

@@ -32,7 +32,7 @@ public final class BackendBucketCdnPolicy {
     /**
      * @return Specifies the cache setting for all responses from this backend.
      * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-     * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+     * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
      * 
      */
     private @Nullable String cacheMode;
@@ -107,7 +107,7 @@ public final class BackendBucketCdnPolicy {
     /**
      * @return Specifies the cache setting for all responses from this backend.
      * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-     * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+     * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
      * 
      */
     public Optional<String> cacheMode() {

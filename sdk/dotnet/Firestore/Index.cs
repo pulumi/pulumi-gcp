@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Firestore
         /// <summary>
         /// The scope at which a query is run.
         /// Default value is `COLLECTION`.
-        /// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         /// </summary>
         [Output("queryScope")]
         public Output<string?> QueryScope { get; private set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Gcp.Firestore
         /// <summary>
         /// The scope at which a query is run.
         /// Default value is `COLLECTION`.
-        /// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }
@@ -264,7 +264,7 @@ namespace Pulumi.Gcp.Firestore
         /// <summary>
         /// The scope at which a query is run.
         /// Default value is `COLLECTION`.
-        /// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+        /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         /// </summary>
         [Input("queryScope")]
         public Input<string>? QueryScope { get; set; }

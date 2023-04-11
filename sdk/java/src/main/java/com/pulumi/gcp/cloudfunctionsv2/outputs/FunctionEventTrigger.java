@@ -33,7 +33,7 @@ public final class FunctionEventTrigger {
     /**
      * @return Describes the retry policy in case of function&#39;s execution failure.
      * Retried execution is charged as any other execution.
-     * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+     * Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
      * 
      */
     private @Nullable String retryPolicy;
@@ -84,7 +84,7 @@ public final class FunctionEventTrigger {
     /**
      * @return Describes the retry policy in case of function&#39;s execution failure.
      * Retried execution is charged as any other execution.
-     * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+     * Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
      * 
      */
     public Optional<String> retryPolicy() {

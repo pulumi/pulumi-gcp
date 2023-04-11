@@ -75,6 +75,16 @@ export type KeystoresAliasesKeyCertFile = import("./keystoresAliasesKeyCertFile"
 export const KeystoresAliasesKeyCertFile: typeof import("./keystoresAliasesKeyCertFile").KeystoresAliasesKeyCertFile = null as any;
 utilities.lazyLoad(exports, ["KeystoresAliasesKeyCertFile"], () => require("./keystoresAliasesKeyCertFile"));
 
+export { KeystoresAliasesPkcs12Args, KeystoresAliasesPkcs12State } from "./keystoresAliasesPkcs12";
+export type KeystoresAliasesPkcs12 = import("./keystoresAliasesPkcs12").KeystoresAliasesPkcs12;
+export const KeystoresAliasesPkcs12: typeof import("./keystoresAliasesPkcs12").KeystoresAliasesPkcs12 = null as any;
+utilities.lazyLoad(exports, ["KeystoresAliasesPkcs12"], () => require("./keystoresAliasesPkcs12"));
+
+export { KeystoresAliasesSelfSignedCertArgs, KeystoresAliasesSelfSignedCertState } from "./keystoresAliasesSelfSignedCert";
+export type KeystoresAliasesSelfSignedCert = import("./keystoresAliasesSelfSignedCert").KeystoresAliasesSelfSignedCert;
+export const KeystoresAliasesSelfSignedCert: typeof import("./keystoresAliasesSelfSignedCert").KeystoresAliasesSelfSignedCert = null as any;
+utilities.lazyLoad(exports, ["KeystoresAliasesSelfSignedCert"], () => require("./keystoresAliasesSelfSignedCert"));
+
 export { NatAddressArgs, NatAddressState } from "./natAddress";
 export type NatAddress = import("./natAddress").NatAddress;
 export const NatAddress: typeof import("./natAddress").NatAddress = null as any;
@@ -133,6 +143,10 @@ const _module = {
                 return new InstanceAttachment(name, <any>undefined, { urn })
             case "gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile":
                 return new KeystoresAliasesKeyCertFile(name, <any>undefined, { urn })
+            case "gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12":
+                return new KeystoresAliasesPkcs12(name, <any>undefined, { urn })
+            case "gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert":
+                return new KeystoresAliasesSelfSignedCert(name, <any>undefined, { urn })
             case "gcp:apigee/natAddress:NatAddress":
                 return new NatAddress(name, <any>undefined, { urn })
             case "gcp:apigee/organization:Organization":
@@ -162,6 +176,8 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/flowhook", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/instanceAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesKeyCertFile", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesPkcs12", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/keystoresAliasesSelfSignedCert", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/natAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/sharedflow", _module)

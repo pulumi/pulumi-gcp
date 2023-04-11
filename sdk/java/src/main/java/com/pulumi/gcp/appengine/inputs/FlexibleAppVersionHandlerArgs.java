@@ -19,7 +19,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * Actions to take when the user is not logged in.
-     * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+     * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
     @Import(name="authFailAction")
@@ -27,7 +27,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * @return Actions to take when the user is not logged in.
-     * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+     * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
     public Optional<Output<String>> authFailAction() {
@@ -36,7 +36,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * Methods to restrict access to a URL based on login status.
-     * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+     * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
      * 
      */
     @Import(name="login")
@@ -44,7 +44,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * @return Methods to restrict access to a URL based on login status.
-     * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+     * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
      * 
      */
     public Optional<Output<String>> login() {
@@ -53,7 +53,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * 30x code to use when performing redirects for the secure field.
-     * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+     * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
      * 
      */
     @Import(name="redirectHttpResponseCode")
@@ -61,7 +61,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * @return 30x code to use when performing redirects for the secure field.
-     * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+     * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
      * 
      */
     public Optional<Output<String>> redirectHttpResponseCode() {
@@ -89,7 +89,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * Security (HTTPS) enforcement for this URL.
-     * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+     * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
      * 
      */
     @Import(name="securityLevel")
@@ -97,7 +97,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
     /**
      * @return Security (HTTPS) enforcement for this URL.
-     * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+     * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
      * 
      */
     public Optional<Output<String>> securityLevel() {
@@ -172,7 +172,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param authFailAction Actions to take when the user is not logged in.
-         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+         * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param authFailAction Actions to take when the user is not logged in.
-         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+         * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param login Methods to restrict access to a URL based on login status.
-         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+         * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param login Methods to restrict access to a URL based on login status.
-         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+         * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param redirectHttpResponseCode 30x code to use when performing redirects for the secure field.
-         * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+         * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param redirectHttpResponseCode 30x code to use when performing redirects for the secure field.
-         * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+         * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param securityLevel Security (HTTPS) enforcement for this URL.
-         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+         * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class FlexibleAppVersionHandlerArgs extends com.pulumi.resources.Re
 
         /**
          * @param securityLevel Security (HTTPS) enforcement for this URL.
-         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+         * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
          * 
          * @return builder
          * 

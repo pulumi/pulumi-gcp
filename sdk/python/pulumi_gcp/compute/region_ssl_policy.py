@@ -35,7 +35,7 @@ class RegionSslPolicyArgs:
         :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer.
                Default value is `TLS_1_0`.
-               Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -51,7 +51,7 @@ class RegionSslPolicyArgs:
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
                Default value is `COMPATIBLE`.
-               Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -118,7 +118,7 @@ class RegionSslPolicyArgs:
         The minimum version of SSL protocol that can be used by the clients
         to establish a connection with the load balancer.
         Default value is `TLS_1_0`.
-        Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
         """
         return pulumi.get(self, "min_tls_version")
 
@@ -156,7 +156,7 @@ class RegionSslPolicyArgs:
         for information on what cipher suites each profile provides. If
         `CUSTOM` is used, the `custom_features` attribute **must be set**.
         Default value is `COMPATIBLE`.
-        Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         """
         return pulumi.get(self, "profile")
 
@@ -209,7 +209,7 @@ class _RegionSslPolicyState:
         :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer.
                Default value is `TLS_1_0`.
-               Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -225,7 +225,7 @@ class _RegionSslPolicyState:
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
                Default value is `COMPATIBLE`.
-               Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
@@ -328,7 +328,7 @@ class _RegionSslPolicyState:
         The minimum version of SSL protocol that can be used by the clients
         to establish a connection with the load balancer.
         Default value is `TLS_1_0`.
-        Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
         """
         return pulumi.get(self, "min_tls_version")
 
@@ -366,7 +366,7 @@ class _RegionSslPolicyState:
         for information on what cipher suites each profile provides. If
         `CUSTOM` is used, the `custom_features` attribute **must be set**.
         Default value is `COMPATIBLE`.
-        Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         """
         return pulumi.get(self, "profile")
 
@@ -459,7 +459,7 @@ class RegionSslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer.
                Default value is `TLS_1_0`.
-               Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -475,7 +475,7 @@ class RegionSslPolicy(pulumi.CustomResource):
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
                Default value is `COMPATIBLE`.
-               Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
@@ -594,7 +594,7 @@ class RegionSslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
                to establish a connection with the load balancer.
                Default value is `TLS_1_0`.
-               Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+               Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -610,7 +610,7 @@ class RegionSslPolicy(pulumi.CustomResource):
                for information on what cipher suites each profile provides. If
                `CUSTOM` is used, the `custom_features` attribute **must be set**.
                Default value is `COMPATIBLE`.
-               Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+               Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the regional SSL policy resides.
@@ -687,7 +687,7 @@ class RegionSslPolicy(pulumi.CustomResource):
         The minimum version of SSL protocol that can be used by the clients
         to establish a connection with the load balancer.
         Default value is `TLS_1_0`.
-        Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+        Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
         """
         return pulumi.get(self, "min_tls_version")
 
@@ -717,7 +717,7 @@ class RegionSslPolicy(pulumi.CustomResource):
         for information on what cipher suites each profile provides. If
         `CUSTOM` is used, the `custom_features` attribute **must be set**.
         Default value is `COMPATIBLE`.
-        Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+        Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
         """
         return pulumi.get(self, "profile")
 

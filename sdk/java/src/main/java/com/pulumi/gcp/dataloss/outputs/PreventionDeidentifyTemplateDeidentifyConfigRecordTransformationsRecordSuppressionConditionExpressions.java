@@ -21,7 +21,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     /**
      * @return The operator to apply to the result of conditions. Default and currently only supported value is AND.
      * Default value is `AND`.
-     * Possible values are `AND`.
+     * Possible values are: `AND`.
      * 
      */
     private @Nullable String logicalOperator;
@@ -38,7 +38,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     /**
      * @return The operator to apply to the result of conditions. Default and currently only supported value is AND.
      * Default value is `AND`.
-     * Possible values are `AND`.
+     * Possible values are: `AND`.
      * 
      */
     public Optional<String> logicalOperator() {

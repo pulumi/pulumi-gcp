@@ -71,7 +71,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
     /**
      * A list of policy types that are activated for this taxonomy. If not set,
      * defaults to an empty list.
-     * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+     * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      * 
      */
     @Export(name="activatedPolicyTypes", type=List.class, parameters={String.class})
@@ -80,7 +80,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
     /**
      * @return A list of policy types that are activated for this taxonomy. If not set,
      * defaults to an empty list.
-     * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+     * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      * 
      */
     public Output<Optional<List<String>>> activatedPolicyTypes() {

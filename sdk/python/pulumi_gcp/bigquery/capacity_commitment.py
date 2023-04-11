@@ -17,29 +17,33 @@ class CapacityCommitmentArgs:
                  plan: pulumi.Input[str],
                  slot_count: pulumi.Input[int],
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CapacityCommitment resource.
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is
                empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
                cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
                or merged.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         """
         pulumi.set(__self__, "plan", plan)
         pulumi.set(__self__, "slot_count", slot_count)
         if capacity_commitment_id is not None:
             pulumi.set(__self__, "capacity_commitment_id", capacity_commitment_id)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if enforce_single_admin_project_per_org is not None:
             pulumi.set(__self__, "enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
         if location is not None:
@@ -53,7 +57,7 @@ class CapacityCommitmentArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[str]:
         """
-        Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         """
         return pulumi.get(self, "plan")
 
@@ -87,6 +91,18 @@ class CapacityCommitmentArgs:
     @capacity_commitment_id.setter
     def capacity_commitment_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "capacity_commitment_id", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
@@ -130,7 +146,7 @@ class CapacityCommitmentArgs:
     @pulumi.getter(name="renewalPlan")
     def renewal_plan(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 
@@ -145,6 +161,7 @@ class _CapacityCommitmentState:
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
                  commitment_end_time: Optional[pulumi.Input[str]] = None,
                  commitment_start_time: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -161,14 +178,15 @@ class _CapacityCommitmentState:
                or merged.
         :param pulumi.Input[str] commitment_end_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         :param pulumi.Input[str] commitment_start_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[str] state: State of the commitment
         """
@@ -178,6 +196,8 @@ class _CapacityCommitmentState:
             pulumi.set(__self__, "commitment_end_time", commitment_end_time)
         if commitment_start_time is not None:
             pulumi.set(__self__, "commitment_start_time", commitment_start_time)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if enforce_single_admin_project_per_org is not None:
             pulumi.set(__self__, "enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
         if location is not None:
@@ -235,6 +255,18 @@ class _CapacityCommitmentState:
         pulumi.set(self, "commitment_start_time", value)
 
     @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
+
+    @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
     def enforce_single_admin_project_per_org(self) -> Optional[pulumi.Input[str]]:
         """
@@ -275,7 +307,7 @@ class _CapacityCommitmentState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         """
         return pulumi.get(self, "plan")
 
@@ -300,7 +332,7 @@ class _CapacityCommitmentState:
     @pulumi.getter(name="renewalPlan")
     def renewal_plan(self) -> Optional[pulumi.Input[str]]:
         """
-        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 
@@ -339,6 +371,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -366,8 +399,9 @@ class CapacityCommitment(pulumi.CustomResource):
 
         example = gcp.bigquery.CapacityCommitment("example",
             capacity_commitment_id="example-commitment",
-            location="us-west1",
-            plan="FLEX",
+            edition="ENTERPRISE",
+            location="us-west2",
+            plan="FLEX_FLAT_RATE",
             slot_count=100)
         ```
 
@@ -376,7 +410,15 @@ class CapacityCommitment(pulumi.CustomResource):
         CapacityCommitment can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{name}}
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,13 +427,14 @@ class CapacityCommitment(pulumi.CustomResource):
                empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character
                cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
                or merged.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         """
         ...
@@ -420,8 +463,9 @@ class CapacityCommitment(pulumi.CustomResource):
 
         example = gcp.bigquery.CapacityCommitment("example",
             capacity_commitment_id="example-commitment",
-            location="us-west1",
-            plan="FLEX",
+            edition="ENTERPRISE",
+            location="us-west2",
+            plan="FLEX_FLAT_RATE",
             slot_count=100)
         ```
 
@@ -430,7 +474,15 @@ class CapacityCommitment(pulumi.CustomResource):
         CapacityCommitment can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{name}}
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -449,6 +501,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -465,6 +518,7 @@ class CapacityCommitment(pulumi.CustomResource):
             __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
 
             __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
+            __props__.__dict__["edition"] = edition
             __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
             __props__.__dict__["location"] = location
             if plan is None and not opts.urn:
@@ -492,6 +546,7 @@ class CapacityCommitment(pulumi.CustomResource):
             capacity_commitment_id: Optional[pulumi.Input[str]] = None,
             commitment_end_time: Optional[pulumi.Input[str]] = None,
             commitment_start_time: Optional[pulumi.Input[str]] = None,
+            edition: Optional[pulumi.Input[str]] = None,
             enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -513,14 +568,15 @@ class CapacityCommitment(pulumi.CustomResource):
                or merged.
         :param pulumi.Input[str] commitment_end_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         :param pulumi.Input[str] commitment_start_time: The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+        :param pulumi.Input[str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] name: The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
-        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        :param pulumi.Input[str] plan: Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         :param pulumi.Input[int] slot_count: Number of slots in this commitment.
         :param pulumi.Input[str] state: State of the commitment
         """
@@ -531,6 +587,7 @@ class CapacityCommitment(pulumi.CustomResource):
         __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
         __props__.__dict__["commitment_end_time"] = commitment_end_time
         __props__.__dict__["commitment_start_time"] = commitment_start_time
+        __props__.__dict__["edition"] = edition
         __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -569,6 +626,14 @@ class CapacityCommitment(pulumi.CustomResource):
         return pulumi.get(self, "commitment_start_time")
 
     @property
+    @pulumi.getter
+    def edition(self) -> pulumi.Output[Optional[str]]:
+        """
+        The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        """
+        return pulumi.get(self, "edition")
+
+    @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
     def enforce_single_admin_project_per_org(self) -> pulumi.Output[Optional[str]]:
         """
@@ -597,7 +662,7 @@ class CapacityCommitment(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         """
         return pulumi.get(self, "plan")
 
@@ -614,7 +679,7 @@ class CapacityCommitment(pulumi.CustomResource):
     @pulumi.getter(name="renewalPlan")
     def renewal_plan(self) -> pulumi.Output[Optional[str]]:
         """
-        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         """
         return pulumi.get(self, "renewal_plan")
 

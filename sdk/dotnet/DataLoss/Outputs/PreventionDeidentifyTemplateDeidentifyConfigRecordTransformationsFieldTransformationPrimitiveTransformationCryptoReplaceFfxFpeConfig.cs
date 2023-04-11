@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     {
         /// <summary>
         /// Common alphabets.
-        /// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+        /// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         /// </summary>
         public readonly string? CommonAlphabet;
         /// <summary>

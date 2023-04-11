@@ -31,7 +31,7 @@ public final class NodeGroupAutoscalingPolicy {
      * - ONLY_SCALE_OUT: Enables only scaling out.
      *   You must use this mode if your node groups are configured to
      *   restart their hosted VMs on minimal servers.
-     *   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+     *   Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
      * 
      */
     private @Nullable String mode;
@@ -60,7 +60,7 @@ public final class NodeGroupAutoscalingPolicy {
      * - ONLY_SCALE_OUT: Enables only scaling out.
      *   You must use this mode if your node groups are configured to
      *   restart their hosted VMs on minimal servers.
-     *   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+     *   Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
      * 
      */
     public Optional<String> mode() {

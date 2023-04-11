@@ -148,7 +148,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
     }
     /**
      * The trust direction, which decides if the current domain is trusted, trusting, or both.
-     * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+     * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      * 
      */
     @Export(name="trustDirection", type=String.class, parameters={})
@@ -156,7 +156,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The trust direction, which decides if the current domain is trusted, trusting, or both.
-     * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+     * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      * 
      */
     public Output<String> trustDirection() {
@@ -180,7 +180,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of trust represented by the trust resource.
-     * Possible values are `FOREST` and `EXTERNAL`.
+     * Possible values are: `FOREST`, `EXTERNAL`.
      * 
      */
     @Export(name="trustType", type=String.class, parameters={})
@@ -188,7 +188,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of trust represented by the trust resource.
-     * Possible values are `FOREST` and `EXTERNAL`.
+     * Possible values are: `FOREST`, `EXTERNAL`.
      * 
      */
     public Output<String> trustType() {

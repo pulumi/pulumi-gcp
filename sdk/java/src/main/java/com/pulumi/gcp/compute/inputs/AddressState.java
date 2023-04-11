@@ -43,7 +43,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * The type of address to reserve.
      * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
-     * Possible values are `INTERNAL` and `EXTERNAL`.
+     * Possible values are: `INTERNAL`, `EXTERNAL`.
      * 
      */
     @Import(name="addressType")
@@ -53,7 +53,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * @return The type of address to reserve.
      * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
-     * Possible values are `INTERNAL` and `EXTERNAL`.
+     * Possible values are: `INTERNAL`, `EXTERNAL`.
      * 
      */
     public Optional<Output<String>> addressType() {
@@ -168,7 +168,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it&#39;s always Premium](https://cloud.google.com/network-tiers/docs/overview).
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     @Import(name="networkTier")
@@ -178,7 +178,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * @return The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
      * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it&#39;s always Premium](https://cloud.google.com/network-tiers/docs/overview).
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     public Optional<Output<String>> networkTier() {
@@ -392,7 +392,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * @param addressType The type of address to reserve.
          * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
          * Default value is `EXTERNAL`.
-         * Possible values are `INTERNAL` and `EXTERNAL`.
+         * Possible values are: `INTERNAL`, `EXTERNAL`.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * @param addressType The type of address to reserve.
          * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
          * Default value is `EXTERNAL`.
-         * Possible values are `INTERNAL` and `EXTERNAL`.
+         * Possible values are: `INTERNAL`, `EXTERNAL`.
          * 
          * @return builder
          * 
@@ -559,7 +559,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * @param networkTier The networking tier used for configuring this address. If this field is not
          * specified, it is assumed to be PREMIUM.
          * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it&#39;s always Premium](https://cloud.google.com/network-tiers/docs/overview).
-         * Possible values are `PREMIUM` and `STANDARD`.
+         * Possible values are: `PREMIUM`, `STANDARD`.
          * 
          * @return builder
          * 
@@ -573,7 +573,7 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * @param networkTier The networking tier used for configuring this address. If this field is not
          * specified, it is assumed to be PREMIUM.
          * This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it&#39;s always Premium](https://cloud.google.com/network-tiers/docs/overview).
-         * Possible values are `PREMIUM` and `STANDARD`.
+         * Possible values are: `PREMIUM`, `STANDARD`.
          * 
          * @return builder
          * 

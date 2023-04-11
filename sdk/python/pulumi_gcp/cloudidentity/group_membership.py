@@ -109,7 +109,7 @@ class _GroupMembershipState:
         :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-               Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+               Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
         :param pulumi.Input['GroupMembershipPreferredMemberKeyArgs'] preferred_member_key: EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]] roles: The MembershipRoles that apply to the Membership.
@@ -177,7 +177,7 @@ class _GroupMembershipState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+        Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
         """
         return pulumi.get(self, "name")
 
@@ -508,7 +508,7 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GroupMembershipMemberKeyArgs']] member_key: EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-               Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+               Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
         :param pulumi.Input[pulumi.InputType['GroupMembershipPreferredMemberKeyArgs']] preferred_member_key: EntityKey of the member.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GroupMembershipRoleArgs']]]] roles: The MembershipRoles that apply to the Membership.
@@ -561,7 +561,7 @@ class GroupMembership(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+        Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
         """
         return pulumi.get(self, "name")
 

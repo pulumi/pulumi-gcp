@@ -75,7 +75,7 @@ type SourceRepresentationInstance struct {
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey pulumi.StringPtrOutput `pulumi:"clientKey"`
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+	// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrOutput `pulumi:"dumpFilePath"`
@@ -148,7 +148,7 @@ type sourceRepresentationInstanceState struct {
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey *string `pulumi:"clientKey"`
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+	// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
@@ -180,7 +180,7 @@ type SourceRepresentationInstanceState struct {
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey pulumi.StringPtrInput
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+	// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringPtrInput
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
@@ -216,7 +216,7 @@ type sourceRepresentationInstanceArgs struct {
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey *string `pulumi:"clientKey"`
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+	// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
@@ -249,7 +249,7 @@ type SourceRepresentationInstanceArgs struct {
 	// The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
 	ClientKey pulumi.StringPtrInput
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+	// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringInput
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
@@ -376,7 +376,7 @@ func (o SourceRepresentationInstanceOutput) ClientKey() pulumi.StringPtrOutput {
 }
 
 // The MySQL version running on your source database server.
-// Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
 func (o SourceRepresentationInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }

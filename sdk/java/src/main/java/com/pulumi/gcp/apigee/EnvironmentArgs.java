@@ -19,7 +19,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. API Proxy type supported by the environment. The type can be set when creating
      * the Environment and cannot be changed.
-     * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+     * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      * 
      */
     @Import(name="apiProxyType")
@@ -28,7 +28,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. API Proxy type supported by the environment. The type can be set when creating
      * the Environment and cannot be changed.
-     * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+     * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
      * 
      */
     public Optional<Output<String>> apiProxyType() {
@@ -43,7 +43,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
      * Managing the deployment of API proxy or shared flow revisions;
      * Creating, updating, or deleting resource files;
      * Creating, updating, or deleting target servers.
-     * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+     * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      * 
      */
     @Import(name="deploymentType")
@@ -57,7 +57,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
      * Managing the deployment of API proxy or shared flow revisions;
      * Creating, updating, or deleting resource files;
      * Creating, updating, or deleting target servers.
-     * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+     * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
      * 
      */
     public Optional<Output<String>> deploymentType() {
@@ -176,7 +176,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param apiProxyType Optional. API Proxy type supported by the environment. The type can be set when creating
          * the Environment and cannot be changed.
-         * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+         * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param apiProxyType Optional. API Proxy type supported by the environment. The type can be set when creating
          * the Environment and cannot be changed.
-         * Possible values are `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, and `CONFIGURABLE`.
+         * Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          * Managing the deployment of API proxy or shared flow revisions;
          * Creating, updating, or deleting resource files;
          * Creating, updating, or deleting target servers.
-         * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+         * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
          * Managing the deployment of API proxy or shared flow revisions;
          * Creating, updating, or deleting resource files;
          * Creating, updating, or deleting target servers.
-         * Possible values are `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, and `ARCHIVE`.
+         * Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
          * 
          * @return builder
          * 

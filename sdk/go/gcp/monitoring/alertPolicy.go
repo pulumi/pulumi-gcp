@@ -131,7 +131,7 @@ type AlertPolicy struct {
 	AlertStrategy AlertPolicyAlertStrategyPtrOutput `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
-	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+	// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
 	Combiner pulumi.StringOutput `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
@@ -228,7 +228,7 @@ type alertPolicyState struct {
 	AlertStrategy *AlertPolicyAlertStrategy `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
-	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+	// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
 	Combiner *string `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
@@ -288,7 +288,7 @@ type AlertPolicyState struct {
 	AlertStrategy AlertPolicyAlertStrategyPtrInput
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
-	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+	// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
 	Combiner pulumi.StringPtrInput
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
@@ -352,7 +352,7 @@ type alertPolicyArgs struct {
 	AlertStrategy *AlertPolicyAlertStrategy `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
-	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+	// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
 	Combiner string `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
@@ -400,7 +400,7 @@ type AlertPolicyArgs struct {
 	AlertStrategy AlertPolicyAlertStrategyPtrInput
 	// How to combine the results of multiple conditions to
 	// determine if an incident should be opened.
-	// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+	// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
 	Combiner pulumi.StringInput
 	// A list of conditions for the policy. The conditions are combined by
 	// AND or OR according to the combiner field. If the combined conditions
@@ -536,7 +536,7 @@ func (o AlertPolicyOutput) AlertStrategy() AlertPolicyAlertStrategyPtrOutput {
 
 // How to combine the results of multiple conditions to
 // determine if an incident should be opened.
-// Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+// Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
 func (o AlertPolicyOutput) Combiner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertPolicy) pulumi.StringOutput { return v.Combiner }).(pulumi.StringOutput)
 }

@@ -161,7 +161,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
         /// Default value is `AFTER_CLASSIC_FIREWALL`.
-        /// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        /// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         /// </summary>
         [Output("networkFirewallPolicyEnforcementOrder")]
         public Output<string?> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.Compute
         /// of this network in the same region as the router. If set to `GLOBAL`,
         /// this network's cloud routers will advertise routes with all
         /// subnetworks of this network, across regions.
-        /// Possible values are `REGIONAL` and `GLOBAL`.
+        /// Possible values are: `REGIONAL`, `GLOBAL`.
         /// </summary>
         [Output("routingMode")]
         public Output<string> RoutingMode { get; private set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
         /// Default value is `AFTER_CLASSIC_FIREWALL`.
-        /// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        /// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         /// </summary>
         [Input("networkFirewallPolicyEnforcementOrder")]
         public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.Gcp.Compute
         /// of this network in the same region as the router. If set to `GLOBAL`,
         /// this network's cloud routers will advertise routes with all
         /// subnetworks of this network, across regions.
-        /// Possible values are `REGIONAL` and `GLOBAL`.
+        /// Possible values are: `REGIONAL`, `GLOBAL`.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
         /// Default value is `AFTER_CLASSIC_FIREWALL`.
-        /// Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+        /// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         /// </summary>
         [Input("networkFirewallPolicyEnforcementOrder")]
         public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.Gcp.Compute
         /// of this network in the same region as the router. If set to `GLOBAL`,
         /// this network's cloud routers will advertise routes with all
         /// subnetworks of this network, across regions.
-        /// Possible values are `REGIONAL` and `GLOBAL`.
+        /// Possible values are: `REGIONAL`, `GLOBAL`.
         /// </summary>
         [Input("routingMode")]
         public Input<string>? RoutingMode { get; set; }

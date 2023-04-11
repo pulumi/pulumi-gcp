@@ -869,7 +869,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Characters to not transform when masking.
 	CharactersToSkip *string `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
-	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
 	CommonCharactersToIgnore *string `pulumi:"commonCharactersToIgnore"`
 }
 
@@ -888,7 +888,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Characters to not transform when masking.
 	CharactersToSkip pulumi.StringPtrInput `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
-	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
 	CommonCharactersToIgnore pulumi.StringPtrInput `pulumi:"commonCharactersToIgnore"`
 }
 
@@ -951,7 +951,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Common characters to not transform when masking. Useful to avoid removing punctuation.
-// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CommonCharactersToIgnore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore) *string {
 		return v.CommonCharactersToIgnore
@@ -2171,7 +2171,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig struct {
 	// Common alphabets.
-	// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+	// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 	CommonAlphabet *string `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 	// If the context is set but:
@@ -2213,7 +2213,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs struct {
 	// Common alphabets.
-	// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+	// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 	CommonAlphabet pulumi.StringPtrInput `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 	// If the context is set but:
@@ -2320,7 +2320,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Common alphabets.
-// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigOutput) CommonAlphabet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *string {
 		return v.CommonAlphabet
@@ -2402,7 +2402,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Common alphabets.
-// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrOutput) CommonAlphabet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *string {
 		if v == nil {
@@ -3581,7 +3581,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -3614,7 +3614,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -3722,7 +3722,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
 		return v.DayOfWeekValue
@@ -3811,7 +3811,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
 		if v == nil {
@@ -4717,7 +4717,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	Conditions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditions `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
 	// Default value is `AND`.
-	// Possible values are `AND`.
+	// Possible values are: `AND`.
 	LogicalOperator *string `pulumi:"logicalOperator"`
 }
 
@@ -4738,7 +4738,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsPtrInput `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
 	// Default value is `AND`.
-	// Possible values are `AND`.
+	// Possible values are: `AND`.
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
 }
 
@@ -4829,7 +4829,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 // The operator to apply to the result of conditions. Default and currently only supported value is AND.
 // Default value is `AND`.
-// Possible values are `AND`.
+// Possible values are: `AND`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsOutput) LogicalOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *string {
 		return v.LogicalOperator
@@ -4873,7 +4873,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 // The operator to apply to the result of conditions. Default and currently only supported value is AND.
 // Default value is `AND`.
-// Possible values are `AND`.
+// Possible values are: `AND`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsPtrOutput) LogicalOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressions) *string {
 		if v == nil {
@@ -5031,7 +5031,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField `pulumi:"field"`
 	// Operator used to compare the field or infoType to the value.
-	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	// Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
 	Operator string `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for EXISTS tests.]
 	// Structure is documented below.
@@ -5054,7 +5054,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionFieldInput `pulumi:"field"`
 	// Operator used to compare the field or infoType to the value.
-	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	// Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for EXISTS tests.]
 	// Structure is documented below.
@@ -5121,7 +5121,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Operator used to compare the field or infoType to the value.
-// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+// Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsCondition) string {
 		return v.Operator
@@ -5217,7 +5217,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -5250,7 +5250,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -5358,7 +5358,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
 		return v.DayOfWeekValue
@@ -5447,7 +5447,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValue) *string {
 		if v == nil {
@@ -6510,7 +6510,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -6543,7 +6543,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -6651,7 +6651,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax) *string {
 		return v.DayOfWeekValue
@@ -6740,7 +6740,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxPtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMax) *string {
 		if v == nil {
@@ -7191,7 +7191,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -7224,7 +7224,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -7332,7 +7332,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin) *string {
 		return v.DayOfWeekValue
@@ -7421,7 +7421,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinPtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMin) *string {
 		if v == nil {
@@ -7872,7 +7872,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -7905,7 +7905,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -7962,7 +7962,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValue) *string {
 		return v.DayOfWeekValue
@@ -8602,7 +8602,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Characters to not transform when masking.
 	CharactersToSkip *string `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
-	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
 	CommonCharactersToIgnore *string `pulumi:"commonCharactersToIgnore"`
 }
 
@@ -8621,7 +8621,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Characters to not transform when masking.
 	CharactersToSkip pulumi.StringPtrInput `pulumi:"charactersToSkip"`
 	// Common characters to not transform when masking. Useful to avoid removing punctuation.
-	// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+	// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
 	CommonCharactersToIgnore pulumi.StringPtrInput `pulumi:"commonCharactersToIgnore"`
 }
 
@@ -8684,7 +8684,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Common characters to not transform when masking. Useful to avoid removing punctuation.
-// Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreOutput) CommonCharactersToIgnore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore) *string {
 		return v.CommonCharactersToIgnore
@@ -10698,7 +10698,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig struct {
 	// Common alphabets.
-	// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+	// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 	CommonAlphabet *string `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 	// If the context is set but:
@@ -10740,7 +10740,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs struct {
 	// Common alphabets.
-	// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+	// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 	CommonAlphabet pulumi.StringPtrInput `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
 	// If the context is set but:
@@ -10847,7 +10847,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Common alphabets.
-// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigOutput) CommonAlphabet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *string {
 		return v.CommonAlphabet
@@ -10929,7 +10929,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Common alphabets.
-// Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigPtrOutput) CommonAlphabet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig) *string {
 		if v == nil {
@@ -13182,7 +13182,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -13215,7 +13215,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -13323,7 +13323,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound) *string {
 		return v.DayOfWeekValue
@@ -13412,7 +13412,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundPtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBound) *string {
 		if v == nil {
@@ -13863,7 +13863,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -13896,7 +13896,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -14004,7 +14004,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound) *string {
 		return v.DayOfWeekValue
@@ -14093,7 +14093,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundPtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBound) *string {
 		if v == nil {
@@ -14809,7 +14809,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -14842,7 +14842,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -14950,7 +14950,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
 		return v.DayOfWeekValue
@@ -15039,7 +15039,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValue) *string {
 		if v == nil {
@@ -15767,7 +15767,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig struct {
 	// The part of the time to keep.
-	// Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+	// Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
 	PartToExtract *string `pulumi:"partToExtract"`
 }
 
@@ -15784,7 +15784,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgs struct {
 	// The part of the time to keep.
-	// Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+	// Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
 	PartToExtract pulumi.StringPtrInput `pulumi:"partToExtract"`
 }
 
@@ -15866,7 +15866,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // The part of the time to keep.
-// Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+// Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigOutput) PartToExtract() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig) *string {
 		return v.PartToExtract
@@ -15898,7 +15898,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // The part of the time to keep.
-// Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+// Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigPtrOutput) PartToExtract() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig) *string {
 		if v == nil {
@@ -16159,7 +16159,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 	Conditions *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
 	// Default value is `AND`.
-	// Possible values are `AND`.
+	// Possible values are: `AND`.
 	LogicalOperator *string `pulumi:"logicalOperator"`
 }
 
@@ -16180,7 +16180,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 	Conditions PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsPtrInput `pulumi:"conditions"`
 	// The operator to apply to the result of conditions. Default and currently only supported value is AND.
 	// Default value is `AND`.
-	// Possible values are `AND`.
+	// Possible values are: `AND`.
 	LogicalOperator pulumi.StringPtrInput `pulumi:"logicalOperator"`
 }
 
@@ -16271,7 +16271,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 
 // The operator to apply to the result of conditions. Default and currently only supported value is AND.
 // Default value is `AND`.
-// Possible values are `AND`.
+// Possible values are: `AND`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsOutput) LogicalOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *string {
 		return v.LogicalOperator
@@ -16315,7 +16315,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 
 // The operator to apply to the result of conditions. Default and currently only supported value is AND.
 // Default value is `AND`.
-// Possible values are `AND`.
+// Possible values are: `AND`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsPtrOutput) LogicalOperator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressions) *string {
 		if v == nil {
@@ -16473,7 +16473,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 	// Structure is documented below.
 	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField `pulumi:"field"`
 	// Operator used to compare the field or infoType to the value.
-	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	// Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
 	Operator string `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for EXISTS tests.]
 	// Structure is documented below.
@@ -16496,7 +16496,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 	// Structure is documented below.
 	Field PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionFieldInput `pulumi:"field"`
 	// Operator used to compare the field or infoType to the value.
-	// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+	// Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for EXISTS tests.]
 	// Structure is documented below.
@@ -16563,7 +16563,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 }
 
 // Operator used to compare the field or infoType to the value.
-// Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+// Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition) string {
 		return v.Operator
@@ -16659,7 +16659,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 	// Structure is documented below.
 	DateValue *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue *string `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue *float64 `pulumi:"floatValue"`
@@ -16692,7 +16692,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 	// Structure is documented below.
 	DateValue PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrInput `pulumi:"dateValue"`
 	// Represents a day of the week.
-	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DayOfWeekValue pulumi.StringPtrInput `pulumi:"dayOfWeekValue"`
 	// A float value.
 	FloatValue pulumi.Float64PtrInput `pulumi:"floatValue"`
@@ -16800,7 +16800,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
 		return v.DayOfWeekValue
@@ -16889,7 +16889,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 }
 
 // Represents a day of the week.
-// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValuePtrOutput) DayOfWeekValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValue) *string {
 		if v == nil {
@@ -17335,7 +17335,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 
 type PreventionInspectTemplateInspectConfig struct {
 	// List of options defining data content to scan. If empty, text, images, and other content will be included.
-	// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+	// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
 	ContentOptions []string `pulumi:"contentOptions"`
 	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	// Structure is documented below.
@@ -17355,7 +17355,7 @@ type PreventionInspectTemplateInspectConfig struct {
 	Limits *PreventionInspectTemplateInspectConfigLimits `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
 	// Default value is `POSSIBLE`.
-	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 	MinLikelihood *string `pulumi:"minLikelihood"`
 	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
 	// other rules are executed in the order they are specified for each info type.
@@ -17376,7 +17376,7 @@ type PreventionInspectTemplateInspectConfigInput interface {
 
 type PreventionInspectTemplateInspectConfigArgs struct {
 	// List of options defining data content to scan. If empty, text, images, and other content will be included.
-	// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+	// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
 	ContentOptions pulumi.StringArrayInput `pulumi:"contentOptions"`
 	// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	// Structure is documented below.
@@ -17396,7 +17396,7 @@ type PreventionInspectTemplateInspectConfigArgs struct {
 	Limits PreventionInspectTemplateInspectConfigLimitsPtrInput `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
 	// Default value is `POSSIBLE`.
-	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 	MinLikelihood pulumi.StringPtrInput `pulumi:"minLikelihood"`
 	// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
 	// other rules are executed in the order they are specified for each info type.
@@ -17482,7 +17482,7 @@ func (o PreventionInspectTemplateInspectConfigOutput) ToPreventionInspectTemplat
 }
 
 // List of options defining data content to scan. If empty, text, images, and other content will be included.
-// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
 func (o PreventionInspectTemplateInspectConfigOutput) ContentOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfig) []string { return v.ContentOptions }).(pulumi.StringArrayOutput)
 }
@@ -17526,7 +17526,7 @@ func (o PreventionInspectTemplateInspectConfigOutput) Limits() PreventionInspect
 
 // Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
 // Default value is `POSSIBLE`.
-// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 func (o PreventionInspectTemplateInspectConfigOutput) MinLikelihood() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfig) *string { return v.MinLikelihood }).(pulumi.StringPtrOutput)
 }
@@ -17565,7 +17565,7 @@ func (o PreventionInspectTemplateInspectConfigPtrOutput) Elem() PreventionInspec
 }
 
 // List of options defining data content to scan. If empty, text, images, and other content will be included.
-// Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
 func (o PreventionInspectTemplateInspectConfigPtrOutput) ContentOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfig) []string {
 		if v == nil {
@@ -17633,7 +17633,7 @@ func (o PreventionInspectTemplateInspectConfigPtrOutput) Limits() PreventionInsp
 
 // Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
 // Default value is `POSSIBLE`.
-// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 func (o PreventionInspectTemplateInspectConfigPtrOutput) MinLikelihood() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfig) *string {
 		if v == nil {
@@ -17660,7 +17660,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoType struct {
 	// Structure is documented below.
 	Dictionary *PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary `pulumi:"dictionary"`
 	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-	// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+	// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
 	ExclusionType *string `pulumi:"exclusionType"`
 	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
 	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
@@ -17671,7 +17671,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoType struct {
 	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
 	// specified by the rule.
 	// Default value is `VERY_LIKELY`.
-	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 	Likelihood *string `pulumi:"likelihood"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -17697,7 +17697,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeArgs struct {
 	// Structure is documented below.
 	Dictionary PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryPtrInput `pulumi:"dictionary"`
 	// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-	// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+	// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
 	ExclusionType pulumi.StringPtrInput `pulumi:"exclusionType"`
 	// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
 	// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
@@ -17708,7 +17708,7 @@ type PreventionInspectTemplateInspectConfigCustomInfoTypeArgs struct {
 	// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
 	// specified by the rule.
 	// Default value is `VERY_LIKELY`.
-	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 	Likelihood pulumi.StringPtrInput `pulumi:"likelihood"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -17778,7 +17778,7 @@ func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) Dictionary()
 }
 
 // If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
 func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) ExclusionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) *string { return v.ExclusionType }).(pulumi.StringPtrOutput)
 }
@@ -17797,7 +17797,7 @@ func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) InfoType() P
 // Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
 // specified by the rule.
 // Default value is `VERY_LIKELY`.
-// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 func (o PreventionInspectTemplateInspectConfigCustomInfoTypeOutput) Likelihood() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigCustomInfoType) *string { return v.Likelihood }).(pulumi.StringPtrOutput)
 }
@@ -19448,7 +19448,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule struct {
 	// Structure is documented below.
 	ExcludeInfoTypes *PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes `pulumi:"excludeInfoTypes"`
 	// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-	// Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+	// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
 	MatchingType string `pulumi:"matchingType"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -19474,7 +19474,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs struct {
 	// Structure is documented below.
 	ExcludeInfoTypes PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesPtrInput `pulumi:"excludeInfoTypes"`
 	// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-	// Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+	// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
 	MatchingType pulumi.StringInput `pulumi:"matchingType"`
 	// Regular expression which defines the rule.
 	// Structure is documented below.
@@ -19575,7 +19575,7 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleOutput) Ex
 }
 
 // How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-// Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleOutput) MatchingType() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule) string { return v.MatchingType }).(pulumi.StringOutput)
 }
@@ -19635,7 +19635,7 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRulePtrOutput)
 }
 
 // How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-// Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRulePtrOutput) MatchingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule) *string {
 		if v == nil {
@@ -20892,7 +20892,7 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment struct {
 	// Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
-	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 	FixedLikelihood *string `pulumi:"fixedLikelihood"`
 	// Increase or decrease the likelihood by the specified number of levels. For example,
 	// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
@@ -20916,7 +20916,7 @@ type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjus
 
 type PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs struct {
 	// Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
-	// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+	// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 	FixedLikelihood pulumi.StringPtrInput `pulumi:"fixedLikelihood"`
 	// Increase or decrease the likelihood by the specified number of levels. For example,
 	// if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
@@ -21005,7 +21005,7 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAd
 }
 
 // Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
-// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentOutput) FixedLikelihood() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) *string {
 		return v.FixedLikelihood
@@ -21049,7 +21049,7 @@ func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAd
 }
 
 // Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
-// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
 func (o PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentPtrOutput) FixedLikelihood() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment) *string {
 		if v == nil {
@@ -22081,7 +22081,7 @@ type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig struct {
 	// If unspecified, then all available columns will be used for a new table or an (existing)
 	// table with no schema, and no changes will be made to an existing table that has a schema.
 	// Only for use with external storage.
-	// Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+	// Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
 	OutputSchema *string `pulumi:"outputSchema"`
 	// Information on the location of the target BigQuery Table.
 	// Structure is documented below.
@@ -22107,7 +22107,7 @@ type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs struct {
 	// If unspecified, then all available columns will be used for a new table or an (existing)
 	// table with no schema, and no changes will be made to an existing table that has a schema.
 	// Only for use with external storage.
-	// Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+	// Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
 	OutputSchema pulumi.StringPtrInput `pulumi:"outputSchema"`
 	// Information on the location of the target BigQuery Table.
 	// Structure is documented below.
@@ -22198,7 +22198,7 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) ToPr
 // If unspecified, then all available columns will be used for a new table or an (existing)
 // table with no schema, and no changes will be made to an existing table that has a schema.
 // Only for use with external storage.
-// Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+// Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigOutput) OutputSchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig) *string { return v.OutputSchema }).(pulumi.StringPtrOutput)
 }
@@ -22242,7 +22242,7 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) E
 // If unspecified, then all available columns will be used for a new table or an (existing)
 // table with no schema, and no changes will be made to an existing table that has a schema.
 // Only for use with external storage.
-// Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+// Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) OutputSchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig) *string {
 		if v == nil {
@@ -22676,7 +22676,7 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptions struct {
 	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
 	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
 	// Default value is `TOP`.
-	// Possible values are `TOP` and `RANDOM_START`.
+	// Possible values are: `TOP`, `RANDOM_START`.
 	SampleMethod *string `pulumi:"sampleMethod"`
 	// Set of files to scan.
 	// Structure is documented below.
@@ -22710,7 +22710,7 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs struct {
 	// How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
 	// rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
 	// Default value is `TOP`.
-	// Possible values are `TOP` and `RANDOM_START`.
+	// Possible values are: `TOP`, `RANDOM_START`.
 	SampleMethod pulumi.StringPtrInput `pulumi:"sampleMethod"`
 	// Set of files to scan.
 	// Structure is documented below.
@@ -22820,7 +22820,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) RowsLi
 // How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
 // rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
 // Default value is `TOP`.
-// Possible values are `TOP` and `RANDOM_START`.
+// Possible values are: `TOP`, `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *string { return v.SampleMethod }).(pulumi.StringPtrOutput)
 }
@@ -22896,7 +22896,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Row
 // How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
 // rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
 // Default value is `TOP`.
-// Possible values are `TOP` and `RANDOM_START`.
+// Possible values are: `TOP`, `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) *string {
 		if v == nil {
@@ -23210,14 +23210,14 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions struct {
 	// List of file type groups to include in the scan. If empty, all files are scanned and available data
 	// format processors are applied. In addition, the binary content of the selected files is always scanned as well.
 	// Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-	// Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+	// Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
 	FileTypes []string `pulumi:"fileTypes"`
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
 	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
 	FilesLimitPercent *int `pulumi:"filesLimitPercent"`
 	// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
 	// If not specified, scanning would start from the top.
-	// Possible values are `TOP` and `RANDOM_START`.
+	// Possible values are: `TOP`, `RANDOM_START`.
 	SampleMethod *string `pulumi:"sampleMethod"`
 }
 
@@ -23245,14 +23245,14 @@ type PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs struct {
 	// List of file type groups to include in the scan. If empty, all files are scanned and available data
 	// format processors are applied. In addition, the binary content of the selected files is always scanned as well.
 	// Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-	// Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+	// Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
 	FileTypes pulumi.StringArrayInput `pulumi:"fileTypes"`
 	// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
 	// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
 	FilesLimitPercent pulumi.IntPtrInput `pulumi:"filesLimitPercent"`
 	// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
 	// If not specified, scanning would start from the top.
-	// Possible values are `TOP` and `RANDOM_START`.
+	// Possible values are: `TOP`, `RANDOM_START`.
 	SampleMethod pulumi.StringPtrInput `pulumi:"sampleMethod"`
 }
 
@@ -23360,7 +23360,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) Fi
 // List of file type groups to include in the scan. If empty, all files are scanned and available data
 // format processors are applied. In addition, the binary content of the selected files is always scanned as well.
 // Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-// Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+// Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) FileTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) []string { return v.FileTypes }).(pulumi.StringArrayOutput)
 }
@@ -23375,7 +23375,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) Fi
 
 // How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
 // If not specified, scanning would start from the top.
-// Possible values are `TOP` and `RANDOM_START`.
+// Possible values are: `TOP`, `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) *string { return v.SampleMethod }).(pulumi.StringPtrOutput)
 }
@@ -23440,7 +23440,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput)
 // List of file type groups to include in the scan. If empty, all files are scanned and available data
 // format processors are applied. In addition, the binary content of the selected files is always scanned as well.
 // Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-// Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+// Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput) FileTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) []string {
 		if v == nil {
@@ -23463,7 +23463,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput)
 
 // How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
 // If not specified, scanning would start from the top.
-// Possible values are `TOP` and `RANDOM_START`.
+// Possible values are: `TOP`, `RANDOM_START`.
 func (o PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsPtrOutput) SampleMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions) *string {
 		if v == nil {

@@ -165,7 +165,7 @@ class DeviceCredentialPublicKey(dict):
                  key: str):
         """
         :param str format: The format of the key.
-               Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+               Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
         :param str key: The key data.
         """
         pulumi.set(__self__, "format", format)
@@ -176,7 +176,7 @@ class DeviceCredentialPublicKey(dict):
     def format(self) -> str:
         """
         The format of the key.
-        Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+        Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
         """
         return pulumi.get(self, "format")
 
@@ -221,10 +221,10 @@ class DeviceGatewayConfig(dict):
                  last_accessed_gateway_time: Optional[str] = None):
         """
         :param str gateway_auth_method: Indicates whether the device is a gateway.
-               Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+               Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
         :param str gateway_type: Indicates whether the device is a gateway.
                Default value is `NON_GATEWAY`.
-               Possible values are `GATEWAY` and `NON_GATEWAY`.
+               Possible values are: `GATEWAY`, `NON_GATEWAY`.
         :param str last_accessed_gateway_id: (Output)
                The ID of the gateway the device accessed most recently.
         :param str last_accessed_gateway_time: (Output)
@@ -244,7 +244,7 @@ class DeviceGatewayConfig(dict):
     def gateway_auth_method(self) -> Optional[str]:
         """
         Indicates whether the device is a gateway.
-        Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+        Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
         """
         return pulumi.get(self, "gateway_auth_method")
 
@@ -254,7 +254,7 @@ class DeviceGatewayConfig(dict):
         """
         Indicates whether the device is a gateway.
         Default value is `NON_GATEWAY`.
-        Possible values are `GATEWAY` and `NON_GATEWAY`.
+        Possible values are: `GATEWAY`, `NON_GATEWAY`.
         """
         return pulumi.get(self, "gateway_type")
 

@@ -20,7 +20,7 @@ public final class NodeGroupShareSettings {
     private @Nullable List<NodeGroupShareSettingsProjectMap> projectMaps;
     /**
      * @return Node group sharing type.
-     * Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+     * Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
      * 
      */
     private String shareType;
@@ -36,7 +36,7 @@ public final class NodeGroupShareSettings {
     }
     /**
      * @return Node group sharing type.
-     * Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+     * Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
      * 
      */
     public String shareType() {

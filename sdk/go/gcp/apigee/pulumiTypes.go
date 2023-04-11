@@ -1879,6 +1879,972 @@ func (o KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput) Index(i pulumi.
 	}).(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput)
 }
 
+type KeystoresAliasesPkcs12CertsInfo struct {
+	CertInfos []KeystoresAliasesPkcs12CertsInfoCertInfo `pulumi:"certInfos"`
+}
+
+// KeystoresAliasesPkcs12CertsInfoInput is an input type that accepts KeystoresAliasesPkcs12CertsInfoArgs and KeystoresAliasesPkcs12CertsInfoOutput values.
+// You can construct a concrete instance of `KeystoresAliasesPkcs12CertsInfoInput` via:
+//
+//	KeystoresAliasesPkcs12CertsInfoArgs{...}
+type KeystoresAliasesPkcs12CertsInfoInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesPkcs12CertsInfoOutput() KeystoresAliasesPkcs12CertsInfoOutput
+	ToKeystoresAliasesPkcs12CertsInfoOutputWithContext(context.Context) KeystoresAliasesPkcs12CertsInfoOutput
+}
+
+type KeystoresAliasesPkcs12CertsInfoArgs struct {
+	CertInfos KeystoresAliasesPkcs12CertsInfoCertInfoArrayInput `pulumi:"certInfos"`
+}
+
+func (KeystoresAliasesPkcs12CertsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoArgs) ToKeystoresAliasesPkcs12CertsInfoOutput() KeystoresAliasesPkcs12CertsInfoOutput {
+	return i.ToKeystoresAliasesPkcs12CertsInfoOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoArgs) ToKeystoresAliasesPkcs12CertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoOutput)
+}
+
+// KeystoresAliasesPkcs12CertsInfoArrayInput is an input type that accepts KeystoresAliasesPkcs12CertsInfoArray and KeystoresAliasesPkcs12CertsInfoArrayOutput values.
+// You can construct a concrete instance of `KeystoresAliasesPkcs12CertsInfoArrayInput` via:
+//
+//	KeystoresAliasesPkcs12CertsInfoArray{ KeystoresAliasesPkcs12CertsInfoArgs{...} }
+type KeystoresAliasesPkcs12CertsInfoArrayInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesPkcs12CertsInfoArrayOutput() KeystoresAliasesPkcs12CertsInfoArrayOutput
+	ToKeystoresAliasesPkcs12CertsInfoArrayOutputWithContext(context.Context) KeystoresAliasesPkcs12CertsInfoArrayOutput
+}
+
+type KeystoresAliasesPkcs12CertsInfoArray []KeystoresAliasesPkcs12CertsInfoInput
+
+func (KeystoresAliasesPkcs12CertsInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesPkcs12CertsInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoArray) ToKeystoresAliasesPkcs12CertsInfoArrayOutput() KeystoresAliasesPkcs12CertsInfoArrayOutput {
+	return i.ToKeystoresAliasesPkcs12CertsInfoArrayOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoArray) ToKeystoresAliasesPkcs12CertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoArrayOutput)
+}
+
+type KeystoresAliasesPkcs12CertsInfoOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesPkcs12CertsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoOutput) ToKeystoresAliasesPkcs12CertsInfoOutput() KeystoresAliasesPkcs12CertsInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoOutput) ToKeystoresAliasesPkcs12CertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoOutput) CertInfos() KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfo) []KeystoresAliasesPkcs12CertsInfoCertInfo { return v.CertInfos }).(KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput)
+}
+
+type KeystoresAliasesPkcs12CertsInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesPkcs12CertsInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesPkcs12CertsInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoArrayOutput) ToKeystoresAliasesPkcs12CertsInfoArrayOutput() KeystoresAliasesPkcs12CertsInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoArrayOutput) ToKeystoresAliasesPkcs12CertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesPkcs12CertsInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesPkcs12CertsInfo {
+		return vs[0].([]KeystoresAliasesPkcs12CertsInfo)[vs[1].(int)]
+	}).(KeystoresAliasesPkcs12CertsInfoOutput)
+}
+
+type KeystoresAliasesPkcs12CertsInfoCertInfo struct {
+	BasicConstraints        *string  `pulumi:"basicConstraints"`
+	ExpiryDate              *string  `pulumi:"expiryDate"`
+	IsValid                 *string  `pulumi:"isValid"`
+	Issuer                  *string  `pulumi:"issuer"`
+	PublicKey               *string  `pulumi:"publicKey"`
+	SerialNumber            *string  `pulumi:"serialNumber"`
+	SigAlgName              *string  `pulumi:"sigAlgName"`
+	Subject                 *string  `pulumi:"subject"`
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
+	ValidFrom               *string  `pulumi:"validFrom"`
+	Version                 *int     `pulumi:"version"`
+}
+
+// KeystoresAliasesPkcs12CertsInfoCertInfoInput is an input type that accepts KeystoresAliasesPkcs12CertsInfoCertInfoArgs and KeystoresAliasesPkcs12CertsInfoCertInfoOutput values.
+// You can construct a concrete instance of `KeystoresAliasesPkcs12CertsInfoCertInfoInput` via:
+//
+//	KeystoresAliasesPkcs12CertsInfoCertInfoArgs{...}
+type KeystoresAliasesPkcs12CertsInfoCertInfoInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesPkcs12CertsInfoCertInfoOutput() KeystoresAliasesPkcs12CertsInfoCertInfoOutput
+	ToKeystoresAliasesPkcs12CertsInfoCertInfoOutputWithContext(context.Context) KeystoresAliasesPkcs12CertsInfoCertInfoOutput
+}
+
+type KeystoresAliasesPkcs12CertsInfoCertInfoArgs struct {
+	BasicConstraints        pulumi.StringPtrInput   `pulumi:"basicConstraints"`
+	ExpiryDate              pulumi.StringPtrInput   `pulumi:"expiryDate"`
+	IsValid                 pulumi.StringPtrInput   `pulumi:"isValid"`
+	Issuer                  pulumi.StringPtrInput   `pulumi:"issuer"`
+	PublicKey               pulumi.StringPtrInput   `pulumi:"publicKey"`
+	SerialNumber            pulumi.StringPtrInput   `pulumi:"serialNumber"`
+	SigAlgName              pulumi.StringPtrInput   `pulumi:"sigAlgName"`
+	Subject                 pulumi.StringPtrInput   `pulumi:"subject"`
+	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
+	ValidFrom               pulumi.StringPtrInput   `pulumi:"validFrom"`
+	Version                 pulumi.IntPtrInput      `pulumi:"version"`
+}
+
+func (KeystoresAliasesPkcs12CertsInfoCertInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoCertInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoCertInfoArgs) ToKeystoresAliasesPkcs12CertsInfoCertInfoOutput() KeystoresAliasesPkcs12CertsInfoCertInfoOutput {
+	return i.ToKeystoresAliasesPkcs12CertsInfoCertInfoOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoCertInfoArgs) ToKeystoresAliasesPkcs12CertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoCertInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoCertInfoOutput)
+}
+
+// KeystoresAliasesPkcs12CertsInfoCertInfoArrayInput is an input type that accepts KeystoresAliasesPkcs12CertsInfoCertInfoArray and KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput values.
+// You can construct a concrete instance of `KeystoresAliasesPkcs12CertsInfoCertInfoArrayInput` via:
+//
+//	KeystoresAliasesPkcs12CertsInfoCertInfoArray{ KeystoresAliasesPkcs12CertsInfoCertInfoArgs{...} }
+type KeystoresAliasesPkcs12CertsInfoCertInfoArrayInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput() KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput
+	ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutputWithContext(context.Context) KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput
+}
+
+type KeystoresAliasesPkcs12CertsInfoCertInfoArray []KeystoresAliasesPkcs12CertsInfoCertInfoInput
+
+func (KeystoresAliasesPkcs12CertsInfoCertInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesPkcs12CertsInfoCertInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoCertInfoArray) ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput() KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput {
+	return i.ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesPkcs12CertsInfoCertInfoArray) ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput)
+}
+
+type KeystoresAliasesPkcs12CertsInfoCertInfoOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoCertInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ToKeystoresAliasesPkcs12CertsInfoCertInfoOutput() KeystoresAliasesPkcs12CertsInfoCertInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ToKeystoresAliasesPkcs12CertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoCertInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) BasicConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.BasicConstraints }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ExpiryDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.ExpiryDate }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) IsValid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.IsValid }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) SigAlgName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.SigAlgName }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) ValidFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *string { return v.ValidFrom }).(pulumi.StringPtrOutput)
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesPkcs12CertsInfoCertInfo) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesPkcs12CertsInfoCertInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput) ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput() KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput) ToKeystoresAliasesPkcs12CertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesPkcs12CertsInfoCertInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesPkcs12CertsInfoCertInfo {
+		return vs[0].([]KeystoresAliasesPkcs12CertsInfoCertInfo)[vs[1].(int)]
+	}).(KeystoresAliasesPkcs12CertsInfoCertInfoOutput)
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfo struct {
+	// (Output)
+	// List of all properties in the object.
+	// Structure is documented below.
+	CertInfos []KeystoresAliasesSelfSignedCertCertsInfoCertInfo `pulumi:"certInfos"`
+}
+
+// KeystoresAliasesSelfSignedCertCertsInfoInput is an input type that accepts KeystoresAliasesSelfSignedCertCertsInfoArgs and KeystoresAliasesSelfSignedCertCertsInfoOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertCertsInfoInput` via:
+//
+//	KeystoresAliasesSelfSignedCertCertsInfoArgs{...}
+type KeystoresAliasesSelfSignedCertCertsInfoInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertCertsInfoOutput() KeystoresAliasesSelfSignedCertCertsInfoOutput
+	ToKeystoresAliasesSelfSignedCertCertsInfoOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertCertsInfoOutput
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoArgs struct {
+	// (Output)
+	// List of all properties in the object.
+	// Structure is documented below.
+	CertInfos KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayInput `pulumi:"certInfos"`
+}
+
+func (KeystoresAliasesSelfSignedCertCertsInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoArgs) ToKeystoresAliasesSelfSignedCertCertsInfoOutput() KeystoresAliasesSelfSignedCertCertsInfoOutput {
+	return i.ToKeystoresAliasesSelfSignedCertCertsInfoOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoArgs) ToKeystoresAliasesSelfSignedCertCertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoOutput)
+}
+
+// KeystoresAliasesSelfSignedCertCertsInfoArrayInput is an input type that accepts KeystoresAliasesSelfSignedCertCertsInfoArray and KeystoresAliasesSelfSignedCertCertsInfoArrayOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertCertsInfoArrayInput` via:
+//
+//	KeystoresAliasesSelfSignedCertCertsInfoArray{ KeystoresAliasesSelfSignedCertCertsInfoArgs{...} }
+type KeystoresAliasesSelfSignedCertCertsInfoArrayInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutput() KeystoresAliasesSelfSignedCertCertsInfoArrayOutput
+	ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertCertsInfoArrayOutput
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoArray []KeystoresAliasesSelfSignedCertCertsInfoInput
+
+func (KeystoresAliasesSelfSignedCertCertsInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesSelfSignedCertCertsInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoArray) ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutput() KeystoresAliasesSelfSignedCertCertsInfoArrayOutput {
+	return i.ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoArray) ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoArrayOutput)
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertCertsInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoOutput) ToKeystoresAliasesSelfSignedCertCertsInfoOutput() KeystoresAliasesSelfSignedCertCertsInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoOutput) ToKeystoresAliasesSelfSignedCertCertsInfoOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoOutput {
+	return o
+}
+
+// (Output)
+// List of all properties in the object.
+// Structure is documented below.
+func (o KeystoresAliasesSelfSignedCertCertsInfoOutput) CertInfos() KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfo) []KeystoresAliasesSelfSignedCertCertsInfoCertInfo {
+		return v.CertInfos
+	}).(KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput)
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesSelfSignedCertCertsInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutput() KeystoresAliasesSelfSignedCertCertsInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) ToKeystoresAliasesSelfSignedCertCertsInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesSelfSignedCertCertsInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesSelfSignedCertCertsInfo {
+		return vs[0].([]KeystoresAliasesSelfSignedCertCertsInfo)[vs[1].(int)]
+	}).(KeystoresAliasesSelfSignedCertCertsInfoOutput)
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoCertInfo struct {
+	// (Output)
+	// X.509 basic constraints extension.
+	BasicConstraints *string `pulumi:"basicConstraints"`
+	// (Output)
+	// X.509 notAfter validity period in milliseconds since epoch.
+	ExpiryDate *string `pulumi:"expiryDate"`
+	// (Output)
+	// Flag that specifies whether the certificate is valid.
+	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+	IsValid *string `pulumi:"isValid"`
+	// (Output)
+	// X.509 issuer.
+	Issuer *string `pulumi:"issuer"`
+	// (Output)
+	// Public key component of the X.509 subject public key info.
+	PublicKey *string `pulumi:"publicKey"`
+	// (Output)
+	// X.509 serial number.
+	SerialNumber *string `pulumi:"serialNumber"`
+	// (Output)
+	// X.509 signatureAlgorithm.
+	SigAlgName *string `pulumi:"sigAlgName"`
+	// Subject details.
+	// Structure is documented below.
+	Subject *string `pulumi:"subject"`
+	// (Output)
+	// X.509 subject alternative names (SANs) extension.
+	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
+	// (Output)
+	// X.509 notBefore validity period in milliseconds since epoch.
+	ValidFrom *string `pulumi:"validFrom"`
+	// (Output)
+	// X.509 version.
+	Version *int `pulumi:"version"`
+}
+
+// KeystoresAliasesSelfSignedCertCertsInfoCertInfoInput is an input type that accepts KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs and KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertCertsInfoCertInfoInput` via:
+//
+//	KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs{...}
+type KeystoresAliasesSelfSignedCertCertsInfoCertInfoInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput() KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput
+	ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs struct {
+	// (Output)
+	// X.509 basic constraints extension.
+	BasicConstraints pulumi.StringPtrInput `pulumi:"basicConstraints"`
+	// (Output)
+	// X.509 notAfter validity period in milliseconds since epoch.
+	ExpiryDate pulumi.StringPtrInput `pulumi:"expiryDate"`
+	// (Output)
+	// Flag that specifies whether the certificate is valid.
+	// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+	IsValid pulumi.StringPtrInput `pulumi:"isValid"`
+	// (Output)
+	// X.509 issuer.
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// (Output)
+	// Public key component of the X.509 subject public key info.
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// (Output)
+	// X.509 serial number.
+	SerialNumber pulumi.StringPtrInput `pulumi:"serialNumber"`
+	// (Output)
+	// X.509 signatureAlgorithm.
+	SigAlgName pulumi.StringPtrInput `pulumi:"sigAlgName"`
+	// Subject details.
+	// Structure is documented below.
+	Subject pulumi.StringPtrInput `pulumi:"subject"`
+	// (Output)
+	// X.509 subject alternative names (SANs) extension.
+	SubjectAlternativeNames pulumi.StringArrayInput `pulumi:"subjectAlternativeNames"`
+	// (Output)
+	// X.509 notBefore validity period in milliseconds since epoch.
+	ValidFrom pulumi.StringPtrInput `pulumi:"validFrom"`
+	// (Output)
+	// X.509 version.
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput() KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput {
+	return i.ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput)
+}
+
+// KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayInput is an input type that accepts KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray and KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayInput` via:
+//
+//	KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray{ KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs{...} }
+type KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput() KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput
+	ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray []KeystoresAliasesSelfSignedCertCertsInfoCertInfoInput
+
+func (KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesSelfSignedCertCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput() KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput {
+	return i.ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput)
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput() KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput {
+	return o
+}
+
+// (Output)
+// X.509 basic constraints extension.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) BasicConstraints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.BasicConstraints }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// X.509 notAfter validity period in milliseconds since epoch.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ExpiryDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.ExpiryDate }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Flag that specifies whether the certificate is valid.
+// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) IsValid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.IsValid }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// X.509 issuer.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Public key component of the X.509 subject public key info.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// X.509 serial number.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// X.509 signatureAlgorithm.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) SigAlgName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.SigAlgName }).(pulumi.StringPtrOutput)
+}
+
+// Subject details.
+// Structure is documented below.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) Subject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.Subject }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// X.509 subject alternative names (SANs) extension.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) []string { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// X.509 notBefore validity period in milliseconds since epoch.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) ValidFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *string { return v.ValidFrom }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// X.509 version.
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertCertsInfoCertInfo) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeystoresAliasesSelfSignedCertCertsInfoCertInfo)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput() KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput) ToKeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput) Index(i pulumi.IntInput) KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeystoresAliasesSelfSignedCertCertsInfoCertInfo {
+		return vs[0].([]KeystoresAliasesSelfSignedCertCertsInfoCertInfo)[vs[1].(int)]
+	}).(KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput)
+}
+
+type KeystoresAliasesSelfSignedCertSubject struct {
+	// Common name of the organization. Maximum length is 64 characters.
+	CommonName *string `pulumi:"commonName"`
+	// Two-letter country code. Example, IN for India, US for United States of America.
+	CountryCode *string `pulumi:"countryCode"`
+	// Email address. Max 255 characters.
+	Email *string `pulumi:"email"`
+	// City or town name. Maximum length is 128 characters.
+	Locality *string `pulumi:"locality"`
+	// Organization name. Maximum length is 64 characters.
+	Org *string `pulumi:"org"`
+	// Organization team name. Maximum length is 64 characters.
+	OrgUnit *string `pulumi:"orgUnit"`
+	// State or district name. Maximum length is 128 characters.
+	State *string `pulumi:"state"`
+}
+
+// KeystoresAliasesSelfSignedCertSubjectInput is an input type that accepts KeystoresAliasesSelfSignedCertSubjectArgs and KeystoresAliasesSelfSignedCertSubjectOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertSubjectInput` via:
+//
+//	KeystoresAliasesSelfSignedCertSubjectArgs{...}
+type KeystoresAliasesSelfSignedCertSubjectInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertSubjectOutput() KeystoresAliasesSelfSignedCertSubjectOutput
+	ToKeystoresAliasesSelfSignedCertSubjectOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertSubjectOutput
+}
+
+type KeystoresAliasesSelfSignedCertSubjectArgs struct {
+	// Common name of the organization. Maximum length is 64 characters.
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
+	// Two-letter country code. Example, IN for India, US for United States of America.
+	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
+	// Email address. Max 255 characters.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// City or town name. Maximum length is 128 characters.
+	Locality pulumi.StringPtrInput `pulumi:"locality"`
+	// Organization name. Maximum length is 64 characters.
+	Org pulumi.StringPtrInput `pulumi:"org"`
+	// Organization team name. Maximum length is 64 characters.
+	OrgUnit pulumi.StringPtrInput `pulumi:"orgUnit"`
+	// State or district name. Maximum length is 128 characters.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (KeystoresAliasesSelfSignedCertSubjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubject)(nil)).Elem()
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectArgs) ToKeystoresAliasesSelfSignedCertSubjectOutput() KeystoresAliasesSelfSignedCertSubjectOutput {
+	return i.ToKeystoresAliasesSelfSignedCertSubjectOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectArgs) ToKeystoresAliasesSelfSignedCertSubjectOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectOutput)
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectArgs) ToKeystoresAliasesSelfSignedCertSubjectPtrOutput() KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return i.ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectArgs) ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectOutput).ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(ctx)
+}
+
+// KeystoresAliasesSelfSignedCertSubjectPtrInput is an input type that accepts KeystoresAliasesSelfSignedCertSubjectArgs, KeystoresAliasesSelfSignedCertSubjectPtr and KeystoresAliasesSelfSignedCertSubjectPtrOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertSubjectPtrInput` via:
+//
+//	        KeystoresAliasesSelfSignedCertSubjectArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeystoresAliasesSelfSignedCertSubjectPtrInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertSubjectPtrOutput() KeystoresAliasesSelfSignedCertSubjectPtrOutput
+	ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertSubjectPtrOutput
+}
+
+type keystoresAliasesSelfSignedCertSubjectPtrType KeystoresAliasesSelfSignedCertSubjectArgs
+
+func KeystoresAliasesSelfSignedCertSubjectPtr(v *KeystoresAliasesSelfSignedCertSubjectArgs) KeystoresAliasesSelfSignedCertSubjectPtrInput {
+	return (*keystoresAliasesSelfSignedCertSubjectPtrType)(v)
+}
+
+func (*keystoresAliasesSelfSignedCertSubjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesSelfSignedCertSubject)(nil)).Elem()
+}
+
+func (i *keystoresAliasesSelfSignedCertSubjectPtrType) ToKeystoresAliasesSelfSignedCertSubjectPtrOutput() KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return i.ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(context.Background())
+}
+
+func (i *keystoresAliasesSelfSignedCertSubjectPtrType) ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectPtrOutput)
+}
+
+type KeystoresAliasesSelfSignedCertSubjectOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertSubjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubject)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) ToKeystoresAliasesSelfSignedCertSubjectOutput() KeystoresAliasesSelfSignedCertSubjectOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) ToKeystoresAliasesSelfSignedCertSubjectOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) ToKeystoresAliasesSelfSignedCertSubjectPtrOutput() KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return o.ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(context.Background())
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeystoresAliasesSelfSignedCertSubject) *KeystoresAliasesSelfSignedCertSubject {
+		return &v
+	}).(KeystoresAliasesSelfSignedCertSubjectPtrOutput)
+}
+
+// Common name of the organization. Maximum length is 64 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// Two-letter country code. Example, IN for India, US for United States of America.
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// Email address. Max 255 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// City or town name. Maximum length is 128 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.Locality }).(pulumi.StringPtrOutput)
+}
+
+// Organization name. Maximum length is 64 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.Org }).(pulumi.StringPtrOutput)
+}
+
+// Organization team name. Maximum length is 64 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) OrgUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.OrgUnit }).(pulumi.StringPtrOutput)
+}
+
+// State or district name. Maximum length is 128 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type KeystoresAliasesSelfSignedCertSubjectPtrOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertSubjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesSelfSignedCertSubject)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) ToKeystoresAliasesSelfSignedCertSubjectPtrOutput() KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) ToKeystoresAliasesSelfSignedCertSubjectPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Elem() KeystoresAliasesSelfSignedCertSubjectOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) KeystoresAliasesSelfSignedCertSubject {
+		if v != nil {
+			return *v
+		}
+		var ret KeystoresAliasesSelfSignedCertSubject
+		return ret
+	}).(KeystoresAliasesSelfSignedCertSubjectOutput)
+}
+
+// Common name of the organization. Maximum length is 64 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Two-letter country code. Example, IN for India, US for United States of America.
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email address. Max 255 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// City or town name. Maximum length is 128 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Locality
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organization name. Maximum length is 64 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Org() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Org
+	}).(pulumi.StringPtrOutput)
+}
+
+// Organization team name. Maximum length is 64 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) OrgUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrgUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// State or district name. Maximum length is 128 characters.
+func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames struct {
+	// Subject Alternative Name
+	SubjectAlternativeName *string `pulumi:"subjectAlternativeName"`
+}
+
+// KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesInput is an input type that accepts KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs and KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesInput` via:
+//
+//	KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs{...}
+type KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput
+	ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput
+}
+
+type KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs struct {
+	// Subject Alternative Name
+	SubjectAlternativeName pulumi.StringPtrInput `pulumi:"subjectAlternativeName"`
+}
+
+func (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames)(nil)).Elem()
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput {
+	return i.ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput)
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return i.ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(context.Background())
+}
+
+func (i KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput).ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(ctx)
+}
+
+// KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrInput is an input type that accepts KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs, KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtr and KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput values.
+// You can construct a concrete instance of `KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrInput` via:
+//
+//	        KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrInput interface {
+	pulumi.Input
+
+	ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput
+	ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput
+}
+
+type keystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrType KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs
+
+func KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtr(v *KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrInput {
+	return (*keystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrType)(v)
+}
+
+func (*keystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames)(nil)).Elem()
+}
+
+func (i *keystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrType) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return i.ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(context.Background())
+}
+
+func (i *keystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrType) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput)
+}
+
+type KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return o.ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(context.Background())
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames) *KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
+		return &v
+	}).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput)
+}
+
+// Subject Alternative Name
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput) SubjectAlternativeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames) *string {
+		return v.SubjectAlternativeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput struct{ *pulumi.OutputState }
+
+func (KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames)(nil)).Elem()
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) ToKeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutputWithContext(ctx context.Context) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput {
+	return o
+}
+
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) Elem() KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames) KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
+		if v != nil {
+			return *v
+		}
+		var ret KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames
+		return ret
+	}).(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput)
+}
+
+// Subject Alternative Name
+func (o KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput) SubjectAlternativeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAlternativeName
+	}).(pulumi.StringPtrOutput)
+}
+
 type OrganizationProperties struct {
 	// List of all properties in the object.
 	// Structure is documented below.
@@ -2264,6 +3230,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoPtrInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoInput)(nil)).Elem(), KeystoresAliasesPkcs12CertsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoArrayInput)(nil)).Elem(), KeystoresAliasesPkcs12CertsInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesPkcs12CertsInfoCertInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesPkcs12CertsInfoCertInfoArrayInput)(nil)).Elem(), KeystoresAliasesPkcs12CertsInfoCertInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfoInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertCertsInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfoArrayInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertCertsInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertCertsInfoCertInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubjectInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertSubjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubjectPtrInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertSubjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrInput)(nil)).Elem(), KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPtrInput)(nil)).Elem(), OrganizationPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPropertiesPropertyInput)(nil)).Elem(), OrganizationPropertiesPropertyArgs{})
@@ -2292,6 +3270,18 @@ func init() {
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoPtrOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoArrayOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesPkcs12CertsInfoOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesPkcs12CertsInfoArrayOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesPkcs12CertsInfoCertInfoOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesPkcs12CertsInfoCertInfoArrayOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertCertsInfoOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertCertsInfoArrayOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertCertsInfoCertInfoOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertCertsInfoCertInfoArrayOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertSubjectOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertSubjectPtrOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesOutput{})
+	pulumi.RegisterOutputType(KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPropertiesPropertyOutput{})

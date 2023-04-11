@@ -438,11 +438,11 @@ class CxFlowNluSettings(dict):
         :param str model_training_mode: Indicates NLU model training mode.
                * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
                * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-               Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+               Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
         :param str model_type: Indicates the type of NLU model.
                * MODEL_TYPE_STANDARD: Use standard NLU model.
                * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-               Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+               Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
         """
         if classification_threshold is not None:
             pulumi.set(__self__, "classification_threshold", classification_threshold)
@@ -467,7 +467,7 @@ class CxFlowNluSettings(dict):
         Indicates NLU model training mode.
         * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
         * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-        Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+        Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
         """
         return pulumi.get(self, "model_training_mode")
 
@@ -478,7 +478,7 @@ class CxFlowNluSettings(dict):
         Indicates the type of NLU model.
         * MODEL_TYPE_STANDARD: Use standard NLU model.
         * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-        Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+        Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
         """
         return pulumi.get(self, "model_type")
 
@@ -2195,7 +2195,7 @@ class FulfillmentFeature(dict):
         """
         :param str type: The type of the feature that enabled for fulfillment.
                * SMALLTALK: Fulfillment is enabled for SmallTalk.
-               Possible values are `SMALLTALK`.
+               Possible values are: `SMALLTALK`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -2205,7 +2205,7 @@ class FulfillmentFeature(dict):
         """
         The type of the feature that enabled for fulfillment.
         * SMALLTALK: Fulfillment is enabled for SmallTalk.
-        Possible values are `SMALLTALK`.
+        Possible values are: `SMALLTALK`.
         """
         return pulumi.get(self, "type")
 

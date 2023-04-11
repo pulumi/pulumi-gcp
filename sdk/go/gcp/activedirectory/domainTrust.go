@@ -82,13 +82,13 @@ type DomainTrust struct {
 	// The fully qualified target domain name which will be in trust with the current domain.
 	TargetDomainName pulumi.StringOutput `pulumi:"targetDomainName"`
 	// The trust direction, which decides if the current domain is trusted, trusting, or both.
-	// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+	// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
 	TrustDirection pulumi.StringOutput `pulumi:"trustDirection"`
 	// The trust secret used for the handshake with the target domain. This will not be stored.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	TrustHandshakeSecret pulumi.StringOutput `pulumi:"trustHandshakeSecret"`
 	// The type of trust represented by the trust resource.
-	// Possible values are `FOREST` and `EXTERNAL`.
+	// Possible values are: `FOREST`, `EXTERNAL`.
 	TrustType pulumi.StringOutput `pulumi:"trustType"`
 }
 
@@ -159,13 +159,13 @@ type domainTrustState struct {
 	// The fully qualified target domain name which will be in trust with the current domain.
 	TargetDomainName *string `pulumi:"targetDomainName"`
 	// The trust direction, which decides if the current domain is trusted, trusting, or both.
-	// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+	// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
 	TrustDirection *string `pulumi:"trustDirection"`
 	// The trust secret used for the handshake with the target domain. This will not be stored.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	TrustHandshakeSecret *string `pulumi:"trustHandshakeSecret"`
 	// The type of trust represented by the trust resource.
-	// Possible values are `FOREST` and `EXTERNAL`.
+	// Possible values are: `FOREST`, `EXTERNAL`.
 	TrustType *string `pulumi:"trustType"`
 }
 
@@ -183,13 +183,13 @@ type DomainTrustState struct {
 	// The fully qualified target domain name which will be in trust with the current domain.
 	TargetDomainName pulumi.StringPtrInput
 	// The trust direction, which decides if the current domain is trusted, trusting, or both.
-	// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+	// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
 	TrustDirection pulumi.StringPtrInput
 	// The trust secret used for the handshake with the target domain. This will not be stored.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	TrustHandshakeSecret pulumi.StringPtrInput
 	// The type of trust represented by the trust resource.
-	// Possible values are `FOREST` and `EXTERNAL`.
+	// Possible values are: `FOREST`, `EXTERNAL`.
 	TrustType pulumi.StringPtrInput
 }
 
@@ -211,13 +211,13 @@ type domainTrustArgs struct {
 	// The fully qualified target domain name which will be in trust with the current domain.
 	TargetDomainName string `pulumi:"targetDomainName"`
 	// The trust direction, which decides if the current domain is trusted, trusting, or both.
-	// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+	// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
 	TrustDirection string `pulumi:"trustDirection"`
 	// The trust secret used for the handshake with the target domain. This will not be stored.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	TrustHandshakeSecret string `pulumi:"trustHandshakeSecret"`
 	// The type of trust represented by the trust resource.
-	// Possible values are `FOREST` and `EXTERNAL`.
+	// Possible values are: `FOREST`, `EXTERNAL`.
 	TrustType string `pulumi:"trustType"`
 }
 
@@ -236,13 +236,13 @@ type DomainTrustArgs struct {
 	// The fully qualified target domain name which will be in trust with the current domain.
 	TargetDomainName pulumi.StringInput
 	// The trust direction, which decides if the current domain is trusted, trusting, or both.
-	// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+	// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
 	TrustDirection pulumi.StringInput
 	// The trust secret used for the handshake with the target domain. This will not be stored.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	TrustHandshakeSecret pulumi.StringInput
 	// The type of trust represented by the trust resource.
-	// Possible values are `FOREST` and `EXTERNAL`.
+	// Possible values are: `FOREST`, `EXTERNAL`.
 	TrustType pulumi.StringInput
 }
 
@@ -361,7 +361,7 @@ func (o DomainTrustOutput) TargetDomainName() pulumi.StringOutput {
 }
 
 // The trust direction, which decides if the current domain is trusted, trusting, or both.
-// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
 func (o DomainTrustOutput) TrustDirection() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainTrust) pulumi.StringOutput { return v.TrustDirection }).(pulumi.StringOutput)
 }
@@ -373,7 +373,7 @@ func (o DomainTrustOutput) TrustHandshakeSecret() pulumi.StringOutput {
 }
 
 // The type of trust represented by the trust resource.
-// Possible values are `FOREST` and `EXTERNAL`.
+// Possible values are: `FOREST`, `EXTERNAL`.
 func (o DomainTrustOutput) TrustType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainTrust) pulumi.StringOutput { return v.TrustType }).(pulumi.StringOutput)
 }

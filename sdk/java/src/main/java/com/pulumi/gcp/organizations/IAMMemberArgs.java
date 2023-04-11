@@ -41,18 +41,14 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-     * will not be inferred from the provider.
+     * The organization id of the target organization.
      * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
 
     /**
-     * @return The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-     * will not be inferred from the provider.
+     * @return The organization id of the target organization.
      * 
      */
     public Output<String> orgId() {
@@ -138,9 +134,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-         * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-         * will not be inferred from the provider.
+         * @param orgId The organization id of the target organization.
          * 
          * @return builder
          * 
@@ -151,9 +145,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-         * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-         * will not be inferred from the provider.
+         * @param orgId The organization id of the target organization.
          * 
          * @return builder
          * 

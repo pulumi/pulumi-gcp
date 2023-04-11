@@ -78,7 +78,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     public readonly importJobId!: pulumi.Output<string>;
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
      */
     public readonly importMethod!: pulumi.Output<string>;
     /**
@@ -93,7 +93,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     /**
      * The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
-     * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+     * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
      */
     public readonly protectionLevel!: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export interface KeyRingImportJobState {
     importJobId?: pulumi.Input<string>;
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
      */
     importMethod?: pulumi.Input<string>;
     /**
@@ -194,7 +194,7 @@ export interface KeyRingImportJobState {
     /**
      * The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
-     * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+     * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
      */
     protectionLevel?: pulumi.Input<string>;
     /**
@@ -218,7 +218,7 @@ export interface KeyRingImportJobArgs {
     importJobId: pulumi.Input<string>;
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
      */
     importMethod: pulumi.Input<string>;
     /**
@@ -229,7 +229,7 @@ export interface KeyRingImportJobArgs {
     /**
      * The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
-     * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+     * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
      */
     protectionLevel: pulumi.Input<string>;
 }

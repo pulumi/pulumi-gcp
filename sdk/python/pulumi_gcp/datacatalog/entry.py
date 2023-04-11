@@ -47,7 +47,7 @@ class EntryArgs:
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-               Possible values are `FILESET`.
+               Possible values are: `FILESET`.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with.
                userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
                and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
@@ -176,7 +176,7 @@ class EntryArgs:
         """
         The type of the entry. Only used for Entries with types in the EntryType enum.
         Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-        Possible values are `FILESET`.
+        Possible values are: `FILESET`.
         """
         return pulumi.get(self, "type")
 
@@ -262,7 +262,7 @@ class _EntryState:
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-               Possible values are `FILESET`.
+               Possible values are: `FILESET`.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with.
                userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
                and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
@@ -454,7 +454,7 @@ class _EntryState:
         """
         The type of the entry. Only used for Entries with types in the EntryType enum.
         Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-        Possible values are `FILESET`.
+        Possible values are: `FILESET`.
         """
         return pulumi.get(self, "type")
 
@@ -635,7 +635,7 @@ class Entry(pulumi.CustomResource):
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-               Possible values are `FILESET`.
+               Possible values are: `FILESET`.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with.
                userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
                and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
@@ -867,7 +867,7 @@ class Entry(pulumi.CustomResource):
                for what fields this schema can contain.
         :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
                Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-               Possible values are `FILESET`.
+               Possible values are: `FILESET`.
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with.
                userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
                and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
@@ -1006,7 +1006,7 @@ class Entry(pulumi.CustomResource):
         """
         The type of the entry. Only used for Entries with types in the EntryType enum.
         Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-        Possible values are `FILESET`.
+        Possible values are: `FILESET`.
         """
         return pulumi.get(self, "type")
 

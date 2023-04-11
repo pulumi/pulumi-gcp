@@ -171,7 +171,7 @@ export class BackendService extends pulumi.CustomResource {
     public readonly circuitBreakers!: pulumi.Output<outputs.compute.BackendServiceCircuitBreakers | undefined>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
     public readonly compressionMode!: pulumi.Output<string | undefined>;
     /**
@@ -246,7 +246,7 @@ export class BackendService extends pulumi.CustomResource {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -302,7 +302,7 @@ export class BackendService extends pulumi.CustomResource {
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
-     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -324,7 +324,7 @@ export class BackendService extends pulumi.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
@@ -446,7 +446,7 @@ export interface BackendServiceState {
     circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
     compressionMode?: pulumi.Input<string>;
     /**
@@ -521,7 +521,7 @@ export interface BackendServiceState {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -577,7 +577,7 @@ export interface BackendServiceState {
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
-     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -599,7 +599,7 @@ export interface BackendServiceState {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
@@ -639,7 +639,7 @@ export interface BackendServiceArgs {
     circuitBreakers?: pulumi.Input<inputs.compute.BackendServiceCircuitBreakers>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
     compressionMode?: pulumi.Input<string>;
     /**
@@ -701,7 +701,7 @@ export interface BackendServiceArgs {
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -757,7 +757,7 @@ export interface BackendServiceArgs {
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
      * types and may result in errors if used with the GA API.
-     * Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -775,7 +775,7 @@ export interface BackendServiceArgs {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      */
     sessionAffinity?: pulumi.Input<string>;
     /**

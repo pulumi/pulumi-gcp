@@ -36,7 +36,7 @@ public final class NodeGroupShareSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * Node group sharing type.
-     * Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+     * Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
      * 
      */
     @Import(name="shareType", required=true)
@@ -44,7 +44,7 @@ public final class NodeGroupShareSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Node group sharing type.
-     * Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+     * Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
      * 
      */
     public Output<String> shareType() {
@@ -112,7 +112,7 @@ public final class NodeGroupShareSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param shareType Node group sharing type.
-         * Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+         * Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class NodeGroupShareSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param shareType Node group sharing type.
-         * Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+         * Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
          * 
          * @return builder
          * 

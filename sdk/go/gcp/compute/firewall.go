@@ -167,7 +167,7 @@ type Firewall struct {
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -308,7 +308,7 @@ type firewallState struct {
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -418,7 +418,7 @@ type FirewallState struct {
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -530,7 +530,7 @@ type firewallArgs struct {
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -637,7 +637,7 @@ type FirewallArgs struct {
 	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
 	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall rule is disabled, i.e not applied to the
 	// network it is associated with. When set to true, the firewall rule is
@@ -846,7 +846,7 @@ func (o FirewallOutput) DestinationRanges() pulumi.StringArrayOutput {
 // destinationRanges; For EGRESS traffic, it is NOT supported to specify
 // `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
 // `sourceTags` or `sourceServiceAccounts` is required.
-// Possible values are `INGRESS` and `EGRESS`.
+// Possible values are: `INGRESS`, `EGRESS`.
 func (o FirewallOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }

@@ -105,7 +105,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     /**
      * Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified.
      * Default value is `ALLOW_ALL`.
-     * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+     * Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
      * 
      */
     @Import(name="ingressSettings")
@@ -114,7 +114,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
     /**
      * @return Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified.
      * Default value is `ALLOW_ALL`.
-     * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+     * Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
      * 
      */
     public Optional<Output<String>> ingressSettings() {
@@ -287,7 +287,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * Available egress settings.
-     * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+     * Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
      * 
      */
     @Import(name="vpcConnectorEgressSettings")
@@ -295,7 +295,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Available egress settings.
-     * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+     * Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
      * 
      */
     public Optional<Output<String>> vpcConnectorEgressSettings() {
@@ -456,7 +456,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         /**
          * @param ingressSettings Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified.
          * Default value is `ALLOW_ALL`.
-         * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+         * Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
         /**
          * @param ingressSettings Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified.
          * Default value is `ALLOW_ALL`.
-         * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+         * Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
          * 
          * @return builder
          * 
@@ -726,7 +726,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param vpcConnectorEgressSettings Available egress settings.
-         * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+         * Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
          * 
          * @return builder
          * 
@@ -738,7 +738,7 @@ public final class FunctionServiceConfigArgs extends com.pulumi.resources.Resour
 
         /**
          * @param vpcConnectorEgressSettings Available egress settings.
-         * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+         * Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
          * 
          * @return builder
          * 

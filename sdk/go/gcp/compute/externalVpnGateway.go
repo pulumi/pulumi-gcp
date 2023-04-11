@@ -200,7 +200,7 @@ type ExternalVpnGateway struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
-	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrOutput `pulumi:"redundancyType"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -254,7 +254,7 @@ type externalVpnGatewayState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
-	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType *string `pulumi:"redundancyType"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -280,7 +280,7 @@ type ExternalVpnGatewayState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates the redundancy type of this external VPN gateway
-	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -310,7 +310,7 @@ type externalVpnGatewayArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates the redundancy type of this external VPN gateway
-	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType *string `pulumi:"redundancyType"`
 }
 
@@ -335,7 +335,7 @@ type ExternalVpnGatewayArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates the redundancy type of this external VPN gateway
-	// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+	// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 	RedundancyType pulumi.StringPtrInput
 }
 
@@ -460,7 +460,7 @@ func (o ExternalVpnGatewayOutput) Project() pulumi.StringOutput {
 }
 
 // Indicates the redundancy type of this external VPN gateway
-// Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+// Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
 func (o ExternalVpnGatewayOutput) RedundancyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringPtrOutput { return v.RedundancyType }).(pulumi.StringPtrOutput)
 }

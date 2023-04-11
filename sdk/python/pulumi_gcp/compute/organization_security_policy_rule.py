@@ -40,7 +40,7 @@ class OrganizationSecurityPolicyRuleArgs:
                (Optional)
                A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
@@ -140,7 +140,7 @@ class OrganizationSecurityPolicyRuleArgs:
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
         The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        Possible values are `INGRESS` and `EGRESS`.
+        Possible values are: `INGRESS`, `EGRESS`.
         """
         return pulumi.get(self, "direction")
 
@@ -224,7 +224,7 @@ class _OrganizationSecurityPolicyRuleState:
                (Optional)
                A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
@@ -295,7 +295,7 @@ class _OrganizationSecurityPolicyRuleState:
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
         The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        Possible values are `INGRESS` and `EGRESS`.
+        Possible values are: `INGRESS`, `EGRESS`.
         """
         return pulumi.get(self, "direction")
 
@@ -475,7 +475,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                (Optional)
                A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
@@ -638,7 +638,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                (Optional)
                A description of the rule.
         :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
-               Possible values are `INGRESS` and `EGRESS`.
+               Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
                If logging is enabled, logs will be exported to the
                configured export destination in Stackdriver.
@@ -696,7 +696,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
     def direction(self) -> pulumi.Output[Optional[str]]:
         """
         The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        Possible values are `INGRESS` and `EGRESS`.
+        Possible values are: `INGRESS`, `EGRESS`.
         """
         return pulumi.get(self, "direction")
 

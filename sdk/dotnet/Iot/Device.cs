@@ -161,7 +161,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The logging verbosity for device activity.
-        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        /// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         /// </summary>
         [Output("logLevel")]
         public Output<string?> LogLevel { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The logging verbosity for device activity.
-        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        /// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The logging verbosity for device activity.
-        /// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+        /// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }

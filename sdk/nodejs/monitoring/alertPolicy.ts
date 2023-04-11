@@ -116,7 +116,7 @@ export class AlertPolicy extends pulumi.CustomResource {
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
-     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+     * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      */
     public readonly combiner!: pulumi.Output<string>;
     /**
@@ -252,7 +252,7 @@ export interface AlertPolicyState {
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
-     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+     * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      */
     combiner?: pulumi.Input<string>;
     /**
@@ -337,7 +337,7 @@ export interface AlertPolicyArgs {
     /**
      * How to combine the results of multiple conditions to
      * determine if an incident should be opened.
-     * Possible values are `AND`, `OR`, and `AND_WITH_MATCHING_RESOURCE`.
+     * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      */
     combiner: pulumi.Input<string>;
     /**

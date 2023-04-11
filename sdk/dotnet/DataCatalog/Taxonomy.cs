@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// A list of policy types that are activated for this taxonomy. If not set,
         /// defaults to an empty list.
-        /// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+        /// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         /// </summary>
         [Output("activatedPolicyTypes")]
         public Output<ImmutableArray<string>> ActivatedPolicyTypes { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// A list of policy types that are activated for this taxonomy. If not set,
         /// defaults to an empty list.
-        /// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+        /// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         /// </summary>
         public InputList<string> ActivatedPolicyTypes
         {
@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// A list of policy types that are activated for this taxonomy. If not set,
         /// defaults to an empty list.
-        /// Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+        /// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         /// </summary>
         public InputList<string> ActivatedPolicyTypes
         {

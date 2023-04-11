@@ -14,7 +14,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `MAVEN_CENTRAL`.
-     * Possible values are `MAVEN_CENTRAL`.
+     * Possible values are: `MAVEN_CENTRAL`.
      * 
      */
     private @Nullable String publicRepository;
@@ -23,7 +23,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `MAVEN_CENTRAL`.
-     * Possible values are `MAVEN_CENTRAL`.
+     * Possible values are: `MAVEN_CENTRAL`.
      * 
      */
     public Optional<String> publicRepository() {

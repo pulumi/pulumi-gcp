@@ -15,12 +15,12 @@ namespace Pulumi.Gcp.Datastream.Outputs
     {
         /// <summary>
         /// Compression of the loaded JSON file.
-        /// Possible values are `NO_COMPRESSION` and `GZIP`.
+        /// Possible values are: `NO_COMPRESSION`, `GZIP`.
         /// </summary>
         public readonly string? Compression;
         /// <summary>
         /// The schema file format along JSON data files.
-        /// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+        /// Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
         /// </summary>
         public readonly string? SchemaFileFormat;
 

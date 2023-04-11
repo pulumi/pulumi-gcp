@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// Post-patch reboot settings.
-        /// Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+        /// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
         /// </summary>
         [Input("rebootConfig")]
         public Input<string>? RebootConfig { get; set; }

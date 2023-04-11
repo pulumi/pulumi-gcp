@@ -33,7 +33,7 @@ class GatewayArgs:
                a single coniguration to the proxy/load balancer.
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] location: The location of the gateway.
@@ -94,7 +94,7 @@ class GatewayArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+        Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         return pulumi.get(self, "type")
 
@@ -214,7 +214,7 @@ class _GatewayState:
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
         if create_time is not None:
@@ -375,7 +375,7 @@ class _GatewayState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+        Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         return pulumi.get(self, "type")
 
@@ -477,7 +477,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         ...
     @overload
@@ -631,7 +631,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-               Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -745,7 +745,7 @@ class Gateway(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-        Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+        Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
         return pulumi.get(self, "type")
 

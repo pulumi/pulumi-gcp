@@ -20,7 +20,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * The allowed signature algorithms to use.
      * Defaults to using only ED25519.
      * You may specify up to 3 signature algorithms to use.
-     * Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+     * Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
      * 
      */
     @Import(name="allowedSignatureAlgorithms")
@@ -30,7 +30,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
      * @return The allowed signature algorithms to use.
      * Defaults to using only ED25519.
      * You may specify up to 3 signature algorithms to use.
-     * Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+     * Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
      * 
      */
     public Optional<Output<List<String>>> allowedSignatureAlgorithms() {
@@ -85,7 +85,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
          * @param allowedSignatureAlgorithms The allowed signature algorithms to use.
          * Defaults to using only ED25519.
          * You may specify up to 3 signature algorithms to use.
-         * Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+         * Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
          * @param allowedSignatureAlgorithms The allowed signature algorithms to use.
          * Defaults to using only ED25519.
          * You may specify up to 3 signature algorithms to use.
-         * Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+         * Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
          * @param allowedSignatureAlgorithms The allowed signature algorithms to use.
          * Defaults to using only ED25519.
          * You may specify up to 3 signature algorithms to use.
-         * Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+         * Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
          * 
          * @return builder
          * 

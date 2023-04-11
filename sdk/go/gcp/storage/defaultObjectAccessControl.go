@@ -104,7 +104,7 @@ type DefaultObjectAccessControl struct {
 	// Structure is documented below.
 	ProjectTeams DefaultObjectAccessControlProjectTeamArrayOutput `pulumi:"projectTeams"`
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -172,7 +172,7 @@ type defaultObjectAccessControlState struct {
 	// Structure is documented below.
 	ProjectTeams []DefaultObjectAccessControlProjectTeam `pulumi:"projectTeams"`
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role *string `pulumi:"role"`
 }
 
@@ -203,7 +203,7 @@ type DefaultObjectAccessControlState struct {
 	// Structure is documented below.
 	ProjectTeams DefaultObjectAccessControlProjectTeamArrayInput
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role pulumi.StringPtrInput
 }
 
@@ -227,7 +227,7 @@ type defaultObjectAccessControlArgs struct {
 	// The name of the object, if applied to an object.
 	Object *string `pulumi:"object"`
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role string `pulumi:"role"`
 }
 
@@ -248,7 +248,7 @@ type DefaultObjectAccessControlArgs struct {
 	// The name of the object, if applied to an object.
 	Object pulumi.StringPtrInput
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role pulumi.StringInput
 }
 
@@ -391,7 +391,7 @@ func (o DefaultObjectAccessControlOutput) ProjectTeams() DefaultObjectAccessCont
 }
 
 // The access permission for the entity.
-// Possible values are `OWNER` and `READER`.
+// Possible values are: `OWNER`, `READER`.
 func (o DefaultObjectAccessControlOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

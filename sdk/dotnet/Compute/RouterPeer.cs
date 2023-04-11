@@ -244,7 +244,7 @@ namespace Pulumi.Gcp.Compute
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
         /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `CUSTOM`.
+        /// Possible values are: `DEFAULT`, `CUSTOM`.
         /// </summary>
         [Output("advertiseMode")]
         public Output<string?> AdvertiseMode { get; private set; } = null!;
@@ -414,7 +414,7 @@ namespace Pulumi.Gcp.Compute
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
         /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `CUSTOM`.
+        /// Possible values are: `DEFAULT`, `CUSTOM`.
         /// </summary>
         [Input("advertiseMode")]
         public Input<string>? AdvertiseMode { get; set; }
@@ -552,7 +552,7 @@ namespace Pulumi.Gcp.Compute
         /// User-specified flag to indicate which mode to use for advertisement.
         /// Valid values of this enum field are: `DEFAULT`, `CUSTOM`
         /// Default value is `DEFAULT`.
-        /// Possible values are `DEFAULT` and `CUSTOM`.
+        /// Possible values are: `DEFAULT`, `CUSTOM`.
         /// </summary>
         [Input("advertiseMode")]
         public Input<string>? AdvertiseMode { get; set; }

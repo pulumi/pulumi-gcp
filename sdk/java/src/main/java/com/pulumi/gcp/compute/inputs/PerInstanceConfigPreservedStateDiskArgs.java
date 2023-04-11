@@ -22,7 +22,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
      * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
      * deleted from the instance group.
      * Default value is `NEVER`.
-     * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+     * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
      * 
      */
     @Import(name="deleteRule")
@@ -35,7 +35,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
      * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
      * deleted from the instance group.
      * Default value is `NEVER`.
-     * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+     * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
      * 
      */
     public Optional<Output<String>> deleteRule() {
@@ -60,7 +60,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
     /**
      * The mode of the disk.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     @Import(name="mode")
@@ -69,7 +69,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
     /**
      * @return The mode of the disk.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -127,7 +127,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
         /**
          * @param mode The mode of the disk.
          * Default value is `READ_WRITE`.
-         * Possible values are `READ_ONLY` and `READ_WRITE`.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class PerInstanceConfigPreservedStateDiskArgs extends com.pulumi.re
         /**
          * @param mode The mode of the disk.
          * Default value is `READ_WRITE`.
-         * Possible values are `READ_ONLY` and `READ_WRITE`.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
          * 
          * @return builder
          * 

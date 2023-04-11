@@ -14,7 +14,7 @@ export namespace accesscontextmanager {
          * OR is used, at least one Condition in conditions must be satisfied
          * for the AccessLevel to be applied.
          * Default value is `AND`.
-         * Possible values are `AND` and `OR`.
+         * Possible values are: `AND`, `OR`.
          */
         combiningFunction?: string;
         /**
@@ -81,13 +81,13 @@ export namespace accesscontextmanager {
         /**
          * A list of allowed device management levels.
          * An empty list allows all management levels.
-         * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+         * Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
          */
         allowedDeviceManagementLevels?: string[];
         /**
          * A list of allowed encryptions statuses.
          * An empty list allows all statuses.
-         * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+         * Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
          */
         allowedEncryptionStatuses?: string[];
         /**
@@ -120,7 +120,7 @@ export namespace accesscontextmanager {
         minimumVersion?: string;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+         * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
          */
         osType: string;
         /**
@@ -133,13 +133,13 @@ export namespace accesscontextmanager {
         /**
          * A list of allowed device management levels.
          * An empty list allows all management levels.
-         * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+         * Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
          */
         allowedDeviceManagementLevels?: string[];
         /**
          * A list of allowed encryptions statuses.
          * An empty list allows all statuses.
-         * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+         * Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
          */
         allowedEncryptionStatuses?: string[];
         /**
@@ -172,7 +172,7 @@ export namespace accesscontextmanager {
         minimumVersion?: string;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+         * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
          */
         osType: string;
     }
@@ -242,7 +242,7 @@ export namespace accesscontextmanager {
          * OR is used, at least one Condition in conditions must be satisfied
          * for the AccessLevel to be applied.
          * Default value is `AND`.
-         * Possible values are `AND` and `OR`.
+         * Possible values are: `AND`, `OR`.
          */
         combiningFunction?: string;
         /**
@@ -309,13 +309,13 @@ export namespace accesscontextmanager {
         /**
          * A list of allowed device management levels.
          * An empty list allows all management levels.
-         * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+         * Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
          */
         allowedDeviceManagementLevels?: string[];
         /**
          * A list of allowed encryptions statuses.
          * An empty list allows all statuses.
-         * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+         * Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
          */
         allowedEncryptionStatuses?: string[];
         /**
@@ -348,7 +348,7 @@ export namespace accesscontextmanager {
         minimumVersion?: string;
         /**
          * The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+         * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
          */
         osType: string;
     }
@@ -470,7 +470,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access to outside the
          * perimeter. If left unspecified, then members of `identities` field will
          * be allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
     }
@@ -555,7 +555,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access from outside the
          * perimeter. If left unspecified, then members of `identities` field will be
          * allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
@@ -728,7 +728,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access to outside the
          * perimeter. If left unspecified, then members of `identities` field will
          * be allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
     }
@@ -813,7 +813,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access from outside the
          * perimeter. If left unspecified, then members of `identities` field will be
          * allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
@@ -943,7 +943,7 @@ export namespace accesscontextmanager {
          * with a common perimeter, but should not be able to share data among
          * themselves.
          * Default value is `PERIMETER_TYPE_REGULAR`.
-         * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+         * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
          */
         perimeterType?: string;
         /**
@@ -1060,7 +1060,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access to outside the
          * perimeter. If left unspecified, then members of `identities` field will
          * be allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
     }
@@ -1145,7 +1145,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access from outside the
          * perimeter. If left unspecified, then members of `identities` field will be
          * allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
@@ -1318,7 +1318,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access to outside the
          * perimeter. If left unspecified, then members of `identities` field will
          * be allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
     }
@@ -1403,7 +1403,7 @@ export namespace accesscontextmanager {
          * Specifies the type of identities that are allowed access from outside the
          * perimeter. If left unspecified, then members of `identities` field will be
          * allowed access.
-         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
          */
         identityType?: string;
         /**
@@ -1557,7 +1557,7 @@ export namespace alloydb {
     export interface ClusterAutomatedBackupPolicyWeeklySchedule {
         /**
          * The days of the week to perform a backup. At least one day of the week must be provided.
-         * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         daysOfWeeks?: string[];
         /**
@@ -1933,6 +1933,130 @@ export namespace apigee {
         version: number;
     }
 
+    export interface KeystoresAliasesPkcs12CertsInfo {
+        certInfos: outputs.apigee.KeystoresAliasesPkcs12CertsInfoCertInfo[];
+    }
+
+    export interface KeystoresAliasesPkcs12CertsInfoCertInfo {
+        basicConstraints: string;
+        expiryDate: string;
+        isValid: string;
+        issuer: string;
+        publicKey: string;
+        serialNumber: string;
+        sigAlgName: string;
+        subject: string;
+        subjectAlternativeNames: string[];
+        validFrom: string;
+        version: number;
+    }
+
+    export interface KeystoresAliasesSelfSignedCertCertsInfo {
+        /**
+         * (Output)
+         * List of all properties in the object.
+         * Structure is documented below.
+         */
+        certInfos: outputs.apigee.KeystoresAliasesSelfSignedCertCertsInfoCertInfo[];
+    }
+
+    export interface KeystoresAliasesSelfSignedCertCertsInfoCertInfo {
+        /**
+         * (Output)
+         * X.509 basic constraints extension.
+         */
+        basicConstraints: string;
+        /**
+         * (Output)
+         * X.509 notAfter validity period in milliseconds since epoch.
+         */
+        expiryDate: string;
+        /**
+         * (Output)
+         * Flag that specifies whether the certificate is valid.
+         * Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+         */
+        isValid: string;
+        /**
+         * (Output)
+         * X.509 issuer.
+         */
+        issuer: string;
+        /**
+         * (Output)
+         * Public key component of the X.509 subject public key info.
+         */
+        publicKey: string;
+        /**
+         * (Output)
+         * X.509 serial number.
+         */
+        serialNumber: string;
+        /**
+         * (Output)
+         * X.509 signatureAlgorithm.
+         */
+        sigAlgName: string;
+        /**
+         * Subject details.
+         * Structure is documented below.
+         */
+        subject: string;
+        /**
+         * (Output)
+         * X.509 subject alternative names (SANs) extension.
+         */
+        subjectAlternativeNames: string[];
+        /**
+         * (Output)
+         * X.509 notBefore validity period in milliseconds since epoch.
+         */
+        validFrom: string;
+        /**
+         * (Output)
+         * X.509 version.
+         */
+        version: number;
+    }
+
+    export interface KeystoresAliasesSelfSignedCertSubject {
+        /**
+         * Common name of the organization. Maximum length is 64 characters.
+         */
+        commonName?: string;
+        /**
+         * Two-letter country code. Example, IN for India, US for United States of America.
+         */
+        countryCode?: string;
+        /**
+         * Email address. Max 255 characters.
+         */
+        email?: string;
+        /**
+         * City or town name. Maximum length is 128 characters.
+         */
+        locality?: string;
+        /**
+         * Organization name. Maximum length is 64 characters.
+         */
+        org?: string;
+        /**
+         * Organization team name. Maximum length is 64 characters.
+         */
+        orgUnit?: string;
+        /**
+         * State or district name. Maximum length is 128 characters.
+         */
+        state?: string;
+    }
+
+    export interface KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
+        /**
+         * Subject Alternative Name
+         */
+        subjectAlternativeName?: string;
+    }
+
     export interface OrganizationProperties {
         /**
          * List of all properties in the object.
@@ -2034,7 +2158,7 @@ export namespace appengine {
         rrdata?: string;
         /**
          * Resource record type. Example: `AAAA`.
-         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * Possible values are: `A`, `AAAA`, `CNAME`.
          */
         type?: string;
     }
@@ -2061,7 +2185,7 @@ export namespace appengine {
         /**
          * SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
          * If `MANUAL`, `certificateId` must be manually specified in order to configure SSL for this domain.
-         * Possible values are `AUTOMATIC` and `MANUAL`.
+         * Possible values are: `AUTOMATIC`, `MANUAL`.
          */
         sslManagementType: string;
     }
@@ -2073,7 +2197,7 @@ export namespace appengine {
         allocations: {[key: string]: string};
         /**
          * Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-         * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+         * Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
          */
         shardBy?: string;
     }
@@ -2082,13 +2206,13 @@ export namespace appengine {
         /**
          * Action to take when users access resources that require authentication.
          * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+         * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          */
         authFailAction?: string;
         /**
          * Level of login required to access this resource.
          * Default value is `LOGIN_OPTIONAL`.
-         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+         * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
          */
         login?: string;
         /**
@@ -2097,7 +2221,7 @@ export namespace appengine {
         script: string;
         /**
          * Security (HTTPS) enforcement for this URL.
-         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+         * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
          */
         securityLevel?: string;
         /**
@@ -2316,7 +2440,7 @@ export namespace appengine {
         /**
          * Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
          * Default value is `FIXED`.
-         * Possible values are `FIXED` and `MANAGED`.
+         * Possible values are: `FIXED`, `MANAGED`.
          */
         rolloutStrategy?: string;
     }
@@ -2331,17 +2455,17 @@ export namespace appengine {
     export interface FlexibleAppVersionHandler {
         /**
          * Actions to take when the user is not logged in.
-         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+         * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          */
         authFailAction?: string;
         /**
          * Methods to restrict access to a URL based on login status.
-         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+         * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
          */
         login?: string;
         /**
          * 30x code to use when performing redirects for the secure field.
-         * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+         * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
          */
         redirectHttpResponseCode?: string;
         /**
@@ -2352,7 +2476,7 @@ export namespace appengine {
         script?: outputs.appengine.FlexibleAppVersionHandlerScript;
         /**
          * Security (HTTPS) enforcement for this URL.
-         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+         * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
          */
         securityLevel?: string;
         /**
@@ -2558,7 +2682,7 @@ export namespace appengine {
         /**
          * The ingress settings for version or service.
          * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-         * Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+         * Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
          */
         ingressTrafficAllowed?: string;
     }
@@ -2675,17 +2799,17 @@ export namespace appengine {
     export interface StandardAppVersionHandler {
         /**
          * Actions to take when the user is not logged in.
-         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+         * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          */
         authFailAction?: string;
         /**
          * Methods to restrict access to a URL based on login status.
-         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+         * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
          */
         login?: string;
         /**
          * 30x code to use when performing redirects for the secure field.
-         * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+         * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
          */
         redirectHttpResponseCode?: string;
         /**
@@ -2696,7 +2820,7 @@ export namespace appengine {
         script?: outputs.appengine.StandardAppVersionHandlerScript;
         /**
          * Security (HTTPS) enforcement for this URL.
-         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+         * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
          */
         securityLevel?: string;
         /**
@@ -2788,6 +2912,10 @@ export namespace appengine {
 }
 
 export namespace artifactregistry {
+    export interface GetRepositoryDockerConfig {
+        immutableTags: boolean;
+    }
+
     export interface GetRepositoryMavenConfig {
         allowSnapshotOverwrites: boolean;
         versionPolicy: string;
@@ -2827,6 +2955,13 @@ export namespace artifactregistry {
         repository: string;
     }
 
+    export interface RepositoryDockerConfig {
+        /**
+         * The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+         */
+        immutableTags?: boolean;
+    }
+
     export interface RepositoryIamBindingCondition {
         description?: string;
         expression: string;
@@ -2848,7 +2983,7 @@ export namespace artifactregistry {
         /**
          * Version policy defines the versions that the registry will accept.
          * Default value is `VERSION_POLICY_UNSPECIFIED`.
-         * Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+         * Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
          */
         versionPolicy?: string;
     }
@@ -2884,7 +3019,7 @@ export namespace artifactregistry {
         /**
          * Address of the remote repository.
          * Default value is `DOCKER_HUB`.
-         * Possible values are `DOCKER_HUB`.
+         * Possible values are: `DOCKER_HUB`.
          */
         publicRepository?: string;
     }
@@ -2893,7 +3028,7 @@ export namespace artifactregistry {
         /**
          * Address of the remote repository.
          * Default value is `MAVEN_CENTRAL`.
-         * Possible values are `MAVEN_CENTRAL`.
+         * Possible values are: `MAVEN_CENTRAL`.
          */
         publicRepository?: string;
     }
@@ -2902,7 +3037,7 @@ export namespace artifactregistry {
         /**
          * Address of the remote repository.
          * Default value is `NPMJS`.
-         * Possible values are `NPMJS`.
+         * Possible values are: `NPMJS`.
          */
         publicRepository?: string;
     }
@@ -2911,7 +3046,7 @@ export namespace artifactregistry {
         /**
          * Address of the remote repository.
          * Default value is `PYPI`.
-         * Possible values are `PYPI`.
+         * Possible values are: `PYPI`.
          */
         publicRepository?: string;
     }
@@ -3180,7 +3315,7 @@ export namespace bigquery {
         serviceAccountId: string;
         /**
          * Type of the Cloud SQL database.
-         * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+         * Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
          */
         type: string;
     }
@@ -3442,7 +3577,7 @@ export namespace bigquery {
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
          * Creation, truncation and append actions occur as one atomic update upon job completion
          * Default value is `CREATE_IF_NEEDED`.
-         * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+         * Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
          */
         createDisposition?: string;
         /**
@@ -3468,7 +3603,7 @@ export namespace bigquery {
          * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
          * Default value is `WRITE_EMPTY`.
-         * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+         * Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
          */
         writeDisposition?: string;
     }
@@ -3612,7 +3747,7 @@ export namespace bigquery {
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
          * Creation, truncation and append actions occur as one atomic update upon job completion
          * Default value is `CREATE_IF_NEEDED`.
-         * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+         * Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
          */
         createDisposition?: string;
         /**
@@ -3728,7 +3863,7 @@ export namespace bigquery {
          * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
          * Default value is `WRITE_EMPTY`.
-         * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+         * Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
          */
         writeDisposition?: string;
     }
@@ -3793,7 +3928,7 @@ export namespace bigquery {
          * CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result.
          * Creation, truncation and append actions occur as one atomic update upon job completion
          * Default value is `CREATE_IF_NEEDED`.
-         * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+         * Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
          */
         createDisposition?: string;
         /**
@@ -3835,7 +3970,7 @@ export namespace bigquery {
         /**
          * Specifies a priority for the query.
          * Default value is `INTERACTIVE`.
-         * Possible values are `INTERACTIVE` and `BATCH`.
+         * Possible values are: `INTERACTIVE`, `BATCH`.
          */
         priority?: string;
         /**
@@ -3883,7 +4018,7 @@ export namespace bigquery {
          * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
          * Creation, truncation and append actions occur as one atomic update upon job completion.
          * Default value is `WRITE_EMPTY`.
-         * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+         * Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
          */
         writeDisposition?: string;
     }
@@ -3933,7 +4068,7 @@ export namespace bigquery {
         /**
          * Determines which statement in the script represents the "key result",
          * used to populate the schema and query results of the script job.
-         * Possible values are `LAST` and `FIRST_SELECT`.
+         * Possible values are: `LAST`, `FIRST_SELECT`.
          */
         keyResultStatement?: string;
         /**
@@ -4010,11 +4145,23 @@ export namespace bigquery {
         reason?: string;
     }
 
+    export interface ReservationAutoscale {
+        /**
+         * (Output)
+         * The slot capacity added to this reservation when autoscale happens. Will be between [0, maxSlots].
+         */
+        currentSlots: number;
+        /**
+         * Number of slots to be scaled when needed.
+         */
+        maxSlots?: number;
+    }
+
     export interface RoutineArgument {
         /**
          * Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
          */
         argumentKind?: string;
         /**
@@ -4029,7 +4176,7 @@ export namespace bigquery {
         dataType?: string;
         /**
          * Specifies whether the argument is input or output. Can be set for procedures only.
-         * Possible values are `IN`, `OUT`, and `INOUT`.
+         * Possible values are: `IN`, `OUT`, `INOUT`.
          */
         mode?: string;
         /**
@@ -4379,7 +4526,7 @@ export namespace bigquerydatapolicy {
     export interface DataPolicyDataMaskingPolicy {
         /**
          * The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
-         * Possible values are `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, and `DATE_YEAR_MASK`.
+         * Possible values are: `SHA256`, `ALWAYS_NULL`, `DEFAULT_MASKING_VALUE`, `LAST_FOUR_CHARACTERS`, `FIRST_FOUR_CHARACTERS`, `EMAIL_MASK`, `DATE_YEAR_MASK`.
          */
         predefinedExpression: string;
     }
@@ -4590,7 +4737,7 @@ export namespace billing {
          * canonical start. Grammatically, "the start of the current CalendarPeriod".
          * All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
          * Exactly one of `calendarPeriod`, `customPeriod` must be provided.
-         * Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+         * Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
          */
         calendarPeriod?: string;
         /**
@@ -4604,7 +4751,7 @@ export namespace billing {
          * Specifies how credits should be treated when determining spend
          * for threshold calculations.
          * Default value is `INCLUDE_ALL_CREDITS`.
-         * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+         * Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
          */
         creditTypesTreatment?: string;
         /**
@@ -4697,7 +4844,7 @@ export namespace billing {
          * The type of basis used to determine if spend has passed
          * the threshold.
          * Default value is `CURRENT_SPEND`.
-         * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+         * Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
          */
         spendBasis?: string;
         /**
@@ -4829,12 +4976,12 @@ export namespace binaryauthorization {
         cluster: string;
         /**
          * The action when a pod creation is denied by the admission rule.
-         * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+         * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
          */
         enforcementMode: string;
         /**
          * How this admission rule will be evaluated.
-         * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+         * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
          */
         evaluationMode: string;
         /**
@@ -4853,12 +5000,12 @@ export namespace binaryauthorization {
     export interface PolicyDefaultAdmissionRule {
         /**
          * The action when a pod creation is denied by the admission rule.
-         * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+         * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
          */
         enforcementMode: string;
         /**
          * How this admission rule will be evaluated.
-         * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+         * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
          */
         evaluationMode: string;
         /**
@@ -5218,7 +5365,7 @@ export namespace certificateauthority {
         /**
          * The algorithm to use for creating a managed Cloud KMS key for a for a simplified
          * experience. All managed keys will be have their ProtectionLevel as HSM.
-         * Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
+         * Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
          */
         algorithm?: string;
         /**
@@ -5341,7 +5488,7 @@ export namespace certificateauthority {
     export interface CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
         /**
          * The algorithm used.
-         * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+         * Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
          */
         signatureAlgorithm: string;
     }
@@ -5851,7 +5998,7 @@ export namespace certificateauthority {
     export interface CertificateCertificateDescriptionPublicKey {
         /**
          * The format of the public key. Currently, only PEM format is supported.
-         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
          */
         format: string;
         /**
@@ -6244,7 +6391,7 @@ export namespace certificateauthority {
     export interface CertificateConfigPublicKey {
         /**
          * The format of the public key. Currently, only PEM format is supported.
-         * Possible values are `KEY_TYPE_UNSPECIFIED` and `PEM`.
+         * Possible values are: `KEY_TYPE_UNSPECIFIED`, `PEM`.
          */
         format: string;
         /**
@@ -7525,7 +7672,7 @@ export namespace cloudbuild {
         branch: string;
         /**
          * Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-         * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+         * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          */
         commentControl?: string;
         /**
@@ -7715,22 +7862,22 @@ export namespace cloudbuild {
         envs?: string[];
         /**
          * Option to define build log streaming behavior to Google Cloud Storage.
-         * Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+         * Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
          */
         logStreamingOption?: string;
         /**
          * Option to specify the logging mode, which determines if and where build logs are stored.
-         * Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+         * Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
          */
         logging?: string;
         /**
          * Compute Engine machine type on which to run the build.
-         * Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+         * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
          */
         machineType?: string;
         /**
          * Requested verifiability options.
-         * Possible values are `NOT_VERIFIED` and `VERIFIED`.
+         * Possible values are: `NOT_VERIFIED`, `VERIFIED`.
          */
         requestedVerifyOption?: string;
         /**
@@ -7741,14 +7888,14 @@ export namespace cloudbuild {
         secretEnvs?: string[];
         /**
          * Requested hash for SourceProvenance.
-         * Each value may be one of `NONE`, `SHA256`, and `MD5`.
+         * Each value may be one of: `NONE`, `SHA256`, `MD5`.
          */
         sourceProvenanceHashes?: string[];
         /**
          * Option to specify behavior when there is an error in the substitution checks.
          * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
          * in the build configuration file.
-         * Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+         * Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
          */
         substitutionOption?: string;
         /**
@@ -7996,7 +8143,7 @@ export namespace cloudbuild {
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
          * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+         * Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
          */
         repoType: string;
         /**
@@ -8048,7 +8195,7 @@ export namespace cloudbuild {
         branch: string;
         /**
          * Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-         * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+         * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          */
         commentControl?: string;
         /**
@@ -8119,7 +8266,7 @@ export namespace cloudbuild {
         branch?: string;
         /**
          * Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-         * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+         * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          */
         commentControl?: string;
         /**
@@ -8156,7 +8303,7 @@ export namespace cloudbuild {
         /**
          * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
          * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-         * Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+         * Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
          */
         repoType: string;
         /**
@@ -8712,7 +8859,7 @@ export namespace cloudfunctionsv2 {
         /**
          * Describes the retry policy in case of function's execution failure.
          * Retried execution is charged as any other execution.
-         * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+         * Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
          */
         retryPolicy?: string;
         /**
@@ -8794,7 +8941,7 @@ export namespace cloudfunctionsv2 {
         /**
          * Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
          * Default value is `ALLOW_ALL`.
-         * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+         * Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
          */
         ingressSettings?: string;
         /**
@@ -8846,7 +8993,7 @@ export namespace cloudfunctionsv2 {
         vpcConnector?: string;
         /**
          * Available egress settings.
-         * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+         * Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
          */
         vpcConnectorEgressSettings?: string;
     }
@@ -9172,7 +9319,7 @@ export namespace cloudidentity {
     export interface GroupMembershipRole {
         /**
          * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-         * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+         * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
          */
         name: string;
     }
@@ -9236,7 +9383,7 @@ export namespace cloudrun {
         /**
          * The mode of the certificate.
          * Default value is `AUTOMATIC`.
-         * Possible values are `NONE` and `AUTOMATIC`.
+         * Possible values are: `NONE`, `AUTOMATIC`.
          */
         certificateMode?: string;
         /**
@@ -9299,7 +9446,7 @@ export namespace cloudrun {
         status: string;
         /**
          * Resource record type. Example: `AAAA`.
-         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * Possible values are: `A`, `AAAA`, `CNAME`.
          */
         type: string;
     }
@@ -9317,7 +9464,7 @@ export namespace cloudrun {
         rrdata: string;
         /**
          * Resource record type. Example: `AAAA`.
-         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * Possible values are: `A`, `AAAA`, `CNAME`.
          */
         type?: string;
     }
@@ -10367,13 +10514,13 @@ export namespace cloudrunv2 {
         encryptionKey?: string;
         /**
          * The execution environment being used to host this Task.
-         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
          */
         executionEnvironment: string;
         /**
          * Number of retries allowed per Task, before marking this Task failed.
          */
-        maxRetries: number;
+        maxRetries?: number;
         /**
          * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
          */
@@ -10701,7 +10848,7 @@ export namespace cloudrunv2 {
         connector?: string;
         /**
          * Traffic VPC egress settings.
-         * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          */
         egress?: string;
     }
@@ -10800,7 +10947,7 @@ export namespace cloudrunv2 {
         state: string;
         /**
          * The allocation type for this traffic target.
-         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
          */
         type: string;
     }
@@ -10833,7 +10980,7 @@ export namespace cloudrunv2 {
         encryptionKey?: string;
         /**
          * The sandbox environment to host this Revision.
-         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
          */
         executionEnvironment?: string;
         /**
@@ -11226,7 +11373,7 @@ export namespace cloudrunv2 {
         connector?: string;
         /**
          * Traffic VPC egress settings.
-         * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+         * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          */
         egress?: string;
     }
@@ -11270,7 +11417,7 @@ export namespace cloudrunv2 {
         state: string;
         /**
          * The allocation type for this traffic target.
-         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
          */
         type: string;
     }
@@ -11290,7 +11437,7 @@ export namespace cloudrunv2 {
         tag?: string;
         /**
          * The allocation type for this traffic target.
-         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
          */
         type?: string;
     }
@@ -11312,7 +11459,7 @@ export namespace cloudrunv2 {
         tag: string;
         /**
          * The allocation type for this traffic target.
-         * Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+         * Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
          */
         type: string;
         /**
@@ -11960,7 +12107,7 @@ export namespace compute {
         /**
          * Defines operating mode for this policy.
          * Default value is `ON`.
-         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          */
         mode?: string;
         /**
@@ -12082,7 +12229,7 @@ export namespace compute {
         /**
          * Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
-         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+         * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
          */
         type?: string;
     }
@@ -12217,7 +12364,7 @@ export namespace compute {
         /**
          * Defines operating mode for this policy.
          * Default value is `ON`.
-         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          */
         mode?: string;
         /**
@@ -12339,7 +12486,7 @@ export namespace compute {
         /**
          * Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
-         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+         * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
          */
         type?: string;
     }
@@ -12441,7 +12588,7 @@ export namespace compute {
         /**
          * Specifies the cache setting for all responses from this backend.
          * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
          */
         cacheMode: string;
         /**
@@ -12543,7 +12690,7 @@ export namespace compute {
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          */
         balancingMode?: string;
         /**
@@ -12641,7 +12788,7 @@ export namespace compute {
         /**
          * Specifies the cache setting for all responses from this backend.
          * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
          */
         cacheMode: string;
         /**
@@ -13235,7 +13382,7 @@ export namespace compute {
     export interface FirewallLogConfig {
         /**
          * This field denotes whether to include or exclude metadata for firewall logs.
-         * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+         * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
          */
         metadata: string;
     }
@@ -14529,7 +14676,7 @@ export namespace compute {
          * label in the provided metadata.
          * MATCH_ALL - All filterLabels must have matching labels in the
          * provided metadata.
-         * Possible values are `MATCH_ANY` and `MATCH_ALL`.
+         * Possible values are: `MATCH_ANY`, `MATCH_ALL`.
          */
         filterMatchCriteria: string;
     }
@@ -14675,27 +14822,27 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -14759,7 +14906,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -14801,7 +14948,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -14845,7 +14992,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -14883,7 +15030,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -14904,7 +15051,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`.
          */
         type: string;
     }
@@ -14960,7 +15107,7 @@ export namespace compute {
          * and not a runtime format. Provided by the client when the disk
          * image is created.
          * Default value is `TAR`.
-         * Possible values are `TAR`.
+         * Possible values are: `TAR`.
          */
         containerType?: string;
         /**
@@ -16447,7 +16594,7 @@ export namespace compute {
          * - ONLY_SCALE_OUT: Enables only scaling out.
          * You must use this mode if your node groups are configured to
          * restart their hosted VMs on minimal servers.
-         * Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+         * Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
          */
         mode: string;
     }
@@ -16467,7 +16614,7 @@ export namespace compute {
         projectMaps?: outputs.compute.NodeGroupShareSettingsProjectMap[];
         /**
          * Node group sharing type.
-         * Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+         * Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
          */
         shareType: string;
     }
@@ -16512,7 +16659,7 @@ export namespace compute {
          * such as physical sockets or cores, to avoid the need for
          * additional licenses when maintenance occurs. However, VMs on such
          * nodes will experience outages while maintenance is applied.
-         * Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
+         * Possible values are: `RESTART_NODE_ON_ANY_SERVER`, `RESTART_NODE_ON_MINIMAL_SERVERS`.
          */
         type: string;
     }
@@ -16531,7 +16678,7 @@ export namespace compute {
          * Preconfigured versioned expression. For organization security policy rules,
          * the only supported type is "FIREWALL".
          * Default value is `FIREWALL`.
-         * Possible values are `FIREWALL`.
+         * Possible values are: `FIREWALL`.
          */
         versionedExpr?: string;
     }
@@ -16590,7 +16737,7 @@ export namespace compute {
         /**
          * Direction of traffic to mirror.
          * Default value is `BOTH`.
-         * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+         * Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
          */
         direction?: string;
         /**
@@ -16659,7 +16806,7 @@ export namespace compute {
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          */
         deleteRule?: string;
         /**
@@ -16669,7 +16816,7 @@ export namespace compute {
         /**
          * The mode of the disk.
          * Default value is `READ_WRITE`.
-         * Possible values are `READ_ONLY` and `READ_WRITE`.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
          */
         mode?: string;
         /**
@@ -16683,7 +16830,7 @@ export namespace compute {
         /**
          * These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          */
         autoDelete?: string;
         /**
@@ -16708,7 +16855,7 @@ export namespace compute {
         /**
          * These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          */
         autoDelete?: string;
         /**
@@ -16776,7 +16923,7 @@ export namespace compute {
         /**
          * Defines operating mode for this policy.
          * Default value is `ON`.
-         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          */
         mode?: string;
         /**
@@ -16898,7 +17045,7 @@ export namespace compute {
         /**
          * Defines how target utilization value is expressed for a
          * Stackdriver Monitoring metric.
-         * Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+         * Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
          */
         type?: string;
     }
@@ -16992,7 +17139,7 @@ export namespace compute {
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `CONNECTION`.
-         * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          */
         balancingMode?: string;
         /**
@@ -17106,7 +17253,7 @@ export namespace compute {
         /**
          * Specifies the cache setting for all responses from this backend.
          * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         * Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
          */
         cacheMode: string;
         /**
@@ -17269,7 +17416,7 @@ export namespace compute {
          * unhealthy backends regardless of protocol and session affinity. It is
          * generally not recommended to use this mode overriding the default.
          * Default value is `DEFAULT_FOR_PROTOCOL`.
-         * Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+         * Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
          */
         connectionPersistenceOnUnhealthyBackends?: string;
         /**
@@ -17286,7 +17433,7 @@ export namespace compute {
          * `PER_SESSION`: The Connection Tracking is performed as per the
          * configured Session Affinity. It matches the configured Session Affinity.
          * Default value is `PER_CONNECTION`.
-         * Possible values are `PER_CONNECTION` and `PER_SESSION`.
+         * Possible values are: `PER_CONNECTION`, `PER_SESSION`.
          */
         trackingMode?: string;
     }
@@ -17547,7 +17694,7 @@ export namespace compute {
     export interface RegionBackendServiceSubsetting {
         /**
          * The algorithm used for subsetting.
-         * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+         * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
          */
         policy: string;
     }
@@ -17708,27 +17855,27 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -17792,7 +17939,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -17834,7 +17981,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -17878,7 +18025,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -17916,7 +18063,7 @@ export namespace compute {
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `PROXY_V1`.
+         * Possible values are: `NONE`, `PROXY_V1`.
          */
         proxyHeader?: string;
         /**
@@ -18299,7 +18446,7 @@ export namespace compute {
          * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
          * deleted from the instance group.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          */
         deleteRule?: string;
         /**
@@ -18309,7 +18456,7 @@ export namespace compute {
         /**
          * The mode of the disk.
          * Default value is `READ_WRITE`.
-         * Possible values are `READ_ONLY` and `READ_WRITE`.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
          */
         mode?: string;
         /**
@@ -18323,7 +18470,7 @@ export namespace compute {
         /**
          * These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          */
         autoDelete?: string;
         /**
@@ -18348,7 +18495,7 @@ export namespace compute {
         /**
          * These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
          * Default value is `NEVER`.
-         * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+         * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
          */
         autoDelete?: string;
         /**
@@ -19468,7 +19615,7 @@ export namespace compute {
          * provided metadata.
          * * MATCH_ALL: All filterLabels must have matching labels in
          * the provided metadata.
-         * Possible values are `MATCH_ALL` and `MATCH_ANY`.
+         * Possible values are: `MATCH_ALL`, `MATCH_ANY`.
          */
         filterMatchCriteria: string;
     }
@@ -19892,7 +20039,7 @@ export namespace compute {
         projectMaps?: outputs.compute.ReservationShareSettingsProjectMap[];
         /**
          * Type of sharing for this shared-reservation
-         * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+         * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
          */
         shareType: string;
     }
@@ -19973,7 +20120,7 @@ export namespace compute {
         /**
          * The disk interface to use for attaching this disk.
          * Default value is `SCSI`.
-         * Possible values are `SCSI` and `NVME`.
+         * Possible values are: `SCSI`, `NVME`.
          */
         interface?: string;
     }
@@ -19989,7 +20136,7 @@ export namespace compute {
          * Specify `COLLOCATED` to enable collocation. Can only be specified with `vmCount`. If compute instances are created
          * with a COLLOCATED policy, then exactly `vmCount` instances must be created at the same time with the resource policy
          * attached.
-         * Possible values are `COLLOCATED`.
+         * Possible values are: `COLLOCATED`.
          */
         collocation?: string;
         maxDistance?: number;
@@ -20068,7 +20215,7 @@ export namespace compute {
          * Specifies the behavior to apply to scheduled snapshots when
          * the source disk is deleted.
          * Default value is `KEEP_AUTO_SNAPSHOTS`.
-         * Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+         * Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
          */
         onSourceDiskDelete?: string;
     }
@@ -20129,7 +20276,7 @@ export namespace compute {
     export interface ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
         /**
          * The day of the week to create the snapshot. e.g. MONDAY
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         day: string;
         /**
@@ -20165,7 +20312,7 @@ export namespace compute {
         /**
          * User-specified flag to indicate which mode to use for advertisement.
          * Default value is `DEFAULT`.
-         * Possible values are `DEFAULT` and `CUSTOM`.
+         * Possible values are: `DEFAULT`, `CUSTOM`.
          */
         advertiseMode?: string;
         /**
@@ -20226,7 +20373,7 @@ export namespace compute {
         enable: boolean;
         /**
          * Specifies the desired filtering of logs on this NAT.
-         * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+         * Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
          */
         filter: string;
     }
@@ -20336,7 +20483,7 @@ export namespace compute {
          * for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
          * for the peer router to initiate the BFD session for this BGP peer.
          * If set to `DISABLED`, BFD is disabled for this BGP peer.
-         * Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+         * Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
          */
         sessionInitializationMode: string;
     }
@@ -20929,7 +21076,7 @@ export namespace compute {
          * interval time will reduce the amount of generated flow logs for long
          * lasting connections. Default is an interval of 5 seconds per connection.
          * Default value is `INTERVAL_5_SEC`.
-         * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+         * Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
          */
         aggregationInterval?: string;
         /**
@@ -20951,7 +21098,7 @@ export namespace compute {
          * Configures whether metadata fields should be added to the reported VPC
          * flow logs.
          * Default value is `INCLUDE_ALL_METADATA`.
-         * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+         * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
          */
         metadata?: string;
         /**
@@ -22516,7 +22663,7 @@ export namespace compute {
          * provided metadata.
          * - MATCH_ALL: All filterLabels must have matching labels in
          * the provided metadata.
-         * Possible values are `MATCH_ALL` and `MATCH_ANY`.
+         * Possible values are: `MATCH_ALL`, `MATCH_ANY`.
          */
         filterMatchCriteria: string;
     }
@@ -22988,7 +23135,7 @@ export namespace container {
     export interface AttachedClusterLoggingConfigComponentConfig {
         /**
          * The components to be enabled.
-         * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+         * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
          */
         enableComponents?: string[];
     }
@@ -24246,6 +24393,10 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodeConfigEphemeralStorageConfig;
         /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         */
+        ephemeralStorageLocalSsdConfig?: outputs.container.ClusterNodeConfigEphemeralStorageLocalSsdConfig;
+        /**
          * Parameters for the Google Container Filesystem (GCFS).
          * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
          * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -24395,6 +24546,13 @@ export namespace container {
     }
 
     export interface ClusterNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         */
+        localSsdCount: number;
+    }
+
+    export interface ClusterNodeConfigEphemeralStorageLocalSsdConfig {
         /**
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
@@ -24708,6 +24866,10 @@ export namespace container {
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig;
         /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         */
+        ephemeralStorageLocalSsdConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
+        /**
          * Parameters for the Google Container Filesystem (GCFS).
          * If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
          * For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -24857,6 +25019,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         */
+        localSsdCount: number;
+    }
+
+    export interface ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
         /**
          * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
@@ -25165,12 +25334,15 @@ export namespace container {
          */
         workloadConfig: outputs.container.ClusterProtectConfigWorkloadConfig;
         /**
-         * ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+         * ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
          */
         workloadVulnerabilityMode: string;
     }
 
     export interface ClusterProtectConfigWorkloadConfig {
+        /**
+         * ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+         */
         auditMode: string;
     }
 
@@ -25492,6 +25664,7 @@ export namespace container {
         diskSizeGb: number;
         diskType: string;
         ephemeralStorageConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageConfig[];
+        ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageLocalSsdConfig[];
         gcfsConfigs: outputs.container.GetClusterNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
         gvnics: outputs.container.GetClusterNodeConfigGvnic[];
@@ -25524,6 +25697,10 @@ export namespace container {
     }
 
     export interface GetClusterNodeConfigEphemeralStorageConfig {
+        localSsdCount: number;
+    }
+
+    export interface GetClusterNodeConfigEphemeralStorageLocalSsdConfig {
         localSsdCount: number;
     }
 
@@ -25655,6 +25832,7 @@ export namespace container {
         diskSizeGb: number;
         diskType: string;
         ephemeralStorageConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageConfig[];
+        ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig[];
         gcfsConfigs: outputs.container.GetClusterNodePoolNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
         gvnics: outputs.container.GetClusterNodePoolNodeConfigGvnic[];
@@ -25687,6 +25865,10 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolNodeConfigEphemeralStorageConfig {
+        localSsdCount: number;
+    }
+
+    export interface GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
         localSsdCount: number;
     }
 
@@ -25915,6 +26097,7 @@ export namespace container {
         diskSizeGb: number;
         diskType: string;
         ephemeralStorageConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageConfig;
+        ephemeralStorageLocalSsdConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
         gcfsConfig?: outputs.container.NodePoolNodeConfigGcfsConfig;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
         gvnic?: outputs.container.NodePoolNodeConfigGvnic;
@@ -25947,6 +26130,10 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigEphemeralStorageConfig {
+        localSsdCount: number;
+    }
+
+    export interface NodePoolNodeConfigEphemeralStorageLocalSsdConfig {
         localSsdCount: number;
     }
 
@@ -26361,7 +26548,7 @@ export namespace datacatalog {
         /**
          * Represents primitive types - string, bool etc.
          * Exactly one of `primitiveType` or `enumType` must be set
-         * Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
+         * Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
          */
         primitiveType: string;
     }
@@ -26438,12 +26625,12 @@ export namespace datafusion {
     export interface InstanceAccelerator {
         /**
          * The type of an accelator for a CDF instance.
-         * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+         * Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
          */
         acceleratorType: string;
         /**
          * The type of an accelator for a CDF instance.
-         * Possible values are `ENABLED` and `DISABLED`.
+         * Possible values are: `ENABLED`, `DISABLED`.
          */
         state: string;
     }
@@ -26582,7 +26769,7 @@ export namespace dataloss {
         charactersToSkip?: string;
         /**
          * Common characters to not transform when masking. Useful to avoid removing punctuation.
-         * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+         * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
          */
         commonCharactersToIgnore?: string;
     }
@@ -26686,7 +26873,7 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
         /**
          * Common alphabets.
-         * Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+         * Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
          */
         commonAlphabet?: string;
         /**
@@ -26813,7 +27000,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -26926,7 +27113,7 @@ export namespace dataloss {
         /**
          * The operator to apply to the result of conditions. Default and currently only supported value is AND.
          * Default value is `AND`.
-         * Possible values are `AND`.
+         * Possible values are: `AND`.
          */
         logicalOperator?: string;
     }
@@ -26947,7 +27134,7 @@ export namespace dataloss {
         field: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionField;
         /**
          * Operator used to compare the field or infoType to the value.
-         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         * Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
          */
         operator: string;
         /**
@@ -26976,7 +27163,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -27153,7 +27340,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -27225,7 +27412,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -27297,7 +27484,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -27385,7 +27572,7 @@ export namespace dataloss {
         charactersToSkip?: string;
         /**
          * Common characters to not transform when masking. Useful to avoid removing punctuation.
-         * Possible values are `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, and `WHITESPACE`.
+         * Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
          */
         commonCharactersToIgnore?: string;
     }
@@ -27545,7 +27732,7 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
         /**
          * Common alphabets.
-         * Possible values are `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, and `ALPHA_NUMERIC`.
+         * Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
          */
         commonAlphabet?: string;
         /**
@@ -27764,7 +27951,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -27836,7 +28023,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -27920,7 +28107,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -27998,7 +28185,7 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig {
         /**
          * The part of the time to keep.
-         * Possible values are `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, and `HOUR_OF_DAY`.
+         * Possible values are: `YEAR`, `MONTH`, `DAY_OF_MONTH`, `DAY_OF_WEEK`, `WEEK_OF_YEAR`, `HOUR_OF_DAY`.
          */
         partToExtract?: string;
     }
@@ -28028,7 +28215,7 @@ export namespace dataloss {
         /**
          * The operator to apply to the result of conditions. Default and currently only supported value is AND.
          * Default value is `AND`.
-         * Possible values are `AND`.
+         * Possible values are: `AND`.
          */
         logicalOperator?: string;
     }
@@ -28049,7 +28236,7 @@ export namespace dataloss {
         field: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionField;
         /**
          * Operator used to compare the field or infoType to the value.
-         * Possible values are `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, and `EXISTS`.
+         * Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
          */
         operator: string;
         /**
@@ -28078,7 +28265,7 @@ export namespace dataloss {
         dateValue?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue;
         /**
          * Represents a day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeekValue?: string;
         /**
@@ -28141,7 +28328,7 @@ export namespace dataloss {
     export interface PreventionInspectTemplateInspectConfig {
         /**
          * List of options defining data content to scan. If empty, text, images, and other content will be included.
-         * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+         * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
          */
         contentOptions?: string[];
         /**
@@ -28173,7 +28360,7 @@ export namespace dataloss {
         /**
          * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
          * Default value is `POSSIBLE`.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          */
         minLikelihood?: string;
         /**
@@ -28192,7 +28379,7 @@ export namespace dataloss {
         dictionary?: outputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary;
         /**
          * If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-         * Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+         * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
          */
         exclusionType?: string;
         /**
@@ -28207,7 +28394,7 @@ export namespace dataloss {
          * Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
          * specified by the rule.
          * Default value is `VERY_LIKELY`.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          */
         likelihood?: string;
         /**
@@ -28375,7 +28562,7 @@ export namespace dataloss {
         excludeInfoTypes?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
         /**
          * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
-         * Possible values are `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, and `MATCHING_TYPE_INVERSE_MATCH`.
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
          */
         matchingType: string;
         /**
@@ -28479,7 +28666,7 @@ export namespace dataloss {
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
         /**
          * Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          */
         fixedLikelihood?: string;
         /**
@@ -28572,7 +28759,7 @@ export namespace dataloss {
          * If unspecified, then all available columns will be used for a new table or an (existing)
          * table with no schema, and no changes will be made to an existing table that has a schema.
          * Only for use with external storage.
-         * Possible values are `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, and `ALL_COLUMNS`.
+         * Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
          */
         outputSchema?: string;
         /**
@@ -28644,7 +28831,7 @@ export namespace dataloss {
          * How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
          * rowsLimit or rowsLimitPercent. If not specified, rows are scanned in the order BigQuery reads them.
          * Default value is `TOP`.
-         * Possible values are `TOP` and `RANDOM_START`.
+         * Possible values are: `TOP`, `RANDOM_START`.
          */
         sampleMethod?: string;
         /**
@@ -28696,7 +28883,7 @@ export namespace dataloss {
          * List of file type groups to include in the scan. If empty, all files are scanned and available data
          * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
          * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-         * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
          */
         fileTypes?: string[];
         /**
@@ -28707,7 +28894,7 @@ export namespace dataloss {
         /**
          * How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
          * If not specified, scanning would start from the top.
-         * Possible values are `TOP` and `RANDOM_START`.
+         * Possible values are: `TOP`, `RANDOM_START`.
          */
         sampleMethod?: string;
     }
@@ -29788,19 +29975,7 @@ export namespace dataproc {
          */
         imageVersion: string;
         /**
-         * The set of optional components to activate on the cluster.
-         * Accepted values are:
-         * * ANACONDA
-         * * DRUID
-         * * FLINK
-         * * HBASE
-         * * HIVE_WEBHCAT
-         * * JUPYTER
-         * * PRESTO
-         * * RANGER
-         * * SOLR
-         * * ZEPPELIN
-         * * ZOOKEEPER
+         * The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
          */
         optionalComponents?: string[];
         /**
@@ -30366,7 +30541,7 @@ export namespace dataproc {
     export interface MetastoreFederationBackendMetastore {
         /**
          * The type of the backend metastore.
-         * Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+         * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
          */
         metastoreType: string;
         /**
@@ -30473,7 +30648,7 @@ export namespace dataproc {
     export interface MetastoreServiceMaintenanceWindow {
         /**
          * The day of week, when the window starts.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeek: string;
         /**
@@ -30524,7 +30699,7 @@ export namespace dataproc {
         /**
          * The output format of the Dataproc Metastore service's logs.
          * Default value is `JSON`.
-         * Possible values are `LEGACY` and `JSON`.
+         * Possible values are: `LEGACY`, `JSON`.
          */
         logFormat?: string;
     }
@@ -31538,7 +31713,7 @@ export namespace datastore {
     export interface DataStoreIndexProperty {
         /**
          * The direction the index should optimize for sorting.
-         * Possible values are `ASCENDING` and `DESCENDING`.
+         * Possible values are: `ASCENDING`, `DESCENDING`.
          */
         direction: string;
         /**
@@ -32075,12 +32250,12 @@ export namespace datastream {
     export interface StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
         /**
          * Compression of the loaded JSON file.
-         * Possible values are `NO_COMPRESSION` and `GZIP`.
+         * Possible values are: `NO_COMPRESSION`, `GZIP`.
          */
         compression?: string;
         /**
          * The schema file format along JSON data files.
-         * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+         * Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
          */
         schemaFileFormat?: string;
     }
@@ -32783,14 +32958,14 @@ export namespace diagflow {
          * Indicates NLU model training mode.
          * * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
          * * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-         * Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+         * Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
          */
         modelTrainingMode?: string;
         /**
          * Indicates the type of NLU model.
          * * MODEL_TYPE_STANDARD: Use standard NLU model.
          * * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-         * Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+         * Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
          */
         modelType?: string;
     }
@@ -33277,7 +33452,7 @@ export namespace diagflow {
         /**
          * The type of the feature that enabled for fulfillment.
          * * SMALLTALK: Fulfillment is enabled for SmallTalk.
-         * Possible values are `SMALLTALK`.
+         * Possible values are: `SMALLTALK`.
          */
         type: string;
     }
@@ -33456,12 +33631,12 @@ export namespace dns {
         /**
          * Specifies the mechanism used to provide authenticated denial-of-existence responses.
          * nonExistence can only be updated when the state is `off`.
-         * Possible values are `nsec` and `nsec3`.
+         * Possible values are: `nsec`, `nsec3`.
          */
         nonExistence: string;
         /**
          * Specifies whether DNSSEC is enabled, and what mode it is in
-         * Possible values are `off`, `on`, and `transfer`.
+         * Possible values are: `off`, `on`, `transfer`.
          */
         state?: string;
     }
@@ -33469,7 +33644,7 @@ export namespace dns {
     export interface ManagedZoneDnssecConfigDefaultKeySpec {
         /**
          * String mnemonic specifying the DNSSEC algorithm of this key
-         * Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+         * Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
          */
         algorithm?: string;
         /**
@@ -33483,7 +33658,7 @@ export namespace dns {
          * resource record sets of type DNSKEY. Zone signing keys do
          * not have the Secure Entry Point flag set and will be used
          * to sign all other types of resource record sets.
-         * Possible values are `keySigning` and `zoneSigning`.
+         * Possible values are: `keySigning`, `zoneSigning`.
          */
         keyType?: string;
         /**
@@ -33507,7 +33682,7 @@ export namespace dns {
          * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
          * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-         * Possible values are `default` and `private`.
+         * Possible values are: `default`, `private`.
          */
         forwardingPath?: string;
         /**
@@ -33594,7 +33769,7 @@ export namespace dns {
          * Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
          * decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
          * to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-         * Possible values are `default` and `private`.
+         * Possible values are: `default`, `private`.
          */
         forwardingPath?: string;
         /**
@@ -33899,7 +34074,7 @@ export namespace dns {
         ttl?: number;
         /**
          * One of valid DNS resource types.
-         * Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+         * Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
          */
         type: string;
     }
@@ -34105,7 +34280,7 @@ export namespace filestore {
          * Either READ_ONLY, for allowing only read requests on the exported directory,
          * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
          * Default value is `READ_WRITE`.
-         * Possible values are `READ_ONLY` and `READ_WRITE`.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
          */
         accessMode?: string;
         /**
@@ -34130,7 +34305,7 @@ export namespace filestore {
          * Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
          * for not allowing root access. The default is NO_ROOT_SQUASH.
          * Default value is `NO_ROOT_SQUASH`.
-         * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+         * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
          */
         squashMode?: string;
     }
@@ -34141,7 +34316,7 @@ export namespace filestore {
          * If not provided, the connect mode defaults to
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
-         * Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+         * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
          */
         connectMode?: string;
         /**
@@ -34152,7 +34327,7 @@ export namespace filestore {
         /**
          * IP versions for which the instance has
          * IP addresses assigned.
-         * Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+         * Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
          */
         modes: string[];
         /**
@@ -34280,7 +34455,7 @@ export namespace firestore {
         /**
          * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
          * be specified.
-         * Possible values are `CONTAINS`.
+         * Possible values are: `CONTAINS`.
          */
         arrayConfig?: string;
         /**
@@ -34290,7 +34465,7 @@ export namespace firestore {
         /**
          * Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=.
          * Only one of `order` and `arrayConfig` can be specified.
-         * Possible values are `ASCENDING` and `DESCENDING`.
+         * Possible values are: `ASCENDING`, `DESCENDING`.
          */
         order?: string;
     }
@@ -34328,7 +34503,7 @@ export namespace folder {
         /**
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
-         * Possible values are `BLOCK_ALL`.
+         * Possible values are: `BLOCK_ALL`.
          */
         enrollmentLevel?: string;
     }
@@ -35089,7 +35264,7 @@ export namespace healthcare {
          * * ANALYTICS_V2: Analytics V2, similar to schema defined by the FHIR community, with added support for extensions with one or more occurrences and contained resources in stringified JSON.
          * * LOSSLESS: A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
          * Default value is `ANALYTICS`.
-         * Possible values are `ANALYTICS`, `ANALYTICS_V2`, and `LOSSLESS`.
+         * Possible values are: `ANALYTICS`, `ANALYTICS_V2`, `LOSSLESS`.
          */
         schemaType?: string;
     }
@@ -35161,7 +35336,7 @@ export namespace healthcare {
         /**
          * The version of the unschematized parser to be used when a custom `schema` is not set.
          * Default value is `V1`.
-         * Possible values are `V1`, `V2`, and `V3`.
+         * Possible values are: `V1`, `V2`, `V3`.
          */
         version?: string;
     }
@@ -35850,7 +36025,7 @@ export namespace iot {
     export interface DeviceCredentialPublicKey {
         /**
          * The format of the key.
-         * Possible values are `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, and `ES256_X509_PEM`.
+         * Possible values are: `RSA_PEM`, `RSA_X509_PEM`, `ES256_PEM`, `ES256_X509_PEM`.
          */
         format: string;
         /**
@@ -35862,13 +36037,13 @@ export namespace iot {
     export interface DeviceGatewayConfig {
         /**
          * Indicates whether the device is a gateway.
-         * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+         * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
          */
         gatewayAuthMethod?: string;
         /**
          * Indicates whether the device is a gateway.
          * Default value is `NON_GATEWAY`.
-         * Possible values are `GATEWAY` and `NON_GATEWAY`.
+         * Possible values are: `GATEWAY`, `NON_GATEWAY`.
          */
         gatewayType?: string;
         /**
@@ -36313,7 +36488,7 @@ export namespace logging {
          * Whether the metric records instantaneous values, changes to a value, etc.
          * Some combinations of metricKind and valueType might not be supported.
          * For counter metrics, set this to DELTA.
-         * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+         * Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
          */
         metricKind: string;
         /**
@@ -36326,7 +36501,7 @@ export namespace logging {
          * Whether the measurement is an integer, a floating-point number, etc.
          * Some combinations of metricKind and valueType might not be supported.
          * For counter metrics, set this to INT64.
-         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+         * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
          */
         valueType: string;
     }
@@ -36343,7 +36518,7 @@ export namespace logging {
         /**
          * The type of data that can be assigned to the label.
          * Default value is `STRING`.
-         * Possible values are `BOOL`, `INT64`, and `STRING`.
+         * Possible values are: `BOOL`, `INT64`, `STRING`.
          */
         valueType?: string;
     }
@@ -36493,7 +36668,7 @@ export namespace memcache {
          * - FRIDAY: Friday
          * - SATURDAY: Saturday
          * - SUNDAY: Sunday
-         * Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         day: string;
         /**
@@ -36766,7 +36941,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
-         * Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+         * Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
          */
         crossSeriesReducer?: string;
         /**
@@ -36815,7 +36990,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
-         * Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+         * Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
          */
         perSeriesAligner?: string;
     }
@@ -36875,7 +37050,7 @@ export namespace monitoring {
          * A condition control that determines how
          * metric-threshold conditions are evaluated when
          * data stops arriving.
-         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
          */
         evaluationMissingData?: string;
         /**
@@ -36938,7 +37113,7 @@ export namespace monitoring {
          * the left-hand side and the threshold on the
          * right-hand side. Only COMPARISON_LT and
          * COMPARISON_GT are supported currently.
-         * Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+         * Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
          */
         comparison: string;
         /**
@@ -37001,7 +37176,7 @@ export namespace monitoring {
          * A condition control that determines how
          * metric-threshold conditions are evaluated when
          * data stops arriving.
-         * Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+         * Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
          */
         evaluationMissingData?: string;
         /**
@@ -37074,7 +37249,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
-         * Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+         * Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
          */
         crossSeriesReducer?: string;
         /**
@@ -37123,7 +37298,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
-         * Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+         * Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
          */
         perSeriesAligner?: string;
     }
@@ -37164,7 +37339,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
-         * Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+         * Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
          */
         crossSeriesReducer?: string;
         /**
@@ -37213,7 +37388,7 @@ export namespace monitoring {
          * and alignmentPeriod must be
          * specified; otherwise, an error is
          * returned.
-         * Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+         * Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
          */
         perSeriesAligner?: string;
     }
@@ -37365,7 +37540,7 @@ export namespace monitoring {
         /**
          * The type of data that can be assigned to the label.
          * Default value is `STRING`.
-         * Possible values are `STRING`, `BOOL`, and `INT64`.
+         * Possible values are: `STRING`, `BOOL`, `INT64`.
          */
         valueType?: string;
     }
@@ -37841,7 +38016,7 @@ export namespace monitoring {
         /**
          * The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
          * Default value is `CONTAINS_STRING`.
-         * Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
+         * Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
          */
         matcher?: string;
     }
@@ -37850,7 +38025,7 @@ export namespace monitoring {
         /**
          * Options to perform JSONPath content matching.
          * Default value is `EXACT_MATCH`.
-         * Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+         * Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
          */
         jsonMatcher?: string;
         /**
@@ -37876,7 +38051,7 @@ export namespace monitoring {
         body?: string;
         /**
          * The content type to use for the check.
-         * Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
          */
         contentType?: string;
         /**
@@ -37898,7 +38073,7 @@ export namespace monitoring {
         /**
          * The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
          * Default value is `GET`.
-         * Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+         * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
          */
         requestMethod?: string;
         /**
@@ -37914,7 +38089,7 @@ export namespace monitoring {
     export interface UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
         /**
          * A class of status codes to accept.
-         * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+         * Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
          */
         statusClass?: string;
         /**
@@ -37953,7 +38128,7 @@ export namespace monitoring {
         groupId?: string;
         /**
          * The resource type of the group members.
-         * Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+         * Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
          */
         resourceType?: string;
     }
@@ -38069,7 +38244,7 @@ export namespace networkmanagement {
         network?: string;
         /**
          * Type of the network where the endpoint is located.
-         * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+         * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
          */
         networkType?: string;
         /**
@@ -38522,7 +38697,7 @@ export namespace networkservices {
         /**
          * Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
          * For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-         * Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+         * Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
          */
         cacheMode: string;
         /**
@@ -38592,7 +38767,7 @@ export namespace networkservices {
          * Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
          * You must also set a signedRequestKeyset to enable signed requests.
          * When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-         * Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+         * Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
          */
         signedRequestMode: string;
         /**
@@ -38606,7 +38781,7 @@ export namespace networkservices {
     export interface EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
         /**
          * The actions to take to add signatures to responses.
-         * Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+         * Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
          */
         actions: string;
         /**
@@ -38691,7 +38866,7 @@ export namespace networkservices {
          * The allowed signature algorithms to use.
          * Defaults to using only ED25519.
          * You may specify up to 3 signature algorithms to use.
-         * Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+         * Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
          */
         allowedSignatureAlgorithms?: string[];
         /**
@@ -38834,7 +39009,7 @@ export namespace notebooks {
         coreCount: number;
         /**
          * Type of this accelerator.
-         * Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
+         * Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
          */
         type: string;
     }
@@ -38866,7 +39041,7 @@ export namespace notebooks {
     export interface InstanceReservationAffinity {
         /**
          * The type of Compute Reservation.
-         * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+         * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
          */
         consumeReservationType: string;
         /**
@@ -38999,7 +39174,7 @@ export namespace notebooks {
         postStartupScript?: string;
         /**
          * Behavior for the post startup script.
-         * Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+         * Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
          */
         postStartupScriptBehavior?: string;
         /**
@@ -39116,7 +39291,7 @@ export namespace notebooks {
         /**
          * The type of vNIC to be used on this interface. This may be gVNIC
          * or VirtioNet.
-         * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+         * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
          */
         nicType?: string;
         /**
@@ -39359,7 +39534,7 @@ export namespace organizations {
         /**
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
-         * Possible values are `BLOCK_ALL`.
+         * Possible values are: `BLOCK_ALL`.
          */
         enrollmentLevel?: string;
     }
@@ -39692,7 +39867,7 @@ export namespace osconfig {
     export interface GuestPoliciesPackage {
         /**
          * The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+         * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
          */
         desiredState?: string;
         /**
@@ -39702,7 +39877,7 @@ export namespace osconfig {
          * This is useful when creating a policy that applies to different types of systems.
          * The default behavior is ANY.
          * Default value is `ANY`.
-         * Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+         * Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
          */
         manager?: string;
         /**
@@ -39739,7 +39914,7 @@ export namespace osconfig {
         /**
          * Type of archive files in this repository. The default behavior is DEB.
          * Default value is `DEB`.
-         * Possible values are `DEB` and `DEB_SRC`.
+         * Possible values are: `DEB`, `DEB_SRC`.
          */
         archiveType?: string;
         /**
@@ -39825,7 +40000,7 @@ export namespace osconfig {
          * if a higher version of the recipe is assigned to this instance.
          * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
          * Default value is `INSTALLED`.
-         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+         * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
          */
         desiredState?: string;
         /**
@@ -39957,7 +40132,7 @@ export namespace osconfig {
         destination: string;
         /**
          * The type of the archive to extract.
-         * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+         * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
          */
         type: string;
     }
@@ -40043,7 +40218,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
          * which likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          */
         interpreter?: string;
         /**
@@ -40101,7 +40276,7 @@ export namespace osconfig {
         destination: string;
         /**
          * The type of the archive to extract.
-         * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+         * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
          */
         type: string;
     }
@@ -40187,7 +40362,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
          * which likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          */
         interpreter?: string;
         /**
@@ -40936,7 +41111,7 @@ export namespace osconfig {
         preStep?: outputs.osconfig.PatchDeploymentPatchConfigPreStep;
         /**
          * Post-patch reboot settings.
-         * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+         * Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
          */
         rebootConfig?: string;
         /**
@@ -40969,7 +41144,7 @@ export namespace osconfig {
         exclusivePackages?: string[];
         /**
          * By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-         * Possible values are `DIST` and `UPGRADE`.
+         * Possible values are: `DIST`, `UPGRADE`.
          */
         type?: string;
     }
@@ -41007,7 +41182,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          */
         interpreter?: string;
         /**
@@ -41044,7 +41219,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          */
         interpreter?: string;
         /**
@@ -41094,7 +41269,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          */
         interpreter?: string;
         /**
@@ -41131,7 +41306,7 @@ export namespace osconfig {
         /**
          * The script interpreter to use to run the script. If no interpreter is specified the script will
          * be executed directly, which will likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          */
         interpreter?: string;
         /**
@@ -41158,7 +41333,7 @@ export namespace osconfig {
     export interface PatchDeploymentPatchConfigWindowsUpdate {
         /**
          * Only apply updates of these windows update classifications. If empty, all updates are applied.
-         * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+         * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
          */
         classifications?: string[];
         /**
@@ -41284,7 +41459,7 @@ export namespace osconfig {
     export interface PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
         /**
          * A day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeek: string;
         /**
@@ -41327,7 +41502,7 @@ export namespace osconfig {
     export interface PatchDeploymentRecurringScheduleWeekly {
         /**
          * IANA Time Zone Database time zone, e.g. "America/New_York".
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         dayOfWeek: string;
     }
@@ -41344,7 +41519,7 @@ export namespace osconfig {
         disruptionBudget: outputs.osconfig.PatchDeploymentRolloutDisruptionBudget;
         /**
          * Mode of the patch rollout.
-         * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+         * Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
          */
         mode: string;
     }
@@ -41381,7 +41556,7 @@ export namespace projects {
         /**
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
-         * Possible values are `BLOCK_ALL`.
+         * Possible values are: `BLOCK_ALL`.
          */
         enrollmentLevel?: string;
     }
@@ -41656,7 +41831,7 @@ export namespace pubsub {
     export interface LiteSubscriptionDeliveryConfig {
         /**
          * When this subscription should send messages to subscribers relative to messages persistence in storage.
-         * Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+         * Possible values are: `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, `DELIVERY_REQUIREMENT_UNSPECIFIED`.
          */
         deliveryRequirement: string;
     }
@@ -41758,7 +41933,7 @@ export namespace pubsub {
         /**
          * Specifies the "time-to-live" duration for an associated resource. The
          * resource expires if it is not active for a period of ttl.
-         * If ttl is not set, the associated resource never expires.
+         * If ttl is set to "", the associated resource never expires.
          * A duration in seconds with up to nine fractional digits, terminated by 's'.
          * Example - "3.5s".
          */
@@ -41873,7 +42048,7 @@ export namespace pubsub {
         /**
          * The encoding of messages validated against schema.
          * Default value is `ENCODING_UNSPECIFIED`.
-         * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+         * Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
          */
         encoding?: string;
         /**
@@ -42034,7 +42209,7 @@ export namespace redis {
          * - FRIDAY: Friday
          * - SATURDAY: Saturday
          * - SUNDAY: Sunday
-         * Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         day: string;
         /**
@@ -42116,7 +42291,7 @@ export namespace redis {
          * Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
          * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
          * - RDB: RDB based Persistence is enabled.
-         * Possible values are `DISABLED` and `RDB`.
+         * Possible values are: `DISABLED`, `RDB`.
          */
         persistenceMode: string;
         /**
@@ -42133,7 +42308,7 @@ export namespace redis {
          * - SIX_HOURS:	Snapshot every 6 hours.
          * - TWELVE_HOURS:	Snapshot every 12 hours.
          * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-         * Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+         * Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
          */
         rdbSnapshotPeriod?: string;
         /**
@@ -42444,7 +42619,7 @@ export namespace sourcerepo {
          * The format of the Cloud Pub/Sub messages.
          * - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
          * - JSON: The message payload is a JSON string of SourceRepoEvent.
-         * Possible values are `PROTOBUF` and `JSON`.
+         * Possible values are: `PROTOBUF`, `JSON`.
          */
         messageFormat: string;
         /**
@@ -43530,7 +43705,7 @@ export namespace storage {
         projectNumber?: string;
         /**
          * The team.
-         * Possible values are `editors`, `owners`, and `viewers`.
+         * Possible values are: `editors`, `owners`, `viewers`.
          */
         team?: string;
     }
@@ -43614,7 +43789,7 @@ export namespace storage {
         projectNumber?: string;
         /**
          * The team.
-         * Possible values are `editors`, `owners`, and `viewers`.
+         * Possible values are: `editors`, `owners`, `viewers`.
          */
         team?: string;
     }
@@ -43846,6 +44021,14 @@ export namespace storage {
          * If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
          */
         includePrefixes?: string[];
+        /**
+         * If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastModifiedBefore?: string;
+        /**
+         * If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastModifiedSince?: string;
         /**
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          */
@@ -44589,7 +44772,7 @@ export namespace workstations {
         fsType: string;
         /**
          * What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-         * Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+         * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
          */
         reclaimPolicy?: string;
         /**

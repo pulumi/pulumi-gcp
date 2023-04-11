@@ -158,7 +158,7 @@ public final class ObjectAccessControlState extends com.pulumi.resources.Resourc
 
     /**
      * The access permission for the entity.
-     * Possible values are `OWNER` and `READER`.
+     * Possible values are: `OWNER`, `READER`.
      * 
      */
     @Import(name="role")
@@ -166,7 +166,7 @@ public final class ObjectAccessControlState extends com.pulumi.resources.Resourc
 
     /**
      * @return The access permission for the entity.
-     * Possible values are `OWNER` and `READER`.
+     * Possible values are: `OWNER`, `READER`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -404,7 +404,7 @@ public final class ObjectAccessControlState extends com.pulumi.resources.Resourc
 
         /**
          * @param role The access permission for the entity.
-         * Possible values are `OWNER` and `READER`.
+         * Possible values are: `OWNER`, `READER`.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class ObjectAccessControlState extends com.pulumi.resources.Resourc
 
         /**
          * @param role The access permission for the entity.
-         * Possible values are `OWNER` and `READER`.
+         * Possible values are: `OWNER`, `READER`.
          * 
          * @return builder
          * 

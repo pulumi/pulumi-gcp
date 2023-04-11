@@ -147,7 +147,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
     /**
      * Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-     * Possible values are `GCE_FIREWALL`.
+     * Possible values are: `GCE_FIREWALL`.
      * 
      */
     @Export(name="purpose", type=String.class, parameters={})
@@ -156,7 +156,7 @@ public class TagKey extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-     * Possible values are `GCE_FIREWALL`.
+     * Possible values are: `GCE_FIREWALL`.
      * 
      */
     public Output<Optional<String>> purpose() {

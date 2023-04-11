@@ -165,7 +165,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
      * How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+     * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      * 
      */
     @Import(name="natIpAllocateOption", required=true)
@@ -175,7 +175,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
      * @return How external IPs should be allocated for this NAT. Valid values are
      * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
      * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-     * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+     * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
      * 
      */
     public Output<String> natIpAllocateOption() {
@@ -274,7 +274,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
-     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+     * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      * 
      */
     @Import(name="sourceSubnetworkIpRangesToNat", required=true)
@@ -291,7 +291,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
      * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
      * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
      * other RouterNat section in any Router for this network in this region.
-     * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+     * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
      * 
      */
     public Output<String> sourceSubnetworkIpRangesToNat() {
@@ -629,7 +629,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
          * @param natIpAllocateOption How external IPs should be allocated for this NAT. Valid values are
          * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
          * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-         * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+         * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
          * @param natIpAllocateOption How external IPs should be allocated for this NAT. Valid values are
          * `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
          * Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-         * Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+         * Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
          * 
          * @return builder
          * 
@@ -796,7 +796,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
          * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
          * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
          * other RouterNat section in any Router for this network in this region.
-         * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+         * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
          * 
          * @return builder
          * 
@@ -817,7 +817,7 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
          * contains ALL_SUBNETWORKS_ALL_IP_RANGES or
          * ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
          * other RouterNat section in any Router for this network in this region.
-         * Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+         * Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
          * 
          * @return builder
          * 

@@ -139,7 +139,7 @@ class InstanceAcceleratorConfigArgs:
         """
         :param pulumi.Input[int] core_count: Count of cores of this accelerator.
         :param pulumi.Input[str] type: Type of this accelerator.
-               Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
+               Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
         """
         pulumi.set(__self__, "core_count", core_count)
         pulumi.set(__self__, "type", type)
@@ -161,7 +161,7 @@ class InstanceAcceleratorConfigArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Type of this accelerator.
-        Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
+        Possible values are: `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, `TPU_V3`.
         """
         return pulumi.get(self, "type")
 
@@ -296,7 +296,7 @@ class InstanceReservationAffinityArgs:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] consume_reservation_type: The type of Compute Reservation.
-               Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+               Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
         :param pulumi.Input[str] key: Corresponds to the label key of reservation resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of reservation resource.
         """
@@ -311,7 +311,7 @@ class InstanceReservationAffinityArgs:
     def consume_reservation_type(self) -> pulumi.Input[str]:
         """
         The type of Compute Reservation.
-        Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+        Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
         """
         return pulumi.get(self, "consume_reservation_type")
 
@@ -667,7 +667,7 @@ class RuntimeSoftwareConfigArgs:
                fully boots up. The path must be a URL or
                Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] post_startup_script_behavior: Behavior for the post startup script.
-               Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+               Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
         :param pulumi.Input[bool] upgradeable: (Output)
                Bool indicating whether an newer image is available in an image family.
         """
@@ -800,7 +800,7 @@ class RuntimeSoftwareConfigArgs:
     def post_startup_script_behavior(self) -> Optional[pulumi.Input[str]]:
         """
         Behavior for the post startup script.
-        Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+        Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
         """
         return pulumi.get(self, "post_startup_script_behavior")
 
@@ -988,7 +988,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
                configuring Private Service Access.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. This may be gVNIC
                or VirtioNet.
-               Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+               Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         :param pulumi.Input[str] reserved_ip_range: Reserved IP Range name is used for VPC Peering. The
                subnetwork allocation will use the range *name* if it's assigned.
         :param pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded VM Instance configuration settings.
@@ -1195,7 +1195,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgs:
         """
         The type of vNIC to be used on this interface. This may be gVNIC
         or VirtioNet.
-        Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         """
         return pulumi.get(self, "nic_type")
 

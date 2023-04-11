@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// Controls the evaluation of a Google-maintained global admission policy
         /// for common system-level images. Images not covered by the global
         /// policy will be subject to the project admission policy.
-        /// Possible values are `ENABLE` and `DISABLE`.
+        /// Possible values are: `ENABLE`, `DISABLE`.
         /// </summary>
         [Output("globalPolicyEvaluationMode")]
         public Output<string> GlobalPolicyEvaluationMode { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// Controls the evaluation of a Google-maintained global admission policy
         /// for common system-level images. Images not covered by the global
         /// policy will be subject to the project admission policy.
-        /// Possible values are `ENABLE` and `DISABLE`.
+        /// Possible values are: `ENABLE`, `DISABLE`.
         /// </summary>
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }
@@ -351,7 +351,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// Controls the evaluation of a Google-maintained global admission policy
         /// for common system-level images. Images not covered by the global
         /// policy will be subject to the project admission policy.
-        /// Possible values are `ENABLE` and `DISABLE`.
+        /// Possible values are: `ENABLE`, `DISABLE`.
         /// </summary>
         [Input("globalPolicyEvaluationMode")]
         public Input<string>? GlobalPolicyEvaluationMode { get; set; }

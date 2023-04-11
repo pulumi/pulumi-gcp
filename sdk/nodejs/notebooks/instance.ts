@@ -167,7 +167,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly bootDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     public readonly bootDiskType!: pulumi.Output<string | undefined>;
     /**
@@ -193,12 +193,12 @@ export class Instance extends pulumi.CustomResource {
     public readonly dataDiskSizeGb!: pulumi.Output<number | undefined>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     public readonly dataDiskType!: pulumi.Output<string | undefined>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
-     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+     * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      */
     public readonly diskEncryption!: pulumi.Output<string | undefined>;
     /**
@@ -249,7 +249,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly network!: pulumi.Output<string>;
     /**
      * The type of vNIC driver.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      */
     public readonly nicType!: pulumi.Output<string | undefined>;
     /**
@@ -443,7 +443,7 @@ export interface InstanceState {
     bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     bootDiskType?: pulumi.Input<string>;
     /**
@@ -469,12 +469,12 @@ export interface InstanceState {
     dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
-     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+     * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      */
     diskEncryption?: pulumi.Input<string>;
     /**
@@ -525,7 +525,7 @@ export interface InstanceState {
     network?: pulumi.Input<string>;
     /**
      * The type of vNIC driver.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      */
     nicType?: pulumi.Input<string>;
     /**
@@ -625,7 +625,7 @@ export interface InstanceArgs {
     bootDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     bootDiskType?: pulumi.Input<string>;
     /**
@@ -651,12 +651,12 @@ export interface InstanceArgs {
     dataDiskSizeGb?: pulumi.Input<number>;
     /**
      * Possible disk types for notebook instances.
-     * Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+     * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
-     * Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+     * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      */
     diskEncryption?: pulumi.Input<string>;
     /**
@@ -707,7 +707,7 @@ export interface InstanceArgs {
     network?: pulumi.Input<string>;
     /**
      * The type of vNIC driver.
-     * Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+     * Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
      */
     nicType?: pulumi.Input<string>;
     /**

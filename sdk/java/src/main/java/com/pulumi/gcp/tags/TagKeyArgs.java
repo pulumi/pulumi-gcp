@@ -49,7 +49,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-     * Possible values are `GCE_FIREWALL`.
+     * Possible values are: `GCE_FIREWALL`.
      * 
      */
     @Import(name="purpose")
@@ -58,7 +58,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. A purpose cannot be changed once set.
      * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-     * Possible values are `GCE_FIREWALL`.
+     * Possible values are: `GCE_FIREWALL`.
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -172,7 +172,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param purpose Optional. A purpose cannot be changed once set.
          * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-         * Possible values are `GCE_FIREWALL`.
+         * Possible values are: `GCE_FIREWALL`.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param purpose Optional. A purpose cannot be changed once set.
          * A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
-         * Possible values are `GCE_FIREWALL`.
+         * Possible values are: `GCE_FIREWALL`.
          * 
          * @return builder
          * 

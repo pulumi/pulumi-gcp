@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.CloudIds
 
         /// <summary>
         /// The minimum alert severity level that is reported by the endpoint.
-        /// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        /// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         /// </summary>
         [Output("severity")]
         public Output<string> Severity { get; private set; } = null!;
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.CloudIds
 
         /// <summary>
         /// The minimum alert severity level that is reported by the endpoint.
-        /// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        /// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         /// </summary>
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.CloudIds
 
         /// <summary>
         /// The minimum alert severity level that is reported by the endpoint.
-        /// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        /// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }

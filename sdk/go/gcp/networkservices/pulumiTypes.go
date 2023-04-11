@@ -3499,7 +3499,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy struct {
 	CacheKeyPolicy *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicy"`
 	// Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
 	// For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-	// Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+	// Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
 	CacheMode *string `pulumi:"cacheMode"`
 	// Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
 	// - The TTL must be > 0 and <= 86400s (1 day)
@@ -3553,7 +3553,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy struct {
 	// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 	// You must also set a signedRequestKeyset to enable signed requests.
 	// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-	// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+	// Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
 	SignedRequestMode *string `pulumi:"signedRequestMode"`
 	// Additional options for signed tokens.
 	// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
@@ -3582,7 +3582,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs struct 
 	CacheKeyPolicy EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
 	// Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
 	// For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-	// Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+	// Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
 	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
 	// Specifies a separate client (e.g. browser client) TTL, separate from the TTL used by the edge caches. Leaving this empty will use the same cache TTL for both the CDN and the client-facing response.
 	// - The TTL must be > 0 and <= 86400s (1 day)
@@ -3636,7 +3636,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs struct 
 	// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 	// You must also set a signedRequestKeyset to enable signed requests.
 	// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-	// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+	// Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
 	SignedRequestMode pulumi.StringPtrInput `pulumi:"signedRequestMode"`
 	// Additional options for signed tokens.
 	// signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
@@ -3740,7 +3740,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) C
 
 // Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
 // For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-// Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+// Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
 }
@@ -3826,7 +3826,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) S
 // Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 // You must also set a signedRequestKeyset to enable signed requests.
 // When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+// Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyOutput) SignedRequestMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		return v.SignedRequestMode
@@ -3891,7 +3891,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 
 // Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
 // For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-// Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+// Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		if v == nil {
@@ -4009,7 +4009,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 // Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
 // You must also set a signedRequestKeyset to enable signed requests.
 // When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+// Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput) SignedRequestMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy) *string {
 		if v == nil {
@@ -4033,7 +4033,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyPtrOutput
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures struct {
 	// The actions to take to add signatures to responses.
-	// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+	// Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
 	Actions string `pulumi:"actions"`
 	// The parameters to copy from the verified token to the generated token.
 	// Only the following parameters may be copied:
@@ -4068,7 +4068,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignature
 
 type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs struct {
 	// The actions to take to add signatures to responses.
-	// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+	// Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
 	Actions pulumi.StringInput `pulumi:"actions"`
 	// The parameters to copy from the verified token to the generated token.
 	// Only the following parameters may be copied:
@@ -4168,7 +4168,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 }
 
 // The actions to take to add signatures to responses.
-// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+// Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesOutput) Actions() pulumi.StringOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) string {
 		return v.Actions
@@ -4238,7 +4238,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignat
 }
 
 // The actions to take to add signatures to responses.
-// Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+// Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesPtrOutput) Actions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures) *string {
 		if v == nil {
@@ -4639,7 +4639,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenO
 	// The allowed signature algorithms to use.
 	// Defaults to using only ED25519.
 	// You may specify up to 3 signature algorithms to use.
-	// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+	// Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
 	AllowedSignatureAlgorithms []string `pulumi:"allowedSignatureAlgorithms"`
 	// The query parameter in which to find the token.
 	// The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
@@ -4662,7 +4662,7 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenO
 	// The allowed signature algorithms to use.
 	// Defaults to using only ED25519.
 	// You may specify up to 3 signature algorithms to use.
-	// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+	// Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
 	AllowedSignatureAlgorithms pulumi.StringArrayInput `pulumi:"allowedSignatureAlgorithms"`
 	// The query parameter in which to find the token.
 	// The name must be 1-64 characters long and match the regular expression `a-zA-Z*` which means the first character must be a letter, and all following characters must be a dash, underscore, letter or digit.
@@ -4750,7 +4750,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTok
 // The allowed signature algorithms to use.
 // Defaults to using only ED25519.
 // You may specify up to 3 signature algorithms to use.
-// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+// Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsOutput) AllowedSignatureAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) []string {
 		return v.AllowedSignatureAlgorithms
@@ -4793,7 +4793,7 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTok
 // The allowed signature algorithms to use.
 // Defaults to using only ED25519.
 // You may specify up to 3 signature algorithms to use.
-// Each value may be one of `ED25519`, `HMAC_SHA_256`, and `HMAC_SHA1`.
+// Each value may be one of: `ED25519`, `HMAC_SHA_256`, `HMAC_SHA1`.
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsPtrOutput) AllowedSignatureAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions) []string {
 		if v == nil {

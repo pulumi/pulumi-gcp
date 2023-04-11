@@ -54,7 +54,7 @@ class InstanceArgs:
                will be used.
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
-               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+               Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
@@ -79,7 +79,7 @@ class InstanceArgs:
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+               Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -104,11 +104,11 @@ class InstanceArgs:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
-               Possible values are `BASIC` and `STANDARD_HA`.
+               Possible values are: `BASIC`, `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
                - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
-               Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+               Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
         pulumi.set(__self__, "memory_size_gb", memory_size_gb)
         if alternative_location_id is not None:
@@ -217,7 +217,7 @@ class InstanceArgs:
         """
         The connection mode of the Redis instance.
         Default value is `DIRECT_PEERING`.
-        Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         """
         return pulumi.get(self, "connect_mode")
 
@@ -352,7 +352,7 @@ class InstanceArgs:
         instance cannot scale up or down the number of replicas.
         - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         can scale up and down the number of replicas.
-        Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+        Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -454,7 +454,7 @@ class InstanceArgs:
         - BASIC: standalone instance
         - STANDARD_HA: highly available primary/replica instances
         Default value is `BASIC`.
-        Possible values are `BASIC` and `STANDARD_HA`.
+        Possible values are: `BASIC`, `STANDARD_HA`.
         """
         return pulumi.get(self, "tier")
 
@@ -469,7 +469,7 @@ class InstanceArgs:
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         Default value is `DISABLED`.
-        Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
         return pulumi.get(self, "transit_encryption_mode")
 
@@ -529,7 +529,7 @@ class _InstanceState:
                will be used.
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
-               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+               Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] create_time: (Output)
                Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -578,7 +578,7 @@ class _InstanceState:
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+               Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -605,11 +605,11 @@ class _InstanceState:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
-               Possible values are `BASIC` and `STANDARD_HA`.
+               Possible values are: `BASIC`, `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
                - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
-               Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+               Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
         if alternative_location_id is not None:
             pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -739,7 +739,7 @@ class _InstanceState:
         """
         The connection mode of the Redis instance.
         Default value is `DIRECT_PEERING`.
-        Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         """
         return pulumi.get(self, "connect_mode")
 
@@ -997,7 +997,7 @@ class _InstanceState:
         instance cannot scale up or down the number of replicas.
         - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         can scale up and down the number of replicas.
-        Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+        Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -1112,7 +1112,7 @@ class _InstanceState:
         - BASIC: standalone instance
         - STANDARD_HA: highly available primary/replica instances
         Default value is `BASIC`.
-        Possible values are `BASIC` and `STANDARD_HA`.
+        Possible values are: `BASIC`, `STANDARD_HA`.
         """
         return pulumi.get(self, "tier")
 
@@ -1127,7 +1127,7 @@ class _InstanceState:
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         Default value is `DISABLED`.
-        Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
         return pulumi.get(self, "transit_encryption_mode")
 
@@ -1340,7 +1340,7 @@ class Instance(pulumi.CustomResource):
                will be used.
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
-               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+               Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
                instance. If this is provided, CMEK is enabled.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
@@ -1366,7 +1366,7 @@ class Instance(pulumi.CustomResource):
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+               Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -1391,11 +1391,11 @@ class Instance(pulumi.CustomResource):
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
-               Possible values are `BASIC` and `STANDARD_HA`.
+               Possible values are: `BASIC`, `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
                - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
-               Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+               Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
         ...
     @overload
@@ -1711,7 +1711,7 @@ class Instance(pulumi.CustomResource):
                will be used.
         :param pulumi.Input[str] connect_mode: The connection mode of the Redis instance.
                Default value is `DIRECT_PEERING`.
-               Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+               Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         :param pulumi.Input[str] create_time: (Output)
                Output only. The time when the policy was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
@@ -1760,7 +1760,7 @@ class Instance(pulumi.CustomResource):
                instance cannot scale up or down the number of replicas.
                - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
                can scale up and down the number of replicas.
-               Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+               Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Redis configuration parameters, according to http://redis.io/topics/config.
                Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances#Instance.FIELDS.redis_configs
@@ -1787,11 +1787,11 @@ class Instance(pulumi.CustomResource):
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
-               Possible values are `BASIC` and `STANDARD_HA`.
+               Possible values are: `BASIC`, `STANDARD_HA`.
         :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
                - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
                Default value is `DISABLED`.
-               Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+               Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1877,7 +1877,7 @@ class Instance(pulumi.CustomResource):
         """
         The connection mode of the Redis instance.
         Default value is `DIRECT_PEERING`.
-        Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         """
         return pulumi.get(self, "connect_mode")
 
@@ -2059,7 +2059,7 @@ class Instance(pulumi.CustomResource):
         instance cannot scale up or down the number of replicas.
         - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
         can scale up and down the number of replicas.
-        Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+        Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -2142,7 +2142,7 @@ class Instance(pulumi.CustomResource):
         - BASIC: standalone instance
         - STANDARD_HA: highly available primary/replica instances
         Default value is `BASIC`.
-        Possible values are `BASIC` and `STANDARD_HA`.
+        Possible values are: `BASIC`, `STANDARD_HA`.
         """
         return pulumi.get(self, "tier")
 
@@ -2153,7 +2153,7 @@ class Instance(pulumi.CustomResource):
         The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
         - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
         Default value is `DISABLED`.
-        Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+        Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
         """
         return pulumi.get(self, "transit_encryption_mode")
 

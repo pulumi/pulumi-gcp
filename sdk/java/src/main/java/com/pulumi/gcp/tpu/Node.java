@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/tpu/docs/)
  * 
  * ## Example Usage
- * ### TPU Node Basic
+ * ### Tpu Node Basic
  * ```java
  * package generated_program;
  * 
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### TPU Node Full
+ * ### Tpu Node Full
  * ```java
  * package generated_program;
  * 

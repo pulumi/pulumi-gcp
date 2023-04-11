@@ -26,7 +26,7 @@ public final class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
      *   provided metadata.
      * - MATCH_ALL: All filterLabels must have matching labels in
      *   the provided metadata.
-     *   Possible values are `MATCH_ALL` and `MATCH_ANY`.
+     *   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
      * 
      */
     private String filterMatchCriteria;
@@ -49,7 +49,7 @@ public final class URLMapPathMatcherRouteRuleMatchRuleMetadataFilter {
      *   provided metadata.
      * - MATCH_ALL: All filterLabels must have matching labels in
      *   the provided metadata.
-     *   Possible values are `MATCH_ALL` and `MATCH_ANY`.
+     *   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
      * 
      */
     public String filterMatchCriteria() {

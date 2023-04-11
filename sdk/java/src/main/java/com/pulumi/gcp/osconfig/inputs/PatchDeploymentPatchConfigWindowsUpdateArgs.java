@@ -18,7 +18,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdateArgs extends com.pulum
 
     /**
      * Only apply updates of these windows update classifications. If empty, all updates are applied.
-     * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+     * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
      * 
      */
     @Import(name="classifications")
@@ -26,7 +26,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdateArgs extends com.pulum
 
     /**
      * @return Only apply updates of these windows update classifications. If empty, all updates are applied.
-     * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+     * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
      * 
      */
     public Optional<Output<List<String>>> classifications() {
@@ -93,7 +93,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdateArgs extends com.pulum
 
         /**
          * @param classifications Only apply updates of these windows update classifications. If empty, all updates are applied.
-         * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+         * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdateArgs extends com.pulum
 
         /**
          * @param classifications Only apply updates of these windows update classifications. If empty, all updates are applied.
-         * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+         * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdateArgs extends com.pulum
 
         /**
          * @param classifications Only apply updates of these windows update classifications. If empty, all updates are applied.
-         * Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+         * Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
          * 
          * @return builder
          * 

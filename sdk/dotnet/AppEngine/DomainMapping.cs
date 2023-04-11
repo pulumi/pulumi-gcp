@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Whether the domain creation should override any existing mappings for this domain.
         /// By default, overrides are rejected.
         /// Default value is `STRICT`.
-        /// Possible values are `STRICT` and `OVERRIDE`.
+        /// Possible values are: `STRICT`, `OVERRIDE`.
         /// </summary>
         [Output("overrideStrategy")]
         public Output<string?> OverrideStrategy { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Whether the domain creation should override any existing mappings for this domain.
         /// By default, overrides are rejected.
         /// Default value is `STRICT`.
-        /// Possible values are `STRICT` and `OVERRIDE`.
+        /// Possible values are: `STRICT`, `OVERRIDE`.
         /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Whether the domain creation should override any existing mappings for this domain.
         /// By default, overrides are rejected.
         /// Default value is `STRICT`.
-        /// Possible values are `STRICT` and `OVERRIDE`.
+        /// Possible values are: `STRICT`, `OVERRIDE`.
         /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }

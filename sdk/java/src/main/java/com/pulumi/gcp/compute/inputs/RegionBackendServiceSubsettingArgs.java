@@ -15,7 +15,7 @@ public final class RegionBackendServiceSubsettingArgs extends com.pulumi.resourc
 
     /**
      * The algorithm used for subsetting.
-     * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+     * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
      * 
      */
     @Import(name="policy", required=true)
@@ -23,7 +23,7 @@ public final class RegionBackendServiceSubsettingArgs extends com.pulumi.resourc
 
     /**
      * @return The algorithm used for subsetting.
-     * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+     * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
      * 
      */
     public Output<String> policy() {
@@ -56,7 +56,7 @@ public final class RegionBackendServiceSubsettingArgs extends com.pulumi.resourc
 
         /**
          * @param policy The algorithm used for subsetting.
-         * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+         * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
          * 
          * @return builder
          * 
@@ -68,7 +68,7 @@ public final class RegionBackendServiceSubsettingArgs extends com.pulumi.resourc
 
         /**
          * @param policy The algorithm used for subsetting.
-         * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+         * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
          * 
          * @return builder
          * 

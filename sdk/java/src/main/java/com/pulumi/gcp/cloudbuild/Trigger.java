@@ -917,7 +917,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
-     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      * 
      */
     @Export(name="includeBuildLogs", type=String.class, parameters={})
@@ -927,7 +927,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * @return Build logs will be sent back to GitHub as part of the checkrun
      * result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
      * INCLUDE_BUILD_LOGS_WITH_STATUS
-     * Possible values are `INCLUDE_BUILD_LOGS_UNSPECIFIED` and `INCLUDE_BUILD_LOGS_WITH_STATUS`.
+     * Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
      * 
      */
     public Output<Optional<String>> includeBuildLogs() {

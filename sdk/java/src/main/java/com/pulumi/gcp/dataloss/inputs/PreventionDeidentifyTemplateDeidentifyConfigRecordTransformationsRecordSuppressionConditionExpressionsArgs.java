@@ -36,7 +36,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     /**
      * The operator to apply to the result of conditions. Default and currently only supported value is AND.
      * Default value is `AND`.
-     * Possible values are `AND`.
+     * Possible values are: `AND`.
      * 
      */
     @Import(name="logicalOperator")
@@ -45,7 +45,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     /**
      * @return The operator to apply to the result of conditions. Default and currently only supported value is AND.
      * Default value is `AND`.
-     * Possible values are `AND`.
+     * Possible values are: `AND`.
      * 
      */
     public Optional<Output<String>> logicalOperator() {
@@ -103,7 +103,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         /**
          * @param logicalOperator The operator to apply to the result of conditions. Default and currently only supported value is AND.
          * Default value is `AND`.
-         * Possible values are `AND`.
+         * Possible values are: `AND`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         /**
          * @param logicalOperator The operator to apply to the result of conditions. Default and currently only supported value is AND.
          * Default value is `AND`.
-         * Possible values are `AND`.
+         * Possible values are: `AND`.
          * 
          * @return builder
          * 

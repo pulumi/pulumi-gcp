@@ -118,7 +118,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
      * `source_tags` or `source_service_accounts` is required.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Import(name="direction")
@@ -130,7 +130,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
      * `source_tags` or `source_service_accounts` is required.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -654,7 +654,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
          * destinationRanges; For EGRESS traffic, it is NOT supported to specify
          * `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
          * `source_tags` or `source_service_accounts` is required.
-         * Possible values are `INGRESS` and `EGRESS`.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -670,7 +670,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
          * destinationRanges; For EGRESS traffic, it is NOT supported to specify
          * `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
          * `source_tags` or `source_service_accounts` is required.
-         * Possible values are `INGRESS` and `EGRESS`.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 

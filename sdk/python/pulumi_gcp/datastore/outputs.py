@@ -20,7 +20,7 @@ class DataStoreIndexProperty(dict):
                  name: str):
         """
         :param str direction: The direction the index should optimize for sorting.
-               Possible values are `ASCENDING` and `DESCENDING`.
+               Possible values are: `ASCENDING`, `DESCENDING`.
         :param str name: The property name to index.
         """
         pulumi.set(__self__, "direction", direction)
@@ -31,7 +31,7 @@ class DataStoreIndexProperty(dict):
     def direction(self) -> str:
         """
         The direction the index should optimize for sorting.
-        Possible values are `ASCENDING` and `DESCENDING`.
+        Possible values are: `ASCENDING`, `DESCENDING`.
         """
         return pulumi.get(self, "direction")
 

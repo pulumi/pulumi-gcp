@@ -21,7 +21,7 @@ public final class PacketMirroringFilter {
     /**
      * @return Direction of traffic to mirror.
      * Default value is `BOTH`.
-     * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+     * Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
      * 
      */
     private @Nullable String direction;
@@ -43,7 +43,7 @@ public final class PacketMirroringFilter {
     /**
      * @return Direction of traffic to mirror.
      * Default value is `BOTH`.
-     * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+     * Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
      * 
      */
     public Optional<String> direction() {

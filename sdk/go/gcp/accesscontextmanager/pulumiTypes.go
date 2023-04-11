@@ -17,7 +17,7 @@ type AccessLevelBasic struct {
 	// OR is used, at least one Condition in conditions must be satisfied
 	// for the AccessLevel to be applied.
 	// Default value is `AND`.
-	// Possible values are `AND` and `OR`.
+	// Possible values are: `AND`, `OR`.
 	CombiningFunction *string `pulumi:"combiningFunction"`
 	// A set of requirements for the AccessLevel to be granted.
 	// Structure is documented below.
@@ -42,7 +42,7 @@ type AccessLevelBasicArgs struct {
 	// OR is used, at least one Condition in conditions must be satisfied
 	// for the AccessLevel to be applied.
 	// Default value is `AND`.
-	// Possible values are `AND` and `OR`.
+	// Possible values are: `AND`, `OR`.
 	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
 	// A set of requirements for the AccessLevel to be granted.
 	// Structure is documented below.
@@ -132,7 +132,7 @@ func (o AccessLevelBasicOutput) ToAccessLevelBasicPtrOutputWithContext(ctx conte
 // OR is used, at least one Condition in conditions must be satisfied
 // for the AccessLevel to be applied.
 // Default value is `AND`.
-// Possible values are `AND` and `OR`.
+// Possible values are: `AND`, `OR`.
 func (o AccessLevelBasicOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
@@ -173,7 +173,7 @@ func (o AccessLevelBasicPtrOutput) Elem() AccessLevelBasicOutput {
 // OR is used, at least one Condition in conditions must be satisfied
 // for the AccessLevel to be applied.
 // Default value is `AND`.
-// Possible values are `AND` and `OR`.
+// Possible values are: `AND`, `OR`.
 func (o AccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessLevelBasic) *string {
 		if v == nil {
@@ -417,11 +417,11 @@ func (o AccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInput) AccessLev
 type AccessLevelBasicConditionDevicePolicy struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
-	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
-	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -450,11 +450,11 @@ type AccessLevelBasicConditionDevicePolicyInput interface {
 type AccessLevelBasicConditionDevicePolicyArgs struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
-	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
-	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -548,14 +548,14 @@ func (o AccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelBasicCondition
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
-// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
 }
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
-// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 func (o AccessLevelBasicConditionDevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
 }
@@ -611,7 +611,7 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) Elem() AccessLevelBasicC
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
-// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []string {
 		if v == nil {
@@ -623,7 +623,7 @@ func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementL
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
-// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 func (o AccessLevelBasicConditionDevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelBasicConditionDevicePolicy) []string {
 		if v == nil {
@@ -682,7 +682,7 @@ type AccessLevelBasicConditionDevicePolicyOsConstraint struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+	// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 	OsType string `pulumi:"osType"`
 	// If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
 	RequireVerifiedChromeOs *bool `pulumi:"requireVerifiedChromeOs"`
@@ -705,7 +705,7 @@ type AccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+	// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 	OsType pulumi.StringInput `pulumi:"osType"`
 	// If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
 	RequireVerifiedChromeOs pulumi.BoolPtrInput `pulumi:"requireVerifiedChromeOs"`
@@ -770,7 +770,7 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) MinimumVersion(
 }
 
 // The operating system type of the device.
-// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 func (o AccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -803,11 +803,11 @@ func (o AccessLevelBasicConditionDevicePolicyOsConstraintArrayOutput) Index(i pu
 type AccessLevelConditionDevicePolicy struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
-	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
-	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -836,11 +836,11 @@ type AccessLevelConditionDevicePolicyInput interface {
 type AccessLevelConditionDevicePolicyArgs struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
-	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
-	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -934,14 +934,14 @@ func (o AccessLevelConditionDevicePolicyOutput) ToAccessLevelConditionDevicePoli
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
-// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 func (o AccessLevelConditionDevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelConditionDevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
 }
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
-// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 func (o AccessLevelConditionDevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
 }
@@ -997,7 +997,7 @@ func (o AccessLevelConditionDevicePolicyPtrOutput) Elem() AccessLevelConditionDe
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
-// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 func (o AccessLevelConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelConditionDevicePolicy) []string {
 		if v == nil {
@@ -1009,7 +1009,7 @@ func (o AccessLevelConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
-// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 func (o AccessLevelConditionDevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelConditionDevicePolicy) []string {
 		if v == nil {
@@ -1068,7 +1068,7 @@ type AccessLevelConditionDevicePolicyOsConstraint struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+	// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 	OsType string `pulumi:"osType"`
 }
 
@@ -1089,7 +1089,7 @@ type AccessLevelConditionDevicePolicyOsConstraintArgs struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+	// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 	OsType pulumi.StringInput `pulumi:"osType"`
 }
 
@@ -1152,7 +1152,7 @@ func (o AccessLevelConditionDevicePolicyOsConstraintOutput) MinimumVersion() pul
 }
 
 // The operating system type of the device.
-// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 func (o AccessLevelConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -1675,7 +1675,7 @@ type AccessLevelsAccessLevelBasic struct {
 	// OR is used, at least one Condition in conditions must be satisfied
 	// for the AccessLevel to be applied.
 	// Default value is `AND`.
-	// Possible values are `AND` and `OR`.
+	// Possible values are: `AND`, `OR`.
 	CombiningFunction *string `pulumi:"combiningFunction"`
 	// A set of requirements for the AccessLevel to be granted.
 	// Structure is documented below.
@@ -1700,7 +1700,7 @@ type AccessLevelsAccessLevelBasicArgs struct {
 	// OR is used, at least one Condition in conditions must be satisfied
 	// for the AccessLevel to be applied.
 	// Default value is `AND`.
-	// Possible values are `AND` and `OR`.
+	// Possible values are: `AND`, `OR`.
 	CombiningFunction pulumi.StringPtrInput `pulumi:"combiningFunction"`
 	// A set of requirements for the AccessLevel to be granted.
 	// Structure is documented below.
@@ -1790,7 +1790,7 @@ func (o AccessLevelsAccessLevelBasicOutput) ToAccessLevelsAccessLevelBasicPtrOut
 // OR is used, at least one Condition in conditions must be satisfied
 // for the AccessLevel to be applied.
 // Default value is `AND`.
-// Possible values are `AND` and `OR`.
+// Possible values are: `AND`, `OR`.
 func (o AccessLevelsAccessLevelBasicOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessLevelsAccessLevelBasic) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
@@ -1831,7 +1831,7 @@ func (o AccessLevelsAccessLevelBasicPtrOutput) Elem() AccessLevelsAccessLevelBas
 // OR is used, at least one Condition in conditions must be satisfied
 // for the AccessLevel to be applied.
 // Default value is `AND`.
-// Possible values are `AND` and `OR`.
+// Possible values are: `AND`, `OR`.
 func (o AccessLevelsAccessLevelBasicPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessLevelsAccessLevelBasic) *string {
 		if v == nil {
@@ -2077,11 +2077,11 @@ func (o AccessLevelsAccessLevelBasicConditionArrayOutput) Index(i pulumi.IntInpu
 type AccessLevelsAccessLevelBasicConditionDevicePolicy struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
-	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
-	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -2110,11 +2110,11 @@ type AccessLevelsAccessLevelBasicConditionDevicePolicyInput interface {
 type AccessLevelsAccessLevelBasicConditionDevicePolicyArgs struct {
 	// A list of allowed device management levels.
 	// An empty list allows all management levels.
-	// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+	// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 	AllowedDeviceManagementLevels pulumi.StringArrayInput `pulumi:"allowedDeviceManagementLevels"`
 	// A list of allowed encryptions statuses.
 	// An empty list allows all statuses.
-	// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+	// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 	AllowedEncryptionStatuses pulumi.StringArrayInput `pulumi:"allowedEncryptionStatuses"`
 	// A list of allowed OS versions.
 	// An empty list allows all types and all versions.
@@ -2208,7 +2208,7 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) ToAccessLevelsA
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
-// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) []string {
 		return v.AllowedDeviceManagementLevels
@@ -2217,7 +2217,7 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) AllowedDeviceMa
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
-// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
 }
@@ -2273,7 +2273,7 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) Elem() Acces
 
 // A list of allowed device management levels.
 // An empty list allows all management levels.
-// Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+// Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) []string {
 		if v == nil {
@@ -2285,7 +2285,7 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) AllowedDevic
 
 // A list of allowed encryptions statuses.
 // An empty list allows all statuses.
-// Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+// Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelsAccessLevelBasicConditionDevicePolicy) []string {
 		if v == nil {
@@ -2344,7 +2344,7 @@ type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+	// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 	OsType string `pulumi:"osType"`
 }
 
@@ -2365,7 +2365,7 @@ type AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs struct {
 	// Format: "major.minor.patch" such as "10.5.301", "9.2.1".
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The operating system type of the device.
-	// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+	// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 	OsType pulumi.StringInput `pulumi:"osType"`
 }
 
@@ -2428,7 +2428,7 @@ func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) Min
 }
 
 // The operating system type of the device.
-// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
 func (o AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
@@ -3577,7 +3577,7 @@ type ServicePerimeterSpecEgressPolicyEgressFrom struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
 
@@ -3600,7 +3600,7 @@ type ServicePerimeterSpecEgressPolicyEgressFromArgs struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
 
@@ -3691,7 +3691,7 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.St
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -3735,7 +3735,7 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) *string {
 		if v == nil {
@@ -4325,7 +4325,7 @@ type ServicePerimeterSpecIngressPolicyIngressFrom struct {
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -4351,7 +4351,7 @@ type ServicePerimeterSpecIngressPolicyIngressFromArgs struct {
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -4445,7 +4445,7 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) Identities() pulumi.
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -4497,7 +4497,7 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulu
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) *string {
 		if v == nil {
@@ -5716,7 +5716,7 @@ type ServicePerimeterStatusEgressPolicyEgressFrom struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
 
@@ -5739,7 +5739,7 @@ type ServicePerimeterStatusEgressPolicyEgressFromArgs struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
 
@@ -5830,7 +5830,7 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -5874,7 +5874,7 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulu
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) *string {
 		if v == nil {
@@ -6464,7 +6464,7 @@ type ServicePerimeterStatusIngressPolicyIngressFrom struct {
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -6490,7 +6490,7 @@ type ServicePerimeterStatusIngressPolicyIngressFromArgs struct {
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -6584,7 +6584,7 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) Identities() pulum
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -6636,7 +6636,7 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pu
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) *string {
 		if v == nil {
@@ -7426,7 +7426,7 @@ type ServicePerimetersServicePerimeter struct {
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
 	// Default value is `PERIMETER_TYPE_REGULAR`.
-	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType *string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
@@ -7493,7 +7493,7 @@ type ServicePerimetersServicePerimeterArgs struct {
 	// with a common perimeter, but should not be able to share data among
 	// themselves.
 	// Default value is `PERIMETER_TYPE_REGULAR`.
-	// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+	// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 	PerimeterType pulumi.StringPtrInput `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration.
 	// This configuration allows to specify and test ServicePerimeter configuration
@@ -7608,7 +7608,7 @@ func (o ServicePerimetersServicePerimeterOutput) Name() pulumi.StringOutput {
 // with a common perimeter, but should not be able to share data among
 // themselves.
 // Default value is `PERIMETER_TYPE_REGULAR`.
-// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
 func (o ServicePerimetersServicePerimeterOutput) PerimeterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.PerimeterType }).(pulumi.StringPtrOutput)
 }
@@ -8135,7 +8135,7 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
 
@@ -8158,7 +8158,7 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
 
@@ -8249,7 +8249,7 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) Ident
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -8293,7 +8293,7 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Id
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string {
 		if v == nil {
@@ -8889,7 +8889,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom struct {
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -8915,7 +8915,7 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs struct {
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -9009,7 +9009,7 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) Ide
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -9061,7 +9061,7 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *string {
 		if v == nil {
@@ -10292,7 +10292,7 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 }
 
@@ -10315,7 +10315,7 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs struct {
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
 	// be allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 }
 
@@ -10406,7 +10406,7 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) Ide
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -10450,7 +10450,7 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 // Specifies the type of identities that are allowed access to outside the
 // perimeter. If left unspecified, then members of `identities` field will
 // be allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string {
 		if v == nil {
@@ -11048,7 +11048,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom struct {
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType *string `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -11074,7 +11074,7 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs struct 
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
 	// allowed access.
-	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 	// Sources that this `IngressPolicy` authorizes access from.
 	// Structure is documented below.
@@ -11168,7 +11168,7 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) I
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -11220,7 +11220,7 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 // Specifies the type of identities that are allowed access from outside the
 // perimeter. If left unspecified, then members of `identities` field will be
 // allowed access.
-// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
 func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *string {
 		if v == nil {

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         public readonly string? ProjectNumber;
         /// <summary>
         /// The team.
-        /// Possible values are `editors`, `owners`, and `viewers`.
+        /// Possible values are: `editors`, `owners`, `viewers`.
         /// </summary>
         public readonly string? Team;
 

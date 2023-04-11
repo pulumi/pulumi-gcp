@@ -259,7 +259,7 @@ class ZoneIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Three different resources help you manage your IAM policy for Cloud Dataplex Zone. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
 
         * `dataplex.ZoneIamPolicy`: Authoritative. Sets the IAM policy for the zone and replaces any existing policy already attached.
         * `dataplex.ZoneIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the zone are preserved.
@@ -319,7 +319,7 @@ class ZoneIamMember(pulumi.CustomResource):
 
         ## Import
 
-        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}} * {{project}}/{{location}}/{{lake}}/{{name}} * {{location}}/{{lake}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex zone IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}} * {{project}}/{{location}}/{{lake}}/{{name}} * {{location}}/{{lake}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex zone IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
          $ pulumi import gcp:dataplex/zoneIamMember:ZoneIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}} roles/viewer user:jane@example.com"
@@ -357,7 +357,7 @@ class ZoneIamMember(pulumi.CustomResource):
                  args: ZoneIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Three different resources help you manage your IAM policy for Cloud Dataplex Zone. Each of these resources serves a different use case:
+        Three different resources help you manage your IAM policy for Dataplex Zone. Each of these resources serves a different use case:
 
         * `dataplex.ZoneIamPolicy`: Authoritative. Sets the IAM policy for the zone and replaces any existing policy already attached.
         * `dataplex.ZoneIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the zone are preserved.
@@ -417,7 +417,7 @@ class ZoneIamMember(pulumi.CustomResource):
 
         ## Import
 
-        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}} * {{project}}/{{location}}/{{lake}}/{{name}} * {{location}}/{{lake}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Dataplex zone IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}} * {{project}}/{{location}}/{{lake}}/{{name}} * {{location}}/{{lake}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex zone IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
          $ pulumi import gcp:dataplex/zoneIamMember:ZoneIamMember editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{zone}} roles/viewer user:jane@example.com"

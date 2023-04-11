@@ -109,7 +109,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-        /// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+        /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         /// </summary>
         [Output("availabilityType")]
         public Output<string> AvailabilityType { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The type of the instance.
-        /// Possible values are `PRIMARY` and `READ_POOL`.
+        /// Possible values are: `PRIMARY`, `READ_POOL`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-        /// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+        /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         /// </summary>
         [Input("availabilityType")]
         public Input<string>? AvailabilityType { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The type of the instance.
-        /// Possible values are `PRIMARY` and `READ_POOL`.
+        /// Possible values are: `PRIMARY`, `READ_POOL`.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -371,7 +371,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
-        /// Possible values are `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, and `REGIONAL`.
+        /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         /// </summary>
         [Input("availabilityType")]
         public Input<string>? AvailabilityType { get; set; }
@@ -421,7 +421,7 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The type of the instance.
-        /// Possible values are `PRIMARY` and `READ_POOL`.
+        /// Possible values are: `PRIMARY`, `READ_POOL`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

@@ -72,8 +72,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The Apigee Organization associated with the Apigee instance,
-        /// in the format `organizations/{{org_name}}`.
+        /// The Apigee Organization name associated with the Apigee instance.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -150,8 +149,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Apigee Organization associated with the Apigee instance,
-        /// in the format `organizations/{{org_name}}`.
+        /// The Apigee Organization name associated with the Apigee instance.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -209,8 +207,7 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The Apigee Organization associated with the Apigee instance,
-        /// in the format `organizations/{{org_name}}`.
+        /// The Apigee Organization name associated with the Apigee instance.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

@@ -1859,9 +1859,9 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
                  schema_file_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] compression: Compression of the loaded JSON file.
-               Possible values are `NO_COMPRESSION` and `GZIP`.
+               Possible values are: `NO_COMPRESSION`, `GZIP`.
         :param pulumi.Input[str] schema_file_format: The schema file format along JSON data files.
-               Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+               Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
         """
         if compression is not None:
             pulumi.set(__self__, "compression", compression)
@@ -1873,7 +1873,7 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
     def compression(self) -> Optional[pulumi.Input[str]]:
         """
         Compression of the loaded JSON file.
-        Possible values are `NO_COMPRESSION` and `GZIP`.
+        Possible values are: `NO_COMPRESSION`, `GZIP`.
         """
         return pulumi.get(self, "compression")
 
@@ -1886,7 +1886,7 @@ class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs:
     def schema_file_format(self) -> Optional[pulumi.Input[str]]:
         """
         The schema file format along JSON data files.
-        Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+        Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
         """
         return pulumi.get(self, "schema_file_format")
 

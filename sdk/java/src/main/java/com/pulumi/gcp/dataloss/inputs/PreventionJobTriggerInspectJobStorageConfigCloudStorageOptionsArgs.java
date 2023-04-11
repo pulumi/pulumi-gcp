@@ -73,7 +73,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * List of file type groups to include in the scan. If empty, all files are scanned and available data
      * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
      * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-     * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+     * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
      * 
      */
     @Import(name="fileTypes")
@@ -83,7 +83,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * @return List of file type groups to include in the scan. If empty, all files are scanned and available data
      * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
      * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-     * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+     * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
      * 
      */
     public Optional<Output<List<String>>> fileTypes() {
@@ -110,7 +110,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
     /**
      * How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
      * If not specified, scanning would start from the top.
-     * Possible values are `TOP` and `RANDOM_START`.
+     * Possible values are: `TOP`, `RANDOM_START`.
      * 
      */
     @Import(name="sampleMethod")
@@ -119,7 +119,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
     /**
      * @return How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
      * If not specified, scanning would start from the top.
-     * Possible values are `TOP` and `RANDOM_START`.
+     * Possible values are: `TOP`, `RANDOM_START`.
      * 
      */
     public Optional<Output<String>> sampleMethod() {
@@ -228,7 +228,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
          * @param fileTypes List of file type groups to include in the scan. If empty, all files are scanned and available data
          * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
          * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-         * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
          * @param fileTypes List of file type groups to include in the scan. If empty, all files are scanned and available data
          * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
          * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-         * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
          * @param fileTypes List of file type groups to include in the scan. If empty, all files are scanned and available data
          * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
          * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-         * Each value may be one of `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, and `TSV`.
+         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         /**
          * @param sampleMethod How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
          * If not specified, scanning would start from the top.
-         * Possible values are `TOP` and `RANDOM_START`.
+         * Possible values are: `TOP`, `RANDOM_START`.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         /**
          * @param sampleMethod How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
          * If not specified, scanning would start from the top.
-         * Possible values are `TOP` and `RANDOM_START`.
+         * Possible values are: `TOP`, `RANDOM_START`.
          * 
          * @return builder
          * 

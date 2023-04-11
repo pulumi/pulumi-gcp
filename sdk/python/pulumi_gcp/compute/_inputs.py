@@ -528,7 +528,7 @@ class AutoscalarAutoscalingPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] mode: Defines operating mode for this policy.
                Default value is `ON`.
-               Possible values are `OFF`, `ONLY_UP`, and `ON`.
+               Possible values are: `OFF`, `ONLY_UP`, `ON`.
         :param pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -654,7 +654,7 @@ class AutoscalarAutoscalingPolicyArgs:
         """
         Defines operating mode for this policy.
         Default value is `ON`.
-        Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        Possible values are: `OFF`, `ONLY_UP`, `ON`.
         """
         return pulumi.get(self, "mode")
 
@@ -855,7 +855,7 @@ class AutoscalarAutoscalingPolicyMetricArgs:
                of the instances.
         :param pulumi.Input[str] type: Defines how target utilization value is expressed for a
                Stackdriver Monitoring metric.
-               Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+               Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
         """
         pulumi.set(__self__, "name", name)
         if filter is not None:
@@ -969,7 +969,7 @@ class AutoscalarAutoscalingPolicyMetricArgs:
         """
         Defines how target utilization value is expressed for a
         Stackdriver Monitoring metric.
-        Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+        Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
         """
         return pulumi.get(self, "type")
 
@@ -1306,7 +1306,7 @@ class AutoscalerAutoscalingPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] mode: Defines operating mode for this policy.
                Default value is `ON`.
-               Possible values are `OFF`, `ONLY_UP`, and `ON`.
+               Possible values are: `OFF`, `ONLY_UP`, `ON`.
         :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -1432,7 +1432,7 @@ class AutoscalerAutoscalingPolicyArgs:
         """
         Defines operating mode for this policy.
         Default value is `ON`.
-        Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        Possible values are: `OFF`, `ONLY_UP`, `ON`.
         """
         return pulumi.get(self, "mode")
 
@@ -1633,7 +1633,7 @@ class AutoscalerAutoscalingPolicyMetricArgs:
                of the instances.
         :param pulumi.Input[str] type: Defines how target utilization value is expressed for a
                Stackdriver Monitoring metric.
-               Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+               Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
         """
         pulumi.set(__self__, "name", name)
         if filter is not None:
@@ -1747,7 +1747,7 @@ class AutoscalerAutoscalingPolicyMetricArgs:
         """
         Defines how target utilization value is expressed for a
         Stackdriver Monitoring metric.
-        Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+        Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
         """
         return pulumi.get(self, "type")
 
@@ -2064,7 +2064,7 @@ class BackendBucketCdnPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-               Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+               Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
         :param pulumi.Input[int] client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param pulumi.Input[int] default_ttl: Specifies the default TTL for cached content served by this origin for responses
                that do not have an existing valid TTL (max-age or s-max-age).
@@ -2139,7 +2139,7 @@ class BackendBucketCdnPolicyArgs:
         """
         Specifies the cache setting for all responses from this backend.
         The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-        Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -2479,7 +2479,7 @@ class BackendServiceBackendArgs:
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
                Default value is `UTILIZATION`.
-               Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                Default value is 1, which means the group will serve up to 100%
@@ -2579,7 +2579,7 @@ class BackendServiceBackendArgs:
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `UTILIZATION`.
-        Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -2744,7 +2744,7 @@ class BackendServiceCdnPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-               Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+               Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
         :param pulumi.Input[int] client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param pulumi.Input[int] default_ttl: Specifies the default TTL for cached content served by this origin for responses
                that do not have an existing valid TTL (max-age or s-max-age).
@@ -2802,7 +2802,7 @@ class BackendServiceCdnPolicyArgs:
         """
         Specifies the cache setting for all responses from this backend.
         The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-        Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -4684,7 +4684,7 @@ class FirewallLogConfigArgs:
                  metadata: pulumi.Input[str]):
         """
         :param pulumi.Input[str] metadata: This field denotes whether to include or exclude metadata for firewall logs.
-               Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+               Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
         """
         pulumi.set(__self__, "metadata", metadata)
 
@@ -4693,7 +4693,7 @@ class FirewallLogConfigArgs:
     def metadata(self) -> pulumi.Input[str]:
         """
         This field denotes whether to include or exclude metadata for firewall logs.
-        Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+        Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
         """
         return pulumi.get(self, "metadata")
 
@@ -4849,7 +4849,7 @@ class GlobalForwardingRuleMetadataFilterArgs:
                label in the provided metadata.
                MATCH_ALL - All filterLabels must have matching labels in the
                provided metadata.
-               Possible values are `MATCH_ANY` and `MATCH_ALL`.
+               Possible values are: `MATCH_ANY`, `MATCH_ALL`.
         """
         pulumi.set(__self__, "filter_labels", filter_labels)
         pulumi.set(__self__, "filter_match_criteria", filter_match_criteria)
@@ -4879,7 +4879,7 @@ class GlobalForwardingRuleMetadataFilterArgs:
         label in the provided metadata.
         MATCH_ALL - All filterLabels must have matching labels in the
         provided metadata.
-        Possible values are `MATCH_ANY` and `MATCH_ALL`.
+        Possible values are: `MATCH_ANY`, `MATCH_ALL`.
         """
         return pulumi.get(self, "filter_match_criteria")
 
@@ -5160,27 +5160,27 @@ class HealthCheckHttp2HealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
                The default value is /.
                (Optional)
@@ -5338,27 +5338,27 @@ class HealthCheckHttp2HealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -5439,7 +5439,7 @@ class HealthCheckHttpHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
@@ -5521,7 +5521,7 @@ class HealthCheckHttpHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -5580,7 +5580,7 @@ class HealthCheckHttpsHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTPS health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
@@ -5662,7 +5662,7 @@ class HealthCheckHttpsHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -5742,7 +5742,7 @@ class HealthCheckSslHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request: The application data to send once the SSL connection has been
                established (default value is empty). If both request and response are
                empty, the connection establishment alone will indicate health. The request
@@ -5810,7 +5810,7 @@ class HealthCheckSslHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -5867,7 +5867,7 @@ class HealthCheckTcpHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request: The application data to send once the TCP connection has been
                established (default value is empty). If both request and response are
                empty, the connection establishment alone will indicate health. The request
@@ -5935,7 +5935,7 @@ class HealthCheckTcpHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -5979,7 +5979,7 @@ class ImageGuestOsFeatureArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -5988,7 +5988,7 @@ class ImageGuestOsFeatureArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`.
         """
         return pulumi.get(self, "type")
 
@@ -6163,7 +6163,7 @@ class ImageRawDiskArgs:
                and not a runtime format. Provided by the client when the disk
                image is created.
                Default value is `TAR`.
-               Possible values are `TAR`.
+               Possible values are: `TAR`.
         :param pulumi.Input[str] sha1: An optional SHA1 checksum of the disk image before unpackaging.
                This is provided by the client when the disk image is created.
         """
@@ -6196,7 +6196,7 @@ class ImageRawDiskArgs:
         and not a runtime format. Provided by the client when the disk
         image is created.
         Default value is `TAR`.
-        Possible values are `TAR`.
+        Possible values are: `TAR`.
         """
         return pulumi.get(self, "container_type")
 
@@ -12216,7 +12216,7 @@ class NodeGroupAutoscalingPolicyArgs:
                - ONLY_SCALE_OUT: Enables only scaling out.
                You must use this mode if your node groups are configured to
                restart their hosted VMs on minimal servers.
-               Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+               Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
         """
         if max_nodes is not None:
             pulumi.set(__self__, "max_nodes", max_nodes)
@@ -12261,7 +12261,7 @@ class NodeGroupAutoscalingPolicyArgs:
         - ONLY_SCALE_OUT: Enables only scaling out.
         You must use this mode if your node groups are configured to
         restart their hosted VMs on minimal servers.
-        Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+        Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
         """
         return pulumi.get(self, "mode")
 
@@ -12299,7 +12299,7 @@ class NodeGroupShareSettingsArgs:
                  project_maps: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgs']]]] = None):
         """
         :param pulumi.Input[str] share_type: Node group sharing type.
-               Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+               Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupShareSettingsProjectMapArgs']]] project_maps: A map of project id and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
         """
@@ -12312,7 +12312,7 @@ class NodeGroupShareSettingsArgs:
     def share_type(self) -> pulumi.Input[str]:
         """
         Node group sharing type.
-        Possible values are `ORGANIZATION`, `SPECIFIC_PROJECTS`, and `LOCAL`.
+        Possible values are: `ORGANIZATION`, `SPECIFIC_PROJECTS`, `LOCAL`.
         """
         return pulumi.get(self, "share_type")
 
@@ -12444,7 +12444,7 @@ class NodeTemplateServerBindingArgs:
                such as physical sockets or cores, to avoid the need for
                additional licenses when maintenance occurs. However, VMs on such
                nodes will experience outages while maintenance is applied.
-               Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
+               Possible values are: `RESTART_NODE_ON_ANY_SERVER`, `RESTART_NODE_ON_MINIMAL_SERVERS`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -12463,7 +12463,7 @@ class NodeTemplateServerBindingArgs:
         such as physical sockets or cores, to avoid the need for
         additional licenses when maintenance occurs. However, VMs on such
         nodes will experience outages while maintenance is applied.
-        Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
+        Possible values are: `RESTART_NODE_ON_ANY_SERVER`, `RESTART_NODE_ON_MINIMAL_SERVERS`.
         """
         return pulumi.get(self, "type")
 
@@ -12485,7 +12485,7 @@ class OrganizationSecurityPolicyRuleMatchArgs:
         :param pulumi.Input[str] versioned_expr: Preconfigured versioned expression. For organization security policy rules,
                the only supported type is "FIREWALL".
                Default value is `FIREWALL`.
-               Possible values are `FIREWALL`.
+               Possible values are: `FIREWALL`.
         """
         pulumi.set(__self__, "config", config)
         if description is not None:
@@ -12525,7 +12525,7 @@ class OrganizationSecurityPolicyRuleMatchArgs:
         Preconfigured versioned expression. For organization security policy rules,
         the only supported type is "FIREWALL".
         Default value is `FIREWALL`.
-        Possible values are `FIREWALL`.
+        Possible values are: `FIREWALL`.
         """
         return pulumi.get(self, "versioned_expr")
 
@@ -12683,7 +12683,7 @@ class PacketMirroringFilterArgs:
                destination (egress) IP in the IP header. Only IPv4 is supported.
         :param pulumi.Input[str] direction: Direction of traffic to mirror.
                Default value is `BOTH`.
-               Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+               Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_protocols: Possible IP protocols including tcp, udp, icmp and esp
         """
         if cidr_ranges is not None:
@@ -12712,7 +12712,7 @@ class PacketMirroringFilterArgs:
         """
         Direction of traffic to mirror.
         Default value is `BOTH`.
-        Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+        Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
         """
         return pulumi.get(self, "direction")
 
@@ -12940,10 +12940,10 @@ class PerInstanceConfigPreservedStateDiskArgs:
                `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
                deleted from the instance group.
                Default value is `NEVER`.
-               Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+               Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         :param pulumi.Input[str] mode: The mode of the disk.
                Default value is `READ_WRITE`.
-               Possible values are `READ_ONLY` and `READ_WRITE`.
+               Possible values are: `READ_ONLY`, `READ_WRITE`.
         """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "source", source)
@@ -12987,7 +12987,7 @@ class PerInstanceConfigPreservedStateDiskArgs:
         `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
         deleted from the instance group.
         Default value is `NEVER`.
-        Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         """
         return pulumi.get(self, "delete_rule")
 
@@ -13001,7 +13001,7 @@ class PerInstanceConfigPreservedStateDiskArgs:
         """
         The mode of the disk.
         Default value is `READ_WRITE`.
-        Possible values are `READ_ONLY` and `READ_WRITE`.
+        Possible values are: `READ_ONLY`, `READ_WRITE`.
         """
         return pulumi.get(self, "mode")
 
@@ -13020,7 +13020,7 @@ class PerInstanceConfigPreservedStateExternalIpArgs:
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
-               Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+               Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         :param pulumi.Input['PerInstanceConfigPreservedStateExternalIpIpAddressArgs'] ip_address: Ip address representation
                Structure is documented below.
         """
@@ -13048,7 +13048,7 @@ class PerInstanceConfigPreservedStateExternalIpArgs:
         """
         These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
         Default value is `NEVER`.
-        Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         """
         return pulumi.get(self, "auto_delete")
 
@@ -13103,7 +13103,7 @@ class PerInstanceConfigPreservedStateInternalIpArgs:
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
-               Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+               Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         :param pulumi.Input['PerInstanceConfigPreservedStateInternalIpIpAddressArgs'] ip_address: Ip address representation
                Structure is documented below.
         """
@@ -13131,7 +13131,7 @@ class PerInstanceConfigPreservedStateInternalIpArgs:
         """
         These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
         Default value is `NEVER`.
-        Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         """
         return pulumi.get(self, "auto_delete")
 
@@ -13217,7 +13217,7 @@ class RegionAutoscalerAutoscalingPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] mode: Defines operating mode for this policy.
                Default value is `ON`.
-               Possible values are `OFF`, `ONLY_UP`, and `ON`.
+               Possible values are: `OFF`, `ONLY_UP`, `ON`.
         :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
@@ -13343,7 +13343,7 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         """
         Defines operating mode for this policy.
         Default value is `ON`.
-        Possible values are `OFF`, `ONLY_UP`, and `ON`.
+        Possible values are: `OFF`, `ONLY_UP`, `ON`.
         """
         return pulumi.get(self, "mode")
 
@@ -13544,7 +13544,7 @@ class RegionAutoscalerAutoscalingPolicyMetricArgs:
                of the instances.
         :param pulumi.Input[str] type: Defines how target utilization value is expressed for a
                Stackdriver Monitoring metric.
-               Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+               Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
         """
         pulumi.set(__self__, "name", name)
         if filter is not None:
@@ -13658,7 +13658,7 @@ class RegionAutoscalerAutoscalingPolicyMetricArgs:
         """
         Defines how target utilization value is expressed for a
         Stackdriver Monitoring metric.
-        Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+        Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
         """
         return pulumi.get(self, "type")
 
@@ -13990,7 +13990,7 @@ class RegionBackendServiceBackendArgs:
                See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
                for an explanation of load balancing modes.
                Default value is `CONNECTION`.
-               Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+               Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         :param pulumi.Input[float] capacity_scaler: A multiplier applied to the group's maximum servicing capacity
                (based on UTILIZATION, RATE or CONNECTION).
                ~>**NOTE**: This field cannot be set for
@@ -14102,7 +14102,7 @@ class RegionBackendServiceBackendArgs:
         See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
         for an explanation of load balancing modes.
         Default value is `CONNECTION`.
-        Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+        Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
         """
         return pulumi.get(self, "balancing_mode")
 
@@ -14289,7 +14289,7 @@ class RegionBackendServiceCdnPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
                The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-               Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+               Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
         :param pulumi.Input[int] client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
         :param pulumi.Input[int] default_ttl: Specifies the default TTL for cached content served by this origin for responses
                that do not have an existing valid TTL (max-age or s-max-age).
@@ -14347,7 +14347,7 @@ class RegionBackendServiceCdnPolicyArgs:
         """
         Specifies the cache setting for all responses from this backend.
         The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
-        Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
         """
         return pulumi.get(self, "cache_mode")
 
@@ -14809,7 +14809,7 @@ class RegionBackendServiceConnectionTrackingPolicyArgs:
                unhealthy backends regardless of protocol and session affinity. It is
                generally not recommended to use this mode overriding the default.
                Default value is `DEFAULT_FOR_PROTOCOL`.
-               Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+               Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
         :param pulumi.Input[int] idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is
                no matching traffic (in seconds).
                For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
@@ -14820,7 +14820,7 @@ class RegionBackendServiceConnectionTrackingPolicyArgs:
                `PER_SESSION`: The Connection Tracking is performed as per the
                configured Session Affinity. It matches the configured Session Affinity.
                Default value is `PER_CONNECTION`.
-               Possible values are `PER_CONNECTION` and `PER_SESSION`.
+               Possible values are: `PER_CONNECTION`, `PER_SESSION`.
         """
         if connection_persistence_on_unhealthy_backends is not None:
             pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
@@ -14847,7 +14847,7 @@ class RegionBackendServiceConnectionTrackingPolicyArgs:
         unhealthy backends regardless of protocol and session affinity. It is
         generally not recommended to use this mode overriding the default.
         Default value is `DEFAULT_FOR_PROTOCOL`.
-        Possible values are `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, and `ALWAYS_PERSIST`.
+        Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
         """
         return pulumi.get(self, "connection_persistence_on_unhealthy_backends")
 
@@ -14880,7 +14880,7 @@ class RegionBackendServiceConnectionTrackingPolicyArgs:
         `PER_SESSION`: The Connection Tracking is performed as per the
         configured Session Affinity. It matches the configured Session Affinity.
         Default value is `PER_CONNECTION`.
-        Possible values are `PER_CONNECTION` and `PER_SESSION`.
+        Possible values are: `PER_CONNECTION`, `PER_SESSION`.
         """
         return pulumi.get(self, "tracking_mode")
 
@@ -15699,7 +15699,7 @@ class RegionBackendServiceSubsettingArgs:
                  policy: pulumi.Input[str]):
         """
         :param pulumi.Input[str] policy: The algorithm used for subsetting.
-               Possible values are `CONSISTENT_HASH_SUBSETTING`.
+               Possible values are: `CONSISTENT_HASH_SUBSETTING`.
         """
         pulumi.set(__self__, "policy", policy)
 
@@ -15708,7 +15708,7 @@ class RegionBackendServiceSubsettingArgs:
     def policy(self) -> pulumi.Input[str]:
         """
         The algorithm used for subsetting.
-        Possible values are `CONSISTENT_HASH_SUBSETTING`.
+        Possible values are: `CONSISTENT_HASH_SUBSETTING`.
         """
         return pulumi.get(self, "policy")
 
@@ -16083,27 +16083,27 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
                The default value is /.
                (Optional)
@@ -16261,27 +16261,27 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -16362,7 +16362,7 @@ class RegionHealthCheckHttpHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
@@ -16444,7 +16444,7 @@ class RegionHealthCheckHttpHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -16503,7 +16503,7 @@ class RegionHealthCheckHttpsHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTPS health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
@@ -16585,7 +16585,7 @@ class RegionHealthCheckHttpsHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -16665,7 +16665,7 @@ class RegionHealthCheckSslHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request: The application data to send once the SSL connection has been
                established (default value is empty). If both request and response are
                empty, the connection establishment alone will indicate health. The request
@@ -16733,7 +16733,7 @@ class RegionHealthCheckSslHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -16790,7 +16790,7 @@ class RegionHealthCheckTcpHealthCheckArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request: The application data to send once the TCP connection has been
                established (default value is empty). If both request and response are
                empty, the connection establishment alone will indicate health. The request
@@ -16858,7 +16858,7 @@ class RegionHealthCheckTcpHealthCheckArgs:
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -18146,10 +18146,10 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
                `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
                deleted from the instance group.
                Default value is `NEVER`.
-               Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+               Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         :param pulumi.Input[str] mode: The mode of the disk.
                Default value is `READ_WRITE`.
-               Possible values are `READ_ONLY` and `READ_WRITE`.
+               Possible values are: `READ_ONLY`, `READ_WRITE`.
         """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "source", source)
@@ -18193,7 +18193,7 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
         `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
         deleted from the instance group.
         Default value is `NEVER`.
-        Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         """
         return pulumi.get(self, "delete_rule")
 
@@ -18207,7 +18207,7 @@ class RegionPerInstanceConfigPreservedStateDiskArgs:
         """
         The mode of the disk.
         Default value is `READ_WRITE`.
-        Possible values are `READ_ONLY` and `READ_WRITE`.
+        Possible values are: `READ_ONLY`, `READ_WRITE`.
         """
         return pulumi.get(self, "mode")
 
@@ -18226,7 +18226,7 @@ class RegionPerInstanceConfigPreservedStateExternalIpArgs:
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
-               Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+               Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         :param pulumi.Input['RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs'] ip_address: Ip address representation
                Structure is documented below.
         """
@@ -18254,7 +18254,7 @@ class RegionPerInstanceConfigPreservedStateExternalIpArgs:
         """
         These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
         Default value is `NEVER`.
-        Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         """
         return pulumi.get(self, "auto_delete")
 
@@ -18309,7 +18309,7 @@ class RegionPerInstanceConfigPreservedStateInternalIpArgs:
         :param pulumi.Input[str] interface_name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] auto_delete: These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
                Default value is `NEVER`.
-               Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+               Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         :param pulumi.Input['RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs'] ip_address: Ip address representation
                Structure is documented below.
         """
@@ -18337,7 +18337,7 @@ class RegionPerInstanceConfigPreservedStateInternalIpArgs:
         """
         These stateful IPs will never be released during autohealing, update or VM instance recreate operations. This flag is used to configure if the IP reservation should be deleted after it is no longer used by the group, e.g. when the given instance or the whole group is deleted.
         Default value is `NEVER`.
-        Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+        Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
         """
         return pulumi.get(self, "auto_delete")
 
@@ -21823,7 +21823,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
                provided metadata.
                * MATCH_ALL: All filterLabels must have matching labels in
                the provided metadata.
-               Possible values are `MATCH_ALL` and `MATCH_ANY`.
+               Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         pulumi.set(__self__, "filter_labels", filter_labels)
         pulumi.set(__self__, "filter_match_criteria", filter_match_criteria)
@@ -21853,7 +21853,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
         provided metadata.
         * MATCH_ALL: All filterLabels must have matching labels in
         the provided metadata.
-        Possible values are `MATCH_ALL` and `MATCH_ANY`.
+        Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         return pulumi.get(self, "filter_match_criteria")
 
@@ -23189,7 +23189,7 @@ class ReservationShareSettingsArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ReservationShareSettingsProjectMapArgs']]] project_maps: A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
                Structure is documented below.
         :param pulumi.Input[str] share_type: Type of sharing for this shared-reservation
-               Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+               Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
         """
         if project_maps is not None:
             pulumi.set(__self__, "project_maps", project_maps)
@@ -23214,7 +23214,7 @@ class ReservationShareSettingsArgs:
     def share_type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of sharing for this shared-reservation
-        Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+        Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
         """
         return pulumi.get(self, "share_type")
 
@@ -23454,7 +23454,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
         :param pulumi.Input[int] disk_size_gb: The size of the disk in base-2 GB.
         :param pulumi.Input[str] interface: The disk interface to use for attaching this disk.
                Default value is `SCSI`.
-               Possible values are `SCSI` and `NVME`.
+               Possible values are: `SCSI`, `NVME`.
         """
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if interface is not None:
@@ -23478,7 +23478,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
         """
         The disk interface to use for attaching this disk.
         Default value is `SCSI`.
-        Possible values are `SCSI` and `NVME`.
+        Possible values are: `SCSI`, `NVME`.
         """
         return pulumi.get(self, "interface")
 
@@ -23501,7 +23501,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
                with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
                attached.
-               Possible values are `COLLOCATED`.
+               Possible values are: `COLLOCATED`.
         :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -23536,7 +23536,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
         Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
         with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
         attached.
-        Possible values are `COLLOCATED`.
+        Possible values are: `COLLOCATED`.
         """
         return pulumi.get(self, "collocation")
 
@@ -23774,7 +23774,7 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs:
         :param pulumi.Input[str] on_source_disk_delete: Specifies the behavior to apply to scheduled snapshots when
                the source disk is deleted.
                Default value is `KEEP_AUTO_SNAPSHOTS`.
-               Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+               Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
         """
         pulumi.set(__self__, "max_retention_days", max_retention_days)
         if on_source_disk_delete is not None:
@@ -23799,7 +23799,7 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs:
         Specifies the behavior to apply to scheduled snapshots when
         the source disk is deleted.
         Default value is `KEEP_AUTO_SNAPSHOTS`.
-        Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+        Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
         """
         return pulumi.get(self, "on_source_disk_delete")
 
@@ -23984,7 +23984,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
                  start_time: pulumi.Input[str]):
         """
         :param pulumi.Input[str] day: The day of the week to create the snapshot. e.g. MONDAY
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param pulumi.Input[str] start_time: Time within the window to start the operations.
                It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
         """
@@ -23996,7 +23996,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs:
     def day(self) -> pulumi.Input[str]:
         """
         The day of the week to create the snapshot. e.g. MONDAY
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -24110,7 +24110,7 @@ class RouterBgpArgs:
                will have the same local ASN.
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
                Default value is `DEFAULT`.
-               Possible values are `DEFAULT` and `CUSTOM`.
+               Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom mode.
                This field can only be populated if advertiseMode is CUSTOM and
                is advertised to all peers of the router. These groups will be
@@ -24164,7 +24164,7 @@ class RouterBgpArgs:
         """
         User-specified flag to indicate which mode to use for advertisement.
         Default value is `DEFAULT`.
-        Possible values are `DEFAULT` and `CUSTOM`.
+        Possible values are: `DEFAULT`, `CUSTOM`.
         """
         return pulumi.get(self, "advertise_mode")
 
@@ -24275,7 +24275,7 @@ class RouterNatLogConfigArgs:
         """
         :param pulumi.Input[bool] enable: Indicates whether or not to export logs.
         :param pulumi.Input[str] filter: Specifies the desired filtering of logs on this NAT.
-               Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+               Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
         """
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "filter", filter)
@@ -24297,7 +24297,7 @@ class RouterNatLogConfigArgs:
     def filter(self) -> pulumi.Input[str]:
         """
         Specifies the desired filtering of logs on this NAT.
-        Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+        Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
         """
         return pulumi.get(self, "filter")
 
@@ -24558,7 +24558,7 @@ class RouterPeerBfdArgs:
                for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
                for the peer router to initiate the BFD session for this BGP peer.
                If set to `DISABLED`, BFD is disabled for this BGP peer.
-               Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+               Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
         :param pulumi.Input[int] min_receive_interval: The minimum interval, in milliseconds, between BFD control packets
                received from the peer router. The actual value is negotiated
                between the two routers and is equal to the greater of this value
@@ -24590,7 +24590,7 @@ class RouterPeerBfdArgs:
         for this BGP peer. If set to `PASSIVE`, the Cloud Router will wait
         for the peer router to initiate the BFD session for this BGP peer.
         If set to `DISABLED`, BFD is disabled for this BGP peer.
-        Possible values are `ACTIVE`, `DISABLED`, and `PASSIVE`.
+        Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
         """
         return pulumi.get(self, "session_initialization_mode")
 
@@ -26470,7 +26470,7 @@ class SubnetworkLogConfigArgs:
                interval time will reduce the amount of generated flow logs for long
                lasting connections. Default is an interval of 5 seconds per connection.
                Default value is `INTERVAL_5_SEC`.
-               Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+               Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
         :param pulumi.Input[str] filter_expr: Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
                https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
                The default value is 'true', which evaluates to include everything.
@@ -26483,7 +26483,7 @@ class SubnetworkLogConfigArgs:
                Configures whether metadata fields should be added to the reported VPC
                flow logs.
                Default value is `INCLUDE_ALL_METADATA`.
-               Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+               Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] metadata_fields: List of metadata fields that should be added to reported logs.
                Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
         """
@@ -26507,7 +26507,7 @@ class SubnetworkLogConfigArgs:
         interval time will reduce the amount of generated flow logs for long
         lasting connections. Default is an interval of 5 seconds per connection.
         Default value is `INTERVAL_5_SEC`.
-        Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+        Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
         """
         return pulumi.get(self, "aggregation_interval")
 
@@ -26553,7 +26553,7 @@ class SubnetworkLogConfigArgs:
         Configures whether metadata fields should be added to the reported VPC
         flow logs.
         Default value is `INCLUDE_ALL_METADATA`.
-        Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+        Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
         """
         return pulumi.get(self, "metadata")
 
@@ -31494,7 +31494,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
                provided metadata.
                - MATCH_ALL: All filterLabels must have matching labels in
                the provided metadata.
-               Possible values are `MATCH_ALL` and `MATCH_ANY`.
+               Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         pulumi.set(__self__, "filter_labels", filter_labels)
         pulumi.set(__self__, "filter_match_criteria", filter_match_criteria)
@@ -31524,7 +31524,7 @@ class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs:
         provided metadata.
         - MATCH_ALL: All filterLabels must have matching labels in
         the provided metadata.
-        Possible values are `MATCH_ALL` and `MATCH_ANY`.
+        Possible values are: `MATCH_ALL`, `MATCH_ANY`.
         """
         return pulumi.get(self, "filter_match_criteria")
 

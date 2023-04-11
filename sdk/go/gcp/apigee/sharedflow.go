@@ -51,8 +51,7 @@ type Sharedflow struct {
 	MetaDatas SharedflowMetaDataArrayOutput `pulumi:"metaDatas"`
 	// The ID of the shared flow.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The Apigee Organization associated with the Apigee instance,
-	// in the format `organizations/{{org_name}}`.
+	// The Apigee Organization name associated with the Apigee instance.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// A list of revisions of this shared flow.
 	Revisions pulumi.StringArrayOutput `pulumi:"revisions"`
@@ -107,8 +106,7 @@ type sharedflowState struct {
 	MetaDatas []SharedflowMetaData `pulumi:"metaDatas"`
 	// The ID of the shared flow.
 	Name *string `pulumi:"name"`
-	// The Apigee Organization associated with the Apigee instance,
-	// in the format `organizations/{{org_name}}`.
+	// The Apigee Organization name associated with the Apigee instance.
 	OrgId *string `pulumi:"orgId"`
 	// A list of revisions of this shared flow.
 	Revisions []string `pulumi:"revisions"`
@@ -129,8 +127,7 @@ type SharedflowState struct {
 	MetaDatas SharedflowMetaDataArrayInput
 	// The ID of the shared flow.
 	Name pulumi.StringPtrInput
-	// The Apigee Organization associated with the Apigee instance,
-	// in the format `organizations/{{org_name}}`.
+	// The Apigee Organization name associated with the Apigee instance.
 	OrgId pulumi.StringPtrInput
 	// A list of revisions of this shared flow.
 	Revisions pulumi.StringArrayInput
@@ -148,8 +145,7 @@ type sharedflowArgs struct {
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
 	// The ID of the shared flow.
 	Name *string `pulumi:"name"`
-	// The Apigee Organization associated with the Apigee instance,
-	// in the format `organizations/{{org_name}}`.
+	// The Apigee Organization name associated with the Apigee instance.
 	OrgId string `pulumi:"orgId"`
 }
 
@@ -162,8 +158,7 @@ type SharedflowArgs struct {
 	DetectMd5hash pulumi.StringPtrInput
 	// The ID of the shared flow.
 	Name pulumi.StringPtrInput
-	// The Apigee Organization associated with the Apigee instance,
-	// in the format `organizations/{{org_name}}`.
+	// The Apigee Organization name associated with the Apigee instance.
 	OrgId pulumi.StringInput
 }
 
@@ -286,8 +281,7 @@ func (o SharedflowOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The Apigee Organization associated with the Apigee instance,
-// in the format `organizations/{{org_name}}`.
+// The Apigee Organization name associated with the Apigee instance.
 func (o SharedflowOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

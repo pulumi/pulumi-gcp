@@ -335,14 +335,14 @@ class GuestPoliciesPackage(dict):
         :param str name: The name of the package. A package is uniquely identified for conflict validation
                by checking the package name and the manager(s) that the package targets.
         :param str desired_state: The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-               Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+               Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
         :param str manager: Type of package manager that can be used to install this package. If a system does not have the package manager,
                the package is not installed or removed no error message is returned. By default, or if you specify ANY,
                the agent attempts to install and remove this package using the default package manager.
                This is useful when creating a policy that applies to different types of systems.
                The default behavior is ANY.
                Default value is `ANY`.
-               Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+               Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
         """
         pulumi.set(__self__, "name", name)
         if desired_state is not None:
@@ -364,7 +364,7 @@ class GuestPoliciesPackage(dict):
     def desired_state(self) -> Optional[str]:
         """
         The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-        Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+        Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
         """
         return pulumi.get(self, "desired_state")
 
@@ -378,7 +378,7 @@ class GuestPoliciesPackage(dict):
         This is useful when creating a policy that applies to different types of systems.
         The default behavior is ANY.
         Default value is `ANY`.
-        Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+        Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
         """
         return pulumi.get(self, "manager")
 
@@ -479,7 +479,7 @@ class GuestPoliciesPackageRepositoryApt(dict):
         :param str uri: URI for this repository.
         :param str archive_type: Type of archive files in this repository. The default behavior is DEB.
                Default value is `DEB`.
-               Possible values are `DEB` and `DEB_SRC`.
+               Possible values are: `DEB`, `DEB_SRC`.
         :param str gpg_key: URI of the key file for this repository. The agent maintains a keyring at
                /etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg containing all the keys in any applied guest policy.
         """
@@ -521,7 +521,7 @@ class GuestPoliciesPackageRepositoryApt(dict):
         """
         Type of archive files in this repository. The default behavior is DEB.
         Default value is `DEB`.
-        Possible values are `DEB` and `DEB_SRC`.
+        Possible values are: `DEB`, `DEB_SRC`.
         """
         return pulumi.get(self, "archive_type")
 
@@ -759,7 +759,7 @@ class GuestPoliciesRecipe(dict):
                if a higher version of the recipe is assigned to this instance.
                REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
                Default value is `INSTALLED`.
-               Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+               Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
         :param Sequence['GuestPoliciesRecipeInstallStepArgs'] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
                Any steps taken (including partially completed steps) are not rolled back.
                Structure is documented below.
@@ -810,7 +810,7 @@ class GuestPoliciesRecipe(dict):
         if a higher version of the recipe is assigned to this instance.
         REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
         Default value is `INSTALLED`.
-        Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+        Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
         """
         return pulumi.get(self, "desired_state")
 
@@ -1185,7 +1185,7 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
         """
         :param str artifact_id: The id of the relevant artifact in the recipe.
         :param str type: The type of the archive to extract.
-               Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+               Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
         :param str destination: Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
@@ -1206,7 +1206,7 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction(dict):
     def type(self) -> str:
         """
         The type of the archive to extract.
-        Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+        Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
         """
         return pulumi.get(self, "type")
 
@@ -1536,7 +1536,7 @@ class GuestPoliciesRecipeInstallStepScriptRun(dict):
         :param Sequence[int] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
                which likely only succeed for scripts with shebang lines.
-               Possible values are `SHELL` and `POWERSHELL`.
+               Possible values are: `SHELL`, `POWERSHELL`.
         """
         pulumi.set(__self__, "script", script)
         if allowed_exit_codes is not None:
@@ -1566,7 +1566,7 @@ class GuestPoliciesRecipeInstallStepScriptRun(dict):
         """
         The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
         which likely only succeed for scripts with shebang lines.
-        Possible values are `SHELL` and `POWERSHELL`.
+        Possible values are: `SHELL`, `POWERSHELL`.
         """
         return pulumi.get(self, "interpreter")
 
@@ -1731,7 +1731,7 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
         """
         :param str artifact_id: The id of the relevant artifact in the recipe.
         :param str type: The type of the archive to extract.
-               Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+               Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
         :param str destination: Directory to extract archive to. Defaults to / on Linux or C:\\ on Windows.
         """
         pulumi.set(__self__, "artifact_id", artifact_id)
@@ -1752,7 +1752,7 @@ class GuestPoliciesRecipeUpdateStepArchiveExtraction(dict):
     def type(self) -> str:
         """
         The type of the archive to extract.
-        Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+        Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
         """
         return pulumi.get(self, "type")
 
@@ -2082,7 +2082,7 @@ class GuestPoliciesRecipeUpdateStepScriptRun(dict):
         :param Sequence[int] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
                which likely only succeed for scripts with shebang lines.
-               Possible values are `SHELL` and `POWERSHELL`.
+               Possible values are: `SHELL`, `POWERSHELL`.
         """
         pulumi.set(__self__, "script", script)
         if allowed_exit_codes is not None:
@@ -2112,7 +2112,7 @@ class GuestPoliciesRecipeUpdateStepScriptRun(dict):
         """
         The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
         which likely only succeed for scripts with shebang lines.
-        Possible values are `SHELL` and `POWERSHELL`.
+        Possible values are: `SHELL`, `POWERSHELL`.
         """
         return pulumi.get(self, "interpreter")
 
@@ -4678,7 +4678,7 @@ class PatchDeploymentPatchConfig(dict):
         :param 'PatchDeploymentPatchConfigPreStepArgs' pre_step: The ExecStep to run before the patch update.
                Structure is documented below.
         :param str reboot_config: Post-patch reboot settings.
-               Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+               Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
         :param 'PatchDeploymentPatchConfigWindowsUpdateArgs' windows_update: Windows update settings. Use this setting to override the default Windows patch rules.
                Structure is documented below.
         :param 'PatchDeploymentPatchConfigYumArgs' yum: Yum update settings. Use this setting to override the default yum patch rules.
@@ -4754,7 +4754,7 @@ class PatchDeploymentPatchConfig(dict):
     def reboot_config(self) -> Optional[str]:
         """
         Post-patch reboot settings.
-        Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+        Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
         """
         return pulumi.get(self, "reboot_config")
 
@@ -4815,7 +4815,7 @@ class PatchDeploymentPatchConfigApt(dict):
                If these packages are not installed, they will be ignored. This field cannot be specified with
                any other patch configuration fields.
         :param str type: By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-               Possible values are `DIST` and `UPGRADE`.
+               Possible values are: `DIST`, `UPGRADE`.
         """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
@@ -4847,7 +4847,7 @@ class PatchDeploymentPatchConfigApt(dict):
     def type(self) -> Optional[str]:
         """
         By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-        Possible values are `DIST` and `UPGRADE`.
+        Possible values are: `DIST`, `UPGRADE`.
         """
         return pulumi.get(self, "type")
 
@@ -4958,7 +4958,7 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
-               Possible values are `SHELL` and `POWERSHELL`.
+               Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
         if allowed_success_codes is not None:
@@ -4993,7 +4993,7 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfig(dict):
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
-        Possible values are `SHELL` and `POWERSHELL`.
+        Possible values are: `SHELL`, `POWERSHELL`.
         """
         return pulumi.get(self, "interpreter")
 
@@ -5097,7 +5097,7 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
-               Possible values are `SHELL` and `POWERSHELL`.
+               Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
         if allowed_success_codes is not None:
@@ -5132,7 +5132,7 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfig(dict):
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
-        Possible values are `SHELL` and `POWERSHELL`.
+        Possible values are: `SHELL`, `POWERSHELL`.
         """
         return pulumi.get(self, "interpreter")
 
@@ -5290,7 +5290,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
-               Possible values are `SHELL` and `POWERSHELL`.
+               Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
         if allowed_success_codes is not None:
@@ -5325,7 +5325,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig(dict):
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
-        Possible values are `SHELL` and `POWERSHELL`.
+        Possible values are: `SHELL`, `POWERSHELL`.
         """
         return pulumi.get(self, "interpreter")
 
@@ -5429,7 +5429,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
                Structure is documented below.
         :param str interpreter: The script interpreter to use to run the script. If no interpreter is specified the script will
                be executed directly, which will likely only succeed for scripts with shebang lines.
-               Possible values are `SHELL` and `POWERSHELL`.
+               Possible values are: `SHELL`, `POWERSHELL`.
         :param str local_path: An absolute path to the executable on the VM.
         """
         if allowed_success_codes is not None:
@@ -5464,7 +5464,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfig(dict):
         """
         The script interpreter to use to run the script. If no interpreter is specified the script will
         be executed directly, which will likely only succeed for scripts with shebang lines.
-        Possible values are `SHELL` and `POWERSHELL`.
+        Possible values are: `SHELL`, `POWERSHELL`.
         """
         return pulumi.get(self, "interpreter")
 
@@ -5559,7 +5559,7 @@ class PatchDeploymentPatchConfigWindowsUpdate(dict):
                  exclusive_patches: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] classifications: Only apply updates of these windows update classifications. If empty, all updates are applied.
-               Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+               Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
         :param Sequence[str] excludes: List of KBs to exclude from update.
         :param Sequence[str] exclusive_patches: An exclusive list of kbs to be updated. These are the only patches that will be updated.
                This field must not be used with other patch configurations.
@@ -5576,7 +5576,7 @@ class PatchDeploymentPatchConfigWindowsUpdate(dict):
     def classifications(self) -> Optional[Sequence[str]]:
         """
         Only apply updates of these windows update classifications. If empty, all updates are applied.
-        Each value may be one of `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, and `UPDATE`.
+        Each value may be one of: `CRITICAL`, `SECURITY`, `DEFINITION`, `DRIVER`, `FEATURE_PACK`, `SERVICE_PACK`, `TOOL`, `UPDATE_ROLLUP`, `UPDATE`.
         """
         return pulumi.get(self, "classifications")
 
@@ -6008,7 +6008,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
                  week_ordinal: int):
         """
         :param str day_of_week: A day of the week.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param int week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
@@ -6019,7 +6019,7 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(dict):
     def day_of_week(self) -> str:
         """
         A day of the week.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week")
 
@@ -6142,7 +6142,7 @@ class PatchDeploymentRecurringScheduleWeekly(dict):
                  day_of_week: str):
         """
         :param str day_of_week: IANA Time Zone Database time zone, e.g. "America/New_York".
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
 
@@ -6151,7 +6151,7 @@ class PatchDeploymentRecurringScheduleWeekly(dict):
     def day_of_week(self) -> str:
         """
         IANA Time Zone Database time zone, e.g. "America/New_York".
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week")
 
@@ -6186,7 +6186,7 @@ class PatchDeploymentRollout(dict):
                For example, if the disruption budget has a fixed value of 10, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
                Structure is documented below.
         :param str mode: Mode of the patch rollout.
-               Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+               Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
         """
         pulumi.set(__self__, "disruption_budget", disruption_budget)
         pulumi.set(__self__, "mode", mode)
@@ -6209,7 +6209,7 @@ class PatchDeploymentRollout(dict):
     def mode(self) -> str:
         """
         Mode of the patch rollout.
-        Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+        Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
         """
         return pulumi.get(self, "mode")
 

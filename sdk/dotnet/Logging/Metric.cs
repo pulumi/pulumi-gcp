@@ -153,6 +153,28 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// });
     /// ```
+    /// ### Logging Metric Disabled
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new()
+    ///     {
+    ///         Disabled = true,
+    ///         Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///         MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///         {
+    ///             MetricKind = "DELTA",
+    ///             ValueType = "INT64",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -190,6 +212,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to True, then this metric is disabled and it does not generate any points.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
         /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
@@ -315,6 +343,12 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// If set to True, then this metric is disabled and it does not generate any points.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         /// is used to match log entries.
         /// </summary>
@@ -404,6 +438,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// If set to True, then this metric is disabled and it does not generate any points.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         /// <summary>
         /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which

@@ -86,7 +86,7 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
      * The type of entities that need to use the authorization relationship during
      * evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
      * "ASSET_TYPE_CREDENTIAL_STRENGTH".
-     * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+     * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      */
     public readonly assetType!: pulumi.Output<string | undefined>;
     /**
@@ -104,12 +104,12 @@ export class AuthorizedOrgsDesc extends pulumi.CustomResource {
      * direction, organizations B and C must specify
      * "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
      * "AuthorizedOrgsDesc" resource.
-     * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+     * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      */
     public readonly authorizationDirection!: pulumi.Output<string | undefined>;
     /**
      * A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-     * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+     * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      */
     public readonly authorizationType!: pulumi.Output<string | undefined>;
     /**
@@ -187,7 +187,7 @@ export interface AuthorizedOrgsDescState {
      * The type of entities that need to use the authorization relationship during
      * evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
      * "ASSET_TYPE_CREDENTIAL_STRENGTH".
-     * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+     * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      */
     assetType?: pulumi.Input<string>;
     /**
@@ -205,12 +205,12 @@ export interface AuthorizedOrgsDescState {
      * direction, organizations B and C must specify
      * "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
      * "AuthorizedOrgsDesc" resource.
-     * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+     * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      */
     authorizationDirection?: pulumi.Input<string>;
     /**
      * A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-     * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+     * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      */
     authorizationType?: pulumi.Input<string>;
     /**
@@ -249,7 +249,7 @@ export interface AuthorizedOrgsDescArgs {
      * The type of entities that need to use the authorization relationship during
      * evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
      * "ASSET_TYPE_CREDENTIAL_STRENGTH".
-     * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+     * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      */
     assetType?: pulumi.Input<string>;
     /**
@@ -267,12 +267,12 @@ export interface AuthorizedOrgsDescArgs {
      * direction, organizations B and C must specify
      * "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
      * "AuthorizedOrgsDesc" resource.
-     * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+     * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      */
     authorizationDirection?: pulumi.Input<string>;
     /**
      * A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-     * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+     * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      */
     authorizationType?: pulumi.Input<string>;
     /**

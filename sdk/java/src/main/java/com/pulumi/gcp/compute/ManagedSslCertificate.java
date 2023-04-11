@@ -299,7 +299,7 @@ public class ManagedSslCertificate extends com.pulumi.resources.CustomResource {
      * Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
-     * Possible values are `MANAGED`.
+     * Possible values are: `MANAGED`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -309,7 +309,7 @@ public class ManagedSslCertificate extends com.pulumi.resources.CustomResource {
      * @return Enum field whose value is always `MANAGED` - used to signal to the API
      * which type this is.
      * Default value is `MANAGED`.
-     * Possible values are `MANAGED`.
+     * Possible values are: `MANAGED`.
      * 
      */
     public Output<Optional<String>> type() {

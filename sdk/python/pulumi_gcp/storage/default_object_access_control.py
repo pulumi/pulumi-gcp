@@ -33,7 +33,7 @@ class DefaultObjectAccessControlArgs:
                * allUsers
                * allAuthenticatedUsers
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER` and `READER`.
+               Possible values are: `OWNER`, `READER`.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         """
         pulumi.set(__self__, "bucket", bucket)
@@ -79,7 +79,7 @@ class DefaultObjectAccessControlArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The access permission for the entity.
-        Possible values are `OWNER` and `READER`.
+        Possible values are: `OWNER`, `READER`.
         """
         return pulumi.get(self, "role")
 
@@ -132,7 +132,7 @@ class _DefaultObjectAccessControlState:
         :param pulumi.Input[Sequence[pulumi.Input['DefaultObjectAccessControlProjectTeamArgs']]] project_teams: The project team associated with the entity
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER` and `READER`.
+               Possible values are: `OWNER`, `READER`.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -263,7 +263,7 @@ class _DefaultObjectAccessControlState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The access permission for the entity.
-        Possible values are `OWNER` and `READER`.
+        Possible values are: `OWNER`, `READER`.
         """
         return pulumi.get(self, "role")
 
@@ -339,7 +339,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
                * allAuthenticatedUsers
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER` and `READER`.
+               Possible values are: `OWNER`, `READER`.
         """
         ...
     @overload
@@ -477,7 +477,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']]]] project_teams: The project team associated with the entity
                Structure is documented below.
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER` and `READER`.
+               Possible values are: `OWNER`, `READER`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -572,7 +572,7 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The access permission for the entity.
-        Possible values are `OWNER` and `READER`.
+        Possible values are: `OWNER`, `READER`.
         """
         return pulumi.get(self, "role")
 

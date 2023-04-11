@@ -23,7 +23,7 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtraction {
     private @Nullable String destination;
     /**
      * @return The type of the archive to extract.
-     * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+     * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
      * 
      */
     private String type;
@@ -45,7 +45,7 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtraction {
     }
     /**
      * @return The type of the archive to extract.
-     * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+     * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
      * 
      */
     public String type() {

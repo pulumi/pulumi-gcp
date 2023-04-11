@@ -1622,7 +1622,7 @@ type MetricMetricDescriptor struct {
 	// Whether the metric records instantaneous values, changes to a value, etc.
 	// Some combinations of metricKind and valueType might not be supported.
 	// For counter metrics, set this to DELTA.
-	// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+	// Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
 	MetricKind string `pulumi:"metricKind"`
 	// The unit in which the metric value is reported. It is only applicable if the valueType is
 	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
@@ -1631,7 +1631,7 @@ type MetricMetricDescriptor struct {
 	// Whether the measurement is an integer, a floating-point number, etc.
 	// Some combinations of metricKind and valueType might not be supported.
 	// For counter metrics, set this to INT64.
-	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -1660,7 +1660,7 @@ type MetricMetricDescriptorArgs struct {
 	// Whether the metric records instantaneous values, changes to a value, etc.
 	// Some combinations of metricKind and valueType might not be supported.
 	// For counter metrics, set this to DELTA.
-	// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+	// Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
 	MetricKind pulumi.StringInput `pulumi:"metricKind"`
 	// The unit in which the metric value is reported. It is only applicable if the valueType is
 	// `INT64`, `DOUBLE`, or `DISTRIBUTION`. The supported units are a subset of
@@ -1669,7 +1669,7 @@ type MetricMetricDescriptorArgs struct {
 	// Whether the measurement is an integer, a floating-point number, etc.
 	// Some combinations of metricKind and valueType might not be supported.
 	// For counter metrics, set this to INT64.
-	// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+	// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
 }
 
@@ -1769,7 +1769,7 @@ func (o MetricMetricDescriptorOutput) Labels() MetricMetricDescriptorLabelArrayO
 // Whether the metric records instantaneous values, changes to a value, etc.
 // Some combinations of metricKind and valueType might not be supported.
 // For counter metrics, set this to DELTA.
-// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+// Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
 func (o MetricMetricDescriptorOutput) MetricKind() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.MetricKind }).(pulumi.StringOutput)
 }
@@ -1784,7 +1784,7 @@ func (o MetricMetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 // Whether the measurement is an integer, a floating-point number, etc.
 // Some combinations of metricKind and valueType might not be supported.
 // For counter metrics, set this to INT64.
-// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
 func (o MetricMetricDescriptorOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricMetricDescriptor) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -1842,7 +1842,7 @@ func (o MetricMetricDescriptorPtrOutput) Labels() MetricMetricDescriptorLabelArr
 // Whether the metric records instantaneous values, changes to a value, etc.
 // Some combinations of metricKind and valueType might not be supported.
 // For counter metrics, set this to DELTA.
-// Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+// Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
 func (o MetricMetricDescriptorPtrOutput) MetricKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
 		if v == nil {
@@ -1867,7 +1867,7 @@ func (o MetricMetricDescriptorPtrOutput) Unit() pulumi.StringPtrOutput {
 // Whether the measurement is an integer, a floating-point number, etc.
 // Some combinations of metricKind and valueType might not be supported.
 // For counter metrics, set this to INT64.
-// Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
 func (o MetricMetricDescriptorPtrOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricMetricDescriptor) *string {
 		if v == nil {
@@ -1884,7 +1884,7 @@ type MetricMetricDescriptorLabel struct {
 	Key string `pulumi:"key"`
 	// The type of data that can be assigned to the label.
 	// Default value is `STRING`.
-	// Possible values are `BOOL`, `INT64`, and `STRING`.
+	// Possible values are: `BOOL`, `INT64`, `STRING`.
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -1906,7 +1906,7 @@ type MetricMetricDescriptorLabelArgs struct {
 	Key pulumi.StringInput `pulumi:"key"`
 	// The type of data that can be assigned to the label.
 	// Default value is `STRING`.
-	// Possible values are `BOOL`, `INT64`, and `STRING`.
+	// Possible values are: `BOOL`, `INT64`, `STRING`.
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
@@ -1973,7 +1973,7 @@ func (o MetricMetricDescriptorLabelOutput) Key() pulumi.StringOutput {
 
 // The type of data that can be assigned to the label.
 // Default value is `STRING`.
-// Possible values are `BOOL`, `INT64`, and `STRING`.
+// Possible values are: `BOOL`, `INT64`, `STRING`.
 func (o MetricMetricDescriptorLabelOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricMetricDescriptorLabel) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }

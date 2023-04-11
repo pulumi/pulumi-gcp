@@ -484,10 +484,10 @@ type ManagedZoneDnssecConfig struct {
 	Kind *string `pulumi:"kind"`
 	// Specifies the mechanism used to provide authenticated denial-of-existence responses.
 	// nonExistence can only be updated when the state is `off`.
-	// Possible values are `nsec` and `nsec3`.
+	// Possible values are: `nsec`, `nsec3`.
 	NonExistence *string `pulumi:"nonExistence"`
 	// Specifies whether DNSSEC is enabled, and what mode it is in
-	// Possible values are `off`, `on`, and `transfer`.
+	// Possible values are: `off`, `on`, `transfer`.
 	State *string `pulumi:"state"`
 }
 
@@ -513,10 +513,10 @@ type ManagedZoneDnssecConfigArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Specifies the mechanism used to provide authenticated denial-of-existence responses.
 	// nonExistence can only be updated when the state is `off`.
-	// Possible values are `nsec` and `nsec3`.
+	// Possible values are: `nsec`, `nsec3`.
 	NonExistence pulumi.StringPtrInput `pulumi:"nonExistence"`
 	// Specifies whether DNSSEC is enabled, and what mode it is in
-	// Possible values are `off`, `on`, and `transfer`.
+	// Possible values are: `off`, `on`, `transfer`.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -613,13 +613,13 @@ func (o ManagedZoneDnssecConfigOutput) Kind() pulumi.StringPtrOutput {
 
 // Specifies the mechanism used to provide authenticated denial-of-existence responses.
 // nonExistence can only be updated when the state is `off`.
-// Possible values are `nsec` and `nsec3`.
+// Possible values are: `nsec`, `nsec3`.
 func (o ManagedZoneDnssecConfigOutput) NonExistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.NonExistence }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether DNSSEC is enabled, and what mode it is in
-// Possible values are `off`, `on`, and `transfer`.
+// Possible values are: `off`, `on`, `transfer`.
 func (o ManagedZoneDnssecConfigOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfig) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -674,7 +674,7 @@ func (o ManagedZoneDnssecConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 
 // Specifies the mechanism used to provide authenticated denial-of-existence responses.
 // nonExistence can only be updated when the state is `off`.
-// Possible values are `nsec` and `nsec3`.
+// Possible values are: `nsec`, `nsec3`.
 func (o ManagedZoneDnssecConfigPtrOutput) NonExistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZoneDnssecConfig) *string {
 		if v == nil {
@@ -685,7 +685,7 @@ func (o ManagedZoneDnssecConfigPtrOutput) NonExistence() pulumi.StringPtrOutput 
 }
 
 // Specifies whether DNSSEC is enabled, and what mode it is in
-// Possible values are `off`, `on`, and `transfer`.
+// Possible values are: `off`, `on`, `transfer`.
 func (o ManagedZoneDnssecConfigPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZoneDnssecConfig) *string {
 		if v == nil {
@@ -697,7 +697,7 @@ func (o ManagedZoneDnssecConfigPtrOutput) State() pulumi.StringPtrOutput {
 
 type ManagedZoneDnssecConfigDefaultKeySpec struct {
 	// String mnemonic specifying the DNSSEC algorithm of this key
-	// Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	// Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
 	Algorithm *string `pulumi:"algorithm"`
 	// Length of the keys in bits
 	KeyLength *int `pulumi:"keyLength"`
@@ -707,7 +707,7 @@ type ManagedZoneDnssecConfigDefaultKeySpec struct {
 	// resource record sets of type DNSKEY. Zone signing keys do
 	// not have the Secure Entry Point flag set and will be used
 	// to sign all other types of resource record sets.
-	// Possible values are `keySigning` and `zoneSigning`.
+	// Possible values are: `keySigning`, `zoneSigning`.
 	KeyType *string `pulumi:"keyType"`
 	// Identifies what kind of resource this is
 	Kind *string `pulumi:"kind"`
@@ -726,7 +726,7 @@ type ManagedZoneDnssecConfigDefaultKeySpecInput interface {
 
 type ManagedZoneDnssecConfigDefaultKeySpecArgs struct {
 	// String mnemonic specifying the DNSSEC algorithm of this key
-	// Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+	// Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Length of the keys in bits
 	KeyLength pulumi.IntPtrInput `pulumi:"keyLength"`
@@ -736,7 +736,7 @@ type ManagedZoneDnssecConfigDefaultKeySpecArgs struct {
 	// resource record sets of type DNSKEY. Zone signing keys do
 	// not have the Secure Entry Point flag set and will be used
 	// to sign all other types of resource record sets.
-	// Possible values are `keySigning` and `zoneSigning`.
+	// Possible values are: `keySigning`, `zoneSigning`.
 	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
 	// Identifies what kind of resource this is
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
@@ -794,7 +794,7 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) ToManagedZoneDnssecConfigDe
 }
 
 // String mnemonic specifying the DNSSEC algorithm of this key
-// Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+// Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -810,7 +810,7 @@ func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) KeyLength() pulumi.IntPtrOu
 // resource record sets of type DNSKEY. Zone signing keys do
 // not have the Secure Entry Point flag set and will be used
 // to sign all other types of resource record sets.
-// Possible values are `keySigning` and `zoneSigning`.
+// Possible values are: `keySigning`, `zoneSigning`.
 func (o ManagedZoneDnssecConfigDefaultKeySpecOutput) KeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneDnssecConfigDefaultKeySpec) *string { return v.KeyType }).(pulumi.StringPtrOutput)
 }
@@ -995,7 +995,7 @@ type ManagedZoneForwardingConfigTargetNameServer struct {
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-	// Possible values are `default` and `private`.
+	// Possible values are: `default`, `private`.
 	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
 	Ipv4Address string `pulumi:"ipv4Address"`
@@ -1016,7 +1016,7 @@ type ManagedZoneForwardingConfigTargetNameServerArgs struct {
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-	// Possible values are `default` and `private`.
+	// Possible values are: `default`, `private`.
 	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address of a target name server.
 	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
@@ -1076,7 +1076,7 @@ func (o ManagedZoneForwardingConfigTargetNameServerOutput) ToManagedZoneForwardi
 // Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 // decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 // to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-// Possible values are `default` and `private`.
+// Possible values are: `default`, `private`.
 func (o ManagedZoneForwardingConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZoneForwardingConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
@@ -2209,7 +2209,7 @@ type PolicyAlternativeNameServerConfigTargetNameServer struct {
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-	// Possible values are `default` and `private`.
+	// Possible values are: `default`, `private`.
 	ForwardingPath *string `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address string `pulumi:"ipv4Address"`
@@ -2230,7 +2230,7 @@ type PolicyAlternativeNameServerConfigTargetNameServerArgs struct {
 	// Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 	// decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 	// to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-	// Possible values are `default` and `private`.
+	// Possible values are: `default`, `private`.
 	ForwardingPath pulumi.StringPtrInput `pulumi:"forwardingPath"`
 	// IPv4 address to forward to.
 	Ipv4Address pulumi.StringInput `pulumi:"ipv4Address"`
@@ -2290,7 +2290,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ToPolicyAlterna
 // Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
 // decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
 // to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-// Possible values are `default` and `private`.
+// Possible values are: `default`, `private`.
 func (o PolicyAlternativeNameServerConfigTargetNameServerOutput) ForwardingPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyAlternativeNameServerConfigTargetNameServer) *string { return v.ForwardingPath }).(pulumi.StringPtrOutput)
 }
@@ -4747,7 +4747,7 @@ type ResponsePolicyRuleLocalDataLocalData struct {
 	// resolvers.
 	Ttl *int `pulumi:"ttl"`
 	// One of valid DNS resource types.
-	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+	// Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
 	Type string `pulumi:"type"`
 }
 
@@ -4771,7 +4771,7 @@ type ResponsePolicyRuleLocalDataLocalDataArgs struct {
 	// resolvers.
 	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
 	// One of valid DNS resource types.
-	// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+	// Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4843,7 +4843,7 @@ func (o ResponsePolicyRuleLocalDataLocalDataOutput) Ttl() pulumi.IntPtrOutput {
 }
 
 // One of valid DNS resource types.
-// Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+// Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
 func (o ResponsePolicyRuleLocalDataLocalDataOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ResponsePolicyRuleLocalDataLocalData) string { return v.Type }).(pulumi.StringOutput)
 }

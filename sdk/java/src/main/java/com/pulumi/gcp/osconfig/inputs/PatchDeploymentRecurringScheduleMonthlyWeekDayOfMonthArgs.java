@@ -16,7 +16,7 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
 
     /**
      * A day of the week.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     @Import(name="dayOfWeek", required=true)
@@ -24,7 +24,7 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
 
     /**
      * @return A day of the week.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public Output<String> dayOfWeek() {
@@ -73,7 +73,7 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
 
         /**
          * @param dayOfWeek A day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
 
         /**
          * @param dayOfWeek A day of the week.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 

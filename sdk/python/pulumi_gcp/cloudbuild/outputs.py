@@ -346,7 +346,7 @@ class TriggerBitbucketServerTriggerConfigPullRequest(dict):
         :param str branch: Regex of branches to match.
                The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         :param str comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-               Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+               Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
         pulumi.set(__self__, "branch", branch)
@@ -369,7 +369,7 @@ class TriggerBitbucketServerTriggerConfigPullRequest(dict):
     def comment_control(self) -> Optional[str]:
         """
         Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-        Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
 
@@ -953,22 +953,22 @@ class TriggerBuildOptions(dict):
                the variable will use the build step value.
                The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param str log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
-               Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+               Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
         :param str logging: Option to specify the logging mode, which determines if and where build logs are stored.
-               Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+               Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
         :param str machine_type: Compute Engine machine type on which to run the build.
-               Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+               Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
         :param str requested_verify_option: Requested verifiability options.
-               Possible values are `NOT_VERIFIED` and `VERIFIED`.
+               Possible values are: `NOT_VERIFIED`, `VERIFIED`.
         :param Sequence[str] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
                Service crypto key. These values must be specified in the build's Secret. These variables
                will be available to all build steps in this build.
         :param Sequence[str] source_provenance_hashes: Requested hash for SourceProvenance.
-               Each value may be one of `NONE`, `SHA256`, and `MD5`.
+               Each value may be one of: `NONE`, `SHA256`, `MD5`.
         :param str substitution_option: Option to specify behavior when there is an error in the substitution checks.
                NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
                in the build configuration file.
-               Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+               Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
         :param Sequence['TriggerBuildOptionsVolumeArgs'] volumes: Global list of volumes to mount for ALL build steps
                Each volume is created as an empty volume prior to starting the build process.
                Upon completion of the build, volumes and their contents are discarded. Global
@@ -1041,7 +1041,7 @@ class TriggerBuildOptions(dict):
     def log_streaming_option(self) -> Optional[str]:
         """
         Option to define build log streaming behavior to Google Cloud Storage.
-        Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+        Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
         """
         return pulumi.get(self, "log_streaming_option")
 
@@ -1050,7 +1050,7 @@ class TriggerBuildOptions(dict):
     def logging(self) -> Optional[str]:
         """
         Option to specify the logging mode, which determines if and where build logs are stored.
-        Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+        Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
         """
         return pulumi.get(self, "logging")
 
@@ -1059,7 +1059,7 @@ class TriggerBuildOptions(dict):
     def machine_type(self) -> Optional[str]:
         """
         Compute Engine machine type on which to run the build.
-        Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+        Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
         """
         return pulumi.get(self, "machine_type")
 
@@ -1068,7 +1068,7 @@ class TriggerBuildOptions(dict):
     def requested_verify_option(self) -> Optional[str]:
         """
         Requested verifiability options.
-        Possible values are `NOT_VERIFIED` and `VERIFIED`.
+        Possible values are: `NOT_VERIFIED`, `VERIFIED`.
         """
         return pulumi.get(self, "requested_verify_option")
 
@@ -1087,7 +1087,7 @@ class TriggerBuildOptions(dict):
     def source_provenance_hashes(self) -> Optional[Sequence[str]]:
         """
         Requested hash for SourceProvenance.
-        Each value may be one of `NONE`, `SHA256`, and `MD5`.
+        Each value may be one of: `NONE`, `SHA256`, `MD5`.
         """
         return pulumi.get(self, "source_provenance_hashes")
 
@@ -1098,7 +1098,7 @@ class TriggerBuildOptions(dict):
         Option to specify behavior when there is an error in the substitution checks.
         NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
         in the build configuration file.
-        Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+        Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
         """
         return pulumi.get(self, "substitution_option")
 
@@ -1795,7 +1795,7 @@ class TriggerGitFileSource(dict):
         :param str path: The path of the file, with the repo root as the root of the path.
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+               Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
         :param str github_enterprise_config: The full resource name of the github enterprise config.
                Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
@@ -1827,7 +1827,7 @@ class TriggerGitFileSource(dict):
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
         Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+        Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
         """
         return pulumi.get(self, "repo_type")
 
@@ -1985,7 +1985,7 @@ class TriggerGithubPullRequest(dict):
         :param str branch: Regex of branches to match.
                The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         :param str comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-               Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+               Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
         pulumi.set(__self__, "branch", branch)
@@ -2008,7 +2008,7 @@ class TriggerGithubPullRequest(dict):
     def comment_control(self) -> Optional[str]:
         """
         Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-        Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
 
@@ -2251,7 +2251,7 @@ class TriggerRepositoryEventConfigPullRequest(dict):
         :param str branch: Regex of branches to match.
                The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         :param str comment_control: Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-               Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+               Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         :param bool invert_regex: If true, branches that do NOT match the git_ref will trigger a build.
         """
         if branch is not None:
@@ -2275,7 +2275,7 @@ class TriggerRepositoryEventConfigPullRequest(dict):
     def comment_control(self) -> Optional[str]:
         """
         Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-        Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+        Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
         """
         return pulumi.get(self, "comment_control")
 
@@ -2378,7 +2378,7 @@ class TriggerSourceToBuild(dict):
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-               Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+               Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
         :param str uri: The URI of the repo (required).
         :param str github_enterprise_config: The full resource name of the github enterprise config.
                Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
@@ -2403,7 +2403,7 @@ class TriggerSourceToBuild(dict):
         """
         The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
         Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-        Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+        Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
         """
         return pulumi.get(self, "repo_type")
 

@@ -111,7 +111,7 @@ type ObjectAccessControl struct {
 	// Structure is documented below.
 	ProjectTeams ObjectAccessControlProjectTeamArrayOutput `pulumi:"projectTeams"`
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -182,7 +182,7 @@ type objectAccessControlState struct {
 	// Structure is documented below.
 	ProjectTeams []ObjectAccessControlProjectTeam `pulumi:"projectTeams"`
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role *string `pulumi:"role"`
 }
 
@@ -213,7 +213,7 @@ type ObjectAccessControlState struct {
 	// Structure is documented below.
 	ProjectTeams ObjectAccessControlProjectTeamArrayInput
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role pulumi.StringPtrInput
 }
 
@@ -237,7 +237,7 @@ type objectAccessControlArgs struct {
 	// The name of the object to apply the access control to.
 	Object string `pulumi:"object"`
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role string `pulumi:"role"`
 }
 
@@ -258,7 +258,7 @@ type ObjectAccessControlArgs struct {
 	// The name of the object to apply the access control to.
 	Object pulumi.StringInput
 	// The access permission for the entity.
-	// Possible values are `OWNER` and `READER`.
+	// Possible values are: `OWNER`, `READER`.
 	Role pulumi.StringInput
 }
 
@@ -399,7 +399,7 @@ func (o ObjectAccessControlOutput) ProjectTeams() ObjectAccessControlProjectTeam
 }
 
 // The access permission for the entity.
-// Possible values are `OWNER` and `READER`.
+// Possible values are: `OWNER`, `READER`.
 func (o ObjectAccessControlOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectAccessControl) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

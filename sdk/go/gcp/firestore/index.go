@@ -102,7 +102,7 @@ type Index struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
 	QueryScope pulumi.StringPtrOutput `pulumi:"queryScope"`
 }
 
@@ -161,7 +161,7 @@ type indexState struct {
 	Project *string `pulumi:"project"`
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
@@ -186,7 +186,7 @@ type IndexState struct {
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
 	QueryScope pulumi.StringPtrInput
 }
 
@@ -212,7 +212,7 @@ type indexArgs struct {
 	Project *string `pulumi:"project"`
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
 	QueryScope *string `pulumi:"queryScope"`
 }
 
@@ -235,7 +235,7 @@ type IndexArgs struct {
 	Project pulumi.StringPtrInput
 	// The scope at which a query is run.
 	// Default value is `COLLECTION`.
-	// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
 	QueryScope pulumi.StringPtrInput
 }
 
@@ -361,7 +361,7 @@ func (o IndexOutput) Project() pulumi.StringOutput {
 
 // The scope at which a query is run.
 // Default value is `COLLECTION`.
-// Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
 func (o IndexOutput) QueryScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringPtrOutput { return v.QueryScope }).(pulumi.StringPtrOutput)
 }

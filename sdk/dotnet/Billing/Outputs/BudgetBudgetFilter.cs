@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// canonical start. Grammatically, "the start of the current CalendarPeriod".
         /// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
         /// Exactly one of `calendar_period`, `custom_period` must be provided.
-        /// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+        /// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
         /// </summary>
         public readonly string? CalendarPeriod;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// Specifies how credits should be treated when determining spend
         /// for threshold calculations.
         /// Default value is `INCLUDE_ALL_CREDITS`.
-        /// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+        /// Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
         /// </summary>
         public readonly string? CreditTypesTreatment;
         /// <summary>

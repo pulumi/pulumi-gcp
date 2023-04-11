@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Type of sharing for this shared-reservation
-        /// Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+        /// Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
         /// </summary>
         [Input("shareType")]
         public Input<string>? ShareType { get; set; }

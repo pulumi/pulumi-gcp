@@ -149,7 +149,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      * CONNECTION balancing modes.
      * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
      */
     public readonly networkEndpointType!: pulumi.Output<string | undefined>;
     /**
@@ -257,7 +257,7 @@ export interface NetworkEndpointGroupState {
      * CONNECTION balancing modes.
      * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**
@@ -322,7 +322,7 @@ export interface NetworkEndpointGroupArgs {
      * CONNECTION balancing modes.
      * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, and NON_GCP_PRIVATE_IP_PORT.
      * Default value is `GCE_VM_IP_PORT`.
-     * Possible values are `GCE_VM_IP`, `GCE_VM_IP_PORT`, and `NON_GCP_PRIVATE_IP_PORT`.
+     * Possible values are: `GCE_VM_IP`, `GCE_VM_IP_PORT`, `NON_GCP_PRIVATE_IP_PORT`.
      */
     networkEndpointType?: pulumi.Input<string>;
     /**

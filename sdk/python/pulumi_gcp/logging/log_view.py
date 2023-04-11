@@ -26,7 +26,7 @@ class LogViewArgs:
         :param pulumi.Input[str] description: Describes this view.
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
-        :param pulumi.Input[str] name: The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        :param pulumi.Input[str] name: The resource name of the view. For example: \\`projects/my-project/locations/global/buckets/my-bucket/views/my-view\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         """
         pulumi.set(__self__, "bucket", bucket)
@@ -93,7 +93,7 @@ class LogViewArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        The resource name of the view. For example: \\`projects/my-project/locations/global/buckets/my-bucket/views/my-view\\`
         """
         return pulumi.get(self, "name")
 
@@ -132,7 +132,7 @@ class _LogViewState:
         :param pulumi.Input[str] description: Describes this view.
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
-        :param pulumi.Input[str] name: The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        :param pulumi.Input[str] name: The resource name of the view. For example: \\`projects/my-project/locations/global/buckets/my-bucket/views/my-view\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         :param pulumi.Input[str] update_time: Output only. The last update timestamp of the view.
         """
@@ -217,7 +217,7 @@ class _LogViewState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        The resource name of the view. For example: \\`projects/my-project/locations/global/buckets/my-bucket/views/my-view\\`
         """
         return pulumi.get(self, "name")
 
@@ -263,24 +263,15 @@ class LogView(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Logging LogView resource
+        Describes a view over log entries in a bucket.
+
+        To get more information about LogView, see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Basic
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.logging.ProjectBucketConfig("basic",
-            project="my-project-name",
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        primary = gcp.logging.LogView("primary",
-            bucket=basic.id,
-            description="A logging view configured with Terraform",
-            filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
-        ```
 
         ## Import
 
@@ -296,7 +287,7 @@ class LogView(pulumi.CustomResource):
         :param pulumi.Input[str] description: Describes this view.
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
-        :param pulumi.Input[str] name: The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        :param pulumi.Input[str] name: The resource name of the view. For example: \\`projects/my-project/locations/global/buckets/my-bucket/views/my-view\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         """
         ...
@@ -306,24 +297,15 @@ class LogView(pulumi.CustomResource):
                  args: LogViewArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Logging LogView resource
+        Describes a view over log entries in a bucket.
+
+        To get more information about LogView, see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/logging/docs/apis)
 
         ## Example Usage
-        ### Basic
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        basic = gcp.logging.ProjectBucketConfig("basic",
-            project="my-project-name",
-            location="global",
-            retention_days=30,
-            bucket_id="_Default")
-        primary = gcp.logging.LogView("primary",
-            bucket=basic.id,
-            description="A logging view configured with Terraform",
-            filter="SOURCE(\\"projects/myproject\\") AND resource.type = \\"gce_instance\\" AND LOG_ID(\\"stdout\\")")
-        ```
 
         ## Import
 
@@ -403,7 +385,7 @@ class LogView(pulumi.CustomResource):
         :param pulumi.Input[str] description: Describes this view.
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: - originating project/folder/organization/billing account. - resource type - log id For example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
-        :param pulumi.Input[str] name: The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        :param pulumi.Input[str] name: The resource name of the view. For example: \\`projects/my-project/locations/global/buckets/my-bucket/views/my-view\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         :param pulumi.Input[str] update_time: Output only. The last update timestamp of the view.
         """
@@ -465,7 +447,7 @@ class LogView(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        The resource name of the view. For example: \\`projects/my-project/locations/global/buckets/my-bucket/views/my-view\\`
         """
         return pulumi.get(self, "name")
 

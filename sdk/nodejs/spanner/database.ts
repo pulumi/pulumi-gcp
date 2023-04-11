@@ -91,7 +91,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The dialect of the Cloud Spanner Database.
      * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+     * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     public readonly databaseDialect!: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export interface DatabaseState {
     /**
      * The dialect of the Cloud Spanner Database.
      * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+     * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
     /**
@@ -242,7 +242,7 @@ export interface DatabaseArgs {
     /**
      * The dialect of the Cloud Spanner Database.
      * If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+     * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      */
     databaseDialect?: pulumi.Input<string>;
     /**

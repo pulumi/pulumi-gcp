@@ -110,7 +110,7 @@ type SSLPolicy struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion pulumi.StringPtrOutput `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -128,7 +128,7 @@ type SSLPolicy struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile pulumi.StringPtrOutput `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -188,7 +188,7 @@ type sslpolicyState struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -206,7 +206,7 @@ type sslpolicyState struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -238,7 +238,7 @@ type SSLPolicyState struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -256,7 +256,7 @@ type SSLPolicyState struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -285,7 +285,7 @@ type sslpolicyArgs struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -303,7 +303,7 @@ type sslpolicyArgs struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -327,7 +327,7 @@ type SSLPolicyArgs struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -345,7 +345,7 @@ type SSLPolicyArgs struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -476,7 +476,7 @@ func (o SSLPolicyOutput) Fingerprint() pulumi.StringOutput {
 // The minimum version of SSL protocol that can be used by the clients
 // to establish a connection with the load balancer.
 // Default value is `TLS_1_0`.
-// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 func (o SSLPolicyOutput) MinTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLPolicy) pulumi.StringPtrOutput { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -500,7 +500,7 @@ func (o SSLPolicyOutput) Name() pulumi.StringOutput {
 // for information on what cipher suites each profile provides. If
 // `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 // Default value is `COMPATIBLE`.
-// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 func (o SSLPolicyOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SSLPolicy) pulumi.StringPtrOutput { return v.Profile }).(pulumi.StringPtrOutput)
 }

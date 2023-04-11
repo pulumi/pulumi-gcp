@@ -23,7 +23,7 @@ class CryptoKeyVersionArgs:
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
-               Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+               Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
         if state is not None:
@@ -47,7 +47,7 @@ class CryptoKeyVersionArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The current state of the CryptoKeyVersion.
-        Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+        Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         return pulumi.get(self, "state")
 
@@ -78,7 +78,7 @@ class _CryptoKeyVersionState:
         :param pulumi.Input[str] name: The resource name for this CryptoKeyVersion.
         :param pulumi.Input[str] protection_level: The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
-               Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+               Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -175,7 +175,7 @@ class _CryptoKeyVersionState:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         The current state of the CryptoKeyVersion.
-        Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+        Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         return pulumi.get(self, "state")
 
@@ -230,7 +230,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
-               Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+               Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         ...
     @overload
@@ -340,7 +340,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for this CryptoKeyVersion.
         :param pulumi.Input[str] protection_level: The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
-               Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+               Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -411,7 +411,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
     def state(self) -> pulumi.Output[str]:
         """
         The current state of the CryptoKeyVersion.
-        Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+        Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         return pulumi.get(self, "state")
 

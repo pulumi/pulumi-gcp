@@ -24,19 +24,7 @@ public final class ClusterClusterConfigSoftwareConfig {
      */
     private @Nullable String imageVersion;
     /**
-     * @return The set of optional components to activate on the cluster.
-     * Accepted values are:
-     * * ANACONDA
-     * * DRUID
-     * * FLINK
-     * * HBASE
-     * * HIVE_WEBHCAT
-     * * JUPYTER
-     * * PRESTO
-     * * RANGER
-     * * SOLR
-     * * ZEPPELIN
-     * * ZOOKEEPER
+     * @return The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
      * 
      */
     private @Nullable List<String> optionalComponents;
@@ -68,19 +56,7 @@ public final class ClusterClusterConfigSoftwareConfig {
         return Optional.ofNullable(this.imageVersion);
     }
     /**
-     * @return The set of optional components to activate on the cluster.
-     * Accepted values are:
-     * * ANACONDA
-     * * DRUID
-     * * FLINK
-     * * HBASE
-     * * HIVE_WEBHCAT
-     * * JUPYTER
-     * * PRESTO
-     * * RANGER
-     * * SOLR
-     * * ZEPPELIN
-     * * ZOOKEEPER
+     * @return The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
      * 
      */
     public List<String> optionalComponents() {

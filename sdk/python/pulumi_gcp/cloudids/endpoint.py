@@ -26,7 +26,7 @@ class EndpointArgs:
         :param pulumi.Input[str] location: The location for the endpoint.
         :param pulumi.Input[str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
-               Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+               Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         :param pulumi.Input[str] description: An optional description of the endpoint.
         :param pulumi.Input[str] name: Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -74,7 +74,7 @@ class EndpointArgs:
     def severity(self) -> pulumi.Input[str]:
         """
         The minimum alert severity level that is reported by the endpoint.
-        Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         """
         return pulumi.get(self, "severity")
 
@@ -158,7 +158,7 @@ class _EndpointState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
-               Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+               Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         :param pulumi.Input[str] update_time: Last update timestamp in RFC 3339 text format.
         """
@@ -287,7 +287,7 @@ class _EndpointState:
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
         The minimum alert severity level that is reported by the endpoint.
-        Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         """
         return pulumi.get(self, "severity")
 
@@ -389,7 +389,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
-               Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+               Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         """
         ...
@@ -531,7 +531,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
-               Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+               Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
         :param pulumi.Input[str] update_time: Last update timestamp in RFC 3339 text format.
         """
@@ -622,7 +622,7 @@ class Endpoint(pulumi.CustomResource):
     def severity(self) -> pulumi.Output[str]:
         """
         The minimum alert severity level that is reported by the endpoint.
-        Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+        Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
         """
         return pulumi.get(self, "severity")
 

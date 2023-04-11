@@ -47,7 +47,7 @@ public final class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs extends co
 
     /**
      * The type of the archive to extract.
-     * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+     * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
      * 
      */
     @Import(name="type", required=true)
@@ -55,7 +55,7 @@ public final class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs extends co
 
     /**
      * @return The type of the archive to extract.
-     * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+     * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
      * 
      */
     public Output<String> type() {
@@ -132,7 +132,7 @@ public final class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs extends co
 
         /**
          * @param type The type of the archive to extract.
-         * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+         * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class GuestPoliciesRecipeUpdateStepArchiveExtractionArgs extends co
 
         /**
          * @param type The type of the archive to extract.
-         * Possible values are `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, and `ZIP`.
+         * Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
          * 
          * @return builder
          * 

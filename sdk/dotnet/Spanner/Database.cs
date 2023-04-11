@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The dialect of the Cloud Spanner Database.
         /// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-        /// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+        /// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         /// </summary>
         [Output("databaseDialect")]
         public Output<string> DatabaseDialect { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The dialect of the Cloud Spanner Database.
         /// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-        /// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+        /// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         /// </summary>
         [Input("databaseDialect")]
         public Input<string>? DatabaseDialect { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The dialect of the Cloud Spanner Database.
         /// If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-        /// Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+        /// Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         /// </summary>
         [Input("databaseDialect")]
         public Input<string>? DatabaseDialect { get; set; }

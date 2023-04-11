@@ -115,7 +115,7 @@ type Endpoint struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The minimum alert severity level that is reported by the endpoint.
-	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+	// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
 	ThreatExceptions pulumi.StringArrayOutput `pulumi:"threatExceptions"`
@@ -179,7 +179,7 @@ type endpointState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The minimum alert severity level that is reported by the endpoint.
-	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+	// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
 	Severity *string `pulumi:"severity"`
 	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
 	ThreatExceptions []string `pulumi:"threatExceptions"`
@@ -206,7 +206,7 @@ type EndpointState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The minimum alert severity level that is reported by the endpoint.
-	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+	// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
 	Severity pulumi.StringPtrInput
 	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
 	ThreatExceptions pulumi.StringArrayInput
@@ -231,7 +231,7 @@ type endpointArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The minimum alert severity level that is reported by the endpoint.
-	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+	// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
 	Severity string `pulumi:"severity"`
 	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
 	ThreatExceptions []string `pulumi:"threatExceptions"`
@@ -251,7 +251,7 @@ type EndpointArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The minimum alert severity level that is reported by the endpoint.
-	// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+	// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
 	Severity pulumi.StringInput
 	// Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
 	ThreatExceptions pulumi.StringArrayInput
@@ -386,7 +386,7 @@ func (o EndpointOutput) Project() pulumi.StringOutput {
 }
 
 // The minimum alert severity level that is reported by the endpoint.
-// Possible values are `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL`.
+// Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
 func (o EndpointOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
 }

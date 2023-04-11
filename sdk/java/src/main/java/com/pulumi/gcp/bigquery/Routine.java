@@ -274,7 +274,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The determinism level of the JavaScript UDF if defined.
-     * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+     * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      * 
      */
     @Export(name="determinismLevel", type=String.class, parameters={})
@@ -282,7 +282,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The determinism level of the JavaScript UDF if defined.
-     * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+     * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      * 
      */
     public Output<Optional<String>> determinismLevel() {
@@ -306,7 +306,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The language of the routine.
-     * Possible values are `SQL` and `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`.
      * 
      */
     @Export(name="language", type=String.class, parameters={})
@@ -314,7 +314,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The language of the routine.
-     * Possible values are `SQL` and `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`.
      * 
      */
     public Output<Optional<String>> language() {
@@ -418,7 +418,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+     * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
     @Export(name="routineType", type=String.class, parameters={})
@@ -426,7 +426,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of routine.
-     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+     * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
     public Output<Optional<String>> routineType() {

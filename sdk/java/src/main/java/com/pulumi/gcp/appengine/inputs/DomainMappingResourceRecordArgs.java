@@ -47,7 +47,7 @@ public final class DomainMappingResourceRecordArgs extends com.pulumi.resources.
 
     /**
      * Resource record type. Example: `AAAA`.
-     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * Possible values are: `A`, `AAAA`, `CNAME`.
      * 
      */
     @Import(name="type")
@@ -55,7 +55,7 @@ public final class DomainMappingResourceRecordArgs extends com.pulumi.resources.
 
     /**
      * @return Resource record type. Example: `AAAA`.
-     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * Possible values are: `A`, `AAAA`, `CNAME`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -132,7 +132,7 @@ public final class DomainMappingResourceRecordArgs extends com.pulumi.resources.
 
         /**
          * @param type Resource record type. Example: `AAAA`.
-         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * Possible values are: `A`, `AAAA`, `CNAME`.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class DomainMappingResourceRecordArgs extends com.pulumi.resources.
 
         /**
          * @param type Resource record type. Example: `AAAA`.
-         * Possible values are `A`, `AAAA`, and `CNAME`.
+         * Possible values are: `A`, `AAAA`, `CNAME`.
          * 
          * @return builder
          * 

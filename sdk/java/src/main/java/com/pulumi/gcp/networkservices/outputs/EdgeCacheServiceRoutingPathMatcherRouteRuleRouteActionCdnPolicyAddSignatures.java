@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures {
     /**
      * @return The actions to take to add signatures to responses.
-     * Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+     * Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
      * 
      */
     private String actions;
@@ -52,7 +52,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
     private EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures() {}
     /**
      * @return The actions to take to add signatures to responses.
-     * Each value may be one of `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, and `PROPAGATE_TOKEN_HLS_COOKIELESS`.
+     * Each value may be one of: `GENERATE_COOKIE`, `GENERATE_TOKEN_HLS_COOKIELESS`, `PROPAGATE_TOKEN_HLS_COOKIELESS`.
      * 
      */
     public String actions() {

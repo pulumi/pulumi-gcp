@@ -41,7 +41,7 @@ class SloArgs:
                Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
-               Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+               Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -141,7 +141,7 @@ class SloArgs:
         """
         A calendar period, semantically "since the start of the current
         <calendarPeriod>".
-        Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+        Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         """
         return pulumi.get(self, "calendar_period")
 
@@ -281,7 +281,7 @@ class _SloState:
                Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
-               Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+               Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -365,7 +365,7 @@ class _SloState:
         """
         A calendar period, semantically "since the start of the current
         <calendarPeriod>".
-        Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+        Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         """
         return pulumi.get(self, "calendar_period")
 
@@ -618,7 +618,7 @@ class Slo(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
-               Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+               Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -819,7 +819,7 @@ class Slo(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current
                <calendarPeriod>".
-               Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+               Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         :param pulumi.Input[str] display_name: Name used for UI elements listing this SLO.
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
@@ -892,7 +892,7 @@ class Slo(pulumi.CustomResource):
         """
         A calendar period, semantically "since the start of the current
         <calendarPeriod>".
-        Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+        Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
         """
         return pulumi.get(self, "calendar_period")
 

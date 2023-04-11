@@ -165,7 +165,7 @@ type Intent struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
-	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayOutput `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -210,7 +210,7 @@ type Intent struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
-	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+	//   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState pulumi.StringOutput `pulumi:"webhookState"`
 }
 
@@ -251,7 +251,7 @@ type intentState struct {
 	Action *string `pulumi:"action"`
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
-	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName *string `pulumi:"displayName"`
@@ -296,7 +296,7 @@ type intentState struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
-	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+	//   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
@@ -306,7 +306,7 @@ type IntentState struct {
 	Action pulumi.StringPtrInput
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
-	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringPtrInput
@@ -351,7 +351,7 @@ type IntentState struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
-	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+	//   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState pulumi.StringPtrInput
 }
 
@@ -365,7 +365,7 @@ type intentArgs struct {
 	Action *string `pulumi:"action"`
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
-	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
 	// The name of this intent to be displayed on the console.
 	DisplayName string `pulumi:"displayName"`
@@ -399,7 +399,7 @@ type intentArgs struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
-	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+	//   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState *string `pulumi:"webhookState"`
 }
 
@@ -410,7 +410,7 @@ type IntentArgs struct {
 	Action pulumi.StringPtrInput
 	// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 	// (i.e. default platform).
-	// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringInput
@@ -444,7 +444,7 @@ type IntentArgs struct {
 	// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 	// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 	//   filling prompt is forwarded to the webhook.
-	//   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+	//   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 	WebhookState pulumi.StringPtrInput
 }
 
@@ -543,7 +543,7 @@ func (o IntentOutput) Action() pulumi.StringOutput {
 
 // The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
 // (i.e. default platform).
-// Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 func (o IntentOutput) DefaultResponsePlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringArrayOutput { return v.DefaultResponsePlatforms }).(pulumi.StringArrayOutput)
 }
@@ -627,7 +627,7 @@ func (o IntentOutput) RootFollowupIntentName() pulumi.StringOutput {
 //   - WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
 //   - WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
 //     filling prompt is forwarded to the webhook.
-//     Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+//     Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
 func (o IntentOutput) WebhookState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.WebhookState }).(pulumi.StringOutput)
 }

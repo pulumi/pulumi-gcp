@@ -63,7 +63,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
     /**
      * The MySQL version running on your source database server.
-     * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
      * 
      */
     @Import(name="databaseVersion")
@@ -71,7 +71,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
     /**
      * @return The MySQL version running on your source database server.
-     * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
      * 
      */
     public Optional<Output<String>> databaseVersion() {
@@ -306,7 +306,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
         /**
          * @param databaseVersion The MySQL version running on your source database server.
-         * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+         * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
         /**
          * @param databaseVersion The MySQL version running on your source database server.
-         * Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+         * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
          * 
          * @return builder
          * 

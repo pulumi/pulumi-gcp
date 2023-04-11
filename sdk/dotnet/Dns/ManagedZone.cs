@@ -493,7 +493,7 @@ namespace Pulumi.Gcp.Dns
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
         /// Default value is `public`.
-        /// Possible values are `private` and `public`.
+        /// Possible values are: `private`, `public`.
         /// </summary>
         [Output("visibility")]
         public Output<string?> Visibility { get; private set; } = null!;
@@ -646,7 +646,7 @@ namespace Pulumi.Gcp.Dns
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
         /// Default value is `public`.
-        /// Possible values are `private` and `public`.
+        /// Possible values are: `private`, `public`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
@@ -788,7 +788,7 @@ namespace Pulumi.Gcp.Dns
         /// The zone's visibility: public zones are exposed to the Internet,
         /// while private zones are visible only to Virtual Private Cloud resources.
         /// Default value is `public`.
-        /// Possible values are `private` and `public`.
+        /// Possible values are: `private`, `public`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }

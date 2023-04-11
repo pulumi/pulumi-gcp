@@ -198,7 +198,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The logging verbosity for device activity.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
     @Import(name="logLevel")
@@ -206,7 +206,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The logging verbosity for device activity.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
     public Optional<Output<String>> logLevel() {
@@ -606,7 +606,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param logLevel The logging verbosity for device activity.
-         * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+         * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param logLevel The logging verbosity for device activity.
-         * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+         * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
          * 
          * @return builder
          * 

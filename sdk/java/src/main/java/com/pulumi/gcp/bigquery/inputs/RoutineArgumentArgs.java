@@ -18,7 +18,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
      * 
      */
     @Import(name="argumentKind")
@@ -27,7 +27,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
      * 
      */
     public Optional<Output<String>> argumentKind() {
@@ -63,7 +63,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Specifies whether the argument is input or output. Can be set for procedures only.
-     * Possible values are `IN`, `OUT`, and `INOUT`.
+     * Possible values are: `IN`, `OUT`, `INOUT`.
      * 
      */
     @Import(name="mode")
@@ -71,7 +71,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Specifies whether the argument is input or output. Can be set for procedures only.
-     * Possible values are `IN`, `OUT`, and `INOUT`.
+     * Possible values are: `IN`, `OUT`, `INOUT`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -123,7 +123,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param argumentKind Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param argumentKind Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param mode Specifies whether the argument is input or output. Can be set for procedures only.
-         * Possible values are `IN`, `OUT`, and `INOUT`.
+         * Possible values are: `IN`, `OUT`, `INOUT`.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param mode Specifies whether the argument is input or output. Can be set for procedures only.
-         * Possible values are `IN`, `OUT`, and `INOUT`.
+         * Possible values are: `IN`, `OUT`, `INOUT`.
          * 
          * @return builder
          * 

@@ -110,6 +110,21 @@ import * as utilities from "../utilities";
  *     bucketName: loggingMetricProjectBucketConfig.id,
  * });
  * ```
+ * ### Logging Metric Disabled
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const loggingMetric = new gcp.logging.Metric("loggingMetric", {
+ *     disabled: true,
+ *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     metricDescriptor: {
+ *         metricKind: "DELTA",
+ *         valueType: "INT64",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -167,6 +182,10 @@ export class Metric extends pulumi.CustomResource {
      * description is 8000 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * If set to True, then this metric is disabled and it does not generate any points.
+     */
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
@@ -227,6 +246,7 @@ export class Metric extends pulumi.CustomResource {
             resourceInputs["bucketName"] = state ? state.bucketName : undefined;
             resourceInputs["bucketOptions"] = state ? state.bucketOptions : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["labelExtractors"] = state ? state.labelExtractors : undefined;
             resourceInputs["metricDescriptor"] = state ? state.metricDescriptor : undefined;
@@ -241,6 +261,7 @@ export class Metric extends pulumi.CustomResource {
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["bucketOptions"] = args ? args.bucketOptions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["labelExtractors"] = args ? args.labelExtractors : undefined;
             resourceInputs["metricDescriptor"] = args ? args.metricDescriptor : undefined;
@@ -273,6 +294,10 @@ export interface MetricState {
      * description is 8000 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If set to True, then this metric is disabled and it does not generate any points.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
@@ -338,6 +363,10 @@ export interface MetricArgs {
      * description is 8000 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * If set to True, then this metric is disabled and it does not generate any points.
+     */
+    disabled?: pulumi.Input<boolean>;
     /**
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.

@@ -318,7 +318,7 @@ type FhirStore struct {
 	StreamConfigs FhirStoreStreamConfigArrayOutput `pulumi:"streamConfigs"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
-	// Possible values are `DSTU2`, `STU3`, and `R4`.
+	// Possible values are: `DSTU2`, `STU3`, `R4`.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -414,7 +414,7 @@ type fhirStoreState struct {
 	StreamConfigs []FhirStoreStreamConfig `pulumi:"streamConfigs"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
-	// Possible values are `DSTU2`, `STU3`, and `R4`.
+	// Possible values are: `DSTU2`, `STU3`, `R4`.
 	Version *string `pulumi:"version"`
 }
 
@@ -479,7 +479,7 @@ type FhirStoreState struct {
 	StreamConfigs FhirStoreStreamConfigArrayInput
 	// The FHIR specification version.
 	// Default value is `STU3`.
-	// Possible values are `DSTU2`, `STU3`, and `R4`.
+	// Possible values are: `DSTU2`, `STU3`, `R4`.
 	Version pulumi.StringPtrInput
 }
 
@@ -546,7 +546,7 @@ type fhirStoreArgs struct {
 	StreamConfigs []FhirStoreStreamConfig `pulumi:"streamConfigs"`
 	// The FHIR specification version.
 	// Default value is `STU3`.
-	// Possible values are `DSTU2`, `STU3`, and `R4`.
+	// Possible values are: `DSTU2`, `STU3`, `R4`.
 	Version *string `pulumi:"version"`
 }
 
@@ -610,7 +610,7 @@ type FhirStoreArgs struct {
 	StreamConfigs FhirStoreStreamConfigArrayInput
 	// The FHIR specification version.
 	// Default value is `STU3`.
-	// Possible values are `DSTU2`, `STU3`, and `R4`.
+	// Possible values are: `DSTU2`, `STU3`, `R4`.
 	Version pulumi.StringPtrInput
 }
 
@@ -794,7 +794,7 @@ func (o FhirStoreOutput) StreamConfigs() FhirStoreStreamConfigArrayOutput {
 
 // The FHIR specification version.
 // Default value is `STU3`.
-// Possible values are `DSTU2`, `STU3`, and `R4`.
+// Possible values are: `DSTU2`, `STU3`, `R4`.
 func (o FhirStoreOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

@@ -378,7 +378,7 @@ export class Authority extends pulumi.CustomResource {
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
-     * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -585,7 +585,7 @@ export interface AuthorityState {
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
-     * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -686,7 +686,7 @@ export interface AuthorityArgs {
      * > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
      * be activated before they can issue certificates.
      * Default value is `SELF_SIGNED`.
-     * Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+     * Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
      */
     type?: pulumi.Input<string>;
 }

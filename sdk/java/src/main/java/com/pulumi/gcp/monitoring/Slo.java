@@ -179,7 +179,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
     /**
      * A calendar period, semantically &#34;since the start of the current
      * &lt;calendarPeriod&gt;&#34;.
-     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+     * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      * 
      */
     @Export(name="calendarPeriod", type=String.class, parameters={})
@@ -188,7 +188,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
     /**
      * @return A calendar period, semantically &#34;since the start of the current
      * &lt;calendarPeriod&gt;&#34;.
-     * Possible values are `DAY`, `WEEK`, `FORTNIGHT`, and `MONTH`.
+     * Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
      * 
      */
     public Output<Optional<String>> calendarPeriod() {

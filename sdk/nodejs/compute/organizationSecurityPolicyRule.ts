@@ -105,7 +105,7 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     public readonly direction!: pulumi.Output<string | undefined>;
     /**
@@ -216,7 +216,7 @@ export interface OrganizationSecurityPolicyRuleState {
     description?: pulumi.Input<string>;
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction?: pulumi.Input<string>;
     /**
@@ -275,7 +275,7 @@ export interface OrganizationSecurityPolicyRuleArgs {
     description?: pulumi.Input<string>;
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction?: pulumi.Input<string>;
     /**

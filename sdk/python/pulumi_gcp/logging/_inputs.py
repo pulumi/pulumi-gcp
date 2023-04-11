@@ -553,11 +553,11 @@ class MetricMetricDescriptorArgs:
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc.
                Some combinations of metricKind and valueType might not be supported.
                For counter metrics, set this to DELTA.
-               Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+               Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
         :param pulumi.Input[str] value_type: Whether the measurement is an integer, a floating-point number, etc.
                Some combinations of metricKind and valueType might not be supported.
                For counter metrics, set this to INT64.
-               Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+               Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case
                without an ending period, for example "Request count". This field is optional but it is
                recommended to be set for any metrics associated with user-visible concepts, such as Quota.
@@ -586,7 +586,7 @@ class MetricMetricDescriptorArgs:
         Whether the metric records instantaneous values, changes to a value, etc.
         Some combinations of metricKind and valueType might not be supported.
         For counter metrics, set this to DELTA.
-        Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+        Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
         """
         return pulumi.get(self, "metric_kind")
 
@@ -601,7 +601,7 @@ class MetricMetricDescriptorArgs:
         Whether the measurement is an integer, a floating-point number, etc.
         Some combinations of metricKind and valueType might not be supported.
         For counter metrics, set this to INT64.
-        Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+        Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
         """
         return pulumi.get(self, "value_type")
 
@@ -665,7 +665,7 @@ class MetricMetricDescriptorLabelArgs:
         :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
                Default value is `STRING`.
-               Possible values are `BOOL`, `INT64`, and `STRING`.
+               Possible values are: `BOOL`, `INT64`, `STRING`.
         """
         pulumi.set(__self__, "key", key)
         if description is not None:
@@ -703,7 +703,7 @@ class MetricMetricDescriptorLabelArgs:
         """
         The type of data that can be assigned to the label.
         Default value is `STRING`.
-        Possible values are `BOOL`, `INT64`, and `STRING`.
+        Possible values are: `BOOL`, `INT64`, `STRING`.
         """
         return pulumi.get(self, "value_type")
 

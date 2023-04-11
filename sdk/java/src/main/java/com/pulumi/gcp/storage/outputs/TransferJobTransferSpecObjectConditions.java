@@ -23,6 +23,16 @@ public final class TransferJobTransferSpecObjectConditions {
      */
     private @Nullable List<String> includePrefixes;
     /**
+     * @return If specified, only objects with a &#34;last modification time&#34; before this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    private @Nullable String lastModifiedBefore;
+    /**
+     * @return If specified, only objects with a &#34;last modification time&#34; on or after this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    private @Nullable String lastModifiedSince;
+    /**
      * @return A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
@@ -47,6 +57,20 @@ public final class TransferJobTransferSpecObjectConditions {
      */
     public List<String> includePrefixes() {
         return this.includePrefixes == null ? List.of() : this.includePrefixes;
+    }
+    /**
+     * @return If specified, only objects with a &#34;last modification time&#34; before this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<String> lastModifiedBefore() {
+        return Optional.ofNullable(this.lastModifiedBefore);
+    }
+    /**
+     * @return If specified, only objects with a &#34;last modification time&#34; on or after this timestamp and objects that don&#39;t have a &#34;last modification time&#34; are transferred. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<String> lastModifiedSince() {
+        return Optional.ofNullable(this.lastModifiedSince);
     }
     /**
      * @return A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
@@ -74,6 +98,8 @@ public final class TransferJobTransferSpecObjectConditions {
     public static final class Builder {
         private @Nullable List<String> excludePrefixes;
         private @Nullable List<String> includePrefixes;
+        private @Nullable String lastModifiedBefore;
+        private @Nullable String lastModifiedSince;
         private @Nullable String maxTimeElapsedSinceLastModification;
         private @Nullable String minTimeElapsedSinceLastModification;
         public Builder() {}
@@ -81,6 +107,8 @@ public final class TransferJobTransferSpecObjectConditions {
     	      Objects.requireNonNull(defaults);
     	      this.excludePrefixes = defaults.excludePrefixes;
     	      this.includePrefixes = defaults.includePrefixes;
+    	      this.lastModifiedBefore = defaults.lastModifiedBefore;
+    	      this.lastModifiedSince = defaults.lastModifiedSince;
     	      this.maxTimeElapsedSinceLastModification = defaults.maxTimeElapsedSinceLastModification;
     	      this.minTimeElapsedSinceLastModification = defaults.minTimeElapsedSinceLastModification;
         }
@@ -102,6 +130,16 @@ public final class TransferJobTransferSpecObjectConditions {
             return includePrefixes(List.of(includePrefixes));
         }
         @CustomType.Setter
+        public Builder lastModifiedBefore(@Nullable String lastModifiedBefore) {
+            this.lastModifiedBefore = lastModifiedBefore;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lastModifiedSince(@Nullable String lastModifiedSince) {
+            this.lastModifiedSince = lastModifiedSince;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxTimeElapsedSinceLastModification(@Nullable String maxTimeElapsedSinceLastModification) {
             this.maxTimeElapsedSinceLastModification = maxTimeElapsedSinceLastModification;
             return this;
@@ -115,6 +153,8 @@ public final class TransferJobTransferSpecObjectConditions {
             final var o = new TransferJobTransferSpecObjectConditions();
             o.excludePrefixes = excludePrefixes;
             o.includePrefixes = includePrefixes;
+            o.lastModifiedBefore = lastModifiedBefore;
+            o.lastModifiedSince = lastModifiedSince;
             o.maxTimeElapsedSinceLastModification = maxTimeElapsedSinceLastModification;
             o.minTimeElapsedSinceLastModification = minTimeElapsedSinceLastModification;
             return o;

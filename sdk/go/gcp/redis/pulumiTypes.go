@@ -260,7 +260,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
 	// - FRIDAY: Friday
 	// - SATURDAY: Saturday
 	// - SUNDAY: Sunday
-	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	//   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	Day string `pulumi:"day"`
 	// (Output)
 	// Output only. Duration of the maintenance window.
@@ -294,7 +294,7 @@ type InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
 	// - FRIDAY: Friday
 	// - SATURDAY: Saturday
 	// - SUNDAY: Sunday
-	//   Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	//   Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	Day pulumi.StringInput `pulumi:"day"`
 	// (Output)
 	// Output only. Duration of the maintenance window.
@@ -367,7 +367,7 @@ func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToInstanceMainte
 //   - FRIDAY: Friday
 //   - SATURDAY: Saturday
 //   - SUNDAY: Sunday
-//     Possible values are `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+//     Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }
@@ -825,7 +825,7 @@ type InstancePersistenceConfig struct {
 	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
 	// - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
 	// - RDB: RDB based Persistence is enabled.
-	//   Possible values are `DISABLED` and `RDB`.
+	//   Possible values are: `DISABLED`, `RDB`.
 	PersistenceMode *string `pulumi:"persistenceMode"`
 	// (Output)
 	// Output only. The next time that a snapshot attempt is scheduled to occur.
@@ -838,7 +838,7 @@ type InstancePersistenceConfig struct {
 	// - SIX_HOURS:	Snapshot every 6 hours.
 	// - TWELVE_HOURS:	Snapshot every 12 hours.
 	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+	//   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
 	RdbSnapshotPeriod *string `pulumi:"rdbSnapshotPeriod"`
 	// Optional. Date and time that the first snapshot was/will be attempted,
 	// and to which future snapshots will be aligned. If not provided,
@@ -864,7 +864,7 @@ type InstancePersistenceConfigArgs struct {
 	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
 	// - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
 	// - RDB: RDB based Persistence is enabled.
-	//   Possible values are `DISABLED` and `RDB`.
+	//   Possible values are: `DISABLED`, `RDB`.
 	PersistenceMode pulumi.StringPtrInput `pulumi:"persistenceMode"`
 	// (Output)
 	// Output only. The next time that a snapshot attempt is scheduled to occur.
@@ -877,7 +877,7 @@ type InstancePersistenceConfigArgs struct {
 	// - SIX_HOURS:	Snapshot every 6 hours.
 	// - TWELVE_HOURS:	Snapshot every 12 hours.
 	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-	//   Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+	//   Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
 	RdbSnapshotPeriod pulumi.StringPtrInput `pulumi:"rdbSnapshotPeriod"`
 	// Optional. Date and time that the first snapshot was/will be attempted,
 	// and to which future snapshots will be aligned. If not provided,
@@ -968,7 +968,7 @@ func (o InstancePersistenceConfigOutput) ToInstancePersistenceConfigPtrOutputWit
 // Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
 //   - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
 //   - RDB: RDB based Persistence is enabled.
-//     Possible values are `DISABLED` and `RDB`.
+//     Possible values are: `DISABLED`, `RDB`.
 func (o InstancePersistenceConfigOutput) PersistenceMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.PersistenceMode }).(pulumi.StringPtrOutput)
 }
@@ -987,7 +987,7 @@ func (o InstancePersistenceConfigOutput) RdbNextSnapshotTime() pulumi.StringPtrO
 //   - SIX_HOURS:	Snapshot every 6 hours.
 //   - TWELVE_HOURS:	Snapshot every 12 hours.
 //   - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-//     Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+//     Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
 func (o InstancePersistenceConfigOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePersistenceConfig) *string { return v.RdbSnapshotPeriod }).(pulumi.StringPtrOutput)
 }
@@ -1029,7 +1029,7 @@ func (o InstancePersistenceConfigPtrOutput) Elem() InstancePersistenceConfigOutp
 // Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
 //   - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
 //   - RDB: RDB based Persistence is enabled.
-//     Possible values are `DISABLED` and `RDB`.
+//     Possible values are: `DISABLED`, `RDB`.
 func (o InstancePersistenceConfigPtrOutput) PersistenceMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePersistenceConfig) *string {
 		if v == nil {
@@ -1058,7 +1058,7 @@ func (o InstancePersistenceConfigPtrOutput) RdbNextSnapshotTime() pulumi.StringP
 //   - SIX_HOURS:	Snapshot every 6 hours.
 //   - TWELVE_HOURS:	Snapshot every 12 hours.
 //   - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-//     Possible values are `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, and `TWENTY_FOUR_HOURS`.
+//     Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
 func (o InstancePersistenceConfigPtrOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePersistenceConfig) *string {
 		if v == nil {

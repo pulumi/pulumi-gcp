@@ -22,7 +22,7 @@ public final class PatchDeploymentRollout {
     private PatchDeploymentRolloutDisruptionBudget disruptionBudget;
     /**
      * @return Mode of the patch rollout.
-     * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+     * Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
      * 
      */
     private String mode;
@@ -42,7 +42,7 @@ public final class PatchDeploymentRollout {
     }
     /**
      * @return Mode of the patch rollout.
-     * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+     * Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
      * 
      */
     public String mode() {

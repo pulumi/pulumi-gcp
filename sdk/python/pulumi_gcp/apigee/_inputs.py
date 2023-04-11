@@ -21,6 +21,12 @@ __all__ = [
     'EnvironmentNodeConfigArgs',
     'KeystoresAliasesKeyCertFileCertsInfoArgs',
     'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs',
+    'KeystoresAliasesPkcs12CertsInfoArgs',
+    'KeystoresAliasesPkcs12CertsInfoCertInfoArgs',
+    'KeystoresAliasesSelfSignedCertCertsInfoArgs',
+    'KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs',
+    'KeystoresAliasesSelfSignedCertSubjectArgs',
+    'KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs',
     'OrganizationPropertiesArgs',
     'OrganizationPropertiesPropertyArgs',
     'SharedflowMetaDataArgs',
@@ -651,6 +657,536 @@ class KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class KeystoresAliasesPkcs12CertsInfoArgs:
+    def __init__(__self__, *,
+                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]] = None):
+        if cert_infos is not None:
+            pulumi.set(__self__, "cert_infos", cert_infos)
+
+    @property
+    @pulumi.getter(name="certInfos")
+    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]]:
+        return pulumi.get(self, "cert_infos")
+
+    @cert_infos.setter
+    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]]):
+        pulumi.set(self, "cert_infos", value)
+
+
+@pulumi.input_type
+class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
+    def __init__(__self__, *,
+                 basic_constraints: Optional[pulumi.Input[str]] = None,
+                 expiry_date: Optional[pulumi.Input[str]] = None,
+                 is_valid: Optional[pulumi.Input[str]] = None,
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input[str]] = None,
+                 sig_alg_name: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input[str]] = None,
+                 subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 valid_from: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        if basic_constraints is not None:
+            pulumi.set(__self__, "basic_constraints", basic_constraints)
+        if expiry_date is not None:
+            pulumi.set(__self__, "expiry_date", expiry_date)
+        if is_valid is not None:
+            pulumi.set(__self__, "is_valid", is_valid)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
+        if sig_alg_name is not None:
+            pulumi.set(__self__, "sig_alg_name", sig_alg_name)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if subject_alternative_names is not None:
+            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+        if valid_from is not None:
+            pulumi.set(__self__, "valid_from", valid_from)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="basicConstraints")
+    def basic_constraints(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "basic_constraints")
+
+    @basic_constraints.setter
+    def basic_constraints(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "basic_constraints", value)
+
+    @property
+    @pulumi.getter(name="expiryDate")
+    def expiry_date(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expiry_date")
+
+    @expiry_date.setter
+    def expiry_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiry_date", value)
+
+    @property
+    @pulumi.getter(name="isValid")
+    def is_valid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "is_valid")
+
+    @is_valid.setter
+    def is_valid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "is_valid", value)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "serial_number")
+
+    @serial_number.setter
+    def serial_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serial_number", value)
+
+    @property
+    @pulumi.getter(name="sigAlgName")
+    def sig_alg_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sig_alg_name")
+
+    @sig_alg_name.setter
+    def sig_alg_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sig_alg_name", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter(name="subjectAlternativeNames")
+    def subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "subject_alternative_names")
+
+    @subject_alternative_names.setter
+    def subject_alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subject_alternative_names", value)
+
+    @property
+    @pulumi.getter(name="validFrom")
+    def valid_from(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "valid_from")
+
+    @valid_from.setter
+    def valid_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valid_from", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class KeystoresAliasesSelfSignedCertCertsInfoArgs:
+    def __init__(__self__, *,
+                 cert_infos: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]] cert_infos: (Output)
+               List of all properties in the object.
+               Structure is documented below.
+        """
+        if cert_infos is not None:
+            pulumi.set(__self__, "cert_infos", cert_infos)
+
+    @property
+    @pulumi.getter(name="certInfos")
+    def cert_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]]:
+        """
+        (Output)
+        List of all properties in the object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cert_infos")
+
+    @cert_infos.setter
+    def cert_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]]):
+        pulumi.set(self, "cert_infos", value)
+
+
+@pulumi.input_type
+class KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs:
+    def __init__(__self__, *,
+                 basic_constraints: Optional[pulumi.Input[str]] = None,
+                 expiry_date: Optional[pulumi.Input[str]] = None,
+                 is_valid: Optional[pulumi.Input[str]] = None,
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input[str]] = None,
+                 sig_alg_name: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input[str]] = None,
+                 subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 valid_from: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] basic_constraints: (Output)
+               X.509 basic constraints extension.
+        :param pulumi.Input[str] expiry_date: (Output)
+               X.509 notAfter validity period in milliseconds since epoch.
+        :param pulumi.Input[str] is_valid: (Output)
+               Flag that specifies whether the certificate is valid.
+               Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        :param pulumi.Input[str] issuer: (Output)
+               X.509 issuer.
+        :param pulumi.Input[str] public_key: (Output)
+               Public key component of the X.509 subject public key info.
+        :param pulumi.Input[str] serial_number: (Output)
+               X.509 serial number.
+        :param pulumi.Input[str] sig_alg_name: (Output)
+               X.509 signatureAlgorithm.
+        :param pulumi.Input[str] subject: Subject details.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alternative_names: (Output)
+               X.509 subject alternative names (SANs) extension.
+        :param pulumi.Input[str] valid_from: (Output)
+               X.509 notBefore validity period in milliseconds since epoch.
+        :param pulumi.Input[int] version: (Output)
+               X.509 version.
+        """
+        if basic_constraints is not None:
+            pulumi.set(__self__, "basic_constraints", basic_constraints)
+        if expiry_date is not None:
+            pulumi.set(__self__, "expiry_date", expiry_date)
+        if is_valid is not None:
+            pulumi.set(__self__, "is_valid", is_valid)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
+        if sig_alg_name is not None:
+            pulumi.set(__self__, "sig_alg_name", sig_alg_name)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if subject_alternative_names is not None:
+            pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+        if valid_from is not None:
+            pulumi.set(__self__, "valid_from", valid_from)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="basicConstraints")
+    def basic_constraints(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 basic constraints extension.
+        """
+        return pulumi.get(self, "basic_constraints")
+
+    @basic_constraints.setter
+    def basic_constraints(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "basic_constraints", value)
+
+    @property
+    @pulumi.getter(name="expiryDate")
+    def expiry_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 notAfter validity period in milliseconds since epoch.
+        """
+        return pulumi.get(self, "expiry_date")
+
+    @expiry_date.setter
+    def expiry_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiry_date", value)
+
+    @property
+    @pulumi.getter(name="isValid")
+    def is_valid(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Flag that specifies whether the certificate is valid.
+        Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
+        """
+        return pulumi.get(self, "is_valid")
+
+    @is_valid.setter
+    def is_valid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "is_valid", value)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 issuer.
+        """
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Public key component of the X.509 subject public key info.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 serial number.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @serial_number.setter
+    def serial_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serial_number", value)
+
+    @property
+    @pulumi.getter(name="sigAlgName")
+    def sig_alg_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 signatureAlgorithm.
+        """
+        return pulumi.get(self, "sig_alg_name")
+
+    @sig_alg_name.setter
+    def sig_alg_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sig_alg_name", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subject details.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter(name="subjectAlternativeNames")
+    def subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        X.509 subject alternative names (SANs) extension.
+        """
+        return pulumi.get(self, "subject_alternative_names")
+
+    @subject_alternative_names.setter
+    def subject_alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subject_alternative_names", value)
+
+    @property
+    @pulumi.getter(name="validFrom")
+    def valid_from(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        X.509 notBefore validity period in milliseconds since epoch.
+        """
+        return pulumi.get(self, "valid_from")
+
+    @valid_from.setter
+    def valid_from(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valid_from", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        X.509 version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class KeystoresAliasesSelfSignedCertSubjectArgs:
+    def __init__(__self__, *,
+                 common_name: Optional[pulumi.Input[str]] = None,
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 locality: Optional[pulumi.Input[str]] = None,
+                 org: Optional[pulumi.Input[str]] = None,
+                 org_unit: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] common_name: Common name of the organization. Maximum length is 64 characters.
+        :param pulumi.Input[str] country_code: Two-letter country code. Example, IN for India, US for United States of America.
+        :param pulumi.Input[str] email: Email address. Max 255 characters.
+        :param pulumi.Input[str] locality: City or town name. Maximum length is 128 characters.
+        :param pulumi.Input[str] org: Organization name. Maximum length is 64 characters.
+        :param pulumi.Input[str] org_unit: Organization team name. Maximum length is 64 characters.
+        :param pulumi.Input[str] state: State or district name. Maximum length is 128 characters.
+        """
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if country_code is not None:
+            pulumi.set(__self__, "country_code", country_code)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+        if locality is not None:
+            pulumi.set(__self__, "locality", locality)
+        if org is not None:
+            pulumi.set(__self__, "org", org)
+        if org_unit is not None:
+            pulumi.set(__self__, "org_unit", org_unit)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Common name of the organization. Maximum length is 64 characters.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Two-letter country code. Example, IN for India, US for United States of America.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country_code", value)
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address. Max 255 characters.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def locality(self) -> Optional[pulumi.Input[str]]:
+        """
+        City or town name. Maximum length is 128 characters.
+        """
+        return pulumi.get(self, "locality")
+
+    @locality.setter
+    def locality(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locality", value)
+
+    @property
+    @pulumi.getter
+    def org(self) -> Optional[pulumi.Input[str]]:
+        """
+        Organization name. Maximum length is 64 characters.
+        """
+        return pulumi.get(self, "org")
+
+    @org.setter
+    def org(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org", value)
+
+    @property
+    @pulumi.getter(name="orgUnit")
+    def org_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Organization team name. Maximum length is 64 characters.
+        """
+        return pulumi.get(self, "org_unit")
+
+    @org_unit.setter
+    def org_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "org_unit", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State or district name. Maximum length is 128 characters.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
+    def __init__(__self__, *,
+                 subject_alternative_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subject_alternative_name: Subject Alternative Name
+        """
+        if subject_alternative_name is not None:
+            pulumi.set(__self__, "subject_alternative_name", subject_alternative_name)
+
+    @property
+    @pulumi.getter(name="subjectAlternativeName")
+    def subject_alternative_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subject Alternative Name
+        """
+        return pulumi.get(self, "subject_alternative_name")
+
+    @subject_alternative_name.setter
+    def subject_alternative_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subject_alternative_name", value)
 
 
 @pulumi.input_type

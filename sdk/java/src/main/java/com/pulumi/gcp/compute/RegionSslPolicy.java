@@ -127,7 +127,7 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
-     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      * 
      */
     @Export(name="minTlsVersion", type=String.class, parameters={})
@@ -137,7 +137,7 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * @return The minimum version of SSL protocol that can be used by the clients
      * to establish a connection with the load balancer.
      * Default value is `TLS_1_0`.
-     * Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+     * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
      * 
      */
     public Output<Optional<String>> minTlsVersion() {
@@ -178,7 +178,7 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `custom_features` attribute **must be set**.
      * Default value is `COMPATIBLE`.
-     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      * 
      */
     @Export(name="profile", type=String.class, parameters={})
@@ -193,7 +193,7 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
      * for information on what cipher suites each profile provides. If
      * `CUSTOM` is used, the `custom_features` attribute **must be set**.
      * Default value is `COMPATIBLE`.
-     * Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+     * Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
      * 
      */
     public Output<Optional<String>> profile() {

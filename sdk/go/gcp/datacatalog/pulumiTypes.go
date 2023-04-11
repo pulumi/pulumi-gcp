@@ -1789,7 +1789,7 @@ type TagTemplateFieldType struct {
 	EnumType *TagTemplateFieldTypeEnumType `pulumi:"enumType"`
 	// Represents primitive types - string, bool etc.
 	// Exactly one of `primitiveType` or `enumType` must be set
-	// Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
+	// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
 	PrimitiveType *string `pulumi:"primitiveType"`
 }
 
@@ -1811,7 +1811,7 @@ type TagTemplateFieldTypeArgs struct {
 	EnumType TagTemplateFieldTypeEnumTypePtrInput `pulumi:"enumType"`
 	// Represents primitive types - string, bool etc.
 	// Exactly one of `primitiveType` or `enumType` must be set
-	// Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
+	// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
 	PrimitiveType pulumi.StringPtrInput `pulumi:"primitiveType"`
 }
 
@@ -1850,7 +1850,7 @@ func (o TagTemplateFieldTypeOutput) EnumType() TagTemplateFieldTypeEnumTypePtrOu
 
 // Represents primitive types - string, bool etc.
 // Exactly one of `primitiveType` or `enumType` must be set
-// Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
+// Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
 func (o TagTemplateFieldTypeOutput) PrimitiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagTemplateFieldType) *string { return v.PrimitiveType }).(pulumi.StringPtrOutput)
 }

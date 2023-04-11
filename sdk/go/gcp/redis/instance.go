@@ -344,7 +344,7 @@ type Instance struct {
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
 	// The connection mode of the Redis instance.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrOutput `pulumi:"connectMode"`
 	// (Output)
 	// Output only. The time when the policy was created.
@@ -412,7 +412,7 @@ type Instance struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringOutput `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -447,12 +447,12 @@ type Instance struct {
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	//   Possible values are: `BASIC`, `STANDARD_HA`.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
 	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
-	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+	//   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrOutput `pulumi:"transitEncryptionMode"`
 }
 
@@ -509,7 +509,7 @@ type instanceState struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// The connection mode of the Redis instance.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// (Output)
 	// Output only. The time when the policy was created.
@@ -577,7 +577,7 @@ type instanceState struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -612,12 +612,12 @@ type instanceState struct {
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	//   Possible values are: `BASIC`, `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
 	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
-	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+	//   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 }
 
@@ -639,7 +639,7 @@ type InstanceState struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// The connection mode of the Redis instance.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
 	// (Output)
 	// Output only. The time when the policy was created.
@@ -707,7 +707,7 @@ type InstanceState struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -742,12 +742,12 @@ type InstanceState struct {
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	//   Possible values are: `BASIC`, `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
 	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
-	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+	//   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrInput
 }
 
@@ -771,7 +771,7 @@ type instanceArgs struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// The connection mode of the Redis instance.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
@@ -808,7 +808,7 @@ type instanceArgs struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode *string `pulumi:"readReplicasMode"`
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -840,12 +840,12 @@ type instanceArgs struct {
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	//   Possible values are: `BASIC`, `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
 	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
-	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+	//   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 }
 
@@ -866,7 +866,7 @@ type InstanceArgs struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// The connection mode of the Redis instance.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput
 	// Optional. The KMS key reference that you want to use to encrypt the data at rest for this Redis
 	// instance. If this is provided, CMEK is enabled.
@@ -903,7 +903,7 @@ type InstanceArgs struct {
 	//   instance cannot scale up or down the number of replicas.
 	// - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 	//   can scale up and down the number of replicas.
-	//   Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+	//   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 	ReadReplicasMode pulumi.StringPtrInput
 	// Redis configuration parameters, according to http://redis.io/topics/config.
 	// Please check Memorystore documentation for the list of supported parameters:
@@ -935,12 +935,12 @@ type InstanceArgs struct {
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
-	//   Possible values are `BASIC` and `STANDARD_HA`.
+	//   Possible values are: `BASIC`, `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
 	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
 	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 	//   Default value is `DISABLED`.
-	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+	//   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrInput
 }
 
@@ -1060,7 +1060,7 @@ func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
 
 // The connection mode of the Redis instance.
 // Default value is `DIRECT_PEERING`.
-// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 func (o InstanceOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
@@ -1185,7 +1185,7 @@ func (o InstanceOutput) ReadEndpointPort() pulumi.IntOutput {
 //     instance cannot scale up or down the number of replicas.
 //   - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
 //     can scale up and down the number of replicas.
-//     Possible values are `READ_REPLICAS_DISABLED` and `READ_REPLICAS_ENABLED`.
+//     Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
 func (o InstanceOutput) ReadReplicasMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReadReplicasMode }).(pulumi.StringOutput)
 }
@@ -1244,7 +1244,7 @@ func (o InstanceOutput) ServerCaCerts() InstanceServerCaCertArrayOutput {
 //   - BASIC: standalone instance
 //   - STANDARD_HA: highly available primary/replica instances
 //     Default value is `BASIC`.
-//     Possible values are `BASIC` and `STANDARD_HA`.
+//     Possible values are: `BASIC`, `STANDARD_HA`.
 func (o InstanceOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -1252,7 +1252,7 @@ func (o InstanceOutput) Tier() pulumi.StringPtrOutput {
 // The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
 //   - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
 //     Default value is `DISABLED`.
-//     Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
+//     Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
 func (o InstanceOutput) TransitEncryptionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.TransitEncryptionMode }).(pulumi.StringPtrOutput)
 }

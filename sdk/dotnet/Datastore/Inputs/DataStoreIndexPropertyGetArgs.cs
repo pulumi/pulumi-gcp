@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Datastore.Inputs
     {
         /// <summary>
         /// The direction the index should optimize for sorting.
-        /// Possible values are `ASCENDING` and `DESCENDING`.
+        /// Possible values are: `ASCENDING`, `DESCENDING`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;

@@ -109,6 +109,7 @@ type Provider struct {
 	MonitoringCustomEndpoint           pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint  pulumi.StringPtrOutput `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkManagementCustomEndpoint    pulumi.StringPtrOutput `pulumi:"networkManagementCustomEndpoint"`
+	NetworkSecurityCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint            pulumi.StringPtrOutput `pulumi:"notebooksCustomEndpoint"`
 	OrgPolicyCustomEndpoint            pulumi.StringPtrOutput `pulumi:"orgPolicyCustomEndpoint"`
@@ -269,6 +270,7 @@ type providerArgs struct {
 	MonitoringCustomEndpoint           *string           `pulumi:"monitoringCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint  *string           `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkManagementCustomEndpoint    *string           `pulumi:"networkManagementCustomEndpoint"`
+	NetworkSecurityCustomEndpoint      *string           `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint      *string           `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint            *string           `pulumi:"notebooksCustomEndpoint"`
 	OrgPolicyCustomEndpoint            *string           `pulumi:"orgPolicyCustomEndpoint"`
@@ -408,6 +410,7 @@ type ProviderArgs struct {
 	MonitoringCustomEndpoint           pulumi.StringPtrInput
 	NetworkConnectivityCustomEndpoint  pulumi.StringPtrInput
 	NetworkManagementCustomEndpoint    pulumi.StringPtrInput
+	NetworkSecurityCustomEndpoint      pulumi.StringPtrInput
 	NetworkServicesCustomEndpoint      pulumi.StringPtrInput
 	NotebooksCustomEndpoint            pulumi.StringPtrInput
 	OrgPolicyCustomEndpoint            pulumi.StringPtrInput
@@ -853,6 +856,10 @@ func (o ProviderOutput) NetworkConnectivityCustomEndpoint() pulumi.StringPtrOutp
 
 func (o ProviderOutput) NetworkManagementCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkManagementCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) NetworkSecurityCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetworkSecurityCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) NetworkServicesCustomEndpoint() pulumi.StringPtrOutput {

@@ -140,7 +140,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      * 
      */
     @Import(name="ipProtocol")
@@ -150,7 +150,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
      * @return The IP protocol to which this rule applies.
      * When the load balancing scheme is INTERNAL, only TCP and UDP are
      * valid.
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      * 
      */
     public Optional<Output<String>> ipProtocol() {
@@ -275,7 +275,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     @Import(name="networkTier")
@@ -284,7 +284,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The networking tier used for configuring this address. If this field is not
      * specified, it is assumed to be PREMIUM.
-     * Possible values are `PREMIUM` and `STANDARD`.
+     * Possible values are: `PREMIUM`, `STANDARD`.
      * 
      */
     public Optional<Output<String>> networkTier() {
@@ -691,7 +691,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @param ipProtocol The IP protocol to which this rule applies.
          * When the load balancing scheme is INTERNAL, only TCP and UDP are
          * valid.
-         * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+         * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
          * 
          * @return builder
          * 
@@ -705,7 +705,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
          * @param ipProtocol The IP protocol to which this rule applies.
          * When the load balancing scheme is INTERNAL, only TCP and UDP are
          * valid.
-         * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+         * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
          * 
          * @return builder
          * 
@@ -862,7 +862,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param networkTier The networking tier used for configuring this address. If this field is not
          * specified, it is assumed to be PREMIUM.
-         * Possible values are `PREMIUM` and `STANDARD`.
+         * Possible values are: `PREMIUM`, `STANDARD`.
          * 
          * @return builder
          * 
@@ -875,7 +875,7 @@ public final class ForwardingRuleArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param networkTier The networking tier used for configuring this address. If this field is not
          * specified, it is assumed to be PREMIUM.
-         * Possible values are `PREMIUM` and `STANDARD`.
+         * Possible values are: `PREMIUM`, `STANDARD`.
          * 
          * @return builder
          * 

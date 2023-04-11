@@ -668,7 +668,7 @@ type TriggerBitbucketServerTriggerConfigPullRequest struct {
 	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch string `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex *bool `pulumi:"invertRegex"`
@@ -690,7 +690,7 @@ type TriggerBitbucketServerTriggerConfigPullRequestArgs struct {
 	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringInput `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
@@ -780,7 +780,7 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) Branch() pulumi.St
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerBitbucketServerTriggerConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBitbucketServerTriggerConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
@@ -826,7 +826,7 @@ func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) Branch() pulumi
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerBitbucketServerTriggerConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBitbucketServerTriggerConfigPullRequest) *string {
 		if v == nil {
@@ -2207,28 +2207,28 @@ type TriggerBuildOptions struct {
 	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Envs []string `pulumi:"envs"`
 	// Option to define build log streaming behavior to Google Cloud Storage.
-	// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+	// Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
 	LogStreamingOption *string `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
-	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+	// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
 	Logging *string `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
-	// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+	// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 	MachineType *string `pulumi:"machineType"`
 	// Requested verifiability options.
-	// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+	// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
 	RequestedVerifyOption *string `pulumi:"requestedVerifyOption"`
 	// A list of global environment variables, which are encrypted using a Cloud Key Management
 	// Service crypto key. These values must be specified in the build's Secret. These variables
 	// will be available to all build steps in this build.
 	SecretEnvs []string `pulumi:"secretEnvs"`
 	// Requested hash for SourceProvenance.
-	// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+	// Each value may be one of: `NONE`, `SHA256`, `MD5`.
 	SourceProvenanceHashes []string `pulumi:"sourceProvenanceHashes"`
 	// Option to specify behavior when there is an error in the substitution checks.
 	// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
 	// in the build configuration file.
-	// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+	// Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
 	SubstitutionOption *string `pulumi:"substitutionOption"`
 	// Global list of volumes to mount for ALL build steps
 	// Each volume is created as an empty volume prior to starting the build process.
@@ -2270,28 +2270,28 @@ type TriggerBuildOptionsArgs struct {
 	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Envs pulumi.StringArrayInput `pulumi:"envs"`
 	// Option to define build log streaming behavior to Google Cloud Storage.
-	// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+	// Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
 	LogStreamingOption pulumi.StringPtrInput `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
-	// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+	// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
 	Logging pulumi.StringPtrInput `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
-	// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+	// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Requested verifiability options.
-	// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+	// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
 	RequestedVerifyOption pulumi.StringPtrInput `pulumi:"requestedVerifyOption"`
 	// A list of global environment variables, which are encrypted using a Cloud Key Management
 	// Service crypto key. These values must be specified in the build's Secret. These variables
 	// will be available to all build steps in this build.
 	SecretEnvs pulumi.StringArrayInput `pulumi:"secretEnvs"`
 	// Requested hash for SourceProvenance.
-	// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+	// Each value may be one of: `NONE`, `SHA256`, `MD5`.
 	SourceProvenanceHashes pulumi.StringArrayInput `pulumi:"sourceProvenanceHashes"`
 	// Option to specify behavior when there is an error in the substitution checks.
 	// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
 	// in the build configuration file.
-	// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+	// Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
 	SubstitutionOption pulumi.StringPtrInput `pulumi:"substitutionOption"`
 	// Global list of volumes to mount for ALL build steps
 	// Each volume is created as an empty volume prior to starting the build process.
@@ -2407,25 +2407,25 @@ func (o TriggerBuildOptionsOutput) Envs() pulumi.StringArrayOutput {
 }
 
 // Option to define build log streaming behavior to Google Cloud Storage.
-// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+// Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
 func (o TriggerBuildOptionsOutput) LogStreamingOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.LogStreamingOption }).(pulumi.StringPtrOutput)
 }
 
 // Option to specify the logging mode, which determines if and where build logs are stored.
-// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
 func (o TriggerBuildOptionsOutput) Logging() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.Logging }).(pulumi.StringPtrOutput)
 }
 
 // Compute Engine machine type on which to run the build.
-// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 func (o TriggerBuildOptionsOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
 // Requested verifiability options.
-// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
 func (o TriggerBuildOptionsOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.RequestedVerifyOption }).(pulumi.StringPtrOutput)
 }
@@ -2438,7 +2438,7 @@ func (o TriggerBuildOptionsOutput) SecretEnvs() pulumi.StringArrayOutput {
 }
 
 // Requested hash for SourceProvenance.
-// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+// Each value may be one of: `NONE`, `SHA256`, `MD5`.
 func (o TriggerBuildOptionsOutput) SourceProvenanceHashes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) []string { return v.SourceProvenanceHashes }).(pulumi.StringArrayOutput)
 }
@@ -2446,7 +2446,7 @@ func (o TriggerBuildOptionsOutput) SourceProvenanceHashes() pulumi.StringArrayOu
 // Option to specify behavior when there is an error in the substitution checks.
 // NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
 // in the build configuration file.
-// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+// Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
 func (o TriggerBuildOptionsOutput) SubstitutionOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.SubstitutionOption }).(pulumi.StringPtrOutput)
 }
@@ -2531,7 +2531,7 @@ func (o TriggerBuildOptionsPtrOutput) Envs() pulumi.StringArrayOutput {
 }
 
 // Option to define build log streaming behavior to Google Cloud Storage.
-// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+// Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
 func (o TriggerBuildOptionsPtrOutput) LogStreamingOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) *string {
 		if v == nil {
@@ -2542,7 +2542,7 @@ func (o TriggerBuildOptionsPtrOutput) LogStreamingOption() pulumi.StringPtrOutpu
 }
 
 // Option to specify the logging mode, which determines if and where build logs are stored.
-// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
 func (o TriggerBuildOptionsPtrOutput) Logging() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) *string {
 		if v == nil {
@@ -2553,7 +2553,7 @@ func (o TriggerBuildOptionsPtrOutput) Logging() pulumi.StringPtrOutput {
 }
 
 // Compute Engine machine type on which to run the build.
-// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 func (o TriggerBuildOptionsPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) *string {
 		if v == nil {
@@ -2564,7 +2564,7 @@ func (o TriggerBuildOptionsPtrOutput) MachineType() pulumi.StringPtrOutput {
 }
 
 // Requested verifiability options.
-// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
 func (o TriggerBuildOptionsPtrOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) *string {
 		if v == nil {
@@ -2587,7 +2587,7 @@ func (o TriggerBuildOptionsPtrOutput) SecretEnvs() pulumi.StringArrayOutput {
 }
 
 // Requested hash for SourceProvenance.
-// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+// Each value may be one of: `NONE`, `SHA256`, `MD5`.
 func (o TriggerBuildOptionsPtrOutput) SourceProvenanceHashes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) []string {
 		if v == nil {
@@ -2600,7 +2600,7 @@ func (o TriggerBuildOptionsPtrOutput) SourceProvenanceHashes() pulumi.StringArra
 // Option to specify behavior when there is an error in the substitution checks.
 // NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
 // in the build configuration file.
-// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+// Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
 func (o TriggerBuildOptionsPtrOutput) SubstitutionOption() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) *string {
 		if v == nil {
@@ -3981,7 +3981,7 @@ type TriggerGitFileSource struct {
 	Path string `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 	RepoType string `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -4011,7 +4011,7 @@ type TriggerGitFileSourceArgs struct {
 	Path pulumi.StringInput `pulumi:"path"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 	RepoType pulumi.StringInput `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -4112,7 +4112,7 @@ func (o TriggerGitFileSourceOutput) Path() pulumi.StringOutput {
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 // Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 func (o TriggerGitFileSourceOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) string { return v.RepoType }).(pulumi.StringOutput)
 }
@@ -4177,7 +4177,7 @@ func (o TriggerGitFileSourcePtrOutput) Path() pulumi.StringPtrOutput {
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 // Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 func (o TriggerGitFileSourcePtrOutput) RepoType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGitFileSource) *string {
 		if v == nil {
@@ -4448,7 +4448,7 @@ type TriggerGithubPullRequest struct {
 	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch string `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex *bool `pulumi:"invertRegex"`
@@ -4470,7 +4470,7 @@ type TriggerGithubPullRequestArgs struct {
 	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringInput `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
@@ -4560,7 +4560,7 @@ func (o TriggerGithubPullRequestOutput) Branch() pulumi.StringOutput {
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerGithubPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
@@ -4606,7 +4606,7 @@ func (o TriggerGithubPullRequestPtrOutput) Branch() pulumi.StringPtrOutput {
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerGithubPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerGithubPullRequest) *string {
 		if v == nil {
@@ -5195,7 +5195,7 @@ type TriggerRepositoryEventConfigPullRequest struct {
 	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch *string `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl *string `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex *bool `pulumi:"invertRegex"`
@@ -5217,7 +5217,7 @@ type TriggerRepositoryEventConfigPullRequestArgs struct {
 	// The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-	// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+	// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 	CommentControl pulumi.StringPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the gitRef will trigger a build.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
@@ -5307,7 +5307,7 @@ func (o TriggerRepositoryEventConfigPullRequestOutput) Branch() pulumi.StringPtr
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerRepositoryEventConfigPullRequestOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerRepositoryEventConfigPullRequest) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
 }
@@ -5353,7 +5353,7 @@ func (o TriggerRepositoryEventConfigPullRequestPtrOutput) Branch() pulumi.String
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-// Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
 func (o TriggerRepositoryEventConfigPullRequestPtrOutput) CommentControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerRepositoryEventConfigPullRequest) *string {
 		if v == nil {
@@ -5556,7 +5556,7 @@ type TriggerSourceToBuild struct {
 	Ref string `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 	RepoType string `pulumi:"repoType"`
 	// The URI of the repo (required).
 	Uri string `pulumi:"uri"`
@@ -5581,7 +5581,7 @@ type TriggerSourceToBuildArgs struct {
 	Ref pulumi.StringInput `pulumi:"ref"`
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-	// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 	RepoType pulumi.StringInput `pulumi:"repoType"`
 	// The URI of the repo (required).
 	Uri pulumi.StringInput `pulumi:"uri"`
@@ -5677,7 +5677,7 @@ func (o TriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 // Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 func (o TriggerSourceToBuildOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.RepoType }).(pulumi.StringOutput)
 }
@@ -5734,7 +5734,7 @@ func (o TriggerSourceToBuildPtrOutput) Ref() pulumi.StringPtrOutput {
 
 // The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 // Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
-// Possible values are `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, and `BITBUCKET_SERVER`.
+// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
 func (o TriggerSourceToBuildPtrOutput) RepoType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
 		if v == nil {

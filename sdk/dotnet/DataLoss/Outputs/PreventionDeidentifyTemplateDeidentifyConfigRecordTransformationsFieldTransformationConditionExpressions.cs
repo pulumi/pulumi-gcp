@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// <summary>
         /// The operator to apply to the result of conditions. Default and currently only supported value is AND.
         /// Default value is `AND`.
-        /// Possible values are `AND`.
+        /// Possible values are: `AND`.
         /// </summary>
         public readonly string? LogicalOperator;
 

@@ -27,7 +27,7 @@ class TaxonomyArgs:
                long when encoded in UTF-8.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] activated_policy_types: A list of policy types that are activated for this taxonomy. If not set,
                defaults to an empty list.
-               Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+               Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         :param pulumi.Input[str] description: Description of this taxonomy. It must: contain only unicode characters,
                tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
                long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -66,7 +66,7 @@ class TaxonomyArgs:
         """
         A list of policy types that are activated for this taxonomy. If not set,
         defaults to an empty list.
-        Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+        Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         """
         return pulumi.get(self, "activated_policy_types")
 
@@ -127,7 +127,7 @@ class _TaxonomyState:
         Input properties used for looking up and filtering Taxonomy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] activated_policy_types: A list of policy types that are activated for this taxonomy. If not set,
                defaults to an empty list.
-               Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+               Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         :param pulumi.Input[str] description: Description of this taxonomy. It must: contain only unicode characters,
                tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
                long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -160,7 +160,7 @@ class _TaxonomyState:
         """
         A list of policy types that are activated for this taxonomy. If not set,
         defaults to an empty list.
-        Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+        Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         """
         return pulumi.get(self, "activated_policy_types")
 
@@ -281,7 +281,7 @@ class Taxonomy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] activated_policy_types: A list of policy types that are activated for this taxonomy. If not set,
                defaults to an empty list.
-               Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+               Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         :param pulumi.Input[str] description: Description of this taxonomy. It must: contain only unicode characters,
                tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
                long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -391,7 +391,7 @@ class Taxonomy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] activated_policy_types: A list of policy types that are activated for this taxonomy. If not set,
                defaults to an empty list.
-               Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+               Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         :param pulumi.Input[str] description: Description of this taxonomy. It must: contain only unicode characters,
                tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
                long when encoded in UTF-8. If not set, defaults to an empty description.
@@ -423,7 +423,7 @@ class Taxonomy(pulumi.CustomResource):
         """
         A list of policy types that are activated for this taxonomy. If not set,
         defaults to an empty list.
-        Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+        Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
         """
         return pulumi.get(self, "activated_policy_types")
 

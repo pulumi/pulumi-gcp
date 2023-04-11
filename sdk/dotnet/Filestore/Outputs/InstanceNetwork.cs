@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// If not provided, the connect mode defaults to
         /// DIRECT_PEERING.
         /// Default value is `DIRECT_PEERING`.
-        /// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+        /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
         /// </summary>
         public readonly string? ConnectMode;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// <summary>
         /// IP versions for which the instance has
         /// IP addresses assigned.
-        /// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+        /// Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
         /// </summary>
         public readonly ImmutableArray<string> Modes;
         /// <summary>

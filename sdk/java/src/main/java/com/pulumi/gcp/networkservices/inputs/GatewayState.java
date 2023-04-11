@@ -186,7 +186,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     @Import(name="type")
@@ -194,7 +194,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-     * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -491,7 +491,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-         * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
-         * Possible values are `TYPE_UNSPECIFIED`, `OPEN_MESH`, and `SECURE_WEB_GATEWAY`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
          * 
          * @return builder
          * 

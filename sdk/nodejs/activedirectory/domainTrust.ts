@@ -90,7 +90,7 @@ export class DomainTrust extends pulumi.CustomResource {
     public readonly targetDomainName!: pulumi.Output<string>;
     /**
      * The trust direction, which decides if the current domain is trusted, trusting, or both.
-     * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+     * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      */
     public readonly trustDirection!: pulumi.Output<string>;
     /**
@@ -100,7 +100,7 @@ export class DomainTrust extends pulumi.CustomResource {
     public readonly trustHandshakeSecret!: pulumi.Output<string>;
     /**
      * The type of trust represented by the trust resource.
-     * Possible values are `FOREST` and `EXTERNAL`.
+     * Possible values are: `FOREST`, `EXTERNAL`.
      */
     public readonly trustType!: pulumi.Output<string>;
 
@@ -189,7 +189,7 @@ export interface DomainTrustState {
     targetDomainName?: pulumi.Input<string>;
     /**
      * The trust direction, which decides if the current domain is trusted, trusting, or both.
-     * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+     * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      */
     trustDirection?: pulumi.Input<string>;
     /**
@@ -199,7 +199,7 @@ export interface DomainTrustState {
     trustHandshakeSecret?: pulumi.Input<string>;
     /**
      * The type of trust represented by the trust resource.
-     * Possible values are `FOREST` and `EXTERNAL`.
+     * Possible values are: `FOREST`, `EXTERNAL`.
      */
     trustType?: pulumi.Input<string>;
 }
@@ -232,7 +232,7 @@ export interface DomainTrustArgs {
     targetDomainName: pulumi.Input<string>;
     /**
      * The trust direction, which decides if the current domain is trusted, trusting, or both.
-     * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+     * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      */
     trustDirection: pulumi.Input<string>;
     /**
@@ -242,7 +242,7 @@ export interface DomainTrustArgs {
     trustHandshakeSecret: pulumi.Input<string>;
     /**
      * The type of trust represented by the trust resource.
-     * Possible values are `FOREST` and `EXTERNAL`.
+     * Possible values are: `FOREST`, `EXTERNAL`.
      */
     trustType: pulumi.Input<string>;
 }

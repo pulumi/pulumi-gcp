@@ -118,7 +118,7 @@ type AppGateway struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
-	// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType pulumi.StringPtrOutput `pulumi:"hostType"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -133,7 +133,7 @@ type AppGateway struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Server-defined URI for this resource.
 	Uri pulumi.StringOutput `pulumi:"uri"`
@@ -175,7 +175,7 @@ type appGatewayState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
-	// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType *string `pulumi:"hostType"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -190,7 +190,7 @@ type appGatewayState struct {
 	State *string `pulumi:"state"`
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
 	Type *string `pulumi:"type"`
 	// Server-defined URI for this resource.
 	Uri *string `pulumi:"uri"`
@@ -204,7 +204,7 @@ type AppGatewayState struct {
 	DisplayName pulumi.StringPtrInput
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
-	// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapInput
@@ -219,7 +219,7 @@ type AppGatewayState struct {
 	State pulumi.StringPtrInput
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
 	Type pulumi.StringPtrInput
 	// Server-defined URI for this resource.
 	Uri pulumi.StringPtrInput
@@ -234,7 +234,7 @@ type appGatewayArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
-	// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType *string `pulumi:"hostType"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -247,7 +247,7 @@ type appGatewayArgs struct {
 	Region *string `pulumi:"region"`
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
 	Type *string `pulumi:"type"`
 }
 
@@ -257,7 +257,7 @@ type AppGatewayArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The type of hosting used by the AppGateway.
 	// Default value is `HOST_TYPE_UNSPECIFIED`.
-	// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+	// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 	HostType pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapInput
@@ -270,7 +270,7 @@ type AppGatewayArgs struct {
 	Region pulumi.StringPtrInput
 	// The type of network connectivity used by the AppGateway.
 	// Default value is `TYPE_UNSPECIFIED`.
-	// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
 	Type pulumi.StringPtrInput
 }
 
@@ -374,7 +374,7 @@ func (o AppGatewayOutput) DisplayName() pulumi.StringPtrOutput {
 
 // The type of hosting used by the AppGateway.
 // Default value is `HOST_TYPE_UNSPECIFIED`.
-// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
 func (o AppGatewayOutput) HostType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.HostType }).(pulumi.StringPtrOutput)
 }
@@ -407,7 +407,7 @@ func (o AppGatewayOutput) State() pulumi.StringOutput {
 
 // The type of network connectivity used by the AppGateway.
 // Default value is `TYPE_UNSPECIFIED`.
-// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
 func (o AppGatewayOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

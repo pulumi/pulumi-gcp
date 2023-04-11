@@ -43,7 +43,7 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs e
      *   provided metadata.
      * * MATCH_ALL: All filterLabels must have matching labels in
      *   the provided metadata.
-     *   Possible values are `MATCH_ALL` and `MATCH_ANY`.
+     *   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
      * 
      */
     @Import(name="filterMatchCriteria", required=true)
@@ -56,7 +56,7 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs e
      *   provided metadata.
      * * MATCH_ALL: All filterLabels must have matching labels in
      *   the provided metadata.
-     *   Possible values are `MATCH_ALL` and `MATCH_ANY`.
+     *   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
      * 
      */
     public Output<String> filterMatchCriteria() {
@@ -135,7 +135,7 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs e
          *   provided metadata.
          * * MATCH_ALL: All filterLabels must have matching labels in
          *   the provided metadata.
-         *   Possible values are `MATCH_ALL` and `MATCH_ANY`.
+         *   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs e
          *   provided metadata.
          * * MATCH_ALL: All filterLabels must have matching labels in
          *   the provided metadata.
-         *   Possible values are `MATCH_ALL` and `MATCH_ANY`.
+         *   Possible values are: `MATCH_ALL`, `MATCH_ANY`.
          * 
          * @return builder
          * 

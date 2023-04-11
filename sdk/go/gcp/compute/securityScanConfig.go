@@ -97,7 +97,7 @@ type SecurityScanConfig struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
 	// Default value is `ENABLED`.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrOutput `pulumi:"exportToSecurityCommandCenter"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -114,11 +114,11 @@ type SecurityScanConfig struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayOutput `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
-	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+	// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
 	UserAgent pulumi.StringPtrOutput `pulumi:"userAgent"`
 }
 
@@ -168,7 +168,7 @@ type securityScanConfigState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
 	// Default value is `ENABLED`.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -185,11 +185,11 @@ type securityScanConfigState struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
-	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+	// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
 	UserAgent *string `pulumi:"userAgent"`
 }
 
@@ -205,7 +205,7 @@ type SecurityScanConfigState struct {
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Cloud Security Command Center.
 	// Default value is `ENABLED`.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -222,11 +222,11 @@ type SecurityScanConfigState struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayInput
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
-	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+	// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
 	UserAgent pulumi.StringPtrInput
 }
 
@@ -246,7 +246,7 @@ type securityScanConfigArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Cloud Security Command Center.
 	// Default value is `ENABLED`.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -260,11 +260,11 @@ type securityScanConfigArgs struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
-	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+	// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
 	UserAgent *string `pulumi:"userAgent"`
 }
 
@@ -281,7 +281,7 @@ type SecurityScanConfigArgs struct {
 	DisplayName pulumi.StringInput
 	// Controls export of scan configurations and results to Cloud Security Command Center.
 	// Default value is `ENABLED`.
-	// Possible values are `ENABLED` and `DISABLED`.
+	// Possible values are: `ENABLED`, `DISABLED`.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively.
 	// Defaults to 15.
@@ -295,11 +295,11 @@ type SecurityScanConfigArgs struct {
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-	// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayInput
 	// Type of the user agents used for scanning
 	// Default value is `CHROME_LINUX`.
-	// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+	// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
 	UserAgent pulumi.StringPtrInput
 }
 
@@ -410,7 +410,7 @@ func (o SecurityScanConfigOutput) DisplayName() pulumi.StringOutput {
 
 // Controls export of scan configurations and results to Cloud Security Command Center.
 // Default value is `ENABLED`.
-// Possible values are `ENABLED` and `DISABLED`.
+// Possible values are: `ENABLED`, `DISABLED`.
 func (o SecurityScanConfigOutput) ExportToSecurityCommandCenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringPtrOutput { return v.ExportToSecurityCommandCenter }).(pulumi.StringPtrOutput)
 }
@@ -445,14 +445,14 @@ func (o SecurityScanConfigOutput) StartingUrls() pulumi.StringArrayOutput {
 }
 
 // Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
-// Each value may be one of `APP_ENGINE` and `COMPUTE`.
+// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 func (o SecurityScanConfigOutput) TargetPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringArrayOutput { return v.TargetPlatforms }).(pulumi.StringArrayOutput)
 }
 
 // Type of the user agents used for scanning
 // Default value is `CHROME_LINUX`.
-// Possible values are `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, and `SAFARI_IPHONE`.
+// Possible values are: `USER_AGENT_UNSPECIFIED`, `CHROME_LINUX`, `CHROME_ANDROID`, `SAFARI_IPHONE`.
 func (o SecurityScanConfigOutput) UserAgent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringPtrOutput { return v.UserAgent }).(pulumi.StringPtrOutput)
 }

@@ -14,7 +14,7 @@ public final class JobQueryScriptOptions {
     /**
      * @return Determines which statement in the script represents the &#34;key result&#34;,
      * used to populate the schema and query results of the script job.
-     * Possible values are `LAST` and `FIRST_SELECT`.
+     * Possible values are: `LAST`, `FIRST_SELECT`.
      * 
      */
     private @Nullable String keyResultStatement;
@@ -33,7 +33,7 @@ public final class JobQueryScriptOptions {
     /**
      * @return Determines which statement in the script represents the &#34;key result&#34;,
      * used to populate the schema and query results of the script job.
-     * Possible values are `LAST` and `FIRST_SELECT`.
+     * Possible values are: `LAST`, `FIRST_SELECT`.
      * 
      */
     public Optional<String> keyResultStatement() {

@@ -107,7 +107,7 @@ export class CaPool extends pulumi.CustomResource {
     public readonly publishingOptions!: pulumi.Output<outputs.certificateauthority.CaPoolPublishingOptions | undefined>;
     /**
      * The Tier of this CaPool.
-     * Possible values are `ENTERPRISE` and `DEVOPS`.
+     * Possible values are: `ENTERPRISE`, `DEVOPS`.
      */
     public readonly tier!: pulumi.Output<string>;
 
@@ -188,7 +188,7 @@ export interface CaPoolState {
     publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions>;
     /**
      * The Tier of this CaPool.
-     * Possible values are `ENTERPRISE` and `DEVOPS`.
+     * Possible values are: `ENTERPRISE`, `DEVOPS`.
      */
     tier?: pulumi.Input<string>;
 }
@@ -229,7 +229,7 @@ export interface CaPoolArgs {
     publishingOptions?: pulumi.Input<inputs.certificateauthority.CaPoolPublishingOptions>;
     /**
      * The Tier of this CaPool.
-     * Possible values are `ENTERPRISE` and `DEVOPS`.
+     * Possible values are: `ENTERPRISE`, `DEVOPS`.
      */
     tier: pulumi.Input<string>;
 }

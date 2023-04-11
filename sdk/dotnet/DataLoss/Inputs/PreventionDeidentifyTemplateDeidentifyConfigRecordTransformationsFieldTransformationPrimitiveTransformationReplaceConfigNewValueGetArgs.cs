@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// Represents a day of the week.
-        /// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         /// </summary>
         [Input("dayOfWeekValue")]
         public Input<string>? DayOfWeekValue { get; set; }

@@ -1067,10 +1067,10 @@ type PolicyClusterAdmissionRule struct {
 	// The identifier for this object. Format specified above.
 	Cluster string `pulumi:"cluster"`
 	// The action when a pod creation is denied by the admission rule.
-	// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+	// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
 	EnforcementMode string `pulumi:"enforcementMode"`
 	// How this admission rule will be evaluated.
-	// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+	// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
 	EvaluationMode string `pulumi:"evaluationMode"`
 	// The resource names of the attestors that must attest to a
 	// container image. If the attestor is in a different project from the
@@ -1098,10 +1098,10 @@ type PolicyClusterAdmissionRuleArgs struct {
 	// The identifier for this object. Format specified above.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
 	// The action when a pod creation is denied by the admission rule.
-	// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+	// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
 	EnforcementMode pulumi.StringInput `pulumi:"enforcementMode"`
 	// How this admission rule will be evaluated.
-	// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+	// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
 	EvaluationMode pulumi.StringInput `pulumi:"evaluationMode"`
 	// The resource names of the attestors that must attest to a
 	// container image. If the attestor is in a different project from the
@@ -1171,13 +1171,13 @@ func (o PolicyClusterAdmissionRuleOutput) Cluster() pulumi.StringOutput {
 }
 
 // The action when a pod creation is denied by the admission rule.
-// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
 func (o PolicyClusterAdmissionRuleOutput) EnforcementMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
 
 // How this admission rule will be evaluated.
-// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
 func (o PolicyClusterAdmissionRuleOutput) EvaluationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyClusterAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
@@ -1216,10 +1216,10 @@ func (o PolicyClusterAdmissionRuleArrayOutput) Index(i pulumi.IntInput) PolicyCl
 
 type PolicyDefaultAdmissionRule struct {
 	// The action when a pod creation is denied by the admission rule.
-	// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+	// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
 	EnforcementMode string `pulumi:"enforcementMode"`
 	// How this admission rule will be evaluated.
-	// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+	// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
 	EvaluationMode string `pulumi:"evaluationMode"`
 	// The resource names of the attestors that must attest to a
 	// container image. If the attestor is in a different project from the
@@ -1245,10 +1245,10 @@ type PolicyDefaultAdmissionRuleInput interface {
 
 type PolicyDefaultAdmissionRuleArgs struct {
 	// The action when a pod creation is denied by the admission rule.
-	// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+	// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
 	EnforcementMode pulumi.StringInput `pulumi:"enforcementMode"`
 	// How this admission rule will be evaluated.
-	// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+	// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
 	EvaluationMode pulumi.StringInput `pulumi:"evaluationMode"`
 	// The resource names of the attestors that must attest to a
 	// container image. If the attestor is in a different project from the
@@ -1339,13 +1339,13 @@ func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutputW
 }
 
 // The action when a pod creation is denied by the admission rule.
-// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
 func (o PolicyDefaultAdmissionRuleOutput) EnforcementMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
 
 // How this admission rule will be evaluated.
-// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
 func (o PolicyDefaultAdmissionRuleOutput) EvaluationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
@@ -1387,7 +1387,7 @@ func (o PolicyDefaultAdmissionRulePtrOutput) Elem() PolicyDefaultAdmissionRuleOu
 }
 
 // The action when a pod creation is denied by the admission rule.
-// Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
 func (o PolicyDefaultAdmissionRulePtrOutput) EnforcementMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) *string {
 		if v == nil {
@@ -1398,7 +1398,7 @@ func (o PolicyDefaultAdmissionRulePtrOutput) EnforcementMode() pulumi.StringPtrO
 }
 
 // How this admission rule will be evaluated.
-// Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
 func (o PolicyDefaultAdmissionRulePtrOutput) EvaluationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) *string {
 		if v == nil {

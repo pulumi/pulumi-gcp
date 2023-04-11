@@ -17,14 +17,14 @@ public final class AccessLevelBasicConditionDevicePolicy {
     /**
      * @return A list of allowed device management levels.
      * An empty list allows all management levels.
-     * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+     * Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
      * 
      */
     private @Nullable List<String> allowedDeviceManagementLevels;
     /**
      * @return A list of allowed encryptions statuses.
      * An empty list allows all statuses.
-     * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+     * Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
      * 
      */
     private @Nullable List<String> allowedEncryptionStatuses;
@@ -56,7 +56,7 @@ public final class AccessLevelBasicConditionDevicePolicy {
     /**
      * @return A list of allowed device management levels.
      * An empty list allows all management levels.
-     * Each value may be one of `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, and `COMPLETE`.
+     * Each value may be one of: `MANAGEMENT_UNSPECIFIED`, `NONE`, `BASIC`, `COMPLETE`.
      * 
      */
     public List<String> allowedDeviceManagementLevels() {
@@ -65,7 +65,7 @@ public final class AccessLevelBasicConditionDevicePolicy {
     /**
      * @return A list of allowed encryptions statuses.
      * An empty list allows all statuses.
-     * Each value may be one of `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, and `ENCRYPTED`.
+     * Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
      * 
      */
     public List<String> allowedEncryptionStatuses() {

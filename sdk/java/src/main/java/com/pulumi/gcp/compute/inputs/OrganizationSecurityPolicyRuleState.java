@@ -57,7 +57,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
     /**
      * The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Import(name="direction")
@@ -65,7 +65,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
     /**
      * @return The direction in which this rule applies. If unspecified an INGRESS rule is created.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -278,7 +278,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
         /**
          * @param direction The direction in which this rule applies. If unspecified an INGRESS rule is created.
-         * Possible values are `INGRESS` and `EGRESS`.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
         /**
          * @param direction The direction in which this rule applies. If unspecified an INGRESS rule is created.
-         * Possible values are `INGRESS` and `EGRESS`.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 

@@ -21,7 +21,7 @@ public final class NodeTemplateServerBinding {
      * such as physical sockets or cores, to avoid the need for
      * additional licenses when maintenance occurs. However, VMs on such
      * nodes will experience outages while maintenance is applied.
-     * Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
+     * Possible values are: `RESTART_NODE_ON_ANY_SERVER`, `RESTART_NODE_ON_MINIMAL_SERVERS`.
      * 
      */
     private String type;
@@ -39,7 +39,7 @@ public final class NodeTemplateServerBinding {
      * such as physical sockets or cores, to avoid the need for
      * additional licenses when maintenance occurs. However, VMs on such
      * nodes will experience outages while maintenance is applied.
-     * Possible values are `RESTART_NODE_ON_ANY_SERVER` and `RESTART_NODE_ON_MINIMAL_SERVERS`.
+     * Possible values are: `RESTART_NODE_ON_ANY_SERVER`, `RESTART_NODE_ON_MINIMAL_SERVERS`.
      * 
      */
     public String type() {

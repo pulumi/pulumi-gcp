@@ -89,7 +89,7 @@ type AuthorizedOrgsDesc struct {
 	// The type of entities that need to use the authorization relationship during
 	// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
 	// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-	// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+	// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType pulumi.StringPtrOutput `pulumi:"assetType"`
 	// The direction of the authorization relationship between this organization
 	// and the organizations listed in the "orgs" field. The valid values for this
@@ -105,10 +105,10 @@ type AuthorizedOrgsDesc struct {
 	// direction, organizations B and C must specify
 	// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
 	// "AuthorizedOrgsDesc" resource.
-	// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+	// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
 	AuthorizationDirection pulumi.StringPtrOutput `pulumi:"authorizationDirection"`
 	// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-	// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+	// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType pulumi.StringPtrOutput `pulumi:"authorizationType"`
 	// Time the AuthorizedOrgsDesc was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -163,7 +163,7 @@ type authorizedOrgsDescState struct {
 	// The type of entities that need to use the authorization relationship during
 	// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
 	// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-	// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+	// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType *string `pulumi:"assetType"`
 	// The direction of the authorization relationship between this organization
 	// and the organizations listed in the "orgs" field. The valid values for this
@@ -179,10 +179,10 @@ type authorizedOrgsDescState struct {
 	// direction, organizations B and C must specify
 	// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
 	// "AuthorizedOrgsDesc" resource.
-	// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+	// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
 	AuthorizationDirection *string `pulumi:"authorizationDirection"`
 	// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-	// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+	// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType *string `pulumi:"authorizationType"`
 	// Time the AuthorizedOrgsDesc was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
@@ -206,7 +206,7 @@ type AuthorizedOrgsDescState struct {
 	// The type of entities that need to use the authorization relationship during
 	// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
 	// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-	// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+	// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType pulumi.StringPtrInput
 	// The direction of the authorization relationship between this organization
 	// and the organizations listed in the "orgs" field. The valid values for this
@@ -222,10 +222,10 @@ type AuthorizedOrgsDescState struct {
 	// direction, organizations B and C must specify
 	// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
 	// "AuthorizedOrgsDesc" resource.
-	// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+	// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
 	AuthorizationDirection pulumi.StringPtrInput
 	// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-	// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+	// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType pulumi.StringPtrInput
 	// Time the AuthorizedOrgsDesc was created in UTC.
 	CreateTime pulumi.StringPtrInput
@@ -253,7 +253,7 @@ type authorizedOrgsDescArgs struct {
 	// The type of entities that need to use the authorization relationship during
 	// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
 	// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-	// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+	// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType *string `pulumi:"assetType"`
 	// The direction of the authorization relationship between this organization
 	// and the organizations listed in the "orgs" field. The valid values for this
@@ -269,10 +269,10 @@ type authorizedOrgsDescArgs struct {
 	// direction, organizations B and C must specify
 	// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
 	// "AuthorizedOrgsDesc" resource.
-	// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+	// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
 	AuthorizationDirection *string `pulumi:"authorizationDirection"`
 	// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-	// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+	// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType *string `pulumi:"authorizationType"`
 	// Resource name for the `AuthorizedOrgsDesc`. Format:
 	// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -293,7 +293,7 @@ type AuthorizedOrgsDescArgs struct {
 	// The type of entities that need to use the authorization relationship during
 	// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
 	// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-	// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+	// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType pulumi.StringPtrInput
 	// The direction of the authorization relationship between this organization
 	// and the organizations listed in the "orgs" field. The valid values for this
@@ -309,10 +309,10 @@ type AuthorizedOrgsDescArgs struct {
 	// direction, organizations B and C must specify
 	// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
 	// "AuthorizedOrgsDesc" resource.
-	// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+	// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
 	AuthorizationDirection pulumi.StringPtrInput
 	// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-	// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+	// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType pulumi.StringPtrInput
 	// Resource name for the `AuthorizedOrgsDesc`. Format:
 	// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`.
@@ -418,7 +418,7 @@ func (o AuthorizedOrgsDescOutput) ToAuthorizedOrgsDescOutputWithContext(ctx cont
 // The type of entities that need to use the authorization relationship during
 // evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
 // "ASSET_TYPE_CREDENTIAL_STRENGTH".
-// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 func (o AuthorizedOrgsDescOutput) AssetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringPtrOutput { return v.AssetType }).(pulumi.StringPtrOutput)
 }
@@ -437,13 +437,13 @@ func (o AuthorizedOrgsDescOutput) AssetType() pulumi.StringPtrOutput {
 // direction, organizations B and C must specify
 // "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
 // "AuthorizedOrgsDesc" resource.
-// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
 func (o AuthorizedOrgsDescOutput) AuthorizationDirection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringPtrOutput { return v.AuthorizationDirection }).(pulumi.StringPtrOutput)
 }
 
 // A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
 func (o AuthorizedOrgsDescOutput) AuthorizationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringPtrOutput { return v.AuthorizationType }).(pulumi.StringPtrOutput)
 }

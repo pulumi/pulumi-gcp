@@ -22,7 +22,7 @@ class GetHcVpnGatewayResult:
     """
     A collection of values returned by getHcVpnGateway.
     """
-    def __init__(__self__, description=None, id=None, name=None, network=None, project=None, region=None, self_link=None, vpn_interfaces=None):
+    def __init__(__self__, description=None, id=None, name=None, network=None, project=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -44,6 +44,9 @@ class GetHcVpnGatewayResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if stack_type and not isinstance(stack_type, str):
+            raise TypeError("Expected argument 'stack_type' to be a str")
+        pulumi.set(__self__, "stack_type", stack_type)
         if vpn_interfaces and not isinstance(vpn_interfaces, list):
             raise TypeError("Expected argument 'vpn_interfaces' to be a list")
         pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
@@ -87,6 +90,11 @@ class GetHcVpnGatewayResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        return pulumi.get(self, "stack_type")
+
+    @property
     @pulumi.getter(name="vpnInterfaces")
     def vpn_interfaces(self) -> Sequence['outputs.GetHcVpnGatewayVpnInterfaceResult']:
         return pulumi.get(self, "vpn_interfaces")
@@ -105,6 +113,7 @@ class AwaitableGetHcVpnGatewayResult(GetHcVpnGatewayResult):
             project=self.project,
             region=self.region,
             self_link=self.self_link,
+            stack_type=self.stack_type,
             vpn_interfaces=self.vpn_interfaces)
 
 
@@ -146,6 +155,7 @@ def get_hc_vpn_gateway(name: Optional[str] = None,
         project=__ret__.project,
         region=__ret__.region,
         self_link=__ret__.self_link,
+        stack_type=__ret__.stack_type,
         vpn_interfaces=__ret__.vpn_interfaces)
 
 

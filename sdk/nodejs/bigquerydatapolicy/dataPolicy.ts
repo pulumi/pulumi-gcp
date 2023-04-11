@@ -96,7 +96,7 @@ export class DataPolicy extends pulumi.CustomResource {
     public readonly dataPolicyId!: pulumi.Output<string>;
     /**
      * The enrollment level of the service.
-     * Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+     * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      */
     public readonly dataPolicyType!: pulumi.Output<string>;
     /**
@@ -179,7 +179,7 @@ export interface DataPolicyState {
     dataPolicyId?: pulumi.Input<string>;
     /**
      * The enrollment level of the service.
-     * Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+     * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      */
     dataPolicyType?: pulumi.Input<string>;
     /**
@@ -216,7 +216,7 @@ export interface DataPolicyArgs {
     dataPolicyId: pulumi.Input<string>;
     /**
      * The enrollment level of the service.
-     * Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+     * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      */
     dataPolicyType: pulumi.Input<string>;
     /**

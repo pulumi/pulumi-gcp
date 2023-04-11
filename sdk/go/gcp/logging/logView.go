@@ -11,44 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Logging LogView resource
+// Describes a view over log entries in a bucket.
+//
+// To get more information about LogView, see:
+//
+// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/logging/docs/apis)
 //
 // ## Example Usage
-// ### Basic
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basic, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
-//				Project:       pulumi.String("my-project-name"),
-//				Location:      pulumi.String("global"),
-//				RetentionDays: pulumi.Int(30),
-//				BucketId:      pulumi.String("_Default"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = logging.NewLogView(ctx, "primary", &logging.LogViewArgs{
-//				Bucket:      basic.ID(),
-//				Description: pulumi.String("A logging view configured with Terraform"),
-//				Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
@@ -72,7 +43,7 @@ type LogView struct {
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+	// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the resource.
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -122,7 +93,7 @@ type logViewState struct {
 	Filter *string `pulumi:"filter"`
 	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
 	Location *string `pulumi:"location"`
-	// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+	// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
 	Name *string `pulumi:"name"`
 	// The parent of the resource.
 	Parent *string `pulumi:"parent"`
@@ -141,7 +112,7 @@ type LogViewState struct {
 	Filter pulumi.StringPtrInput
 	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
 	Location pulumi.StringPtrInput
-	// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+	// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
 	Name pulumi.StringPtrInput
 	// The parent of the resource.
 	Parent pulumi.StringPtrInput
@@ -162,7 +133,7 @@ type logViewArgs struct {
 	Filter *string `pulumi:"filter"`
 	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
 	Location *string `pulumi:"location"`
-	// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+	// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
 	Name *string `pulumi:"name"`
 	// The parent of the resource.
 	Parent *string `pulumi:"parent"`
@@ -178,7 +149,7 @@ type LogViewArgs struct {
 	Filter pulumi.StringPtrInput
 	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
 	Location pulumi.StringPtrInput
-	// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+	// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
 	Name pulumi.StringPtrInput
 	// The parent of the resource.
 	Parent pulumi.StringPtrInput
@@ -296,7 +267,7 @@ func (o LogViewOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogView) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
 func (o LogViewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogView) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

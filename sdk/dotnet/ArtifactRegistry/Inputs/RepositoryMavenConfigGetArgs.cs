@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         /// <summary>
         /// Version policy defines the versions that the registry will accept.
         /// Default value is `VERSION_POLICY_UNSPECIFIED`.
-        /// Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+        /// Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
         /// </summary>
         [Input("versionPolicy")]
         public Input<string>? VersionPolicy { get; set; }

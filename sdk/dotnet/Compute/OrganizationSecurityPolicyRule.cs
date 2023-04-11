@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        /// Possible values are `INGRESS` and `EGRESS`.
+        /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Output("direction")]
         public Output<string?> Direction { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        /// Possible values are `INGRESS` and `EGRESS`.
+        /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-        /// Possible values are `INGRESS` and `EGRESS`.
+        /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }

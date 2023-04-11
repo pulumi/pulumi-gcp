@@ -79,7 +79,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
      * global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
      * and addressType of INTERNAL
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      * 
      */
     @Import(name="ipProtocol")
@@ -90,7 +90,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
      * global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
      * and addressType of INTERNAL
-     * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+     * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
      * 
      */
     public Optional<Output<String>> ipProtocol() {
@@ -99,7 +99,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
 
     /**
      * The IP Version that will be used by this global forwarding rule.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      * 
      */
     @Import(name="ipVersion")
@@ -107,7 +107,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The IP Version that will be used by this global forwarding rule.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      * 
      */
     public Optional<Output<String>> ipVersion() {
@@ -141,7 +141,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * Note: This field must be set &#34;&#34; if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -159,7 +159,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * Note: This field must be set &#34;&#34; if the global address is
      * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
      * Default value is `EXTERNAL`.
-     * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -454,7 +454,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
          * global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
          * and addressType of INTERNAL
-         * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+         * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
          * global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
          * and addressType of INTERNAL
-         * Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+         * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ipVersion The IP Version that will be used by this global forwarding rule.
-         * Possible values are `IPV4` and `IPV6`.
+         * Possible values are: `IPV4`, `IPV6`.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param ipVersion The IP Version that will be used by this global forwarding rule.
-         * Possible values are `IPV4` and `IPV6`.
+         * Possible values are: `IPV4`, `IPV6`.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * Note: This field must be set &#34;&#34; if the global address is
          * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
          * Default value is `EXTERNAL`.
-         * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
          * 
@@ -556,7 +556,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * Note: This field must be set &#34;&#34; if the global address is
          * configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
          * Default value is `EXTERNAL`.
-         * Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
          * 

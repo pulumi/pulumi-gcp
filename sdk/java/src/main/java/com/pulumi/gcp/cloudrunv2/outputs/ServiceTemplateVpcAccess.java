@@ -18,7 +18,7 @@ public final class ServiceTemplateVpcAccess {
     private @Nullable String connector;
     /**
      * @return Traffic VPC egress settings.
-     * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
      */
     private @Nullable String egress;
@@ -33,7 +33,7 @@ public final class ServiceTemplateVpcAccess {
     }
     /**
      * @return Traffic VPC egress settings.
-     * Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+     * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
      */
     public Optional<String> egress() {

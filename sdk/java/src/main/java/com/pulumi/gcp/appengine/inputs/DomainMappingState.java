@@ -52,7 +52,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
      * Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
      * Default value is `STRICT`.
-     * Possible values are `STRICT` and `OVERRIDE`.
+     * Possible values are: `STRICT`, `OVERRIDE`.
      * 
      */
     @Import(name="overrideStrategy")
@@ -62,7 +62,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
      * @return Whether the domain creation should override any existing mappings for this domain.
      * By default, overrides are rejected.
      * Default value is `STRICT`.
-     * Possible values are `STRICT` and `OVERRIDE`.
+     * Possible values are: `STRICT`, `OVERRIDE`.
      * 
      */
     public Optional<Output<String>> overrideStrategy() {
@@ -197,7 +197,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
          * @param overrideStrategy Whether the domain creation should override any existing mappings for this domain.
          * By default, overrides are rejected.
          * Default value is `STRICT`.
-         * Possible values are `STRICT` and `OVERRIDE`.
+         * Possible values are: `STRICT`, `OVERRIDE`.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class DomainMappingState extends com.pulumi.resources.ResourceArgs 
          * @param overrideStrategy Whether the domain creation should override any existing mappings for this domain.
          * By default, overrides are rejected.
          * Default value is `STRICT`.
-         * Possible values are `STRICT` and `OVERRIDE`.
+         * Possible values are: `STRICT`, `OVERRIDE`.
          * 
          * @return builder
          * 

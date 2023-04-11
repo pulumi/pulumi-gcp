@@ -38,11 +38,11 @@ class RoutineArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
-               Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+               Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are `SQL` and `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -59,7 +59,7 @@ class RoutineArgs:
                cannot suppress the recurring diff this causes. As a workaround, we recommend using
                the schema as returned by the API.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+               Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "definition_body", definition_body)
@@ -150,7 +150,7 @@ class RoutineArgs:
     def determinism_level(self) -> Optional[pulumi.Input[str]]:
         """
         The determinism level of the JavaScript UDF if defined.
-        Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+        Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         """
         return pulumi.get(self, "determinism_level")
 
@@ -176,7 +176,7 @@ class RoutineArgs:
     def language(self) -> Optional[pulumi.Input[str]]:
         """
         The language of the routine.
-        Possible values are `SQL` and `JAVASCRIPT`.
+        Possible values are: `SQL`, `JAVASCRIPT`.
         """
         return pulumi.get(self, "language")
 
@@ -237,7 +237,7 @@ class RoutineArgs:
     def routine_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of routine.
-        Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+        Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         return pulumi.get(self, "routine_type")
 
@@ -274,11 +274,11 @@ class _RoutineState:
                If language=SQL, it is the substring inside (but excluding) the parentheses.
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
-               Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+               Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are `SQL` and `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`.
         :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the
                epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -298,7 +298,7 @@ class _RoutineState:
                the schema as returned by the API.
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+               Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
@@ -397,7 +397,7 @@ class _RoutineState:
     def determinism_level(self) -> Optional[pulumi.Input[str]]:
         """
         The determinism level of the JavaScript UDF if defined.
-        Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+        Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         """
         return pulumi.get(self, "determinism_level")
 
@@ -423,7 +423,7 @@ class _RoutineState:
     def language(self) -> Optional[pulumi.Input[str]]:
         """
         The language of the routine.
-        Possible values are `SQL` and `JAVASCRIPT`.
+        Possible values are: `SQL`, `JAVASCRIPT`.
         """
         return pulumi.get(self, "language")
 
@@ -509,7 +509,7 @@ class _RoutineState:
     def routine_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of routine.
-        Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+        Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         return pulumi.get(self, "routine_type")
 
@@ -641,11 +641,11 @@ class Routine(pulumi.CustomResource):
                If language=SQL, it is the substring inside (but excluding) the parentheses.
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
-               Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+               Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are `SQL` and `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -663,7 +663,7 @@ class Routine(pulumi.CustomResource):
                the schema as returned by the API.
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+               Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         ...
     @overload
@@ -863,11 +863,11 @@ class Routine(pulumi.CustomResource):
                If language=SQL, it is the substring inside (but excluding) the parentheses.
         :param pulumi.Input[str] description: The description of the routine if defined.
         :param pulumi.Input[str] determinism_level: The determinism level of the JavaScript UDF if defined.
-               Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+               Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are `SQL` and `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`.
         :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the
                epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -887,7 +887,7 @@ class Routine(pulumi.CustomResource):
                the schema as returned by the API.
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
-               Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+               Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -957,7 +957,7 @@ class Routine(pulumi.CustomResource):
     def determinism_level(self) -> pulumi.Output[Optional[str]]:
         """
         The determinism level of the JavaScript UDF if defined.
-        Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+        Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         """
         return pulumi.get(self, "determinism_level")
 
@@ -975,7 +975,7 @@ class Routine(pulumi.CustomResource):
     def language(self) -> pulumi.Output[Optional[str]]:
         """
         The language of the routine.
-        Possible values are `SQL` and `JAVASCRIPT`.
+        Possible values are: `SQL`, `JAVASCRIPT`.
         """
         return pulumi.get(self, "language")
 
@@ -1037,7 +1037,7 @@ class Routine(pulumi.CustomResource):
     def routine_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of routine.
-        Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+        Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         return pulumi.get(self, "routine_type")
 

@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// Direction of traffic to mirror.
         /// Default value is `BOTH`.
-        /// Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+        /// Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }

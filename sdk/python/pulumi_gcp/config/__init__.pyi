@@ -200,6 +200,8 @@ networkConnectivityCustomEndpoint: Optional[str]
 
 networkManagementCustomEndpoint: Optional[str]
 
+networkSecurityCustomEndpoint: Optional[str]
+
 networkServicesCustomEndpoint: Optional[str]
 
 notebooksCustomEndpoint: Optional[str]

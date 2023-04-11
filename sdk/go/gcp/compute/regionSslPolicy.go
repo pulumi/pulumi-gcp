@@ -61,7 +61,7 @@ type RegionSslPolicy struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion pulumi.StringPtrOutput `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -79,7 +79,7 @@ type RegionSslPolicy struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile pulumi.StringPtrOutput `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -142,7 +142,7 @@ type regionSslPolicyState struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -160,7 +160,7 @@ type regionSslPolicyState struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -192,7 +192,7 @@ type RegionSslPolicyState struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -210,7 +210,7 @@ type RegionSslPolicyState struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -239,7 +239,7 @@ type regionSslPolicyArgs struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion *string `pulumi:"minTlsVersion"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -257,7 +257,7 @@ type regionSslPolicyArgs struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile *string `pulumi:"profile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -281,7 +281,7 @@ type RegionSslPolicyArgs struct {
 	// The minimum version of SSL protocol that can be used by the clients
 	// to establish a connection with the load balancer.
 	// Default value is `TLS_1_0`.
-	// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+	// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 	MinTlsVersion pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -299,7 +299,7 @@ type RegionSslPolicyArgs struct {
 	// for information on what cipher suites each profile provides. If
 	// `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 	// Default value is `COMPATIBLE`.
-	// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+	// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 	Profile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -430,7 +430,7 @@ func (o RegionSslPolicyOutput) Fingerprint() pulumi.StringOutput {
 // The minimum version of SSL protocol that can be used by the clients
 // to establish a connection with the load balancer.
 // Default value is `TLS_1_0`.
-// Possible values are `TLS_1_0`, `TLS_1_1`, and `TLS_1_2`.
+// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`.
 func (o RegionSslPolicyOutput) MinTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringPtrOutput { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -454,7 +454,7 @@ func (o RegionSslPolicyOutput) Name() pulumi.StringOutput {
 // for information on what cipher suites each profile provides. If
 // `CUSTOM` is used, the `customFeatures` attribute **must be set**.
 // Default value is `COMPATIBLE`.
-// Possible values are `COMPATIBLE`, `MODERN`, `RESTRICTED`, and `CUSTOM`.
+// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`.
 func (o RegionSslPolicyOutput) Profile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringPtrOutput { return v.Profile }).(pulumi.StringPtrOutput)
 }

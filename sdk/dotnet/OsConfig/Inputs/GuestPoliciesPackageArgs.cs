@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     {
         /// <summary>
         /// The desiredState the agent should maintain for this package. The default is to ensure the package is installed.
-        /// Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+        /// Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         /// This is useful when creating a policy that applies to different types of systems.
         /// The default behavior is ANY.
         /// Default value is `ANY`.
-        /// Possible values are `ANY`, `APT`, `YUM`, `ZYPPER`, and `GOO`.
+        /// Possible values are: `ANY`, `APT`, `YUM`, `ZYPPER`, `GOO`.
         /// </summary>
         [Input("manager")]
         public Input<string>? Manager { get; set; }

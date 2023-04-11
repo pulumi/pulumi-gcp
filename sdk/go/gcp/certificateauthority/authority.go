@@ -412,7 +412,7 @@ type Authority struct {
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
-	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+	// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The time at which this CertificateAuthority was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -536,7 +536,7 @@ type authorityState struct {
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
-	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+	// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
 	Type *string `pulumi:"type"`
 	// The time at which this CertificateAuthority was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -617,7 +617,7 @@ type AuthorityState struct {
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
-	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+	// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
 	Type pulumi.StringPtrInput
 	// The time at which this CertificateAuthority was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
@@ -685,7 +685,7 @@ type authorityArgs struct {
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
-	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+	// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -746,7 +746,7 @@ type AuthorityArgs struct {
 	// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 	// be activated before they can issue certificates.
 	// Default value is `SELF_SIGNED`.
-	// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+	// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
 	Type pulumi.StringPtrInput
 }
 
@@ -969,7 +969,7 @@ func (o AuthorityOutput) SubordinateConfig() AuthoritySubordinateConfigPtrOutput
 // > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
 // be activated before they can issue certificates.
 // Default value is `SELF_SIGNED`.
-// Possible values are `SELF_SIGNED` and `SUBORDINATE`.
+// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
 func (o AuthorityOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Authority) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

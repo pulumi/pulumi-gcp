@@ -18,7 +18,7 @@ public final class PerInstanceConfigPreservedStateDisk {
      * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
      * deleted from the instance group.
      * Default value is `NEVER`.
-     * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+     * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
      * 
      */
     private @Nullable String deleteRule;
@@ -30,7 +30,7 @@ public final class PerInstanceConfigPreservedStateDisk {
     /**
      * @return The mode of the disk.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     private @Nullable String mode;
@@ -49,7 +49,7 @@ public final class PerInstanceConfigPreservedStateDisk {
      * `ON_PERMANENT_INSTANCE_DELETION` will delete the stateful disk when the VM is permanently
      * deleted from the instance group.
      * Default value is `NEVER`.
-     * Possible values are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
+     * Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
      * 
      */
     public Optional<String> deleteRule() {
@@ -65,7 +65,7 @@ public final class PerInstanceConfigPreservedStateDisk {
     /**
      * @return The mode of the disk.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     public Optional<String> mode() {

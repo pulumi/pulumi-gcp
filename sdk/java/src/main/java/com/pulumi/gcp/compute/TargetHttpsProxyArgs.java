@@ -119,7 +119,7 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
      * specified, uses the QUIC policy with no user overrides, which is
      * equivalent to DISABLE.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+     * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      * 
      */
     @Import(name="quicOverride")
@@ -132,7 +132,7 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
      * specified, uses the QUIC policy with no user overrides, which is
      * equivalent to DISABLE.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+     * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      * 
      */
     public Optional<Output<String>> quicOverride() {
@@ -358,7 +358,7 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
          * specified, uses the QUIC policy with no user overrides, which is
          * equivalent to DISABLE.
          * Default value is `NONE`.
-         * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+         * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
          * specified, uses the QUIC policy with no user overrides, which is
          * equivalent to DISABLE.
          * Default value is `NONE`.
-         * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+         * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
          * 
          * @return builder
          * 

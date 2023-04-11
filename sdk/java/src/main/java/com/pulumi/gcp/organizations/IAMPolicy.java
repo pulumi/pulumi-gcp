@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var organization = new IAMPolicy(&#34;organization&#34;, IAMPolicyArgs.builder()        
- *             .orgId(&#34;your-organization-id&#34;)
+ *             .orgId(&#34;1234567890&#34;)
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var organization = new IAMPolicy(&#34;organization&#34;, IAMPolicyArgs.builder()        
- *             .orgId(&#34;your-organization-id&#34;)
+ *             .orgId(&#34;1234567890&#34;)
  *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
  *             .build());
  * 
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var organization = new IAMBinding(&#34;organization&#34;, IAMBindingArgs.builder()        
  *             .members(&#34;user:jane@example.com&#34;)
- *             .orgId(&#34;your-organization-id&#34;)
+ *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
  *             .build());
  * 
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .build())
  *             .members(&#34;user:jane@example.com&#34;)
- *             .orgId(&#34;your-organization-id&#34;)
+ *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
  *             .build());
  * 
@@ -218,7 +218,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var organization = new IAMMember(&#34;organization&#34;, IAMMemberArgs.builder()        
  *             .member(&#34;user:jane@example.com&#34;)
- *             .orgId(&#34;your-organization-id&#34;)
+ *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
  *             .build());
  * 
@@ -256,7 +256,7 @@ import javax.annotation.Nullable;
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .build())
  *             .member(&#34;user:jane@example.com&#34;)
- *             .orgId(&#34;your-organization-id&#34;)
+ *             .orgId(&#34;1234567890&#34;)
  *             .role(&#34;roles/editor&#34;)
  *             .build());
  * 
@@ -296,7 +296,7 @@ import javax.annotation.Nullable;
  *                     .exemptedMembers(&#34;user:joebloggs@hashicorp.com&#34;)
  *                     .logType(&#34;DATA_READ&#34;)
  *                     .build())
- *             .orgId(&#34;your-organization-id&#34;)
+ *             .orgId(&#34;1234567890&#34;)
  *             .service(&#34;allServices&#34;)
  *             .build());
  * 
@@ -362,18 +362,14 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-     * will not be inferred from the provider.
+     * The organization id of the target organization.
      * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
 
     /**
-     * @return The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-     * Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-     * will not be inferred from the provider.
+     * @return The organization id of the target organization.
      * 
      */
     public Output<String> orgId() {

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// <summary>
         /// The encoding of messages validated against schema.
         /// Default value is `ENCODING_UNSPECIFIED`.
-        /// Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+        /// Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
         /// </summary>
         public readonly string? Encoding;
         /// <summary>

@@ -1070,12 +1070,12 @@ type CxFlowNluSettings struct {
 	// Indicates NLU model training mode.
 	// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
 	// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-	//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+	//   Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
 	ModelTrainingMode *string `pulumi:"modelTrainingMode"`
 	// Indicates the type of NLU model.
 	// * MODEL_TYPE_STANDARD: Use standard NLU model.
 	// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-	//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+	//   Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
 	ModelType *string `pulumi:"modelType"`
 }
 
@@ -1097,12 +1097,12 @@ type CxFlowNluSettingsArgs struct {
 	// Indicates NLU model training mode.
 	// * MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
 	// * MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-	//   Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+	//   Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
 	ModelTrainingMode pulumi.StringPtrInput `pulumi:"modelTrainingMode"`
 	// Indicates the type of NLU model.
 	// * MODEL_TYPE_STANDARD: Use standard NLU model.
 	// * MODEL_TYPE_ADVANCED: Use advanced NLU model.
-	//   Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+	//   Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
 	ModelType pulumi.StringPtrInput `pulumi:"modelType"`
 }
 
@@ -1192,7 +1192,7 @@ func (o CxFlowNluSettingsOutput) ClassificationThreshold() pulumi.Float64PtrOutp
 // Indicates NLU model training mode.
 //   - MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
 //   - MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-//     Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+//     Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
 func (o CxFlowNluSettingsOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowNluSettings) *string { return v.ModelTrainingMode }).(pulumi.StringPtrOutput)
 }
@@ -1200,7 +1200,7 @@ func (o CxFlowNluSettingsOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 // Indicates the type of NLU model.
 //   - MODEL_TYPE_STANDARD: Use standard NLU model.
 //   - MODEL_TYPE_ADVANCED: Use advanced NLU model.
-//     Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+//     Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
 func (o CxFlowNluSettingsOutput) ModelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxFlowNluSettings) *string { return v.ModelType }).(pulumi.StringPtrOutput)
 }
@@ -1243,7 +1243,7 @@ func (o CxFlowNluSettingsPtrOutput) ClassificationThreshold() pulumi.Float64PtrO
 // Indicates NLU model training mode.
 //   - MODEL_TRAINING_MODE_AUTOMATIC: NLU model training is automatically triggered when a flow gets modified. User can also manually trigger model training in this mode.
 //   - MODEL_TRAINING_MODE_MANUAL: User needs to manually trigger NLU model training. Best for large flows whose models take long time to train.
-//     Possible values are `MODEL_TRAINING_MODE_AUTOMATIC` and `MODEL_TRAINING_MODE_MANUAL`.
+//     Possible values are: `MODEL_TRAINING_MODE_AUTOMATIC`, `MODEL_TRAINING_MODE_MANUAL`.
 func (o CxFlowNluSettingsPtrOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowNluSettings) *string {
 		if v == nil {
@@ -1256,7 +1256,7 @@ func (o CxFlowNluSettingsPtrOutput) ModelTrainingMode() pulumi.StringPtrOutput {
 // Indicates the type of NLU model.
 //   - MODEL_TYPE_STANDARD: Use standard NLU model.
 //   - MODEL_TYPE_ADVANCED: Use advanced NLU model.
-//     Possible values are `MODEL_TYPE_STANDARD` and `MODEL_TYPE_ADVANCED`.
+//     Possible values are: `MODEL_TYPE_STANDARD`, `MODEL_TYPE_ADVANCED`.
 func (o CxFlowNluSettingsPtrOutput) ModelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxFlowNluSettings) *string {
 		if v == nil {
@@ -5633,7 +5633,7 @@ func (o EntityTypeEntityArrayOutput) Index(i pulumi.IntInput) EntityTypeEntityOu
 type FulfillmentFeature struct {
 	// The type of the feature that enabled for fulfillment.
 	// * SMALLTALK: Fulfillment is enabled for SmallTalk.
-	//   Possible values are `SMALLTALK`.
+	//   Possible values are: `SMALLTALK`.
 	Type string `pulumi:"type"`
 }
 
@@ -5651,7 +5651,7 @@ type FulfillmentFeatureInput interface {
 type FulfillmentFeatureArgs struct {
 	// The type of the feature that enabled for fulfillment.
 	// * SMALLTALK: Fulfillment is enabled for SmallTalk.
-	//   Possible values are `SMALLTALK`.
+	//   Possible values are: `SMALLTALK`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5708,7 +5708,7 @@ func (o FulfillmentFeatureOutput) ToFulfillmentFeatureOutputWithContext(ctx cont
 
 // The type of the feature that enabled for fulfillment.
 //   - SMALLTALK: Fulfillment is enabled for SmallTalk.
-//     Possible values are `SMALLTALK`.
+//     Possible values are: `SMALLTALK`.
 func (o FulfillmentFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v FulfillmentFeature) string { return v.Type }).(pulumi.StringOutput)
 }

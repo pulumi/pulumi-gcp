@@ -45,11 +45,6 @@ export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
 export const getWebAppOutput: typeof import("./getWebApp").getWebAppOutput = null as any;
 utilities.lazyLoad(exports, ["getWebApp","getWebAppOutput"], () => require("./getWebApp"));
 
-export { GetWebAppConfigArgs, GetWebAppConfigResult, GetWebAppConfigOutputArgs } from "./getWebAppConfig";
-export const getWebAppConfig: typeof import("./getWebAppConfig").getWebAppConfig = null as any;
-export const getWebAppConfigOutput: typeof import("./getWebAppConfig").getWebAppConfigOutput = null as any;
-utilities.lazyLoad(exports, ["getWebAppConfig","getWebAppConfigOutput"], () => require("./getWebAppConfig"));
-
 export { HostingChannelArgs, HostingChannelState } from "./hostingChannel";
 export type HostingChannel = import("./hostingChannel").HostingChannel;
 export const HostingChannel: typeof import("./hostingChannel").HostingChannel = null as any;

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGvnicArgs;
@@ -65,6 +66,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<NodePoolNodeConfigEphemeralStorageConfigArgs>> ephemeralStorageConfig() {
         return Optional.ofNullable(this.ephemeralStorageConfig);
+    }
+
+    @Import(name="ephemeralStorageLocalSsdConfig")
+    private @Nullable Output<NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs> ephemeralStorageLocalSsdConfig;
+
+    public Optional<Output<NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs>> ephemeralStorageLocalSsdConfig() {
+        return Optional.ofNullable(this.ephemeralStorageLocalSsdConfig);
     }
 
     @Import(name="gcfsConfig")
@@ -250,6 +258,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
+        this.ephemeralStorageLocalSsdConfig = $.ephemeralStorageLocalSsdConfig;
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
@@ -338,6 +347,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder ephemeralStorageConfig(NodePoolNodeConfigEphemeralStorageConfigArgs ephemeralStorageConfig) {
             return ephemeralStorageConfig(Output.of(ephemeralStorageConfig));
+        }
+
+        public Builder ephemeralStorageLocalSsdConfig(@Nullable Output<NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs> ephemeralStorageLocalSsdConfig) {
+            $.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
+            return this;
+        }
+
+        public Builder ephemeralStorageLocalSsdConfig(NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs ephemeralStorageLocalSsdConfig) {
+            return ephemeralStorageLocalSsdConfig(Output.of(ephemeralStorageLocalSsdConfig));
         }
 
         public Builder gcfsConfig(@Nullable Output<NodePoolNodeConfigGcfsConfigArgs> gcfsConfig) {

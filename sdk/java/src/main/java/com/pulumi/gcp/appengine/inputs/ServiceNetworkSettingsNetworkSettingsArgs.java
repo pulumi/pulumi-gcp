@@ -18,7 +18,7 @@ public final class ServiceNetworkSettingsNetworkSettingsArgs extends com.pulumi.
     /**
      * The ingress settings for version or service.
      * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-     * Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+     * Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
      * 
      */
     @Import(name="ingressTrafficAllowed")
@@ -27,7 +27,7 @@ public final class ServiceNetworkSettingsNetworkSettingsArgs extends com.pulumi.
     /**
      * @return The ingress settings for version or service.
      * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-     * Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+     * Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
      * 
      */
     public Optional<Output<String>> ingressTrafficAllowed() {
@@ -61,7 +61,7 @@ public final class ServiceNetworkSettingsNetworkSettingsArgs extends com.pulumi.
         /**
          * @param ingressTrafficAllowed The ingress settings for version or service.
          * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-         * Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+         * Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class ServiceNetworkSettingsNetworkSettingsArgs extends com.pulumi.
         /**
          * @param ingressTrafficAllowed The ingress settings for version or service.
          * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
-         * Possible values are `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+         * Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
          * 
          * @return builder
          * 

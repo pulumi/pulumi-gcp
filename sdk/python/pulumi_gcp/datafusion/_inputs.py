@@ -23,9 +23,9 @@ class InstanceAcceleratorArgs:
                  state: pulumi.Input[str]):
         """
         :param pulumi.Input[str] accelerator_type: The type of an accelator for a CDF instance.
-               Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+               Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
         :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
-               Possible values are `ENABLED` and `DISABLED`.
+               Possible values are: `ENABLED`, `DISABLED`.
         """
         pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "state", state)
@@ -35,7 +35,7 @@ class InstanceAcceleratorArgs:
     def accelerator_type(self) -> pulumi.Input[str]:
         """
         The type of an accelator for a CDF instance.
-        Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+        Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
         """
         return pulumi.get(self, "accelerator_type")
 
@@ -48,7 +48,7 @@ class InstanceAcceleratorArgs:
     def state(self) -> pulumi.Input[str]:
         """
         The type of an accelator for a CDF instance.
-        Possible values are `ENABLED` and `DISABLED`.
+        Possible values are: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "state")
 

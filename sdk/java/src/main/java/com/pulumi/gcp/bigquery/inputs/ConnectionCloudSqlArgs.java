@@ -82,7 +82,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Type of the Cloud SQL database.
-     * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+     * Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
      * 
      */
     @Import(name="type", required=true)
@@ -90,7 +90,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Type of the Cloud SQL database.
-     * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+     * Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
      * 
      */
     public Output<String> type() {
@@ -215,7 +215,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param type Type of the Cloud SQL database.
-         * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+         * Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param type Type of the Cloud SQL database.
-         * Possible values are `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, and `MYSQL`.
+         * Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
          * 
          * @return builder
          * 

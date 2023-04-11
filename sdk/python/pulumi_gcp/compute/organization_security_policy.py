@@ -28,7 +28,7 @@ class OrganizationSecurityPolicyArgs:
                For organization security policies, the only supported type
                is "FIREWALL".
                Default value is `FIREWALL`.
-               Possible values are `FIREWALL`.
+               Possible values are: `FIREWALL`.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "parent", parent)
@@ -82,7 +82,7 @@ class OrganizationSecurityPolicyArgs:
         For organization security policies, the only supported type
         is "FIREWALL".
         Default value is `FIREWALL`.
-        Possible values are `FIREWALL`.
+        Possible values are: `FIREWALL`.
         """
         return pulumi.get(self, "type")
 
@@ -113,7 +113,7 @@ class _OrganizationSecurityPolicyState:
                For organization security policies, the only supported type
                is "FIREWALL".
                Default value is `FIREWALL`.
-               Possible values are `FIREWALL`.
+               Possible values are: `FIREWALL`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -198,7 +198,7 @@ class _OrganizationSecurityPolicyState:
         For organization security policies, the only supported type
         is "FIREWALL".
         Default value is `FIREWALL`.
-        Possible values are `FIREWALL`.
+        Possible values are: `FIREWALL`.
         """
         return pulumi.get(self, "type")
 
@@ -261,7 +261,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                For organization security policies, the only supported type
                is "FIREWALL".
                Default value is `FIREWALL`.
-               Possible values are `FIREWALL`.
+               Possible values are: `FIREWALL`.
         """
         ...
     @overload
@@ -375,7 +375,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                For organization security policies, the only supported type
                is "FIREWALL".
                Default value is `FIREWALL`.
-               Possible values are `FIREWALL`.
+               Possible values are: `FIREWALL`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -439,7 +439,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         For organization security policies, the only supported type
         is "FIREWALL".
         Default value is `FIREWALL`.
-        Possible values are `FIREWALL`.
+        Possible values are: `FIREWALL`.
         """
         return pulumi.get(self, "type")
 

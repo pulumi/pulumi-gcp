@@ -119,7 +119,7 @@ export class CryptoKey extends pulumi.CustomResource {
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is `ENCRYPT_DECRYPT`.
-     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
+     * Possible values are: `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, `MAC`.
      */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
@@ -213,7 +213,7 @@ export interface CryptoKeyState {
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is `ENCRYPT_DECRYPT`.
-     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
+     * Possible values are: `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, `MAC`.
      */
     purpose?: pulumi.Input<string>;
     /**
@@ -266,7 +266,7 @@ export interface CryptoKeyArgs {
      * [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
      * for possible inputs.
      * Default value is `ENCRYPT_DECRYPT`.
-     * Possible values are `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, and `MAC`.
+     * Possible values are: `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, `MAC`.
      */
     purpose?: pulumi.Input<string>;
     /**

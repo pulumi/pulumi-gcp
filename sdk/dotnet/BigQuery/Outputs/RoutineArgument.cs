@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// Defaults to FIXED_TYPE.
         /// Default value is `FIXED_TYPE`.
-        /// Possible values are `FIXED_TYPE` and `ANY_TYPE`.
+        /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
         /// </summary>
         public readonly string? ArgumentKind;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         public readonly string? DataType;
         /// <summary>
         /// Specifies whether the argument is input or output. Can be set for procedures only.
-        /// Possible values are `IN`, `OUT`, and `INOUT`.
+        /// Possible values are: `IN`, `OUT`, `INOUT`.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

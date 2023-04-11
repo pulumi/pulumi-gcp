@@ -71,7 +71,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The sandbox environment to host this Revision.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     @Import(name="executionEnvironment")
@@ -79,7 +79,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The sandbox environment to host this Revision.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     public Optional<Output<String>> executionEnvironment() {
@@ -327,7 +327,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param executionEnvironment The sandbox environment to host this Revision.
-         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param executionEnvironment The sandbox environment to host this Revision.
-         * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+         * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
          * 
          * @return builder
          * 

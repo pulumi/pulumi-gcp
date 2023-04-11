@@ -38,7 +38,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
      * Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
      * with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
      * attached.
-     * Possible values are `COLLOCATED`.
+     * Possible values are: `COLLOCATED`.
      * 
      */
     @Import(name="collocation")
@@ -49,7 +49,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
      * Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
      * with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
      * attached.
-     * Possible values are `COLLOCATED`.
+     * Possible values are: `COLLOCATED`.
      * 
      */
     public Optional<Output<String>> collocation() {
@@ -137,7 +137,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
          * Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
          * with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
          * attached.
-         * Possible values are `COLLOCATED`.
+         * Possible values are: `COLLOCATED`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
          * Specify `COLLOCATED` to enable collocation. Can only be specified with `vm_count`. If compute instances are created
          * with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
          * attached.
-         * Possible values are `COLLOCATED`.
+         * Possible values are: `COLLOCATED`.
          * 
          * @return builder
          * 

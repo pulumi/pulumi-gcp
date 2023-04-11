@@ -85,7 +85,7 @@ class RegionBackendServiceArgs:
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input['RegionBackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -116,12 +116,12 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, and `UNSPECIFIED`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
                and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
@@ -356,7 +356,7 @@ class RegionBackendServiceArgs:
         balancing cannot be used with the other(s). For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `INTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -475,7 +475,7 @@ class RegionBackendServiceArgs:
         The protocol this RegionBackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         types and may result in errors if used with the GA API.
-        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, and `UNSPECIFIED`.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         """
         return pulumi.get(self, "protocol")
 
@@ -502,7 +502,7 @@ class RegionBackendServiceArgs:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -615,7 +615,7 @@ class _RegionBackendServiceState:
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input['RegionBackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -646,13 +646,13 @@ class _RegionBackendServiceState:
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, and `UNSPECIFIED`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
                and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
@@ -918,7 +918,7 @@ class _RegionBackendServiceState:
         balancing cannot be used with the other(s). For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `INTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1037,7 +1037,7 @@ class _RegionBackendServiceState:
         The protocol this RegionBackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         types and may result in errors if used with the GA API.
-        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, and `UNSPECIFIED`.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1076,7 +1076,7 @@ class _RegionBackendServiceState:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -1209,7 +1209,7 @@ class RegionBackendService(pulumi.CustomResource):
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -1240,12 +1240,12 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, and `UNSPECIFIED`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
                and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
@@ -1447,7 +1447,7 @@ class RegionBackendService(pulumi.CustomResource):
                balancing cannot be used with the other(s). For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `INTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         :param pulumi.Input[str] locality_lb_policy: The load balancing algorithm used within the scope of the locality.
                The possible values are:
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service.
@@ -1478,13 +1478,13 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this RegionBackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, and `UNSPECIFIED`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
                and Internal HTTP(S) load balancing.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
@@ -1671,7 +1671,7 @@ class RegionBackendService(pulumi.CustomResource):
         balancing cannot be used with the other(s). For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `INTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, and `INTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1758,7 +1758,7 @@ class RegionBackendService(pulumi.CustomResource):
         The protocol this RegionBackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         types and may result in errors if used with the GA API.
-        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, and `UNSPECIFIED`.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1785,7 +1785,7 @@ class RegionBackendService(pulumi.CustomResource):
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, and `CLIENT_IP_NO_DESTINATION`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
         """
         return pulumi.get(self, "session_affinity")
 

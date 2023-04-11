@@ -14,53 +14,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/)
  *
  * ## Example Usage
- * ### Firebase Web App Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "tf-test",
- *     orgId: "123456789",
- *     labels: {
- *         firebase: "enabled",
- *     },
- * }, {
- *     provider: google_beta,
- * });
- * const defaultFirebase_projectProject = new gcp.firebase.Project("defaultFirebase/projectProject", {project: defaultProject.projectId}, {
- *     provider: google_beta,
- * });
- * const basicWebApp = new gcp.firebase.WebApp("basicWebApp", {
- *     project: defaultProject.projectId,
- *     displayName: "Display Name Basic",
- *     deletionPolicy: "DELETE",
- * }, {
- *     provider: google_beta,
- *     dependsOn: [defaultFirebase / projectProject],
- * });
- * const basicWebAppConfig = gcp.firebase.getWebAppConfigOutput({
- *     webAppId: basicWebApp.appId,
- * });
- * const defaultBucket = new gcp.storage.Bucket("defaultBucket", {location: "US"}, {
- *     provider: google_beta,
- * });
- * const defaultBucketObject = new gcp.storage.BucketObject("defaultBucketObject", {
- *     bucket: defaultBucket.name,
- *     content: pulumi.all([basicWebApp.appId, basicWebAppConfig, basicWebAppConfig, basicWebAppConfig["database_url"] || "", basicWebAppConfig["storage_bucket"] || "", basicWebAppConfig["messaging_sender_id"] || "", basicWebAppConfig["measurement_id"] || ""]).apply(([appId, basicWebAppConfig, basicWebAppConfig1, s, s1, s2, s3]) => JSON.stringify({
- *         appId: appId,
- *         apiKey: basicWebAppConfig.apiKey,
- *         authDomain: basicWebAppConfig1.authDomain,
- *         databaseURL: s,
- *         storageBucket: s1,
- *         messagingSenderId: s2,
- *         measurementId: s3,
- *     })),
- * }, {
- *     provider: google_beta,
- * });
- * ```
  *
  * ## Import
  *

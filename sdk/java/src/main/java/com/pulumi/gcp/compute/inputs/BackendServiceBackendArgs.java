@@ -25,7 +25,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
      * 
      */
     @Import(name="balancingMode")
@@ -39,7 +39,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
      * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
      * for an explanation of load balancing modes.
      * Default value is `UTILIZATION`.
-     * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+     * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
      * 
      */
     public Optional<Output<String>> balancingMode() {
@@ -326,7 +326,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class BackendServiceBackendArgs extends com.pulumi.resources.Resour
          * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
          * for an explanation of load balancing modes.
          * Default value is `UTILIZATION`.
-         * Possible values are `UTILIZATION`, `RATE`, and `CONNECTION`.
+         * Possible values are: `UTILIZATION`, `RATE`, `CONNECTION`.
          * 
          * @return builder
          * 

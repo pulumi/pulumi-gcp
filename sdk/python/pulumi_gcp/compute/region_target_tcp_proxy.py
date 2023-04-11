@@ -39,7 +39,7 @@ class RegionTargetTcpProxyArgs:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] region: The Region in which the created target TCP proxy should reside.
                If it is not provided, the provider region is used.
         """
@@ -132,7 +132,7 @@ class RegionTargetTcpProxyArgs:
         Specifies the type of proxy header to append before sending data to
         the backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -186,7 +186,7 @@ class _RegionTargetTcpProxyState:
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] region: The Region in which the created target TCP proxy should reside.
                If it is not provided, the provider region is used.
@@ -300,7 +300,7 @@ class _RegionTargetTcpProxyState:
         Specifies the type of proxy header to append before sending data to
         the backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 
@@ -410,7 +410,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] region: The Region in which the created target TCP proxy should reside.
                If it is not provided, the provider region is used.
         """
@@ -540,7 +540,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
-               Possible values are `NONE` and `PROXY_V1`.
+               Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] region: The Region in which the created target TCP proxy should reside.
                If it is not provided, the provider region is used.
@@ -625,7 +625,7 @@ class RegionTargetTcpProxy(pulumi.CustomResource):
         Specifies the type of proxy header to append before sending data to
         the backend.
         Default value is `NONE`.
-        Possible values are `NONE` and `PROXY_V1`.
+        Possible values are: `NONE`, `PROXY_V1`.
         """
         return pulumi.get(self, "proxy_header")
 

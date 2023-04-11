@@ -112,16 +112,14 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Apigee Organization associated with the Apigee instance,
-     * in the format `organizations/{{org_name}}`.
+     * The Apigee Organization name associated with the Apigee instance.
      * 
      */
     @Import(name="orgId")
     private @Nullable Output<String> orgId;
 
     /**
-     * @return The Apigee Organization associated with the Apigee instance,
-     * in the format `organizations/{{org_name}}`.
+     * @return The Apigee Organization name associated with the Apigee instance.
      * 
      */
     public Optional<Output<String>> orgId() {
@@ -316,8 +314,7 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId The Apigee Organization associated with the Apigee instance,
-         * in the format `organizations/{{org_name}}`.
+         * @param orgId The Apigee Organization name associated with the Apigee instance.
          * 
          * @return builder
          * 
@@ -328,8 +325,7 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orgId The Apigee Organization associated with the Apigee instance,
-         * in the format `organizations/{{org_name}}`.
+         * @param orgId The Apigee Organization name associated with the Apigee instance.
          * 
          * @return builder
          * 

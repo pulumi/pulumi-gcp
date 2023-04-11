@@ -147,7 +147,7 @@ export class Registry extends pulumi.CustomResource {
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      */
     public readonly logLevel!: pulumi.Output<string | undefined>;
     /**
@@ -243,7 +243,7 @@ export interface RegistryState {
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      */
     logLevel?: pulumi.Input<string>;
     /**
@@ -299,7 +299,7 @@ export interface RegistryArgs {
      * errors will be logged. LogLevel is inclusive; enabling INFO logging
      * will also enable ERROR logging.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      */
     logLevel?: pulumi.Input<string>;
     /**

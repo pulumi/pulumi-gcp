@@ -238,7 +238,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The type of the entry. Only used for Entries with types in the EntryType enum.
         /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-        /// Possible values are `FILESET`.
+        /// Possible values are: `FILESET`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The type of the entry. Only used for Entries with types in the EntryType enum.
         /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-        /// Possible values are `FILESET`.
+        /// Possible values are: `FILESET`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -489,7 +489,7 @@ namespace Pulumi.Gcp.DataCatalog
         /// <summary>
         /// The type of the entry. Only used for Entries with types in the EntryType enum.
         /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-        /// Possible values are `FILESET`.
+        /// Possible values are: `FILESET`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

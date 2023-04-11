@@ -137,7 +137,7 @@ class ConnectivityTestSourceArgs:
                destination is a global load balancer VIP.
         :param pulumi.Input[str] network: A Compute Engine network URI.
         :param pulumi.Input[str] network_type: Type of the network where the endpoint is located.
-               Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+               Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
         :param pulumi.Input[int] port: The IP protocol port of the endpoint. Only applicable when
                protocol is TCP or UDP.
         :param pulumi.Input[str] project_id: Project ID where the endpoint is located. The Project ID can be
@@ -206,7 +206,7 @@ class ConnectivityTestSourceArgs:
     def network_type(self) -> Optional[pulumi.Input[str]]:
         """
         Type of the network where the endpoint is located.
-        Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+        Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
         """
         return pulumi.get(self, "network_type")
 

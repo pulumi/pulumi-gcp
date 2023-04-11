@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class RegionBackendServiceSubsetting {
     /**
      * @return The algorithm used for subsetting.
-     * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+     * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
      * 
      */
     private String policy;
@@ -19,7 +19,7 @@ public final class RegionBackendServiceSubsetting {
     private RegionBackendServiceSubsetting() {}
     /**
      * @return The algorithm used for subsetting.
-     * Possible values are `CONSISTENT_HASH_SUBSETTING`.
+     * Possible values are: `CONSISTENT_HASH_SUBSETTING`.
      * 
      */
     public String policy() {

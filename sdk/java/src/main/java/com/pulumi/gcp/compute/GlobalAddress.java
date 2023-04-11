@@ -139,7 +139,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
      *   Default value is `EXTERNAL`.
-     *   Possible values are `EXTERNAL` and `INTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
     @Export(name="addressType", type=String.class, parameters={})
@@ -150,7 +150,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
      * * EXTERNAL indicates public/external single IP address.
      * * INTERNAL indicates internal IP ranges belonging to some network.
      *   Default value is `EXTERNAL`.
-     *   Possible values are `EXTERNAL` and `INTERNAL`.
+     *   Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
     public Output<Optional<String>> addressType() {
@@ -186,7 +186,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
     }
     /**
      * The IP Version that will be used by this address. The default value is `IPV4`.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      * 
      */
     @Export(name="ipVersion", type=String.class, parameters={})
@@ -194,7 +194,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The IP Version that will be used by this address. The default value is `IPV4`.
-     * Possible values are `IPV4` and `IPV6`.
+     * Possible values are: `IPV4`, `IPV6`.
      * 
      */
     public Output<Optional<String>> ipVersion() {

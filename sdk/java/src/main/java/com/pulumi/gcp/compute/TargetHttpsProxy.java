@@ -249,7 +249,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * specified, uses the QUIC policy with no user overrides, which is
      * equivalent to DISABLE.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+     * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      * 
      */
     @Export(name="quicOverride", type=String.class, parameters={})
@@ -262,7 +262,7 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * specified, uses the QUIC policy with no user overrides, which is
      * equivalent to DISABLE.
      * Default value is `NONE`.
-     * Possible values are `NONE`, `ENABLE`, and `DISABLE`.
+     * Possible values are: `NONE`, `ENABLE`, `DISABLE`.
      * 
      */
     public Output<Optional<String>> quicOverride() {

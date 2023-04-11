@@ -13,14 +13,14 @@ import javax.annotation.Nullable;
 public final class DeviceGatewayConfig {
     /**
      * @return Indicates whether the device is a gateway.
-     * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+     * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
      * 
      */
     private @Nullable String gatewayAuthMethod;
     /**
      * @return Indicates whether the device is a gateway.
      * Default value is `NON_GATEWAY`.
-     * Possible values are `GATEWAY` and `NON_GATEWAY`.
+     * Possible values are: `GATEWAY`, `NON_GATEWAY`.
      * 
      */
     private @Nullable String gatewayType;
@@ -40,7 +40,7 @@ public final class DeviceGatewayConfig {
     private DeviceGatewayConfig() {}
     /**
      * @return Indicates whether the device is a gateway.
-     * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+     * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
      * 
      */
     public Optional<String> gatewayAuthMethod() {
@@ -49,7 +49,7 @@ public final class DeviceGatewayConfig {
     /**
      * @return Indicates whether the device is a gateway.
      * Default value is `NON_GATEWAY`.
-     * Possible values are `GATEWAY` and `NON_GATEWAY`.
+     * Possible values are: `GATEWAY`, `NON_GATEWAY`.
      * 
      */
     public Optional<String> gatewayType() {

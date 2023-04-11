@@ -36,7 +36,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
 
     /**
      * The operating system type of the device.
-     * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+     * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
      * 
      */
     @Import(name="osType", required=true)
@@ -44,7 +44,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
 
     /**
      * @return The operating system type of the device.
-     * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+     * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
      * 
      */
     public Output<String> osType() {
@@ -103,7 +103,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
 
         /**
          * @param osType The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+         * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint
 
         /**
          * @param osType The operating system type of the device.
-         * Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+         * Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
          * 
          * @return builder
          * 

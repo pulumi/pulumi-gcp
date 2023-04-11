@@ -15,12 +15,12 @@ namespace Pulumi.Gcp.DataFusion.Outputs
     {
         /// <summary>
         /// The type of an accelator for a CDF instance.
-        /// Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+        /// Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
         /// </summary>
         public readonly string AcceleratorType;
         /// <summary>
         /// The type of an accelator for a CDF instance.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         public readonly string State;
 

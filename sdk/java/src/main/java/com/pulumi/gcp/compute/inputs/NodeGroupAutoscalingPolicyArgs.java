@@ -57,7 +57,7 @@ public final class NodeGroupAutoscalingPolicyArgs extends com.pulumi.resources.R
      * - ONLY_SCALE_OUT: Enables only scaling out.
      *   You must use this mode if your node groups are configured to
      *   restart their hosted VMs on minimal servers.
-     *   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+     *   Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
      * 
      */
     @Import(name="mode")
@@ -70,7 +70,7 @@ public final class NodeGroupAutoscalingPolicyArgs extends com.pulumi.resources.R
      * - ONLY_SCALE_OUT: Enables only scaling out.
      *   You must use this mode if your node groups are configured to
      *   restart their hosted VMs on minimal servers.
-     *   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+     *   Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -156,7 +156,7 @@ public final class NodeGroupAutoscalingPolicyArgs extends com.pulumi.resources.R
          * - ONLY_SCALE_OUT: Enables only scaling out.
          *   You must use this mode if your node groups are configured to
          *   restart their hosted VMs on minimal servers.
-         *   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+         *   Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class NodeGroupAutoscalingPolicyArgs extends com.pulumi.resources.R
          * - ONLY_SCALE_OUT: Enables only scaling out.
          *   You must use this mode if your node groups are configured to
          *   restart their hosted VMs on minimal servers.
-         *   Possible values are `OFF`, `ON`, and `ONLY_SCALE_OUT`.
+         *   Possible values are: `OFF`, `ON`, `ONLY_SCALE_OUT`.
          * 
          * @return builder
          * 

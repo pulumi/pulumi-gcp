@@ -81,7 +81,7 @@ type OrganizationSecurityPolicy struct {
 	// For organization security policies, the only supported type
 	// is "FIREWALL".
 	// Default value is `FIREWALL`.
-	// Possible values are `FIREWALL`.
+	// Possible values are: `FIREWALL`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -136,7 +136,7 @@ type organizationSecurityPolicyState struct {
 	// For organization security policies, the only supported type
 	// is "FIREWALL".
 	// Default value is `FIREWALL`.
-	// Possible values are `FIREWALL`.
+	// Possible values are: `FIREWALL`.
 	Type *string `pulumi:"type"`
 }
 
@@ -157,7 +157,7 @@ type OrganizationSecurityPolicyState struct {
 	// For organization security policies, the only supported type
 	// is "FIREWALL".
 	// Default value is `FIREWALL`.
-	// Possible values are `FIREWALL`.
+	// Possible values are: `FIREWALL`.
 	Type pulumi.StringPtrInput
 }
 
@@ -177,7 +177,7 @@ type organizationSecurityPolicyArgs struct {
 	// For organization security policies, the only supported type
 	// is "FIREWALL".
 	// Default value is `FIREWALL`.
-	// Possible values are `FIREWALL`.
+	// Possible values are: `FIREWALL`.
 	Type *string `pulumi:"type"`
 }
 
@@ -194,7 +194,7 @@ type OrganizationSecurityPolicyArgs struct {
 	// For organization security policies, the only supported type
 	// is "FIREWALL".
 	// Default value is `FIREWALL`.
-	// Possible values are `FIREWALL`.
+	// Possible values are: `FIREWALL`.
 	Type pulumi.StringPtrInput
 }
 
@@ -316,7 +316,7 @@ func (o OrganizationSecurityPolicyOutput) PolicyId() pulumi.StringOutput {
 // For organization security policies, the only supported type
 // is "FIREWALL".
 // Default value is `FIREWALL`.
-// Possible values are `FIREWALL`.
+// Possible values are: `FIREWALL`.
 func (o OrganizationSecurityPolicyOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

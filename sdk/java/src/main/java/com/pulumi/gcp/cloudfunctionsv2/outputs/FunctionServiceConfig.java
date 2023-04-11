@@ -48,7 +48,7 @@ public final class FunctionServiceConfig {
     /**
      * @return Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified.
      * Default value is `ALLOW_ALL`.
-     * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+     * Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
      * 
      */
     private @Nullable String ingressSettings;
@@ -111,7 +111,7 @@ public final class FunctionServiceConfig {
     private @Nullable String vpcConnector;
     /**
      * @return Available egress settings.
-     * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+     * Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
      * 
      */
     private @Nullable String vpcConnectorEgressSettings;
@@ -158,7 +158,7 @@ public final class FunctionServiceConfig {
     /**
      * @return Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified.
      * Default value is `ALLOW_ALL`.
-     * Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+     * Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
      * 
      */
     public Optional<String> ingressSettings() {
@@ -243,7 +243,7 @@ public final class FunctionServiceConfig {
     }
     /**
      * @return Available egress settings.
-     * Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+     * Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
      * 
      */
     public Optional<String> vpcConnectorEgressSettings() {

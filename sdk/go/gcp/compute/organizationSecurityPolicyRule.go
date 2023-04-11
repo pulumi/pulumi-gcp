@@ -96,7 +96,7 @@ type OrganizationSecurityPolicyRule struct {
 	// A description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule.
 	// If logging is enabled, logs will be exported to the
@@ -172,7 +172,7 @@ type organizationSecurityPolicyRuleState struct {
 	// A description of the rule.
 	Description *string `pulumi:"description"`
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule.
 	// If logging is enabled, logs will be exported to the
@@ -208,7 +208,7 @@ type OrganizationSecurityPolicyRuleState struct {
 	// A description of the rule.
 	Description pulumi.StringPtrInput
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether to enable logging for a particular rule.
 	// If logging is enabled, logs will be exported to the
@@ -248,7 +248,7 @@ type organizationSecurityPolicyRuleArgs struct {
 	// A description of the rule.
 	Description *string `pulumi:"description"`
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether to enable logging for a particular rule.
 	// If logging is enabled, logs will be exported to the
@@ -285,7 +285,7 @@ type OrganizationSecurityPolicyRuleArgs struct {
 	// A description of the rule.
 	Description pulumi.StringPtrInput
 	// The direction in which this rule applies. If unspecified an INGRESS rule is created.
-	// Possible values are `INGRESS` and `EGRESS`.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether to enable logging for a particular rule.
 	// If logging is enabled, logs will be exported to the
@@ -413,7 +413,7 @@ func (o OrganizationSecurityPolicyRuleOutput) Description() pulumi.StringPtrOutp
 }
 
 // The direction in which this rule applies. If unspecified an INGRESS rule is created.
-// Possible values are `INGRESS` and `EGRESS`.
+// Possible values are: `INGRESS`, `EGRESS`.
 func (o OrganizationSecurityPolicyRuleOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicyRule) pulumi.StringPtrOutput { return v.Direction }).(pulumi.StringPtrOutput)
 }

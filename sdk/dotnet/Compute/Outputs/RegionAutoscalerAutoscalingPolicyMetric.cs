@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Defines how target utilization value is expressed for a
         /// Stackdriver Monitoring metric.
-        /// Possible values are `GAUGE`, `DELTA_PER_SECOND`, and `DELTA_PER_MINUTE`.
+        /// Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
         /// </summary>
         public readonly string? Type;
 

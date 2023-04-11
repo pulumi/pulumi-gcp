@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Logging.Outputs
         /// <summary>
         /// The type of data that can be assigned to the label.
         /// Default value is `STRING`.
-        /// Possible values are `BOOL`, `INT64`, and `STRING`.
+        /// Possible values are: `BOOL`, `INT64`, `STRING`.
         /// </summary>
         public readonly string? ValueType;
 

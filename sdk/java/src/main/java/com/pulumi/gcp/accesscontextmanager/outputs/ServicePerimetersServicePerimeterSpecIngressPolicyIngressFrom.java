@@ -24,7 +24,7 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
      * @return Specifies the type of identities that are allowed access from outside the
      * perimeter. If left unspecified, then members of `identities` field will be
      * allowed access.
-     * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+     * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
      * 
      */
     private @Nullable String identityType;
@@ -49,7 +49,7 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
      * @return Specifies the type of identities that are allowed access from outside the
      * perimeter. If left unspecified, then members of `identities` field will be
      * allowed access.
-     * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+     * Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
      * 
      */
     public Optional<String> identityType() {

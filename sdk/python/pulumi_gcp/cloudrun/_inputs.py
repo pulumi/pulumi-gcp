@@ -221,7 +221,7 @@ class DomainMappingSpecArgs:
                The route must exist.
         :param pulumi.Input[str] certificate_mode: The mode of the certificate.
                Default value is `AUTOMATIC`.
-               Possible values are `NONE` and `AUTOMATIC`.
+               Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[bool] force_override: If set, the mapping will override any mapping set before this spec was set.
                It is recommended that the user leaves this empty to receive an error
                warning about a potential conflict and only set it once the respective UI
@@ -252,7 +252,7 @@ class DomainMappingSpecArgs:
         """
         The mode of the certificate.
         Default value is `AUTOMATIC`.
-        Possible values are `NONE` and `AUTOMATIC`.
+        Possible values are: `NONE`, `AUTOMATIC`.
         """
         return pulumi.get(self, "certificate_mode")
 
@@ -380,7 +380,7 @@ class DomainMappingStatusConditionArgs:
         :param pulumi.Input[str] status: (Output)
                Status of the condition, one of True, False, Unknown.
         :param pulumi.Input[str] type: Resource record type. Example: `AAAA`.
-               Possible values are `A`, `AAAA`, and `CNAME`.
+               Possible values are: `A`, `AAAA`, `CNAME`.
         """
         if message is not None:
             pulumi.set(__self__, "message", message)
@@ -435,7 +435,7 @@ class DomainMappingStatusConditionArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Resource record type. Example: `AAAA`.
-        Possible values are `A`, `AAAA`, and `CNAME`.
+        Possible values are: `A`, `AAAA`, `CNAME`.
         """
         return pulumi.get(self, "type")
 
@@ -456,7 +456,7 @@ class DomainMappingStatusResourceRecordArgs:
                Data for this record. Values vary by record type, as defined in RFC 1035
                (section 5) and RFC 1034 (section 3.6.1).
         :param pulumi.Input[str] type: Resource record type. Example: `AAAA`.
-               Possible values are `A`, `AAAA`, and `CNAME`.
+               Possible values are: `A`, `AAAA`, `CNAME`.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -496,7 +496,7 @@ class DomainMappingStatusResourceRecordArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Resource record type. Example: `AAAA`.
-        Possible values are `A`, `AAAA`, and `CNAME`.
+        Possible values are: `A`, `AAAA`, `CNAME`.
         """
         return pulumi.get(self, "type")
 

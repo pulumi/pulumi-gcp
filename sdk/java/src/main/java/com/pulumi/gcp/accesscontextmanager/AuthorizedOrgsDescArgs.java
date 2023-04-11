@@ -20,7 +20,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
      * The type of entities that need to use the authorization relationship during
      * evaluation, such as a device. Valid values are &#34;ASSET_TYPE_DEVICE&#34; and
      * &#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;.
-     * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+     * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      * 
      */
     @Import(name="assetType")
@@ -30,7 +30,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
      * @return The type of entities that need to use the authorization relationship during
      * evaluation, such as a device. Valid values are &#34;ASSET_TYPE_DEVICE&#34; and
      * &#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;.
-     * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+     * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
      * 
      */
     public Optional<Output<String>> assetType() {
@@ -52,7 +52,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
      * direction, organizations B and C must specify
      * &#34;AUTHORIZATION_DIRECTION_FROM&#34; as the authorization direction in their
      * &#34;AuthorizedOrgsDesc&#34; resource.
-     * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+     * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      * 
      */
     @Import(name="authorizationDirection")
@@ -73,7 +73,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
      * direction, organizations B and C must specify
      * &#34;AUTHORIZATION_DIRECTION_FROM&#34; as the authorization direction in their
      * &#34;AuthorizedOrgsDesc&#34; resource.
-     * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+     * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
      * 
      */
     public Optional<Output<String>> authorizationDirection() {
@@ -82,7 +82,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
 
     /**
      * A granular control type for authorization levels. Valid value is &#34;AUTHORIZATION_TYPE_TRUST&#34;.
-     * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+     * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      * 
      */
     @Import(name="authorizationType")
@@ -90,7 +90,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return A granular control type for authorization levels. Valid value is &#34;AUTHORIZATION_TYPE_TRUST&#34;.
-     * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+     * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
      * 
      */
     public Optional<Output<String>> authorizationType() {
@@ -187,7 +187,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
          * @param assetType The type of entities that need to use the authorization relationship during
          * evaluation, such as a device. Valid values are &#34;ASSET_TYPE_DEVICE&#34; and
          * &#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;.
-         * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+         * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
          * @param assetType The type of entities that need to use the authorization relationship during
          * evaluation, such as a device. Valid values are &#34;ASSET_TYPE_DEVICE&#34; and
          * &#34;ASSET_TYPE_CREDENTIAL_STRENGTH&#34;.
-         * Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+         * Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
          * direction, organizations B and C must specify
          * &#34;AUTHORIZATION_DIRECTION_FROM&#34; as the authorization direction in their
          * &#34;AuthorizedOrgsDesc&#34; resource.
-         * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+         * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
          * direction, organizations B and C must specify
          * &#34;AUTHORIZATION_DIRECTION_FROM&#34; as the authorization direction in their
          * &#34;AuthorizedOrgsDesc&#34; resource.
-         * Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+         * Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param authorizationType A granular control type for authorization levels. Valid value is &#34;AUTHORIZATION_TYPE_TRUST&#34;.
-         * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+         * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param authorizationType A granular control type for authorization levels. Valid value is &#34;AUTHORIZATION_TYPE_TRUST&#34;.
-         * Possible values are `AUTHORIZATION_TYPE_TRUST`.
+         * Possible values are: `AUTHORIZATION_TYPE_TRUST`.
          * 
          * @return builder
          * 

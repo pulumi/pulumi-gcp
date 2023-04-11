@@ -191,7 +191,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
 
     /**
      * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
     public readonly checkerType!: pulumi.Output<string>;
     /**
@@ -308,7 +308,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
 export interface UptimeCheckConfigState {
     /**
      * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
     checkerType?: pulumi.Input<string>;
     /**
@@ -373,7 +373,7 @@ export interface UptimeCheckConfigState {
 export interface UptimeCheckConfigArgs {
     /**
      * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      */
     checkerType?: pulumi.Input<string>;
     /**

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// <summary>
         /// Address of the remote repository.
         /// Default value is `NPMJS`.
-        /// Possible values are `NPMJS`.
+        /// Possible values are: `NPMJS`.
         /// </summary>
         public readonly string? PublicRepository;
 

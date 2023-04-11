@@ -1989,7 +1989,7 @@ type DefaultObjectAccessControlProjectTeam struct {
 	// The project team associated with the entity
 	ProjectNumber *string `pulumi:"projectNumber"`
 	// The team.
-	// Possible values are `editors`, `owners`, and `viewers`.
+	// Possible values are: `editors`, `owners`, `viewers`.
 	Team *string `pulumi:"team"`
 }
 
@@ -2008,7 +2008,7 @@ type DefaultObjectAccessControlProjectTeamArgs struct {
 	// The project team associated with the entity
 	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
 	// The team.
-	// Possible values are `editors`, `owners`, and `viewers`.
+	// Possible values are: `editors`, `owners`, `viewers`.
 	Team pulumi.StringPtrInput `pulumi:"team"`
 }
 
@@ -2069,7 +2069,7 @@ func (o DefaultObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.Stri
 }
 
 // The team.
-// Possible values are `editors`, `owners`, and `viewers`.
+// Possible values are: `editors`, `owners`, `viewers`.
 func (o DefaultObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DefaultObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
@@ -2098,7 +2098,7 @@ type ObjectAccessControlProjectTeam struct {
 	// The project team associated with the entity
 	ProjectNumber *string `pulumi:"projectNumber"`
 	// The team.
-	// Possible values are `editors`, `owners`, and `viewers`.
+	// Possible values are: `editors`, `owners`, `viewers`.
 	Team *string `pulumi:"team"`
 }
 
@@ -2117,7 +2117,7 @@ type ObjectAccessControlProjectTeamArgs struct {
 	// The project team associated with the entity
 	ProjectNumber pulumi.StringPtrInput `pulumi:"projectNumber"`
 	// The team.
-	// Possible values are `editors`, `owners`, and `viewers`.
+	// Possible values are: `editors`, `owners`, `viewers`.
 	Team pulumi.StringPtrInput `pulumi:"team"`
 }
 
@@ -2178,7 +2178,7 @@ func (o ObjectAccessControlProjectTeamOutput) ProjectNumber() pulumi.StringPtrOu
 }
 
 // The team.
-// Possible values are `editors`, `owners`, and `viewers`.
+// Possible values are: `editors`, `owners`, `viewers`.
 func (o ObjectAccessControlProjectTeamOutput) Team() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectAccessControlProjectTeam) *string { return v.Team }).(pulumi.StringPtrOutput)
 }
@@ -4702,6 +4702,10 @@ type TransferJobTransferSpecObjectConditions struct {
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
 	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	IncludePrefixes []string `pulumi:"includePrefixes"`
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedBefore *string `pulumi:"lastModifiedBefore"`
+	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedSince *string `pulumi:"lastModifiedSince"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaxTimeElapsedSinceLastModification *string `pulumi:"maxTimeElapsedSinceLastModification"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -4724,6 +4728,10 @@ type TransferJobTransferSpecObjectConditionsArgs struct {
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
 	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
 	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedBefore pulumi.StringPtrInput `pulumi:"lastModifiedBefore"`
+	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedSince pulumi.StringPtrInput `pulumi:"lastModifiedSince"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"maxTimeElapsedSinceLastModification"`
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -4817,6 +4825,16 @@ func (o TransferJobTransferSpecObjectConditionsOutput) IncludePrefixes() pulumi.
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
 
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobTransferSpecObjectConditionsOutput) LastModifiedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.LastModifiedBefore }).(pulumi.StringPtrOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobTransferSpecObjectConditionsOutput) LastModifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.LastModifiedSince }).(pulumi.StringPtrOutput)
+}
+
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o TransferJobTransferSpecObjectConditionsOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecObjectConditions) *string { return v.MaxTimeElapsedSinceLastModification }).(pulumi.StringPtrOutput)
@@ -4869,6 +4887,26 @@ func (o TransferJobTransferSpecObjectConditionsPtrOutput) IncludePrefixes() pulu
 		}
 		return v.IncludePrefixes
 	}).(pulumi.StringArrayOutput)
+}
+
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobTransferSpecObjectConditionsPtrOutput) LastModifiedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedBefore
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobTransferSpecObjectConditionsPtrOutput) LastModifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedSince
+	}).(pulumi.StringPtrOutput)
 }
 
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".

@@ -21,7 +21,7 @@ public final class ReservationShareSettings {
     private @Nullable List<ReservationShareSettingsProjectMap> projectMaps;
     /**
      * @return Type of sharing for this shared-reservation
-     * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+     * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
      * 
      */
     private @Nullable String shareType;
@@ -37,7 +37,7 @@ public final class ReservationShareSettings {
     }
     /**
      * @return Type of sharing for this shared-reservation
-     * Possible values are `LOCAL` and `SPECIFIC_PROJECTS`.
+     * Possible values are: `LOCAL`, `SPECIFIC_PROJECTS`.
      * 
      */
     public Optional<String> shareType() {

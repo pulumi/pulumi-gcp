@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// <summary>
         /// Cache modes allow users to control the behaviour of the cache, what content it should cache automatically, whether to respect origin headers, or whether to unconditionally cache all responses.
         /// For all cache modes, Cache-Control headers will be passed to the client. Use clientTtl to override what is sent to the client.
-        /// Possible values are `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `BYPASS_CACHE`.
+        /// Possible values are: `CACHE_ALL_STATIC`, `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `BYPASS_CACHE`.
         /// </summary>
         public readonly string? CacheMode;
         /// <summary>
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         /// Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
         /// You must also set a signedRequestKeyset to enable signed requests.
         /// When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
-        /// Possible values are `DISABLED`, `REQUIRE_SIGNATURES`, and `REQUIRE_TOKENS`.
+        /// Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
         /// </summary>
         public readonly string? SignedRequestMode;
         /// <summary>

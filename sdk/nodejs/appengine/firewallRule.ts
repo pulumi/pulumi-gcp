@@ -83,7 +83,7 @@ export class FirewallRule extends pulumi.CustomResource {
 
     /**
      * The action to take if this rule matches.
-     * Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+     * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -151,7 +151,7 @@ export class FirewallRule extends pulumi.CustomResource {
 export interface FirewallRuleState {
     /**
      * The action to take if this rule matches.
-     * Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+     * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface FirewallRuleState {
 export interface FirewallRuleArgs {
     /**
      * The action to take if this rule matches.
-     * Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+     * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      */
     action: pulumi.Input<string>;
     /**

@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.Compute
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         /// cannot enable direct path.
-        /// Possible values are `EXTERNAL` and `INTERNAL`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Output("ipv6AccessType")]
         public Output<string?> Ipv6AccessType { get; private set; } = null!;
@@ -334,7 +334,7 @@ namespace Pulumi.Gcp.Compute
         /// An `ACTIVE` subnetwork is one that is currently being used.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
         /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-        /// Possible values are `ACTIVE` and `BACKUP`.
+        /// Possible values are: `ACTIVE`, `BACKUP`.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
@@ -358,7 +358,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
-        /// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         /// </summary>
         [Output("stackType")]
         public Output<string> StackType { get; private set; } = null!;
@@ -430,7 +430,7 @@ namespace Pulumi.Gcp.Compute
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         /// cannot enable direct path.
-        /// Possible values are `EXTERNAL` and `INTERNAL`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.Gcp.Compute
         /// An `ACTIVE` subnetwork is one that is currently being used.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
         /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-        /// Possible values are `ACTIVE` and `BACKUP`.
+        /// Possible values are: `ACTIVE`, `BACKUP`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -529,7 +529,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
-        /// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
@@ -588,7 +588,7 @@ namespace Pulumi.Gcp.Compute
         /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
         /// or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
         /// cannot enable direct path.
-        /// Possible values are `EXTERNAL` and `INTERNAL`.
+        /// Possible values are: `EXTERNAL`, `INTERNAL`.
         /// </summary>
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
@@ -669,7 +669,7 @@ namespace Pulumi.Gcp.Compute
         /// An `ACTIVE` subnetwork is one that is currently being used.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
         /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-        /// Possible values are `ACTIVE` and `BACKUP`.
+        /// Possible values are: `ACTIVE`, `BACKUP`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -699,7 +699,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
-        /// Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }

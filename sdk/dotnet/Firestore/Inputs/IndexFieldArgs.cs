@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Firestore.Inputs
         /// <summary>
         /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
         /// be specified.
-        /// Possible values are `CONTAINS`.
+        /// Possible values are: `CONTAINS`.
         /// </summary>
         [Input("arrayConfig")]
         public Input<string>? ArrayConfig { get; set; }
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Firestore.Inputs
         /// <summary>
         /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
         /// Only one of `order` and `arrayConfig` can be specified.
-        /// Possible values are `ASCENDING` and `DESCENDING`.
+        /// Possible values are: `ASCENDING`, `DESCENDING`.
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

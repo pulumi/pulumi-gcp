@@ -148,7 +148,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
      * Default value is `AFTER_CLASSIC_FIREWALL`.
-     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
     public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string | undefined>;
     /**
@@ -162,7 +162,7 @@ export class Network extends pulumi.CustomResource {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network's cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
-     * Possible values are `REGIONAL` and `GLOBAL`.
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      */
     public readonly routingMode!: pulumi.Output<string>;
     /**
@@ -276,7 +276,7 @@ export interface NetworkState {
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
      * Default value is `AFTER_CLASSIC_FIREWALL`.
-     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
     networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
     /**
@@ -290,7 +290,7 @@ export interface NetworkState {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network's cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
-     * Possible values are `REGIONAL` and `GLOBAL`.
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      */
     routingMode?: pulumi.Input<string>;
     /**
@@ -355,7 +355,7 @@ export interface NetworkArgs {
     /**
      * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
      * Default value is `AFTER_CLASSIC_FIREWALL`.
-     * Possible values are `BEFORE_CLASSIC_FIREWALL` and `AFTER_CLASSIC_FIREWALL`.
+     * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
     networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
     /**
@@ -369,7 +369,7 @@ export interface NetworkArgs {
      * of this network in the same region as the router. If set to `GLOBAL`,
      * this network's cloud routers will advertise routes with all
      * subnetworks of this network, across regions.
-     * Possible values are `REGIONAL` and `GLOBAL`.
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      */
     routingMode?: pulumi.Input<string>;
 }

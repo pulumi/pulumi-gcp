@@ -29,7 +29,7 @@ class SourceRepresentationInstanceArgs:
         """
         The set of arguments for constructing a SourceRepresentationInstance resource.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
-               Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+               Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
@@ -74,7 +74,7 @@ class SourceRepresentationInstanceArgs:
     def database_version(self) -> pulumi.Input[str]:
         """
         The MySQL version running on your source database server.
-        Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         """
         return pulumi.get(self, "database_version")
 
@@ -240,7 +240,7 @@ class _SourceRepresentationInstanceState:
         :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
-               Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+               Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
@@ -320,7 +320,7 @@ class _SourceRepresentationInstanceState:
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
         The MySQL version running on your source database server.
-        Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         """
         return pulumi.get(self, "database_version")
 
@@ -487,7 +487,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
-               Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+               Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
@@ -628,7 +628,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
-               Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+               Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
@@ -689,7 +689,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     def database_version(self) -> pulumi.Output[str]:
         """
         The MySQL version running on your source database server.
-        Possible values are `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
+        Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         """
         return pulumi.get(self, "database_version")
 

@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// <summary>
         /// Address of the remote repository.
         /// Default value is `PYPI`.
-        /// Possible values are `PYPI`.
+        /// Possible values are: `PYPI`.
         /// </summary>
         public readonly string? PublicRepository;
 

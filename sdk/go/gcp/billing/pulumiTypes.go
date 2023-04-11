@@ -962,7 +962,7 @@ type BudgetBudgetFilter struct {
 	// canonical start. Grammatically, "the start of the current CalendarPeriod".
 	// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
 	// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
-	// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+	// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
 	// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
 	// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
@@ -972,7 +972,7 @@ type BudgetBudgetFilter struct {
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
 	// Default value is `INCLUDE_ALL_CREDITS`.
-	// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+	// Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
 	CreditTypesTreatment *string `pulumi:"creditTypesTreatment"`
 	// Specifies to track usage from any start date (required) to any end date (optional).
 	// This time period is static, it does not recur.
@@ -1021,7 +1021,7 @@ type BudgetBudgetFilterArgs struct {
 	// canonical start. Grammatically, "the start of the current CalendarPeriod".
 	// All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
 	// Exactly one of `calendarPeriod`, `customPeriod` must be provided.
-	// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+	// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
 	CalendarPeriod pulumi.StringPtrInput `pulumi:"calendarPeriod"`
 	// Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
 	// this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
@@ -1031,7 +1031,7 @@ type BudgetBudgetFilterArgs struct {
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
 	// Default value is `INCLUDE_ALL_CREDITS`.
-	// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+	// Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
 	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
 	// Specifies to track usage from any start date (required) to any end date (optional).
 	// This time period is static, it does not recur.
@@ -1145,7 +1145,7 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx c
 // canonical start. Grammatically, "the start of the current CalendarPeriod".
 // All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
 // Exactly one of `calendarPeriod`, `customPeriod` must be provided.
-// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
 func (o BudgetBudgetFilterOutput) CalendarPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CalendarPeriod }).(pulumi.StringPtrOutput)
 }
@@ -1161,7 +1161,7 @@ func (o BudgetBudgetFilterOutput) CreditTypes() pulumi.StringArrayOutput {
 // Specifies how credits should be treated when determining spend
 // for threshold calculations.
 // Default value is `INCLUDE_ALL_CREDITS`.
-// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+// Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
 func (o BudgetBudgetFilterOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
 }
@@ -1238,7 +1238,7 @@ func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
 // canonical start. Grammatically, "the start of the current CalendarPeriod".
 // All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
 // Exactly one of `calendarPeriod`, `customPeriod` must be provided.
-// Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+// Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
 func (o BudgetBudgetFilterPtrOutput) CalendarPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) *string {
 		if v == nil {
@@ -1264,7 +1264,7 @@ func (o BudgetBudgetFilterPtrOutput) CreditTypes() pulumi.StringArrayOutput {
 // Specifies how credits should be treated when determining spend
 // for threshold calculations.
 // Default value is `INCLUDE_ALL_CREDITS`.
-// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+// Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
 func (o BudgetBudgetFilterPtrOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) *string {
 		if v == nil {
@@ -1865,7 +1865,7 @@ type BudgetThresholdRule struct {
 	// The type of basis used to determine if spend has passed
 	// the threshold.
 	// Default value is `CURRENT_SPEND`.
-	// Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+	// Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
 	SpendBasis *string `pulumi:"spendBasis"`
 	// Send an alert when this threshold is exceeded. This is a
 	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
@@ -1887,7 +1887,7 @@ type BudgetThresholdRuleArgs struct {
 	// The type of basis used to determine if spend has passed
 	// the threshold.
 	// Default value is `CURRENT_SPEND`.
-	// Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+	// Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
 	SpendBasis pulumi.StringPtrInput `pulumi:"spendBasis"`
 	// Send an alert when this threshold is exceeded. This is a
 	// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
@@ -1948,7 +1948,7 @@ func (o BudgetThresholdRuleOutput) ToBudgetThresholdRuleOutputWithContext(ctx co
 // The type of basis used to determine if spend has passed
 // the threshold.
 // Default value is `CURRENT_SPEND`.
-// Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+// Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
 func (o BudgetThresholdRuleOutput) SpendBasis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetThresholdRule) *string { return v.SpendBasis }).(pulumi.StringPtrOutput)
 }

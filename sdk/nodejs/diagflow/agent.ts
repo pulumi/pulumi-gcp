@@ -85,7 +85,7 @@ export class Agent extends pulumi.CustomResource {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     * Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+     * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
     public readonly apiVersion!: pulumi.Output<string>;
     /**
@@ -130,7 +130,7 @@ export class Agent extends pulumi.CustomResource {
      * syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
      * using @sys.any or very large developer entities.
-     * Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+     * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
     public readonly matchMode!: pulumi.Output<string>;
     /**
@@ -224,7 +224,7 @@ export interface AgentState {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     * Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+     * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
     apiVersion?: pulumi.Input<string>;
     /**
@@ -269,7 +269,7 @@ export interface AgentState {
      * syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
      * using @sys.any or very large developer entities.
-     * Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+     * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
     matchMode?: pulumi.Input<string>;
     /**
@@ -308,7 +308,7 @@ export interface AgentArgs {
      * * API_VERSION_V1: Legacy V1 API.
      * * API_VERSION_V2: V2 API.
      * * API_VERSION_V2_BETA_1: V2beta1 API.
-     * Possible values are `API_VERSION_V1`, `API_VERSION_V2`, and `API_VERSION_V2_BETA_1`.
+     * Possible values are: `API_VERSION_V1`, `API_VERSION_V2`, `API_VERSION_V2_BETA_1`.
      */
     apiVersion?: pulumi.Input<string>;
     /**
@@ -348,7 +348,7 @@ export interface AgentArgs {
      * syntax and composite entities.
      * * MATCH_MODE_ML_ONLY: Can be used for agents with a large number of examples in intents, especially the ones
      * using @sys.any or very large developer entities.
-     * Possible values are `MATCH_MODE_HYBRID` and `MATCH_MODE_ML_ONLY`.
+     * Possible values are: `MATCH_MODE_HYBRID`, `MATCH_MODE_ML_ONLY`.
      */
     matchMode?: pulumi.Input<string>;
     /**

@@ -107,7 +107,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        /// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+        /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        /// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+        /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.Diagflow
         /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
         /// types can contain references to other entity types (with or without aliases).
         /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        /// Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+        /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

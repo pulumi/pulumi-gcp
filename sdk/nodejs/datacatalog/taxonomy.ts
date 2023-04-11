@@ -66,7 +66,7 @@ export class Taxonomy extends pulumi.CustomResource {
     /**
      * A list of policy types that are activated for this taxonomy. If not set,
      * defaults to an empty list.
-     * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+     * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      */
     public readonly activatedPolicyTypes!: pulumi.Output<string[] | undefined>;
     /**
@@ -140,7 +140,7 @@ export interface TaxonomyState {
     /**
      * A list of policy types that are activated for this taxonomy. If not set,
      * defaults to an empty list.
-     * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+     * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      */
     activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -179,7 +179,7 @@ export interface TaxonomyArgs {
     /**
      * A list of policy types that are activated for this taxonomy. If not set,
      * defaults to an empty list.
-     * Each value may be one of `POLICY_TYPE_UNSPECIFIED` and `FINE_GRAINED_ACCESS_CONTROL`.
+     * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      */
     activatedPolicyTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

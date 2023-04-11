@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
         /// <summary>
         /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-        /// Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+        /// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
         /// </summary>
         [Input("exclusionType")]
         public Input<string>? ExclusionType { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
         /// specified by the rule.
         /// Default value is `VERY_LIKELY`.
-        /// Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+        /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
         /// </summary>
         [Input("likelihood")]
         public Input<string>? Likelihood { get; set; }

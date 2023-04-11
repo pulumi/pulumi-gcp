@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Inputs
         /// <summary>
         /// Describes the retry policy in case of function's execution failure.
         /// Retried execution is charged as any other execution.
-        /// Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+        /// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
         /// </summary>
         [Input("retryPolicy")]
         public Input<string>? RetryPolicy { get; set; }

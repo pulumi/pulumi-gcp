@@ -133,7 +133,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
      * cannot enable direct path.
-     * Possible values are `EXTERNAL` and `INTERNAL`.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
     @Import(name="ipv6AccessType")
@@ -143,7 +143,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * @return The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
      * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
      * cannot enable direct path.
-     * Possible values are `EXTERNAL` and `INTERNAL`.
+     * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
     public Optional<Output<String>> ipv6AccessType() {
@@ -323,7 +323,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * An `ACTIVE` subnetwork is one that is currently being used.
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
      * Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-     * Possible values are `ACTIVE` and `BACKUP`.
+     * Possible values are: `ACTIVE`, `BACKUP`.
      * 
      */
     @Import(name="role")
@@ -335,7 +335,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
      * An `ACTIVE` subnetwork is one that is currently being used.
      * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
      * Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-     * Possible values are `ACTIVE` and `BACKUP`.
+     * Possible values are: `ACTIVE`, `BACKUP`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -383,7 +383,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
-     * Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
      * 
      */
     @Import(name="stackType")
@@ -392,7 +392,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
-     * Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
      * 
      */
     public Optional<Output<String>> stackType() {
@@ -592,7 +592,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * @param ipv6AccessType The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
          * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
          * cannot enable direct path.
-         * Possible values are `EXTERNAL` and `INTERNAL`.
+         * Possible values are: `EXTERNAL`, `INTERNAL`.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * @param ipv6AccessType The access type of IPv6 address this subnet holds. It&#39;s immutable and can only be specified during creation
          * or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet
          * cannot enable direct path.
-         * Possible values are `EXTERNAL` and `INTERNAL`.
+         * Possible values are: `EXTERNAL`, `INTERNAL`.
          * 
          * @return builder
          * 
@@ -842,7 +842,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * An `ACTIVE` subnetwork is one that is currently being used.
          * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
          * Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-         * Possible values are `ACTIVE` and `BACKUP`.
+         * Possible values are: `ACTIVE`, `BACKUP`.
          * 
          * @return builder
          * 
@@ -858,7 +858,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          * An `ACTIVE` subnetwork is one that is currently being used.
          * A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
          * Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
-         * Possible values are `ACTIVE` and `BACKUP`.
+         * Possible values are: `ACTIVE`, `BACKUP`.
          * 
          * @return builder
          * 
@@ -934,7 +934,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param stackType The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
          * If not specified IPV4_ONLY will be used.
-         * Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
          * 
          * @return builder
          * 
@@ -947,7 +947,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param stackType The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
          * If not specified IPV4_ONLY will be used.
-         * Possible values are `IPV4_ONLY` and `IPV4_IPV6`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
          * 
          * @return builder
          * 

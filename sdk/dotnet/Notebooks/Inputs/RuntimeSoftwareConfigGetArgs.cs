@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Notebooks.Inputs
 
         /// <summary>
         /// Behavior for the post startup script.
-        /// Possible values are `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, and `DOWNLOAD_AND_RUN_EVERY_START`.
+        /// Possible values are: `POST_STARTUP_SCRIPT_BEHAVIOR_UNSPECIFIED`, `RUN_EVERY_START`, `DOWNLOAD_AND_RUN_EVERY_START`.
         /// </summary>
         [Input("postStartupScriptBehavior")]
         public Input<string>? PostStartupScriptBehavior { get; set; }

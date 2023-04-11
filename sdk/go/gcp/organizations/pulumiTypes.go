@@ -25,7 +25,7 @@ type AccessApprovalSettingsEnrolledService struct {
 	CloudProduct string `pulumi:"cloudProduct"`
 	// The enrollment level of the service.
 	// Default value is `BLOCK_ALL`.
-	// Possible values are `BLOCK_ALL`.
+	// Possible values are: `BLOCK_ALL`.
 	EnrollmentLevel *string `pulumi:"enrollmentLevel"`
 }
 
@@ -55,7 +55,7 @@ type AccessApprovalSettingsEnrolledServiceArgs struct {
 	CloudProduct pulumi.StringInput `pulumi:"cloudProduct"`
 	// The enrollment level of the service.
 	// Default value is `BLOCK_ALL`.
-	// Possible values are `BLOCK_ALL`.
+	// Possible values are: `BLOCK_ALL`.
 	EnrollmentLevel pulumi.StringPtrInput `pulumi:"enrollmentLevel"`
 }
 
@@ -127,7 +127,7 @@ func (o AccessApprovalSettingsEnrolledServiceOutput) CloudProduct() pulumi.Strin
 
 // The enrollment level of the service.
 // Default value is `BLOCK_ALL`.
-// Possible values are `BLOCK_ALL`.
+// Possible values are: `BLOCK_ALL`.
 func (o AccessApprovalSettingsEnrolledServiceOutput) EnrollmentLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) *string { return v.EnrollmentLevel }).(pulumi.StringPtrOutput)
 }

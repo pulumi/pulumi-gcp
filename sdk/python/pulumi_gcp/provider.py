@@ -110,6 +110,7 @@ class ProviderArgs:
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -343,6 +344,8 @@ class ProviderArgs:
             pulumi.set(__self__, "network_connectivity_custom_endpoint", network_connectivity_custom_endpoint)
         if network_management_custom_endpoint is not None:
             pulumi.set(__self__, "network_management_custom_endpoint", network_management_custom_endpoint)
+        if network_security_custom_endpoint is not None:
+            pulumi.set(__self__, "network_security_custom_endpoint", network_security_custom_endpoint)
         if network_services_custom_endpoint is not None:
             pulumi.set(__self__, "network_services_custom_endpoint", network_services_custom_endpoint)
         if notebooks_custom_endpoint is not None:
@@ -1286,6 +1289,15 @@ class ProviderArgs:
         pulumi.set(self, "network_management_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="networkSecurityCustomEndpoint")
+    def network_security_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_security_custom_endpoint")
+
+    @network_security_custom_endpoint.setter
+    def network_security_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_security_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="networkServicesCustomEndpoint")
     def network_services_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "network_services_custom_endpoint")
@@ -1746,6 +1758,7 @@ class Provider(pulumi.ProviderResource):
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1918,6 +1931,7 @@ class Provider(pulumi.ProviderResource):
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_connectivity_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2062,6 +2076,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["monitoring_custom_endpoint"] = monitoring_custom_endpoint
             __props__.__dict__["network_connectivity_custom_endpoint"] = network_connectivity_custom_endpoint
             __props__.__dict__["network_management_custom_endpoint"] = network_management_custom_endpoint
+            __props__.__dict__["network_security_custom_endpoint"] = network_security_custom_endpoint
             __props__.__dict__["network_services_custom_endpoint"] = network_services_custom_endpoint
             __props__.__dict__["notebooks_custom_endpoint"] = notebooks_custom_endpoint
             __props__.__dict__["org_policy_custom_endpoint"] = org_policy_custom_endpoint
@@ -2573,6 +2588,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="networkManagementCustomEndpoint")
     def network_management_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "network_management_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="networkSecurityCustomEndpoint")
+    def network_security_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "network_security_custom_endpoint")
 
     @property
     @pulumi.getter(name="networkServicesCustomEndpoint")

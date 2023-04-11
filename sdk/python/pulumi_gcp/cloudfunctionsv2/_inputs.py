@@ -400,7 +400,7 @@ class FunctionEventTriggerArgs:
                as the transport topic for the event delivery.
         :param pulumi.Input[str] retry_policy: Describes the retry policy in case of function's execution failure.
                Retried execution is charged as any other execution.
-               Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+               Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
         :param pulumi.Input[str] service_account_email: The email of the service account for this function.
         :param pulumi.Input[str] trigger: (Output)
                Output only. The resource name of the Eventarc trigger.
@@ -468,7 +468,7 @@ class FunctionEventTriggerArgs:
         """
         Describes the retry policy in case of function's execution failure.
         Retried execution is charged as any other execution.
-        Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+        Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
         """
         return pulumi.get(self, "retry_policy")
 
@@ -693,7 +693,7 @@ class FunctionServiceConfigArgs:
                URIs of the Service deployed
         :param pulumi.Input[str] ingress_settings: Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
                Default value is `ALLOW_ALL`.
-               Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+               Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
         :param pulumi.Input[int] max_instance_count: The limit on the maximum number of function instances that may coexist at a
                given time.
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
@@ -712,7 +712,7 @@ class FunctionServiceConfigArgs:
                URI of the Service deployed.
         :param pulumi.Input[str] vpc_connector: The Serverless VPC Access connector that this cloud function can connect to.
         :param pulumi.Input[str] vpc_connector_egress_settings: Available egress settings.
-               Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+               Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
         """
         if all_traffic_on_latest_revision is not None:
             pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
@@ -818,7 +818,7 @@ class FunctionServiceConfigArgs:
         """
         Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
         Default value is `ALLOW_ALL`.
-        Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+        Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
         """
         return pulumi.get(self, "ingress_settings")
 
@@ -958,7 +958,7 @@ class FunctionServiceConfigArgs:
     def vpc_connector_egress_settings(self) -> Optional[pulumi.Input[str]]:
         """
         Available egress settings.
-        Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+        Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
         """
         return pulumi.get(self, "vpc_connector_egress_settings")
 

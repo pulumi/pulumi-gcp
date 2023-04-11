@@ -10,6 +10,143 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type RepositoryDockerConfig struct {
+	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+	ImmutableTags *bool `pulumi:"immutableTags"`
+}
+
+// RepositoryDockerConfigInput is an input type that accepts RepositoryDockerConfigArgs and RepositoryDockerConfigOutput values.
+// You can construct a concrete instance of `RepositoryDockerConfigInput` via:
+//
+//	RepositoryDockerConfigArgs{...}
+type RepositoryDockerConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryDockerConfigOutput() RepositoryDockerConfigOutput
+	ToRepositoryDockerConfigOutputWithContext(context.Context) RepositoryDockerConfigOutput
+}
+
+type RepositoryDockerConfigArgs struct {
+	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+	ImmutableTags pulumi.BoolPtrInput `pulumi:"immutableTags"`
+}
+
+func (RepositoryDockerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryDockerConfig)(nil)).Elem()
+}
+
+func (i RepositoryDockerConfigArgs) ToRepositoryDockerConfigOutput() RepositoryDockerConfigOutput {
+	return i.ToRepositoryDockerConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryDockerConfigArgs) ToRepositoryDockerConfigOutputWithContext(ctx context.Context) RepositoryDockerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryDockerConfigOutput)
+}
+
+func (i RepositoryDockerConfigArgs) ToRepositoryDockerConfigPtrOutput() RepositoryDockerConfigPtrOutput {
+	return i.ToRepositoryDockerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryDockerConfigArgs) ToRepositoryDockerConfigPtrOutputWithContext(ctx context.Context) RepositoryDockerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryDockerConfigOutput).ToRepositoryDockerConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryDockerConfigPtrInput is an input type that accepts RepositoryDockerConfigArgs, RepositoryDockerConfigPtr and RepositoryDockerConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryDockerConfigPtrInput` via:
+//
+//	        RepositoryDockerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryDockerConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryDockerConfigPtrOutput() RepositoryDockerConfigPtrOutput
+	ToRepositoryDockerConfigPtrOutputWithContext(context.Context) RepositoryDockerConfigPtrOutput
+}
+
+type repositoryDockerConfigPtrType RepositoryDockerConfigArgs
+
+func RepositoryDockerConfigPtr(v *RepositoryDockerConfigArgs) RepositoryDockerConfigPtrInput {
+	return (*repositoryDockerConfigPtrType)(v)
+}
+
+func (*repositoryDockerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryDockerConfig)(nil)).Elem()
+}
+
+func (i *repositoryDockerConfigPtrType) ToRepositoryDockerConfigPtrOutput() RepositoryDockerConfigPtrOutput {
+	return i.ToRepositoryDockerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryDockerConfigPtrType) ToRepositoryDockerConfigPtrOutputWithContext(ctx context.Context) RepositoryDockerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryDockerConfigPtrOutput)
+}
+
+type RepositoryDockerConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryDockerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryDockerConfig)(nil)).Elem()
+}
+
+func (o RepositoryDockerConfigOutput) ToRepositoryDockerConfigOutput() RepositoryDockerConfigOutput {
+	return o
+}
+
+func (o RepositoryDockerConfigOutput) ToRepositoryDockerConfigOutputWithContext(ctx context.Context) RepositoryDockerConfigOutput {
+	return o
+}
+
+func (o RepositoryDockerConfigOutput) ToRepositoryDockerConfigPtrOutput() RepositoryDockerConfigPtrOutput {
+	return o.ToRepositoryDockerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryDockerConfigOutput) ToRepositoryDockerConfigPtrOutputWithContext(ctx context.Context) RepositoryDockerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryDockerConfig) *RepositoryDockerConfig {
+		return &v
+	}).(RepositoryDockerConfigPtrOutput)
+}
+
+// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+func (o RepositoryDockerConfigOutput) ImmutableTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RepositoryDockerConfig) *bool { return v.ImmutableTags }).(pulumi.BoolPtrOutput)
+}
+
+type RepositoryDockerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryDockerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryDockerConfig)(nil)).Elem()
+}
+
+func (o RepositoryDockerConfigPtrOutput) ToRepositoryDockerConfigPtrOutput() RepositoryDockerConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryDockerConfigPtrOutput) ToRepositoryDockerConfigPtrOutputWithContext(ctx context.Context) RepositoryDockerConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryDockerConfigPtrOutput) Elem() RepositoryDockerConfigOutput {
+	return o.ApplyT(func(v *RepositoryDockerConfig) RepositoryDockerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryDockerConfig
+		return ret
+	}).(RepositoryDockerConfigOutput)
+}
+
+// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+func (o RepositoryDockerConfigPtrOutput) ImmutableTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryDockerConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ImmutableTags
+	}).(pulumi.BoolPtrOutput)
+}
+
 type RepositoryIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -342,7 +479,7 @@ type RepositoryMavenConfig struct {
 	AllowSnapshotOverwrites *bool `pulumi:"allowSnapshotOverwrites"`
 	// Version policy defines the versions that the registry will accept.
 	// Default value is `VERSION_POLICY_UNSPECIFIED`.
-	// Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+	// Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
 	VersionPolicy *string `pulumi:"versionPolicy"`
 }
 
@@ -363,7 +500,7 @@ type RepositoryMavenConfigArgs struct {
 	AllowSnapshotOverwrites pulumi.BoolPtrInput `pulumi:"allowSnapshotOverwrites"`
 	// Version policy defines the versions that the registry will accept.
 	// Default value is `VERSION_POLICY_UNSPECIFIED`.
-	// Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+	// Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
 	VersionPolicy pulumi.StringPtrInput `pulumi:"versionPolicy"`
 }
 
@@ -452,7 +589,7 @@ func (o RepositoryMavenConfigOutput) AllowSnapshotOverwrites() pulumi.BoolPtrOut
 
 // Version policy defines the versions that the registry will accept.
 // Default value is `VERSION_POLICY_UNSPECIFIED`.
-// Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+// Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
 func (o RepositoryMavenConfigOutput) VersionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryMavenConfig) *string { return v.VersionPolicy }).(pulumi.StringPtrOutput)
 }
@@ -494,7 +631,7 @@ func (o RepositoryMavenConfigPtrOutput) AllowSnapshotOverwrites() pulumi.BoolPtr
 
 // Version policy defines the versions that the registry will accept.
 // Default value is `VERSION_POLICY_UNSPECIFIED`.
-// Possible values are `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, and `SNAPSHOT`.
+// Possible values are: `VERSION_POLICY_UNSPECIFIED`, `RELEASE`, `SNAPSHOT`.
 func (o RepositoryMavenConfigPtrOutput) VersionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryMavenConfig) *string {
 		if v == nil {
@@ -744,7 +881,7 @@ func (o RepositoryRemoteRepositoryConfigPtrOutput) PythonRepository() Repository
 type RepositoryRemoteRepositoryConfigDockerRepository struct {
 	// Address of the remote repository.
 	// Default value is `DOCKER_HUB`.
-	// Possible values are `DOCKER_HUB`.
+	// Possible values are: `DOCKER_HUB`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
 
@@ -762,7 +899,7 @@ type RepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
 type RepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
 	// Address of the remote repository.
 	// Default value is `DOCKER_HUB`.
-	// Possible values are `DOCKER_HUB`.
+	// Possible values are: `DOCKER_HUB`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
 
@@ -845,7 +982,7 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemo
 
 // Address of the remote repository.
 // Default value is `DOCKER_HUB`.
-// Possible values are `DOCKER_HUB`.
+// Possible values are: `DOCKER_HUB`.
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigDockerRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
 }
@@ -876,7 +1013,7 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) Elem() Reposi
 
 // Address of the remote repository.
 // Default value is `DOCKER_HUB`.
-// Possible values are `DOCKER_HUB`.
+// Possible values are: `DOCKER_HUB`.
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepository) *string {
 		if v == nil {
@@ -889,7 +1026,7 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) PublicReposit
 type RepositoryRemoteRepositoryConfigMavenRepository struct {
 	// Address of the remote repository.
 	// Default value is `MAVEN_CENTRAL`.
-	// Possible values are `MAVEN_CENTRAL`.
+	// Possible values are: `MAVEN_CENTRAL`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
 
@@ -907,7 +1044,7 @@ type RepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
 type RepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
 	// Address of the remote repository.
 	// Default value is `MAVEN_CENTRAL`.
-	// Possible values are `MAVEN_CENTRAL`.
+	// Possible values are: `MAVEN_CENTRAL`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
 
@@ -990,7 +1127,7 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemot
 
 // Address of the remote repository.
 // Default value is `MAVEN_CENTRAL`.
-// Possible values are `MAVEN_CENTRAL`.
+// Possible values are: `MAVEN_CENTRAL`.
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigMavenRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
 }
@@ -1021,7 +1158,7 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) Elem() Reposit
 
 // Address of the remote repository.
 // Default value is `MAVEN_CENTRAL`.
-// Possible values are `MAVEN_CENTRAL`.
+// Possible values are: `MAVEN_CENTRAL`.
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepository) *string {
 		if v == nil {
@@ -1034,7 +1171,7 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) PublicReposito
 type RepositoryRemoteRepositoryConfigNpmRepository struct {
 	// Address of the remote repository.
 	// Default value is `NPMJS`.
-	// Possible values are `NPMJS`.
+	// Possible values are: `NPMJS`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
 
@@ -1052,7 +1189,7 @@ type RepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
 type RepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
 	// Address of the remote repository.
 	// Default value is `NPMJS`.
-	// Possible values are `NPMJS`.
+	// Possible values are: `NPMJS`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
 
@@ -1135,7 +1272,7 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteR
 
 // Address of the remote repository.
 // Default value is `NPMJS`.
-// Possible values are `NPMJS`.
+// Possible values are: `NPMJS`.
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigNpmRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
 }
@@ -1166,7 +1303,7 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) Elem() Repositor
 
 // Address of the remote repository.
 // Default value is `NPMJS`.
-// Possible values are `NPMJS`.
+// Possible values are: `NPMJS`.
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepository) *string {
 		if v == nil {
@@ -1179,7 +1316,7 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) PublicRepository
 type RepositoryRemoteRepositoryConfigPythonRepository struct {
 	// Address of the remote repository.
 	// Default value is `PYPI`.
-	// Possible values are `PYPI`.
+	// Possible values are: `PYPI`.
 	PublicRepository *string `pulumi:"publicRepository"`
 }
 
@@ -1197,7 +1334,7 @@ type RepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
 type RepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
 	// Address of the remote repository.
 	// Default value is `PYPI`.
-	// Possible values are `PYPI`.
+	// Possible values are: `PYPI`.
 	PublicRepository pulumi.StringPtrInput `pulumi:"publicRepository"`
 }
 
@@ -1280,7 +1417,7 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemo
 
 // Address of the remote repository.
 // Default value is `PYPI`.
-// Possible values are `PYPI`.
+// Possible values are: `PYPI`.
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigPythonRepository) *string { return v.PublicRepository }).(pulumi.StringPtrOutput)
 }
@@ -1311,7 +1448,7 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) Elem() Reposi
 
 // Address of the remote repository.
 // Default value is `PYPI`.
-// Possible values are `PYPI`.
+// Possible values are: `PYPI`.
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) PublicRepository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepository) *string {
 		if v == nil {
@@ -1584,6 +1721,100 @@ func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryVirtualRepositoryConfigUpstreamPolicy {
 		return vs[0].([]RepositoryVirtualRepositoryConfigUpstreamPolicy)[vs[1].(int)]
 	}).(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
+}
+
+type GetRepositoryDockerConfig struct {
+	ImmutableTags bool `pulumi:"immutableTags"`
+}
+
+// GetRepositoryDockerConfigInput is an input type that accepts GetRepositoryDockerConfigArgs and GetRepositoryDockerConfigOutput values.
+// You can construct a concrete instance of `GetRepositoryDockerConfigInput` via:
+//
+//	GetRepositoryDockerConfigArgs{...}
+type GetRepositoryDockerConfigInput interface {
+	pulumi.Input
+
+	ToGetRepositoryDockerConfigOutput() GetRepositoryDockerConfigOutput
+	ToGetRepositoryDockerConfigOutputWithContext(context.Context) GetRepositoryDockerConfigOutput
+}
+
+type GetRepositoryDockerConfigArgs struct {
+	ImmutableTags pulumi.BoolInput `pulumi:"immutableTags"`
+}
+
+func (GetRepositoryDockerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryDockerConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryDockerConfigArgs) ToGetRepositoryDockerConfigOutput() GetRepositoryDockerConfigOutput {
+	return i.ToGetRepositoryDockerConfigOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryDockerConfigArgs) ToGetRepositoryDockerConfigOutputWithContext(ctx context.Context) GetRepositoryDockerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryDockerConfigOutput)
+}
+
+// GetRepositoryDockerConfigArrayInput is an input type that accepts GetRepositoryDockerConfigArray and GetRepositoryDockerConfigArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryDockerConfigArrayInput` via:
+//
+//	GetRepositoryDockerConfigArray{ GetRepositoryDockerConfigArgs{...} }
+type GetRepositoryDockerConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryDockerConfigArrayOutput() GetRepositoryDockerConfigArrayOutput
+	ToGetRepositoryDockerConfigArrayOutputWithContext(context.Context) GetRepositoryDockerConfigArrayOutput
+}
+
+type GetRepositoryDockerConfigArray []GetRepositoryDockerConfigInput
+
+func (GetRepositoryDockerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryDockerConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryDockerConfigArray) ToGetRepositoryDockerConfigArrayOutput() GetRepositoryDockerConfigArrayOutput {
+	return i.ToGetRepositoryDockerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryDockerConfigArray) ToGetRepositoryDockerConfigArrayOutputWithContext(ctx context.Context) GetRepositoryDockerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryDockerConfigArrayOutput)
+}
+
+type GetRepositoryDockerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryDockerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryDockerConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryDockerConfigOutput) ToGetRepositoryDockerConfigOutput() GetRepositoryDockerConfigOutput {
+	return o
+}
+
+func (o GetRepositoryDockerConfigOutput) ToGetRepositoryDockerConfigOutputWithContext(ctx context.Context) GetRepositoryDockerConfigOutput {
+	return o
+}
+
+func (o GetRepositoryDockerConfigOutput) ImmutableTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRepositoryDockerConfig) bool { return v.ImmutableTags }).(pulumi.BoolOutput)
+}
+
+type GetRepositoryDockerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryDockerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryDockerConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryDockerConfigArrayOutput) ToGetRepositoryDockerConfigArrayOutput() GetRepositoryDockerConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryDockerConfigArrayOutput) ToGetRepositoryDockerConfigArrayOutputWithContext(ctx context.Context) GetRepositoryDockerConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryDockerConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryDockerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryDockerConfig {
+		return vs[0].([]GetRepositoryDockerConfig)[vs[1].(int)]
+	}).(GetRepositoryDockerConfigOutput)
 }
 
 type GetRepositoryMavenConfig struct {
@@ -2391,6 +2622,8 @@ func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i p
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryDockerConfigInput)(nil)).Elem(), RepositoryDockerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryDockerConfigPtrInput)(nil)).Elem(), RepositoryDockerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
@@ -2411,6 +2644,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigPtrInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryDockerConfigInput)(nil)).Elem(), GetRepositoryDockerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryDockerConfigArrayInput)(nil)).Elem(), GetRepositoryDockerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigInput)(nil)).Elem(), GetRepositoryMavenConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigArrayInput)(nil)).Elem(), GetRepositoryMavenConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigArgs{})
@@ -2427,6 +2662,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
+	pulumi.RegisterOutputType(RepositoryDockerConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryDockerConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})
@@ -2447,6 +2684,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput{})
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryDockerConfigOutput{})
+	pulumi.RegisterOutputType(GetRepositoryDockerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryMavenConfigOutput{})
 	pulumi.RegisterOutputType(GetRepositoryMavenConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigOutput{})

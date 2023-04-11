@@ -68,7 +68,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
     /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
      * 
      */
     @Import(name="name")
@@ -76,7 +76,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-     * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+     * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -247,7 +247,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-         * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+         * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class GroupMembershipState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param name The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-         * Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+         * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
          * 
          * @return builder
          * 

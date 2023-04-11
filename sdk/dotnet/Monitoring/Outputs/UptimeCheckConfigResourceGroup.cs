@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         public readonly string? GroupId;
         /// <summary>
         /// The resource type of the group members.
-        /// Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+        /// Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
         /// </summary>
         public readonly string? ResourceType;
 

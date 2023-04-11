@@ -38,7 +38,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
 
     /**
      * If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-     * Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+     * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
      * 
      */
     @Import(name="exclusionType")
@@ -46,7 +46,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
 
     /**
      * @return If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-     * Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+     * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
      * 
      */
     public Optional<Output<String>> exclusionType() {
@@ -80,7 +80,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
      * Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
      * specified by the rule.
      * Default value is `VERY_LIKELY`.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     @Import(name="likelihood")
@@ -90,7 +90,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
      * @return Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
      * specified by the rule.
      * Default value is `VERY_LIKELY`.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     public Optional<Output<String>> likelihood() {
@@ -185,7 +185,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
 
         /**
          * @param exclusionType If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-         * Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+         * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
 
         /**
          * @param exclusionType If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
-         * Possible values are `EXCLUSION_TYPE_EXCLUDE`.
+         * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
          * @param likelihood Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
          * specified by the rule.
          * Default value is `VERY_LIKELY`.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
          * @param likelihood Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
          * specified by the rule.
          * Default value is `VERY_LIKELY`.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
          * 

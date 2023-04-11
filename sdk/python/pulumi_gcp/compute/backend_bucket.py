@@ -31,7 +31,7 @@ class BackendBucketArgs:
         :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
@@ -95,7 +95,7 @@ class BackendBucketArgs:
     def compression_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        Possible values are `AUTOMATIC` and `DISABLED`.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
         """
         return pulumi.get(self, "compression_mode")
 
@@ -204,7 +204,7 @@ class _BackendBucketState:
         :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
@@ -275,7 +275,7 @@ class _BackendBucketState:
     def compression_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        Possible values are `AUTOMATIC` and `DISABLED`.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
         """
         return pulumi.get(self, "compression_mode")
 
@@ -504,7 +504,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
@@ -699,7 +699,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
@@ -756,7 +756,7 @@ class BackendBucket(pulumi.CustomResource):
     def compression_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        Possible values are `AUTOMATIC` and `DISABLED`.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
         """
         return pulumi.get(self, "compression_mode")
 

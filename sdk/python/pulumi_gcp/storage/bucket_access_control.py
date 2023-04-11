@@ -36,7 +36,7 @@ class BucketAccessControlArgs:
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER`, `READER`, and `WRITER`.
+               Possible values are: `OWNER`, `READER`, `WRITER`.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "entity", entity)
@@ -86,7 +86,7 @@ class BucketAccessControlArgs:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The access permission for the entity.
-        Possible values are `OWNER`, `READER`, and `WRITER`.
+        Possible values are: `OWNER`, `READER`, `WRITER`.
         """
         return pulumi.get(self, "role")
 
@@ -124,7 +124,7 @@ class _BucketAccessControlState:
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER`, `READER`, and `WRITER`.
+               Possible values are: `OWNER`, `READER`, `WRITER`.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -204,7 +204,7 @@ class _BucketAccessControlState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The access permission for the entity.
-        Possible values are `OWNER`, `READER`, and `WRITER`.
+        Possible values are: `OWNER`, `READER`, `WRITER`.
         """
         return pulumi.get(self, "role")
 
@@ -287,7 +287,7 @@ class BucketAccessControl(pulumi.CustomResource):
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER`, `READER`, and `WRITER`.
+               Possible values are: `OWNER`, `READER`, `WRITER`.
         """
         ...
     @overload
@@ -418,7 +418,7 @@ class BucketAccessControl(pulumi.CustomResource):
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
         :param pulumi.Input[str] role: The access permission for the entity.
-               Possible values are `OWNER`, `READER`, and `WRITER`.
+               Possible values are: `OWNER`, `READER`, `WRITER`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -482,7 +482,7 @@ class BucketAccessControl(pulumi.CustomResource):
     def role(self) -> pulumi.Output[Optional[str]]:
         """
         The access permission for the entity.
-        Possible values are `OWNER`, `READER`, and `WRITER`.
+        Possible values are: `OWNER`, `READER`, `WRITER`.
         """
         return pulumi.get(self, "role")
 

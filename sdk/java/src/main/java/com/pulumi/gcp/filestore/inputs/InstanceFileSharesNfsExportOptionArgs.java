@@ -21,7 +21,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
      * Either READ_ONLY, for allowing only read requests on the exported directory,
      * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     @Import(name="accessMode")
@@ -31,7 +31,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
      * @return Either READ_ONLY, for allowing only read requests on the exported directory,
      * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
      * Default value is `READ_WRITE`.
-     * Possible values are `READ_ONLY` and `READ_WRITE`.
+     * Possible values are: `READ_ONLY`, `READ_WRITE`.
      * 
      */
     public Optional<Output<String>> accessMode() {
@@ -99,7 +99,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
      * Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
      * Default value is `NO_ROOT_SQUASH`.
-     * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
      * 
      */
     @Import(name="squashMode")
@@ -109,7 +109,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
      * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
      * for not allowing root access. The default is NO_ROOT_SQUASH.
      * Default value is `NO_ROOT_SQUASH`.
-     * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+     * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
      * 
      */
     public Optional<Output<String>> squashMode() {
@@ -148,7 +148,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
          * @param accessMode Either READ_ONLY, for allowing only read requests on the exported directory,
          * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
          * Default value is `READ_WRITE`.
-         * Possible values are `READ_ONLY` and `READ_WRITE`.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
          * @param accessMode Either READ_ONLY, for allowing only read requests on the exported directory,
          * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
          * Default value is `READ_WRITE`.
-         * Possible values are `READ_ONLY` and `READ_WRITE`.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
          * @param squashMode Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
          * for not allowing root access. The default is NO_ROOT_SQUASH.
          * Default value is `NO_ROOT_SQUASH`.
-         * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+         * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class InstanceFileSharesNfsExportOptionArgs extends com.pulumi.reso
          * @param squashMode Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
          * for not allowing root access. The default is NO_ROOT_SQUASH.
          * Default value is `NO_ROOT_SQUASH`.
-         * Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+         * Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
          * 
          * @return builder
          * 

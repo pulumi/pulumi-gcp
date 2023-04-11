@@ -115,7 +115,7 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
 
     /**
      * The current state of the CryptoKeyVersion.
-     * Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+     * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
      */
     @Import(name="state")
@@ -123,7 +123,7 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The current state of the CryptoKeyVersion.
-     * Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+     * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -306,7 +306,7 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param state The current state of the CryptoKeyVersion.
-         * Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+         * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class CryptoKeyVersionState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param state The current state of the CryptoKeyVersion.
-         * Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+         * Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
          * 
          * @return builder
          * 

@@ -76,7 +76,7 @@ public final class FlexibleAppVersionEndpointsApiServiceArgs extends com.pulumi.
     /**
      * Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
      * Default value is `FIXED`.
-     * Possible values are `FIXED` and `MANAGED`.
+     * Possible values are: `FIXED`, `MANAGED`.
      * 
      */
     @Import(name="rolloutStrategy")
@@ -85,7 +85,7 @@ public final class FlexibleAppVersionEndpointsApiServiceArgs extends com.pulumi.
     /**
      * @return Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
      * Default value is `FIXED`.
-     * Possible values are `FIXED` and `MANAGED`.
+     * Possible values are: `FIXED`, `MANAGED`.
      * 
      */
     public Optional<Output<String>> rolloutStrategy() {
@@ -197,7 +197,7 @@ public final class FlexibleAppVersionEndpointsApiServiceArgs extends com.pulumi.
         /**
          * @param rolloutStrategy Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
          * Default value is `FIXED`.
-         * Possible values are `FIXED` and `MANAGED`.
+         * Possible values are: `FIXED`, `MANAGED`.
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class FlexibleAppVersionEndpointsApiServiceArgs extends com.pulumi.
         /**
          * @param rolloutStrategy Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
          * Default value is `FIXED`.
-         * Possible values are `FIXED` and `MANAGED`.
+         * Possible values are: `FIXED`, `MANAGED`.
          * 
          * @return builder
          * 

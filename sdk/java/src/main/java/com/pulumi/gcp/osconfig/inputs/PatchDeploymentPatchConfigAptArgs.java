@@ -52,7 +52,7 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
 
     /**
      * By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-     * Possible values are `DIST` and `UPGRADE`.
+     * Possible values are: `DIST`, `UPGRADE`.
      * 
      */
     @Import(name="type")
@@ -60,7 +60,7 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
 
     /**
      * @return By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-     * Possible values are `DIST` and `UPGRADE`.
+     * Possible values are: `DIST`, `UPGRADE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -163,7 +163,7 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
 
         /**
          * @param type By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-         * Possible values are `DIST` and `UPGRADE`.
+         * Possible values are: `DIST`, `UPGRADE`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class PatchDeploymentPatchConfigAptArgs extends com.pulumi.resource
 
         /**
          * @param type By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-         * Possible values are `DIST` and `UPGRADE`.
+         * Possible values are: `DIST`, `UPGRADE`.
          * 
          * @return builder
          * 

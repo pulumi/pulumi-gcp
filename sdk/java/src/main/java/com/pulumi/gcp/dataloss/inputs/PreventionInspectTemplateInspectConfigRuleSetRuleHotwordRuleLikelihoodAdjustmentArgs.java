@@ -18,7 +18,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
 
     /**
      * Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     @Import(name="fixedLikelihood")
@@ -26,7 +26,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
 
     /**
      * @return Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     public Optional<Output<String>> fixedLikelihood() {
@@ -85,7 +85,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
 
         /**
          * @param fixedLikelihood Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
 
         /**
          * @param fixedLikelihood Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
          * 

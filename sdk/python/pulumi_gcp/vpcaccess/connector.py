@@ -448,7 +448,7 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
-        ### VPC Access Connector
+        ### Vpc Access Connector
 
         ```python
         import pulumi
@@ -458,7 +458,7 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
-        ### VPC Access Connector Shared VPC
+        ### Vpc Access Connector Shared Vpc
 
         ```python
         import pulumi
@@ -528,7 +528,7 @@ class Connector(pulumi.CustomResource):
             * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 
         ## Example Usage
-        ### VPC Access Connector
+        ### Vpc Access Connector
 
         ```python
         import pulumi
@@ -538,7 +538,7 @@ class Connector(pulumi.CustomResource):
             ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
-        ### VPC Access Connector Shared VPC
+        ### Vpc Access Connector Shared Vpc
 
         ```python
         import pulumi

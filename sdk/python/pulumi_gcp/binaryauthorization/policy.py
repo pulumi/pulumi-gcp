@@ -40,7 +40,7 @@ class PolicyArgs:
         :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
                policy will be subject to the project admission policy.
-               Possible values are `ENABLE` and `DISABLE`.
+               Possible values are: `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -120,7 +120,7 @@ class PolicyArgs:
         Controls the evaluation of a Google-maintained global admission policy
         for common system-level images. Images not covered by the global
         policy will be subject to the project admission policy.
-        Possible values are `ENABLE` and `DISABLE`.
+        Possible values are: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "global_policy_evaluation_mode")
 
@@ -169,7 +169,7 @@ class _PolicyState:
         :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
                policy will be subject to the project admission policy.
-               Possible values are `ENABLE` and `DISABLE`.
+               Possible values are: `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -250,7 +250,7 @@ class _PolicyState:
         Controls the evaluation of a Google-maintained global admission policy
         for common system-level images. Images not covered by the global
         policy will be subject to the project admission policy.
-        Possible values are `ENABLE` and `DISABLE`.
+        Possible values are: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "global_policy_evaluation_mode")
 
@@ -376,7 +376,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
                policy will be subject to the project admission policy.
-               Possible values are `ENABLE` and `DISABLE`.
+               Possible values are: `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -537,7 +537,7 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
                policy will be subject to the project admission policy.
-               Possible values are `ENABLE` and `DISABLE`.
+               Possible values are: `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -601,7 +601,7 @@ class Policy(pulumi.CustomResource):
         Controls the evaluation of a Google-maintained global admission policy
         for common system-level images. Images not covered by the global
         policy will be subject to the project admission policy.
-        Possible values are `ENABLE` and `DISABLE`.
+        Possible values are: `ENABLE`, `DISABLE`.
         """
         return pulumi.get(self, "global_policy_evaluation_mode")
 

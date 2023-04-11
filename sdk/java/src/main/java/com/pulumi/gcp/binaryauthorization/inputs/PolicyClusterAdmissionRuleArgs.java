@@ -33,7 +33,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
     /**
      * The action when a pod creation is denied by the admission rule.
-     * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+     * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
      * 
      */
     @Import(name="enforcementMode", required=true)
@@ -41,7 +41,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
     /**
      * @return The action when a pod creation is denied by the admission rule.
-     * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+     * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
      * 
      */
     public Output<String> enforcementMode() {
@@ -50,7 +50,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
     /**
      * How this admission rule will be evaluated.
-     * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+     * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
      * 
      */
     @Import(name="evaluationMode", required=true)
@@ -58,7 +58,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
     /**
      * @return How this admission rule will be evaluated.
-     * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+     * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
      * 
      */
     public Output<String> evaluationMode() {
@@ -144,7 +144,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
         /**
          * @param enforcementMode The action when a pod creation is denied by the admission rule.
-         * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+         * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
         /**
          * @param enforcementMode The action when a pod creation is denied by the admission rule.
-         * Possible values are `ENFORCED_BLOCK_AND_AUDIT_LOG` and `DRYRUN_AUDIT_LOG_ONLY`.
+         * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
         /**
          * @param evaluationMode How this admission rule will be evaluated.
-         * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+         * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
 
         /**
          * @param evaluationMode How this admission rule will be evaluated.
-         * Possible values are `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, and `ALWAYS_DENY`.
+         * Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
          * 
          * @return builder
          * 

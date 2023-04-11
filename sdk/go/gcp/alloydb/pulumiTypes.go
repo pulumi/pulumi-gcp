@@ -567,7 +567,7 @@ func (o ClusterAutomatedBackupPolicyTimeBasedRetentionPtrOutput) RetentionPeriod
 
 type ClusterAutomatedBackupPolicyWeeklySchedule struct {
 	// The days of the week to perform a backup. At least one day of the week must be provided.
-	// Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
 	// The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
 	// Structure is documented below.
@@ -587,7 +587,7 @@ type ClusterAutomatedBackupPolicyWeeklyScheduleInput interface {
 
 type ClusterAutomatedBackupPolicyWeeklyScheduleArgs struct {
 	// The days of the week to perform a backup. At least one day of the week must be provided.
-	// Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
 	// The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
 	// Structure is documented below.
@@ -672,7 +672,7 @@ func (o ClusterAutomatedBackupPolicyWeeklyScheduleOutput) ToClusterAutomatedBack
 }
 
 // The days of the week to perform a backup. At least one day of the week must be provided.
-// Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o ClusterAutomatedBackupPolicyWeeklyScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicyWeeklySchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
 }
@@ -710,7 +710,7 @@ func (o ClusterAutomatedBackupPolicyWeeklySchedulePtrOutput) Elem() ClusterAutom
 }
 
 // The days of the week to perform a backup. At least one day of the week must be provided.
-// Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
 func (o ClusterAutomatedBackupPolicyWeeklySchedulePtrOutput) DaysOfWeeks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterAutomatedBackupPolicyWeeklySchedule) []string {
 		if v == nil {

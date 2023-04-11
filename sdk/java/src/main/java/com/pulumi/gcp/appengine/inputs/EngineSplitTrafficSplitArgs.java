@@ -33,7 +33,7 @@ public final class EngineSplitTrafficSplitArgs extends com.pulumi.resources.Reso
 
     /**
      * Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-     * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+     * Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
      * 
      */
     @Import(name="shardBy")
@@ -41,7 +41,7 @@ public final class EngineSplitTrafficSplitArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-     * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+     * Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
      * 
      */
     public Optional<Output<String>> shardBy() {
@@ -96,7 +96,7 @@ public final class EngineSplitTrafficSplitArgs extends com.pulumi.resources.Reso
 
         /**
          * @param shardBy Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-         * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+         * Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class EngineSplitTrafficSplitArgs extends com.pulumi.resources.Reso
 
         /**
          * @param shardBy Mechanism used to determine which version a request is sent to. The traffic selection algorithm will be stable for either type until allocations are changed.
-         * Possible values are `UNSPECIFIED`, `COOKIE`, `IP`, and `RANDOM`.
+         * Possible values are: `UNSPECIFIED`, `COOKIE`, `IP`, `RANDOM`.
          * 
          * @return builder
          * 

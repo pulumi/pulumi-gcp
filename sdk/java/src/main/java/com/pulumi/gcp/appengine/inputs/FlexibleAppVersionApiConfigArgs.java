@@ -18,7 +18,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
     /**
      * Action to take when users access resources that require authentication.
      * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-     * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+     * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
     @Import(name="authFailAction")
@@ -27,7 +27,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
     /**
      * @return Action to take when users access resources that require authentication.
      * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-     * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+     * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
     public Optional<Output<String>> authFailAction() {
@@ -37,7 +37,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
     /**
      * Level of login required to access this resource.
      * Default value is `LOGIN_OPTIONAL`.
-     * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+     * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
      * 
      */
     @Import(name="login")
@@ -46,7 +46,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
     /**
      * @return Level of login required to access this resource.
      * Default value is `LOGIN_OPTIONAL`.
-     * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+     * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
      * 
      */
     public Optional<Output<String>> login() {
@@ -70,7 +70,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
 
     /**
      * Security (HTTPS) enforcement for this URL.
-     * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+     * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
      * 
      */
     @Import(name="securityLevel")
@@ -78,7 +78,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
 
     /**
      * @return Security (HTTPS) enforcement for this URL.
-     * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+     * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
      * 
      */
     public Optional<Output<String>> securityLevel() {
@@ -131,7 +131,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
         /**
          * @param authFailAction Action to take when users access resources that require authentication.
          * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+         * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
         /**
          * @param authFailAction Action to take when users access resources that require authentication.
          * Default value is `AUTH_FAIL_ACTION_REDIRECT`.
-         * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+         * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
         /**
          * @param login Level of login required to access this resource.
          * Default value is `LOGIN_OPTIONAL`.
-         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+         * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
         /**
          * @param login Level of login required to access this resource.
          * Default value is `LOGIN_OPTIONAL`.
-         * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+         * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
 
         /**
          * @param securityLevel Security (HTTPS) enforcement for this URL.
-         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+         * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
 
         /**
          * @param securityLevel Security (HTTPS) enforcement for this URL.
-         * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+         * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
          * 
          * @return builder
          * 

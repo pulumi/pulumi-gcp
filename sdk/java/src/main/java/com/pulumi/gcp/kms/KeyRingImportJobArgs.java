@@ -30,7 +30,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The wrapping method to be used for incoming key material.
-     * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
      * 
      */
     @Import(name="importMethod", required=true)
@@ -38,7 +38,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The wrapping method to be used for incoming key material.
-     * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+     * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
      * 
      */
     public Output<String> importMethod() {
@@ -65,7 +65,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
     /**
      * The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
-     * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+     * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
      * 
      */
     @Import(name="protectionLevel", required=true)
@@ -74,7 +74,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The protection level of the ImportJob. This must match the protectionLevel of the
      * versionTemplate on the CryptoKey you attempt to import into.
-     * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+     * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
      * 
      */
     public Output<String> protectionLevel() {
@@ -131,7 +131,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param importMethod The wrapping method to be used for incoming key material.
-         * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+         * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param importMethod The wrapping method to be used for incoming key material.
-         * Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+         * Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param protectionLevel The protection level of the ImportJob. This must match the protectionLevel of the
          * versionTemplate on the CryptoKey you attempt to import into.
-         * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+         * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param protectionLevel The protection level of the ImportJob. This must match the protectionLevel of the
          * versionTemplate on the CryptoKey you attempt to import into.
-         * Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+         * Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
          * 
          * @return builder
          * 

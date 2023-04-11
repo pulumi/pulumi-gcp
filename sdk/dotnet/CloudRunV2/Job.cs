@@ -391,7 +391,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-        /// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Output("launchStage")]
         public Output<string> LaunchStage { get; private set; } = null!;
@@ -531,7 +531,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-        /// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }
@@ -649,7 +649,7 @@ namespace Pulumi.Gcp.CloudRunV2
 
         /// <summary>
         /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-        /// Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+        /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
         public Input<string>? LaunchStage { get; set; }

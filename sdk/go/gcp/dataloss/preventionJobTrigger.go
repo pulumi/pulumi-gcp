@@ -240,7 +240,7 @@ type PreventionJobTrigger struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Whether the trigger is currently active.
 	// Default value is `HEALTHY`.
-	// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -307,7 +307,7 @@ type preventionJobTriggerState struct {
 	Parent *string `pulumi:"parent"`
 	// Whether the trigger is currently active.
 	// Default value is `HEALTHY`.
-	// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status *string `pulumi:"status"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -340,7 +340,7 @@ type PreventionJobTriggerState struct {
 	Parent pulumi.StringPtrInput
 	// Whether the trigger is currently active.
 	// Default value is `HEALTHY`.
-	// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -364,7 +364,7 @@ type preventionJobTriggerArgs struct {
 	Parent string `pulumi:"parent"`
 	// Whether the trigger is currently active.
 	// Default value is `HEALTHY`.
-	// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status *string `pulumi:"status"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -385,7 +385,7 @@ type PreventionJobTriggerArgs struct {
 	Parent pulumi.StringInput
 	// Whether the trigger is currently active.
 	// Default value is `HEALTHY`.
-	// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
@@ -522,7 +522,7 @@ func (o PreventionJobTriggerOutput) Parent() pulumi.StringOutput {
 
 // Whether the trigger is currently active.
 // Default value is `HEALTHY`.
-// Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 func (o PreventionJobTriggerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }

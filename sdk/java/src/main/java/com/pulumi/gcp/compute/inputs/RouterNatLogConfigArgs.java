@@ -31,7 +31,7 @@ public final class RouterNatLogConfigArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Specifies the desired filtering of logs on this NAT.
-     * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+     * Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
      * 
      */
     @Import(name="filter", required=true)
@@ -39,7 +39,7 @@ public final class RouterNatLogConfigArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Specifies the desired filtering of logs on this NAT.
-     * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+     * Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
      * 
      */
     public Output<String> filter() {
@@ -94,7 +94,7 @@ public final class RouterNatLogConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param filter Specifies the desired filtering of logs on this NAT.
-         * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+         * Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class RouterNatLogConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param filter Specifies the desired filtering of logs on this NAT.
-         * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+         * Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
          * 
          * @return builder
          * 

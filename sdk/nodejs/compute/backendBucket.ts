@@ -145,7 +145,7 @@ export class BackendBucket extends pulumi.CustomResource {
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.BackendBucketCdnPolicy>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
     public readonly compressionMode!: pulumi.Output<string | undefined>;
     /**
@@ -250,7 +250,7 @@ export interface BackendBucketState {
     cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
     compressionMode?: pulumi.Input<string>;
     /**
@@ -310,7 +310,7 @@ export interface BackendBucketArgs {
     cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
     /**
      * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-     * Possible values are `AUTOMATIC` and `DISABLED`.
+     * Possible values are: `AUTOMATIC`, `DISABLED`.
      */
     compressionMode?: pulumi.Input<string>;
     /**

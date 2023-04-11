@@ -83,6 +83,7 @@ import * as ml from "./ml";
 import * as monitoring from "./monitoring";
 import * as networkconnectivity from "./networkconnectivity";
 import * as networkmanagement from "./networkmanagement";
+import * as networksecurity from "./networksecurity";
 import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
 import * as organizations from "./organizations";
@@ -184,6 +185,7 @@ export {
     monitoring,
     networkconnectivity,
     networkmanagement,
+    networksecurity,
     networkservices,
     notebooks,
     organizations,

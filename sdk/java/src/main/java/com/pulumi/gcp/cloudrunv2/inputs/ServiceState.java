@@ -154,7 +154,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-     * Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+     * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
      * 
      */
     @Import(name="ingress")
@@ -162,7 +162,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-     * Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+     * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
      * 
      */
     public Optional<Output<String>> ingress() {
@@ -220,7 +220,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-     * Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
     @Import(name="launchStage")
@@ -228,7 +228,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-     * Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+     * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
     public Optional<Output<String>> launchStage() {
@@ -654,7 +654,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ingress Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-         * Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+         * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
          * 
          * @return builder
          * 
@@ -666,7 +666,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ingress Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
-         * Possible values are `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, and `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
+         * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
          * 
          * @return builder
          * 
@@ -744,7 +744,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param launchStage The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-         * Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+         * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
          * 
          * @return builder
          * 
@@ -756,7 +756,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param launchStage The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
-         * Possible values are `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, and `DEPRECATED`.
+         * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
          * 
          * @return builder
          * 

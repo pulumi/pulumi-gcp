@@ -116,7 +116,7 @@ export class Index extends pulumi.CustomResource {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      */
     public readonly queryScope!: pulumi.Output<string | undefined>;
 
@@ -194,7 +194,7 @@ export interface IndexState {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      */
     queryScope?: pulumi.Input<string>;
 }
@@ -229,7 +229,7 @@ export interface IndexArgs {
     /**
      * The scope at which a query is run.
      * Default value is `COLLECTION`.
-     * Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+     * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
      */
     queryScope?: pulumi.Input<string>;
 }

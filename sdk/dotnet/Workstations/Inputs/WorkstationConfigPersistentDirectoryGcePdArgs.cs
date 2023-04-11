@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
 
         /// <summary>
         /// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-        /// Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+        /// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
         /// </summary>
         [Input("reclaimPolicy")]
         public Input<string>? ReclaimPolicy { get; set; }

@@ -35,7 +35,7 @@ class AddressArgs:
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
-               Possible values are `INTERNAL` and `EXTERNAL`.
+               Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -50,7 +50,7 @@ class AddressArgs:
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-               Possible values are `PREMIUM` and `STANDARD`.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -120,7 +120,7 @@ class AddressArgs:
         The type of address to reserve.
         Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
         Default value is `EXTERNAL`.
-        Possible values are `INTERNAL` and `EXTERNAL`.
+        Possible values are: `INTERNAL`, `EXTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -190,7 +190,7 @@ class AddressArgs:
         The networking tier used for configuring this address. If this field is not
         specified, it is assumed to be PREMIUM.
         This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-        Possible values are `PREMIUM` and `STANDARD`.
+        Possible values are: `PREMIUM`, `STANDARD`.
         """
         return pulumi.get(self, "network_tier")
 
@@ -303,7 +303,7 @@ class _AddressState:
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
-               Possible values are `INTERNAL` and `EXTERNAL`.
+               Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -320,7 +320,7 @@ class _AddressState:
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-               Possible values are `PREMIUM` and `STANDARD`.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -400,7 +400,7 @@ class _AddressState:
         The type of address to reserve.
         Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
         Default value is `EXTERNAL`.
-        Possible values are `INTERNAL` and `EXTERNAL`.
+        Possible values are: `INTERNAL`, `EXTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -494,7 +494,7 @@ class _AddressState:
         The networking tier used for configuring this address. If this field is not
         specified, it is assumed to be PREMIUM.
         This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-        Possible values are `PREMIUM` and `STANDARD`.
+        Possible values are: `PREMIUM`, `STANDARD`.
         """
         return pulumi.get(self, "network_tier")
 
@@ -747,7 +747,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
-               Possible values are `INTERNAL` and `EXTERNAL`.
+               Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -762,7 +762,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-               Possible values are `PREMIUM` and `STANDARD`.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1000,7 +1000,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
-               Possible values are `INTERNAL` and `EXTERNAL`.
+               Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -1017,7 +1017,7 @@ class Address(pulumi.CustomResource):
         :param pulumi.Input[str] network_tier: The networking tier used for configuring this address. If this field is not
                specified, it is assumed to be PREMIUM.
                This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-               Possible values are `PREMIUM` and `STANDARD`.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[int] prefix_length: The prefix length if the resource represents an IP range.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1082,7 +1082,7 @@ class Address(pulumi.CustomResource):
         The type of address to reserve.
         Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
         Default value is `EXTERNAL`.
-        Possible values are `INTERNAL` and `EXTERNAL`.
+        Possible values are: `INTERNAL`, `EXTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -1148,7 +1148,7 @@ class Address(pulumi.CustomResource):
         The networking tier used for configuring this address. If this field is not
         specified, it is assumed to be PREMIUM.
         This argument should not be used when configuring Internal addresses, because [network tier cannot be set for internal traffic; it's always Premium](https://cloud.google.com/network-tiers/docs/overview).
-        Possible values are `PREMIUM` and `STANDARD`.
+        Possible values are: `PREMIUM`, `STANDARD`.
         """
         return pulumi.get(self, "network_tier")
 

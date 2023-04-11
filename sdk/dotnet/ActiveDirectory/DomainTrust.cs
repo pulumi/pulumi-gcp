@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The trust direction, which decides if the current domain is trusted, trusting, or both.
-        /// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+        /// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         /// </summary>
         [Output("trustDirection")]
         public Output<string> TrustDirection { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The type of trust represented by the trust resource.
-        /// Possible values are `FOREST` and `EXTERNAL`.
+        /// Possible values are: `FOREST`, `EXTERNAL`.
         /// </summary>
         [Output("trustType")]
         public Output<string> TrustType { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The trust direction, which decides if the current domain is trusted, trusting, or both.
-        /// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+        /// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         /// </summary>
         [Input("trustDirection", required: true)]
         public Input<string> TrustDirection { get; set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The type of trust represented by the trust resource.
-        /// Possible values are `FOREST` and `EXTERNAL`.
+        /// Possible values are: `FOREST`, `EXTERNAL`.
         /// </summary>
         [Input("trustType", required: true)]
         public Input<string> TrustType { get; set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The trust direction, which decides if the current domain is trusted, trusting, or both.
-        /// Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+        /// Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
         /// </summary>
         [Input("trustDirection")]
         public Input<string>? TrustDirection { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.Gcp.ActiveDirectory
 
         /// <summary>
         /// The type of trust represented by the trust resource.
-        /// Possible values are `FOREST` and `EXTERNAL`.
+        /// Possible values are: `FOREST`, `EXTERNAL`.
         /// </summary>
         [Input("trustType")]
         public Input<string>? TrustType { get; set; }

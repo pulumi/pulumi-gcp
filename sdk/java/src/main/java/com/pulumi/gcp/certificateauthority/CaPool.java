@@ -325,7 +325,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Tier of this CaPool.
-     * Possible values are `ENTERPRISE` and `DEVOPS`.
+     * Possible values are: `ENTERPRISE`, `DEVOPS`.
      * 
      */
     @Export(name="tier", type=String.class, parameters={})
@@ -333,7 +333,7 @@ public class CaPool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Tier of this CaPool.
-     * Possible values are `ENTERPRISE` and `DEVOPS`.
+     * Possible values are: `ENTERPRISE`, `DEVOPS`.
      * 
      */
     public Output<String> tier() {

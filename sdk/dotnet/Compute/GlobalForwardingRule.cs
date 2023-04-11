@@ -193,14 +193,14 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
         /// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
         /// and addressType of INTERNAL
-        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
         /// The IP Version that will be used by this global forwarding rule.
-        /// Possible values are `IPV4` and `IPV6`.
+        /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
         [Output("ipVersion")]
         public Output<string?> IpVersion { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Compute
         /// Note: This field must be set "" if the global address is
         /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -410,14 +410,14 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
         /// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
         /// and addressType of INTERNAL
-        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
         /// The IP Version that will be used by this global forwarding rule.
-        /// Possible values are `IPV4` and `IPV6`.
+        /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.Gcp.Compute
         /// Note: This field must be set "" if the global address is
         /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -576,14 +576,14 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
         /// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
         /// and addressType of INTERNAL
-        /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
         /// The IP Version that will be used by this global forwarding rule.
-        /// Possible values are `IPV4` and `IPV6`.
+        /// Possible values are: `IPV4`, `IPV6`.
         /// </summary>
         [Input("ipVersion")]
         public Input<string>? IpVersion { get; set; }
@@ -618,7 +618,7 @@ namespace Pulumi.Gcp.Compute
         /// Note: This field must be set "" if the global address is
         /// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }

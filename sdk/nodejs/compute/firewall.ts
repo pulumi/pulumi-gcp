@@ -153,7 +153,7 @@ export class Firewall extends pulumi.CustomResource {
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     public readonly direction!: pulumi.Output<string>;
     /**
@@ -365,7 +365,7 @@ export interface FirewallState {
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction?: pulumi.Input<string>;
     /**
@@ -512,7 +512,7 @@ export interface FirewallArgs {
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction?: pulumi.Input<string>;
     /**

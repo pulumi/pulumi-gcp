@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class AttachedClusterLoggingConfigComponentConfig {
     /**
      * @return The components to be enabled.
-     * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+     * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
      * 
      */
     private @Nullable List<String> enableComponents;
@@ -21,7 +21,7 @@ public final class AttachedClusterLoggingConfigComponentConfig {
     private AttachedClusterLoggingConfigComponentConfig() {}
     /**
      * @return The components to be enabled.
-     * Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+     * Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
      * 
      */
     public List<String> enableComponents() {

@@ -98,7 +98,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     /**
      * The dialect of the Cloud Spanner Database.
      * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
-     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+     * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      * 
      */
     @Export(name="databaseDialect", type=String.class, parameters={})
@@ -107,7 +107,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     /**
      * @return The dialect of the Cloud Spanner Database.
      * If it is not provided, &#34;GOOGLE_STANDARD_SQL&#34; will be used.
-     * Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+     * Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
      * 
      */
     public Output<String> databaseDialect() {

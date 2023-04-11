@@ -26,7 +26,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
      * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     @Import(name="createPolicy")
@@ -39,7 +39,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
      * the deployment will fail. Note that updating this field does not
      * actually affect the deployment, just how it is updated.
      * Default value is `CREATE_OR_ACQUIRE`.
-     * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+     * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
     public Optional<Output<String>> createPolicy() {
@@ -54,7 +54,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
      * Default value is `DELETE`.
-     * Possible values are `ABANDON` and `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     @Import(name="deletePolicy")
@@ -68,7 +68,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
      * and is not actually deleted. Note that updating this field does not
      * actually change the deployment, just how it is updated.
      * Default value is `DELETE`.
-     * Possible values are `ABANDON` and `DELETE`.
+     * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
     public Optional<Output<String>> deletePolicy() {
@@ -225,7 +225,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
          * the deployment will fail. Note that updating this field does not
          * actually affect the deployment, just how it is updated.
          * Default value is `CREATE_OR_ACQUIRE`.
-         * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+         * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
          * the deployment will fail. Note that updating this field does not
          * actually affect the deployment, just how it is updated.
          * Default value is `CREATE_OR_ACQUIRE`.
-         * Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+         * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
          * and is not actually deleted. Note that updating this field does not
          * actually change the deployment, just how it is updated.
          * Default value is `DELETE`.
-         * Possible values are `ABANDON` and `DELETE`.
+         * Possible values are: `ABANDON`, `DELETE`.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
          * and is not actually deleted. Note that updating this field does not
          * actually change the deployment, just how it is updated.
          * Default value is `DELETE`.
-         * Possible values are `ABANDON` and `DELETE`.
+         * Possible values are: `ABANDON`, `DELETE`.
          * 
          * @return builder
          * 

@@ -71,7 +71,7 @@ type TargetSSLProxy struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrOutput `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
@@ -143,7 +143,7 @@ type targetSSLProxyState struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
@@ -184,7 +184,7 @@ type TargetSSLProxyState struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
@@ -227,7 +227,7 @@ type targetSSLProxyArgs struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one
@@ -263,7 +263,7 @@ type TargetSSLProxyArgs struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput
 	// A list of SslCertificate resources that are used to authenticate
 	// connections between users and the load balancer. At least one
@@ -404,7 +404,7 @@ func (o TargetSSLProxyOutput) Project() pulumi.StringOutput {
 // Specifies the type of proxy header to append before sending data to
 // the backend.
 // Default value is `NONE`.
-// Possible values are `NONE` and `PROXY_V1`.
+// Possible values are: `NONE`, `PROXY_V1`.
 func (o TargetSSLProxyOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetSSLProxy) pulumi.StringPtrOutput { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }

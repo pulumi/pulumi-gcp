@@ -15,7 +15,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
     /**
      * The type of an accelator for a CDF instance.
-     * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+     * Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
      * 
      */
     @Import(name="acceleratorType", required=true)
@@ -23,7 +23,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+     * Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
      * 
      */
     public Output<String> acceleratorType() {
@@ -32,7 +32,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
     /**
      * The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     @Import(name="state", required=true)
@@ -40,7 +40,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     public Output<String> state() {
@@ -74,7 +74,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
         /**
          * @param acceleratorType The type of an accelator for a CDF instance.
-         * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+         * Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
         /**
          * @param acceleratorType The type of an accelator for a CDF instance.
-         * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+         * Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
         /**
          * @param state The type of an accelator for a CDF instance.
-         * Possible values are `ENABLED` and `DISABLED`.
+         * Possible values are: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
 
         /**
          * @param state The type of an accelator for a CDF instance.
-         * Possible values are `ENABLED` and `DISABLED`.
+         * Possible values are: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 

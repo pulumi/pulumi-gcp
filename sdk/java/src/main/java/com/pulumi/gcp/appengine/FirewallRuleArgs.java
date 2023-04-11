@@ -18,7 +18,7 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The action to take if this rule matches.
-     * Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+     * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      * 
      */
     @Import(name="action", required=true)
@@ -26,7 +26,7 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The action to take if this rule matches.
-     * Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+     * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
      * 
      */
     public Output<String> action() {
@@ -133,7 +133,7 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param action The action to take if this rule matches.
-         * Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+         * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param action The action to take if this rule matches.
-         * Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+         * Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
          * 
          * @return builder
          * 

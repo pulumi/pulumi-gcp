@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// Specifies the type of identities that are allowed access to outside the
         /// perimeter. If left unspecified, then members of `identities` field will
         /// be allowed access.
-        /// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+        /// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
         /// </summary>
         public readonly string? IdentityType;
 

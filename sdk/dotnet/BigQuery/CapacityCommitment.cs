@@ -33,8 +33,9 @@ namespace Pulumi.Gcp.BigQuery
     ///     var example = new Gcp.BigQuery.CapacityCommitment("example", new()
     ///     {
     ///         CapacityCommitmentId = "example-commitment",
-    ///         Location = "us-west1",
-    ///         Plan = "FLEX",
+    ///         Edition = "ENTERPRISE",
+    ///         Location = "us-west2",
+    ///         Plan = "FLEX_FLAT_RATE",
     ///         SlotCount = 100,
     ///     });
     /// 
@@ -46,7 +47,15 @@ namespace Pulumi.Gcp.BigQuery
     /// CapacityCommitment can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{name}}
+    ///  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{project}}/{{location}}/{{capacity_commitment_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment default {{location}}/{{capacity_commitment_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/capacityCommitment:CapacityCommitment")]
@@ -74,6 +83,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> CommitmentStartTime { get; private set; } = null!;
 
         /// <summary>
+        /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        /// </summary>
+        [Output("edition")]
+        public Output<string?> Edition { get; private set; } = null!;
+
+        /// <summary>
         /// If true, fail the request if another project in the organization has a capacity commitment.
         /// </summary>
         [Output("enforceSingleAdminProjectPerOrg")]
@@ -93,7 +108,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -106,7 +121,7 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         /// </summary>
         [Output("renewalPlan")]
         public Output<string?> RenewalPlan { get; private set; } = null!;
@@ -179,6 +194,12 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? CapacityCommitmentId { get; set; }
 
         /// <summary>
+        /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
+        /// <summary>
         /// If true, fail the request if another project in the organization has a capacity commitment.
         /// </summary>
         [Input("enforceSingleAdminProjectPerOrg")]
@@ -192,7 +213,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -205,7 +226,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         /// </summary>
         [Input("renewalPlan")]
         public Input<string>? RenewalPlan { get; set; }
@@ -246,6 +267,12 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? CommitmentStartTime { get; set; }
 
         /// <summary>
+        /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
+        /// <summary>
         /// If true, fail the request if another project in the organization has a capacity commitment.
         /// </summary>
         [Input("enforceSingleAdminProjectPerOrg")]
@@ -265,7 +292,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Capacity commitment plan. Valid values are FLEX, TRIAL, MONTHLY, ANNUAL
+        /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
@@ -278,7 +305,7 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
+        /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable some commitment plans.
         /// </summary>
         [Input("renewalPlan")]
         public Input<string>? RenewalPlan { get; set; }

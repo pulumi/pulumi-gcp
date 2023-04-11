@@ -289,7 +289,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
      * determined by our system based on the latest supported minor version.
      * Default value is `MEMCACHE_1_5`.
-     * Possible values are `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`.
      * 
      */
     @Export(name="memcacheVersion", type=String.class, parameters={})
@@ -300,7 +300,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
      * determined by our system based on the latest supported minor version.
      * Default value is `MEMCACHE_1_5`.
-     * Possible values are `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`.
      * 
      */
     public Output<Optional<String>> memcacheVersion() {

@@ -140,7 +140,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      * Creating user Databases is only available for projects on the Blaze plan.
      * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
      * Default value is `USER_DATABASE`.
-     * Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+     * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      * 
      */
     @Import(name="type")
@@ -152,7 +152,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      * Creating user Databases is only available for projects on the Blaze plan.
      * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
      * Default value is `USER_DATABASE`.
-     * Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+     * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -357,7 +357,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          * Creating user Databases is only available for projects on the Blaze plan.
          * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
          * Default value is `USER_DATABASE`.
-         * Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+         * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          * Creating user Databases is only available for projects on the Blaze plan.
          * Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo.
          * Default value is `USER_DATABASE`.
-         * Possible values are `DEFAULT_DATABASE` and `USER_DATABASE`.
+         * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
          * 
          * @return builder
          * 

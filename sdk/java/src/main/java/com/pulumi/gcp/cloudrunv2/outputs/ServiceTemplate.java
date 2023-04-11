@@ -36,7 +36,7 @@ public final class ServiceTemplate {
     private @Nullable String encryptionKey;
     /**
      * @return The sandbox environment to host this Revision.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     private @Nullable String executionEnvironment;
@@ -110,7 +110,7 @@ public final class ServiceTemplate {
     }
     /**
      * @return The sandbox environment to host this Revision.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     public Optional<String> executionEnvironment() {

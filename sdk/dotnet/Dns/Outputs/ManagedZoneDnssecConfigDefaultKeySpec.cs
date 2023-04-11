@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Dns.Outputs
     {
         /// <summary>
         /// String mnemonic specifying the DNSSEC algorithm of this key
-        /// Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+        /// Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
         /// </summary>
         public readonly string? Algorithm;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// resource record sets of type DNSKEY. Zone signing keys do
         /// not have the Secure Entry Point flag set and will be used
         /// to sign all other types of resource record sets.
-        /// Possible values are `keySigning` and `zoneSigning`.
+        /// Possible values are: `keySigning`, `zoneSigning`.
         /// </summary>
         public readonly string? KeyType;
         /// <summary>

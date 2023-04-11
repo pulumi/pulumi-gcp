@@ -71,7 +71,7 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      *   types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     *   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      * 
      */
     @Import(name="kind")
@@ -83,7 +83,7 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
      * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
      *   types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-     *   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+     *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
      * 
      */
     public Optional<Output<String>> kind() {
@@ -235,7 +235,7 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
          * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
          *   types can contain references to other entity types (with or without aliases).
          * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-         *   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+         *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class EntityTypeState extends com.pulumi.resources.ResourceArgs {
          * * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
          *   types can contain references to other entity types (with or without aliases).
          * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-         *   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+         *   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
          * 
          * @return builder
          * 

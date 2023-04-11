@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryDockerConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryMavenConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
@@ -32,6 +33,23 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dockerConfig")
+    private @Nullable Output<RepositoryDockerConfigArgs> dockerConfig;
+
+    /**
+     * @return Docker repository config contains repository level configuration for the repositories of docker type.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryDockerConfigArgs>> dockerConfig() {
+        return Optional.ofNullable(this.dockerConfig);
     }
 
     /**
@@ -136,16 +154,18 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
-     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * The mode configures the repository to serve artifacts from different sources.
+     * Default value is `STANDARD_REPOSITORY`.
+     * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
-     * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+     * @return The mode configures the repository to serve artifacts from different sources.
+     * Default value is `STANDARD_REPOSITORY`.
+     * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -171,6 +191,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration specific for a Remote Repository.
+     * Structure is documented below.
      * 
      */
     @Import(name="remoteRepositoryConfig")
@@ -178,6 +199,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration specific for a Remote Repository.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RepositoryRemoteRepositoryConfigArgs>> remoteRepositoryConfig() {
@@ -203,6 +225,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration specific for a Virtual Repository.
+     * Structure is documented below.
      * 
      */
     @Import(name="virtualRepositoryConfig")
@@ -210,6 +233,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration specific for a Virtual Repository.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RepositoryVirtualRepositoryConfigArgs>> virtualRepositoryConfig() {
@@ -220,6 +244,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     private RepositoryArgs(RepositoryArgs $) {
         this.description = $.description;
+        this.dockerConfig = $.dockerConfig;
         this.format = $.format;
         this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
@@ -269,6 +294,29 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dockerConfig Docker repository config contains repository level configuration for the repositories of docker type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dockerConfig(@Nullable Output<RepositoryDockerConfigArgs> dockerConfig) {
+            $.dockerConfig = dockerConfig;
+            return this;
+        }
+
+        /**
+         * @param dockerConfig Docker repository config contains repository level configuration for the repositories of docker type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dockerConfig(RepositoryDockerConfigArgs dockerConfig) {
+            return dockerConfig(Output.of(dockerConfig));
         }
 
         /**
@@ -403,8 +451,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
-         * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+         * @param mode The mode configures the repository to serve artifacts from different sources.
+         * Default value is `STANDARD_REPOSITORY`.
+         * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
          * 
          * @return builder
          * 
@@ -415,8 +464,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mode The mode configures the repository to serve artifacts from different sources. Default value: &#34;STANDARD_REPOSITORY&#34;
-         * Possible values: [&#34;STANDARD_REPOSITORY&#34;, &#34;VIRTUAL_REPOSITORY&#34;, &#34;REMOTE_REPOSITORY&#34;]
+         * @param mode The mode configures the repository to serve artifacts from different sources.
+         * Default value is `STANDARD_REPOSITORY`.
+         * Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
          * 
          * @return builder
          * 
@@ -450,6 +500,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param remoteRepositoryConfig Configuration specific for a Remote Repository.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -461,6 +512,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param remoteRepositoryConfig Configuration specific for a Remote Repository.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -494,6 +546,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param virtualRepositoryConfig Configuration specific for a Virtual Repository.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -505,6 +558,7 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param virtualRepositoryConfig Configuration specific for a Virtual Repository.
+         * Structure is documented below.
          * 
          * @return builder
          * 

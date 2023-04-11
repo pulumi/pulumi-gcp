@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly int DiskSizeGb;
         public readonly string DiskType;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult> EphemeralStorageConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult> EphemeralStorageLocalSsdConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGcfsConfigResult> GcfsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult> GuestAccelerators;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGvnicResult> Gvnics;
@@ -55,6 +56,8 @@ namespace Pulumi.Gcp.Container.Outputs
             string diskType,
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult> ephemeralStorageConfigs,
+
+            ImmutableArray<Outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult> ephemeralStorageLocalSsdConfigs,
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGcfsConfigResult> gcfsConfigs,
 
@@ -111,6 +114,7 @@ namespace Pulumi.Gcp.Container.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EphemeralStorageConfigs = ephemeralStorageConfigs;
+            EphemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             GcfsConfigs = gcfsConfigs;
             GuestAccelerators = guestAccelerators;
             Gvnics = gvnics;

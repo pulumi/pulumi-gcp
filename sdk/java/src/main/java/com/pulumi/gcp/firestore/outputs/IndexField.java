@@ -14,7 +14,7 @@ public final class IndexField {
     /**
      * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
      * be specified.
-     * Possible values are `CONTAINS`.
+     * Possible values are: `CONTAINS`.
      * 
      */
     private @Nullable String arrayConfig;
@@ -26,7 +26,7 @@ public final class IndexField {
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
      * Only one of `order` and `arrayConfig` can be specified.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     private @Nullable String order;
@@ -35,7 +35,7 @@ public final class IndexField {
     /**
      * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
      * be specified.
-     * Possible values are `CONTAINS`.
+     * Possible values are: `CONTAINS`.
      * 
      */
     public Optional<String> arrayConfig() {
@@ -51,7 +51,7 @@ public final class IndexField {
     /**
      * @return Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=.
      * Only one of `order` and `arrayConfig` can be specified.
-     * Possible values are `ASCENDING` and `DESCENDING`.
+     * Possible values are: `ASCENDING`, `DESCENDING`.
      * 
      */
     public Optional<String> order() {

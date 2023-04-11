@@ -31,7 +31,7 @@ public final class ConnectivityTestSource {
     private @Nullable String network;
     /**
      * @return Type of the network where the endpoint is located.
-     * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
      * 
      */
     private @Nullable String networkType;
@@ -81,7 +81,7 @@ public final class ConnectivityTestSource {
     }
     /**
      * @return Type of the network where the endpoint is located.
-     * Possible values are `GCP_NETWORK` and `NON_GCP_NETWORK`.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
      * 
      */
     public Optional<String> networkType() {

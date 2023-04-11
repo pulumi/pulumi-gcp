@@ -260,7 +260,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * The FHIR specification version.
      * Default value is `STU3`.
-     * Possible values are `DSTU2`, `STU3`, and `R4`.
+     * Possible values are: `DSTU2`, `STU3`, `R4`.
      * 
      */
     @Import(name="version")
@@ -269,7 +269,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The FHIR specification version.
      * Default value is `STU3`.
-     * Possible values are `DSTU2`, `STU3`, and `R4`.
+     * Possible values are: `DSTU2`, `STU3`, `R4`.
      * 
      */
     public Optional<Output<String>> version() {
@@ -643,7 +643,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param version The FHIR specification version.
          * Default value is `STU3`.
-         * Possible values are `DSTU2`, `STU3`, and `R4`.
+         * Possible values are: `DSTU2`, `STU3`, `R4`.
          * 
          * @return builder
          * 
@@ -656,7 +656,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param version The FHIR specification version.
          * Default value is `STU3`.
-         * Possible values are `DSTU2`, `STU3`, and `R4`.
+         * Possible values are: `DSTU2`, `STU3`, `R4`.
          * 
          * @return builder
          * 

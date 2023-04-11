@@ -58,7 +58,7 @@ class BackendServiceArgs:
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input['BackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -90,7 +90,7 @@ class BackendServiceArgs:
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -122,7 +122,7 @@ class BackendServiceArgs:
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -131,7 +131,7 @@ class BackendServiceArgs:
                Structure is documented below.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -251,7 +251,7 @@ class BackendServiceArgs:
     def compression_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        Possible values are `AUTOMATIC` and `DISABLED`.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
         """
         return pulumi.get(self, "compression_mode")
 
@@ -393,7 +393,7 @@ class BackendServiceArgs:
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -513,7 +513,7 @@ class BackendServiceArgs:
         The protocol this BackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         types and may result in errors if used with the GA API.
-        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
         """
         return pulumi.get(self, "protocol")
 
@@ -555,7 +555,7 @@ class BackendServiceArgs:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -626,7 +626,7 @@ class _BackendServiceState:
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input['BackendServiceConsistentHashArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -662,7 +662,7 @@ class _BackendServiceState:
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -694,7 +694,7 @@ class _BackendServiceState:
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -704,7 +704,7 @@ class _BackendServiceState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -832,7 +832,7 @@ class _BackendServiceState:
     def compression_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        Possible values are `AUTOMATIC` and `DISABLED`.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
         """
         return pulumi.get(self, "compression_mode")
 
@@ -1011,7 +1011,7 @@ class _BackendServiceState:
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1131,7 +1131,7 @@ class _BackendServiceState:
         The protocol this BackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         types and may result in errors if used with the GA API.
-        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1185,7 +1185,7 @@ class _BackendServiceState:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -1358,7 +1358,7 @@ class BackendService(pulumi.CustomResource):
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -1390,7 +1390,7 @@ class BackendService(pulumi.CustomResource):
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -1422,7 +1422,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -1431,7 +1431,7 @@ class BackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1687,7 +1687,7 @@ class BackendService(pulumi.CustomResource):
                is applicable only when the load_balancing_scheme is set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
         :param pulumi.Input[str] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-               Possible values are `AUTOMATIC` and `DISABLED`.
+               Possible values are: `AUTOMATIC`, `DISABLED`.
         :param pulumi.Input[int] connection_draining_timeout_sec: Time for which instance will be drained (not accept new
                connections, but still work to finish started).
         :param pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session
@@ -1723,7 +1723,7 @@ class BackendService(pulumi.CustomResource):
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -1755,7 +1755,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
                types and may result in errors if used with the GA API.
-               Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -1765,7 +1765,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1851,7 +1851,7 @@ class BackendService(pulumi.CustomResource):
     def compression_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        Possible values are `AUTOMATIC` and `DISABLED`.
+        Possible values are: `AUTOMATIC`, `DISABLED`.
         """
         return pulumi.get(self, "compression_mode")
 
@@ -1978,7 +1978,7 @@ class BackendService(pulumi.CustomResource):
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `INTERNAL_SELF_MANAGED`, and `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -2066,7 +2066,7 @@ class BackendService(pulumi.CustomResource):
         The protocol this BackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
         types and may result in errors if used with the GA API.
-        Possible values are `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, and `GRPC`.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
         """
         return pulumi.get(self, "protocol")
 
@@ -2104,7 +2104,7 @@ class BackendService(pulumi.CustomResource):
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, and `HTTP_COOKIE`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
         """
         return pulumi.get(self, "session_affinity")
 

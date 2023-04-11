@@ -144,7 +144,7 @@ type Device struct {
 	// The last time a state event was received.
 	LastStateTime pulumi.StringOutput `pulumi:"lastStateTime"`
 	// The logging verbosity for device activity.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel pulumi.StringPtrOutput `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
@@ -219,7 +219,7 @@ type deviceState struct {
 	// The last time a state event was received.
 	LastStateTime *string `pulumi:"lastStateTime"`
 	// The logging verbosity for device activity.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -263,7 +263,7 @@ type DeviceState struct {
 	// The last time a state event was received.
 	LastStateTime pulumi.StringPtrInput
 	// The logging verbosity for device activity.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// The metadata key-value pairs assigned to the device.
 	Metadata pulumi.StringMapInput
@@ -293,7 +293,7 @@ type deviceArgs struct {
 	// Structure is documented below.
 	GatewayConfig *DeviceGatewayConfig `pulumi:"gatewayConfig"`
 	// The logging verbosity for device activity.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel *string `pulumi:"logLevel"`
 	// The metadata key-value pairs assigned to the device.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -314,7 +314,7 @@ type DeviceArgs struct {
 	// Structure is documented below.
 	GatewayConfig DeviceGatewayConfigPtrInput
 	// The logging verbosity for device activity.
-	// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+	// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 	LogLevel pulumi.StringPtrInput
 	// The metadata key-value pairs assigned to the device.
 	Metadata pulumi.StringMapInput
@@ -471,7 +471,7 @@ func (o DeviceOutput) LastStateTime() pulumi.StringOutput {
 }
 
 // The logging verbosity for device activity.
-// Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+// Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
 func (o DeviceOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringPtrOutput { return v.LogLevel }).(pulumi.StringPtrOutput)
 }

@@ -37,14 +37,14 @@ namespace Pulumi.Gcp.Dns.Inputs
         /// <summary>
         /// Specifies the mechanism used to provide authenticated denial-of-existence responses.
         /// non_existence can only be updated when the state is `off`.
-        /// Possible values are `nsec` and `nsec3`.
+        /// Possible values are: `nsec`, `nsec3`.
         /// </summary>
         [Input("nonExistence")]
         public Input<string>? NonExistence { get; set; }
 
         /// <summary>
         /// Specifies whether DNSSEC is enabled, and what mode it is in
-        /// Possible values are `off`, `on`, and `transfer`.
+        /// Possible values are: `off`, `on`, `transfer`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

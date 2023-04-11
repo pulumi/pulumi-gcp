@@ -5048,10 +5048,10 @@ func (o StreamDestinationConfigGcsDestinationConfigAvroFileFormatPtrOutput) Elem
 
 type StreamDestinationConfigGcsDestinationConfigJsonFileFormat struct {
 	// Compression of the loaded JSON file.
-	// Possible values are `NO_COMPRESSION` and `GZIP`.
+	// Possible values are: `NO_COMPRESSION`, `GZIP`.
 	Compression *string `pulumi:"compression"`
 	// The schema file format along JSON data files.
-	// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+	// Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
 	SchemaFileFormat *string `pulumi:"schemaFileFormat"`
 }
 
@@ -5068,10 +5068,10 @@ type StreamDestinationConfigGcsDestinationConfigJsonFileFormatInput interface {
 
 type StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs struct {
 	// Compression of the loaded JSON file.
-	// Possible values are `NO_COMPRESSION` and `GZIP`.
+	// Possible values are: `NO_COMPRESSION`, `GZIP`.
 	Compression pulumi.StringPtrInput `pulumi:"compression"`
 	// The schema file format along JSON data files.
-	// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+	// Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
 	SchemaFileFormat pulumi.StringPtrInput `pulumi:"schemaFileFormat"`
 }
 
@@ -5153,13 +5153,13 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) ToStrea
 }
 
 // Compression of the loaded JSON file.
-// Possible values are `NO_COMPRESSION` and `GZIP`.
+// Possible values are: `NO_COMPRESSION`, `GZIP`.
 func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string { return v.Compression }).(pulumi.StringPtrOutput)
 }
 
 // The schema file format along JSON data files.
-// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+// Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
 func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatOutput) SchemaFileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string { return v.SchemaFileFormat }).(pulumi.StringPtrOutput)
 }
@@ -5189,7 +5189,7 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Elem
 }
 
 // Compression of the loaded JSON file.
-// Possible values are `NO_COMPRESSION` and `GZIP`.
+// Possible values are: `NO_COMPRESSION`, `GZIP`.
 func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Compression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string {
 		if v == nil {
@@ -5200,7 +5200,7 @@ func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) Comp
 }
 
 // The schema file format along JSON data files.
-// Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+// Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
 func (o StreamDestinationConfigGcsDestinationConfigJsonFileFormatPtrOutput) SchemaFileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigGcsDestinationConfigJsonFileFormat) *string {
 		if v == nil {

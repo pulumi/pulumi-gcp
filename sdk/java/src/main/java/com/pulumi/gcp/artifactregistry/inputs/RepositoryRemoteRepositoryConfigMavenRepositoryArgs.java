@@ -18,7 +18,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
     /**
      * Address of the remote repository.
      * Default value is `MAVEN_CENTRAL`.
-     * Possible values are `MAVEN_CENTRAL`.
+     * Possible values are: `MAVEN_CENTRAL`.
      * 
      */
     @Import(name="publicRepository")
@@ -27,7 +27,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
     /**
      * @return Address of the remote repository.
      * Default value is `MAVEN_CENTRAL`.
-     * Possible values are `MAVEN_CENTRAL`.
+     * Possible values are: `MAVEN_CENTRAL`.
      * 
      */
     public Optional<Output<String>> publicRepository() {
@@ -61,7 +61,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
         /**
          * @param publicRepository Address of the remote repository.
          * Default value is `MAVEN_CENTRAL`.
-         * Possible values are `MAVEN_CENTRAL`.
+         * Possible values are: `MAVEN_CENTRAL`.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepositoryArgs extends c
         /**
          * @param publicRepository Address of the remote repository.
          * Default value is `MAVEN_CENTRAL`.
-         * Possible values are `MAVEN_CENTRAL`.
+         * Possible values are: `MAVEN_CENTRAL`.
          * 
          * @return builder
          * 

@@ -16,7 +16,7 @@ public final class BudgetThresholdRule {
      * @return The type of basis used to determine if spend has passed
      * the threshold.
      * Default value is `CURRENT_SPEND`.
-     * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+     * Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
      * 
      */
     private @Nullable String spendBasis;
@@ -32,7 +32,7 @@ public final class BudgetThresholdRule {
      * @return The type of basis used to determine if spend has passed
      * the threshold.
      * Default value is `CURRENT_SPEND`.
-     * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+     * Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
      * 
      */
     public Optional<String> spendBasis() {

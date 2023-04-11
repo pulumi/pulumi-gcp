@@ -17,7 +17,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
     /**
      * Compression of the loaded JSON file.
-     * Possible values are `NO_COMPRESSION` and `GZIP`.
+     * Possible values are: `NO_COMPRESSION`, `GZIP`.
      * 
      */
     @Import(name="compression")
@@ -25,7 +25,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
     /**
      * @return Compression of the loaded JSON file.
-     * Possible values are `NO_COMPRESSION` and `GZIP`.
+     * Possible values are: `NO_COMPRESSION`, `GZIP`.
      * 
      */
     public Optional<Output<String>> compression() {
@@ -34,7 +34,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
     /**
      * The schema file format along JSON data files.
-     * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+     * Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
      * 
      */
     @Import(name="schemaFileFormat")
@@ -42,7 +42,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
     /**
      * @return The schema file format along JSON data files.
-     * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+     * Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
      * 
      */
     public Optional<Output<String>> schemaFileFormat() {
@@ -76,7 +76,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
         /**
          * @param compression Compression of the loaded JSON file.
-         * Possible values are `NO_COMPRESSION` and `GZIP`.
+         * Possible values are: `NO_COMPRESSION`, `GZIP`.
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
         /**
          * @param compression Compression of the loaded JSON file.
-         * Possible values are `NO_COMPRESSION` and `GZIP`.
+         * Possible values are: `NO_COMPRESSION`, `GZIP`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
         /**
          * @param schemaFileFormat The schema file format along JSON data files.
-         * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+         * Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs
 
         /**
          * @param schemaFileFormat The schema file format along JSON data files.
-         * Possible values are `NO_SCHEMA_FILE` and `AVRO_SCHEMA_FILE`.
+         * Possible values are: `NO_SCHEMA_FILE`, `AVRO_SCHEMA_FILE`.
          * 
          * @return builder
          * 

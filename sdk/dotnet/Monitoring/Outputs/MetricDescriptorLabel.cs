@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// <summary>
         /// The type of data that can be assigned to the label.
         /// Default value is `STRING`.
-        /// Possible values are `STRING`, `BOOL`, and `INT64`.
+        /// Possible values are: `STRING`, `BOOL`, `INT64`.
         /// </summary>
         public readonly string? ValueType;
 

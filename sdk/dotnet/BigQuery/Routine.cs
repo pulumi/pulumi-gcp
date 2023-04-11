@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The determinism level of the JavaScript UDF if defined.
-        /// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+        /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         /// </summary>
         [Output("determinismLevel")]
         public Output<string?> DeterminismLevel { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The language of the routine.
-        /// Possible values are `SQL` and `JAVASCRIPT`.
+        /// Possible values are: `SQL`, `JAVASCRIPT`.
         /// </summary>
         [Output("language")]
         public Output<string?> Language { get; private set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The type of routine.
-        /// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+        /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         /// </summary>
         [Output("routineType")]
         public Output<string?> RoutineType { get; private set; } = null!;
@@ -340,7 +340,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The determinism level of the JavaScript UDF if defined.
-        /// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+        /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         /// </summary>
         [Input("determinismLevel")]
         public Input<string>? DeterminismLevel { get; set; }
@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The language of the routine.
-        /// Possible values are `SQL` and `JAVASCRIPT`.
+        /// Possible values are: `SQL`, `JAVASCRIPT`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The type of routine.
-        /// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+        /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         /// </summary>
         [Input("routineType")]
         public Input<string>? RoutineType { get; set; }
@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The determinism level of the JavaScript UDF if defined.
-        /// Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+        /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
         /// </summary>
         [Input("determinismLevel")]
         public Input<string>? DeterminismLevel { get; set; }
@@ -477,7 +477,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The language of the routine.
-        /// Possible values are `SQL` and `JAVASCRIPT`.
+        /// Possible values are: `SQL`, `JAVASCRIPT`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -527,7 +527,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The type of routine.
-        /// Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+        /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         /// </summary>
         [Input("routineType")]
         public Input<string>? RoutineType { get; set; }

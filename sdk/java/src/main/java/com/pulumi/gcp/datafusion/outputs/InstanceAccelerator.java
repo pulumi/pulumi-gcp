@@ -11,13 +11,13 @@ import java.util.Objects;
 public final class InstanceAccelerator {
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+     * Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
      * 
      */
     private String acceleratorType;
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     private String state;
@@ -25,7 +25,7 @@ public final class InstanceAccelerator {
     private InstanceAccelerator() {}
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `CDC`, `HEALTHCARE`, and `CCAI_INSIGHTS`.
+     * Possible values are: `CDC`, `HEALTHCARE`, `CCAI_INSIGHTS`.
      * 
      */
     public String acceleratorType() {
@@ -33,7 +33,7 @@ public final class InstanceAccelerator {
     }
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     public String state() {

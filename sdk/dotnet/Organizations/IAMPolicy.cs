@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
     ///     {
-    ///         OrgId = "your-organization-id",
+    ///         OrgId = "1234567890",
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
     ///     {
-    ///         OrgId = "your-organization-id",
+    ///         OrgId = "1234567890",
     ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
     ///     });
     /// 
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Organizations
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         OrgId = "your-organization-id",
+    ///         OrgId = "1234567890",
     ///         Role = "roles/editor",
     ///     });
     /// 
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Organizations
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         OrgId = "your-organization-id",
+    ///         OrgId = "1234567890",
     ///         Role = "roles/editor",
     ///     });
     /// 
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.Organizations
     ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
     ///     {
     ///         Member = "user:jane@example.com",
-    ///         OrgId = "your-organization-id",
+    ///         OrgId = "1234567890",
     ///         Role = "roles/editor",
     ///     });
     /// 
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.Organizations
     ///             Title = "expires_after_2019_12_31",
     ///         },
     ///         Member = "user:jane@example.com",
-    ///         OrgId = "your-organization-id",
+    ///         OrgId = "1234567890",
     ///         Role = "roles/editor",
     ///     });
     /// 
@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.Organizations
     ///                 LogType = "DATA_READ",
     ///             },
     ///         },
-    ///         OrgId = "your-organization-id",
+    ///         OrgId = "1234567890",
     ///         Service = "allServices",
     ///     });
     /// 
@@ -284,9 +284,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-        /// Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-        /// will not be inferred from the provider.
+        /// The organization id of the target organization.
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -346,9 +344,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class IAMPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-        /// Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-        /// will not be inferred from the provider.
+        /// The organization id of the target organization.
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -376,9 +372,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The organization ID. If not specified for `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-        /// Required for `gcp.organizations.IAMPolicy` - you must explicitly set the organization, and it
-        /// will not be inferred from the provider.
+        /// The organization id of the target organization.
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

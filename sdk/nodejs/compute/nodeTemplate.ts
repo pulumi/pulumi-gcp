@@ -101,7 +101,7 @@ export class NodeTemplate extends pulumi.CustomResource {
     /**
      * CPU overcommit.
      * Default value is `NONE`.
-     * Possible values are `ENABLED` and `NONE`.
+     * Possible values are: `ENABLED`, `NONE`.
      */
     public readonly cpuOvercommitType!: pulumi.Output<string | undefined>;
     /**
@@ -205,7 +205,7 @@ export interface NodeTemplateState {
     /**
      * CPU overcommit.
      * Default value is `NONE`.
-     * Possible values are `ENABLED` and `NONE`.
+     * Possible values are: `ENABLED`, `NONE`.
      */
     cpuOvercommitType?: pulumi.Input<string>;
     /**
@@ -267,7 +267,7 @@ export interface NodeTemplateArgs {
     /**
      * CPU overcommit.
      * Default value is `NONE`.
-     * Possible values are `ENABLED` and `NONE`.
+     * Possible values are: `ENABLED`, `NONE`.
      */
     cpuOvercommitType?: pulumi.Input<string>;
     /**

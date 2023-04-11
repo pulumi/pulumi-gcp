@@ -101,7 +101,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The determinism level of the JavaScript UDF if defined.
-     * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+     * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      * 
      */
     @Import(name="determinismLevel")
@@ -109,7 +109,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The determinism level of the JavaScript UDF if defined.
-     * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+     * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
      * 
      */
     public Optional<Output<String>> determinismLevel() {
@@ -135,7 +135,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The language of the routine.
-     * Possible values are `SQL` and `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`.
      * 
      */
     @Import(name="language")
@@ -143,7 +143,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The language of the routine.
-     * Possible values are `SQL` and `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`.
      * 
      */
     public Optional<Output<String>> language() {
@@ -253,7 +253,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of routine.
-     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+     * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
     @Import(name="routineType")
@@ -261,7 +261,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of routine.
-     * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+     * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      * 
      */
     public Optional<Output<String>> routineType() {
@@ -429,7 +429,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param determinismLevel The determinism level of the JavaScript UDF if defined.
-         * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+         * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param determinismLevel The determinism level of the JavaScript UDF if defined.
-         * Possible values are `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, and `NOT_DETERMINISTIC`.
+         * Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param language The language of the routine.
-         * Possible values are `SQL` and `JAVASCRIPT`.
+         * Possible values are: `SQL`, `JAVASCRIPT`.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param language The language of the routine.
-         * Possible values are `SQL` and `JAVASCRIPT`.
+         * Possible values are: `SQL`, `JAVASCRIPT`.
          * 
          * @return builder
          * 
@@ -640,7 +640,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param routineType The type of routine.
-         * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+         * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param routineType The type of routine.
-         * Possible values are `SCALAR_FUNCTION`, `PROCEDURE`, and `TABLE_VALUED_FUNCTION`.
+         * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
          * 
          * @return builder
          * 

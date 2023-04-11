@@ -111,7 +111,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
     /**
      * Indicates the redundancy type of this external VPN gateway
-     * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+     * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      * 
      */
     @Import(name="redundancyType")
@@ -119,7 +119,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
     /**
      * @return Indicates the redundancy type of this external VPN gateway
-     * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+     * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
      * 
      */
     public Optional<Output<String>> redundancyType() {
@@ -305,7 +305,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
         /**
          * @param redundancyType Indicates the redundancy type of this external VPN gateway
-         * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+         * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
 
         /**
          * @param redundancyType Indicates the redundancy type of this external VPN gateway
-         * Possible values are `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, and `TWO_IPS_REDUNDANCY`.
+         * Possible values are: `FOUR_IPS_REDUNDANCY`, `SINGLE_IP_INTERNALLY_REDUNDANT`, `TWO_IPS_REDUNDANCY`.
          * 
          * @return builder
          * 

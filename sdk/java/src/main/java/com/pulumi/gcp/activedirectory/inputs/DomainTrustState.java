@@ -98,7 +98,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The trust direction, which decides if the current domain is trusted, trusting, or both.
-     * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+     * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      * 
      */
     @Import(name="trustDirection")
@@ -106,7 +106,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The trust direction, which decides if the current domain is trusted, trusting, or both.
-     * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+     * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      * 
      */
     public Optional<Output<String>> trustDirection() {
@@ -132,7 +132,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of trust represented by the trust resource.
-     * Possible values are `FOREST` and `EXTERNAL`.
+     * Possible values are: `FOREST`, `EXTERNAL`.
      * 
      */
     @Import(name="trustType")
@@ -140,7 +140,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of trust represented by the trust resource.
-     * Possible values are `FOREST` and `EXTERNAL`.
+     * Possible values are: `FOREST`, `EXTERNAL`.
      * 
      */
     public Optional<Output<String>> trustType() {
@@ -299,7 +299,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param trustDirection The trust direction, which decides if the current domain is trusted, trusting, or both.
-         * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+         * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param trustDirection The trust direction, which decides if the current domain is trusted, trusting, or both.
-         * Possible values are `INBOUND`, `OUTBOUND`, and `BIDIRECTIONAL`.
+         * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param trustType The type of trust represented by the trust resource.
-         * Possible values are `FOREST` and `EXTERNAL`.
+         * Possible values are: `FOREST`, `EXTERNAL`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class DomainTrustState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param trustType The type of trust represented by the trust resource.
-         * Possible values are `FOREST` and `EXTERNAL`.
+         * Possible values are: `FOREST`, `EXTERNAL`.
          * 
          * @return builder
          * 

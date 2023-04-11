@@ -370,7 +370,7 @@ namespace Pulumi.Gcp.DataFusion
 
         /// <summary>
         /// The type of an accelator for a CDF instance.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -398,7 +398,7 @@ namespace Pulumi.Gcp.DataFusion
         /// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
-        /// Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -602,7 +602,7 @@ namespace Pulumi.Gcp.DataFusion
         /// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
-        /// Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -789,7 +789,7 @@ namespace Pulumi.Gcp.DataFusion
 
         /// <summary>
         /// The type of an accelator for a CDF instance.
-        /// Possible values are `ENABLED` and `DISABLED`.
+        /// Possible values are: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -817,7 +817,7 @@ namespace Pulumi.Gcp.DataFusion
         /// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
         /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
         /// pipelines at low cost.
-        /// Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+        /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

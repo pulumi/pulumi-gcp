@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
     /**
      * @return The algorithm used.
-     * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+     * Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
      * 
      */
     private String signatureAlgorithm;
@@ -19,7 +19,7 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
     private CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve() {}
     /**
      * @return The algorithm used.
-     * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+     * Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
      * 
      */
     public String signatureAlgorithm() {

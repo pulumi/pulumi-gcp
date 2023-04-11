@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-        /// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Output("checkerType")]
         public Output<string> CheckerType { get; private set; } = null!;
@@ -356,7 +356,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-        /// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Input("checkerType")]
         public Input<string>? CheckerType { get; set; }
@@ -449,7 +449,7 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-        /// Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+        /// Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         /// </summary>
         [Input("checkerType")]
         public Input<string>? CheckerType { get; set; }

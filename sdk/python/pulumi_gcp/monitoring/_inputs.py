@@ -432,7 +432,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
                and alignmentPeriod must be
                specified; otherwise, an error is
                returned.
-               Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+               Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
@@ -475,7 +475,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
                and alignmentPeriod must be
                specified; otherwise, an error is
                returned.
-               Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+               Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
         if alignment_period is not None:
             pulumi.set(__self__, "alignment_period", alignment_period)
@@ -532,7 +532,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         and alignmentPeriod must be
         specified; otherwise, an error is
         returned.
-        Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+        Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
         """
         return pulumi.get(self, "cross_series_reducer")
 
@@ -597,7 +597,7 @@ class AlertPolicyConditionConditionAbsentAggregationArgs:
         and alignmentPeriod must be
         specified; otherwise, an error is
         returned.
-        Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+        Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
         return pulumi.get(self, "per_series_aligner")
 
@@ -730,7 +730,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
         :param pulumi.Input[str] evaluation_missing_data: A condition control that determines how
                metric-threshold conditions are evaluated when
                data stops arriving.
-               Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+               Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
         :param pulumi.Input['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs'] trigger: The number/percent of time series for which
                the comparison must hold in order for the
                condition to trigger. If unspecified, then
@@ -793,7 +793,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgs:
         A condition control that determines how
         metric-threshold conditions are evaluated when
         data stops arriving.
-        Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
         """
         return pulumi.get(self, "evaluation_missing_data")
 
@@ -890,7 +890,7 @@ class AlertPolicyConditionConditionThresholdArgs:
                the left-hand side and the threshold on the
                right-hand side. Only COMPARISON_LT and
                COMPARISON_GT are supported currently.
-               Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+               Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
         :param pulumi.Input[str] duration: The amount of time that a time series must
                violate the threshold to be considered
                failing. Currently, only values that are a
@@ -955,7 +955,7 @@ class AlertPolicyConditionConditionThresholdArgs:
         :param pulumi.Input[str] evaluation_missing_data: A condition control that determines how
                metric-threshold conditions are evaluated when
                data stops arriving.
-               Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+               Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
         :param pulumi.Input[str] filter: A filter that identifies which time series
                should be compared with the threshold.The
                filter is similar to the one that is
@@ -1009,7 +1009,7 @@ class AlertPolicyConditionConditionThresholdArgs:
         the left-hand side and the threshold on the
         right-hand side. Only COMPARISON_LT and
         COMPARISON_GT are supported currently.
-        Possible values are `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, and `COMPARISON_NE`.
+        Possible values are: `COMPARISON_GT`, `COMPARISON_GE`, `COMPARISON_LT`, `COMPARISON_LE`, `COMPARISON_EQ`, `COMPARISON_NE`.
         """
         return pulumi.get(self, "comparison")
 
@@ -1129,7 +1129,7 @@ class AlertPolicyConditionConditionThresholdArgs:
         A condition control that determines how
         metric-threshold conditions are evaluated when
         data stops arriving.
-        Possible values are `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, and `EVALUATION_MISSING_DATA_NO_OP`.
+        Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
         """
         return pulumi.get(self, "evaluation_missing_data")
 
@@ -1233,7 +1233,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
                and alignmentPeriod must be
                specified; otherwise, an error is
                returned.
-               Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+               Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
@@ -1276,7 +1276,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
                and alignmentPeriod must be
                specified; otherwise, an error is
                returned.
-               Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+               Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
         if alignment_period is not None:
             pulumi.set(__self__, "alignment_period", alignment_period)
@@ -1333,7 +1333,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         and alignmentPeriod must be
         specified; otherwise, an error is
         returned.
-        Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+        Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
         """
         return pulumi.get(self, "cross_series_reducer")
 
@@ -1398,7 +1398,7 @@ class AlertPolicyConditionConditionThresholdAggregationArgs:
         and alignmentPeriod must be
         specified; otherwise, an error is
         returned.
-        Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+        Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
         return pulumi.get(self, "per_series_aligner")
 
@@ -1446,7 +1446,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
                and alignmentPeriod must be
                specified; otherwise, an error is
                returned.
-               Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+               Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: The set of fields to preserve when
                crossSeriesReducer is specified.
                The groupByFields determine how
@@ -1489,7 +1489,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
                and alignmentPeriod must be
                specified; otherwise, an error is
                returned.
-               Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+               Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
         if alignment_period is not None:
             pulumi.set(__self__, "alignment_period", alignment_period)
@@ -1546,7 +1546,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         and alignmentPeriod must be
         specified; otherwise, an error is
         returned.
-        Possible values are `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, and `REDUCE_PERCENTILE_05`.
+        Possible values are: `REDUCE_NONE`, `REDUCE_MEAN`, `REDUCE_MIN`, `REDUCE_MAX`, `REDUCE_SUM`, `REDUCE_STDDEV`, `REDUCE_COUNT`, `REDUCE_COUNT_TRUE`, `REDUCE_COUNT_FALSE`, `REDUCE_FRACTION_TRUE`, `REDUCE_PERCENTILE_99`, `REDUCE_PERCENTILE_95`, `REDUCE_PERCENTILE_50`, `REDUCE_PERCENTILE_05`.
         """
         return pulumi.get(self, "cross_series_reducer")
 
@@ -1611,7 +1611,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregationArgs:
         and alignmentPeriod must be
         specified; otherwise, an error is
         returned.
-        Possible values are `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, and `ALIGN_PERCENT_CHANGE`.
+        Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
         return pulumi.get(self, "per_series_aligner")
 
@@ -1865,7 +1865,7 @@ class MetricDescriptorLabelArgs:
         :param pulumi.Input[str] description: A human-readable description for the label.
         :param pulumi.Input[str] value_type: The type of data that can be assigned to the label.
                Default value is `STRING`.
-               Possible values are `STRING`, `BOOL`, and `INT64`.
+               Possible values are: `STRING`, `BOOL`, `INT64`.
         """
         pulumi.set(__self__, "key", key)
         if description is not None:
@@ -1903,7 +1903,7 @@ class MetricDescriptorLabelArgs:
         """
         The type of data that can be assigned to the label.
         Default value is `STRING`.
-        Possible values are `STRING`, `BOOL`, and `INT64`.
+        Possible values are: `STRING`, `BOOL`, `INT64`.
         """
         return pulumi.get(self, "value_type")
 
@@ -3276,7 +3276,7 @@ class UptimeCheckConfigContentMatcherArgs:
                Structure is documented below.
         :param pulumi.Input[str] matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
                Default value is `CONTAINS_STRING`.
-               Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
+               Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
         """
         pulumi.set(__self__, "content", content)
         if json_path_matcher is not None:
@@ -3315,7 +3315,7 @@ class UptimeCheckConfigContentMatcherArgs:
         """
         The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         Default value is `CONTAINS_STRING`.
-        Possible values are `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, and `NOT_MATCHES_JSON_PATH`.
+        Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
         """
         return pulumi.get(self, "matcher")
 
@@ -3333,7 +3333,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
         :param pulumi.Input[str] json_path: JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
         :param pulumi.Input[str] json_matcher: Options to perform JSONPath content matching.
                Default value is `EXACT_MATCH`.
-               Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+               Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
         """
         pulumi.set(__self__, "json_path", json_path)
         if json_matcher is not None:
@@ -3357,7 +3357,7 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
         """
         Options to perform JSONPath content matching.
         Default value is `EXACT_MATCH`.
-        Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+        Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
         """
         return pulumi.get(self, "json_matcher")
 
@@ -3387,14 +3387,14 @@ class UptimeCheckConfigHttpCheckArgs:
                Structure is documented below.
         :param pulumi.Input[str] body: The request body associated with the HTTP POST request. If contentType is URL_ENCODED, the body passed in must be URL-encoded. Users can provide a Content-Length header via the headers field or the API will do so. If the requestMethod is GET and body is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. "foo=bar" in URL-encoded form is "foo%3Dbar" and in base64 encoding is "Zm9vJTI1M0RiYXI=".
         :param pulumi.Input[str] content_type: The content type to use for the check.
-               Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+               Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param pulumi.Input[bool] mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to True then the headers will be obscured with ******.
         :param pulumi.Input[str] path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically. Optional (defaults to "/").
         :param pulumi.Input[int] port: The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) and path to construct the full URL. Optional (defaults to 80 without SSL, or 443 with SSL).
         :param pulumi.Input[str] request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
                Default value is `GET`.
-               Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+               Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
         :param pulumi.Input[bool] use_ssl: If true, use HTTPS instead of HTTP to run the check.
         :param pulumi.Input[bool] validate_ssl: Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitoredResource is set to uptime_url. If useSsl is false, setting validateSsl to true has no effect.
         """
@@ -3464,7 +3464,7 @@ class UptimeCheckConfigHttpCheckArgs:
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
         The content type to use for the check.
-        Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+        Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
         """
         return pulumi.get(self, "content_type")
 
@@ -3526,7 +3526,7 @@ class UptimeCheckConfigHttpCheckArgs:
         """
         The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
         Default value is `GET`.
-        Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+        Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
         """
         return pulumi.get(self, "request_method")
 
@@ -3566,7 +3566,7 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
                  status_value: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] status_class: A class of status codes to accept.
-               Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+               Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
         :param pulumi.Input[int] status_value: A status code to accept.
         """
         if status_class is not None:
@@ -3579,7 +3579,7 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs:
     def status_class(self) -> Optional[pulumi.Input[str]]:
         """
         A class of status codes to accept.
-        Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+        Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
         """
         return pulumi.get(self, "status_class")
 
@@ -3684,7 +3684,7 @@ class UptimeCheckConfigResourceGroupArgs:
         """
         :param pulumi.Input[str] group_id: The group of resources being monitored. Should be the `name` of a group
         :param pulumi.Input[str] resource_type: The resource type of the group members.
-               Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+               Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -3708,7 +3708,7 @@ class UptimeCheckConfigResourceGroupArgs:
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
         The resource type of the group members.
-        Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+        Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
         """
         return pulumi.get(self, "resource_type")
 

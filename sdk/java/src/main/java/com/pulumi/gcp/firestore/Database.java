@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
 public class Database extends com.pulumi.resources.CustomResource {
     /**
      * The App Engine integration mode to use for this database.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     @Export(name="appEngineIntegrationMode", type=String.class, parameters={})
@@ -45,7 +45,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The App Engine integration mode to use for this database.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     public Output<String> appEngineIntegrationMode() {
@@ -53,7 +53,7 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * The concurrency control mode to use for this database.
-     * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+     * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      * 
      */
     @Export(name="concurrencyMode", type=String.class, parameters={})
@@ -61,7 +61,7 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The concurrency control mode to use for this database.
-     * Possible values are `OPTIMISTIC`, `PESSIMISTIC`, and `OPTIMISTIC_WITH_ENTITY_GROUPS`.
+     * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      * 
      */
     public Output<String> concurrencyMode() {
@@ -179,7 +179,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
-     * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+     * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -189,7 +189,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * @return The type of the database.
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
-     * Possible values are `FIRESTORE_NATIVE` and `DATASTORE_MODE`.
+     * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      * 
      */
     public Output<String> type() {

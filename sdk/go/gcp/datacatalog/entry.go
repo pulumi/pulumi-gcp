@@ -187,7 +187,7 @@ type Entry struct {
 	Schema pulumi.StringPtrOutput `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
 	// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-	// Possible values are `FILESET`.
+	// Possible values are: `FILESET`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// This field indicates the entry's source system that Data Catalog does not integrate with.
 	// userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -275,7 +275,7 @@ type entryState struct {
 	Schema *string `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
 	// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-	// Possible values are `FILESET`.
+	// Possible values are: `FILESET`.
 	Type *string `pulumi:"type"`
 	// This field indicates the entry's source system that Data Catalog does not integrate with.
 	// userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -329,7 +329,7 @@ type EntryState struct {
 	Schema pulumi.StringPtrInput
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
 	// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-	// Possible values are `FILESET`.
+	// Possible values are: `FILESET`.
 	Type pulumi.StringPtrInput
 	// This field indicates the entry's source system that Data Catalog does not integrate with.
 	// userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -374,7 +374,7 @@ type entryArgs struct {
 	Schema *string `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
 	// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-	// Possible values are `FILESET`.
+	// Possible values are: `FILESET`.
 	Type *string `pulumi:"type"`
 	// This field indicates the entry's source system that Data Catalog does not integrate with.
 	// userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -416,7 +416,7 @@ type EntryArgs struct {
 	Schema pulumi.StringPtrInput
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
 	// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-	// Possible values are `FILESET`.
+	// Possible values are: `FILESET`.
 	Type pulumi.StringPtrInput
 	// This field indicates the entry's source system that Data Catalog does not integrate with.
 	// userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
@@ -589,7 +589,7 @@ func (o EntryOutput) Schema() pulumi.StringPtrOutput {
 
 // The type of the entry. Only used for Entries with types in the EntryType enum.
 // Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-// Possible values are `FILESET`.
+// Possible values are: `FILESET`.
 func (o EntryOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

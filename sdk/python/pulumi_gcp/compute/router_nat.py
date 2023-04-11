@@ -41,7 +41,7 @@ class RouterNatArgs:
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-               Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+               Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
@@ -53,7 +53,7 @@ class RouterNatArgs:
                contains ALL_SUBNETWORKS_ALL_IP_RANGES or
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
-               Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+               Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -135,7 +135,7 @@ class RouterNatArgs:
         How external IPs should be allocated for this NAT. Valid values are
         `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
         Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-        Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+        Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         """
         return pulumi.get(self, "nat_ip_allocate_option")
 
@@ -169,7 +169,7 @@ class RouterNatArgs:
         contains ALL_SUBNETWORKS_ALL_IP_RANGES or
         ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
         other RouterNat section in any Router for this network in this region.
-        Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+        Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         """
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
 
@@ -446,7 +446,7 @@ class _RouterNatState:
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-               Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+               Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -465,7 +465,7 @@ class _RouterNatState:
                contains ALL_SUBNETWORKS_ALL_IP_RANGES or
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
-               Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+               Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatSubnetworkArgs']]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
@@ -631,7 +631,7 @@ class _RouterNatState:
         How external IPs should be allocated for this NAT. Valid values are
         `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
         Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-        Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+        Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         """
         return pulumi.get(self, "nat_ip_allocate_option")
 
@@ -716,7 +716,7 @@ class _RouterNatState:
         contains ALL_SUBNETWORKS_ALL_IP_RANGES or
         ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
         other RouterNat section in any Router for this network in this region.
-        Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+        Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         """
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
 
@@ -965,7 +965,7 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-               Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+               Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -984,7 +984,7 @@ class RouterNat(pulumi.CustomResource):
                contains ALL_SUBNETWORKS_ALL_IP_RANGES or
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
-               Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+               Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
@@ -1256,7 +1256,7 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.Input[str] nat_ip_allocate_option: How external IPs should be allocated for this NAT. Valid values are
                `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-               Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+               Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1275,7 +1275,7 @@ class RouterNat(pulumi.CustomResource):
                contains ALL_SUBNETWORKS_ALL_IP_RANGES or
                ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
                other RouterNat section in any Router for this network in this region.
-               Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+               Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatSubnetworkArgs']]]] subnetworks: One or more subnetwork NAT configurations. Only used if
                `source_subnetwork_ip_ranges_to_nat` is set to `LIST_OF_SUBNETWORKS`
                Structure is documented below.
@@ -1394,7 +1394,7 @@ class RouterNat(pulumi.CustomResource):
         How external IPs should be allocated for this NAT. Valid values are
         `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
         Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
-        Possible values are `MANUAL_ONLY` and `AUTO_ONLY`.
+        Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         """
         return pulumi.get(self, "nat_ip_allocate_option")
 
@@ -1455,7 +1455,7 @@ class RouterNat(pulumi.CustomResource):
         contains ALL_SUBNETWORKS_ALL_IP_RANGES or
         ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any
         other RouterNat section in any Router for this network in this region.
-        Possible values are `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, and `LIST_OF_SUBNETWORKS`.
+        Possible values are: `ALL_SUBNETWORKS_ALL_IP_RANGES`, `ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES`, `LIST_OF_SUBNETWORKS`.
         """
         return pulumi.get(self, "source_subnetwork_ip_ranges_to_nat")
 

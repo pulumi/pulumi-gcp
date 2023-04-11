@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly string? EncryptionKey;
         /// <summary>
         /// The sandbox environment to host this Revision.
-        /// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+        /// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         /// </summary>
         public readonly string? ExecutionEnvironment;
         /// <summary>

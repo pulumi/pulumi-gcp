@@ -99,7 +99,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
      * For organization security policies, the only supported type
      * is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     @Import(name="type")
@@ -110,7 +110,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
      * For organization security policies, the only supported type
      * is &#34;FIREWALL&#34;.
      * Default value is `FIREWALL`.
-     * Possible values are `FIREWALL`.
+     * Possible values are: `FIREWALL`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -260,7 +260,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
          * For organization security policies, the only supported type
          * is &#34;FIREWALL&#34;.
          * Default value is `FIREWALL`.
-         * Possible values are `FIREWALL`.
+         * Possible values are: `FIREWALL`.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class OrganizationSecurityPolicyState extends com.pulumi.resources.
          * For organization security policies, the only supported type
          * is &#34;FIREWALL&#34;.
          * Default value is `FIREWALL`.
-         * Possible values are `FIREWALL`.
+         * Possible values are: `FIREWALL`.
          * 
          * @return builder
          * 

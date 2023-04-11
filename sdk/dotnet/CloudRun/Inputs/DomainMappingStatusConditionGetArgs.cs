@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
         /// <summary>
         /// Resource record type. Example: `AAAA`.
-        /// Possible values are `A`, `AAAA`, and `CNAME`.
+        /// Possible values are: `A`, `AAAA`, `CNAME`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

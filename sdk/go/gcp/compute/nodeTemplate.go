@@ -118,7 +118,7 @@ type NodeTemplate struct {
 
 	// CPU overcommit.
 	// Default value is `NONE`.
-	// Possible values are `ENABLED` and `NONE`.
+	// Possible values are: `ENABLED`, `NONE`.
 	CpuOvercommitType pulumi.StringPtrOutput `pulumi:"cpuOvercommitType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -183,7 +183,7 @@ func GetNodeTemplate(ctx *pulumi.Context,
 type nodeTemplateState struct {
 	// CPU overcommit.
 	// Default value is `NONE`.
-	// Possible values are `ENABLED` and `NONE`.
+	// Possible values are: `ENABLED`, `NONE`.
 	CpuOvercommitType *string `pulumi:"cpuOvercommitType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -220,7 +220,7 @@ type nodeTemplateState struct {
 type NodeTemplateState struct {
 	// CPU overcommit.
 	// Default value is `NONE`.
-	// Possible values are `ENABLED` and `NONE`.
+	// Possible values are: `ENABLED`, `NONE`.
 	CpuOvercommitType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -261,7 +261,7 @@ func (NodeTemplateState) ElementType() reflect.Type {
 type nodeTemplateArgs struct {
 	// CPU overcommit.
 	// Default value is `NONE`.
-	// Possible values are `ENABLED` and `NONE`.
+	// Possible values are: `ENABLED`, `NONE`.
 	CpuOvercommitType *string `pulumi:"cpuOvercommitType"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
@@ -295,7 +295,7 @@ type nodeTemplateArgs struct {
 type NodeTemplateArgs struct {
 	// CPU overcommit.
 	// Default value is `NONE`.
-	// Possible values are `ENABLED` and `NONE`.
+	// Possible values are: `ENABLED`, `NONE`.
 	CpuOvercommitType pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
@@ -414,7 +414,7 @@ func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context)
 
 // CPU overcommit.
 // Default value is `NONE`.
-// Possible values are `ENABLED` and `NONE`.
+// Possible values are: `ENABLED`, `NONE`.
 func (o NodeTemplateOutput) CpuOvercommitType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.StringPtrOutput { return v.CpuOvercommitType }).(pulumi.StringPtrOutput)
 }

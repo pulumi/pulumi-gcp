@@ -46,28 +46,28 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
         /// <summary>
         /// Option to define build log streaming behavior to Google Cloud Storage.
-        /// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+        /// Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
         /// </summary>
         [Input("logStreamingOption")]
         public Input<string>? LogStreamingOption { get; set; }
 
         /// <summary>
         /// Option to specify the logging mode, which determines if and where build logs are stored.
-        /// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+        /// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
         /// </summary>
         [Input("logging")]
         public Input<string>? Logging { get; set; }
 
         /// <summary>
         /// Compute Engine machine type on which to run the build.
-        /// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+        /// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
         /// Requested verifiability options.
-        /// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+        /// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
         /// </summary>
         [Input("requestedVerifyOption")]
         public Input<string>? RequestedVerifyOption { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
         /// <summary>
         /// Requested hash for SourceProvenance.
-        /// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+        /// Each value may be one of: `NONE`, `SHA256`, `MD5`.
         /// </summary>
         public InputList<string> SourceProvenanceHashes
         {
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         /// Option to specify behavior when there is an error in the substitution checks.
         /// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
         /// in the build configuration file.
-        /// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+        /// Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
         /// </summary>
         [Input("substitutionOption")]
         public Input<string>? SubstitutionOption { get; set; }

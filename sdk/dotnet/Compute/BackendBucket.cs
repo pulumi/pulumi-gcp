@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        /// Possible values are `AUTOMATIC` and `DISABLED`.
+        /// Possible values are: `AUTOMATIC`, `DISABLED`.
         /// </summary>
         [Output("compressionMode")]
         public Output<string?> CompressionMode { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        /// Possible values are `AUTOMATIC` and `DISABLED`.
+        /// Possible values are: `AUTOMATIC`, `DISABLED`.
         /// </summary>
         [Input("compressionMode")]
         public Input<string>? CompressionMode { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-        /// Possible values are `AUTOMATIC` and `DISABLED`.
+        /// Possible values are: `AUTOMATIC`, `DISABLED`.
         /// </summary>
         [Input("compressionMode")]
         public Input<string>? CompressionMode { get; set; }

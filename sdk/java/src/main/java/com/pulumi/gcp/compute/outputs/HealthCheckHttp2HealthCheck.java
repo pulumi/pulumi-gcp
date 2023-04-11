@@ -95,27 +95,27 @@ public final class HealthCheckHttp2HealthCheck {
      * @return Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     private @Nullable String proxyHeader;
@@ -247,27 +247,27 @@ public final class HealthCheckHttp2HealthCheck {
      * @return Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     public Optional<String> proxyHeader() {

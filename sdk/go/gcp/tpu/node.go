@@ -20,7 +20,7 @@ import (
 //   - [Official Documentation](https://cloud.google.com/tpu/docs/)
 //
 // ## Example Usage
-// ### TPU Node Basic
+// ### Tpu Node Basic
 //
 // ```go
 // package main
@@ -52,7 +52,7 @@ import (
 //	}
 //
 // ```
-// ### TPU Node Full
+// ### Tpu Node Full
 //
 // ```go
 // package main

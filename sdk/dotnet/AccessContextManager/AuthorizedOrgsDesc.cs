@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The type of entities that need to use the authorization relationship during
         /// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
         /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-        /// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         /// </summary>
         [Output("assetType")]
         public Output<string?> AssetType { get; private set; } = null!;
@@ -95,14 +95,14 @@ namespace Pulumi.Gcp.AccessContextManager
         /// direction, organizations B and C must specify
         /// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
         /// "AuthorizedOrgsDesc" resource.
-        /// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+        /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         /// </summary>
         [Output("authorizationDirection")]
         public Output<string?> AuthorizationDirection { get; private set; } = null!;
 
         /// <summary>
         /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-        /// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+        /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         /// </summary>
         [Output("authorizationType")]
         public Output<string?> AuthorizationType { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The type of entities that need to use the authorization relationship during
         /// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
         /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-        /// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         /// </summary>
         [Input("assetType")]
         public Input<string>? AssetType { get; set; }
@@ -213,14 +213,14 @@ namespace Pulumi.Gcp.AccessContextManager
         /// direction, organizations B and C must specify
         /// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
         /// "AuthorizedOrgsDesc" resource.
-        /// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+        /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         /// </summary>
         [Input("authorizationDirection")]
         public Input<string>? AuthorizationDirection { get; set; }
 
         /// <summary>
         /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-        /// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+        /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         /// </summary>
         [Input("authorizationType")]
         public Input<string>? AuthorizationType { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The type of entities that need to use the authorization relationship during
         /// evaluation, such as a device. Valid values are "ASSET_TYPE_DEVICE" and
         /// "ASSET_TYPE_CREDENTIAL_STRENGTH".
-        /// Possible values are `ASSET_TYPE_DEVICE` and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        /// Possible values are: `ASSET_TYPE_DEVICE`, `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         /// </summary>
         [Input("assetType")]
         public Input<string>? AssetType { get; set; }
@@ -287,14 +287,14 @@ namespace Pulumi.Gcp.AccessContextManager
         /// direction, organizations B and C must specify
         /// "AUTHORIZATION_DIRECTION_FROM" as the authorization direction in their
         /// "AuthorizedOrgsDesc" resource.
-        /// Possible values are `AUTHORIZATION_DIRECTION_TO` and `AUTHORIZATION_DIRECTION_FROM`.
+        /// Possible values are: `AUTHORIZATION_DIRECTION_TO`, `AUTHORIZATION_DIRECTION_FROM`.
         /// </summary>
         [Input("authorizationDirection")]
         public Input<string>? AuthorizationDirection { get; set; }
 
         /// <summary>
         /// A granular control type for authorization levels. Valid value is "AUTHORIZATION_TYPE_TRUST".
-        /// Possible values are `AUTHORIZATION_TYPE_TRUST`.
+        /// Possible values are: `AUTHORIZATION_TYPE_TRUST`.
         /// </summary>
         [Input("authorizationType")]
         public Input<string>? AuthorizationType { get; set; }

@@ -14,7 +14,7 @@ public final class UptimeCheckConfigContentMatcherJsonPathMatcher {
     /**
      * @return Options to perform JSONPath content matching.
      * Default value is `EXACT_MATCH`.
-     * Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+     * Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
      * 
      */
     private @Nullable String jsonMatcher;
@@ -28,7 +28,7 @@ public final class UptimeCheckConfigContentMatcherJsonPathMatcher {
     /**
      * @return Options to perform JSONPath content matching.
      * Default value is `EXACT_MATCH`.
-     * Possible values are `EXACT_MATCH` and `REGEX_MATCH`.
+     * Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
      * 
      */
     public Optional<String> jsonMatcher() {

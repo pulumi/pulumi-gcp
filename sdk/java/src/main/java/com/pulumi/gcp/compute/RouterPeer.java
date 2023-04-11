@@ -304,7 +304,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      * 
      */
     @Export(name="advertiseMode", type=String.class, parameters={})
@@ -314,7 +314,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      * @return User-specified flag to indicate which mode to use for advertisement.
      * Valid values of this enum field are: `DEFAULT`, `CUSTOM`
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      * 
      */
     public Output<Optional<String>> advertiseMode() {

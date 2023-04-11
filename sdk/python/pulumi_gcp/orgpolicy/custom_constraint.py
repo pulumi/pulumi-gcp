@@ -25,7 +25,7 @@ class CustomConstraintArgs:
         """
         The set of arguments for constructing a CustomConstraint resource.
         :param pulumi.Input[str] action_type: The action to take if the condition is met.
-               Possible values are `ALLOW` and `DENY`.
+               Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         :param pulumi.Input[str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
@@ -51,7 +51,7 @@ class CustomConstraintArgs:
     def action_type(self) -> pulumi.Input[str]:
         """
         The action to take if the condition is met.
-        Possible values are `ALLOW` and `DENY`.
+        Possible values are: `ALLOW`, `DENY`.
         """
         return pulumi.get(self, "action_type")
 
@@ -159,7 +159,7 @@ class _CustomConstraintState:
         """
         Input properties used for looking up and filtering CustomConstraint resources.
         :param pulumi.Input[str] action_type: The action to take if the condition is met.
-               Possible values are `ALLOW` and `DENY`.
+               Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         :param pulumi.Input[str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[str] display_name: A human-friendly name for the constraint.
@@ -193,7 +193,7 @@ class _CustomConstraintState:
     def action_type(self) -> Optional[pulumi.Input[str]]:
         """
         The action to take if the condition is met.
-        Possible values are `ALLOW` and `DENY`.
+        Possible values are: `ALLOW`, `DENY`.
         """
         return pulumi.get(self, "action_type")
 
@@ -370,7 +370,7 @@ class CustomConstraint(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_type: The action to take if the condition is met.
-               Possible values are `ALLOW` and `DENY`.
+               Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         :param pulumi.Input[str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[str] display_name: A human-friendly name for the constraint.
@@ -518,7 +518,7 @@ class CustomConstraint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_type: The action to take if the condition is met.
-               Possible values are `ALLOW` and `DENY`.
+               Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         :param pulumi.Input[str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[str] display_name: A human-friendly name for the constraint.
@@ -548,7 +548,7 @@ class CustomConstraint(pulumi.CustomResource):
     def action_type(self) -> pulumi.Output[str]:
         """
         The action to take if the condition is met.
-        Possible values are `ALLOW` and `DENY`.
+        Possible values are: `ALLOW`, `DENY`.
         """
         return pulumi.get(self, "action_type")
 

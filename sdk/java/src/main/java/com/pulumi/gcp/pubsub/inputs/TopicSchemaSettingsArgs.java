@@ -18,7 +18,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
     /**
      * The encoding of messages validated against schema.
      * Default value is `ENCODING_UNSPECIFIED`.
-     * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+     * Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
      * 
      */
     @Import(name="encoding")
@@ -27,7 +27,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
     /**
      * @return The encoding of messages validated against schema.
      * Default value is `ENCODING_UNSPECIFIED`.
-     * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+     * Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
      * 
      */
     public Optional<Output<String>> encoding() {
@@ -83,7 +83,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
         /**
          * @param encoding The encoding of messages validated against schema.
          * Default value is `ENCODING_UNSPECIFIED`.
-         * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+         * Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class TopicSchemaSettingsArgs extends com.pulumi.resources.Resource
         /**
          * @param encoding The encoding of messages validated against schema.
          * Default value is `ENCODING_UNSPECIFIED`.
-         * Possible values are `ENCODING_UNSPECIFIED`, `JSON`, and `BINARY`.
+         * Possible values are: `ENCODING_UNSPECIFIED`, `JSON`, `BINARY`.
          * 
          * @return builder
          * 

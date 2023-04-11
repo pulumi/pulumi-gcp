@@ -23,8 +23,7 @@ class SharedflowArgs:
         """
         The set of arguments for constructing a Sharedflow resource.
         :param pulumi.Input[str] config_bundle: A path to the config bundle zip you want to upload. Must be defined if content is not.
-        :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
-               in the format `organizations/{{org_name}}`.
+        :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         :param pulumi.Input[str] detect_md5hash: A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
                will trigger an update.
         :param pulumi.Input[str] name: The ID of the shared flow.
@@ -52,8 +51,7 @@ class SharedflowArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        The Apigee Organization associated with the Apigee instance,
-        in the format `organizations/{{org_name}}`.
+        The Apigee Organization name associated with the Apigee instance.
         """
         return pulumi.get(self, "org_id")
 
@@ -108,8 +106,7 @@ class _SharedflowState:
         :param pulumi.Input[Sequence[pulumi.Input['SharedflowMetaDataArgs']]] meta_datas: Metadata describing the shared flow.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the shared flow.
-        :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
-               in the format `organizations/{{org_name}}`.
+        :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] revisions: A list of revisions of this shared flow.
         """
         if config_bundle is not None:
@@ -207,8 +204,7 @@ class _SharedflowState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Apigee Organization associated with the Apigee instance,
-        in the format `organizations/{{org_name}}`.
+        The Apigee Organization name associated with the Apigee instance.
         """
         return pulumi.get(self, "org_id")
 
@@ -266,8 +262,7 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[str] detect_md5hash: A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
                will trigger an update.
         :param pulumi.Input[str] name: The ID of the shared flow.
-        :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
-               in the format `organizations/{{org_name}}`.
+        :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         """
         ...
     @overload
@@ -369,8 +364,7 @@ class Sharedflow(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SharedflowMetaDataArgs']]]] meta_datas: Metadata describing the shared flow.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the shared flow.
-        :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
-               in the format `organizations/{{org_name}}`.
+        :param pulumi.Input[str] org_id: The Apigee Organization name associated with the Apigee instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] revisions: A list of revisions of this shared flow.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -441,8 +435,7 @@ class Sharedflow(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        The Apigee Organization associated with the Apigee instance,
-        in the format `organizations/{{org_name}}`.
+        The Apigee Organization name associated with the Apigee instance.
         """
         return pulumi.get(self, "org_id")
 

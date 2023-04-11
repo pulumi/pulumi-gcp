@@ -37,6 +37,18 @@ namespace Pulumi.Gcp.Storage.Inputs
         }
 
         /// <summary>
+        /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("lastModifiedBefore")]
+        public Input<string>? LastModifiedBefore { get; set; }
+
+        /// <summary>
+        /// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("lastModifiedSince")]
+        public Input<string>? LastModifiedSince { get; set; }
+
+        /// <summary>
         /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
         [Input("maxTimeElapsedSinceLastModification")]

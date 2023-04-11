@@ -35,7 +35,7 @@ public final class GuestPoliciesRecipeInstallStepScriptRunArgs extends com.pulum
     /**
      * The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
      * which likely only succeed for scripts with shebang lines.
-     * Possible values are `SHELL` and `POWERSHELL`.
+     * Possible values are: `SHELL`, `POWERSHELL`.
      * 
      */
     @Import(name="interpreter")
@@ -44,7 +44,7 @@ public final class GuestPoliciesRecipeInstallStepScriptRunArgs extends com.pulum
     /**
      * @return The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
      * which likely only succeed for scripts with shebang lines.
-     * Possible values are `SHELL` and `POWERSHELL`.
+     * Possible values are: `SHELL`, `POWERSHELL`.
      * 
      */
     public Optional<Output<String>> interpreter() {
@@ -126,7 +126,7 @@ public final class GuestPoliciesRecipeInstallStepScriptRunArgs extends com.pulum
         /**
          * @param interpreter The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
          * which likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class GuestPoliciesRecipeInstallStepScriptRunArgs extends com.pulum
         /**
          * @param interpreter The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
          * which likely only succeed for scripts with shebang lines.
-         * Possible values are `SHELL` and `POWERSHELL`.
+         * Possible values are: `SHELL`, `POWERSHELL`.
          * 
          * @return builder
          * 

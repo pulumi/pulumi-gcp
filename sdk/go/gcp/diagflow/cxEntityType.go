@@ -108,7 +108,7 @@ type CxEntityType struct {
 	// Represents kinds of entities.
 	// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-	//   Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode pulumi.StringPtrOutput `pulumi:"autoExpansionMode"`
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -125,7 +125,7 @@ type CxEntityType struct {
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The language of the following fields in entityType:
 	// EntityType.entities.value
@@ -184,7 +184,7 @@ type cxEntityTypeState struct {
 	// Represents kinds of entities.
 	// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-	//   Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
@@ -201,7 +201,7 @@ type cxEntityTypeState struct {
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
 	Kind *string `pulumi:"kind"`
 	// The language of the following fields in entityType:
 	// EntityType.entities.value
@@ -223,7 +223,7 @@ type CxEntityTypeState struct {
 	// Represents kinds of entities.
 	// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-	//   Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode pulumi.StringPtrInput
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringPtrInput
@@ -240,7 +240,7 @@ type CxEntityTypeState struct {
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
 	Kind pulumi.StringPtrInput
 	// The language of the following fields in entityType:
 	// EntityType.entities.value
@@ -266,7 +266,7 @@ type cxEntityTypeArgs struct {
 	// Represents kinds of entities.
 	// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-	//   Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
@@ -283,7 +283,7 @@ type cxEntityTypeArgs struct {
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
 	Kind string `pulumi:"kind"`
 	// The language of the following fields in entityType:
 	// EntityType.entities.value
@@ -303,7 +303,7 @@ type CxEntityTypeArgs struct {
 	// Represents kinds of entities.
 	// * AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-	//   Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode pulumi.StringPtrInput
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringInput
@@ -320,7 +320,7 @@ type CxEntityTypeArgs struct {
 	// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
 	// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
 	// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-	//   Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+	//   Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
 	Kind pulumi.StringInput
 	// The language of the following fields in entityType:
 	// EntityType.entities.value
@@ -425,7 +425,7 @@ func (o CxEntityTypeOutput) ToCxEntityTypeOutputWithContext(ctx context.Context)
 // Represents kinds of entities.
 //   - AUTO_EXPANSION_MODE_UNSPECIFIED: Auto expansion disabled for the entity.
 //   - AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
-//     Possible values are `AUTO_EXPANSION_MODE_DEFAULT` and `AUTO_EXPANSION_MODE_UNSPECIFIED`.
+//     Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 func (o CxEntityTypeOutput) AutoExpansionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxEntityType) pulumi.StringPtrOutput { return v.AutoExpansionMode }).(pulumi.StringPtrOutput)
 }
@@ -457,7 +457,7 @@ func (o CxEntityTypeOutput) ExcludedPhrases() CxEntityTypeExcludedPhraseArrayOut
 //   - KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
 //   - KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
 //   - KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-//     Possible values are `KIND_MAP`, `KIND_LIST`, and `KIND_REGEXP`.
+//     Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
 func (o CxEntityTypeOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxEntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

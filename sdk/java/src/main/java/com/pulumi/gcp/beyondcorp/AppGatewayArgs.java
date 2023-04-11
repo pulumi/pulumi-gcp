@@ -34,7 +34,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
-     * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+     * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      * 
      */
     @Import(name="hostType")
@@ -43,7 +43,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
-     * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+     * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      * 
      */
     public Optional<Output<String>> hostType() {
@@ -115,7 +115,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      * 
      */
     @Import(name="type")
@@ -124,7 +124,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -185,7 +185,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param hostType The type of hosting used by the AppGateway.
          * Default value is `HOST_TYPE_UNSPECIFIED`.
-         * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+         * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param hostType The type of hosting used by the AppGateway.
          * Default value is `HOST_TYPE_UNSPECIFIED`.
-         * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+         * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The type of network connectivity used by the AppGateway.
          * Default value is `TYPE_UNSPECIFIED`.
-         * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class AppGatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The type of network connectivity used by the AppGateway.
          * Default value is `TYPE_UNSPECIFIED`.
-         * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
          * 
          * @return builder
          * 

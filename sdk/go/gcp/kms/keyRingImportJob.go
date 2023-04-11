@@ -51,7 +51,7 @@ type KeyRingImportJob struct {
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId pulumi.StringOutput `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
-	// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
 	ImportMethod pulumi.StringOutput `pulumi:"importMethod"`
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -60,7 +60,7 @@ type KeyRingImportJob struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The protection level of the ImportJob. This must match the protectionLevel of the
 	// versionTemplate on the CryptoKey you attempt to import into.
-	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+	// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
 	// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
 	// Structure is documented below.
@@ -121,7 +121,7 @@ type keyRingImportJobState struct {
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId *string `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
-	// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
 	ImportMethod *string `pulumi:"importMethod"`
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -130,7 +130,7 @@ type keyRingImportJobState struct {
 	Name *string `pulumi:"name"`
 	// The protection level of the ImportJob. This must match the protectionLevel of the
 	// versionTemplate on the CryptoKey you attempt to import into.
-	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+	// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
 	// Structure is documented below.
@@ -151,7 +151,7 @@ type KeyRingImportJobState struct {
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId pulumi.StringPtrInput
 	// The wrapping method to be used for incoming key material.
-	// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
 	ImportMethod pulumi.StringPtrInput
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
@@ -160,7 +160,7 @@ type KeyRingImportJobState struct {
 	Name pulumi.StringPtrInput
 	// The protection level of the ImportJob. This must match the protectionLevel of the
 	// versionTemplate on the CryptoKey you attempt to import into.
-	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+	// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
 	ProtectionLevel pulumi.StringPtrInput
 	// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
 	// Structure is documented below.
@@ -177,14 +177,14 @@ type keyRingImportJobArgs struct {
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId string `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
-	// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
 	ImportMethod string `pulumi:"importMethod"`
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing string `pulumi:"keyRing"`
 	// The protection level of the ImportJob. This must match the protectionLevel of the
 	// versionTemplate on the CryptoKey you attempt to import into.
-	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+	// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
 	ProtectionLevel string `pulumi:"protectionLevel"`
 }
 
@@ -193,14 +193,14 @@ type KeyRingImportJobArgs struct {
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
 	ImportJobId pulumi.StringInput
 	// The wrapping method to be used for incoming key material.
-	// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
 	ImportMethod pulumi.StringInput
 	// The KeyRing that this import job belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
 	KeyRing pulumi.StringInput
 	// The protection level of the ImportJob. This must match the protectionLevel of the
 	// versionTemplate on the CryptoKey you attempt to import into.
-	// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+	// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
 	ProtectionLevel pulumi.StringInput
 }
 
@@ -311,7 +311,7 @@ func (o KeyRingImportJobOutput) ImportJobId() pulumi.StringOutput {
 }
 
 // The wrapping method to be used for incoming key material.
-// Possible values are `RSA_OAEP_3072_SHA1_AES_256` and `RSA_OAEP_4096_SHA1_AES_256`.
+// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
 func (o KeyRingImportJobOutput) ImportMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) pulumi.StringOutput { return v.ImportMethod }).(pulumi.StringOutput)
 }
@@ -329,7 +329,7 @@ func (o KeyRingImportJobOutput) Name() pulumi.StringOutput {
 
 // The protection level of the ImportJob. This must match the protectionLevel of the
 // versionTemplate on the CryptoKey you attempt to import into.
-// Possible values are `SOFTWARE`, `HSM`, and `EXTERNAL`.
+// Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
 func (o KeyRingImportJobOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) pulumi.StringOutput { return v.ProtectionLevel }).(pulumi.StringOutput)
 }

@@ -126,7 +126,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The enrollment level of the service.
-     * Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+     * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      * 
      */
     @Export(name="dataPolicyType", type=String.class, parameters={})
@@ -134,7 +134,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The enrollment level of the service.
-     * Possible values are `COLUMN_LEVEL_SECURITY_POLICY` and `DATA_MASKING_POLICY`.
+     * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      * 
      */
     public Output<String> dataPolicyType() {

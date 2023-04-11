@@ -80,7 +80,7 @@ type DomainMapping struct {
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
 	// Default value is `STRICT`.
-	// Possible values are `STRICT` and `OVERRIDE`.
+	// Possible values are: `STRICT`, `OVERRIDE`.
 	OverrideStrategy pulumi.StringPtrOutput `pulumi:"overrideStrategy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -133,7 +133,7 @@ type domainMappingState struct {
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
 	// Default value is `STRICT`.
-	// Possible values are `STRICT` and `OVERRIDE`.
+	// Possible values are: `STRICT`, `OVERRIDE`.
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -155,7 +155,7 @@ type DomainMappingState struct {
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
 	// Default value is `STRICT`.
-	// Possible values are `STRICT` and `OVERRIDE`.
+	// Possible values are: `STRICT`, `OVERRIDE`.
 	OverrideStrategy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -179,7 +179,7 @@ type domainMappingArgs struct {
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
 	// Default value is `STRICT`.
-	// Possible values are `STRICT` and `OVERRIDE`.
+	// Possible values are: `STRICT`, `OVERRIDE`.
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -196,7 +196,7 @@ type DomainMappingArgs struct {
 	// Whether the domain creation should override any existing mappings for this domain.
 	// By default, overrides are rejected.
 	// Default value is `STRICT`.
-	// Possible values are `STRICT` and `OVERRIDE`.
+	// Possible values are: `STRICT`, `OVERRIDE`.
 	OverrideStrategy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -306,7 +306,7 @@ func (o DomainMappingOutput) Name() pulumi.StringOutput {
 // Whether the domain creation should override any existing mappings for this domain.
 // By default, overrides are rejected.
 // Default value is `STRICT`.
-// Possible values are `STRICT` and `OVERRIDE`.
+// Possible values are: `STRICT`, `OVERRIDE`.
 func (o DomainMappingOutput) OverrideStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainMapping) pulumi.StringPtrOutput { return v.OverrideStrategy }).(pulumi.StringPtrOutput)
 }

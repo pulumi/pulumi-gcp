@@ -23,7 +23,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
 
     /**
      * List of options defining data content to scan. If empty, text, images, and other content will be included.
-     * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+     * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
      * 
      */
     @Import(name="contentOptions")
@@ -31,7 +31,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
 
     /**
      * @return List of options defining data content to scan. If empty, text, images, and other content will be included.
-     * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+     * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
      * 
      */
     public Optional<Output<List<String>>> contentOptions() {
@@ -128,7 +128,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
     /**
      * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
      * Default value is `POSSIBLE`.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     @Import(name="minLikelihood")
@@ -137,7 +137,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
     /**
      * @return Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
      * Default value is `POSSIBLE`.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     public Optional<Output<String>> minLikelihood() {
@@ -196,7 +196,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
 
         /**
          * @param contentOptions List of options defining data content to scan. If empty, text, images, and other content will be included.
-         * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+         * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
 
         /**
          * @param contentOptions List of options defining data content to scan. If empty, text, images, and other content will be included.
-         * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+         * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
 
         /**
          * @param contentOptions List of options defining data content to scan. If empty, text, images, and other content will be included.
-         * Each value may be one of `CONTENT_TEXT` and `CONTENT_IMAGE`.
+         * Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         /**
          * @param minLikelihood Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
          * Default value is `POSSIBLE`.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         /**
          * @param minLikelihood Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
          * Default value is `POSSIBLE`.
-         * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
          * 
          * @return builder
          * 

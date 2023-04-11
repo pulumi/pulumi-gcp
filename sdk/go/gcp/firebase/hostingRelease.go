@@ -201,7 +201,7 @@ type HostingRelease struct {
 	// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
 	// ROLLBACK: The release points back to a previously deployed version. Output only.
 	// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-	// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+	// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
 	// The content of the version specified will be actively displayed on the appropriate URL.
@@ -260,7 +260,7 @@ type hostingReleaseState struct {
 	// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
 	// ROLLBACK: The release points back to a previously deployed version. Output only.
 	// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-	// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+	// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
 	Type *string `pulumi:"type"`
 	// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
 	// The content of the version specified will be actively displayed on the appropriate URL.
@@ -288,7 +288,7 @@ type HostingReleaseState struct {
 	// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
 	// ROLLBACK: The release points back to a previously deployed version. Output only.
 	// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-	// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+	// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
 	Type pulumi.StringPtrInput
 	// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
 	// The content of the version specified will be actively displayed on the appropriate URL.
@@ -314,7 +314,7 @@ type hostingReleaseArgs struct {
 	// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
 	// ROLLBACK: The release points back to a previously deployed version. Output only.
 	// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-	// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+	// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
 	Type *string `pulumi:"type"`
 	// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
 	// The content of the version specified will be actively displayed on the appropriate URL.
@@ -337,7 +337,7 @@ type HostingReleaseArgs struct {
 	// DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
 	// ROLLBACK: The release points back to a previously deployed version. Output only.
 	// SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-	// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+	// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
 	Type pulumi.StringPtrInput
 	// The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
 	// The content of the version specified will be actively displayed on the appropriate URL.
@@ -466,7 +466,7 @@ func (o HostingReleaseOutput) SiteId() pulumi.StringOutput {
 // DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
 // ROLLBACK: The release points back to a previously deployed version. Output only.
 // SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-// Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+// Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
 func (o HostingReleaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingRelease) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

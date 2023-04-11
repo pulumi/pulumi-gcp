@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// <summary>
         /// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified.
         /// Default value is `ALLOW_ALL`.
-        /// Possible values are `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, and `ALLOW_INTERNAL_AND_GCLB`.
+        /// Possible values are: `ALLOW_ALL`, `ALLOW_INTERNAL_ONLY`, `ALLOW_INTERNAL_AND_GCLB`.
         /// </summary>
         public readonly string? IngressSettings;
         /// <summary>
@@ -91,7 +91,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         public readonly string? VpcConnector;
         /// <summary>
         /// Available egress settings.
-        /// Possible values are `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, and `ALL_TRAFFIC`.
+        /// Possible values are: `VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED`, `PRIVATE_RANGES_ONLY`, `ALL_TRAFFIC`.
         /// </summary>
         public readonly string? VpcConnectorEgressSettings;
 

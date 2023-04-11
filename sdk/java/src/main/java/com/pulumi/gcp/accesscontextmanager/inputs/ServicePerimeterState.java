@@ -102,7 +102,7 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      * 
      */
     @Import(name="perimeterType")
@@ -124,7 +124,7 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      * 
      */
     public Optional<Output<String>> perimeterType() {
@@ -377,7 +377,7 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
          * with a common perimeter, but should not be able to share data among
          * themselves.
          * Default value is `PERIMETER_TYPE_REGULAR`.
-         * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+         * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
          * with a common perimeter, but should not be able to share data among
          * themselves.
          * Default value is `PERIMETER_TYPE_REGULAR`.
-         * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+         * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
          * 
          * @return builder
          * 

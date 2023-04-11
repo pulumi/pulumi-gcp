@@ -36,7 +36,7 @@ public final class FlexibleAppVersionEndpointsApiService {
     /**
      * @return Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
      * Default value is `FIXED`.
-     * Possible values are `FIXED` and `MANAGED`.
+     * Possible values are: `FIXED`, `MANAGED`.
      * 
      */
     private @Nullable String rolloutStrategy;
@@ -72,7 +72,7 @@ public final class FlexibleAppVersionEndpointsApiService {
     /**
      * @return Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
      * Default value is `FIXED`.
-     * Possible values are `FIXED` and `MANAGED`.
+     * Possible values are: `FIXED`, `MANAGED`.
      * 
      */
     public Optional<String> rolloutStrategy() {

@@ -19,7 +19,7 @@ public final class SubnetworkLogConfig {
      * interval time will reduce the amount of generated flow logs for long
      * lasting connections. Default is an interval of 5 seconds per connection.
      * Default value is `INTERVAL_5_SEC`.
-     * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+     * Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
      * 
      */
     private @Nullable String aggregationInterval;
@@ -44,7 +44,7 @@ public final class SubnetworkLogConfig {
      * Configures whether metadata fields should be added to the reported VPC
      * flow logs.
      * Default value is `INCLUDE_ALL_METADATA`.
-     * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
      * 
      */
     private @Nullable String metadata;
@@ -62,7 +62,7 @@ public final class SubnetworkLogConfig {
      * interval time will reduce the amount of generated flow logs for long
      * lasting connections. Default is an interval of 5 seconds per connection.
      * Default value is `INTERVAL_5_SEC`.
-     * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+     * Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
      * 
      */
     public Optional<String> aggregationInterval() {
@@ -93,7 +93,7 @@ public final class SubnetworkLogConfig {
      * Configures whether metadata fields should be added to the reported VPC
      * flow logs.
      * Default value is `INCLUDE_ALL_METADATA`.
-     * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
      * 
      */
     public Optional<String> metadata() {

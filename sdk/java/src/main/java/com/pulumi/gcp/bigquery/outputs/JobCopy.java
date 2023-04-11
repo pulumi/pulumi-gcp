@@ -21,7 +21,7 @@ public final class JobCopy {
      * CREATE_NEVER: The table must already exist. If it does not, a &#39;notFound&#39; error is returned in the job result.
      * Creation, truncation and append actions occur as one atomic update upon job completion
      * Default value is `CREATE_IF_NEEDED`.
-     * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+     * Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
      * 
      */
     private @Nullable String createDisposition;
@@ -51,7 +51,7 @@ public final class JobCopy {
      * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
      * Creation, truncation and append actions occur as one atomic update upon job completion.
      * Default value is `WRITE_EMPTY`.
-     * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+     * Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
      * 
      */
     private @Nullable String writeDisposition;
@@ -63,7 +63,7 @@ public final class JobCopy {
      * CREATE_NEVER: The table must already exist. If it does not, a &#39;notFound&#39; error is returned in the job result.
      * Creation, truncation and append actions occur as one atomic update upon job completion
      * Default value is `CREATE_IF_NEEDED`.
-     * Possible values are `CREATE_IF_NEEDED` and `CREATE_NEVER`.
+     * Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
      * 
      */
     public Optional<String> createDisposition() {
@@ -101,7 +101,7 @@ public final class JobCopy {
      * Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
      * Creation, truncation and append actions occur as one atomic update upon job completion.
      * Default value is `WRITE_EMPTY`.
-     * Possible values are `WRITE_TRUNCATE`, `WRITE_APPEND`, and `WRITE_EMPTY`.
+     * Possible values are: `WRITE_TRUNCATE`, `WRITE_APPEND`, `WRITE_EMPTY`.
      * 
      */
     public Optional<String> writeDisposition() {

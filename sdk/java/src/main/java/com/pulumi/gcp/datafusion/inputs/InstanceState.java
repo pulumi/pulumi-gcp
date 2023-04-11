@@ -382,7 +382,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     @Import(name="state")
@@ -390,7 +390,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of an accelator for a CDF instance.
-     * Possible values are `ENABLED` and `DISABLED`.
+     * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -438,7 +438,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
-     *   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+     *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
      */
     @Import(name="type")
@@ -455,7 +455,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
-     *   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+     *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -1064,7 +1064,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param state The type of an accelator for a CDF instance.
-         * Possible values are `ENABLED` and `DISABLED`.
+         * Possible values are: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -1076,7 +1076,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param state The type of an accelator for a CDF instance.
-         * Possible values are `ENABLED` and `DISABLED`.
+         * Possible values are: `ENABLED`, `DISABLED`.
          * 
          * @return builder
          * 
@@ -1138,7 +1138,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
          *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
          *   pipelines at low cost.
-         *   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+         *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
          * 
          * @return builder
          * 
@@ -1159,7 +1159,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
          *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
          *   pipelines at low cost.
-         *   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
+         *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
          * 
          * @return builder
          * 

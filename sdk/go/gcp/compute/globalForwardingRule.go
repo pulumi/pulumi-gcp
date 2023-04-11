@@ -194,10 +194,10 @@ type GlobalForwardingRule struct {
 	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
 	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
 	// and addressType of INTERNAL
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// Used internally during label updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -214,7 +214,7 @@ type GlobalForwardingRule struct {
 	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -335,10 +335,10 @@ type globalForwardingRuleState struct {
 	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
 	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
 	// and addressType of INTERNAL
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// Used internally during label updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -355,7 +355,7 @@ type globalForwardingRuleState struct {
 	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -445,10 +445,10 @@ type GlobalForwardingRuleState struct {
 	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
 	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
 	// and addressType of INTERNAL
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
 	// Used internally during label updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -465,7 +465,7 @@ type GlobalForwardingRuleState struct {
 	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -559,10 +559,10 @@ type globalForwardingRuleArgs struct {
 	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
 	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
 	// and addressType of INTERNAL
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -577,7 +577,7 @@ type globalForwardingRuleArgs struct {
 	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -661,10 +661,10 @@ type GlobalForwardingRuleArgs struct {
 	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
 	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
 	// and addressType of INTERNAL
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -679,7 +679,7 @@ type GlobalForwardingRuleArgs struct {
 	// Note: This field must be set "" if the global address is
 	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 	// Default value is `EXTERNAL`.
-	// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -854,13 +854,13 @@ func (o GlobalForwardingRuleOutput) IpAddress() pulumi.StringOutput {
 // INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
 // global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
 // and addressType of INTERNAL
-// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 func (o GlobalForwardingRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
 }
 
 // The IP Version that will be used by this global forwarding rule.
-// Possible values are `IPV4` and `IPV6`.
+// Possible values are: `IPV4`, `IPV6`.
 func (o GlobalForwardingRuleOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
@@ -886,7 +886,7 @@ func (o GlobalForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 // Note: This field must be set "" if the global address is
 // configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
 // Default value is `EXTERNAL`.
-// Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 func (o GlobalForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }

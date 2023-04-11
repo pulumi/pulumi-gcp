@@ -154,7 +154,7 @@ public final class AutoscalarAutoscalingPolicyArgs extends com.pulumi.resources.
     /**
      * Defines operating mode for this policy.
      * Default value is `ON`.
-     * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+     * Possible values are: `OFF`, `ONLY_UP`, `ON`.
      * 
      */
     @Import(name="mode")
@@ -163,7 +163,7 @@ public final class AutoscalarAutoscalingPolicyArgs extends com.pulumi.resources.
     /**
      * @return Defines operating mode for this policy.
      * Default value is `ON`.
-     * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+     * Possible values are: `OFF`, `ONLY_UP`, `ON`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -436,7 +436,7 @@ public final class AutoscalarAutoscalingPolicyArgs extends com.pulumi.resources.
         /**
          * @param mode Defines operating mode for this policy.
          * Default value is `ON`.
-         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class AutoscalarAutoscalingPolicyArgs extends com.pulumi.resources.
         /**
          * @param mode Defines operating mode for this policy.
          * Default value is `ON`.
-         * Possible values are `OFF`, `ONLY_UP`, and `ON`.
+         * Possible values are: `OFF`, `ONLY_UP`, `ON`.
          * 
          * @return builder
          * 

@@ -70,7 +70,7 @@ type TargetTCPProxy struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrOutput `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
@@ -133,7 +133,7 @@ type targetTCPProxyState struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
@@ -165,7 +165,7 @@ type TargetTCPProxyState struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
@@ -199,7 +199,7 @@ type targetTCPProxyArgs struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 }
 
@@ -226,7 +226,7 @@ type TargetTCPProxyArgs struct {
 	// Specifies the type of proxy header to append before sending data to
 	// the backend.
 	// Default value is `NONE`.
-	// Possible values are `NONE` and `PROXY_V1`.
+	// Possible values are: `NONE`, `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput
 }
 
@@ -358,7 +358,7 @@ func (o TargetTCPProxyOutput) ProxyBind() pulumi.BoolOutput {
 // Specifies the type of proxy header to append before sending data to
 // the backend.
 // Default value is `NONE`.
-// Possible values are `NONE` and `PROXY_V1`.
+// Possible values are: `NONE`, `PROXY_V1`.
 func (o TargetTCPProxyOutput) ProxyHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetTCPProxy) pulumi.StringPtrOutput { return v.ProxyHeader }).(pulumi.StringPtrOutput)
 }

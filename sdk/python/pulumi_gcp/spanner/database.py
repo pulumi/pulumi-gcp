@@ -29,7 +29,7 @@ class DatabaseArgs:
         :param pulumi.Input[str] instance: The instance to create the database on.
         :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+               Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -82,7 +82,7 @@ class DatabaseArgs:
         """
         The dialect of the Cloud Spanner Database.
         If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-        Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+        Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         """
         return pulumi.get(self, "database_dialect")
 
@@ -190,7 +190,7 @@ class _DatabaseState:
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+               Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -236,7 +236,7 @@ class _DatabaseState:
         """
         The dialect of the Cloud Spanner Database.
         If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-        Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+        Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         """
         return pulumi.get(self, "database_dialect")
 
@@ -422,7 +422,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+               Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -571,7 +571,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_dialect: The dialect of the Cloud Spanner Database.
                If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-               Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+               Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
@@ -613,7 +613,7 @@ class Database(pulumi.CustomResource):
         """
         The dialect of the Cloud Spanner Database.
         If it is not provided, "GOOGLE_STANDARD_SQL" will be used.
-        Possible values are `GOOGLE_STANDARD_SQL` and `POSTGRESQL`.
+        Possible values are: `GOOGLE_STANDARD_SQL`, `POSTGRESQL`.
         """
         return pulumi.get(self, "database_dialect")
 

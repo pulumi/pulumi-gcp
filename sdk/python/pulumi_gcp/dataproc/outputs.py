@@ -2209,19 +2209,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
                installed onto the nodes when you create clusters. If not specified, defaults to the
                latest version. For a list of valid versions see
                [Cloud Dataproc versions](https://cloud.google.com/dataproc/docs/concepts/dataproc-versions)
-        :param Sequence[str] optional_components: The set of optional components to activate on the cluster.
-               Accepted values are:
-               * ANACONDA
-               * DRUID
-               * FLINK
-               * HBASE
-               * HIVE_WEBHCAT
-               * JUPYTER
-               * PRESTO
-               * RANGER
-               * SOLR
-               * ZEPPELIN
-               * ZOOKEEPER
+        :param Sequence[str] optional_components: The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
         :param Mapping[str, str] override_properties: A list of override and additional properties (key/value pairs)
                used to modify various aspects of the common configuration files used when creating
                a cluster. For a list of valid properties please see
@@ -2254,19 +2242,7 @@ class ClusterClusterConfigSoftwareConfig(dict):
     @pulumi.getter(name="optionalComponents")
     def optional_components(self) -> Optional[Sequence[str]]:
         """
-        The set of optional components to activate on the cluster.
-        Accepted values are:
-        * ANACONDA
-        * DRUID
-        * FLINK
-        * HBASE
-        * HIVE_WEBHCAT
-        * JUPYTER
-        * PRESTO
-        * RANGER
-        * SOLR
-        * ZEPPELIN
-        * ZOOKEEPER
+        The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
         """
         return pulumi.get(self, "optional_components")
 
@@ -4537,7 +4513,7 @@ class MetastoreFederationBackendMetastore(dict):
                  rank: str):
         """
         :param str metastore_type: The type of the backend metastore.
-               Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+               Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
         :param str name: The relative resource name of the metastore that is being federated. The formats of the relative resource names for the currently supported metastores are listed below: Dataplex: projects/{projectId}/locations/{location}/lakes/{lake_id} BigQuery: projects/{projectId} Dataproc Metastore: projects/{projectId}/locations/{location}/services/{serviceId}
         :param str rank: The identifier for this object. Format specified above.
         """
@@ -4550,7 +4526,7 @@ class MetastoreFederationBackendMetastore(dict):
     def metastore_type(self) -> str:
         """
         The type of the backend metastore.
-        Possible values are `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, and `BIGQUERY`.
+        Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
         """
         return pulumi.get(self, "metastore_type")
 
@@ -4983,7 +4959,7 @@ class MetastoreServiceMaintenanceWindow(dict):
                  hour_of_day: int):
         """
         :param str day_of_week: The day of week, when the window starts.
-               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+               Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param int hour_of_day: The hour of day (0-23) when the window starts.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
@@ -4994,7 +4970,7 @@ class MetastoreServiceMaintenanceWindow(dict):
     def day_of_week(self) -> str:
         """
         The day of week, when the window starts.
-        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day_of_week")
 
@@ -5161,7 +5137,7 @@ class MetastoreServiceTelemetryConfig(dict):
         """
         :param str log_format: The output format of the Dataproc Metastore service's logs.
                Default value is `JSON`.
-               Possible values are `LEGACY` and `JSON`.
+               Possible values are: `LEGACY`, `JSON`.
         """
         if log_format is not None:
             pulumi.set(__self__, "log_format", log_format)
@@ -5172,7 +5148,7 @@ class MetastoreServiceTelemetryConfig(dict):
         """
         The output format of the Dataproc Metastore service's logs.
         Default value is `JSON`.
-        Possible values are `LEGACY` and `JSON`.
+        Possible values are: `LEGACY`, `JSON`.
         """
         return pulumi.get(self, "log_format")
 

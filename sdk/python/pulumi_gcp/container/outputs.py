@@ -116,6 +116,7 @@ __all__ = [
     'ClusterNodeConfig',
     'ClusterNodeConfigAdvancedMachineFeatures',
     'ClusterNodeConfigEphemeralStorageConfig',
+    'ClusterNodeConfigEphemeralStorageLocalSsdConfig',
     'ClusterNodeConfigGcfsConfig',
     'ClusterNodeConfigGuestAccelerator',
     'ClusterNodeConfigGuestAcceleratorGpuSharingConfig',
@@ -140,6 +141,7 @@ __all__ = [
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
+    'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig',
     'ClusterNodePoolNodeConfigGcfsConfig',
     'ClusterNodePoolNodeConfigGuestAccelerator',
     'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig',
@@ -177,6 +179,7 @@ __all__ = [
     'NodePoolNodeConfig',
     'NodePoolNodeConfigAdvancedMachineFeatures',
     'NodePoolNodeConfigEphemeralStorageConfig',
+    'NodePoolNodeConfigEphemeralStorageLocalSsdConfig',
     'NodePoolNodeConfigGcfsConfig',
     'NodePoolNodeConfigGuestAccelerator',
     'NodePoolNodeConfigGuestAcceleratorGpuSharingConfig',
@@ -242,6 +245,7 @@ __all__ = [
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
+    'GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult',
     'GetClusterNodeConfigGcfsConfigResult',
     'GetClusterNodeConfigGuestAcceleratorResult',
     'GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult',
@@ -266,6 +270,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
+    'GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult',
     'GetClusterNodePoolNodeConfigGcfsConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult',
@@ -461,7 +466,7 @@ class AttachedClusterLoggingConfigComponentConfig(dict):
                  enable_components: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] enable_components: The components to be enabled.
-               Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+               Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
         """
         if enable_components is not None:
             pulumi.set(__self__, "enable_components", enable_components)
@@ -471,7 +476,7 @@ class AttachedClusterLoggingConfigComponentConfig(dict):
     def enable_components(self) -> Optional[Sequence[str]]:
         """
         The components to be enabled.
-        Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+        Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
         """
         return pulumi.get(self, "enable_components")
 
@@ -5275,6 +5280,8 @@ class ClusterNodeConfig(dict):
             suggest = "disk_type"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
+        elif key == "ephemeralStorageLocalSsdConfig":
+            suggest = "ephemeral_storage_local_ssd_config"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -5329,6 +5336,7 @@ class ClusterNodeConfig(dict):
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodeConfigEphemeralStorageConfig'] = None,
+                 ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  gcfs_config: Optional['outputs.ClusterNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodeConfigGvnic'] = None,
@@ -5363,6 +5371,7 @@ class ClusterNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -5441,6 +5450,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        if ephemeral_storage_local_ssd_config is not None:
+            pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -5534,6 +5545,14 @@ class ClusterNodeConfig(dict):
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         """
         return pulumi.get(self, "ephemeral_storage_config")
+
+    @property
+    @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
+    def ephemeral_storage_local_ssd_config(self) -> Optional['outputs.ClusterNodeConfigEphemeralStorageLocalSsdConfig']:
+        """
+        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -5828,6 +5847,41 @@ class ClusterNodeConfigEphemeralStorageConfig(dict):
 
     def get(self, key: str, default = None) -> Any:
         ClusterNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        """
+        :param int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        """
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class ClusterNodeConfigEphemeralStorageLocalSsdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigEphemeralStorageLocalSsdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigEphemeralStorageLocalSsdConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -6966,6 +7020,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "disk_type"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
+        elif key == "ephemeralStorageLocalSsdConfig":
+            suggest = "ephemeral_storage_local_ssd_config"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -7020,6 +7076,7 @@ class ClusterNodePoolNodeConfig(dict):
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig'] = None,
+                 ephemeral_storage_local_ssd_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  gcfs_config: Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodePoolNodeConfigGvnic'] = None,
@@ -7054,6 +7111,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs' ephemeral_storage_local_ssd_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigGcfsConfigArgs' gcfs_config: Parameters for the Google Container Filesystem (GCFS).
                If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
                For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `node_version` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
@@ -7132,6 +7190,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        if ephemeral_storage_local_ssd_config is not None:
+            pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -7225,6 +7285,14 @@ class ClusterNodePoolNodeConfig(dict):
         Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         """
         return pulumi.get(self, "ephemeral_storage_config")
+
+    @property
+    @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
+    def ephemeral_storage_local_ssd_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig']:
+        """
+        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -7519,6 +7587,41 @@ class ClusterNodePoolNodeConfigEphemeralStorageConfig(dict):
 
     def get(self, key: str, default = None) -> Any:
         ClusterNodePoolNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        """
+        :param int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        """
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -8591,7 +8694,7 @@ class ClusterProtectConfig(dict):
                  workload_vulnerability_mode: Optional[str] = None):
         """
         :param 'ClusterProtectConfigWorkloadConfigArgs' workload_config: ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
-        :param str workload_vulnerability_mode: ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+        :param str workload_vulnerability_mode: ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         if workload_config is not None:
             pulumi.set(__self__, "workload_config", workload_config)
@@ -8610,7 +8713,7 @@ class ClusterProtectConfig(dict):
     @pulumi.getter(name="workloadVulnerabilityMode")
     def workload_vulnerability_mode(self) -> Optional[str]:
         """
-        ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED, DISABLED, BASIC.
+        ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         return pulumi.get(self, "workload_vulnerability_mode")
 
@@ -8636,11 +8739,17 @@ class ClusterProtectConfigWorkloadConfig(dict):
 
     def __init__(__self__, *,
                  audit_mode: str):
+        """
+        :param str audit_mode: ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        """
         pulumi.set(__self__, "audit_mode", audit_mode)
 
     @property
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> str:
+        """
+        ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        """
         return pulumi.get(self, "audit_mode")
 
 
@@ -9160,6 +9269,8 @@ class NodePoolNodeConfig(dict):
             suggest = "disk_type"
         elif key == "ephemeralStorageConfig":
             suggest = "ephemeral_storage_config"
+        elif key == "ephemeralStorageLocalSsdConfig":
+            suggest = "ephemeral_storage_local_ssd_config"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
@@ -9214,6 +9325,7 @@ class NodePoolNodeConfig(dict):
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig'] = None,
+                 ephemeral_storage_local_ssd_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig'] = None,
                  gcfs_config: Optional['outputs.NodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.NodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.NodePoolNodeConfigGvnic'] = None,
@@ -9249,6 +9361,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if ephemeral_storage_config is not None:
             pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
+        if ephemeral_storage_local_ssd_config is not None:
+            pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if guest_accelerators is not None:
@@ -9324,6 +9438,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig']:
         return pulumi.get(self, "ephemeral_storage_config")
+
+    @property
+    @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
+    def ephemeral_storage_local_ssd_config(self) -> Optional['outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig']:
+        return pulumi.get(self, "ephemeral_storage_local_ssd_config")
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -9497,6 +9616,35 @@ class NodePoolNodeConfigEphemeralStorageConfig(dict):
 
     def get(self, key: str, default = None) -> Any:
         NodePoolNodeConfigEphemeralStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigEphemeralStorageLocalSsdConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigEphemeralStorageLocalSsdConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigEphemeralStorageLocalSsdConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigEphemeralStorageLocalSsdConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -11083,6 +11231,7 @@ class GetClusterNodeConfigResult(dict):
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult'],
+                 ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult'],
                  gcfs_configs: Sequence['outputs.GetClusterNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodeConfigGvnicResult'],
@@ -11113,6 +11262,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
+        pulumi.set(__self__, "ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
@@ -11163,6 +11313,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="ephemeralStorageConfigs")
     def ephemeral_storage_configs(self) -> Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult']:
         return pulumi.get(self, "ephemeral_storage_configs")
+
+    @property
+    @pulumi.getter(name="ephemeralStorageLocalSsdConfigs")
+    def ephemeral_storage_local_ssd_configs(self) -> Sequence['outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult']:
+        return pulumi.get(self, "ephemeral_storage_local_ssd_configs")
 
     @property
     @pulumi.getter(name="gcfsConfigs")
@@ -11304,6 +11459,18 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
 
 @pulumi.output_type
 class GetClusterNodeConfigEphemeralStorageConfigResult(dict):
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
@@ -11825,6 +11992,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult'],
+                 ephemeral_storage_local_ssd_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult'],
                  gcfs_configs: Sequence['outputs.GetClusterNodePoolNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodePoolNodeConfigGvnicResult'],
@@ -11855,6 +12023,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
+        pulumi.set(__self__, "ephemeral_storage_local_ssd_configs", ephemeral_storage_local_ssd_configs)
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
@@ -11905,6 +12074,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="ephemeralStorageConfigs")
     def ephemeral_storage_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult']:
         return pulumi.get(self, "ephemeral_storage_configs")
+
+    @property
+    @pulumi.getter(name="ephemeralStorageLocalSsdConfigs")
+    def ephemeral_storage_local_ssd_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult']:
+        return pulumi.get(self, "ephemeral_storage_local_ssd_configs")
 
     @property
     @pulumi.getter(name="gcfsConfigs")
@@ -12046,6 +12220,18 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
 
 @pulumi.output_type
 class GetClusterNodePoolNodeConfigEphemeralStorageConfigResult(dict):
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult(dict):
     def __init__(__self__, *,
                  local_ssd_count: int):
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)

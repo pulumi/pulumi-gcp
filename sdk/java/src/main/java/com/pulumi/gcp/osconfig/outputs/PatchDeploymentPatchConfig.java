@@ -50,7 +50,7 @@ public final class PatchDeploymentPatchConfig {
     private @Nullable PatchDeploymentPatchConfigPreStep preStep;
     /**
      * @return Post-patch reboot settings.
-     * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+     * Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
      * 
      */
     private @Nullable String rebootConfig;
@@ -115,7 +115,7 @@ public final class PatchDeploymentPatchConfig {
     }
     /**
      * @return Post-patch reboot settings.
-     * Possible values are `DEFAULT`, `ALWAYS`, and `NEVER`.
+     * Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
      * 
      */
     public Optional<String> rebootConfig() {

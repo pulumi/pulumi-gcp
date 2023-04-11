@@ -101,7 +101,7 @@ export class Group extends pulumi.CustomResource {
      * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
      * for possible values.
      * Default value is `EMPTY`.
-     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      */
     public readonly initialGroupConfig!: pulumi.Output<string | undefined>;
     /**
@@ -205,7 +205,7 @@ export interface GroupState {
      * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
      * for possible values.
      * Default value is `EMPTY`.
-     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      */
     initialGroupConfig?: pulumi.Input<string>;
     /**
@@ -258,7 +258,7 @@ export interface GroupArgs {
      * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
      * for possible values.
      * Default value is `EMPTY`.
-     * Possible values are `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, and `EMPTY`.
+     * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      */
     initialGroupConfig?: pulumi.Input<string>;
     /**

@@ -66,7 +66,7 @@ class EdgeCacheOriginArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-               Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+               Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -80,7 +80,7 @@ class EdgeCacheOriginArgs:
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -271,7 +271,7 @@ class EdgeCacheOriginArgs:
         """
         The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
         When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-        Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+        Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         """
         return pulumi.get(self, "protocol")
 
@@ -296,7 +296,7 @@ class EdgeCacheOriginArgs:
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -371,7 +371,7 @@ class _EdgeCacheOriginState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-               Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+               Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -385,7 +385,7 @@ class _EdgeCacheOriginState:
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -577,7 +577,7 @@ class _EdgeCacheOriginState:
         """
         The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
         When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-        Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+        Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         """
         return pulumi.get(self, "protocol")
 
@@ -602,7 +602,7 @@ class _EdgeCacheOriginState:
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -791,7 +791,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-               Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+               Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -805,7 +805,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1045,7 +1045,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
                When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-               Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+               Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more retry conditions for the configured origin.
                If the failure mode during a connection attempt to the origin matches the configured retryCondition(s),
                the origin request will be retried up to maxAttempts times. The failoverOrigin, if configured, will then be used to satisfy the request.
@@ -1059,7 +1059,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input[pulumi.InputType['EdgeCacheOriginTimeoutArgs']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1198,7 +1198,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         """
         The protocol to use to connect to the configured origin. Defaults to HTTP2, and it is strongly recommended that users use HTTP2 for both security & performance.
         When using HTTP2 or HTTPS as the protocol, a valid, publicly-signed, unexpired TLS (SSL) certificate must be presented by the origin server.
-        Possible values are `HTTP2`, `HTTPS`, and `HTTP`.
+        Possible values are: `HTTP2`, `HTTPS`, `HTTP`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1219,7 +1219,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, and `FORBIDDEN`.
+        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 

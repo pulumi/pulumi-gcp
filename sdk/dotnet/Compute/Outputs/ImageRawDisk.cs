@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// and not a runtime format. Provided by the client when the disk
         /// image is created.
         /// Default value is `TAR`.
-        /// Possible values are `TAR`.
+        /// Possible values are: `TAR`.
         /// </summary>
         public readonly string? ContainerType;
         /// <summary>

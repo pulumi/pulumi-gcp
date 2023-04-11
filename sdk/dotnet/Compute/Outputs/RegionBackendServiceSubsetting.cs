@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// The algorithm used for subsetting.
-        /// Possible values are `CONSISTENT_HASH_SUBSETTING`.
+        /// Possible values are: `CONSISTENT_HASH_SUBSETTING`.
         /// </summary>
         public readonly string Policy;
 

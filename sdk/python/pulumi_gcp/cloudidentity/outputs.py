@@ -179,7 +179,7 @@ class GroupMembershipRole(dict):
                  name: str):
         """
         :param str name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-               Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+               Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
         """
         pulumi.set(__self__, "name", name)
 
@@ -188,7 +188,7 @@ class GroupMembershipRole(dict):
     def name(self) -> str:
         """
         The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
-        Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
+        Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
         """
         return pulumi.get(self, "name")
 

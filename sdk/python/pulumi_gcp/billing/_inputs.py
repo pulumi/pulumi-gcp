@@ -329,7 +329,7 @@ class BudgetBudgetFilterArgs:
                canonical start. Grammatically, "the start of the current CalendarPeriod".
                All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
                Exactly one of `calendar_period`, `custom_period` must be provided.
-               Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+               Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
                this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
                If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
@@ -337,7 +337,7 @@ class BudgetBudgetFilterArgs:
         :param pulumi.Input[str] credit_types_treatment: Specifies how credits should be treated when determining spend
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
-               Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+               Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
         :param pulumi.Input['BudgetBudgetFilterCustomPeriodArgs'] custom_period: Specifies to track usage from any start date (required) to any end date (optional).
                This time period is static, it does not recur.
                Exactly one of `calendar_period`, `custom_period` must be provided.
@@ -388,7 +388,7 @@ class BudgetBudgetFilterArgs:
         canonical start. Grammatically, "the start of the current CalendarPeriod".
         All calendar times begin at 12 AM US and Canadian Pacific Time (UTC-8).
         Exactly one of `calendar_period`, `custom_period` must be provided.
-        Possible values are `MONTH`, `QUARTER`, `YEAR`, and `CALENDAR_PERIOD_UNSPECIFIED`.
+        Possible values are: `MONTH`, `QUARTER`, `YEAR`, `CALENDAR_PERIOD_UNSPECIFIED`.
         """
         return pulumi.get(self, "calendar_period")
 
@@ -418,7 +418,7 @@ class BudgetBudgetFilterArgs:
         Specifies how credits should be treated when determining spend
         for threshold calculations.
         Default value is `INCLUDE_ALL_CREDITS`.
-        Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+        Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
         """
         return pulumi.get(self, "credit_types_treatment")
 
@@ -665,7 +665,7 @@ class BudgetThresholdRuleArgs:
         :param pulumi.Input[str] spend_basis: The type of basis used to determine if spend has passed
                the threshold.
                Default value is `CURRENT_SPEND`.
-               Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+               Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
         """
         pulumi.set(__self__, "threshold_percent", threshold_percent)
         if spend_basis is not None:
@@ -691,7 +691,7 @@ class BudgetThresholdRuleArgs:
         The type of basis used to determine if spend has passed
         the threshold.
         Default value is `CURRENT_SPEND`.
-        Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+        Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
         """
         return pulumi.get(self, "spend_basis")
 

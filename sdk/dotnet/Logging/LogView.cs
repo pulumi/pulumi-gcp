@@ -10,34 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging
 {
     /// <summary>
-    /// The Logging LogView resource
+    /// Describes a view over log entries in a bucket.
+    /// 
+    /// To get more information about LogView, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
-    /// ### Basic
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basic = new Gcp.Logging.ProjectBucketConfig("basic", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         Location = "global",
-    ///         RetentionDays = 30,
-    ///         BucketId = "_Default",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.Logging.LogView("primary", new()
-    ///     {
-    ///         Bucket = basic.Id,
-    ///         Description = "A logging view configured with Terraform",
-    ///         Filter = "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
@@ -81,7 +62,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        /// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -169,7 +150,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        /// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -219,7 +200,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+        /// The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

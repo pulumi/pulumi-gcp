@@ -35,7 +35,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
     /**
      * Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-     * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+     * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
     @Import(name="commentControl")
@@ -43,7 +43,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
     /**
      * @return Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-     * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+     * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
      * 
      */
     public Optional<Output<String>> commentControl() {
@@ -116,7 +116,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
         /**
          * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-         * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+         * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class TriggerGithubPullRequestArgs extends com.pulumi.resources.Res
 
         /**
          * @param commentControl Configure builds to run whether a repository owner or collaborator need to comment /gcbrun.
-         * Possible values are `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, and `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
+         * Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
          * 
          * @return builder
          * 

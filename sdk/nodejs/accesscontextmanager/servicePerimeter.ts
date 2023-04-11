@@ -177,7 +177,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Access Context Manager Service Perimeter Dry Run
+ * ### Access Context Manager Service Perimeter Dry-Run
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -272,7 +272,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      */
     public readonly perimeterType!: pulumi.Output<string | undefined>;
     /**
@@ -398,7 +398,7 @@ export interface ServicePerimeterState {
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      */
     perimeterType?: pulumi.Input<string>;
     /**
@@ -474,7 +474,7 @@ export interface ServicePerimeterArgs {
      * with a common perimeter, but should not be able to share data among
      * themselves.
      * Default value is `PERIMETER_TYPE_REGULAR`.
-     * Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+     * Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
      */
     perimeterType?: pulumi.Input<string>;
     /**

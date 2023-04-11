@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
     /**
      * @return The day of the week to create the snapshot. e.g. MONDAY
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     private String day;
@@ -25,7 +25,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
     private ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek() {}
     /**
      * @return The day of the week to create the snapshot. e.g. MONDAY
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public String day() {

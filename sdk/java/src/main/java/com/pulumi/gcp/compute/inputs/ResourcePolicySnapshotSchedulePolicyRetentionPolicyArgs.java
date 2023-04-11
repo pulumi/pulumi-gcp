@@ -35,7 +35,7 @@ public final class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs exten
      * Specifies the behavior to apply to scheduled snapshots when
      * the source disk is deleted.
      * Default value is `KEEP_AUTO_SNAPSHOTS`.
-     * Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+     * Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
      * 
      */
     @Import(name="onSourceDiskDelete")
@@ -45,7 +45,7 @@ public final class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs exten
      * @return Specifies the behavior to apply to scheduled snapshots when
      * the source disk is deleted.
      * Default value is `KEEP_AUTO_SNAPSHOTS`.
-     * Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+     * Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
      * 
      */
     public Optional<Output<String>> onSourceDiskDelete() {
@@ -102,7 +102,7 @@ public final class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs exten
          * @param onSourceDiskDelete Specifies the behavior to apply to scheduled snapshots when
          * the source disk is deleted.
          * Default value is `KEEP_AUTO_SNAPSHOTS`.
-         * Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+         * Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs exten
          * @param onSourceDiskDelete Specifies the behavior to apply to scheduled snapshots when
          * the source disk is deleted.
          * Default value is `KEEP_AUTO_SNAPSHOTS`.
-         * Possible values are `KEEP_AUTO_SNAPSHOTS` and `APPLY_RETENTION_POLICY`.
+         * Possible values are: `KEEP_AUTO_SNAPSHOTS`, `APPLY_RETENTION_POLICY`.
          * 
          * @return builder
          * 

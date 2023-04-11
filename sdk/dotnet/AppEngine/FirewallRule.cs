@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// The action to take if this rule matches.
-        /// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+        /// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// The action to take if this rule matches.
-        /// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+        /// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// The action to take if this rule matches.
-        /// Possible values are `UNSPECIFIED_ACTION`, `ALLOW`, and `DENY`.
+        /// Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

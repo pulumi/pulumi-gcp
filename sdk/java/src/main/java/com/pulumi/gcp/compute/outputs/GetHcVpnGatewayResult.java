@@ -24,6 +24,7 @@ public final class GetHcVpnGatewayResult {
     private @Nullable String project;
     private @Nullable String region;
     private String selfLink;
+    private String stackType;
     private List<GetHcVpnGatewayVpnInterface> vpnInterfaces;
 
     private GetHcVpnGatewayResult() {}
@@ -52,6 +53,9 @@ public final class GetHcVpnGatewayResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public String stackType() {
+        return this.stackType;
+    }
     public List<GetHcVpnGatewayVpnInterface> vpnInterfaces() {
         return this.vpnInterfaces;
     }
@@ -72,6 +76,7 @@ public final class GetHcVpnGatewayResult {
         private @Nullable String project;
         private @Nullable String region;
         private String selfLink;
+        private String stackType;
         private List<GetHcVpnGatewayVpnInterface> vpnInterfaces;
         public Builder() {}
         public Builder(GetHcVpnGatewayResult defaults) {
@@ -83,6 +88,7 @@ public final class GetHcVpnGatewayResult {
     	      this.project = defaults.project;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
+    	      this.stackType = defaults.stackType;
     	      this.vpnInterfaces = defaults.vpnInterfaces;
         }
 
@@ -122,6 +128,11 @@ public final class GetHcVpnGatewayResult {
             return this;
         }
         @CustomType.Setter
+        public Builder stackType(String stackType) {
+            this.stackType = Objects.requireNonNull(stackType);
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpnInterfaces(List<GetHcVpnGatewayVpnInterface> vpnInterfaces) {
             this.vpnInterfaces = Objects.requireNonNull(vpnInterfaces);
             return this;
@@ -138,6 +149,7 @@ public final class GetHcVpnGatewayResult {
             o.project = project;
             o.region = region;
             o.selfLink = selfLink;
+            o.stackType = stackType;
             o.vpnInterfaces = vpnInterfaces;
             return o;
         }

@@ -21,7 +21,7 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User-specified flag to indicate which mode to use for advertisement.
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      * 
      */
     @Import(name="advertiseMode")
@@ -30,7 +30,7 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User-specified flag to indicate which mode to use for advertisement.
      * Default value is `DEFAULT`.
-     * Possible values are `DEFAULT` and `CUSTOM`.
+     * Possible values are: `DEFAULT`, `CUSTOM`.
      * 
      */
     public Optional<Output<String>> advertiseMode() {
@@ -170,7 +170,7 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param advertiseMode User-specified flag to indicate which mode to use for advertisement.
          * Default value is `DEFAULT`.
-         * Possible values are `DEFAULT` and `CUSTOM`.
+         * Possible values are: `DEFAULT`, `CUSTOM`.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param advertiseMode User-specified flag to indicate which mode to use for advertisement.
          * Default value is `DEFAULT`.
-         * Possible values are `DEFAULT` and `CUSTOM`.
+         * Possible values are: `DEFAULT`, `CUSTOM`.
          * 
          * @return builder
          * 

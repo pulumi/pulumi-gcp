@@ -22,13 +22,16 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, create_time=None, description=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None):
+    def __init__(__self__, create_time=None, description=None, docker_configs=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if docker_configs and not isinstance(docker_configs, list):
+            raise TypeError("Expected argument 'docker_configs' to be a list")
+        pulumi.set(__self__, "docker_configs", docker_configs)
         if format and not isinstance(format, str):
             raise TypeError("Expected argument 'format' to be a str")
         pulumi.set(__self__, "format", format)
@@ -78,6 +81,11 @@ class GetRepositoryResult:
     @pulumi.getter
     def description(self) -> str:
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerConfigs")
+    def docker_configs(self) -> Sequence['outputs.GetRepositoryDockerConfigResult']:
+        return pulumi.get(self, "docker_configs")
 
     @property
     @pulumi.getter
@@ -156,6 +164,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
         return GetRepositoryResult(
             create_time=self.create_time,
             description=self.description,
+            docker_configs=self.docker_configs,
             format=self.format,
             id=self.id,
             kms_key_name=self.kms_key_name,
@@ -206,6 +215,7 @@ def get_repository(location: Optional[str] = None,
     return AwaitableGetRepositoryResult(
         create_time=__ret__.create_time,
         description=__ret__.description,
+        docker_configs=__ret__.docker_configs,
         format=__ret__.format,
         id=__ret__.id,
         kms_key_name=__ret__.kms_key_name,

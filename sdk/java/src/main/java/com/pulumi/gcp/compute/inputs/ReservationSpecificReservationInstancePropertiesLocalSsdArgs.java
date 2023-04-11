@@ -34,7 +34,7 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
     /**
      * The disk interface to use for attaching this disk.
      * Default value is `SCSI`.
-     * Possible values are `SCSI` and `NVME`.
+     * Possible values are: `SCSI`, `NVME`.
      * 
      */
     @Import(name="interface")
@@ -43,7 +43,7 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
     /**
      * @return The disk interface to use for attaching this disk.
      * Default value is `SCSI`.
-     * Possible values are `SCSI` and `NVME`.
+     * Possible values are: `SCSI`, `NVME`.
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -99,7 +99,7 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
         /**
          * @param interface_ The disk interface to use for attaching this disk.
          * Default value is `SCSI`.
-         * Possible values are `SCSI` and `NVME`.
+         * Possible values are: `SCSI`, `NVME`.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
         /**
          * @param interface_ The disk interface to use for attaching this disk.
          * Default value is `SCSI`.
-         * Possible values are `SCSI` and `NVME`.
+         * Possible values are: `SCSI`, `NVME`.
          * 
          * @return builder
          * 

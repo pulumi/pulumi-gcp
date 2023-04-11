@@ -118,7 +118,7 @@ type ForwardingRule struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -154,7 +154,7 @@ type ForwardingRule struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -291,7 +291,7 @@ type forwardingRuleState struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -327,7 +327,7 @@ type forwardingRuleState struct {
 	Network *string `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -436,7 +436,7 @@ type ForwardingRuleState struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
 	IpProtocol pulumi.StringPtrInput
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -472,7 +472,7 @@ type ForwardingRuleState struct {
 	Network pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -583,7 +583,7 @@ type forwardingRuleArgs struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -617,7 +617,7 @@ type forwardingRuleArgs struct {
 	Network *string `pulumi:"network"`
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -716,7 +716,7 @@ type ForwardingRuleArgs struct {
 	// The IP protocol to which this rule applies.
 	// When the load balancing scheme is INTERNAL, only TCP and UDP are
 	// valid.
-	// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
 	IpProtocol pulumi.StringPtrInput
 	// Indicates whether or not this load balancer can be used
 	// as a collector for packet mirroring. To prevent mirroring loops,
@@ -750,7 +750,7 @@ type ForwardingRuleArgs struct {
 	Network pulumi.StringPtrInput
 	// The networking tier used for configuring this address. If this field is not
 	// specified, it is assumed to be PREMIUM.
-	// Possible values are `PREMIUM` and `STANDARD`.
+	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
 	// This field is used along with the target field for TargetHttpProxy,
 	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
@@ -954,7 +954,7 @@ func (o ForwardingRuleOutput) IpAddress() pulumi.StringOutput {
 // The IP protocol to which this rule applies.
 // When the load balancing scheme is INTERNAL, only TCP and UDP are
 // valid.
-// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, and `L3_DEFAULT`.
+// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
 func (o ForwardingRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
 }
@@ -1011,7 +1011,7 @@ func (o ForwardingRuleOutput) Network() pulumi.StringOutput {
 
 // The networking tier used for configuring this address. If this field is not
 // specified, it is assumed to be PREMIUM.
-// Possible values are `PREMIUM` and `STANDARD`.
+// Possible values are: `PREMIUM`, `STANDARD`.
 func (o ForwardingRuleOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.NetworkTier }).(pulumi.StringOutput)
 }

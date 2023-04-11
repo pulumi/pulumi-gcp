@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.ReservationArgs;
 import com.pulumi.gcp.bigquery.inputs.ReservationState;
+import com.pulumi.gcp.bigquery.outputs.ReservationAutoscale;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -35,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.bigquery.Reservation;
  * import com.pulumi.gcp.bigquery.ReservationArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ReservationAutoscaleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -49,9 +51,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var reservation = new Reservation(&#34;reservation&#34;, ReservationArgs.builder()        
+ *             .autoscale(ReservationAutoscaleArgs.builder()
+ *                 .maxSlots(100)
+ *                 .build())
  *             .concurrency(0)
- *             .ignoreIdleSlots(false)
- *             .location(&#34;asia-northeast1&#34;)
+ *             .edition(&#34;STANDARD&#34;)
+ *             .ignoreIdleSlots(true)
+ *             .location(&#34;us-west2&#34;)
  *             .slotCapacity(0)
  *             .build());
  * 
@@ -79,6 +85,22 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigquery/reservation:Reservation")
 public class Reservation extends com.pulumi.resources.CustomResource {
     /**
+     * The configuration parameters for the auto scaling feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="autoscale", type=ReservationAutoscale.class, parameters={})
+    private Output</* @Nullable */ ReservationAutoscale> autoscale;
+
+    /**
+     * @return The configuration parameters for the auto scaling feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ReservationAutoscale>> autoscale() {
+        return Codegen.optional(this.autoscale);
+    }
+    /**
      * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
      * 
      */
@@ -91,6 +113,20 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> concurrency() {
         return Codegen.optional(this.concurrency);
+    }
+    /**
+     * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    @Export(name="edition", type=String.class, parameters={})
+    private Output</* @Nullable */ String> edition;
+
+    /**
+     * @return The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+     * 
+     */
+    public Output<Optional<String>> edition() {
+        return Codegen.optional(this.edition);
     }
     /**
      * If false, any query using this reservation will use idle slots from other reservations within

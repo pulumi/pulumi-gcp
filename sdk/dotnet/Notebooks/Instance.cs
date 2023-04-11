@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         /// </summary>
         [Output("bootDiskType")]
         public Output<string?> BootDiskType { get; private set; } = null!;
@@ -223,14 +223,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         /// </summary>
         [Output("dataDiskType")]
         public Output<string?> DataDiskType { get; private set; } = null!;
 
         /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
-        /// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+        /// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         /// </summary>
         [Output("diskEncryption")]
         public Output<string?> DiskEncryption { get; private set; } = null!;
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// The type of vNIC driver.
-        /// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        /// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         /// </summary>
         [Output("nicType")]
         public Output<string?> NicType { get; private set; } = null!;
@@ -477,7 +477,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -513,14 +513,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
 
         /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
-        /// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+        /// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<string>? DiskEncryption { get; set; }
@@ -609,7 +609,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// The type of vNIC driver.
-        /// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        /// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }
@@ -746,7 +746,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
@@ -782,14 +782,14 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// Possible disk types for notebook instances.
-        /// Possible values are `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, and `PD_EXTREME`.
+        /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
 
         /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
-        /// Possible values are `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, and `CMEK`.
+        /// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         /// </summary>
         [Input("diskEncryption")]
         public Input<string>? DiskEncryption { get; set; }
@@ -878,7 +878,7 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// The type of vNIC driver.
-        /// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        /// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         /// </summary>
         [Input("nicType")]
         public Input<string>? NicType { get; set; }

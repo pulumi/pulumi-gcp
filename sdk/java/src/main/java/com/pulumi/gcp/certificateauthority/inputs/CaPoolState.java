@@ -122,7 +122,7 @@ public final class CaPoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Tier of this CaPool.
-     * Possible values are `ENTERPRISE` and `DEVOPS`.
+     * Possible values are: `ENTERPRISE`, `DEVOPS`.
      * 
      */
     @Import(name="tier")
@@ -130,7 +130,7 @@ public final class CaPoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Tier of this CaPool.
-     * Possible values are `ENTERPRISE` and `DEVOPS`.
+     * Possible values are: `ENTERPRISE`, `DEVOPS`.
      * 
      */
     public Optional<Output<String>> tier() {
@@ -307,7 +307,7 @@ public final class CaPoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tier The Tier of this CaPool.
-         * Possible values are `ENTERPRISE` and `DEVOPS`.
+         * Possible values are: `ENTERPRISE`, `DEVOPS`.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class CaPoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tier The Tier of this CaPool.
-         * Possible values are `ENTERPRISE` and `DEVOPS`.
+         * Possible values are: `ENTERPRISE`, `DEVOPS`.
          * 
          * @return builder
          * 

@@ -41,7 +41,7 @@ public final class PatchDeploymentRolloutArgs extends com.pulumi.resources.Resou
 
     /**
      * Mode of the patch rollout.
-     * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+     * Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
      * 
      */
     @Import(name="mode", required=true)
@@ -49,7 +49,7 @@ public final class PatchDeploymentRolloutArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Mode of the patch rollout.
-     * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+     * Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
      * 
      */
     public Output<String> mode() {
@@ -114,7 +114,7 @@ public final class PatchDeploymentRolloutArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Mode of the patch rollout.
-         * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+         * Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class PatchDeploymentRolloutArgs extends com.pulumi.resources.Resou
 
         /**
          * @param mode Mode of the patch rollout.
-         * Possible values are `ZONE_BY_ZONE` and `CONCURRENT_ZONES`.
+         * Possible values are: `ZONE_BY_ZONE`, `CONCURRENT_ZONES`.
          * 
          * @return builder
          * 

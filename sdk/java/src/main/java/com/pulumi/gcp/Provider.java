@@ -574,6 +574,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> networkManagementCustomEndpoint() {
         return Codegen.optional(this.networkManagementCustomEndpoint);
     }
+    @Export(name="networkSecurityCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> networkSecurityCustomEndpoint;
+
+    public Output<Optional<String>> networkSecurityCustomEndpoint() {
+        return Codegen.optional(this.networkSecurityCustomEndpoint);
+    }
     @Export(name="networkServicesCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> networkServicesCustomEndpoint;
 

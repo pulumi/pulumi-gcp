@@ -94,7 +94,7 @@ type MangedSslCertificate struct {
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
 	// Default value is `MANAGED`.
-	// Possible values are `MANAGED`.
+	// Possible values are: `MANAGED`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -157,7 +157,7 @@ type mangedSslCertificateState struct {
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
 	// Default value is `MANAGED`.
-	// Possible values are `MANAGED`.
+	// Possible values are: `MANAGED`.
 	Type *string `pulumi:"type"`
 }
 
@@ -192,7 +192,7 @@ type MangedSslCertificateState struct {
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
 	// Default value is `MANAGED`.
-	// Possible values are `MANAGED`.
+	// Possible values are: `MANAGED`.
 	Type pulumi.StringPtrInput
 }
 
@@ -223,7 +223,7 @@ type mangedSslCertificateArgs struct {
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
 	// Default value is `MANAGED`.
-	// Possible values are `MANAGED`.
+	// Possible values are: `MANAGED`.
 	Type *string `pulumi:"type"`
 }
 
@@ -251,7 +251,7 @@ type MangedSslCertificateArgs struct {
 	// Enum field whose value is always `MANAGED` - used to signal to the API
 	// which type this is.
 	// Default value is `MANAGED`.
-	// Possible values are `MANAGED`.
+	// Possible values are: `MANAGED`.
 	Type pulumi.StringPtrInput
 }
 
@@ -399,7 +399,7 @@ func (o MangedSslCertificateOutput) SubjectAlternativeNames() pulumi.StringArray
 // Enum field whose value is always `MANAGED` - used to signal to the API
 // which type this is.
 // Default value is `MANAGED`.
-// Possible values are `MANAGED`.
+// Possible values are: `MANAGED`.
 func (o MangedSslCertificateOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MangedSslCertificate) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

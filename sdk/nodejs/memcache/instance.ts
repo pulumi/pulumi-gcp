@@ -160,7 +160,7 @@ export class Instance extends pulumi.CustomResource {
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
      * determined by our system based on the latest supported minor version.
      * Default value is `MEMCACHE_1_5`.
-     * Possible values are `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`.
      */
     public readonly memcacheVersion!: pulumi.Output<string | undefined>;
     /**
@@ -309,7 +309,7 @@ export interface InstanceState {
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
      * determined by our system based on the latest supported minor version.
      * Default value is `MEMCACHE_1_5`.
-     * Possible values are `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`.
      */
     memcacheVersion?: pulumi.Input<string>;
     /**
@@ -373,7 +373,7 @@ export interface InstanceArgs {
      * Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
      * determined by our system based on the latest supported minor version.
      * Default value is `MEMCACHE_1_5`.
-     * Possible values are `MEMCACHE_1_5`.
+     * Possible values are: `MEMCACHE_1_5`.
      */
     memcacheVersion?: pulumi.Input<string>;
     /**

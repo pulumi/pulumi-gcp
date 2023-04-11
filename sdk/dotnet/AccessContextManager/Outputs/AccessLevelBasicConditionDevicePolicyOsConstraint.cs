@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         public readonly string? MinimumVersion;
         /// <summary>
         /// The operating system type of the device.
-        /// Possible values are `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, and `IOS`.
+        /// Possible values are: `OS_UNSPECIFIED`, `DESKTOP_MAC`, `DESKTOP_WINDOWS`, `DESKTOP_LINUX`, `DESKTOP_CHROME_OS`, `ANDROID`, `IOS`.
         /// </summary>
         public readonly string OsType;
         /// <summary>

@@ -492,7 +492,7 @@ class JobTemplateTemplateArgs:
                Structure is documented below.
         :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param pulumi.Input[str] execution_environment: The execution environment being used to host this Task.
-               Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+               Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param pulumi.Input[int] max_retries: Number of retries allowed per Task, before marking this Task failed.
         :param pulumi.Input[str] service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         :param pulumi.Input[str] timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
@@ -549,7 +549,7 @@ class JobTemplateTemplateArgs:
     def execution_environment(self) -> Optional[pulumi.Input[str]]:
         """
         The execution environment being used to host this Task.
-        Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+        Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         """
         return pulumi.get(self, "execution_environment")
 
@@ -1663,7 +1663,7 @@ class JobTemplateTemplateVpcAccessArgs:
         """
         :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[str] egress: Traffic VPC egress settings.
-               Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+               Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -1687,7 +1687,7 @@ class JobTemplateTemplateVpcAccessArgs:
     def egress(self) -> Optional[pulumi.Input[str]]:
         """
         Traffic VPC egress settings.
-        Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+        Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         """
         return pulumi.get(self, "egress")
 
@@ -1916,7 +1916,7 @@ class ServiceConditionArgs:
         :param pulumi.Input[str] state: (Output)
                State of the condition.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
-               Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+               Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -2032,7 +2032,7 @@ class ServiceConditionArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The allocation type for this traffic target.
-        Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         return pulumi.get(self, "type")
 
@@ -2140,7 +2140,7 @@ class ServiceTemplateArgs:
                Structure is documented below.
         :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param pulumi.Input[str] execution_environment: The sandbox environment to host this Revision.
-               Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+               Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
@@ -2221,7 +2221,7 @@ class ServiceTemplateArgs:
     def execution_environment(self) -> Optional[pulumi.Input[str]]:
         """
         The sandbox environment to host this Revision.
-        Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+        Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
         """
         return pulumi.get(self, "execution_environment")
 
@@ -3542,7 +3542,7 @@ class ServiceTemplateVpcAccessArgs:
         """
         :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[str] egress: Traffic VPC egress settings.
-               Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+               Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -3566,7 +3566,7 @@ class ServiceTemplateVpcAccessArgs:
     def egress(self) -> Optional[pulumi.Input[str]]:
         """
         Traffic VPC egress settings.
-        Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+        Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
         """
         return pulumi.get(self, "egress")
 
@@ -3603,7 +3603,7 @@ class ServiceTerminalConditionArgs:
         :param pulumi.Input[str] state: (Output)
                State of the condition.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
-               Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+               Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         if execution_reason is not None:
             pulumi.set(__self__, "execution_reason", execution_reason)
@@ -3719,7 +3719,7 @@ class ServiceTerminalConditionArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The allocation type for this traffic target.
-        Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         return pulumi.get(self, "type")
 
@@ -3740,7 +3740,7 @@ class ServiceTrafficArgs:
         :param pulumi.Input[str] revision: Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param pulumi.Input[str] tag: Indicates a string to be part of the URI to exclusively reference this target.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
-               Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+               Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         if percent is not None:
             pulumi.set(__self__, "percent", percent)
@@ -3792,7 +3792,7 @@ class ServiceTrafficArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The allocation type for this traffic target.
-        Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         return pulumi.get(self, "type")
 
@@ -3816,7 +3816,7 @@ class ServiceTrafficStatusArgs:
                Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param pulumi.Input[str] tag: Indicates a string to be part of the URI to exclusively reference this target.
         :param pulumi.Input[str] type: The allocation type for this traffic target.
-               Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+               Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         :param pulumi.Input[str] uri: (Output)
                Displays the target URI.
         """
@@ -3874,7 +3874,7 @@ class ServiceTrafficStatusArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The allocation type for this traffic target.
-        Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+        Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
         """
         return pulumi.get(self, "type")
 

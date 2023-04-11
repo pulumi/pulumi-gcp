@@ -239,7 +239,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
      * `source_tags` or `source_service_accounts` is required.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Export(name="direction", type=String.class, parameters={})
@@ -251,7 +251,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
      * destinationRanges; For EGRESS traffic, it is NOT supported to specify
      * `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
      * `source_tags` or `source_service_accounts` is required.
-     * Possible values are `INGRESS` and `EGRESS`.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Output<String> direction() {

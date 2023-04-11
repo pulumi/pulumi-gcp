@@ -201,7 +201,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     @Export(name="proxyHeader", type=String.class, parameters={})
@@ -211,7 +211,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * @return Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `PROXY_V1`.
+     * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
     public Output<Optional<String>> proxyHeader() {

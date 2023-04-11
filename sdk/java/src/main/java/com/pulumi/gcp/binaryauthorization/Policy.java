@@ -243,7 +243,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
-     * Possible values are `ENABLE` and `DISABLE`.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     @Export(name="globalPolicyEvaluationMode", type=String.class, parameters={})
@@ -253,7 +253,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * @return Controls the evaluation of a Google-maintained global admission policy
      * for common system-level images. Images not covered by the global
      * policy will be subject to the project admission policy.
-     * Possible values are `ENABLE` and `DISABLE`.
+     * Possible values are: `ENABLE`, `DISABLE`.
      * 
      */
     public Output<String> globalPolicyEvaluationMode() {

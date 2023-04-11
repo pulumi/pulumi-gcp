@@ -69,7 +69,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
     /**
      * Describes the retry policy in case of function&#39;s execution failure.
      * Retried execution is charged as any other execution.
-     * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+     * Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
      * 
      */
     @Import(name="retryPolicy")
@@ -78,7 +78,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
     /**
      * @return Describes the retry policy in case of function&#39;s execution failure.
      * Retried execution is charged as any other execution.
-     * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+     * Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
      * 
      */
     public Optional<Output<String>> retryPolicy() {
@@ -249,7 +249,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         /**
          * @param retryPolicy Describes the retry policy in case of function&#39;s execution failure.
          * Retried execution is charged as any other execution.
-         * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+         * Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         /**
          * @param retryPolicy Describes the retry policy in case of function&#39;s execution failure.
          * Retried execution is charged as any other execution.
-         * Possible values are `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, and `RETRY_POLICY_RETRY`.
+         * Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
          * 
          * @return builder
          * 

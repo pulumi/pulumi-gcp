@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// with a common perimeter, but should not be able to share data among
         /// themselves.
         /// Default value is `PERIMETER_TYPE_REGULAR`.
-        /// Possible values are `PERIMETER_TYPE_REGULAR` and `PERIMETER_TYPE_BRIDGE`.
+        /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
         /// </summary>
         [Input("perimeterType")]
         public Input<string>? PerimeterType { get; set; }

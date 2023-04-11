@@ -228,7 +228,7 @@ type InstanceFileSharesNfsExportOption struct {
 	// Either READ_ONLY, for allowing only read requests on the exported directory,
 	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
 	// Default value is `READ_WRITE`.
-	// Possible values are `READ_ONLY` and `READ_WRITE`.
+	// Possible values are: `READ_ONLY`, `READ_WRITE`.
 	AccessMode *string `pulumi:"accessMode"`
 	// An integer representing the anonymous group id with a default value of 65534.
 	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -245,7 +245,7 @@ type InstanceFileSharesNfsExportOption struct {
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH.
 	// Default value is `NO_ROOT_SQUASH`.
-	// Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+	// Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
 	SquashMode *string `pulumi:"squashMode"`
 }
 
@@ -264,7 +264,7 @@ type InstanceFileSharesNfsExportOptionArgs struct {
 	// Either READ_ONLY, for allowing only read requests on the exported directory,
 	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
 	// Default value is `READ_WRITE`.
-	// Possible values are `READ_ONLY` and `READ_WRITE`.
+	// Possible values are: `READ_ONLY`, `READ_WRITE`.
 	AccessMode pulumi.StringPtrInput `pulumi:"accessMode"`
 	// An integer representing the anonymous group id with a default value of 65534.
 	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
@@ -281,7 +281,7 @@ type InstanceFileSharesNfsExportOptionArgs struct {
 	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 	// for not allowing root access. The default is NO_ROOT_SQUASH.
 	// Default value is `NO_ROOT_SQUASH`.
-	// Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+	// Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
 	SquashMode pulumi.StringPtrInput `pulumi:"squashMode"`
 }
 
@@ -339,7 +339,7 @@ func (o InstanceFileSharesNfsExportOptionOutput) ToInstanceFileSharesNfsExportOp
 // Either READ_ONLY, for allowing only read requests on the exported directory,
 // or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
 // Default value is `READ_WRITE`.
-// Possible values are `READ_ONLY` and `READ_WRITE`.
+// Possible values are: `READ_ONLY`, `READ_WRITE`.
 func (o InstanceFileSharesNfsExportOptionOutput) AccessMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
 }
@@ -368,7 +368,7 @@ func (o InstanceFileSharesNfsExportOptionOutput) IpRanges() pulumi.StringArrayOu
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
 // for not allowing root access. The default is NO_ROOT_SQUASH.
 // Default value is `NO_ROOT_SQUASH`.
-// Possible values are `NO_ROOT_SQUASH` and `ROOT_SQUASH`.
+// Possible values are: `NO_ROOT_SQUASH`, `ROOT_SQUASH`.
 func (o InstanceFileSharesNfsExportOptionOutput) SquashMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFileSharesNfsExportOption) *string { return v.SquashMode }).(pulumi.StringPtrOutput)
 }
@@ -398,14 +398,14 @@ type InstanceNetwork struct {
 	// If not provided, the connect mode defaults to
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode *string `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// IP versions for which the instance has
 	// IP addresses assigned.
-	// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+	// Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
 	Modes []string `pulumi:"modes"`
 	// The name of the GCE VPC network to which the
 	// instance is connected.
@@ -431,14 +431,14 @@ type InstanceNetworkArgs struct {
 	// If not provided, the connect mode defaults to
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
-	// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 	ConnectMode pulumi.StringPtrInput `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 	// IP versions for which the instance has
 	// IP addresses assigned.
-	// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+	// Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
 	Modes pulumi.StringArrayInput `pulumi:"modes"`
 	// The name of the GCE VPC network to which the
 	// instance is connected.
@@ -503,7 +503,7 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 // If not provided, the connect mode defaults to
 // DIRECT_PEERING.
 // Default value is `DIRECT_PEERING`.
-// Possible values are `DIRECT_PEERING` and `PRIVATE_SERVICE_ACCESS`.
+// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
 func (o InstanceNetworkOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }
@@ -516,7 +516,7 @@ func (o InstanceNetworkOutput) IpAddresses() pulumi.StringArrayOutput {
 
 // IP versions for which the instance has
 // IP addresses assigned.
-// Each value may be one of `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, and `MODE_IPV6`.
+// Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
 func (o InstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceNetwork) []string { return v.Modes }).(pulumi.StringArrayOutput)
 }

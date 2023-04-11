@@ -18,7 +18,7 @@ public final class MetastoreServiceTelemetryConfigArgs extends com.pulumi.resour
     /**
      * The output format of the Dataproc Metastore service&#39;s logs.
      * Default value is `JSON`.
-     * Possible values are `LEGACY` and `JSON`.
+     * Possible values are: `LEGACY`, `JSON`.
      * 
      */
     @Import(name="logFormat")
@@ -27,7 +27,7 @@ public final class MetastoreServiceTelemetryConfigArgs extends com.pulumi.resour
     /**
      * @return The output format of the Dataproc Metastore service&#39;s logs.
      * Default value is `JSON`.
-     * Possible values are `LEGACY` and `JSON`.
+     * Possible values are: `LEGACY`, `JSON`.
      * 
      */
     public Optional<Output<String>> logFormat() {
@@ -61,7 +61,7 @@ public final class MetastoreServiceTelemetryConfigArgs extends com.pulumi.resour
         /**
          * @param logFormat The output format of the Dataproc Metastore service&#39;s logs.
          * Default value is `JSON`.
-         * Possible values are `LEGACY` and `JSON`.
+         * Possible values are: `LEGACY`, `JSON`.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class MetastoreServiceTelemetryConfigArgs extends com.pulumi.resour
         /**
          * @param logFormat The output format of the Dataproc Metastore service&#39;s logs.
          * Default value is `JSON`.
-         * Possible values are `LEGACY` and `JSON`.
+         * Possible values are: `LEGACY`, `JSON`.
          * 
          * @return builder
          * 

@@ -138,7 +138,7 @@ export class Device extends pulumi.CustomResource {
     public /*out*/ readonly lastStateTime!: pulumi.Output<string>;
     /**
      * The logging verbosity for device activity.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      */
     public readonly logLevel!: pulumi.Output<string | undefined>;
     /**
@@ -276,7 +276,7 @@ export interface DeviceState {
     lastStateTime?: pulumi.Input<string>;
     /**
      * The logging verbosity for device activity.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      */
     logLevel?: pulumi.Input<string>;
     /**
@@ -323,7 +323,7 @@ export interface DeviceArgs {
     gatewayConfig?: pulumi.Input<inputs.iot.DeviceGatewayConfig>;
     /**
      * The logging verbosity for device activity.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      */
     logLevel?: pulumi.Input<string>;
     /**

@@ -33,10 +33,10 @@ class GlobalAddressArgs:
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -102,7 +102,7 @@ class GlobalAddressArgs:
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL` and `INTERNAL`.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -127,7 +127,7 @@ class GlobalAddressArgs:
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
         The IP Version that will be used by this address. The default value is `IPV4`.
-        Possible values are `IPV4` and `IPV6`.
+        Possible values are: `IPV4`, `IPV6`.
         """
         return pulumi.get(self, "ip_version")
 
@@ -248,11 +248,11 @@ class _GlobalAddressState:
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -326,7 +326,7 @@ class _GlobalAddressState:
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL` and `INTERNAL`.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -363,7 +363,7 @@ class _GlobalAddressState:
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
         The IP Version that will be used by this address. The default value is `IPV4`.
-        Possible values are `IPV4` and `IPV6`.
+        Possible values are: `IPV4`, `IPV6`.
         """
         return pulumi.get(self, "ip_version")
 
@@ -559,10 +559,10 @@ class GlobalAddress(pulumi.CustomResource):
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -726,11 +726,11 @@ class GlobalAddress(pulumi.CustomResource):
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL` and `INTERNAL`.
+               Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -792,7 +792,7 @@ class GlobalAddress(pulumi.CustomResource):
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL` and `INTERNAL`.
+        Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -817,7 +817,7 @@ class GlobalAddress(pulumi.CustomResource):
     def ip_version(self) -> pulumi.Output[Optional[str]]:
         """
         The IP Version that will be used by this address. The default value is `IPV4`.
-        Possible values are `IPV4` and `IPV6`.
+        Possible values are: `IPV4`, `IPV6`.
         """
         return pulumi.get(self, "ip_version")
 

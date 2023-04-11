@@ -32,7 +32,7 @@ public final class UptimeCheckConfigResourceGroupArgs extends com.pulumi.resourc
 
     /**
      * The resource type of the group members.
-     * Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+     * Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
      * 
      */
     @Import(name="resourceType")
@@ -40,7 +40,7 @@ public final class UptimeCheckConfigResourceGroupArgs extends com.pulumi.resourc
 
     /**
      * @return The resource type of the group members.
-     * Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+     * Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -95,7 +95,7 @@ public final class UptimeCheckConfigResourceGroupArgs extends com.pulumi.resourc
 
         /**
          * @param resourceType The resource type of the group members.
-         * Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+         * Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class UptimeCheckConfigResourceGroupArgs extends com.pulumi.resourc
 
         /**
          * @param resourceType The resource type of the group members.
-         * Possible values are `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, and `AWS_ELB_LOAD_BALANCER`.
+         * Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
          * 
          * @return builder
          * 

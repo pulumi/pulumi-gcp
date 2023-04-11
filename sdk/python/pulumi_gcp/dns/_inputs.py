@@ -162,9 +162,9 @@ class ManagedZoneDnssecConfigArgs:
         :param pulumi.Input[str] kind: Identifies what kind of resource this is
         :param pulumi.Input[str] non_existence: Specifies the mechanism used to provide authenticated denial-of-existence responses.
                non_existence can only be updated when the state is `off`.
-               Possible values are `nsec` and `nsec3`.
+               Possible values are: `nsec`, `nsec3`.
         :param pulumi.Input[str] state: Specifies whether DNSSEC is enabled, and what mode it is in
-               Possible values are `off`, `on`, and `transfer`.
+               Possible values are: `off`, `on`, `transfer`.
         """
         if default_key_specs is not None:
             pulumi.set(__self__, "default_key_specs", default_key_specs)
@@ -209,7 +209,7 @@ class ManagedZoneDnssecConfigArgs:
         """
         Specifies the mechanism used to provide authenticated denial-of-existence responses.
         non_existence can only be updated when the state is `off`.
-        Possible values are `nsec` and `nsec3`.
+        Possible values are: `nsec`, `nsec3`.
         """
         return pulumi.get(self, "non_existence")
 
@@ -222,7 +222,7 @@ class ManagedZoneDnssecConfigArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies whether DNSSEC is enabled, and what mode it is in
-        Possible values are `off`, `on`, and `transfer`.
+        Possible values are: `off`, `on`, `transfer`.
         """
         return pulumi.get(self, "state")
 
@@ -240,7 +240,7 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
                  kind: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] algorithm: String mnemonic specifying the DNSSEC algorithm of this key
-               Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+               Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
         :param pulumi.Input[int] key_length: Length of the keys in bits
         :param pulumi.Input[str] key_type: Specifies whether this is a key signing key (KSK) or a zone
                signing key (ZSK). Key signing keys have the Secure Entry
@@ -248,7 +248,7 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
                resource record sets of type DNSKEY. Zone signing keys do
                not have the Secure Entry Point flag set and will be used
                to sign all other types of resource record sets.
-               Possible values are `keySigning` and `zoneSigning`.
+               Possible values are: `keySigning`, `zoneSigning`.
         :param pulumi.Input[str] kind: Identifies what kind of resource this is
         """
         if algorithm is not None:
@@ -265,7 +265,7 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
     def algorithm(self) -> Optional[pulumi.Input[str]]:
         """
         String mnemonic specifying the DNSSEC algorithm of this key
-        Possible values are `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, and `rsasha512`.
+        Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
         """
         return pulumi.get(self, "algorithm")
 
@@ -295,7 +295,7 @@ class ManagedZoneDnssecConfigDefaultKeySpecArgs:
         resource record sets of type DNSKEY. Zone signing keys do
         not have the Secure Entry Point flag set and will be used
         to sign all other types of resource record sets.
-        Possible values are `keySigning` and `zoneSigning`.
+        Possible values are: `keySigning`, `zoneSigning`.
         """
         return pulumi.get(self, "key_type")
 
@@ -354,7 +354,7 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
         :param pulumi.Input[str] forwarding_path: Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
                decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-               Possible values are `default` and `private`.
+               Possible values are: `default`, `private`.
         """
         pulumi.set(__self__, "ipv4_address", ipv4_address)
         if forwarding_path is not None:
@@ -379,7 +379,7 @@ class ManagedZoneForwardingConfigTargetNameServerArgs:
         Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
         decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
         to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-        Possible values are `default` and `private`.
+        Possible values are: `default`, `private`.
         """
         return pulumi.get(self, "forwarding_path")
 
@@ -618,7 +618,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
         :param pulumi.Input[str] forwarding_path: Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
                decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
                to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-               Possible values are `default` and `private`.
+               Possible values are: `default`, `private`.
         """
         pulumi.set(__self__, "ipv4_address", ipv4_address)
         if forwarding_path is not None:
@@ -643,7 +643,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
         Forwarding path for this TargetNameServer. If unset or `default` Cloud DNS will make forwarding
         decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go
         to the Internet. When set to `private`, Cloud DNS will always send queries through VPC for this target
-        Possible values are `default` and `private`.
+        Possible values are: `default`, `private`.
         """
         return pulumi.get(self, "forwarding_path")
 
@@ -1628,7 +1628,7 @@ class ResponsePolicyRuleLocalDataLocalDataArgs:
         """
         :param pulumi.Input[str] name: For example, www.example.com.
         :param pulumi.Input[str] type: One of valid DNS resource types.
-               Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+               Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by
                resolvers.
@@ -1657,7 +1657,7 @@ class ResponsePolicyRuleLocalDataLocalDataArgs:
     def type(self) -> pulumi.Input[str]:
         """
         One of valid DNS resource types.
-        Possible values are `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
+        Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
         """
         return pulumi.get(self, "type")
 

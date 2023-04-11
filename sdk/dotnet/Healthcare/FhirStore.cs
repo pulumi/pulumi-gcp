@@ -328,7 +328,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// The FHIR specification version.
         /// Default value is `STU3`.
-        /// Possible values are `DSTU2`, `STU3`, and `R4`.
+        /// Possible values are: `DSTU2`, `STU3`, `R4`.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -496,7 +496,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// The FHIR specification version.
         /// Default value is `STU3`.
-        /// Possible values are `DSTU2`, `STU3`, and `R4`.
+        /// Possible values are: `DSTU2`, `STU3`, `R4`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -632,7 +632,7 @@ namespace Pulumi.Gcp.Healthcare
         /// <summary>
         /// The FHIR specification version.
         /// Default value is `STU3`.
-        /// Possible values are `DSTU2`, `STU3`, and `R4`.
+        /// Possible values are: `DSTU2`, `STU3`, `R4`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

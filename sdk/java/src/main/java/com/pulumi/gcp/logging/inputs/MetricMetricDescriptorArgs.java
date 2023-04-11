@@ -63,7 +63,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
      * Whether the metric records instantaneous values, changes to a value, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to DELTA.
-     * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+     * Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
      * 
      */
     @Import(name="metricKind", required=true)
@@ -73,7 +73,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
      * @return Whether the metric records instantaneous values, changes to a value, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to DELTA.
-     * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+     * Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
      * 
      */
     public Output<String> metricKind() {
@@ -103,7 +103,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
      * Whether the measurement is an integer, a floating-point number, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to INT64.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
      * 
      */
     @Import(name="valueType", required=true)
@@ -113,7 +113,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
      * @return Whether the measurement is an integer, a floating-point number, etc.
      * Some combinations of metricKind and valueType might not be supported.
      * For counter metrics, set this to INT64.
-     * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+     * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
      * 
      */
     public Output<String> valueType() {
@@ -220,7 +220,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
          * @param metricKind Whether the metric records instantaneous values, changes to a value, etc.
          * Some combinations of metricKind and valueType might not be supported.
          * For counter metrics, set this to DELTA.
-         * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+         * Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
          * @param metricKind Whether the metric records instantaneous values, changes to a value, etc.
          * Some combinations of metricKind and valueType might not be supported.
          * For counter metrics, set this to DELTA.
-         * Possible values are `DELTA`, `GAUGE`, and `CUMULATIVE`.
+         * Possible values are: `DELTA`, `GAUGE`, `CUMULATIVE`.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
          * @param valueType Whether the measurement is an integer, a floating-point number, etc.
          * Some combinations of metricKind and valueType might not be supported.
          * For counter metrics, set this to INT64.
-         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+         * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
          * @param valueType Whether the measurement is an integer, a floating-point number, etc.
          * Some combinations of metricKind and valueType might not be supported.
          * For counter metrics, set this to INT64.
-         * Possible values are `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, and `MONEY`.
+         * Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`, `MONEY`.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
     /**
      * @return Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     private @Nullable String fixedLikelihood;
@@ -32,7 +32,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
     private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment() {}
     /**
      * @return Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
-     * Possible values are `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, and `VERY_LIKELY`.
+     * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
      * 
      */
     public Optional<String> fixedLikelihood() {

@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// the deployment will fail. Note that updating this field does not
         /// actually affect the deployment, just how it is updated.
         /// Default value is `CREATE_OR_ACQUIRE`.
-        /// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+        /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         /// </summary>
         [Output("createPolicy")]
         public Output<string?> CreatePolicy { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// and is not actually deleted. Note that updating this field does not
         /// actually change the deployment, just how it is updated.
         /// Default value is `DELETE`.
-        /// Possible values are `ABANDON` and `DELETE`.
+        /// Possible values are: `ABANDON`, `DELETE`.
         /// </summary>
         [Output("deletePolicy")]
         public Output<string?> DeletePolicy { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// the deployment will fail. Note that updating this field does not
         /// actually affect the deployment, just how it is updated.
         /// Default value is `CREATE_OR_ACQUIRE`.
-        /// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+        /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         /// </summary>
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// and is not actually deleted. Note that updating this field does not
         /// actually change the deployment, just how it is updated.
         /// Default value is `DELETE`.
-        /// Possible values are `ABANDON` and `DELETE`.
+        /// Possible values are: `ABANDON`, `DELETE`.
         /// </summary>
         [Input("deletePolicy")]
         public Input<string>? DeletePolicy { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// the deployment will fail. Note that updating this field does not
         /// actually affect the deployment, just how it is updated.
         /// Default value is `CREATE_OR_ACQUIRE`.
-        /// Possible values are `ACQUIRE` and `CREATE_OR_ACQUIRE`.
+        /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
         /// </summary>
         [Input("createPolicy")]
         public Input<string>? CreatePolicy { get; set; }
@@ -319,7 +319,7 @@ namespace Pulumi.Gcp.DeploymentManager
         /// and is not actually deleted. Note that updating this field does not
         /// actually change the deployment, just how it is updated.
         /// Default value is `DELETE`.
-        /// Possible values are `ABANDON` and `DELETE`.
+        /// Possible values are: `ABANDON`, `DELETE`.
         /// </summary>
         [Input("deletePolicy")]
         public Input<string>? DeletePolicy { get; set; }

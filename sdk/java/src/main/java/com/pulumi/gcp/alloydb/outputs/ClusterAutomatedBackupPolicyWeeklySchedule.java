@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class ClusterAutomatedBackupPolicyWeeklySchedule {
     /**
      * @return The days of the week to perform a backup. At least one day of the week must be provided.
-     * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     private @Nullable List<String> daysOfWeeks;
@@ -28,7 +28,7 @@ public final class ClusterAutomatedBackupPolicyWeeklySchedule {
     private ClusterAutomatedBackupPolicyWeeklySchedule() {}
     /**
      * @return The days of the week to perform a backup. At least one day of the week must be provided.
-     * Each value may be one of `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public List<String> daysOfWeeks() {

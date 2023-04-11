@@ -65,6 +65,43 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Ha Vpn Gateway Ipv6
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.HaVpnGateway;
+ * import com.pulumi.gcp.compute.HaVpnGatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network1 = new Network(&#34;network1&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var haGateway1 = new HaVpnGateway(&#34;haGateway1&#34;, HaVpnGatewayArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .network(network1.id())
+ *             .stackType(&#34;IPV4_IPV6&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Compute Ha Vpn Gateway Encrypted Interconnect
  * ```java
  * package generated_program;
@@ -278,6 +315,26 @@ public class HaVpnGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * If not specified, IPV4_ONLY will be used.
+     * Default value is `IPV4_ONLY`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * 
+     */
+    @Export(name="stackType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> stackType;
+
+    /**
+     * @return The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * If not specified, IPV4_ONLY will be used.
+     * Default value is `IPV4_ONLY`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * 
+     */
+    public Output<Optional<String>> stackType() {
+        return Codegen.optional(this.stackType);
     }
     /**
      * A list of interfaces on this VPN gateway.

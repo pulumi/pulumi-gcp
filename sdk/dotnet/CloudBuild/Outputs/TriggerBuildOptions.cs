@@ -35,22 +35,22 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly ImmutableArray<string> Envs;
         /// <summary>
         /// Option to define build log streaming behavior to Google Cloud Storage.
-        /// Possible values are `STREAM_DEFAULT`, `STREAM_ON`, and `STREAM_OFF`.
+        /// Possible values are: `STREAM_DEFAULT`, `STREAM_ON`, `STREAM_OFF`.
         /// </summary>
         public readonly string? LogStreamingOption;
         /// <summary>
         /// Option to specify the logging mode, which determines if and where build logs are stored.
-        /// Possible values are `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, and `NONE`.
+        /// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
         /// </summary>
         public readonly string? Logging;
         /// <summary>
         /// Compute Engine machine type on which to run the build.
-        /// Possible values are `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, and `E2_HIGHCPU_32`.
+        /// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
         /// </summary>
         public readonly string? MachineType;
         /// <summary>
         /// Requested verifiability options.
-        /// Possible values are `NOT_VERIFIED` and `VERIFIED`.
+        /// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
         /// </summary>
         public readonly string? RequestedVerifyOption;
         /// <summary>
@@ -61,14 +61,14 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly ImmutableArray<string> SecretEnvs;
         /// <summary>
         /// Requested hash for SourceProvenance.
-        /// Each value may be one of `NONE`, `SHA256`, and `MD5`.
+        /// Each value may be one of: `NONE`, `SHA256`, `MD5`.
         /// </summary>
         public readonly ImmutableArray<string> SourceProvenanceHashes;
         /// <summary>
         /// Option to specify behavior when there is an error in the substitution checks.
         /// NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
         /// in the build configuration file.
-        /// Possible values are `MUST_MATCH` and `ALLOW_LOOSE`.
+        /// Possible values are: `MUST_MATCH`, `ALLOW_LOOSE`.
         /// </summary>
         public readonly string? SubstitutionOption;
         /// <summary>

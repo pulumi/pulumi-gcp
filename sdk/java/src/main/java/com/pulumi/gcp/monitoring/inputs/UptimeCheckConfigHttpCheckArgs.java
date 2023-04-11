@@ -72,7 +72,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
     /**
      * The content type to use for the check.
-     * Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
      * 
      */
     @Import(name="contentType")
@@ -80,7 +80,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
     /**
      * @return The content type to use for the check.
-     * Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -150,7 +150,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
     /**
      * The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
      * Default value is `GET`.
-     * Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+     * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
      * 
      */
     @Import(name="requestMethod")
@@ -159,7 +159,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
     /**
      * @return The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
      * Default value is `GET`.
-     * Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+     * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
      * 
      */
     public Optional<Output<String>> requestMethod() {
@@ -310,7 +310,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
         /**
          * @param contentType The content type to use for the check.
-         * Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
 
         /**
          * @param contentType The content type to use for the check.
-         * Possible values are `TYPE_UNSPECIFIED` and `URL_ENCODED`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
         /**
          * @param requestMethod The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
          * Default value is `GET`.
-         * Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+         * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class UptimeCheckConfigHttpCheckArgs extends com.pulumi.resources.R
         /**
          * @param requestMethod The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then requestMethod defaults to GET.
          * Default value is `GET`.
-         * Possible values are `METHOD_UNSPECIFIED`, `GET`, and `POST`.
+         * Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
          * 
          * @return builder
          * 

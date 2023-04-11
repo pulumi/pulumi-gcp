@@ -204,7 +204,7 @@ export class Entry extends pulumi.CustomResource {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-     * Possible values are `FILESET`.
+     * Possible values are: `FILESET`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -343,7 +343,7 @@ export interface EntryState {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-     * Possible values are `FILESET`.
+     * Possible values are: `FILESET`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -407,7 +407,7 @@ export interface EntryArgs {
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      * Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
-     * Possible values are `FILESET`.
+     * Possible values are: `FILESET`.
      */
     type?: pulumi.Input<string>;
     /**

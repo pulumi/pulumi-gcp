@@ -16,7 +16,7 @@ public final class MetastoreServiceMaintenanceWindowArgs extends com.pulumi.reso
 
     /**
      * The day of week, when the window starts.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     @Import(name="dayOfWeek", required=true)
@@ -24,7 +24,7 @@ public final class MetastoreServiceMaintenanceWindowArgs extends com.pulumi.reso
 
     /**
      * @return The day of week, when the window starts.
-     * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+     * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
      * 
      */
     public Output<String> dayOfWeek() {
@@ -73,7 +73,7 @@ public final class MetastoreServiceMaintenanceWindowArgs extends com.pulumi.reso
 
         /**
          * @param dayOfWeek The day of week, when the window starts.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class MetastoreServiceMaintenanceWindowArgs extends com.pulumi.reso
 
         /**
          * @param dayOfWeek The day of week, when the window starts.
-         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          * 
          * @return builder
          * 

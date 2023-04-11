@@ -18,7 +18,7 @@ public final class CustomConstraintState extends com.pulumi.resources.ResourceAr
 
     /**
      * The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      * 
      */
     @Import(name="actionType")
@@ -26,7 +26,7 @@ public final class CustomConstraintState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The action to take if the condition is met.
-     * Possible values are `ALLOW` and `DENY`.
+     * Possible values are: `ALLOW`, `DENY`.
      * 
      */
     public Optional<Output<String>> actionType() {
@@ -187,7 +187,7 @@ public final class CustomConstraintState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param actionType The action to take if the condition is met.
-         * Possible values are `ALLOW` and `DENY`.
+         * Possible values are: `ALLOW`, `DENY`.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class CustomConstraintState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param actionType The action to take if the condition is met.
-         * Possible values are `ALLOW` and `DENY`.
+         * Possible values are: `ALLOW`, `DENY`.
          * 
          * @return builder
          * 

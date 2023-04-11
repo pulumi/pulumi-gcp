@@ -62,7 +62,7 @@ type FolderFeed struct {
 	// Structure is documented below.
 	Condition FolderFeedConditionPtrOutput `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringOutput `pulumi:"feedId"`
@@ -142,7 +142,7 @@ type folderFeedState struct {
 	// Structure is documented below.
 	Condition *FolderFeedCondition `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId *string `pulumi:"feedId"`
@@ -182,7 +182,7 @@ type FolderFeedState struct {
 	// Structure is documented below.
 	Condition FolderFeedConditionPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringPtrInput
@@ -226,7 +226,7 @@ type folderFeedArgs struct {
 	// Structure is documented below.
 	Condition *FolderFeedCondition `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId string `pulumi:"feedId"`
@@ -262,7 +262,7 @@ type FolderFeedArgs struct {
 	// Structure is documented below.
 	Condition FolderFeedConditionPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringInput
@@ -395,7 +395,7 @@ func (o FolderFeedOutput) Condition() FolderFeedConditionPtrOutput {
 }
 
 // Asset content type. If not specified, no content but the asset name and type will be returned.
-// Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
 func (o FolderFeedOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderFeed) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }

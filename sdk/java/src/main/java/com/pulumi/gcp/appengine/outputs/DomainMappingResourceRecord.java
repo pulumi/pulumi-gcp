@@ -23,7 +23,7 @@ public final class DomainMappingResourceRecord {
     private @Nullable String rrdata;
     /**
      * @return Resource record type. Example: `AAAA`.
-     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * Possible values are: `A`, `AAAA`, `CNAME`.
      * 
      */
     private @Nullable String type;
@@ -45,7 +45,7 @@ public final class DomainMappingResourceRecord {
     }
     /**
      * @return Resource record type. Example: `AAAA`.
-     * Possible values are `A`, `AAAA`, and `CNAME`.
+     * Possible values are: `A`, `AAAA`, `CNAME`.
      * 
      */
     public Optional<String> type() {

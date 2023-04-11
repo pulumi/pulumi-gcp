@@ -36,7 +36,7 @@ class IndexArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
         pulumi.set(__self__, "collection", collection)
         pulumi.set(__self__, "fields", fields)
@@ -108,7 +108,7 @@ class IndexArgs:
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
-        Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
         return pulumi.get(self, "query_scope")
 
@@ -143,7 +143,7 @@ class _IndexState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
         if collection is not None:
             pulumi.set(__self__, "collection", collection)
@@ -232,7 +232,7 @@ class _IndexState:
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
-        Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
         return pulumi.get(self, "query_scope")
 
@@ -317,7 +317,7 @@ class Index(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
         ...
     @overload
@@ -452,7 +452,7 @@ class Index(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] query_scope: The scope at which a query is run.
                Default value is `COLLECTION`.
-               Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -520,7 +520,7 @@ class Index(pulumi.CustomResource):
         """
         The scope at which a query is run.
         Default value is `COLLECTION`.
-        Possible values are `COLLECTION` and `COLLECTION_GROUP`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
         """
         return pulumi.get(self, "query_scope")
 

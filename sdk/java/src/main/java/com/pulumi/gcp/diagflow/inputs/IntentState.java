@@ -39,7 +39,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
     /**
      * The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
      * (i.e. default platform).
-     * Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+     * Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
      * 
      */
     @Import(name="defaultResponsePlatforms")
@@ -48,7 +48,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
      * (i.e. default platform).
-     * Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+     * Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
      * 
      */
     public Optional<Output<List<String>>> defaultResponsePlatforms() {
@@ -270,7 +270,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
      *   filling prompt is forwarded to the webhook.
-     *   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+     *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      * 
      */
     @Import(name="webhookState")
@@ -281,7 +281,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
      *   filling prompt is forwarded to the webhook.
-     *   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+     *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      * 
      */
     public Optional<Output<String>> webhookState() {
@@ -352,7 +352,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultResponsePlatforms The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
          * (i.e. default platform).
-         * Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+         * Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultResponsePlatforms The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
          * (i.e. default platform).
-         * Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+         * Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultResponsePlatforms The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
          * (i.e. default platform).
-         * Each value may be one of `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, and `GOOGLE_HANGOUTS`.
+         * Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
          * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
          * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
          *   filling prompt is forwarded to the webhook.
-         *   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+         *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
          * 
          * @return builder
          * 
@@ -723,7 +723,7 @@ public final class IntentState extends com.pulumi.resources.ResourceArgs {
          * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
          * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
          *   filling prompt is forwarded to the webhook.
-         *   Possible values are `WEBHOOK_STATE_ENABLED` and `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+         *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
          * 
          * @return builder
          * 

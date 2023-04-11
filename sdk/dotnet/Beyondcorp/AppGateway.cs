@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The type of hosting used by the AppGateway.
         /// Default value is `HOST_TYPE_UNSPECIFIED`.
-        /// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+        /// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         /// </summary>
         [Output("hostType")]
         public Output<string?> HostType { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The type of network connectivity used by the AppGateway.
         /// Default value is `TYPE_UNSPECIFIED`.
-        /// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The type of hosting used by the AppGateway.
         /// Default value is `HOST_TYPE_UNSPECIFIED`.
-        /// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+        /// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         /// </summary>
         [Input("hostType")]
         public Input<string>? HostType { get; set; }
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The type of network connectivity used by the AppGateway.
         /// Default value is `TYPE_UNSPECIFIED`.
-        /// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -282,7 +282,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The type of hosting used by the AppGateway.
         /// Default value is `HOST_TYPE_UNSPECIFIED`.
-        /// Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+        /// Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         /// </summary>
         [Input("hostType")]
         public Input<string>? HostType { get; set; }
@@ -327,7 +327,7 @@ namespace Pulumi.Gcp.Beyondcorp
         /// <summary>
         /// The type of network connectivity used by the AppGateway.
         /// Default value is `TYPE_UNSPECIFIED`.
-        /// Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

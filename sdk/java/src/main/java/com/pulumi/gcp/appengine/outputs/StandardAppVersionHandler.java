@@ -15,19 +15,19 @@ import javax.annotation.Nullable;
 public final class StandardAppVersionHandler {
     /**
      * @return Actions to take when the user is not logged in.
-     * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+     * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
     private @Nullable String authFailAction;
     /**
      * @return Methods to restrict access to a URL based on login status.
-     * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+     * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
      * 
      */
     private @Nullable String login;
     /**
      * @return 30x code to use when performing redirects for the secure field.
-     * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+     * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
      * 
      */
     private @Nullable String redirectHttpResponseCode;
@@ -40,7 +40,7 @@ public final class StandardAppVersionHandler {
     private @Nullable StandardAppVersionHandlerScript script;
     /**
      * @return Security (HTTPS) enforcement for this URL.
-     * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+     * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
      * 
      */
     private @Nullable String securityLevel;
@@ -60,7 +60,7 @@ public final class StandardAppVersionHandler {
     private StandardAppVersionHandler() {}
     /**
      * @return Actions to take when the user is not logged in.
-     * Possible values are `AUTH_FAIL_ACTION_REDIRECT` and `AUTH_FAIL_ACTION_UNAUTHORIZED`.
+     * Possible values are: `AUTH_FAIL_ACTION_REDIRECT`, `AUTH_FAIL_ACTION_UNAUTHORIZED`.
      * 
      */
     public Optional<String> authFailAction() {
@@ -68,7 +68,7 @@ public final class StandardAppVersionHandler {
     }
     /**
      * @return Methods to restrict access to a URL based on login status.
-     * Possible values are `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, and `LOGIN_REQUIRED`.
+     * Possible values are: `LOGIN_OPTIONAL`, `LOGIN_ADMIN`, `LOGIN_REQUIRED`.
      * 
      */
     public Optional<String> login() {
@@ -76,7 +76,7 @@ public final class StandardAppVersionHandler {
     }
     /**
      * @return 30x code to use when performing redirects for the secure field.
-     * Possible values are `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, and `REDIRECT_HTTP_RESPONSE_CODE_307`.
+     * Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
      * 
      */
     public Optional<String> redirectHttpResponseCode() {
@@ -93,7 +93,7 @@ public final class StandardAppVersionHandler {
     }
     /**
      * @return Security (HTTPS) enforcement for this URL.
-     * Possible values are `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, and `SECURE_ALWAYS`.
+     * Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
      * 
      */
     public Optional<String> securityLevel() {

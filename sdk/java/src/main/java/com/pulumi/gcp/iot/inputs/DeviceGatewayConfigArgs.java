@@ -17,7 +17,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
 
     /**
      * Indicates whether the device is a gateway.
-     * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+     * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
      * 
      */
     @Import(name="gatewayAuthMethod")
@@ -25,7 +25,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Indicates whether the device is a gateway.
-     * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+     * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
      * 
      */
     public Optional<Output<String>> gatewayAuthMethod() {
@@ -35,7 +35,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
     /**
      * Indicates whether the device is a gateway.
      * Default value is `NON_GATEWAY`.
-     * Possible values are `GATEWAY` and `NON_GATEWAY`.
+     * Possible values are: `GATEWAY`, `NON_GATEWAY`.
      * 
      */
     @Import(name="gatewayType")
@@ -44,7 +44,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
     /**
      * @return Indicates whether the device is a gateway.
      * Default value is `NON_GATEWAY`.
-     * Possible values are `GATEWAY` and `NON_GATEWAY`.
+     * Possible values are: `GATEWAY`, `NON_GATEWAY`.
      * 
      */
     public Optional<Output<String>> gatewayType() {
@@ -114,7 +114,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param gatewayAuthMethod Indicates whether the device is a gateway.
-         * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+         * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param gatewayAuthMethod Indicates whether the device is a gateway.
-         * Possible values are `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, and `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
+         * Possible values are: `ASSOCIATION_ONLY`, `DEVICE_AUTH_TOKEN_ONLY`, `ASSOCIATION_AND_DEVICE_AUTH_TOKEN`.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param gatewayType Indicates whether the device is a gateway.
          * Default value is `NON_GATEWAY`.
-         * Possible values are `GATEWAY` and `NON_GATEWAY`.
+         * Possible values are: `GATEWAY`, `NON_GATEWAY`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class DeviceGatewayConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param gatewayType Indicates whether the device is a gateway.
          * Default value is `NON_GATEWAY`.
-         * Possible values are `GATEWAY` and `NON_GATEWAY`.
+         * Possible values are: `GATEWAY`, `NON_GATEWAY`.
          * 
          * @return builder
          * 

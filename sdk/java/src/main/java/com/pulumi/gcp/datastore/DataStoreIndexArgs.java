@@ -20,7 +20,7 @@ public final class DataStoreIndexArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Policy for including ancestors in the index.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `ALL_ANCESTORS`.
+     * Possible values are: `NONE`, `ALL_ANCESTORS`.
      * 
      */
     @Import(name="ancestor")
@@ -29,7 +29,7 @@ public final class DataStoreIndexArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * @return Policy for including ancestors in the index.
      * Default value is `NONE`.
-     * Possible values are `NONE` and `ALL_ANCESTORS`.
+     * Possible values are: `NONE`, `ALL_ANCESTORS`.
      * 
      */
     public Optional<Output<String>> ancestor() {
@@ -115,7 +115,7 @@ public final class DataStoreIndexArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param ancestor Policy for including ancestors in the index.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `ALL_ANCESTORS`.
+         * Possible values are: `NONE`, `ALL_ANCESTORS`.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class DataStoreIndexArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param ancestor Policy for including ancestors in the index.
          * Default value is `NONE`.
-         * Possible values are `NONE` and `ALL_ANCESTORS`.
+         * Possible values are: `NONE`, `ALL_ANCESTORS`.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ public final class ObjectAccessControlProjectTeam {
     private @Nullable String projectNumber;
     /**
      * @return The team.
-     * Possible values are `editors`, `owners`, and `viewers`.
+     * Possible values are: `editors`, `owners`, `viewers`.
      * 
      */
     private @Nullable String team;
@@ -33,7 +33,7 @@ public final class ObjectAccessControlProjectTeam {
     }
     /**
      * @return The team.
-     * Possible values are `editors`, `owners`, and `viewers`.
+     * Possible values are: `editors`, `owners`, `viewers`.
      * 
      */
     public Optional<String> team() {

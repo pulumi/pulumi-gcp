@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class InstanceReservationAffinity {
     /**
      * @return The type of Compute Reservation.
-     * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+     * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
      * 
      */
     private String consumeReservationType;
@@ -32,7 +32,7 @@ public final class InstanceReservationAffinity {
     private InstanceReservationAffinity() {}
     /**
      * @return The type of Compute Reservation.
-     * Possible values are `NO_RESERVATION`, `ANY_RESERVATION`, and `SPECIFIC_RESERVATION`.
+     * Possible values are: `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
      * 
      */
     public String consumeReservationType() {

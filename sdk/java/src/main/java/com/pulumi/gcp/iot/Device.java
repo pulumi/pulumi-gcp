@@ -286,7 +286,7 @@ public class Device extends com.pulumi.resources.CustomResource {
     }
     /**
      * The logging verbosity for device activity.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
     @Export(name="logLevel", type=String.class, parameters={})
@@ -294,7 +294,7 @@ public class Device extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The logging verbosity for device activity.
-     * Possible values are `NONE`, `ERROR`, `INFO`, and `DEBUG`.
+     * Possible values are: `NONE`, `ERROR`, `INFO`, `DEBUG`.
      * 
      */
     public Output<Optional<String>> logLevel() {

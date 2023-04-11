@@ -30,7 +30,7 @@ class HostingReleaseArgs:
                DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
                ROLLBACK: The release points back to a previously deployed version. Output only.
                SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-               Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+               Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         :param pulumi.Input[str] version_name: The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
                The content of the version specified will be actively displayed on the appropriate URL.
                The Version must belong to the same site as in the `site_id`.
@@ -92,7 +92,7 @@ class HostingReleaseArgs:
         DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
         ROLLBACK: The release points back to a previously deployed version. Output only.
         SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-        Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+        Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         """
         return pulumi.get(self, "type")
 
@@ -141,7 +141,7 @@ class _HostingReleaseState:
                DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
                ROLLBACK: The release points back to a previously deployed version. Output only.
                SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-               Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+               Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         :param pulumi.Input[str] version_name: The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
                The content of the version specified will be actively displayed on the appropriate URL.
                The Version must belong to the same site as in the `site_id`.
@@ -234,7 +234,7 @@ class _HostingReleaseState:
         DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
         ROLLBACK: The release points back to a previously deployed version. Output only.
         SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-        Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+        Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         """
         return pulumi.get(self, "type")
 
@@ -376,7 +376,7 @@ class HostingRelease(pulumi.CustomResource):
                DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
                ROLLBACK: The release points back to a previously deployed version. Output only.
                SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-               Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+               Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         :param pulumi.Input[str] version_name: The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
                The content of the version specified will be actively displayed on the appropriate URL.
                The Version must belong to the same site as in the `site_id`.
@@ -559,7 +559,7 @@ class HostingRelease(pulumi.CustomResource):
                DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
                ROLLBACK: The release points back to a previously deployed version. Output only.
                SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-               Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+               Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         :param pulumi.Input[str] version_name: The unique identifier for a version, in the format: sites/SITE_ID/versions/VERSION_ID.
                The content of the version specified will be actively displayed on the appropriate URL.
                The Version must belong to the same site as in the `site_id`.
@@ -630,7 +630,7 @@ class HostingRelease(pulumi.CustomResource):
         DEPLOY: A version was uploaded to Firebase Hosting and released. Output only.
         ROLLBACK: The release points back to a previously deployed version. Output only.
         SITE_DISABLE: The release prevents the site from serving content. Firebase Hosting acts as if the site never existed
-        Possible values are `DEPLOY`, `ROLLBACK`, and `SITE_DISABLE`.
+        Possible values are: `DEPLOY`, `ROLLBACK`, `SITE_DISABLE`.
         """
         return pulumi.get(self, "type")
 

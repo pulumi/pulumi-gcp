@@ -20,7 +20,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
      * The type of basis used to determine if spend has passed
      * the threshold.
      * Default value is `CURRENT_SPEND`.
-     * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+     * Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
      * 
      */
     @Import(name="spendBasis")
@@ -30,7 +30,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
      * @return The type of basis used to determine if spend has passed
      * the threshold.
      * Default value is `CURRENT_SPEND`.
-     * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+     * Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
      * 
      */
     public Optional<Output<String>> spendBasis() {
@@ -83,7 +83,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
          * @param spendBasis The type of basis used to determine if spend has passed
          * the threshold.
          * Default value is `CURRENT_SPEND`.
-         * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+         * Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
          * @param spendBasis The type of basis used to determine if spend has passed
          * the threshold.
          * Default value is `CURRENT_SPEND`.
-         * Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
+         * Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
          * 
          * @return builder
          * 

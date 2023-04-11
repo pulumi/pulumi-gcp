@@ -43,7 +43,7 @@ public final class GuestPoliciesRecipeArgs extends com.pulumi.resources.Resource
      * if a higher version of the recipe is assigned to this instance.
      * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
      * Default value is `INSTALLED`.
-     * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+     * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
      * 
      */
     @Import(name="desiredState")
@@ -56,7 +56,7 @@ public final class GuestPoliciesRecipeArgs extends com.pulumi.resources.Resource
      * if a higher version of the recipe is assigned to this instance.
      * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
      * Default value is `INSTALLED`.
-     * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+     * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -207,7 +207,7 @@ public final class GuestPoliciesRecipeArgs extends com.pulumi.resources.Resource
          * if a higher version of the recipe is assigned to this instance.
          * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
          * Default value is `INSTALLED`.
-         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+         * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class GuestPoliciesRecipeArgs extends com.pulumi.resources.Resource
          * if a higher version of the recipe is assigned to this instance.
          * REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
          * Default value is `INSTALLED`.
-         * Possible values are `INSTALLED`, `UPDATED`, and `REMOVED`.
+         * Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
          * 
          * @return builder
          * 

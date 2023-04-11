@@ -18,7 +18,7 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs exte
 
     /**
      * A class of status codes to accept.
-     * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+     * Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
      * 
      */
     @Import(name="statusClass")
@@ -26,7 +26,7 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs exte
 
     /**
      * @return A class of status codes to accept.
-     * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+     * Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
      * 
      */
     public Optional<Output<String>> statusClass() {
@@ -75,7 +75,7 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs exte
 
         /**
          * @param statusClass A class of status codes to accept.
-         * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+         * Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
          * 
          * @return builder
          * 
@@ -87,7 +87,7 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs exte
 
         /**
          * @param statusClass A class of status codes to accept.
-         * Possible values are `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, and `STATUS_CLASS_ANY`.
+         * Possible values are: `STATUS_CLASS_1XX`, `STATUS_CLASS_2XX`, `STATUS_CLASS_3XX`, `STATUS_CLASS_4XX`, `STATUS_CLASS_5XX`, `STATUS_CLASS_ANY`.
          * 
          * @return builder
          * 

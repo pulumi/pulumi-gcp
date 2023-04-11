@@ -17,7 +17,7 @@ public final class RouterNatLogConfig {
     private Boolean enable;
     /**
      * @return Specifies the desired filtering of logs on this NAT.
-     * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+     * Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
      * 
      */
     private String filter;
@@ -32,7 +32,7 @@ public final class RouterNatLogConfig {
     }
     /**
      * @return Specifies the desired filtering of logs on this NAT.
-     * Possible values are `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, and `ALL`.
+     * Possible values are: `ERRORS_ONLY`, `TRANSLATIONS_ONLY`, `ALL`.
      * 
      */
     public String filter() {

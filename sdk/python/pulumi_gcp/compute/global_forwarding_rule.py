@@ -55,9 +55,9 @@ class GlobalForwardingRuleArgs:
                INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
                global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
                and addressType of INTERNAL
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -70,7 +70,7 @@ class GlobalForwardingRuleArgs:
                Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -203,7 +203,7 @@ class GlobalForwardingRuleArgs:
         INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
         global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
         and addressType of INTERNAL
-        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -216,7 +216,7 @@ class GlobalForwardingRuleArgs:
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
         The IP Version that will be used by this global forwarding rule.
-        Possible values are `IPV4` and `IPV6`.
+        Possible values are: `IPV4`, `IPV6`.
         """
         return pulumi.get(self, "ip_version")
 
@@ -251,7 +251,7 @@ class GlobalForwardingRuleArgs:
         Note: This field must be set "" if the global address is
         configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -400,9 +400,9 @@ class _GlobalForwardingRuleState:
                INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
                global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
                and addressType of INTERNAL
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
@@ -416,7 +416,7 @@ class _GlobalForwardingRuleState:
                Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -551,7 +551,7 @@ class _GlobalForwardingRuleState:
         INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
         global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
         and addressType of INTERNAL
-        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -564,7 +564,7 @@ class _GlobalForwardingRuleState:
     def ip_version(self) -> Optional[pulumi.Input[str]]:
         """
         The IP Version that will be used by this global forwarding rule.
-        Possible values are `IPV4` and `IPV6`.
+        Possible values are: `IPV4`, `IPV6`.
         """
         return pulumi.get(self, "ip_version")
 
@@ -611,7 +611,7 @@ class _GlobalForwardingRuleState:
         Note: This field must be set "" if the global address is
         configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -906,9 +906,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
                global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
                and addressType of INTERNAL
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
                The value of INTERNAL_SELF_MANAGED means that this will be used for
@@ -921,7 +921,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1179,9 +1179,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
                global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
                and addressType of INTERNAL
-               Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+               Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
-               Possible values are `IPV4` and `IPV6`.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] label_fingerprint: Used internally during label updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
         :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
@@ -1195,7 +1195,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                Note: This field must be set "" if the global address is
                configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
                Default value is `EXTERNAL`.
-               Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1311,7 +1311,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
         global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
         and addressType of INTERNAL
-        Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
+        Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -1320,7 +1320,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
     def ip_version(self) -> pulumi.Output[Optional[str]]:
         """
         The IP Version that will be used by this global forwarding rule.
-        Possible values are `IPV4` and `IPV6`.
+        Possible values are: `IPV4`, `IPV6`.
         """
         return pulumi.get(self, "ip_version")
 
@@ -1355,7 +1355,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         Note: This field must be set "" if the global address is
         configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
         Default value is `EXTERNAL`.
-        Possible values are `EXTERNAL`, `EXTERNAL_MANAGED`, and `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 

@@ -29,7 +29,7 @@ public final class JobTemplateTemplate {
     private @Nullable String encryptionKey;
     /**
      * @return The execution environment being used to host this Task.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     private @Nullable String executionEnvironment;
@@ -80,7 +80,7 @@ public final class JobTemplateTemplate {
     }
     /**
      * @return The execution environment being used to host this Task.
-     * Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+     * Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
      * 
      */
     public Optional<String> executionEnvironment() {

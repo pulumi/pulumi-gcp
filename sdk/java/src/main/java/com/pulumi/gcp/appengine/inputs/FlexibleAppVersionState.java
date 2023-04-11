@@ -198,7 +198,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
 
     /**
      * A list of the types of messages that this application is able to receive.
-     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+     * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      * 
      */
     @Import(name="inboundServices")
@@ -206,7 +206,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
 
     /**
      * @return A list of the types of messages that this application is able to receive.
-     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+     * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      * 
      */
     public Optional<Output<List<String>>> inboundServices() {
@@ -494,7 +494,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
-     * Possible values are `SERVING` and `STOPPED`.
+     * Possible values are: `SERVING`, `STOPPED`.
      * 
      */
     @Import(name="servingStatus")
@@ -503,7 +503,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
     /**
      * @return Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
-     * Possible values are `SERVING` and `STOPPED`.
+     * Possible values are: `SERVING`, `STOPPED`.
      * 
      */
     public Optional<Output<String>> servingStatus() {
@@ -837,7 +837,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
 
         /**
          * @param inboundServices A list of the types of messages that this application is able to receive.
-         * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+         * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
          * 
          * @return builder
          * 
@@ -849,7 +849,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
 
         /**
          * @param inboundServices A list of the types of messages that this application is able to receive.
-         * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+         * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
          * 
          * @return builder
          * 
@@ -860,7 +860,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
 
         /**
          * @param inboundServices A list of the types of messages that this application is able to receive.
-         * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+         * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
          * 
          * @return builder
          * 
@@ -1246,7 +1246,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
         /**
          * @param servingStatus Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
          * Default value is `SERVING`.
-         * Possible values are `SERVING` and `STOPPED`.
+         * Possible values are: `SERVING`, `STOPPED`.
          * 
          * @return builder
          * 
@@ -1259,7 +1259,7 @@ public final class FlexibleAppVersionState extends com.pulumi.resources.Resource
         /**
          * @param servingStatus Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
          * Default value is `SERVING`.
-         * Possible values are `SERVING` and `STOPPED`.
+         * Possible values are: `SERVING`, `STOPPED`.
          * 
          * @return builder
          * 

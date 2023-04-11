@@ -5,26 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The Logging LogView resource
+ * Describes a view over log entries in a bucket.
+ *
+ * To get more information about LogView, see:
+ *
+ * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.locations.buckets.views)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
  * ## Example Usage
- * ### Basic
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.logging.ProjectBucketConfig("basic", {
- *     project: "my-project-name",
- *     location: "global",
- *     retentionDays: 30,
- *     bucketId: "_Default",
- * });
- * const primary = new gcp.logging.LogView("primary", {
- *     bucket: basic.id,
- *     description: "A logging view configured with Terraform",
- *     filter: "SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")",
- * });
- * ```
  *
  * ## Import
  *
@@ -83,7 +72,7 @@ export class LogView extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+     * The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -160,7 +149,7 @@ export interface LogViewState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+     * The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
      */
     name?: pulumi.Input<string>;
     /**
@@ -194,7 +183,7 @@ export interface LogViewArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the view. For example: `projects/my-project/locations/global/buckets/my-bucket/views/my-view`
+     * The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
      */
     name?: pulumi.Input<string>;
     /**

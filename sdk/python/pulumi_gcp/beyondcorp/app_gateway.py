@@ -28,7 +28,7 @@ class AppGatewayArgs:
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[str] host_type: The type of hosting used by the AppGateway.
                Default value is `HOST_TYPE_UNSPECIFIED`.
-               Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+               Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: ID of the AppGateway.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -36,7 +36,7 @@ class AppGatewayArgs:
         :param pulumi.Input[str] region: The region of the AppGateway.
         :param pulumi.Input[str] type: The type of network connectivity used by the AppGateway.
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -71,7 +71,7 @@ class AppGatewayArgs:
         """
         The type of hosting used by the AppGateway.
         Default value is `HOST_TYPE_UNSPECIFIED`.
-        Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+        Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         """
         return pulumi.get(self, "host_type")
 
@@ -134,7 +134,7 @@ class AppGatewayArgs:
         """
         The type of network connectivity used by the AppGateway.
         Default value is `TYPE_UNSPECIFIED`.
-        Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+        Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         """
         return pulumi.get(self, "type")
 
@@ -163,7 +163,7 @@ class _AppGatewayState:
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[str] host_type: The type of hosting used by the AppGateway.
                Default value is `HOST_TYPE_UNSPECIFIED`.
-               Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+               Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: ID of the AppGateway.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -172,7 +172,7 @@ class _AppGatewayState:
         :param pulumi.Input[str] state: Represents the different states of a AppGateway.
         :param pulumi.Input[str] type: The type of network connectivity used by the AppGateway.
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         :param pulumi.Input[str] uri: Server-defined URI for this resource.
         """
         if allocated_connections is not None:
@@ -227,7 +227,7 @@ class _AppGatewayState:
         """
         The type of hosting used by the AppGateway.
         Default value is `HOST_TYPE_UNSPECIFIED`.
-        Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+        Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         """
         return pulumi.get(self, "host_type")
 
@@ -302,7 +302,7 @@ class _AppGatewayState:
         """
         The type of network connectivity used by the AppGateway.
         Default value is `TYPE_UNSPECIFIED`.
-        Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+        Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         """
         return pulumi.get(self, "type")
 
@@ -401,7 +401,7 @@ class AppGateway(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[str] host_type: The type of hosting used by the AppGateway.
                Default value is `HOST_TYPE_UNSPECIFIED`.
-               Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+               Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: ID of the AppGateway.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -409,7 +409,7 @@ class AppGateway(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the AppGateway.
         :param pulumi.Input[str] type: The type of network connectivity used by the AppGateway.
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         """
         ...
     @overload
@@ -550,7 +550,7 @@ class AppGateway(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: An arbitrary user-provided name for the AppGateway.
         :param pulumi.Input[str] host_type: The type of hosting used by the AppGateway.
                Default value is `HOST_TYPE_UNSPECIFIED`.
-               Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+               Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: ID of the AppGateway.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -559,7 +559,7 @@ class AppGateway(pulumi.CustomResource):
         :param pulumi.Input[str] state: Represents the different states of a AppGateway.
         :param pulumi.Input[str] type: The type of network connectivity used by the AppGateway.
                Default value is `TYPE_UNSPECIFIED`.
-               Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+               Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         :param pulumi.Input[str] uri: Server-defined URI for this resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -601,7 +601,7 @@ class AppGateway(pulumi.CustomResource):
         """
         The type of hosting used by the AppGateway.
         Default value is `HOST_TYPE_UNSPECIFIED`.
-        Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+        Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
         """
         return pulumi.get(self, "host_type")
 
@@ -652,7 +652,7 @@ class AppGateway(pulumi.CustomResource):
         """
         The type of network connectivity used by the AppGateway.
         Default value is `TYPE_UNSPECIFIED`.
-        Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+        Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
         """
         return pulumi.get(self, "type")
 

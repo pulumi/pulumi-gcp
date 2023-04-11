@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// The type of the schema definition
         /// Default value is `TYPE_UNSPECIFIED`.
-        /// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// The type of the schema definition
         /// Default value is `TYPE_UNSPECIFIED`.
-        /// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.Gcp.PubSub
         /// <summary>
         /// The type of the schema definition
         /// Default value is `TYPE_UNSPECIFIED`.
-        /// Possible values are `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, and `AVRO`.
+        /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

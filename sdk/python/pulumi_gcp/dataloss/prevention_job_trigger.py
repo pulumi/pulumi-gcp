@@ -34,7 +34,7 @@ class PreventionJobTriggerArgs:
                Structure is documented below.
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
-               Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+               Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "triggers", triggers)
@@ -116,7 +116,7 @@ class PreventionJobTriggerArgs:
         """
         Whether the trigger is currently active.
         Default value is `HEALTHY`.
-        Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         """
         return pulumi.get(self, "status")
 
@@ -157,7 +157,7 @@ class _PreventionJobTriggerState:
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
-               Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+               Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
@@ -267,7 +267,7 @@ class _PreventionJobTriggerState:
         """
         Whether the trigger is currently active.
         Default value is `HEALTHY`.
-        Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         """
         return pulumi.get(self, "status")
 
@@ -450,7 +450,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
-               Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+               Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
@@ -685,7 +685,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
-               Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+               Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
@@ -768,7 +768,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         """
         Whether the trigger is currently active.
         Default value is `HEALTHY`.
-        Possible values are `PAUSED`, `HEALTHY`, and `CANCELLED`.
+        Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         """
         return pulumi.get(self, "status")
 

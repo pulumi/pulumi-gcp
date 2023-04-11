@@ -97,7 +97,7 @@ type HmacKey struct {
 	ServiceAccountEmail pulumi.StringOutput `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
-	// Possible values are `ACTIVE` and `INACTIVE`.
+	// Possible values are: `ACTIVE`, `INACTIVE`.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// 'The creation time of the HMAC key in RFC 3339 format. '
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
@@ -153,7 +153,7 @@ type hmacKeyState struct {
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
-	// Possible values are `ACTIVE` and `INACTIVE`.
+	// Possible values are: `ACTIVE`, `INACTIVE`.
 	State *string `pulumi:"state"`
 	// 'The creation time of the HMAC key in RFC 3339 format. '
 	TimeCreated *string `pulumi:"timeCreated"`
@@ -174,7 +174,7 @@ type HmacKeyState struct {
 	ServiceAccountEmail pulumi.StringPtrInput
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
-	// Possible values are `ACTIVE` and `INACTIVE`.
+	// Possible values are: `ACTIVE`, `INACTIVE`.
 	State pulumi.StringPtrInput
 	// 'The creation time of the HMAC key in RFC 3339 format. '
 	TimeCreated pulumi.StringPtrInput
@@ -194,7 +194,7 @@ type hmacKeyArgs struct {
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
-	// Possible values are `ACTIVE` and `INACTIVE`.
+	// Possible values are: `ACTIVE`, `INACTIVE`.
 	State *string `pulumi:"state"`
 }
 
@@ -207,7 +207,7 @@ type HmacKeyArgs struct {
 	ServiceAccountEmail pulumi.StringInput
 	// The state of the key. Can be set to one of ACTIVE, INACTIVE.
 	// Default value is `ACTIVE`.
-	// Possible values are `ACTIVE` and `INACTIVE`.
+	// Possible values are: `ACTIVE`, `INACTIVE`.
 	State pulumi.StringPtrInput
 }
 
@@ -322,7 +322,7 @@ func (o HmacKeyOutput) ServiceAccountEmail() pulumi.StringOutput {
 
 // The state of the key. Can be set to one of ACTIVE, INACTIVE.
 // Default value is `ACTIVE`.
-// Possible values are `ACTIVE` and `INACTIVE`.
+// Possible values are: `ACTIVE`, `INACTIVE`.
 func (o HmacKeyOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HmacKey) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }

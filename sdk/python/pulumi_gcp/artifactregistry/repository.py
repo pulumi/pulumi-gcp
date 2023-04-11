@@ -19,6 +19,7 @@ class RepositoryArgs:
                  format: pulumi.Input[str],
                  repository_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_config: Optional[pulumi.Input['RepositoryDockerConfigArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,8 @@ class RepositoryArgs:
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+               Structure is documented below.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -50,17 +53,22 @@ class RepositoryArgs:
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
-        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources.
+               Default value is `STANDARD_REPOSITORY`.
+               Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
+               Structure is documented below.
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
+               Structure is documented below.
         """
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "repository_id", repository_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if docker_config is not None:
+            pulumi.set(__self__, "docker_config", docker_config)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -117,6 +125,19 @@ class RepositoryArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dockerConfig")
+    def docker_config(self) -> Optional[pulumi.Input['RepositoryDockerConfigArgs']]:
+        """
+        Docker repository config contains repository level configuration for the repositories of docker type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "docker_config")
+
+    @docker_config.setter
+    def docker_config(self, value: Optional[pulumi.Input['RepositoryDockerConfigArgs']]):
+        pulumi.set(self, "docker_config", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -180,8 +201,9 @@ class RepositoryArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-        Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        The mode configures the repository to serve artifacts from different sources.
+        Default value is `STANDARD_REPOSITORY`.
+        Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         """
         return pulumi.get(self, "mode")
 
@@ -207,6 +229,7 @@ class RepositoryArgs:
     def remote_repository_config(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']]:
         """
         Configuration specific for a Remote Repository.
+        Structure is documented below.
         """
         return pulumi.get(self, "remote_repository_config")
 
@@ -219,6 +242,7 @@ class RepositoryArgs:
     def virtual_repository_config(self) -> Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]:
         """
         Configuration specific for a Virtual Repository.
+        Structure is documented below.
         """
         return pulumi.get(self, "virtual_repository_config")
 
@@ -232,6 +256,7 @@ class _RepositoryState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_config: Optional[pulumi.Input['RepositoryDockerConfigArgs']] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -248,6 +273,8 @@ class _RepositoryState:
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+               Structure is documented below.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
@@ -266,22 +293,27 @@ class _RepositoryState:
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
-        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources.
+               Default value is `STANDARD_REPOSITORY`.
+               Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         :param pulumi.Input[str] name: The name of the repository, for example:
                "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigArgs'] remote_repository_config: Configuration specific for a Remote Repository.
+               Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
+               Structure is documented below.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if docker_config is not None:
+            pulumi.set(__self__, "docker_config", docker_config)
         if format is not None:
             pulumi.set(__self__, "format", format)
         if kms_key_name is not None:
@@ -330,6 +362,19 @@ class _RepositoryState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dockerConfig")
+    def docker_config(self) -> Optional[pulumi.Input['RepositoryDockerConfigArgs']]:
+        """
+        Docker repository config contains repository level configuration for the repositories of docker type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "docker_config")
+
+    @docker_config.setter
+    def docker_config(self, value: Optional[pulumi.Input['RepositoryDockerConfigArgs']]):
+        pulumi.set(self, "docker_config", value)
 
     @property
     @pulumi.getter
@@ -408,8 +453,9 @@ class _RepositoryState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-        Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        The mode configures the repository to serve artifacts from different sources.
+        Default value is `STANDARD_REPOSITORY`.
+        Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         """
         return pulumi.get(self, "mode")
 
@@ -448,6 +494,7 @@ class _RepositoryState:
     def remote_repository_config(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']]:
         """
         Configuration specific for a Remote Repository.
+        Structure is documented below.
         """
         return pulumi.get(self, "remote_repository_config")
 
@@ -485,6 +532,7 @@ class _RepositoryState:
     def virtual_repository_config(self) -> Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]:
         """
         Configuration specific for a Virtual Repository.
+        Structure is documented below.
         """
         return pulumi.get(self, "virtual_repository_config")
 
@@ -499,6 +547,7 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -532,141 +581,7 @@ class Repository(pulumi.CustomResource):
             location="us-central1",
             repository_id="my-repository")
         ```
-        ### Artifact Registry Repository Cmek
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
-            crypto_key_id="kms-key",
-            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with cmek",
-            format="DOCKER",
-            kms_key_name="kms-key",
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
-        ```
-        ### Artifact Registry Repository Virtual
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
-            location="us-central1",
-            repository_id="my-repository-upstream",
-            description="example docker repository (upstream source)",
-            format="DOCKER",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example virtual docker repository",
-            format="DOCKER",
-            mode="VIRTUAL_REPOSITORY",
-            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
-                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                    id="my-repository-upstream",
-                    repository=my_repo_upstream.id,
-                    priority=1,
-                )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[]))
-        ```
-        ### Artifact Registry Repository Remote
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example remote docker repository",
-            format="DOCKER",
-            mode="REMOTE_REPOSITORY",
-            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
-                description="docker hub",
-                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
-                    public_repository="DOCKER_HUB",
-                ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        ```
-
-        ## Import
-
-        Repository can be imported using any of these accepted formats
-
-        ```sh
-         $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
-        ```
-
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
-               can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
-               You can only create alpha formats if you are a member of the
-               [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
-               used to encrypt the contents of the Repository. Has the form:
-               `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
-               This value may not be changed after the Repository has been created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
-               This field may contain up to 64 entries. Label keys and values may be no
-               longer than 63 characters. Label keys must begin with a lowercase letter
-               and may only contain lowercase letters, numeric characters, underscores,
-               and dashes.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
-        :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
-               Provides additional configuration details for repositories of the maven
-               format type.
-               Structure is documented below.
-        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
-               If it is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
-        :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
-               "repo1"
-        :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
-        """
-        ...
-    @overload
-    def __init__(__self__,
-                 resource_name: str,
-                 args: RepositoryArgs,
-                 opts: Optional[pulumi.ResourceOptions] = None):
-        """
-        A repository for storing artifacts
-
-        To get more information about Repository, see:
-
-        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
-
-        ## Example Usage
-        ### Artifact Registry Repository Basic
+        ### Artifact Registry Repository Docker
 
         ```python
         import pulumi
@@ -674,6 +589,9 @@ class Repository(pulumi.CustomResource):
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
             description="example docker repository",
+            docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
+                immutable_tags=True,
+            ),
             format="DOCKER",
             location="us-central1",
             repository_id="my-repository")
@@ -707,8 +625,7 @@ class Repository(pulumi.CustomResource):
             location="us-central1",
             repository_id="my-repository-upstream",
             description="example docker repository (upstream source)",
-            format="DOCKER",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            format="DOCKER")
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
             repository_id="my-repository",
@@ -722,8 +639,7 @@ class Repository(pulumi.CustomResource):
                     priority=1,
                 )],
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[]))
+            opts=pulumi.ResourceOptions(depends_on=[]))
         ```
         ### Artifact Registry Repository Remote
 
@@ -732,10 +648,9 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
             description="example remote docker repository",
             format="DOCKER",
+            location="us-central1",
             mode="REMOTE_REPOSITORY",
             remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
                 description="docker hub",
@@ -743,7 +658,170 @@ class Repository(pulumi.CustomResource):
                     public_repository="DOCKER_HUB",
                 ),
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            repository_id="my-repository")
+        ```
+
+        ## Import
+
+        Repository can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default {{project}}/{{location}}/{{repository_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+               Structure is documented below.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
+               can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
+               You can only create alpha formats if you are a member of the
+               [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
+               used to encrypt the contents of the Repository. Has the form:
+               `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+               This value may not be changed after the Repository has been created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata.
+               This field may contain up to 64 entries. Label keys and values may be no
+               longer than 63 characters. Label keys must begin with a lowercase letter
+               and may only contain lowercase letters, numeric characters, underscores,
+               and dashes.
+        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[pulumi.InputType['RepositoryMavenConfigArgs']] maven_config: MavenRepositoryConfig is maven related repository details.
+               Provides additional configuration details for repositories of the maven
+               format type.
+               Structure is documented below.
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources.
+               Default value is `STANDARD_REPOSITORY`.
+               Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
+               Structure is documented below.
+        :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
+               "repo1"
+        :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
+               Structure is documented below.
+        """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RepositoryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A repository for storing artifacts
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+
+        ## Example Usage
+        ### Artifact Registry Repository Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            description="example docker repository",
+            format="DOCKER",
+            location="us-central1",
+            repository_id="my-repository")
+        ```
+        ### Artifact Registry Repository Docker
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            description="example docker repository",
+            docker_config=gcp.artifactregistry.RepositoryDockerConfigArgs(
+                immutable_tags=True,
+            ),
+            format="DOCKER",
+            location="us-central1",
+            repository_id="my-repository")
+        ```
+        ### Artifact Registry Repository Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+            crypto_key_id="kms-key",
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with cmek",
+            format="DOCKER",
+            kms_key_name="kms-key",
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key]))
+        ```
+        ### Artifact Registry Repository Virtual
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
+            location="us-central1",
+            repository_id="my-repository-upstream",
+            description="example docker repository (upstream source)",
+            format="DOCKER")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example virtual docker repository",
+            format="DOCKER",
+            mode="VIRTUAL_REPOSITORY",
+            virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
+                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
+                    id="my-repository-upstream",
+                    repository=my_repo_upstream.id,
+                    priority=1,
+                )],
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[]))
+        ```
+        ### Artifact Registry Repository Remote
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            description="example remote docker repository",
+            format="DOCKER",
+            location="us-central1",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="docker hub",
+                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
+                    public_repository="DOCKER_HUB",
+                ),
+            ),
+            repository_id="my-repository")
         ```
 
         ## Import
@@ -782,6 +860,7 @@ class Repository(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -802,6 +881,7 @@ class Repository(pulumi.CustomResource):
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["docker_config"] = docker_config
             if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
             __props__.__dict__["format"] = format
@@ -831,6 +911,7 @@ class Repository(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
             format: Optional[pulumi.Input[str]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -852,6 +933,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
+        :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
+               Structure is documented below.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
@@ -870,17 +953,20 @@ class Repository(pulumi.CustomResource):
                Provides additional configuration details for repositories of the maven
                format type.
                Structure is documented below.
-        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-               Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        :param pulumi.Input[str] mode: The mode configures the repository to serve artifacts from different sources.
+               Default value is `STANDARD_REPOSITORY`.
+               Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         :param pulumi.Input[str] name: The name of the repository, for example:
                "repo1"
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['RepositoryRemoteRepositoryConfigArgs']] remote_repository_config: Configuration specific for a Remote Repository.
+               Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input[pulumi.InputType['RepositoryVirtualRepositoryConfigArgs']] virtual_repository_config: Configuration specific for a Virtual Repository.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -888,6 +974,7 @@ class Repository(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["docker_config"] = docker_config
         __props__.__dict__["format"] = format
         __props__.__dict__["kms_key_name"] = kms_key_name
         __props__.__dict__["labels"] = labels
@@ -917,6 +1004,15 @@ class Repository(pulumi.CustomResource):
         The user-provided description of the repository.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerConfig")
+    def docker_config(self) -> pulumi.Output[Optional['outputs.RepositoryDockerConfig']]:
+        """
+        Docker repository config contains repository level configuration for the repositories of docker type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "docker_config")
 
     @property
     @pulumi.getter
@@ -975,8 +1071,9 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The mode configures the repository to serve artifacts from different sources. Default value: "STANDARD_REPOSITORY"
-        Possible values: ["STANDARD_REPOSITORY", "VIRTUAL_REPOSITORY", "REMOTE_REPOSITORY"]
+        The mode configures the repository to serve artifacts from different sources.
+        Default value is `STANDARD_REPOSITORY`.
+        Possible values are: `STANDARD_REPOSITORY`, `VIRTUAL_REPOSITORY`, `REMOTE_REPOSITORY`.
         """
         return pulumi.get(self, "mode")
 
@@ -1003,6 +1100,7 @@ class Repository(pulumi.CustomResource):
     def remote_repository_config(self) -> pulumi.Output[Optional['outputs.RepositoryRemoteRepositoryConfig']]:
         """
         Configuration specific for a Remote Repository.
+        Structure is documented below.
         """
         return pulumi.get(self, "remote_repository_config")
 
@@ -1028,6 +1126,7 @@ class Repository(pulumi.CustomResource):
     def virtual_repository_config(self) -> pulumi.Output[Optional['outputs.RepositoryVirtualRepositoryConfig']]:
         """
         Configuration specific for a Virtual Repository.
+        Structure is documented below.
         """
         return pulumi.get(self, "virtual_repository_config")
 

@@ -1011,7 +1011,7 @@ type JobTemplateTemplate struct {
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task.
-	// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
 	// Number of retries allowed per Task, before marking this Task failed.
 	MaxRetries *int `pulumi:"maxRetries"`
@@ -1046,7 +1046,7 @@ type JobTemplateTemplateArgs struct {
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task.
-	// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
 	// Number of retries allowed per Task, before marking this Task failed.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
@@ -1152,7 +1152,7 @@ func (o JobTemplateTemplateOutput) EncryptionKey() pulumi.StringPtrOutput {
 }
 
 // The execution environment being used to host this Task.
-// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 func (o JobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplate) *string { return v.ExecutionEnvironment }).(pulumi.StringPtrOutput)
 }
@@ -1231,7 +1231,7 @@ func (o JobTemplateTemplatePtrOutput) EncryptionKey() pulumi.StringPtrOutput {
 }
 
 // The execution environment being used to host this Task.
-// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 func (o JobTemplateTemplatePtrOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplate) *string {
 		if v == nil {
@@ -4152,7 +4152,7 @@ type JobTemplateTemplateVpcAccess struct {
 	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 	Connector *string `pulumi:"connector"`
 	// Traffic VPC egress settings.
-	// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress *string `pulumi:"egress"`
 }
 
@@ -4171,7 +4171,7 @@ type JobTemplateTemplateVpcAccessArgs struct {
 	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
 	// Traffic VPC egress settings.
-	// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress pulumi.StringPtrInput `pulumi:"egress"`
 }
 
@@ -4258,7 +4258,7 @@ func (o JobTemplateTemplateVpcAccessOutput) Connector() pulumi.StringPtrOutput {
 }
 
 // Traffic VPC egress settings.
-// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 func (o JobTemplateTemplateVpcAccessOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVpcAccess) *string { return v.Egress }).(pulumi.StringPtrOutput)
 }
@@ -4298,7 +4298,7 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) Connector() pulumi.StringPtrOutpu
 }
 
 // Traffic VPC egress settings.
-// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 func (o JobTemplateTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateVpcAccess) *string {
 		if v == nil {
@@ -4675,7 +4675,7 @@ type ServiceCondition struct {
 	// State of the condition.
 	State *string `pulumi:"state"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
 }
 
@@ -4714,7 +4714,7 @@ type ServiceConditionArgs struct {
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -4813,7 +4813,7 @@ func (o ServiceConditionOutput) State() pulumi.StringPtrOutput {
 }
 
 // The allocation type for this traffic target.
-// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 func (o ServiceConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -5173,7 +5173,7 @@ type ServiceTemplate struct {
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
-	// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
 	// KRM-style labels for the resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -5217,7 +5217,7 @@ type ServiceTemplateArgs struct {
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
-	// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
 	// KRM-style labels for the resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -5335,7 +5335,7 @@ func (o ServiceTemplateOutput) EncryptionKey() pulumi.StringPtrOutput {
 }
 
 // The sandbox environment to host this Revision.
-// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 func (o ServiceTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.ExecutionEnvironment }).(pulumi.StringPtrOutput)
 }
@@ -5440,7 +5440,7 @@ func (o ServiceTemplatePtrOutput) EncryptionKey() pulumi.StringPtrOutput {
 }
 
 // The sandbox environment to host this Revision.
-// Possible values are `EXECUTION_ENVIRONMENT_GEN1` and `EXECUTION_ENVIRONMENT_GEN2`.
+// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 func (o ServiceTemplatePtrOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplate) *string {
 		if v == nil {
@@ -8925,7 +8925,7 @@ type ServiceTemplateVpcAccess struct {
 	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 	Connector *string `pulumi:"connector"`
 	// Traffic VPC egress settings.
-	// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress *string `pulumi:"egress"`
 }
 
@@ -8944,7 +8944,7 @@ type ServiceTemplateVpcAccessArgs struct {
 	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
 	// Traffic VPC egress settings.
-	// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 	Egress pulumi.StringPtrInput `pulumi:"egress"`
 }
 
@@ -9031,7 +9031,7 @@ func (o ServiceTemplateVpcAccessOutput) Connector() pulumi.StringPtrOutput {
 }
 
 // Traffic VPC egress settings.
-// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 func (o ServiceTemplateVpcAccessOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVpcAccess) *string { return v.Egress }).(pulumi.StringPtrOutput)
 }
@@ -9071,7 +9071,7 @@ func (o ServiceTemplateVpcAccessPtrOutput) Connector() pulumi.StringPtrOutput {
 }
 
 // Traffic VPC egress settings.
-// Possible values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`.
+// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
 func (o ServiceTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVpcAccess) *string {
 		if v == nil {
@@ -9105,7 +9105,7 @@ type ServiceTerminalCondition struct {
 	// State of the condition.
 	State *string `pulumi:"state"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
 }
 
@@ -9144,7 +9144,7 @@ type ServiceTerminalConditionArgs struct {
 	// State of the condition.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -9243,7 +9243,7 @@ func (o ServiceTerminalConditionOutput) State() pulumi.StringPtrOutput {
 }
 
 // The allocation type for this traffic target.
-// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 func (o ServiceTerminalConditionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTerminalCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -9276,7 +9276,7 @@ type ServiceTraffic struct {
 	// Indicates a string to be part of the URI to exclusively reference this target.
 	Tag *string `pulumi:"tag"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
 }
 
@@ -9299,7 +9299,7 @@ type ServiceTrafficArgs struct {
 	// Indicates a string to be part of the URI to exclusively reference this target.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -9370,7 +9370,7 @@ func (o ServiceTrafficOutput) Tag() pulumi.StringPtrOutput {
 }
 
 // The allocation type for this traffic target.
-// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 func (o ServiceTrafficOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTraffic) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -9405,7 +9405,7 @@ type ServiceTrafficStatus struct {
 	// Indicates a string to be part of the URI to exclusively reference this target.
 	Tag *string `pulumi:"tag"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type *string `pulumi:"type"`
 	// (Output)
 	// Displays the target URI.
@@ -9433,7 +9433,7 @@ type ServiceTrafficStatusArgs struct {
 	// Indicates a string to be part of the URI to exclusively reference this target.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The allocation type for this traffic target.
-	// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+	// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// (Output)
 	// Displays the target URI.
@@ -9509,7 +9509,7 @@ func (o ServiceTrafficStatusOutput) Tag() pulumi.StringPtrOutput {
 }
 
 // The allocation type for this traffic target.
-// Possible values are `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST` and `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
+// Possible values are: `TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST`, `TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION`.
 func (o ServiceTrafficStatusOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTrafficStatus) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

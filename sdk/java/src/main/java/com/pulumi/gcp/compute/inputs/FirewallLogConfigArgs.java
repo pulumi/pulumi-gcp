@@ -15,7 +15,7 @@ public final class FirewallLogConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * This field denotes whether to include or exclude metadata for firewall logs.
-     * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
      * 
      */
     @Import(name="metadata", required=true)
@@ -23,7 +23,7 @@ public final class FirewallLogConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return This field denotes whether to include or exclude metadata for firewall logs.
-     * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
      * 
      */
     public Output<String> metadata() {
@@ -56,7 +56,7 @@ public final class FirewallLogConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param metadata This field denotes whether to include or exclude metadata for firewall logs.
-         * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+         * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
          * 
          * @return builder
          * 
@@ -68,7 +68,7 @@ public final class FirewallLogConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param metadata This field denotes whether to include or exclude metadata for firewall logs.
-         * Possible values are `EXCLUDE_ALL_METADATA` and `INCLUDE_ALL_METADATA`.
+         * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`.
          * 
          * @return builder
          * 

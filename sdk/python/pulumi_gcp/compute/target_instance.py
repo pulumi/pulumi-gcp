@@ -40,7 +40,7 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] nat_policy: NAT option controlling how IPs are NAT'ed to the instance.
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
-               Possible values are `NO_NAT`.
+               Possible values are: `NO_NAT`.
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -114,7 +114,7 @@ class TargetInstanceArgs:
         NAT option controlling how IPs are NAT'ed to the instance.
         Currently only NO_NAT (default value) is supported.
         Default value is `NO_NAT`.
-        Possible values are `NO_NAT`.
+        Possible values are: `NO_NAT`.
         """
         return pulumi.get(self, "nat_policy")
 
@@ -192,7 +192,7 @@ class _TargetInstanceState:
         :param pulumi.Input[str] nat_policy: NAT option controlling how IPs are NAT'ed to the instance.
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
-               Possible values are `NO_NAT`.
+               Possible values are: `NO_NAT`.
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -284,7 +284,7 @@ class _TargetInstanceState:
         NAT option controlling how IPs are NAT'ed to the instance.
         Currently only NO_NAT (default value) is supported.
         Default value is `NO_NAT`.
-        Possible values are `NO_NAT`.
+        Possible values are: `NO_NAT`.
         """
         return pulumi.get(self, "nat_policy")
 
@@ -457,7 +457,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] nat_policy: NAT option controlling how IPs are NAT'ed to the instance.
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
-               Possible values are `NO_NAT`.
+               Possible values are: `NO_NAT`.
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -638,7 +638,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] nat_policy: NAT option controlling how IPs are NAT'ed to the instance.
                Currently only NO_NAT (default value) is supported.
                Default value is `NO_NAT`.
-               Possible values are `NO_NAT`.
+               Possible values are: `NO_NAT`.
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -710,7 +710,7 @@ class TargetInstance(pulumi.CustomResource):
         NAT option controlling how IPs are NAT'ed to the instance.
         Currently only NO_NAT (default value) is supported.
         Default value is `NO_NAT`.
-        Possible values are `NO_NAT`.
+        Possible values are: `NO_NAT`.
         """
         return pulumi.get(self, "nat_policy")
 

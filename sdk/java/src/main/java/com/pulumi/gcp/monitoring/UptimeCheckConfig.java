@@ -272,7 +272,7 @@ import javax.annotation.Nullable;
 public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     /**
      * The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
     @Export(name="checkerType", type=String.class, parameters={})
@@ -280,7 +280,7 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The checker type to use for the check. If the monitored resource type is servicedirectory_service, checkerType must be set to VPC_CHECKERS.
-     * Possible values are `STATIC_IP_CHECKERS` and `VPC_CHECKERS`.
+     * Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
      * 
      */
     public Output<String> checkerType() {

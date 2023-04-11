@@ -153,7 +153,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
     /**
      * The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
-     * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+     * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      * 
      */
     @Export(name="hostType", type=String.class, parameters={})
@@ -162,7 +162,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of hosting used by the AppGateway.
      * Default value is `HOST_TYPE_UNSPECIFIED`.
-     * Possible values are `HOST_TYPE_UNSPECIFIED` and `GCP_REGIONAL_MIG`.
+     * Possible values are: `HOST_TYPE_UNSPECIFIED`, `GCP_REGIONAL_MIG`.
      * 
      */
     public Output<Optional<String>> hostType() {
@@ -243,7 +243,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
     /**
      * The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
@@ -252,7 +252,7 @@ public class AppGateway extends com.pulumi.resources.CustomResource {
     /**
      * @return The type of network connectivity used by the AppGateway.
      * Default value is `TYPE_UNSPECIFIED`.
-     * Possible values are `TYPE_UNSPECIFIED` and `TCP_PROXY`.
+     * Possible values are: `TYPE_UNSPECIFIED`, `TCP_PROXY`.
      * 
      */
     public Output<Optional<String>> type() {

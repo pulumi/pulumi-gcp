@@ -89,7 +89,7 @@ type CryptoKeyVersion struct {
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
 	// The current state of the CryptoKeyVersion.
-	// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -141,7 +141,7 @@ type cryptoKeyVersionState struct {
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// The current state of the CryptoKeyVersion.
-	// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State *string `pulumi:"state"`
 }
 
@@ -162,7 +162,7 @@ type CryptoKeyVersionState struct {
 	// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
 	ProtectionLevel pulumi.StringPtrInput
 	// The current state of the CryptoKeyVersion.
-	// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State pulumi.StringPtrInput
 }
 
@@ -175,7 +175,7 @@ type cryptoKeyVersionArgs struct {
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey string `pulumi:"cryptoKey"`
 	// The current state of the CryptoKeyVersion.
-	// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State *string `pulumi:"state"`
 }
 
@@ -185,7 +185,7 @@ type CryptoKeyVersionArgs struct {
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey pulumi.StringInput
 	// The current state of the CryptoKeyVersion.
-	// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 	State pulumi.StringPtrInput
 }
 
@@ -310,7 +310,7 @@ func (o CryptoKeyVersionOutput) ProtectionLevel() pulumi.StringOutput {
 }
 
 // The current state of the CryptoKeyVersion.
-// Possible values are `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, and `IMPORT_FAILED`.
+// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
 func (o CryptoKeyVersionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

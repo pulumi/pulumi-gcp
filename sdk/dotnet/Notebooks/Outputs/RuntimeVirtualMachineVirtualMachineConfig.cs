@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Notebooks.Outputs
         /// <summary>
         /// The type of vNIC to be used on this interface. This may be gVNIC
         /// or VirtioNet.
-        /// Possible values are `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, and `GVNIC`.
+        /// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
         /// </summary>
         public readonly string? NicType;
         /// <summary>

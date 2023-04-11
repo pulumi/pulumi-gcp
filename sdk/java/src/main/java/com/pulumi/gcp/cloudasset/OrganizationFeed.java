@@ -129,7 +129,7 @@ public class OrganizationFeed extends com.pulumi.resources.CustomResource {
     }
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
      * 
      */
     @Export(name="contentType", type=String.class, parameters={})
@@ -137,7 +137,7 @@ public class OrganizationFeed extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, and `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
      * 
      */
     public Output<Optional<String>> contentType() {

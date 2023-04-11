@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// The components to be enabled.
-        /// Each value may be one of `SYSTEM_COMPONENTS` and `WORKLOADS`.
+        /// Each value may be one of: `SYSTEM_COMPONENTS`, `WORKLOADS`.
         /// </summary>
         public InputList<string> EnableComponents
         {

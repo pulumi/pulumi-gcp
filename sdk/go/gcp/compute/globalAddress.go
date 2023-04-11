@@ -110,14 +110,14 @@ type GlobalAddress struct {
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -189,14 +189,14 @@ type globalAddressState struct {
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -240,14 +240,14 @@ type GlobalAddressState struct {
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -295,12 +295,12 @@ type globalAddressArgs struct {
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -341,12 +341,12 @@ type GlobalAddressArgs struct {
 	// * EXTERNAL indicates public/external single IP address.
 	// * INTERNAL indicates internal IP ranges belonging to some network.
 	//   Default value is `EXTERNAL`.
-	//   Possible values are `EXTERNAL` and `INTERNAL`.
+	//   Possible values are: `EXTERNAL`, `INTERNAL`.
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
-	// Possible values are `IPV4` and `IPV6`.
+	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -475,7 +475,7 @@ func (o GlobalAddressOutput) Address() pulumi.StringOutput {
 //   - EXTERNAL indicates public/external single IP address.
 //   - INTERNAL indicates internal IP ranges belonging to some network.
 //     Default value is `EXTERNAL`.
-//     Possible values are `EXTERNAL` and `INTERNAL`.
+//     Possible values are: `EXTERNAL`, `INTERNAL`.
 func (o GlobalAddressOutput) AddressType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.AddressType }).(pulumi.StringPtrOutput)
 }
@@ -491,7 +491,7 @@ func (o GlobalAddressOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The IP Version that will be used by this address. The default value is `IPV4`.
-// Possible values are `IPV4` and `IPV6`.
+// Possible values are: `IPV4`, `IPV6`.
 func (o GlobalAddressOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
 }

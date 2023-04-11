@@ -207,7 +207,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     public readonly handlers!: pulumi.Output<outputs.appengine.FlexibleAppVersionHandler[]>;
     /**
      * A list of the types of messages that this application is able to receive.
-     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+     * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      */
     public readonly inboundServices!: pulumi.Output<string[] | undefined>;
     /**
@@ -296,7 +296,7 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
-     * Possible values are `SERVING` and `STOPPED`.
+     * Possible values are: `SERVING`, `STOPPED`.
      */
     public readonly servingStatus!: pulumi.Output<string | undefined>;
     /**
@@ -457,7 +457,7 @@ export interface FlexibleAppVersionState {
     handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
      * A list of the types of messages that this application is able to receive.
-     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+     * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      */
     inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -546,7 +546,7 @@ export interface FlexibleAppVersionState {
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
-     * Possible values are `SERVING` and `STOPPED`.
+     * Possible values are: `SERVING`, `STOPPED`.
      */
     servingStatus?: pulumi.Input<string>;
     /**
@@ -615,7 +615,7 @@ export interface FlexibleAppVersionArgs {
     handlers?: pulumi.Input<pulumi.Input<inputs.appengine.FlexibleAppVersionHandler>[]>;
     /**
      * A list of the types of messages that this application is able to receive.
-     * Each value may be one of `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, and `INBOUND_SERVICE_WARMUP`.
+     * Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
      */
     inboundServices?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -693,7 +693,7 @@ export interface FlexibleAppVersionArgs {
     /**
      * Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.
      * Default value is `SERVING`.
-     * Possible values are `SERVING` and `STOPPED`.
+     * Possible values are: `SERVING`, `STOPPED`.
      */
     servingStatus?: pulumi.Input<string>;
     /**

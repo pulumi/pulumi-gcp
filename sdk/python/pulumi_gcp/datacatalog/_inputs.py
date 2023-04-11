@@ -756,7 +756,7 @@ class TagTemplateFieldTypeArgs:
                Structure is documented below.
         :param pulumi.Input[str] primitive_type: Represents primitive types - string, bool etc.
                Exactly one of `primitive_type` or `enum_type` must be set
-               Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
+               Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
         """
         if enum_type is not None:
             pulumi.set(__self__, "enum_type", enum_type)
@@ -783,7 +783,7 @@ class TagTemplateFieldTypeArgs:
         """
         Represents primitive types - string, bool etc.
         Exactly one of `primitive_type` or `enum_type` must be set
-        Possible values are `DOUBLE`, `STRING`, `BOOL`, and `TIMESTAMP`.
+        Possible values are: `DOUBLE`, `STRING`, `BOOL`, `TIMESTAMP`.
         """
         return pulumi.get(self, "primitive_type")
 

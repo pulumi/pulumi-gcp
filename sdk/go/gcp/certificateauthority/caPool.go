@@ -93,7 +93,7 @@ type CaPool struct {
 	// Structure is documented below.
 	PublishingOptions CaPoolPublishingOptionsPtrOutput `pulumi:"publishingOptions"`
 	// The Tier of this CaPool.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
+	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 }
 
@@ -151,7 +151,7 @@ type caPoolState struct {
 	// Structure is documented below.
 	PublishingOptions *CaPoolPublishingOptions `pulumi:"publishingOptions"`
 	// The Tier of this CaPool.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
+	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier *string `pulumi:"tier"`
 }
 
@@ -175,7 +175,7 @@ type CaPoolState struct {
 	// Structure is documented below.
 	PublishingOptions CaPoolPublishingOptionsPtrInput
 	// The Tier of this CaPool.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
+	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier pulumi.StringPtrInput
 }
 
@@ -203,7 +203,7 @@ type caPoolArgs struct {
 	// Structure is documented below.
 	PublishingOptions *CaPoolPublishingOptions `pulumi:"publishingOptions"`
 	// The Tier of this CaPool.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
+	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier string `pulumi:"tier"`
 }
 
@@ -228,7 +228,7 @@ type CaPoolArgs struct {
 	// Structure is documented below.
 	PublishingOptions CaPoolPublishingOptionsPtrInput
 	// The Tier of this CaPool.
-	// Possible values are `ENTERPRISE` and `DEVOPS`.
+	// Possible values are: `ENTERPRISE`, `DEVOPS`.
 	Tier pulumi.StringInput
 }
 
@@ -356,7 +356,7 @@ func (o CaPoolOutput) PublishingOptions() CaPoolPublishingOptionsPtrOutput {
 }
 
 // The Tier of this CaPool.
-// Possible values are `ENTERPRISE` and `DEVOPS`.
+// Possible values are: `ENTERPRISE`, `DEVOPS`.
 func (o CaPoolOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
 }

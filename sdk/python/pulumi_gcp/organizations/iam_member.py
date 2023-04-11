@@ -22,9 +22,7 @@ class IAMMemberArgs:
                  condition: Optional[pulumi.Input['IAMMemberConditionArgs']] = None):
         """
         The set of arguments for constructing a IAMMember resource.
-        :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-               Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] org_id: The organization id of the target organization.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
                `organizations/{{org_id}}/roles/{{role_id}}`.
@@ -50,9 +48,7 @@ class IAMMemberArgs:
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Input[str]:
         """
-        The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-        Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-        will not be inferred from the provider.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -101,9 +97,7 @@ class _IAMMemberState:
         :param pulumi.Input['IAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the organization's IAM policy.
-        :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-               Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] org_id: The organization id of the target organization.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
                `organizations/{{org_id}}/roles/{{role_id}}`.
@@ -157,9 +151,7 @@ class _IAMMemberState:
     @pulumi.getter(name="orgId")
     def org_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-        Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-        will not be inferred from the provider.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 
@@ -227,7 +219,7 @@ class IAMMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         organization = gcp.organizations.IAMPolicy("organization",
-            org_id="your-organization-id",
+            org_id="1234567890",
             policy_data=admin.policy_data)
         ```
 
@@ -247,7 +239,7 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
         )])
         organization = gcp.organizations.IAMPolicy("organization",
-            org_id="your-organization-id",
+            org_id="1234567890",
             policy_data=admin.policy_data)
         ```
 
@@ -261,7 +253,7 @@ class IAMMember(pulumi.CustomResource):
 
         organization = gcp.organizations.IAMBinding("organization",
             members=["user:jane@example.com"],
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -278,7 +270,7 @@ class IAMMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
             ),
             members=["user:jane@example.com"],
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -290,7 +282,7 @@ class IAMMember(pulumi.CustomResource):
 
         organization = gcp.organizations.IAMMember("organization",
             member="user:jane@example.com",
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -307,7 +299,7 @@ class IAMMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
             ),
             member="user:jane@example.com",
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -327,7 +319,7 @@ class IAMMember(pulumi.CustomResource):
                     log_type="DATA_READ",
                 ),
             ],
-            org_id="your-organization-id",
+            org_id="1234567890",
             service="allServices")
         ```
 
@@ -375,9 +367,7 @@ class IAMMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
-        :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-               Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] org_id: The organization id of the target organization.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
                `organizations/{{org_id}}/roles/{{role_id}}`.
@@ -423,7 +413,7 @@ class IAMMember(pulumi.CustomResource):
             members=["user:jane@example.com"],
         )])
         organization = gcp.organizations.IAMPolicy("organization",
-            org_id="your-organization-id",
+            org_id="1234567890",
             policy_data=admin.policy_data)
         ```
 
@@ -443,7 +433,7 @@ class IAMMember(pulumi.CustomResource):
             role="roles/editor",
         )])
         organization = gcp.organizations.IAMPolicy("organization",
-            org_id="your-organization-id",
+            org_id="1234567890",
             policy_data=admin.policy_data)
         ```
 
@@ -457,7 +447,7 @@ class IAMMember(pulumi.CustomResource):
 
         organization = gcp.organizations.IAMBinding("organization",
             members=["user:jane@example.com"],
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -474,7 +464,7 @@ class IAMMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
             ),
             members=["user:jane@example.com"],
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -486,7 +476,7 @@ class IAMMember(pulumi.CustomResource):
 
         organization = gcp.organizations.IAMMember("organization",
             member="user:jane@example.com",
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -503,7 +493,7 @@ class IAMMember(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
             ),
             member="user:jane@example.com",
-            org_id="your-organization-id",
+            org_id="1234567890",
             role="roles/editor")
         ```
 
@@ -523,7 +513,7 @@ class IAMMember(pulumi.CustomResource):
                     log_type="DATA_READ",
                 ),
             ],
-            org_id="your-organization-id",
+            org_id="1234567890",
             service="allServices")
         ```
 
@@ -631,9 +621,7 @@ class IAMMember(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['IAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the organization's IAM policy.
-        :param pulumi.Input[str] org_id: The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-               Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-               will not be inferred from the provider.
+        :param pulumi.Input[str] org_id: The organization id of the target organization.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
                `organizations/{{org_id}}/roles/{{role_id}}`.
@@ -675,9 +663,7 @@ class IAMMember(pulumi.CustomResource):
     @pulumi.getter(name="orgId")
     def org_id(self) -> pulumi.Output[str]:
         """
-        The organization ID. If not specified for `organizations.IAMBinding`, `organizations.IAMMember`, or `organizations.IamAuditConfig`, uses the ID of the organization configured with the provider.
-        Required for `organizations.IAMPolicy` - you must explicitly set the organization, and it
-        will not be inferred from the provider.
+        The organization id of the target organization.
         """
         return pulumi.get(self, "org_id")
 

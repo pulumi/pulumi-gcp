@@ -23,7 +23,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
      * interval time will reduce the amount of generated flow logs for long
      * lasting connections. Default is an interval of 5 seconds per connection.
      * Default value is `INTERVAL_5_SEC`.
-     * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+     * Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
      * 
      */
     @Import(name="aggregationInterval")
@@ -35,7 +35,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
      * interval time will reduce the amount of generated flow logs for long
      * lasting connections. Default is an interval of 5 seconds per connection.
      * Default value is `INTERVAL_5_SEC`.
-     * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+     * Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
      * 
      */
     public Optional<Output<String>> aggregationInterval() {
@@ -89,7 +89,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
      * Configures whether metadata fields should be added to the reported VPC
      * flow logs.
      * Default value is `INCLUDE_ALL_METADATA`.
-     * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
      * 
      */
     @Import(name="metadata")
@@ -100,7 +100,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
      * Configures whether metadata fields should be added to the reported VPC
      * flow logs.
      * Default value is `INCLUDE_ALL_METADATA`.
-     * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+     * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
      * 
      */
     public Optional<Output<String>> metadata() {
@@ -158,7 +158,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
          * interval time will reduce the amount of generated flow logs for long
          * lasting connections. Default is an interval of 5 seconds per connection.
          * Default value is `INTERVAL_5_SEC`.
-         * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+         * Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
          * interval time will reduce the amount of generated flow logs for long
          * lasting connections. Default is an interval of 5 seconds per connection.
          * Default value is `INTERVAL_5_SEC`.
-         * Possible values are `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, and `INTERVAL_15_MIN`.
+         * Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
          * Configures whether metadata fields should be added to the reported VPC
          * flow logs.
          * Default value is `INCLUDE_ALL_METADATA`.
-         * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+         * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class SubnetworkLogConfigArgs extends com.pulumi.resources.Resource
          * Configures whether metadata fields should be added to the reported VPC
          * flow logs.
          * Default value is `INCLUDE_ALL_METADATA`.
-         * Possible values are `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, and `CUSTOM_METADATA`.
+         * Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
          * 
          * @return builder
          * 

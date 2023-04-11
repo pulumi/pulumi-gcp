@@ -24,7 +24,7 @@ class HmacKeyArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
-               Possible values are `ACTIVE` and `INACTIVE`.
+               Possible values are: `ACTIVE`, `INACTIVE`.
         """
         pulumi.set(__self__, "service_account_email", service_account_email)
         if project is not None:
@@ -63,7 +63,7 @@ class HmacKeyArgs:
         """
         The state of the key. Can be set to one of ACTIVE, INACTIVE.
         Default value is `ACTIVE`.
-        Possible values are `ACTIVE` and `INACTIVE`.
+        Possible values are: `ACTIVE`, `INACTIVE`.
         """
         return pulumi.get(self, "state")
 
@@ -92,7 +92,7 @@ class _HmacKeyState:
         :param pulumi.Input[str] service_account_email: The email address of the key's associated service account.
         :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
-               Possible values are `ACTIVE` and `INACTIVE`.
+               Possible values are: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] time_created: 'The creation time of the HMAC key in RFC 3339 format. '
         :param pulumi.Input[str] updated: 'The last modification time of the HMAC key metadata in RFC 3339 format.'
         """
@@ -167,7 +167,7 @@ class _HmacKeyState:
         """
         The state of the key. Can be set to one of ACTIVE, INACTIVE.
         Default value is `ACTIVE`.
-        Possible values are `ACTIVE` and `INACTIVE`.
+        Possible values are: `ACTIVE`, `INACTIVE`.
         """
         return pulumi.get(self, "state")
 
@@ -262,7 +262,7 @@ class HmacKey(pulumi.CustomResource):
         :param pulumi.Input[str] service_account_email: The email address of the key's associated service account.
         :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
-               Possible values are `ACTIVE` and `INACTIVE`.
+               Possible values are: `ACTIVE`, `INACTIVE`.
         """
         ...
     @overload
@@ -386,7 +386,7 @@ class HmacKey(pulumi.CustomResource):
         :param pulumi.Input[str] service_account_email: The email address of the key's associated service account.
         :param pulumi.Input[str] state: The state of the key. Can be set to one of ACTIVE, INACTIVE.
                Default value is `ACTIVE`.
-               Possible values are `ACTIVE` and `INACTIVE`.
+               Possible values are: `ACTIVE`, `INACTIVE`.
         :param pulumi.Input[str] time_created: 'The creation time of the HMAC key in RFC 3339 format. '
         :param pulumi.Input[str] updated: 'The last modification time of the HMAC key metadata in RFC 3339 format.'
         """
@@ -443,7 +443,7 @@ class HmacKey(pulumi.CustomResource):
         """
         The state of the key. Can be set to one of ACTIVE, INACTIVE.
         Default value is `ACTIVE`.
-        Possible values are `ACTIVE` and `INACTIVE`.
+        Possible values are: `ACTIVE`, `INACTIVE`.
         """
         return pulumi.get(self, "state")
 

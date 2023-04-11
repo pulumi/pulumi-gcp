@@ -14,7 +14,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `DOCKER_HUB`.
-     * Possible values are `DOCKER_HUB`.
+     * Possible values are: `DOCKER_HUB`.
      * 
      */
     private @Nullable String publicRepository;
@@ -23,7 +23,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
     /**
      * @return Address of the remote repository.
      * Default value is `DOCKER_HUB`.
-     * Possible values are `DOCKER_HUB`.
+     * Possible values are: `DOCKER_HUB`.
      * 
      */
     public Optional<String> publicRepository() {

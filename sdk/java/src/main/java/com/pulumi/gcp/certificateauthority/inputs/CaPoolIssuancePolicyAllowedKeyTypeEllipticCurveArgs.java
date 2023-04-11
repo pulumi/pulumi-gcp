@@ -15,7 +15,7 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs extends c
 
     /**
      * The algorithm used.
-     * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+     * Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
      * 
      */
     @Import(name="signatureAlgorithm", required=true)
@@ -23,7 +23,7 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs extends c
 
     /**
      * @return The algorithm used.
-     * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+     * Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
      * 
      */
     public Output<String> signatureAlgorithm() {
@@ -56,7 +56,7 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs extends c
 
         /**
          * @param signatureAlgorithm The algorithm used.
-         * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+         * Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
          * 
          * @return builder
          * 
@@ -68,7 +68,7 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs extends c
 
         /**
          * @param signatureAlgorithm The algorithm used.
-         * Possible values are `ECDSA_P256`, `ECDSA_P384`, and `EDDSA_25519`.
+         * Possible values are: `ECDSA_P256`, `ECDSA_P384`, `EDDSA_25519`.
          * 
          * @return builder
          * 

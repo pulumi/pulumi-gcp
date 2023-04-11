@@ -647,7 +647,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
         :param pulumi.Input[str] disk_type: Type of the disk to use.
         :param pulumi.Input[str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
         :param pulumi.Input[str] reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-               Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+               Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
         :param pulumi.Input[int] size_gb: Size of the disk in GB. Must be empty if sourceSnapshot is set.
         """
         if disk_type is not None:
@@ -688,7 +688,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     def reclaim_policy(self) -> Optional[pulumi.Input[str]]:
         """
         What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-        Possible values are `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, and `RETAIN`.
+        Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
         """
         return pulumi.get(self, "reclaim_policy")
 
