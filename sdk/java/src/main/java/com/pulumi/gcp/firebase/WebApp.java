@@ -25,6 +25,101 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://firebase.google.com/)
  * 
  * ## Example Usage
+ * ### Firebase Web App Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.firebase.Project;
+ * import com.pulumi.gcp.firebase.ProjectArgs;
+ * import com.pulumi.gcp.firebase.WebApp;
+ * import com.pulumi.gcp.firebase.WebAppArgs;
+ * import com.pulumi.gcp.firebase.FirebaseFunctions;
+ * import com.pulumi.gcp.firebase.inputs.GetWebAppConfigArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;tf-test&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultFirebase_projectProject = new Project(&#34;defaultFirebase/projectProject&#34;, ProjectArgs.builder()        
+ *             .project(defaultProject.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var basicWebApp = new WebApp(&#34;basicWebApp&#34;, WebAppArgs.builder()        
+ *             .project(defaultProject.projectId())
+ *             .displayName(&#34;Display Name Basic&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(defaultFirebase / projectProject)
+ *                 .build());
+ * 
+ *         final var basicWebAppConfig = FirebaseFunctions.getWebAppConfig(GetWebAppConfigArgs.builder()
+ *             .webAppId(basicWebApp.appId())
+ *             .build());
+ * 
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .bucket(defaultBucket.name())
+ *             .content(Output.tuple(basicWebApp.appId(), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult), basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;database_url&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;storage_bucket&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;messaging_sender_id&#34;], basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult)[&#34;measurement_id&#34;]).applyValue(values -&gt; {
+ *                 var appId = values.t1;
+ *                 var basicWebAppConfig = values.t2;
+ *                 var basicWebAppConfig1 = values.t3;
+ *                 var s = values.t4;
+ *                 var s1 = values.t5;
+ *                 var s2 = values.t6;
+ *                 var s3 = values.t7;
+ *                 return serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty(&#34;appId&#34;, appId),
+ *                         jsonProperty(&#34;apiKey&#34;, basicWebAppConfig.applyValue(getWebAppConfigResult -&gt; getWebAppConfigResult.apiKey())),
+ *                         jsonProperty(&#34;authDomain&#34;, basicWebAppConfig1.authDomain()),
+ *                         jsonProperty(&#34;databaseURL&#34;, s),
+ *                         jsonProperty(&#34;storageBucket&#34;, s1),
+ *                         jsonProperty(&#34;messagingSenderId&#34;, s2),
+ *                         jsonProperty(&#34;measurementId&#34;, s3)
+ *                     ));
+ *             }))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

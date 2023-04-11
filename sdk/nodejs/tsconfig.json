@@ -556,6 +556,7 @@
         "firebase/getAppleAppConfig.ts",
         "firebase/getHostingChannel.ts",
         "firebase/getWebApp.ts",
+        "firebase/getWebAppConfig.ts",
         "firebase/hostingChannel.ts",
         "firebase/hostingRelease.ts",
         "firebase/hostingSite.ts",
