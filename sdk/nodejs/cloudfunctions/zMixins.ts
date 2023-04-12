@@ -16,6 +16,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as express from "express";
 import * as cloudfunctions from ".";
 import * as storage from "../storage";
+import * as inputs from "../types/input";
 
 import * as filepath from "path";
 
@@ -353,6 +354,10 @@ export interface CallbackFunctionArgs {
      * Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Secret environment variables configuration. Structure is documented below.
+     */
+    secretEnvironmentVariables?: pulumi.Input<pulumi.Input<inputs.cloudfunctions.FunctionSecretEnvironmentVariable>[]>;
     /**
      * If provided, the self-provided service account to run the function with.
      */
