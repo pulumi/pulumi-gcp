@@ -11,11 +11,13 @@ import (
 	"unicode"
 
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
+	"github.com/pulumi/pulumi/sdk/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -128,6 +130,107 @@ const (
 	gcpWorkflows            = "Workflows"            // Workflows
 	gcpWorkstations         = "Workstations"         // Workstations
 )
+
+var moduleMapping = map[string]string{
+	"access_approval":                 gcpAccessApproval,
+	"access_context_manager":          gcpAccessContextManager,
+	"active_directory":                gcpActiveDirectory,
+	"alloydb":                         gcpAlloydb,
+	"api_gateway":                     gcpApiGateway,
+	"apigee":                          gcpApigee,
+	"app_engine":                      gcpAppEngine,
+	"artifact_registry":               gcpArtifactRegistry,
+	"assured_workloads":               gcpAssuredWorkloads,
+	"beyondcorp":                      gcpBeyondcorp,
+	"bigquery_analytics_hub":          gcpBigQueryAnalyticsHub,
+	"bigquery_datapolicy_data_policy": gcpBigQueryDataPolicy,
+	"bigquery":                        gcpBigQuery,
+	"bigtable":                        gcpBigTable,
+	"billing":                         gcpBilling,
+	"binary_authorization":            gcpBinaryAuthorization,
+	"privateca":                       gcpCertificateAuthority,
+	"certificate_manager":             gcpCertificateManager,
+	"cloud_asset":                     gcpCloudAsset,
+	"cloudbuild":                      gcpCloudBuild,
+	"cloudbuildv2":                    gcpCloudBuildV2,
+	"clouddeploy":                     gcpCloudDeploy,
+	"cloudfunctions":                  gcpCloudFunctions,
+	"cloudfunctions2":                 gcpCloudFunctionsV2,
+	"cloud_ids":                       gcpCloudIds,
+	"cloud_identity":                  gcpCloudIdentity,
+	"cloud_run":                       gcpCloudRun,
+	"cloud_run_v2":                    gcpCloudRunV2,
+	"cloud_scheduler":                 gcpCloudScheduler,
+	"cloud_tasks":                     gcpCloudTasks,
+	"composer":                        gcpComposer,
+	"compute":                         gcpCompute,
+	"container_analysis":              gcpContainerAnalysis,
+	"dataform":                        gcpDataform,
+	"dns":                             gcpDNS,
+	"data_catalog":                    gcpDataCatalog,
+	"dataflow":                        gcpDataFlow,
+	"data_fusion":                     gcpDataFusion,
+	"data_loss":                       gcpDataLoss,
+	"dataplex":                        gcpDataPlex,
+	"dataproc":                        gcpDataProc,
+	"datastore":                       gcpDatastore,
+	"datastream":                      gcpDatastream,
+	"deployment_manager":              gcpDeploymentManager,
+	"dialogflow":                      gcpDiagflow,
+	"endpoints":                       gcpEndPoints,
+	"essential_contacts":              gcpEssentialContacts,
+	"eventarc":                        gcpEventarc,
+	"filestore":                       gcpFilestore,
+	"firebase":                        gcpFirebase,
+	"firebaserules":                   gcpFirebaserules,
+	"firestore":                       gcpFirestore,
+	"folder":                          gcpFolder,
+	"game_services":                   gcpGameServices,
+	"gke_backup":                      gcpGkeBackup,
+	"gke_hub":                         gcpGkeHub,
+	"healthcare":                      gcpHealthcare,
+	"iam":                             gcpIAM,
+	"iap":                             gcpIAP,
+	"identity_platform":               gcpIdentityPlatform,
+	"cloudiot":                        gcpIot,
+	"kms":                             gcpKMS,
+	"container":                       gcpKubernetes,
+	"logging":                         gcpLogging,
+	"ml":                              gcpMachingLearning,
+	"memcache":                        gcpMemcache,
+	"monitoring":                      gcpMonitoring,
+	"network_connectivity":            gcpNetworkConnectivity,
+	"network_management":              gcpNetworkManagement,
+	"network_security":                gcpNetworkSecurity,
+	"network_services":                gcpNetworkServices,
+	"notebooks":                       gcpNotebooks,
+	"organization":                    gcpOrganization,
+	"org_policy":                      gcpOrgPolicy,
+	"os_config":                       gcpOsConfig,
+	"os_login":                        gcpOsLogin,
+	"project":                         gcpProject,
+	"pubsub":                          gcpPubSub,
+	"recaptcha":                       gcpRecaptcha,
+	"redis":                           gcpRedis,
+	"resource_manager":                gcpResourceManager,
+	"runtimeconfig":                   gcpRuntimeConfig,
+	"secret_manager":                  gcpSecretManager,
+	"service_directory":               gcpServiceDirectory,
+	"service_networking":              gcpServiceNetworking,
+	"scc":                             gcpSecurityCenter,
+	"sql":                             gcpSQL,
+	"service_account":                 gcpServiceAccount,
+	"service_usage":                   gcpServiceUsage,
+	"sourcerepo":                      gcpSourceRepo,
+	"spanner":                         gcpSpanner,
+	"storage":                         gcpStorage,
+	"tags":                            gcpTags,
+	"tpu":                             gcpTPU,
+	"vertex":                          gcpVertex,
+	"vpc_access":                      gcpVpcAccess,
+	"workflows":                       gcpWorkflows,
+	"workstations":                    gcpWorkstations,
+}
 
 var namespaceMap = map[string]string{
 	"gcp": "Gcp",
@@ -3682,6 +3785,9 @@ func Provider() tfbridge.ProviderInfo {
 			Source: "cloudiot_registry.html.markdown",
 		},
 	})
+
+	err := x.ComputeDefaults(&prov, x.TokensMappedModules("gcp_", "", moduleMapping, x.MakeStandardToken("gcp")))
+	contract.AssertNoErrorf(err, "Failed to map all tokens")
 
 	prov.SetAutonaming(255, "-")
 
