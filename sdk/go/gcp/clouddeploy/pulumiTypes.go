@@ -13,6 +13,7 @@ import (
 type DeliveryPipelineCondition struct {
 	PipelineReadyConditions  []DeliveryPipelineConditionPipelineReadyCondition  `pulumi:"pipelineReadyConditions"`
 	TargetsPresentConditions []DeliveryPipelineConditionTargetsPresentCondition `pulumi:"targetsPresentConditions"`
+	TargetsTypeConditions    []DeliveryPipelineConditionTargetsTypeCondition    `pulumi:"targetsTypeConditions"`
 }
 
 // DeliveryPipelineConditionInput is an input type that accepts DeliveryPipelineConditionArgs and DeliveryPipelineConditionOutput values.
@@ -29,6 +30,7 @@ type DeliveryPipelineConditionInput interface {
 type DeliveryPipelineConditionArgs struct {
 	PipelineReadyConditions  DeliveryPipelineConditionPipelineReadyConditionArrayInput  `pulumi:"pipelineReadyConditions"`
 	TargetsPresentConditions DeliveryPipelineConditionTargetsPresentConditionArrayInput `pulumi:"targetsPresentConditions"`
+	TargetsTypeConditions    DeliveryPipelineConditionTargetsTypeConditionArrayInput    `pulumi:"targetsTypeConditions"`
 }
 
 func (DeliveryPipelineConditionArgs) ElementType() reflect.Type {
@@ -92,6 +94,12 @@ func (o DeliveryPipelineConditionOutput) TargetsPresentConditions() DeliveryPipe
 	return o.ApplyT(func(v DeliveryPipelineCondition) []DeliveryPipelineConditionTargetsPresentCondition {
 		return v.TargetsPresentConditions
 	}).(DeliveryPipelineConditionTargetsPresentConditionArrayOutput)
+}
+
+func (o DeliveryPipelineConditionOutput) TargetsTypeConditions() DeliveryPipelineConditionTargetsTypeConditionArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineCondition) []DeliveryPipelineConditionTargetsTypeCondition {
+		return v.TargetsTypeConditions
+	}).(DeliveryPipelineConditionTargetsTypeConditionArrayOutput)
 }
 
 type DeliveryPipelineConditionArrayOutput struct{ *pulumi.OutputState }
@@ -326,6 +334,106 @@ func (o DeliveryPipelineConditionTargetsPresentConditionArrayOutput) Index(i pul
 	}).(DeliveryPipelineConditionTargetsPresentConditionOutput)
 }
 
+type DeliveryPipelineConditionTargetsTypeCondition struct {
+	ErrorDetails *string `pulumi:"errorDetails"`
+	Status       *bool   `pulumi:"status"`
+}
+
+// DeliveryPipelineConditionTargetsTypeConditionInput is an input type that accepts DeliveryPipelineConditionTargetsTypeConditionArgs and DeliveryPipelineConditionTargetsTypeConditionOutput values.
+// You can construct a concrete instance of `DeliveryPipelineConditionTargetsTypeConditionInput` via:
+//
+//	DeliveryPipelineConditionTargetsTypeConditionArgs{...}
+type DeliveryPipelineConditionTargetsTypeConditionInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineConditionTargetsTypeConditionOutput() DeliveryPipelineConditionTargetsTypeConditionOutput
+	ToDeliveryPipelineConditionTargetsTypeConditionOutputWithContext(context.Context) DeliveryPipelineConditionTargetsTypeConditionOutput
+}
+
+type DeliveryPipelineConditionTargetsTypeConditionArgs struct {
+	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
+	Status       pulumi.BoolPtrInput   `pulumi:"status"`
+}
+
+func (DeliveryPipelineConditionTargetsTypeConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineConditionTargetsTypeCondition)(nil)).Elem()
+}
+
+func (i DeliveryPipelineConditionTargetsTypeConditionArgs) ToDeliveryPipelineConditionTargetsTypeConditionOutput() DeliveryPipelineConditionTargetsTypeConditionOutput {
+	return i.ToDeliveryPipelineConditionTargetsTypeConditionOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineConditionTargetsTypeConditionArgs) ToDeliveryPipelineConditionTargetsTypeConditionOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsTypeConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionTargetsTypeConditionOutput)
+}
+
+// DeliveryPipelineConditionTargetsTypeConditionArrayInput is an input type that accepts DeliveryPipelineConditionTargetsTypeConditionArray and DeliveryPipelineConditionTargetsTypeConditionArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineConditionTargetsTypeConditionArrayInput` via:
+//
+//	DeliveryPipelineConditionTargetsTypeConditionArray{ DeliveryPipelineConditionTargetsTypeConditionArgs{...} }
+type DeliveryPipelineConditionTargetsTypeConditionArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineConditionTargetsTypeConditionArrayOutput() DeliveryPipelineConditionTargetsTypeConditionArrayOutput
+	ToDeliveryPipelineConditionTargetsTypeConditionArrayOutputWithContext(context.Context) DeliveryPipelineConditionTargetsTypeConditionArrayOutput
+}
+
+type DeliveryPipelineConditionTargetsTypeConditionArray []DeliveryPipelineConditionTargetsTypeConditionInput
+
+func (DeliveryPipelineConditionTargetsTypeConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineConditionTargetsTypeCondition)(nil)).Elem()
+}
+
+func (i DeliveryPipelineConditionTargetsTypeConditionArray) ToDeliveryPipelineConditionTargetsTypeConditionArrayOutput() DeliveryPipelineConditionTargetsTypeConditionArrayOutput {
+	return i.ToDeliveryPipelineConditionTargetsTypeConditionArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineConditionTargetsTypeConditionArray) ToDeliveryPipelineConditionTargetsTypeConditionArrayOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsTypeConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineConditionTargetsTypeConditionArrayOutput)
+}
+
+type DeliveryPipelineConditionTargetsTypeConditionOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineConditionTargetsTypeConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineConditionTargetsTypeCondition)(nil)).Elem()
+}
+
+func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ToDeliveryPipelineConditionTargetsTypeConditionOutput() DeliveryPipelineConditionTargetsTypeConditionOutput {
+	return o
+}
+
+func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ToDeliveryPipelineConditionTargetsTypeConditionOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsTypeConditionOutput {
+	return o
+}
+
+func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ErrorDetails() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineConditionTargetsTypeCondition) *string { return v.ErrorDetails }).(pulumi.StringPtrOutput)
+}
+
+func (o DeliveryPipelineConditionTargetsTypeConditionOutput) Status() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineConditionTargetsTypeCondition) *bool { return v.Status }).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineConditionTargetsTypeConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineConditionTargetsTypeConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineConditionTargetsTypeCondition)(nil)).Elem()
+}
+
+func (o DeliveryPipelineConditionTargetsTypeConditionArrayOutput) ToDeliveryPipelineConditionTargetsTypeConditionArrayOutput() DeliveryPipelineConditionTargetsTypeConditionArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineConditionTargetsTypeConditionArrayOutput) ToDeliveryPipelineConditionTargetsTypeConditionArrayOutputWithContext(ctx context.Context) DeliveryPipelineConditionTargetsTypeConditionArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineConditionTargetsTypeConditionArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineConditionTargetsTypeConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineConditionTargetsTypeCondition {
+		return vs[0].([]DeliveryPipelineConditionTargetsTypeCondition)[vs[1].(int)]
+	}).(DeliveryPipelineConditionTargetsTypeConditionOutput)
+}
+
 type DeliveryPipelineSerialPipeline struct {
 	// Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
 	Stages []DeliveryPipelineSerialPipelineStage `pulumi:"stages"`
@@ -466,7 +574,7 @@ func (o DeliveryPipelineSerialPipelinePtrOutput) Stages() DeliveryPipelineSerial
 type DeliveryPipelineSerialPipelineStage struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
-	// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+	// Optional. The strategy to use for a `Rollout` to this stage.
 	Strategy *DeliveryPipelineSerialPipelineStageStrategy `pulumi:"strategy"`
 	// The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId *string `pulumi:"targetId"`
@@ -486,7 +594,7 @@ type DeliveryPipelineSerialPipelineStageInput interface {
 type DeliveryPipelineSerialPipelineStageArgs struct {
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
-	// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+	// Optional. The strategy to use for a `Rollout` to this stage.
 	Strategy DeliveryPipelineSerialPipelineStageStrategyPtrInput `pulumi:"strategy"`
 	// The targetId to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
@@ -548,7 +656,7 @@ func (o DeliveryPipelineSerialPipelineStageOutput) Profiles() pulumi.StringArray
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStage) []string { return v.Profiles }).(pulumi.StringArrayOutput)
 }
 
-// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+// Optional. The strategy to use for a `Rollout` to this stage.
 func (o DeliveryPipelineSerialPipelineStageOutput) Strategy() DeliveryPipelineSerialPipelineStageStrategyPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStage) *DeliveryPipelineSerialPipelineStageStrategy {
 		return v.Strategy
@@ -581,6 +689,8 @@ func (o DeliveryPipelineSerialPipelineStageArrayOutput) Index(i pulumi.IntInput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategy struct {
+	// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+	Canary *DeliveryPipelineSerialPipelineStageStrategyCanary `pulumi:"canary"`
 	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
 	Standard *DeliveryPipelineSerialPipelineStageStrategyStandard `pulumi:"standard"`
 }
@@ -597,6 +707,8 @@ type DeliveryPipelineSerialPipelineStageStrategyInput interface {
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyArgs struct {
+	// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+	Canary DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput `pulumi:"canary"`
 	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
 	Standard DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput `pulumi:"standard"`
 }
@@ -678,6 +790,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToDeliveryPipelineSer
 	}).(DeliveryPipelineSerialPipelineStageStrategyPtrOutput)
 }
 
+// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+func (o DeliveryPipelineSerialPipelineStageStrategyOutput) Canary() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyCanary {
+		return v.Canary
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput)
+}
+
 // Standard deployment strategy executes a single deploy and allows verifying the deployment.
 func (o DeliveryPipelineSerialPipelineStageStrategyOutput) Standard() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyStandard {
@@ -709,6 +828,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Elem() DeliveryPip
 	}).(DeliveryPipelineSerialPipelineStageStrategyOutput)
 }
 
+// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Canary() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyCanary {
+		if v == nil {
+			return nil
+		}
+		return v.Canary
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput)
+}
+
 // Standard deployment strategy executes a single deploy and allows verifying the deployment.
 func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Standard() DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyStandard {
@@ -717,6 +846,1414 @@ func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Standard() Deliver
 		}
 		return v.Standard
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanary struct {
+	// Configures the progressive based deployment for a Target.
+	CanaryDeployment *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment `pulumi:"canaryDeployment"`
+	// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+	CustomCanaryDeployment *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment `pulumi:"customCanaryDeployment"`
+	// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+	RuntimeConfig *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig `pulumi:"runtimeConfig"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryArgs struct {
+	// Configures the progressive based deployment for a Target.
+	CanaryDeployment DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput `pulumi:"canaryDeployment"`
+	// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+	CustomCanaryDeployment DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput `pulumi:"customCanaryDeployment"`
+	// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+	RuntimeConfig DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput `pulumi:"runtimeConfig"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanary)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanary)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanary)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanary {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput)
+}
+
+// Configures the progressive based deployment for a Target.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) CanaryDeployment() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
+		return v.CanaryDeployment
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput)
+}
+
+// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) CustomCanaryDeployment() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
+		return v.CustomCanaryDeployment
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput)
+}
+
+// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryOutput) RuntimeConfig() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
+		return v.RuntimeConfig
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanary)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanary) DeliveryPipelineSerialPipelineStageStrategyCanary {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanary
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryOutput)
+}
+
+// Configures the progressive based deployment for a Target.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) CanaryDeployment() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
+		if v == nil {
+			return nil
+		}
+		return v.CanaryDeployment
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput)
+}
+
+// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) CustomCanaryDeployment() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
+		if v == nil {
+			return nil
+		}
+		return v.CustomCanaryDeployment
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput)
+}
+
+// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) RuntimeConfig() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanary) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeConfig
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment struct {
+	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+	Percentages []int `pulumi:"percentages"`
+	// Whether to run verify tests after each percentage deployment.
+	Verify *bool `pulumi:"verify"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs struct {
+	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+	Percentages pulumi.IntArrayInput `pulumi:"percentages"`
+	// Whether to run verify tests after each percentage deployment.
+	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput)
+}
+
+// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Percentages() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) []int { return v.Percentages }).(pulumi.IntArrayOutput)
+}
+
+// Whether to run verify tests after each percentage deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
+}
+
+// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Percentages() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentages
+	}).(pulumi.IntArrayOutput)
+}
+
+// Whether to run verify tests after each percentage deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Verify
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment struct {
+	// Required. Configuration for each phase in the canary deployment in the order executed.
+	PhaseConfigs []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig `pulumi:"phaseConfigs"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs struct {
+	// Required. Configuration for each phase in the canary deployment in the order executed.
+	PhaseConfigs DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput `pulumi:"phaseConfigs"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput)
+}
+
+// Required. Configuration for each phase in the canary deployment in the order executed.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput) PhaseConfigs() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
+		return v.PhaseConfigs
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput)
+}
+
+// Required. Configuration for each phase in the canary deployment in the order executed.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput) PhaseConfigs() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment) []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PhaseConfigs
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig struct {
+	// Required. Percentage deployment for the phase.
+	Percentage int `pulumi:"percentage"`
+	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	PhaseId string `pulumi:"phaseId"`
+	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+	Profiles []string `pulumi:"profiles"`
+	// Whether to run verify tests after the deployment.
+	Verify *bool `pulumi:"verify"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs struct {
+	// Required. Percentage deployment for the phase.
+	Percentage pulumi.IntInput `pulumi:"percentage"`
+	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	PhaseId pulumi.StringInput `pulumi:"phaseId"`
+	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
+	// Whether to run verify tests after the deployment.
+	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray{ DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs{...} }
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray []DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput {
+	return o
+}
+
+// Required. Percentage deployment for the phase.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Percentage() pulumi.IntOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) int {
+		return v.Percentage
+	}).(pulumi.IntOutput)
+}
+
+// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) PhaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) string {
+		return v.PhaseId
+	}).(pulumi.StringOutput)
+}
+
+// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Profiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) []string {
+		return v.Profiles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to run verify tests after the deployment.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *bool {
+		return v.Verify
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig struct {
+	// Cloud Run runtime configuration.
+	CloudRun *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun `pulumi:"cloudRun"`
+	// Kubernetes runtime configuration.
+	Kubernetes *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes `pulumi:"kubernetes"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs struct {
+	// Cloud Run runtime configuration.
+	CloudRun DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrInput `pulumi:"cloudRun"`
+	// Kubernetes runtime configuration.
+	Kubernetes DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrInput `pulumi:"kubernetes"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
+}
+
+// Cloud Run runtime configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) CloudRun() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
+		return v.CloudRun
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput)
+}
+
+// Kubernetes runtime configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput) Kubernetes() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
+		return v.Kubernetes
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput)
+}
+
+// Cloud Run runtime configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) CloudRun() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRun
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput)
+}
+
+// Kubernetes runtime configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput) Kubernetes() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
+		if v == nil {
+			return nil
+		}
+		return v.Kubernetes
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun struct {
+	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+	AutomaticTrafficControl *bool `pulumi:"automaticTrafficControl"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs struct {
+	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+	AutomaticTrafficControl pulumi.BoolPtrInput `pulumi:"automaticTrafficControl"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput)
+}
+
+// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) *bool {
+		return v.AutomaticTrafficControl
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput)
+}
+
+// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticTrafficControl
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes struct {
+	// Kubernetes Gateway API service mesh configuration.
+	GatewayServiceMesh *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh `pulumi:"gatewayServiceMesh"`
+	// Kubernetes Service networking configuration.
+	ServiceNetworking *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking `pulumi:"serviceNetworking"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs struct {
+	// Kubernetes Gateway API service mesh configuration.
+	GatewayServiceMesh DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrInput `pulumi:"gatewayServiceMesh"`
+	// Kubernetes Service networking configuration.
+	ServiceNetworking DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput `pulumi:"serviceNetworking"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput)
+}
+
+// Kubernetes Gateway API service mesh configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) GatewayServiceMesh() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh {
+		return v.GatewayServiceMesh
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput)
+}
+
+// Kubernetes Service networking configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput) ServiceNetworking() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
+		return v.ServiceNetworking
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput)
+}
+
+// Kubernetes Gateway API service mesh configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) GatewayServiceMesh() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayServiceMesh
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput)
+}
+
+// Kubernetes Service networking configuration.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput) ServiceNetworking() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceNetworking
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh struct {
+	// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+	Deployment string `pulumi:"deployment"`
+	// Required. Name of the Gateway API HTTPRoute.
+	HttpRoute string `pulumi:"httpRoute"`
+	// Required. Name of the Kubernetes Service.
+	Service string `pulumi:"service"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs struct {
+	// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+	Deployment pulumi.StringInput `pulumi:"deployment"`
+	// Required. Name of the Gateway API HTTPRoute.
+	HttpRoute pulumi.StringInput `pulumi:"httpRoute"`
+	// Required. Name of the Kubernetes Service.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput)
+}
+
+// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) Deployment() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) string {
+		return v.Deployment
+	}).(pulumi.StringOutput)
+}
+
+// Required. Name of the Gateway API HTTPRoute.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) HttpRoute() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) string {
+		return v.HttpRoute
+	}).(pulumi.StringOutput)
+}
+
+// Required. Name of the Kubernetes Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) string {
+		return v.Service
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput)
+}
+
+// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) Deployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Deployment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the Gateway API HTTPRoute.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) HttpRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpRoute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the Kubernetes Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking struct {
+	// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+	Deployment string `pulumi:"deployment"`
+	// Required. Name of the Kubernetes Service.
+	Service string `pulumi:"service"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs struct {
+	// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+	Deployment pulumi.StringInput `pulumi:"deployment"`
+	// Required. Name of the Kubernetes Service.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput)
+}
+
+// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) Deployment() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) string {
+		return v.Deployment
+	}).(pulumi.StringOutput)
+}
+
+// Required. Name of the Kubernetes Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) string {
+		return v.Service
+	}).(pulumi.StringOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput)
+}
+
+// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) Deployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Deployment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the Kubernetes Service.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandard struct {
@@ -1563,12 +3100,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionPipelineReadyConditionArrayInput)(nil)).Elem(), DeliveryPipelineConditionPipelineReadyConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionTargetsPresentConditionInput)(nil)).Elem(), DeliveryPipelineConditionTargetsPresentConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionTargetsPresentConditionArrayInput)(nil)).Elem(), DeliveryPipelineConditionTargetsPresentConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionTargetsTypeConditionInput)(nil)).Elem(), DeliveryPipelineConditionTargetsTypeConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionTargetsTypeConditionArrayInput)(nil)).Elem(), DeliveryPipelineConditionTargetsTypeConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineInput)(nil)).Elem(), DeliveryPipelineSerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelinePtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterInput)(nil)).Elem(), TargetAnthosClusterArgs{})
@@ -1587,12 +3144,32 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineConditionPipelineReadyConditionArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionTargetsPresentConditionOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionTargetsPresentConditionArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineConditionTargetsTypeConditionOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineConditionTargetsTypeConditionArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelinePtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterOutput{})

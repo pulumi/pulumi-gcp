@@ -569,7 +569,7 @@ class Routine(pulumi.CustomResource):
         test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
         sproc = gcp.bigquery.Routine("sproc",
             dataset_id=test.dataset_id,
-            routine_id="tf_test_routine_id",
+            routine_id="routine_id",
             routine_type="SCALAR_FUNCTION",
             language="JAVASCRIPT",
             definition_body="CREATE FUNCTION multiplyInputs return x*y;",
@@ -595,7 +595,7 @@ class Routine(pulumi.CustomResource):
         test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
         sproc = gcp.bigquery.Routine("sproc",
             dataset_id=test.dataset_id,
-            routine_id="tf_test_routine_id",
+            routine_id="routine_id",
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",
@@ -704,7 +704,7 @@ class Routine(pulumi.CustomResource):
         test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
         sproc = gcp.bigquery.Routine("sproc",
             dataset_id=test.dataset_id,
-            routine_id="tf_test_routine_id",
+            routine_id="routine_id",
             routine_type="SCALAR_FUNCTION",
             language="JAVASCRIPT",
             definition_body="CREATE FUNCTION multiplyInputs return x*y;",
@@ -730,7 +730,7 @@ class Routine(pulumi.CustomResource):
         test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
         sproc = gcp.bigquery.Routine("sproc",
             dataset_id=test.dataset_id,
-            routine_id="tf_test_routine_id",
+            routine_id="routine_id",
             routine_type="TABLE_VALUED_FUNCTION",
             language="SQL",
             definition_body="SELECT 1 + value AS value\\n",

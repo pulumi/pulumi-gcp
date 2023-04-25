@@ -20,6 +20,29 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/identity-platform/docs)
  *
  * ## Example Usage
+ * ### Identity Platform Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultProject = new gcp.organizations.Project("defaultProject", {
+ *     projectId: "my-project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     labels: {
+ *         firebase: "enabled",
+ *     },
+ * });
+ * const identitytoolkit = new gcp.projects.Service("identitytoolkit", {
+ *     project: defaultProject.projectId,
+ *     service: "identitytoolkit.googleapis.com",
+ * });
+ * const defaultConfig = new gcp.identityplatform.Config("defaultConfig", {
+ *     project: defaultProject.projectId,
+ *     autodeleteAnonymousUsers: true,
+ * });
+ * ```
  *
  * ## Import
  *

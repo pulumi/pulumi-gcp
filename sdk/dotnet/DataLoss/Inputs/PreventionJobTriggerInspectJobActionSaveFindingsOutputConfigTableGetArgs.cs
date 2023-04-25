@@ -13,20 +13,21 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Dataset ID of the table.
+        /// The ID of the dataset containing this table.
         /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// The Google Cloud Platform project ID of the project containing the table.
+        /// The ID of the project containing this table.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Name of the table. If is not set a new one will be generated for you with the following format:
-        /// `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+        /// The ID of the table. The ID must contain only letters (a-z,
+        /// A-Z), numbers (0-9), or underscores (_). The maximum length
+        /// is 1,024 characters.
         /// </summary>
         [Input("tableId")]
         public Input<string>? TableId { get; set; }

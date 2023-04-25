@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -70,6 +71,23 @@ public final class PreventionJobTriggerInspectJobStorageConfigArgs extends com.p
     }
 
     /**
+     * Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="hybridOptions")
+    private @Nullable Output<PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs> hybridOptions;
+
+    /**
+     * @return Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs>> hybridOptions() {
+        return Optional.ofNullable(this.hybridOptions);
+    }
+
+    /**
      * Information on where to inspect
      * Structure is documented below.
      * 
@@ -92,6 +110,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigArgs extends com.p
         this.bigQueryOptions = $.bigQueryOptions;
         this.cloudStorageOptions = $.cloudStorageOptions;
         this.datastoreOptions = $.datastoreOptions;
+        this.hybridOptions = $.hybridOptions;
         this.timespanConfig = $.timespanConfig;
     }
 
@@ -180,6 +199,29 @@ public final class PreventionJobTriggerInspectJobStorageConfigArgs extends com.p
          */
         public Builder datastoreOptions(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs datastoreOptions) {
             return datastoreOptions(Output.of(datastoreOptions));
+        }
+
+        /**
+         * @param hybridOptions Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridOptions(@Nullable Output<PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs> hybridOptions) {
+            $.hybridOptions = hybridOptions;
+            return this;
+        }
+
+        /**
+         * @param hybridOptions Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridOptions(PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs hybridOptions) {
+            return hybridOptions(Output.of(hybridOptions));
         }
 
         /**

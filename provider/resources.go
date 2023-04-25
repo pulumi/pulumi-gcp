@@ -352,6 +352,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_access_context_manager_authorized_orgs_desc": {
 				Tok: gcpResource(gcpAccessContextManager, "AuthorizedOrgsDesc"),
 			},
+			"google_access_context_manager_ingress_policy": {
+				Tok: gcpResource(gcpAccessContextManager, "IngressPolicy"),
+			},
 
 			// Alloydb
 			"google_alloydb_backup":   {Tok: gcpResource(gcpAlloydb, "Backup")},
@@ -1258,6 +1261,10 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_region_backend_service_iam.html.markdown",
 				},
 			},
+			"google_compute_region_commitment":        {Tok: gcpResource(gcpCompute, "RegionCommitment")},
+			"google_compute_region_instance_template": {Tok: gcpResource(gcpCompute, "RegionInstanceTemplate")},
+			"google_compute_public_advertised_prefix": {Tok: gcpResource(gcpCompute, "PublicAdvertisedPrefix")},
+			"google_compute_public_delegated_prefix":  {Tok: gcpResource(gcpCompute, "PublicDelegatedPrefix")},
 
 			// Container Analysis resources
 			"google_container_analysis_note": {
@@ -1690,6 +1697,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_logging_organization_bucket_config":    {Tok: gcpResource(gcpLogging, "OrganizationBucketConfig")},
 			"google_logging_project_bucket_config":         {Tok: gcpResource(gcpLogging, "ProjectBucketConfig")},
 			"google_logging_log_view":                      {Tok: gcpResource(gcpLogging, "LogView")},
+			"google_logging_linked_dataset":                {Tok: gcpResource(gcpLogging, "LinkedDataset")},
 
 			// Storage resources
 			"google_storage_bucket": {
@@ -2512,6 +2520,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_network_services_edge_cache_service": {Tok: gcpResource(gcpNetworkServices, "EdgeCacheService")},
 			"google_network_services_gateway":            {Tok: gcpResource(gcpNetworkServices, "Gateway")},
 			"google_network_services_mesh":               {Tok: gcpResource(gcpNetworkServices, "Mesh")},
+			"google_network_services_http_route":         {Tok: gcpResource(gcpNetworkServices, "HttpRoute")},
+			"google_network_services_tcp_route":          {Tok: gcpResource(gcpNetworkServices, "TcpRoute")},
 
 			// Notebook
 			"google_notebooks_environment": {Tok: gcpResource(gcpNotebooks, "Environment")},
@@ -3174,6 +3184,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpCompute, "getRegionInstanceGroup"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_compute_region_instance_group.html.markdown",
+				},
+			},
+			"google_compute_region_instance_template": {
+				Tok: gcpDataSource(gcpCompute, "getRegionInstanceTemplate"),
+				Docs: &tfbridge.DocInfo{
+					Source: "datasource_compute_region_instance_template.html.markdown",
 				},
 			},
 			"google_compute_ha_vpn_gateway": {Tok: gcpDataSource(gcpCompute, "getHcVpnGateway")},

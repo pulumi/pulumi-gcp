@@ -204,6 +204,124 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Job Trigger Job Notification Emails
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var jobNotificationEmails = new Gcp.DataLoss.PreventionJobTrigger("jobNotificationEmails", new()
+    ///     {
+    ///         Description = "Description for the job_trigger created by terraform",
+    ///         DisplayName = "TerraformDisplayName",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     JobNotificationEmails = null,
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "sample-inspect-template",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dlp Job Trigger Hybrid
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hybridTrigger = new Gcp.DataLoss.PreventionJobTrigger("hybridTrigger", new()
+    ///     {
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 HybridOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs
+    ///                 {
+    ///                     Description = "Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
+    ///                     Labels = 
+    ///                     {
+    ///                         { "env", "prod" },
+    ///                     },
+    ///                     RequiredFindingLabelKeys = new[]
+    ///                     {
+    ///                         "appointment-bookings-comments",
+    ///                     },
+    ///                     TableOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs
+    ///                     {
+    ///                         IdentifyingFields = new[]
+    ///                         {
+    ///                             new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs
+    ///                             {
+    ///                                 Name = "booking_id",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Manual = null,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -222,6 +340,8 @@ namespace Pulumi.Gcp.DataLoss
     {
         /// <summary>
         /// A description of the job trigger.
+        /// (Optional)
+        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -256,6 +376,8 @@ namespace Pulumi.Gcp.DataLoss
         /// The name of the Datastore kind.
         /// (Required)
         /// Name of a BigQuery field to be returned with the findings.
+        /// (Required)
+        /// Name describing the field.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -330,6 +452,8 @@ namespace Pulumi.Gcp.DataLoss
     {
         /// <summary>
         /// A description of the job trigger.
+        /// (Optional)
+        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -385,6 +509,8 @@ namespace Pulumi.Gcp.DataLoss
     {
         /// <summary>
         /// A description of the job trigger.
+        /// (Optional)
+        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -419,6 +545,8 @@ namespace Pulumi.Gcp.DataLoss
         /// The name of the Datastore kind.
         /// (Required)
         /// Name of a BigQuery field to be returned with the findings.
+        /// (Required)
+        /// Name describing the field.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

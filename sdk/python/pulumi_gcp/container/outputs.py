@@ -99,6 +99,7 @@ __all__ = [
     'ClusterGatewayApiConfig',
     'ClusterIdentityServiceConfig',
     'ClusterIpAllocationPolicy',
+    'ClusterIpAllocationPolicyPodCidrOverprovisionConfig',
     'ClusterLoggingConfig',
     'ClusterMaintenancePolicy',
     'ClusterMaintenancePolicyDailyMaintenanceWindow',
@@ -138,6 +139,7 @@ __all__ = [
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig',
     'ClusterNodePoolManagement',
     'ClusterNodePoolNetworkConfig',
+    'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig',
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
@@ -176,6 +178,7 @@ __all__ = [
     'NodePoolAutoscaling',
     'NodePoolManagement',
     'NodePoolNetworkConfig',
+    'NodePoolNetworkConfigPodCidrOverprovisionConfig',
     'NodePoolNodeConfig',
     'NodePoolNodeConfigAdvancedMachineFeatures',
     'NodePoolNodeConfigEphemeralStorageConfig',
@@ -228,6 +231,7 @@ __all__ = [
     'GetClusterGatewayApiConfigResult',
     'GetClusterIdentityServiceConfigResult',
     'GetClusterIpAllocationPolicyResult',
+    'GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult',
     'GetClusterLoggingConfigResult',
     'GetClusterMaintenancePolicyResult',
     'GetClusterMaintenancePolicyDailyMaintenanceWindowResult',
@@ -267,6 +271,7 @@ __all__ = [
     'GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult',
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNetworkConfigResult',
+    'GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult',
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
@@ -4552,6 +4557,8 @@ class ClusterIpAllocationPolicy(dict):
             suggest = "cluster_ipv4_cidr_block"
         elif key == "clusterSecondaryRangeName":
             suggest = "cluster_secondary_range_name"
+        elif key == "podCidrOverprovisionConfig":
+            suggest = "pod_cidr_overprovision_config"
         elif key == "servicesIpv4CidrBlock":
             suggest = "services_ipv4_cidr_block"
         elif key == "servicesSecondaryRangeName":
@@ -4573,6 +4580,7 @@ class ClusterIpAllocationPolicy(dict):
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: Optional[str] = None,
                  cluster_secondary_range_name: Optional[str] = None,
+                 pod_cidr_overprovision_config: Optional['outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig'] = None,
                  services_ipv4_cidr_block: Optional[str] = None,
                  services_secondary_range_name: Optional[str] = None,
                  stack_type: Optional[str] = None):
@@ -4602,6 +4610,8 @@ class ClusterIpAllocationPolicy(dict):
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
+        if pod_cidr_overprovision_config is not None:
+            pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         if services_ipv4_cidr_block is not None:
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
@@ -4630,6 +4640,11 @@ class ClusterIpAllocationPolicy(dict):
         `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
         """
         return pulumi.get(self, "cluster_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="podCidrOverprovisionConfig")
+    def pod_cidr_overprovision_config(self) -> Optional['outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig']:
+        return pulumi.get(self, "pod_cidr_overprovision_config")
 
     @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
@@ -4663,6 +4678,24 @@ class ClusterIpAllocationPolicy(dict):
         Possible values are `IPV4` and `PV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
+
+
+@pulumi.output_type
+class ClusterIpAllocationPolicyPodCidrOverprovisionConfig(dict):
+    def __init__(__self__, *,
+                 disabled: bool):
+        """
+        :param bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        """
+        pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        """
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -6930,6 +6963,8 @@ class ClusterNodePoolNetworkConfig(dict):
             suggest = "create_pod_range"
         elif key == "enablePrivateNodes":
             suggest = "enable_private_nodes"
+        elif key == "podCidrOverprovisionConfig":
+            suggest = "pod_cidr_overprovision_config"
         elif key == "podIpv4CidrBlock":
             suggest = "pod_ipv4_cidr_block"
         elif key == "podRange":
@@ -6949,6 +6984,7 @@ class ClusterNodePoolNetworkConfig(dict):
     def __init__(__self__, *,
                  create_pod_range: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
+                 pod_cidr_overprovision_config: Optional['outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig'] = None,
                  pod_ipv4_cidr_block: Optional[str] = None,
                  pod_range: Optional[str] = None):
         """
@@ -6964,6 +7000,8 @@ class ClusterNodePoolNetworkConfig(dict):
             pulumi.set(__self__, "create_pod_range", create_pod_range)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        if pod_cidr_overprovision_config is not None:
+            pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         if pod_ipv4_cidr_block is not None:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
@@ -6989,6 +7027,11 @@ class ClusterNodePoolNetworkConfig(dict):
         return pulumi.get(self, "enable_private_nodes")
 
     @property
+    @pulumi.getter(name="podCidrOverprovisionConfig")
+    def pod_cidr_overprovision_config(self) -> Optional['outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig']:
+        return pulumi.get(self, "pod_cidr_overprovision_config")
+
+    @property
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[str]:
         """
@@ -7003,6 +7046,24 @@ class ClusterNodePoolNetworkConfig(dict):
         The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
+
+
+@pulumi.output_type
+class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
+    def __init__(__self__, *,
+                 disabled: bool):
+        """
+        :param bool disabled: Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        """
+        pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+        """
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -9185,6 +9246,8 @@ class NodePoolNetworkConfig(dict):
             suggest = "create_pod_range"
         elif key == "enablePrivateNodes":
             suggest = "enable_private_nodes"
+        elif key == "podCidrOverprovisionConfig":
+            suggest = "pod_cidr_overprovision_config"
         elif key == "podIpv4CidrBlock":
             suggest = "pod_ipv4_cidr_block"
         elif key == "podRange":
@@ -9204,6 +9267,7 @@ class NodePoolNetworkConfig(dict):
     def __init__(__self__, *,
                  create_pod_range: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
+                 pod_cidr_overprovision_config: Optional['outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig'] = None,
                  pod_ipv4_cidr_block: Optional[str] = None,
                  pod_range: Optional[str] = None):
         """
@@ -9216,6 +9280,8 @@ class NodePoolNetworkConfig(dict):
             pulumi.set(__self__, "create_pod_range", create_pod_range)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        if pod_cidr_overprovision_config is not None:
+            pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         if pod_ipv4_cidr_block is not None:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
@@ -9238,6 +9304,11 @@ class NodePoolNetworkConfig(dict):
         return pulumi.get(self, "enable_private_nodes")
 
     @property
+    @pulumi.getter(name="podCidrOverprovisionConfig")
+    def pod_cidr_overprovision_config(self) -> Optional['outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig']:
+        return pulumi.get(self, "pod_cidr_overprovision_config")
+
+    @property
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> Optional[str]:
         """
@@ -9252,6 +9323,18 @@ class NodePoolNetworkConfig(dict):
         The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
         return pulumi.get(self, "pod_range")
+
+
+@pulumi.output_type
+class NodePoolNetworkConfigPodCidrOverprovisionConfig(dict):
+    def __init__(__self__, *,
+                 disabled: bool):
+        pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -10915,11 +10998,13 @@ class GetClusterIpAllocationPolicyResult(dict):
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
+                 pod_cidr_overprovision_configs: Sequence['outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult'],
                  services_ipv4_cidr_block: str,
                  services_secondary_range_name: str,
                  stack_type: str):
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
+        pulumi.set(__self__, "pod_cidr_overprovision_configs", pod_cidr_overprovision_configs)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         pulumi.set(__self__, "stack_type", stack_type)
@@ -10935,6 +11020,11 @@ class GetClusterIpAllocationPolicyResult(dict):
         return pulumi.get(self, "cluster_secondary_range_name")
 
     @property
+    @pulumi.getter(name="podCidrOverprovisionConfigs")
+    def pod_cidr_overprovision_configs(self) -> Sequence['outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult']:
+        return pulumi.get(self, "pod_cidr_overprovision_configs")
+
+    @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
     def services_ipv4_cidr_block(self) -> str:
         return pulumi.get(self, "services_ipv4_cidr_block")
@@ -10948,6 +11038,18 @@ class GetClusterIpAllocationPolicyResult(dict):
     @pulumi.getter(name="stackType")
     def stack_type(self) -> str:
         return pulumi.get(self, "stack_type")
+
+
+@pulumi.output_type
+class GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult(dict):
+    def __init__(__self__, *,
+                 disabled: bool):
+        pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type
@@ -11956,10 +12058,12 @@ class GetClusterNodePoolNetworkConfigResult(dict):
     def __init__(__self__, *,
                  create_pod_range: bool,
                  enable_private_nodes: bool,
+                 pod_cidr_overprovision_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult'],
                  pod_ipv4_cidr_block: str,
                  pod_range: str):
         pulumi.set(__self__, "create_pod_range", create_pod_range)
         pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        pulumi.set(__self__, "pod_cidr_overprovision_configs", pod_cidr_overprovision_configs)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
 
@@ -11974,6 +12078,11 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         return pulumi.get(self, "enable_private_nodes")
 
     @property
+    @pulumi.getter(name="podCidrOverprovisionConfigs")
+    def pod_cidr_overprovision_configs(self) -> Sequence['outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult']:
+        return pulumi.get(self, "pod_cidr_overprovision_configs")
+
+    @property
     @pulumi.getter(name="podIpv4CidrBlock")
     def pod_ipv4_cidr_block(self) -> str:
         return pulumi.get(self, "pod_ipv4_cidr_block")
@@ -11982,6 +12091,18 @@ class GetClusterNodePoolNetworkConfigResult(dict):
     @pulumi.getter(name="podRange")
     def pod_range(self) -> str:
         return pulumi.get(self, "pod_range")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult(dict):
+    def __init__(__self__, *,
+                 disabled: bool):
+        pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        return pulumi.get(self, "disabled")
 
 
 @pulumi.output_type

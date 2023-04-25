@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -55,6 +56,13 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> clusterSecondaryRangeName() {
         return Optional.ofNullable(this.clusterSecondaryRangeName);
+    }
+
+    @Import(name="podCidrOverprovisionConfig")
+    private @Nullable Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
+
+    public Optional<Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs>> podCidrOverprovisionConfig() {
+        return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }
 
     /**
@@ -125,6 +133,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     private ClusterIpAllocationPolicyArgs(ClusterIpAllocationPolicyArgs $) {
         this.clusterIpv4CidrBlock = $.clusterIpv4CidrBlock;
         this.clusterSecondaryRangeName = $.clusterSecondaryRangeName;
+        this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
         this.servicesIpv4CidrBlock = $.servicesIpv4CidrBlock;
         this.servicesSecondaryRangeName = $.servicesSecondaryRangeName;
         this.stackType = $.stackType;
@@ -200,6 +209,15 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
          */
         public Builder clusterSecondaryRangeName(String clusterSecondaryRangeName) {
             return clusterSecondaryRangeName(Output.of(clusterSecondaryRangeName));
+        }
+
+        public Builder podCidrOverprovisionConfig(@Nullable Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig) {
+            $.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
+            return this;
+        }
+
+        public Builder podCidrOverprovisionConfig(ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs podCidrOverprovisionConfig) {
+            return podCidrOverprovisionConfig(Output.of(podCidrOverprovisionConfig));
         }
 
         /**

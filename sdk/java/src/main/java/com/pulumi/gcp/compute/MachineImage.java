@@ -96,10 +96,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.compute.MachineImage;
  * import com.pulumi.gcp.compute.MachineImageArgs;
  * import com.pulumi.gcp.compute.inputs.MachineImageMachineImageEncryptionKeyArgs;
@@ -143,16 +139,6 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var kms_project_binding = new IAMMember(&#34;kms-project-binding&#34;, IAMMemberArgs.builder()        
- *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
- *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .member(String.format(&#34;serviceAccount:service-%s@compute-system.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
  *         var image = new MachineImage(&#34;image&#34;, MachineImageArgs.builder()        
  *             .sourceInstance(vm.selfLink())
  *             .machineImageEncryptionKey(MachineImageMachineImageEncryptionKeyArgs.builder()
@@ -160,7 +146,6 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
- *                 .dependsOn(kms_project_binding)
  *                 .build());
  * 
  *     }

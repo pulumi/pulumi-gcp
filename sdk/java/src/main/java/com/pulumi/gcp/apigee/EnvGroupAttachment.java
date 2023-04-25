@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;tf-test&#34;)
+ *             .projectId(&#34;my-project&#34;)
  *             .orgId(&#34;&#34;)
  *             .billingAccount(&#34;&#34;)
  *             .build());
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *         var apigeeEnv = new Environment(&#34;apigeeEnv&#34;, EnvironmentArgs.builder()        
  *             .orgId(apigeeOrg.id())
  *             .description(&#34;Apigee Environment&#34;)
- *             .displayName(&#34;tf-test&#34;)
+ *             .displayName(&#34;my-environment&#34;)
  *             .build());
  * 
  *         var envGroupAttachment = new EnvGroupAttachment(&#34;envGroupAttachment&#34;, EnvGroupAttachmentArgs.builder()        

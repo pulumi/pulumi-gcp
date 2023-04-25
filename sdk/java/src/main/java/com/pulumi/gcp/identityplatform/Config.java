@@ -31,6 +31,52 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/identity-platform/docs)
  * 
  * ## Example Usage
+ * ### Identity Platform Config Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.identityplatform.Config;
+ * import com.pulumi.gcp.identityplatform.ConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))
+ *             .build());
+ * 
+ *         var identitytoolkit = new Service(&#34;identitytoolkit&#34;, ServiceArgs.builder()        
+ *             .project(defaultProject.projectId())
+ *             .service(&#34;identitytoolkit.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
+ *             .project(defaultProject.projectId())
+ *             .autodeleteAnonymousUsers(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

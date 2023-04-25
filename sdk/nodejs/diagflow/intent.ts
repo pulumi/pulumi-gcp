@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const agentProjectProject = new gcp.organizations.Project("agentProjectProject", {
- *     projectId: "tf-test-dialogflow",
+ *     projectId: "my-project",
  *     orgId: "123456789",
  * });
  * const agentProjectService = new gcp.projects.Service("agentProjectService", {
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     service: "dialogflow.googleapis.com",
  *     disableDependentServices: false,
  * });
- * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflowServiceAccount", {accountId: "tf-test-dialogflow"});
+ * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflowServiceAccount", {accountId: "my-account"});
  * const agentCreate = new gcp.projects.IAMMember("agentCreate", {
  *     project: agentProjectService.project,
  *     role: "roles/dialogflow.admin",

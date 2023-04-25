@@ -559,7 +559,7 @@ class Instance(pulumi.CustomResource):
         apigee_instance = gcp.apigee.Instance("apigeeInstance",
             location="us-central1",
             description="Auto-managed Apigee Runtime Instance",
-            display_name="tf-test",
+            display_name="my-instance-name",
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
         ```
@@ -737,7 +737,7 @@ class Instance(pulumi.CustomResource):
         apigee_instance = gcp.apigee.Instance("apigeeInstance",
             location="us-central1",
             description="Auto-managed Apigee Runtime Instance",
-            display_name="tf-test",
+            display_name="my-instance-name",
             org_id=apigee_org.id,
             disk_encryption_key_name=apigee_key.id)
         ```

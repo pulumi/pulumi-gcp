@@ -85,7 +85,7 @@ type TagValue struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The generated numeric id for the TagValue.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+	// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
 	NamespacedName pulumi.StringOutput `pulumi:"namespacedName"`
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -139,7 +139,7 @@ type tagValueState struct {
 	Description *string `pulumi:"description"`
 	// The generated numeric id for the TagValue.
 	Name *string `pulumi:"name"`
-	// Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+	// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
 	NamespacedName *string `pulumi:"namespacedName"`
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent *string `pulumi:"parent"`
@@ -159,7 +159,7 @@ type TagValueState struct {
 	Description pulumi.StringPtrInput
 	// The generated numeric id for the TagValue.
 	Name pulumi.StringPtrInput
-	// Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+	// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
 	NamespacedName pulumi.StringPtrInput
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent pulumi.StringPtrInput
@@ -299,7 +299,7 @@ func (o TagValueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
 func (o TagValueOutput) NamespacedName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagValue) pulumi.StringOutput { return v.NamespacedName }).(pulumi.StringOutput)
 }

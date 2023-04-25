@@ -12,6 +12,77 @@ import (
 )
 
 // ## Example Usage
+// ### Active Directory Peering Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/activedirectory"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "source-network", nil, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = activedirectory.NewDomain(ctx, "ad-domain", &activedirectory.DomainArgs{
+//				DomainName: pulumi.String("ad.test.hashicorptest.com"),
+//				Locations: pulumi.StringArray{
+//					pulumi.String("us-central1"),
+//				},
+//				ReservedIpRange: pulumi.String("192.168.255.0/24"),
+//				AuthorizedNetworks: pulumi.StringArray{
+//					source_network.ID(),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewProject(ctx, "peered-project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("my-peered-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//				Project: peered_project.ProjectId,
+//				Service: pulumi.String("compute.googleapis.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetwork(ctx, "peered-network", &compute.NetworkArgs{
+//				Project: compute.Project,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = activedirectory.NewPeering(ctx, "ad-domain-peering", &activedirectory.PeeringArgs{
+//				DomainResource:    ad_domain.Name,
+//				PeeringId:         pulumi.String("ad-domain-peering"),
+//				AuthorizedNetwork: peered_network.ID(),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

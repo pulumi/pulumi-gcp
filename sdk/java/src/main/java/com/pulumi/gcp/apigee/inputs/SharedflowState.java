@@ -18,14 +18,14 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
     public static final SharedflowState Empty = new SharedflowState();
 
     /**
-     * A path to the config bundle zip you want to upload. Must be defined if content is not.
+     * Path to the config zip bundle.
      * 
      */
     @Import(name="configBundle")
     private @Nullable Output<String> configBundle;
 
     /**
-     * @return A path to the config bundle zip you want to upload. Must be defined if content is not.
+     * @return Path to the config zip bundle.
      * 
      */
     public Optional<Output<String>> configBundle() {
@@ -173,7 +173,7 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configBundle A path to the config bundle zip you want to upload. Must be defined if content is not.
+         * @param configBundle Path to the config zip bundle.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class SharedflowState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param configBundle A path to the config bundle zip you want to upload. Must be defined if content is not.
+         * @param configBundle Path to the config zip bundle.
          * 
          * @return builder
          * 

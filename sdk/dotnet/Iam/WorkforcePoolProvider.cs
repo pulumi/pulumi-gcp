@@ -121,6 +121,11 @@ namespace Pulumi.Gcp.Iam
     ///         {
     ///             IssuerUri = "https://accounts.thirdparty.com",
     ///             ClientId = "client-id",
+    ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
+    ///             {
+    ///                 ResponseType = "ID_TOKEN",
+    ///                 AssertionClaimsBehavior = "ONLY_ID_TOKEN_CLAIMS",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -155,6 +160,11 @@ namespace Pulumi.Gcp.Iam
     ///         {
     ///             IssuerUri = "https://accounts.thirdparty.com",
     ///             ClientId = "client-id",
+    ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
+    ///             {
+    ///                 ResponseType = "ID_TOKEN",
+    ///                 AssertionClaimsBehavior = "ONLY_ID_TOKEN_CLAIMS",
+    ///             },
     ///         },
     ///         DisplayName = "Display name",
     ///         Description = "A sample OIDC workforce pool provider.",

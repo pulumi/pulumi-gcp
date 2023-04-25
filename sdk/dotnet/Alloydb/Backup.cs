@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.Alloydb
         /// The location where the alloydb backup should reside.
         /// </summary>
         [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
@@ -336,8 +336,8 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The location where the alloydb backup should reside.
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

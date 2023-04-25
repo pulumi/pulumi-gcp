@@ -106,7 +106,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The location where the alloydb cluster should reside.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Cluster created via DMS migration.
      * Structure is documented below.
@@ -161,6 +161,9 @@ export class Cluster extends pulumi.CustomResource {
             const args = argsOrState as ClusterArgs | undefined;
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
+            }
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
             if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
@@ -279,7 +282,7 @@ export interface ClusterArgs {
     /**
      * The location where the alloydb cluster should reside.
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
      * "projects/{projectNumber}/global/networks/{network_id}".

@@ -12,40 +12,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
     /**
-     * @return Dataset ID of the table.
+     * @return The ID of the dataset containing this table.
      * 
      */
     private String datasetId;
     /**
-     * @return The Google Cloud Platform project ID of the project containing the table.
+     * @return The ID of the project containing this table.
      * 
      */
     private String projectId;
     /**
-     * @return Name of the table. If is not set a new one will be generated for you with the following format:
-     * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+     * @return The ID of the table. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 1,024 characters.
      * 
      */
     private @Nullable String tableId;
 
     private PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable() {}
     /**
-     * @return Dataset ID of the table.
+     * @return The ID of the dataset containing this table.
      * 
      */
     public String datasetId() {
         return this.datasetId;
     }
     /**
-     * @return The Google Cloud Platform project ID of the project containing the table.
+     * @return The ID of the project containing this table.
      * 
      */
     public String projectId() {
         return this.projectId;
     }
     /**
-     * @return Name of the table. If is not set a new one will be generated for you with the following format:
-     * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+     * @return The ID of the table. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 1,024 characters.
      * 
      */
     public Optional<String> tableId() {

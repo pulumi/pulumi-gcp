@@ -163,9 +163,7 @@ type Firewall struct {
 	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges pulumi.StringArrayOutput `pulumi:"destinationRanges"`
 	// Direction of traffic to which this firewall applies; default is
-	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
@@ -304,9 +302,7 @@ type firewallState struct {
 	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges []string `pulumi:"destinationRanges"`
 	// Direction of traffic to which this firewall applies; default is
-	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
@@ -414,9 +410,7 @@ type FirewallState struct {
 	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges pulumi.StringArrayInput
 	// Direction of traffic to which this firewall applies; default is
-	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
@@ -526,9 +520,7 @@ type firewallArgs struct {
 	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges []string `pulumi:"destinationRanges"`
 	// Direction of traffic to which this firewall applies; default is
-	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
@@ -633,9 +625,7 @@ type FirewallArgs struct {
 	// must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
 	DestinationRanges pulumi.StringArrayInput
 	// Direction of traffic to which this firewall applies; default is
-	// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-	// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-	// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+	// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
 	// `sourceTags` or `sourceServiceAccounts` is required.
 	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
@@ -842,9 +832,7 @@ func (o FirewallOutput) DestinationRanges() pulumi.StringArrayOutput {
 }
 
 // Direction of traffic to which this firewall applies; default is
-// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-// `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+// INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
 // `sourceTags` or `sourceServiceAccounts` is required.
 // Possible values are: `INGRESS`, `EGRESS`.
 func (o FirewallOutput) Direction() pulumi.StringOutput {

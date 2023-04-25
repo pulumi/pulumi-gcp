@@ -83,7 +83,7 @@ class _TagValueState:
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: User-assigned description of the TagValue. Must not exceed 256 characters.
         :param pulumi.Input[str] name: The generated numeric id for the TagValue.
-        :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
                The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -146,7 +146,7 @@ class _TagValueState:
     @pulumi.getter(name="namespacedName")
     def namespaced_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         """
         return pulumi.get(self, "namespaced_name")
 
@@ -357,7 +357,7 @@ class TagValue(pulumi.CustomResource):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[str] description: User-assigned description of the TagValue. Must not exceed 256 characters.
         :param pulumi.Input[str] name: The generated numeric id for the TagValue.
-        :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
                The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -406,7 +406,7 @@ class TagValue(pulumi.CustomResource):
     @pulumi.getter(name="namespacedName")
     def namespaced_name(self) -> pulumi.Output[str]:
         """
-        Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         """
         return pulumi.get(self, "namespaced_name")
 

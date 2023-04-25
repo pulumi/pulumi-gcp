@@ -210,7 +210,7 @@ type Backup struct {
 	// User-defined labels for the alloydb backup.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -238,6 +238,9 @@ func NewBackup(ctx *pulumi.Context,
 	}
 	if args.ClusterName == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	var resource Backup
 	err := ctx.RegisterResource("gcp:alloydb/backup:Backup", name, args, &resource, opts...)
@@ -334,7 +337,7 @@ type backupArgs struct {
 	// User-defined labels for the alloydb backup.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -351,7 +354,7 @@ type BackupArgs struct {
 	// User-defined labels for the alloydb backup.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -475,8 +478,8 @@ func (o BackupOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb backup should reside.
-func (o BackupOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o BackupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}

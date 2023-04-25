@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var agentProjectProject = new Project(&#34;agentProjectProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;tf-test-dialogflow&#34;)
+ *             .projectId(&#34;my-project&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dialogflowServiceAccount = new Account(&#34;dialogflowServiceAccount&#34;, AccountArgs.builder()        
- *             .accountId(&#34;tf-test-dialogflow&#34;)
+ *             .accountId(&#34;my-account&#34;)
  *             .build());
  * 
  *         var agentCreate = new IAMMember(&#34;agentCreate&#34;, IAMMemberArgs.builder()        

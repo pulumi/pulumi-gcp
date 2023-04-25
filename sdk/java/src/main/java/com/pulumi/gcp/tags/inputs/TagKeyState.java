@@ -79,14 +79,14 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id}.
+     * Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id}.
+     * @return Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      * 
      */
     public Optional<Output<String>> parent() {
@@ -282,7 +282,7 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parent Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id}.
+         * @param parent Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parent Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id}.
+         * @param parent Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
          * 
          * @return builder
          * 

@@ -76,7 +76,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			agentProjectProject, err := organizations.NewProject(ctx, "agentProjectProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("tf-test-dialogflow"),
+//				ProjectId: pulumi.String("my-project"),
 //				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			dialogflowServiceAccount, err := serviceAccount.NewAccount(ctx, "dialogflowServiceAccount", &serviceAccount.AccountArgs{
-//				AccountId: pulumi.String("tf-test-dialogflow"),
+//				AccountId: pulumi.String("my-account"),
 //			})
 //			if err != nil {
 //				return err

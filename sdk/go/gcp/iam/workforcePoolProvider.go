@@ -141,6 +141,10 @@ import (
 //				Oidc: &iam.WorkforcePoolProviderOidcArgs{
 //					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
 //					ClientId:  pulumi.String("client-id"),
+//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
+//						ResponseType:            pulumi.String("ID_TOKEN"),
+//						AssertionClaimsBehavior: pulumi.String("ONLY_ID_TOKEN_CLAIMS"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -183,6 +187,10 @@ import (
 //				Oidc: &iam.WorkforcePoolProviderOidcArgs{
 //					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
 //					ClientId:  pulumi.String("client-id"),
+//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
+//						ResponseType:            pulumi.String("ID_TOKEN"),
+//						AssertionClaimsBehavior: pulumi.String("ONLY_ID_TOKEN_CLAIMS"),
+//					},
 //				},
 //				DisplayName:        pulumi.String("Display name"),
 //				Description:        pulumi.String("A sample OIDC workforce pool provider."),

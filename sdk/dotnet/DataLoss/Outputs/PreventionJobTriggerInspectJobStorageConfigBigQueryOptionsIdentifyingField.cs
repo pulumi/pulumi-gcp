@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
     {
         /// <summary>
-        /// Name of a BigQuery field to be returned with the findings.
+        /// Name describing the field.
         /// </summary>
         public readonly string Name;
 

@@ -103,15 +103,15 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * The location where the alloydb cluster should reside.
      * 
      */
-    @Import(name="location")
-    private @Nullable Output<String> location;
+    @Import(name="location", required=true)
+    private Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
      * 
      */
-    public Optional<Output<String>> location() {
-        return Optional.ofNullable(this.location);
+    public Output<String> location() {
+        return this.location;
     }
 
     /**
@@ -296,7 +296,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder location(@Nullable Output<String> location) {
+        public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
@@ -359,6 +359,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         public ClusterArgs build() {
             $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
             return $;
         }

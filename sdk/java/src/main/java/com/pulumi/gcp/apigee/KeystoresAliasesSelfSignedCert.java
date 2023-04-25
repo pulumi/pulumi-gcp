@@ -29,6 +29,133 @@ import javax.annotation.Nullable;
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  * 
  * ## Example Usage
+ * ### Apigee Env Keystore Alias Self Signed Cert
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.gcp.apigee.Environment;
+ * import com.pulumi.gcp.apigee.EnvironmentArgs;
+ * import com.pulumi.gcp.apigee.EnvKeystore;
+ * import com.pulumi.gcp.apigee.EnvKeystoreArgs;
+ * import com.pulumi.gcp.apigee.KeystoresAliasesSelfSignedCert;
+ * import com.pulumi.gcp.apigee.KeystoresAliasesSelfSignedCertArgs;
+ * import com.pulumi.gcp.apigee.inputs.KeystoresAliasesSelfSignedCertSubjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build());
+ * 
+ *         var apigee = new Service(&#34;apigee&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;apigee.googleapis.com&#34;)
+ *             .build());
+ * 
+ *         var servicenetworking = new Service(&#34;servicenetworking&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigee)
+ *                 .build());
+ * 
+ *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;compute.googleapis.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
+ * 
+ *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;, NetworkArgs.builder()        
+ *             .project(project.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(compute)
+ *                 .build());
+ * 
+ *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .prefixLength(16)
+ *             .network(apigeeNetwork.id())
+ *             .project(project.projectId())
+ *             .build());
+ * 
+ *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(apigeeNetwork.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(apigeeRange.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(servicenetworking)
+ *                 .build());
+ * 
+ *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
+ *             .analyticsRegion(&#34;us-central1&#34;)
+ *             .projectId(project.projectId())
+ *             .authorizedNetwork(apigeeNetwork.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigee)
+ *                 .build());
+ * 
+ *         var apigeeEnvironmentKeystoreSsAliasEnvironment = new Environment(&#34;apigeeEnvironmentKeystoreSsAliasEnvironment&#34;, EnvironmentArgs.builder()        
+ *             .orgId(apigeeOrg.id())
+ *             .description(&#34;Apigee Environment&#34;)
+ *             .displayName(&#34;environment-1&#34;)
+ *             .build());
+ * 
+ *         var apigeeEnvironmentKeystoreAlias = new EnvKeystore(&#34;apigeeEnvironmentKeystoreAlias&#34;, EnvKeystoreArgs.builder()        
+ *             .envId(apigeeEnvironmentKeystoreSsAliasEnvironment.id())
+ *             .build());
+ * 
+ *         var apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert = new KeystoresAliasesSelfSignedCert(&#34;apigeeEnvironmentKeystoreSsAliasKeystoresAliasesSelfSignedCert&#34;, KeystoresAliasesSelfSignedCertArgs.builder()        
+ *             .environment(apigeeEnvironmentKeystoreSsAliasEnvironment.name())
+ *             .orgId(apigeeOrg.name())
+ *             .keystore(apigeeEnvironmentKeystoreAlias.name())
+ *             .alias(&#34;alias&#34;)
+ *             .keySize(1024)
+ *             .sigAlg(&#34;SHA512withRSA&#34;)
+ *             .certValidityInDays(4)
+ *             .subject(KeystoresAliasesSelfSignedCertSubjectArgs.builder()
+ *                 .commonName(&#34;selfsigned_example&#34;)
+ *                 .countryCode(&#34;US&#34;)
+ *                 .locality(&#34;TX&#34;)
+ *                 .org(&#34;CCE&#34;)
+ *                 .orgUnit(&#34;PSO&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

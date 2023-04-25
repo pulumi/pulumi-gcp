@@ -13,6 +13,7 @@ from .folder_exclusion import *
 from .folder_sink import *
 from .get_project_cmek_settings import *
 from .get_sink import *
+from .linked_dataset import *
 from .log_view import *
 from .metric import *
 from .organization_bucket_config import *

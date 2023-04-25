@@ -697,6 +697,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="ID_TOKEN",
+                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                ),
             ))
         ```
         ### Iam Workforce Pool Provider Oidc Full
@@ -719,6 +723,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="ID_TOKEN",
+                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                ),
             ),
             display_name="Display name",
             description="A sample OIDC workforce pool provider.",
@@ -889,6 +897,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="ID_TOKEN",
+                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                ),
             ))
         ```
         ### Iam Workforce Pool Provider Oidc Full
@@ -911,6 +923,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
+                    response_type="ID_TOKEN",
+                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                ),
             ),
             display_name="Display name",
             description="A sample OIDC workforce pool provider.",

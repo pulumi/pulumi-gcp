@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly string ClusterIpv4CidrBlock;
         public readonly string ClusterSecondaryRangeName;
+        public readonly ImmutableArray<Outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult> PodCidrOverprovisionConfigs;
         public readonly string ServicesIpv4CidrBlock;
         public readonly string ServicesSecondaryRangeName;
         public readonly string StackType;
@@ -25,6 +26,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string clusterSecondaryRangeName,
 
+            ImmutableArray<Outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult> podCidrOverprovisionConfigs,
+
             string servicesIpv4CidrBlock,
 
             string servicesSecondaryRangeName,
@@ -33,6 +36,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
+            PodCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
             StackType = stackType;

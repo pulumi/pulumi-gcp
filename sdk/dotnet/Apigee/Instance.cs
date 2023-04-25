@@ -258,7 +258,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         Location = "us-central1",
     ///         Description = "Auto-managed Apigee Runtime Instance",
-    ///         DisplayName = "tf-test",
+    ///         DisplayName = "my-instance-name",
     ///         OrgId = apigeeOrg.Id,
     ///         DiskEncryptionKeyName = apigeeKey.Id,
     ///     });

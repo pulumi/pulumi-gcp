@@ -16,28 +16,27 @@ class BackupArgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
                  cluster_name: pulumi.Input[str],
+                 location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
         :param pulumi.Input[str] backup_id: The ID of the alloydb backup.
         :param pulumi.Input[str] cluster_name: The full resource name of the backup source cluster (e.g., projects/{project}/locations/{location}/clusters/{clusterId}).
+        :param pulumi.Input[str] location: The location where the alloydb backup should reside.
         :param pulumi.Input[str] description: User-provided description of the backup.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb backup.
-        :param pulumi.Input[str] location: The location where the alloydb backup should reside.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -67,6 +66,18 @@ class BackupArgs:
 
     @property
     @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location where the alloydb backup should reside.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         User-provided description of the backup.
@@ -88,18 +99,6 @@ class BackupArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The location where the alloydb backup should reside.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -585,6 +584,8 @@ class Backup(pulumi.CustomResource):
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -708,7 +709,7 @@ class Backup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[str]]:
+    def location(self) -> pulumi.Output[str]:
         """
         The location where the alloydb backup should reside.
         """

@@ -41,7 +41,7 @@ class TargetArgs:
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input['TargetRunArgs'] run: (Beta only) Information specifying a Cloud Run deployment target.
+        :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
         """
         pulumi.set(__self__, "location", location)
         if annotations is not None:
@@ -203,7 +203,7 @@ class TargetArgs:
     @pulumi.getter
     def run(self) -> Optional[pulumi.Input['TargetRunArgs']]:
         """
-        (Beta only) Information specifying a Cloud Run deployment target.
+        Information specifying a Cloud Run deployment target.
         """
         return pulumi.get(self, "run")
 
@@ -247,7 +247,7 @@ class _TargetState:
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input['TargetRunArgs'] run: (Beta only) Information specifying a Cloud Run deployment target.
+        :param pulumi.Input['TargetRunArgs'] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
@@ -447,7 +447,7 @@ class _TargetState:
     @pulumi.getter
     def run(self) -> Optional[pulumi.Input['TargetRunArgs']]:
         """
-        (Beta only) Information specifying a Cloud Run deployment target.
+        Information specifying a Cloud Run deployment target.
         """
         return pulumi.get(self, "run")
 
@@ -632,7 +632,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: (Beta only) Information specifying a Cloud Run deployment target.
+        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: Information specifying a Cloud Run deployment target.
         """
         ...
     @overload
@@ -851,7 +851,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
-        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: (Beta only) Information specifying a Cloud Run deployment target.
+        :param pulumi.Input[pulumi.InputType['TargetRunArgs']] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Output only. Resource id of the `Target`.
         :param pulumi.Input[str] uid: Output only. Unique identifier of the `Target`.
         :param pulumi.Input[str] update_time: Output only. Most recent time at which the `Target` was updated.
@@ -987,7 +987,7 @@ class Target(pulumi.CustomResource):
     @pulumi.getter
     def run(self) -> pulumi.Output[Optional['outputs.TargetRun']]:
         """
-        (Beta only) Information specifying a Cloud Run deployment target.
+        Information specifying a Cloud Run deployment target.
         """
         return pulumi.get(self, "run")
 

@@ -9,6 +9,8 @@ from .edge_cache_keyset import *
 from .edge_cache_origin import *
 from .edge_cache_service import *
 from .gateway import *
+from .http_route import *
 from .mesh import *
+from .tcp_route import *
 from ._inputs import *
 from . import outputs

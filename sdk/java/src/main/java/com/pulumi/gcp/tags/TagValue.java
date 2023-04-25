@@ -124,14 +124,14 @@ public class TagValue extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+     * Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      * 
      */
     @Export(name="namespacedName", type=String.class, parameters={})
     private Output<String> namespacedName;
 
     /**
-     * @return Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+     * @return Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      * 
      */
     public Output<String> namespacedName() {

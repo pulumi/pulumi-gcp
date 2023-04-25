@@ -135,6 +135,26 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
+        ### Identity Platform Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            labels={
+                "firebase": "enabled",
+            })
+        identitytoolkit = gcp.projects.Service("identitytoolkit",
+            project=default_project.project_id,
+            service="identitytoolkit.googleapis.com")
+        default_config = gcp.identityplatform.Config("defaultConfig",
+            project=default_project.project_id,
+            autodelete_anonymous_users=True)
+        ```
 
         ## Import
 
@@ -180,6 +200,26 @@ class Config(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/identity-platform/docs)
 
         ## Example Usage
+        ### Identity Platform Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_project = gcp.organizations.Project("defaultProject",
+            project_id="my-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            labels={
+                "firebase": "enabled",
+            })
+        identitytoolkit = gcp.projects.Service("identitytoolkit",
+            project=default_project.project_id,
+            service="identitytoolkit.googleapis.com")
+        default_config = gcp.identityplatform.Config("defaultConfig",
+            project=default_project.project_id,
+            autodelete_anonymous_users=True)
+        ```
 
         ## Import
 

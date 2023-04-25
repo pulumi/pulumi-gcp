@@ -85,7 +85,7 @@ export class TagKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly namespacedName!: pulumi.Output<string>;
     /**
-     * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+     * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export interface TagKeyState {
      */
     namespacedName?: pulumi.Input<string>;
     /**
-     * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+     * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      */
     parent?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface TagKeyArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+     * Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      */
     parent: pulumi.Input<string>;
     /**

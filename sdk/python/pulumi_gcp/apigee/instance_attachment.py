@@ -134,7 +134,7 @@ class InstanceAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test",
+            project_id="my-project",
             org_id="",
             billing_account="")
         apigee = gcp.projects.Service("apigee",
@@ -220,7 +220,7 @@ class InstanceAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test",
+            project_id="my-project",
             org_id="",
             billing_account="")
         apigee = gcp.projects.Service("apigee",

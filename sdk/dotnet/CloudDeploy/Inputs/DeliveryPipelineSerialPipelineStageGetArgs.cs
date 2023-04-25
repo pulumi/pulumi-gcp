@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         }
 
         /// <summary>
-        /// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        /// Optional. The strategy to use for a `Rollout` to this stage.
         /// </summary>
         [Input("strategy")]
         public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyGetArgs>? Strategy { get; set; }

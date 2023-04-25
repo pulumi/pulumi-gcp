@@ -122,7 +122,7 @@ public final class HaVpnGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -132,7 +132,7 @@ public final class HaVpnGatewayState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> stackType;
 
     /**
-     * @return The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+     * @return The stack type for this VPN gateway to identify the IP protocols that are enabled.
      * If not specified, IPV4_ONLY will be used.
      * Default value is `IPV4_ONLY`.
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -331,7 +331,7 @@ public final class HaVpnGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+         * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enabled.
          * If not specified, IPV4_ONLY will be used.
          * Default value is `IPV4_ONLY`.
          * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -345,7 +345,7 @@ public final class HaVpnGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+         * @param stackType The stack type for this VPN gateway to identify the IP protocols that are enabled.
          * If not specified, IPV4_ONLY will be used.
          * Default value is `IPV4_ONLY`.
          * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.

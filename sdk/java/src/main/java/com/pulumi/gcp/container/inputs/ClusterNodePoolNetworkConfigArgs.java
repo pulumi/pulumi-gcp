@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -52,6 +53,13 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.enablePrivateNodes);
     }
 
+    @Import(name="podCidrOverprovisionConfig")
+    private @Nullable Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
+
+    public Optional<Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs>> podCidrOverprovisionConfig() {
+        return Optional.ofNullable(this.podCidrOverprovisionConfig);
+    }
+
     /**
      * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
      * 
@@ -87,6 +95,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
     private ClusterNodePoolNetworkConfigArgs(ClusterNodePoolNetworkConfigArgs $) {
         this.createPodRange = $.createPodRange;
         this.enablePrivateNodes = $.enablePrivateNodes;
+        this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
         this.podIpv4CidrBlock = $.podIpv4CidrBlock;
         this.podRange = $.podRange;
     }
@@ -155,6 +164,15 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
          */
         public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
             return enablePrivateNodes(Output.of(enablePrivateNodes));
+        }
+
+        public Builder podCidrOverprovisionConfig(@Nullable Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig) {
+            $.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
+            return this;
+        }
+
+        public Builder podCidrOverprovisionConfig(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs podCidrOverprovisionConfig) {
+            return podCidrOverprovisionConfig(Output.of(podCidrOverprovisionConfig));
         }
 
         /**

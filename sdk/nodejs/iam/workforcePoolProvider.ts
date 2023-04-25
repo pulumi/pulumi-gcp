@@ -90,6 +90,10 @@ import * as utilities from "../utilities";
  *     oidc: {
  *         issuerUri: "https://accounts.thirdparty.com",
  *         clientId: "client-id",
+ *         webSsoConfig: {
+ *             responseType: "ID_TOKEN",
+ *             assertionClaimsBehavior: "ONLY_ID_TOKEN_CLAIMS",
+ *         },
  *     },
  * });
  * ```
@@ -114,6 +118,10 @@ import * as utilities from "../utilities";
  *     oidc: {
  *         issuerUri: "https://accounts.thirdparty.com",
  *         clientId: "client-id",
+ *         webSsoConfig: {
+ *             responseType: "ID_TOKEN",
+ *             assertionClaimsBehavior: "ONLY_ID_TOKEN_CLAIMS",
+ *         },
  *     },
  *     displayName: "Display name",
  *     description: "A sample OIDC workforce pool provider.",

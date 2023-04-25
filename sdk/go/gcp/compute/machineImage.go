@@ -70,12 +70,8 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -110,26 +106,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "kms-project-binding", &projects.IAMMemberArgs{
-//				Project: *pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@compute-system.iam.gserviceaccount.com", project.Number)),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
 //			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
 //				SourceInstance: vm.SelfLink,
 //				MachineImageEncryptionKey: &compute.MachineImageMachineImageEncryptionKeyArgs{
 //					KmsKeyName: cryptoKey.ID(),
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
-//				kms_project_binding,
-//			}))
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}

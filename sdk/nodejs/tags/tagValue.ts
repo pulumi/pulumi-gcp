@@ -86,7 +86,7 @@ export class TagValue extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+     * Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      */
     public /*out*/ readonly namespacedName!: pulumi.Output<string>;
     /**
@@ -163,7 +163,7 @@ export interface TagValueState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+     * Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      */
     namespacedName?: pulumi.Input<string>;
     /**

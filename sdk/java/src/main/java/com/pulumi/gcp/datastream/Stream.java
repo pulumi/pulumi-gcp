@@ -505,6 +505,145 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Datastream Stream Postgresql Bigquery Dataset Id
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
+ * import com.pulumi.gcp.datastream.Stream;
+ * import com.pulumi.gcp.datastream.StreamArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var postgres = new Dataset(&#34;postgres&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;postgres&#34;)
+ *             .friendlyName(&#34;postgres&#34;)
+ *             .description(&#34;Database of postgres&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var destinationConnectionProfile2 = new ConnectionProfile(&#34;destinationConnectionProfile2&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;Connection profile&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;dest-profile&#34;)
+ *             .bigqueryProfile()
+ *             .build());
+ * 
+ *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .authorizedNetworks(                    
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.71.242.81&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.72.28.29&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.67.6.157&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.67.234.134&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.72.239.218&#34;)
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *             .length(16)
+ *             .special(false)
+ *             .build());
+ * 
+ *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .instance(instance.name())
+ *             .host(&#34;%&#34;)
+ *             .password(pwd.result())
+ *             .build());
+ * 
+ *         var sourceConnectionProfile = new ConnectionProfile(&#34;sourceConnectionProfile&#34;, ConnectionProfileArgs.builder()        
+ *             .displayName(&#34;Source connection profile&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .connectionProfileId(&#34;source-profile&#34;)
+ *             .mysqlProfile(ConnectionProfileMysqlProfileArgs.builder()
+ *                 .hostname(instance.publicIpAddress())
+ *                 .username(user.name())
+ *                 .password(user.password())
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new Stream(&#34;default&#34;, StreamArgs.builder()        
+ *             .displayName(&#34;postgres to bigQuery&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .streamId(&#34;postgres-bigquery&#34;)
+ *             .sourceConfig(StreamSourceConfigArgs.builder()
+ *                 .sourceConnectionProfile(sourceConnectionProfile.id())
+ *                 .mysqlSourceConfig()
+ *                 .build())
+ *             .destinationConfig(StreamDestinationConfigArgs.builder()
+ *                 .destinationConnectionProfile(destinationConnectionProfile2.id())
+ *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
+ *                     .dataFreshness(&#34;900s&#34;)
+ *                     .singleTargetDataset(StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs.builder()
+ *                         .datasetId(postgres.id())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .backfillAll()
+ *             .build());
+ * 
+ *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *             .instance(instance.name())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Datastream Stream Bigquery
  * ```java
  * package generated_program;

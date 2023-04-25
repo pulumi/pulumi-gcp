@@ -77,7 +77,7 @@ import (
 //			}
 //			_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
 //				DatasetId:      test.DatasetId,
-//				RoutineId:      pulumi.String("tf_test_routine_id"),
+//				RoutineId:      pulumi.String("routine_id"),
 //				RoutineType:    pulumi.String("SCALAR_FUNCTION"),
 //				Language:       pulumi.String("JAVASCRIPT"),
 //				DefinitionBody: pulumi.String("CREATE FUNCTION multiplyInputs return x*y;"),
@@ -146,7 +146,7 @@ import (
 //			json1 := string(tmpJSON1)
 //			_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
 //				DatasetId:      test.DatasetId,
-//				RoutineId:      pulumi.String("tf_test_routine_id"),
+//				RoutineId:      pulumi.String("routine_id"),
 //				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
 //				Language:       pulumi.String("SQL"),
 //				DefinitionBody: pulumi.String("SELECT 1 + value AS value\n"),

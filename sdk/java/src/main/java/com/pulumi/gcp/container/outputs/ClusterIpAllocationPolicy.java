@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,7 @@ public final class ClusterIpAllocationPolicy {
      * 
      */
     private @Nullable String clusterSecondaryRangeName;
+    private @Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig;
     /**
      * @return The IP address range of the services IPs in this cluster.
      * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -73,6 +75,9 @@ public final class ClusterIpAllocationPolicy {
     public Optional<String> clusterSecondaryRangeName() {
         return Optional.ofNullable(this.clusterSecondaryRangeName);
     }
+    public Optional<ClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {
+        return Optional.ofNullable(this.podCidrOverprovisionConfig);
+    }
     /**
      * @return The IP address range of the services IPs in this cluster.
      * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -115,6 +120,7 @@ public final class ClusterIpAllocationPolicy {
     public static final class Builder {
         private @Nullable String clusterIpv4CidrBlock;
         private @Nullable String clusterSecondaryRangeName;
+        private @Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig;
         private @Nullable String servicesIpv4CidrBlock;
         private @Nullable String servicesSecondaryRangeName;
         private @Nullable String stackType;
@@ -123,6 +129,7 @@ public final class ClusterIpAllocationPolicy {
     	      Objects.requireNonNull(defaults);
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
+    	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
     	      this.servicesIpv4CidrBlock = defaults.servicesIpv4CidrBlock;
     	      this.servicesSecondaryRangeName = defaults.servicesSecondaryRangeName;
     	      this.stackType = defaults.stackType;
@@ -136,6 +143,11 @@ public final class ClusterIpAllocationPolicy {
         @CustomType.Setter
         public Builder clusterSecondaryRangeName(@Nullable String clusterSecondaryRangeName) {
             this.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder podCidrOverprovisionConfig(@Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig) {
+            this.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
         }
         @CustomType.Setter
@@ -157,6 +169,7 @@ public final class ClusterIpAllocationPolicy {
             final var o = new ClusterIpAllocationPolicy();
             o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             o.clusterSecondaryRangeName = clusterSecondaryRangeName;
+            o.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             o.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             o.servicesSecondaryRangeName = servicesSecondaryRangeName;
             o.stackType = stackType;

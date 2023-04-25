@@ -45,6 +45,11 @@ export const getSink: typeof import("./getSink").getSink = null as any;
 export const getSinkOutput: typeof import("./getSink").getSinkOutput = null as any;
 utilities.lazyLoad(exports, ["getSink","getSinkOutput"], () => require("./getSink"));
 
+export { LinkedDatasetArgs, LinkedDatasetState } from "./linkedDataset";
+export type LinkedDataset = import("./linkedDataset").LinkedDataset;
+export const LinkedDataset: typeof import("./linkedDataset").LinkedDataset = null as any;
+utilities.lazyLoad(exports, ["LinkedDataset"], () => require("./linkedDataset"));
+
 export { LogViewArgs, LogViewState } from "./logView";
 export type LogView = import("./logView").LogView;
 export const LogView: typeof import("./logView").LogView = null as any;
@@ -102,6 +107,8 @@ const _module = {
                 return new FolderExclusion(name, <any>undefined, { urn })
             case "gcp:logging/folderSink:FolderSink":
                 return new FolderSink(name, <any>undefined, { urn })
+            case "gcp:logging/linkedDataset:LinkedDataset":
+                return new LinkedDataset(name, <any>undefined, { urn })
             case "gcp:logging/logView:LogView":
                 return new LogView(name, <any>undefined, { urn })
             case "gcp:logging/metric:Metric":
@@ -129,6 +136,7 @@ pulumi.runtime.registerResourceModule("gcp", "logging/billingAccountSink", _modu
 pulumi.runtime.registerResourceModule("gcp", "logging/folderBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderExclusion", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderSink", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/linkedDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/logView", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/metric", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationBucketConfig", _module)

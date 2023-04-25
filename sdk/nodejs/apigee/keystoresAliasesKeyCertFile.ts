@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * An alias from a key/certificate pair.
  *
- * To get more information about KeysotresAliasesKeyCertFile, see:
+ * To get more information about KeystoresAliasesKeyCertFile, see:
  *
  * * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
  * * How-to Guides
@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+ * KeystoresAliasesKeyCertFile can be imported using any of these accepted formats
  *
  * ```sh
  *  $ pulumi import gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile default organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}

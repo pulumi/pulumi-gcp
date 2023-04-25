@@ -24,6 +24,113 @@ import javax.annotation.Nullable;
  *     * [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
  * 
  * ## Example Usage
+ * ### Apigee Nat Address Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.gcp.apigee.Instance;
+ * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.gcp.apigee.NatAddress;
+ * import com.pulumi.gcp.apigee.NatAddressArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig();
+ * 
+ *         var apigeeNetwork = new Network(&#34;apigeeNetwork&#34;);
+ * 
+ *         var apigeeRange = new GlobalAddress(&#34;apigeeRange&#34;, GlobalAddressArgs.builder()        
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .prefixLength(21)
+ *             .network(apigeeNetwork.id())
+ *             .build());
+ * 
+ *         var apigeeVpcConnection = new Connection(&#34;apigeeVpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(apigeeNetwork.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(apigeeRange.name())
+ *             .build());
+ * 
+ *         var apigeeKeyring = new KeyRing(&#34;apigeeKeyring&#34;, KeyRingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var apigeeKey = new CryptoKey(&#34;apigeeKey&#34;, CryptoKeyArgs.builder()        
+ *             .keyRing(apigeeKeyring.id())
+ *             .build());
+ * 
+ *         var apigeeSa = new ServiceIdentity(&#34;apigeeSa&#34;, ServiceIdentityArgs.builder()        
+ *             .project(google_project.project().project_id())
+ *             .service(google_project_service.apigee().service())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var apigeeSaKeyuser = new CryptoKeyIAMBinding(&#34;apigeeSaKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *             .cryptoKeyId(apigeeKey.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .members(apigeeSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        
+ *             .analyticsRegion(&#34;us-central1&#34;)
+ *             .displayName(&#34;apigee-org&#34;)
+ *             .description(&#34;Terraform-provisioned Apigee Org.&#34;)
+ *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .authorizedNetwork(apigeeNetwork.id())
+ *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigeeSaKeyuser)
+ *                 .build());
+ * 
+ *         var apigeeInstance = new Instance(&#34;apigeeInstance&#34;, InstanceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;Terraform-managed Apigee Runtime Instance&#34;)
+ *             .displayName(&#34;apigee-instance&#34;)
+ *             .orgId(apigeeOrg.id())
+ *             .diskEncryptionKeyName(apigeeKey.id())
+ *             .build());
+ * 
+ *         var apigee_nat = new NatAddress(&#34;apigee-nat&#34;, NatAddressArgs.builder()        
+ *             .instanceId(apigeeInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

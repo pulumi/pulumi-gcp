@@ -15,6 +15,60 @@ import * as utilities from "../utilities";
  *     * [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
  *
  * ## Example Usage
+ * ### Apigee Nat Address Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigeeNetwork", {});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigeeRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 21,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigeeVpcConnection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeKeyring = new gcp.kms.KeyRing("apigeeKeyring", {location: "us-central1"});
+ * const apigeeKey = new gcp.kms.CryptoKey("apigeeKey", {keyRing: apigeeKeyring.id});
+ * const apigeeSa = new gcp.projects.ServiceIdentity("apigeeSa", {
+ *     project: google_project.project.project_id,
+ *     service: google_project_service.apigee.service,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser", {
+ *     cryptoKeyId: apigeeKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [pulumi.interpolate`serviceAccount:${apigeeSa.email}`],
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigeeOrg", {
+ *     analyticsRegion: "us-central1",
+ *     displayName: "apigee-org",
+ *     description: "Terraform-provisioned Apigee Org.",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigeeSaKeyuser,
+ *     ],
+ * });
+ * const apigeeInstance = new gcp.apigee.Instance("apigeeInstance", {
+ *     location: "us-central1",
+ *     description: "Terraform-managed Apigee Runtime Instance",
+ *     displayName: "apigee-instance",
+ *     orgId: apigeeOrg.id,
+ *     diskEncryptionKeyName: apigeeKey.id,
+ * });
+ * const apigee_nat = new gcp.apigee.NatAddress("apigee-nat", {instanceId: apigeeInstance.id});
+ * ```
  *
  * ## Import
  *

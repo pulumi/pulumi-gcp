@@ -24,9 +24,18 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-     * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+     * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+     * keys to configure features on a Service:
+     * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+     * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+     * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
+     * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+     *   that can be used in the audience field of ID token for authenticated requests.
+     * - `run.googleapis.com/description` sets a user defined description for the Service.
      * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
+     * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+     *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
      * 
      */
     @Import(name="annotations")
@@ -39,9 +48,18 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-     * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+     * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+     * keys to configure features on a Service:
+     * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+     * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+     * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
+     * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+     *   that can be used in the audience field of ID token for authenticated requests.
+     * - `run.googleapis.com/description` sets a user defined description for the Service.
      * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
      *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
+     * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+     *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -199,9 +217,18 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-         * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+         * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+         * keys to configure features on a Service:
+         * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+         * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+         * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
+         * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+         *   that can be used in the audience field of ID token for authenticated requests.
+         * - `run.googleapis.com/description` sets a user defined description for the Service.
          * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
          *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
+         * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+         *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
          * 
          * @return builder
          * 
@@ -218,9 +245,18 @@ public final class ServiceMetadataArgs extends com.pulumi.resources.ResourceArgs
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-         * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+         * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+         * keys to configure features on a Service:
+         * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+         * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+         * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
+         * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+         *   that can be used in the audience field of ID token for authenticated requests.
+         * - `run.googleapis.com/description` sets a user defined description for the Service.
          * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
          *   for the Service. For example, `&#34;run.googleapis.com/ingress&#34; = &#34;all&#34;`.
+         * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+         *   when a preview feature is used. For example, `&#34;run.googleapis.com/launch-stage&#34;: &#34;BETA&#34;`
          * 
          * @return builder
          * 

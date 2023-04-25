@@ -13,14 +13,14 @@ public final class GetTagKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetTagKeyPlainArgs Empty = new GetTagKeyPlainArgs();
 
     /**
-     * The resource name of the parent organization in format `organizations/{org_id}`.
+     * The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
      * 
      */
     @Import(name="parent", required=true)
     private String parent;
 
     /**
-     * @return The resource name of the parent organization in format `organizations/{org_id}`.
+     * @return The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
      * 
      */
     public String parent() {
@@ -68,7 +68,7 @@ public final class GetTagKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parent The resource name of the parent organization in format `organizations/{org_id}`.
+         * @param parent The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
          * 
          * @return builder
          * 

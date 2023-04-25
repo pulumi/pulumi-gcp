@@ -403,7 +403,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             title="my policy")
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="tf_test_chromeos_no_lock",
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
@@ -419,7 +419,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                     ],
                 )],
             ))
-        created_later = gcp.service_account.Account("created-later", account_id="tf-test")
+        created_later = gcp.service_account.Account("created-later", account_id="my-account-id")
         access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
             access_level=access_level_service_account.name,
             ip_subnetworks=["192.0.4.0/24"],
@@ -523,7 +523,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             title="my policy")
         access_level_service_account = gcp.accesscontextmanager.AccessLevel("access-level-service-account",
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            title="tf_test_chromeos_no_lock",
+            title="chromeos_no_lock",
             basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
                 conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
                     device_policy=gcp.accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs(
@@ -539,7 +539,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                     ],
                 )],
             ))
-        created_later = gcp.service_account.Account("created-later", account_id="tf-test")
+        created_later = gcp.service_account.Account("created-later", account_id="my-account-id")
         access_level_conditions = gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions",
             access_level=access_level_service_account.name,
             ip_subnetworks=["192.0.4.0/24"],

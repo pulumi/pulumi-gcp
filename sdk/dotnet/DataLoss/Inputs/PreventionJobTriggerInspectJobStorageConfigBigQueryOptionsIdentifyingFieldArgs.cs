@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of a BigQuery field to be returned with the findings.
+        /// Name describing the field.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

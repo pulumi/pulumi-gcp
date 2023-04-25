@@ -21,15 +21,23 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         /// </summary>
         public readonly string IssuerUri;
+        /// <summary>
+        /// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkforcePoolProviderOidcWebSsoConfig? WebSsoConfig;
 
         [OutputConstructor]
         private WorkforcePoolProviderOidc(
             string clientId,
 
-            string issuerUri)
+            string issuerUri,
+
+            Outputs.WorkforcePoolProviderOidcWebSsoConfig? webSsoConfig)
         {
             ClientId = clientId;
             IssuerUri = issuerUri;
+            WebSsoConfig = webSsoConfig;
         }
     }
 }

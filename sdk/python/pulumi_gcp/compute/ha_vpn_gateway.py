@@ -37,7 +37,7 @@ class HaVpnGatewayArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
-        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -129,7 +129,7 @@ class HaVpnGatewayArgs:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        The stack type for this VPN gateway to identify the IP protocols that are enabled.
         If not specified, IPV4_ONLY will be used.
         Default value is `IPV4_ONLY`.
         Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -180,7 +180,7 @@ class _HaVpnGatewayState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -287,7 +287,7 @@ class _HaVpnGatewayState:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        The stack type for this VPN gateway to identify the IP protocols that are enabled.
         If not specified, IPV4_ONLY will be used.
         Default value is `IPV4_ONLY`.
         Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -446,7 +446,7 @@ class HaVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
-        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -645,7 +645,7 @@ class HaVpnGateway(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region this gateway should sit in.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        :param pulumi.Input[str] stack_type: The stack type for this VPN gateway to identify the IP protocols that are enabled.
                If not specified, IPV4_ONLY will be used.
                Default value is `IPV4_ONLY`.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -725,7 +725,7 @@ class HaVpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="stackType")
     def stack_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        The stack type for this VPN gateway to identify the IP protocols that are enabled.
         If not specified, IPV4_ONLY will be used.
         Default value is `IPV4_ONLY`.
         Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.

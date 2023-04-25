@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
     /**
-     * @return Name of a BigQuery field to be returned with the findings.
+     * @return Name describing the field.
      * 
      */
     private String name;
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField() {}
     /**
-     * @return Name of a BigQuery field to be returned with the findings.
+     * @return Name describing the field.
      * 
      */
     public String name() {

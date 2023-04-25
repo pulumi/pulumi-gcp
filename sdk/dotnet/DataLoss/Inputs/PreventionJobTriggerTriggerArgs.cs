@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionJobTriggerTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// For use with hybrid jobs. Jobs must be manually created and finished.
+        /// </summary>
+        [Input("manual")]
+        public Input<Inputs.PreventionJobTriggerTriggerManualArgs>? Manual { get; set; }
+
+        /// <summary>
         /// Schedule for triggered jobs
         /// Structure is documented below.
         /// </summary>

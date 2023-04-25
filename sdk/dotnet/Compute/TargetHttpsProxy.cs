@@ -96,8 +96,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the QUIC override policy for this resource. This determines
         /// whether the load balancer will attempt to negotiate QUIC with clients
         /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-        /// specified, uses the QUIC policy with no user overrides, which is
-        /// equivalent to DISABLE.
+        /// specified, Google manages whether QUIC is used.
         /// Default value is `NONE`.
         /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         /// </summary>
@@ -223,8 +222,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the QUIC override policy for this resource. This determines
         /// whether the load balancer will attempt to negotiate QUIC with clients
         /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-        /// specified, uses the QUIC policy with no user overrides, which is
-        /// equivalent to DISABLE.
+        /// specified, Google manages whether QUIC is used.
         /// Default value is `NONE`.
         /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         /// </summary>
@@ -324,8 +322,7 @@ namespace Pulumi.Gcp.Compute
         /// Specifies the QUIC override policy for this resource. This determines
         /// whether the load balancer will attempt to negotiate QUIC with clients
         /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-        /// specified, uses the QUIC policy with no user overrides, which is
-        /// equivalent to DISABLE.
+        /// specified, Google manages whether QUIC is used.
         /// Default value is `NONE`.
         /// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         /// </summary>

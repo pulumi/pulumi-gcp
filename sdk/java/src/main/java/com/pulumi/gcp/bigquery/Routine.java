@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * 
  *         var sproc = new Routine(&#34;sproc&#34;, RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;tf_test_routine_id&#34;)
+ *             .routineId(&#34;routine_id&#34;)
  *             .routineType(&#34;SCALAR_FUNCTION&#34;)
  *             .language(&#34;JAVASCRIPT&#34;)
  *             .definitionBody(&#34;CREATE FUNCTION multiplyInputs return x*y;&#34;)
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * 
  *         var sproc = new Routine(&#34;sproc&#34;, RoutineArgs.builder()        
  *             .datasetId(test.datasetId())
- *             .routineId(&#34;tf_test_routine_id&#34;)
+ *             .routineId(&#34;routine_id&#34;)
  *             .routineType(&#34;TABLE_VALUED_FUNCTION&#34;)
  *             .language(&#34;SQL&#34;)
  *             .definitionBody(&#34;&#34;&#34;

@@ -25,6 +25,40 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///     * [Official Documentation](https://cloud.google.com/identity-platform/docs)
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Config Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         Labels = 
+    ///         {
+    ///             { "firebase", "enabled" },
+    ///         },
+    ///     });
+    /// 
+    ///     var identitytoolkit = new Gcp.Projects.Service("identitytoolkit", new()
+    ///     {
+    ///         Project = defaultProject.ProjectId,
+    ///         ServiceName = "identitytoolkit.googleapis.com",
+    ///     });
+    /// 
+    ///     var defaultConfig = new Gcp.IdentityPlatform.Config("defaultConfig", new()
+    ///     {
+    ///         Project = defaultProject.ProjectId,
+    ///         AutodeleteAnonymousUsers = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

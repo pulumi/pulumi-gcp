@@ -386,14 +386,14 @@ public class Target extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requireApproval);
     }
     /**
-     * (Beta only) Information specifying a Cloud Run deployment target.
+     * Information specifying a Cloud Run deployment target.
      * 
      */
     @Export(name="run", type=TargetRun.class, parameters={})
     private Output</* @Nullable */ TargetRun> run;
 
     /**
-     * @return (Beta only) Information specifying a Cloud Run deployment target.
+     * @return Information specifying a Cloud Run deployment target.
      * 
      */
     public Output<Optional<TargetRun>> run() {

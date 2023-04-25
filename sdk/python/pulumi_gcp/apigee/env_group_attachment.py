@@ -134,7 +134,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test",
+            project_id="my-project",
             org_id="",
             billing_account="")
         apigee = gcp.projects.Service("apigee",
@@ -173,7 +173,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
         apigee_env = gcp.apigee.Environment("apigeeEnv",
             org_id=apigee_org.id,
             description="Apigee Environment",
-            display_name="tf-test")
+            display_name="my-environment")
         env_group_attachment = gcp.apigee.EnvGroupAttachment("envGroupAttachment",
             envgroup_id=apigee_envgroup.id,
             environment=apigee_env.name)
@@ -220,7 +220,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test",
+            project_id="my-project",
             org_id="",
             billing_account="")
         apigee = gcp.projects.Service("apigee",
@@ -259,7 +259,7 @@ class EnvGroupAttachment(pulumi.CustomResource):
         apigee_env = gcp.apigee.Environment("apigeeEnv",
             org_id=apigee_org.id,
             description="Apigee Environment",
-            display_name="tf-test")
+            display_name="my-environment")
         env_group_attachment = gcp.apigee.EnvGroupAttachment("envGroupAttachment",
             envgroup_id=apigee_envgroup.id,
             environment=apigee_env.name)

@@ -17,6 +17,7 @@ __all__ = [
     'FolderBucketConfigCmekSettings',
     'FolderSinkBigqueryOptions',
     'FolderSinkExclusion',
+    'LinkedDatasetBigqueryDataset',
     'MetricBucketOptions',
     'MetricBucketOptionsExplicitBuckets',
     'MetricBucketOptionsExponentialBuckets',
@@ -349,6 +350,50 @@ class FolderSinkExclusion(dict):
         If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class LinkedDatasetBigqueryDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinkedDatasetBigqueryDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinkedDatasetBigqueryDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinkedDatasetBigqueryDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: Optional[str] = None):
+        """
+        :param str dataset_id: (Output)
+               Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+               of the link, so the link must match the naming restrictions of BigQuery datasets
+               (alphanumeric characters and underscores only). The dataset will have a resource path of
+               "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+        of the link, so the link must match the naming restrictions of BigQuery datasets
+        (alphanumeric characters and underscores only). The dataset will have a resource path of
+        "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+        """
+        return pulumi.get(self, "dataset_id")
 
 
 @pulumi.output_type

@@ -66,14 +66,6 @@ import * as utilities from "../utilities";
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id}, {
  *     provider: google_beta,
  * });
- * const project = gcp.organizations.getProject({});
- * const kms_project_binding = new gcp.projects.IAMMember("kms-project-binding", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: project.then(project => `serviceAccount:service-${project.number}@compute-system.iam.gserviceaccount.com`),
- * }, {
- *     provider: google_beta,
- * });
  * const image = new gcp.compute.MachineImage("image", {
  *     sourceInstance: vm.selfLink,
  *     machineImageEncryptionKey: {
@@ -81,7 +73,6 @@ import * as utilities from "../utilities";
  *     },
  * }, {
  *     provider: google_beta,
- *     dependsOn: [kms_project_binding],
  * });
  * ```
  *

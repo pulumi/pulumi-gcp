@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     var access_level_service_account = new Gcp.AccessContextManager.AccessLevel("access-level-service-account", new()
     ///     {
     ///         Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
-    ///         Title = "tf_test_chromeos_no_lock",
+    ///         Title = "chromeos_no_lock",
     ///         Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
     ///         {
     ///             Conditions = new[]
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var created_later = new Gcp.ServiceAccount.Account("created-later", new()
     ///     {
-    ///         AccountId = "tf-test",
+    ///         AccountId = "my-account-id",
     ///     });
     /// 
     ///     var access_level_conditions = new Gcp.AccessContextManager.AccessLevelCondition("access-level-conditions", new()

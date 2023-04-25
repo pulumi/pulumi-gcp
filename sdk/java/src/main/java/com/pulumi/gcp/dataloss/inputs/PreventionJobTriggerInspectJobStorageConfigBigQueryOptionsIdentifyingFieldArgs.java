@@ -14,14 +14,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIde
     public static final PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs Empty = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs();
 
     /**
-     * Name of a BigQuery field to be returned with the findings.
+     * Name describing the field.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of a BigQuery field to be returned with the findings.
+     * @return Name describing the field.
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIde
         }
 
         /**
-         * @param name Name of a BigQuery field to be returned with the findings.
+         * @param name Name describing the field.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIde
         }
 
         /**
-         * @param name Name of a BigQuery field to be returned with the findings.
+         * @param name Name describing the field.
          * 
          * @return builder
          * 

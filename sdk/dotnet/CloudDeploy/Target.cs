@@ -245,7 +245,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<bool?> RequireApproval { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta only) Information specifying a Cloud Run deployment target.
+        /// Information specifying a Cloud Run deployment target.
         /// </summary>
         [Output("run")]
         public Output<Outputs.TargetRun?> Run { get; private set; } = null!;
@@ -399,7 +399,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<bool>? RequireApproval { get; set; }
 
         /// <summary>
-        /// (Beta only) Information specifying a Cloud Run deployment target.
+        /// Information specifying a Cloud Run deployment target.
         /// </summary>
         [Input("run")]
         public Input<Inputs.TargetRunArgs>? Run { get; set; }
@@ -509,7 +509,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<bool>? RequireApproval { get; set; }
 
         /// <summary>
-        /// (Beta only) Information specifying a Cloud Run deployment target.
+        /// Information specifying a Cloud Run deployment target.
         /// </summary>
         [Input("run")]
         public Input<Inputs.TargetRunGetArgs>? Run { get; set; }

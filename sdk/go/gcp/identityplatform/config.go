@@ -25,6 +25,52 @@ import (
 //   - [Official Documentation](https://cloud.google.com/identity-platform/docs)
 //
 // ## Example Usage
+// ### Identity Platform Config Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/identityplatform"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("my-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				Labels: pulumi.StringMap{
+//					"firebase": pulumi.String("enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewService(ctx, "identitytoolkit", &projects.ServiceArgs{
+//				Project: defaultProject.ProjectId,
+//				Service: pulumi.String("identitytoolkit.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = identityplatform.NewConfig(ctx, "defaultConfig", &identityplatform.ConfigArgs{
+//				Project:                  defaultProject.ProjectId,
+//				AutodeleteAnonymousUsers: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

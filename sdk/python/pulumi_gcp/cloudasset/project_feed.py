@@ -49,7 +49,7 @@ class ProjectFeedArgs:
                condition are optional.
                Structure is documented below.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
-               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -161,7 +161,7 @@ class ProjectFeedArgs:
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
         Asset content type. If not specified, no content but the asset name and type will be returned.
-        Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+        Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         """
         return pulumi.get(self, "content_type")
 
@@ -217,7 +217,7 @@ class _ProjectFeedState:
                condition are optional.
                Structure is documented below.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
-               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         :param pulumi.Input['ProjectFeedFeedOutputConfigArgs'] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
@@ -312,7 +312,7 @@ class _ProjectFeedState:
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
         Asset content type. If not specified, no content but the asset name and type will be returned.
-        Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+        Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         """
         return pulumi.get(self, "content_type")
 
@@ -434,7 +434,7 @@ class ProjectFeed(pulumi.CustomResource):
                condition are optional.
                Structure is documented below.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
-               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         :param pulumi.Input[pulumi.InputType['ProjectFeedFeedOutputConfigArgs']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
@@ -565,7 +565,7 @@ class ProjectFeed(pulumi.CustomResource):
                condition are optional.
                Structure is documented below.
         :param pulumi.Input[str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
-               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+               Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         :param pulumi.Input[str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         :param pulumi.Input[pulumi.InputType['ProjectFeedFeedOutputConfigArgs']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
@@ -640,7 +640,7 @@ class ProjectFeed(pulumi.CustomResource):
     def content_type(self) -> pulumi.Output[Optional[str]]:
         """
         Asset content type. If not specified, no content but the asset name and type will be returned.
-        Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+        Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         """
         return pulumi.get(self, "content_type")
 

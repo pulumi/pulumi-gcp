@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
     ///     {
     ///         DatasetId = test.DatasetId,
-    ///         RoutineId = "tf_test_routine_id",
+    ///         RoutineId = "routine_id",
     ///         RoutineType = "SCALAR_FUNCTION",
     ///         Language = "JAVASCRIPT",
     ///         DefinitionBody = "CREATE FUNCTION multiplyInputs return x*y;",
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
     ///     {
     ///         DatasetId = test.DatasetId,
-    ///         RoutineId = "tf_test_routine_id",
+    ///         RoutineId = "routine_id",
     ///         RoutineType = "TABLE_VALUED_FUNCTION",
     ///         Language = "SQL",
     ///         DefinitionBody = @"SELECT 1 + value AS value

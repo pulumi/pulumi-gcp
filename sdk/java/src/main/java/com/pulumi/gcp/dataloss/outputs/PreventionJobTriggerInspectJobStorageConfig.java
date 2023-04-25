@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptions;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptions;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfig;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,12 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
      * 
      */
     private @Nullable PreventionJobTriggerInspectJobStorageConfigDatastoreOptions datastoreOptions;
+    /**
+     * @return Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobStorageConfigHybridOptions hybridOptions;
     /**
      * @return Information on where to inspect
      * Structure is documented below.
@@ -65,6 +72,14 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
         return Optional.ofNullable(this.datastoreOptions);
     }
     /**
+     * @return Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobStorageConfigHybridOptions> hybridOptions() {
+        return Optional.ofNullable(this.hybridOptions);
+    }
+    /**
      * @return Information on where to inspect
      * Structure is documented below.
      * 
@@ -85,6 +100,7 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
         private @Nullable PreventionJobTriggerInspectJobStorageConfigBigQueryOptions bigQueryOptions;
         private @Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions cloudStorageOptions;
         private @Nullable PreventionJobTriggerInspectJobStorageConfigDatastoreOptions datastoreOptions;
+        private @Nullable PreventionJobTriggerInspectJobStorageConfigHybridOptions hybridOptions;
         private @Nullable PreventionJobTriggerInspectJobStorageConfigTimespanConfig timespanConfig;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfig defaults) {
@@ -92,6 +108,7 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
     	      this.bigQueryOptions = defaults.bigQueryOptions;
     	      this.cloudStorageOptions = defaults.cloudStorageOptions;
     	      this.datastoreOptions = defaults.datastoreOptions;
+    	      this.hybridOptions = defaults.hybridOptions;
     	      this.timespanConfig = defaults.timespanConfig;
         }
 
@@ -111,6 +128,11 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder hybridOptions(@Nullable PreventionJobTriggerInspectJobStorageConfigHybridOptions hybridOptions) {
+            this.hybridOptions = hybridOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder timespanConfig(@Nullable PreventionJobTriggerInspectJobStorageConfigTimespanConfig timespanConfig) {
             this.timespanConfig = timespanConfig;
             return this;
@@ -120,6 +142,7 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
             o.bigQueryOptions = bigQueryOptions;
             o.cloudStorageOptions = cloudStorageOptions;
             o.datastoreOptions = datastoreOptions;
+            o.hybridOptions = hybridOptions;
             o.timespanConfig = timespanConfig;
             return o;
         }

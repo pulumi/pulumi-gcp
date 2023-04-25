@@ -20,6 +20,42 @@ import (
 //   - [Official Documentation](https://cloud.google.com/logging/docs/apis)
 //
 // ## Example Usage
+// ### Logging Log View Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/logging"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			loggingLogViewProjectBucketConfig, err := logging.NewProjectBucketConfig(ctx, "loggingLogViewProjectBucketConfig", &logging.ProjectBucketConfigArgs{
+//				Project:       pulumi.String("my-project-name"),
+//				Location:      pulumi.String("global"),
+//				RetentionDays: pulumi.Int(30),
+//				BucketId:      pulumi.String("_Default"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = logging.NewLogView(ctx, "loggingLogViewLogView", &logging.LogViewArgs{
+//				Bucket:      loggingLogViewProjectBucketConfig.ID(),
+//				Description: pulumi.String("A logging view configured with Terraform"),
+//				Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

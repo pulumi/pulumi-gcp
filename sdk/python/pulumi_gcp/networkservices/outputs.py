@@ -41,6 +41,28 @@ __all__ = [
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect',
+    'HttpRouteRule',
+    'HttpRouteRuleAction',
+    'HttpRouteRuleActionCorsPolicy',
+    'HttpRouteRuleActionDestination',
+    'HttpRouteRuleActionFaultInjectionPolicy',
+    'HttpRouteRuleActionFaultInjectionPolicyAbort',
+    'HttpRouteRuleActionFaultInjectionPolicyDelay',
+    'HttpRouteRuleActionRedirect',
+    'HttpRouteRuleActionRequestHeaderModifier',
+    'HttpRouteRuleActionRequestMirrorPolicy',
+    'HttpRouteRuleActionRequestMirrorPolicyDestination',
+    'HttpRouteRuleActionResponseHeaderModifier',
+    'HttpRouteRuleActionRetryPolicy',
+    'HttpRouteRuleActionUrlRewrite',
+    'HttpRouteRuleMatch',
+    'HttpRouteRuleMatchHeader',
+    'HttpRouteRuleMatchHeaderRangeMatch',
+    'HttpRouteRuleMatchQueryParameter',
+    'TcpRouteRule',
+    'TcpRouteRuleAction',
+    'TcpRouteRuleActionDestination',
+    'TcpRouteRuleMatch',
 ]
 
 @pulumi.output_type
@@ -2497,5 +2519,1450 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
         If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
         """
         return pulumi.get(self, "strip_query")
+
+
+@pulumi.output_type
+class HttpRouteRule(dict):
+    def __init__(__self__, *,
+                 action: Optional['outputs.HttpRouteRuleAction'] = None,
+                 matches: Optional[Sequence['outputs.HttpRouteRuleMatch']] = None):
+        """
+        :param 'HttpRouteRuleActionArgs' action: The detailed rule defining how to route matched traffic.
+               Structure is documented below.
+        :param Sequence['HttpRouteRuleMatchArgs'] matches: A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+               If no matches field is specified, this rule will unconditionally match traffic.
+               If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+               Structure is documented below.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional['outputs.HttpRouteRuleAction']:
+        """
+        The detailed rule defining how to route matched traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[Sequence['outputs.HttpRouteRuleMatch']]:
+        """
+        A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+        If no matches field is specified, this rule will unconditionally match traffic.
+        If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matches")
+
+
+@pulumi.output_type
+class HttpRouteRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "corsPolicy":
+            suggest = "cors_policy"
+        elif key == "faultInjectionPolicy":
+            suggest = "fault_injection_policy"
+        elif key == "requestHeaderModifier":
+            suggest = "request_header_modifier"
+        elif key == "requestMirrorPolicy":
+            suggest = "request_mirror_policy"
+        elif key == "responseHeaderModifier":
+            suggest = "response_header_modifier"
+        elif key == "retryPolicy":
+            suggest = "retry_policy"
+        elif key == "urlRewrite":
+            suggest = "url_rewrite"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cors_policy: Optional['outputs.HttpRouteRuleActionCorsPolicy'] = None,
+                 destinations: Optional[Sequence['outputs.HttpRouteRuleActionDestination']] = None,
+                 fault_injection_policy: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicy'] = None,
+                 redirect: Optional['outputs.HttpRouteRuleActionRedirect'] = None,
+                 request_header_modifier: Optional['outputs.HttpRouteRuleActionRequestHeaderModifier'] = None,
+                 request_mirror_policy: Optional['outputs.HttpRouteRuleActionRequestMirrorPolicy'] = None,
+                 response_header_modifier: Optional['outputs.HttpRouteRuleActionResponseHeaderModifier'] = None,
+                 retry_policy: Optional['outputs.HttpRouteRuleActionRetryPolicy'] = None,
+                 timeout: Optional[str] = None,
+                 url_rewrite: Optional['outputs.HttpRouteRuleActionUrlRewrite'] = None):
+        """
+        :param 'HttpRouteRuleActionCorsPolicyArgs' cors_policy: The specification for allowing client side cross-origin requests.
+               Structure is documented below.
+        :param Sequence['HttpRouteRuleActionDestinationArgs'] destinations: The destination to which traffic should be forwarded.
+               Structure is documented below.
+        :param 'HttpRouteRuleActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+               Structure is documented below.
+        :param 'HttpRouteRuleActionRedirectArgs' redirect: If set, the request is directed as configured by this field.
+               Structure is documented below.
+        :param 'HttpRouteRuleActionRequestHeaderModifierArgs' request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+               Structure is documented below.
+        :param 'HttpRouteRuleActionRequestMirrorPolicyArgs' request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+               Structure is documented below.
+        :param 'HttpRouteRuleActionResponseHeaderModifierArgs' response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
+               Structure is documented below.
+        :param 'HttpRouteRuleActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+               Structure is documented below.
+        :param str timeout: Specifies the timeout for selected route.
+        :param 'HttpRouteRuleActionUrlRewriteArgs' url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
+               Structure is documented below.
+        """
+        if cors_policy is not None:
+            pulumi.set(__self__, "cors_policy", cors_policy)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if fault_injection_policy is not None:
+            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+        if request_header_modifier is not None:
+            pulumi.set(__self__, "request_header_modifier", request_header_modifier)
+        if request_mirror_policy is not None:
+            pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
+        if response_header_modifier is not None:
+            pulumi.set(__self__, "response_header_modifier", response_header_modifier)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if url_rewrite is not None:
+            pulumi.set(__self__, "url_rewrite", url_rewrite)
+
+    @property
+    @pulumi.getter(name="corsPolicy")
+    def cors_policy(self) -> Optional['outputs.HttpRouteRuleActionCorsPolicy']:
+        """
+        The specification for allowing client side cross-origin requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cors_policy")
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['outputs.HttpRouteRuleActionDestination']]:
+        """
+        The destination to which traffic should be forwarded.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="faultInjectionPolicy")
+    def fault_injection_policy(self) -> Optional['outputs.HttpRouteRuleActionFaultInjectionPolicy']:
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional['outputs.HttpRouteRuleActionRedirect']:
+        """
+        If set, the request is directed as configured by this field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect")
+
+    @property
+    @pulumi.getter(name="requestHeaderModifier")
+    def request_header_modifier(self) -> Optional['outputs.HttpRouteRuleActionRequestHeaderModifier']:
+        """
+        The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_header_modifier")
+
+    @property
+    @pulumi.getter(name="requestMirrorPolicy")
+    def request_mirror_policy(self) -> Optional['outputs.HttpRouteRuleActionRequestMirrorPolicy']:
+        """
+        Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_mirror_policy")
+
+    @property
+    @pulumi.getter(name="responseHeaderModifier")
+    def response_header_modifier(self) -> Optional['outputs.HttpRouteRuleActionResponseHeaderModifier']:
+        """
+        The specification for modifying the headers of a response prior to sending the response back to the client.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_header_modifier")
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional['outputs.HttpRouteRuleActionRetryPolicy']:
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[str]:
+        """
+        Specifies the timeout for selected route.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="urlRewrite")
+    def url_rewrite(self) -> Optional['outputs.HttpRouteRuleActionUrlRewrite']:
+        """
+        The specification for rewrite URL before forwarding requests to the destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "url_rewrite")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionCorsPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOriginRegexes":
+            suggest = "allow_origin_regexes"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionCorsPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionCorsPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionCorsPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_credentials: Optional[bool] = None,
+                 allow_headers: Optional[Sequence[str]] = None,
+                 allow_methods: Optional[Sequence[str]] = None,
+                 allow_origin_regexes: Optional[Sequence[str]] = None,
+                 allow_origins: Optional[Sequence[str]] = None,
+                 disabled: Optional[bool] = None,
+                 expose_headers: Optional[Sequence[str]] = None,
+                 max_age: Optional[str] = None):
+        """
+        :param bool allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+        :param Sequence[str] allow_headers: Specifies the content for Access-Control-Allow-Headers header.
+        :param Sequence[str] allow_methods: Specifies the content for Access-Control-Allow-Methods header.
+        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins.
+        :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
+        :param bool disabled: If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        :param Sequence[str] expose_headers: Specifies the content for Access-Control-Expose-Headers header.
+        :param str max_age: Specifies how long result of a preflight request can be cached in seconds.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origin_regexes is not None:
+            pulumi.set(__self__, "allow_origin_regexes", allow_origin_regexes)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[bool]:
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the content for Access-Control-Allow-Headers header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the content for Access-Control-Allow-Methods header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @property
+    @pulumi.getter(name="allowOriginRegexes")
+    def allow_origin_regexes(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the regular expression patterns that match allowed origins.
+        """
+        return pulumi.get(self, "allow_origin_regexes")
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the list of origins that will be allowed to do CORS requests.
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the content for Access-Control-Expose-Headers header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[str]:
+        """
+        Specifies how long result of a preflight request can be cached in seconds.
+        """
+        return pulumi.get(self, "max_age")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: Optional[str] = None,
+                 weight: Optional[int] = None):
+        """
+        :param str service_name: The URL of a BackendService to route traffic to.
+        :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+               If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+               If weights are specified for any one service name, they need to be specified for all of them.
+               If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+        If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+        If weights are specified for any one service name, they need to be specified for all of them.
+        If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionFaultInjectionPolicy(dict):
+    def __init__(__self__, *,
+                 abort: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyAbort'] = None,
+                 delay: Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyDelay'] = None):
+        """
+        :param 'HttpRouteRuleActionFaultInjectionPolicyAbortArgs' abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+               Structure is documented below.
+        :param 'HttpRouteRuleActionFaultInjectionPolicyDelayArgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+               Structure is documented below.
+        """
+        if abort is not None:
+            pulumi.set(__self__, "abort", abort)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+
+    @property
+    @pulumi.getter
+    def abort(self) -> Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyAbort']:
+        """
+        Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "abort")
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional['outputs.HttpRouteRuleActionFaultInjectionPolicyDelay']:
+        """
+        Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delay")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionFaultInjectionPolicyAbort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpStatus":
+            suggest = "http_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionFaultInjectionPolicyAbort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionFaultInjectionPolicyAbort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionFaultInjectionPolicyAbort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_status: Optional[int] = None,
+                 percentage: Optional[int] = None):
+        """
+        :param int http_status: The HTTP status code used to abort the request.
+        :param int percentage: The percentage of traffic which will be aborted.
+        """
+        if http_status is not None:
+            pulumi.set(__self__, "http_status", http_status)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="httpStatus")
+    def http_status(self) -> Optional[int]:
+        """
+        The HTTP status code used to abort the request.
+        """
+        return pulumi.get(self, "http_status")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[int]:
+        """
+        The percentage of traffic which will be aborted.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionFaultInjectionPolicyDelay(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedDelay":
+            suggest = "fixed_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionFaultInjectionPolicyDelay. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionFaultInjectionPolicyDelay.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionFaultInjectionPolicyDelay.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_delay: Optional[str] = None,
+                 percentage: Optional[int] = None):
+        """
+        :param str fixed_delay: Specify a fixed delay before forwarding the request.
+        :param int percentage: The percentage of traffic on which delay will be injected.
+        """
+        if fixed_delay is not None:
+            pulumi.set(__self__, "fixed_delay", fixed_delay)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="fixedDelay")
+    def fixed_delay(self) -> Optional[str]:
+        """
+        Specify a fixed delay before forwarding the request.
+        """
+        return pulumi.get(self, "fixed_delay")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[int]:
+        """
+        The percentage of traffic on which delay will be injected.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostRedirect":
+            suggest = "host_redirect"
+        elif key == "httpsRedirect":
+            suggest = "https_redirect"
+        elif key == "pathRedirect":
+            suggest = "path_redirect"
+        elif key == "portRedirect":
+            suggest = "port_redirect"
+        elif key == "prefixRewrite":
+            suggest = "prefix_rewrite"
+        elif key == "responseCode":
+            suggest = "response_code"
+        elif key == "stripQuery":
+            suggest = "strip_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionRedirect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_redirect: Optional[str] = None,
+                 https_redirect: Optional[bool] = None,
+                 path_redirect: Optional[str] = None,
+                 port_redirect: Optional[int] = None,
+                 prefix_rewrite: Optional[str] = None,
+                 response_code: Optional[str] = None,
+                 strip_query: Optional[bool] = None):
+        """
+        :param str host_redirect: The host that will be used in the redirect response instead of the one that was supplied in the request.
+        :param bool https_redirect: If set to true, the URL scheme in the redirected request is set to https.
+        :param str path_redirect: The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+        :param int port_redirect: The port that will be used in the redirected request instead of the one that was supplied in the request.
+        :param str prefix_rewrite: Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+        :param str response_code: The HTTP Status code to use for the redirect.
+        :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+        """
+        if host_redirect is not None:
+            pulumi.set(__self__, "host_redirect", host_redirect)
+        if https_redirect is not None:
+            pulumi.set(__self__, "https_redirect", https_redirect)
+        if path_redirect is not None:
+            pulumi.set(__self__, "path_redirect", path_redirect)
+        if port_redirect is not None:
+            pulumi.set(__self__, "port_redirect", port_redirect)
+        if prefix_rewrite is not None:
+            pulumi.set(__self__, "prefix_rewrite", prefix_rewrite)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+        if strip_query is not None:
+            pulumi.set(__self__, "strip_query", strip_query)
+
+    @property
+    @pulumi.getter(name="hostRedirect")
+    def host_redirect(self) -> Optional[str]:
+        """
+        The host that will be used in the redirect response instead of the one that was supplied in the request.
+        """
+        return pulumi.get(self, "host_redirect")
+
+    @property
+    @pulumi.getter(name="httpsRedirect")
+    def https_redirect(self) -> Optional[bool]:
+        """
+        If set to true, the URL scheme in the redirected request is set to https.
+        """
+        return pulumi.get(self, "https_redirect")
+
+    @property
+    @pulumi.getter(name="pathRedirect")
+    def path_redirect(self) -> Optional[str]:
+        """
+        The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+        """
+        return pulumi.get(self, "path_redirect")
+
+    @property
+    @pulumi.getter(name="portRedirect")
+    def port_redirect(self) -> Optional[int]:
+        """
+        The port that will be used in the redirected request instead of the one that was supplied in the request.
+        """
+        return pulumi.get(self, "port_redirect")
+
+    @property
+    @pulumi.getter(name="prefixRewrite")
+    def prefix_rewrite(self) -> Optional[str]:
+        """
+        Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+        """
+        return pulumi.get(self, "prefix_rewrite")
+
+    @property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[str]:
+        """
+        The HTTP Status code to use for the redirect.
+        """
+        return pulumi.get(self, "response_code")
+
+    @property
+    @pulumi.getter(name="stripQuery")
+    def strip_query(self) -> Optional[bool]:
+        """
+        If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+        """
+        return pulumi.get(self, "strip_query")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionRequestHeaderModifier(dict):
+    def __init__(__self__, *,
+                 add: Optional[Mapping[str, str]] = None,
+                 removes: Optional[Sequence[str]] = None,
+                 set: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] add: Add the headers with given map where key is the name of the header, value is the value of the header.
+        :param Sequence[str] removes: Remove headers (matching by header names) specified in the list.
+        :param Mapping[str, str] set: Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        if add is not None:
+            pulumi.set(__self__, "add", add)
+        if removes is not None:
+            pulumi.set(__self__, "removes", removes)
+        if set is not None:
+            pulumi.set(__self__, "set", set)
+
+    @property
+    @pulumi.getter
+    def add(self) -> Optional[Mapping[str, str]]:
+        """
+        Add the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        return pulumi.get(self, "add")
+
+    @property
+    @pulumi.getter
+    def removes(self) -> Optional[Sequence[str]]:
+        """
+        Remove headers (matching by header names) specified in the list.
+        """
+        return pulumi.get(self, "removes")
+
+    @property
+    @pulumi.getter
+    def set(self) -> Optional[Mapping[str, str]]:
+        """
+        Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        return pulumi.get(self, "set")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionRequestMirrorPolicy(dict):
+    def __init__(__self__, *,
+                 destination: Optional['outputs.HttpRouteRuleActionRequestMirrorPolicyDestination'] = None):
+        """
+        :param 'HttpRouteRuleActionRequestMirrorPolicyDestinationArgs' destination: The destination the requests will be mirrored to.
+               Structure is documented below.
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional['outputs.HttpRouteRuleActionRequestMirrorPolicyDestination']:
+        """
+        The destination the requests will be mirrored to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destination")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionRequestMirrorPolicyDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionRequestMirrorPolicyDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionRequestMirrorPolicyDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionRequestMirrorPolicyDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: Optional[str] = None,
+                 weight: Optional[int] = None):
+        """
+        :param str service_name: The URL of a BackendService to route traffic to.
+        :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+               If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+               If weights are specified for any one service name, they need to be specified for all of them.
+               If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+        If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+        If weights are specified for any one service name, they need to be specified for all of them.
+        If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionResponseHeaderModifier(dict):
+    def __init__(__self__, *,
+                 add: Optional[Mapping[str, str]] = None,
+                 removes: Optional[Sequence[str]] = None,
+                 set: Optional[Mapping[str, str]] = None):
+        """
+        :param Mapping[str, str] add: Add the headers with given map where key is the name of the header, value is the value of the header.
+        :param Sequence[str] removes: Remove headers (matching by header names) specified in the list.
+        :param Mapping[str, str] set: Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        if add is not None:
+            pulumi.set(__self__, "add", add)
+        if removes is not None:
+            pulumi.set(__self__, "removes", removes)
+        if set is not None:
+            pulumi.set(__self__, "set", set)
+
+    @property
+    @pulumi.getter
+    def add(self) -> Optional[Mapping[str, str]]:
+        """
+        Add the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        return pulumi.get(self, "add")
+
+    @property
+    @pulumi.getter
+    def removes(self) -> Optional[Sequence[str]]:
+        """
+        Remove headers (matching by header names) specified in the list.
+        """
+        return pulumi.get(self, "removes")
+
+    @property
+    @pulumi.getter
+    def set(self) -> Optional[Mapping[str, str]]:
+        """
+        Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        return pulumi.get(self, "set")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionRetryPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numRetries":
+            suggest = "num_retries"
+        elif key == "perTryTimeout":
+            suggest = "per_try_timeout"
+        elif key == "retryConditions":
+            suggest = "retry_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionRetryPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionRetryPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionRetryPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 num_retries: Optional[int] = None,
+                 per_try_timeout: Optional[str] = None,
+                 retry_conditions: Optional[Sequence[str]] = None):
+        """
+        :param int num_retries: Specifies the allowed number of retries.
+        :param str per_try_timeout: Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
+        """
+        if num_retries is not None:
+            pulumi.set(__self__, "num_retries", num_retries)
+        if per_try_timeout is not None:
+            pulumi.set(__self__, "per_try_timeout", per_try_timeout)
+        if retry_conditions is not None:
+            pulumi.set(__self__, "retry_conditions", retry_conditions)
+
+    @property
+    @pulumi.getter(name="numRetries")
+    def num_retries(self) -> Optional[int]:
+        """
+        Specifies the allowed number of retries.
+        """
+        return pulumi.get(self, "num_retries")
+
+    @property
+    @pulumi.getter(name="perTryTimeout")
+    def per_try_timeout(self) -> Optional[str]:
+        """
+        Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "per_try_timeout")
+
+    @property
+    @pulumi.getter(name="retryConditions")
+    def retry_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Specifies one or more conditions when this retry policy applies.
+        """
+        return pulumi.get(self, "retry_conditions")
+
+
+@pulumi.output_type
+class HttpRouteRuleActionUrlRewrite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostRewrite":
+            suggest = "host_rewrite"
+        elif key == "pathPrefixRewrite":
+            suggest = "path_prefix_rewrite"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleActionUrlRewrite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleActionUrlRewrite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleActionUrlRewrite.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host_rewrite: Optional[str] = None,
+                 path_prefix_rewrite: Optional[str] = None):
+        """
+        :param str host_rewrite: Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+        :param str path_prefix_rewrite: Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+        """
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+        if path_prefix_rewrite is not None:
+            pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[str]:
+        """
+        Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @property
+    @pulumi.getter(name="pathPrefixRewrite")
+    def path_prefix_rewrite(self) -> Optional[str]:
+        """
+        Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+        """
+        return pulumi.get(self, "path_prefix_rewrite")
+
+
+@pulumi.output_type
+class HttpRouteRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullPathMatch":
+            suggest = "full_path_match"
+        elif key == "ignoreCase":
+            suggest = "ignore_case"
+        elif key == "prefixMatch":
+            suggest = "prefix_match"
+        elif key == "queryParameters":
+            suggest = "query_parameters"
+        elif key == "regexMatch":
+            suggest = "regex_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 full_path_match: Optional[str] = None,
+                 headers: Optional[Sequence['outputs.HttpRouteRuleMatchHeader']] = None,
+                 ignore_case: Optional[bool] = None,
+                 prefix_match: Optional[str] = None,
+                 query_parameters: Optional[Sequence['outputs.HttpRouteRuleMatchQueryParameter']] = None,
+                 regex_match: Optional[str] = None):
+        """
+        :param str full_path_match: The HTTP request path value should exactly match this value.
+        :param Sequence['HttpRouteRuleMatchHeaderArgs'] headers: Specifies a list of HTTP request headers to match against.
+               Structure is documented below.
+        :param bool ignore_case: Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
+        :param str prefix_match: The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
+        :param Sequence['HttpRouteRuleMatchQueryParameterArgs'] query_parameters: Specifies a list of query parameters to match against.
+               Structure is documented below.
+        :param str regex_match: The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        """
+        if full_path_match is not None:
+            pulumi.set(__self__, "full_path_match", full_path_match)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix_match is not None:
+            pulumi.set(__self__, "prefix_match", prefix_match)
+        if query_parameters is not None:
+            pulumi.set(__self__, "query_parameters", query_parameters)
+        if regex_match is not None:
+            pulumi.set(__self__, "regex_match", regex_match)
+
+    @property
+    @pulumi.getter(name="fullPathMatch")
+    def full_path_match(self) -> Optional[str]:
+        """
+        The HTTP request path value should exactly match this value.
+        """
+        return pulumi.get(self, "full_path_match")
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.HttpRouteRuleMatchHeader']]:
+        """
+        Specifies a list of HTTP request headers to match against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> Optional[bool]:
+        """
+        Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> Optional[str]:
+        """
+        The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @property
+    @pulumi.getter(name="queryParameters")
+    def query_parameters(self) -> Optional[Sequence['outputs.HttpRouteRuleMatchQueryParameter']]:
+        """
+        Specifies a list of query parameters to match against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_parameters")
+
+    @property
+    @pulumi.getter(name="regexMatch")
+    def regex_match(self) -> Optional[str]:
+        """
+        The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        """
+        return pulumi.get(self, "regex_match")
+
+
+@pulumi.output_type
+class HttpRouteRuleMatchHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exactMatch":
+            suggest = "exact_match"
+        elif key == "invertMatch":
+            suggest = "invert_match"
+        elif key == "prefixMatch":
+            suggest = "prefix_match"
+        elif key == "presentMatch":
+            suggest = "present_match"
+        elif key == "rangeMatch":
+            suggest = "range_match"
+        elif key == "regexMatch":
+            suggest = "regex_match"
+        elif key == "suffixMatch":
+            suggest = "suffix_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleMatchHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleMatchHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleMatchHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exact_match: Optional[str] = None,
+                 header: Optional[str] = None,
+                 invert_match: Optional[bool] = None,
+                 prefix_match: Optional[str] = None,
+                 present_match: Optional[bool] = None,
+                 range_match: Optional['outputs.HttpRouteRuleMatchHeaderRangeMatch'] = None,
+                 regex_match: Optional[str] = None,
+                 suffix_match: Optional[str] = None):
+        """
+        :param str exact_match: The value of the header should match exactly the content of exactMatch.
+        :param str header: The name of the HTTP header to match against.
+        :param bool invert_match: If specified, the match result will be inverted before checking. Default value is set to false.
+        :param str prefix_match: The value of the header must start with the contents of prefixMatch.
+        :param bool present_match: A header with headerName must exist. The match takes place whether or not the header has a value.
+        :param 'HttpRouteRuleMatchHeaderRangeMatchArgs' range_match: If specified, the rule will match if the request header value is within the range.
+               Structure is documented below.
+        :param str regex_match: The value of the header must match the regular expression specified in regexMatch.
+        :param str suffix_match: The value of the header must end with the contents of suffixMatch.
+        """
+        if exact_match is not None:
+            pulumi.set(__self__, "exact_match", exact_match)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if invert_match is not None:
+            pulumi.set(__self__, "invert_match", invert_match)
+        if prefix_match is not None:
+            pulumi.set(__self__, "prefix_match", prefix_match)
+        if present_match is not None:
+            pulumi.set(__self__, "present_match", present_match)
+        if range_match is not None:
+            pulumi.set(__self__, "range_match", range_match)
+        if regex_match is not None:
+            pulumi.set(__self__, "regex_match", regex_match)
+        if suffix_match is not None:
+            pulumi.set(__self__, "suffix_match", suffix_match)
+
+    @property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[str]:
+        """
+        The value of the header should match exactly the content of exactMatch.
+        """
+        return pulumi.get(self, "exact_match")
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[str]:
+        """
+        The name of the HTTP header to match against.
+        """
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter(name="invertMatch")
+    def invert_match(self) -> Optional[bool]:
+        """
+        If specified, the match result will be inverted before checking. Default value is set to false.
+        """
+        return pulumi.get(self, "invert_match")
+
+    @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> Optional[str]:
+        """
+        The value of the header must start with the contents of prefixMatch.
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @property
+    @pulumi.getter(name="presentMatch")
+    def present_match(self) -> Optional[bool]:
+        """
+        A header with headerName must exist. The match takes place whether or not the header has a value.
+        """
+        return pulumi.get(self, "present_match")
+
+    @property
+    @pulumi.getter(name="rangeMatch")
+    def range_match(self) -> Optional['outputs.HttpRouteRuleMatchHeaderRangeMatch']:
+        """
+        If specified, the rule will match if the request header value is within the range.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "range_match")
+
+    @property
+    @pulumi.getter(name="regexMatch")
+    def regex_match(self) -> Optional[str]:
+        """
+        The value of the header must match the regular expression specified in regexMatch.
+        """
+        return pulumi.get(self, "regex_match")
+
+    @property
+    @pulumi.getter(name="suffixMatch")
+    def suffix_match(self) -> Optional[str]:
+        """
+        The value of the header must end with the contents of suffixMatch.
+        """
+        return pulumi.get(self, "suffix_match")
+
+
+@pulumi.output_type
+class HttpRouteRuleMatchHeaderRangeMatch(dict):
+    def __init__(__self__, *,
+                 end: int,
+                 start: int):
+        """
+        :param int end: End of the range (exclusive).
+        :param int start: Start of the range (inclusive).
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> int:
+        """
+        End of the range (exclusive).
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def start(self) -> int:
+        """
+        Start of the range (inclusive).
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class HttpRouteRuleMatchQueryParameter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exactMatch":
+            suggest = "exact_match"
+        elif key == "presentMatch":
+            suggest = "present_match"
+        elif key == "queryParameter":
+            suggest = "query_parameter"
+        elif key == "regexMatch":
+            suggest = "regex_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleMatchQueryParameter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleMatchQueryParameter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleMatchQueryParameter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exact_match: Optional[str] = None,
+                 present_match: Optional[bool] = None,
+                 query_parameter: Optional[str] = None,
+                 regex_match: Optional[str] = None):
+        """
+        :param str exact_match: The value of the query parameter must exactly match the contents of exactMatch.
+        :param bool present_match: Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
+        :param str query_parameter: The name of the query parameter to match.
+        :param str regex_match: The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        """
+        if exact_match is not None:
+            pulumi.set(__self__, "exact_match", exact_match)
+        if present_match is not None:
+            pulumi.set(__self__, "present_match", present_match)
+        if query_parameter is not None:
+            pulumi.set(__self__, "query_parameter", query_parameter)
+        if regex_match is not None:
+            pulumi.set(__self__, "regex_match", regex_match)
+
+    @property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[str]:
+        """
+        The value of the query parameter must exactly match the contents of exactMatch.
+        """
+        return pulumi.get(self, "exact_match")
+
+    @property
+    @pulumi.getter(name="presentMatch")
+    def present_match(self) -> Optional[bool]:
+        """
+        Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
+        """
+        return pulumi.get(self, "present_match")
+
+    @property
+    @pulumi.getter(name="queryParameter")
+    def query_parameter(self) -> Optional[str]:
+        """
+        The name of the query parameter to match.
+        """
+        return pulumi.get(self, "query_parameter")
+
+    @property
+    @pulumi.getter(name="regexMatch")
+    def regex_match(self) -> Optional[str]:
+        """
+        The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+        """
+        return pulumi.get(self, "regex_match")
+
+
+@pulumi.output_type
+class TcpRouteRule(dict):
+    def __init__(__self__, *,
+                 action: 'outputs.TcpRouteRuleAction',
+                 matches: Optional[Sequence['outputs.TcpRouteRuleMatch']] = None):
+        """
+        :param 'TcpRouteRuleActionArgs' action: A detailed rule defining how to route traffic.
+               Structure is documented below.
+        :param Sequence['TcpRouteRuleMatchArgs'] matches: RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+               If no routeMatch field is specified, this rule will unconditionally match traffic.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "action", action)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> 'outputs.TcpRouteRuleAction':
+        """
+        A detailed rule defining how to route traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[Sequence['outputs.TcpRouteRuleMatch']]:
+        """
+        RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+        If no routeMatch field is specified, this rule will unconditionally match traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matches")
+
+
+@pulumi.output_type
+class TcpRouteRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "originalDestination":
+            suggest = "original_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TcpRouteRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TcpRouteRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TcpRouteRuleAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destinations: Optional[Sequence['outputs.TcpRouteRuleActionDestination']] = None,
+                 original_destination: Optional[bool] = None):
+        """
+        :param Sequence['TcpRouteRuleActionDestinationArgs'] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
+               Structure is documented below.
+        :param bool original_destination: If true, Router will use the destination IP and port of the original connection as the destination of the request.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if original_destination is not None:
+            pulumi.set(__self__, "original_destination", original_destination)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['outputs.TcpRouteRuleActionDestination']]:
+        """
+        The destination services to which traffic should be forwarded. At least one destination service is required.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="originalDestination")
+    def original_destination(self) -> Optional[bool]:
+        """
+        If true, Router will use the destination IP and port of the original connection as the destination of the request.
+        """
+        return pulumi.get(self, "original_destination")
+
+
+@pulumi.output_type
+class TcpRouteRuleActionDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TcpRouteRuleActionDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TcpRouteRuleActionDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TcpRouteRuleActionDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: Optional[str] = None,
+                 weight: Optional[int] = None):
+        """
+        :param str service_name: The URL of a BackendService to route traffic to.
+        :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+               If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+               If weights are specified for any one service name, they need to be specified for all of them.
+               If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+        If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+        If weights are specified for any one service name, they need to be specified for all of them.
+        If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class TcpRouteRuleMatch(dict):
+    def __init__(__self__, *,
+                 address: str,
+                 port: str):
+        """
+        :param str address: Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
+               By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+        :param str port: Specifies the destination port to match against.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
+        By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        Specifies the destination port to match against.
+        """
+        return pulumi.get(self, "port")
 
 

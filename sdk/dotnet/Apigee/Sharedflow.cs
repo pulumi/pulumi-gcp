@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Apigee
     public partial class Sharedflow : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A path to the config bundle zip you want to upload. Must be defined if content is not.
+        /// Path to the config zip bundle.
         /// </summary>
         [Output("configBundle")]
         public Output<string> ConfigBundle { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Apigee
     public sealed class SharedflowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A path to the config bundle zip you want to upload. Must be defined if content is not.
+        /// Path to the config zip bundle.
         /// </summary>
         [Input("configBundle", required: true)]
         public Input<string> ConfigBundle { get; set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.Apigee
     public sealed class SharedflowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A path to the config bundle zip you want to upload. Must be defined if content is not.
+        /// Path to the config zip bundle.
         /// </summary>
         [Input("configBundle")]
         public Input<string>? ConfigBundle { get; set; }

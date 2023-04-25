@@ -84,6 +84,76 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Beyondcorp App Connection Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.gcp.beyondcorp.AppGateway;
+ * import com.pulumi.gcp.beyondcorp.AppGatewayArgs;
+ * import com.pulumi.gcp.beyondcorp.AppConnector;
+ * import com.pulumi.gcp.beyondcorp.AppConnectorArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.AppConnectorPrincipalInfoArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.AppConnectorPrincipalInfoServiceAccountArgs;
+ * import com.pulumi.gcp.beyondcorp.AppConnection;
+ * import com.pulumi.gcp.beyondcorp.AppConnectionArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.AppConnectionApplicationEndpointArgs;
+ * import com.pulumi.gcp.beyondcorp.inputs.AppConnectionGatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serviceAccount = new Account(&#34;serviceAccount&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;my-account&#34;)
+ *             .displayName(&#34;Test Service Account&#34;)
+ *             .build());
+ * 
+ *         var appGateway = new AppGateway(&#34;appGateway&#34;, AppGatewayArgs.builder()        
+ *             .type(&#34;TCP_PROXY&#34;)
+ *             .hostType(&#34;GCP_REGIONAL_MIG&#34;)
+ *             .build());
+ * 
+ *         var appConnector = new AppConnector(&#34;appConnector&#34;, AppConnectorArgs.builder()        
+ *             .principalInfo(AppConnectorPrincipalInfoArgs.builder()
+ *                 .serviceAccount(AppConnectorPrincipalInfoServiceAccountArgs.builder()
+ *                     .email(serviceAccount.email())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var appConnection = new AppConnection(&#34;appConnection&#34;, AppConnectionArgs.builder()        
+ *             .type(&#34;TCP_PROXY&#34;)
+ *             .displayName(&#34;some display name&#34;)
+ *             .applicationEndpoint(AppConnectionApplicationEndpointArgs.builder()
+ *                 .host(&#34;foo-host&#34;)
+ *                 .port(8080)
+ *                 .build())
+ *             .connectors(appConnector.id())
+ *             .gateway(AppConnectionGatewayArgs.builder()
+ *                 .appGateway(appGateway.id())
+ *                 .build())
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;),
+ *                 Map.entry(&#34;bar&#34;, &#34;baz&#34;)
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

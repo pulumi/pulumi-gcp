@@ -6,6 +6,7 @@ package com.pulumi.gcp.clouddeploy.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineConditionPipelineReadyCondition;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineConditionTargetsPresentCondition;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineConditionTargetsTypeCondition;
 import java.util.List;
 import java.util.Objects;
 import javax.annotation.Nullable;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 public final class DeliveryPipelineCondition {
     private @Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions;
     private @Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions;
+    private @Nullable List<DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions;
 
     private DeliveryPipelineCondition() {}
     public List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions() {
@@ -21,6 +23,9 @@ public final class DeliveryPipelineCondition {
     }
     public List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions() {
         return this.targetsPresentConditions == null ? List.of() : this.targetsPresentConditions;
+    }
+    public List<DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions() {
+        return this.targetsTypeConditions == null ? List.of() : this.targetsTypeConditions;
     }
 
     public static Builder builder() {
@@ -34,11 +39,13 @@ public final class DeliveryPipelineCondition {
     public static final class Builder {
         private @Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions;
         private @Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions;
+        private @Nullable List<DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions;
         public Builder() {}
         public Builder(DeliveryPipelineCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pipelineReadyConditions = defaults.pipelineReadyConditions;
     	      this.targetsPresentConditions = defaults.targetsPresentConditions;
+    	      this.targetsTypeConditions = defaults.targetsTypeConditions;
         }
 
         @CustomType.Setter
@@ -57,10 +64,19 @@ public final class DeliveryPipelineCondition {
         public Builder targetsPresentConditions(DeliveryPipelineConditionTargetsPresentCondition... targetsPresentConditions) {
             return targetsPresentConditions(List.of(targetsPresentConditions));
         }
+        @CustomType.Setter
+        public Builder targetsTypeConditions(@Nullable List<DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions) {
+            this.targetsTypeConditions = targetsTypeConditions;
+            return this;
+        }
+        public Builder targetsTypeConditions(DeliveryPipelineConditionTargetsTypeCondition... targetsTypeConditions) {
+            return targetsTypeConditions(List.of(targetsTypeConditions));
+        }
         public DeliveryPipelineCondition build() {
             final var o = new DeliveryPipelineCondition();
             o.pipelineReadyConditions = pipelineReadyConditions;
             o.targetsPresentConditions = targetsPresentConditions;
+            o.targetsTypeConditions = targetsTypeConditions;
             return o;
         }
     }

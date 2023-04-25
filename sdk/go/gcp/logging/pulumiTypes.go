@@ -926,6 +926,115 @@ func (o FolderSinkExclusionArrayOutput) Index(i pulumi.IntInput) FolderSinkExclu
 	}).(FolderSinkExclusionOutput)
 }
 
+type LinkedDatasetBigqueryDataset struct {
+	// (Output)
+	// Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+	// of the link, so the link must match the naming restrictions of BigQuery datasets
+	// (alphanumeric characters and underscores only). The dataset will have a resource path of
+	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+	DatasetId *string `pulumi:"datasetId"`
+}
+
+// LinkedDatasetBigqueryDatasetInput is an input type that accepts LinkedDatasetBigqueryDatasetArgs and LinkedDatasetBigqueryDatasetOutput values.
+// You can construct a concrete instance of `LinkedDatasetBigqueryDatasetInput` via:
+//
+//	LinkedDatasetBigqueryDatasetArgs{...}
+type LinkedDatasetBigqueryDatasetInput interface {
+	pulumi.Input
+
+	ToLinkedDatasetBigqueryDatasetOutput() LinkedDatasetBigqueryDatasetOutput
+	ToLinkedDatasetBigqueryDatasetOutputWithContext(context.Context) LinkedDatasetBigqueryDatasetOutput
+}
+
+type LinkedDatasetBigqueryDatasetArgs struct {
+	// (Output)
+	// Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+	// of the link, so the link must match the naming restrictions of BigQuery datasets
+	// (alphanumeric characters and underscores only). The dataset will have a resource path of
+	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
+}
+
+func (LinkedDatasetBigqueryDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedDatasetBigqueryDataset)(nil)).Elem()
+}
+
+func (i LinkedDatasetBigqueryDatasetArgs) ToLinkedDatasetBigqueryDatasetOutput() LinkedDatasetBigqueryDatasetOutput {
+	return i.ToLinkedDatasetBigqueryDatasetOutputWithContext(context.Background())
+}
+
+func (i LinkedDatasetBigqueryDatasetArgs) ToLinkedDatasetBigqueryDatasetOutputWithContext(ctx context.Context) LinkedDatasetBigqueryDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatasetBigqueryDatasetOutput)
+}
+
+// LinkedDatasetBigqueryDatasetArrayInput is an input type that accepts LinkedDatasetBigqueryDatasetArray and LinkedDatasetBigqueryDatasetArrayOutput values.
+// You can construct a concrete instance of `LinkedDatasetBigqueryDatasetArrayInput` via:
+//
+//	LinkedDatasetBigqueryDatasetArray{ LinkedDatasetBigqueryDatasetArgs{...} }
+type LinkedDatasetBigqueryDatasetArrayInput interface {
+	pulumi.Input
+
+	ToLinkedDatasetBigqueryDatasetArrayOutput() LinkedDatasetBigqueryDatasetArrayOutput
+	ToLinkedDatasetBigqueryDatasetArrayOutputWithContext(context.Context) LinkedDatasetBigqueryDatasetArrayOutput
+}
+
+type LinkedDatasetBigqueryDatasetArray []LinkedDatasetBigqueryDatasetInput
+
+func (LinkedDatasetBigqueryDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedDatasetBigqueryDataset)(nil)).Elem()
+}
+
+func (i LinkedDatasetBigqueryDatasetArray) ToLinkedDatasetBigqueryDatasetArrayOutput() LinkedDatasetBigqueryDatasetArrayOutput {
+	return i.ToLinkedDatasetBigqueryDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i LinkedDatasetBigqueryDatasetArray) ToLinkedDatasetBigqueryDatasetArrayOutputWithContext(ctx context.Context) LinkedDatasetBigqueryDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedDatasetBigqueryDatasetArrayOutput)
+}
+
+type LinkedDatasetBigqueryDatasetOutput struct{ *pulumi.OutputState }
+
+func (LinkedDatasetBigqueryDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedDatasetBigqueryDataset)(nil)).Elem()
+}
+
+func (o LinkedDatasetBigqueryDatasetOutput) ToLinkedDatasetBigqueryDatasetOutput() LinkedDatasetBigqueryDatasetOutput {
+	return o
+}
+
+func (o LinkedDatasetBigqueryDatasetOutput) ToLinkedDatasetBigqueryDatasetOutputWithContext(ctx context.Context) LinkedDatasetBigqueryDatasetOutput {
+	return o
+}
+
+// (Output)
+// Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+// of the link, so the link must match the naming restrictions of BigQuery datasets
+// (alphanumeric characters and underscores only). The dataset will have a resource path of
+// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+func (o LinkedDatasetBigqueryDatasetOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LinkedDatasetBigqueryDataset) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
+}
+
+type LinkedDatasetBigqueryDatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (LinkedDatasetBigqueryDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedDatasetBigqueryDataset)(nil)).Elem()
+}
+
+func (o LinkedDatasetBigqueryDatasetArrayOutput) ToLinkedDatasetBigqueryDatasetArrayOutput() LinkedDatasetBigqueryDatasetArrayOutput {
+	return o
+}
+
+func (o LinkedDatasetBigqueryDatasetArrayOutput) ToLinkedDatasetBigqueryDatasetArrayOutputWithContext(ctx context.Context) LinkedDatasetBigqueryDatasetArrayOutput {
+	return o
+}
+
+func (o LinkedDatasetBigqueryDatasetArrayOutput) Index(i pulumi.IntInput) LinkedDatasetBigqueryDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkedDatasetBigqueryDataset {
+		return vs[0].([]LinkedDatasetBigqueryDataset)[vs[1].(int)]
+	}).(LinkedDatasetBigqueryDatasetOutput)
+}
+
 type MetricBucketOptions struct {
 	// Specifies a set of buckets with arbitrary widths.
 	// Structure is documented below.
@@ -3208,6 +3317,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkBigqueryOptionsPtrInput)(nil)).Elem(), FolderSinkBigqueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkExclusionInput)(nil)).Elem(), FolderSinkExclusionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderSinkExclusionArrayInput)(nil)).Elem(), FolderSinkExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinkedDatasetBigqueryDatasetInput)(nil)).Elem(), LinkedDatasetBigqueryDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LinkedDatasetBigqueryDatasetArrayInput)(nil)).Elem(), LinkedDatasetBigqueryDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsInput)(nil)).Elem(), MetricBucketOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsPtrInput)(nil)).Elem(), MetricBucketOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricBucketOptionsExplicitBucketsInput)(nil)).Elem(), MetricBucketOptionsExplicitBucketsArgs{})
@@ -3248,6 +3359,8 @@ func init() {
 	pulumi.RegisterOutputType(FolderSinkBigqueryOptionsPtrOutput{})
 	pulumi.RegisterOutputType(FolderSinkExclusionOutput{})
 	pulumi.RegisterOutputType(FolderSinkExclusionArrayOutput{})
+	pulumi.RegisterOutputType(LinkedDatasetBigqueryDatasetOutput{})
+	pulumi.RegisterOutputType(LinkedDatasetBigqueryDatasetArrayOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsPtrOutput{})
 	pulumi.RegisterOutputType(MetricBucketOptionsExplicitBucketsOutput{})

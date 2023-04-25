@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Alloydb
         /// The location where the alloydb cluster should reside.
         /// </summary>
         [Output("location")]
-        public Output<string?> Location { get; private set; } = null!;
+        public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
         /// Cluster created via DMS migration.
@@ -235,8 +235,8 @@ namespace Pulumi.Gcp.Alloydb
         /// <summary>
         /// The location where the alloydb cluster should reside.
         /// </summary>
-        [Input("location")]
-        public Input<string>? Location { get; set; }
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:

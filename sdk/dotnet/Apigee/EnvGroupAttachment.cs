@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test",
+    ///         ProjectId = "my-project",
     ///         OrgId = "",
     ///         BillingAccount = "",
     ///     });
@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.Apigee
     ///     {
     ///         OrgId = apigeeOrg.Id,
     ///         Description = "Apigee Environment",
-    ///         DisplayName = "tf-test",
+    ///         DisplayName = "my-environment",
     ///     });
     /// 
     ///     var envGroupAttachment = new Gcp.Apigee.EnvGroupAttachment("envGroupAttachment", new()

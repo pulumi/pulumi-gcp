@@ -261,14 +261,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="location", type=String.class, parameters={})
-    private Output</* @Nullable */ String> location;
+    private Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
      * 
      */
-    public Output<Optional<String>> location() {
-        return Codegen.optional(this.location);
+    public Output<String> location() {
+        return this.location;
     }
     /**
      * Cluster created via DMS migration.

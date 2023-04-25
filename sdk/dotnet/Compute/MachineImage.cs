@@ -109,18 +109,6 @@ namespace Pulumi.Gcp.Compute
     ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var kms_project_binding = new Gcp.Projects.IAMMember("kms-project-binding", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@compute-system.iam.gserviceaccount.com",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
-    /// 
     ///     var image = new Gcp.Compute.MachineImage("image", new()
     ///     {
     ///         SourceInstance = vm.SelfLink,
@@ -131,10 +119,6 @@ namespace Pulumi.Gcp.Compute
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
-    ///         DependsOn = new[]
-    ///         {
-    ///             kms_project_binding,
-    ///         },
     ///     });
     /// 
     /// });

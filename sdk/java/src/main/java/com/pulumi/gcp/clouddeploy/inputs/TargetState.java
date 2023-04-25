@@ -219,14 +219,14 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Beta only) Information specifying a Cloud Run deployment target.
+     * Information specifying a Cloud Run deployment target.
      * 
      */
     @Import(name="run")
     private @Nullable Output<TargetRunArgs> run;
 
     /**
-     * @return (Beta only) Information specifying a Cloud Run deployment target.
+     * @return Information specifying a Cloud Run deployment target.
      * 
      */
     public Optional<Output<TargetRunArgs>> run() {
@@ -602,7 +602,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param run (Beta only) Information specifying a Cloud Run deployment target.
+         * @param run Information specifying a Cloud Run deployment target.
          * 
          * @return builder
          * 
@@ -613,7 +613,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param run (Beta only) Information specifying a Cloud Run deployment target.
+         * @param run Information specifying a Cloud Run deployment target.
          * 
          * @return builder
          * 

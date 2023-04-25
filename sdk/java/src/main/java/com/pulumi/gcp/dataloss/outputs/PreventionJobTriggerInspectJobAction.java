@@ -4,6 +4,8 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionDeidentify;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPubSub;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc;
@@ -14,6 +16,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionJobTriggerInspectJobAction {
+    /**
+     * @return Create a de-identified copy of the requested table or files.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobActionDeidentify deidentify;
+    /**
+     * @return Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobActionJobNotificationEmails jobNotificationEmails;
     /**
      * @return Publish a message into a given Pub/Sub topic when the job completes.
      * Structure is documented below.
@@ -38,6 +51,21 @@ public final class PreventionJobTriggerInspectJobAction {
     private @Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
 
     private PreventionJobTriggerInspectJobAction() {}
+    /**
+     * @return Create a de-identified copy of the requested table or files.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionDeidentify> deidentify() {
+        return Optional.ofNullable(this.deidentify);
+    }
+    /**
+     * @return Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionJobNotificationEmails> jobNotificationEmails() {
+        return Optional.ofNullable(this.jobNotificationEmails);
+    }
     /**
      * @return Publish a message into a given Pub/Sub topic when the job completes.
      * Structure is documented below.
@@ -78,6 +106,8 @@ public final class PreventionJobTriggerInspectJobAction {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PreventionJobTriggerInspectJobActionDeidentify deidentify;
+        private @Nullable PreventionJobTriggerInspectJobActionJobNotificationEmails jobNotificationEmails;
         private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
         private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
         private @Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc;
@@ -85,12 +115,24 @@ public final class PreventionJobTriggerInspectJobAction {
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobAction defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deidentify = defaults.deidentify;
+    	      this.jobNotificationEmails = defaults.jobNotificationEmails;
     	      this.pubSub = defaults.pubSub;
     	      this.publishFindingsToCloudDataCatalog = defaults.publishFindingsToCloudDataCatalog;
     	      this.publishSummaryToCscc = defaults.publishSummaryToCscc;
     	      this.saveFindings = defaults.saveFindings;
         }
 
+        @CustomType.Setter
+        public Builder deidentify(@Nullable PreventionJobTriggerInspectJobActionDeidentify deidentify) {
+            this.deidentify = deidentify;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder jobNotificationEmails(@Nullable PreventionJobTriggerInspectJobActionJobNotificationEmails jobNotificationEmails) {
+            this.jobNotificationEmails = jobNotificationEmails;
+            return this;
+        }
         @CustomType.Setter
         public Builder pubSub(@Nullable PreventionJobTriggerInspectJobActionPubSub pubSub) {
             this.pubSub = pubSub;
@@ -113,6 +155,8 @@ public final class PreventionJobTriggerInspectJobAction {
         }
         public PreventionJobTriggerInspectJobAction build() {
             final var o = new PreventionJobTriggerInspectJobAction();
+            o.deidentify = deidentify;
+            o.jobNotificationEmails = jobNotificationEmails;
             o.pubSub = pubSub;
             o.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             o.publishSummaryToCscc = publishSummaryToCscc;

@@ -19,7 +19,7 @@ public final class DeliveryPipelineSerialPipelineStage {
      */
     private @Nullable List<String> profiles;
     /**
-     * @return (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * @return Optional. The strategy to use for a `Rollout` to this stage.
      * 
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategy strategy;
@@ -38,7 +38,7 @@ public final class DeliveryPipelineSerialPipelineStage {
         return this.profiles == null ? List.of() : this.profiles;
     }
     /**
-     * @return (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * @return Optional. The strategy to use for a `Rollout` to this stage.
      * 
      */
     public Optional<DeliveryPipelineSerialPipelineStageStrategy> strategy() {

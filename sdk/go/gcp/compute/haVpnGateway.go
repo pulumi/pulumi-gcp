@@ -233,7 +233,7 @@ type HaVpnGateway struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -294,7 +294,7 @@ type haVpnGatewayState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -324,7 +324,7 @@ type HaVpnGatewayState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -356,7 +356,7 @@ type haVpnGatewayArgs struct {
 	Project *string `pulumi:"project"`
 	// The region this gateway should sit in.
 	Region *string `pulumi:"region"`
-	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -385,7 +385,7 @@ type HaVpnGatewayArgs struct {
 	Project pulumi.StringPtrInput
 	// The region this gateway should sit in.
 	Region pulumi.StringPtrInput
-	// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+	// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 	// If not specified, IPV4_ONLY will be used.
 	// Default value is `IPV4_ONLY`.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -519,7 +519,7 @@ func (o HaVpnGatewayOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *HaVpnGateway) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+// The stack type for this VPN gateway to identify the IP protocols that are enabled.
 // If not specified, IPV4_ONLY will be used.
 // Default value is `IPV4_ONLY`.
 // Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.

@@ -17,6 +17,83 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * ### Active Directory Peering Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.activedirectory.Domain;
+ * import com.pulumi.gcp.activedirectory.DomainArgs;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.activedirectory.Peering;
+ * import com.pulumi.gcp.activedirectory.PeeringArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var source_network = new Network(&#34;source-network&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(google_beta)
+ *             .build());
+ * 
+ *         var ad_domain = new Domain(&#34;ad-domain&#34;, DomainArgs.builder()        
+ *             .domainName(&#34;ad.test.hashicorptest.com&#34;)
+ *             .locations(&#34;us-central1&#34;)
+ *             .reservedIpRange(&#34;192.168.255.0/24&#34;)
+ *             .authorizedNetworks(source_network.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var peered_project = new Project(&#34;peered-project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-peered-project&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var compute = new Service(&#34;compute&#34;, ServiceArgs.builder()        
+ *             .project(peered_project.projectId())
+ *             .service(&#34;compute.googleapis.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var peered_network = new Network(&#34;peered-network&#34;, NetworkArgs.builder()        
+ *             .project(compute.project())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var ad_domain_peering = new Peering(&#34;ad-domain-peering&#34;, PeeringArgs.builder()        
+ *             .domainResource(ad_domain.name())
+ *             .peeringId(&#34;ad-domain-peering&#34;)
+ *             .authorizedNetwork(peered_network.id())
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

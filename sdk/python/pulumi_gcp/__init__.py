@@ -386,6 +386,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "accesscontextmanager/ingressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/ingressPolicy:IngressPolicy": "IngressPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "accesscontextmanager/servicePerimeter",
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {
@@ -2290,6 +2298,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/publicAdvertisedPrefix",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix": "PublicAdvertisedPrefix"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/publicDelegatedPrefix",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix": "PublicDelegatedPrefix"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionAutoscaler",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -2326,6 +2350,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy": "RegionBackendServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionCommitment",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionCommitment:RegionCommitment": "RegionCommitment"
   }
  },
  {
@@ -2382,6 +2414,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager": "RegionInstanceGroupManager"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionInstanceTemplate",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate": "RegionInstanceTemplate"
   }
  },
  {
@@ -4586,6 +4626,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "logging/linkedDataset",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/linkedDataset:LinkedDataset": "LinkedDataset"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "logging/logView",
   "fqn": "pulumi_gcp.logging",
   "classes": {
@@ -4826,10 +4874,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/httpRoute",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/httpRoute:HttpRoute": "HttpRoute"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/mesh",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/mesh:Mesh": "Mesh"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/tcpRoute",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/tcpRoute:TcpRoute": "TcpRoute"
   }
  },
  {

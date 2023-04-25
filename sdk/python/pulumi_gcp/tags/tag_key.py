@@ -21,7 +21,7 @@ class TagKeyArgs:
                  purpose_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a TagKey resource.
-        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
                The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         :param pulumi.Input[str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
@@ -44,7 +44,7 @@ class TagKeyArgs:
     @pulumi.getter
     def parent(self) -> pulumi.Input[str]:
         """
-        Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         """
         return pulumi.get(self, "parent")
 
@@ -124,7 +124,7 @@ class _TagKeyState:
         :param pulumi.Input[str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
         :param pulumi.Input[str] name: The generated numeric id for the TagKey.
         :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagKey.
-        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
                Possible values are: `GCE_FIREWALL`.
@@ -207,7 +207,7 @@ class _TagKeyState:
     @pulumi.getter
     def parent(self) -> Optional[pulumi.Input[str]]:
         """
-        Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         """
         return pulumi.get(self, "parent")
 
@@ -317,7 +317,7 @@ class TagKey(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
-        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
                Possible values are: `GCE_FIREWALL`.
@@ -439,7 +439,7 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-assigned description of the TagKey. Must not exceed 256 characters.
         :param pulumi.Input[str] name: The generated numeric id for the TagKey.
         :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagKey.
-        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[str] purpose: Optional. A purpose cannot be changed once set.
                A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
                Possible values are: `GCE_FIREWALL`.
@@ -502,7 +502,7 @@ class TagKey(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         """
         return pulumi.get(self, "parent")
 

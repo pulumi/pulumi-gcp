@@ -4,14 +4,17 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNetworkConfig {
     private Boolean createPodRange;
     private Boolean enablePrivateNodes;
+    private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
     private String podIpv4CidrBlock;
     private String podRange;
 
@@ -21,6 +24,9 @@ public final class GetClusterNodePoolNetworkConfig {
     }
     public Boolean enablePrivateNodes() {
         return this.enablePrivateNodes;
+    }
+    public List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs() {
+        return this.podCidrOverprovisionConfigs;
     }
     public String podIpv4CidrBlock() {
         return this.podIpv4CidrBlock;
@@ -40,6 +46,7 @@ public final class GetClusterNodePoolNetworkConfig {
     public static final class Builder {
         private Boolean createPodRange;
         private Boolean enablePrivateNodes;
+        private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
         private String podIpv4CidrBlock;
         private String podRange;
         public Builder() {}
@@ -47,6 +54,7 @@ public final class GetClusterNodePoolNetworkConfig {
     	      Objects.requireNonNull(defaults);
     	      this.createPodRange = defaults.createPodRange;
     	      this.enablePrivateNodes = defaults.enablePrivateNodes;
+    	      this.podCidrOverprovisionConfigs = defaults.podCidrOverprovisionConfigs;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
         }
@@ -62,6 +70,14 @@ public final class GetClusterNodePoolNetworkConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder podCidrOverprovisionConfigs(List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs) {
+            this.podCidrOverprovisionConfigs = Objects.requireNonNull(podCidrOverprovisionConfigs);
+            return this;
+        }
+        public Builder podCidrOverprovisionConfigs(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig... podCidrOverprovisionConfigs) {
+            return podCidrOverprovisionConfigs(List.of(podCidrOverprovisionConfigs));
+        }
+        @CustomType.Setter
         public Builder podIpv4CidrBlock(String podIpv4CidrBlock) {
             this.podIpv4CidrBlock = Objects.requireNonNull(podIpv4CidrBlock);
             return this;
@@ -75,6 +91,7 @@ public final class GetClusterNodePoolNetworkConfig {
             final var o = new GetClusterNodePoolNetworkConfig();
             o.createPodRange = createPodRange;
             o.enablePrivateNodes = enablePrivateNodes;
+            o.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             o.podIpv4CidrBlock = podIpv4CidrBlock;
             o.podRange = podRange;
             return o;

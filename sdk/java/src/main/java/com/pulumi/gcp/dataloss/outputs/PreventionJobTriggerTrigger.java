@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerTriggerManual;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerTriggerSchedule;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionJobTriggerTrigger {
     /**
+     * @return For use with hybrid jobs. Jobs must be manually created and finished.
+     * 
+     */
+    private @Nullable PreventionJobTriggerTriggerManual manual;
+    /**
      * @return Schedule for triggered jobs
      * Structure is documented below.
      * 
@@ -19,6 +25,13 @@ public final class PreventionJobTriggerTrigger {
     private @Nullable PreventionJobTriggerTriggerSchedule schedule;
 
     private PreventionJobTriggerTrigger() {}
+    /**
+     * @return For use with hybrid jobs. Jobs must be manually created and finished.
+     * 
+     */
+    public Optional<PreventionJobTriggerTriggerManual> manual() {
+        return Optional.ofNullable(this.manual);
+    }
     /**
      * @return Schedule for triggered jobs
      * Structure is documented below.
@@ -37,13 +50,20 @@ public final class PreventionJobTriggerTrigger {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PreventionJobTriggerTriggerManual manual;
         private @Nullable PreventionJobTriggerTriggerSchedule schedule;
         public Builder() {}
         public Builder(PreventionJobTriggerTrigger defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.manual = defaults.manual;
     	      this.schedule = defaults.schedule;
         }
 
+        @CustomType.Setter
+        public Builder manual(@Nullable PreventionJobTriggerTriggerManual manual) {
+            this.manual = manual;
+            return this;
+        }
         @CustomType.Setter
         public Builder schedule(@Nullable PreventionJobTriggerTriggerSchedule schedule) {
             this.schedule = schedule;
@@ -51,6 +71,7 @@ public final class PreventionJobTriggerTrigger {
         }
         public PreventionJobTriggerTrigger build() {
             final var o = new PreventionJobTriggerTrigger();
+            o.manual = manual;
             o.schedule = schedule;
             return o;
         }

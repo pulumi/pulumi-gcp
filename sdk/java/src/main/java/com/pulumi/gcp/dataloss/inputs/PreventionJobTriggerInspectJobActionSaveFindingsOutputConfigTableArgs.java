@@ -16,14 +16,14 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
     public static final PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs Empty = new PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs();
 
     /**
-     * Dataset ID of the table.
+     * The ID of the dataset containing this table.
      * 
      */
     @Import(name="datasetId", required=true)
     private Output<String> datasetId;
 
     /**
-     * @return Dataset ID of the table.
+     * @return The ID of the dataset containing this table.
      * 
      */
     public Output<String> datasetId() {
@@ -31,14 +31,14 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
     }
 
     /**
-     * The Google Cloud Platform project ID of the project containing the table.
+     * The ID of the project containing this table.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return The Google Cloud Platform project ID of the project containing the table.
+     * @return The ID of the project containing this table.
      * 
      */
     public Output<String> projectId() {
@@ -46,16 +46,18 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
     }
 
     /**
-     * Name of the table. If is not set a new one will be generated for you with the following format:
-     * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+     * The ID of the table. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 1,024 characters.
      * 
      */
     @Import(name="tableId")
     private @Nullable Output<String> tableId;
 
     /**
-     * @return Name of the table. If is not set a new one will be generated for you with the following format:
-     * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+     * @return The ID of the table. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 1,024 characters.
      * 
      */
     public Optional<Output<String>> tableId() {
@@ -89,7 +91,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
         }
 
         /**
-         * @param datasetId Dataset ID of the table.
+         * @param datasetId The ID of the dataset containing this table.
          * 
          * @return builder
          * 
@@ -100,7 +102,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
         }
 
         /**
-         * @param datasetId Dataset ID of the table.
+         * @param datasetId The ID of the dataset containing this table.
          * 
          * @return builder
          * 
@@ -110,7 +112,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
         }
 
         /**
-         * @param projectId The Google Cloud Platform project ID of the project containing the table.
+         * @param projectId The ID of the project containing this table.
          * 
          * @return builder
          * 
@@ -121,7 +123,7 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
         }
 
         /**
-         * @param projectId The Google Cloud Platform project ID of the project containing the table.
+         * @param projectId The ID of the project containing this table.
          * 
          * @return builder
          * 
@@ -131,8 +133,9 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
         }
 
         /**
-         * @param tableId Name of the table. If is not set a new one will be generated for you with the following format:
-         * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+         * @param tableId The ID of the table. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 1,024 characters.
          * 
          * @return builder
          * 
@@ -143,8 +146,9 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigT
         }
 
         /**
-         * @param tableId Name of the table. If is not set a new one will be generated for you with the following format:
-         * `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+         * @param tableId The ID of the table. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 1,024 characters.
          * 
          * @return builder
          * 

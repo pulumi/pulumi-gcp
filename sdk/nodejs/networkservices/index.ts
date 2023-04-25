@@ -25,10 +25,20 @@ export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
 
+export { HttpRouteArgs, HttpRouteState } from "./httpRoute";
+export type HttpRoute = import("./httpRoute").HttpRoute;
+export const HttpRoute: typeof import("./httpRoute").HttpRoute = null as any;
+utilities.lazyLoad(exports, ["HttpRoute"], () => require("./httpRoute"));
+
 export { MeshArgs, MeshState } from "./mesh";
 export type Mesh = import("./mesh").Mesh;
 export const Mesh: typeof import("./mesh").Mesh = null as any;
 utilities.lazyLoad(exports, ["Mesh"], () => require("./mesh"));
+
+export { TcpRouteArgs, TcpRouteState } from "./tcpRoute";
+export type TcpRoute = import("./tcpRoute").TcpRoute;
+export const TcpRoute: typeof import("./tcpRoute").TcpRoute = null as any;
+utilities.lazyLoad(exports, ["TcpRoute"], () => require("./tcpRoute"));
 
 
 const _module = {
@@ -43,8 +53,12 @@ const _module = {
                 return new EdgeCacheService(name, <any>undefined, { urn })
             case "gcp:networkservices/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "gcp:networkservices/httpRoute:HttpRoute":
+                return new HttpRoute(name, <any>undefined, { urn })
             case "gcp:networkservices/mesh:Mesh":
                 return new Mesh(name, <any>undefined, { urn })
+            case "gcp:networkservices/tcpRoute:TcpRoute":
+                return new TcpRoute(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -54,4 +68,6 @@ pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheKeyset", 
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheOrigin", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheService", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/gateway", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/httpRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/mesh", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/tcpRoute", _module)

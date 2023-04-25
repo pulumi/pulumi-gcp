@@ -128,7 +128,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the instance.
+     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
      * Possible values are: `PRIMARY`, `READ_POOL`.
      * 
      */
@@ -136,7 +136,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> instanceType;
 
     /**
-     * @return The type of the instance.
+     * @return The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
      * Possible values are: `PRIMARY`, `READ_POOL`.
      * 
      */
@@ -379,7 +379,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the instance.
+         * @param instanceType The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
          * Possible values are: `PRIMARY`, `READ_POOL`.
          * 
          * @return builder
@@ -391,7 +391,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the instance.
+         * @param instanceType The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
          * Possible values are: `PRIMARY`, `READ_POOL`.
          * 
          * @return builder

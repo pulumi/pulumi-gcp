@@ -13,7 +13,7 @@ import (
 
 // An alias from a key/certificate pair.
 //
-// To get more information about KeysotresAliasesKeyCertFile, see:
+// To get more information about KeystoresAliasesKeyCertFile, see:
 //
 // * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.environments.keystores.aliases)
 // * How-to Guides
@@ -21,7 +21,7 @@ import (
 //
 // ## Import
 //
-// # KeysotresAliasesKeyCertFile can be imported using any of these accepted formats
+// # KeystoresAliasesKeyCertFile can be imported using any of these accepted formats
 //
 // ```sh
 //

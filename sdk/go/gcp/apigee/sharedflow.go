@@ -37,7 +37,7 @@ import (
 type Sharedflow struct {
 	pulumi.CustomResourceState
 
-	// A path to the config bundle zip you want to upload. Must be defined if content is not.
+	// Path to the config zip bundle.
 	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -92,7 +92,7 @@ func GetSharedflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Sharedflow resources.
 type sharedflowState struct {
-	// A path to the config bundle zip you want to upload. Must be defined if content is not.
+	// Path to the config zip bundle.
 	ConfigBundle *string `pulumi:"configBundle"`
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -113,7 +113,7 @@ type sharedflowState struct {
 }
 
 type SharedflowState struct {
-	// A path to the config bundle zip you want to upload. Must be defined if content is not.
+	// Path to the config zip bundle.
 	ConfigBundle pulumi.StringPtrInput
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -138,7 +138,7 @@ func (SharedflowState) ElementType() reflect.Type {
 }
 
 type sharedflowArgs struct {
-	// A path to the config bundle zip you want to upload. Must be defined if content is not.
+	// Path to the config zip bundle.
 	ConfigBundle string `pulumi:"configBundle"`
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -151,7 +151,7 @@ type sharedflowArgs struct {
 
 // The set of arguments for constructing a Sharedflow resource.
 type SharedflowArgs struct {
-	// A path to the config bundle zip you want to upload. Must be defined if content is not.
+	// Path to the config zip bundle.
 	ConfigBundle pulumi.StringInput
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -249,7 +249,7 @@ func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) Sha
 	return o
 }
 
-// A path to the config bundle zip you want to upload. Must be defined if content is not.
+// Path to the config zip bundle.
 func (o SharedflowOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
 }

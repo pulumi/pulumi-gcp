@@ -29,6 +29,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptions? DatastoreOptions;
         /// <summary>
+        /// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions? HybridOptions;
+        /// <summary>
         /// Information on where to inspect
         /// Structure is documented below.
         /// </summary>
@@ -42,11 +47,14 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptions? datastoreOptions,
 
+            Outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions? hybridOptions,
+
             Outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfig? timespanConfig)
         {
             BigQueryOptions = bigQueryOptions;
             CloudStorageOptions = cloudStorageOptions;
             DatastoreOptions = datastoreOptions;
+            HybridOptions = hybridOptions;
             TimespanConfig = timespanConfig;
         }
     }

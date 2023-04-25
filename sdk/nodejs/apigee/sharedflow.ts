@@ -56,7 +56,7 @@ export class Sharedflow extends pulumi.CustomResource {
     }
 
     /**
-     * A path to the config bundle zip you want to upload. Must be defined if content is not.
+     * Path to the config zip bundle.
      */
     public readonly configBundle!: pulumi.Output<string>;
     /**
@@ -138,7 +138,7 @@ export class Sharedflow extends pulumi.CustomResource {
  */
 export interface SharedflowState {
     /**
-     * A path to the config bundle zip you want to upload. Must be defined if content is not.
+     * Path to the config zip bundle.
      */
     configBundle?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface SharedflowState {
  */
 export interface SharedflowArgs {
     /**
-     * A path to the config bundle zip you want to upload. Must be defined if content is not.
+     * Path to the config zip bundle.
      */
     configBundle: pulumi.Input<string>;
     /**

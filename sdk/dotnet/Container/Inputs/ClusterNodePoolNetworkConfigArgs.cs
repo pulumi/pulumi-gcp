@@ -27,6 +27,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
+        [Input("podCidrOverprovisionConfig")]
+        public Input<Inputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs>? PodCidrOverprovisionConfig { get; set; }
+
         /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         /// </summary>
