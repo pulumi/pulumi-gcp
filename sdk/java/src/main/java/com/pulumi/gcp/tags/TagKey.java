@@ -131,14 +131,14 @@ public class TagKey extends com.pulumi.resources.CustomResource {
         return this.namespacedName;
     }
     /**
-     * Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id}.
+     * Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      * 
      */
     @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
-     * @return Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id}.
+     * @return Input only. The resource name of the new TagKey&#39;s parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
      * 
      */
     public Output<String> parent() {

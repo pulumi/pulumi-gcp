@@ -312,7 +312,7 @@ import javax.annotation.Nullable;
  *         var apigeeInstance = new Instance(&#34;apigeeInstance&#34;, InstanceArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;Auto-managed Apigee Runtime Instance&#34;)
- *             .displayName(&#34;tf-test&#34;)
+ *             .displayName(&#34;my-instance-name&#34;)
  *             .orgId(apigeeOrg.id())
  *             .diskEncryptionKeyName(apigeeKey.id())
  *             .build());

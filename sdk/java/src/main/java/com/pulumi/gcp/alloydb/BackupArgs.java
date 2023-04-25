@@ -80,15 +80,15 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
      * The location where the alloydb backup should reside.
      * 
      */
-    @Import(name="location")
-    private @Nullable Output<String> location;
+    @Import(name="location", required=true)
+    private Output<String> location;
 
     /**
      * @return The location where the alloydb backup should reside.
      * 
      */
-    public Optional<Output<String>> location() {
-        return Optional.ofNullable(this.location);
+    public Output<String> location() {
+        return this.location;
     }
 
     /**
@@ -227,7 +227,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder location(@Nullable Output<String> location) {
+        public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
@@ -268,6 +268,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         public BackupArgs build() {
             $.backupId = Objects.requireNonNull($.backupId, "expected parameter 'backupId' to be non-null");
             $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
+            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
             return $;
         }
     }

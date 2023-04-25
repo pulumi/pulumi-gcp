@@ -23,6 +23,177 @@ import javax.annotation.Nullable;
  * The Cloud Deploy `DeliveryPipeline` resource
  * 
  * ## Example Usage
+ * ### Canary_delivery_pipeline
+ * Creates a basic Cloud Deploy delivery pipeline
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
+ * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .description(&#34;basic description&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
+ *             .project(&#34;my-project-name&#34;)
+ *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
+ *                 .stages(                
+ *                     DeliveryPipelineSerialPipelineStageArgs.builder()
+ *                         .profiles(                        
+ *                             &#34;example-profile-one&#34;,
+ *                             &#34;example-profile-two&#34;)
+ *                         .targetId(&#34;example-target-one&#34;)
+ *                         .build(),
+ *                     DeliveryPipelineSerialPipelineStageArgs.builder()
+ *                         .profiles()
+ *                         .targetId(&#34;example-target-two&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Canary_service_networking_delivery_pipeline
+ * Creates a basic Cloud Deploy delivery pipeline
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
+ * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .description(&#34;basic description&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
+ *             .project(&#34;my-project-name&#34;)
+ *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
+ *                 .stages(                
+ *                     DeliveryPipelineSerialPipelineStageArgs.builder()
+ *                         .profiles(                        
+ *                             &#34;example-profile-one&#34;,
+ *                             &#34;example-profile-two&#34;)
+ *                         .targetId(&#34;example-target-one&#34;)
+ *                         .build(),
+ *                     DeliveryPipelineSerialPipelineStageArgs.builder()
+ *                         .profiles()
+ *                         .targetId(&#34;example-target-two&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Canaryrun_delivery_pipeline
+ * Creates a basic Cloud Deploy delivery pipeline
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.clouddeploy.DeliveryPipeline;
+ * import com.pulumi.gcp.clouddeploy.DeliveryPipelineArgs;
+ * import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new DeliveryPipeline(&#34;primary&#34;, DeliveryPipelineArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
+ *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
+ *             ))
+ *             .description(&#34;basic description&#34;)
+ *             .labels(Map.ofEntries(
+ *                 Map.entry(&#34;my_first_label&#34;, &#34;example-label-1&#34;),
+ *                 Map.entry(&#34;my_second_label&#34;, &#34;example-label-2&#34;)
+ *             ))
+ *             .project(&#34;my-project-name&#34;)
+ *             .serialPipeline(DeliveryPipelineSerialPipelineArgs.builder()
+ *                 .stages(                
+ *                     DeliveryPipelineSerialPipelineStageArgs.builder()
+ *                         .profiles(                        
+ *                             &#34;example-profile-one&#34;,
+ *                             &#34;example-profile-two&#34;)
+ *                         .targetId(&#34;example-target-one&#34;)
+ *                         .build(),
+ *                     DeliveryPipelineSerialPipelineStageArgs.builder()
+ *                         .profiles()
+ *                         .targetId(&#34;example-target-two&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Delivery_pipeline
  * Creates a basic Cloud Deploy delivery pipeline
  * ```java

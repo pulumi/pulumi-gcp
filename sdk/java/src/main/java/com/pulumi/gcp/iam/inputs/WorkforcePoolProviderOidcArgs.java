@@ -5,8 +5,11 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.ResourceArgs {
@@ -43,11 +46,29 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
         return this.issuerUri;
     }
 
+    /**
+     * Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="webSsoConfig")
+    private @Nullable Output<WorkforcePoolProviderOidcWebSsoConfigArgs> webSsoConfig;
+
+    /**
+     * @return Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkforcePoolProviderOidcWebSsoConfigArgs>> webSsoConfig() {
+        return Optional.ofNullable(this.webSsoConfig);
+    }
+
     private WorkforcePoolProviderOidcArgs() {}
 
     private WorkforcePoolProviderOidcArgs(WorkforcePoolProviderOidcArgs $) {
         this.clientId = $.clientId;
         this.issuerUri = $.issuerUri;
+        this.webSsoConfig = $.webSsoConfig;
     }
 
     public static Builder builder() {
@@ -108,6 +129,29 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
          */
         public Builder issuerUri(String issuerUri) {
             return issuerUri(Output.of(issuerUri));
+        }
+
+        /**
+         * @param webSsoConfig Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webSsoConfig(@Nullable Output<WorkforcePoolProviderOidcWebSsoConfigArgs> webSsoConfig) {
+            $.webSsoConfig = webSsoConfig;
+            return this;
+        }
+
+        /**
+         * @param webSsoConfig Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs webSsoConfig) {
+            return webSsoConfig(Output.of(webSsoConfig));
         }
 
         public WorkforcePoolProviderOidcArgs build() {

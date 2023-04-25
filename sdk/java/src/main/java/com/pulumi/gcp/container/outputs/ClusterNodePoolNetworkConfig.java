@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -25,6 +26,7 @@ public final class ClusterNodePoolNetworkConfig {
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
+    private @Nullable ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
     /**
      * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
      * 
@@ -54,6 +56,9 @@ public final class ClusterNodePoolNetworkConfig {
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
+    public Optional<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {
+        return Optional.ofNullable(this.podCidrOverprovisionConfig);
+    }
     /**
      * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
      * 
@@ -80,6 +85,7 @@ public final class ClusterNodePoolNetworkConfig {
     public static final class Builder {
         private @Nullable Boolean createPodRange;
         private @Nullable Boolean enablePrivateNodes;
+        private @Nullable ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
         private @Nullable String podIpv4CidrBlock;
         private @Nullable String podRange;
         public Builder() {}
@@ -87,6 +93,7 @@ public final class ClusterNodePoolNetworkConfig {
     	      Objects.requireNonNull(defaults);
     	      this.createPodRange = defaults.createPodRange;
     	      this.enablePrivateNodes = defaults.enablePrivateNodes;
+    	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
         }
@@ -99,6 +106,11 @@ public final class ClusterNodePoolNetworkConfig {
         @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
             this.enablePrivateNodes = enablePrivateNodes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder podCidrOverprovisionConfig(@Nullable ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig) {
+            this.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
         }
         @CustomType.Setter
@@ -115,6 +127,7 @@ public final class ClusterNodePoolNetworkConfig {
             final var o = new ClusterNodePoolNetworkConfig();
             o.createPodRange = createPodRange;
             o.enablePrivateNodes = enablePrivateNodes;
+            o.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             o.podIpv4CidrBlock = podIpv4CidrBlock;
             o.podRange = podRange;
             return o;

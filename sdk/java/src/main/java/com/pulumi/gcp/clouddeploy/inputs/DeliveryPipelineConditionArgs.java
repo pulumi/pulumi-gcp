@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineConditionPipelineReadyConditionArgs;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineConditionTargetsPresentConditionArgs;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineConditionTargetsTypeConditionArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,11 +32,19 @@ public final class DeliveryPipelineConditionArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.targetsPresentConditions);
     }
 
+    @Import(name="targetsTypeConditions")
+    private @Nullable Output<List<DeliveryPipelineConditionTargetsTypeConditionArgs>> targetsTypeConditions;
+
+    public Optional<Output<List<DeliveryPipelineConditionTargetsTypeConditionArgs>>> targetsTypeConditions() {
+        return Optional.ofNullable(this.targetsTypeConditions);
+    }
+
     private DeliveryPipelineConditionArgs() {}
 
     private DeliveryPipelineConditionArgs(DeliveryPipelineConditionArgs $) {
         this.pipelineReadyConditions = $.pipelineReadyConditions;
         this.targetsPresentConditions = $.targetsPresentConditions;
+        this.targetsTypeConditions = $.targetsTypeConditions;
     }
 
     public static Builder builder() {
@@ -80,6 +89,19 @@ public final class DeliveryPipelineConditionArgs extends com.pulumi.resources.Re
 
         public Builder targetsPresentConditions(DeliveryPipelineConditionTargetsPresentConditionArgs... targetsPresentConditions) {
             return targetsPresentConditions(List.of(targetsPresentConditions));
+        }
+
+        public Builder targetsTypeConditions(@Nullable Output<List<DeliveryPipelineConditionTargetsTypeConditionArgs>> targetsTypeConditions) {
+            $.targetsTypeConditions = targetsTypeConditions;
+            return this;
+        }
+
+        public Builder targetsTypeConditions(List<DeliveryPipelineConditionTargetsTypeConditionArgs> targetsTypeConditions) {
+            return targetsTypeConditions(Output.of(targetsTypeConditions));
+        }
+
+        public Builder targetsTypeConditions(DeliveryPipelineConditionTargetsTypeConditionArgs... targetsTypeConditions) {
+            return targetsTypeConditions(List.of(targetsTypeConditions));
         }
 
         public DeliveryPipelineConditionArgs build() {

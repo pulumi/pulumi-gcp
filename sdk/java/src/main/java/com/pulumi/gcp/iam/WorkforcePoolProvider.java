@@ -135,6 +135,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -162,6 +163,10 @@ import javax.annotation.Nullable;
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
  *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
  *                 .clientId(&#34;client-id&#34;)
+ *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
+ *                     .responseType(&#34;ID_TOKEN&#34;)
+ *                     .assertionClaimsBehavior(&#34;ONLY_ID_TOKEN_CLAIMS&#34;)
+ *                     .build())
  *                 .build())
  *             .build());
  * 
@@ -180,6 +185,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -207,6 +213,10 @@ import javax.annotation.Nullable;
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
  *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
  *                 .clientId(&#34;client-id&#34;)
+ *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
+ *                     .responseType(&#34;ID_TOKEN&#34;)
+ *                     .assertionClaimsBehavior(&#34;ONLY_ID_TOKEN_CLAIMS&#34;)
+ *                     .build())
  *                 .build())
  *             .displayName(&#34;Display name&#34;)
  *             .description(&#34;A sample OIDC workforce pool provider.&#34;)

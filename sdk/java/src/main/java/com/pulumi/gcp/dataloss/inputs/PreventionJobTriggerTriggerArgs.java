@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerManualArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class PreventionJobTriggerTriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionJobTriggerTriggerArgs Empty = new PreventionJobTriggerTriggerArgs();
+
+    /**
+     * For use with hybrid jobs. Jobs must be manually created and finished.
+     * 
+     */
+    @Import(name="manual")
+    private @Nullable Output<PreventionJobTriggerTriggerManualArgs> manual;
+
+    /**
+     * @return For use with hybrid jobs. Jobs must be manually created and finished.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerTriggerManualArgs>> manual() {
+        return Optional.ofNullable(this.manual);
+    }
 
     /**
      * Schedule for triggered jobs
@@ -35,6 +51,7 @@ public final class PreventionJobTriggerTriggerArgs extends com.pulumi.resources.
     private PreventionJobTriggerTriggerArgs() {}
 
     private PreventionJobTriggerTriggerArgs(PreventionJobTriggerTriggerArgs $) {
+        this.manual = $.manual;
         this.schedule = $.schedule;
     }
 
@@ -54,6 +71,27 @@ public final class PreventionJobTriggerTriggerArgs extends com.pulumi.resources.
 
         public Builder(PreventionJobTriggerTriggerArgs defaults) {
             $ = new PreventionJobTriggerTriggerArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param manual For use with hybrid jobs. Jobs must be manually created and finished.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder manual(@Nullable Output<PreventionJobTriggerTriggerManualArgs> manual) {
+            $.manual = manual;
+            return this;
+        }
+
+        /**
+         * @param manual For use with hybrid jobs. Jobs must be manually created and finished.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder manual(PreventionJobTriggerTriggerManualArgs manual) {
+            return manual(Output.of(manual));
         }
 
         /**

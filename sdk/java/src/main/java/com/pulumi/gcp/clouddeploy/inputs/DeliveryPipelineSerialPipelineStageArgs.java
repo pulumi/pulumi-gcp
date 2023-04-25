@@ -33,14 +33,14 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
     }
 
     /**
-     * (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * Optional. The strategy to use for a `Rollout` to this stage.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyArgs> strategy;
 
     /**
-     * @return (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+     * @return Optional. The strategy to use for a `Rollout` to this stage.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyArgs>> strategy() {
@@ -120,7 +120,7 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
         }
 
         /**
-         * @param strategy (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+         * @param strategy Optional. The strategy to use for a `Rollout` to this stage.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
         }
 
         /**
-         * @param strategy (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+         * @param strategy Optional. The strategy to use for a `Rollout` to this stage.
          * 
          * @return builder
          * 

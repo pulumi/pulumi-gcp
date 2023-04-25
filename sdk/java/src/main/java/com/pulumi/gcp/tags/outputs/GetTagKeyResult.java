@@ -27,7 +27,7 @@ public final class GetTagKeyResult {
      */
     private String name;
     /**
-     * @return Namespaced name of the TagKey.
+     * @return Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
      * 
      */
     private String namespacedName;
@@ -67,7 +67,7 @@ public final class GetTagKeyResult {
         return this.name;
     }
     /**
-     * @return Namespaced name of the TagKey.
+     * @return Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
      * 
      */
     public String namespacedName() {

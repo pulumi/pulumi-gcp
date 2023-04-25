@@ -5,6 +5,8 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPubSubArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs;
@@ -17,6 +19,38 @@ import javax.annotation.Nullable;
 public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionJobTriggerInspectJobActionArgs Empty = new PreventionJobTriggerInspectJobActionArgs();
+
+    /**
+     * Create a de-identified copy of the requested table or files.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="deidentify")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionDeidentifyArgs> deidentify;
+
+    /**
+     * @return Create a de-identified copy of the requested table or files.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobActionDeidentifyArgs>> deidentify() {
+        return Optional.ofNullable(this.deidentify);
+    }
+
+    /**
+     * Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+     * 
+     */
+    @Import(name="jobNotificationEmails")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs> jobNotificationEmails;
+
+    /**
+     * @return Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs>> jobNotificationEmails() {
+        return Optional.ofNullable(this.jobNotificationEmails);
+    }
 
     /**
      * Publish a message into a given Pub/Sub topic when the job completes.
@@ -85,6 +119,8 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
     private PreventionJobTriggerInspectJobActionArgs() {}
 
     private PreventionJobTriggerInspectJobActionArgs(PreventionJobTriggerInspectJobActionArgs $) {
+        this.deidentify = $.deidentify;
+        this.jobNotificationEmails = $.jobNotificationEmails;
         this.pubSub = $.pubSub;
         this.publishFindingsToCloudDataCatalog = $.publishFindingsToCloudDataCatalog;
         this.publishSummaryToCscc = $.publishSummaryToCscc;
@@ -107,6 +143,50 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
 
         public Builder(PreventionJobTriggerInspectJobActionArgs defaults) {
             $ = new PreventionJobTriggerInspectJobActionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deidentify Create a de-identified copy of the requested table or files.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deidentify(@Nullable Output<PreventionJobTriggerInspectJobActionDeidentifyArgs> deidentify) {
+            $.deidentify = deidentify;
+            return this;
+        }
+
+        /**
+         * @param deidentify Create a de-identified copy of the requested table or files.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deidentify(PreventionJobTriggerInspectJobActionDeidentifyArgs deidentify) {
+            return deidentify(Output.of(deidentify));
+        }
+
+        /**
+         * @param jobNotificationEmails Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobNotificationEmails(@Nullable Output<PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs> jobNotificationEmails) {
+            $.jobNotificationEmails = jobNotificationEmails;
+            return this;
+        }
+
+        /**
+         * @param jobNotificationEmails Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobNotificationEmails(PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs jobNotificationEmails) {
+            return jobNotificationEmails(Output.of(jobNotificationEmails));
         }
 
         /**

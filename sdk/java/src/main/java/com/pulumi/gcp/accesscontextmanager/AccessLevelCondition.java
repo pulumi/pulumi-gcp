@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  *         var access_level_service_account = new AccessLevel(&#34;access-level-service-account&#34;, AccessLevelArgs.builder()        
  *             .parent(access_policy.name().applyValue(name -&gt; String.format(&#34;accessPolicies/%s&#34;, name)))
- *             .title(&#34;tf_test_chromeos_no_lock&#34;)
+ *             .title(&#34;chromeos_no_lock&#34;)
  *             .basic(AccessLevelBasicArgs.builder()
  *                 .conditions(AccessLevelBasicConditionArgs.builder()
  *                     .devicePolicy(AccessLevelBasicConditionDevicePolicyArgs.builder()
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var created_later = new Account(&#34;created-later&#34;, AccountArgs.builder()        
- *             .accountId(&#34;tf-test&#34;)
+ *             .accountId(&#34;my-account-id&#34;)
  *             .build());
  * 
  *         var access_level_conditions = new AccessLevelCondition(&#34;access-level-conditions&#34;, AccessLevelConditionArgs.builder()        

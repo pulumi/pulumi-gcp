@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanary;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandard;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategy {
     /**
+     * @return (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanary canary;
+    /**
      * @return Standard deployment strategy executes a single deploy and allows verifying the deployment.
      * 
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandard standard;
 
     private DeliveryPipelineSerialPipelineStageStrategy() {}
+    /**
+     * @return (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanary> canary() {
+        return Optional.ofNullable(this.canary);
+    }
     /**
      * @return Standard deployment strategy executes a single deploy and allows verifying the deployment.
      * 
@@ -35,13 +48,20 @@ public final class DeliveryPipelineSerialPipelineStageStrategy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanary canary;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandard standard;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.canary = defaults.canary;
     	      this.standard = defaults.standard;
         }
 
+        @CustomType.Setter
+        public Builder canary(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanary canary) {
+            this.canary = canary;
+            return this;
+        }
         @CustomType.Setter
         public Builder standard(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandard standard) {
             this.standard = standard;
@@ -49,6 +69,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategy {
         }
         public DeliveryPipelineSerialPipelineStageStrategy build() {
             final var o = new DeliveryPipelineSerialPipelineStageStrategy();
+            o.canary = canary;
             o.standard = standard;
             return o;
         }

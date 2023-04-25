@@ -63,14 +63,14 @@ public final class TagValueState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+     * Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      * 
      */
     @Import(name="namespacedName")
     private @Nullable Output<String> namespacedName;
 
     /**
-     * @return Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+     * @return Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
      * 
      */
     public Optional<Output<String>> namespacedName() {
@@ -222,7 +222,7 @@ public final class TagValueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespacedName Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+         * @param namespacedName Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class TagValueState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namespacedName Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+         * @param namespacedName Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
          * 
          * @return builder
          * 

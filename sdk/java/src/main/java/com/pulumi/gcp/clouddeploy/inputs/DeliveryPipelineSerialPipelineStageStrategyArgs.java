@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryArgs;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyStandardArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class DeliveryPipelineSerialPipelineStageStrategyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeliveryPipelineSerialPipelineStageStrategyArgs Empty = new DeliveryPipelineSerialPipelineStageStrategyArgs();
+
+    /**
+     * (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * 
+     */
+    @Import(name="canary")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryArgs> canary;
+
+    /**
+     * @return (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryArgs>> canary() {
+        return Optional.ofNullable(this.canary);
+    }
 
     /**
      * Standard deployment strategy executes a single deploy and allows verifying the deployment.
@@ -33,6 +49,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyArgs extends com.p
     private DeliveryPipelineSerialPipelineStageStrategyArgs() {}
 
     private DeliveryPipelineSerialPipelineStageStrategyArgs(DeliveryPipelineSerialPipelineStageStrategyArgs $) {
+        this.canary = $.canary;
         this.standard = $.standard;
     }
 
@@ -52,6 +69,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyArgs extends com.p
 
         public Builder(DeliveryPipelineSerialPipelineStageStrategyArgs defaults) {
             $ = new DeliveryPipelineSerialPipelineStageStrategyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param canary (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder canary(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryArgs> canary) {
+            $.canary = canary;
+            return this;
+        }
+
+        /**
+         * @param canary (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder canary(DeliveryPipelineSerialPipelineStageStrategyCanaryArgs canary) {
+            return canary(Output.of(canary));
         }
 
         /**

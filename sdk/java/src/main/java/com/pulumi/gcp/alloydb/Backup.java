@@ -287,14 +287,14 @@ public class Backup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="location", type=String.class, parameters={})
-    private Output</* @Nullable */ String> location;
+    private Output<String> location;
 
     /**
      * @return The location where the alloydb backup should reside.
      * 
      */
-    public Output<Optional<String>> location() {
-        return Codegen.optional(this.location);
+    public Output<String> location() {
+        return this.location;
     }
     /**
      * Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}

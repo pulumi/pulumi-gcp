@@ -110,7 +110,7 @@ public final class ProjectFeedState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      * 
      */
     @Import(name="contentType")
@@ -118,7 +118,7 @@ public final class ProjectFeedState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -364,7 +364,7 @@ public final class ProjectFeedState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned.
-         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class ProjectFeedState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param contentType Asset content type. If not specified, no content but the asset name and type will be returned.
-         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+         * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
          * 
          * @return builder
          * 

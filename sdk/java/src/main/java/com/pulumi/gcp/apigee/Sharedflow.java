@@ -41,14 +41,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:apigee/sharedflow:Sharedflow")
 public class Sharedflow extends com.pulumi.resources.CustomResource {
     /**
-     * A path to the config bundle zip you want to upload. Must be defined if content is not.
+     * Path to the config zip bundle.
      * 
      */
     @Export(name="configBundle", type=String.class, parameters={})
     private Output<String> configBundle;
 
     /**
-     * @return A path to the config bundle zip you want to upload. Must be defined if content is not.
+     * @return Path to the config zip bundle.
      * 
      */
     public Output<String> configBundle() {

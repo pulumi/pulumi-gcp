@@ -56,6 +56,8 @@ import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionNetworkEndpointGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
@@ -107,6 +109,7 @@ import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
@@ -5677,6 +5680,246 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRegionInstanceGroupResult> getRegionInstanceGroupPlain(GetRegionInstanceGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", TypeShape.of(GetRegionInstanceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .build());
+     * 
+     *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplate() {
+        return getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .build());
+     * 
+     *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionInstanceTemplateResult> getRegionInstanceTemplatePlain() {
+        return getRegionInstanceTemplatePlain(GetRegionInstanceTemplatePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .build());
+     * 
+     *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(GetRegionInstanceTemplateArgs args) {
+        return getRegionInstanceTemplate(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .build());
+     * 
+     *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionInstanceTemplateResult> getRegionInstanceTemplatePlain(GetRegionInstanceTemplatePlainArgs args) {
+        return getRegionInstanceTemplatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .build());
+     * 
+     *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(GetRegionInstanceTemplateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", TypeShape.of(GetRegionInstanceTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var generic = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .name(&#34;generic-tpl-20200107&#34;)
+     *             .build());
+     * 
+     *         final var generic-regex = ComputeFunctions.getRegionInstanceTemplate(GetRegionInstanceTemplateArgs.builder()
+     *             .filter(&#34;name != generic-tpl-20200107&#34;)
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionInstanceTemplateResult> getRegionInstanceTemplatePlain(GetRegionInstanceTemplatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", TypeShape.of(GetRegionInstanceTemplateResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access a Region Network Endpoint Group&#39;s attributes.
