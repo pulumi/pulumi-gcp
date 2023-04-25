@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.Tags
     public static class GetTagKey
     {
         /// <summary>
-        /// Get a tag key within a GCP org by `parent` and `short_name`.
+        /// Get a tag key by org or project `parent` and `short_name`.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -33,6 +34,22 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// });
         /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
+        ///     {
+        ///         Parent = "projects/abc",
+        ///         ShortName = "environment",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -40,7 +57,7 @@ namespace Pulumi.Gcp.Tags
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagKeyResult>("gcp:tags/getTagKey:getTagKey", args ?? new GetTagKeyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get a tag key within a GCP org by `parent` and `short_name`.
+        /// Get a tag key by org or project `parent` and `short_name`.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -48,6 +65,7 @@ namespace Pulumi.Gcp.Tags
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -56,6 +74,22 @@ namespace Pulumi.Gcp.Tags
         ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
         ///     {
         ///         Parent = "organizations/12345",
+        ///         ShortName = "environment",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKey.Invoke(new()
+        ///     {
+        ///         Parent = "projects/abc",
         ///         ShortName = "environment",
         ///     });
         /// 
@@ -72,7 +106,7 @@ namespace Pulumi.Gcp.Tags
     public sealed class GetTagKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the parent organization in format `organizations/{org_id}`.
+        /// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
         /// </summary>
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
@@ -92,7 +126,7 @@ namespace Pulumi.Gcp.Tags
     public sealed class GetTagKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the parent organization in format `organizations/{org_id}`.
+        /// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -128,7 +162,7 @@ namespace Pulumi.Gcp.Tags
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Namespaced name of the TagKey.
+        /// Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
         /// </summary>
         public readonly string NamespacedName;
         public readonly string Parent;

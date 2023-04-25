@@ -27,6 +27,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -80,6 +81,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -111,6 +113,7 @@ namespace Pulumi.Gcp.BigTable
     /// An example of more complex GC policy:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -175,6 +178,7 @@ namespace Pulumi.Gcp.BigTable
     /// This is equivalent to running the following `cbt` command:
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 

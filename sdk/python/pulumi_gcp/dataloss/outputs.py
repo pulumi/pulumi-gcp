@@ -7209,10 +7209,11 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
                  project_id: str,
                  table_id: Optional[str] = None):
         """
-        :param str dataset_id: Dataset ID of the table.
-        :param str project_id: The Google Cloud Platform project ID of the project containing the table.
-        :param str table_id: Name of the table. If is not set a new one will be generated for you with the following format:
-               `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
+        :param str table_id: The ID of the table. The ID must contain only letters (a-z,
+               A-Z), numbers (0-9), or underscores (_). The maximum length
+               is 1,024 characters.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -7223,7 +7224,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
         """
-        Dataset ID of the table.
+        The ID of the dataset containing this table.
         """
         return pulumi.get(self, "dataset_id")
 
@@ -7231,7 +7232,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        The Google Cloud Platform project ID of the project containing the table.
+        The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
 
@@ -7239,8 +7240,9 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable(dict):
     @pulumi.getter(name="tableId")
     def table_id(self) -> Optional[str]:
         """
-        Name of the table. If is not set a new one will be generated for you with the following format:
-        `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+        The ID of the table. The ID must contain only letters (a-z,
+        A-Z), numbers (0-9), or underscores (_). The maximum length
+        is 1,024 characters.
         """
         return pulumi.get(self, "table_id")
 
@@ -7447,7 +7449,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Name of a BigQuery field to be returned with the findings.
+        :param str name: Name describing the field.
         """
         pulumi.set(__self__, "name", name)
 
@@ -7455,7 +7457,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of a BigQuery field to be returned with the findings.
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 

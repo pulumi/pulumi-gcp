@@ -61,7 +61,7 @@ import (
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
 //				}).(pulumi.StringOutput),
-//				Title: pulumi.String("tf_test_chromeos_no_lock"),
+//				Title: pulumi.String("chromeos_no_lock"),
 //				Basic: &accesscontextmanager.AccessLevelBasicArgs{
 //					Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
 //						&accesscontextmanager.AccessLevelBasicConditionArgs{
@@ -86,7 +86,7 @@ import (
 //				return err
 //			}
 //			_, err = serviceAccount.NewAccount(ctx, "created-later", &serviceAccount.AccountArgs{
-//				AccountId: pulumi.String("tf-test"),
+//				AccountId: pulumi.String("my-account-id"),
 //			})
 //			if err != nil {
 //				return err

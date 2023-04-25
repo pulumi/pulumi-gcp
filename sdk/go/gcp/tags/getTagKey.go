@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get a tag key within a GCP org by `parent` and `shortName`.
+// Get a tag key by org or project `parent` and `shortName`.
 //
 // ## Example Usage
 //
@@ -38,6 +38,30 @@ import (
 //	}
 //
 // ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := tags.LookupTagKey(ctx, &tags.LookupTagKeyArgs{
+//				Parent:    "projects/abc",
+//				ShortName: "environment",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupTagKey(ctx *pulumi.Context, args *LookupTagKeyArgs, opts ...pulumi.InvokeOption) (*LookupTagKeyResult, error) {
 	var rv LookupTagKeyResult
 	err := ctx.Invoke("gcp:tags/getTagKey:getTagKey", args, &rv, opts...)
@@ -49,7 +73,7 @@ func LookupTagKey(ctx *pulumi.Context, args *LookupTagKeyArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getTagKey.
 type LookupTagKeyArgs struct {
-	// The resource name of the parent organization in format `organizations/{org_id}`.
+	// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
 	Parent string `pulumi:"parent"`
 	// The tag key's short_name.
 	ShortName string `pulumi:"shortName"`
@@ -65,7 +89,7 @@ type LookupTagKeyResult struct {
 	Id string `pulumi:"id"`
 	// The generated numeric id for the TagKey.
 	Name string `pulumi:"name"`
-	// Namespaced name of the TagKey.
+	// Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
 	NamespacedName string `pulumi:"namespacedName"`
 	Parent         string `pulumi:"parent"`
 	ShortName      string `pulumi:"shortName"`
@@ -89,7 +113,7 @@ func LookupTagKeyOutput(ctx *pulumi.Context, args LookupTagKeyOutputArgs, opts .
 
 // A collection of arguments for invoking getTagKey.
 type LookupTagKeyOutputArgs struct {
-	// The resource name of the parent organization in format `organizations/{org_id}`.
+	// The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
 	Parent pulumi.StringInput `pulumi:"parent"`
 	// The tag key's short_name.
 	ShortName pulumi.StringInput `pulumi:"shortName"`
@@ -134,7 +158,7 @@ func (o LookupTagKeyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Namespaced name of the TagKey.
+// Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
 func (o LookupTagKeyResultOutput) NamespacedName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagKeyResult) string { return v.NamespacedName }).(pulumi.StringOutput)
 }

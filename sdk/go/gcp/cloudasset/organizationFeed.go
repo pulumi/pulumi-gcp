@@ -62,7 +62,7 @@ type OrganizationFeed struct {
 	// Structure is documented below.
 	Condition OrganizationFeedConditionPtrOutput `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringOutput `pulumi:"feedId"`
@@ -139,7 +139,7 @@ type organizationFeedState struct {
 	// Structure is documented below.
 	Condition *OrganizationFeedCondition `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId *string `pulumi:"feedId"`
@@ -176,7 +176,7 @@ type OrganizationFeedState struct {
 	// Structure is documented below.
 	Condition OrganizationFeedConditionPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringPtrInput
@@ -217,7 +217,7 @@ type organizationFeedArgs struct {
 	// Structure is documented below.
 	Condition *OrganizationFeedCondition `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType *string `pulumi:"contentType"`
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId string `pulumi:"feedId"`
@@ -253,7 +253,7 @@ type OrganizationFeedArgs struct {
 	// Structure is documented below.
 	Condition OrganizationFeedConditionPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
-	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+	// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 	ContentType pulumi.StringPtrInput
 	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
 	FeedId pulumi.StringInput
@@ -386,7 +386,7 @@ func (o OrganizationFeedOutput) Condition() OrganizationFeedConditionPtrOutput {
 }
 
 // Asset content type. If not specified, no content but the asset name and type will be returned.
-// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
 func (o OrganizationFeedOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationFeed) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }

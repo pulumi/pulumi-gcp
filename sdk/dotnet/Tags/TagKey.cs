@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -79,7 +80,7 @@ namespace Pulumi.Gcp.Tags
         public Output<string> NamespacedName { get; private set; } = null!;
 
         /// <summary>
-        /// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        /// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -166,7 +167,7 @@ namespace Pulumi.Gcp.Tags
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        /// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -233,7 +234,7 @@ namespace Pulumi.Gcp.Tags
         public Input<string>? NamespacedName { get; set; }
 
         /// <summary>
-        /// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+        /// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

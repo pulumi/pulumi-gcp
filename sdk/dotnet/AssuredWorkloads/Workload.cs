@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// A basic test of a assuredworkloads api
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -82,7 +83,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public Output<string> BillingAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS
+        /// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
         /// </summary>
         [Output("complianceRegime")]
         public Output<string> ComplianceRegime { get; private set; } = null!;
@@ -200,7 +201,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public Input<string> BillingAccount { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS
+        /// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
         /// </summary>
         [Input("complianceRegime", required: true)]
         public Input<string> ComplianceRegime { get; set; } = null!;
@@ -274,7 +275,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
         public Input<string>? BillingAccount { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS
+        /// Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
         /// </summary>
         [Input("complianceRegime")]
         public Input<string>? ComplianceRegime { get; set; }

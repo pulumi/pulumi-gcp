@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -58,6 +59,65 @@ namespace Pulumi.Gcp.Beyondcorp
     ///         Connectors = new[]
     ///         {
     ///             appConnector.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Beyondcorp App Connection Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new()
+    ///     {
+    ///         AccountId = "my-account",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var appGateway = new Gcp.Beyondcorp.AppGateway("appGateway", new()
+    ///     {
+    ///         Type = "TCP_PROXY",
+    ///         HostType = "GCP_REGIONAL_MIG",
+    ///     });
+    /// 
+    ///     var appConnector = new Gcp.Beyondcorp.AppConnector("appConnector", new()
+    ///     {
+    ///         PrincipalInfo = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoArgs
+    ///         {
+    ///             ServiceAccount = new Gcp.Beyondcorp.Inputs.AppConnectorPrincipalInfoServiceAccountArgs
+    ///             {
+    ///                 Email = serviceAccount.Email,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var appConnection = new Gcp.Beyondcorp.AppConnection("appConnection", new()
+    ///     {
+    ///         Type = "TCP_PROXY",
+    ///         DisplayName = "some display name",
+    ///         ApplicationEndpoint = new Gcp.Beyondcorp.Inputs.AppConnectionApplicationEndpointArgs
+    ///         {
+    ///             Host = "foo-host",
+    ///             Port = 8080,
+    ///         },
+    ///         Connectors = new[]
+    ///         {
+    ///             appConnector.Id,
+    ///         },
+    ///         Gateway = new Gcp.Beyondcorp.Inputs.AppConnectionGatewayArgs
+    ///         {
+    ///             AppGateway = appGateway.Id,
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///             { "bar", "baz" },
     ///         },
     ///     });
     /// 

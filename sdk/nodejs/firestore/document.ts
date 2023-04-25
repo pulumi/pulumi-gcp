@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *
  * const mydoc = new gcp.firestore.Document("mydoc", {
  *     collection: "somenewcollection",
- *     documentId: "my-doc",
+ *     documentId: "my-doc-id",
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
  *     project: "my-project-name",
  * });
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * const mydoc = new gcp.firestore.Document("mydoc", {
  *     collection: "somenewcollection",
- *     documentId: "my-doc",
+ *     documentId: "my-doc-id",
  *     fields: "{\"something\":{\"mapValue\":{\"fields\":{\"akey\":{\"stringValue\":\"avalue\"}}}}}",
  *     project: "my-project-name",
  * });

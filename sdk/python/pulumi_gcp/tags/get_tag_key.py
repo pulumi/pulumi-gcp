@@ -81,7 +81,7 @@ class GetTagKeyResult:
     @pulumi.getter(name="namespacedName")
     def namespaced_name(self) -> str:
         """
-        Namespaced name of the TagKey.
+        Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
         """
         return pulumi.get(self, "namespaced_name")
 
@@ -125,7 +125,7 @@ def get_tag_key(parent: Optional[str] = None,
                 short_name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagKeyResult:
     """
-    Get a tag key within a GCP org by `parent` and `short_name`.
+    Get a tag key by org or project `parent` and `short_name`.
 
     ## Example Usage
 
@@ -136,9 +136,16 @@ def get_tag_key(parent: Optional[str] = None,
     environment_tag_key = gcp.tags.get_tag_key(parent="organizations/12345",
         short_name="environment")
     ```
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_key = gcp.tags.get_tag_key(parent="projects/abc",
+        short_name="environment")
+    ```
 
 
-    :param str parent: The resource name of the parent organization in format `organizations/{org_id}`.
+    :param str parent: The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
     :param str short_name: The tag key's short_name.
     """
     __args__ = dict()
@@ -163,7 +170,7 @@ def get_tag_key_output(parent: Optional[pulumi.Input[str]] = None,
                        short_name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagKeyResult]:
     """
-    Get a tag key within a GCP org by `parent` and `short_name`.
+    Get a tag key by org or project `parent` and `short_name`.
 
     ## Example Usage
 
@@ -174,9 +181,16 @@ def get_tag_key_output(parent: Optional[pulumi.Input[str]] = None,
     environment_tag_key = gcp.tags.get_tag_key(parent="organizations/12345",
         short_name="environment")
     ```
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    environment_tag_key = gcp.tags.get_tag_key(parent="projects/abc",
+        short_name="environment")
+    ```
 
 
-    :param str parent: The resource name of the parent organization in format `organizations/{org_id}`.
+    :param str parent: The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
     :param str short_name: The tag key's short_name.
     """
     ...

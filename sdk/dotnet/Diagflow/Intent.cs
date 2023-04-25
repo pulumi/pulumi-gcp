@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -53,6 +54,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -60,7 +62,7 @@ namespace Pulumi.Gcp.Diagflow
     /// {
     ///     var agentProjectProject = new Gcp.Organizations.Project("agentProjectProject", new()
     ///     {
-    ///         ProjectId = "tf-test-dialogflow",
+    ///         ProjectId = "my-project",
     ///         OrgId = "123456789",
     ///     });
     /// 
@@ -73,7 +75,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     ///     var dialogflowServiceAccount = new Gcp.ServiceAccount.Account("dialogflowServiceAccount", new()
     ///     {
-    ///         AccountId = "tf-test-dialogflow",
+    ///         AccountId = "my-account",
     ///     });
     /// 
     ///     var agentCreate = new Gcp.Projects.IAMMember("agentCreate", new()

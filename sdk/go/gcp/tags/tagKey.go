@@ -75,7 +75,7 @@ type TagKey struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Output only. Namespaced name of the TagKey.
 	NamespacedName pulumi.StringOutput `pulumi:"namespacedName"`
-	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
@@ -136,7 +136,7 @@ type tagKeyState struct {
 	Name *string `pulumi:"name"`
 	// Output only. Namespaced name of the TagKey.
 	NamespacedName *string `pulumi:"namespacedName"`
-	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
 	Parent *string `pulumi:"parent"`
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
@@ -163,7 +163,7 @@ type TagKeyState struct {
 	Name pulumi.StringPtrInput
 	// Output only. Namespaced name of the TagKey.
 	NamespacedName pulumi.StringPtrInput
-	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
 	Parent pulumi.StringPtrInput
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
@@ -187,7 +187,7 @@ func (TagKeyState) ElementType() reflect.Type {
 type tagKeyArgs struct {
 	// User-assigned description of the TagKey. Must not exceed 256 characters.
 	Description *string `pulumi:"description"`
-	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
 	Parent string `pulumi:"parent"`
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
@@ -205,7 +205,7 @@ type tagKeyArgs struct {
 type TagKeyArgs struct {
 	// User-assigned description of the TagKey. Must not exceed 256 characters.
 	Description pulumi.StringPtrInput
-	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+	// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
 	Parent pulumi.StringInput
 	// Optional. A purpose cannot be changed once set.
 	// A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag.
@@ -327,7 +327,7 @@ func (o TagKeyOutput) NamespacedName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.NamespacedName }).(pulumi.StringOutput)
 }
 
-// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id}.
+// Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
 func (o TagKeyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

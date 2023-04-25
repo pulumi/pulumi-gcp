@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test",
+ *     projectId: "my-project",
  *     orgId: "",
  *     billingAccount: "",
  * });
@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  * const apigeeEnv = new gcp.apigee.Environment("apigeeEnv", {
  *     orgId: apigeeOrg.id,
  *     description: "Apigee Environment",
- *     displayName: "tf-test",
+ *     displayName: "my-environment",
  * });
  * const envGroupAttachment = new gcp.apigee.EnvGroupAttachment("envGroupAttachment", {
  *     envgroupId: apigeeEnvgroup.id,

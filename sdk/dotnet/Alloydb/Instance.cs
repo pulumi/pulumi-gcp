@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -152,7 +153,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the instance.
+        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
         /// Possible values are: `PRIMARY`, `READ_POOL`.
         /// </summary>
         [Output("instanceType")]
@@ -317,7 +318,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the instance.
+        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
         /// Possible values are: `PRIMARY`, `READ_POOL`.
         /// </summary>
         [Input("instanceType", required: true)]
@@ -420,7 +421,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The type of the instance.
+        /// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
         /// Possible values are: `PRIMARY`, `READ_POOL`.
         /// </summary>
         [Input("instanceType")]

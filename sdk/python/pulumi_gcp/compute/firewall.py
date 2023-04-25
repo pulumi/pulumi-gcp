@@ -49,9 +49,7 @@ class FirewallArgs:
                traffic that has destination IP address in these ranges. These ranges
                must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
-               INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-               destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
                Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -230,9 +228,7 @@ class FirewallArgs:
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
         Direction of traffic to which this firewall applies; default is
-        INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-        destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
         `source_tags` or `source_service_accounts` is required.
         Possible values are: `INGRESS`, `EGRESS`.
         """
@@ -467,9 +463,7 @@ class _FirewallState:
                traffic that has destination IP address in these ranges. These ranges
                must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
-               INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-               destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
                Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -655,9 +649,7 @@ class _FirewallState:
     def direction(self) -> Optional[pulumi.Input[str]]:
         """
         Direction of traffic to which this firewall applies; default is
-        INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-        destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
         `source_tags` or `source_service_accounts` is required.
         Possible values are: `INGRESS`, `EGRESS`.
         """
@@ -999,9 +991,7 @@ class Firewall(pulumi.CustomResource):
                traffic that has destination IP address in these ranges. These ranges
                must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
-               INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-               destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
                Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -1275,9 +1265,7 @@ class Firewall(pulumi.CustomResource):
                traffic that has destination IP address in these ranges. These ranges
                must be expressed in CIDR format. IPv4 or IPv6 ranges are supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies; default is
-               INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-               destinationRanges; For EGRESS traffic, it is NOT supported to specify
-               `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+               INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
                `source_tags` or `source_service_accounts` is required.
                Possible values are: `INGRESS`, `EGRESS`.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled, i.e not applied to the
@@ -1426,9 +1414,7 @@ class Firewall(pulumi.CustomResource):
     def direction(self) -> pulumi.Output[str]:
         """
         Direction of traffic to which this firewall applies; default is
-        INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-        destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
         `source_tags` or `source_service_accounts` is required.
         Possible values are: `INGRESS`, `EGRESS`.
         """

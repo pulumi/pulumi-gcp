@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -82,6 +83,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -145,6 +147,7 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -222,6 +225,8 @@ namespace Pulumi.Gcp.DataLoss
     {
         /// <summary>
         /// A description of the job trigger.
+        /// (Optional)
+        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -256,6 +261,8 @@ namespace Pulumi.Gcp.DataLoss
         /// The name of the Datastore kind.
         /// (Required)
         /// Name of a BigQuery field to be returned with the findings.
+        /// (Required)
+        /// Name describing the field.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -330,6 +337,8 @@ namespace Pulumi.Gcp.DataLoss
     {
         /// <summary>
         /// A description of the job trigger.
+        /// (Optional)
+        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -385,6 +394,8 @@ namespace Pulumi.Gcp.DataLoss
     {
         /// <summary>
         /// A description of the job trigger.
+        /// (Optional)
+        /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -419,6 +430,8 @@ namespace Pulumi.Gcp.DataLoss
         /// The name of the Datastore kind.
         /// (Required)
         /// Name of a BigQuery field to be returned with the findings.
+        /// (Required)
+        /// Name describing the field.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

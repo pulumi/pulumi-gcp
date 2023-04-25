@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -48,6 +49,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -71,6 +73,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -221,7 +224,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        /// The stack type for this VPN gateway to identify the IP protocols that are enabled.
         /// If not specified, IPV4_ONLY will be used.
         /// Default value is `IPV4_ONLY`.
         /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -320,7 +323,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        /// The stack type for this VPN gateway to identify the IP protocols that are enabled.
         /// If not specified, IPV4_ONLY will be used.
         /// Default value is `IPV4_ONLY`.
         /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
@@ -393,7 +396,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The stack type for this VPN gateway to identify the IP protocols that are enbaled.
+        /// The stack type for this VPN gateway to identify the IP protocols that are enabled.
         /// If not specified, IPV4_ONLY will be used.
         /// Default value is `IPV4_ONLY`.
         /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.

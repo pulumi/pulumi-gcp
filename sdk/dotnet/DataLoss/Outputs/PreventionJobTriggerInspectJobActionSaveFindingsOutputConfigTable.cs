@@ -14,16 +14,17 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable
     {
         /// <summary>
-        /// Dataset ID of the table.
+        /// The ID of the dataset containing this table.
         /// </summary>
         public readonly string DatasetId;
         /// <summary>
-        /// The Google Cloud Platform project ID of the project containing the table.
+        /// The ID of the project containing this table.
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Name of the table. If is not set a new one will be generated for you with the following format:
-        /// `dlp_googleapis_yyyy_mm_dd_[dlp_job_id]`. Pacific timezone will be used for generating the date details.
+        /// The ID of the table. The ID must contain only letters (a-z,
+        /// A-Z), numbers (0-9), or underscores (_). The maximum length
+        /// is 1,024 characters.
         /// </summary>
         public readonly string? TableId;
 

@@ -401,6 +401,39 @@ class AppConnection(pulumi.CustomResource):
             ),
             connectors=[app_connector.id])
         ```
+        ### Beyondcorp App Connection Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="my-account",
+            display_name="Test Service Account")
+        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+            type="TCP_PROXY",
+            host_type="GCP_REGIONAL_MIG")
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+                email=service_account.email,
+            ),
+        ))
+        app_connection = gcp.beyondcorp.AppConnection("appConnection",
+            type="TCP_PROXY",
+            display_name="some display name",
+            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
+                host="foo-host",
+                port=8080,
+            ),
+            connectors=[app_connector.id],
+            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
+                app_gateway=app_gateway.id,
+            ),
+            labels={
+                "foo": "bar",
+                "bar": "baz",
+            })
+        ```
 
         ## Import
 
@@ -482,6 +515,39 @@ class AppConnection(pulumi.CustomResource):
                 port=8080,
             ),
             connectors=[app_connector.id])
+        ```
+        ### Beyondcorp App Connection Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="my-account",
+            display_name="Test Service Account")
+        app_gateway = gcp.beyondcorp.AppGateway("appGateway",
+            type="TCP_PROXY",
+            host_type="GCP_REGIONAL_MIG")
+        app_connector = gcp.beyondcorp.AppConnector("appConnector", principal_info=gcp.beyondcorp.AppConnectorPrincipalInfoArgs(
+            service_account=gcp.beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs(
+                email=service_account.email,
+            ),
+        ))
+        app_connection = gcp.beyondcorp.AppConnection("appConnection",
+            type="TCP_PROXY",
+            display_name="some display name",
+            application_endpoint=gcp.beyondcorp.AppConnectionApplicationEndpointArgs(
+                host="foo-host",
+                port=8080,
+            ),
+            connectors=[app_connector.id],
+            gateway=gcp.beyondcorp.AppConnectionGatewayArgs(
+                app_gateway=app_gateway.id,
+            ),
+            labels={
+                "foo": "bar",
+                "bar": "baz",
+            })
         ```
 
         ## Import

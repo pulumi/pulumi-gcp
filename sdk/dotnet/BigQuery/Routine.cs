@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -48,6 +49,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -61,7 +63,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
     ///     {
     ///         DatasetId = test.DatasetId,
-    ///         RoutineId = "tf_test_routine_id",
+    ///         RoutineId = "routine_id",
     ///         RoutineType = "SCALAR_FUNCTION",
     ///         Language = "JAVASCRIPT",
     ///         DefinitionBody = "CREATE FUNCTION multiplyInputs return x*y;",
@@ -87,6 +89,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
@@ -101,7 +104,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var sproc = new Gcp.BigQuery.Routine("sproc", new()
     ///     {
     ///         DatasetId = test.DatasetId,
-    ///         RoutineId = "tf_test_routine_id",
+    ///         RoutineId = "routine_id",
     ///         RoutineType = "TABLE_VALUED_FUNCTION",
     ///         Language = "SQL",
     ///         DefinitionBody = @"SELECT 1 + value AS value

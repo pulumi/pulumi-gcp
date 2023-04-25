@@ -73,8 +73,7 @@ type TargetHttpsProxy struct {
 	// Specifies the QUIC override policy for this resource. This determines
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE.
+	// specified, Google manages whether QUIC is used.
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrOutput `pulumi:"quicOverride"`
@@ -152,8 +151,7 @@ type targetHttpsProxyState struct {
 	// Specifies the QUIC override policy for this resource. This determines
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE.
+	// specified, Google manages whether QUIC is used.
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride *string `pulumi:"quicOverride"`
@@ -200,8 +198,7 @@ type TargetHttpsProxyState struct {
 	// Specifies the QUIC override policy for this resource. This determines
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE.
+	// specified, Google manages whether QUIC is used.
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrInput
@@ -248,8 +245,7 @@ type targetHttpsProxyArgs struct {
 	// Specifies the QUIC override policy for this resource. This determines
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE.
+	// specified, Google manages whether QUIC is used.
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride *string `pulumi:"quicOverride"`
@@ -291,8 +287,7 @@ type TargetHttpsProxyArgs struct {
 	// Specifies the QUIC override policy for this resource. This determines
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-	// specified, uses the QUIC policy with no user overrides, which is
-	// equivalent to DISABLE.
+	// specified, Google manages whether QUIC is used.
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrInput
@@ -444,8 +439,7 @@ func (o TargetHttpsProxyOutput) ProxyId() pulumi.IntOutput {
 // Specifies the QUIC override policy for this resource. This determines
 // whether the load balancer will attempt to negotiate QUIC with clients
 // or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-// specified, uses the QUIC policy with no user overrides, which is
-// equivalent to DISABLE.
+// specified, Google manages whether QUIC is used.
 // Default value is `NONE`.
 // Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 func (o TargetHttpsProxyOutput) QuicOverride() pulumi.StringPtrOutput {

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Profiles;
         /// <summary>
-        /// (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        /// Optional. The strategy to use for a `Rollout` to this stage.
         /// </summary>
         public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategy? Strategy;
         /// <summary>

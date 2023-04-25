@@ -8561,7 +8561,7 @@ export namespace clouddeploy {
          */
         profiles?: string[];
         /**
-         * (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+         * Optional. The strategy to use for a `Rollout` to this stage.
          */
         strategy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategy;
         /**
@@ -9766,9 +9766,18 @@ export namespace cloudrun {
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-         * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+         * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+         * keys to configure features on a Service:
+         * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+         * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+         * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
+         * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+         * that can be used in the audience field of ID token for authenticated requests.
+         * - `run.googleapis.com/description` sets a user defined description for the Service.
          * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
          * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+         * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+         * when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
          */
         annotations: {[key: string]: string};
         /**
@@ -9897,9 +9906,18 @@ export namespace cloudrun {
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
-         * Cloud Run (fully managed) uses the following annotation keys to configure features on a Service:
+         * Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
+         * keys to configure features on a Service:
+         * - `run.googleapis.com/binary-authorization-breakglass` sets the [Binary Authorization breakglass](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--breakglass).
+         * - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
+         * - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
+         * - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
+         * that can be used in the audience field of ID token for authenticated requests.
+         * - `run.googleapis.com/description` sets a user defined description for the Service.
          * - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
          * for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+         * - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
+         * when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
          */
         annotations: {[key: string]: string};
         /**
@@ -28821,16 +28839,17 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable {
         /**
-         * Dataset ID of the table.
+         * The ID of the dataset containing this table.
          */
         datasetId: string;
         /**
-         * The Google Cloud Platform project ID of the project containing the table.
+         * The ID of the project containing this table.
          */
         projectId: string;
         /**
-         * Name of the table. If is not set a new one will be generated for you with the following format:
-         * `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+         * The ID of the table. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 1,024 characters.
          */
         tableId?: string;
     }
@@ -28893,7 +28912,7 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
         /**
-         * Name of a BigQuery field to be returned with the findings.
+         * Name describing the field.
          */
         name: string;
     }

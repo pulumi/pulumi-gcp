@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -80,7 +81,7 @@ namespace Pulumi.Gcp.Tags
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        /// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         /// </summary>
         [Output("namespacedName")]
         public Output<string> NamespacedName { get; private set; } = null!;
@@ -198,7 +199,7 @@ namespace Pulumi.Gcp.Tags
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Output only. Namespaced name of the TagValue. Will be in the format {organizationId}/{tag_key_short_name}/{shortName}.
+        /// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         /// </summary>
         [Input("namespacedName")]
         public Input<string>? NamespacedName { get; set; }

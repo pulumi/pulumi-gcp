@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Get a tag key within a GCP org by `parent` and `shortName`.
+ * Get a tag key by org or project `parent` and `shortName`.
  *
  * ## Example Usage
  *
@@ -15,6 +15,15 @@ import * as utilities from "../utilities";
  *
  * const environmentTagKey = gcp.tags.getTagKey({
  *     parent: "organizations/12345",
+ *     shortName: "environment",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentTagKey = gcp.tags.getTagKey({
+ *     parent: "projects/abc",
  *     shortName: "environment",
  * });
  * ```
@@ -33,7 +42,7 @@ export function getTagKey(args: GetTagKeyArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetTagKeyArgs {
     /**
-     * The resource name of the parent organization in format `organizations/{org_id}`.
+     * The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
      */
     parent: string;
     /**
@@ -61,7 +70,7 @@ export interface GetTagKeyResult {
      */
     readonly name: string;
     /**
-     * Namespaced name of the TagKey.
+     * Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
      */
     readonly namespacedName: string;
     readonly parent: string;
@@ -73,7 +82,7 @@ export interface GetTagKeyResult {
     readonly updateTime: string;
 }
 /**
- * Get a tag key within a GCP org by `parent` and `shortName`.
+ * Get a tag key by org or project `parent` and `shortName`.
  *
  * ## Example Usage
  *
@@ -83,6 +92,15 @@ export interface GetTagKeyResult {
  *
  * const environmentTagKey = gcp.tags.getTagKey({
  *     parent: "organizations/12345",
+ *     shortName: "environment",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environmentTagKey = gcp.tags.getTagKey({
+ *     parent: "projects/abc",
  *     shortName: "environment",
  * });
  * ```
@@ -96,7 +114,7 @@ export function getTagKeyOutput(args: GetTagKeyOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetTagKeyOutputArgs {
     /**
-     * The resource name of the parent organization in format `organizations/{org_id}`.
+     * The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
      */
     parent: pulumi.Input<string>;
     /**

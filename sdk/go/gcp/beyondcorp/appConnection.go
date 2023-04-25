@@ -72,6 +72,71 @@ import (
 //	}
 //
 // ```
+// ### Beyondcorp App Connection Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/beyondcorp"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("my-account"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			appGateway, err := beyondcorp.NewAppGateway(ctx, "appGateway", &beyondcorp.AppGatewayArgs{
+//				Type:     pulumi.String("TCP_PROXY"),
+//				HostType: pulumi.String("GCP_REGIONAL_MIG"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			appConnector, err := beyondcorp.NewAppConnector(ctx, "appConnector", &beyondcorp.AppConnectorArgs{
+//				PrincipalInfo: &beyondcorp.AppConnectorPrincipalInfoArgs{
+//					ServiceAccount: &beyondcorp.AppConnectorPrincipalInfoServiceAccountArgs{
+//						Email: serviceAccount.Email,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = beyondcorp.NewAppConnection(ctx, "appConnection", &beyondcorp.AppConnectionArgs{
+//				Type:        pulumi.String("TCP_PROXY"),
+//				DisplayName: pulumi.String("some display name"),
+//				ApplicationEndpoint: &beyondcorp.AppConnectionApplicationEndpointArgs{
+//					Host: pulumi.String("foo-host"),
+//					Port: pulumi.Int(8080),
+//				},
+//				Connectors: pulumi.StringArray{
+//					appConnector.ID(),
+//				},
+//				Gateway: &beyondcorp.AppConnectionGatewayArgs{
+//					AppGateway: appGateway.ID(),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//					"bar": pulumi.String("baz"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

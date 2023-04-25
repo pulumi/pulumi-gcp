@@ -207,7 +207,7 @@ class DeliveryPipelineSerialPipelineStage(dict):
                  target_id: Optional[str] = None):
         """
         :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
-        :param 'DeliveryPipelineSerialPipelineStageStrategyArgs' strategy: (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyArgs' strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param str target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
         if profiles is not None:
@@ -229,7 +229,7 @@ class DeliveryPipelineSerialPipelineStage(dict):
     @pulumi.getter
     def strategy(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategy']:
         """
-        (Beta only) Optional. The strategy to use for a `Rollout` to this stage.
+        Optional. The strategy to use for a `Rollout` to this stage.
         """
         return pulumi.get(self, "strategy")
 

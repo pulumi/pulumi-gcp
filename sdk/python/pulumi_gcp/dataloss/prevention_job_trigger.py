@@ -29,6 +29,8 @@ class PreventionJobTriggerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the job trigger.
+               (Optional)
+               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -78,6 +80,8 @@ class PreventionJobTriggerArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A description of the job trigger.
+        (Optional)
+        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         """
         return pulumi.get(self, "description")
 
@@ -139,6 +143,8 @@ class _PreventionJobTriggerState:
         """
         Input properties used for looking up and filtering PreventionJobTrigger resources.
         :param pulumi.Input[str] description: A description of the job trigger.
+               (Optional)
+               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -153,6 +159,8 @@ class _PreventionJobTriggerState:
                The name of the Datastore kind.
                (Required)
                Name of a BigQuery field to be returned with the findings.
+               (Required)
+               Name describing the field.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -183,6 +191,8 @@ class _PreventionJobTriggerState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A description of the job trigger.
+        (Optional)
+        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         """
         return pulumi.get(self, "description")
 
@@ -241,6 +251,8 @@ class _PreventionJobTriggerState:
         The name of the Datastore kind.
         (Required)
         Name of a BigQuery field to be returned with the findings.
+        (Required)
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 
@@ -443,6 +455,8 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the job trigger.
+               (Optional)
+               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -667,6 +681,8 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the job trigger.
+               (Optional)
+               A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         :param pulumi.Input[str] display_name: User set display name of the job trigger.
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
@@ -681,6 +697,8 @@ class PreventionJobTrigger(pulumi.CustomResource):
                The name of the Datastore kind.
                (Required)
                Name of a BigQuery field to be returned with the findings.
+               (Required)
+               Name describing the field.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
         :param pulumi.Input[str] status: Whether the trigger is currently active.
@@ -708,6 +726,8 @@ class PreventionJobTrigger(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the job trigger.
+        (Optional)
+        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
         """
         return pulumi.get(self, "description")
 
@@ -750,6 +770,8 @@ class PreventionJobTrigger(pulumi.CustomResource):
         The name of the Datastore kind.
         (Required)
         Name of a BigQuery field to be returned with the findings.
+        (Required)
+        Name describing the field.
         """
         return pulumi.get(self, "name")
 

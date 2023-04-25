@@ -216,6 +216,8 @@ type PreventionJobTrigger struct {
 	pulumi.CustomResourceState
 
 	// A description of the job trigger.
+	// (Optional)
+	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -234,6 +236,8 @@ type PreventionJobTrigger struct {
 	// The name of the Datastore kind.
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	// (Required)
+	// Name describing the field.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
@@ -283,6 +287,8 @@ func GetPreventionJobTrigger(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PreventionJobTrigger resources.
 type preventionJobTriggerState struct {
 	// A description of the job trigger.
+	// (Optional)
+	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
@@ -301,6 +307,8 @@ type preventionJobTriggerState struct {
 	// The name of the Datastore kind.
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	// (Required)
+	// Name describing the field.
 	Name *string `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
@@ -316,6 +324,8 @@ type preventionJobTriggerState struct {
 
 type PreventionJobTriggerState struct {
 	// A description of the job trigger.
+	// (Optional)
+	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
@@ -334,6 +344,8 @@ type PreventionJobTriggerState struct {
 	// The name of the Datastore kind.
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	// (Required)
+	// Name describing the field.
 	Name pulumi.StringPtrInput
 	// The parent of the trigger, either in the format `projects/{{project}}`
 	// or `projects/{{project}}/locations/{{location}}`
@@ -353,6 +365,8 @@ func (PreventionJobTriggerState) ElementType() reflect.Type {
 
 type preventionJobTriggerArgs struct {
 	// A description of the job trigger.
+	// (Optional)
+	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
 	DisplayName *string `pulumi:"displayName"`
@@ -374,6 +388,8 @@ type preventionJobTriggerArgs struct {
 // The set of arguments for constructing a PreventionJobTrigger resource.
 type PreventionJobTriggerArgs struct {
 	// A description of the job trigger.
+	// (Optional)
+	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
 	DisplayName pulumi.StringPtrInput
@@ -480,6 +496,8 @@ func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutputWithContext(ctx 
 }
 
 // A description of the job trigger.
+// (Optional)
+// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 func (o PreventionJobTriggerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -510,6 +528,8 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 // The name of the Datastore kind.
 // (Required)
 // Name of a BigQuery field to be returned with the findings.
+// (Required)
+// Name describing the field.
 func (o PreventionJobTriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -149,9 +149,7 @@ export class Firewall extends pulumi.CustomResource {
     public readonly destinationRanges!: pulumi.Output<string[]>;
     /**
      * Direction of traffic to which this firewall applies; default is
-     * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-     * destinationRanges; For EGRESS traffic, it is NOT supported to specify
-     * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+     * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
@@ -361,9 +359,7 @@ export interface FirewallState {
     destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Direction of traffic to which this firewall applies; default is
-     * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-     * destinationRanges; For EGRESS traffic, it is NOT supported to specify
-     * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+     * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      */
@@ -508,9 +504,7 @@ export interface FirewallArgs {
     destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Direction of traffic to which this firewall applies; default is
-     * INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-     * destinationRanges; For EGRESS traffic, it is NOT supported to specify
-     * `sourceRanges` OR `sourceTags`. For INGRESS traffic, one of `sourceRanges`,
+     * INGRESS. Note: For INGRESS traffic, one of `sourceRanges`,
      * `sourceTags` or `sourceServiceAccounts` is required.
      * Possible values are: `INGRESS`, `EGRESS`.
      */

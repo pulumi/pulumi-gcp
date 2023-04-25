@@ -21,6 +21,120 @@ import (
 //   - [Provisioning NAT IPs](https://cloud.google.com/apigee/docs/api-platform/security/nat-provisioning)
 //
 // ## Example Usage
+// ### Apigee Nat Address Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigeeNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigeeRange", &compute.GlobalAddressArgs{
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(21),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigeeVpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
+//				KeyRing: apigeeKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.Any(google_project.Project.Project_id),
+//				Service: pulumi.Any(google_project_service.Apigee.Service),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: apigeeKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					apigeeSa.Email.ApplyT(func(email string) (string, error) {
+//						return fmt.Sprintf("serviceAccount:%v", email), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigeeOrg", &apigee.OrganizationArgs{
+//				AnalyticsRegion:                  pulumi.String("us-central1"),
+//				DisplayName:                      pulumi.String("apigee-org"),
+//				Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
+//				ProjectId:                        *pulumi.String(current.Project),
+//				AuthorizedNetwork:                apigeeNetwork.ID(),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//				apigeeSaKeyuser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			apigeeInstance, err := apigee.NewInstance(ctx, "apigeeInstance", &apigee.InstanceArgs{
+//				Location:              pulumi.String("us-central1"),
+//				Description:           pulumi.String("Terraform-managed Apigee Runtime Instance"),
+//				DisplayName:           pulumi.String("apigee-instance"),
+//				OrgId:                 apigeeOrg.ID(),
+//				DiskEncryptionKeyName: apigeeKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewNatAddress(ctx, "apigee-nat", &apigee.NatAddressArgs{
+//				InstanceId: apigeeInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

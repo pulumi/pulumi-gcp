@@ -359,6 +359,96 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Datastream Stream Postgresql Bigquery Dataset Id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const postgres = new gcp.bigquery.Dataset("postgres", {
+ *     datasetId: "postgres",
+ *     friendlyName: "postgres",
+ *     description: "Database of postgres",
+ *     location: "us-central1",
+ * });
+ * const destinationConnectionProfile2 = new gcp.datastream.ConnectionProfile("destinationConnectionProfile2", {
+ *     displayName: "Connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "dest-profile",
+ *     bigqueryProfile: {},
+ * });
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "MYSQL_8_0",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *         ipConfiguration: {
+ *             authorizedNetworks: [
+ *                 {
+ *                     value: "34.71.242.81",
+ *                 },
+ *                 {
+ *                     value: "34.72.28.29",
+ *                 },
+ *                 {
+ *                     value: "34.67.6.157",
+ *                 },
+ *                 {
+ *                     value: "34.67.234.134",
+ *                 },
+ *                 {
+ *                     value: "34.72.239.218",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     deletionProtection: false,
+ * });
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     host: "%",
+ *     password: pwd.result,
+ * });
+ * const sourceConnectionProfile = new gcp.datastream.ConnectionProfile("sourceConnectionProfile", {
+ *     displayName: "Source connection profile",
+ *     location: "us-central1",
+ *     connectionProfileId: "source-profile",
+ *     mysqlProfile: {
+ *         hostname: instance.publicIpAddress,
+ *         username: user.name,
+ *         password: user.password,
+ *     },
+ * });
+ * const _default = new gcp.datastream.Stream("default", {
+ *     displayName: "postgres to bigQuery",
+ *     location: "us-central1",
+ *     streamId: "postgres-bigquery",
+ *     sourceConfig: {
+ *         sourceConnectionProfile: sourceConnectionProfile.id,
+ *         mysqlSourceConfig: {},
+ *     },
+ *     destinationConfig: {
+ *         destinationConnectionProfile: destinationConnectionProfile2.id,
+ *         bigqueryDestinationConfig: {
+ *             dataFreshness: "900s",
+ *             singleTargetDataset: {
+ *                 datasetId: postgres.id,
+ *             },
+ *         },
+ *     },
+ *     backfillAll: {},
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name});
+ * ```
  * ### Datastream Stream Bigquery
  *
  * ```typescript

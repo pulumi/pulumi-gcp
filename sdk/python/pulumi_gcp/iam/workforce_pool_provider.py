@@ -677,54 +677,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             disabled=False,
             attribute_condition="true")
         ```
-        ### Iam Workforce Pool Provider Oidc Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.iam.WorkforcePool("pool",
-            workforce_pool_id="example-pool",
-            parent="organizations/123456789",
-            location="global")
-        example = gcp.iam.WorkforcePoolProvider("example",
-            workforce_pool_id=pool.workforce_pool_id,
-            location=pool.location,
-            provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.sub",
-            },
-            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.thirdparty.com",
-                client_id="client-id",
-            ))
-        ```
-        ### Iam Workforce Pool Provider Oidc Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.iam.WorkforcePool("pool",
-            workforce_pool_id="example-pool",
-            parent="organizations/123456789",
-            location="global")
-        example = gcp.iam.WorkforcePoolProvider("example",
-            workforce_pool_id=pool.workforce_pool_id,
-            location=pool.location,
-            provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.sub",
-            },
-            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.thirdparty.com",
-                client_id="client-id",
-            ),
-            display_name="Display name",
-            description="A sample OIDC workforce pool provider.",
-            disabled=False,
-            attribute_condition="true")
-        ```
 
         ## Import
 
@@ -866,54 +818,6 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             ),
             display_name="Display name",
             description="A sample SAML workforce pool provider.",
-            disabled=False,
-            attribute_condition="true")
-        ```
-        ### Iam Workforce Pool Provider Oidc Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.iam.WorkforcePool("pool",
-            workforce_pool_id="example-pool",
-            parent="organizations/123456789",
-            location="global")
-        example = gcp.iam.WorkforcePoolProvider("example",
-            workforce_pool_id=pool.workforce_pool_id,
-            location=pool.location,
-            provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.sub",
-            },
-            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.thirdparty.com",
-                client_id="client-id",
-            ))
-        ```
-        ### Iam Workforce Pool Provider Oidc Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        pool = gcp.iam.WorkforcePool("pool",
-            workforce_pool_id="example-pool",
-            parent="organizations/123456789",
-            location="global")
-        example = gcp.iam.WorkforcePoolProvider("example",
-            workforce_pool_id=pool.workforce_pool_id,
-            location=pool.location,
-            provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.sub",
-            },
-            oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
-                issuer_uri="https://accounts.thirdparty.com",
-                client_id="client-id",
-            ),
-            display_name="Display name",
-            description="A sample OIDC workforce pool provider.",
             disabled=False,
             attribute_condition="true")
         ```

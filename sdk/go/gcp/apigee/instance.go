@@ -316,7 +316,7 @@ import (
 //			_, err = apigee.NewInstance(ctx, "apigeeInstance", &apigee.InstanceArgs{
 //				Location:              pulumi.String("us-central1"),
 //				Description:           pulumi.String("Auto-managed Apigee Runtime Instance"),
-//				DisplayName:           pulumi.String("tf-test"),
+//				DisplayName:           pulumi.String("my-instance-name"),
 //				OrgId:                 apigeeOrg.ID(),
 //				DiskEncryptionKeyName: apigeeKey.ID(),
 //			})

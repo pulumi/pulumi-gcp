@@ -780,6 +780,89 @@ class Stream(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Datastream Stream Postgresql Bigquery Dataset Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        postgres = gcp.bigquery.Dataset("postgres",
+            dataset_id="postgres",
+            friendly_name="postgres",
+            description="Database of postgres",
+            location="us-central1")
+        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destinationConnectionProfile2",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="dest-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=False)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        default = gcp.datastream.Stream("default",
+            display_name="postgres to bigQuery",
+            location="us-central1",
+            stream_id="postgres-bigquery",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile2.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    single_target_dataset=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs(
+                        dataset_id=postgres.id,
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs())
+        db = gcp.sql.Database("db", instance=instance.name)
+        ```
         ### Datastream Stream Bigquery
 
         ```python
@@ -1243,6 +1326,89 @@ class Stream(pulumi.CustomResource):
                     )],
                 ),
             ))
+        ```
+        ### Datastream Stream Postgresql Bigquery Dataset Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        postgres = gcp.bigquery.Dataset("postgres",
+            dataset_id="postgres",
+            friendly_name="postgres",
+            description="Database of postgres",
+            location="us-central1")
+        destination_connection_profile2 = gcp.datastream.ConnectionProfile("destinationConnectionProfile2",
+            display_name="Connection profile",
+            location="us-central1",
+            connection_profile_id="dest-profile",
+            bigquery_profile=gcp.datastream.ConnectionProfileBigqueryProfileArgs())
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="MYSQL_8_0",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                backup_configuration=gcp.sql.DatabaseInstanceSettingsBackupConfigurationArgs(
+                    enabled=True,
+                    binary_log_enabled=True,
+                ),
+                ip_configuration=gcp.sql.DatabaseInstanceSettingsIpConfigurationArgs(
+                    authorized_networks=[
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.71.242.81",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.28.29",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.6.157",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.67.234.134",
+                        ),
+                        gcp.sql.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs(
+                            value="34.72.239.218",
+                        ),
+                    ],
+                ),
+            ),
+            deletion_protection=False)
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            host="%",
+            password=pwd.result)
+        source_connection_profile = gcp.datastream.ConnectionProfile("sourceConnectionProfile",
+            display_name="Source connection profile",
+            location="us-central1",
+            connection_profile_id="source-profile",
+            mysql_profile=gcp.datastream.ConnectionProfileMysqlProfileArgs(
+                hostname=instance.public_ip_address,
+                username=user.name,
+                password=user.password,
+            ))
+        default = gcp.datastream.Stream("default",
+            display_name="postgres to bigQuery",
+            location="us-central1",
+            stream_id="postgres-bigquery",
+            source_config=gcp.datastream.StreamSourceConfigArgs(
+                source_connection_profile=source_connection_profile.id,
+                mysql_source_config=gcp.datastream.StreamSourceConfigMysqlSourceConfigArgs(),
+            ),
+            destination_config=gcp.datastream.StreamDestinationConfigArgs(
+                destination_connection_profile=destination_connection_profile2.id,
+                bigquery_destination_config=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigArgs(
+                    data_freshness="900s",
+                    single_target_dataset=gcp.datastream.StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs(
+                        dataset_id=postgres.id,
+                    ),
+                ),
+            ),
+            backfill_all=gcp.datastream.StreamBackfillAllArgs())
+        db = gcp.sql.Database("db", instance=instance.name)
         ```
         ### Datastream Stream Bigquery
 

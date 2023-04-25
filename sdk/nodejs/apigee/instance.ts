@@ -157,7 +157,7 @@ import * as utilities from "../utilities";
  * const apigeeInstance = new gcp.apigee.Instance("apigeeInstance", {
  *     location: "us-central1",
  *     description: "Auto-managed Apigee Runtime Instance",
- *     displayName: "tf-test",
+ *     displayName: "my-instance-name",
  *     orgId: apigeeOrg.id,
  *     diskEncryptionKeyName: apigeeKey.id,
  * });

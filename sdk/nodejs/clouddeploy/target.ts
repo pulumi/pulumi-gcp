@@ -201,7 +201,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly requireApproval!: pulumi.Output<boolean | undefined>;
     /**
-     * (Beta only) Information specifying a Cloud Run deployment target.
+     * Information specifying a Cloud Run deployment target.
      */
     public readonly run!: pulumi.Output<outputs.clouddeploy.TargetRun | undefined>;
     /**
@@ -332,7 +332,7 @@ export interface TargetState {
      */
     requireApproval?: pulumi.Input<boolean>;
     /**
-     * (Beta only) Information specifying a Cloud Run deployment target.
+     * Information specifying a Cloud Run deployment target.
      */
     run?: pulumi.Input<inputs.clouddeploy.TargetRun>;
     /**
@@ -398,7 +398,7 @@ export interface TargetArgs {
      */
     requireApproval?: pulumi.Input<boolean>;
     /**
-     * (Beta only) Information specifying a Cloud Run deployment target.
+     * Information specifying a Cloud Run deployment target.
      */
     run?: pulumi.Input<inputs.clouddeploy.TargetRun>;
 }

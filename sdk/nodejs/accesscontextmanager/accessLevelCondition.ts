@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * });
  * const access_level_service_account = new gcp.accesscontextmanager.AccessLevel("access-level-service-account", {
  *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     title: "tf_test_chromeos_no_lock",
+ *     title: "chromeos_no_lock",
  *     basic: {
  *         conditions: [{
  *             devicePolicy: {
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  * });
- * const created_later = new gcp.serviceaccount.Account("created-later", {accountId: "tf-test"});
+ * const created_later = new gcp.serviceaccount.Account("created-later", {accountId: "my-account-id"});
  * const access_level_conditions = new gcp.accesscontextmanager.AccessLevelCondition("access-level-conditions", {
  *     accessLevel: access_level_service_account.name,
  *     ipSubnetworks: ["192.0.4.0/24"],

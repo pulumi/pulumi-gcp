@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -73,6 +74,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -168,9 +170,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Direction of traffic to which this firewall applies; default is
-        /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-        /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
         /// `source_tags` or `source_service_accounts` is required.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
@@ -407,9 +407,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Direction of traffic to which this firewall applies; default is
-        /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-        /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
         /// `source_tags` or `source_service_accounts` is required.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
@@ -638,9 +636,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Direction of traffic to which this firewall applies; default is
-        /// INGRESS. Note: For INGRESS traffic, it is NOT supported to specify
-        /// destinationRanges; For EGRESS traffic, it is NOT supported to specify
-        /// `source_ranges` OR `source_tags`. For INGRESS traffic, one of `source_ranges`,
+        /// INGRESS. Note: For INGRESS traffic, one of `source_ranges`,
         /// `source_tags` or `source_service_accounts` is required.
         /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>

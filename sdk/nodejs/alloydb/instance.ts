@@ -130,7 +130,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The type of the instance.
+     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
      * Possible values are: `PRIMARY`, `READ_POOL`.
      */
     public readonly instanceType!: pulumi.Output<string>;
@@ -278,7 +278,7 @@ export interface InstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The type of the instance.
+     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
      * Possible values are: `PRIMARY`, `READ_POOL`.
      */
     instanceType?: pulumi.Input<string>;
@@ -357,7 +357,7 @@ export interface InstanceArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The type of the instance.
+     * The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
      * Possible values are: `PRIMARY`, `READ_POOL`.
      */
     instanceType: pulumi.Input<string>;

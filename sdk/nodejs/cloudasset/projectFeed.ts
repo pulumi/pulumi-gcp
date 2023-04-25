@@ -94,7 +94,7 @@ export class ProjectFeed extends pulumi.CustomResource {
     public readonly condition!: pulumi.Output<outputs.cloudasset.ProjectFeedCondition | undefined>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     /**
@@ -198,7 +198,7 @@ export interface ProjectFeedState {
     condition?: pulumi.Input<inputs.cloudasset.ProjectFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
     contentType?: pulumi.Input<string>;
     /**
@@ -258,7 +258,7 @@ export interface ProjectFeedArgs {
     condition?: pulumi.Input<inputs.cloudasset.ProjectFeedCondition>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
-     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `ACCESS_POLICY`.
+     * Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
      */
     contentType?: pulumi.Input<string>;
     /**

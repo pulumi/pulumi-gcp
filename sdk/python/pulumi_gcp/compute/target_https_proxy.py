@@ -45,8 +45,7 @@ class TargetHttpsProxyArgs:
         :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines
                whether the load balancer will attempt to negotiate QUIC with clients
                or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-               specified, uses the QUIC policy with no user overrides, which is
-               equivalent to DISABLE.
+               specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
@@ -164,8 +163,7 @@ class TargetHttpsProxyArgs:
         Specifies the QUIC override policy for this resource. This determines
         whether the load balancer will attempt to negotiate QUIC with clients
         or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-        specified, uses the QUIC policy with no user overrides, which is
-        equivalent to DISABLE.
+        specified, Google manages whether QUIC is used.
         Default value is `NONE`.
         Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         """
@@ -241,8 +239,7 @@ class _TargetHttpsProxyState:
         :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines
                whether the load balancer will attempt to negotiate QUIC with clients
                or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-               specified, uses the QUIC policy with no user overrides, which is
-               equivalent to DISABLE.
+               specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -381,8 +378,7 @@ class _TargetHttpsProxyState:
         Specifies the QUIC override policy for this resource. This determines
         whether the load balancer will attempt to negotiate QUIC with clients
         or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-        specified, uses the QUIC policy with no user overrides, which is
-        equivalent to DISABLE.
+        specified, Google manages whether QUIC is used.
         Default value is `NONE`.
         Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         """
@@ -509,8 +505,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines
                whether the load balancer will attempt to negotiate QUIC with clients
                or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-               specified, uses the QUIC policy with no user overrides, which is
-               equivalent to DISABLE.
+               specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
@@ -652,8 +647,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines
                whether the load balancer will attempt to negotiate QUIC with clients
                or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-               specified, uses the QUIC policy with no user overrides, which is
-               equivalent to DISABLE.
+               specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -757,8 +751,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         Specifies the QUIC override policy for this resource. This determines
         whether the load balancer will attempt to negotiate QUIC with clients
         or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
-        specified, uses the QUIC policy with no user overrides, which is
-        equivalent to DISABLE.
+        specified, Google manages whether QUIC is used.
         Default value is `NONE`.
         Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         """

@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -59,6 +60,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -86,78 +88,6 @@ namespace Pulumi.Gcp.Iam
     ///         },
     ///         DisplayName = "Display name",
     ///         Description = "A sample SAML workforce pool provider.",
-    ///         Disabled = false,
-    ///         AttributeCondition = "true",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Iam Workforce Pool Provider Oidc Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pool = new Gcp.Iam.WorkforcePool("pool", new()
-    ///     {
-    ///         WorkforcePoolId = "example-pool",
-    ///         Parent = "organizations/123456789",
-    ///         Location = "global",
-    ///     });
-    /// 
-    ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
-    ///     {
-    ///         WorkforcePoolId = pool.WorkforcePoolId,
-    ///         Location = pool.Location,
-    ///         ProviderId = "example-prvdr",
-    ///         AttributeMapping = 
-    ///         {
-    ///             { "google.subject", "assertion.sub" },
-    ///         },
-    ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
-    ///         {
-    ///             IssuerUri = "https://accounts.thirdparty.com",
-    ///             ClientId = "client-id",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Iam Workforce Pool Provider Oidc Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var pool = new Gcp.Iam.WorkforcePool("pool", new()
-    ///     {
-    ///         WorkforcePoolId = "example-pool",
-    ///         Parent = "organizations/123456789",
-    ///         Location = "global",
-    ///     });
-    /// 
-    ///     var example = new Gcp.Iam.WorkforcePoolProvider("example", new()
-    ///     {
-    ///         WorkforcePoolId = pool.WorkforcePoolId,
-    ///         Location = pool.Location,
-    ///         ProviderId = "example-prvdr",
-    ///         AttributeMapping = 
-    ///         {
-    ///             { "google.subject", "assertion.sub" },
-    ///         },
-    ///         Oidc = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcArgs
-    ///         {
-    ///             IssuerUri = "https://accounts.thirdparty.com",
-    ///             ClientId = "client-id",
-    ///         },
-    ///         DisplayName = "Display name",
-    ///         Description = "A sample OIDC workforce pool provider.",
     ///         Disabled = false,
     ///         AttributeCondition = "true",
     ///     });
@@ -230,6 +160,7 @@ namespace Pulumi.Gcp.Iam
         /// on a Google token:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
@@ -415,6 +346,7 @@ namespace Pulumi.Gcp.Iam
         /// on a Google token:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
@@ -547,6 +479,7 @@ namespace Pulumi.Gcp.Iam
         /// on a Google token:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 

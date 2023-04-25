@@ -163,7 +163,7 @@ class Client(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test",
+            project_id="my-project",
             org_id="123456789")
         project_service = gcp.projects.Service("projectService",
             project=project.project_id,
@@ -226,7 +226,7 @@ class Client(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test",
+            project_id="my-project",
             org_id="123456789")
         project_service = gcp.projects.Service("projectService",
             project=project.project_id,

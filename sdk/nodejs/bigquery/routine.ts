@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
  * const sproc = new gcp.bigquery.Routine("sproc", {
  *     datasetId: test.datasetId,
- *     routineId: "tf_test_routine_id",
+ *     routineId: "routine_id",
  *     routineType: "SCALAR_FUNCTION",
  *     language: "JAVASCRIPT",
  *     definitionBody: "CREATE FUNCTION multiplyInputs return x*y;",
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
  * const sproc = new gcp.bigquery.Routine("sproc", {
  *     datasetId: test.datasetId,
- *     routineId: "tf_test_routine_id",
+ *     routineId: "routine_id",
  *     routineType: "TABLE_VALUED_FUNCTION",
  *     language: "SQL",
  *     definitionBody: "SELECT 1 + value AS value\n",

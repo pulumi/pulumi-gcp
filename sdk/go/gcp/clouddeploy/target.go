@@ -203,7 +203,7 @@ type Target struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrOutput `pulumi:"requireApproval"`
-	// (Beta only) Information specifying a Cloud Run deployment target.
+	// Information specifying a Cloud Run deployment target.
 	Run TargetRunPtrOutput `pulumi:"run"`
 	// Output only. Resource id of the `Target`.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
@@ -271,7 +271,7 @@ type targetState struct {
 	Project *string `pulumi:"project"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
-	// (Beta only) Information specifying a Cloud Run deployment target.
+	// Information specifying a Cloud Run deployment target.
 	Run *TargetRun `pulumi:"run"`
 	// Output only. Resource id of the `Target`.
 	TargetId *string `pulumi:"targetId"`
@@ -308,7 +308,7 @@ type TargetState struct {
 	Project pulumi.StringPtrInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
-	// (Beta only) Information specifying a Cloud Run deployment target.
+	// Information specifying a Cloud Run deployment target.
 	Run TargetRunPtrInput
 	// Output only. Resource id of the `Target`.
 	TargetId pulumi.StringPtrInput
@@ -345,7 +345,7 @@ type targetArgs struct {
 	Project *string `pulumi:"project"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
-	// (Beta only) Information specifying a Cloud Run deployment target.
+	// Information specifying a Cloud Run deployment target.
 	Run *TargetRun `pulumi:"run"`
 }
 
@@ -373,7 +373,7 @@ type TargetArgs struct {
 	Project pulumi.StringPtrInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
-	// (Beta only) Information specifying a Cloud Run deployment target.
+	// Information specifying a Cloud Run deployment target.
 	Run TargetRunPtrInput
 }
 
@@ -529,7 +529,7 @@ func (o TargetOutput) RequireApproval() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Target) pulumi.BoolPtrOutput { return v.RequireApproval }).(pulumi.BoolPtrOutput)
 }
 
-// (Beta only) Information specifying a Cloud Run deployment target.
+// Information specifying a Cloud Run deployment target.
 func (o TargetOutput) Run() TargetRunPtrOutput {
 	return o.ApplyT(func(v *Target) TargetRunPtrOutput { return v.Run }).(TargetRunPtrOutput)
 }

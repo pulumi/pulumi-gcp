@@ -134,7 +134,7 @@ type Instance struct {
 	GceZone pulumi.StringPtrOutput `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The type of the instance.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
 	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -215,7 +215,7 @@ type instanceState struct {
 	GceZone *string `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The type of the instance.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
 	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -259,7 +259,7 @@ type InstanceState struct {
 	GceZone pulumi.StringPtrInput
 	// The ID of the alloydb instance.
 	InstanceId pulumi.StringPtrInput
-	// The type of the instance.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
 	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType pulumi.StringPtrInput
 	// The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -305,7 +305,7 @@ type instanceArgs struct {
 	GceZone *string `pulumi:"gceZone"`
 	// The ID of the alloydb instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The type of the instance.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
 	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType string `pulumi:"instanceType"`
 	// User-defined labels for the alloydb instance.
@@ -336,7 +336,7 @@ type InstanceArgs struct {
 	GceZone pulumi.StringPtrInput
 	// The ID of the alloydb instance.
 	InstanceId pulumi.StringInput
-	// The type of the instance.
+	// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
 	// Possible values are: `PRIMARY`, `READ_POOL`.
 	InstanceType pulumi.StringInput
 	// User-defined labels for the alloydb instance.
@@ -478,7 +478,7 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The type of the instance.
+// The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `dependsOn` meta-data attribute.
 // Possible values are: `PRIMARY`, `READ_POOL`.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)

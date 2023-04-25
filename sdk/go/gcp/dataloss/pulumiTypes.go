@@ -22264,12 +22264,13 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigPtrOutput) T
 }
 
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable struct {
-	// Dataset ID of the table.
+	// The ID of the dataset containing this table.
 	DatasetId string `pulumi:"datasetId"`
-	// The Google Cloud Platform project ID of the project containing the table.
+	// The ID of the project containing this table.
 	ProjectId string `pulumi:"projectId"`
-	// Name of the table. If is not set a new one will be generated for you with the following format:
-	// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+	// The ID of the table. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 1,024 characters.
 	TableId *string `pulumi:"tableId"`
 }
 
@@ -22285,12 +22286,13 @@ type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableInput inte
 }
 
 type PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs struct {
-	// Dataset ID of the table.
+	// The ID of the dataset containing this table.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
-	// The Google Cloud Platform project ID of the project containing the table.
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Name of the table. If is not set a new one will be generated for you with the following format:
-	// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+	// The ID of the table. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 1,024 characters.
 	TableId pulumi.StringPtrInput `pulumi:"tableId"`
 }
 
@@ -22371,18 +22373,19 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput)
 	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput)
 }
 
-// Dataset ID of the table.
+// The ID of the dataset containing this table.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// The Google Cloud Platform project ID of the project containing the table.
+// The ID of the project containing this table.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Name of the table. If is not set a new one will be generated for you with the following format:
-// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+// The ID of the table. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 1,024 characters.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string { return v.TableId }).(pulumi.StringPtrOutput)
 }
@@ -22411,7 +22414,7 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutp
 	}).(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableOutput)
 }
 
-// Dataset ID of the table.
+// The ID of the dataset containing this table.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string {
 		if v == nil {
@@ -22421,7 +22424,7 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Google Cloud Platform project ID of the project containing the table.
+// The ID of the project containing this table.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string {
 		if v == nil {
@@ -22431,8 +22434,9 @@ func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the table. If is not set a new one will be generated for you with the following format:
-// `dlp_googleapis_yyyy_mm_dd_[dlpJobId]`. Pacific timezone will be used for generating the date details.
+// The ID of the table. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 1,024 characters.
 func (o PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTablePtrOutput) TableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable) *string {
 		if v == nil {
@@ -22918,7 +22922,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Tab
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField struct {
-	// Name of a BigQuery field to be returned with the findings.
+	// Name describing the field.
 	Name string `pulumi:"name"`
 }
 
@@ -22934,7 +22938,7 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldI
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs struct {
-	// Name of a BigQuery field to be returned with the findings.
+	// Name describing the field.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -22989,7 +22993,7 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFie
 	return o
 }
 
-// Name of a BigQuery field to be returned with the findings.
+// Name describing the field.
 func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField) string {
 		return v.Name

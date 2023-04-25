@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("tf-test"),
+//				ProjectId:      pulumi.String("my-project"),
 //				OrgId:          pulumi.String(""),
 //				BillingAccount: pulumi.String(""),
 //			})
@@ -120,7 +120,7 @@ import (
 //			apigeeEnv, err := apigee.NewEnvironment(ctx, "apigeeEnv", &apigee.EnvironmentArgs{
 //				OrgId:       apigeeOrg.ID(),
 //				Description: pulumi.String("Apigee Environment"),
-//				DisplayName: pulumi.String("tf-test"),
+//				DisplayName: pulumi.String("my-environment"),
 //			})
 //			if err != nil {
 //				return err
