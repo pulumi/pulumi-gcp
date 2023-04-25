@@ -19,7 +19,6 @@ namespace Pulumi.Gcp.Container
     /// A basic example of a containeraws cluster
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -39,7 +38,6 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -81,7 +79,6 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -116,7 +113,6 @@ namespace Pulumi.Gcp.Datastream
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;

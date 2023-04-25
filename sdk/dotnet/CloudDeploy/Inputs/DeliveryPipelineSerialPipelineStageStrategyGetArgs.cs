@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     public sealed class DeliveryPipelineSerialPipelineStageStrategyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+        /// </summary>
+        [Input("canary")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryGetArgs>? Canary { get; set; }
+
+        /// <summary>
         /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
         /// </summary>
         [Input("standard")]

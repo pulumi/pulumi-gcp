@@ -24,7 +24,6 @@ namespace Pulumi.Gcp.Firebase.Inputs
         /// the segment and an optional * to capture the rest of the URL. For example:
         /// ```csharp
         /// using System.Collections.Generic;
-        /// using System.Linq;
         /// using Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 

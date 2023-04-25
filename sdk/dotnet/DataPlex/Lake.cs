@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.DataPlex
     /// A basic example of a dataplex lake
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

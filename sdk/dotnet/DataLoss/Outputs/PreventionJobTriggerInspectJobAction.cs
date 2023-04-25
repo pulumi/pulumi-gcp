@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobAction
     {
         /// <summary>
+        /// Create a de-identified copy of the requested table or files.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobActionDeidentify? Deidentify;
+        /// <summary>
+        /// Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails? JobNotificationEmails;
+        /// <summary>
         /// Publish a message into a given Pub/Sub topic when the job completes.
         /// Structure is documented below.
         /// </summary>
@@ -34,6 +43,10 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionJobTriggerInspectJobAction(
+            Outputs.PreventionJobTriggerInspectJobActionDeidentify? deidentify,
+
+            Outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails? jobNotificationEmails,
+
             Outputs.PreventionJobTriggerInspectJobActionPubSub? pubSub,
 
             Outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog? publishFindingsToCloudDataCatalog,
@@ -42,6 +55,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionJobTriggerInspectJobActionSaveFindings? saveFindings)
         {
+            Deidentify = deidentify;
+            JobNotificationEmails = jobNotificationEmails;
             PubSub = pubSub;
             PublishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             PublishSummaryToCscc = publishSummaryToCscc;

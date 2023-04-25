@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("clusterSecondaryRangeName")]
         public Input<string>? ClusterSecondaryRangeName { get; set; }
 
+        [Input("podCidrOverprovisionConfig")]
+        public Input<Inputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfigGetArgs>? PodCidrOverprovisionConfig { get; set; }
+
         /// <summary>
         /// The IP address range of the services IPs in this cluster.
         /// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)

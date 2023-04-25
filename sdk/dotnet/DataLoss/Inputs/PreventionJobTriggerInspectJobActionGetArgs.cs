@@ -13,6 +13,19 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionJobTriggerInspectJobActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Create a de-identified copy of the requested table or files.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("deidentify")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionDeidentifyGetArgs>? Deidentify { get; set; }
+
+        /// <summary>
+        /// Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+        /// </summary>
+        [Input("jobNotificationEmails")]
+        public Input<Inputs.PreventionJobTriggerInspectJobActionJobNotificationEmailsGetArgs>? JobNotificationEmails { get; set; }
+
+        /// <summary>
         /// Publish a message into a given Pub/Sub topic when the job completes.
         /// Structure is documented below.
         /// </summary>

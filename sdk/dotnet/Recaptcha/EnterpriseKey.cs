@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Recaptcha
     /// A basic test of recaptcha enterprise key that can be used by Android apps
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -48,7 +47,6 @@ namespace Pulumi.Gcp.Recaptcha
     /// A basic test of recaptcha enterprise key that can be used by iOS apps
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -79,7 +77,6 @@ namespace Pulumi.Gcp.Recaptcha
     /// A minimal test of recaptcha enterprise key
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -103,7 +100,6 @@ namespace Pulumi.Gcp.Recaptcha
     /// A basic test of recaptcha enterprise key that can be used by websites
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -137,7 +133,6 @@ namespace Pulumi.Gcp.Recaptcha
     /// A basic test of recaptcha enterprise key with score integration type that can be used by websites
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

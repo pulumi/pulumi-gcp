@@ -165,6 +165,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMetadata{}
 	case "gcp:compute/projectMetadataItem:ProjectMetadataItem":
 		r = &ProjectMetadataItem{}
+	case "gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix":
+		r = &PublicAdvertisedPrefix{}
+	case "gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix":
+		r = &PublicDelegatedPrefix{}
 	case "gcp:compute/regionAutoscaler:RegionAutoscaler":
 		r = &RegionAutoscaler{}
 	case "gcp:compute/regionBackendService:RegionBackendService":
@@ -175,6 +179,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionBackendServiceIamMember{}
 	case "gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy":
 		r = &RegionBackendServiceIamPolicy{}
+	case "gcp:compute/regionCommitment:RegionCommitment":
+		r = &RegionCommitment{}
 	case "gcp:compute/regionDisk:RegionDisk":
 		r = &RegionDisk{}
 	case "gcp:compute/regionDiskIamBinding:RegionDiskIamBinding":
@@ -189,6 +195,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionHealthCheck{}
 	case "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager":
 		r = &RegionInstanceGroupManager{}
+	case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
+		r = &RegionInstanceTemplate{}
 	case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
 	case "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy":
@@ -650,6 +658,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/publicAdvertisedPrefix",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/publicDelegatedPrefix",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/regionAutoscaler",
 		&module{version},
 	)
@@ -671,6 +689,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionBackendServiceIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionCommitment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -706,6 +729,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionInstanceGroupManager",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionInstanceTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

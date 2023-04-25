@@ -28,6 +28,14 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
             set => _targetsPresentConditions = value;
         }
 
+        [Input("targetsTypeConditions")]
+        private InputList<Inputs.DeliveryPipelineConditionTargetsTypeConditionGetArgs>? _targetsTypeConditions;
+        public InputList<Inputs.DeliveryPipelineConditionTargetsTypeConditionGetArgs> TargetsTypeConditions
+        {
+            get => _targetsTypeConditions ?? (_targetsTypeConditions = new InputList<Inputs.DeliveryPipelineConditionTargetsTypeConditionGetArgs>());
+            set => _targetsTypeConditions = value;
+        }
+
         public DeliveryPipelineConditionGetArgs()
         {
         }

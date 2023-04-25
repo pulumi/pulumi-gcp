@@ -254,6 +254,11 @@ export const getRegionInstanceGroup: typeof import("./getRegionInstanceGroup").g
 export const getRegionInstanceGroupOutput: typeof import("./getRegionInstanceGroup").getRegionInstanceGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionInstanceGroup","getRegionInstanceGroupOutput"], () => require("./getRegionInstanceGroup"));
 
+export { GetRegionInstanceTemplateArgs, GetRegionInstanceTemplateResult, GetRegionInstanceTemplateOutputArgs } from "./getRegionInstanceTemplate";
+export const getRegionInstanceTemplate: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplate = null as any;
+export const getRegionInstanceTemplateOutput: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionInstanceTemplate","getRegionInstanceTemplateOutput"], () => require("./getRegionInstanceTemplate"));
+
 export { GetRegionNetworkEndpointGroupArgs, GetRegionNetworkEndpointGroupResult, GetRegionNetworkEndpointGroupOutputArgs } from "./getRegionNetworkEndpointGroup";
 export const getRegionNetworkEndpointGroup: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroup = null as any;
 export const getRegionNetworkEndpointGroupOutput: typeof import("./getRegionNetworkEndpointGroup").getRegionNetworkEndpointGroupOutput = null as any;
@@ -549,6 +554,16 @@ export type ProjectMetadataItem = import("./projectMetadataItem").ProjectMetadat
 export const ProjectMetadataItem: typeof import("./projectMetadataItem").ProjectMetadataItem = null as any;
 utilities.lazyLoad(exports, ["ProjectMetadataItem"], () => require("./projectMetadataItem"));
 
+export { PublicAdvertisedPrefixArgs, PublicAdvertisedPrefixState } from "./publicAdvertisedPrefix";
+export type PublicAdvertisedPrefix = import("./publicAdvertisedPrefix").PublicAdvertisedPrefix;
+export const PublicAdvertisedPrefix: typeof import("./publicAdvertisedPrefix").PublicAdvertisedPrefix = null as any;
+utilities.lazyLoad(exports, ["PublicAdvertisedPrefix"], () => require("./publicAdvertisedPrefix"));
+
+export { PublicDelegatedPrefixArgs, PublicDelegatedPrefixState } from "./publicDelegatedPrefix";
+export type PublicDelegatedPrefix = import("./publicDelegatedPrefix").PublicDelegatedPrefix;
+export const PublicDelegatedPrefix: typeof import("./publicDelegatedPrefix").PublicDelegatedPrefix = null as any;
+utilities.lazyLoad(exports, ["PublicDelegatedPrefix"], () => require("./publicDelegatedPrefix"));
+
 export { RegionAutoscalerArgs, RegionAutoscalerState } from "./regionAutoscaler";
 export type RegionAutoscaler = import("./regionAutoscaler").RegionAutoscaler;
 export const RegionAutoscaler: typeof import("./regionAutoscaler").RegionAutoscaler = null as any;
@@ -573,6 +588,11 @@ export { RegionBackendServiceIamPolicyArgs, RegionBackendServiceIamPolicyState }
 export type RegionBackendServiceIamPolicy = import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy;
 export const RegionBackendServiceIamPolicy: typeof import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy = null as any;
 utilities.lazyLoad(exports, ["RegionBackendServiceIamPolicy"], () => require("./regionBackendServiceIamPolicy"));
+
+export { RegionCommitmentArgs, RegionCommitmentState } from "./regionCommitment";
+export type RegionCommitment = import("./regionCommitment").RegionCommitment;
+export const RegionCommitment: typeof import("./regionCommitment").RegionCommitment = null as any;
+utilities.lazyLoad(exports, ["RegionCommitment"], () => require("./regionCommitment"));
 
 export { RegionDiskArgs, RegionDiskState } from "./regionDisk";
 export type RegionDisk = import("./regionDisk").RegionDisk;
@@ -608,6 +628,11 @@ export { RegionInstanceGroupManagerArgs, RegionInstanceGroupManagerState } from 
 export type RegionInstanceGroupManager = import("./regionInstanceGroupManager").RegionInstanceGroupManager;
 export const RegionInstanceGroupManager: typeof import("./regionInstanceGroupManager").RegionInstanceGroupManager = null as any;
 utilities.lazyLoad(exports, ["RegionInstanceGroupManager"], () => require("./regionInstanceGroupManager"));
+
+export { RegionInstanceTemplateArgs, RegionInstanceTemplateState } from "./regionInstanceTemplate";
+export type RegionInstanceTemplate = import("./regionInstanceTemplate").RegionInstanceTemplate;
+export const RegionInstanceTemplate: typeof import("./regionInstanceTemplate").RegionInstanceTemplate = null as any;
+utilities.lazyLoad(exports, ["RegionInstanceTemplate"], () => require("./regionInstanceTemplate"));
 
 export { RegionNetworkEndpointGroupArgs, RegionNetworkEndpointGroupState } from "./regionNetworkEndpointGroup";
 export type RegionNetworkEndpointGroup = import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup;
@@ -978,6 +1003,10 @@ const _module = {
                 return new ProjectMetadata(name, <any>undefined, { urn })
             case "gcp:compute/projectMetadataItem:ProjectMetadataItem":
                 return new ProjectMetadataItem(name, <any>undefined, { urn })
+            case "gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix":
+                return new PublicAdvertisedPrefix(name, <any>undefined, { urn })
+            case "gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix":
+                return new PublicDelegatedPrefix(name, <any>undefined, { urn })
             case "gcp:compute/regionAutoscaler:RegionAutoscaler":
                 return new RegionAutoscaler(name, <any>undefined, { urn })
             case "gcp:compute/regionBackendService:RegionBackendService":
@@ -988,6 +1017,8 @@ const _module = {
                 return new RegionBackendServiceIamMember(name, <any>undefined, { urn })
             case "gcp:compute/regionBackendServiceIamPolicy:RegionBackendServiceIamPolicy":
                 return new RegionBackendServiceIamPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/regionCommitment:RegionCommitment":
+                return new RegionCommitment(name, <any>undefined, { urn })
             case "gcp:compute/regionDisk:RegionDisk":
                 return new RegionDisk(name, <any>undefined, { urn })
             case "gcp:compute/regionDiskIamBinding:RegionDiskIamBinding":
@@ -1002,6 +1033,8 @@ const _module = {
                 return new RegionHealthCheck(name, <any>undefined, { urn })
             case "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager":
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
+            case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
+                return new RegionInstanceTemplate(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy":
@@ -1165,11 +1198,14 @@ pulumi.runtime.registerResourceModule("gcp", "compute/perInstanceConfig", _modul
 pulumi.runtime.registerResourceModule("gcp", "compute/projectDefaultNetworkTier", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadata", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/projectMetadataItem", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/publicAdvertisedPrefix", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/publicDelegatedPrefix", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionAutoscaler", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendService", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionBackendServiceIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionCommitment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDisk", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamMember", _module)
@@ -1177,6 +1213,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskIamPolicy", _mod
 pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskResourcePolicyAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthCheck", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceGroupManager", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyAssociation", _module)

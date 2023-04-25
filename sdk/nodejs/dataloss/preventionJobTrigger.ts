@@ -135,6 +135,76 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Dlp Job Trigger Job Notification Emails
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const jobNotificationEmails = new gcp.dataloss.PreventionJobTrigger("jobNotificationEmails", {
+ *     description: "Description for the job_trigger created by terraform",
+ *     displayName: "TerraformDisplayName",
+ *     inspectJob: {
+ *         actions: [{
+ *             jobNotificationEmails: {},
+ *         }],
+ *         inspectTemplateName: "sample-inspect-template",
+ *         storageConfig: {
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Dlp Job Trigger Hybrid
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hybridTrigger = new gcp.dataloss.PreventionJobTrigger("hybridTrigger", {
+ *     inspectJob: {
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         datasetId: "dataset",
+ *                         projectId: "project",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         inspectTemplateName: "fake",
+ *         storageConfig: {
+ *             hybridOptions: {
+ *                 description: "Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
+ *                 labels: {
+ *                     env: "prod",
+ *                 },
+ *                 requiredFindingLabelKeys: ["appointment-bookings-comments"],
+ *                 tableOptions: {
+ *                     identifyingFields: [{
+ *                         name: "booking_id",
+ *                     }],
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         manual: {},
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

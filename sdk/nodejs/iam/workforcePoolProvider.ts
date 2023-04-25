@@ -69,6 +69,66 @@ import * as utilities from "../utilities";
  *     attributeCondition: "true",
  * });
  * ```
+ * ### Iam Workforce Pool Provider Oidc Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkforcePool("pool", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ * });
+ * const example = new gcp.iam.WorkforcePoolProvider("example", {
+ *     workforcePoolId: pool.workforcePoolId,
+ *     location: pool.location,
+ *     providerId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://accounts.thirdparty.com",
+ *         clientId: "client-id",
+ *         webSsoConfig: {
+ *             responseType: "ID_TOKEN",
+ *             assertionClaimsBehavior: "ONLY_ID_TOKEN_CLAIMS",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Iam Workforce Pool Provider Oidc Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkforcePool("pool", {
+ *     workforcePoolId: "example-pool",
+ *     parent: "organizations/123456789",
+ *     location: "global",
+ * });
+ * const example = new gcp.iam.WorkforcePoolProvider("example", {
+ *     workforcePoolId: pool.workforcePoolId,
+ *     location: pool.location,
+ *     providerId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://accounts.thirdparty.com",
+ *         clientId: "client-id",
+ *         webSsoConfig: {
+ *             responseType: "ID_TOKEN",
+ *             assertionClaimsBehavior: "ONLY_ID_TOKEN_CLAIMS",
+ *         },
+ *     },
+ *     displayName: "Display name",
+ *     description: "A sample OIDC workforce pool provider.",
+ *     disabled: false,
+ *     attributeCondition: "true",
+ * });
+ * ```
  *
  * ## Import
  *

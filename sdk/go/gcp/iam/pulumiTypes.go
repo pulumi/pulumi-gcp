@@ -1061,6 +1061,9 @@ type WorkforcePoolProviderOidc struct {
 	ClientId string `pulumi:"clientId"`
 	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
 	IssuerUri string `pulumi:"issuerUri"`
+	// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+	// Structure is documented below.
+	WebSsoConfig *WorkforcePoolProviderOidcWebSsoConfig `pulumi:"webSsoConfig"`
 }
 
 // WorkforcePoolProviderOidcInput is an input type that accepts WorkforcePoolProviderOidcArgs and WorkforcePoolProviderOidcOutput values.
@@ -1079,6 +1082,9 @@ type WorkforcePoolProviderOidcArgs struct {
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
 	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+	// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+	// Structure is documented below.
+	WebSsoConfig WorkforcePoolProviderOidcWebSsoConfigPtrInput `pulumi:"webSsoConfig"`
 }
 
 func (WorkforcePoolProviderOidcArgs) ElementType() reflect.Type {
@@ -1168,6 +1174,12 @@ func (o WorkforcePoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
 }
 
+// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+// Structure is documented below.
+func (o WorkforcePoolProviderOidcOutput) WebSsoConfig() WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidc) *WorkforcePoolProviderOidcWebSsoConfig { return v.WebSsoConfig }).(WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
+}
+
 type WorkforcePoolProviderOidcPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkforcePoolProviderOidcPtrOutput) ElementType() reflect.Type {
@@ -1209,6 +1221,189 @@ func (o WorkforcePoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+// Structure is documented below.
+func (o WorkforcePoolProviderOidcPtrOutput) WebSsoConfig() WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidc) *WorkforcePoolProviderOidcWebSsoConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WebSsoConfig
+	}).(WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
+}
+
+type WorkforcePoolProviderOidcWebSsoConfig struct {
+	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+	// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+	//   Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+	AssertionClaimsBehavior string `pulumi:"assertionClaimsBehavior"`
+	// The Response Type to request for in the OIDC Authorization Request for web sign-in.
+	// * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+	//   Possible values are: `ID_TOKEN`.
+	ResponseType string `pulumi:"responseType"`
+}
+
+// WorkforcePoolProviderOidcWebSsoConfigInput is an input type that accepts WorkforcePoolProviderOidcWebSsoConfigArgs and WorkforcePoolProviderOidcWebSsoConfigOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcWebSsoConfigInput` via:
+//
+//	WorkforcePoolProviderOidcWebSsoConfigArgs{...}
+type WorkforcePoolProviderOidcWebSsoConfigInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcWebSsoConfigOutput() WorkforcePoolProviderOidcWebSsoConfigOutput
+	ToWorkforcePoolProviderOidcWebSsoConfigOutputWithContext(context.Context) WorkforcePoolProviderOidcWebSsoConfigOutput
+}
+
+type WorkforcePoolProviderOidcWebSsoConfigArgs struct {
+	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+	// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+	//   Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+	AssertionClaimsBehavior pulumi.StringInput `pulumi:"assertionClaimsBehavior"`
+	// The Response Type to request for in the OIDC Authorization Request for web sign-in.
+	// * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+	//   Possible values are: `ID_TOKEN`.
+	ResponseType pulumi.StringInput `pulumi:"responseType"`
+}
+
+func (WorkforcePoolProviderOidcWebSsoConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidcWebSsoConfig)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderOidcWebSsoConfigArgs) ToWorkforcePoolProviderOidcWebSsoConfigOutput() WorkforcePoolProviderOidcWebSsoConfigOutput {
+	return i.ToWorkforcePoolProviderOidcWebSsoConfigOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcWebSsoConfigArgs) ToWorkforcePoolProviderOidcWebSsoConfigOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcWebSsoConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcWebSsoConfigOutput)
+}
+
+func (i WorkforcePoolProviderOidcWebSsoConfigArgs) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutput() WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return i.ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcWebSsoConfigArgs) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcWebSsoConfigOutput).ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderOidcWebSsoConfigPtrInput is an input type that accepts WorkforcePoolProviderOidcWebSsoConfigArgs, WorkforcePoolProviderOidcWebSsoConfigPtr and WorkforcePoolProviderOidcWebSsoConfigPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcWebSsoConfigPtrInput` via:
+//
+//	        WorkforcePoolProviderOidcWebSsoConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderOidcWebSsoConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcWebSsoConfigPtrOutput() WorkforcePoolProviderOidcWebSsoConfigPtrOutput
+	ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(context.Context) WorkforcePoolProviderOidcWebSsoConfigPtrOutput
+}
+
+type workforcePoolProviderOidcWebSsoConfigPtrType WorkforcePoolProviderOidcWebSsoConfigArgs
+
+func WorkforcePoolProviderOidcWebSsoConfigPtr(v *WorkforcePoolProviderOidcWebSsoConfigArgs) WorkforcePoolProviderOidcWebSsoConfigPtrInput {
+	return (*workforcePoolProviderOidcWebSsoConfigPtrType)(v)
+}
+
+func (*workforcePoolProviderOidcWebSsoConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidcWebSsoConfig)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderOidcWebSsoConfigPtrType) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutput() WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return i.ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderOidcWebSsoConfigPtrType) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
+}
+
+type WorkforcePoolProviderOidcWebSsoConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcWebSsoConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidcWebSsoConfig)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ToWorkforcePoolProviderOidcWebSsoConfigOutput() WorkforcePoolProviderOidcWebSsoConfigOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ToWorkforcePoolProviderOidcWebSsoConfigOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcWebSsoConfigOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutput() WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return o.ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderOidcWebSsoConfig) *WorkforcePoolProviderOidcWebSsoConfig {
+		return &v
+	}).(WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
+}
+
+// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+//   - ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+//     Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+func (o WorkforcePoolProviderOidcWebSsoConfigOutput) AssertionClaimsBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcWebSsoConfig) string { return v.AssertionClaimsBehavior }).(pulumi.StringOutput)
+}
+
+// The Response Type to request for in the OIDC Authorization Request for web sign-in.
+//   - ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+//     Possible values are: `ID_TOKEN`.
+func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ResponseType() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcWebSsoConfig) string { return v.ResponseType }).(pulumi.StringOutput)
+}
+
+type WorkforcePoolProviderOidcWebSsoConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidcWebSsoConfig)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutput() WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ToWorkforcePoolProviderOidcWebSsoConfigPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) Elem() WorkforcePoolProviderOidcWebSsoConfigOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcWebSsoConfig) WorkforcePoolProviderOidcWebSsoConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderOidcWebSsoConfig
+		return ret
+	}).(WorkforcePoolProviderOidcWebSsoConfigOutput)
+}
+
+// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+//   - ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+//     Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) AssertionClaimsBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcWebSsoConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AssertionClaimsBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Response Type to request for in the OIDC Authorization Request for web sign-in.
+//   - ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+//     Possible values are: `ID_TOKEN`.
+func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ResponseType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcWebSsoConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResponseType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2114,6 +2309,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcWebSsoConfigInput)(nil)).Elem(), WorkforcePoolProviderOidcWebSsoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcWebSsoConfigPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcWebSsoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderSamlInput)(nil)).Elem(), WorkforcePoolProviderSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderSamlPtrInput)(nil)).Elem(), WorkforcePoolProviderSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderAwsInput)(nil)).Elem(), WorkloadIdentityPoolProviderAwsArgs{})
@@ -2140,6 +2337,8 @@ func init() {
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcWebSsoConfigOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcWebSsoConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderSamlOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderSamlPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderAwsOutput{})

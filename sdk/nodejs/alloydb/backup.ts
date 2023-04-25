@@ -170,7 +170,7 @@ export class Backup extends pulumi.CustomResource {
     /**
      * The location where the alloydb backup should reside.
      */
-    public readonly location!: pulumi.Output<string | undefined>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backupId}
      */
@@ -230,6 +230,9 @@ export class Backup extends pulumi.CustomResource {
             }
             if ((!args || args.clusterName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
+            }
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
             resourceInputs["backupId"] = args ? args.backupId : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
@@ -332,7 +335,7 @@ export interface BackupArgs {
     /**
      * The location where the alloydb backup should reside.
      */
-    location?: pulumi.Input<string>;
+    location: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

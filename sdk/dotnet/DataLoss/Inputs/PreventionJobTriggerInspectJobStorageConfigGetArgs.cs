@@ -34,6 +34,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsGetArgs>? DatastoreOptions { get; set; }
 
         /// <summary>
+        /// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("hybridOptions")]
+        public Input<Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsGetArgs>? HybridOptions { get; set; }
+
+        /// <summary>
         /// Information on where to inspect
         /// Structure is documented below.
         /// </summary>

@@ -196,6 +196,118 @@ import (
 //	}
 //
 // ```
+// ### Dlp Job Trigger Job Notification Emails
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "jobNotificationEmails", &dataloss.PreventionJobTriggerArgs{
+//				Description: pulumi.String("Description for the job_trigger created by terraform"),
+//				DisplayName: pulumi.String("TerraformDisplayName"),
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							JobNotificationEmails: nil,
+//						},
+//					},
+//					InspectTemplateName: pulumi.String("sample-inspect-template"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+//							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+//								Url: pulumi.String("gs://mybucket/directory/"),
+//							},
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("projects/my-project-name"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dlp Job Trigger Hybrid
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "hybridTrigger", &dataloss.PreventionJobTriggerArgs{
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+//										DatasetId: pulumi.String("dataset"),
+//										ProjectId: pulumi.String("project"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					InspectTemplateName: pulumi.String("fake"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						HybridOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs{
+//							Description: pulumi.String("Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings"),
+//							Labels: pulumi.StringMap{
+//								"env": pulumi.String("prod"),
+//							},
+//							RequiredFindingLabelKeys: pulumi.StringArray{
+//								pulumi.String("appointment-bookings-comments"),
+//							},
+//							TableOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs{
+//								IdentifyingFields: dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray{
+//									&dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs{
+//										Name: pulumi.String("booking_id"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("projects/my-project-name"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Manual: nil,
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

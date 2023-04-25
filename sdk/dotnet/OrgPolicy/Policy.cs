@@ -21,7 +21,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// A test of an enforce orgpolicy policy for a project
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -54,7 +53,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// A test of an orgpolicy policy for a folder
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -88,7 +86,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// A test of an orgpolicy policy for an organization
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -109,7 +106,6 @@ namespace Pulumi.Gcp.OrgPolicy
     /// A test of an orgpolicy policy for a project
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

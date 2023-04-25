@@ -33,7 +33,6 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
-        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -74,7 +73,6 @@ namespace Pulumi.Gcp.Projects
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
-        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 

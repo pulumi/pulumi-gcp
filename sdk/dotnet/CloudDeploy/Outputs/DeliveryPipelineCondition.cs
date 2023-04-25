@@ -15,15 +15,19 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     {
         public readonly ImmutableArray<Outputs.DeliveryPipelineConditionPipelineReadyCondition> PipelineReadyConditions;
         public readonly ImmutableArray<Outputs.DeliveryPipelineConditionTargetsPresentCondition> TargetsPresentConditions;
+        public readonly ImmutableArray<Outputs.DeliveryPipelineConditionTargetsTypeCondition> TargetsTypeConditions;
 
         [OutputConstructor]
         private DeliveryPipelineCondition(
             ImmutableArray<Outputs.DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions,
 
-            ImmutableArray<Outputs.DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions)
+            ImmutableArray<Outputs.DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions,
+
+            ImmutableArray<Outputs.DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions)
         {
             PipelineReadyConditions = pipelineReadyConditions;
             TargetsPresentConditions = targetsPresentConditions;
+            TargetsTypeConditions = targetsTypeConditions;
         }
     }
 }

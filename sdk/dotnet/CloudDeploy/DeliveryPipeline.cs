@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// Creates a basic Cloud Deploy delivery pipeline
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -69,7 +68,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// Creates a basic Cloud Deploy delivery pipeline
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -121,7 +119,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// Creates a basic Cloud Deploy delivery pipeline
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -173,7 +170,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// Creates a basic Cloud Deploy delivery pipeline
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -222,7 +218,6 @@ namespace Pulumi.Gcp.CloudDeploy
     /// tests creating and updating a delivery pipeline with deployment verification strategy
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

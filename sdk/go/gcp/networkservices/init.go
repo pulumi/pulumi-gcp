@@ -29,8 +29,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EdgeCacheService{}
 	case "gcp:networkservices/gateway:Gateway":
 		r = &Gateway{}
+	case "gcp:networkservices/httpRoute:HttpRoute":
+		r = &HttpRoute{}
 	case "gcp:networkservices/mesh:Mesh":
 		r = &Mesh{}
+	case "gcp:networkservices/tcpRoute:TcpRoute":
+		r = &TcpRoute{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -66,7 +70,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networkservices/httpRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networkservices/mesh",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/tcpRoute",
 		&module{version},
 	)
 }

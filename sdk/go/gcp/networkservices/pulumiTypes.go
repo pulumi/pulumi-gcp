@@ -5571,6 +5571,3572 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) StripQu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type HttpRouteRule struct {
+	// The detailed rule defining how to route matched traffic.
+	// Structure is documented below.
+	Action *HttpRouteRuleAction `pulumi:"action"`
+	// A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+	// If no matches field is specified, this rule will unconditionally match traffic.
+	// If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+	// Structure is documented below.
+	Matches []HttpRouteRuleMatch `pulumi:"matches"`
+}
+
+// HttpRouteRuleInput is an input type that accepts HttpRouteRuleArgs and HttpRouteRuleOutput values.
+// You can construct a concrete instance of `HttpRouteRuleInput` via:
+//
+//	HttpRouteRuleArgs{...}
+type HttpRouteRuleInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleOutput() HttpRouteRuleOutput
+	ToHttpRouteRuleOutputWithContext(context.Context) HttpRouteRuleOutput
+}
+
+type HttpRouteRuleArgs struct {
+	// The detailed rule defining how to route matched traffic.
+	// Structure is documented below.
+	Action HttpRouteRuleActionPtrInput `pulumi:"action"`
+	// A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+	// If no matches field is specified, this rule will unconditionally match traffic.
+	// If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+	// Structure is documented below.
+	Matches HttpRouteRuleMatchArrayInput `pulumi:"matches"`
+}
+
+func (HttpRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRule)(nil)).Elem()
+}
+
+func (i HttpRouteRuleArgs) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
+	return i.ToHttpRouteRuleOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleArgs) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleOutput)
+}
+
+// HttpRouteRuleArrayInput is an input type that accepts HttpRouteRuleArray and HttpRouteRuleArrayOutput values.
+// You can construct a concrete instance of `HttpRouteRuleArrayInput` via:
+//
+//	HttpRouteRuleArray{ HttpRouteRuleArgs{...} }
+type HttpRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleArrayOutput() HttpRouteRuleArrayOutput
+	ToHttpRouteRuleArrayOutputWithContext(context.Context) HttpRouteRuleArrayOutput
+}
+
+type HttpRouteRuleArray []HttpRouteRuleInput
+
+func (HttpRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRule)(nil)).Elem()
+}
+
+func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutput() HttpRouteRuleArrayOutput {
+	return i.ToHttpRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleArray) ToHttpRouteRuleArrayOutputWithContext(ctx context.Context) HttpRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleArrayOutput)
+}
+
+type HttpRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRule)(nil)).Elem()
+}
+
+func (o HttpRouteRuleOutput) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
+	return o
+}
+
+func (o HttpRouteRuleOutput) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
+	return o
+}
+
+// The detailed rule defining how to route matched traffic.
+// Structure is documented below.
+func (o HttpRouteRuleOutput) Action() HttpRouteRuleActionPtrOutput {
+	return o.ApplyT(func(v HttpRouteRule) *HttpRouteRuleAction { return v.Action }).(HttpRouteRuleActionPtrOutput)
+}
+
+// A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+// If no matches field is specified, this rule will unconditionally match traffic.
+// If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+// Structure is documented below.
+func (o HttpRouteRuleOutput) Matches() HttpRouteRuleMatchArrayOutput {
+	return o.ApplyT(func(v HttpRouteRule) []HttpRouteRuleMatch { return v.Matches }).(HttpRouteRuleMatchArrayOutput)
+}
+
+type HttpRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRule)(nil)).Elem()
+}
+
+func (o HttpRouteRuleArrayOutput) ToHttpRouteRuleArrayOutput() HttpRouteRuleArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleArrayOutput) ToHttpRouteRuleArrayOutputWithContext(ctx context.Context) HttpRouteRuleArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRule {
+		return vs[0].([]HttpRouteRule)[vs[1].(int)]
+	}).(HttpRouteRuleOutput)
+}
+
+type HttpRouteRuleAction struct {
+	// The specification for allowing client side cross-origin requests.
+	// Structure is documented below.
+	CorsPolicy *HttpRouteRuleActionCorsPolicy `pulumi:"corsPolicy"`
+	// The destination to which traffic should be forwarded.
+	// Structure is documented below.
+	Destinations []HttpRouteRuleActionDestination `pulumi:"destinations"`
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+	// Structure is documented below.
+	FaultInjectionPolicy *HttpRouteRuleActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// If set, the request is directed as configured by this field.
+	// Structure is documented below.
+	Redirect *HttpRouteRuleActionRedirect `pulumi:"redirect"`
+	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+	// Structure is documented below.
+	RequestHeaderModifier *HttpRouteRuleActionRequestHeaderModifier `pulumi:"requestHeaderModifier"`
+	// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+	// Structure is documented below.
+	RequestMirrorPolicy *HttpRouteRuleActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
+	// The specification for modifying the headers of a response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeaderModifier *HttpRouteRuleActionResponseHeaderModifier `pulumi:"responseHeaderModifier"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy *HttpRouteRuleActionRetryPolicy `pulumi:"retryPolicy"`
+	// Specifies the timeout for selected route.
+	Timeout *string `pulumi:"timeout"`
+	// The specification for rewrite URL before forwarding requests to the destination.
+	// Structure is documented below.
+	UrlRewrite *HttpRouteRuleActionUrlRewrite `pulumi:"urlRewrite"`
+}
+
+// HttpRouteRuleActionInput is an input type that accepts HttpRouteRuleActionArgs and HttpRouteRuleActionOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionInput` via:
+//
+//	HttpRouteRuleActionArgs{...}
+type HttpRouteRuleActionInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionOutput() HttpRouteRuleActionOutput
+	ToHttpRouteRuleActionOutputWithContext(context.Context) HttpRouteRuleActionOutput
+}
+
+type HttpRouteRuleActionArgs struct {
+	// The specification for allowing client side cross-origin requests.
+	// Structure is documented below.
+	CorsPolicy HttpRouteRuleActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// The destination to which traffic should be forwarded.
+	// Structure is documented below.
+	Destinations HttpRouteRuleActionDestinationArrayInput `pulumi:"destinations"`
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+	// Structure is documented below.
+	FaultInjectionPolicy HttpRouteRuleActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// If set, the request is directed as configured by this field.
+	// Structure is documented below.
+	Redirect HttpRouteRuleActionRedirectPtrInput `pulumi:"redirect"`
+	// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+	// Structure is documented below.
+	RequestHeaderModifier HttpRouteRuleActionRequestHeaderModifierPtrInput `pulumi:"requestHeaderModifier"`
+	// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+	// Structure is documented below.
+	RequestMirrorPolicy HttpRouteRuleActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
+	// The specification for modifying the headers of a response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeaderModifier HttpRouteRuleActionResponseHeaderModifierPtrInput `pulumi:"responseHeaderModifier"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy HttpRouteRuleActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Specifies the timeout for selected route.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// The specification for rewrite URL before forwarding requests to the destination.
+	// Structure is documented below.
+	UrlRewrite HttpRouteRuleActionUrlRewritePtrInput `pulumi:"urlRewrite"`
+}
+
+func (HttpRouteRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleAction)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionArgs) ToHttpRouteRuleActionOutput() HttpRouteRuleActionOutput {
+	return i.ToHttpRouteRuleActionOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionArgs) ToHttpRouteRuleActionOutputWithContext(ctx context.Context) HttpRouteRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionOutput)
+}
+
+func (i HttpRouteRuleActionArgs) ToHttpRouteRuleActionPtrOutput() HttpRouteRuleActionPtrOutput {
+	return i.ToHttpRouteRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionArgs) ToHttpRouteRuleActionPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionOutput).ToHttpRouteRuleActionPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionPtrInput is an input type that accepts HttpRouteRuleActionArgs, HttpRouteRuleActionPtr and HttpRouteRuleActionPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionPtrInput` via:
+//
+//	        HttpRouteRuleActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionPtrOutput() HttpRouteRuleActionPtrOutput
+	ToHttpRouteRuleActionPtrOutputWithContext(context.Context) HttpRouteRuleActionPtrOutput
+}
+
+type httpRouteRuleActionPtrType HttpRouteRuleActionArgs
+
+func HttpRouteRuleActionPtr(v *HttpRouteRuleActionArgs) HttpRouteRuleActionPtrInput {
+	return (*httpRouteRuleActionPtrType)(v)
+}
+
+func (*httpRouteRuleActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleAction)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionPtrType) ToHttpRouteRuleActionPtrOutput() HttpRouteRuleActionPtrOutput {
+	return i.ToHttpRouteRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionPtrType) ToHttpRouteRuleActionPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionPtrOutput)
+}
+
+type HttpRouteRuleActionOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleAction)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionOutput) ToHttpRouteRuleActionOutput() HttpRouteRuleActionOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionOutput) ToHttpRouteRuleActionOutputWithContext(ctx context.Context) HttpRouteRuleActionOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionOutput) ToHttpRouteRuleActionPtrOutput() HttpRouteRuleActionPtrOutput {
+	return o.ToHttpRouteRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionOutput) ToHttpRouteRuleActionPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleAction) *HttpRouteRuleAction {
+		return &v
+	}).(HttpRouteRuleActionPtrOutput)
+}
+
+// The specification for allowing client side cross-origin requests.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) CorsPolicy() HttpRouteRuleActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionCorsPolicy { return v.CorsPolicy }).(HttpRouteRuleActionCorsPolicyPtrOutput)
+}
+
+// The destination to which traffic should be forwarded.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) Destinations() HttpRouteRuleActionDestinationArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) []HttpRouteRuleActionDestination { return v.Destinations }).(HttpRouteRuleActionDestinationArrayOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) FaultInjectionPolicy() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionFaultInjectionPolicy { return v.FaultInjectionPolicy }).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// If set, the request is directed as configured by this field.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) Redirect() HttpRouteRuleActionRedirectPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionRedirect { return v.Redirect }).(HttpRouteRuleActionRedirectPtrOutput)
+}
+
+// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) RequestHeaderModifier() HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionRequestHeaderModifier { return v.RequestHeaderModifier }).(HttpRouteRuleActionRequestHeaderModifierPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) RequestMirrorPolicy() HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionRequestMirrorPolicy { return v.RequestMirrorPolicy }).(HttpRouteRuleActionRequestMirrorPolicyPtrOutput)
+}
+
+// The specification for modifying the headers of a response prior to sending the response back to the client.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) ResponseHeaderModifier() HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionResponseHeaderModifier {
+		return v.ResponseHeaderModifier
+	}).(HttpRouteRuleActionResponseHeaderModifierPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) RetryPolicy() HttpRouteRuleActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionRetryPolicy { return v.RetryPolicy }).(HttpRouteRuleActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for selected route.
+func (o HttpRouteRuleActionOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// The specification for rewrite URL before forwarding requests to the destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionOutput) UrlRewrite() HttpRouteRuleActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleAction) *HttpRouteRuleActionUrlRewrite { return v.UrlRewrite }).(HttpRouteRuleActionUrlRewritePtrOutput)
+}
+
+type HttpRouteRuleActionPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleAction)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionPtrOutput) ToHttpRouteRuleActionPtrOutput() HttpRouteRuleActionPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionPtrOutput) ToHttpRouteRuleActionPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionPtrOutput) Elem() HttpRouteRuleActionOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) HttpRouteRuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleAction
+		return ret
+	}).(HttpRouteRuleActionOutput)
+}
+
+// The specification for allowing client side cross-origin requests.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) CorsPolicy() HttpRouteRuleActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionCorsPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.CorsPolicy
+	}).(HttpRouteRuleActionCorsPolicyPtrOutput)
+}
+
+// The destination to which traffic should be forwarded.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) Destinations() HttpRouteRuleActionDestinationArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) []HttpRouteRuleActionDestination {
+		if v == nil {
+			return nil
+		}
+		return v.Destinations
+	}).(HttpRouteRuleActionDestinationArrayOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) FaultInjectionPolicy() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionFaultInjectionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.FaultInjectionPolicy
+	}).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// If set, the request is directed as configured by this field.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) Redirect() HttpRouteRuleActionRedirectPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionRedirect {
+		if v == nil {
+			return nil
+		}
+		return v.Redirect
+	}).(HttpRouteRuleActionRedirectPtrOutput)
+}
+
+// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) RequestHeaderModifier() HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionRequestHeaderModifier {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaderModifier
+	}).(HttpRouteRuleActionRequestHeaderModifierPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) RequestMirrorPolicy() HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionRequestMirrorPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RequestMirrorPolicy
+	}).(HttpRouteRuleActionRequestMirrorPolicyPtrOutput)
+}
+
+// The specification for modifying the headers of a response prior to sending the response back to the client.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) ResponseHeaderModifier() HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionResponseHeaderModifier {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeaderModifier
+	}).(HttpRouteRuleActionResponseHeaderModifierPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) RetryPolicy() HttpRouteRuleActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionRetryPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RetryPolicy
+	}).(HttpRouteRuleActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for selected route.
+func (o HttpRouteRuleActionPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification for rewrite URL before forwarding requests to the destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionPtrOutput) UrlRewrite() HttpRouteRuleActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleAction) *HttpRouteRuleActionUrlRewrite {
+		if v == nil {
+			return nil
+		}
+		return v.UrlRewrite
+	}).(HttpRouteRuleActionUrlRewritePtrOutput)
+}
+
+type HttpRouteRuleActionCorsPolicy struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// Specifies the content for Access-Control-Allow-Headers header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// Specifies the content for Access-Control-Allow-Methods header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins.
+	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	AllowOrigins []string `pulumi:"allowOrigins"`
+	// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled *bool `pulumi:"disabled"`
+	// Specifies the content for Access-Control-Expose-Headers header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// Specifies how long result of a preflight request can be cached in seconds.
+	MaxAge *string `pulumi:"maxAge"`
+}
+
+// HttpRouteRuleActionCorsPolicyInput is an input type that accepts HttpRouteRuleActionCorsPolicyArgs and HttpRouteRuleActionCorsPolicyOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionCorsPolicyInput` via:
+//
+//	HttpRouteRuleActionCorsPolicyArgs{...}
+type HttpRouteRuleActionCorsPolicyInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionCorsPolicyOutput() HttpRouteRuleActionCorsPolicyOutput
+	ToHttpRouteRuleActionCorsPolicyOutputWithContext(context.Context) HttpRouteRuleActionCorsPolicyOutput
+}
+
+type HttpRouteRuleActionCorsPolicyArgs struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// Specifies the content for Access-Control-Allow-Headers header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// Specifies the content for Access-Control-Allow-Methods header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins.
+	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Specifies the content for Access-Control-Expose-Headers header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// Specifies how long result of a preflight request can be cached in seconds.
+	MaxAge pulumi.StringPtrInput `pulumi:"maxAge"`
+}
+
+func (HttpRouteRuleActionCorsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionCorsPolicy)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionCorsPolicyArgs) ToHttpRouteRuleActionCorsPolicyOutput() HttpRouteRuleActionCorsPolicyOutput {
+	return i.ToHttpRouteRuleActionCorsPolicyOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionCorsPolicyArgs) ToHttpRouteRuleActionCorsPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionCorsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionCorsPolicyOutput)
+}
+
+func (i HttpRouteRuleActionCorsPolicyArgs) ToHttpRouteRuleActionCorsPolicyPtrOutput() HttpRouteRuleActionCorsPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionCorsPolicyArgs) ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionCorsPolicyOutput).ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionCorsPolicyPtrInput is an input type that accepts HttpRouteRuleActionCorsPolicyArgs, HttpRouteRuleActionCorsPolicyPtr and HttpRouteRuleActionCorsPolicyPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionCorsPolicyPtrInput` via:
+//
+//	        HttpRouteRuleActionCorsPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionCorsPolicyPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionCorsPolicyPtrOutput() HttpRouteRuleActionCorsPolicyPtrOutput
+	ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(context.Context) HttpRouteRuleActionCorsPolicyPtrOutput
+}
+
+type httpRouteRuleActionCorsPolicyPtrType HttpRouteRuleActionCorsPolicyArgs
+
+func HttpRouteRuleActionCorsPolicyPtr(v *HttpRouteRuleActionCorsPolicyArgs) HttpRouteRuleActionCorsPolicyPtrInput {
+	return (*httpRouteRuleActionCorsPolicyPtrType)(v)
+}
+
+func (*httpRouteRuleActionCorsPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionCorsPolicy)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionCorsPolicyPtrType) ToHttpRouteRuleActionCorsPolicyPtrOutput() HttpRouteRuleActionCorsPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionCorsPolicyPtrType) ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionCorsPolicyPtrOutput)
+}
+
+type HttpRouteRuleActionCorsPolicyOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionCorsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionCorsPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionCorsPolicyOutput) ToHttpRouteRuleActionCorsPolicyOutput() HttpRouteRuleActionCorsPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionCorsPolicyOutput) ToHttpRouteRuleActionCorsPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionCorsPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionCorsPolicyOutput) ToHttpRouteRuleActionCorsPolicyPtrOutput() HttpRouteRuleActionCorsPolicyPtrOutput {
+	return o.ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionCorsPolicyOutput) ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionCorsPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionCorsPolicy) *HttpRouteRuleActionCorsPolicy {
+		return &v
+	}).(HttpRouteRuleActionCorsPolicyPtrOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+func (o HttpRouteRuleActionCorsPolicyOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for Access-Control-Allow-Headers header.
+func (o HttpRouteRuleActionCorsPolicyOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for Access-Control-Allow-Methods header.
+func (o HttpRouteRuleActionCorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins.
+func (o HttpRouteRuleActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+func (o HttpRouteRuleActionCorsPolicyOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
+}
+
+// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o HttpRouteRuleActionCorsPolicyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for Access-Control-Expose-Headers header.
+func (o HttpRouteRuleActionCorsPolicyOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long result of a preflight request can be cached in seconds.
+func (o HttpRouteRuleActionCorsPolicyOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) *string { return v.MaxAge }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleActionCorsPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionCorsPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionCorsPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) ToHttpRouteRuleActionCorsPolicyPtrOutput() HttpRouteRuleActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) ToHttpRouteRuleActionCorsPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) Elem() HttpRouteRuleActionCorsPolicyOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) HttpRouteRuleActionCorsPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionCorsPolicy
+		return ret
+	}).(HttpRouteRuleActionCorsPolicyOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for Access-Control-Allow-Headers header.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for Access-Control-Allow-Methods header.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOriginRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for Access-Control-Expose-Headers header.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long result of a preflight request can be cached in seconds.
+func (o HttpRouteRuleActionCorsPolicyPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleActionDestination struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName *string `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+	// If weights are specified for any one service name, they need to be specified for all of them.
+	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	Weight *int `pulumi:"weight"`
+}
+
+// HttpRouteRuleActionDestinationInput is an input type that accepts HttpRouteRuleActionDestinationArgs and HttpRouteRuleActionDestinationOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionDestinationInput` via:
+//
+//	HttpRouteRuleActionDestinationArgs{...}
+type HttpRouteRuleActionDestinationInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionDestinationOutput() HttpRouteRuleActionDestinationOutput
+	ToHttpRouteRuleActionDestinationOutputWithContext(context.Context) HttpRouteRuleActionDestinationOutput
+}
+
+type HttpRouteRuleActionDestinationArgs struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+	// If weights are specified for any one service name, they need to be specified for all of them.
+	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (HttpRouteRuleActionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionDestinationArgs) ToHttpRouteRuleActionDestinationOutput() HttpRouteRuleActionDestinationOutput {
+	return i.ToHttpRouteRuleActionDestinationOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionDestinationArgs) ToHttpRouteRuleActionDestinationOutputWithContext(ctx context.Context) HttpRouteRuleActionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionDestinationOutput)
+}
+
+// HttpRouteRuleActionDestinationArrayInput is an input type that accepts HttpRouteRuleActionDestinationArray and HttpRouteRuleActionDestinationArrayOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionDestinationArrayInput` via:
+//
+//	HttpRouteRuleActionDestinationArray{ HttpRouteRuleActionDestinationArgs{...} }
+type HttpRouteRuleActionDestinationArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionDestinationArrayOutput() HttpRouteRuleActionDestinationArrayOutput
+	ToHttpRouteRuleActionDestinationArrayOutputWithContext(context.Context) HttpRouteRuleActionDestinationArrayOutput
+}
+
+type HttpRouteRuleActionDestinationArray []HttpRouteRuleActionDestinationInput
+
+func (HttpRouteRuleActionDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionDestinationArray) ToHttpRouteRuleActionDestinationArrayOutput() HttpRouteRuleActionDestinationArrayOutput {
+	return i.ToHttpRouteRuleActionDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionDestinationArray) ToHttpRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) HttpRouteRuleActionDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionDestinationArrayOutput)
+}
+
+type HttpRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionDestinationOutput) ToHttpRouteRuleActionDestinationOutput() HttpRouteRuleActionDestinationOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionDestinationOutput) ToHttpRouteRuleActionDestinationOutputWithContext(ctx context.Context) HttpRouteRuleActionDestinationOutput {
+	return o
+}
+
+// The URL of a BackendService to route traffic to.
+func (o HttpRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+// If weights are specified for any one service name, they need to be specified for all of them.
+// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+func (o HttpRouteRuleActionDestinationOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleActionDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionDestinationArrayOutput) ToHttpRouteRuleActionDestinationArrayOutput() HttpRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionDestinationArrayOutput) ToHttpRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) HttpRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleActionDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRuleActionDestination {
+		return vs[0].([]HttpRouteRuleActionDestination)[vs[1].(int)]
+	}).(HttpRouteRuleActionDestinationOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicy struct {
+	// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Abort *HttpRouteRuleActionFaultInjectionPolicyAbort `pulumi:"abort"`
+	// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Delay *HttpRouteRuleActionFaultInjectionPolicyDelay `pulumi:"delay"`
+}
+
+// HttpRouteRuleActionFaultInjectionPolicyInput is an input type that accepts HttpRouteRuleActionFaultInjectionPolicyArgs and HttpRouteRuleActionFaultInjectionPolicyOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionFaultInjectionPolicyInput` via:
+//
+//	HttpRouteRuleActionFaultInjectionPolicyArgs{...}
+type HttpRouteRuleActionFaultInjectionPolicyInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionFaultInjectionPolicyOutput() HttpRouteRuleActionFaultInjectionPolicyOutput
+	ToHttpRouteRuleActionFaultInjectionPolicyOutputWithContext(context.Context) HttpRouteRuleActionFaultInjectionPolicyOutput
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyArgs struct {
+	// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Abort HttpRouteRuleActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
+	// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Delay HttpRouteRuleActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
+}
+
+func (HttpRouteRuleActionFaultInjectionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyArgs) ToHttpRouteRuleActionFaultInjectionPolicyOutput() HttpRouteRuleActionFaultInjectionPolicyOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyArgs) ToHttpRouteRuleActionFaultInjectionPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyOutput)
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyArgs) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutput() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyArgs) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyOutput).ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionFaultInjectionPolicyPtrInput is an input type that accepts HttpRouteRuleActionFaultInjectionPolicyArgs, HttpRouteRuleActionFaultInjectionPolicyPtr and HttpRouteRuleActionFaultInjectionPolicyPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionFaultInjectionPolicyPtrInput` via:
+//
+//	        HttpRouteRuleActionFaultInjectionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionFaultInjectionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionFaultInjectionPolicyPtrOutput() HttpRouteRuleActionFaultInjectionPolicyPtrOutput
+	ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Context) HttpRouteRuleActionFaultInjectionPolicyPtrOutput
+}
+
+type httpRouteRuleActionFaultInjectionPolicyPtrType HttpRouteRuleActionFaultInjectionPolicyArgs
+
+func HttpRouteRuleActionFaultInjectionPolicyPtr(v *HttpRouteRuleActionFaultInjectionPolicyArgs) HttpRouteRuleActionFaultInjectionPolicyPtrInput {
+	return (*httpRouteRuleActionFaultInjectionPolicyPtrType)(v)
+}
+
+func (*httpRouteRuleActionFaultInjectionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionFaultInjectionPolicyPtrType) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutput() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionFaultInjectionPolicyPtrType) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionFaultInjectionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyOutput) ToHttpRouteRuleActionFaultInjectionPolicyOutput() HttpRouteRuleActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyOutput) ToHttpRouteRuleActionFaultInjectionPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyOutput) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutput() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyOutput) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionFaultInjectionPolicy) *HttpRouteRuleActionFaultInjectionPolicy {
+		return &v
+	}).(HttpRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionFaultInjectionPolicyOutput) Abort() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicy) *HttpRouteRuleActionFaultInjectionPolicyAbort {
+		return v.Abort
+	}).(HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionFaultInjectionPolicyOutput) Delay() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicy) *HttpRouteRuleActionFaultInjectionPolicyDelay {
+		return v.Delay
+	}).(HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionFaultInjectionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutput() HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) Elem() HttpRouteRuleActionFaultInjectionPolicyOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicy) HttpRouteRuleActionFaultInjectionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionFaultInjectionPolicy
+		return ret
+	}).(HttpRouteRuleActionFaultInjectionPolicyOutput)
+}
+
+// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) Abort() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicy) *HttpRouteRuleActionFaultInjectionPolicyAbort {
+		if v == nil {
+			return nil
+		}
+		return v.Abort
+	}).(HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o HttpRouteRuleActionFaultInjectionPolicyPtrOutput) Delay() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicy) *HttpRouteRuleActionFaultInjectionPolicyDelay {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyAbort struct {
+	// The HTTP status code used to abort the request.
+	HttpStatus *int `pulumi:"httpStatus"`
+	// The percentage of traffic which will be aborted.
+	Percentage *int `pulumi:"percentage"`
+}
+
+// HttpRouteRuleActionFaultInjectionPolicyAbortInput is an input type that accepts HttpRouteRuleActionFaultInjectionPolicyAbortArgs and HttpRouteRuleActionFaultInjectionPolicyAbortOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionFaultInjectionPolicyAbortInput` via:
+//
+//	HttpRouteRuleActionFaultInjectionPolicyAbortArgs{...}
+type HttpRouteRuleActionFaultInjectionPolicyAbortInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionFaultInjectionPolicyAbortOutput() HttpRouteRuleActionFaultInjectionPolicyAbortOutput
+	ToHttpRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortOutput
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyAbortArgs struct {
+	// The HTTP status code used to abort the request.
+	HttpStatus pulumi.IntPtrInput `pulumi:"httpStatus"`
+	// The percentage of traffic which will be aborted.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ToHttpRouteRuleActionFaultInjectionPolicyAbortOutput() HttpRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ToHttpRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyAbortOutput)
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyAbortArgs) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyAbortOutput).ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionFaultInjectionPolicyAbortPtrInput is an input type that accepts HttpRouteRuleActionFaultInjectionPolicyAbortArgs, HttpRouteRuleActionFaultInjectionPolicyAbortPtr and HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionFaultInjectionPolicyAbortPtrInput` via:
+//
+//	        HttpRouteRuleActionFaultInjectionPolicyAbortArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionFaultInjectionPolicyAbortPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput
+	ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput
+}
+
+type httpRouteRuleActionFaultInjectionPolicyAbortPtrType HttpRouteRuleActionFaultInjectionPolicyAbortArgs
+
+func HttpRouteRuleActionFaultInjectionPolicyAbortPtr(v *HttpRouteRuleActionFaultInjectionPolicyAbortArgs) HttpRouteRuleActionFaultInjectionPolicyAbortPtrInput {
+	return (*httpRouteRuleActionFaultInjectionPolicyAbortPtrType)(v)
+}
+
+func (*httpRouteRuleActionFaultInjectionPolicyAbortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionFaultInjectionPolicyAbortPtrType) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionFaultInjectionPolicyAbortPtrType) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ToHttpRouteRuleActionFaultInjectionPolicyAbortOutput() HttpRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ToHttpRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionFaultInjectionPolicyAbort) *HttpRouteRuleActionFaultInjectionPolicyAbort {
+		return &v
+	}).(HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The HTTP status code used to abort the request.
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic which will be aborted.
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicyAbort) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput() HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) Elem() HttpRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicyAbort) HttpRouteRuleActionFaultInjectionPolicyAbort {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionFaultInjectionPolicyAbort
+		return ret
+	}).(HttpRouteRuleActionFaultInjectionPolicyAbortOutput)
+}
+
+// The HTTP status code used to abort the request.
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicyAbort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic which will be aborted.
+func (o HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicyAbort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyDelay struct {
+	// Specify a fixed delay before forwarding the request.
+	FixedDelay *string `pulumi:"fixedDelay"`
+	// The percentage of traffic on which delay will be injected.
+	Percentage *int `pulumi:"percentage"`
+}
+
+// HttpRouteRuleActionFaultInjectionPolicyDelayInput is an input type that accepts HttpRouteRuleActionFaultInjectionPolicyDelayArgs and HttpRouteRuleActionFaultInjectionPolicyDelayOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionFaultInjectionPolicyDelayInput` via:
+//
+//	HttpRouteRuleActionFaultInjectionPolicyDelayArgs{...}
+type HttpRouteRuleActionFaultInjectionPolicyDelayInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionFaultInjectionPolicyDelayOutput() HttpRouteRuleActionFaultInjectionPolicyDelayOutput
+	ToHttpRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayOutput
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyDelayArgs struct {
+	// Specify a fixed delay before forwarding the request.
+	FixedDelay pulumi.StringPtrInput `pulumi:"fixedDelay"`
+	// The percentage of traffic on which delay will be injected.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ToHttpRouteRuleActionFaultInjectionPolicyDelayOutput() HttpRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ToHttpRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyDelayOutput)
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionFaultInjectionPolicyDelayArgs) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyDelayOutput).ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionFaultInjectionPolicyDelayPtrInput is an input type that accepts HttpRouteRuleActionFaultInjectionPolicyDelayArgs, HttpRouteRuleActionFaultInjectionPolicyDelayPtr and HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionFaultInjectionPolicyDelayPtrInput` via:
+//
+//	        HttpRouteRuleActionFaultInjectionPolicyDelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionFaultInjectionPolicyDelayPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput
+	ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput
+}
+
+type httpRouteRuleActionFaultInjectionPolicyDelayPtrType HttpRouteRuleActionFaultInjectionPolicyDelayArgs
+
+func HttpRouteRuleActionFaultInjectionPolicyDelayPtr(v *HttpRouteRuleActionFaultInjectionPolicyDelayArgs) HttpRouteRuleActionFaultInjectionPolicyDelayPtrInput {
+	return (*httpRouteRuleActionFaultInjectionPolicyDelayPtrType)(v)
+}
+
+func (*httpRouteRuleActionFaultInjectionPolicyDelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionFaultInjectionPolicyDelayPtrType) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionFaultInjectionPolicyDelayPtrType) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ToHttpRouteRuleActionFaultInjectionPolicyDelayOutput() HttpRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ToHttpRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionFaultInjectionPolicyDelay) *HttpRouteRuleActionFaultInjectionPolicyDelay {
+		return &v
+	}).(HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+// Specify a fixed delay before forwarding the request.
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) FixedDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicyDelay) *string { return v.FixedDelay }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of traffic on which delay will be injected.
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionFaultInjectionPolicyDelay) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput() HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToHttpRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) Elem() HttpRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicyDelay) HttpRouteRuleActionFaultInjectionPolicyDelay {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionFaultInjectionPolicyDelay
+		return ret
+	}).(HttpRouteRuleActionFaultInjectionPolicyDelayOutput)
+}
+
+// Specify a fixed delay before forwarding the request.
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicyDelay) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FixedDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of traffic on which delay will be injected.
+func (o HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionFaultInjectionPolicyDelay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleActionRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was supplied in the request.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The port that will be used in the redirected request instead of the one that was supplied in the request.
+	PortRedirect *int `pulumi:"portRedirect"`
+	// Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+	PrefixRewrite *string `pulumi:"prefixRewrite"`
+	// The HTTP Status code to use for the redirect.
+	ResponseCode *string `pulumi:"responseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+	StripQuery *bool `pulumi:"stripQuery"`
+}
+
+// HttpRouteRuleActionRedirectInput is an input type that accepts HttpRouteRuleActionRedirectArgs and HttpRouteRuleActionRedirectOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRedirectInput` via:
+//
+//	HttpRouteRuleActionRedirectArgs{...}
+type HttpRouteRuleActionRedirectInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRedirectOutput() HttpRouteRuleActionRedirectOutput
+	ToHttpRouteRuleActionRedirectOutputWithContext(context.Context) HttpRouteRuleActionRedirectOutput
+}
+
+type HttpRouteRuleActionRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was supplied in the request.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The port that will be used in the redirected request instead of the one that was supplied in the request.
+	PortRedirect pulumi.IntPtrInput `pulumi:"portRedirect"`
+	// Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+	PrefixRewrite pulumi.StringPtrInput `pulumi:"prefixRewrite"`
+	// The HTTP Status code to use for the redirect.
+	ResponseCode pulumi.StringPtrInput `pulumi:"responseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
+}
+
+func (HttpRouteRuleActionRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRedirect)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionRedirectArgs) ToHttpRouteRuleActionRedirectOutput() HttpRouteRuleActionRedirectOutput {
+	return i.ToHttpRouteRuleActionRedirectOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRedirectArgs) ToHttpRouteRuleActionRedirectOutputWithContext(ctx context.Context) HttpRouteRuleActionRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRedirectOutput)
+}
+
+func (i HttpRouteRuleActionRedirectArgs) ToHttpRouteRuleActionRedirectPtrOutput() HttpRouteRuleActionRedirectPtrOutput {
+	return i.ToHttpRouteRuleActionRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRedirectArgs) ToHttpRouteRuleActionRedirectPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRedirectOutput).ToHttpRouteRuleActionRedirectPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionRedirectPtrInput is an input type that accepts HttpRouteRuleActionRedirectArgs, HttpRouteRuleActionRedirectPtr and HttpRouteRuleActionRedirectPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRedirectPtrInput` via:
+//
+//	        HttpRouteRuleActionRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionRedirectPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRedirectPtrOutput() HttpRouteRuleActionRedirectPtrOutput
+	ToHttpRouteRuleActionRedirectPtrOutputWithContext(context.Context) HttpRouteRuleActionRedirectPtrOutput
+}
+
+type httpRouteRuleActionRedirectPtrType HttpRouteRuleActionRedirectArgs
+
+func HttpRouteRuleActionRedirectPtr(v *HttpRouteRuleActionRedirectArgs) HttpRouteRuleActionRedirectPtrInput {
+	return (*httpRouteRuleActionRedirectPtrType)(v)
+}
+
+func (*httpRouteRuleActionRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRedirect)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionRedirectPtrType) ToHttpRouteRuleActionRedirectPtrOutput() HttpRouteRuleActionRedirectPtrOutput {
+	return i.ToHttpRouteRuleActionRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionRedirectPtrType) ToHttpRouteRuleActionRedirectPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRedirectPtrOutput)
+}
+
+type HttpRouteRuleActionRedirectOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRedirect)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRedirectOutput) ToHttpRouteRuleActionRedirectOutput() HttpRouteRuleActionRedirectOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRedirectOutput) ToHttpRouteRuleActionRedirectOutputWithContext(ctx context.Context) HttpRouteRuleActionRedirectOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRedirectOutput) ToHttpRouteRuleActionRedirectPtrOutput() HttpRouteRuleActionRedirectPtrOutput {
+	return o.ToHttpRouteRuleActionRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionRedirectOutput) ToHttpRouteRuleActionRedirectPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRedirect) *HttpRouteRuleActionRedirect {
+		return &v
+	}).(HttpRouteRuleActionRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was supplied in the request.
+func (o HttpRouteRuleActionRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https.
+func (o HttpRouteRuleActionRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+func (o HttpRouteRuleActionRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The port that will be used in the redirected request instead of the one that was supplied in the request.
+func (o HttpRouteRuleActionRedirectOutput) PortRedirect() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRedirect) *int { return v.PortRedirect }).(pulumi.IntPtrOutput)
+}
+
+// Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+func (o HttpRouteRuleActionRedirectOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRedirect) *string { return v.PrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for the redirect.
+func (o HttpRouteRuleActionRedirectOutput) ResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRedirect) *string { return v.ResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+func (o HttpRouteRuleActionRedirectOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRedirect) *bool { return v.StripQuery }).(pulumi.BoolPtrOutput)
+}
+
+type HttpRouteRuleActionRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRedirect)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRedirectPtrOutput) ToHttpRouteRuleActionRedirectPtrOutput() HttpRouteRuleActionRedirectPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRedirectPtrOutput) ToHttpRouteRuleActionRedirectPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRedirectPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRedirectPtrOutput) Elem() HttpRouteRuleActionRedirectOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) HttpRouteRuleActionRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionRedirect
+		return ret
+	}).(HttpRouteRuleActionRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was supplied in the request.
+func (o HttpRouteRuleActionRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https.
+func (o HttpRouteRuleActionRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+func (o HttpRouteRuleActionRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port that will be used in the redirected request instead of the one that was supplied in the request.
+func (o HttpRouteRuleActionRedirectPtrOutput) PortRedirect() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortRedirect
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+func (o HttpRouteRuleActionRedirectPtrOutput) PrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for the redirect.
+func (o HttpRouteRuleActionRedirectPtrOutput) ResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+func (o HttpRouteRuleActionRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StripQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+type HttpRouteRuleActionRequestHeaderModifier struct {
+	// Add the headers with given map where key is the name of the header, value is the value of the header.
+	Add map[string]string `pulumi:"add"`
+	// Remove headers (matching by header names) specified in the list.
+	Removes []string `pulumi:"removes"`
+	// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+	Set map[string]string `pulumi:"set"`
+}
+
+// HttpRouteRuleActionRequestHeaderModifierInput is an input type that accepts HttpRouteRuleActionRequestHeaderModifierArgs and HttpRouteRuleActionRequestHeaderModifierOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRequestHeaderModifierInput` via:
+//
+//	HttpRouteRuleActionRequestHeaderModifierArgs{...}
+type HttpRouteRuleActionRequestHeaderModifierInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRequestHeaderModifierOutput() HttpRouteRuleActionRequestHeaderModifierOutput
+	ToHttpRouteRuleActionRequestHeaderModifierOutputWithContext(context.Context) HttpRouteRuleActionRequestHeaderModifierOutput
+}
+
+type HttpRouteRuleActionRequestHeaderModifierArgs struct {
+	// Add the headers with given map where key is the name of the header, value is the value of the header.
+	Add pulumi.StringMapInput `pulumi:"add"`
+	// Remove headers (matching by header names) specified in the list.
+	Removes pulumi.StringArrayInput `pulumi:"removes"`
+	// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+	Set pulumi.StringMapInput `pulumi:"set"`
+}
+
+func (HttpRouteRuleActionRequestHeaderModifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRequestHeaderModifier)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionRequestHeaderModifierArgs) ToHttpRouteRuleActionRequestHeaderModifierOutput() HttpRouteRuleActionRequestHeaderModifierOutput {
+	return i.ToHttpRouteRuleActionRequestHeaderModifierOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRequestHeaderModifierArgs) ToHttpRouteRuleActionRequestHeaderModifierOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestHeaderModifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestHeaderModifierOutput)
+}
+
+func (i HttpRouteRuleActionRequestHeaderModifierArgs) ToHttpRouteRuleActionRequestHeaderModifierPtrOutput() HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return i.ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRequestHeaderModifierArgs) ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestHeaderModifierOutput).ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionRequestHeaderModifierPtrInput is an input type that accepts HttpRouteRuleActionRequestHeaderModifierArgs, HttpRouteRuleActionRequestHeaderModifierPtr and HttpRouteRuleActionRequestHeaderModifierPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRequestHeaderModifierPtrInput` via:
+//
+//	        HttpRouteRuleActionRequestHeaderModifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionRequestHeaderModifierPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRequestHeaderModifierPtrOutput() HttpRouteRuleActionRequestHeaderModifierPtrOutput
+	ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(context.Context) HttpRouteRuleActionRequestHeaderModifierPtrOutput
+}
+
+type httpRouteRuleActionRequestHeaderModifierPtrType HttpRouteRuleActionRequestHeaderModifierArgs
+
+func HttpRouteRuleActionRequestHeaderModifierPtr(v *HttpRouteRuleActionRequestHeaderModifierArgs) HttpRouteRuleActionRequestHeaderModifierPtrInput {
+	return (*httpRouteRuleActionRequestHeaderModifierPtrType)(v)
+}
+
+func (*httpRouteRuleActionRequestHeaderModifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRequestHeaderModifier)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionRequestHeaderModifierPtrType) ToHttpRouteRuleActionRequestHeaderModifierPtrOutput() HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return i.ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionRequestHeaderModifierPtrType) ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestHeaderModifierPtrOutput)
+}
+
+type HttpRouteRuleActionRequestHeaderModifierOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRequestHeaderModifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRequestHeaderModifier)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) ToHttpRouteRuleActionRequestHeaderModifierOutput() HttpRouteRuleActionRequestHeaderModifierOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) ToHttpRouteRuleActionRequestHeaderModifierOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestHeaderModifierOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) ToHttpRouteRuleActionRequestHeaderModifierPtrOutput() HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return o.ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRequestHeaderModifier) *HttpRouteRuleActionRequestHeaderModifier {
+		return &v
+	}).(HttpRouteRuleActionRequestHeaderModifierPtrOutput)
+}
+
+// Add the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRequestHeaderModifier) map[string]string { return v.Add }).(pulumi.StringMapOutput)
+}
+
+// Remove headers (matching by header names) specified in the list.
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRequestHeaderModifier) []string { return v.Removes }).(pulumi.StringArrayOutput)
+}
+
+// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionRequestHeaderModifierOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRequestHeaderModifier) map[string]string { return v.Set }).(pulumi.StringMapOutput)
+}
+
+type HttpRouteRuleActionRequestHeaderModifierPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRequestHeaderModifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRequestHeaderModifier)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) ToHttpRouteRuleActionRequestHeaderModifierPtrOutput() HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) ToHttpRouteRuleActionRequestHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestHeaderModifierPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) Elem() HttpRouteRuleActionRequestHeaderModifierOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestHeaderModifier) HttpRouteRuleActionRequestHeaderModifier {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionRequestHeaderModifier
+		return ret
+	}).(HttpRouteRuleActionRequestHeaderModifierOutput)
+}
+
+// Add the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestHeaderModifier) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringMapOutput)
+}
+
+// Remove headers (matching by header names) specified in the list.
+func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestHeaderModifier) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Removes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionRequestHeaderModifierPtrOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestHeaderModifier) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Set
+	}).(pulumi.StringMapOutput)
+}
+
+type HttpRouteRuleActionRequestMirrorPolicy struct {
+	// The destination the requests will be mirrored to.
+	// Structure is documented below.
+	Destination *HttpRouteRuleActionRequestMirrorPolicyDestination `pulumi:"destination"`
+}
+
+// HttpRouteRuleActionRequestMirrorPolicyInput is an input type that accepts HttpRouteRuleActionRequestMirrorPolicyArgs and HttpRouteRuleActionRequestMirrorPolicyOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRequestMirrorPolicyInput` via:
+//
+//	HttpRouteRuleActionRequestMirrorPolicyArgs{...}
+type HttpRouteRuleActionRequestMirrorPolicyInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRequestMirrorPolicyOutput() HttpRouteRuleActionRequestMirrorPolicyOutput
+	ToHttpRouteRuleActionRequestMirrorPolicyOutputWithContext(context.Context) HttpRouteRuleActionRequestMirrorPolicyOutput
+}
+
+type HttpRouteRuleActionRequestMirrorPolicyArgs struct {
+	// The destination the requests will be mirrored to.
+	// Structure is documented below.
+	Destination HttpRouteRuleActionRequestMirrorPolicyDestinationPtrInput `pulumi:"destination"`
+}
+
+func (HttpRouteRuleActionRequestMirrorPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyArgs) ToHttpRouteRuleActionRequestMirrorPolicyOutput() HttpRouteRuleActionRequestMirrorPolicyOutput {
+	return i.ToHttpRouteRuleActionRequestMirrorPolicyOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyArgs) ToHttpRouteRuleActionRequestMirrorPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyOutput)
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyArgs) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutput() HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyArgs) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyOutput).ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionRequestMirrorPolicyPtrInput is an input type that accepts HttpRouteRuleActionRequestMirrorPolicyArgs, HttpRouteRuleActionRequestMirrorPolicyPtr and HttpRouteRuleActionRequestMirrorPolicyPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRequestMirrorPolicyPtrInput` via:
+//
+//	        HttpRouteRuleActionRequestMirrorPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionRequestMirrorPolicyPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRequestMirrorPolicyPtrOutput() HttpRouteRuleActionRequestMirrorPolicyPtrOutput
+	ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(context.Context) HttpRouteRuleActionRequestMirrorPolicyPtrOutput
+}
+
+type httpRouteRuleActionRequestMirrorPolicyPtrType HttpRouteRuleActionRequestMirrorPolicyArgs
+
+func HttpRouteRuleActionRequestMirrorPolicyPtr(v *HttpRouteRuleActionRequestMirrorPolicyArgs) HttpRouteRuleActionRequestMirrorPolicyPtrInput {
+	return (*httpRouteRuleActionRequestMirrorPolicyPtrType)(v)
+}
+
+func (*httpRouteRuleActionRequestMirrorPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionRequestMirrorPolicyPtrType) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutput() HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionRequestMirrorPolicyPtrType) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyPtrOutput)
+}
+
+type HttpRouteRuleActionRequestMirrorPolicyOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRequestMirrorPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyOutput) ToHttpRouteRuleActionRequestMirrorPolicyOutput() HttpRouteRuleActionRequestMirrorPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyOutput) ToHttpRouteRuleActionRequestMirrorPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyOutput) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutput() HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return o.ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyOutput) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRequestMirrorPolicy) *HttpRouteRuleActionRequestMirrorPolicy {
+		return &v
+	}).(HttpRouteRuleActionRequestMirrorPolicyPtrOutput)
+}
+
+// The destination the requests will be mirrored to.
+// Structure is documented below.
+func (o HttpRouteRuleActionRequestMirrorPolicyOutput) Destination() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRequestMirrorPolicy) *HttpRouteRuleActionRequestMirrorPolicyDestination {
+		return v.Destination
+	}).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
+}
+
+type HttpRouteRuleActionRequestMirrorPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRequestMirrorPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutput() HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) ToHttpRouteRuleActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) Elem() HttpRouteRuleActionRequestMirrorPolicyOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestMirrorPolicy) HttpRouteRuleActionRequestMirrorPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionRequestMirrorPolicy
+		return ret
+	}).(HttpRouteRuleActionRequestMirrorPolicyOutput)
+}
+
+// The destination the requests will be mirrored to.
+// Structure is documented below.
+func (o HttpRouteRuleActionRequestMirrorPolicyPtrOutput) Destination() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestMirrorPolicy) *HttpRouteRuleActionRequestMirrorPolicyDestination {
+		if v == nil {
+			return nil
+		}
+		return v.Destination
+	}).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
+}
+
+type HttpRouteRuleActionRequestMirrorPolicyDestination struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName *string `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+	// If weights are specified for any one service name, they need to be specified for all of them.
+	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	Weight *int `pulumi:"weight"`
+}
+
+// HttpRouteRuleActionRequestMirrorPolicyDestinationInput is an input type that accepts HttpRouteRuleActionRequestMirrorPolicyDestinationArgs and HttpRouteRuleActionRequestMirrorPolicyDestinationOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRequestMirrorPolicyDestinationInput` via:
+//
+//	HttpRouteRuleActionRequestMirrorPolicyDestinationArgs{...}
+type HttpRouteRuleActionRequestMirrorPolicyDestinationInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationOutput
+	ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutputWithContext(context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationOutput
+}
+
+type HttpRouteRuleActionRequestMirrorPolicyDestinationArgs struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+	// If weights are specified for any one service name, they need to be specified for all of them.
+	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicyDestination)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationOutput {
+	return i.ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyDestinationOutput)
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return i.ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyDestinationOutput).ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionRequestMirrorPolicyDestinationPtrInput is an input type that accepts HttpRouteRuleActionRequestMirrorPolicyDestinationArgs, HttpRouteRuleActionRequestMirrorPolicyDestinationPtr and HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRequestMirrorPolicyDestinationPtrInput` via:
+//
+//	        HttpRouteRuleActionRequestMirrorPolicyDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionRequestMirrorPolicyDestinationPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput
+	ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput
+}
+
+type httpRouteRuleActionRequestMirrorPolicyDestinationPtrType HttpRouteRuleActionRequestMirrorPolicyDestinationArgs
+
+func HttpRouteRuleActionRequestMirrorPolicyDestinationPtr(v *HttpRouteRuleActionRequestMirrorPolicyDestinationArgs) HttpRouteRuleActionRequestMirrorPolicyDestinationPtrInput {
+	return (*httpRouteRuleActionRequestMirrorPolicyDestinationPtrType)(v)
+}
+
+func (*httpRouteRuleActionRequestMirrorPolicyDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRequestMirrorPolicyDestination)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionRequestMirrorPolicyDestinationPtrType) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return i.ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionRequestMirrorPolicyDestinationPtrType) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
+}
+
+type HttpRouteRuleActionRequestMirrorPolicyDestinationOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicyDestination)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ToHttpRouteRuleActionRequestMirrorPolicyDestinationOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return o.ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRequestMirrorPolicyDestination) *HttpRouteRuleActionRequestMirrorPolicyDestination {
+		return &v
+	}).(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput)
+}
+
+// The URL of a BackendService to route traffic to.
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRequestMirrorPolicyDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+// If weights are specified for any one service name, they need to be specified for all of them.
+// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRequestMirrorPolicyDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRequestMirrorPolicyDestination)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput() HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ToHttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) Elem() HttpRouteRuleActionRequestMirrorPolicyDestinationOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestMirrorPolicyDestination) HttpRouteRuleActionRequestMirrorPolicyDestination {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionRequestMirrorPolicyDestination
+		return ret
+	}).(HttpRouteRuleActionRequestMirrorPolicyDestinationOutput)
+}
+
+// The URL of a BackendService to route traffic to.
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestMirrorPolicyDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+// If weights are specified for any one service name, they need to be specified for all of them.
+// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+func (o HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRequestMirrorPolicyDestination) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Weight
+	}).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleActionResponseHeaderModifier struct {
+	// Add the headers with given map where key is the name of the header, value is the value of the header.
+	Add map[string]string `pulumi:"add"`
+	// Remove headers (matching by header names) specified in the list.
+	Removes []string `pulumi:"removes"`
+	// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+	Set map[string]string `pulumi:"set"`
+}
+
+// HttpRouteRuleActionResponseHeaderModifierInput is an input type that accepts HttpRouteRuleActionResponseHeaderModifierArgs and HttpRouteRuleActionResponseHeaderModifierOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionResponseHeaderModifierInput` via:
+//
+//	HttpRouteRuleActionResponseHeaderModifierArgs{...}
+type HttpRouteRuleActionResponseHeaderModifierInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionResponseHeaderModifierOutput() HttpRouteRuleActionResponseHeaderModifierOutput
+	ToHttpRouteRuleActionResponseHeaderModifierOutputWithContext(context.Context) HttpRouteRuleActionResponseHeaderModifierOutput
+}
+
+type HttpRouteRuleActionResponseHeaderModifierArgs struct {
+	// Add the headers with given map where key is the name of the header, value is the value of the header.
+	Add pulumi.StringMapInput `pulumi:"add"`
+	// Remove headers (matching by header names) specified in the list.
+	Removes pulumi.StringArrayInput `pulumi:"removes"`
+	// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+	Set pulumi.StringMapInput `pulumi:"set"`
+}
+
+func (HttpRouteRuleActionResponseHeaderModifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionResponseHeaderModifier)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionResponseHeaderModifierArgs) ToHttpRouteRuleActionResponseHeaderModifierOutput() HttpRouteRuleActionResponseHeaderModifierOutput {
+	return i.ToHttpRouteRuleActionResponseHeaderModifierOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionResponseHeaderModifierArgs) ToHttpRouteRuleActionResponseHeaderModifierOutputWithContext(ctx context.Context) HttpRouteRuleActionResponseHeaderModifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionResponseHeaderModifierOutput)
+}
+
+func (i HttpRouteRuleActionResponseHeaderModifierArgs) ToHttpRouteRuleActionResponseHeaderModifierPtrOutput() HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return i.ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionResponseHeaderModifierArgs) ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionResponseHeaderModifierOutput).ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionResponseHeaderModifierPtrInput is an input type that accepts HttpRouteRuleActionResponseHeaderModifierArgs, HttpRouteRuleActionResponseHeaderModifierPtr and HttpRouteRuleActionResponseHeaderModifierPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionResponseHeaderModifierPtrInput` via:
+//
+//	        HttpRouteRuleActionResponseHeaderModifierArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionResponseHeaderModifierPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionResponseHeaderModifierPtrOutput() HttpRouteRuleActionResponseHeaderModifierPtrOutput
+	ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(context.Context) HttpRouteRuleActionResponseHeaderModifierPtrOutput
+}
+
+type httpRouteRuleActionResponseHeaderModifierPtrType HttpRouteRuleActionResponseHeaderModifierArgs
+
+func HttpRouteRuleActionResponseHeaderModifierPtr(v *HttpRouteRuleActionResponseHeaderModifierArgs) HttpRouteRuleActionResponseHeaderModifierPtrInput {
+	return (*httpRouteRuleActionResponseHeaderModifierPtrType)(v)
+}
+
+func (*httpRouteRuleActionResponseHeaderModifierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionResponseHeaderModifier)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionResponseHeaderModifierPtrType) ToHttpRouteRuleActionResponseHeaderModifierPtrOutput() HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return i.ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionResponseHeaderModifierPtrType) ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionResponseHeaderModifierPtrOutput)
+}
+
+type HttpRouteRuleActionResponseHeaderModifierOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionResponseHeaderModifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionResponseHeaderModifier)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) ToHttpRouteRuleActionResponseHeaderModifierOutput() HttpRouteRuleActionResponseHeaderModifierOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) ToHttpRouteRuleActionResponseHeaderModifierOutputWithContext(ctx context.Context) HttpRouteRuleActionResponseHeaderModifierOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) ToHttpRouteRuleActionResponseHeaderModifierPtrOutput() HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return o.ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionResponseHeaderModifier) *HttpRouteRuleActionResponseHeaderModifier {
+		return &v
+	}).(HttpRouteRuleActionResponseHeaderModifierPtrOutput)
+}
+
+// Add the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionResponseHeaderModifier) map[string]string { return v.Add }).(pulumi.StringMapOutput)
+}
+
+// Remove headers (matching by header names) specified in the list.
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionResponseHeaderModifier) []string { return v.Removes }).(pulumi.StringArrayOutput)
+}
+
+// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionResponseHeaderModifierOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionResponseHeaderModifier) map[string]string { return v.Set }).(pulumi.StringMapOutput)
+}
+
+type HttpRouteRuleActionResponseHeaderModifierPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionResponseHeaderModifierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionResponseHeaderModifier)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) ToHttpRouteRuleActionResponseHeaderModifierPtrOutput() HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) ToHttpRouteRuleActionResponseHeaderModifierPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionResponseHeaderModifierPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) Elem() HttpRouteRuleActionResponseHeaderModifierOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionResponseHeaderModifier) HttpRouteRuleActionResponseHeaderModifier {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionResponseHeaderModifier
+		return ret
+	}).(HttpRouteRuleActionResponseHeaderModifierOutput)
+}
+
+// Add the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) Add() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionResponseHeaderModifier) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Add
+	}).(pulumi.StringMapOutput)
+}
+
+// Remove headers (matching by header names) specified in the list.
+func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) Removes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionResponseHeaderModifier) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Removes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+func (o HttpRouteRuleActionResponseHeaderModifierPtrOutput) Set() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionResponseHeaderModifier) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Set
+	}).(pulumi.StringMapOutput)
+}
+
+type HttpRouteRuleActionRetryPolicy struct {
+	// Specifies the allowed number of retries.
+	NumRetries *int `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	PerTryTimeout *string `pulumi:"perTryTimeout"`
+	// Specifies one or more conditions when this retry policy applies.
+	RetryConditions []string `pulumi:"retryConditions"`
+}
+
+// HttpRouteRuleActionRetryPolicyInput is an input type that accepts HttpRouteRuleActionRetryPolicyArgs and HttpRouteRuleActionRetryPolicyOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRetryPolicyInput` via:
+//
+//	HttpRouteRuleActionRetryPolicyArgs{...}
+type HttpRouteRuleActionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRetryPolicyOutput() HttpRouteRuleActionRetryPolicyOutput
+	ToHttpRouteRuleActionRetryPolicyOutputWithContext(context.Context) HttpRouteRuleActionRetryPolicyOutput
+}
+
+type HttpRouteRuleActionRetryPolicyArgs struct {
+	// Specifies the allowed number of retries.
+	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	PerTryTimeout pulumi.StringPtrInput `pulumi:"perTryTimeout"`
+	// Specifies one or more conditions when this retry policy applies.
+	RetryConditions pulumi.StringArrayInput `pulumi:"retryConditions"`
+}
+
+func (HttpRouteRuleActionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionRetryPolicyArgs) ToHttpRouteRuleActionRetryPolicyOutput() HttpRouteRuleActionRetryPolicyOutput {
+	return i.ToHttpRouteRuleActionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRetryPolicyArgs) ToHttpRouteRuleActionRetryPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRetryPolicyOutput)
+}
+
+func (i HttpRouteRuleActionRetryPolicyArgs) ToHttpRouteRuleActionRetryPolicyPtrOutput() HttpRouteRuleActionRetryPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionRetryPolicyArgs) ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRetryPolicyOutput).ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionRetryPolicyPtrInput is an input type that accepts HttpRouteRuleActionRetryPolicyArgs, HttpRouteRuleActionRetryPolicyPtr and HttpRouteRuleActionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionRetryPolicyPtrInput` via:
+//
+//	        HttpRouteRuleActionRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionRetryPolicyPtrOutput() HttpRouteRuleActionRetryPolicyPtrOutput
+	ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(context.Context) HttpRouteRuleActionRetryPolicyPtrOutput
+}
+
+type httpRouteRuleActionRetryPolicyPtrType HttpRouteRuleActionRetryPolicyArgs
+
+func HttpRouteRuleActionRetryPolicyPtr(v *HttpRouteRuleActionRetryPolicyArgs) HttpRouteRuleActionRetryPolicyPtrInput {
+	return (*httpRouteRuleActionRetryPolicyPtrType)(v)
+}
+
+func (*httpRouteRuleActionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionRetryPolicyPtrType) ToHttpRouteRuleActionRetryPolicyPtrOutput() HttpRouteRuleActionRetryPolicyPtrOutput {
+	return i.ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionRetryPolicyPtrType) ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionRetryPolicyPtrOutput)
+}
+
+type HttpRouteRuleActionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRetryPolicyOutput) ToHttpRouteRuleActionRetryPolicyOutput() HttpRouteRuleActionRetryPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRetryPolicyOutput) ToHttpRouteRuleActionRetryPolicyOutputWithContext(ctx context.Context) HttpRouteRuleActionRetryPolicyOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRetryPolicyOutput) ToHttpRouteRuleActionRetryPolicyPtrOutput() HttpRouteRuleActionRetryPolicyPtrOutput {
+	return o.ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionRetryPolicyOutput) ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionRetryPolicy) *HttpRouteRuleActionRetryPolicy {
+		return &v
+	}).(HttpRouteRuleActionRetryPolicyPtrOutput)
+}
+
+// Specifies the allowed number of retries.
+func (o HttpRouteRuleActionRetryPolicyOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o HttpRouteRuleActionRetryPolicyOutput) PerTryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRetryPolicy) *string { return v.PerTryTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Specifies one or more conditions when this retry policy applies.
+func (o HttpRouteRuleActionRetryPolicyOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionRetryPolicy) []string { return v.RetryConditions }).(pulumi.StringArrayOutput)
+}
+
+type HttpRouteRuleActionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionRetryPolicyPtrOutput) ToHttpRouteRuleActionRetryPolicyPtrOutput() HttpRouteRuleActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRetryPolicyPtrOutput) ToHttpRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) HttpRouteRuleActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionRetryPolicyPtrOutput) Elem() HttpRouteRuleActionRetryPolicyOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRetryPolicy) HttpRouteRuleActionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionRetryPolicy
+		return ret
+	}).(HttpRouteRuleActionRetryPolicyOutput)
+}
+
+// Specifies the allowed number of retries.
+func (o HttpRouteRuleActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o HttpRouteRuleActionRetryPolicyPtrOutput) PerTryTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRetryPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerTryTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies one or more conditions when this retry policy applies.
+func (o HttpRouteRuleActionRetryPolicyPtrOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionRetryPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryConditions
+	}).(pulumi.StringArrayOutput)
+}
+
+type HttpRouteRuleActionUrlRewrite struct {
+	// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+	HostRewrite *string `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+	PathPrefixRewrite *string `pulumi:"pathPrefixRewrite"`
+}
+
+// HttpRouteRuleActionUrlRewriteInput is an input type that accepts HttpRouteRuleActionUrlRewriteArgs and HttpRouteRuleActionUrlRewriteOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionUrlRewriteInput` via:
+//
+//	HttpRouteRuleActionUrlRewriteArgs{...}
+type HttpRouteRuleActionUrlRewriteInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionUrlRewriteOutput() HttpRouteRuleActionUrlRewriteOutput
+	ToHttpRouteRuleActionUrlRewriteOutputWithContext(context.Context) HttpRouteRuleActionUrlRewriteOutput
+}
+
+type HttpRouteRuleActionUrlRewriteArgs struct {
+	// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+	PathPrefixRewrite pulumi.StringPtrInput `pulumi:"pathPrefixRewrite"`
+}
+
+func (HttpRouteRuleActionUrlRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionUrlRewrite)(nil)).Elem()
+}
+
+func (i HttpRouteRuleActionUrlRewriteArgs) ToHttpRouteRuleActionUrlRewriteOutput() HttpRouteRuleActionUrlRewriteOutput {
+	return i.ToHttpRouteRuleActionUrlRewriteOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionUrlRewriteArgs) ToHttpRouteRuleActionUrlRewriteOutputWithContext(ctx context.Context) HttpRouteRuleActionUrlRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionUrlRewriteOutput)
+}
+
+func (i HttpRouteRuleActionUrlRewriteArgs) ToHttpRouteRuleActionUrlRewritePtrOutput() HttpRouteRuleActionUrlRewritePtrOutput {
+	return i.ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleActionUrlRewriteArgs) ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionUrlRewriteOutput).ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleActionUrlRewritePtrInput is an input type that accepts HttpRouteRuleActionUrlRewriteArgs, HttpRouteRuleActionUrlRewritePtr and HttpRouteRuleActionUrlRewritePtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleActionUrlRewritePtrInput` via:
+//
+//	        HttpRouteRuleActionUrlRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleActionUrlRewritePtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleActionUrlRewritePtrOutput() HttpRouteRuleActionUrlRewritePtrOutput
+	ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(context.Context) HttpRouteRuleActionUrlRewritePtrOutput
+}
+
+type httpRouteRuleActionUrlRewritePtrType HttpRouteRuleActionUrlRewriteArgs
+
+func HttpRouteRuleActionUrlRewritePtr(v *HttpRouteRuleActionUrlRewriteArgs) HttpRouteRuleActionUrlRewritePtrInput {
+	return (*httpRouteRuleActionUrlRewritePtrType)(v)
+}
+
+func (*httpRouteRuleActionUrlRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionUrlRewrite)(nil)).Elem()
+}
+
+func (i *httpRouteRuleActionUrlRewritePtrType) ToHttpRouteRuleActionUrlRewritePtrOutput() HttpRouteRuleActionUrlRewritePtrOutput {
+	return i.ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleActionUrlRewritePtrType) ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleActionUrlRewritePtrOutput)
+}
+
+type HttpRouteRuleActionUrlRewriteOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionUrlRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleActionUrlRewrite)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionUrlRewriteOutput) ToHttpRouteRuleActionUrlRewriteOutput() HttpRouteRuleActionUrlRewriteOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionUrlRewriteOutput) ToHttpRouteRuleActionUrlRewriteOutputWithContext(ctx context.Context) HttpRouteRuleActionUrlRewriteOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionUrlRewriteOutput) ToHttpRouteRuleActionUrlRewritePtrOutput() HttpRouteRuleActionUrlRewritePtrOutput {
+	return o.ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleActionUrlRewriteOutput) ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionUrlRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleActionUrlRewrite) *HttpRouteRuleActionUrlRewrite {
+		return &v
+	}).(HttpRouteRuleActionUrlRewritePtrOutput)
+}
+
+// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+func (o HttpRouteRuleActionUrlRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionUrlRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+func (o HttpRouteRuleActionUrlRewriteOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleActionUrlRewrite) *string { return v.PathPrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleActionUrlRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleActionUrlRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleActionUrlRewrite)(nil)).Elem()
+}
+
+func (o HttpRouteRuleActionUrlRewritePtrOutput) ToHttpRouteRuleActionUrlRewritePtrOutput() HttpRouteRuleActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionUrlRewritePtrOutput) ToHttpRouteRuleActionUrlRewritePtrOutputWithContext(ctx context.Context) HttpRouteRuleActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleActionUrlRewritePtrOutput) Elem() HttpRouteRuleActionUrlRewriteOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionUrlRewrite) HttpRouteRuleActionUrlRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleActionUrlRewrite
+		return ret
+	}).(HttpRouteRuleActionUrlRewriteOutput)
+}
+
+// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+func (o HttpRouteRuleActionUrlRewritePtrOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+func (o HttpRouteRuleActionUrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathPrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleMatch struct {
+	// The HTTP request path value should exactly match this value.
+	FullPathMatch *string `pulumi:"fullPathMatch"`
+	// Specifies a list of HTTP request headers to match against.
+	// Structure is documented below.
+	Headers []HttpRouteRuleMatchHeader `pulumi:"headers"`
+	// Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
+	IgnoreCase *bool `pulumi:"ignoreCase"`
+	// The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
+	PrefixMatch *string `pulumi:"prefixMatch"`
+	// Specifies a list of query parameters to match against.
+	// Structure is documented below.
+	QueryParameters []HttpRouteRuleMatchQueryParameter `pulumi:"queryParameters"`
+	// The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+	RegexMatch *string `pulumi:"regexMatch"`
+}
+
+// HttpRouteRuleMatchInput is an input type that accepts HttpRouteRuleMatchArgs and HttpRouteRuleMatchOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchInput` via:
+//
+//	HttpRouteRuleMatchArgs{...}
+type HttpRouteRuleMatchInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchOutput() HttpRouteRuleMatchOutput
+	ToHttpRouteRuleMatchOutputWithContext(context.Context) HttpRouteRuleMatchOutput
+}
+
+type HttpRouteRuleMatchArgs struct {
+	// The HTTP request path value should exactly match this value.
+	FullPathMatch pulumi.StringPtrInput `pulumi:"fullPathMatch"`
+	// Specifies a list of HTTP request headers to match against.
+	// Structure is documented below.
+	Headers HttpRouteRuleMatchHeaderArrayInput `pulumi:"headers"`
+	// Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
+	IgnoreCase pulumi.BoolPtrInput `pulumi:"ignoreCase"`
+	// The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
+	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
+	// Specifies a list of query parameters to match against.
+	// Structure is documented below.
+	QueryParameters HttpRouteRuleMatchQueryParameterArrayInput `pulumi:"queryParameters"`
+	// The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
+}
+
+func (HttpRouteRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatch)(nil)).Elem()
+}
+
+func (i HttpRouteRuleMatchArgs) ToHttpRouteRuleMatchOutput() HttpRouteRuleMatchOutput {
+	return i.ToHttpRouteRuleMatchOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchArgs) ToHttpRouteRuleMatchOutputWithContext(ctx context.Context) HttpRouteRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchOutput)
+}
+
+// HttpRouteRuleMatchArrayInput is an input type that accepts HttpRouteRuleMatchArray and HttpRouteRuleMatchArrayOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchArrayInput` via:
+//
+//	HttpRouteRuleMatchArray{ HttpRouteRuleMatchArgs{...} }
+type HttpRouteRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchArrayOutput() HttpRouteRuleMatchArrayOutput
+	ToHttpRouteRuleMatchArrayOutputWithContext(context.Context) HttpRouteRuleMatchArrayOutput
+}
+
+type HttpRouteRuleMatchArray []HttpRouteRuleMatchInput
+
+func (HttpRouteRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleMatch)(nil)).Elem()
+}
+
+func (i HttpRouteRuleMatchArray) ToHttpRouteRuleMatchArrayOutput() HttpRouteRuleMatchArrayOutput {
+	return i.ToHttpRouteRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchArray) ToHttpRouteRuleMatchArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchArrayOutput)
+}
+
+type HttpRouteRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatch)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchOutput) ToHttpRouteRuleMatchOutput() HttpRouteRuleMatchOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchOutput) ToHttpRouteRuleMatchOutputWithContext(ctx context.Context) HttpRouteRuleMatchOutput {
+	return o
+}
+
+// The HTTP request path value should exactly match this value.
+func (o HttpRouteRuleMatchOutput) FullPathMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.FullPathMatch }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a list of HTTP request headers to match against.
+// Structure is documented below.
+func (o HttpRouteRuleMatchOutput) Headers() HttpRouteRuleMatchHeaderArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) []HttpRouteRuleMatchHeader { return v.Headers }).(HttpRouteRuleMatchHeaderArrayOutput)
+}
+
+// Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
+func (o HttpRouteRuleMatchOutput) IgnoreCase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) *bool { return v.IgnoreCase }).(pulumi.BoolPtrOutput)
+}
+
+// The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
+func (o HttpRouteRuleMatchOutput) PrefixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a list of query parameters to match against.
+// Structure is documented below.
+func (o HttpRouteRuleMatchOutput) QueryParameters() HttpRouteRuleMatchQueryParameterArrayOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) []HttpRouteRuleMatchQueryParameter { return v.QueryParameters }).(HttpRouteRuleMatchQueryParameterArrayOutput)
+}
+
+// The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+func (o HttpRouteRuleMatchOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatch) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleMatch)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchArrayOutput) ToHttpRouteRuleMatchArrayOutput() HttpRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchArrayOutput) ToHttpRouteRuleMatchArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRuleMatch {
+		return vs[0].([]HttpRouteRuleMatch)[vs[1].(int)]
+	}).(HttpRouteRuleMatchOutput)
+}
+
+type HttpRouteRuleMatchHeader struct {
+	// The value of the header should match exactly the content of exactMatch.
+	ExactMatch *string `pulumi:"exactMatch"`
+	// The name of the HTTP header to match against.
+	Header *string `pulumi:"header"`
+	// If specified, the match result will be inverted before checking. Default value is set to false.
+	InvertMatch *bool `pulumi:"invertMatch"`
+	// The value of the header must start with the contents of prefixMatch.
+	PrefixMatch *string `pulumi:"prefixMatch"`
+	// A header with headerName must exist. The match takes place whether or not the header has a value.
+	PresentMatch *bool `pulumi:"presentMatch"`
+	// If specified, the rule will match if the request header value is within the range.
+	// Structure is documented below.
+	RangeMatch *HttpRouteRuleMatchHeaderRangeMatch `pulumi:"rangeMatch"`
+	// The value of the header must match the regular expression specified in regexMatch.
+	RegexMatch *string `pulumi:"regexMatch"`
+	// The value of the header must end with the contents of suffixMatch.
+	SuffixMatch *string `pulumi:"suffixMatch"`
+}
+
+// HttpRouteRuleMatchHeaderInput is an input type that accepts HttpRouteRuleMatchHeaderArgs and HttpRouteRuleMatchHeaderOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchHeaderInput` via:
+//
+//	HttpRouteRuleMatchHeaderArgs{...}
+type HttpRouteRuleMatchHeaderInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchHeaderOutput() HttpRouteRuleMatchHeaderOutput
+	ToHttpRouteRuleMatchHeaderOutputWithContext(context.Context) HttpRouteRuleMatchHeaderOutput
+}
+
+type HttpRouteRuleMatchHeaderArgs struct {
+	// The value of the header should match exactly the content of exactMatch.
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// The name of the HTTP header to match against.
+	Header pulumi.StringPtrInput `pulumi:"header"`
+	// If specified, the match result will be inverted before checking. Default value is set to false.
+	InvertMatch pulumi.BoolPtrInput `pulumi:"invertMatch"`
+	// The value of the header must start with the contents of prefixMatch.
+	PrefixMatch pulumi.StringPtrInput `pulumi:"prefixMatch"`
+	// A header with headerName must exist. The match takes place whether or not the header has a value.
+	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
+	// If specified, the rule will match if the request header value is within the range.
+	// Structure is documented below.
+	RangeMatch HttpRouteRuleMatchHeaderRangeMatchPtrInput `pulumi:"rangeMatch"`
+	// The value of the header must match the regular expression specified in regexMatch.
+	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
+	// The value of the header must end with the contents of suffixMatch.
+	SuffixMatch pulumi.StringPtrInput `pulumi:"suffixMatch"`
+}
+
+func (HttpRouteRuleMatchHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (i HttpRouteRuleMatchHeaderArgs) ToHttpRouteRuleMatchHeaderOutput() HttpRouteRuleMatchHeaderOutput {
+	return i.ToHttpRouteRuleMatchHeaderOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchHeaderArgs) ToHttpRouteRuleMatchHeaderOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderOutput)
+}
+
+// HttpRouteRuleMatchHeaderArrayInput is an input type that accepts HttpRouteRuleMatchHeaderArray and HttpRouteRuleMatchHeaderArrayOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchHeaderArrayInput` via:
+//
+//	HttpRouteRuleMatchHeaderArray{ HttpRouteRuleMatchHeaderArgs{...} }
+type HttpRouteRuleMatchHeaderArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchHeaderArrayOutput() HttpRouteRuleMatchHeaderArrayOutput
+	ToHttpRouteRuleMatchHeaderArrayOutputWithContext(context.Context) HttpRouteRuleMatchHeaderArrayOutput
+}
+
+type HttpRouteRuleMatchHeaderArray []HttpRouteRuleMatchHeaderInput
+
+func (HttpRouteRuleMatchHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (i HttpRouteRuleMatchHeaderArray) ToHttpRouteRuleMatchHeaderArrayOutput() HttpRouteRuleMatchHeaderArrayOutput {
+	return i.ToHttpRouteRuleMatchHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchHeaderArray) ToHttpRouteRuleMatchHeaderArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderArrayOutput)
+}
+
+type HttpRouteRuleMatchHeaderOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchHeaderOutput) ToHttpRouteRuleMatchHeaderOutput() HttpRouteRuleMatchHeaderOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchHeaderOutput) ToHttpRouteRuleMatchHeaderOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderOutput {
+	return o
+}
+
+// The value of the header should match exactly the content of exactMatch.
+func (o HttpRouteRuleMatchHeaderOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// The name of the HTTP header to match against.
+func (o HttpRouteRuleMatchHeaderOutput) Header() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *string { return v.Header }).(pulumi.StringPtrOutput)
+}
+
+// If specified, the match result will be inverted before checking. Default value is set to false.
+func (o HttpRouteRuleMatchHeaderOutput) InvertMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *bool { return v.InvertMatch }).(pulumi.BoolPtrOutput)
+}
+
+// The value of the header must start with the contents of prefixMatch.
+func (o HttpRouteRuleMatchHeaderOutput) PrefixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *string { return v.PrefixMatch }).(pulumi.StringPtrOutput)
+}
+
+// A header with headerName must exist. The match takes place whether or not the header has a value.
+func (o HttpRouteRuleMatchHeaderOutput) PresentMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
+}
+
+// If specified, the rule will match if the request header value is within the range.
+// Structure is documented below.
+func (o HttpRouteRuleMatchHeaderOutput) RangeMatch() HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *HttpRouteRuleMatchHeaderRangeMatch { return v.RangeMatch }).(HttpRouteRuleMatchHeaderRangeMatchPtrOutput)
+}
+
+// The value of the header must match the regular expression specified in regexMatch.
+func (o HttpRouteRuleMatchHeaderOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+// The value of the header must end with the contents of suffixMatch.
+func (o HttpRouteRuleMatchHeaderOutput) SuffixMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeader) *string { return v.SuffixMatch }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleMatchHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchHeaderArrayOutput) ToHttpRouteRuleMatchHeaderArrayOutput() HttpRouteRuleMatchHeaderArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchHeaderArrayOutput) ToHttpRouteRuleMatchHeaderArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchHeaderArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleMatchHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRuleMatchHeader {
+		return vs[0].([]HttpRouteRuleMatchHeader)[vs[1].(int)]
+	}).(HttpRouteRuleMatchHeaderOutput)
+}
+
+type HttpRouteRuleMatchHeaderRangeMatch struct {
+	// End of the range (exclusive).
+	End int `pulumi:"end"`
+	// Start of the range (inclusive).
+	Start int `pulumi:"start"`
+}
+
+// HttpRouteRuleMatchHeaderRangeMatchInput is an input type that accepts HttpRouteRuleMatchHeaderRangeMatchArgs and HttpRouteRuleMatchHeaderRangeMatchOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchHeaderRangeMatchInput` via:
+//
+//	HttpRouteRuleMatchHeaderRangeMatchArgs{...}
+type HttpRouteRuleMatchHeaderRangeMatchInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchHeaderRangeMatchOutput() HttpRouteRuleMatchHeaderRangeMatchOutput
+	ToHttpRouteRuleMatchHeaderRangeMatchOutputWithContext(context.Context) HttpRouteRuleMatchHeaderRangeMatchOutput
+}
+
+type HttpRouteRuleMatchHeaderRangeMatchArgs struct {
+	// End of the range (exclusive).
+	End pulumi.IntInput `pulumi:"end"`
+	// Start of the range (inclusive).
+	Start pulumi.IntInput `pulumi:"start"`
+}
+
+func (HttpRouteRuleMatchHeaderRangeMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatchHeaderRangeMatch)(nil)).Elem()
+}
+
+func (i HttpRouteRuleMatchHeaderRangeMatchArgs) ToHttpRouteRuleMatchHeaderRangeMatchOutput() HttpRouteRuleMatchHeaderRangeMatchOutput {
+	return i.ToHttpRouteRuleMatchHeaderRangeMatchOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchHeaderRangeMatchArgs) ToHttpRouteRuleMatchHeaderRangeMatchOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderRangeMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderRangeMatchOutput)
+}
+
+func (i HttpRouteRuleMatchHeaderRangeMatchArgs) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutput() HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return i.ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchHeaderRangeMatchArgs) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderRangeMatchOutput).ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(ctx)
+}
+
+// HttpRouteRuleMatchHeaderRangeMatchPtrInput is an input type that accepts HttpRouteRuleMatchHeaderRangeMatchArgs, HttpRouteRuleMatchHeaderRangeMatchPtr and HttpRouteRuleMatchHeaderRangeMatchPtrOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchHeaderRangeMatchPtrInput` via:
+//
+//	        HttpRouteRuleMatchHeaderRangeMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpRouteRuleMatchHeaderRangeMatchPtrInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchHeaderRangeMatchPtrOutput() HttpRouteRuleMatchHeaderRangeMatchPtrOutput
+	ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(context.Context) HttpRouteRuleMatchHeaderRangeMatchPtrOutput
+}
+
+type httpRouteRuleMatchHeaderRangeMatchPtrType HttpRouteRuleMatchHeaderRangeMatchArgs
+
+func HttpRouteRuleMatchHeaderRangeMatchPtr(v *HttpRouteRuleMatchHeaderRangeMatchArgs) HttpRouteRuleMatchHeaderRangeMatchPtrInput {
+	return (*httpRouteRuleMatchHeaderRangeMatchPtrType)(v)
+}
+
+func (*httpRouteRuleMatchHeaderRangeMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleMatchHeaderRangeMatch)(nil)).Elem()
+}
+
+func (i *httpRouteRuleMatchHeaderRangeMatchPtrType) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutput() HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return i.ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *httpRouteRuleMatchHeaderRangeMatchPtrType) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchHeaderRangeMatchPtrOutput)
+}
+
+type HttpRouteRuleMatchHeaderRangeMatchOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchHeaderRangeMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatchHeaderRangeMatch)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchOutput) ToHttpRouteRuleMatchHeaderRangeMatchOutput() HttpRouteRuleMatchHeaderRangeMatchOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchOutput) ToHttpRouteRuleMatchHeaderRangeMatchOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderRangeMatchOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchOutput) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutput() HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return o.ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(context.Background())
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchOutput) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpRouteRuleMatchHeaderRangeMatch) *HttpRouteRuleMatchHeaderRangeMatch {
+		return &v
+	}).(HttpRouteRuleMatchHeaderRangeMatchPtrOutput)
+}
+
+// End of the range (exclusive).
+func (o HttpRouteRuleMatchHeaderRangeMatchOutput) End() pulumi.IntOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeaderRangeMatch) int { return v.End }).(pulumi.IntOutput)
+}
+
+// Start of the range (inclusive).
+func (o HttpRouteRuleMatchHeaderRangeMatchOutput) Start() pulumi.IntOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchHeaderRangeMatch) int { return v.Start }).(pulumi.IntOutput)
+}
+
+type HttpRouteRuleMatchHeaderRangeMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchHeaderRangeMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpRouteRuleMatchHeaderRangeMatch)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutput() HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) ToHttpRouteRuleMatchHeaderRangeMatchPtrOutputWithContext(ctx context.Context) HttpRouteRuleMatchHeaderRangeMatchPtrOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) Elem() HttpRouteRuleMatchHeaderRangeMatchOutput {
+	return o.ApplyT(func(v *HttpRouteRuleMatchHeaderRangeMatch) HttpRouteRuleMatchHeaderRangeMatch {
+		if v != nil {
+			return *v
+		}
+		var ret HttpRouteRuleMatchHeaderRangeMatch
+		return ret
+	}).(HttpRouteRuleMatchHeaderRangeMatchOutput)
+}
+
+// End of the range (exclusive).
+func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) End() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleMatchHeaderRangeMatch) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.End
+	}).(pulumi.IntPtrOutput)
+}
+
+// Start of the range (inclusive).
+func (o HttpRouteRuleMatchHeaderRangeMatchPtrOutput) Start() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HttpRouteRuleMatchHeaderRangeMatch) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Start
+	}).(pulumi.IntPtrOutput)
+}
+
+type HttpRouteRuleMatchQueryParameter struct {
+	// The value of the query parameter must exactly match the contents of exactMatch.
+	ExactMatch *string `pulumi:"exactMatch"`
+	// Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
+	PresentMatch *bool `pulumi:"presentMatch"`
+	// The name of the query parameter to match.
+	QueryParameter *string `pulumi:"queryParameter"`
+	// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+	RegexMatch *string `pulumi:"regexMatch"`
+}
+
+// HttpRouteRuleMatchQueryParameterInput is an input type that accepts HttpRouteRuleMatchQueryParameterArgs and HttpRouteRuleMatchQueryParameterOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchQueryParameterInput` via:
+//
+//	HttpRouteRuleMatchQueryParameterArgs{...}
+type HttpRouteRuleMatchQueryParameterInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchQueryParameterOutput() HttpRouteRuleMatchQueryParameterOutput
+	ToHttpRouteRuleMatchQueryParameterOutputWithContext(context.Context) HttpRouteRuleMatchQueryParameterOutput
+}
+
+type HttpRouteRuleMatchQueryParameterArgs struct {
+	// The value of the query parameter must exactly match the contents of exactMatch.
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
+	PresentMatch pulumi.BoolPtrInput `pulumi:"presentMatch"`
+	// The name of the query parameter to match.
+	QueryParameter pulumi.StringPtrInput `pulumi:"queryParameter"`
+	// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+	RegexMatch pulumi.StringPtrInput `pulumi:"regexMatch"`
+}
+
+func (HttpRouteRuleMatchQueryParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatchQueryParameter)(nil)).Elem()
+}
+
+func (i HttpRouteRuleMatchQueryParameterArgs) ToHttpRouteRuleMatchQueryParameterOutput() HttpRouteRuleMatchQueryParameterOutput {
+	return i.ToHttpRouteRuleMatchQueryParameterOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchQueryParameterArgs) ToHttpRouteRuleMatchQueryParameterOutputWithContext(ctx context.Context) HttpRouteRuleMatchQueryParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchQueryParameterOutput)
+}
+
+// HttpRouteRuleMatchQueryParameterArrayInput is an input type that accepts HttpRouteRuleMatchQueryParameterArray and HttpRouteRuleMatchQueryParameterArrayOutput values.
+// You can construct a concrete instance of `HttpRouteRuleMatchQueryParameterArrayInput` via:
+//
+//	HttpRouteRuleMatchQueryParameterArray{ HttpRouteRuleMatchQueryParameterArgs{...} }
+type HttpRouteRuleMatchQueryParameterArrayInput interface {
+	pulumi.Input
+
+	ToHttpRouteRuleMatchQueryParameterArrayOutput() HttpRouteRuleMatchQueryParameterArrayOutput
+	ToHttpRouteRuleMatchQueryParameterArrayOutputWithContext(context.Context) HttpRouteRuleMatchQueryParameterArrayOutput
+}
+
+type HttpRouteRuleMatchQueryParameterArray []HttpRouteRuleMatchQueryParameterInput
+
+func (HttpRouteRuleMatchQueryParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleMatchQueryParameter)(nil)).Elem()
+}
+
+func (i HttpRouteRuleMatchQueryParameterArray) ToHttpRouteRuleMatchQueryParameterArrayOutput() HttpRouteRuleMatchQueryParameterArrayOutput {
+	return i.ToHttpRouteRuleMatchQueryParameterArrayOutputWithContext(context.Background())
+}
+
+func (i HttpRouteRuleMatchQueryParameterArray) ToHttpRouteRuleMatchQueryParameterArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchQueryParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpRouteRuleMatchQueryParameterArrayOutput)
+}
+
+type HttpRouteRuleMatchQueryParameterOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchQueryParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpRouteRuleMatchQueryParameter)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchQueryParameterOutput) ToHttpRouteRuleMatchQueryParameterOutput() HttpRouteRuleMatchQueryParameterOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchQueryParameterOutput) ToHttpRouteRuleMatchQueryParameterOutputWithContext(ctx context.Context) HttpRouteRuleMatchQueryParameterOutput {
+	return o
+}
+
+// The value of the query parameter must exactly match the contents of exactMatch.
+func (o HttpRouteRuleMatchQueryParameterOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchQueryParameter) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
+func (o HttpRouteRuleMatchQueryParameterOutput) PresentMatch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchQueryParameter) *bool { return v.PresentMatch }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the query parameter to match.
+func (o HttpRouteRuleMatchQueryParameterOutput) QueryParameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchQueryParameter) *string { return v.QueryParameter }).(pulumi.StringPtrOutput)
+}
+
+// The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+func (o HttpRouteRuleMatchQueryParameterOutput) RegexMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpRouteRuleMatchQueryParameter) *string { return v.RegexMatch }).(pulumi.StringPtrOutput)
+}
+
+type HttpRouteRuleMatchQueryParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (HttpRouteRuleMatchQueryParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HttpRouteRuleMatchQueryParameter)(nil)).Elem()
+}
+
+func (o HttpRouteRuleMatchQueryParameterArrayOutput) ToHttpRouteRuleMatchQueryParameterArrayOutput() HttpRouteRuleMatchQueryParameterArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchQueryParameterArrayOutput) ToHttpRouteRuleMatchQueryParameterArrayOutputWithContext(ctx context.Context) HttpRouteRuleMatchQueryParameterArrayOutput {
+	return o
+}
+
+func (o HttpRouteRuleMatchQueryParameterArrayOutput) Index(i pulumi.IntInput) HttpRouteRuleMatchQueryParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRouteRuleMatchQueryParameter {
+		return vs[0].([]HttpRouteRuleMatchQueryParameter)[vs[1].(int)]
+	}).(HttpRouteRuleMatchQueryParameterOutput)
+}
+
+type TcpRouteRule struct {
+	// A detailed rule defining how to route traffic.
+	// Structure is documented below.
+	Action TcpRouteRuleAction `pulumi:"action"`
+	// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+	// If no routeMatch field is specified, this rule will unconditionally match traffic.
+	// Structure is documented below.
+	Matches []TcpRouteRuleMatch `pulumi:"matches"`
+}
+
+// TcpRouteRuleInput is an input type that accepts TcpRouteRuleArgs and TcpRouteRuleOutput values.
+// You can construct a concrete instance of `TcpRouteRuleInput` via:
+//
+//	TcpRouteRuleArgs{...}
+type TcpRouteRuleInput interface {
+	pulumi.Input
+
+	ToTcpRouteRuleOutput() TcpRouteRuleOutput
+	ToTcpRouteRuleOutputWithContext(context.Context) TcpRouteRuleOutput
+}
+
+type TcpRouteRuleArgs struct {
+	// A detailed rule defining how to route traffic.
+	// Structure is documented below.
+	Action TcpRouteRuleActionInput `pulumi:"action"`
+	// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+	// If no routeMatch field is specified, this rule will unconditionally match traffic.
+	// Structure is documented below.
+	Matches TcpRouteRuleMatchArrayInput `pulumi:"matches"`
+}
+
+func (TcpRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRule)(nil)).Elem()
+}
+
+func (i TcpRouteRuleArgs) ToTcpRouteRuleOutput() TcpRouteRuleOutput {
+	return i.ToTcpRouteRuleOutputWithContext(context.Background())
+}
+
+func (i TcpRouteRuleArgs) ToTcpRouteRuleOutputWithContext(ctx context.Context) TcpRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleOutput)
+}
+
+// TcpRouteRuleArrayInput is an input type that accepts TcpRouteRuleArray and TcpRouteRuleArrayOutput values.
+// You can construct a concrete instance of `TcpRouteRuleArrayInput` via:
+//
+//	TcpRouteRuleArray{ TcpRouteRuleArgs{...} }
+type TcpRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToTcpRouteRuleArrayOutput() TcpRouteRuleArrayOutput
+	ToTcpRouteRuleArrayOutputWithContext(context.Context) TcpRouteRuleArrayOutput
+}
+
+type TcpRouteRuleArray []TcpRouteRuleInput
+
+func (TcpRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TcpRouteRule)(nil)).Elem()
+}
+
+func (i TcpRouteRuleArray) ToTcpRouteRuleArrayOutput() TcpRouteRuleArrayOutput {
+	return i.ToTcpRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TcpRouteRuleArray) ToTcpRouteRuleArrayOutputWithContext(ctx context.Context) TcpRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleArrayOutput)
+}
+
+type TcpRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (TcpRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRule)(nil)).Elem()
+}
+
+func (o TcpRouteRuleOutput) ToTcpRouteRuleOutput() TcpRouteRuleOutput {
+	return o
+}
+
+func (o TcpRouteRuleOutput) ToTcpRouteRuleOutputWithContext(ctx context.Context) TcpRouteRuleOutput {
+	return o
+}
+
+// A detailed rule defining how to route traffic.
+// Structure is documented below.
+func (o TcpRouteRuleOutput) Action() TcpRouteRuleActionOutput {
+	return o.ApplyT(func(v TcpRouteRule) TcpRouteRuleAction { return v.Action }).(TcpRouteRuleActionOutput)
+}
+
+// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+// If no routeMatch field is specified, this rule will unconditionally match traffic.
+// Structure is documented below.
+func (o TcpRouteRuleOutput) Matches() TcpRouteRuleMatchArrayOutput {
+	return o.ApplyT(func(v TcpRouteRule) []TcpRouteRuleMatch { return v.Matches }).(TcpRouteRuleMatchArrayOutput)
+}
+
+type TcpRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TcpRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TcpRouteRule)(nil)).Elem()
+}
+
+func (o TcpRouteRuleArrayOutput) ToTcpRouteRuleArrayOutput() TcpRouteRuleArrayOutput {
+	return o
+}
+
+func (o TcpRouteRuleArrayOutput) ToTcpRouteRuleArrayOutputWithContext(ctx context.Context) TcpRouteRuleArrayOutput {
+	return o
+}
+
+func (o TcpRouteRuleArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TcpRouteRule {
+		return vs[0].([]TcpRouteRule)[vs[1].(int)]
+	}).(TcpRouteRuleOutput)
+}
+
+type TcpRouteRuleAction struct {
+	// The destination services to which traffic should be forwarded. At least one destination service is required.
+	// Structure is documented below.
+	Destinations []TcpRouteRuleActionDestination `pulumi:"destinations"`
+	// If true, Router will use the destination IP and port of the original connection as the destination of the request.
+	OriginalDestination *bool `pulumi:"originalDestination"`
+}
+
+// TcpRouteRuleActionInput is an input type that accepts TcpRouteRuleActionArgs and TcpRouteRuleActionOutput values.
+// You can construct a concrete instance of `TcpRouteRuleActionInput` via:
+//
+//	TcpRouteRuleActionArgs{...}
+type TcpRouteRuleActionInput interface {
+	pulumi.Input
+
+	ToTcpRouteRuleActionOutput() TcpRouteRuleActionOutput
+	ToTcpRouteRuleActionOutputWithContext(context.Context) TcpRouteRuleActionOutput
+}
+
+type TcpRouteRuleActionArgs struct {
+	// The destination services to which traffic should be forwarded. At least one destination service is required.
+	// Structure is documented below.
+	Destinations TcpRouteRuleActionDestinationArrayInput `pulumi:"destinations"`
+	// If true, Router will use the destination IP and port of the original connection as the destination of the request.
+	OriginalDestination pulumi.BoolPtrInput `pulumi:"originalDestination"`
+}
+
+func (TcpRouteRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRuleAction)(nil)).Elem()
+}
+
+func (i TcpRouteRuleActionArgs) ToTcpRouteRuleActionOutput() TcpRouteRuleActionOutput {
+	return i.ToTcpRouteRuleActionOutputWithContext(context.Background())
+}
+
+func (i TcpRouteRuleActionArgs) ToTcpRouteRuleActionOutputWithContext(ctx context.Context) TcpRouteRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleActionOutput)
+}
+
+type TcpRouteRuleActionOutput struct{ *pulumi.OutputState }
+
+func (TcpRouteRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRuleAction)(nil)).Elem()
+}
+
+func (o TcpRouteRuleActionOutput) ToTcpRouteRuleActionOutput() TcpRouteRuleActionOutput {
+	return o
+}
+
+func (o TcpRouteRuleActionOutput) ToTcpRouteRuleActionOutputWithContext(ctx context.Context) TcpRouteRuleActionOutput {
+	return o
+}
+
+// The destination services to which traffic should be forwarded. At least one destination service is required.
+// Structure is documented below.
+func (o TcpRouteRuleActionOutput) Destinations() TcpRouteRuleActionDestinationArrayOutput {
+	return o.ApplyT(func(v TcpRouteRuleAction) []TcpRouteRuleActionDestination { return v.Destinations }).(TcpRouteRuleActionDestinationArrayOutput)
+}
+
+// If true, Router will use the destination IP and port of the original connection as the destination of the request.
+func (o TcpRouteRuleActionOutput) OriginalDestination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TcpRouteRuleAction) *bool { return v.OriginalDestination }).(pulumi.BoolPtrOutput)
+}
+
+type TcpRouteRuleActionDestination struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName *string `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+	// If weights are specified for any one service name, they need to be specified for all of them.
+	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	Weight *int `pulumi:"weight"`
+}
+
+// TcpRouteRuleActionDestinationInput is an input type that accepts TcpRouteRuleActionDestinationArgs and TcpRouteRuleActionDestinationOutput values.
+// You can construct a concrete instance of `TcpRouteRuleActionDestinationInput` via:
+//
+//	TcpRouteRuleActionDestinationArgs{...}
+type TcpRouteRuleActionDestinationInput interface {
+	pulumi.Input
+
+	ToTcpRouteRuleActionDestinationOutput() TcpRouteRuleActionDestinationOutput
+	ToTcpRouteRuleActionDestinationOutputWithContext(context.Context) TcpRouteRuleActionDestinationOutput
+}
+
+type TcpRouteRuleActionDestinationArgs struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+	// If weights are specified for any one service name, they need to be specified for all of them.
+	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (TcpRouteRuleActionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i TcpRouteRuleActionDestinationArgs) ToTcpRouteRuleActionDestinationOutput() TcpRouteRuleActionDestinationOutput {
+	return i.ToTcpRouteRuleActionDestinationOutputWithContext(context.Background())
+}
+
+func (i TcpRouteRuleActionDestinationArgs) ToTcpRouteRuleActionDestinationOutputWithContext(ctx context.Context) TcpRouteRuleActionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleActionDestinationOutput)
+}
+
+// TcpRouteRuleActionDestinationArrayInput is an input type that accepts TcpRouteRuleActionDestinationArray and TcpRouteRuleActionDestinationArrayOutput values.
+// You can construct a concrete instance of `TcpRouteRuleActionDestinationArrayInput` via:
+//
+//	TcpRouteRuleActionDestinationArray{ TcpRouteRuleActionDestinationArgs{...} }
+type TcpRouteRuleActionDestinationArrayInput interface {
+	pulumi.Input
+
+	ToTcpRouteRuleActionDestinationArrayOutput() TcpRouteRuleActionDestinationArrayOutput
+	ToTcpRouteRuleActionDestinationArrayOutputWithContext(context.Context) TcpRouteRuleActionDestinationArrayOutput
+}
+
+type TcpRouteRuleActionDestinationArray []TcpRouteRuleActionDestinationInput
+
+func (TcpRouteRuleActionDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TcpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i TcpRouteRuleActionDestinationArray) ToTcpRouteRuleActionDestinationArrayOutput() TcpRouteRuleActionDestinationArrayOutput {
+	return i.ToTcpRouteRuleActionDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i TcpRouteRuleActionDestinationArray) ToTcpRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) TcpRouteRuleActionDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleActionDestinationArrayOutput)
+}
+
+type TcpRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
+
+func (TcpRouteRuleActionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o TcpRouteRuleActionDestinationOutput) ToTcpRouteRuleActionDestinationOutput() TcpRouteRuleActionDestinationOutput {
+	return o
+}
+
+func (o TcpRouteRuleActionDestinationOutput) ToTcpRouteRuleActionDestinationOutputWithContext(ctx context.Context) TcpRouteRuleActionDestinationOutput {
+	return o
+}
+
+// The URL of a BackendService to route traffic to.
+func (o TcpRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TcpRouteRuleActionDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+// If weights are specified for any one service name, they need to be specified for all of them.
+// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+func (o TcpRouteRuleActionDestinationOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TcpRouteRuleActionDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type TcpRouteRuleActionDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (TcpRouteRuleActionDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TcpRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o TcpRouteRuleActionDestinationArrayOutput) ToTcpRouteRuleActionDestinationArrayOutput() TcpRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o TcpRouteRuleActionDestinationArrayOutput) ToTcpRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) TcpRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o TcpRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleActionDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TcpRouteRuleActionDestination {
+		return vs[0].([]TcpRouteRuleActionDestination)[vs[1].(int)]
+	}).(TcpRouteRuleActionDestinationOutput)
+}
+
+type TcpRouteRuleMatch struct {
+	// Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
+	// By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+	Address string `pulumi:"address"`
+	// Specifies the destination port to match against.
+	Port string `pulumi:"port"`
+}
+
+// TcpRouteRuleMatchInput is an input type that accepts TcpRouteRuleMatchArgs and TcpRouteRuleMatchOutput values.
+// You can construct a concrete instance of `TcpRouteRuleMatchInput` via:
+//
+//	TcpRouteRuleMatchArgs{...}
+type TcpRouteRuleMatchInput interface {
+	pulumi.Input
+
+	ToTcpRouteRuleMatchOutput() TcpRouteRuleMatchOutput
+	ToTcpRouteRuleMatchOutputWithContext(context.Context) TcpRouteRuleMatchOutput
+}
+
+type TcpRouteRuleMatchArgs struct {
+	// Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
+	// By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Specifies the destination port to match against.
+	Port pulumi.StringInput `pulumi:"port"`
+}
+
+func (TcpRouteRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRuleMatch)(nil)).Elem()
+}
+
+func (i TcpRouteRuleMatchArgs) ToTcpRouteRuleMatchOutput() TcpRouteRuleMatchOutput {
+	return i.ToTcpRouteRuleMatchOutputWithContext(context.Background())
+}
+
+func (i TcpRouteRuleMatchArgs) ToTcpRouteRuleMatchOutputWithContext(ctx context.Context) TcpRouteRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleMatchOutput)
+}
+
+// TcpRouteRuleMatchArrayInput is an input type that accepts TcpRouteRuleMatchArray and TcpRouteRuleMatchArrayOutput values.
+// You can construct a concrete instance of `TcpRouteRuleMatchArrayInput` via:
+//
+//	TcpRouteRuleMatchArray{ TcpRouteRuleMatchArgs{...} }
+type TcpRouteRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToTcpRouteRuleMatchArrayOutput() TcpRouteRuleMatchArrayOutput
+	ToTcpRouteRuleMatchArrayOutputWithContext(context.Context) TcpRouteRuleMatchArrayOutput
+}
+
+type TcpRouteRuleMatchArray []TcpRouteRuleMatchInput
+
+func (TcpRouteRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TcpRouteRuleMatch)(nil)).Elem()
+}
+
+func (i TcpRouteRuleMatchArray) ToTcpRouteRuleMatchArrayOutput() TcpRouteRuleMatchArrayOutput {
+	return i.ToTcpRouteRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i TcpRouteRuleMatchArray) ToTcpRouteRuleMatchArrayOutputWithContext(ctx context.Context) TcpRouteRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TcpRouteRuleMatchArrayOutput)
+}
+
+type TcpRouteRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (TcpRouteRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TcpRouteRuleMatch)(nil)).Elem()
+}
+
+func (o TcpRouteRuleMatchOutput) ToTcpRouteRuleMatchOutput() TcpRouteRuleMatchOutput {
+	return o
+}
+
+func (o TcpRouteRuleMatchOutput) ToTcpRouteRuleMatchOutputWithContext(ctx context.Context) TcpRouteRuleMatchOutput {
+	return o
+}
+
+// Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
+// By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+func (o TcpRouteRuleMatchOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v TcpRouteRuleMatch) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Specifies the destination port to match against.
+func (o TcpRouteRuleMatchOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v TcpRouteRuleMatch) string { return v.Port }).(pulumi.StringOutput)
+}
+
+type TcpRouteRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (TcpRouteRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TcpRouteRuleMatch)(nil)).Elem()
+}
+
+func (o TcpRouteRuleMatchArrayOutput) ToTcpRouteRuleMatchArrayOutput() TcpRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o TcpRouteRuleMatchArrayOutput) ToTcpRouteRuleMatchArrayOutputWithContext(ctx context.Context) TcpRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o TcpRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TcpRouteRuleMatch {
+		return vs[0].([]TcpRouteRuleMatch)[vs[1].(int)]
+	}).(TcpRouteRuleMatchOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArray{})
@@ -5632,6 +9198,49 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleInput)(nil)).Elem(), HttpRouteRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleArrayInput)(nil)).Elem(), HttpRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionInput)(nil)).Elem(), HttpRouteRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionPtrInput)(nil)).Elem(), HttpRouteRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionCorsPolicyInput)(nil)).Elem(), HttpRouteRuleActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionCorsPolicyPtrInput)(nil)).Elem(), HttpRouteRuleActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionDestinationInput)(nil)).Elem(), HttpRouteRuleActionDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionDestinationArrayInput)(nil)).Elem(), HttpRouteRuleActionDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyPtrInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyAbortInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyAbortPtrInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyDelayInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), HttpRouteRuleActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRedirectInput)(nil)).Elem(), HttpRouteRuleActionRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRedirectPtrInput)(nil)).Elem(), HttpRouteRuleActionRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRequestHeaderModifierInput)(nil)).Elem(), HttpRouteRuleActionRequestHeaderModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRequestHeaderModifierPtrInput)(nil)).Elem(), HttpRouteRuleActionRequestHeaderModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicyInput)(nil)).Elem(), HttpRouteRuleActionRequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicyPtrInput)(nil)).Elem(), HttpRouteRuleActionRequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicyDestinationInput)(nil)).Elem(), HttpRouteRuleActionRequestMirrorPolicyDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRequestMirrorPolicyDestinationPtrInput)(nil)).Elem(), HttpRouteRuleActionRequestMirrorPolicyDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionResponseHeaderModifierInput)(nil)).Elem(), HttpRouteRuleActionResponseHeaderModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionResponseHeaderModifierPtrInput)(nil)).Elem(), HttpRouteRuleActionResponseHeaderModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRetryPolicyInput)(nil)).Elem(), HttpRouteRuleActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionRetryPolicyPtrInput)(nil)).Elem(), HttpRouteRuleActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionUrlRewriteInput)(nil)).Elem(), HttpRouteRuleActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionUrlRewritePtrInput)(nil)).Elem(), HttpRouteRuleActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchInput)(nil)).Elem(), HttpRouteRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchArrayInput)(nil)).Elem(), HttpRouteRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchHeaderInput)(nil)).Elem(), HttpRouteRuleMatchHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchHeaderArrayInput)(nil)).Elem(), HttpRouteRuleMatchHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchHeaderRangeMatchInput)(nil)).Elem(), HttpRouteRuleMatchHeaderRangeMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchHeaderRangeMatchPtrInput)(nil)).Elem(), HttpRouteRuleMatchHeaderRangeMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchQueryParameterInput)(nil)).Elem(), HttpRouteRuleMatchQueryParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleMatchQueryParameterArrayInput)(nil)).Elem(), HttpRouteRuleMatchQueryParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleInput)(nil)).Elem(), TcpRouteRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleArrayInput)(nil)).Elem(), TcpRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionInput)(nil)).Elem(), TcpRouteRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionDestinationInput)(nil)).Elem(), TcpRouteRuleActionDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionDestinationArrayInput)(nil)).Elem(), TcpRouteRuleActionDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleMatchInput)(nil)).Elem(), TcpRouteRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleMatchArrayInput)(nil)).Elem(), TcpRouteRuleMatchArray{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyOutput{})
@@ -5692,4 +9301,47 @@ func init() {
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionCorsPolicyOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionCorsPolicyPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionDestinationOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionDestinationArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyAbortOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyAbortPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyDelayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionFaultInjectionPolicyDelayPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRedirectOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRedirectPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRequestHeaderModifierOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRequestHeaderModifierPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRequestMirrorPolicyOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRequestMirrorPolicyPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRequestMirrorPolicyDestinationOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRequestMirrorPolicyDestinationPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionResponseHeaderModifierOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionResponseHeaderModifierPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionUrlRewriteOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleActionUrlRewritePtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchHeaderOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchHeaderArrayOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchHeaderRangeMatchOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchHeaderRangeMatchPtrOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchQueryParameterOutput{})
+	pulumi.RegisterOutputType(HttpRouteRuleMatchQueryParameterArrayOutput{})
+	pulumi.RegisterOutputType(TcpRouteRuleOutput{})
+	pulumi.RegisterOutputType(TcpRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(TcpRouteRuleActionOutput{})
+	pulumi.RegisterOutputType(TcpRouteRuleActionDestinationOutput{})
+	pulumi.RegisterOutputType(TcpRouteRuleActionDestinationArrayOutput{})
+	pulumi.RegisterOutputType(TcpRouteRuleMatchOutput{})
+	pulumi.RegisterOutputType(TcpRouteRuleMatchArrayOutput{})
 }

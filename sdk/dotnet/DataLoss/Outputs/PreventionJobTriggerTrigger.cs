@@ -14,14 +14,22 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerTrigger
     {
         /// <summary>
+        /// For use with hybrid jobs. Jobs must be manually created and finished.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerTriggerManual? Manual;
+        /// <summary>
         /// Schedule for triggered jobs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionJobTriggerTriggerSchedule? Schedule;
 
         [OutputConstructor]
-        private PreventionJobTriggerTrigger(Outputs.PreventionJobTriggerTriggerSchedule? schedule)
+        private PreventionJobTriggerTrigger(
+            Outputs.PreventionJobTriggerTriggerManual? manual,
+
+            Outputs.PreventionJobTriggerTriggerSchedule? schedule)
         {
+            Manual = manual;
             Schedule = schedule;
         }
     }

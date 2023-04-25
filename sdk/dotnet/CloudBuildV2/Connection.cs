@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -127,7 +126,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

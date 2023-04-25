@@ -21420,6 +21420,11 @@ func (o PreventionJobTriggerInspectJobPtrOutput) StorageConfig() PreventionJobTr
 }
 
 type PreventionJobTriggerInspectJobAction struct {
+	// Create a de-identified copy of the requested table or files.
+	// Structure is documented below.
+	Deidentify *PreventionJobTriggerInspectJobActionDeidentify `pulumi:"deidentify"`
+	// Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+	JobNotificationEmails *PreventionJobTriggerInspectJobActionJobNotificationEmails `pulumi:"jobNotificationEmails"`
 	// Publish a message into a given Pub/Sub topic when the job completes.
 	// Structure is documented below.
 	PubSub *PreventionJobTriggerInspectJobActionPubSub `pulumi:"pubSub"`
@@ -21444,6 +21449,11 @@ type PreventionJobTriggerInspectJobActionInput interface {
 }
 
 type PreventionJobTriggerInspectJobActionArgs struct {
+	// Create a de-identified copy of the requested table or files.
+	// Structure is documented below.
+	Deidentify PreventionJobTriggerInspectJobActionDeidentifyPtrInput `pulumi:"deidentify"`
+	// Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+	JobNotificationEmails PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput `pulumi:"jobNotificationEmails"`
 	// Publish a message into a given Pub/Sub topic when the job completes.
 	// Structure is documented below.
 	PubSub PreventionJobTriggerInspectJobActionPubSubPtrInput `pulumi:"pubSub"`
@@ -21507,6 +21517,21 @@ func (o PreventionJobTriggerInspectJobActionOutput) ToPreventionJobTriggerInspec
 	return o
 }
 
+// Create a de-identified copy of the requested table or files.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionOutput) Deidentify() PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionDeidentify {
+		return v.Deidentify
+	}).(PreventionJobTriggerInspectJobActionDeidentifyPtrOutput)
+}
+
+// Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+func (o PreventionJobTriggerInspectJobActionOutput) JobNotificationEmails() PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobAction) *PreventionJobTriggerInspectJobActionJobNotificationEmails {
+		return v.JobNotificationEmails
+	}).(PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput)
+}
+
 // Publish a message into a given Pub/Sub topic when the job completes.
 // Structure is documented below.
 func (o PreventionJobTriggerInspectJobActionOutput) PubSub() PreventionJobTriggerInspectJobActionPubSubPtrOutput {
@@ -21555,6 +21580,871 @@ func (o PreventionJobTriggerInspectJobActionArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerInspectJobAction {
 		return vs[0].([]PreventionJobTriggerInspectJobAction)[vs[1].(int)]
 	}).(PreventionJobTriggerInspectJobActionOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentify struct {
+	// User settable Cloud Storage bucket and folders to store de-identified files.
+	// This field must be set for cloud storage deidentification.
+	// The output Cloud Storage bucket must be different from the input bucket.
+	// De-identified files will overwrite files in the output path.
+	// Form of: gs://bucket/folder/ or gs://bucket
+	CloudStorageOutput string `pulumi:"cloudStorageOutput"`
+	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+	// If empty, all supported files will be transformed. Supported types may be automatically added over time.
+	// If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+	// Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+	FileTypesToTransforms []string `pulumi:"fileTypesToTransforms"`
+	// User specified deidentify templates and configs for structured, unstructured, and image files.
+	// Structure is documented below.
+	TransformationConfig *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig `pulumi:"transformationConfig"`
+	// Config for storing transformation details.
+	// Structure is documented below.
+	TransformationDetailsStorageConfig *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig `pulumi:"transformationDetailsStorageConfig"`
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyArgs and PreventionJobTriggerInspectJobActionDeidentifyOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyInput` via:
+//
+//	PreventionJobTriggerInspectJobActionDeidentifyArgs{...}
+type PreventionJobTriggerInspectJobActionDeidentifyInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyOutput() PreventionJobTriggerInspectJobActionDeidentifyOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyOutput
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyArgs struct {
+	// User settable Cloud Storage bucket and folders to store de-identified files.
+	// This field must be set for cloud storage deidentification.
+	// The output Cloud Storage bucket must be different from the input bucket.
+	// De-identified files will overwrite files in the output path.
+	// Form of: gs://bucket/folder/ or gs://bucket
+	CloudStorageOutput pulumi.StringInput `pulumi:"cloudStorageOutput"`
+	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+	// If empty, all supported files will be transformed. Supported types may be automatically added over time.
+	// If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+	// Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+	FileTypesToTransforms pulumi.StringArrayInput `pulumi:"fileTypesToTransforms"`
+	// User specified deidentify templates and configs for structured, unstructured, and image files.
+	// Structure is documented below.
+	TransformationConfig PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrInput `pulumi:"transformationConfig"`
+	// Config for storing transformation details.
+	// Structure is documented below.
+	TransformationDetailsStorageConfig PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrInput `pulumi:"transformationDetailsStorageConfig"`
+}
+
+func (PreventionJobTriggerInspectJobActionDeidentifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentify)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyArgs) ToPreventionJobTriggerInspectJobActionDeidentifyOutput() PreventionJobTriggerInspectJobActionDeidentifyOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyArgs) ToPreventionJobTriggerInspectJobActionDeidentifyOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyOutput)
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyArgs) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyArgs) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyOutput).ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyArgs, PreventionJobTriggerInspectJobActionDeidentifyPtr and PreventionJobTriggerInspectJobActionDeidentifyPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionDeidentifyArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionDeidentifyPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyPtrOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyPtrOutput
+}
+
+type preventionJobTriggerInspectJobActionDeidentifyPtrType PreventionJobTriggerInspectJobActionDeidentifyArgs
+
+func PreventionJobTriggerInspectJobActionDeidentifyPtr(v *PreventionJobTriggerInspectJobActionDeidentifyArgs) PreventionJobTriggerInspectJobActionDeidentifyPtrInput {
+	return (*preventionJobTriggerInspectJobActionDeidentifyPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionDeidentifyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentify)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyPtrType) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyPtrType) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentify)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) ToPreventionJobTriggerInspectJobActionDeidentifyOutput() PreventionJobTriggerInspectJobActionDeidentifyOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) ToPreventionJobTriggerInspectJobActionDeidentifyOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionDeidentify) *PreventionJobTriggerInspectJobActionDeidentify {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionDeidentifyPtrOutput)
+}
+
+// User settable Cloud Storage bucket and folders to store de-identified files.
+// This field must be set for cloud storage deidentification.
+// The output Cloud Storage bucket must be different from the input bucket.
+// De-identified files will overwrite files in the output path.
+// Form of: gs://bucket/folder/ or gs://bucket
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) CloudStorageOutput() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentify) string { return v.CloudStorageOutput }).(pulumi.StringOutput)
+}
+
+// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+// If empty, all supported files will be transformed. Supported types may be automatically added over time.
+// If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+// Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) FileTypesToTransforms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentify) []string { return v.FileTypesToTransforms }).(pulumi.StringArrayOutput)
+}
+
+// User specified deidentify templates and configs for structured, unstructured, and image files.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) TransformationConfig() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentify) *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
+		return v.TransformationConfig
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput)
+}
+
+// Config for storing transformation details.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionDeidentifyOutput) TransformationDetailsStorageConfig() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentify) *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig {
+		return v.TransformationDetailsStorageConfig
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentify)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) Elem() PreventionJobTriggerInspectJobActionDeidentifyOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentify) PreventionJobTriggerInspectJobActionDeidentify {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionDeidentify
+		return ret
+	}).(PreventionJobTriggerInspectJobActionDeidentifyOutput)
+}
+
+// User settable Cloud Storage bucket and folders to store de-identified files.
+// This field must be set for cloud storage deidentification.
+// The output Cloud Storage bucket must be different from the input bucket.
+// De-identified files will overwrite files in the output path.
+// Form of: gs://bucket/folder/ or gs://bucket
+func (o PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) CloudStorageOutput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudStorageOutput
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+// If empty, all supported files will be transformed. Supported types may be automatically added over time.
+// If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+// Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+func (o PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) FileTypesToTransforms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentify) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileTypesToTransforms
+	}).(pulumi.StringArrayOutput)
+}
+
+// User specified deidentify templates and configs for structured, unstructured, and image files.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) TransformationConfig() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentify) *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TransformationConfig
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput)
+}
+
+// Config for storing transformation details.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionDeidentifyPtrOutput) TransformationDetailsStorageConfig() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentify) *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TransformationDetailsStorageConfig
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig struct {
+	// If this template is specified, it will serve as the default de-identify template.
+	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
+	// If this template is specified, it will serve as the de-identify template for images.
+	ImageRedactTemplate *string `pulumi:"imageRedactTemplate"`
+	// If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+	StructuredDeidentifyTemplate *string `pulumi:"structuredDeidentifyTemplate"`
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs and PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigInput` via:
+//
+//	PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs{...}
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs struct {
+	// If this template is specified, it will serve as the default de-identify template.
+	DeidentifyTemplate pulumi.StringPtrInput `pulumi:"deidentifyTemplate"`
+	// If this template is specified, it will serve as the de-identify template for images.
+	ImageRedactTemplate pulumi.StringPtrInput `pulumi:"imageRedactTemplate"`
+	// If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+	StructuredDeidentifyTemplate pulumi.StringPtrInput `pulumi:"structuredDeidentifyTemplate"`
+}
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput)
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput).ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs, PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtr and PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput
+}
+
+type preventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrType PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs
+
+func PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtr(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrInput {
+	return (*preventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrType) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrType) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput)
+}
+
+// If this template is specified, it will serve as the default de-identify template.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) *string {
+		return v.DeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// If this template is specified, it will serve as the de-identify template for images.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) ImageRedactTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) *string {
+		return v.ImageRedactTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput) StructuredDeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) *string {
+		return v.StructuredDeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput) Elem() PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig
+		return ret
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput)
+}
+
+// If this template is specified, it will serve as the default de-identify template.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// If this template is specified, it will serve as the de-identify template for images.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput) ImageRedactTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageRedactTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput) StructuredDeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StructuredDeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig struct {
+	// The BigQuery table in which to store the output.
+	// Structure is documented below.
+	Table PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable `pulumi:"table"`
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs and PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigInput` via:
+//
+//	PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs{...}
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs struct {
+	// The BigQuery table in which to store the output.
+	// Structure is documented below.
+	Table PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableInput `pulumi:"table"`
+}
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput)
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput).ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs, PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtr and PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput
+}
+
+type preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrType PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs
+
+func PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtr(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrInput {
+	return (*preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrType) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrType) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig) *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput)
+}
+
+// The BigQuery table in which to store the output.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput) Table() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable {
+		return v.Table
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput) Elem() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig
+		return ret
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput)
+}
+
+// The BigQuery table in which to store the output.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput) Table() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig) *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable {
+		if v == nil {
+			return nil
+		}
+		return &v.Table
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable struct {
+	// The ID of the dataset containing this table.
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId string `pulumi:"projectId"`
+	// The ID of the table. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 1,024 characters.
+	TableId *string `pulumi:"tableId"`
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs and PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableInput` via:
+//
+//	PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs{...}
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs struct {
+	// The ID of the dataset containing this table.
+	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this table.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the table. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 1,024 characters.
+	TableId pulumi.StringPtrInput `pulumi:"tableId"`
+}
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput)
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput).ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrInput is an input type that accepts PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs, PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtr and PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput
+	ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput
+}
+
+type preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrType PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs
+
+func PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtr(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrInput {
+	return (*preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrType) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrType) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) string {
+		return v.DatasetId
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the project containing this table.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) string {
+		return v.ProjectId
+	}).(pulumi.StringOutput)
+}
+
+// The ID of the table. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 1,024 characters.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) *string {
+		return v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput) ToPreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput) Elem() PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable
+		return ret
+	}).(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput)
+}
+
+// The ID of the dataset containing this table.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project containing this table.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the table. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 1,024 characters.
+func (o PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TableId
+	}).(pulumi.StringPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionJobNotificationEmails struct {
+}
+
+// PreventionJobTriggerInspectJobActionJobNotificationEmailsInput is an input type that accepts PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs and PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionJobNotificationEmailsInput` via:
+//
+//	PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs{...}
+type PreventionJobTriggerInspectJobActionJobNotificationEmailsInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionJobNotificationEmailsOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput
+	ToPreventionJobTriggerInspectJobActionJobNotificationEmailsOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput
+}
+
+type PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs struct {
+}
+
+func (PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionJobNotificationEmails)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput {
+	return i.ToPreventionJobTriggerInspectJobActionJobNotificationEmailsOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput)
+}
+
+func (i PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput).ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput is an input type that accepts PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs, PreventionJobTriggerInspectJobActionJobNotificationEmailsPtr and PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput
+	ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput
+}
+
+type preventionJobTriggerInspectJobActionJobNotificationEmailsPtrType PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs
+
+func PreventionJobTriggerInspectJobActionJobNotificationEmailsPtr(v *PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs) PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput {
+	return (*preventionJobTriggerInspectJobActionJobNotificationEmailsPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobActionJobNotificationEmailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionJobNotificationEmails)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobActionJobNotificationEmailsPtrType) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobActionJobNotificationEmailsPtrType) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobActionJobNotificationEmails)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobActionJobNotificationEmails) *PreventionJobTriggerInspectJobActionJobNotificationEmails {
+		return &v
+	}).(PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobActionJobNotificationEmails)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput() PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput) ToPreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput) Elem() PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobActionJobNotificationEmails) PreventionJobTriggerInspectJobActionJobNotificationEmails {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobActionJobNotificationEmails
+		return ret
+	}).(PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput)
 }
 
 type PreventionJobTriggerInspectJobActionPubSub struct {
@@ -22456,6 +23346,9 @@ type PreventionJobTriggerInspectJobStorageConfig struct {
 	// Options defining a data set within Google Cloud Datastore.
 	// Structure is documented below.
 	DatastoreOptions *PreventionJobTriggerInspectJobStorageConfigDatastoreOptions `pulumi:"datastoreOptions"`
+	// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+	// Structure is documented below.
+	HybridOptions *PreventionJobTriggerInspectJobStorageConfigHybridOptions `pulumi:"hybridOptions"`
 	// Information on where to inspect
 	// Structure is documented below.
 	TimespanConfig *PreventionJobTriggerInspectJobStorageConfigTimespanConfig `pulumi:"timespanConfig"`
@@ -22482,6 +23375,9 @@ type PreventionJobTriggerInspectJobStorageConfigArgs struct {
 	// Options defining a data set within Google Cloud Datastore.
 	// Structure is documented below.
 	DatastoreOptions PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrInput `pulumi:"datastoreOptions"`
+	// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+	// Structure is documented below.
+	HybridOptions PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrInput `pulumi:"hybridOptions"`
 	// Information on where to inspect
 	// Structure is documented below.
 	TimespanConfig PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrInput `pulumi:"timespanConfig"`
@@ -22588,6 +23484,14 @@ func (o PreventionJobTriggerInspectJobStorageConfigOutput) DatastoreOptions() Pr
 	}).(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrOutput)
 }
 
+// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigOutput) HybridOptions() PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfig) *PreventionJobTriggerInspectJobStorageConfigHybridOptions {
+		return v.HybridOptions
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput)
+}
+
 // Information on where to inspect
 // Structure is documented below.
 func (o PreventionJobTriggerInspectJobStorageConfigOutput) TimespanConfig() PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrOutput {
@@ -22651,6 +23555,17 @@ func (o PreventionJobTriggerInspectJobStorageConfigPtrOutput) DatastoreOptions()
 		}
 		return v.DatastoreOptions
 	}).(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPtrOutput)
+}
+
+// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigPtrOutput) HybridOptions() PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfig) *PreventionJobTriggerInspectJobStorageConfigHybridOptions {
+		if v == nil {
+			return nil
+		}
+		return v.HybridOptions
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput)
 }
 
 // Information on where to inspect
@@ -24321,6 +25236,494 @@ func (o PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type PreventionJobTriggerInspectJobStorageConfigHybridOptions struct {
+	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	Description *string `pulumi:"description"`
+	// To organize findings, these labels will be added to each finding.
+	// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+	// Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+	// No more than 10 labels can be associated with a given finding.
+	// Examples:
+	// * `"environment" : "production"`
+	// * `"pipeline" : "etl"`
+	Labels map[string]string `pulumi:"labels"`
+	// These are labels that each inspection request must include within their 'finding_labels' map. Request
+	// may contain others, but any missing one of these will be rejected.
+	// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+	// No more than 10 keys can be required.
+	RequiredFindingLabelKeys []string `pulumi:"requiredFindingLabelKeys"`
+	// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+	// Structure is documented below.
+	TableOptions *PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions `pulumi:"tableOptions"`
+}
+
+// PreventionJobTriggerInspectJobStorageConfigHybridOptionsInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs and PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigHybridOptionsInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs{...}
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs struct {
+	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// To organize findings, these labels will be added to each finding.
+	// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+	// Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+	// No more than 10 labels can be associated with a given finding.
+	// Examples:
+	// * `"environment" : "production"`
+	// * `"pipeline" : "etl"`
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// These are labels that each inspection request must include within their 'finding_labels' map. Request
+	// may contain others, but any missing one of these will be rejected.
+	// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+	// No more than 10 keys can be required.
+	RequiredFindingLabelKeys pulumi.StringArrayInput `pulumi:"requiredFindingLabelKeys"`
+	// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+	// Structure is documented below.
+	TableOptions PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrInput `pulumi:"tableOptions"`
+}
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptions)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput)
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput).ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs, PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtr and PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput
+}
+
+type preventionJobTriggerInspectJobStorageConfigHybridOptionsPtrType PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs
+
+func PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtr(v *PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs) PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrInput {
+	return (*preventionJobTriggerInspectJobStorageConfigHybridOptionsPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobStorageConfigHybridOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobStorageConfigHybridOptions)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobStorageConfigHybridOptionsPtrType) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobStorageConfigHybridOptionsPtrType) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptions)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobStorageConfigHybridOptions) *PreventionJobTriggerInspectJobStorageConfigHybridOptions {
+		return &v
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput)
+}
+
+// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigHybridOptions) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// To organize findings, these labels will be added to each finding.
+// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+// Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+// No more than 10 labels can be associated with a given finding.
+// Examples:
+// * `"environment" : "production"`
+// * `"pipeline" : "etl"`
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigHybridOptions) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// These are labels that each inspection request must include within their 'finding_labels' map. Request
+// may contain others, but any missing one of these will be rejected.
+// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+// No more than 10 keys can be required.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) RequiredFindingLabelKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigHybridOptions) []string {
+		return v.RequiredFindingLabelKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput) TableOptions() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigHybridOptions) *PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
+		return v.TableOptions
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobStorageConfigHybridOptions)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) Elem() PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigHybridOptions) PreventionJobTriggerInspectJobStorageConfigHybridOptions {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobStorageConfigHybridOptions
+		return ret
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput)
+}
+
+// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigHybridOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// To organize findings, these labels will be added to each finding.
+// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+// Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+// No more than 10 labels can be associated with a given finding.
+// Examples:
+// * `"environment" : "production"`
+// * `"pipeline" : "etl"`
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigHybridOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// These are labels that each inspection request must include within their 'finding_labels' map. Request
+// may contain others, but any missing one of these will be rejected.
+// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+// No more than 10 keys can be required.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) RequiredFindingLabelKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigHybridOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredFindingLabelKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput) TableOptions() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigHybridOptions) *PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
+		if v == nil {
+			return nil
+		}
+		return v.TableOptions
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions struct {
+	// The columns that are the primary keys for table objects included in ContentItem. A copy of this
+	// cell's value will stored alongside alongside each finding so that the finding can be traced to
+	// the specific row it came from. No more than 3 may be provided.
+	// Structure is documented below.
+	IdentifyingFields []PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField `pulumi:"identifyingFields"`
+}
+
+// PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs and PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs{...}
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs struct {
+	// The columns that are the primary keys for table objects included in ContentItem. A copy of this
+	// cell's value will stored alongside alongside each finding so that the finding can be traced to
+	// the specific row it came from. No more than 3 may be provided.
+	// Structure is documented below.
+	IdentifyingFields PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayInput `pulumi:"identifyingFields"`
+}
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput)
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput).ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs, PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtr and PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrInput` via:
+//
+//	        PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput
+}
+
+type preventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrType PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs
+
+func PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtr(v *PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrInput {
+	return (*preventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrType)(v)
+}
+
+func (*preventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrType) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrType) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return o.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions) *PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
+		return &v
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput)
+}
+
+// The columns that are the primary keys for table objects included in ContentItem. A copy of this
+// cell's value will stored alongside alongside each finding so that the finding can be traced to
+// the specific row it came from. No more than 3 may be provided.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput) IdentifyingFields() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions) []PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField {
+		return v.IdentifyingFields
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput) Elem() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions
+		return ret
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput)
+}
+
+// The columns that are the primary keys for table objects included in ContentItem. A copy of this
+// cell's value will stored alongside alongside each finding so that the finding can be traced to
+// the specific row it came from. No more than 3 may be provided.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput) IdentifyingFields() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions) []PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField {
+		if v == nil {
+			return nil
+		}
+		return v.IdentifyingFields
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField struct {
+	// Name describing the field.
+	Name string `pulumi:"name"`
+}
+
+// PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs and PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs{...}
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs struct {
+	// Name describing the field.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput)
+}
+
+// PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray and PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray{ PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs{...} }
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput
+	ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray []PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldInput
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput {
+	return o
+}
+
+// Name describing the field.
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput) Index(i pulumi.IntInput) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField {
+		return vs[0].([]PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField)[vs[1].(int)]
+	}).(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput)
+}
+
 type PreventionJobTriggerInspectJobStorageConfigTimespanConfig struct {
 	// When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
 	// scanning files that have not been modified since the last time the JobTrigger executed. This will
@@ -24689,6 +26092,8 @@ func (o PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldP
 }
 
 type PreventionJobTriggerTrigger struct {
+	// For use with hybrid jobs. Jobs must be manually created and finished.
+	Manual *PreventionJobTriggerTriggerManual `pulumi:"manual"`
 	// Schedule for triggered jobs
 	// Structure is documented below.
 	Schedule *PreventionJobTriggerTriggerSchedule `pulumi:"schedule"`
@@ -24706,6 +26111,8 @@ type PreventionJobTriggerTriggerInput interface {
 }
 
 type PreventionJobTriggerTriggerArgs struct {
+	// For use with hybrid jobs. Jobs must be manually created and finished.
+	Manual PreventionJobTriggerTriggerManualPtrInput `pulumi:"manual"`
 	// Schedule for triggered jobs
 	// Structure is documented below.
 	Schedule PreventionJobTriggerTriggerSchedulePtrInput `pulumi:"schedule"`
@@ -24762,6 +26169,11 @@ func (o PreventionJobTriggerTriggerOutput) ToPreventionJobTriggerTriggerOutputWi
 	return o
 }
 
+// For use with hybrid jobs. Jobs must be manually created and finished.
+func (o PreventionJobTriggerTriggerOutput) Manual() PreventionJobTriggerTriggerManualPtrOutput {
+	return o.ApplyT(func(v PreventionJobTriggerTrigger) *PreventionJobTriggerTriggerManual { return v.Manual }).(PreventionJobTriggerTriggerManualPtrOutput)
+}
+
 // Schedule for triggered jobs
 // Structure is documented below.
 func (o PreventionJobTriggerTriggerOutput) Schedule() PreventionJobTriggerTriggerSchedulePtrOutput {
@@ -24786,6 +26198,124 @@ func (o PreventionJobTriggerTriggerArrayOutput) Index(i pulumi.IntInput) Prevent
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerTrigger {
 		return vs[0].([]PreventionJobTriggerTrigger)[vs[1].(int)]
 	}).(PreventionJobTriggerTriggerOutput)
+}
+
+type PreventionJobTriggerTriggerManual struct {
+}
+
+// PreventionJobTriggerTriggerManualInput is an input type that accepts PreventionJobTriggerTriggerManualArgs and PreventionJobTriggerTriggerManualOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerTriggerManualInput` via:
+//
+//	PreventionJobTriggerTriggerManualArgs{...}
+type PreventionJobTriggerTriggerManualInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerTriggerManualOutput() PreventionJobTriggerTriggerManualOutput
+	ToPreventionJobTriggerTriggerManualOutputWithContext(context.Context) PreventionJobTriggerTriggerManualOutput
+}
+
+type PreventionJobTriggerTriggerManualArgs struct {
+}
+
+func (PreventionJobTriggerTriggerManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerTriggerManual)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerTriggerManualArgs) ToPreventionJobTriggerTriggerManualOutput() PreventionJobTriggerTriggerManualOutput {
+	return i.ToPreventionJobTriggerTriggerManualOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerTriggerManualArgs) ToPreventionJobTriggerTriggerManualOutputWithContext(ctx context.Context) PreventionJobTriggerTriggerManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerTriggerManualOutput)
+}
+
+func (i PreventionJobTriggerTriggerManualArgs) ToPreventionJobTriggerTriggerManualPtrOutput() PreventionJobTriggerTriggerManualPtrOutput {
+	return i.ToPreventionJobTriggerTriggerManualPtrOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerTriggerManualArgs) ToPreventionJobTriggerTriggerManualPtrOutputWithContext(ctx context.Context) PreventionJobTriggerTriggerManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerTriggerManualOutput).ToPreventionJobTriggerTriggerManualPtrOutputWithContext(ctx)
+}
+
+// PreventionJobTriggerTriggerManualPtrInput is an input type that accepts PreventionJobTriggerTriggerManualArgs, PreventionJobTriggerTriggerManualPtr and PreventionJobTriggerTriggerManualPtrOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerTriggerManualPtrInput` via:
+//
+//	        PreventionJobTriggerTriggerManualArgs{...}
+//
+//	or:
+//
+//	        nil
+type PreventionJobTriggerTriggerManualPtrInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerTriggerManualPtrOutput() PreventionJobTriggerTriggerManualPtrOutput
+	ToPreventionJobTriggerTriggerManualPtrOutputWithContext(context.Context) PreventionJobTriggerTriggerManualPtrOutput
+}
+
+type preventionJobTriggerTriggerManualPtrType PreventionJobTriggerTriggerManualArgs
+
+func PreventionJobTriggerTriggerManualPtr(v *PreventionJobTriggerTriggerManualArgs) PreventionJobTriggerTriggerManualPtrInput {
+	return (*preventionJobTriggerTriggerManualPtrType)(v)
+}
+
+func (*preventionJobTriggerTriggerManualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerTriggerManual)(nil)).Elem()
+}
+
+func (i *preventionJobTriggerTriggerManualPtrType) ToPreventionJobTriggerTriggerManualPtrOutput() PreventionJobTriggerTriggerManualPtrOutput {
+	return i.ToPreventionJobTriggerTriggerManualPtrOutputWithContext(context.Background())
+}
+
+func (i *preventionJobTriggerTriggerManualPtrType) ToPreventionJobTriggerTriggerManualPtrOutputWithContext(ctx context.Context) PreventionJobTriggerTriggerManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerTriggerManualPtrOutput)
+}
+
+type PreventionJobTriggerTriggerManualOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerTriggerManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerTriggerManual)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerTriggerManualOutput) ToPreventionJobTriggerTriggerManualOutput() PreventionJobTriggerTriggerManualOutput {
+	return o
+}
+
+func (o PreventionJobTriggerTriggerManualOutput) ToPreventionJobTriggerTriggerManualOutputWithContext(ctx context.Context) PreventionJobTriggerTriggerManualOutput {
+	return o
+}
+
+func (o PreventionJobTriggerTriggerManualOutput) ToPreventionJobTriggerTriggerManualPtrOutput() PreventionJobTriggerTriggerManualPtrOutput {
+	return o.ToPreventionJobTriggerTriggerManualPtrOutputWithContext(context.Background())
+}
+
+func (o PreventionJobTriggerTriggerManualOutput) ToPreventionJobTriggerTriggerManualPtrOutputWithContext(ctx context.Context) PreventionJobTriggerTriggerManualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PreventionJobTriggerTriggerManual) *PreventionJobTriggerTriggerManual {
+		return &v
+	}).(PreventionJobTriggerTriggerManualPtrOutput)
+}
+
+type PreventionJobTriggerTriggerManualPtrOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerTriggerManualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionJobTriggerTriggerManual)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerTriggerManualPtrOutput) ToPreventionJobTriggerTriggerManualPtrOutput() PreventionJobTriggerTriggerManualPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerTriggerManualPtrOutput) ToPreventionJobTriggerTriggerManualPtrOutputWithContext(ctx context.Context) PreventionJobTriggerTriggerManualPtrOutput {
+	return o
+}
+
+func (o PreventionJobTriggerTriggerManualPtrOutput) Elem() PreventionJobTriggerTriggerManualOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerTriggerManual) PreventionJobTriggerTriggerManual {
+		if v != nil {
+			return *v
+		}
+		var ret PreventionJobTriggerTriggerManual
+		return ret
+	}).(PreventionJobTriggerTriggerManualOutput)
 }
 
 type PreventionJobTriggerTriggerSchedule struct {
@@ -26742,6 +28272,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionArrayInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionJobNotificationEmailsInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPubSubPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPubSubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogInput)(nil)).Elem(), PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs{})
@@ -26774,12 +28314,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigTimespanConfigInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerTriggerInput)(nil)).Elem(), PreventionJobTriggerTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerTriggerArrayInput)(nil)).Elem(), PreventionJobTriggerTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerTriggerManualInput)(nil)).Elem(), PreventionJobTriggerTriggerManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerTriggerManualPtrInput)(nil)).Elem(), PreventionJobTriggerTriggerManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerTriggerScheduleInput)(nil)).Elem(), PreventionJobTriggerTriggerScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerTriggerSchedulePtrInput)(nil)).Elem(), PreventionJobTriggerTriggerScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionStoredInfoTypeDictionaryInput)(nil)).Elem(), PreventionStoredInfoTypeDictionaryArgs{})
@@ -27049,6 +28597,16 @@ func init() {
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionArrayOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTablePtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionJobNotificationEmailsOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionJobNotificationEmailsPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPubSubPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogOutput{})
@@ -27081,12 +28639,20 @@ func init() {
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigHybridOptionsOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigHybridOptionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArrayOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigTimespanConfigOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigTimespanConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerTriggerOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerTriggerArrayOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerTriggerManualOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerTriggerManualPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerTriggerScheduleOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerTriggerSchedulePtrOutput{})
 	pulumi.RegisterOutputType(PreventionStoredInfoTypeDictionaryOutput{})

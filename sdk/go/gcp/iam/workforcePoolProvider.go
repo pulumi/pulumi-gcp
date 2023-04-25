@@ -109,6 +109,102 @@ import (
 //	}
 //
 // ```
+// ### Iam Workforce Pool Provider Oidc Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
+//				WorkforcePoolId: pulumi.String("example-pool"),
+//				Parent:          pulumi.String("organizations/123456789"),
+//				Location:        pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
+//				WorkforcePoolId: pool.WorkforcePoolId,
+//				Location:        pool.Location,
+//				ProviderId:      pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.sub"),
+//				},
+//				Oidc: &iam.WorkforcePoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
+//					ClientId:  pulumi.String("client-id"),
+//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
+//						ResponseType:            pulumi.String("ID_TOKEN"),
+//						AssertionClaimsBehavior: pulumi.String("ONLY_ID_TOKEN_CLAIMS"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Iam Workforce Pool Provider Oidc Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkforcePool(ctx, "pool", &iam.WorkforcePoolArgs{
+//				WorkforcePoolId: pulumi.String("example-pool"),
+//				Parent:          pulumi.String("organizations/123456789"),
+//				Location:        pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkforcePoolProvider(ctx, "example", &iam.WorkforcePoolProviderArgs{
+//				WorkforcePoolId: pool.WorkforcePoolId,
+//				Location:        pool.Location,
+//				ProviderId:      pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.sub"),
+//				},
+//				Oidc: &iam.WorkforcePoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
+//					ClientId:  pulumi.String("client-id"),
+//					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
+//						ResponseType:            pulumi.String("ID_TOKEN"),
+//						AssertionClaimsBehavior: pulumi.String("ONLY_ID_TOKEN_CLAIMS"),
+//					},
+//				},
+//				DisplayName:        pulumi.String("Display name"),
+//				Description:        pulumi.String("A sample OIDC workforce pool provider."),
+//				Disabled:           pulumi.Bool(false),
+//				AttributeCondition: pulumi.String("true"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

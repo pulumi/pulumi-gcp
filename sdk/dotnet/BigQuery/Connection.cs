@@ -15,7 +15,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -36,7 +35,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
@@ -95,7 +93,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// using Random = Pulumi.Random;
@@ -155,7 +152,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -182,7 +178,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -207,7 +202,6 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

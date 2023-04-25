@@ -13885,7 +13885,8 @@ type ClusterIpAllocationPolicy struct {
 	// The name of the existing secondary
 	// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
 	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
-	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
+	ClusterSecondaryRangeName  *string                                              `pulumi:"clusterSecondaryRangeName"`
+	PodCidrOverprovisionConfig *ClusterIpAllocationPolicyPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range of the services IPs in this cluster.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -13924,7 +13925,8 @@ type ClusterIpAllocationPolicyArgs struct {
 	// The name of the existing secondary
 	// range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
 	// `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
-	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
+	ClusterSecondaryRangeName  pulumi.StringPtrInput                                       `pulumi:"clusterSecondaryRangeName"`
+	PodCidrOverprovisionConfig ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range of the services IPs in this cluster.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -14035,6 +14037,12 @@ func (o ClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.Stri
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+func (o ClusterIpAllocationPolicyOutput) PodCidrOverprovisionConfig() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+		return v.PodCidrOverprovisionConfig
+	}).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput)
+}
+
 // The IP address range of the services IPs in this cluster.
 // Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 // to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -14109,6 +14117,15 @@ func (o ClusterIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ClusterIpAllocationPolicyPtrOutput) PodCidrOverprovisionConfig() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PodCidrOverprovisionConfig
+	}).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput)
+}
+
 // The IP address range of the services IPs in this cluster.
 // Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 // to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -14146,6 +14163,143 @@ func (o ClusterIpAllocationPolicyPtrOutput) StackType() pulumi.StringPtrOutput {
 		}
 		return v.StackType
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterIpAllocationPolicyPodCidrOverprovisionConfig struct {
+	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	Disabled bool `pulumi:"disabled"`
+}
+
+// ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput is an input type that accepts ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs and ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput values.
+// You can construct a concrete instance of `ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput` via:
+//
+//	ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{...}
+type ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput interface {
+	pulumi.Input
+
+	ToClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput
+	ToClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput
+}
+
+type ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs struct {
+	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return i.ToClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput)
+}
+
+func (i ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return i.ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput).ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput is an input type that accepts ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs, ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtr and ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput` via:
+//
+//	        ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput
+	ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput
+}
+
+type clusterIpAllocationPolicyPodCidrOverprovisionConfigPtrType ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs
+
+func ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtr(v *ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput {
+	return (*clusterIpAllocationPolicyPodCidrOverprovisionConfigPtrType)(v)
+}
+
+func (*clusterIpAllocationPolicyPodCidrOverprovisionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i *clusterIpAllocationPolicyPodCidrOverprovisionConfigPtrType) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return i.ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterIpAllocationPolicyPodCidrOverprovisionConfigPtrType) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput)
+}
+
+type ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return o.ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIpAllocationPolicyPodCidrOverprovisionConfig) *ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+		return &v
+	}).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput)
+}
+
+// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicyPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput() ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) ToClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) Elem() ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicyPodCidrOverprovisionConfig) ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIpAllocationPolicyPodCidrOverprovisionConfig
+		return ret
+	}).(ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput)
+}
+
+// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicyPodCidrOverprovisionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterLoggingConfig struct {
@@ -20634,7 +20788,8 @@ type ClusterNodePoolNetworkConfig struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes         *bool                                                   `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfig *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
@@ -20659,7 +20814,8 @@ type ClusterNodePoolNetworkConfigArgs struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes         pulumi.BoolPtrInput                                            `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfig ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
@@ -20756,6 +20912,12 @@ func (o ClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrO
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterNodePoolNetworkConfigOutput) PodCidrOverprovisionConfig() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return v.PodCidrOverprovisionConfig
+	}).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -20813,6 +20975,15 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o ClusterNodePoolNetworkConfigPtrOutput) PodCidrOverprovisionConfig() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PodCidrOverprovisionConfig
+	}).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *string {
@@ -20831,6 +21002,143 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 		}
 		return v.PodRange
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
+	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	Disabled bool `pulumi:"disabled"`
+}
+
+// ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput is an input type that accepts ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs and ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput` via:
+//
+//	ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...}
+type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+	ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+}
+
+type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs struct {
+	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return i.ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
+}
+
+func (i ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return i.ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput).ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput is an input type that accepts ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs, ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtr and ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput` via:
+//
+//	        ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput
+	ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput
+}
+
+type clusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrType ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs
+
+func ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtr(v *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput {
+	return (*clusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrType) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return i.ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrType) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return &v
+	}).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
+// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) ToClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Elem() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig
+		return ret
+	}).(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
+}
+
+// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfig struct {
@@ -27477,7 +27785,8 @@ type NodePoolNetworkConfig struct {
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
-	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes         *bool                                            `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfig *NodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
@@ -27499,7 +27808,8 @@ type NodePoolNetworkConfigArgs struct {
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
-	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes         pulumi.BoolPtrInput                                     `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfig NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
@@ -27593,6 +27903,12 @@ func (o NodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+func (o NodePoolNetworkConfigOutput) PodCidrOverprovisionConfig() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *NodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return v.PodCidrOverprovisionConfig
+	}).(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o NodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -27647,6 +27963,15 @@ func (o NodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+func (o NodePoolNetworkConfigPtrOutput) PodCidrOverprovisionConfig() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) *NodePoolNetworkConfigPodCidrOverprovisionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PodCidrOverprovisionConfig
+	}).(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 func (o NodePoolNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *string {
@@ -27665,6 +27990,139 @@ func (o NodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 		}
 		return v.PodRange
 	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNetworkConfigPodCidrOverprovisionConfig struct {
+	Disabled bool `pulumi:"disabled"`
+}
+
+// NodePoolNetworkConfigPodCidrOverprovisionConfigInput is an input type that accepts NodePoolNetworkConfigPodCidrOverprovisionConfigArgs and NodePoolNetworkConfigPodCidrOverprovisionConfigOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigPodCidrOverprovisionConfigInput` via:
+//
+//	NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...}
+type NodePoolNetworkConfigPodCidrOverprovisionConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+	ToNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+}
+
+type NodePoolNetworkConfigPodCidrOverprovisionConfigArgs struct {
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (NodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i NodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return i.ToNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
+}
+
+func (i NodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return i.ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigPodCidrOverprovisionConfigOutput).ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput is an input type that accepts NodePoolNetworkConfigPodCidrOverprovisionConfigArgs, NodePoolNetworkConfigPodCidrOverprovisionConfigPtr and NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput` via:
+//
+//	        NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput
+	ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput
+}
+
+type nodePoolNetworkConfigPodCidrOverprovisionConfigPtrType NodePoolNetworkConfigPodCidrOverprovisionConfigArgs
+
+func NodePoolNetworkConfigPodCidrOverprovisionConfigPtr(v *NodePoolNetworkConfigPodCidrOverprovisionConfigArgs) NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput {
+	return (*nodePoolNetworkConfigPodCidrOverprovisionConfigPtrType)(v)
+}
+
+func (*nodePoolNetworkConfigPodCidrOverprovisionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNetworkConfigPodCidrOverprovisionConfigPtrType) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return i.ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNetworkConfigPodCidrOverprovisionConfigPtrType) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
+type NodePoolNetworkConfigPodCidrOverprovisionConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNetworkConfigPodCidrOverprovisionConfig) *NodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return &v
+	}).(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput)
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) ToNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Elem() NodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfigPodCidrOverprovisionConfig) NodePoolNetworkConfigPodCidrOverprovisionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNetworkConfigPodCidrOverprovisionConfig
+		return ret
+	}).(NodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
+}
+
+func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfigPodCidrOverprovisionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfig struct {
@@ -34218,11 +34676,12 @@ func (o GetClusterIdentityServiceConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClusterIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock       string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      string `pulumi:"servicesIpv4CidrBlock"`
-	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
-	StackType                  string `pulumi:"stackType"`
+	ClusterIpv4CidrBlock        string                                                   `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName   string                                                   `pulumi:"clusterSecondaryRangeName"`
+	PodCidrOverprovisionConfigs []GetClusterIpAllocationPolicyPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfigs"`
+	ServicesIpv4CidrBlock       string                                                   `pulumi:"servicesIpv4CidrBlock"`
+	ServicesSecondaryRangeName  string                                                   `pulumi:"servicesSecondaryRangeName"`
+	StackType                   string                                                   `pulumi:"stackType"`
 }
 
 // GetClusterIpAllocationPolicyInput is an input type that accepts GetClusterIpAllocationPolicyArgs and GetClusterIpAllocationPolicyOutput values.
@@ -34237,11 +34696,12 @@ type GetClusterIpAllocationPolicyInput interface {
 }
 
 type GetClusterIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock       pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
-	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
-	StackType                  pulumi.StringInput `pulumi:"stackType"`
+	ClusterIpv4CidrBlock        pulumi.StringInput                                               `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName   pulumi.StringInput                                               `pulumi:"clusterSecondaryRangeName"`
+	PodCidrOverprovisionConfigs GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayInput `pulumi:"podCidrOverprovisionConfigs"`
+	ServicesIpv4CidrBlock       pulumi.StringInput                                               `pulumi:"servicesIpv4CidrBlock"`
+	ServicesSecondaryRangeName  pulumi.StringInput                                               `pulumi:"servicesSecondaryRangeName"`
+	StackType                   pulumi.StringInput                                               `pulumi:"stackType"`
 }
 
 func (GetClusterIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -34303,6 +34763,12 @@ func (o GetClusterIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.S
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
 }
 
+func (o GetClusterIpAllocationPolicyOutput) PodCidrOverprovisionConfigs() GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) []GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+		return v.PodCidrOverprovisionConfigs
+	}).(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput)
+}
+
 func (o GetClusterIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ServicesIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -34333,6 +34799,100 @@ func (o GetClusterIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) GetClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIpAllocationPolicy {
 		return vs[0].([]GetClusterIpAllocationPolicy)[vs[1].(int)]
 	}).(GetClusterIpAllocationPolicyOutput)
+}
+
+type GetClusterIpAllocationPolicyPodCidrOverprovisionConfig struct {
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetClusterIpAllocationPolicyPodCidrOverprovisionConfigInput is an input type that accepts GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs and GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput values.
+// You can construct a concrete instance of `GetClusterIpAllocationPolicyPodCidrOverprovisionConfigInput` via:
+//
+//	GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{...}
+type GetClusterIpAllocationPolicyPodCidrOverprovisionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput() GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput
+	ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(context.Context) GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput
+}
+
+type GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs struct {
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput() GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return i.ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput)
+}
+
+// GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayInput is an input type that accepts GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray and GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayInput` via:
+//
+//	GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray{ GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{...} }
+type GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput() GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput
+	ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutputWithContext(context.Context) GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput
+}
+
+type GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray []GetClusterIpAllocationPolicyPodCidrOverprovisionConfigInput
+
+func (GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput() GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput {
+	return i.ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput)
+}
+
+type GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput() GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicyPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIpAllocationPolicyPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput() GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput) ToGetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+		return vs[0].([]GetClusterIpAllocationPolicyPodCidrOverprovisionConfig)[vs[1].(int)]
+	}).(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput)
 }
 
 type GetClusterLoggingConfig struct {
@@ -38405,10 +38965,11 @@ func (o GetClusterNodePoolManagementArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterNodePoolNetworkConfig struct {
-	CreatePodRange     bool   `pulumi:"createPodRange"`
-	EnablePrivateNodes bool   `pulumi:"enablePrivateNodes"`
-	PodIpv4CidrBlock   string `pulumi:"podIpv4CidrBlock"`
-	PodRange           string `pulumi:"podRange"`
+	CreatePodRange              bool                                                        `pulumi:"createPodRange"`
+	EnablePrivateNodes          bool                                                        `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfigs []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfigs"`
+	PodIpv4CidrBlock            string                                                      `pulumi:"podIpv4CidrBlock"`
+	PodRange                    string                                                      `pulumi:"podRange"`
 }
 
 // GetClusterNodePoolNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigArgs and GetClusterNodePoolNetworkConfigOutput values.
@@ -38423,10 +38984,11 @@ type GetClusterNodePoolNetworkConfigInput interface {
 }
 
 type GetClusterNodePoolNetworkConfigArgs struct {
-	CreatePodRange     pulumi.BoolInput   `pulumi:"createPodRange"`
-	EnablePrivateNodes pulumi.BoolInput   `pulumi:"enablePrivateNodes"`
-	PodIpv4CidrBlock   pulumi.StringInput `pulumi:"podIpv4CidrBlock"`
-	PodRange           pulumi.StringInput `pulumi:"podRange"`
+	CreatePodRange              pulumi.BoolInput                                                    `pulumi:"createPodRange"`
+	EnablePrivateNodes          pulumi.BoolInput                                                    `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfigs GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput `pulumi:"podCidrOverprovisionConfigs"`
+	PodIpv4CidrBlock            pulumi.StringInput                                                  `pulumi:"podIpv4CidrBlock"`
+	PodRange                    pulumi.StringInput                                                  `pulumi:"podRange"`
 }
 
 func (GetClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -38488,6 +39050,12 @@ func (o GetClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolO
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
 }
 
+func (o GetClusterNodePoolNetworkConfigOutput) PodCidrOverprovisionConfigs() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return v.PodCidrOverprovisionConfigs
+	}).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput)
+}
+
 func (o GetClusterNodePoolNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) string { return v.PodIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -38514,6 +39082,100 @@ func (o GetClusterNodePoolNetworkConfigArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfig {
 		return vs[0].([]GetClusterNodePoolNetworkConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNetworkConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs and GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...}
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs struct {
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray and GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray{ GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) ToGetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfig struct {
@@ -42399,6 +43061,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigPtrInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput)(nil)).Elem(), ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingConfigInput)(nil)).Elem(), ClusterLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingConfigPtrInput)(nil)).Elem(), ClusterLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyInput)(nil)).Elem(), ClusterMaintenancePolicyArgs{})
@@ -42477,6 +43141,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolManagementPtrInput)(nil)).Elem(), ClusterNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPtrInput)(nil)).Elem(), ClusterNodePoolNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
@@ -42553,6 +43219,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementPtrInput)(nil)).Elem(), NodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigInput)(nil)).Elem(), NodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPtrInput)(nil)).Elem(), NodePoolNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
@@ -42657,6 +43325,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigArrayInput)(nil)).Elem(), GetClusterIdentityServiceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyInput)(nil)).Elem(), GetClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyPodCidrOverprovisionConfigInput)(nil)).Elem(), GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterLoggingConfigInput)(nil)).Elem(), GetClusterLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterLoggingConfigArrayInput)(nil)).Elem(), GetClusterLoggingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMaintenancePolicyInput)(nil)).Elem(), GetClusterMaintenancePolicyArgs{})
@@ -42735,6 +43405,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementArrayInput)(nil)).Elem(), GetClusterNodePoolManagementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{})
@@ -42981,6 +43653,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyOutput{})
@@ -43059,6 +43733,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput{})
@@ -43135,6 +43811,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesOutput{})
@@ -43239,6 +43917,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyOutput{})
@@ -43317,6 +43997,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput{})

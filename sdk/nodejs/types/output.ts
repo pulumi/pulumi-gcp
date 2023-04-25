@@ -8529,6 +8529,7 @@ export namespace clouddeploy {
     export interface DeliveryPipelineCondition {
         pipelineReadyConditions: outputs.clouddeploy.DeliveryPipelineConditionPipelineReadyCondition[];
         targetsPresentConditions: outputs.clouddeploy.DeliveryPipelineConditionTargetsPresentCondition[];
+        targetsTypeConditions: outputs.clouddeploy.DeliveryPipelineConditionTargetsTypeCondition[];
     }
 
     export interface DeliveryPipelineConditionPipelineReadyCondition {
@@ -8546,6 +8547,11 @@ export namespace clouddeploy {
          * Output only. Most recent time at which the pipeline was updated.
          */
         updateTime: string;
+    }
+
+    export interface DeliveryPipelineConditionTargetsTypeCondition {
+        errorDetails: string;
+        status: boolean;
     }
 
     export interface DeliveryPipelineSerialPipeline {
@@ -8572,9 +8578,120 @@ export namespace clouddeploy {
 
     export interface DeliveryPipelineSerialPipelineStageStrategy {
         /**
+         * (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+         */
+        canary?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanary;
+        /**
          * Standard deployment strategy executes a single deploy and allows verifying the deployment.
          */
         standard?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyStandard;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanary {
+        /**
+         * Configures the progressive based deployment for a Target.
+         */
+        canaryDeployment?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment;
+        /**
+         * Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+         */
+        customCanaryDeployment?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment;
+        /**
+         * Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+         */
+        runtimeConfig?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
+        /**
+         * Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+         */
+        percentages: number[];
+        /**
+         * Whether to run verify tests after each percentage deployment.
+         */
+        verify?: boolean;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
+        /**
+         * Required. Configuration for each phase in the canary deployment in the order executed.
+         */
+        phaseConfigs: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig[];
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
+        /**
+         * Required. Percentage deployment for the phase.
+         */
+        percentage: number;
+        /**
+         * Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+         */
+        phaseId: string;
+        /**
+         * Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+         */
+        profiles?: string[];
+        /**
+         * Whether to run verify tests after the deployment.
+         */
+        verify?: boolean;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
+        /**
+         * Cloud Run runtime configuration.
+         */
+        cloudRun?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun;
+        /**
+         * Kubernetes runtime configuration.
+         */
+        kubernetes?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
+        /**
+         * Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+         */
+        automaticTrafficControl?: boolean;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
+        /**
+         * Kubernetes Gateway API service mesh configuration.
+         */
+        gatewayServiceMesh?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh;
+        /**
+         * Kubernetes Service networking configuration.
+         */
+        serviceNetworking?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh {
+        /**
+         * Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+         */
+        deployment: string;
+        /**
+         * Required. Name of the Gateway API HTTPRoute.
+         */
+        httpRoute: string;
+        /**
+         * Required. Name of the Kubernetes Service.
+         */
+        service: string;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
+        /**
+         * Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+         */
+        deployment: string;
+        /**
+         * Required. Name of the Kubernetes Service.
+         */
+        service: string;
     }
 
     export interface DeliveryPipelineSerialPipelineStageStrategyStandard {
@@ -14516,6 +14633,330 @@ export namespace compute {
         port: number;
     }
 
+    export interface GetRegionInstanceTemplateAdvancedMachineFeature {
+        enableNestedVirtualization: boolean;
+        threadsPerCore: number;
+        visibleCoreCount: number;
+    }
+
+    export interface GetRegionInstanceTemplateConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute: boolean;
+    }
+
+    export interface GetRegionInstanceTemplateDisk {
+        /**
+         * Whether or not the disk should be auto-deleted.
+         * This defaults to true.
+         */
+        autoDelete: boolean;
+        /**
+         * Indicates that this is a boot disk.
+         */
+        boot: boolean;
+        /**
+         * A unique device name that is reflected into the
+         * /dev/  tree of a Linux operating system running within the instance. If not
+         * specified, the server chooses a default device name to apply to this disk.
+         */
+        deviceName: string;
+        /**
+         * Encrypts or decrypts a disk using a customer-supplied encryption key.
+         */
+        diskEncryptionKeys: outputs.compute.GetRegionInstanceTemplateDiskDiskEncryptionKey[];
+        /**
+         * Name of the disk. When not provided, this defaults
+         * to the name of the instance.
+         */
+        diskName: string;
+        /**
+         * The size of the image in gigabytes. If not
+         * specified, it will inherit the size of its base image. For SCRATCH disks,
+         * the size must be exactly 375GB.
+         */
+        diskSizeGb: number;
+        /**
+         * The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+         * `"pd-balanced"` or `"pd-standard"`.
+         */
+        diskType: string;
+        /**
+         * Specifies the disk interface to use for attaching this disk,
+         * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+         * and the request will fail if you attempt to attach a persistent disk in any other format
+         * than SCSI. Local SSDs can use either NVME or SCSI.
+         */
+        interface: string;
+        /**
+         * (Optional) A set of ket/value label pairs to assign to disk created from
+         * this template
+         */
+        labels: {[key: string]: string};
+        /**
+         * The mode in which to attach this disk, either READ_WRITE
+         * or READ_ONLY. If you are attaching or creating a boot disk, this must
+         * read-write mode.
+         */
+        mode: string;
+        /**
+         * (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies: string[];
+        /**
+         * The name (**not self_link**)
+         * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        source: string;
+        /**
+         * The image from which to
+         * initialize this disk. This can be one of: the image's `selfLink`,
+         * `projects/{project}/global/images/{image}`,
+         * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+         * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+         * `{project}/{image}`, `{family}`, or `{image}`.
+         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        sourceImage: string;
+        sourceImageEncryptionKeys: outputs.compute.GetRegionInstanceTemplateDiskSourceImageEncryptionKey[];
+        sourceSnapshot: string;
+        sourceSnapshotEncryptionKeys: outputs.compute.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey[];
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface GetRegionInstanceTemplateDiskDiskEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+    }
+
+    export interface GetRegionInstanceTemplateDiskSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
+    }
+
+    export interface GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+        kmsKeyServiceAccount: string;
+    }
+
+    export interface GetRegionInstanceTemplateGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
+        count: number;
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface GetRegionInstanceTemplateNetworkInterface {
+        accessConfigs: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceAccessConfig[];
+        /**
+         * An
+         * array of alias IP ranges for this network interface. Can only be specified for network
+         * interfaces on subnet-mode networks. Structure documented below.
+         */
+        aliasIpRanges: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceAliasIpRange[];
+        ipv6AccessConfigs: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessType: string;
+        /**
+         * The name of the instance template. One of `name` or `filter` must be provided.
+         */
+        name: string;
+        /**
+         * The name or selfLink of the network to attach this interface to.
+         * Use `network` attribute for Legacy or Auto subnetted networks and
+         * `subnetwork` for custom subnetted networks.
+         */
+        network: string;
+        /**
+         * The private IP address to assign to the instance. If
+         * empty, the address will be automatically assigned.
+         */
+        networkIp: string;
+        nicType: string;
+        queueCount: number;
+        stackType: string;
+        /**
+         * the name of the subnetwork to attach this interface
+         * to. The subnetwork must exist in the same `region` this instance will be
+         * created in. Either `network` or `subnetwork` must be provided.
+         */
+        subnetwork: string;
+        /**
+         * The ID of the project in which the subnetwork belongs.
+         * If it is not provided, the provider project is used.
+         */
+        subnetworkProject: string;
+    }
+
+    export interface GetRegionInstanceTemplateNetworkInterfaceAccessConfig {
+        /**
+         * The IP address that will be 1:1 mapped to the instance's
+         * network ip. If not given, one will be generated.
+         */
+        natIp: string;
+        /**
+         * The [networking tier][network-tier] used for configuring
+         * this instance template. This field can take the following values: PREMIUM or
+         * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         */
+        networkTier: string;
+        publicPtrDomainName: string;
+    }
+
+    export interface GetRegionInstanceTemplateNetworkInterfaceAliasIpRange {
+        /**
+         * The IP CIDR range represented by this alias IP range. This IP CIDR range
+         * must belong to the specified subnetwork and cannot contain IP addresses reserved by
+         * system or used by other network interfaces. At the time of writing only a
+         * netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+         * error.
+         */
+        ipCidrRange: string;
+        /**
+         * The subnetwork secondary range name specifying
+         * the secondary range from which to allocate the IP CIDR range for this alias IP
+         * range. If left unspecified, the primary range of the subnetwork will be used.
+         */
+        subnetworkRangeName: string;
+    }
+
+    export interface GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        /**
+         * The [networking tier][network-tier] used for configuring
+         * this instance template. This field can take the following values: PREMIUM or
+         * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         */
+        networkTier: string;
+        publicPtrDomainName: string;
+    }
+
+    export interface GetRegionInstanceTemplateNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier for the instance.
+         */
+        totalEgressBandwidthTier: string;
+    }
+
+    export interface GetRegionInstanceTemplateReservationAffinity {
+        specificReservations: outputs.compute.GetRegionInstanceTemplateReservationAffinitySpecificReservation[];
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface GetRegionInstanceTemplateReservationAffinitySpecificReservation {
+        /**
+         * The key for the node affinity label.
+         */
+        key: string;
+        values: string[];
+    }
+
+    export interface GetRegionInstanceTemplateScheduling {
+        /**
+         * Specifies whether the instance should be
+         * automatically restarted if it is terminated by Compute Engine (not
+         * terminated by a user). This defaults to true.
+         */
+        automaticRestart: boolean;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction: string;
+        maintenanceInterval: string;
+        maxRunDurations: outputs.compute.GetRegionInstanceTemplateSchedulingMaxRunDuration[];
+        minNodeCpus: number;
+        /**
+         * Specifies node affinities or anti-affinities
+         * to determine which sole-tenant nodes your instances and managed instance
+         * groups will use as host systems. Read more on sole-tenant node creation
+         * [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+         * Structure documented below.
+         */
+        nodeAffinities: outputs.compute.GetRegionInstanceTemplateSchedulingNodeAffinity[];
+        /**
+         * Defines the maintenance behavior for this
+         * instance.
+         */
+        onHostMaintenance: string;
+        /**
+         * Allows instance to be preempted. This defaults to
+         * false. Read more on this
+         * [here](https://cloud.google.com/compute/docs/instances/preemptible).
+         */
+        preemptible: boolean;
+        /**
+         * Describe the type of preemptible VM.
+         */
+        provisioningModel: string;
+    }
+
+    export interface GetRegionInstanceTemplateSchedulingMaxRunDuration {
+        nanos: number;
+        seconds: number;
+    }
+
+    export interface GetRegionInstanceTemplateSchedulingNodeAffinity {
+        /**
+         * The key for the node affinity label.
+         */
+        key: string;
+        /**
+         * The operator. Can be `IN` for node-affinities
+         * or `NOT_IN` for anti-affinities.
+         */
+        operator: string;
+        values: string[];
+    }
+
+    export interface GetRegionInstanceTemplateServiceAccount {
+        /**
+         * The service account e-mail address. If not given, the
+         * default Google Compute Engine service account is used.
+         */
+        email: string;
+        /**
+         * A list of service scopes. Both OAuth2 URLs and gcloud
+         * short names are supported. To allow full access to all Cloud APIs, use the
+         * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+         */
+        scopes: string[];
+    }
+
+    export interface GetRegionInstanceTemplateShieldedInstanceConfig {
+        /**
+         * - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+         */
+        enableIntegrityMonitoring: boolean;
+        /**
+         * - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+         */
+        enableSecureBoot: boolean;
+        /**
+         * - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+         */
+        enableVtpm: boolean;
+    }
+
     export interface GetRegionNetworkEndpointGroupAppEngine {
         service: string;
         urlMask: string;
@@ -17767,6 +18208,40 @@ export namespace compute {
         policy: string;
     }
 
+    export interface RegionCommitmentLicenseResource {
+        /**
+         * The number of licenses purchased.
+         */
+        amount?: string;
+        /**
+         * Specifies the core range of the instance for which this license applies.
+         */
+        coresPerLicense?: string;
+        /**
+         * Any applicable license URI.
+         */
+        license: string;
+    }
+
+    export interface RegionCommitmentResource {
+        /**
+         * Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
+         */
+        acceleratorType?: string;
+        /**
+         * The amount of the resource purchased (in a type-dependent unit,
+         * such as bytes). For vCPUs, this can just be an integer. For memory,
+         * this must be provided in MB. Memory must be a multiple of 256 MB,
+         * with up to 6.5GB of memory per every vCPU.
+         */
+        amount?: string;
+        /**
+         * Type of resource for which this commitment applies.
+         * Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
+         */
+        type?: string;
+    }
+
     export interface RegionDiskDiskEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
@@ -18343,6 +18818,409 @@ export namespace compute {
          * one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
          */
         percent?: number;
+    }
+
+    export interface RegionInstanceTemplateAdvancedMachineFeatures {
+        /**
+         * Defines whether the instance should have nested virtualization enabled. Defaults to false.
+         */
+        enableNestedVirtualization?: boolean;
+        /**
+         * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         */
+        threadsPerCore?: number;
+        /**
+         * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         */
+        visibleCoreCount?: number;
+    }
+
+    export interface RegionInstanceTemplateConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute: boolean;
+    }
+
+    export interface RegionInstanceTemplateDisk {
+        /**
+         * Whether or not the disk should be auto-deleted.
+         * This defaults to true.
+         */
+        autoDelete?: boolean;
+        /**
+         * Indicates that this is a boot disk.
+         */
+        boot: boolean;
+        /**
+         * A unique device name that is reflected into the
+         * /dev/  tree of a Linux operating system running within the instance. If not
+         * specified, the server chooses a default device name to apply to this disk.
+         */
+        deviceName: string;
+        /**
+         * Encrypts or decrypts a disk using a customer-supplied encryption key.
+         */
+        diskEncryptionKey?: outputs.compute.RegionInstanceTemplateDiskDiskEncryptionKey;
+        /**
+         * Name of the disk. When not provided, this defaults
+         * to the name of the instance.
+         */
+        diskName?: string;
+        /**
+         * The size of the image in gigabytes. If not
+         * specified, it will inherit the size of its base image. For SCRATCH disks,
+         * the size must be exactly 375GB.
+         */
+        diskSizeGb: number;
+        /**
+         * The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+         * `"pd-balanced"` or `"pd-standard"`.
+         */
+        diskType: string;
+        /**
+         * Specifies the disk interface to use for attaching this disk,
+         * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+         * and the request will fail if you attempt to attach a persistent disk in any other format
+         * than SCSI. Local SSDs can use either NVME or SCSI.
+         */
+        interface: string;
+        /**
+         * A set of ket/value label pairs to assign to disk created from
+         * this template
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The mode in which to attach this disk, either READ_WRITE
+         * or READ_ONLY. If you are attaching or creating a boot disk, this must
+         * read-write mode.
+         */
+        mode: string;
+        /**
+         * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies?: string;
+        /**
+         * The name (**not self_link**)
+         * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        source?: string;
+        /**
+         * The image from which to
+         * initialize this disk. This can be one of: the image's `selfLink`,
+         * `projects/{project}/global/images/{image}`,
+         * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+         * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+         * `{project}/{image}`, `{family}`, or `{image}`.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        sourceImage: string;
+        /**
+         * The customer-supplied encryption
+         * key of the source image. Required if the source image is protected by a
+         * customer-supplied encryption key.
+         */
+        sourceImageEncryptionKey?: outputs.compute.RegionInstanceTemplateDiskSourceImageEncryptionKey;
+        /**
+         * The source snapshot to create this disk.
+         * > **Note:** Either `source`, `sourceImage`, or `sourceSnapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        sourceSnapshot?: string;
+        /**
+         * The customer-supplied encryption
+         * key of the source snapshot. Structure
+         * documented below.
+         */
+        sourceSnapshotEncryptionKey?: outputs.compute.RegionInstanceTemplateDiskSourceSnapshotEncryptionKey;
+        /**
+         * The type of GCE disk, can be either `"SCRATCH"` or
+         * `"PERSISTENT"`.
+         */
+        type: string;
+    }
+
+    export interface RegionInstanceTemplateDiskDiskEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+    }
+
+    export interface RegionInstanceTemplateDiskSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key that is
+         * stored in Google Cloud KMS.
+         */
+        kmsKeySelfLink: string;
+        /**
+         * The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         */
+        kmsKeyServiceAccount?: string;
+    }
+
+    export interface RegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key that is
+         * stored in Google Cloud KMS.
+         */
+        kmsKeySelfLink: string;
+        /**
+         * The service account being used for the
+         * encryption request for the given KMS key. If absent, the Compute Engine
+         * default service account is used.
+         */
+        kmsKeyServiceAccount?: string;
+    }
+
+    export interface RegionInstanceTemplateGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
+        count: number;
+        /**
+         * The type of GCE disk, can be either `"SCRATCH"` or
+         * `"PERSISTENT"`.
+         */
+        type: string;
+    }
+
+    export interface RegionInstanceTemplateNetworkInterface {
+        accessConfigs?: outputs.compute.RegionInstanceTemplateNetworkInterfaceAccessConfig[];
+        /**
+         * An
+         * array of alias IP ranges for this network interface. Can only be specified for network
+         * interfaces on subnet-mode networks. Structure documented below.
+         */
+        aliasIpRanges?: outputs.compute.RegionInstanceTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * An array of IPv6 access configurations for this interface.
+         * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+         * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+         */
+        ipv6AccessConfigs?: outputs.compute.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessType: string;
+        name: string;
+        /**
+         * The name or selfLink of the network to attach this interface to.
+         * Use `network` attribute for Legacy or Auto subnetted networks and
+         * `subnetwork` for custom subnetted networks.
+         */
+        network: string;
+        /**
+         * The private IP address to assign to the instance. If
+         * empty, the address will be automatically assigned.
+         */
+        networkIp?: string;
+        /**
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+         */
+        nicType?: string;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
+        queueCount?: number;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         */
+        stackType: string;
+        /**
+         * the name of the subnetwork to attach this interface
+         * to. The subnetwork must exist in the same `region` this instance will be
+         * created in. Either `network` or `subnetwork` must be provided.
+         */
+        subnetwork: string;
+        /**
+         * The ID of the project in which the subnetwork belongs.
+         * If it is not provided, the provider project is used.
+         */
+        subnetworkProject: string;
+    }
+
+    export interface RegionInstanceTemplateNetworkInterfaceAccessConfig {
+        /**
+         * The IP address that will be 1:1 mapped to the instance's
+         * network ip. If not given, one will be generated.
+         */
+        natIp: string;
+        /**
+         * The service-level to be provided for IPv6 traffic when the
+         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+         */
+        networkTier: string;
+        publicPtrDomainName: string;
+    }
+
+    export interface RegionInstanceTemplateNetworkInterfaceAliasIpRange {
+        /**
+         * The IP CIDR range represented by this alias IP range. This IP CIDR range
+         * must belong to the specified subnetwork and cannot contain IP addresses reserved by
+         * system or used by other network interfaces. At the time of writing only a
+         * netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+         * error.
+         */
+        ipCidrRange: string;
+        /**
+         * The subnetwork secondary range name specifying
+         * the secondary range from which to allocate the IP CIDR range for this alias IP
+         * range. If left unspecified, the primary range of the subnetwork will be used.
+         */
+        subnetworkRangeName?: string;
+    }
+
+    export interface RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        externalIpv6: string;
+        externalIpv6PrefixLength: string;
+        /**
+         * The [networking tier][network-tier] used for configuring
+         * this instance template. This field can take the following values: PREMIUM,
+         * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+         */
+        networkTier: string;
+        publicPtrDomainName: string;
+    }
+
+    export interface RegionInstanceTemplateNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+         */
+        totalEgressBandwidthTier: string;
+    }
+
+    export interface RegionInstanceTemplateReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use..
+         * Structure is documented below.
+         */
+        specificReservation?: outputs.compute.RegionInstanceTemplateReservationAffinitySpecificReservation;
+        /**
+         * The type of reservation from which this instance can consume resources.
+         */
+        type: string;
+    }
+
+    export interface RegionInstanceTemplateReservationAffinitySpecificReservation {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         */
+        key: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
+        values: string[];
+    }
+
+    export interface RegionInstanceTemplateScheduling {
+        /**
+         * Specifies whether the instance should be
+         * automatically restarted if it is terminated by Compute Engine (not
+         * terminated by a user). This defaults to true.
+         */
+        automaticRestart?: boolean;
+        /**
+         * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+         */
+        instanceTerminationAction?: string;
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
+         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
+         */
+        maintenanceInterval?: string;
+        /**
+         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         */
+        maxRunDuration?: outputs.compute.RegionInstanceTemplateSchedulingMaxRunDuration;
+        minNodeCpus?: number;
+        /**
+         * Specifies node affinities or anti-affinities
+         * to determine which sole-tenant nodes your instances and managed instance
+         * groups will use as host systems. Read more on sole-tenant node creation
+         * [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+         * Structure documented below.
+         */
+        nodeAffinities?: outputs.compute.RegionInstanceTemplateSchedulingNodeAffinity[];
+        /**
+         * Defines the maintenance behavior for this
+         * instance.
+         */
+        onHostMaintenance: string;
+        /**
+         * Allows instance to be preempted. This defaults to
+         * false. Read more on this
+         * [here](https://cloud.google.com/compute/docs/instances/preemptible).
+         */
+        preemptible?: boolean;
+        /**
+         * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+         * `preemptible` should be `true` and `autoRestart` should be
+         * `false`. For more info about
+         * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+         */
+        provisioningModel: string;
+    }
+
+    export interface RegionInstanceTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: number;
+    }
+
+    export interface RegionInstanceTemplateSchedulingNodeAffinity {
+        /**
+         * The key for the node affinity label.
+         */
+        key: string;
+        /**
+         * The operator. Can be `IN` for node-affinities
+         * or `NOT_IN` for anti-affinities.
+         */
+        operator: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
+        values: string[];
+    }
+
+    export interface RegionInstanceTemplateServiceAccount {
+        /**
+         * The service account e-mail address. If not given, the
+         * default Google Compute Engine service account is used.
+         */
+        email: string;
+        /**
+         * A list of service scopes. Both OAuth2 URLs and gcloud
+         * short names are supported. To allow full access to all Cloud APIs, use the
+         * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+         */
+        scopes: string[];
+    }
+
+    export interface RegionInstanceTemplateShieldedInstanceConfig {
+        /**
+         * - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+         */
+        enableIntegrityMonitoring?: boolean;
+        /**
+         * - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+         */
+        enableSecureBoot?: boolean;
+        /**
+         * - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+         */
+        enableVtpm?: boolean;
     }
 
     export interface RegionNetworkEndpointGroupAppEngine {
@@ -24285,6 +25163,7 @@ export namespace container {
          * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
          */
         clusterSecondaryRangeName: string;
+        podCidrOverprovisionConfig: outputs.container.ClusterIpAllocationPolicyPodCidrOverprovisionConfig;
         /**
          * The IP address range of the services IPs in this cluster.
          * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
@@ -24306,6 +25185,13 @@ export namespace container {
          * Possible values are `IPV4` and `PV4_IPV6`.
          */
         stackType?: string;
+    }
+
+    export interface ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+        /**
+         * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         */
+        disabled: boolean;
     }
 
     export interface ClusterLoggingConfig {
@@ -24899,6 +25785,7 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes: boolean;
+        podCidrOverprovisionConfig: outputs.container.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
          */
@@ -24906,7 +25793,14 @@ export namespace container {
         /**
          * The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
          */
-        podRange?: string;
+        podRange: string;
+    }
+
+    export interface ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+        /**
+         * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         */
+        disabled: boolean;
     }
 
     export interface ClusterNodePoolNodeConfig {
@@ -25650,9 +26544,14 @@ export namespace container {
     export interface GetClusterIpAllocationPolicy {
         clusterIpv4CidrBlock: string;
         clusterSecondaryRangeName: string;
+        podCidrOverprovisionConfigs: outputs.container.GetClusterIpAllocationPolicyPodCidrOverprovisionConfig[];
         servicesIpv4CidrBlock: string;
         servicesSecondaryRangeName: string;
         stackType: string;
+    }
+
+    export interface GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
+        disabled: boolean;
     }
 
     export interface GetClusterLoggingConfig {
@@ -25890,8 +26789,13 @@ export namespace container {
     export interface GetClusterNodePoolNetworkConfig {
         createPodRange: boolean;
         enablePrivateNodes: boolean;
+        podCidrOverprovisionConfigs: outputs.container.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig[];
         podIpv4CidrBlock: string;
         podRange: string;
+    }
+
+    export interface GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
+        disabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfig {
@@ -26149,6 +27053,7 @@ export namespace container {
          * Whether nodes have internal IP addresses only.
          */
         enablePrivateNodes: boolean;
+        podCidrOverprovisionConfig: outputs.container.NodePoolNetworkConfigPodCidrOverprovisionConfig;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
          */
@@ -26156,7 +27061,11 @@ export namespace container {
         /**
          * The ID of the secondary range for pod IPs. If `createPodRange` is true, this ID is used for the new range. If `createPodRange` is false, uses an existing secondary range with this ID.
          */
-        podRange?: string;
+        podRange: string;
+    }
+
+    export interface NodePoolNetworkConfigPodCidrOverprovisionConfig {
+        disabled: boolean;
     }
 
     export interface NodePoolNodeConfig {
@@ -28778,6 +29687,15 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobAction {
         /**
+         * Create a de-identified copy of the requested table or files.
+         * Structure is documented below.
+         */
+        deidentify?: outputs.dataloss.PreventionJobTriggerInspectJobActionDeidentify;
+        /**
+         * Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+         */
+        jobNotificationEmails?: outputs.dataloss.PreventionJobTriggerInspectJobActionJobNotificationEmails;
+        /**
          * Publish a message into a given Pub/Sub topic when the job completes.
          * Structure is documented below.
          */
@@ -28795,6 +29713,77 @@ export namespace dataloss {
          * Structure is documented below.
          */
         saveFindings?: outputs.dataloss.PreventionJobTriggerInspectJobActionSaveFindings;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionDeidentify {
+        /**
+         * User settable Cloud Storage bucket and folders to store de-identified files.
+         * This field must be set for cloud storage deidentification.
+         * The output Cloud Storage bucket must be different from the input bucket.
+         * De-identified files will overwrite files in the output path.
+         * Form of: gs://bucket/folder/ or gs://bucket
+         */
+        cloudStorageOutput: string;
+        /**
+         * List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+         * If empty, all supported files will be transformed. Supported types may be automatically added over time.
+         * If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+         * Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+         */
+        fileTypesToTransforms?: string[];
+        /**
+         * User specified deidentify templates and configs for structured, unstructured, and image files.
+         * Structure is documented below.
+         */
+        transformationConfig?: outputs.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig;
+        /**
+         * Config for storing transformation details.
+         * Structure is documented below.
+         */
+        transformationDetailsStorageConfig?: outputs.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
+        /**
+         * If this template is specified, it will serve as the default de-identify template.
+         */
+        deidentifyTemplate?: string;
+        /**
+         * If this template is specified, it will serve as the de-identify template for images.
+         */
+        imageRedactTemplate?: string;
+        /**
+         * If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+         */
+        structuredDeidentifyTemplate?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig {
+        /**
+         * The BigQuery table in which to store the output.
+         * Structure is documented below.
+         */
+        table: outputs.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable {
+        /**
+         * The ID of the dataset containing this table.
+         */
+        datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
+        projectId: string;
+        /**
+         * The ID of the table. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 1,024 characters.
+         */
+        tableId?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobActionJobNotificationEmails {
     }
 
     export interface PreventionJobTriggerInspectJobActionPubSub {
@@ -28870,6 +29859,11 @@ export namespace dataloss {
          * Structure is documented below.
          */
         datastoreOptions?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigDatastoreOptions;
+        /**
+         * Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+         * Structure is documented below.
+         */
+        hybridOptions?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptions;
         /**
          * Information on where to inspect
          * Structure is documented below.
@@ -29035,6 +30029,52 @@ export namespace dataloss {
         projectId: string;
     }
 
+    export interface PreventionJobTriggerInspectJobStorageConfigHybridOptions {
+        /**
+         * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+         */
+        description?: string;
+        /**
+         * To organize findings, these labels will be added to each finding.
+         * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+         * Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+         * No more than 10 labels can be associated with a given finding.
+         * Examples:
+         * * `"environment" : "production"`
+         * * `"pipeline" : "etl"`
+         */
+        labels?: {[key: string]: string};
+        /**
+         * These are labels that each inspection request must include within their 'finding_labels' map. Request
+         * may contain others, but any missing one of these will be rejected.
+         * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+         * No more than 10 keys can be required.
+         */
+        requiredFindingLabelKeys?: string[];
+        /**
+         * If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+         * Structure is documented below.
+         */
+        tableOptions?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions {
+        /**
+         * The columns that are the primary keys for table objects included in ContentItem. A copy of this
+         * cell's value will stored alongside alongside each finding so that the finding can be traced to
+         * the specific row it came from. No more than 3 may be provided.
+         * Structure is documented below.
+         */
+        identifyingFields?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField[];
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField {
+        /**
+         * Name describing the field.
+         */
+        name: string;
+    }
+
     export interface PreventionJobTriggerInspectJobStorageConfigTimespanConfig {
         /**
          * When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
@@ -29071,10 +30111,17 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerTrigger {
         /**
+         * For use with hybrid jobs. Jobs must be manually created and finished.
+         */
+        manual?: outputs.dataloss.PreventionJobTriggerTriggerManual;
+        /**
          * Schedule for triggered jobs
          * Structure is documented below.
          */
         schedule?: outputs.dataloss.PreventionJobTriggerTriggerSchedule;
+    }
+
+    export interface PreventionJobTriggerTriggerManual {
     }
 
     export interface PreventionJobTriggerTriggerSchedule {
@@ -35566,6 +36613,26 @@ export namespace iam {
          * The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
          */
         issuerUri: string;
+        /**
+         * Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+         * Structure is documented below.
+         */
+        webSsoConfig: outputs.iam.WorkforcePoolProviderOidcWebSsoConfig;
+    }
+
+    export interface WorkforcePoolProviderOidcWebSsoConfig {
+        /**
+         * The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+         * * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+         * Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+         */
+        assertionClaimsBehavior: string;
+        /**
+         * The Response Type to request for in the OIDC Authorization Request for web sign-in.
+         * * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+         * Possible values are: `ID_TOKEN`.
+         */
+        responseType: string;
     }
 
     export interface WorkforcePoolProviderSaml {
@@ -36479,6 +37546,17 @@ export namespace logging {
          * A client-assigned identifier, such as `load-balancer-exclusion`.
          */
         name: string;
+    }
+
+    export interface LinkedDatasetBigqueryDataset {
+        /**
+         * (Output)
+         * Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+         * of the link, so the link must match the naming restrictions of BigQuery datasets
+         * (alphanumeric characters and underscores only). The dataset will have a resource path of
+         * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+         */
+        datasetId: string;
     }
 
     export interface MetricBucketOptions {
@@ -39038,6 +40116,413 @@ export namespace networkservices {
          * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
          */
         stripQuery: boolean;
+    }
+
+    export interface HttpRouteRule {
+        /**
+         * The detailed rule defining how to route matched traffic.
+         * Structure is documented below.
+         */
+        action?: outputs.networkservices.HttpRouteRuleAction;
+        /**
+         * A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
+         * If no matches field is specified, this rule will unconditionally match traffic.
+         * If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+         * Structure is documented below.
+         */
+        matches?: outputs.networkservices.HttpRouteRuleMatch[];
+    }
+
+    export interface HttpRouteRuleAction {
+        /**
+         * The specification for allowing client side cross-origin requests.
+         * Structure is documented below.
+         */
+        corsPolicy?: outputs.networkservices.HttpRouteRuleActionCorsPolicy;
+        /**
+         * The destination to which traffic should be forwarded.
+         * Structure is documented below.
+         */
+        destinations?: outputs.networkservices.HttpRouteRuleActionDestination[];
+        /**
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+         * Structure is documented below.
+         */
+        faultInjectionPolicy?: outputs.networkservices.HttpRouteRuleActionFaultInjectionPolicy;
+        /**
+         * If set, the request is directed as configured by this field.
+         * Structure is documented below.
+         */
+        redirect?: outputs.networkservices.HttpRouteRuleActionRedirect;
+        /**
+         * The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+         * Structure is documented below.
+         */
+        requestHeaderModifier?: outputs.networkservices.HttpRouteRuleActionRequestHeaderModifier;
+        /**
+         * Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
+         * Structure is documented below.
+         */
+        requestMirrorPolicy?: outputs.networkservices.HttpRouteRuleActionRequestMirrorPolicy;
+        /**
+         * The specification for modifying the headers of a response prior to sending the response back to the client.
+         * Structure is documented below.
+         */
+        responseHeaderModifier?: outputs.networkservices.HttpRouteRuleActionResponseHeaderModifier;
+        /**
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
+         */
+        retryPolicy?: outputs.networkservices.HttpRouteRuleActionRetryPolicy;
+        /**
+         * Specifies the timeout for selected route.
+         */
+        timeout?: string;
+        /**
+         * The specification for rewrite URL before forwarding requests to the destination.
+         * Structure is documented below.
+         */
+        urlRewrite?: outputs.networkservices.HttpRouteRuleActionUrlRewrite;
+    }
+
+    export interface HttpRouteRuleActionCorsPolicy {
+        /**
+         * In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+         */
+        allowCredentials?: boolean;
+        /**
+         * Specifies the content for Access-Control-Allow-Headers header.
+         */
+        allowHeaders?: string[];
+        /**
+         * Specifies the content for Access-Control-Allow-Methods header.
+         */
+        allowMethods?: string[];
+        /**
+         * Specifies the regular expression patterns that match allowed origins.
+         */
+        allowOriginRegexes?: string[];
+        /**
+         * Specifies the list of origins that will be allowed to do CORS requests.
+         */
+        allowOrigins?: string[];
+        /**
+         * If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+         */
+        disabled?: boolean;
+        /**
+         * Specifies the content for Access-Control-Expose-Headers header.
+         */
+        exposeHeaders?: string[];
+        /**
+         * Specifies how long result of a preflight request can be cached in seconds.
+         */
+        maxAge?: string;
+    }
+
+    export interface HttpRouteRuleActionDestination {
+        /**
+         * The URL of a BackendService to route traffic to.
+         */
+        serviceName?: string;
+        /**
+         * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+         * If weights are specified for any one service name, they need to be specified for all of them.
+         * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+         */
+        weight?: number;
+    }
+
+    export interface HttpRouteRuleActionFaultInjectionPolicy {
+        /**
+         * Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+         * Structure is documented below.
+         */
+        abort?: outputs.networkservices.HttpRouteRuleActionFaultInjectionPolicyAbort;
+        /**
+         * Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+         * Structure is documented below.
+         */
+        delay?: outputs.networkservices.HttpRouteRuleActionFaultInjectionPolicyDelay;
+    }
+
+    export interface HttpRouteRuleActionFaultInjectionPolicyAbort {
+        /**
+         * The HTTP status code used to abort the request.
+         */
+        httpStatus?: number;
+        /**
+         * The percentage of traffic which will be aborted.
+         */
+        percentage?: number;
+    }
+
+    export interface HttpRouteRuleActionFaultInjectionPolicyDelay {
+        /**
+         * Specify a fixed delay before forwarding the request.
+         */
+        fixedDelay?: string;
+        /**
+         * The percentage of traffic on which delay will be injected.
+         */
+        percentage?: number;
+    }
+
+    export interface HttpRouteRuleActionRedirect {
+        /**
+         * The host that will be used in the redirect response instead of the one that was supplied in the request.
+         */
+        hostRedirect?: string;
+        /**
+         * If set to true, the URL scheme in the redirected request is set to https.
+         */
+        httpsRedirect?: boolean;
+        /**
+         * The path that will be used in the redirect response instead of the one that was supplied in the request. pathRedirect can not be supplied together with prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+         */
+        pathRedirect?: string;
+        /**
+         * The port that will be used in the redirected request instead of the one that was supplied in the request.
+         */
+        portRedirect?: number;
+        /**
+         * Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
+         */
+        prefixRewrite?: string;
+        /**
+         * The HTTP Status code to use for the redirect.
+         */
+        responseCode?: string;
+        /**
+         * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
+         */
+        stripQuery?: boolean;
+    }
+
+    export interface HttpRouteRuleActionRequestHeaderModifier {
+        /**
+         * Add the headers with given map where key is the name of the header, value is the value of the header.
+         */
+        add?: {[key: string]: string};
+        /**
+         * Remove headers (matching by header names) specified in the list.
+         */
+        removes?: string[];
+        /**
+         * Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+         */
+        set?: {[key: string]: string};
+    }
+
+    export interface HttpRouteRuleActionRequestMirrorPolicy {
+        /**
+         * The destination the requests will be mirrored to.
+         * Structure is documented below.
+         */
+        destination?: outputs.networkservices.HttpRouteRuleActionRequestMirrorPolicyDestination;
+    }
+
+    export interface HttpRouteRuleActionRequestMirrorPolicyDestination {
+        /**
+         * The URL of a BackendService to route traffic to.
+         */
+        serviceName?: string;
+        /**
+         * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+         * If weights are specified for any one service name, they need to be specified for all of them.
+         * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+         */
+        weight?: number;
+    }
+
+    export interface HttpRouteRuleActionResponseHeaderModifier {
+        /**
+         * Add the headers with given map where key is the name of the header, value is the value of the header.
+         */
+        add?: {[key: string]: string};
+        /**
+         * Remove headers (matching by header names) specified in the list.
+         */
+        removes?: string[];
+        /**
+         * Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+         */
+        set?: {[key: string]: string};
+    }
+
+    export interface HttpRouteRuleActionRetryPolicy {
+        /**
+         * Specifies the allowed number of retries.
+         */
+        numRetries?: number;
+        /**
+         * Specifies a non-zero timeout per retry attempt. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        perTryTimeout?: string;
+        /**
+         * Specifies one or more conditions when this retry policy applies.
+         */
+        retryConditions?: string[];
+    }
+
+    export interface HttpRouteRuleActionUrlRewrite {
+        /**
+         * Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+         */
+        hostRewrite?: string;
+        /**
+         * Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+         */
+        pathPrefixRewrite?: string;
+    }
+
+    export interface HttpRouteRuleMatch {
+        /**
+         * The HTTP request path value should exactly match this value.
+         */
+        fullPathMatch?: string;
+        /**
+         * Specifies a list of HTTP request headers to match against.
+         * Structure is documented below.
+         */
+        headers?: outputs.networkservices.HttpRouteRuleMatchHeader[];
+        /**
+         * Specifies if prefixMatch and fullPathMatch matches are case sensitive. The default value is false.
+         */
+        ignoreCase?: boolean;
+        /**
+         * The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
+         */
+        prefixMatch?: string;
+        /**
+         * Specifies a list of query parameters to match against.
+         * Structure is documented below.
+         */
+        queryParameters?: outputs.networkservices.HttpRouteRuleMatchQueryParameter[];
+        /**
+         * The HTTP request path value must satisfy the regular expression specified by regexMatch after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         */
+        regexMatch?: string;
+    }
+
+    export interface HttpRouteRuleMatchHeader {
+        /**
+         * The value of the header should match exactly the content of exactMatch.
+         */
+        exactMatch?: string;
+        /**
+         * The name of the HTTP header to match against.
+         */
+        header?: string;
+        /**
+         * If specified, the match result will be inverted before checking. Default value is set to false.
+         */
+        invertMatch?: boolean;
+        /**
+         * The value of the header must start with the contents of prefixMatch.
+         */
+        prefixMatch?: string;
+        /**
+         * A header with headerName must exist. The match takes place whether or not the header has a value.
+         */
+        presentMatch?: boolean;
+        /**
+         * If specified, the rule will match if the request header value is within the range.
+         * Structure is documented below.
+         */
+        rangeMatch?: outputs.networkservices.HttpRouteRuleMatchHeaderRangeMatch;
+        /**
+         * The value of the header must match the regular expression specified in regexMatch.
+         */
+        regexMatch?: string;
+        /**
+         * The value of the header must end with the contents of suffixMatch.
+         */
+        suffixMatch?: string;
+    }
+
+    export interface HttpRouteRuleMatchHeaderRangeMatch {
+        /**
+         * End of the range (exclusive).
+         */
+        end: number;
+        /**
+         * Start of the range (inclusive).
+         */
+        start: number;
+    }
+
+    export interface HttpRouteRuleMatchQueryParameter {
+        /**
+         * The value of the query parameter must exactly match the contents of exactMatch.
+         */
+        exactMatch?: string;
+        /**
+         * Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not.
+         */
+        presentMatch?: boolean;
+        /**
+         * The name of the query parameter to match.
+         */
+        queryParameter?: string;
+        /**
+         * The value of the query parameter must match the regular expression specified by regexMatch.For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax
+         */
+        regexMatch?: string;
+    }
+
+    export interface TcpRouteRule {
+        /**
+         * A detailed rule defining how to route traffic.
+         * Structure is documented below.
+         */
+        action: outputs.networkservices.TcpRouteRuleAction;
+        /**
+         * RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
+         * If no routeMatch field is specified, this rule will unconditionally match traffic.
+         * Structure is documented below.
+         */
+        matches?: outputs.networkservices.TcpRouteRuleMatch[];
+    }
+
+    export interface TcpRouteRuleAction {
+        /**
+         * The destination services to which traffic should be forwarded. At least one destination service is required.
+         * Structure is documented below.
+         */
+        destinations?: outputs.networkservices.TcpRouteRuleActionDestination[];
+        /**
+         * If true, Router will use the destination IP and port of the original connection as the destination of the request.
+         */
+        originalDestination?: boolean;
+    }
+
+    export interface TcpRouteRuleActionDestination {
+        /**
+         * The URL of a BackendService to route traffic to.
+         */
+        serviceName?: string;
+        /**
+         * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports.
+         * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
+         * If weights are specified for any one service name, they need to be specified for all of them.
+         * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+         */
+        weight?: number;
+    }
+
+    export interface TcpRouteRuleMatch {
+        /**
+         * Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask.
+         * By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+         */
+        address: string;
+        /**
+         * Specifies the destination port to match against.
+         */
+        port: string;
     }
 
 }

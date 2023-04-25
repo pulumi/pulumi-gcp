@@ -103,7 +103,7 @@ type Cluster struct {
 	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Cluster created via DMS migration.
 	// Structure is documented below.
 	MigrationSources ClusterMigrationSourceArrayOutput `pulumi:"migrationSources"`
@@ -128,6 +128,9 @@ func NewCluster(ctx *pulumi.Context,
 
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
@@ -244,7 +247,7 @@ type clusterArgs struct {
 	// User-defined labels for the alloydb cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	Network string `pulumi:"network"`
@@ -269,7 +272,7 @@ type ClusterArgs struct {
 	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
-	Location pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
 	Network pulumi.StringInput
@@ -405,8 +408,8 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb cluster should reside.
-func (o ClusterOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o ClusterOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Cluster created via DMS migration.

@@ -17,7 +17,6 @@ namespace Pulumi.Gcp.Projects
     /// A basic example of a android api keys key
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -66,7 +65,6 @@ namespace Pulumi.Gcp.Projects
     /// A basic example of a api keys key
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -111,7 +109,6 @@ namespace Pulumi.Gcp.Projects
     /// A basic example of a ios api keys key
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -156,7 +153,6 @@ namespace Pulumi.Gcp.Projects
     /// A minimal example of a api keys key
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -180,7 +176,6 @@ namespace Pulumi.Gcp.Projects
     /// A basic example of a server api keys key
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
