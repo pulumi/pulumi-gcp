@@ -116,7 +116,7 @@ def get_attached_install_manifest(cluster_id: Optional[str] = None,
 
     :param str cluster_id: The name that will be used when creating the attached cluster resource.
     :param str location: The location to list versions for.
-    :param str platform_version: The platform version for the cluster. A list of valid values can be retrieved using the `container_get_attached_versions` data source.
+    :param str platform_version: The platform version for the cluster. A list of valid values can be retrieved using the _container_get_attached_versions_ data source.
     :param str project: ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
     """
@@ -162,7 +162,7 @@ def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]]
 
     :param str cluster_id: The name that will be used when creating the attached cluster resource.
     :param str location: The location to list versions for.
-    :param str platform_version: The platform version for the cluster. A list of valid values can be retrieved using the `container_get_attached_versions` data source.
+    :param str platform_version: The platform version for the cluster. A list of valid values can be retrieved using the _container_get_attached_versions_ data source.
     :param str project: ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
     """

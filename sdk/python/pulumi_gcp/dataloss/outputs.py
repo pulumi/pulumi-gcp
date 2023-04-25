@@ -138,6 +138,11 @@ __all__ = [
     'PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity',
     'PreventionJobTriggerInspectJob',
     'PreventionJobTriggerInspectJobAction',
+    'PreventionJobTriggerInspectJobActionDeidentify',
+    'PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig',
+    'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig',
+    'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable',
+    'PreventionJobTriggerInspectJobActionJobNotificationEmails',
     'PreventionJobTriggerInspectJobActionPubSub',
     'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog',
     'PreventionJobTriggerInspectJobActionPublishSummaryToCscc',
@@ -154,9 +159,13 @@ __all__ = [
     'PreventionJobTriggerInspectJobStorageConfigDatastoreOptions',
     'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind',
     'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId',
+    'PreventionJobTriggerInspectJobStorageConfigHybridOptions',
+    'PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions',
+    'PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField',
     'PreventionJobTriggerInspectJobStorageConfigTimespanConfig',
     'PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField',
     'PreventionJobTriggerTrigger',
+    'PreventionJobTriggerTriggerManual',
     'PreventionJobTriggerTriggerSchedule',
     'PreventionStoredInfoTypeDictionary',
     'PreventionStoredInfoTypeDictionaryCloudStoragePath',
@@ -6974,7 +6983,9 @@ class PreventionJobTriggerInspectJobAction(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "pubSub":
+        if key == "jobNotificationEmails":
+            suggest = "job_notification_emails"
+        elif key == "pubSub":
             suggest = "pub_sub"
         elif key == "publishFindingsToCloudDataCatalog":
             suggest = "publish_findings_to_cloud_data_catalog"
@@ -6995,11 +7006,16 @@ class PreventionJobTriggerInspectJobAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 deidentify: Optional['outputs.PreventionJobTriggerInspectJobActionDeidentify'] = None,
+                 job_notification_emails: Optional['outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails'] = None,
                  pub_sub: Optional['outputs.PreventionJobTriggerInspectJobActionPubSub'] = None,
                  publish_findings_to_cloud_data_catalog: Optional['outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog'] = None,
                  publish_summary_to_cscc: Optional['outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc'] = None,
                  save_findings: Optional['outputs.PreventionJobTriggerInspectJobActionSaveFindings'] = None):
         """
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyArgs' deidentify: Create a de-identified copy of the requested table or files.
+               Structure is documented below.
+        :param 'PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs' job_notification_emails: Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
         :param 'PreventionJobTriggerInspectJobActionPubSubArgs' pub_sub: Publish a message into a given Pub/Sub topic when the job completes.
                Structure is documented below.
         :param 'PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs' publish_findings_to_cloud_data_catalog: Publish findings of a DlpJob to Data Catalog.
@@ -7007,6 +7023,10 @@ class PreventionJobTriggerInspectJobAction(dict):
         :param 'PreventionJobTriggerInspectJobActionSaveFindingsArgs' save_findings: If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
                Structure is documented below.
         """
+        if deidentify is not None:
+            pulumi.set(__self__, "deidentify", deidentify)
+        if job_notification_emails is not None:
+            pulumi.set(__self__, "job_notification_emails", job_notification_emails)
         if pub_sub is not None:
             pulumi.set(__self__, "pub_sub", pub_sub)
         if publish_findings_to_cloud_data_catalog is not None:
@@ -7015,6 +7035,23 @@ class PreventionJobTriggerInspectJobAction(dict):
             pulumi.set(__self__, "publish_summary_to_cscc", publish_summary_to_cscc)
         if save_findings is not None:
             pulumi.set(__self__, "save_findings", save_findings)
+
+    @property
+    @pulumi.getter
+    def deidentify(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionDeidentify']:
+        """
+        Create a de-identified copy of the requested table or files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deidentify")
+
+    @property
+    @pulumi.getter(name="jobNotificationEmails")
+    def job_notification_emails(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionJobNotificationEmails']:
+        """
+        Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
+        """
+        return pulumi.get(self, "job_notification_emails")
 
     @property
     @pulumi.getter(name="pubSub")
@@ -7049,6 +7086,257 @@ class PreventionJobTriggerInspectJobAction(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "save_findings")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobActionDeidentify(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStorageOutput":
+            suggest = "cloud_storage_output"
+        elif key == "fileTypesToTransforms":
+            suggest = "file_types_to_transforms"
+        elif key == "transformationConfig":
+            suggest = "transformation_config"
+        elif key == "transformationDetailsStorageConfig":
+            suggest = "transformation_details_storage_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionDeidentify. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobActionDeidentify.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobActionDeidentify.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_storage_output: str,
+                 file_types_to_transforms: Optional[Sequence[str]] = None,
+                 transformation_config: Optional['outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig'] = None,
+                 transformation_details_storage_config: Optional['outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig'] = None):
+        """
+        :param str cloud_storage_output: User settable Cloud Storage bucket and folders to store de-identified files.
+               This field must be set for cloud storage deidentification.
+               The output Cloud Storage bucket must be different from the input bucket.
+               De-identified files will overwrite files in the output path.
+               Form of: gs://bucket/folder/ or gs://bucket
+        :param Sequence[str] file_types_to_transforms: List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+               If empty, all supported files will be transformed. Supported types may be automatically added over time.
+               If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+               Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs' transformation_config: User specified deidentify templates and configs for structured, unstructured, and image files.
+               Structure is documented below.
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs' transformation_details_storage_config: Config for storing transformation details.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "cloud_storage_output", cloud_storage_output)
+        if file_types_to_transforms is not None:
+            pulumi.set(__self__, "file_types_to_transforms", file_types_to_transforms)
+        if transformation_config is not None:
+            pulumi.set(__self__, "transformation_config", transformation_config)
+        if transformation_details_storage_config is not None:
+            pulumi.set(__self__, "transformation_details_storage_config", transformation_details_storage_config)
+
+    @property
+    @pulumi.getter(name="cloudStorageOutput")
+    def cloud_storage_output(self) -> str:
+        """
+        User settable Cloud Storage bucket and folders to store de-identified files.
+        This field must be set for cloud storage deidentification.
+        The output Cloud Storage bucket must be different from the input bucket.
+        De-identified files will overwrite files in the output path.
+        Form of: gs://bucket/folder/ or gs://bucket
+        """
+        return pulumi.get(self, "cloud_storage_output")
+
+    @property
+    @pulumi.getter(name="fileTypesToTransforms")
+    def file_types_to_transforms(self) -> Optional[Sequence[str]]:
+        """
+        List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
+        If empty, all supported files will be transformed. Supported types may be automatically added over time.
+        If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
+        Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
+        """
+        return pulumi.get(self, "file_types_to_transforms")
+
+    @property
+    @pulumi.getter(name="transformationConfig")
+    def transformation_config(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig']:
+        """
+        User specified deidentify templates and configs for structured, unstructured, and image files.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformation_config")
+
+    @property
+    @pulumi.getter(name="transformationDetailsStorageConfig")
+    def transformation_details_storage_config(self) -> Optional['outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig']:
+        """
+        Config for storing transformation details.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "transformation_details_storage_config")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deidentifyTemplate":
+            suggest = "deidentify_template"
+        elif key == "imageRedactTemplate":
+            suggest = "image_redact_template"
+        elif key == "structuredDeidentifyTemplate":
+            suggest = "structured_deidentify_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deidentify_template: Optional[str] = None,
+                 image_redact_template: Optional[str] = None,
+                 structured_deidentify_template: Optional[str] = None):
+        """
+        :param str deidentify_template: If this template is specified, it will serve as the default de-identify template.
+        :param str image_redact_template: If this template is specified, it will serve as the de-identify template for images.
+        :param str structured_deidentify_template: If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+        """
+        if deidentify_template is not None:
+            pulumi.set(__self__, "deidentify_template", deidentify_template)
+        if image_redact_template is not None:
+            pulumi.set(__self__, "image_redact_template", image_redact_template)
+        if structured_deidentify_template is not None:
+            pulumi.set(__self__, "structured_deidentify_template", structured_deidentify_template)
+
+    @property
+    @pulumi.getter(name="deidentifyTemplate")
+    def deidentify_template(self) -> Optional[str]:
+        """
+        If this template is specified, it will serve as the default de-identify template.
+        """
+        return pulumi.get(self, "deidentify_template")
+
+    @property
+    @pulumi.getter(name="imageRedactTemplate")
+    def image_redact_template(self) -> Optional[str]:
+        """
+        If this template is specified, it will serve as the de-identify template for images.
+        """
+        return pulumi.get(self, "image_redact_template")
+
+    @property
+    @pulumi.getter(name="structuredDeidentifyTemplate")
+    def structured_deidentify_template(self) -> Optional[str]:
+        """
+        If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
+        """
+        return pulumi.get(self, "structured_deidentify_template")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig(dict):
+    def __init__(__self__, *,
+                 table: 'outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable'):
+        """
+        :param 'PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs' table: The BigQuery table in which to store the output.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def table(self) -> 'outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable':
+        """
+        The BigQuery table in which to store the output.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str,
+                 project_id: str,
+                 table_id: Optional[str] = None):
+        """
+        :param str dataset_id: The ID of the dataset containing this table.
+        :param str project_id: The ID of the project containing this table.
+        :param str table_id: The ID of the table. The ID must contain only letters (a-z,
+               A-Z), numbers (0-9), or underscores (_). The maximum length
+               is 1,024 characters.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The ID of the dataset containing this table.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The ID of the project containing this table.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[str]:
+        """
+        The ID of the table. The ID must contain only letters (a-z,
+        A-Z), numbers (0-9), or underscores (_). The maximum length
+        is 1,024 characters.
+        """
+        return pulumi.get(self, "table_id")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobActionJobNotificationEmails(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -7258,6 +7546,8 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
             suggest = "cloud_storage_options"
         elif key == "datastoreOptions":
             suggest = "datastore_options"
+        elif key == "hybridOptions":
+            suggest = "hybrid_options"
         elif key == "timespanConfig":
             suggest = "timespan_config"
 
@@ -7276,6 +7566,7 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
                  big_query_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptions'] = None,
                  cloud_storage_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions'] = None,
                  datastore_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptions'] = None,
+                 hybrid_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions'] = None,
                  timespan_config: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfig'] = None):
         """
         :param 'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs' big_query_options: Options defining BigQuery table and row identifiers.
@@ -7283,6 +7574,8 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
         :param 'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs' cloud_storage_options: Options defining a file or a set of files within a Google Cloud Storage bucket.
                Structure is documented below.
         :param 'PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs' datastore_options: Options defining a data set within Google Cloud Datastore.
+               Structure is documented below.
+        :param 'PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs' hybrid_options: Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
                Structure is documented below.
         :param 'PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs' timespan_config: Information on where to inspect
                Structure is documented below.
@@ -7293,6 +7586,8 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
             pulumi.set(__self__, "cloud_storage_options", cloud_storage_options)
         if datastore_options is not None:
             pulumi.set(__self__, "datastore_options", datastore_options)
+        if hybrid_options is not None:
+            pulumi.set(__self__, "hybrid_options", hybrid_options)
         if timespan_config is not None:
             pulumi.set(__self__, "timespan_config", timespan_config)
 
@@ -7322,6 +7617,15 @@ class PreventionJobTriggerInspectJobStorageConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "datastore_options")
+
+    @property
+    @pulumi.getter(name="hybridOptions")
+    def hybrid_options(self) -> Optional['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions']:
+        """
+        Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hybrid_options")
 
     @property
     @pulumi.getter(name="timespanConfig")
@@ -7895,6 +8199,160 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId(dic
 
 
 @pulumi.output_type
+class PreventionJobTriggerInspectJobStorageConfigHybridOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requiredFindingLabelKeys":
+            suggest = "required_finding_label_keys"
+        elif key == "tableOptions":
+            suggest = "table_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigHybridOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigHybridOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigHybridOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 labels: Optional[Mapping[str, str]] = None,
+                 required_finding_label_keys: Optional[Sequence[str]] = None,
+                 table_options: Optional['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions'] = None):
+        """
+        :param str description: A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        :param Mapping[str, str] labels: To organize findings, these labels will be added to each finding.
+               Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+               Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+               No more than 10 labels can be associated with a given finding.
+               Examples:
+               * `"environment" : "production"`
+               * `"pipeline" : "etl"`
+        :param Sequence[str] required_finding_label_keys: These are labels that each inspection request must include within their 'finding_labels' map. Request
+               may contain others, but any missing one of these will be rejected.
+               Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+               No more than 10 keys can be required.
+        :param 'PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs' table_options: If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+               Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if required_finding_label_keys is not None:
+            pulumi.set(__self__, "required_finding_label_keys", required_finding_label_keys)
+        if table_options is not None:
+            pulumi.set(__self__, "table_options", table_options)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A short description of where the data is coming from. Will be stored once in the job. 256 max length.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        To organize findings, these labels will be added to each finding.
+        Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+        Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
+        No more than 10 labels can be associated with a given finding.
+        Examples:
+        * `"environment" : "production"`
+        * `"pipeline" : "etl"`
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="requiredFindingLabelKeys")
+    def required_finding_label_keys(self) -> Optional[Sequence[str]]:
+        """
+        These are labels that each inspection request must include within their 'finding_labels' map. Request
+        may contain others, but any missing one of these will be rejected.
+        Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
+        No more than 10 keys can be required.
+        """
+        return pulumi.get(self, "required_finding_label_keys")
+
+    @property
+    @pulumi.getter(name="tableOptions")
+    def table_options(self) -> Optional['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions']:
+        """
+        If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_options")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identifyingFields":
+            suggest = "identifying_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 identifying_fields: Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField']] = None):
+        """
+        :param Sequence['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs'] identifying_fields: The columns that are the primary keys for table objects included in ContentItem. A copy of this
+               cell's value will stored alongside alongside each finding so that the finding can be traced to
+               the specific row it came from. No more than 3 may be provided.
+               Structure is documented below.
+        """
+        if identifying_fields is not None:
+            pulumi.set(__self__, "identifying_fields", identifying_fields)
+
+    @property
+    @pulumi.getter(name="identifyingFields")
+    def identifying_fields(self) -> Optional[Sequence['outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField']]:
+        """
+        The columns that are the primary keys for table objects included in ContentItem. A copy of this
+        cell's value will stored alongside alongside each finding so that the finding can be traced to
+        the specific row it came from. No more than 3 may be provided.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identifying_fields")
+
+
+@pulumi.output_type
+class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Name describing the field.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name describing the field.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class PreventionJobTriggerInspectJobStorageConfigTimespanConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8008,13 +8466,25 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField(di
 @pulumi.output_type
 class PreventionJobTriggerTrigger(dict):
     def __init__(__self__, *,
+                 manual: Optional['outputs.PreventionJobTriggerTriggerManual'] = None,
                  schedule: Optional['outputs.PreventionJobTriggerTriggerSchedule'] = None):
         """
+        :param 'PreventionJobTriggerTriggerManualArgs' manual: For use with hybrid jobs. Jobs must be manually created and finished.
         :param 'PreventionJobTriggerTriggerScheduleArgs' schedule: Schedule for triggered jobs
                Structure is documented below.
         """
+        if manual is not None:
+            pulumi.set(__self__, "manual", manual)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def manual(self) -> Optional['outputs.PreventionJobTriggerTriggerManual']:
+        """
+        For use with hybrid jobs. Jobs must be manually created and finished.
+        """
+        return pulumi.get(self, "manual")
 
     @property
     @pulumi.getter
@@ -8024,6 +8494,12 @@ class PreventionJobTriggerTrigger(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "schedule")
+
+
+@pulumi.output_type
+class PreventionJobTriggerTriggerManual(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

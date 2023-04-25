@@ -439,6 +439,74 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 ),
             )])
         ```
+        ### Dlp Job Trigger Job Notification Emails
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        job_notification_emails = gcp.dataloss.PreventionJobTrigger("jobNotificationEmails",
+            description="Description for the job_trigger created by terraform",
+            display_name="TerraformDisplayName",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    job_notification_emails=gcp.dataloss.PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs(),
+                )],
+                inspect_template_name="sample-inspect-template",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )])
+        ```
+        ### Dlp Job Trigger Hybrid
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hybrid_trigger = gcp.dataloss.PreventionJobTrigger("hybridTrigger",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    save_findings=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs(
+                        output_config=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs(
+                            table=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs(
+                                dataset_id="dataset",
+                                project_id="project",
+                            ),
+                        ),
+                    ),
+                )],
+                inspect_template_name="fake",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    hybrid_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs(
+                        description="Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
+                        labels={
+                            "env": "prod",
+                        },
+                        required_finding_label_keys=["appointment-bookings-comments"],
+                        table_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs(
+                            identifying_fields=[gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs(
+                                name="booking_id",
+                            )],
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                manual=gcp.dataloss.PreventionJobTriggerTriggerManualArgs(),
+            )])
+        ```
 
         ## Import
 
@@ -598,6 +666,74 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
                     recurrence_period_duration="86400s",
                 ),
+            )])
+        ```
+        ### Dlp Job Trigger Job Notification Emails
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        job_notification_emails = gcp.dataloss.PreventionJobTrigger("jobNotificationEmails",
+            description="Description for the job_trigger created by terraform",
+            display_name="TerraformDisplayName",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    job_notification_emails=gcp.dataloss.PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs(),
+                )],
+                inspect_template_name="sample-inspect-template",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )])
+        ```
+        ### Dlp Job Trigger Hybrid
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        hybrid_trigger = gcp.dataloss.PreventionJobTrigger("hybridTrigger",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    save_findings=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs(
+                        output_config=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs(
+                            table=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs(
+                                dataset_id="dataset",
+                                project_id="project",
+                            ),
+                        ),
+                    ),
+                )],
+                inspect_template_name="fake",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    hybrid_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs(
+                        description="Hybrid job trigger for data from the comments field of a table that contains customer appointment bookings",
+                        labels={
+                            "env": "prod",
+                        },
+                        required_finding_label_keys=["appointment-bookings-comments"],
+                        table_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs(
+                            identifying_fields=[gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs(
+                                name="booking_id",
+                            )],
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                manual=gcp.dataloss.PreventionJobTriggerTriggerManualArgs(),
             )])
         ```
 

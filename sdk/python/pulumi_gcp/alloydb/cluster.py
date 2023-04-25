@@ -17,16 +17,17 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
                  network: pulumi.Input[str],
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
+        :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster.
@@ -36,11 +37,11 @@ class ClusterArgs:
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
-        :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
         if automated_backup_policy is not None:
             pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
@@ -50,8 +51,6 @@ class ClusterArgs:
             pulumi.set(__self__, "initial_user", initial_user)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -66,6 +65,18 @@ class ClusterArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location where the alloydb cluster should reside.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -130,18 +141,6 @@ class ClusterArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The location where the alloydb cluster should reside.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -534,6 +533,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["initial_user"] = initial_user
             __props__.__dict__["labels"] = labels
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
@@ -676,7 +677,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[Optional[str]]:
+    def location(self) -> pulumi.Output[str]:
         """
         The location where the alloydb cluster should reside.
         """

@@ -172,7 +172,7 @@ class ClusterArgs:
                current master version--use the read-only `master_version` field to obtain that.
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
-               the `container_get_engine_versions` data source useful - it indicates which versions
+               the _container_get_engine_versions_ data source useful - it indicates which versions
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
@@ -220,7 +220,7 @@ class ClusterArgs:
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as the provider will see spurious diffs
-               when fuzzy versions are used. See the `container_get_engine_versions` data source's
+               when fuzzy versions are used. See the _container_get_engine_versions_ data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -238,7 +238,7 @@ class ClusterArgs:
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-               for more details; the `container_get_engine_versions` datasource can provide
+               for more details; the _container_get_engine_versions_ datasource can provide
                the default version for a channel. Note that removing the `release_channel`
                field from your config will cause the provider to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
@@ -847,7 +847,7 @@ class ClusterArgs:
         current master version--use the read-only `master_version` field to obtain that.
         If unset, the cluster's version will be set by GKE to the version of the most recent
         official release (which is not necessarily the latest version).  Most users will find
-        the `container_get_engine_versions` data source useful - it indicates which versions
+        the _container_get_engine_versions_ data source useful - it indicates which versions
         are available. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
@@ -1027,7 +1027,7 @@ class ClusterArgs:
         version set by GKE which is not necessarily the latest version. This only affects
         nodes in the default node pool. While a fuzzy version can be specified, it's
         recommended that you specify explicit versions as the provider will see spurious diffs
-        when fuzzy versions are used. See the `container_get_engine_versions` data source's
+        when fuzzy versions are used. See the _container_get_engine_versions_ data source's
         `version_prefix` field to approximate fuzzy versions.
         To update nodes in other node pools, use the `version` attribute on the node pool.
         """
@@ -1122,7 +1122,7 @@ class ClusterArgs:
         feature, which provide more control over automatic upgrades of your GKE clusters.
         When updating this field, GKE imposes specific version requirements. See
         [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-        for more details; the `container_get_engine_versions` datasource can provide
+        for more details; the _container_get_engine_versions_ datasource can provide
         the default version for a channel. Note that removing the `release_channel`
         field from your config will cause the provider to stop managing your cluster's
         release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
@@ -1411,7 +1411,7 @@ class _ClusterState:
                current master version--use the read-only `master_version` field to obtain that.
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
-               the `container_get_engine_versions` data source useful - it indicates which versions
+               the _container_get_engine_versions_ data source useful - it indicates which versions
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
@@ -1459,7 +1459,7 @@ class _ClusterState:
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as the provider will see spurious diffs
-               when fuzzy versions are used. See the `container_get_engine_versions` data source's
+               when fuzzy versions are used. See the _container_get_engine_versions_ data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input['ClusterNotificationConfigArgs'] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -1477,7 +1477,7 @@ class _ClusterState:
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-               for more details; the `container_get_engine_versions` datasource can provide
+               for more details; the _container_get_engine_versions_ datasource can provide
                the default version for a channel. Note that removing the `release_channel`
                field from your config will cause the provider to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
@@ -2146,7 +2146,7 @@ class _ClusterState:
         current master version--use the read-only `master_version` field to obtain that.
         If unset, the cluster's version will be set by GKE to the version of the most recent
         official release (which is not necessarily the latest version).  Most users will find
-        the `container_get_engine_versions` data source useful - it indicates which versions
+        the _container_get_engine_versions_ data source useful - it indicates which versions
         are available. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
@@ -2326,7 +2326,7 @@ class _ClusterState:
         version set by GKE which is not necessarily the latest version. This only affects
         nodes in the default node pool. While a fuzzy version can be specified, it's
         recommended that you specify explicit versions as the provider will see spurious diffs
-        when fuzzy versions are used. See the `container_get_engine_versions` data source's
+        when fuzzy versions are used. See the _container_get_engine_versions_ data source's
         `version_prefix` field to approximate fuzzy versions.
         To update nodes in other node pools, use the `version` attribute on the node pool.
         """
@@ -2430,7 +2430,7 @@ class _ClusterState:
         feature, which provide more control over automatic upgrades of your GKE clusters.
         When updating this field, GKE imposes specific version requirements. See
         [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-        for more details; the `container_get_engine_versions` datasource can provide
+        for more details; the _container_get_engine_versions_ datasource can provide
         the default version for a channel. Note that removing the `release_channel`
         field from your config will cause the provider to stop managing your cluster's
         release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
@@ -2821,7 +2821,7 @@ class Cluster(pulumi.CustomResource):
                current master version--use the read-only `master_version` field to obtain that.
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
-               the `container_get_engine_versions` data source useful - it indicates which versions
+               the _container_get_engine_versions_ data source useful - it indicates which versions
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
@@ -2869,7 +2869,7 @@ class Cluster(pulumi.CustomResource):
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as the provider will see spurious diffs
-               when fuzzy versions are used. See the `container_get_engine_versions` data source's
+               when fuzzy versions are used. See the _container_get_engine_versions_ data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -2887,7 +2887,7 @@ class Cluster(pulumi.CustomResource):
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-               for more details; the `container_get_engine_versions` datasource can provide
+               for more details; the _container_get_engine_versions_ datasource can provide
                the default version for a channel. Note that removing the `release_channel`
                field from your config will cause the provider to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
@@ -3325,7 +3325,7 @@ class Cluster(pulumi.CustomResource):
                current master version--use the read-only `master_version` field to obtain that.
                If unset, the cluster's version will be set by GKE to the version of the most recent
                official release (which is not necessarily the latest version).  Most users will find
-               the `container_get_engine_versions` data source useful - it indicates which versions
+               the _container_get_engine_versions_ data source useful - it indicates which versions
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
@@ -3373,7 +3373,7 @@ class Cluster(pulumi.CustomResource):
                version set by GKE which is not necessarily the latest version. This only affects
                nodes in the default node pool. While a fuzzy version can be specified, it's
                recommended that you specify explicit versions as the provider will see spurious diffs
-               when fuzzy versions are used. See the `container_get_engine_versions` data source's
+               when fuzzy versions are used. See the _container_get_engine_versions_ data source's
                `version_prefix` field to approximate fuzzy versions.
                To update nodes in other node pools, use the `version` attribute on the node pool.
         :param pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']] notification_config: Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
@@ -3391,7 +3391,7 @@ class Cluster(pulumi.CustomResource):
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
                [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-               for more details; the `container_get_engine_versions` datasource can provide
+               for more details; the _container_get_engine_versions_ datasource can provide
                the default version for a channel. Note that removing the `release_channel`
                field from your config will cause the provider to stop managing your cluster's
                release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
@@ -3850,7 +3850,7 @@ class Cluster(pulumi.CustomResource):
         current master version--use the read-only `master_version` field to obtain that.
         If unset, the cluster's version will be set by GKE to the version of the most recent
         official release (which is not necessarily the latest version).  Most users will find
-        the `container_get_engine_versions` data source useful - it indicates which versions
+        the _container_get_engine_versions_ data source useful - it indicates which versions
         are available. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
@@ -3982,7 +3982,7 @@ class Cluster(pulumi.CustomResource):
         version set by GKE which is not necessarily the latest version. This only affects
         nodes in the default node pool. While a fuzzy version can be specified, it's
         recommended that you specify explicit versions as the provider will see spurious diffs
-        when fuzzy versions are used. See the `container_get_engine_versions` data source's
+        when fuzzy versions are used. See the _container_get_engine_versions_ data source's
         `version_prefix` field to approximate fuzzy versions.
         To update nodes in other node pools, use the `version` attribute on the node pool.
         """
@@ -4054,7 +4054,7 @@ class Cluster(pulumi.CustomResource):
         feature, which provide more control over automatic upgrades of your GKE clusters.
         When updating this field, GKE imposes specific version requirements. See
         [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
-        for more details; the `container_get_engine_versions` datasource can provide
+        for more details; the _container_get_engine_versions_ datasource can provide
         the default version for a channel. Note that removing the `release_channel`
         field from your config will cause the provider to stop managing your cluster's
         release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`

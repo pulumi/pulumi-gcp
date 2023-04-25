@@ -235,6 +235,8 @@ __all__ = [
     'RegionBackendServiceOutlierDetectionBaseEjectionTime',
     'RegionBackendServiceOutlierDetectionInterval',
     'RegionBackendServiceSubsetting',
+    'RegionCommitmentLicenseResource',
+    'RegionCommitmentResource',
     'RegionDiskDiskEncryptionKey',
     'RegionDiskIamBindingCondition',
     'RegionDiskIamMemberCondition',
@@ -261,6 +263,25 @@ __all__ = [
     'RegionInstanceGroupManagerUpdatePolicy',
     'RegionInstanceGroupManagerVersion',
     'RegionInstanceGroupManagerVersionTargetSize',
+    'RegionInstanceTemplateAdvancedMachineFeatures',
+    'RegionInstanceTemplateConfidentialInstanceConfig',
+    'RegionInstanceTemplateDisk',
+    'RegionInstanceTemplateDiskDiskEncryptionKey',
+    'RegionInstanceTemplateDiskSourceImageEncryptionKey',
+    'RegionInstanceTemplateDiskSourceSnapshotEncryptionKey',
+    'RegionInstanceTemplateGuestAccelerator',
+    'RegionInstanceTemplateNetworkInterface',
+    'RegionInstanceTemplateNetworkInterfaceAccessConfig',
+    'RegionInstanceTemplateNetworkInterfaceAliasIpRange',
+    'RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig',
+    'RegionInstanceTemplateNetworkPerformanceConfig',
+    'RegionInstanceTemplateReservationAffinity',
+    'RegionInstanceTemplateReservationAffinitySpecificReservation',
+    'RegionInstanceTemplateScheduling',
+    'RegionInstanceTemplateSchedulingMaxRunDuration',
+    'RegionInstanceTemplateSchedulingNodeAffinity',
+    'RegionInstanceTemplateServiceAccount',
+    'RegionInstanceTemplateShieldedInstanceConfig',
     'RegionNetworkEndpointGroupAppEngine',
     'RegionNetworkEndpointGroupCloudFunction',
     'RegionNetworkEndpointGroupCloudRun',
@@ -581,6 +602,25 @@ __all__ = [
     'GetInstanceTemplateShieldedInstanceConfigResult',
     'GetRegionInstanceGroupInstanceResult',
     'GetRegionInstanceGroupInstanceNamedPortResult',
+    'GetRegionInstanceTemplateAdvancedMachineFeatureResult',
+    'GetRegionInstanceTemplateConfidentialInstanceConfigResult',
+    'GetRegionInstanceTemplateDiskResult',
+    'GetRegionInstanceTemplateDiskDiskEncryptionKeyResult',
+    'GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult',
+    'GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult',
+    'GetRegionInstanceTemplateGuestAcceleratorResult',
+    'GetRegionInstanceTemplateNetworkInterfaceResult',
+    'GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult',
+    'GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult',
+    'GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult',
+    'GetRegionInstanceTemplateNetworkPerformanceConfigResult',
+    'GetRegionInstanceTemplateReservationAffinityResult',
+    'GetRegionInstanceTemplateReservationAffinitySpecificReservationResult',
+    'GetRegionInstanceTemplateSchedulingResult',
+    'GetRegionInstanceTemplateSchedulingMaxRunDurationResult',
+    'GetRegionInstanceTemplateSchedulingNodeAffinityResult',
+    'GetRegionInstanceTemplateServiceAccountResult',
+    'GetRegionInstanceTemplateShieldedInstanceConfigResult',
     'GetRegionNetworkEndpointGroupAppEngineResult',
     'GetRegionNetworkEndpointGroupCloudFunctionResult',
     'GetRegionNetworkEndpointGroupCloudRunResult',
@@ -15699,6 +15739,133 @@ class RegionBackendServiceSubsetting(dict):
 
 
 @pulumi.output_type
+class RegionCommitmentLicenseResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coresPerLicense":
+            suggest = "cores_per_license"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionCommitmentLicenseResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionCommitmentLicenseResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionCommitmentLicenseResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 license: str,
+                 amount: Optional[str] = None,
+                 cores_per_license: Optional[str] = None):
+        """
+        :param str license: Any applicable license URI.
+        :param str amount: The number of licenses purchased.
+        :param str cores_per_license: Specifies the core range of the instance for which this license applies.
+        """
+        pulumi.set(__self__, "license", license)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if cores_per_license is not None:
+            pulumi.set(__self__, "cores_per_license", cores_per_license)
+
+    @property
+    @pulumi.getter
+    def license(self) -> str:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter
+    def amount(self) -> Optional[str]:
+        """
+        The number of licenses purchased.
+        """
+        return pulumi.get(self, "amount")
+
+    @property
+    @pulumi.getter(name="coresPerLicense")
+    def cores_per_license(self) -> Optional[str]:
+        """
+        Specifies the core range of the instance for which this license applies.
+        """
+        return pulumi.get(self, "cores_per_license")
+
+
+@pulumi.output_type
+class RegionCommitmentResource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionCommitmentResource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionCommitmentResource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionCommitmentResource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_type: Optional[str] = None,
+                 amount: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str accelerator_type: Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
+        :param str amount: The amount of the resource purchased (in a type-dependent unit,
+               such as bytes). For vCPUs, this can just be an integer. For memory,
+               this must be provided in MB. Memory must be a multiple of 256 MB,
+               with up to 6.5GB of memory per every vCPU.
+        :param str type: Type of resource for which this commitment applies.
+               Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
+        """
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[str]:
+        """
+        Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter
+    def amount(self) -> Optional[str]:
+        """
+        The amount of the resource purchased (in a type-dependent unit,
+        such as bytes). For vCPUs, this can just be an integer. For memory,
+        this must be provided in MB. Memory must be a multiple of 256 MB,
+        with up to 6.5GB of memory per every vCPU.
+        """
+        return pulumi.get(self, "amount")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of resource for which this commitment applies.
+        Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class RegionDiskDiskEncryptionKey(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17611,6 +17778,1434 @@ class RegionInstanceGroupManagerVersionTargetSize(dict):
         one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
         """
         return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateAdvancedMachineFeatures(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableNestedVirtualization":
+            suggest = "enable_nested_virtualization"
+        elif key == "threadsPerCore":
+            suggest = "threads_per_core"
+        elif key == "visibleCoreCount":
+            suggest = "visible_core_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateAdvancedMachineFeatures.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateAdvancedMachineFeatures.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_nested_virtualization: Optional[bool] = None,
+                 threads_per_core: Optional[int] = None,
+                 visible_core_count: Optional[int] = None):
+        """
+        :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        :param int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        """
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if visible_core_count is not None:
+            pulumi.set(__self__, "visible_core_count", visible_core_count)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[bool]:
+        """
+        Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[int]:
+        """
+        The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> Optional[int]:
+        """
+        The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        """
+        return pulumi.get(self, "visible_core_count")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateConfidentialInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateConfidentialInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateConfidentialInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateConfidentialInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_confidential_compute: bool):
+        """
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+        elif key == "deviceName":
+            suggest = "device_name"
+        elif key == "diskEncryptionKey":
+            suggest = "disk_encryption_key"
+        elif key == "diskName":
+            suggest = "disk_name"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "resourcePolicies":
+            suggest = "resource_policies"
+        elif key == "sourceImage":
+            suggest = "source_image"
+        elif key == "sourceImageEncryptionKey":
+            suggest = "source_image_encryption_key"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
+        elif key == "sourceSnapshotEncryptionKey":
+            suggest = "source_snapshot_encryption_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_delete: Optional[bool] = None,
+                 boot: Optional[bool] = None,
+                 device_name: Optional[str] = None,
+                 disk_encryption_key: Optional['outputs.RegionInstanceTemplateDiskDiskEncryptionKey'] = None,
+                 disk_name: Optional[str] = None,
+                 disk_size_gb: Optional[int] = None,
+                 disk_type: Optional[str] = None,
+                 interface: Optional[str] = None,
+                 labels: Optional[Mapping[str, str]] = None,
+                 mode: Optional[str] = None,
+                 resource_policies: Optional[str] = None,
+                 source: Optional[str] = None,
+                 source_image: Optional[str] = None,
+                 source_image_encryption_key: Optional['outputs.RegionInstanceTemplateDiskSourceImageEncryptionKey'] = None,
+                 source_snapshot: Optional[str] = None,
+                 source_snapshot_encryption_key: Optional['outputs.RegionInstanceTemplateDiskSourceSnapshotEncryptionKey'] = None,
+                 type: Optional[str] = None):
+        """
+        :param bool auto_delete: Whether or not the disk should be auto-deleted.
+               This defaults to true.
+        :param bool boot: Indicates that this is a boot disk.
+        :param str device_name: A unique device name that is reflected into the
+               /dev/  tree of a Linux operating system running within the instance. If not
+               specified, the server chooses a default device name to apply to this disk.
+        :param 'RegionInstanceTemplateDiskDiskEncryptionKeyArgs' disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param str disk_name: Name of the disk. When not provided, this defaults
+               to the name of the instance.
+        :param int disk_size_gb: The size of the image in gigabytes. If not
+               specified, it will inherit the size of its base image. For SCRATCH disks,
+               the size must be exactly 375GB.
+        :param str disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+               `"pd-balanced"` or `"pd-standard"`.
+        :param str interface: Specifies the disk interface to use for attaching this disk,
+               which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+               and the request will fail if you attempt to attach a persistent disk in any other format
+               than SCSI. Local SSDs can use either NVME or SCSI.
+        :param Mapping[str, str] labels: A set of ket/value label pairs to assign to disk created from
+               this template
+        :param str mode: The mode in which to attach this disk, either READ_WRITE
+               or READ_ONLY. If you are attaching or creating a boot disk, this must
+               read-write mode.
+        :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        :param str source: The name (**not self_link**)
+               of the disk (such as those managed by `compute.Disk`) to attach.
+               > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param str source_image: The image from which to
+               initialize this disk. This can be one of: the image's `self_link`,
+               `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`.
+               > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param 'RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs' source_image_encryption_key: The customer-supplied encryption
+               key of the source image. Required if the source image is protected by a
+               customer-supplied encryption key.
+        :param str source_snapshot: The source snapshot to create this disk.
+               > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param 'RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs' source_snapshot_encryption_key: The customer-supplied encryption
+               key of the source snapshot. Structure
+               documented below.
+        :param str type: The type of GCE disk, can be either `"SCRATCH"` or
+               `"PERSISTENT"`.
+        """
+        if auto_delete is not None:
+            pulumi.set(__self__, "auto_delete", auto_delete)
+        if boot is not None:
+            pulumi.set(__self__, "boot", boot)
+        if device_name is not None:
+            pulumi.set(__self__, "device_name", device_name)
+        if disk_encryption_key is not None:
+            pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if disk_name is not None:
+            pulumi.set(__self__, "disk_name", disk_name)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if source_image is not None:
+            pulumi.set(__self__, "source_image", source_image)
+        if source_image_encryption_key is not None:
+            pulumi.set(__self__, "source_image_encryption_key", source_image_encryption_key)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
+        if source_snapshot_encryption_key is not None:
+            pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> Optional[bool]:
+        """
+        Whether or not the disk should be auto-deleted.
+        This defaults to true.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @property
+    @pulumi.getter
+    def boot(self) -> Optional[bool]:
+        """
+        Indicates that this is a boot disk.
+        """
+        return pulumi.get(self, "boot")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> Optional[str]:
+        """
+        A unique device name that is reflected into the
+        /dev/  tree of a Linux operating system running within the instance. If not
+        specified, the server chooses a default device name to apply to this disk.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKey")
+    def disk_encryption_key(self) -> Optional['outputs.RegionInstanceTemplateDiskDiskEncryptionKey']:
+        """
+        Encrypts or decrypts a disk using a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> Optional[str]:
+        """
+        Name of the disk. When not provided, this defaults
+        to the name of the instance.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[int]:
+        """
+        The size of the image in gigabytes. If not
+        specified, it will inherit the size of its base image. For SCRATCH disks,
+        the size must be exactly 375GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[str]:
+        """
+        The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+        `"pd-balanced"` or `"pd-standard"`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[str]:
+        """
+        Specifies the disk interface to use for attaching this disk,
+        which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+        and the request will fail if you attempt to attach a persistent disk in any other format
+        than SCSI. Local SSDs can use either NVME or SCSI.
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A set of ket/value label pairs to assign to disk created from
+        this template
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        The mode in which to attach this disk, either READ_WRITE
+        or READ_ONLY. If you are attaching or creating a boot disk, this must
+        read-write mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[str]:
+        """
+        - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        The name (**not self_link**)
+        of the disk (such as those managed by `compute.Disk`) to attach.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> Optional[str]:
+        """
+        The image from which to
+        initialize this disk. This can be one of: the image's `self_link`,
+        `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKey")
+    def source_image_encryption_key(self) -> Optional['outputs.RegionInstanceTemplateDiskSourceImageEncryptionKey']:
+        """
+        The customer-supplied encryption
+        key of the source image. Required if the source image is protected by a
+        customer-supplied encryption key.
+        """
+        return pulumi.get(self, "source_image_encryption_key")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[str]:
+        """
+        The source snapshot to create this disk.
+        > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKey")
+    def source_snapshot_encryption_key(self) -> Optional['outputs.RegionInstanceTemplateDiskSourceSnapshotEncryptionKey']:
+        """
+        The customer-supplied encryption
+        key of the source snapshot. Structure
+        documented below.
+        """
+        return pulumi.get(self, "source_snapshot_encryption_key")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of GCE disk, can be either `"SCRATCH"` or
+        `"PERSISTENT"`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateDiskDiskEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateDiskDiskEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateDiskDiskEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateDiskDiskEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateDiskSourceImageEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateDiskSourceImageEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateDiskSourceImageEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateDiskSourceImageEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is
+               stored in Google Cloud KMS.
+        :param str kms_key_service_account: The service account being used for the
+               encryption request for the given KMS key. If absent, the Compute Engine
+               default service account is used.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is
+        stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateDiskSourceSnapshotEncryptionKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeySelfLink":
+            suggest = "kms_key_self_link"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateDiskSourceSnapshotEncryptionKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateDiskSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateDiskSourceSnapshotEncryptionKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: Optional[str] = None):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is
+               stored in Google Cloud KMS.
+        :param str kms_key_service_account: The service account being used for the
+               encryption request for the given KMS key. If absent, the Compute Engine
+               default service account is used.
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is
+        stored in Google Cloud KMS.
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account being used for the
+        encryption request for the given KMS key. If absent, the Compute Engine
+        default service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateGuestAccelerator(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 type: str):
+        """
+        :param int count: The number of the guest accelerator cards exposed to this instance.
+        :param str type: The type of GCE disk, can be either `"SCRATCH"` or
+               `"PERSISTENT"`.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of GCE disk, can be either `"SCRATCH"` or
+        `"PERSISTENT"`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessConfigs":
+            suggest = "access_configs"
+        elif key == "aliasIpRanges":
+            suggest = "alias_ip_ranges"
+        elif key == "ipv6AccessConfigs":
+            suggest = "ipv6_access_configs"
+        elif key == "ipv6AccessType":
+            suggest = "ipv6_access_type"
+        elif key == "networkIp":
+            suggest = "network_ip"
+        elif key == "nicType":
+            suggest = "nic_type"
+        elif key == "queueCount":
+            suggest = "queue_count"
+        elif key == "stackType":
+            suggest = "stack_type"
+        elif key == "subnetworkProject":
+            suggest = "subnetwork_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_configs: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAccessConfig']] = None,
+                 alias_ip_ranges: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAliasIpRange']] = None,
+                 ipv6_access_configs: Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig']] = None,
+                 ipv6_access_type: Optional[str] = None,
+                 name: Optional[str] = None,
+                 network: Optional[str] = None,
+                 network_ip: Optional[str] = None,
+                 nic_type: Optional[str] = None,
+                 queue_count: Optional[int] = None,
+                 stack_type: Optional[str] = None,
+                 subnetwork: Optional[str] = None,
+                 subnetwork_project: Optional[str] = None):
+        """
+        :param Sequence['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+               array of alias IP ranges for this network interface. Can only be specified for network
+               interfaces on subnet-mode networks. Structure documented below.
+        :param Sequence['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs'] ipv6_access_configs: An array of IPv6 access configurations for this interface.
+               Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+               specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        :param str network: The name or self_link of the network to attach this interface to.
+               Use `network` attribute for Legacy or Auto subnetted networks and
+               `subnetwork` for custom subnetted networks.
+        :param str network_ip: The private IP address to assign to the instance. If
+               empty, the address will be automatically assigned.
+        :param str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        :param str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        :param str subnetwork: the name of the subnetwork to attach this interface
+               to. The subnetwork must exist in the same `region` this instance will be
+               created in. Either `network` or `subnetwork` must be provided.
+        :param str subnetwork_project: The ID of the project in which the subnetwork belongs.
+               If it is not provided, the provider project is used.
+        """
+        if access_configs is not None:
+            pulumi.set(__self__, "access_configs", access_configs)
+        if alias_ip_ranges is not None:
+            pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if ipv6_access_configs is not None:
+            pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
+        if ipv6_access_type is not None:
+            pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_ip is not None:
+            pulumi.set(__self__, "network_ip", network_ip)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if subnetwork_project is not None:
+            pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+
+    @property
+    @pulumi.getter(name="accessConfigs")
+    def access_configs(self) -> Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAccessConfig']]:
+        return pulumi.get(self, "access_configs")
+
+    @property
+    @pulumi.getter(name="aliasIpRanges")
+    def alias_ip_ranges(self) -> Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceAliasIpRange']]:
+        """
+        An
+        array of alias IP ranges for this network interface. Can only be specified for network
+        interfaces on subnet-mode networks. Structure documented below.
+        """
+        return pulumi.get(self, "alias_ip_ranges")
+
+    @property
+    @pulumi.getter(name="ipv6AccessConfigs")
+    def ipv6_access_configs(self) -> Optional[Sequence['outputs.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig']]:
+        """
+        An array of IPv6 access configurations for this interface.
+        Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
+        specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        """
+        return pulumi.get(self, "ipv6_access_configs")
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> Optional[str]:
+        return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        The name or self_link of the network to attach this interface to.
+        Use `network` attribute for Legacy or Auto subnetted networks and
+        `subnetwork` for custom subnetted networks.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkIp")
+    def network_ip(self) -> Optional[str]:
+        """
+        The private IP address to assign to the instance. If
+        empty, the address will be automatically assigned.
+        """
+        return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[str]:
+        """
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        """
+        return pulumi.get(self, "nic_type")
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[int]:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
+        return pulumi.get(self, "queue_count")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[str]:
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[str]:
+        """
+        the name of the subnetwork to attach this interface
+        to. The subnetwork must exist in the same `region` this instance will be
+        created in. Either `network` or `subnetwork` must be provided.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="subnetworkProject")
+    def subnetwork_project(self) -> Optional[str]:
+        """
+        The ID of the project in which the subnetwork belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "subnetwork_project")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateNetworkInterfaceAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "natIp":
+            suggest = "nat_ip"
+        elif key == "networkTier":
+            suggest = "network_tier"
+        elif key == "publicPtrDomainName":
+            suggest = "public_ptr_domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateNetworkInterfaceAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateNetworkInterfaceAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateNetworkInterfaceAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 nat_ip: Optional[str] = None,
+                 network_tier: Optional[str] = None,
+                 public_ptr_domain_name: Optional[str] = None):
+        """
+        :param str nat_ip: The IP address that will be 1:1 mapped to the instance's
+               network ip. If not given, one will be generated.
+        :param str network_tier: The service-level to be provided for IPv6 traffic when the
+               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        """
+        if nat_ip is not None:
+            pulumi.set(__self__, "nat_ip", nat_ip)
+        if network_tier is not None:
+            pulumi.set(__self__, "network_tier", network_tier)
+        if public_ptr_domain_name is not None:
+            pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="natIp")
+    def nat_ip(self) -> Optional[str]:
+        """
+        The IP address that will be 1:1 mapped to the instance's
+        network ip. If not given, one will be generated.
+        """
+        return pulumi.get(self, "nat_ip")
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> Optional[str]:
+        """
+        The service-level to be provided for IPv6 traffic when the
+        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> Optional[str]:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateNetworkInterfaceAliasIpRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipCidrRange":
+            suggest = "ip_cidr_range"
+        elif key == "subnetworkRangeName":
+            suggest = "subnetwork_range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateNetworkInterfaceAliasIpRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateNetworkInterfaceAliasIpRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateNetworkInterfaceAliasIpRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_cidr_range: str,
+                 subnetwork_range_name: Optional[str] = None):
+        """
+        :param str ip_cidr_range: The IP CIDR range represented by this alias IP range. This IP CIDR range
+               must belong to the specified subnetwork and cannot contain IP addresses reserved by
+               system or used by other network interfaces. At the time of writing only a
+               netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+               error.
+        :param str subnetwork_range_name: The subnetwork secondary range name specifying
+               the secondary range from which to allocate the IP CIDR range for this alias IP
+               range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if subnetwork_range_name is not None:
+            pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> str:
+        """
+        The IP CIDR range represented by this alias IP range. This IP CIDR range
+        must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        system or used by other network interfaces. At the time of writing only a
+        netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        error.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="subnetworkRangeName")
+    def subnetwork_range_name(self) -> Optional[str]:
+        """
+        The subnetwork secondary range name specifying
+        the secondary range from which to allocate the IP CIDR range for this alias IP
+        range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+        return pulumi.get(self, "subnetwork_range_name")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkTier":
+            suggest = "network_tier"
+        elif key == "externalIpv6":
+            suggest = "external_ipv6"
+        elif key == "externalIpv6PrefixLength":
+            suggest = "external_ipv6_prefix_length"
+        elif key == "publicPtrDomainName":
+            suggest = "public_ptr_domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_tier: str,
+                 external_ipv6: Optional[str] = None,
+                 external_ipv6_prefix_length: Optional[str] = None,
+                 public_ptr_domain_name: Optional[str] = None):
+        """
+        :param str network_tier: The [networking tier][network-tier] used for configuring
+               this instance template. This field can take the following values: PREMIUM,
+               STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+               subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        """
+        pulumi.set(__self__, "network_tier", network_tier)
+        if external_ipv6 is not None:
+            pulumi.set(__self__, "external_ipv6", external_ipv6)
+        if external_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if public_ptr_domain_name is not None:
+            pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> str:
+        """
+        The [networking tier][network-tier] used for configuring
+        this instance template. This field can take the following values: PREMIUM,
+        STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="externalIpv6")
+    def external_ipv6(self) -> Optional[str]:
+        return pulumi.get(self, "external_ipv6")
+
+    @property
+    @pulumi.getter(name="externalIpv6PrefixLength")
+    def external_ipv6_prefix_length(self) -> Optional[str]:
+        return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> Optional[str]:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        :param str total_egress_bandwidth_tier: The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "specificReservation":
+            suggest = "specific_reservation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 specific_reservation: Optional['outputs.RegionInstanceTemplateReservationAffinitySpecificReservation'] = None):
+        """
+        :param str type: The type of reservation from which this instance can consume resources.
+        :param 'RegionInstanceTemplateReservationAffinitySpecificReservationArgs' specific_reservation: Specifies the label selector for the reservation to use..
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "type", type)
+        if specific_reservation is not None:
+            pulumi.set(__self__, "specific_reservation", specific_reservation)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of reservation from which this instance can consume resources.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="specificReservation")
+    def specific_reservation(self) -> Optional['outputs.RegionInstanceTemplateReservationAffinitySpecificReservation']:
+        """
+        Specifies the label selector for the reservation to use..
+        Structure is documented below.
+        """
+        return pulumi.get(self, "specific_reservation")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateReservationAffinitySpecificReservation(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 values: Sequence[str]):
+        """
+        :param str key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        :param Sequence[str] values: Corresponds to the label values of a reservation resource.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateScheduling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automaticRestart":
+            suggest = "automatic_restart"
+        elif key == "instanceTerminationAction":
+            suggest = "instance_termination_action"
+        elif key == "maintenanceInterval":
+            suggest = "maintenance_interval"
+        elif key == "maxRunDuration":
+            suggest = "max_run_duration"
+        elif key == "minNodeCpus":
+            suggest = "min_node_cpus"
+        elif key == "nodeAffinities":
+            suggest = "node_affinities"
+        elif key == "onHostMaintenance":
+            suggest = "on_host_maintenance"
+        elif key == "provisioningModel":
+            suggest = "provisioning_model"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateScheduling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateScheduling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateScheduling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 automatic_restart: Optional[bool] = None,
+                 instance_termination_action: Optional[str] = None,
+                 maintenance_interval: Optional[str] = None,
+                 max_run_duration: Optional['outputs.RegionInstanceTemplateSchedulingMaxRunDuration'] = None,
+                 min_node_cpus: Optional[int] = None,
+                 node_affinities: Optional[Sequence['outputs.RegionInstanceTemplateSchedulingNodeAffinity']] = None,
+                 on_host_maintenance: Optional[str] = None,
+                 preemptible: Optional[bool] = None,
+                 provisioning_model: Optional[str] = None):
+        """
+        :param bool automatic_restart: Specifies whether the instance should be
+               automatically restarted if it is terminated by Compute Engine (not
+               terminated by a user). This defaults to true.
+        :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
+               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        :param 'RegionInstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param Sequence['RegionInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+               to determine which sole-tenant nodes your instances and managed instance
+               groups will use as host systems. Read more on sole-tenant node creation
+               [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+               Structure documented below.
+        :param str on_host_maintenance: Defines the maintenance behavior for this
+               instance.
+        :param bool preemptible: Allows instance to be preempted. This defaults to
+               false. Read more on this
+               [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        :param str provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+               `preemptible` should be `true` and `auto_restart` should be
+               `false`. For more info about
+               `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
+        if automatic_restart is not None:
+            pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if instance_termination_action is not None:
+            pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if maintenance_interval is not None:
+            pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        if max_run_duration is not None:
+            pulumi.set(__self__, "max_run_duration", max_run_duration)
+        if min_node_cpus is not None:
+            pulumi.set(__self__, "min_node_cpus", min_node_cpus)
+        if node_affinities is not None:
+            pulumi.set(__self__, "node_affinities", node_affinities)
+        if on_host_maintenance is not None:
+            pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        if preemptible is not None:
+            pulumi.set(__self__, "preemptible", preemptible)
+        if provisioning_model is not None:
+            pulumi.set(__self__, "provisioning_model", provisioning_model)
+
+    @property
+    @pulumi.getter(name="automaticRestart")
+    def automatic_restart(self) -> Optional[bool]:
+        """
+        Specifies whether the instance should be
+        automatically restarted if it is terminated by Compute Engine (not
+        terminated by a user). This defaults to true.
+        """
+        return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="instanceTerminationAction")
+    def instance_termination_action(self) -> Optional[str]:
+        """
+        Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        """
+        return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> Optional[str]:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
+        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        """
+        return pulumi.get(self, "maintenance_interval")
+
+    @property
+    @pulumi.getter(name="maxRunDuration")
+    def max_run_duration(self) -> Optional['outputs.RegionInstanceTemplateSchedulingMaxRunDuration']:
+        """
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        """
+        return pulumi.get(self, "max_run_duration")
+
+    @property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> Optional[int]:
+        return pulumi.get(self, "min_node_cpus")
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Optional[Sequence['outputs.RegionInstanceTemplateSchedulingNodeAffinity']]:
+        """
+        Specifies node affinities or anti-affinities
+        to determine which sole-tenant nodes your instances and managed instance
+        groups will use as host systems. Read more on sole-tenant node creation
+        [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        Structure documented below.
+        """
+        return pulumi.get(self, "node_affinities")
+
+    @property
+    @pulumi.getter(name="onHostMaintenance")
+    def on_host_maintenance(self) -> Optional[str]:
+        """
+        Defines the maintenance behavior for this
+        instance.
+        """
+        return pulumi.get(self, "on_host_maintenance")
+
+    @property
+    @pulumi.getter
+    def preemptible(self) -> Optional[bool]:
+        """
+        Allows instance to be preempted. This defaults to
+        false. Read more on this
+        [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        """
+        return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> Optional[str]:
+        """
+        Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
+        `preemptible` should be `true` and `auto_restart` should be
+        `false`. For more info about
+        `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        """
+        return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateSchedulingMaxRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateSchedulingNodeAffinity(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        """
+        :param str key: The key for the node affinity label.
+        :param str operator: The operator. Can be `IN` for node-affinities
+               or `NOT_IN` for anti-affinities.
+        :param Sequence[str] values: Corresponds to the label values of a reservation resource.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key for the node affinity label.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator. Can be `IN` for node-affinities
+        or `NOT_IN` for anti-affinities.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateServiceAccount(dict):
+    def __init__(__self__, *,
+                 scopes: Sequence[str],
+                 email: Optional[str] = None):
+        """
+        :param Sequence[str] scopes: A list of service scopes. Both OAuth2 URLs and gcloud
+               short names are supported. To allow full access to all Cloud APIs, use the
+               `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        :param str email: The service account e-mail address. If not given, the
+               default Google Compute Engine service account is used.
+        """
+        pulumi.set(__self__, "scopes", scopes)
+        if email is not None:
+            pulumi.set(__self__, "email", email)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        A list of service scopes. Both OAuth2 URLs and gcloud
+        short names are supported. To allow full access to all Cloud APIs, use the
+        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter
+    def email(self) -> Optional[str]:
+        """
+        The service account e-mail address. If not given, the
+        default Google Compute Engine service account is used.
+        """
+        return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateShieldedInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionInstanceTemplateShieldedInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionInstanceTemplateShieldedInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionInstanceTemplateShieldedInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[bool] = None,
+                 enable_secure_boot: Optional[bool] = None,
+                 enable_vtpm: Optional[bool] = None):
+        """
+        :param bool enable_integrity_monitoring: - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        :param bool enable_secure_boot: - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        :param bool enable_vtpm: - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[bool]:
+        """
+        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[bool]:
+        """
+        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[bool]:
+        """
+        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        """
+        return pulumi.get(self, "enable_vtpm")
 
 
 @pulumi.output_type
@@ -37323,6 +38918,940 @@ class GetRegionInstanceGroupInstanceNamedPortResult(dict):
         Integer port number
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateAdvancedMachineFeatureResult(dict):
+    def __init__(__self__, *,
+                 enable_nested_virtualization: bool,
+                 threads_per_core: int,
+                 visible_core_count: int):
+        pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+        pulumi.set(__self__, "visible_core_count", visible_core_count)
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> bool:
+        return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> int:
+        return pulumi.get(self, "visible_core_count")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_confidential_compute: bool):
+        """
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateDiskResult(dict):
+    def __init__(__self__, *,
+                 auto_delete: bool,
+                 boot: bool,
+                 device_name: str,
+                 disk_encryption_keys: Sequence['outputs.GetRegionInstanceTemplateDiskDiskEncryptionKeyResult'],
+                 disk_name: str,
+                 disk_size_gb: int,
+                 disk_type: str,
+                 interface: str,
+                 labels: Mapping[str, str],
+                 mode: str,
+                 resource_policies: Sequence[str],
+                 source: str,
+                 source_image: str,
+                 source_image_encryption_keys: Sequence['outputs.GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult'],
+                 source_snapshot: str,
+                 source_snapshot_encryption_keys: Sequence['outputs.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult'],
+                 type: str):
+        """
+        :param bool auto_delete: Whether or not the disk should be auto-deleted.
+               This defaults to true.
+        :param bool boot: Indicates that this is a boot disk.
+        :param str device_name: A unique device name that is reflected into the
+               /dev/  tree of a Linux operating system running within the instance. If not
+               specified, the server chooses a default device name to apply to this disk.
+        :param Sequence['GetRegionInstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_keys: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param str disk_name: Name of the disk. When not provided, this defaults
+               to the name of the instance.
+        :param int disk_size_gb: The size of the image in gigabytes. If not
+               specified, it will inherit the size of its base image. For SCRATCH disks,
+               the size must be exactly 375GB.
+        :param str disk_type: The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+               `"pd-balanced"` or `"pd-standard"`.
+        :param str interface: Specifies the disk interface to use for attaching this disk,
+               which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+               and the request will fail if you attempt to attach a persistent disk in any other format
+               than SCSI. Local SSDs can use either NVME or SCSI.
+        :param Mapping[str, str] labels: (Optional) A set of ket/value label pairs to assign to disk created from
+               this template
+        :param str mode: The mode in which to attach this disk, either READ_WRITE
+               or READ_ONLY. If you are attaching or creating a boot disk, this must
+               read-write mode.
+        :param Sequence[str] resource_policies: (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        :param str source: The name (**not self_link**)
+               of the disk (such as those managed by `compute.Disk`) to attach.
+               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param str source_image: The image from which to
+               initialize this disk. This can be one of: the image's `self_link`,
+               `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`.
+               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "auto_delete", auto_delete)
+        pulumi.set(__self__, "boot", boot)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "disk_encryption_keys", disk_encryption_keys)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "interface", interface)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "resource_policies", resource_policies)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_image", source_image)
+        pulumi.set(__self__, "source_image_encryption_keys", source_image_encryption_keys)
+        pulumi.set(__self__, "source_snapshot", source_snapshot)
+        pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> bool:
+        """
+        Whether or not the disk should be auto-deleted.
+        This defaults to true.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @property
+    @pulumi.getter
+    def boot(self) -> bool:
+        """
+        Indicates that this is a boot disk.
+        """
+        return pulumi.get(self, "boot")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        A unique device name that is reflected into the
+        /dev/  tree of a Linux operating system running within the instance. If not
+        specified, the server chooses a default device name to apply to this disk.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeys")
+    def disk_encryption_keys(self) -> Sequence['outputs.GetRegionInstanceTemplateDiskDiskEncryptionKeyResult']:
+        """
+        Encrypts or decrypts a disk using a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "disk_encryption_keys")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        Name of the disk. When not provided, this defaults
+        to the name of the instance.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> int:
+        """
+        The size of the image in gigabytes. If not
+        specified, it will inherit the size of its base image. For SCRATCH disks,
+        the size must be exactly 375GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The GCE disk type. Such as `"pd-ssd"`, `"local-ssd"`,
+        `"pd-balanced"` or `"pd-standard"`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> str:
+        """
+        Specifies the disk interface to use for attaching this disk,
+        which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+        and the request will fail if you attempt to attach a persistent disk in any other format
+        than SCSI. Local SSDs can use either NVME or SCSI.
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        (Optional) A set of ket/value label pairs to assign to disk created from
+        this template
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The mode in which to attach this disk, either READ_WRITE
+        or READ_ONLY. If you are attaching or creating a boot disk, this must
+        read-write mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Sequence[str]:
+        """
+        (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        The name (**not self_link**)
+        of the disk (such as those managed by `compute.Disk`) to attach.
+        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> str:
+        """
+        The image from which to
+        initialize this disk. This can be one of: the image's `self_link`,
+        `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`.
+        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter(name="sourceImageEncryptionKeys")
+    def source_image_encryption_keys(self) -> Sequence['outputs.GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult']:
+        return pulumi.get(self, "source_image_encryption_keys")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> str:
+        return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotEncryptionKeys")
+    def source_snapshot_encryption_keys(self) -> Sequence['outputs.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult']:
+        return pulumi.get(self, "source_snapshot_encryption_keys")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateDiskDiskEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str,
+                 kms_key_service_account: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> str:
+        return pulumi.get(self, "kms_key_service_account")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateGuestAcceleratorResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 type: str):
+        """
+        :param int count: The number of the guest accelerator cards exposed to this instance.
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateNetworkInterfaceResult(dict):
+    def __init__(__self__, *,
+                 access_configs: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult'],
+                 alias_ip_ranges: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
+                 ipv6_access_configs: Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult'],
+                 ipv6_access_type: str,
+                 name: str,
+                 network: str,
+                 network_ip: str,
+                 nic_type: str,
+                 queue_count: int,
+                 stack_type: str,
+                 subnetwork: str,
+                 subnetwork_project: str):
+        """
+        :param Sequence['GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+               array of alias IP ranges for this network interface. Can only be specified for network
+               interfaces on subnet-mode networks. Structure documented below.
+        :param str name: The name of the instance template. One of `name` or `filter` must be provided.
+        :param str network: The name or self_link of the network to attach this interface to.
+               Use `network` attribute for Legacy or Auto subnetted networks and
+               `subnetwork` for custom subnetted networks.
+        :param str network_ip: The private IP address to assign to the instance. If
+               empty, the address will be automatically assigned.
+        :param str subnetwork: the name of the subnetwork to attach this interface
+               to. The subnetwork must exist in the same `region` this instance will be
+               created in. Either `network` or `subnetwork` must be provided.
+        :param str subnetwork_project: The ID of the project in which the subnetwork belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "access_configs", access_configs)
+        pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
+        pulumi.set(__self__, "ipv6_access_type", ipv6_access_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_ip", network_ip)
+        pulumi.set(__self__, "nic_type", nic_type)
+        pulumi.set(__self__, "queue_count", queue_count)
+        pulumi.set(__self__, "stack_type", stack_type)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+
+    @property
+    @pulumi.getter(name="accessConfigs")
+    def access_configs(self) -> Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult']:
+        return pulumi.get(self, "access_configs")
+
+    @property
+    @pulumi.getter(name="aliasIpRanges")
+    def alias_ip_ranges(self) -> Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult']:
+        """
+        An
+        array of alias IP ranges for this network interface. Can only be specified for network
+        interfaces on subnet-mode networks. Structure documented below.
+        """
+        return pulumi.get(self, "alias_ip_ranges")
+
+    @property
+    @pulumi.getter(name="ipv6AccessConfigs")
+    def ipv6_access_configs(self) -> Sequence['outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult']:
+        return pulumi.get(self, "ipv6_access_configs")
+
+    @property
+    @pulumi.getter(name="ipv6AccessType")
+    def ipv6_access_type(self) -> str:
+        return pulumi.get(self, "ipv6_access_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance template. One of `name` or `filter` must be provided.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The name or self_link of the network to attach this interface to.
+        Use `network` attribute for Legacy or Auto subnetted networks and
+        `subnetwork` for custom subnetted networks.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkIp")
+    def network_ip(self) -> str:
+        """
+        The private IP address to assign to the instance. If
+        empty, the address will be automatically assigned.
+        """
+        return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> str:
+        return pulumi.get(self, "nic_type")
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> int:
+        return pulumi.get(self, "queue_count")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        return pulumi.get(self, "stack_type")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        the name of the subnetwork to attach this interface
+        to. The subnetwork must exist in the same `region` this instance will be
+        created in. Either `network` or `subnetwork` must be provided.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="subnetworkProject")
+    def subnetwork_project(self) -> str:
+        """
+        The ID of the project in which the subnetwork belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "subnetwork_project")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
+    def __init__(__self__, *,
+                 nat_ip: str,
+                 network_tier: str,
+                 public_ptr_domain_name: str):
+        """
+        :param str nat_ip: The IP address that will be 1:1 mapped to the instance's
+               network ip. If not given, one will be generated.
+        :param str network_tier: The [networking tier][network-tier] used for configuring
+               this instance template. This field can take the following values: PREMIUM or
+               STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        """
+        pulumi.set(__self__, "nat_ip", nat_ip)
+        pulumi.set(__self__, "network_tier", network_tier)
+        pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="natIp")
+    def nat_ip(self) -> str:
+        """
+        The IP address that will be 1:1 mapped to the instance's
+        network ip. If not given, one will be generated.
+        """
+        return pulumi.get(self, "nat_ip")
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> str:
+        """
+        The [networking tier][network-tier] used for configuring
+        this instance template. This field can take the following values: PREMIUM or
+        STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> str:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
+    def __init__(__self__, *,
+                 ip_cidr_range: str,
+                 subnetwork_range_name: str):
+        """
+        :param str ip_cidr_range: The IP CIDR range represented by this alias IP range. This IP CIDR range
+               must belong to the specified subnetwork and cannot contain IP addresses reserved by
+               system or used by other network interfaces. At the time of writing only a
+               netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+               error.
+        :param str subnetwork_range_name: The subnetwork secondary range name specifying
+               the secondary range from which to allocate the IP CIDR range for this alias IP
+               range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> str:
+        """
+        The IP CIDR range represented by this alias IP range. This IP CIDR range
+        must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        system or used by other network interfaces. At the time of writing only a
+        netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        error.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="subnetworkRangeName")
+    def subnetwork_range_name(self) -> str:
+        """
+        The subnetwork secondary range name specifying
+        the secondary range from which to allocate the IP CIDR range for this alias IP
+        range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+        return pulumi.get(self, "subnetwork_range_name")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
+    def __init__(__self__, *,
+                 external_ipv6: str,
+                 external_ipv6_prefix_length: str,
+                 network_tier: str,
+                 public_ptr_domain_name: str):
+        """
+        :param str network_tier: The [networking tier][network-tier] used for configuring
+               this instance template. This field can take the following values: PREMIUM or
+               STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        """
+        pulumi.set(__self__, "external_ipv6", external_ipv6)
+        pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        pulumi.set(__self__, "network_tier", network_tier)
+        pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="externalIpv6")
+    def external_ipv6(self) -> str:
+        return pulumi.get(self, "external_ipv6")
+
+    @property
+    @pulumi.getter(name="externalIpv6PrefixLength")
+    def external_ipv6_prefix_length(self) -> str:
+        return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> str:
+        """
+        The [networking tier][network-tier] used for configuring
+        this instance template. This field can take the following values: PREMIUM or
+        STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> str:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateNetworkPerformanceConfigResult(dict):
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        :param str total_egress_bandwidth_tier: The egress bandwidth tier for the instance.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        The egress bandwidth tier for the instance.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateReservationAffinityResult(dict):
+    def __init__(__self__, *,
+                 specific_reservations: Sequence['outputs.GetRegionInstanceTemplateReservationAffinitySpecificReservationResult'],
+                 type: str):
+        """
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "specific_reservations", specific_reservations)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="specificReservations")
+    def specific_reservations(self) -> Sequence['outputs.GetRegionInstanceTemplateReservationAffinitySpecificReservationResult']:
+        return pulumi.get(self, "specific_reservations")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateReservationAffinitySpecificReservationResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 values: Sequence[str]):
+        """
+        :param str key: The key for the node affinity label.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key for the node affinity label.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateSchedulingResult(dict):
+    def __init__(__self__, *,
+                 automatic_restart: bool,
+                 instance_termination_action: str,
+                 maintenance_interval: str,
+                 max_run_durations: Sequence['outputs.GetRegionInstanceTemplateSchedulingMaxRunDurationResult'],
+                 min_node_cpus: int,
+                 node_affinities: Sequence['outputs.GetRegionInstanceTemplateSchedulingNodeAffinityResult'],
+                 on_host_maintenance: str,
+                 preemptible: bool,
+                 provisioning_model: str):
+        """
+        :param bool automatic_restart: Specifies whether the instance should be
+               automatically restarted if it is terminated by Compute Engine (not
+               terminated by a user). This defaults to true.
+        :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param Sequence['GetRegionInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+               to determine which sole-tenant nodes your instances and managed instance
+               groups will use as host systems. Read more on sole-tenant node creation
+               [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+               Structure documented below.
+        :param str on_host_maintenance: Defines the maintenance behavior for this
+               instance.
+        :param bool preemptible: Allows instance to be preempted. This defaults to
+               false. Read more on this
+               [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        :param str provisioning_model: Describe the type of preemptible VM.
+        """
+        pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+        pulumi.set(__self__, "max_run_durations", max_run_durations)
+        pulumi.set(__self__, "min_node_cpus", min_node_cpus)
+        pulumi.set(__self__, "node_affinities", node_affinities)
+        pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        pulumi.set(__self__, "preemptible", preemptible)
+        pulumi.set(__self__, "provisioning_model", provisioning_model)
+
+    @property
+    @pulumi.getter(name="automaticRestart")
+    def automatic_restart(self) -> bool:
+        """
+        Specifies whether the instance should be
+        automatically restarted if it is terminated by Compute Engine (not
+        terminated by a user). This defaults to true.
+        """
+        return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="instanceTerminationAction")
+    def instance_termination_action(self) -> str:
+        """
+        Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        """
+        return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
+
+    @property
+    @pulumi.getter(name="maxRunDurations")
+    def max_run_durations(self) -> Sequence['outputs.GetRegionInstanceTemplateSchedulingMaxRunDurationResult']:
+        return pulumi.get(self, "max_run_durations")
+
+    @property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> int:
+        return pulumi.get(self, "min_node_cpus")
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.GetRegionInstanceTemplateSchedulingNodeAffinityResult']:
+        """
+        Specifies node affinities or anti-affinities
+        to determine which sole-tenant nodes your instances and managed instance
+        groups will use as host systems. Read more on sole-tenant node creation
+        [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        Structure documented below.
+        """
+        return pulumi.get(self, "node_affinities")
+
+    @property
+    @pulumi.getter(name="onHostMaintenance")
+    def on_host_maintenance(self) -> str:
+        """
+        Defines the maintenance behavior for this
+        instance.
+        """
+        return pulumi.get(self, "on_host_maintenance")
+
+    @property
+    @pulumi.getter
+    def preemptible(self) -> bool:
+        """
+        Allows instance to be preempted. This defaults to
+        false. Read more on this
+        [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        """
+        return pulumi.get(self, "preemptible")
+
+    @property
+    @pulumi.getter(name="provisioningModel")
+    def provisioning_model(self) -> str:
+        """
+        Describe the type of preemptible VM.
+        """
+        return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateSchedulingMaxRunDurationResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateSchedulingNodeAffinityResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        """
+        :param str key: The key for the node affinity label.
+        :param str operator: The operator. Can be `IN` for node-affinities
+               or `NOT_IN` for anti-affinities.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key for the node affinity label.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator. Can be `IN` for node-affinities
+        or `NOT_IN` for anti-affinities.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateServiceAccountResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 scopes: Sequence[str]):
+        """
+        :param str email: The service account e-mail address. If not given, the
+               default Google Compute Engine service account is used.
+        :param Sequence[str] scopes: A list of service scopes. Both OAuth2 URLs and gcloud
+               short names are supported. To allow full access to all Cloud APIs, use the
+               `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The service account e-mail address. If not given, the
+        default Google Compute Engine service account is used.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        A list of service scopes. Both OAuth2 URLs and gcloud
+        short names are supported. To allow full access to all Cloud APIs, use the
+        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateShieldedInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: bool,
+                 enable_secure_boot: bool,
+                 enable_vtpm: bool):
+        """
+        :param bool enable_integrity_monitoring: - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        :param bool enable_secure_boot: - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        :param bool enable_vtpm: - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        """
+        pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> bool:
+        """
+        - Compare the most recent boot measurements to the integrity policy baseline and return a pair of pass/fail results depending on whether they match or not. Defaults to true.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> bool:
+        """
+        - Verify the digital signature of all boot components, and halt the boot process if signature verification fails. Defaults to false.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> bool:
+        """
+        - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
+        """
+        return pulumi.get(self, "enable_vtpm")
 
 
 @pulumi.output_type

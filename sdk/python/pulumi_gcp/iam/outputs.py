@@ -18,6 +18,7 @@ __all__ = [
     'DenyPolicyRuleDenyRule',
     'DenyPolicyRuleDenyRuleDenialCondition',
     'WorkforcePoolProviderOidc',
+    'WorkforcePoolProviderOidcWebSsoConfig',
     'WorkforcePoolProviderSaml',
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
@@ -423,6 +424,8 @@ class WorkforcePoolProviderOidc(dict):
             suggest = "client_id"
         elif key == "issuerUri":
             suggest = "issuer_uri"
+        elif key == "webSsoConfig":
+            suggest = "web_sso_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderOidc. Access the value via the '{suggest}' property getter instead.")
@@ -437,13 +440,18 @@ class WorkforcePoolProviderOidc(dict):
 
     def __init__(__self__, *,
                  client_id: str,
-                 issuer_uri: str):
+                 issuer_uri: str,
+                 web_sso_config: Optional['outputs.WorkforcePoolProviderOidcWebSsoConfig'] = None):
         """
         :param str client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
         :param str issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        :param 'WorkforcePoolProviderOidcWebSsoConfigArgs' web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+               Structure is documented below.
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if web_sso_config is not None:
+            pulumi.set(__self__, "web_sso_config", web_sso_config)
 
     @property
     @pulumi.getter(name="clientId")
@@ -460,6 +468,71 @@ class WorkforcePoolProviderOidc(dict):
         The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         """
         return pulumi.get(self, "issuer_uri")
+
+    @property
+    @pulumi.getter(name="webSsoConfig")
+    def web_sso_config(self) -> Optional['outputs.WorkforcePoolProviderOidcWebSsoConfig']:
+        """
+        Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "web_sso_config")
+
+
+@pulumi.output_type
+class WorkforcePoolProviderOidcWebSsoConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assertionClaimsBehavior":
+            suggest = "assertion_claims_behavior"
+        elif key == "responseType":
+            suggest = "response_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderOidcWebSsoConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkforcePoolProviderOidcWebSsoConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkforcePoolProviderOidcWebSsoConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assertion_claims_behavior: str,
+                 response_type: str):
+        """
+        :param str assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+               * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+               Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+        :param str response_type: The Response Type to request for in the OIDC Authorization Request for web sign-in.
+               * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+               Possible values are: `ID_TOKEN`.
+        """
+        pulumi.set(__self__, "assertion_claims_behavior", assertion_claims_behavior)
+        pulumi.set(__self__, "response_type", response_type)
+
+    @property
+    @pulumi.getter(name="assertionClaimsBehavior")
+    def assertion_claims_behavior(self) -> str:
+        """
+        The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+        * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
+        Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+        """
+        return pulumi.get(self, "assertion_claims_behavior")
+
+    @property
+    @pulumi.getter(name="responseType")
+    def response_type(self) -> str:
+        """
+        The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
+        Possible values are: `ID_TOKEN`.
+        """
+        return pulumi.get(self, "response_type")
 
 
 @pulumi.output_type

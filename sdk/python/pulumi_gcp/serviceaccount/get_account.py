@@ -65,7 +65,7 @@ class GetAccountResult:
     def email(self) -> str:
         """
         The e-mail address of the service account. This value
-        should be referenced from any `organizations_get_iam_policy` data sources
+        should be referenced from any _organizations_get_iam_policy_ data sources
         that would grant the service account privileges.
         """
         return pulumi.get(self, "email")

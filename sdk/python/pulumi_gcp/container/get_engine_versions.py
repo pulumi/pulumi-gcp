@@ -162,7 +162,7 @@ def get_engine_versions(location: Optional[str] = None,
     """
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 
-    > If you are using the `container_get_engine_versions` datasource with a
+    > If you are using the _container_get_engine_versions_ datasource with a
     regional cluster, ensure that you have provided a region as the `location` to
     the datasource. A region can have a different set of supported versions than
     its component zones, and not all zones in a region are guaranteed to
@@ -211,7 +211,7 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
     """
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 
-    > If you are using the `container_get_engine_versions` datasource with a
+    > If you are using the _container_get_engine_versions_ datasource with a
     regional cluster, ensure that you have provided a region as the `location` to
     the datasource. A region can have a different set of supported versions than
     its component zones, and not all zones in a region are guaranteed to

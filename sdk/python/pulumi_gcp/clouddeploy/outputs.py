@@ -14,9 +14,19 @@ __all__ = [
     'DeliveryPipelineCondition',
     'DeliveryPipelineConditionPipelineReadyCondition',
     'DeliveryPipelineConditionTargetsPresentCondition',
+    'DeliveryPipelineConditionTargetsTypeCondition',
     'DeliveryPipelineSerialPipeline',
     'DeliveryPipelineSerialPipelineStage',
     'DeliveryPipelineSerialPipelineStageStrategy',
+    'DeliveryPipelineSerialPipelineStageStrategyCanary',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking',
     'DeliveryPipelineSerialPipelineStageStrategyStandard',
     'TargetAnthosCluster',
     'TargetExecutionConfig',
@@ -34,6 +44,8 @@ class DeliveryPipelineCondition(dict):
             suggest = "pipeline_ready_conditions"
         elif key == "targetsPresentConditions":
             suggest = "targets_present_conditions"
+        elif key == "targetsTypeConditions":
+            suggest = "targets_type_conditions"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineCondition. Access the value via the '{suggest}' property getter instead.")
@@ -48,11 +60,14 @@ class DeliveryPipelineCondition(dict):
 
     def __init__(__self__, *,
                  pipeline_ready_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionPipelineReadyCondition']] = None,
-                 targets_present_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsPresentCondition']] = None):
+                 targets_present_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsPresentCondition']] = None,
+                 targets_type_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsTypeCondition']] = None):
         if pipeline_ready_conditions is not None:
             pulumi.set(__self__, "pipeline_ready_conditions", pipeline_ready_conditions)
         if targets_present_conditions is not None:
             pulumi.set(__self__, "targets_present_conditions", targets_present_conditions)
+        if targets_type_conditions is not None:
+            pulumi.set(__self__, "targets_type_conditions", targets_type_conditions)
 
     @property
     @pulumi.getter(name="pipelineReadyConditions")
@@ -63,6 +78,11 @@ class DeliveryPipelineCondition(dict):
     @pulumi.getter(name="targetsPresentConditions")
     def targets_present_conditions(self) -> Optional[Sequence['outputs.DeliveryPipelineConditionTargetsPresentCondition']]:
         return pulumi.get(self, "targets_present_conditions")
+
+    @property
+    @pulumi.getter(name="targetsTypeConditions")
+    def targets_type_conditions(self) -> Optional[Sequence['outputs.DeliveryPipelineConditionTargetsTypeCondition']]:
+        return pulumi.get(self, "targets_type_conditions")
 
 
 @pulumi.output_type
@@ -164,6 +184,44 @@ class DeliveryPipelineConditionTargetsPresentCondition(dict):
 
 
 @pulumi.output_type
+class DeliveryPipelineConditionTargetsTypeCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineConditionTargetsTypeCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineConditionTargetsTypeCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineConditionTargetsTypeCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: Optional[str] = None,
+                 status: Optional[bool] = None):
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[str]:
+        return pulumi.get(self, "error_details")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[bool]:
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class DeliveryPipelineSerialPipeline(dict):
     def __init__(__self__, *,
                  stages: Optional[Sequence['outputs.DeliveryPipelineSerialPipelineStage']] = None):
@@ -245,12 +303,24 @@ class DeliveryPipelineSerialPipelineStage(dict):
 @pulumi.output_type
 class DeliveryPipelineSerialPipelineStageStrategy(dict):
     def __init__(__self__, *,
+                 canary: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanary'] = None,
                  standard: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyStandard'] = None):
         """
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryArgs' canary: (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
         :param 'DeliveryPipelineSerialPipelineStageStrategyStandardArgs' standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
+        if canary is not None:
+            pulumi.set(__self__, "canary", canary)
         if standard is not None:
             pulumi.set(__self__, "standard", standard)
+
+    @property
+    @pulumi.getter
+    def canary(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanary']:
+        """
+        (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+        """
+        return pulumi.get(self, "canary")
 
     @property
     @pulumi.getter
@@ -259,6 +329,425 @@ class DeliveryPipelineSerialPipelineStageStrategy(dict):
         Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
         return pulumi.get(self, "standard")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanary(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canaryDeployment":
+            suggest = "canary_deployment"
+        elif key == "customCanaryDeployment":
+            suggest = "custom_canary_deployment"
+        elif key == "runtimeConfig":
+            suggest = "runtime_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineSerialPipelineStageStrategyCanary. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanary.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanary.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 canary_deployment: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment'] = None,
+                 custom_canary_deployment: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment'] = None,
+                 runtime_config: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig'] = None):
+        """
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs' canary_deployment: Configures the progressive based deployment for a Target.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs' custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs' runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        """
+        if canary_deployment is not None:
+            pulumi.set(__self__, "canary_deployment", canary_deployment)
+        if custom_canary_deployment is not None:
+            pulumi.set(__self__, "custom_canary_deployment", custom_canary_deployment)
+        if runtime_config is not None:
+            pulumi.set(__self__, "runtime_config", runtime_config)
+
+    @property
+    @pulumi.getter(name="canaryDeployment")
+    def canary_deployment(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment']:
+        """
+        Configures the progressive based deployment for a Target.
+        """
+        return pulumi.get(self, "canary_deployment")
+
+    @property
+    @pulumi.getter(name="customCanaryDeployment")
+    def custom_canary_deployment(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment']:
+        """
+        Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        """
+        return pulumi.get(self, "custom_canary_deployment")
+
+    @property
+    @pulumi.getter(name="runtimeConfig")
+    def runtime_config(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig']:
+        """
+        Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        """
+        return pulumi.get(self, "runtime_config")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(dict):
+    def __init__(__self__, *,
+                 percentages: Sequence[int],
+                 verify: Optional[bool] = None):
+        """
+        :param Sequence[int] percentages: Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        :param bool verify: Whether to run verify tests after each percentage deployment.
+        """
+        pulumi.set(__self__, "percentages", percentages)
+        if verify is not None:
+            pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def percentages(self) -> Sequence[int]:
+        """
+        Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        """
+        return pulumi.get(self, "percentages")
+
+    @property
+    @pulumi.getter
+    def verify(self) -> Optional[bool]:
+        """
+        Whether to run verify tests after each percentage deployment.
+        """
+        return pulumi.get(self, "verify")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phaseConfigs":
+            suggest = "phase_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phase_configs: Sequence['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig']):
+        """
+        :param Sequence['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs'] phase_configs: Required. Configuration for each phase in the canary deployment in the order executed.
+        """
+        pulumi.set(__self__, "phase_configs", phase_configs)
+
+    @property
+    @pulumi.getter(name="phaseConfigs")
+    def phase_configs(self) -> Sequence['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig']:
+        """
+        Required. Configuration for each phase in the canary deployment in the order executed.
+        """
+        return pulumi.get(self, "phase_configs")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phaseId":
+            suggest = "phase_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 percentage: int,
+                 phase_id: str,
+                 profiles: Optional[Sequence[str]] = None,
+                 verify: Optional[bool] = None):
+        """
+        :param int percentage: Required. Percentage deployment for the phase.
+        :param str phase_id: Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        :param bool verify: Whether to run verify tests after the deployment.
+        """
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "phase_id", phase_id)
+        if profiles is not None:
+            pulumi.set(__self__, "profiles", profiles)
+        if verify is not None:
+            pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> int:
+        """
+        Required. Percentage deployment for the phase.
+        """
+        return pulumi.get(self, "percentage")
+
+    @property
+    @pulumi.getter(name="phaseId")
+    def phase_id(self) -> str:
+        """
+        Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        """
+        return pulumi.get(self, "phase_id")
+
+    @property
+    @pulumi.getter
+    def profiles(self) -> Optional[Sequence[str]]:
+        """
+        Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        """
+        return pulumi.get(self, "profiles")
+
+    @property
+    @pulumi.getter
+    def verify(self) -> Optional[bool]:
+        """
+        Whether to run verify tests after the deployment.
+        """
+        return pulumi.get(self, "verify")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudRun":
+            suggest = "cloud_run"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_run: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun'] = None,
+                 kubernetes: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes'] = None):
+        """
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs' cloud_run: Cloud Run runtime configuration.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs' kubernetes: Kubernetes runtime configuration.
+        """
+        if cloud_run is not None:
+            pulumi.set(__self__, "cloud_run", cloud_run)
+        if kubernetes is not None:
+            pulumi.set(__self__, "kubernetes", kubernetes)
+
+    @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun']:
+        """
+        Cloud Run runtime configuration.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @property
+    @pulumi.getter
+    def kubernetes(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes']:
+        """
+        Kubernetes runtime configuration.
+        """
+        return pulumi.get(self, "kubernetes")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automaticTrafficControl":
+            suggest = "automatic_traffic_control"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 automatic_traffic_control: Optional[bool] = None):
+        """
+        :param bool automatic_traffic_control: Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        """
+        if automatic_traffic_control is not None:
+            pulumi.set(__self__, "automatic_traffic_control", automatic_traffic_control)
+
+    @property
+    @pulumi.getter(name="automaticTrafficControl")
+    def automatic_traffic_control(self) -> Optional[bool]:
+        """
+        Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        """
+        return pulumi.get(self, "automatic_traffic_control")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayServiceMesh":
+            suggest = "gateway_service_mesh"
+        elif key == "serviceNetworking":
+            suggest = "service_networking"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gateway_service_mesh: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh'] = None,
+                 service_networking: Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking'] = None):
+        """
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs' gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
+        :param 'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs' service_networking: Kubernetes Service networking configuration.
+        """
+        if gateway_service_mesh is not None:
+            pulumi.set(__self__, "gateway_service_mesh", gateway_service_mesh)
+        if service_networking is not None:
+            pulumi.set(__self__, "service_networking", service_networking)
+
+    @property
+    @pulumi.getter(name="gatewayServiceMesh")
+    def gateway_service_mesh(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh']:
+        """
+        Kubernetes Gateway API service mesh configuration.
+        """
+        return pulumi.get(self, "gateway_service_mesh")
+
+    @property
+    @pulumi.getter(name="serviceNetworking")
+    def service_networking(self) -> Optional['outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking']:
+        """
+        Kubernetes Service networking configuration.
+        """
+        return pulumi.get(self, "service_networking")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpRoute":
+            suggest = "http_route"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deployment: str,
+                 http_route: str,
+                 service: str):
+        """
+        :param str deployment: Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+        :param str http_route: Required. Name of the Gateway API HTTPRoute.
+        :param str service: Required. Name of the Kubernetes Service.
+        """
+        pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "http_route", http_route)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> str:
+        """
+        Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="httpRoute")
+    def http_route(self) -> str:
+        """
+        Required. Name of the Gateway API HTTPRoute.
+        """
+        return pulumi.get(self, "http_route")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Required. Name of the Kubernetes Service.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking(dict):
+    def __init__(__self__, *,
+                 deployment: str,
+                 service: str):
+        """
+        :param str deployment: Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        :param str service: Required. Name of the Kubernetes Service.
+        """
+        pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> str:
+        """
+        Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Required. Name of the Kubernetes Service.
+        """
+        return pulumi.get(self, "service")
 
 
 @pulumi.output_type

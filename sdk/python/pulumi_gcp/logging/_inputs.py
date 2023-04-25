@@ -16,6 +16,7 @@ __all__ = [
     'FolderBucketConfigCmekSettingsArgs',
     'FolderSinkBigqueryOptionsArgs',
     'FolderSinkExclusionArgs',
+    'LinkedDatasetBigqueryDatasetArgs',
     'MetricBucketOptionsArgs',
     'MetricBucketOptionsExplicitBucketsArgs',
     'MetricBucketOptionsExponentialBucketsArgs',
@@ -342,6 +343,37 @@ class FolderSinkExclusionArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
+class LinkedDatasetBigqueryDatasetArgs:
+    def __init__(__self__, *,
+                 dataset_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dataset_id: (Output)
+               Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+               of the link, so the link must match the naming restrictions of BigQuery datasets
+               (alphanumeric characters and underscores only). The dataset will have a resource path of
+               "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
+        of the link, so the link must match the naming restrictions of BigQuery datasets
+        (alphanumeric characters and underscores only). The dataset will have a resource path of
+        "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET_ID]"
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_id", value)
 
 
 @pulumi.input_type

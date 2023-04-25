@@ -38,7 +38,6 @@ def readme():
 
 
 setup(name='pulumi_gcp',
-      python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing Google Cloud Platform resources.",
       long_description=readme(),

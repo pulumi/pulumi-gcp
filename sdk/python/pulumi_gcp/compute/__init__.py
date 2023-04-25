@@ -55,6 +55,7 @@ from .get_network_endpoint_group import *
 from .get_network_peering import *
 from .get_node_types import *
 from .get_region_instance_group import *
+from .get_region_instance_template import *
 from .get_region_network_endpoint_group import *
 from .get_region_ssl_certificate import *
 from .get_regions import *
@@ -114,11 +115,14 @@ from .per_instance_config import *
 from .project_default_network_tier import *
 from .project_metadata import *
 from .project_metadata_item import *
+from .public_advertised_prefix import *
+from .public_delegated_prefix import *
 from .region_autoscaler import *
 from .region_backend_service import *
 from .region_backend_service_iam_binding import *
 from .region_backend_service_iam_member import *
 from .region_backend_service_iam_policy import *
+from .region_commitment import *
 from .region_disk import *
 from .region_disk_iam_binding import *
 from .region_disk_iam_member import *
@@ -126,6 +130,7 @@ from .region_disk_iam_policy import *
 from .region_disk_resource_policy_attachment import *
 from .region_health_check import *
 from .region_instance_group_manager import *
+from .region_instance_template import *
 from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *
 from .region_network_firewall_policy_association import *

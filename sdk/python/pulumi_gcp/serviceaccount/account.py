@@ -137,7 +137,7 @@ class _AccountState:
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
-               should be referenced from any `organizations_get_iam_policy` data sources
+               should be referenced from any _organizations_get_iam_policy_ data sources
                that would grant the service account privileges.
         :param pulumi.Input[str] member: The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[str] name: The fully-qualified name of the service account.
@@ -223,7 +223,7 @@ class _AccountState:
     def email(self) -> Optional[pulumi.Input[str]]:
         """
         The e-mail address of the service account. This value
-        should be referenced from any `organizations_get_iam_policy` data sources
+        should be referenced from any _organizations_get_iam_policy_ data sources
         that would grant the service account privileges.
         """
         return pulumi.get(self, "email")
@@ -459,7 +459,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
         :param pulumi.Input[str] email: The e-mail address of the service account. This value
-               should be referenced from any `organizations_get_iam_policy` data sources
+               should be referenced from any _organizations_get_iam_policy_ data sources
                that would grant the service account privileges.
         :param pulumi.Input[str] member: The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[str] name: The fully-qualified name of the service account.
@@ -525,7 +525,7 @@ class Account(pulumi.CustomResource):
     def email(self) -> pulumi.Output[str]:
         """
         The e-mail address of the service account. This value
-        should be referenced from any `organizations_get_iam_policy` data sources
+        should be referenced from any _organizations_get_iam_policy_ data sources
         that would grant the service account privileges.
         """
         return pulumi.get(self, "email")
