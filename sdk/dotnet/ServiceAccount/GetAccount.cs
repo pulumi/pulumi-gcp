@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -50,6 +51,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 

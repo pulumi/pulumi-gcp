@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -57,6 +58,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

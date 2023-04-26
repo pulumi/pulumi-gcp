@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.OsLogin
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

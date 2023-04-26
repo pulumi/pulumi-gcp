@@ -3392,7 +3392,7 @@ class TableEncryptionConfigurationArgs:
         :param pulumi.Input[str] kms_key_name: The self link or full name of a key which should be used to
                encrypt this table.  Note that the default bigquery service account will need to have
                encrypt/decrypt permissions on this key - you may want to see the
-               _bigquery_get_default_service_account_ datasource and the
+               `bigquery_get_default_service_account` datasource and the
                `kms.CryptoKeyIAMBinding` resource.
         :param pulumi.Input[str] kms_key_version: The self link or full name of the kms key version used to encrypt this table.
         """
@@ -3407,7 +3407,7 @@ class TableEncryptionConfigurationArgs:
         The self link or full name of a key which should be used to
         encrypt this table.  Note that the default bigquery service account will need to have
         encrypt/decrypt permissions on this key - you may want to see the
-        _bigquery_get_default_service_account_ datasource and the
+        `bigquery_get_default_service_account` datasource and the
         `kms.CryptoKeyIAMBinding` resource.
         """
         return pulumi.get(self, "kms_key_name")

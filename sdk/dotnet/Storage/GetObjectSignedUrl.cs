@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -44,6 +45,7 @@ namespace Pulumi.Gcp.Storage
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.IO;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -80,6 +82,7 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -102,6 +105,7 @@ namespace Pulumi.Gcp.Storage
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.IO;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 

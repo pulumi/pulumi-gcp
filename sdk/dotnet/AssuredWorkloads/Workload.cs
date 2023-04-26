@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.AssuredWorkloads
     /// A basic test of a assuredworkloads api
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

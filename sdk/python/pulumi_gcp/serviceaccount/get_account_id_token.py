@@ -106,10 +106,10 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     ## Example Usage
 
     ### ServiceAccount JSON Credential File.
-      _service_account_get_account_id_token_ will use the configured provider credentials
+      `service_account_get_account_id_token` will use the configured provider credentials
 
     ### Service Account Impersonation.
-      _service_account_get_account_access_token_ will use background impersonated credentials provided by _service_account_get_account_access_token_.
+      `service_account_get_account_access_token` will use background impersonated credentials provided by `service_account_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -152,10 +152,10 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     ## Example Usage
 
     ### ServiceAccount JSON Credential File.
-      _service_account_get_account_id_token_ will use the configured provider credentials
+      `service_account_get_account_id_token` will use the configured provider credentials
 
     ### Service Account Impersonation.
-      _service_account_get_account_access_token_ will use background impersonated credentials provided by _service_account_get_account_access_token_.
+      `service_account_get_account_access_token` will use background impersonated credentials provided by `service_account_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.

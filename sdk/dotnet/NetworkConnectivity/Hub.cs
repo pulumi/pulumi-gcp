@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// A basic test of a networkconnectivity hub
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

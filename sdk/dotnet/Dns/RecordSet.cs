@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -67,6 +68,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -95,6 +97,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -129,6 +132,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -159,6 +163,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -188,6 +193,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -229,6 +235,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

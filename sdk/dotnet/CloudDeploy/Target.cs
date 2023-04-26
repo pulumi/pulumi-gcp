@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// tests creating and updating a multi-target
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -69,6 +70,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// tests creating and updating a cloud run target
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -117,6 +119,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// Creates a basic Cloud Deploy target
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

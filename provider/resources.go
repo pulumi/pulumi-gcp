@@ -11,11 +11,13 @@ import (
 	"unicode"
 
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
+	"github.com/pulumi/pulumi/sdk/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -128,6 +130,107 @@ const (
 	gcpWorkflows            = "Workflows"            // Workflows
 	gcpWorkstations         = "Workstations"         // Workstations
 )
+
+var moduleMapping = map[string]string{
+	"access_approval":                 gcpAccessApproval,
+	"access_context_manager":          gcpAccessContextManager,
+	"active_directory":                gcpActiveDirectory,
+	"alloydb":                         gcpAlloydb,
+	"api_gateway":                     gcpApiGateway,
+	"apigee":                          gcpApigee,
+	"app_engine":                      gcpAppEngine,
+	"artifact_registry":               gcpArtifactRegistry,
+	"assured_workloads":               gcpAssuredWorkloads,
+	"beyondcorp":                      gcpBeyondcorp,
+	"bigquery_analytics_hub":          gcpBigQueryAnalyticsHub,
+	"bigquery_datapolicy_data_policy": gcpBigQueryDataPolicy,
+	"bigquery":                        gcpBigQuery,
+	"bigtable":                        gcpBigTable,
+	"billing":                         gcpBilling,
+	"binary_authorization":            gcpBinaryAuthorization,
+	"privateca":                       gcpCertificateAuthority,
+	"certificate_manager":             gcpCertificateManager,
+	"cloud_asset":                     gcpCloudAsset,
+	"cloudbuild":                      gcpCloudBuild,
+	"cloudbuildv2":                    gcpCloudBuildV2,
+	"clouddeploy":                     gcpCloudDeploy,
+	"cloudfunctions":                  gcpCloudFunctions,
+	"cloudfunctions2":                 gcpCloudFunctionsV2,
+	"cloud_ids":                       gcpCloudIds,
+	"cloud_identity":                  gcpCloudIdentity,
+	"cloud_run":                       gcpCloudRun,
+	"cloud_run_v2":                    gcpCloudRunV2,
+	"cloud_scheduler":                 gcpCloudScheduler,
+	"cloud_tasks":                     gcpCloudTasks,
+	"composer":                        gcpComposer,
+	"compute":                         gcpCompute,
+	"container_analysis":              gcpContainerAnalysis,
+	"dataform":                        gcpDataform,
+	"dns":                             gcpDNS,
+	"data_catalog":                    gcpDataCatalog,
+	"dataflow":                        gcpDataFlow,
+	"data_fusion":                     gcpDataFusion,
+	"data_loss":                       gcpDataLoss,
+	"dataplex":                        gcpDataPlex,
+	"dataproc":                        gcpDataProc,
+	"datastore":                       gcpDatastore,
+	"datastream":                      gcpDatastream,
+	"deployment_manager":              gcpDeploymentManager,
+	"dialogflow":                      gcpDiagflow,
+	"endpoints":                       gcpEndPoints,
+	"essential_contacts":              gcpEssentialContacts,
+	"eventarc":                        gcpEventarc,
+	"filestore":                       gcpFilestore,
+	"firebase":                        gcpFirebase,
+	"firebaserules":                   gcpFirebaserules,
+	"firestore":                       gcpFirestore,
+	"folder":                          gcpFolder,
+	"game_services":                   gcpGameServices,
+	"gke_backup":                      gcpGkeBackup,
+	"gke_hub":                         gcpGkeHub,
+	"healthcare":                      gcpHealthcare,
+	"iam":                             gcpIAM,
+	"iap":                             gcpIAP,
+	"identity_platform":               gcpIdentityPlatform,
+	"cloudiot":                        gcpIot,
+	"kms":                             gcpKMS,
+	"container":                       gcpKubernetes,
+	"logging":                         gcpLogging,
+	"ml":                              gcpMachingLearning,
+	"memcache":                        gcpMemcache,
+	"monitoring":                      gcpMonitoring,
+	"network_connectivity":            gcpNetworkConnectivity,
+	"network_management":              gcpNetworkManagement,
+	"network_security":                gcpNetworkSecurity,
+	"network_services":                gcpNetworkServices,
+	"notebooks":                       gcpNotebooks,
+	"organization":                    gcpOrganization,
+	"org_policy":                      gcpOrgPolicy,
+	"os_config":                       gcpOsConfig,
+	"os_login":                        gcpOsLogin,
+	"project":                         gcpProject,
+	"pubsub":                          gcpPubSub,
+	"recaptcha":                       gcpRecaptcha,
+	"redis":                           gcpRedis,
+	"resource_manager":                gcpResourceManager,
+	"runtimeconfig":                   gcpRuntimeConfig,
+	"secret_manager":                  gcpSecretManager,
+	"service_directory":               gcpServiceDirectory,
+	"service_networking":              gcpServiceNetworking,
+	"scc":                             gcpSecurityCenter,
+	"sql":                             gcpSQL,
+	"service_account":                 gcpServiceAccount,
+	"service_usage":                   gcpServiceUsage,
+	"sourcerepo":                      gcpSourceRepo,
+	"spanner":                         gcpSpanner,
+	"storage":                         gcpStorage,
+	"tags":                            gcpTags,
+	"tpu":                             gcpTPU,
+	"vertex":                          gcpVertex,
+	"vpc_access":                      gcpVpcAccess,
+	"workflows":                       gcpWorkflows,
+	"workstations":                    gcpWorkstations,
+}
 
 var namespaceMap = map[string]string{
 	"gcp": "Gcp",
@@ -374,20 +477,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_app_engine_application_url_dispatch_rules": {
 				Tok: gcpResource(gcpAppEngine, "ApplicationUrlDispatchRules"),
 			},
-			"google_app_engine_service_split_traffic":    {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
-			"google_app_engine_flexible_app_version":     {Tok: gcpResource(gcpAppEngine, "FlexibleAppVersion")},
-			"google_app_engine_service_network_settings": {Tok: gcpResource(gcpAppEngine, "ServiceNetworkSettings")},
-
-			// AssuredWorkloads
-			"google_assured_workloads_workload": {Tok: gcpResource(gcpAssuredWorkloads, "Workload")},
-
-			// Beyondcorp
-			"google_beyondcorp_app_connection": {Tok: gcpResource(gcpBeyondcorp, "AppConnection")},
-			"google_beyondcorp_app_connector":  {Tok: gcpResource(gcpBeyondcorp, "AppConnector")},
-			"google_beyondcorp_app_gateway":    {Tok: gcpResource(gcpBeyondcorp, "AppGateway")},
+			"google_app_engine_service_split_traffic": {Tok: gcpResource(gcpAppEngine, "EngineSplitTraffic")},
 
 			// BigQuery Analytics Hub
-			"google_bigquery_analytics_hub_data_exchange": {Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchange")},
 			"google_bigquery_analytics_hub_data_exchange_iam_binding": {
 				Tok: gcpResource(gcpBigQueryAnalyticsHub, "DataExchangeIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -424,7 +516,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "bigquery_analytics_hub_listing_iam.html.markdown",
 				},
 			},
-			"google_bigquery_analytics_hub_listing": {Tok: gcpResource(gcpBigQueryAnalyticsHub, "Listing")},
 
 			// BigQuery Data Policy
 			"google_bigquery_datapolicy_data_policy": {Tok: gcpResource(gcpBigQueryDataPolicy, "DataPolicy")},
@@ -448,11 +539,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// BigQuery
-			"google_bigquery_dataset":              {Tok: gcpResource(gcpBigQuery, "Dataset")},
-			"google_bigquery_table":                {Tok: gcpResource(gcpBigQuery, "Table")},
-			"google_bigquery_data_transfer_config": {Tok: gcpResource(gcpBigQuery, "DataTransferConfig")},
-			"google_bigquery_reservation":          {Tok: gcpResource(gcpBigQuery, "Reservation")},
-			"google_bigtable_app_profile":          {Tok: gcpResource(gcpBigQuery, "AppProfile")},
+
+			// Note: the TF type token says bigtable (not bigquery) so this token cannot be auto-mapped.
+			"google_bigtable_app_profile": {Tok: gcpResource(gcpBigQuery, "AppProfile")},
+
 			"google_bigquery_dataset_access": {
 				Tok: gcpResource(gcpBigQuery, "DatasetAccess"),
 				// The upstream provider has nested attributes, both called "dataset", which causes a panic in the
@@ -466,8 +556,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"google_bigquery_job":        {Tok: gcpResource(gcpBigQuery, "Job")},
-			"google_bigquery_connection": {Tok: gcpResource(gcpBigQuery, "Connection")},
 			"google_bigquery_dataset_iam_binding": {
 				Tok: gcpResource(gcpBigQuery, "DatasetIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -529,8 +617,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// BigTable
-			"google_bigtable_instance": {Tok: gcpResource(gcpBigTable, "Instance")},
-			"google_bigtable_table":    {Tok: gcpResource(gcpBigTable, "Table")},
 			"google_bigtable_instance_iam_binding": {
 				Tok: gcpResource(gcpBigTable, "InstanceIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -593,7 +679,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "billing_account_iam.html.markdown",
 				},
 			},
-			"google_billing_budget":     {Tok: gcpResource(gcpBilling, "Budget")},
 			"google_billing_subaccount": {Tok: gcpResource(gcpBilling, "SubAccount")},
 
 			// Binary Authorization
@@ -635,12 +720,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloud_build_trigger.html.markdown",
 				},
 			},
-			"google_cloudbuild_worker_pool":             {Tok: gcpResource(gcpCloudBuild, "WorkerPool")},
-			"google_cloudbuild_bitbucket_server_config": {Tok: gcpResource(gcpCloudBuild, "BitbucketServerConfig")},
 
 			// Cloud Build V2
-			"google_cloudbuildv2_connection": {Tok: gcpResource(gcpCloudBuildV2, "Connection")},
-			"google_cloudbuildv2_repository": {Tok: gcpResource(gcpCloudBuildV2, "Repository")},
 			"google_cloudbuildv2_connection_iam_binding": {
 				Tok: gcpResource(gcpCloudBuildV2, "ConnectionIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -659,10 +740,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloudbuildv2_connection_iam.html.markdown",
 				},
 			},
-
-			// Cloud Deploy
-			"google_clouddeploy_delivery_pipeline": {Tok: gcpResource(gcpCloudDeploy, "DeliveryPipeline")},
-			"google_clouddeploy_target":            {Tok: gcpResource(gcpCloudDeploy, "Target")},
 
 			// Cloud Functions
 			"google_cloudfunctions_function": {
@@ -693,7 +770,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Cloud Functions (2nd gen)
-			"google_cloudfunctions2_function": {Tok: gcpResource(gcpCloudFunctionsV2, "Function")},
 			"google_cloudfunctions2_function_iam_binding": {
 				Tok: gcpResource(gcpCloudFunctionsV2, "FunctionIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -712,27 +788,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloudfunctions2_function_iam.html.markdown",
 				},
 			},
-
-			// Cloud IDs
-			"google_cloud_ids_endpoint": {
-				Tok: gcpResource(gcpCloudIds, "Endpoint"),
-			},
-
-			// Dataform
-			"google_dataform_repository": {
-				Tok: gcpResource(gcpDataform, "Repository"),
-			},
-
-			// Data Stream
-			"google_datastream_connection_profile": {Tok: gcpResource(gcpDatastream, "ConnectionProfile")},
-			"google_datastream_private_connection": {Tok: gcpResource(gcpDatastream, "PrivateConnection")},
-			"google_datastream_stream":             {Tok: gcpResource(gcpDatastream, "Stream")},
-
-			// Cloud Scheduler
-			"google_cloud_scheduler_job": {Tok: gcpResource(gcpCloudScheduler, "Job")},
-
-			// Composer
-			"google_composer_environment": {Tok: gcpResource(gcpComposer, "Environment")},
 
 			// Core functions
 			"google_folder": {
@@ -771,8 +826,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_folder_iam.html.markdown",
 				},
 			},
-			"google_folder_access_approval_settings": {Tok: gcpResource(gcpFolder, "AccessApprovalSettings")},
-
 			"google_organization_policy": {
 				Tok: gcpResource(gcpOrganization, "Policy"),
 				Docs: &tfbridge.DocInfo{
@@ -866,10 +919,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"google_project_service_identity": {
-				Tok: gcpResource(gcpProject, "ServiceIdentity"),
-			},
-			"google_project_default_service_accounts": {Tok: gcpResource(gcpProject, "DefaultServiceAccounts")},
 			"google_project_usage_export_bucket": {
 				Tok: gcpResource(gcpProject, "UsageExportBucket"),
 				Docs: &tfbridge.DocInfo{
@@ -3420,7 +3469,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_compute_instance_serial_port.html.markdown",
 				},
 			},
-			"google_compute_instance_group_manager": {Tok: gcpDataSource(gcpCompute, "getInstanceGroupManager")},
 			"google_bigquery_default_service_account": {
 				Tok:  gcpDataSource(gcpBigQuery, "getDefaultServiceAccount"),
 				Docs: &tfbridge.DocInfo{Source: "google_bigquery_default_service_account.html"},
@@ -3431,10 +3479,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_sql_ca_certs.html.markdown",
 				},
 			},
-			"google_sql_database":           {Tok: gcpDataSource(gcpSQL, "getDatabase")},
-			"google_sql_databases":          {Tok: gcpDataSource(gcpSQL, "getDatabases")},
-			"google_sql_database_instance":  {Tok: gcpDataSource(gcpSQL, "getDatabaseInstance")},
-			"google_sql_database_instances": {Tok: gcpDataSource(gcpSQL, "getDatabaseInstances")},
+
 			"google_service_networking_peered_dns_domain": {
 				Tok: gcpDataSource(gcpServiceNetworking, "getPeeredDnsDomain"),
 				// At the time of writing this data source does not have any upstream docs at all, so we override
@@ -3462,9 +3507,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_monitoring_app_engine_service.html.markdown",
 				},
 			},
-			"google_monitoring_cluster_istio_service":   {Tok: gcpDataSource(gcpMonitoring, "getClusterIstioService")},
-			"google_monitoring_mesh_istio_service":      {Tok: gcpDataSource(gcpMonitoring, "getMeshIstioService")},
-			"google_monitoring_istio_canonical_service": {Tok: gcpDataSource(gcpMonitoring, "getIstioCanonicalService")},
 
 			// Firebase
 			"google_firebase_android_app": {
@@ -3519,23 +3561,11 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cloud_identity_group_membership.html.markdown",
 				},
 			},
-			"google_cloud_identity_groups": {Tok: gcpDataSource(gcpCloudIdentity, "getGroups")},
 
 			// GameServices
 			"google_game_services_game_server_deployment_rollout": {
 				Tok: gcpDataSource(gcpGameServices, "getGameServerDeploymentRollout"),
 			},
-
-			// Pubsub
-			"google_pubsub_topic":        {Tok: gcpDataSource(gcpPubSub, "getTopic")},
-			"google_pubsub_subscription": {Tok: gcpDataSource(gcpPubSub, "getSubscription")},
-
-			//Cloud Run
-			"google_cloud_run_service":   {Tok: gcpDataSource(gcpCloudRun, "getService")},
-			"google_cloud_run_locations": {Tok: gcpDataSource(gcpCloudRun, "getLocations")},
-
-			//Appengine
-			"google_app_engine_default_service_account": {Tok: gcpDataSource(gcpAppEngine, "getDefaultServiceAccount")},
 
 			// Source repo
 			"google_sourcerepo_repository": {
@@ -3544,35 +3574,6 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "data_source_sourcerepo_repository.html.markdown",
 				},
 			},
-
-			// Spanner
-			"google_spanner_instance": {Tok: gcpDataSource(gcpSpanner, "getInstance")},
-
-			//runtime config
-			"google_runtimeconfig_config":   {Tok: gcpDataSource(gcpRuntimeConfig, "getConfig")},
-			"google_runtimeconfig_variable": {Tok: gcpDataSource(gcpRuntimeConfig, "getVariable")},
-
-			// IAP
-			"google_iap_client": {Tok: gcpDataSource(gcpIAP, "getClient")},
-
-			// Secret Manager
-			"google_secret_manager_secret":                {Tok: gcpDataSource(gcpSecretManager, "getSecret")},
-			"google_secret_manager_secret_version_access": {Tok: gcpDataSource(gcpSecretManager, "getSecretVersionAccess")},
-
-			// Tags
-			"google_tags_tag_key":   {Tok: gcpDataSource(gcpTags, "getTagKey")},
-			"google_tags_tag_value": {Tok: gcpDataSource(gcpTags, "getTagValue")},
-
-			// VPC Access
-			"google_vpc_access_connector": {Tok: gcpDataSource(gcpVpcAccess, "getConnector")},
-
-			// Beyondcorp
-			"google_beyondcorp_app_connection": {Tok: gcpDataSource(gcpBeyondcorp, "getAppConnection")},
-			"google_beyondcorp_app_connector":  {Tok: gcpDataSource(gcpBeyondcorp, "getAppConnector")},
-			"google_beyondcorp_app_gateway":    {Tok: gcpDataSource(gcpBeyondcorp, "getAppGateway")},
-
-			// Cloudbuild
-			"google_cloudbuild_trigger": {Tok: gcpDataSource(gcpCloudBuild, "getTrigger")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -3682,6 +3683,12 @@ func Provider() tfbridge.ProviderInfo {
 			Source: "cloudiot_registry.html.markdown",
 		},
 	})
+
+	err := x.ComputeDefaults(&prov, x.TokensMappedModules("google_", "",
+		moduleMapping, func(module, name string) (string, error) {
+			return string(gcpResource(module, name)), nil
+		}))
+	contract.AssertNoErrorf(err, "Failed to map all tokens")
 
 	prov.SetAutonaming(255, "-")
 
