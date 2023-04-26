@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.OsConfig
     /// An example of an osconfig os policy assignment with fixed rollout disruption budget
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

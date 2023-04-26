@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 
@@ -58,6 +59,7 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Gcp = Pulumi.Gcp;
         /// 

@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * func computeFilebase64sha256(path string) string {
+ * function computeFilebase64sha256(path string) string {
  * 	const fileData = Buffer.from(fs.readFileSync(path), 'binary')
  * 	return crypto.createHash('sha256').update(fileData).digest('hex')
  * }

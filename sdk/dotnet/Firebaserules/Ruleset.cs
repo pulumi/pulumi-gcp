@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// Creates a basic Firestore ruleset
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -46,6 +47,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// Creates a minimal Firestore ruleset
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

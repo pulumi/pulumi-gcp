@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// Creates a basic Firebase Rules Release
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -68,6 +69,7 @@ namespace Pulumi.Gcp.Firebaserules
     /// Creates a minimal Firebase Rules Release
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 

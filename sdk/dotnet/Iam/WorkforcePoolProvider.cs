@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -59,6 +60,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -96,6 +98,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -135,6 +138,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -240,6 +244,7 @@ namespace Pulumi.Gcp.Iam
         /// on a Google token:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
@@ -425,6 +430,7 @@ namespace Pulumi.Gcp.Iam
         /// on a Google token:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
@@ -557,6 +563,7 @@ namespace Pulumi.Gcp.Iam
         /// on a Google token:
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 

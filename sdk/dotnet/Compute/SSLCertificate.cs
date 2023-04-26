@@ -29,6 +29,7 @@ namespace Pulumi.Gcp.Compute
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -50,6 +51,7 @@ namespace Pulumi.Gcp.Compute
     /// using System;
     /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using System.Security.Cryptography;
     /// using System.Text;
     /// using Pulumi;
@@ -57,7 +59,7 @@ namespace Pulumi.Gcp.Compute
     /// using Random = Pulumi.Random;
     /// 
     /// 	private static string ComputeFileBase64Sha256(string path) {
-    /// 		var fileData = Encoding.UTF8.GetBytes(File.ReadAllText(path));
+    /// 		var fileData = System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path));
     /// 		var hashData = SHA256.Create().ComputeHash(fileData);
     /// 		return Convert.ToBase64String(hashData);
     /// 	}
