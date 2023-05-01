@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := storage.GetTransferProjectServieAccount(ctx, &storage.GetTransferProjectServieAccountArgs{
+//			_default, err := storage.GetTransferProjectServiceAccount(ctx, &storage.GetTransferProjectServiceAccountArgs{
 //				Project: pulumi.StringRef(_var.Project),
 //			}, nil)
 //			if err != nil {

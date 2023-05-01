@@ -75,6 +75,11 @@ export const getProjectServiceAccount: typeof import("./getProjectServiceAccount
 export const getProjectServiceAccountOutput: typeof import("./getProjectServiceAccount").getProjectServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectServiceAccount","getProjectServiceAccountOutput"], () => require("./getProjectServiceAccount"));
 
+export { GetTransferProjectServiceAccountArgs, GetTransferProjectServiceAccountResult, GetTransferProjectServiceAccountOutputArgs } from "./getTransferProjectServiceAccount";
+export const getTransferProjectServiceAccount: typeof import("./getTransferProjectServiceAccount").getTransferProjectServiceAccount = null as any;
+export const getTransferProjectServiceAccountOutput: typeof import("./getTransferProjectServiceAccount").getTransferProjectServiceAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getTransferProjectServiceAccount","getTransferProjectServiceAccountOutput"], () => require("./getTransferProjectServiceAccount"));
+
 export { GetTransferProjectServieAccountArgs, GetTransferProjectServieAccountResult, GetTransferProjectServieAccountOutputArgs } from "./getTransferProjectServieAccount";
 export const getTransferProjectServieAccount: typeof import("./getTransferProjectServieAccount").getTransferProjectServieAccount = null as any;
 export const getTransferProjectServieAccountOutput: typeof import("./getTransferProjectServieAccount").getTransferProjectServieAccountOutput = null as any;

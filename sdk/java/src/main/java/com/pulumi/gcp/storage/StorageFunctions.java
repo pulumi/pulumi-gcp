@@ -18,6 +18,8 @@ import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
 import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
 import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountPlainArgs;
+import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
 import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountPlainArgs;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentResult;
@@ -25,6 +27,7 @@ import com.pulumi.gcp.storage.outputs.GetBucketObjectResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
 import com.pulumi.gcp.storage.outputs.GetObjectSignedUrlResult;
 import com.pulumi.gcp.storage.outputs.GetProjectServiceAccountResult;
+import com.pulumi.gcp.storage.outputs.GetTransferProjectServiceAccountResult;
 import com.pulumi.gcp.storage.outputs.GetTransferProjectServieAccountResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -1692,7 +1695,7 @@ public final class StorageFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1706,7 +1709,7 @@ public final class StorageFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServieAccount();
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
      * 
      *         ctx.export(&#34;defaultAccount&#34;, default_.email());
      *     }
@@ -1714,186 +1717,246 @@ public final class StorageFunctions {
      * ```
      * 
      */
+    public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount() {
+        return getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Storage Transfer service account for this project
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     * 
+     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccountPlain() {
+        return getTransferProjectServiceAccountPlain(GetTransferProjectServiceAccountPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Storage Transfer service account for this project
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     * 
+     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs args) {
+        return getTransferProjectServiceAccount(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Storage Transfer service account for this project
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     * 
+     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccountPlain(GetTransferProjectServiceAccountPlainArgs args) {
+        return getTransferProjectServiceAccountPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve Storage Transfer service account for this project
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     * 
+     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", TypeShape.of(GetTransferProjectServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve Storage Transfer service account for this project
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     * 
+     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccountPlain(GetTransferProjectServiceAccountPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", TypeShape.of(GetTransferProjectServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * 
+     * @deprecated
+     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * 
+     */
+    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount() {
         return getTransferProjectServieAccount(GetTransferProjectServieAccountArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve Storage Transfer service account for this project
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServieAccount();
-     * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
-     *     }
-     * }
-     * ```
+     * @deprecated
+     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
+    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
     public static CompletableFuture<GetTransferProjectServieAccountResult> getTransferProjectServieAccountPlain() {
         return getTransferProjectServieAccountPlain(GetTransferProjectServieAccountPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve Storage Transfer service account for this project
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServieAccount();
-     * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
-     *     }
-     * }
-     * ```
+     * @deprecated
+     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
+    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(GetTransferProjectServieAccountArgs args) {
         return getTransferProjectServieAccount(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve Storage Transfer service account for this project
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServieAccount();
-     * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
-     *     }
-     * }
-     * ```
+     * @deprecated
+     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
+    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
     public static CompletableFuture<GetTransferProjectServieAccountResult> getTransferProjectServieAccountPlain(GetTransferProjectServieAccountPlainArgs args) {
         return getTransferProjectServieAccountPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to retrieve Storage Transfer service account for this project
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServieAccount();
-     * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
-     *     }
-     * }
-     * ```
+     * @deprecated
+     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
+    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(GetTransferProjectServieAccountArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", TypeShape.of(GetTransferProjectServieAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to retrieve Storage Transfer service account for this project
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = StorageFunctions.getTransferProjectServieAccount();
-     * 
-     *         ctx.export(&#34;defaultAccount&#34;, default_.email());
-     *     }
-     * }
-     * ```
+     * @deprecated
+     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
      * 
      */
+    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
     public static CompletableFuture<GetTransferProjectServieAccountResult> getTransferProjectServieAccountPlain(GetTransferProjectServieAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", TypeShape.of(GetTransferProjectServieAccountResult.class), args, Utilities.withVersion(options));
     }

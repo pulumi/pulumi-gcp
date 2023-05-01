@@ -10,32 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to retrieve Storage Transfer service account for this project
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := storage.GetTransferProjectServieAccount(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("defaultAccount", _default.Email)
-//			return nil
-//		})
-//	}
-//
-// ```
+// Deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
 func GetTransferProjectServieAccount(ctx *pulumi.Context, args *GetTransferProjectServieAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServieAccountResult, error) {
 	var rv GetTransferProjectServieAccountResult
 	err := ctx.Invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, opts...)
@@ -47,20 +22,16 @@ func GetTransferProjectServieAccount(ctx *pulumi.Context, args *GetTransferProje
 
 // A collection of arguments for invoking getTransferProjectServieAccount.
 type GetTransferProjectServieAccountArgs struct {
-	// The project ID. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
 // A collection of values returned by getTransferProjectServieAccount.
 type GetTransferProjectServieAccountResult struct {
-	// Email address of the default service account used by Storage Transfer Jobs running in this project.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
-	Member  string `pulumi:"member"`
-	Project string `pulumi:"project"`
-	// Unique identifier for the service account.
+	Id        string `pulumi:"id"`
+	Member    string `pulumi:"member"`
+	Project   string `pulumi:"project"`
 	SubjectId string `pulumi:"subjectId"`
 }
 
@@ -79,7 +50,6 @@ func GetTransferProjectServieAccountOutput(ctx *pulumi.Context, args GetTransfer
 
 // A collection of arguments for invoking getTransferProjectServieAccount.
 type GetTransferProjectServieAccountOutputArgs struct {
-	// The project ID. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -102,7 +72,6 @@ func (o GetTransferProjectServieAccountResultOutput) ToGetTransferProjectServieA
 	return o
 }
 
-// Email address of the default service account used by Storage Transfer Jobs running in this project.
 func (o GetTransferProjectServieAccountResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -112,7 +81,6 @@ func (o GetTransferProjectServieAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
 func (o GetTransferProjectServieAccountResultOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Member }).(pulumi.StringOutput)
 }
@@ -121,7 +89,6 @@ func (o GetTransferProjectServieAccountResultOutput) Project() pulumi.StringOutp
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Unique identifier for the service account.
 func (o GetTransferProjectServieAccountResultOutput) SubjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransferProjectServieAccountResult) string { return v.SubjectId }).(pulumi.StringOutput)
 }

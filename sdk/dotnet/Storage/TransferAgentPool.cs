@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = Gcp.Storage.GetTransferProjectServieAccount.Invoke(new()
+    ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke(new()
     ///     {
     ///         Project = "my-project-name",
     ///     });
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/pubsub.editor",
-    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
+    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)}"),
     ///     });
     /// 
     ///     var example = new Gcp.Storage.TransferAgentPool("example", new()

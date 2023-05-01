@@ -8,18 +8,34 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetTransferProjectServieAccountResult {
+public final class GetTransferProjectServiceAccountResult {
+    /**
+     * @return Email address of the default service account used by Storage Transfer Jobs running in this project.
+     * 
+     */
     private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
     private String member;
     private String project;
+    /**
+     * @return Unique identifier for the service account.
+     * 
+     */
     private String subjectId;
 
-    private GetTransferProjectServieAccountResult() {}
+    private GetTransferProjectServiceAccountResult() {}
+    /**
+     * @return Email address of the default service account used by Storage Transfer Jobs running in this project.
+     * 
+     */
     public String email() {
         return this.email;
     }
@@ -30,12 +46,20 @@ public final class GetTransferProjectServieAccountResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
     public String member() {
         return this.member;
     }
     public String project() {
         return this.project;
     }
+    /**
+     * @return Unique identifier for the service account.
+     * 
+     */
     public String subjectId() {
         return this.subjectId;
     }
@@ -44,7 +68,7 @@ public final class GetTransferProjectServieAccountResult {
         return new Builder();
     }
 
-    public static Builder builder(GetTransferProjectServieAccountResult defaults) {
+    public static Builder builder(GetTransferProjectServiceAccountResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -55,7 +79,7 @@ public final class GetTransferProjectServieAccountResult {
         private String project;
         private String subjectId;
         public Builder() {}
-        public Builder(GetTransferProjectServieAccountResult defaults) {
+        public Builder(GetTransferProjectServiceAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
     	      this.id = defaults.id;
@@ -89,8 +113,8 @@ public final class GetTransferProjectServieAccountResult {
             this.subjectId = Objects.requireNonNull(subjectId);
             return this;
         }
-        public GetTransferProjectServieAccountResult build() {
-            final var o = new GetTransferProjectServieAccountResult();
+        public GetTransferProjectServiceAccountResult build() {
+            final var o = new GetTransferProjectServiceAccountResult();
             o.email = email;
             o.id = id;
             o.member = member;

@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = Gcp.Storage.GetTransferProjectServieAccount.Invoke(new()
+    ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke(new()
     ///     {
     ///         Project = @var.Project,
     ///     });
@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         Bucket = s3_backup_bucketBucket.Name,
     ///         Role = "roles/storage.admin",
-    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
+    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)}"),
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         Topic = topic.Id,
     ///         Role = "roles/pubsub.publisher",
-    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)}"),
+    ///         Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)}"),
     ///     });
     /// 
     ///     var s3_bucket_nightly_backup = new Gcp.Storage.TransferJob("s3-bucket-nightly-backup", new()

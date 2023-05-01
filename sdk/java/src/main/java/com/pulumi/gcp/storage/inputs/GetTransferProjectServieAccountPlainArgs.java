@@ -14,17 +14,9 @@ public final class GetTransferProjectServieAccountPlainArgs extends com.pulumi.r
 
     public static final GetTransferProjectServieAccountPlainArgs Empty = new GetTransferProjectServieAccountPlainArgs();
 
-    /**
-     * The project ID. If it is not provided, the provider project is used.
-     * 
-     */
     @Import(name="project")
     private @Nullable String project;
 
-    /**
-     * @return The project ID. If it is not provided, the provider project is used.
-     * 
-     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -53,12 +45,6 @@ public final class GetTransferProjectServieAccountPlainArgs extends com.pulumi.r
             $ = new GetTransferProjectServieAccountPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param project The project ID. If it is not provided, the provider project is used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
