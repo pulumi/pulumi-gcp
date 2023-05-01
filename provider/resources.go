@@ -3535,6 +3535,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "firebase_apple_app.html.markdown",
 				},
 			},
+			"google_firebase_android_app_config": {
+				Tok: gcpDataSource(gcpFirebase, "getAndroidAppConfig"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+			},
 			"google_firebase_hosting_channel": {
 				Tok: gcpDataSource(gcpFirebase, "getHostingChannel"),
 				Docs: &tfbridge.DocInfo{
