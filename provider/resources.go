@@ -3665,6 +3665,13 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		})
 
+	prov.RenameDataSource("google_storage_transfer_project_service_account", gcpDataSource(gcpStorage, "getTransferProjectServieAccount"),
+		gcpDataSource(gcpStorage, "getTransferProjectServiceAccount"), gcpStorage, gcpStorage, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "google_storage_transfer_project_service_account.html.markdown",
+			},
+		})
+
 	prov.RenameResourceWithAlias("google_cloudiot_registry", gcpResource(gcpKMS,
 		"Registry"), gcpResource(gcpIot, "Registry"), gcpKMS, gcpIot, &tfbridge.ResourceInfo{
 		Fields: map[string]*tfbridge.SchemaInfo{
