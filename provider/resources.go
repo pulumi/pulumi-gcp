@@ -4,6 +4,7 @@ package gcp
 
 import (
 	"context"
+	_ "embed"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -16,6 +17,7 @@ import (
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -348,9 +350,13 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 	return nil
 }
 
+//go:embed cmd/pulumi-resource-gcp/bridge-metadata.json
+var metadata []byte
+
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(google.Provider())
+	p = pf.MuxShimWithPF(context.Background(), p, google.New(""))
 	prov := tfbridge.ProviderInfo{
 		P:              p,
 		Name:           "google-beta",
@@ -361,6 +367,8 @@ func Provider() tfbridge.ProviderInfo {
 		License:        "Apache-2.0",
 		Homepage:       "https://pulumi.io",
 		Repository:     "https://github.com/pulumi/pulumi-gcp",
+		Version:        version.Version,
+		MetadataInfo:   tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"project": {
 				Default: &tfbridge.DefaultInfo{

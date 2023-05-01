@@ -16,10 +16,9 @@ package main
 
 import (
 	gcp "github.com/pulumi/pulumi-gcp/provider/v6"
-	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 )
 
 func main() {
-	tfgen.Main("gcp", version.Version, gcp.Provider())
+	tfgen.MainWithMuxer("gcp", gcp.Provider())
 }
