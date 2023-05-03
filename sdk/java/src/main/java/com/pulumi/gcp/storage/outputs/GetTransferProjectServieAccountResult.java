@@ -9,17 +9,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTransferProjectServieAccountResult {
+    /**
+     * @return Email address of the default service account used by Storage Transfer Jobs running in this project.
+     * 
+     */
     private String email;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
     private String member;
     private String project;
+    /**
+     * @return Unique identifier for the service account.
+     * 
+     */
     private String subjectId;
 
     private GetTransferProjectServieAccountResult() {}
+    /**
+     * @return Email address of the default service account used by Storage Transfer Jobs running in this project.
+     * 
+     */
     public String email() {
         return this.email;
     }
@@ -30,12 +46,20 @@ public final class GetTransferProjectServieAccountResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     * 
+     */
     public String member() {
         return this.member;
     }
     public String project() {
         return this.project;
     }
+    /**
+     * @return Unique identifier for the service account.
+     * 
+     */
     public String subjectId() {
         return this.subjectId;
     }

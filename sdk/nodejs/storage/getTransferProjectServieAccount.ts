@@ -4,6 +4,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to retrieve Storage Transfer service account for this project
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.storage.getTransferProjectServiceAccount({});
+ * export const defaultAccount = _default.then(_default => _default.email);
+ * ```
+ */
 /** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {
     pulumi.log.warn("getTransferProjectServieAccount is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount")
@@ -19,6 +32,9 @@ export function getTransferProjectServieAccount(args?: GetTransferProjectServieA
  * A collection of arguments for invoking getTransferProjectServieAccount.
  */
 export interface GetTransferProjectServieAccountArgs {
+    /**
+     * The project ID. If it is not provided, the provider project is used.
+     */
     project?: string;
 }
 
@@ -26,15 +42,37 @@ export interface GetTransferProjectServieAccountArgs {
  * A collection of values returned by getTransferProjectServieAccount.
  */
 export interface GetTransferProjectServieAccountResult {
+    /**
+     * Email address of the default service account used by Storage Transfer Jobs running in this project.
+     */
     readonly email: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+     */
     readonly member: string;
     readonly project: string;
+    /**
+     * Unique identifier for the service account.
+     */
     readonly subjectId: string;
 }
+/**
+ * Use this data source to retrieve Storage Transfer service account for this project
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.storage.getTransferProjectServiceAccount({});
+ * export const defaultAccount = _default.then(_default => _default.email);
+ * ```
+ */
 /** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {
     return pulumi.output(args).apply((a: any) => getTransferProjectServieAccount(a, opts))
@@ -44,5 +82,8 @@ export function getTransferProjectServieAccountOutput(args?: GetTransferProjectS
  * A collection of arguments for invoking getTransferProjectServieAccount.
  */
 export interface GetTransferProjectServieAccountOutputArgs {
+    /**
+     * The project ID. If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
 }

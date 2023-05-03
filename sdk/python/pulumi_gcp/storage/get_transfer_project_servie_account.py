@@ -43,6 +43,9 @@ class GetTransferProjectServieAccountResult:
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        Email address of the default service account used by Storage Transfer Jobs running in this project.
+        """
         return pulumi.get(self, "email")
 
     @property
@@ -56,6 +59,9 @@ class GetTransferProjectServieAccountResult:
     @property
     @pulumi.getter
     def member(self) -> str:
+        """
+        The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
         return pulumi.get(self, "member")
 
     @property
@@ -66,6 +72,9 @@ class GetTransferProjectServieAccountResult:
     @property
     @pulumi.getter(name="subjectId")
     def subject_id(self) -> str:
+        """
+        Unique identifier for the service account.
+        """
         return pulumi.get(self, "subject_id")
 
 
@@ -85,7 +94,20 @@ class AwaitableGetTransferProjectServieAccountResult(GetTransferProjectServieAcc
 def get_transfer_project_servie_account(project: Optional[str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTransferProjectServieAccountResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve Storage Transfer service account for this project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.storage.get_transfer_project_service_account()
+    pulumi.export("defaultAccount", default.email)
+    ```
+
+
+    :param str project: The project ID. If it is not provided, the provider project is used.
     """
     pulumi.log.warn("""get_transfer_project_servie_account is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount""")
     __args__ = dict()
@@ -105,7 +127,20 @@ def get_transfer_project_servie_account(project: Optional[str] = None,
 def get_transfer_project_servie_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransferProjectServieAccountResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to retrieve Storage Transfer service account for this project
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.storage.get_transfer_project_service_account()
+    pulumi.export("defaultAccount", default.email)
+    ```
+
+
+    :param str project: The project ID. If it is not provided, the provider project is used.
     """
     pulumi.log.warn("""get_transfer_project_servie_account is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount""")
     ...
