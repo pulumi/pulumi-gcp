@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.storage.getTransferProjectServieAccount({
+ * const default = gcp.storage.getTransferProjectServiceAccount({
  *     project: _var.project,
  * });
  * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {

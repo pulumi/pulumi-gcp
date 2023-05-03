@@ -317,7 +317,7 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_servie_account(project=var["project"])
+        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
             project=var["project"],
@@ -430,7 +430,7 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_servie_account(project=var["project"])
+        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
             project=var["project"],

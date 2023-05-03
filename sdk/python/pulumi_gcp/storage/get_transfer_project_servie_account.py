@@ -16,6 +16,8 @@ __all__ = [
     'get_transfer_project_servie_account_output',
 ]
 
+warnings.warn("""gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount""", DeprecationWarning)
+
 @pulumi.output_type
 class GetTransferProjectServieAccountResult:
     """
@@ -100,13 +102,14 @@ def get_transfer_project_servie_account(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.storage.get_transfer_project_servie_account()
+    default = gcp.storage.get_transfer_project_service_account()
     pulumi.export("defaultAccount", default.email)
     ```
 
 
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
+    pulumi.log.warn("""get_transfer_project_servie_account is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount""")
     __args__ = dict()
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -132,11 +135,12 @@ def get_transfer_project_servie_account_output(project: Optional[pulumi.Input[Op
     import pulumi
     import pulumi_gcp as gcp
 
-    default = gcp.storage.get_transfer_project_servie_account()
+    default = gcp.storage.get_transfer_project_service_account()
     pulumi.export("defaultAccount", default.email)
     ```
 
 
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
+    pulumi.log.warn("""get_transfer_project_servie_account is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount""")
     ...

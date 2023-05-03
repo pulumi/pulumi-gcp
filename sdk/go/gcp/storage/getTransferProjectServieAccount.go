@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := storage.GetTransferProjectServieAccount(ctx, nil, nil)
+//			_default, err := storage.GetTransferProjectServiceAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -36,6 +36,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
 func GetTransferProjectServieAccount(ctx *pulumi.Context, args *GetTransferProjectServieAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServieAccountResult, error) {
 	var rv GetTransferProjectServieAccountResult
 	err := ctx.Invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, opts...)
