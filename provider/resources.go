@@ -2926,6 +2926,36 @@ func Provider() tfbridge.ProviderInfo {
 			"google_workstations_workstation_cluster": {Tok: gcpResource(gcpWorkstations, "WorkstationCluster")},
 			"google_workstations_workstation_config":  {Tok: gcpResource(gcpWorkstations, "WorkstationConfig")},
 			"google_workstations_workstation":         {Tok: gcpResource(gcpWorkstations, "Workstation")},
+			"google_workstations_workstation_config_iam_binding": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "workstations_workstation_config_iam.html.markdown",
+				},
+			},
+			"google_workstations_workstation_config_iam_member": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "workstations_workstation_config_iam.html.markdown",
+				},
+			},
+			"google_workstations_workstation_config_iam_policy": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "workstations_workstation_config_iam.html.markdown",
+				},
+			},
+			"google_workstations_workstation_iam_binding": {Tok: gcpResource(gcpWorkstations, "WorkstationIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "workstations_workstation_iam.html.markdown",
+				},
+			},
+			"google_workstations_workstation_iam_member": {Tok: gcpResource(gcpWorkstations, "WorkstationIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "workstations_workstation_iam.html.markdown",
+				},
+			},
+			"google_workstations_workstation_iam_policy": {Tok: gcpResource(gcpWorkstations, "WorkstationIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "workstations_workstation_iam.html.markdown",
+				},
+			},
 
 			//eventarc
 			"google_eventarc_channel": {
