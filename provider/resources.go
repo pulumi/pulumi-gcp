@@ -15,6 +15,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
+	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
@@ -35,100 +36,102 @@ const (
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
 	gcpAlloydb              = "Alloydb"              // Alloydb resources
 	// nolint:golint
-	gcpApiGateway           = "ApiGateway"           // ApiGateway resources
-	gcpApigee               = "Apigee"               // Apigee resources
-	gcpAppEngine            = "AppEngine"            // AppEngine resources
-	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
-	gcpAssuredWorkloads     = "AssuredWorkloads"     // AssuredWorkloads resources
-	gcpBeyondcorp           = "Beyondcorp"           // Beyondcorp resources
-	gcpBigQueryAnalyticsHub = "BigQueryAnalyticsHub" // BigQuery Analytics Hub resources
-	gcpBigQueryDataPolicy   = "BigQueryDataPolicy"   // BigQuery Data Policy resources
-	gcpBigQuery             = "BigQuery"             // BigQuery resources
-	gcpBigTable             = "BigTable"             // BitTable resources
-	gcpBilling              = "Billing"              // Billing resources
-	gcpBinaryAuthorization  = "BinaryAuthorization"  // Binary Authorization resources
-	gcpCertificateAuthority = "CertificateAuthority" // CertificateAuthority resources
-	gcpCertificateManager   = "CertificateManager"   // CertificateManager resources
-	gcpCloudAsset           = "CloudAsset"           // CloudAsset resources
-	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
-	gcpCloudBuildV2         = "CloudBuildV2"         // CloudBuild (2nd Gen) resources
-	gcpCloudDeploy          = "CloudDeploy"          // CloudDeploy resources
-	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
-	gcpCloudFunctionsV2     = "CloudFunctionsV2"     // CloudFunction (2nd Gen) resources
-	gcpCloudIds             = "CloudIds"             // CloudIds resources
-	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
-	gcpCloudRun             = "CloudRun"             // CloudRun resources
-	gcpCloudRunV2           = "CloudRunV2"           // CloudRun (2nd Gen) resources
-	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
-	gcpCloudTasks           = "CloudTasks"           // Cloud Tasks resources
-	gcpComposer             = "Composer"             // Cloud Composer resources
-	gcpCompute              = "Compute"              // Compute resources
-	gcpContainerAnalysis    = "ContainerAnalysis"    // Container Analysis resources
-	gcpDataform             = "Dataform"             // Dataform resources
-	gcpDNS                  = "Dns"                  // DNS resources
-	gcpDataCatalog          = "DataCatalog"          // Data Catalog resources
-	gcpDataFlow             = "Dataflow"             // DataFlow resources
-	gcpDataFusion           = "DataFusion"           // DataFusion resources
-	gcpDataLoss             = "DataLoss"             // DataLoss resources
-	gcpDataPlex             = "DataPlex"             // DataPlex
-	gcpDataProc             = "Dataproc"             // DataProc resources
-	gcpDatastore            = "Datastore"            // Datastore resources
-	gcpDatastream           = "Datastream"           // Datastream resources
-	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
-	gcpDiagflow             = "Diagflow"             // Diagflow resources
-	gcpEndPoints            = "Endpoints"            // End Point resources
-	gcpEssentialContacts    = "EssentialContacts"    // Essential Contacts resources
-	gcpEventarc             = "Eventarc"             // Eventarc
-	gcpFilestore            = "Filestore"            // Filestore resources
-	gcpFirebase             = "Firebase"             // Firebase resources
-	gcpFirebaserules        = "Firebaserules"        // FirebaseRules resources
-	gcpFirestore            = "Firestore"            // Firestore resources
-	gcpFolder               = "Folder"               // Folder resources
-	gcpGameServices         = "GameServices"         // Game Services resources
-	gcpGkeBackup            = "GkeBackup"            // Gke Backup resources
-	gcpGkeHub               = "GkeHub"               // Gke Hub resources
-	gcpHealthcare           = "Healthcare"           // Healthcare resources
-	gcpIAM                  = "Iam"                  // IAM resources
-	gcpIAP                  = "Iap"                  // IAP resources
-	gcpIdentityPlatform     = "IdentityPlatform"     // IdentityPlatform resources
-	gcpIot                  = "Iot"                  // Iot resources
-	gcpKMS                  = "Kms"                  // KMS resources
-	gcpKubernetes           = "Container"            // Kubernetes Engine resources
-	gcpLogging              = "Logging"              // Logging resources
-	gcpMachingLearning      = "ML"                   // Machine Learning
-	gcpMemcache             = "Memcache"             // Memcache resources
-	gcpMonitoring           = "Monitoring"           // Monitoring resources
-	gcpNetworkConnectivity  = "NetworkConnectivity"  // Network Connectivity resources
-	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
-	gcpNetworkSecurity      = "NetworkSecurity"      // Network Security resources
-	gcpNetworkServices      = "NetworkServices"      // Network Services resources
-	gcpNotebooks            = "Notebooks"            // Notebooks resources
-	gcpOrganization         = "Organizations"        // Organization resources
-	gcpOrgPolicy            = "OrgPolicy"            // Org Policy
-	gcpOsConfig             = "OsConfig"             // OsConfig resources
-	gcpOsLogin              = "OsLogin"              // OsLogin resources
-	gcpProject              = "Projects"             // Project resources
-	gcpPubSub               = "PubSub"               // PubSub resources
-	gcpRecaptcha            = "Recaptcha"            //Recaptcha resources
-	gcpRedis                = "Redis"                // Redis resources
-	gcpResourceManager      = "ResourceManager"      // Resource Manager resources
-	gcpRuntimeConfig        = "RuntimeConfig"        // Runtime Config resources
-	gcpSecretManager        = "SecretManager"        // Secret Manager resources
-	gcpServiceDirectory     = "ServiceDirectory"     // Service Directory resources
-	gcpServiceNetworking    = "ServiceNetworking"    // Service Networking resources
-	gcpSecurityCenter       = "SecurityCenter"       // Security Center
-	gcpSQL                  = "Sql"                  // SQL resources
-	gcpServiceAccount       = "ServiceAccount"       // Service Account resources
-	gcpServiceUsage         = "ServiceUsage"         // Service Usage resources
-	gcpSourceRepo           = "SourceRepo"           // Source Repo resources
-	gcpSpanner              = "Spanner"              // Spanner Resources
-	gcpStorage              = "Storage"              // Storage resources
-	gcpTags                 = "Tags"                 // Tags
-	gcpTPU                  = "Tpu"                  // Tensor Processing Units
-	gcpVertex               = "Vertex"               // Vertex
-	gcpVpcAccess            = "VpcAccess"            // VPC Access
-	gcpWorkflows            = "Workflows"            // Workflows
-	gcpWorkstations         = "Workstations"         // Workstations
+	gcpApiGateway               = "ApiGateway"               // ApiGateway resources
+	gcpApigee                   = "Apigee"                   // Apigee resources
+	gcpAppEngine                = "AppEngine"                // AppEngine resources
+	gcpArtifactRegistry         = "ArtifactRegistry"         // ArtifactRegistry resources
+	gcpAssuredWorkloads         = "AssuredWorkloads"         // AssuredWorkloads resources
+	gcpBeyondcorp               = "Beyondcorp"               // Beyondcorp resources
+	gcpBigQueryAnalyticsHub     = "BigQueryAnalyticsHub"     // BigQuery Analytics Hub resources
+	gcpBigQueryDataPolicy       = "BigQueryDataPolicy"       // BigQuery Data Policy resources
+	gcpBigQuery                 = "BigQuery"                 // BigQuery resources
+	gcpBigTable                 = "BigTable"                 // BitTable resources
+	gcpBilling                  = "Billing"                  // Billing resources
+	gcpBinaryAuthorization      = "BinaryAuthorization"      // Binary Authorization resources
+	gcpCertificateAuthority     = "CertificateAuthority"     // CertificateAuthority resources
+	gcpCertificateManager       = "CertificateManager"       // CertificateManager resources
+	gcpCloudAsset               = "CloudAsset"               // CloudAsset resources
+	gcpCloudBuild               = "CloudBuild"               // CloudBuild resources
+	gcpCloudBuildV2             = "CloudBuildV2"             // CloudBuild (2nd Gen) resources
+	gcpCloudDeploy              = "CloudDeploy"              // CloudDeploy resources
+	gcpCloudFunctions           = "CloudFunctions"           // CloudFunction resources
+	gcpCloudFunctionsV2         = "CloudFunctionsV2"         // CloudFunction (2nd Gen) resources
+	gcpCloudIds                 = "CloudIds"                 // CloudIds resources
+	gcpCloudIdentity            = "CloudIdentity"            // CloudIdentity resources
+	gcpCloudRun                 = "CloudRun"                 // CloudRun resources
+	gcpCloudRunV2               = "CloudRunV2"               // CloudRun (2nd Gen) resources
+	gcpCloudScheduler           = "CloudScheduler"           // Cloud Scheduler resources
+	gcpCloudTasks               = "CloudTasks"               // Cloud Tasks resources
+	gcpComposer                 = "Composer"                 // Cloud Composer resources
+	gcpCompute                  = "Compute"                  // Compute resources
+	gcpContainerAnalysis        = "ContainerAnalysis"        // Container Analysis resources
+	gcpDataform                 = "Dataform"                 // Dataform resources
+	gcpDNS                      = "Dns"                      // DNS resources
+	gcpDatabaseMigrationService = "DatabaseMigrationService" // Database Migration Service resources
+	gcpDataCatalog              = "DataCatalog"              // Data Catalog resources
+	gcpDataFlow                 = "Dataflow"                 // DataFlow resources
+	gcpDataFusion               = "DataFusion"               // DataFusion resources
+	gcpDataLoss                 = "DataLoss"                 // DataLoss resources
+	gcpDataPlex                 = "DataPlex"                 // DataPlex
+	gcpDataProc                 = "Dataproc"                 // DataProc resources
+	gcpDatastore                = "Datastore"                // Datastore resources
+	gcpDatastream               = "Datastream"               // Datastream resources
+	gcpDeploymentManager        = "DeploymentManager"        // DeploymentManager resources
+	gcpDiagflow                 = "Diagflow"                 // Diagflow resources
+	gcpEndPoints                = "Endpoints"                // End Point resources
+	gcpEssentialContacts        = "EssentialContacts"        // Essential Contacts resources
+	gcpEventarc                 = "Eventarc"                 // Eventarc
+	gcpFilestore                = "Filestore"                // Filestore resources
+	gcpFirebase                 = "Firebase"                 // Firebase resources
+	gcpFirebaserules            = "Firebaserules"            // FirebaseRules resources
+	gcpFirestore                = "Firestore"                // Firestore resources
+	gcpFolder                   = "Folder"                   // Folder resources
+	gcpGameServices             = "GameServices"             // Game Services resources
+	gcpGkeBackup                = "GkeBackup"                // Gke Backup resources
+	gcpGkeHub                   = "GkeHub"                   // Gke Hub resources
+	gcpGkeOnPrem                = "GkeOnPrem"                // Gke On Prem resources
+	gcpHealthcare               = "Healthcare"               // Healthcare resources
+	gcpIAM                      = "Iam"                      // IAM resources
+	gcpIAP                      = "Iap"                      // IAP resources
+	gcpIdentityPlatform         = "IdentityPlatform"         // IdentityPlatform resources
+	gcpIot                      = "Iot"                      // Iot resources
+	gcpKMS                      = "Kms"                      // KMS resources
+	gcpKubernetes               = "Container"                // Kubernetes Engine resources
+	gcpLogging                  = "Logging"                  // Logging resources
+	gcpMachingLearning          = "ML"                       // Machine Learning
+	gcpMemcache                 = "Memcache"                 // Memcache resources
+	gcpMonitoring               = "Monitoring"               // Monitoring resources
+	gcpNetworkConnectivity      = "NetworkConnectivity"      // Network Connectivity resources
+	gcpNetworkManagement        = "NetworkManagement"        // Network Management resources
+	gcpNetworkSecurity          = "NetworkSecurity"          // Network Security resources
+	gcpNetworkServices          = "NetworkServices"          // Network Services resources
+	gcpNotebooks                = "Notebooks"                // Notebooks resources
+	gcpOrganization             = "Organizations"            // Organization resources
+	gcpOrgPolicy                = "OrgPolicy"                // Org Policy
+	gcpOsConfig                 = "OsConfig"                 // OsConfig resources
+	gcpOsLogin                  = "OsLogin"                  // OsLogin resources
+	gcpProject                  = "Projects"                 // Project resources
+	gcpPubSub                   = "PubSub"                   // PubSub resources
+	gcpRecaptcha                = "Recaptcha"                //Recaptcha resources
+	gcpRedis                    = "Redis"                    // Redis resources
+	gcpResourceManager          = "ResourceManager"          // Resource Manager resources
+	gcpRuntimeConfig            = "RuntimeConfig"            // Runtime Config resources
+	gcpSecretManager            = "SecretManager"            // Secret Manager resources
+	gcpServiceDirectory         = "ServiceDirectory"         // Service Directory resources
+	gcpServiceNetworking        = "ServiceNetworking"        // Service Networking resources
+	gcpSecurityCenter           = "SecurityCenter"           // Security Center
+	gcpSQL                      = "Sql"                      // SQL resources
+	gcpServiceAccount           = "ServiceAccount"           // Service Account resources
+	gcpServiceUsage             = "ServiceUsage"             // Service Usage resources
+	gcpSourceRepo               = "SourceRepo"               // Source Repo resources
+	gcpSpanner                  = "Spanner"                  // Spanner Resources
+	gcpStorage                  = "Storage"                  // Storage resources
+	gcpTags                     = "Tags"                     // Tags
+	gcpTPU                      = "Tpu"                      // Tensor Processing Units
+	gcpVertex                   = "Vertex"                   // Vertex
+	gcpVpcAccess                = "VpcAccess"                // VPC Access
+	gcpWorkflows                = "Workflows"                // Workflows
+	gcpWorkstations             = "Workstations"             // Workstations
 )
 
 var moduleMapping = map[string]string{
@@ -313,7 +316,7 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 		return nil
 	}
 
-	config := google.Config{
+	config := tpg_transport.Config{
 		AccessToken: stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
 		Credentials: stringValue(vars, "credentials", []string{
 			"GOOGLE_CREDENTIALS",
@@ -1555,6 +1558,13 @@ func Provider() tfbridge.ProviderInfo {
 			"google_firestore_index":    {Tok: gcpResource(gcpFirestore, "Index")},
 			"google_firestore_document": {Tok: gcpResource(gcpFirestore, "Document")},
 			"google_firestore_database": {Tok: gcpResource(gcpFirestore, "Database")},
+			"google_firestore_field": {Tok: gcpResource(gcpFirestore, "Field"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"field": {
+						CSharpName: "FieldId",
+					},
+				},
+			},
 
 			// Monitoring resources
 			"google_monitoring_alert_policy":         {Tok: gcpResource(gcpMonitoring, "AlertPolicy")},
@@ -1747,6 +1757,25 @@ func Provider() tfbridge.ProviderInfo {
 			"google_logging_project_bucket_config":         {Tok: gcpResource(gcpLogging, "ProjectBucketConfig")},
 			"google_logging_log_view":                      {Tok: gcpResource(gcpLogging, "LogView")},
 			"google_logging_linked_dataset":                {Tok: gcpResource(gcpLogging, "LinkedDataset")},
+
+			// Database migration service resources
+			"google_database_migration_service_connection_profile": {
+				Tok: gcpResource(gcpDatabaseMigrationService, "ConnectionProfile"),
+			},
+
+			// GKE On-Prem resources
+			"google_gkeonprem_bare_metal_cluster": {
+				Tok: gcpResource(gcpGkeOnPrem, "BareMetalCluster"),
+			},
+			"google_gkeonprem_bare_metal_node_pool": {
+				Tok: gcpResource(gcpGkeOnPrem, "BareMetalNodePool"),
+			},
+			"google_gkeonprem_vmware_cluster": {
+				Tok: gcpResource(gcpGkeOnPrem, "VMwareCluster"),
+			},
+			"google_gkeonprem_vmware_node_pool": {
+				Tok: gcpResource(gcpGkeOnPrem, "VMwareNodePool"),
+			},
 
 			// Storage resources
 			"google_storage_bucket": {
