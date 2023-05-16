@@ -8,6 +8,7 @@ import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyCon
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -40,6 +41,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * 
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig replaceConfig;
+    /**
+     * @return Replace with a value randomly drawn (with replacement) from a dictionary.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig replaceDictionaryConfig;
     /**
      * @return Replace each matching finding with the name of the info type.
      * 
@@ -81,6 +88,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.replaceConfig);
     }
     /**
+     * @return Replace with a value randomly drawn (with replacement) from a dictionary.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig> replaceDictionaryConfig() {
+        return Optional.ofNullable(this.replaceDictionaryConfig);
+    }
+    /**
      * @return Replace each matching finding with the name of the info type.
      * 
      */
@@ -101,6 +116,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig cryptoDeterministicConfig;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig cryptoReplaceFfxFpeConfig;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig replaceConfig;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig replaceDictionaryConfig;
         private @Nullable Boolean replaceWithInfoTypeConfig;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation defaults) {
@@ -109,6 +125,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     	      this.cryptoDeterministicConfig = defaults.cryptoDeterministicConfig;
     	      this.cryptoReplaceFfxFpeConfig = defaults.cryptoReplaceFfxFpeConfig;
     	      this.replaceConfig = defaults.replaceConfig;
+    	      this.replaceDictionaryConfig = defaults.replaceDictionaryConfig;
     	      this.replaceWithInfoTypeConfig = defaults.replaceWithInfoTypeConfig;
         }
 
@@ -133,6 +150,11 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         @CustomType.Setter
+        public Builder replaceDictionaryConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig replaceDictionaryConfig) {
+            this.replaceDictionaryConfig = replaceDictionaryConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder replaceWithInfoTypeConfig(@Nullable Boolean replaceWithInfoTypeConfig) {
             this.replaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
             return this;
@@ -143,6 +165,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             o.cryptoDeterministicConfig = cryptoDeterministicConfig;
             o.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
             o.replaceConfig = replaceConfig;
+            o.replaceDictionaryConfig = replaceDictionaryConfig;
             o.replaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
             return o;
         }

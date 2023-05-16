@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigConfigConnectorConfig
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigDnsCacheConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGcsFuseCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGkeBackupAgentConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHorizontalPodAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHttpLoadBalancing;
@@ -52,6 +53,13 @@ public final class ClusterAddonsConfig {
      * 
      */
     private @Nullable ClusterAddonsConfigGcpFilestoreCsiDriverConfig gcpFilestoreCsiDriverConfig;
+    /**
+     * @return )) The status of the GCSFuse CSI driver addon,
+     * which allows the usage of a gcs bucket as volumes.
+     * It is disabled by default; set `enabled = true` to enable.
+     * 
+     */
+    private @Nullable ClusterAddonsConfigGcsFuseCsiDriverConfig gcsFuseCsiDriverConfig;
     /**
      * @return .
      * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
@@ -140,6 +148,15 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.gcpFilestoreCsiDriverConfig);
     }
     /**
+     * @return )) The status of the GCSFuse CSI driver addon,
+     * which allows the usage of a gcs bucket as volumes.
+     * It is disabled by default; set `enabled = true` to enable.
+     * 
+     */
+    public Optional<ClusterAddonsConfigGcsFuseCsiDriverConfig> gcsFuseCsiDriverConfig() {
+        return Optional.ofNullable(this.gcsFuseCsiDriverConfig);
+    }
+    /**
      * @return .
      * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
      * 
@@ -210,6 +227,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigDnsCacheConfig dnsCacheConfig;
         private @Nullable ClusterAddonsConfigGcePersistentDiskCsiDriverConfig gcePersistentDiskCsiDriverConfig;
         private @Nullable ClusterAddonsConfigGcpFilestoreCsiDriverConfig gcpFilestoreCsiDriverConfig;
+        private @Nullable ClusterAddonsConfigGcsFuseCsiDriverConfig gcsFuseCsiDriverConfig;
         private @Nullable ClusterAddonsConfigGkeBackupAgentConfig gkeBackupAgentConfig;
         private @Nullable ClusterAddonsConfigHorizontalPodAutoscaling horizontalPodAutoscaling;
         private @Nullable ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing;
@@ -224,6 +242,7 @@ public final class ClusterAddonsConfig {
     	      this.dnsCacheConfig = defaults.dnsCacheConfig;
     	      this.gcePersistentDiskCsiDriverConfig = defaults.gcePersistentDiskCsiDriverConfig;
     	      this.gcpFilestoreCsiDriverConfig = defaults.gcpFilestoreCsiDriverConfig;
+    	      this.gcsFuseCsiDriverConfig = defaults.gcsFuseCsiDriverConfig;
     	      this.gkeBackupAgentConfig = defaults.gkeBackupAgentConfig;
     	      this.horizontalPodAutoscaling = defaults.horizontalPodAutoscaling;
     	      this.httpLoadBalancing = defaults.httpLoadBalancing;
@@ -255,6 +274,11 @@ public final class ClusterAddonsConfig {
         @CustomType.Setter
         public Builder gcpFilestoreCsiDriverConfig(@Nullable ClusterAddonsConfigGcpFilestoreCsiDriverConfig gcpFilestoreCsiDriverConfig) {
             this.gcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gcsFuseCsiDriverConfig(@Nullable ClusterAddonsConfigGcsFuseCsiDriverConfig gcsFuseCsiDriverConfig) {
+            this.gcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
             return this;
         }
         @CustomType.Setter
@@ -294,6 +318,7 @@ public final class ClusterAddonsConfig {
             o.dnsCacheConfig = dnsCacheConfig;
             o.gcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             o.gcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
+            o.gcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
             o.gkeBackupAgentConfig = gkeBackupAgentConfig;
             o.horizontalPodAutoscaling = horizontalPodAutoscaling;
             o.httpLoadBalancing = httpLoadBalancing;

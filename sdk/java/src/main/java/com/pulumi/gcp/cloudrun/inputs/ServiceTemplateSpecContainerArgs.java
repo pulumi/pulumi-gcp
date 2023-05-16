@@ -179,9 +179,23 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         return Optional.ofNullable(this.resources);
     }
 
+    /**
+     * Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="startupProbe")
     private @Nullable Output<ServiceTemplateSpecContainerStartupProbeArgs> startupProbe;
 
+    /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<ServiceTemplateSpecContainerStartupProbeArgs>> startupProbe() {
         return Optional.ofNullable(this.startupProbe);
     }
@@ -536,11 +550,29 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
             return resources(Output.of(resources));
         }
 
+        /**
+         * @param startupProbe Startup probe of application within the container.
+         * All other probes are disabled if a startup probe is provided, until it
+         * succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startupProbe(@Nullable Output<ServiceTemplateSpecContainerStartupProbeArgs> startupProbe) {
             $.startupProbe = startupProbe;
             return this;
         }
 
+        /**
+         * @param startupProbe Startup probe of application within the container.
+         * All other probes are disabled if a startup probe is provided, until it
+         * succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder startupProbe(ServiceTemplateSpecContainerStartupProbeArgs startupProbe) {
             return startupProbe(Output.of(startupProbe));
         }

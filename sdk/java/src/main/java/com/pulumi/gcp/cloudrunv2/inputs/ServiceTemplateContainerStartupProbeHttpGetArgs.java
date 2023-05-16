@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,11 +50,29 @@ public final class ServiceTemplateContainerStartupProbeHttpGetArgs extends com.p
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    /**
+     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
+     * 
+     */
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
     private ServiceTemplateContainerStartupProbeHttpGetArgs() {}
 
     private ServiceTemplateContainerStartupProbeHttpGetArgs(ServiceTemplateContainerStartupProbeHttpGetArgs $) {
         this.httpHeaders = $.httpHeaders;
         this.path = $.path;
+        this.port = $.port;
     }
 
     public static Builder builder() {
@@ -127,6 +146,29 @@ public final class ServiceTemplateContainerStartupProbeHttpGetArgs extends com.p
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param port Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(Integer port) {
+            return port(Output.of(port));
         }
 
         public ServiceTemplateContainerStartupProbeHttpGetArgs build() {

@@ -1336,6 +1336,10 @@ class ServiceTemplateSpecContainer(dict):
                Structure is documented below.
         :param 'ServiceTemplateSpecContainerResourcesArgs' resources: Compute Resources required by this container. Used to set values such as max memory
                Structure is documented below.
+        :param 'ServiceTemplateSpecContainerStartupProbeArgs' startup_probe: Startup probe of application within the container.
+               All other probes are disabled if a startup probe is provided, until it
+               succeeds. Container will not be added to service endpoints if the probe fails.
+               Structure is documented below.
         :param Sequence['ServiceTemplateSpecContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
                Only supports SecretVolumeSources.
                Structure is documented below.
@@ -1447,6 +1451,12 @@ class ServiceTemplateSpecContainer(dict):
     @property
     @pulumi.getter(name="startupProbe")
     def startup_probe(self) -> Optional['outputs.ServiceTemplateSpecContainerStartupProbe']:
+        """
+        Startup probe of application within the container.
+        All other probes are disabled if a startup probe is provided, until it
+        succeeds. Container will not be added to service endpoints if the probe fails.
+        Structure is documented below.
+        """
         return pulumi.get(self, "startup_probe")
 
     @property
@@ -1938,6 +1948,7 @@ class ServiceTemplateSpecContainerLivenessProbeGrpc(dict):
                  service: Optional[str] = None):
         """
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         :param str service: The name of the service to place in the gRPC HealthCheckRequest
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
@@ -1952,6 +1963,7 @@ class ServiceTemplateSpecContainerLivenessProbeGrpc(dict):
     def port(self) -> Optional[int]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -1987,16 +1999,21 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGet(dict):
 
     def __init__(__self__, *,
                  http_headers: Optional[Sequence['outputs.ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader']] = None,
-                 path: Optional[str] = None):
+                 path: Optional[str] = None,
+                 port: Optional[int] = None):
         """
         :param Sequence['ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -2014,6 +2031,15 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGet(dict):
         Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -2292,6 +2318,7 @@ class ServiceTemplateSpecContainerStartupProbeGrpc(dict):
                  service: Optional[str] = None):
         """
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         :param str service: The name of the service to place in the gRPC HealthCheckRequest
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
@@ -2306,6 +2333,7 @@ class ServiceTemplateSpecContainerStartupProbeGrpc(dict):
     def port(self) -> Optional[int]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -2341,16 +2369,21 @@ class ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
 
     def __init__(__self__, *,
                  http_headers: Optional[Sequence['outputs.ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader']] = None,
-                 path: Optional[str] = None):
+                 path: Optional[str] = None,
+                 port: Optional[int] = None):
         """
         :param Sequence['ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. If set, it should not be empty string.
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -2368,6 +2401,15 @@ class ServiceTemplateSpecContainerStartupProbeHttpGet(dict):
         Path to access on the HTTP server. If set, it should not be empty string.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -2406,6 +2448,7 @@ class ServiceTemplateSpecContainerStartupProbeTcpSocket(dict):
                  port: Optional[int] = None):
         """
         :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -2415,6 +2458,7 @@ class ServiceTemplateSpecContainerStartupProbeTcpSocket(dict):
     def port(self) -> Optional[int]:
         """
         Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -3328,9 +3372,11 @@ class GetServiceTemplateSpecContainerLivenessProbeGrpcResult(dict):
 class GetServiceTemplateSpecContainerLivenessProbeHttpGetResult(dict):
     def __init__(__self__, *,
                  http_headers: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult'],
-                 path: str):
+                 path: str,
+                 port: int):
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -3341,6 +3387,11 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetResult(dict):
     @pulumi.getter
     def path(self) -> str:
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -3496,9 +3547,11 @@ class GetServiceTemplateSpecContainerStartupProbeGrpcResult(dict):
 class GetServiceTemplateSpecContainerStartupProbeHttpGetResult(dict):
     def __init__(__self__, *,
                  http_headers: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult'],
-                 path: str):
+                 path: str,
+                 port: int):
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -3509,6 +3562,11 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetResult(dict):
     @pulumi.getter
     def path(self) -> str:
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

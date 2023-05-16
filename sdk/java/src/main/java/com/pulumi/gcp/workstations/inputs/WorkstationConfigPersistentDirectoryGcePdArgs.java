@@ -48,7 +48,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
 
     /**
      * What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-     * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+     * Possible values are: `DELETE`, `RETAIN`.
      * 
      */
     @Import(name="reclaimPolicy")
@@ -56,7 +56,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
 
     /**
      * @return What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-     * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+     * Possible values are: `DELETE`, `RETAIN`.
      * 
      */
     public Optional<Output<String>> reclaimPolicy() {
@@ -149,7 +149,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
 
         /**
          * @param reclaimPolicy What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-         * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+         * Possible values are: `DELETE`, `RETAIN`.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
 
         /**
          * @param reclaimPolicy What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-         * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+         * Possible values are: `DELETE`, `RETAIN`.
          * 
          * @return builder
          * 

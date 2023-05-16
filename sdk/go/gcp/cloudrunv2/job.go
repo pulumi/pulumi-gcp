@@ -35,8 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -95,8 +94,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Volumes: cloudrunv2.JobTemplateTemplateVolumeArray{
@@ -210,8 +208,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -262,8 +259,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Location:    pulumi.String("us-central1"),
-//				LaunchStage: pulumi.String("BETA"),
+//				Location: pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Volumes: cloudrunv2.JobTemplateTemplateVolumeArray{
@@ -325,6 +321,56 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Job Emptydir
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Location:    pulumi.String("us-central1"),
+//				LaunchStage: pulumi.String("BETA"),
+//				Template: &cloudrunv2.JobTemplateArgs{
+//					Template: &cloudrunv2.JobTemplateTemplateArgs{
+//						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
+//							&cloudrunv2.JobTemplateTemplateContainerArgs{
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								VolumeMounts: cloudrunv2.JobTemplateTemplateContainerVolumeMountArray{
+//									&cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs{
+//										Name:      pulumi.String("empty-dir-volume"),
+//										MountPath: pulumi.String("/mnt"),
+//									},
+//								},
+//							},
+//						},
+//						Volumes: cloudrunv2.JobTemplateTemplateVolumeArray{
+//							&cloudrunv2.JobTemplateTemplateVolumeArgs{
+//								Name: pulumi.String("empty-dir-volume"),
+//								EmptyDir: &cloudrunv2.JobTemplateTemplateVolumeEmptyDirArgs{
+//									Medium:    pulumi.String("MEMORY"),
+//									SizeLimit: pulumi.String("128Mi"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -373,7 +419,9 @@ type Job struct {
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayOutput `pulumi:"latestCreatedExecutions"`
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run job
@@ -455,7 +503,9 @@ type jobState struct {
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions []JobLatestCreatedExecution `pulumi:"latestCreatedExecutions"`
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run job
@@ -506,7 +556,9 @@ type JobState struct {
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayInput
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run job
@@ -549,7 +601,9 @@ type jobArgs struct {
 	// (Optional)
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels map[string]string `pulumi:"labels"`
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run job
@@ -577,7 +631,9 @@ type JobArgs struct {
 	// (Optional)
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapInput
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run job
@@ -729,7 +785,9 @@ func (o JobOutput) LatestCreatedExecutions() JobLatestCreatedExecutionArrayOutpu
 	return o.ApplyT(func(v *Job) JobLatestCreatedExecutionArrayOutput { return v.LatestCreatedExecutions }).(JobLatestCreatedExecutionArrayOutput)
 }
 
-// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 // Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 func (o JobOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)

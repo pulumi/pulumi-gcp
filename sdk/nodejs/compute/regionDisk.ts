@@ -60,6 +60,38 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Region Disk Async
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.compute.RegionDisk("primary", {
+ *     type: "pd-ssd",
+ *     region: "us-central1",
+ *     physicalBlockSizeBytes: 4096,
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const secondary = new gcp.compute.RegionDisk("secondary", {
+ *     type: "pd-ssd",
+ *     region: "us-east1",
+ *     physicalBlockSizeBytes: 4096,
+ *     asyncPrimaryDisk: {
+ *         disk: primary.id,
+ *     },
+ *     replicaZones: [
+ *         "us-east1-b",
+ *         "us-east1-c",
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -109,6 +141,10 @@ export class RegionDisk extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegionDisk.__pulumiType;
     }
 
+    /**
+     * A nested object resource
+     */
+    public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.RegionDiskAsyncPrimaryDisk | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -263,6 +299,7 @@ export class RegionDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegionDiskState | undefined;
+            resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
@@ -290,6 +327,7 @@ export class RegionDisk extends pulumi.CustomResource {
             if ((!args || args.replicaZones === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replicaZones'");
             }
+            resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
@@ -322,6 +360,10 @@ export class RegionDisk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RegionDisk resources.
  */
 export interface RegionDiskState {
+    /**
+     * A nested object resource
+     */
+    asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -468,6 +510,10 @@ export interface RegionDiskState {
  * The set of arguments for constructing a RegionDisk resource.
  */
 export interface RegionDiskArgs {
+    /**
+     * A nested object resource
+     */
+    asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

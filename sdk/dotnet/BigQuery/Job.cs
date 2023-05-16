@@ -183,6 +183,85 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Job Load Parquet
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testBucket = new Gcp.Storage.Bucket("testBucket", new()
+    ///     {
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var testBucketObject = new Gcp.Storage.BucketObject("testBucketObject", new()
+    ///     {
+    ///         Source = new FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+    ///         Bucket = testBucket.Name,
+    ///     });
+    /// 
+    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     {
+    ///         DatasetId = "job_load_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var testTable = new Gcp.BigQuery.Table("testTable", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         TableId = "job_load_table",
+    ///         DatasetId = testDataset.DatasetId,
+    ///     });
+    /// 
+    ///     var job = new Gcp.BigQuery.Job("job", new()
+    ///     {
+    ///         JobId = "job_load",
+    ///         Labels = 
+    ///         {
+    ///             { "my_job", "load" },
+    ///         },
+    ///         Load = new Gcp.BigQuery.Inputs.JobLoadArgs
+    ///         {
+    ///             SourceUris = new[]
+    ///             {
+    ///                 Output.Tuple(testBucketObject.Bucket, testBucketObject.Name).Apply(values =&gt;
+    ///                 {
+    ///                     var bucket = values.Item1;
+    ///                     var name = values.Item2;
+    ///                     return $"gs://{bucket}/{name}";
+    ///                 }),
+    ///             },
+    ///             DestinationTable = new Gcp.BigQuery.Inputs.JobLoadDestinationTableArgs
+    ///             {
+    ///                 ProjectId = testTable.Project,
+    ///                 DatasetId = testTable.DatasetId,
+    ///                 TableId = testTable.TableId,
+    ///             },
+    ///             SchemaUpdateOptions = new[]
+    ///             {
+    ///                 "ALLOW_FIELD_RELAXATION",
+    ///                 "ALLOW_FIELD_ADDITION",
+    ///             },
+    ///             WriteDisposition = "WRITE_APPEND",
+    ///             SourceFormat = "PARQUET",
+    ///             Autodetect = true,
+    ///             ParquetOptions = new Gcp.BigQuery.Inputs.JobLoadParquetOptionsArgs
+    ///             {
+    ///                 EnumAsString = true,
+    ///                 EnableListInference = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Bigquery Job Extract
     /// 
     /// ```csharp

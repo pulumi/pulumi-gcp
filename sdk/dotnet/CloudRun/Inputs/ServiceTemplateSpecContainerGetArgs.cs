@@ -105,6 +105,12 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("resources")]
         public Input<Inputs.ServiceTemplateSpecContainerResourcesGetArgs>? Resources { get; set; }
 
+        /// <summary>
+        /// Startup probe of application within the container.
+        /// All other probes are disabled if a startup probe is provided, until it
+        /// succeeds. Container will not be added to service endpoints if the probe fails.
+        /// Structure is documented below.
+        /// </summary>
         [Input("startupProbe")]
         public Input<Inputs.ServiceTemplateSpecContainerStartupProbeGetArgs>? StartupProbe { get; set; }
 

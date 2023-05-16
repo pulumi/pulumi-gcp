@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,7 @@ import java.util.Objects;
 public final class GetServiceTemplateSpecContainerStartupProbeHttpGet {
     private List<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader> httpHeaders;
     private String path;
+    private Integer port;
 
     private GetServiceTemplateSpecContainerStartupProbeHttpGet() {}
     public List<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader> httpHeaders() {
@@ -20,6 +22,9 @@ public final class GetServiceTemplateSpecContainerStartupProbeHttpGet {
     }
     public String path() {
         return this.path;
+    }
+    public Integer port() {
+        return this.port;
     }
 
     public static Builder builder() {
@@ -33,11 +38,13 @@ public final class GetServiceTemplateSpecContainerStartupProbeHttpGet {
     public static final class Builder {
         private List<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader> httpHeaders;
         private String path;
+        private Integer port;
         public Builder() {}
         public Builder(GetServiceTemplateSpecContainerStartupProbeHttpGet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpHeaders = defaults.httpHeaders;
     	      this.path = defaults.path;
+    	      this.port = defaults.port;
         }
 
         @CustomType.Setter
@@ -53,10 +60,16 @@ public final class GetServiceTemplateSpecContainerStartupProbeHttpGet {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
+        public Builder port(Integer port) {
+            this.port = Objects.requireNonNull(port);
+            return this;
+        }
         public GetServiceTemplateSpecContainerStartupProbeHttpGet build() {
             final var o = new GetServiceTemplateSpecContainerStartupProbeHttpGet();
             o.httpHeaders = httpHeaders;
             o.path = path;
+            o.port = port;
             return o;
         }
     }

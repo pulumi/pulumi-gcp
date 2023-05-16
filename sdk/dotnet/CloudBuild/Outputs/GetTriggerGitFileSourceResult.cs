@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         public readonly string GithubEnterpriseConfig;
         public readonly string Path;
         public readonly string RepoType;
+        public readonly string Repository;
         public readonly string Revision;
         public readonly string Uri;
 
@@ -27,6 +28,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string repoType,
 
+            string repository,
+
             string revision,
 
             string uri)
@@ -34,6 +37,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
             GithubEnterpriseConfig = githubEnterpriseConfig;
             Path = path;
             RepoType = repoType;
+            Repository = repository;
             Revision = revision;
             Uri = uri;
         }

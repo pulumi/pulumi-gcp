@@ -9,6 +9,7 @@ import com.pulumi.gcp.container.outputs.AwsNodePoolConfigConfigEncryption;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigInstancePlacement;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigProxyConfig;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigRootVolume;
+import com.pulumi.gcp.container.outputs.AwsNodePoolConfigSpotConfig;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigSshConfig;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigTaint;
 import java.lang.String;
@@ -70,6 +71,11 @@ public final class AwsNodePoolConfig {
      * 
      */
     private @Nullable List<String> securityGroupIds;
+    /**
+     * @return (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * 
+     */
+    private @Nullable AwsNodePoolConfigSpotConfig spotConfig;
     /**
      * @return Optional. The SSH configuration.
      * 
@@ -158,6 +164,13 @@ public final class AwsNodePoolConfig {
         return this.securityGroupIds == null ? List.of() : this.securityGroupIds;
     }
     /**
+     * @return (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * 
+     */
+    public Optional<AwsNodePoolConfigSpotConfig> spotConfig() {
+        return Optional.ofNullable(this.spotConfig);
+    }
+    /**
      * @return Optional. The SSH configuration.
      * 
      */
@@ -198,6 +211,7 @@ public final class AwsNodePoolConfig {
         private @Nullable AwsNodePoolConfigProxyConfig proxyConfig;
         private @Nullable AwsNodePoolConfigRootVolume rootVolume;
         private @Nullable List<String> securityGroupIds;
+        private @Nullable AwsNodePoolConfigSpotConfig spotConfig;
         private @Nullable AwsNodePoolConfigSshConfig sshConfig;
         private @Nullable Map<String,String> tags;
         private @Nullable List<AwsNodePoolConfigTaint> taints;
@@ -214,6 +228,7 @@ public final class AwsNodePoolConfig {
     	      this.proxyConfig = defaults.proxyConfig;
     	      this.rootVolume = defaults.rootVolume;
     	      this.securityGroupIds = defaults.securityGroupIds;
+    	      this.spotConfig = defaults.spotConfig;
     	      this.sshConfig = defaults.sshConfig;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
@@ -273,6 +288,11 @@ public final class AwsNodePoolConfig {
             return securityGroupIds(List.of(securityGroupIds));
         }
         @CustomType.Setter
+        public Builder spotConfig(@Nullable AwsNodePoolConfigSpotConfig spotConfig) {
+            this.spotConfig = spotConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sshConfig(@Nullable AwsNodePoolConfigSshConfig sshConfig) {
             this.sshConfig = sshConfig;
             return this;
@@ -302,6 +322,7 @@ public final class AwsNodePoolConfig {
             o.proxyConfig = proxyConfig;
             o.rootVolume = rootVolume;
             o.securityGroupIds = securityGroupIds;
+            o.spotConfig = spotConfig;
             o.sshConfig = sshConfig;
             o.tags = tags;
             o.taints = taints;

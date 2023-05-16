@@ -45,6 +45,7 @@ __all__ = [
     'JobLoadArgs',
     'JobLoadDestinationEncryptionConfigurationArgs',
     'JobLoadDestinationTableArgs',
+    'JobLoadParquetOptionsArgs',
     'JobLoadTimePartitioningArgs',
     'JobQueryArgs',
     'JobQueryDefaultDatasetArgs',
@@ -1897,6 +1898,7 @@ class JobLoadArgs:
                  json_extension: Optional[pulumi.Input[str]] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
                  null_marker: Optional[pulumi.Input[str]] = None,
+                 parquet_options: Optional[pulumi.Input['JobLoadParquetOptionsArgs']] = None,
                  projection_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quote: Optional[pulumi.Input[str]] = None,
                  schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1950,6 +1952,8 @@ class JobLoadArgs:
                property to a custom value, BigQuery throws an error if an
                empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
                an empty value.
+        :param pulumi.Input['JobLoadParquetOptionsArgs'] parquet_options: Parquet Options for load and make external tables.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
                Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
                If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -2010,6 +2014,8 @@ class JobLoadArgs:
             pulumi.set(__self__, "max_bad_records", max_bad_records)
         if null_marker is not None:
             pulumi.set(__self__, "null_marker", null_marker)
+        if parquet_options is not None:
+            pulumi.set(__self__, "parquet_options", parquet_options)
         if projection_fields is not None:
             pulumi.set(__self__, "projection_fields", projection_fields)
         if quote is not None:
@@ -2212,6 +2218,19 @@ class JobLoadArgs:
     @null_marker.setter
     def null_marker(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "null_marker", value)
+
+    @property
+    @pulumi.getter(name="parquetOptions")
+    def parquet_options(self) -> Optional[pulumi.Input['JobLoadParquetOptionsArgs']]:
+        """
+        Parquet Options for load and make external tables.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "parquet_options")
+
+    @parquet_options.setter
+    def parquet_options(self, value: Optional[pulumi.Input['JobLoadParquetOptionsArgs']]):
+        pulumi.set(self, "parquet_options", value)
 
     @property
     @pulumi.getter(name="projectionFields")
@@ -2422,6 +2441,45 @@ class JobLoadDestinationTableArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+
+@pulumi.input_type
+class JobLoadParquetOptionsArgs:
+    def __init__(__self__, *,
+                 enable_list_inference: Optional[pulumi.Input[bool]] = None,
+                 enum_as_string: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_list_inference: If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+        :param pulumi.Input[bool] enum_as_string: If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        """
+        if enable_list_inference is not None:
+            pulumi.set(__self__, "enable_list_inference", enable_list_inference)
+        if enum_as_string is not None:
+            pulumi.set(__self__, "enum_as_string", enum_as_string)
+
+    @property
+    @pulumi.getter(name="enableListInference")
+    def enable_list_inference(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+        """
+        return pulumi.get(self, "enable_list_inference")
+
+    @enable_list_inference.setter
+    def enable_list_inference(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_list_inference", value)
+
+    @property
+    @pulumi.getter(name="enumAsString")
+    def enum_as_string(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        """
+        return pulumi.get(self, "enum_as_string")
+
+    @enum_as_string.setter
+    def enum_as_string(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enum_as_string", value)
 
 
 @pulumi.input_type

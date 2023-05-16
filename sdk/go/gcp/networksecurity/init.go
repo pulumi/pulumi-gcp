@@ -21,10 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:networksecurity/addressGroup:AddressGroup":
+		r = &AddressGroup{}
+	case "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy":
+		r = &AuthorizationPolicy{}
+	case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
+		r = &ClientTlsPolicy{}
 	case "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy":
 		r = &GatewaySecurityPolicy{}
 	case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
 		r = &GatewaySecurityPolicyRule{}
+	case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
+		r = &TlsInspectionPolicy{}
 	case "gcp:networksecurity/urlList:UrlList":
 		r = &UrlList{}
 	default:
@@ -42,12 +50,32 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networksecurity/addressGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/authorizationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/clientTlsPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networksecurity/gatewaySecurityPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/gatewaySecurityPolicyRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/tlsInspectionPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

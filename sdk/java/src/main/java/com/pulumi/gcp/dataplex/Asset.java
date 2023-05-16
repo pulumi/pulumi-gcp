@@ -25,6 +25,82 @@ import javax.annotation.Nullable;
  * The Dataplex Asset resource
  * 
  * ## Example Usage
+ * ### Basic_asset
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.dataplex.Lake;
+ * import com.pulumi.gcp.dataplex.LakeArgs;
+ * import com.pulumi.gcp.dataplex.Zone;
+ * import com.pulumi.gcp.dataplex.ZoneArgs;
+ * import com.pulumi.gcp.dataplex.inputs.ZoneDiscoverySpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.ZoneResourceSpecArgs;
+ * import com.pulumi.gcp.dataplex.Asset;
+ * import com.pulumi.gcp.dataplex.AssetArgs;
+ * import com.pulumi.gcp.dataplex.inputs.AssetDiscoverySpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.AssetResourceSpecArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicBucket = new Bucket(&#34;basicBucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *         var basicLake = new Lake(&#34;basicLake&#34;, LakeArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *         var basicZone = new Zone(&#34;basicZone&#34;, ZoneArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .lake(basicLake.name())
+ *             .type(&#34;RAW&#34;)
+ *             .discoverySpec(ZoneDiscoverySpecArgs.builder()
+ *                 .enabled(false)
+ *                 .build())
+ *             .resourceSpec(ZoneResourceSpecArgs.builder()
+ *                 .locationType(&#34;SINGLE_REGION&#34;)
+ *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *         var primary = new Asset(&#34;primary&#34;, AssetArgs.builder()        
+ *             .location(&#34;us-west1&#34;)
+ *             .lake(basicLake.name())
+ *             .dataplexZone(basicZone.name())
+ *             .discoverySpec(AssetDiscoverySpecArgs.builder()
+ *                 .enabled(false)
+ *                 .build())
+ *             .resourceSpec(AssetResourceSpecArgs.builder()
+ *                 .name(&#34;projects/my-project-name/buckets/bucket&#34;)
+ *                 .type(&#34;STORAGE_BUCKET&#34;)
+ *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(basicBucket)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -8,6 +8,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVpcAccess;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -24,7 +25,7 @@ public final class ServiceTemplate {
      */
     private @Nullable Map<String,String> annotations;
     /**
-     * @return Holds the single container that defines the unit of execution for this task.
+     * @return Holds the containers that define the unit of execution for this Service.
      * Structure is documented below.
      * 
      */
@@ -67,6 +68,11 @@ public final class ServiceTemplate {
      */
     private @Nullable String serviceAccount;
     /**
+     * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * 
+     */
+    private @Nullable Boolean sessionAffinity;
+    /**
      * @return Max allowed time for an instance to respond to a request.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
@@ -94,7 +100,7 @@ public final class ServiceTemplate {
         return this.annotations == null ? Map.of() : this.annotations;
     }
     /**
-     * @return Holds the single container that defines the unit of execution for this task.
+     * @return Holds the containers that define the unit of execution for this Service.
      * Structure is documented below.
      * 
      */
@@ -153,6 +159,13 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.serviceAccount);
     }
     /**
+     * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * 
+     */
+    public Optional<Boolean> sessionAffinity() {
+        return Optional.ofNullable(this.sessionAffinity);
+    }
+    /**
      * @return Max allowed time for an instance to respond to a request.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
@@ -195,6 +208,7 @@ public final class ServiceTemplate {
         private @Nullable String revision;
         private @Nullable ServiceTemplateScaling scaling;
         private @Nullable String serviceAccount;
+        private @Nullable Boolean sessionAffinity;
         private @Nullable String timeout;
         private @Nullable List<ServiceTemplateVolume> volumes;
         private @Nullable ServiceTemplateVpcAccess vpcAccess;
@@ -210,6 +224,7 @@ public final class ServiceTemplate {
     	      this.revision = defaults.revision;
     	      this.scaling = defaults.scaling;
     	      this.serviceAccount = defaults.serviceAccount;
+    	      this.sessionAffinity = defaults.sessionAffinity;
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
     	      this.vpcAccess = defaults.vpcAccess;
@@ -264,6 +279,11 @@ public final class ServiceTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder sessionAffinity(@Nullable Boolean sessionAffinity) {
+            this.sessionAffinity = sessionAffinity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
             this.timeout = timeout;
             return this;
@@ -292,6 +312,7 @@ public final class ServiceTemplate {
             o.revision = revision;
             o.scaling = scaling;
             o.serviceAccount = serviceAccount;
+            o.sessionAffinity = sessionAffinity;
             o.timeout = timeout;
             o.volumes = volumes;
             o.vpcAccess = vpcAccess;

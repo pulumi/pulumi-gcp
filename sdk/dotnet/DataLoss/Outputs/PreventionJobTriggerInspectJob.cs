@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionJobTriggerInspectJobAction> Actions;
         /// <summary>
+        /// The core content of the template.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobInspectConfig? InspectConfig;
+        /// <summary>
         /// The name of the template to run when this job is triggered.
         /// </summary>
         public readonly string InspectTemplateName;
@@ -32,11 +37,14 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionJobTriggerInspectJob(
             ImmutableArray<Outputs.PreventionJobTriggerInspectJobAction> actions,
 
+            Outputs.PreventionJobTriggerInspectJobInspectConfig? inspectConfig,
+
             string inspectTemplateName,
 
             Outputs.PreventionJobTriggerInspectJobStorageConfig storageConfig)
         {
             Actions = actions;
+            InspectConfig = inspectConfig;
             InspectTemplateName = inspectTemplateName;
             StorageConfig = storageConfig;
         }

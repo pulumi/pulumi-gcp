@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class BackendServiceCdnPolicy
     {
         /// <summary>
+        /// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+        /// The cache is bypassed for all cdnPolicy.cacheMode settings.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BackendServiceCdnPolicyBypassCacheOnRequestHeader> BypassCacheOnRequestHeaders;
+        /// <summary>
         /// The CacheKeyPolicy for this CdnPolicy.
         /// Structure is documented below.
         /// </summary>
@@ -66,6 +72,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private BackendServiceCdnPolicy(
+            ImmutableArray<Outputs.BackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders,
+
             Outputs.BackendServiceCdnPolicyCacheKeyPolicy? cacheKeyPolicy,
 
             string? cacheMode,
@@ -84,6 +92,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? signedUrlCacheMaxAgeSec)
         {
+            BypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             CacheKeyPolicy = cacheKeyPolicy;
             CacheMode = cacheMode;
             ClientTtl = clientTtl;

@@ -12,6 +12,22 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class FirewallPolicyRuleMatchGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("destAddressGroups")]
+        private InputList<string>? _destAddressGroups;
+        public InputList<string> DestAddressGroups
+        {
+            get => _destAddressGroups ?? (_destAddressGroups = new InputList<string>());
+            set => _destAddressGroups = value;
+        }
+
+        [Input("destFqdns")]
+        private InputList<string>? _destFqdns;
+        public InputList<string> DestFqdns
+        {
+            get => _destFqdns ?? (_destFqdns = new InputList<string>());
+            set => _destFqdns = value;
+        }
+
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
 
@@ -22,6 +38,22 @@ namespace Pulumi.Gcp.Compute.Inputs
         {
             get => _destIpRanges ?? (_destIpRanges = new InputList<string>());
             set => _destIpRanges = value;
+        }
+
+        [Input("destRegionCodes")]
+        private InputList<string>? _destRegionCodes;
+        public InputList<string> DestRegionCodes
+        {
+            get => _destRegionCodes ?? (_destRegionCodes = new InputList<string>());
+            set => _destRegionCodes = value;
+        }
+
+        [Input("destThreatIntelligences")]
+        private InputList<string>? _destThreatIntelligences;
+        public InputList<string> DestThreatIntelligences
+        {
+            get => _destThreatIntelligences ?? (_destThreatIntelligences = new InputList<string>());
+            set => _destThreatIntelligences = value;
         }
 
         [Input("layer4Configs", required: true)]
@@ -36,6 +68,22 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _layer4Configs = value;
         }
 
+        [Input("srcAddressGroups")]
+        private InputList<string>? _srcAddressGroups;
+        public InputList<string> SrcAddressGroups
+        {
+            get => _srcAddressGroups ?? (_srcAddressGroups = new InputList<string>());
+            set => _srcAddressGroups = value;
+        }
+
+        [Input("srcFqdns")]
+        private InputList<string>? _srcFqdns;
+        public InputList<string> SrcFqdns
+        {
+            get => _srcFqdns ?? (_srcFqdns = new InputList<string>());
+            set => _srcFqdns = value;
+        }
+
         [Input("srcIpRanges")]
         private InputList<string>? _srcIpRanges;
 
@@ -46,6 +94,22 @@ namespace Pulumi.Gcp.Compute.Inputs
         {
             get => _srcIpRanges ?? (_srcIpRanges = new InputList<string>());
             set => _srcIpRanges = value;
+        }
+
+        [Input("srcRegionCodes")]
+        private InputList<string>? _srcRegionCodes;
+        public InputList<string> SrcRegionCodes
+        {
+            get => _srcRegionCodes ?? (_srcRegionCodes = new InputList<string>());
+            set => _srcRegionCodes = value;
+        }
+
+        [Input("srcThreatIntelligences")]
+        private InputList<string>? _srcThreatIntelligences;
+        public InputList<string> SrcThreatIntelligences
+        {
+            get => _srcThreatIntelligences ?? (_srcThreatIntelligences = new InputList<string>());
+            set => _srcThreatIntelligences = value;
         }
 
         public FirewallPolicyRuleMatchGetArgs()

@@ -370,6 +370,75 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Multicontainer
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Name = "hello-1",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerPortArgs
+    ///                         {
+    ///                             ContainerPort = 8080,
+    ///                         },
+    ///                     },
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     DependsOns = new[]
+    ///                     {
+    ///                         "hello-2",
+    ///                     },
+    ///                     VolumeMounts = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerVolumeMountArgs
+    ///                         {
+    ///                             Name = "empty-dir-volume",
+    ///                             MountPath = "/mnt",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Name = "hello-2",
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///             Volumes = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
+    ///                 {
+    ///                     Name = "empty-dir-volume",
+    ///                     EmptyDir = new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeEmptyDirArgs
+    ///                     {
+    ///                         Medium = "MEMORY",
+    ///                         SizeLimit = "256Mi",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -470,7 +539,9 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> LatestReadyRevision { get; private set; } = null!;
 
         /// <summary>
-        /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Output("launchStage")]
@@ -658,7 +729,9 @@ namespace Pulumi.Gcp.CloudRunV2
         }
 
         /// <summary>
-        /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
@@ -809,7 +882,9 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<string>? LatestReadyRevision { get; set; }
 
         /// <summary>
-        /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]

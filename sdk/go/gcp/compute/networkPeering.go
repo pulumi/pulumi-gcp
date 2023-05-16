@@ -94,6 +94,8 @@ type NetworkPeering struct {
 	// The peer network in the peering. The peer network
 	// may belong to a different project.
 	PeerNetwork pulumi.StringOutput `pulumi:"peerNetwork"`
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+	StackType pulumi.StringPtrOutput `pulumi:"stackType"`
 	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
 	// `ACTIVE` when there's a matching configuration in the peer network.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -151,6 +153,8 @@ type networkPeeringState struct {
 	// The peer network in the peering. The peer network
 	// may belong to a different project.
 	PeerNetwork *string `pulumi:"peerNetwork"`
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+	StackType *string `pulumi:"stackType"`
 	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
 	// `ACTIVE` when there's a matching configuration in the peer network.
 	State *string `pulumi:"state"`
@@ -174,6 +178,8 @@ type NetworkPeeringState struct {
 	// The peer network in the peering. The peer network
 	// may belong to a different project.
 	PeerNetwork pulumi.StringPtrInput
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+	StackType pulumi.StringPtrInput
 	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
 	// `ACTIVE` when there's a matching configuration in the peer network.
 	State pulumi.StringPtrInput
@@ -201,6 +207,8 @@ type networkPeeringArgs struct {
 	// The peer network in the peering. The peer network
 	// may belong to a different project.
 	PeerNetwork string `pulumi:"peerNetwork"`
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+	StackType *string `pulumi:"stackType"`
 }
 
 // The set of arguments for constructing a NetworkPeering resource.
@@ -220,6 +228,8 @@ type NetworkPeeringArgs struct {
 	// The peer network in the peering. The peer network
 	// may belong to a different project.
 	PeerNetwork pulumi.StringInput
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+	StackType pulumi.StringPtrInput
 }
 
 func (NetworkPeeringArgs) ElementType() reflect.Type {
@@ -343,6 +353,11 @@ func (o NetworkPeeringOutput) Network() pulumi.StringOutput {
 // may belong to a different project.
 func (o NetworkPeeringOutput) PeerNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPeering) pulumi.StringOutput { return v.PeerNetwork }).(pulumi.StringOutput)
+}
+
+// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+func (o NetworkPeeringOutput) StackType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPeering) pulumi.StringPtrOutput { return v.StackType }).(pulumi.StringPtrOutput)
 }
 
 // State for the peering, either `ACTIVE` or `INACTIVE`. The peering is

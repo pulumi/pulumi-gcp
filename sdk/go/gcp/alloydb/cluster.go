@@ -97,6 +97,12 @@ type Cluster struct {
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig ClusterEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
+	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// Structure is documented below.
+	EncryptionInfos ClusterEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrOutput `pulumi:"initialUser"`
@@ -170,6 +176,12 @@ type clusterState struct {
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
+	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// Structure is documented below.
+	EncryptionInfos []ClusterEncryptionInfo `pulumi:"encryptionInfos"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
@@ -206,6 +218,12 @@ type ClusterState struct {
 	DatabaseVersion pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig ClusterEncryptionConfigPtrInput
+	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// Structure is documented below.
+	EncryptionInfos ClusterEncryptionInfoArrayInput
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
@@ -241,6 +259,9 @@ type clusterArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser *ClusterInitialUser `pulumi:"initialUser"`
@@ -266,6 +287,9 @@ type ClusterArgs struct {
 	ClusterId pulumi.StringInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig ClusterEncryptionConfigPtrInput
 	// Initial user to setup during cluster creation.
 	// Structure is documented below.
 	InitialUser ClusterInitialUserPtrInput
@@ -394,6 +418,18 @@ func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 // User-settable and human-readable display name for the Cluster.
 func (o ClusterOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+// Structure is documented below.
+func (o ClusterOutput) EncryptionConfig() ClusterEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterEncryptionConfigPtrOutput { return v.EncryptionConfig }).(ClusterEncryptionConfigPtrOutput)
+}
+
+// EncryptionInfo describes the encryption information of a cluster or a backup.
+// Structure is documented below.
+func (o ClusterOutput) EncryptionInfos() ClusterEncryptionInfoArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterEncryptionInfoArrayOutput { return v.EncryptionInfos }).(ClusterEncryptionInfoArrayOutput)
 }
 
 // Initial user to setup during cluster creation.

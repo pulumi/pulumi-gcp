@@ -20,6 +20,60 @@ import (
 //   - [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 //
 // ## Example Usage
+// ### Dlp Deidentify Template Image Transformations
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionDeidentifyTemplate(ctx, "basic", &dataloss.PreventionDeidentifyTemplateArgs{
+//				DeidentifyConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs{
+//					ImageTransformations: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs{
+//						Transforms: dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArray{
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
+//								RedactionColor: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs{
+//									Blue:  pulumi.Float64(1),
+//									Green: pulumi.Float64(0.2),
+//									Red:   pulumi.Float64(0.5),
+//								},
+//								SelectedInfoTypes: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs{
+//									InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArray{
+//										&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs{
+//											Name:    pulumi.String("COLOR_INFO"),
+//											Version: pulumi.String("latest"),
+//										},
+//									},
+//								},
+//							},
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
+//								AllInfoTypes: nil,
+//							},
+//							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
+//								AllText: nil,
+//							},
+//						},
+//					},
+//				},
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				Parent:      pulumi.String("projects/my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -39,6 +93,8 @@ import (
 type PreventionDeidentifyTemplate struct {
 	pulumi.CustomResourceState
 
+	// The creation timestamp of an deidentifyTemplate. Set by the server.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig PreventionDeidentifyTemplateDeidentifyConfigOutput `pulumi:"deidentifyConfig"`
@@ -46,6 +102,8 @@ type PreventionDeidentifyTemplate struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the template.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// Name of the information type.
+	// (Required)
 	// Name of the information type.
 	// (Required)
 	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -90,6 +148,8 @@ type PreventionDeidentifyTemplate struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// The last update timestamp of an deidentifyTemplate. Set by the server.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewPreventionDeidentifyTemplate registers a new resource with the given unique name, arguments, and options.
@@ -127,6 +187,8 @@ func GetPreventionDeidentifyTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PreventionDeidentifyTemplate resources.
 type preventionDeidentifyTemplateState struct {
+	// The creation timestamp of an deidentifyTemplate. Set by the server.
+	CreateTime *string `pulumi:"createTime"`
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig *PreventionDeidentifyTemplateDeidentifyConfig `pulumi:"deidentifyConfig"`
@@ -134,6 +196,8 @@ type preventionDeidentifyTemplateState struct {
 	Description *string `pulumi:"description"`
 	// User set display name of the template.
 	DisplayName *string `pulumi:"displayName"`
+	// Name of the information type.
+	// (Required)
 	// Name of the information type.
 	// (Required)
 	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -178,9 +242,13 @@ type preventionDeidentifyTemplateState struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent *string `pulumi:"parent"`
+	// The last update timestamp of an deidentifyTemplate. Set by the server.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type PreventionDeidentifyTemplateState struct {
+	// The creation timestamp of an deidentifyTemplate. Set by the server.
+	CreateTime pulumi.StringPtrInput
 	// Configuration of the deidentify template
 	// Structure is documented below.
 	DeidentifyConfig PreventionDeidentifyTemplateDeidentifyConfigPtrInput
@@ -188,6 +256,8 @@ type PreventionDeidentifyTemplateState struct {
 	Description pulumi.StringPtrInput
 	// User set display name of the template.
 	DisplayName pulumi.StringPtrInput
+	// Name of the information type.
+	// (Required)
 	// Name of the information type.
 	// (Required)
 	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -232,6 +302,8 @@ type PreventionDeidentifyTemplateState struct {
 	// * `organizations/{{organization_id}}`
 	// * `organizations/{{organization_id}}/locations/{{location}}`
 	Parent pulumi.StringPtrInput
+	// The last update timestamp of an deidentifyTemplate. Set by the server.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (PreventionDeidentifyTemplateState) ElementType() reflect.Type {
@@ -358,6 +430,11 @@ func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplateOutput
 	return o
 }
 
+// The creation timestamp of an deidentifyTemplate. Set by the server.
+func (o PreventionDeidentifyTemplateOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Configuration of the deidentify template
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateOutput) DeidentifyConfig() PreventionDeidentifyTemplateDeidentifyConfigOutput {
@@ -376,6 +453,8 @@ func (o PreventionDeidentifyTemplateOutput) DisplayName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Name of the information type.
+// (Required)
 // Name of the information type.
 // (Required)
 // Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -424,6 +503,11 @@ func (o PreventionDeidentifyTemplateOutput) Name() pulumi.StringOutput {
 // * `organizations/{{organization_id}}/locations/{{location}}`
 func (o PreventionDeidentifyTemplateOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of an deidentifyTemplate. Set by the server.
+func (o PreventionDeidentifyTemplateOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionDeidentifyTemplate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type PreventionDeidentifyTemplateArrayOutput struct{ *pulumi.OutputState }

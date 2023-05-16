@@ -24,6 +24,11 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterAutomatedBackupPolicyEncryptionConfig? EncryptionConfig;
+        /// <summary>
         /// Labels to apply to backups created using this configuration.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
@@ -32,12 +37,12 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly string? Location;
         /// <summary>
-        /// Quantity-based Backup retention policy to retain recent backups.
+        /// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterAutomatedBackupPolicyQuantityBasedRetention? QuantityBasedRetention;
         /// <summary>
-        /// Time-based Backup retention policy.
+        /// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterAutomatedBackupPolicyTimeBasedRetention? TimeBasedRetention;
@@ -53,6 +58,8 @@ namespace Pulumi.Gcp.Alloydb.Outputs
 
             bool? enabled,
 
+            Outputs.ClusterAutomatedBackupPolicyEncryptionConfig? encryptionConfig,
+
             ImmutableDictionary<string, string>? labels,
 
             string? location,
@@ -65,6 +72,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         {
             BackupWindow = backupWindow;
             Enabled = enabled;
+            EncryptionConfig = encryptionConfig;
             Labels = labels;
             Location = location;
             QuantityBasedRetention = quantityBasedRetention;

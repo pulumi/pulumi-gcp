@@ -6,6 +6,8 @@ package com.pulumi.gcp.cloudbuild.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildStepVolumeArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +18,48 @@ import javax.annotation.Nullable;
 public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TriggerBuildStepArgs Empty = new TriggerBuildStepArgs();
+
+    /**
+     * Allow this build step to fail without failing the entire build if and
+     * only if the exit code is one of the specified codes.
+     * If `allowFailure` is also specified, this field will take precedence.
+     * 
+     */
+    @Import(name="allowExitCodes")
+    private @Nullable Output<List<Integer>> allowExitCodes;
+
+    /**
+     * @return Allow this build step to fail without failing the entire build if and
+     * only if the exit code is one of the specified codes.
+     * If `allowFailure` is also specified, this field will take precedence.
+     * 
+     */
+    public Optional<Output<List<Integer>>> allowExitCodes() {
+        return Optional.ofNullable(this.allowExitCodes);
+    }
+
+    /**
+     * Allow this build step to fail without failing the entire build.
+     * If false, the entire build will fail if this step fails. Otherwise, the
+     * build will succeed, but this step will still have a failure status.
+     * Error information will be reported in the `failureDetail` field.
+     * `allowExitCodes` takes precedence over this field.
+     * 
+     */
+    @Import(name="allowFailure")
+    private @Nullable Output<Boolean> allowFailure;
+
+    /**
+     * @return Allow this build step to fail without failing the entire build.
+     * If false, the entire build will fail if this step fails. Otherwise, the
+     * build will succeed, but this step will still have a failure status.
+     * Error information will be reported in the `failureDetail` field.
+     * `allowExitCodes` takes precedence over this field.
+     * 
+     */
+    public Optional<Output<Boolean>> allowFailure() {
+        return Optional.ofNullable(this.allowFailure);
+    }
 
     /**
      * A list of arguments that will be presented to the step when it is started.
@@ -296,6 +340,8 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
     private TriggerBuildStepArgs() {}
 
     private TriggerBuildStepArgs(TriggerBuildStepArgs $) {
+        this.allowExitCodes = $.allowExitCodes;
+        this.allowFailure = $.allowFailure;
         this.args = $.args;
         this.dir = $.dir;
         this.entrypoint = $.entrypoint;
@@ -326,6 +372,72 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(TriggerBuildStepArgs defaults) {
             $ = new TriggerBuildStepArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowExitCodes Allow this build step to fail without failing the entire build if and
+         * only if the exit code is one of the specified codes.
+         * If `allowFailure` is also specified, this field will take precedence.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowExitCodes(@Nullable Output<List<Integer>> allowExitCodes) {
+            $.allowExitCodes = allowExitCodes;
+            return this;
+        }
+
+        /**
+         * @param allowExitCodes Allow this build step to fail without failing the entire build if and
+         * only if the exit code is one of the specified codes.
+         * If `allowFailure` is also specified, this field will take precedence.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowExitCodes(List<Integer> allowExitCodes) {
+            return allowExitCodes(Output.of(allowExitCodes));
+        }
+
+        /**
+         * @param allowExitCodes Allow this build step to fail without failing the entire build if and
+         * only if the exit code is one of the specified codes.
+         * If `allowFailure` is also specified, this field will take precedence.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowExitCodes(Integer... allowExitCodes) {
+            return allowExitCodes(List.of(allowExitCodes));
+        }
+
+        /**
+         * @param allowFailure Allow this build step to fail without failing the entire build.
+         * If false, the entire build will fail if this step fails. Otherwise, the
+         * build will succeed, but this step will still have a failure status.
+         * Error information will be reported in the `failureDetail` field.
+         * `allowExitCodes` takes precedence over this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowFailure(@Nullable Output<Boolean> allowFailure) {
+            $.allowFailure = allowFailure;
+            return this;
+        }
+
+        /**
+         * @param allowFailure Allow this build step to fail without failing the entire build.
+         * If false, the entire build will fail if this step fails. Otherwise, the
+         * build will succeed, but this step will still have a failure status.
+         * Error information will be reported in the `failureDetail` field.
+         * `allowExitCodes` takes precedence over this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowFailure(Boolean allowFailure) {
+            return allowFailure(Output.of(allowFailure));
         }
 
         /**

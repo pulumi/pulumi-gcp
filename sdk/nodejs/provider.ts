@@ -77,6 +77,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataCatalogCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataFusionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataLossPreventionCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly databaseMigrationServiceCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataflowCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataformCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataplexCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -102,6 +103,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly gkeBackupCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly gkeonpremCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly googlePartnerName!: pulumi.Output<string | undefined>;
     public readonly healthcareCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iam2CustomEndpoint!: pulumi.Output<string | undefined>;
@@ -221,6 +223,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataCatalogCustomEndpoint"] = args ? args.dataCatalogCustomEndpoint : undefined;
             resourceInputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
             resourceInputs["dataLossPreventionCustomEndpoint"] = args ? args.dataLossPreventionCustomEndpoint : undefined;
+            resourceInputs["databaseMigrationServiceCustomEndpoint"] = args ? args.databaseMigrationServiceCustomEndpoint : undefined;
             resourceInputs["dataflowCustomEndpoint"] = args ? args.dataflowCustomEndpoint : undefined;
             resourceInputs["dataformCustomEndpoint"] = args ? args.dataformCustomEndpoint : undefined;
             resourceInputs["dataplexCustomEndpoint"] = args ? args.dataplexCustomEndpoint : undefined;
@@ -247,6 +250,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["gkeBackupCustomEndpoint"] = args ? args.gkeBackupCustomEndpoint : undefined;
             resourceInputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
             resourceInputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
+            resourceInputs["gkeonpremCustomEndpoint"] = args ? args.gkeonpremCustomEndpoint : undefined;
             resourceInputs["googlePartnerName"] = args ? args.googlePartnerName : undefined;
             resourceInputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
             resourceInputs["iam2CustomEndpoint"] = args ? args.iam2CustomEndpoint : undefined;
@@ -367,6 +371,7 @@ export interface ProviderArgs {
     dataCatalogCustomEndpoint?: pulumi.Input<string>;
     dataFusionCustomEndpoint?: pulumi.Input<string>;
     dataLossPreventionCustomEndpoint?: pulumi.Input<string>;
+    databaseMigrationServiceCustomEndpoint?: pulumi.Input<string>;
     dataflowCustomEndpoint?: pulumi.Input<string>;
     dataformCustomEndpoint?: pulumi.Input<string>;
     dataplexCustomEndpoint?: pulumi.Input<string>;
@@ -393,6 +398,7 @@ export interface ProviderArgs {
     gkeBackupCustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;
     gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
+    gkeonpremCustomEndpoint?: pulumi.Input<string>;
     googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
     iam2CustomEndpoint?: pulumi.Input<string>;

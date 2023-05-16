@@ -6,6 +6,8 @@ package com.pulumi.gcp.dataloss.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
@@ -15,6 +17,11 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
      * 
      */
     private String name;
+    /**
+     * @return Version name for this InfoType.
+     * 
+     */
+    private @Nullable String version;
 
     private PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType() {}
     /**
@@ -24,6 +31,13 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Version name for this InfoType.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -36,10 +50,12 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
     @CustomType.Builder
     public static final class Builder {
         private String name;
+        private @Nullable String version;
         public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -47,9 +63,15 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+            this.version = version;
+            return this;
+        }
         public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType build() {
             final var o = new PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType();
             o.name = name;
+            o.version = version;
             return o;
         }
     }

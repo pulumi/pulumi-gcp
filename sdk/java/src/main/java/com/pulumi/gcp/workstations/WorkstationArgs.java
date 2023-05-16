@@ -62,14 +62,14 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location where the workstation cluster config should reside.
+     * The location where the workstation parent resources reside.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return The location where the workstation cluster config should reside.
+     * @return The location where the workstation parent resources reside.
      * 
      */
     public Output<String> location() {
@@ -94,14 +94,14 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      * 
      */
     @Import(name="workstationClusterId", required=true)
     private Output<String> workstationClusterId;
 
     /**
-     * @return The name of the workstation cluster.
+     * @return The ID of the parent workstation cluster.
      * 
      */
     public Output<String> workstationClusterId() {
@@ -109,14 +109,14 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the workstation cluster config.
+     * The ID of the parent workstation cluster config.
      * 
      */
     @Import(name="workstationConfigId", required=true)
     private Output<String> workstationConfigId;
 
     /**
-     * @return The ID of the workstation cluster config.
+     * @return The ID of the parent workstation cluster config.
      * 
      */
     public Output<String> workstationConfigId() {
@@ -233,7 +233,7 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location where the workstation cluster config should reside.
+         * @param location The location where the workstation parent resources reside.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location where the workstation cluster config should reside.
+         * @param location The location where the workstation parent resources reside.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workstationClusterId The name of the workstation cluster.
+         * @param workstationClusterId The ID of the parent workstation cluster.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workstationClusterId The name of the workstation cluster.
+         * @param workstationClusterId The ID of the parent workstation cluster.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workstationConfigId The ID of the workstation cluster config.
+         * @param workstationConfigId The ID of the parent workstation cluster config.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workstationConfigId The ID of the workstation cluster config.
+         * @param workstationConfigId The ID of the parent workstation cluster config.
          * 
          * @return builder
          * 

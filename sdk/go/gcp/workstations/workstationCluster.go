@@ -153,7 +153,7 @@ type WorkstationCluster struct {
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
 	Conditions WorkstationClusterConditionArrayOutput `pulumi:"conditions"`
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
 	// Details can be found in the conditions field.
@@ -183,7 +183,7 @@ type WorkstationCluster struct {
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// The ID of the workstation cluster.
+	// ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
 }
 
@@ -230,7 +230,7 @@ type workstationClusterState struct {
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
 	Conditions []WorkstationClusterCondition `pulumi:"conditions"`
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
 	// Details can be found in the conditions field.
@@ -260,7 +260,7 @@ type workstationClusterState struct {
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
-	// The ID of the workstation cluster.
+	// ID to use for the workstation cluster.
 	WorkstationClusterId *string `pulumi:"workstationClusterId"`
 }
 
@@ -270,7 +270,7 @@ type WorkstationClusterState struct {
 	// Status conditions describing the current resource state.
 	// Structure is documented below.
 	Conditions WorkstationClusterConditionArrayInput
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime pulumi.StringPtrInput
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
 	// Details can be found in the conditions field.
@@ -300,7 +300,7 @@ type WorkstationClusterState struct {
 	Subnetwork pulumi.StringPtrInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
-	// The ID of the workstation cluster.
+	// ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringPtrInput
 }
 
@@ -329,7 +329,7 @@ type workstationClusterArgs struct {
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork string `pulumi:"subnetwork"`
-	// The ID of the workstation cluster.
+	// ID to use for the workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
 }
 
@@ -355,7 +355,7 @@ type WorkstationClusterArgs struct {
 	// Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
 	// Must be part of the subnetwork specified for this cluster.
 	Subnetwork pulumi.StringInput
-	// The ID of the workstation cluster.
+	// ID to use for the workstation cluster.
 	WorkstationClusterId pulumi.StringInput
 }
 
@@ -457,7 +457,7 @@ func (o WorkstationClusterOutput) Conditions() WorkstationClusterConditionArrayO
 	return o.ApplyT(func(v *WorkstationCluster) WorkstationClusterConditionArrayOutput { return v.Conditions }).(WorkstationClusterConditionArrayOutput)
 }
 
-// Time the Instance was created in UTC.
+// Time when this resource was created.
 func (o WorkstationClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -525,7 +525,7 @@ func (o WorkstationClusterOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The ID of the workstation cluster.
+// ID to use for the workstation cluster.
 func (o WorkstationClusterOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationCluster) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }

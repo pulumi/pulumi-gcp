@@ -12,6 +12,8 @@ import com.pulumi.gcp.alloydb.ClusterArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterState;
 import com.pulumi.gcp.alloydb.outputs.ClusterAutomatedBackupPolicy;
 import com.pulumi.gcp.alloydb.outputs.ClusterBackupSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionConfig;
+import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionInfo;
 import com.pulumi.gcp.alloydb.outputs.ClusterInitialUser;
 import com.pulumi.gcp.alloydb.outputs.ClusterMigrationSource;
 import java.lang.String;
@@ -225,6 +227,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> displayName() {
         return Codegen.optional(this.displayName);
+    }
+    /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionConfig", type=ClusterEncryptionConfig.class, parameters={})
+    private Output</* @Nullable */ ClusterEncryptionConfig> encryptionConfig;
+
+    /**
+     * @return EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterEncryptionConfig>> encryptionConfig() {
+        return Codegen.optional(this.encryptionConfig);
+    }
+    /**
+     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionInfos", type=List.class, parameters={ClusterEncryptionInfo.class})
+    private Output<List<ClusterEncryptionInfo>> encryptionInfos;
+
+    /**
+     * @return EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ClusterEncryptionInfo>> encryptionInfos() {
+        return this.encryptionInfos;
     }
     /**
      * Initial user to setup during cluster creation.

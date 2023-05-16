@@ -27,14 +27,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EdgeCacheOrigin{}
 	case "gcp:networkservices/edgeCacheService:EdgeCacheService":
 		r = &EdgeCacheService{}
+	case "gcp:networkservices/endpointPolicy:EndpointPolicy":
+		r = &EndpointPolicy{}
 	case "gcp:networkservices/gateway:Gateway":
 		r = &Gateway{}
+	case "gcp:networkservices/grpcRoute:GrpcRoute":
+		r = &GrpcRoute{}
 	case "gcp:networkservices/httpRoute:HttpRoute":
 		r = &HttpRoute{}
 	case "gcp:networkservices/mesh:Mesh":
 		r = &Mesh{}
+	case "gcp:networkservices/serviceBinding:ServiceBinding":
+		r = &ServiceBinding{}
 	case "gcp:networkservices/tcpRoute:TcpRoute":
 		r = &TcpRoute{}
+	case "gcp:networkservices/tlsRoute:TlsRoute":
+		r = &TlsRoute{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -65,7 +73,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networkservices/endpointPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networkservices/gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/grpcRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -80,7 +98,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networkservices/serviceBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networkservices/tcpRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networkservices/tlsRoute",
 		&module{version},
 	)
 }

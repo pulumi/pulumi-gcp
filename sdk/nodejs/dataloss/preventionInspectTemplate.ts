@@ -80,6 +80,68 @@ import * as utilities from "../utilities";
  *     parent: "projects/my-project-name",
  * });
  * ```
+ * ### Dlp Inspect Template Custom Type Surrogate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customTypeSurrogate = new gcp.dataloss.PreventionInspectTemplate("customTypeSurrogate", {
+ *     description: "My description",
+ *     displayName: "display_name",
+ *     inspectConfig: {
+ *         customInfoTypes: [{
+ *             infoType: {
+ *                 name: "MY_CUSTOM_TYPE",
+ *             },
+ *             likelihood: "UNLIKELY",
+ *             surrogateType: {},
+ *         }],
+ *         infoTypes: [{
+ *             name: "EMAIL_ADDRESS",
+ *         }],
+ *         limits: {
+ *             maxFindingsPerItem: 10,
+ *             maxFindingsPerRequest: 50,
+ *         },
+ *         minLikelihood: "UNLIKELY",
+ *         ruleSets: [
+ *             {
+ *                 infoTypes: [{
+ *                     name: "EMAIL_ADDRESS",
+ *                 }],
+ *                 rules: [{
+ *                     exclusionRule: {
+ *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
+ *                         regex: {
+ *                             pattern: ".+@example.com",
+ *                         },
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 infoTypes: [{
+ *                     name: "MY_CUSTOM_TYPE",
+ *                 }],
+ *                 rules: [{
+ *                     hotwordRule: {
+ *                         hotwordRegex: {
+ *                             pattern: "example*",
+ *                         },
+ *                         likelihoodAdjustment: {
+ *                             fixedLikelihood: "VERY_LIKELY",
+ *                         },
+ *                         proximity: {
+ *                             windowBefore: 50,
+ *                         },
+ *                     },
+ *                 }],
+ *             },
+ *         ],
+ *     },
+ *     parent: "projects/my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *

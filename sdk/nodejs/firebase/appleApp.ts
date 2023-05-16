@@ -97,7 +97,7 @@ export class AppleApp extends pulumi.CustomResource {
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      */
-    public readonly bundleId!: pulumi.Output<string | undefined>;
+    public readonly bundleId!: pulumi.Output<string>;
     /**
      * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
      * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
@@ -146,6 +146,9 @@ export class AppleApp extends pulumi.CustomResource {
             resourceInputs["teamId"] = state ? state.teamId : undefined;
         } else {
             const args = argsOrState as AppleAppArgs | undefined;
+            if ((!args || args.bundleId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bundleId'");
+            }
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
@@ -217,7 +220,7 @@ export interface AppleAppArgs {
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      */
-    bundleId?: pulumi.Input<string>;
+    bundleId: pulumi.Input<string>;
     /**
      * (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
      * destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to

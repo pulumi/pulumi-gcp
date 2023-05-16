@@ -9,6 +9,7 @@ import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionJobNo
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPubSub;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishSummaryToCscc;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionPublishToStackdriver;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionSaveFindings;
 import java.util.Objects;
 import java.util.Optional;
@@ -43,6 +44,11 @@ public final class PreventionJobTriggerInspectJobAction {
      * 
      */
     private @Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc;
+    /**
+     * @return Enable Stackdriver metric dlp.googleapis.com/findingCount.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobActionPublishToStackdriver publishToStackdriver;
     /**
      * @return If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
      * Structure is documented below.
@@ -89,6 +95,13 @@ public final class PreventionJobTriggerInspectJobAction {
         return Optional.ofNullable(this.publishSummaryToCscc);
     }
     /**
+     * @return Enable Stackdriver metric dlp.googleapis.com/findingCount.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobActionPublishToStackdriver> publishToStackdriver() {
+        return Optional.ofNullable(this.publishToStackdriver);
+    }
+    /**
      * @return If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
      * Structure is documented below.
      * 
@@ -111,6 +124,7 @@ public final class PreventionJobTriggerInspectJobAction {
         private @Nullable PreventionJobTriggerInspectJobActionPubSub pubSub;
         private @Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog;
         private @Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc;
+        private @Nullable PreventionJobTriggerInspectJobActionPublishToStackdriver publishToStackdriver;
         private @Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobAction defaults) {
@@ -120,6 +134,7 @@ public final class PreventionJobTriggerInspectJobAction {
     	      this.pubSub = defaults.pubSub;
     	      this.publishFindingsToCloudDataCatalog = defaults.publishFindingsToCloudDataCatalog;
     	      this.publishSummaryToCscc = defaults.publishSummaryToCscc;
+    	      this.publishToStackdriver = defaults.publishToStackdriver;
     	      this.saveFindings = defaults.saveFindings;
         }
 
@@ -149,6 +164,11 @@ public final class PreventionJobTriggerInspectJobAction {
             return this;
         }
         @CustomType.Setter
+        public Builder publishToStackdriver(@Nullable PreventionJobTriggerInspectJobActionPublishToStackdriver publishToStackdriver) {
+            this.publishToStackdriver = publishToStackdriver;
+            return this;
+        }
+        @CustomType.Setter
         public Builder saveFindings(@Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings) {
             this.saveFindings = saveFindings;
             return this;
@@ -160,6 +180,7 @@ public final class PreventionJobTriggerInspectJobAction {
             o.pubSub = pubSub;
             o.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             o.publishSummaryToCscc = publishSummaryToCscc;
+            o.publishToStackdriver = publishToStackdriver;
             o.saveFindings = saveFindings;
             return o;
         }

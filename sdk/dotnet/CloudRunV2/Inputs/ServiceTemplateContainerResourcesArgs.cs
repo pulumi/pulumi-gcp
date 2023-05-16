@@ -30,6 +30,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
             set => _limits = value;
         }
 
+        /// <summary>
+        /// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+        /// </summary>
+        [Input("startupCpuBoost")]
+        public Input<bool>? StartupCpuBoost { get; set; }
+
         public ServiceTemplateContainerResourcesArgs()
         {
         }

@@ -139,6 +139,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Resource Policy Consistency Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cgroup = new gcp.compute.ResourcePolicy("cgroup", {
+ *     region: "europe-west1",
+ *     diskConsistencyGroupPolicy: {
+ *         enabled: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -193,6 +208,10 @@ export class ResourcePolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Replication consistency group for asynchronous disk replication.
+     */
+    public readonly diskConsistencyGroupPolicy!: pulumi.Output<outputs.compute.ResourcePolicyDiskConsistencyGroupPolicy | undefined>;
+    /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
@@ -245,6 +264,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ResourcePolicyState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskConsistencyGroupPolicy"] = state ? state.diskConsistencyGroupPolicy : undefined;
             resourceInputs["groupPlacementPolicy"] = state ? state.groupPlacementPolicy : undefined;
             resourceInputs["instanceSchedulePolicy"] = state ? state.instanceSchedulePolicy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -255,6 +275,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ResourcePolicyArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskConsistencyGroupPolicy"] = args ? args.diskConsistencyGroupPolicy : undefined;
             resourceInputs["groupPlacementPolicy"] = args ? args.groupPlacementPolicy : undefined;
             resourceInputs["instanceSchedulePolicy"] = args ? args.instanceSchedulePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -276,6 +297,10 @@ export interface ResourcePolicyState {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Replication consistency group for asynchronous disk replication.
+     */
+    diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy>;
     /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.
@@ -324,6 +349,10 @@ export interface ResourcePolicyArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Replication consistency group for asynchronous disk replication.
+     */
+    diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy>;
     /**
      * Resource policy for instances used for placement configuration.
      * Structure is documented below.

@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Name of the information type.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Version name for this InfoType.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
-        private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType(string name)
+        private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType(
+            string name,
+
+            string? version)
         {
             Name = name;
+            Version = version;
         }
     }
 }

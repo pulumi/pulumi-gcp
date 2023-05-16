@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskState;
+import com.pulumi.gcp.compute.outputs.RegionDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.RegionDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.RegionDiskSourceSnapshotEncryptionKey;
 import java.lang.Integer;
@@ -97,6 +98,58 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Region Disk Async
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionDisk;
+ * import com.pulumi.gcp.compute.RegionDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new RegionDisk(&#34;primary&#34;, RegionDiskArgs.builder()        
+ *             .type(&#34;pd-ssd&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .physicalBlockSizeBytes(4096)
+ *             .replicaZones(            
+ *                 &#34;us-central1-a&#34;,
+ *                 &#34;us-central1-f&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var secondary = new RegionDisk(&#34;secondary&#34;, RegionDiskArgs.builder()        
+ *             .type(&#34;pd-ssd&#34;)
+ *             .region(&#34;us-east1&#34;)
+ *             .physicalBlockSizeBytes(4096)
+ *             .asyncPrimaryDisk(RegionDiskAsyncPrimaryDiskArgs.builder()
+ *                 .disk(primary.id())
+ *                 .build())
+ *             .replicaZones(            
+ *                 &#34;us-east1-b&#34;,
+ *                 &#34;us-east1-c&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -121,6 +174,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/regionDisk:RegionDisk")
 public class RegionDisk extends com.pulumi.resources.CustomResource {
+    /**
+     * A nested object resource
+     * 
+     */
+    @Export(name="asyncPrimaryDisk", type=RegionDiskAsyncPrimaryDisk.class, parameters={})
+    private Output</* @Nullable */ RegionDiskAsyncPrimaryDisk> asyncPrimaryDisk;
+
+    /**
+     * @return A nested object resource
+     * 
+     */
+    public Output<Optional<RegionDiskAsyncPrimaryDisk>> asyncPrimaryDisk() {
+        return Codegen.optional(this.asyncPrimaryDisk);
+    }
     /**
      * Creation timestamp in RFC3339 text format.
      * 

@@ -63,7 +63,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
     /**
      * The MySQL version running on your source database server.
-     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      * 
      */
     @Import(name="databaseVersion")
@@ -71,7 +71,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
     /**
      * @return The MySQL version running on your source database server.
-     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      * 
      */
     public Optional<Output<String>> databaseVersion() {
@@ -306,7 +306,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
         /**
          * @param databaseVersion The MySQL version running on your source database server.
-         * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+         * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
         /**
          * @param databaseVersion The MySQL version running on your source database server.
-         * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+         * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
          * 
          * @return builder
          * 

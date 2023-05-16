@@ -5740,6 +5740,9 @@ type JobLoad struct {
 	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 	// an empty value.
 	NullMarker *string `pulumi:"nullMarker"`
+	// Parquet Options for load and make external tables.
+	// Structure is documented below.
+	ParquetOptions *JobLoadParquetOptions `pulumi:"parquetOptions"`
 	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
 	// Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
 	// If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -5854,6 +5857,9 @@ type JobLoadArgs struct {
 	// empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
 	// an empty value.
 	NullMarker pulumi.StringPtrInput `pulumi:"nullMarker"`
+	// Parquet Options for load and make external tables.
+	// Structure is documented below.
+	ParquetOptions JobLoadParquetOptionsPtrInput `pulumi:"parquetOptions"`
 	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
 	// Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
 	// If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -6069,6 +6075,12 @@ func (o JobLoadOutput) MaxBadRecords() pulumi.IntPtrOutput {
 // an empty value.
 func (o JobLoadOutput) NullMarker() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobLoad) *string { return v.NullMarker }).(pulumi.StringPtrOutput)
+}
+
+// Parquet Options for load and make external tables.
+// Structure is documented below.
+func (o JobLoadOutput) ParquetOptions() JobLoadParquetOptionsPtrOutput {
+	return o.ApplyT(func(v JobLoad) *JobLoadParquetOptions { return v.ParquetOptions }).(JobLoadParquetOptionsPtrOutput)
 }
 
 // If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
@@ -6313,6 +6325,17 @@ func (o JobLoadPtrOutput) NullMarker() pulumi.StringPtrOutput {
 		}
 		return v.NullMarker
 	}).(pulumi.StringPtrOutput)
+}
+
+// Parquet Options for load and make external tables.
+// Structure is documented below.
+func (o JobLoadPtrOutput) ParquetOptions() JobLoadParquetOptionsPtrOutput {
+	return o.ApplyT(func(v *JobLoad) *JobLoadParquetOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ParquetOptions
+	}).(JobLoadParquetOptionsPtrOutput)
 }
 
 // If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
@@ -6769,6 +6792,162 @@ func (o JobLoadDestinationTablePtrOutput) TableId() pulumi.StringPtrOutput {
 		}
 		return &v.TableId
 	}).(pulumi.StringPtrOutput)
+}
+
+type JobLoadParquetOptions struct {
+	// If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+	EnableListInference *bool `pulumi:"enableListInference"`
+	// If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+	EnumAsString *bool `pulumi:"enumAsString"`
+}
+
+// JobLoadParquetOptionsInput is an input type that accepts JobLoadParquetOptionsArgs and JobLoadParquetOptionsOutput values.
+// You can construct a concrete instance of `JobLoadParquetOptionsInput` via:
+//
+//	JobLoadParquetOptionsArgs{...}
+type JobLoadParquetOptionsInput interface {
+	pulumi.Input
+
+	ToJobLoadParquetOptionsOutput() JobLoadParquetOptionsOutput
+	ToJobLoadParquetOptionsOutputWithContext(context.Context) JobLoadParquetOptionsOutput
+}
+
+type JobLoadParquetOptionsArgs struct {
+	// If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+	EnableListInference pulumi.BoolPtrInput `pulumi:"enableListInference"`
+	// If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+	EnumAsString pulumi.BoolPtrInput `pulumi:"enumAsString"`
+}
+
+func (JobLoadParquetOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadParquetOptions)(nil)).Elem()
+}
+
+func (i JobLoadParquetOptionsArgs) ToJobLoadParquetOptionsOutput() JobLoadParquetOptionsOutput {
+	return i.ToJobLoadParquetOptionsOutputWithContext(context.Background())
+}
+
+func (i JobLoadParquetOptionsArgs) ToJobLoadParquetOptionsOutputWithContext(ctx context.Context) JobLoadParquetOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadParquetOptionsOutput)
+}
+
+func (i JobLoadParquetOptionsArgs) ToJobLoadParquetOptionsPtrOutput() JobLoadParquetOptionsPtrOutput {
+	return i.ToJobLoadParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i JobLoadParquetOptionsArgs) ToJobLoadParquetOptionsPtrOutputWithContext(ctx context.Context) JobLoadParquetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadParquetOptionsOutput).ToJobLoadParquetOptionsPtrOutputWithContext(ctx)
+}
+
+// JobLoadParquetOptionsPtrInput is an input type that accepts JobLoadParquetOptionsArgs, JobLoadParquetOptionsPtr and JobLoadParquetOptionsPtrOutput values.
+// You can construct a concrete instance of `JobLoadParquetOptionsPtrInput` via:
+//
+//	        JobLoadParquetOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobLoadParquetOptionsPtrInput interface {
+	pulumi.Input
+
+	ToJobLoadParquetOptionsPtrOutput() JobLoadParquetOptionsPtrOutput
+	ToJobLoadParquetOptionsPtrOutputWithContext(context.Context) JobLoadParquetOptionsPtrOutput
+}
+
+type jobLoadParquetOptionsPtrType JobLoadParquetOptionsArgs
+
+func JobLoadParquetOptionsPtr(v *JobLoadParquetOptionsArgs) JobLoadParquetOptionsPtrInput {
+	return (*jobLoadParquetOptionsPtrType)(v)
+}
+
+func (*jobLoadParquetOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadParquetOptions)(nil)).Elem()
+}
+
+func (i *jobLoadParquetOptionsPtrType) ToJobLoadParquetOptionsPtrOutput() JobLoadParquetOptionsPtrOutput {
+	return i.ToJobLoadParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *jobLoadParquetOptionsPtrType) ToJobLoadParquetOptionsPtrOutputWithContext(ctx context.Context) JobLoadParquetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobLoadParquetOptionsPtrOutput)
+}
+
+type JobLoadParquetOptionsOutput struct{ *pulumi.OutputState }
+
+func (JobLoadParquetOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLoadParquetOptions)(nil)).Elem()
+}
+
+func (o JobLoadParquetOptionsOutput) ToJobLoadParquetOptionsOutput() JobLoadParquetOptionsOutput {
+	return o
+}
+
+func (o JobLoadParquetOptionsOutput) ToJobLoadParquetOptionsOutputWithContext(ctx context.Context) JobLoadParquetOptionsOutput {
+	return o
+}
+
+func (o JobLoadParquetOptionsOutput) ToJobLoadParquetOptionsPtrOutput() JobLoadParquetOptionsPtrOutput {
+	return o.ToJobLoadParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o JobLoadParquetOptionsOutput) ToJobLoadParquetOptionsPtrOutputWithContext(ctx context.Context) JobLoadParquetOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobLoadParquetOptions) *JobLoadParquetOptions {
+		return &v
+	}).(JobLoadParquetOptionsPtrOutput)
+}
+
+// If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+func (o JobLoadParquetOptionsOutput) EnableListInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobLoadParquetOptions) *bool { return v.EnableListInference }).(pulumi.BoolPtrOutput)
+}
+
+// If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+func (o JobLoadParquetOptionsOutput) EnumAsString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobLoadParquetOptions) *bool { return v.EnumAsString }).(pulumi.BoolPtrOutput)
+}
+
+type JobLoadParquetOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (JobLoadParquetOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLoadParquetOptions)(nil)).Elem()
+}
+
+func (o JobLoadParquetOptionsPtrOutput) ToJobLoadParquetOptionsPtrOutput() JobLoadParquetOptionsPtrOutput {
+	return o
+}
+
+func (o JobLoadParquetOptionsPtrOutput) ToJobLoadParquetOptionsPtrOutputWithContext(ctx context.Context) JobLoadParquetOptionsPtrOutput {
+	return o
+}
+
+func (o JobLoadParquetOptionsPtrOutput) Elem() JobLoadParquetOptionsOutput {
+	return o.ApplyT(func(v *JobLoadParquetOptions) JobLoadParquetOptions {
+		if v != nil {
+			return *v
+		}
+		var ret JobLoadParquetOptions
+		return ret
+	}).(JobLoadParquetOptionsOutput)
+}
+
+// If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+func (o JobLoadParquetOptionsPtrOutput) EnableListInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobLoadParquetOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableListInference
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+func (o JobLoadParquetOptionsPtrOutput) EnumAsString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobLoadParquetOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnumAsString
+	}).(pulumi.BoolPtrOutput)
 }
 
 type JobLoadTimePartitioning struct {
@@ -11503,6 +11682,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadDestinationEncryptionConfigurationPtrInput)(nil)).Elem(), JobLoadDestinationEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadDestinationTableInput)(nil)).Elem(), JobLoadDestinationTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadDestinationTablePtrInput)(nil)).Elem(), JobLoadDestinationTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadParquetOptionsInput)(nil)).Elem(), JobLoadParquetOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadParquetOptionsPtrInput)(nil)).Elem(), JobLoadParquetOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadTimePartitioningInput)(nil)).Elem(), JobLoadTimePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobLoadTimePartitioningPtrInput)(nil)).Elem(), JobLoadTimePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobQueryInput)(nil)).Elem(), JobQueryArgs{})
@@ -11619,6 +11800,8 @@ func init() {
 	pulumi.RegisterOutputType(JobLoadDestinationEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(JobLoadDestinationTableOutput{})
 	pulumi.RegisterOutputType(JobLoadDestinationTablePtrOutput{})
+	pulumi.RegisterOutputType(JobLoadParquetOptionsOutput{})
+	pulumi.RegisterOutputType(JobLoadParquetOptionsPtrOutput{})
 	pulumi.RegisterOutputType(JobLoadTimePartitioningOutput{})
 	pulumi.RegisterOutputType(JobLoadTimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(JobQueryOutput{})

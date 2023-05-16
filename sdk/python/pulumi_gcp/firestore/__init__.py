@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .database import *
 from .document import *
+from .field import *
 from .index import *
 from ._inputs import *
 from . import outputs

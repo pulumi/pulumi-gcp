@@ -17,7 +17,9 @@ import javax.annotation.Nullable;
 public final class GetForwardingRuleResult {
     private Boolean allPorts;
     private Boolean allowGlobalAccess;
+    private Boolean allowPscGlobalAccess;
     private String backendService;
+    private String baseForwardingRule;
     private String creationTimestamp;
     private String description;
     /**
@@ -44,6 +46,7 @@ public final class GetForwardingRuleResult {
     private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
     private String serviceLabel;
     private String serviceName;
+    private List<String> sourceIpRanges;
     private String subnetwork;
     private String target;
 
@@ -54,8 +57,14 @@ public final class GetForwardingRuleResult {
     public Boolean allowGlobalAccess() {
         return this.allowGlobalAccess;
     }
+    public Boolean allowPscGlobalAccess() {
+        return this.allowPscGlobalAccess;
+    }
     public String backendService() {
         return this.backendService;
+    }
+    public String baseForwardingRule() {
+        return this.baseForwardingRule;
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
@@ -127,6 +136,9 @@ public final class GetForwardingRuleResult {
     public String serviceName() {
         return this.serviceName;
     }
+    public List<String> sourceIpRanges() {
+        return this.sourceIpRanges;
+    }
     public String subnetwork() {
         return this.subnetwork;
     }
@@ -145,7 +157,9 @@ public final class GetForwardingRuleResult {
     public static final class Builder {
         private Boolean allPorts;
         private Boolean allowGlobalAccess;
+        private Boolean allowPscGlobalAccess;
         private String backendService;
+        private String baseForwardingRule;
         private String creationTimestamp;
         private String description;
         private String id;
@@ -168,6 +182,7 @@ public final class GetForwardingRuleResult {
         private List<GetForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations;
         private String serviceLabel;
         private String serviceName;
+        private List<String> sourceIpRanges;
         private String subnetwork;
         private String target;
         public Builder() {}
@@ -175,7 +190,9 @@ public final class GetForwardingRuleResult {
     	      Objects.requireNonNull(defaults);
     	      this.allPorts = defaults.allPorts;
     	      this.allowGlobalAccess = defaults.allowGlobalAccess;
+    	      this.allowPscGlobalAccess = defaults.allowPscGlobalAccess;
     	      this.backendService = defaults.backendService;
+    	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
@@ -198,6 +215,7 @@ public final class GetForwardingRuleResult {
     	      this.serviceDirectoryRegistrations = defaults.serviceDirectoryRegistrations;
     	      this.serviceLabel = defaults.serviceLabel;
     	      this.serviceName = defaults.serviceName;
+    	      this.sourceIpRanges = defaults.sourceIpRanges;
     	      this.subnetwork = defaults.subnetwork;
     	      this.target = defaults.target;
         }
@@ -213,8 +231,18 @@ public final class GetForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder allowPscGlobalAccess(Boolean allowPscGlobalAccess) {
+            this.allowPscGlobalAccess = Objects.requireNonNull(allowPscGlobalAccess);
+            return this;
+        }
+        @CustomType.Setter
         public Builder backendService(String backendService) {
             this.backendService = Objects.requireNonNull(backendService);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder baseForwardingRule(String baseForwardingRule) {
+            this.baseForwardingRule = Objects.requireNonNull(baseForwardingRule);
             return this;
         }
         @CustomType.Setter
@@ -334,6 +362,14 @@ public final class GetForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceIpRanges(List<String> sourceIpRanges) {
+            this.sourceIpRanges = Objects.requireNonNull(sourceIpRanges);
+            return this;
+        }
+        public Builder sourceIpRanges(String... sourceIpRanges) {
+            return sourceIpRanges(List.of(sourceIpRanges));
+        }
+        @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
             this.subnetwork = Objects.requireNonNull(subnetwork);
             return this;
@@ -347,7 +383,9 @@ public final class GetForwardingRuleResult {
             final var o = new GetForwardingRuleResult();
             o.allPorts = allPorts;
             o.allowGlobalAccess = allowGlobalAccess;
+            o.allowPscGlobalAccess = allowPscGlobalAccess;
             o.backendService = backendService;
+            o.baseForwardingRule = baseForwardingRule;
             o.creationTimestamp = creationTimestamp;
             o.description = description;
             o.id = id;
@@ -370,6 +408,7 @@ public final class GetForwardingRuleResult {
             o.serviceDirectoryRegistrations = serviceDirectoryRegistrations;
             o.serviceLabel = serviceLabel;
             o.serviceName = serviceName;
+            o.sourceIpRanges = sourceIpRanges;
             o.subnetwork = subnetwork;
             o.target = target;
             return o;

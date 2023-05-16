@@ -81,6 +81,21 @@ public final class GatewaySecurityPolicyArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * 
+     */
+    @Import(name="tlsInspectionPolicy")
+    private @Nullable Output<String> tlsInspectionPolicy;
+
+    /**
+     * @return Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * 
+     */
+    public Optional<Output<String>> tlsInspectionPolicy() {
+        return Optional.ofNullable(this.tlsInspectionPolicy);
+    }
+
     private GatewaySecurityPolicyArgs() {}
 
     private GatewaySecurityPolicyArgs(GatewaySecurityPolicyArgs $) {
@@ -88,6 +103,7 @@ public final class GatewaySecurityPolicyArgs extends com.pulumi.resources.Resour
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
+        this.tlsInspectionPolicy = $.tlsInspectionPolicy;
     }
 
     public static Builder builder() {
@@ -196,6 +212,27 @@ public final class GatewaySecurityPolicyArgs extends com.pulumi.resources.Resour
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsInspectionPolicy(@Nullable Output<String> tlsInspectionPolicy) {
+            $.tlsInspectionPolicy = tlsInspectionPolicy;
+            return this;
+        }
+
+        /**
+         * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsInspectionPolicy(String tlsInspectionPolicy) {
+            return tlsInspectionPolicy(Output.of(tlsInspectionPolicy));
         }
 
         public GatewaySecurityPolicyArgs build() {

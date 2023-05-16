@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.alloydb.inputs.BackupEncryptionConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -62,6 +63,23 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionConfig")
+    private @Nullable Output<BackupEncryptionConfigArgs> encryptionConfig;
+
+    /**
+     * @return EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BackupEncryptionConfigArgs>> encryptionConfig() {
+        return Optional.ofNullable(this.encryptionConfig);
+    }
+
+    /**
      * User-defined labels for the alloydb backup.
      * 
      */
@@ -114,6 +132,7 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         this.backupId = $.backupId;
         this.clusterName = $.clusterName;
         this.description = $.description;
+        this.encryptionConfig = $.encryptionConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.project = $.project;
@@ -198,6 +217,29 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(@Nullable Output<BackupEncryptionConfigArgs> encryptionConfig) {
+            $.encryptionConfig = encryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(BackupEncryptionConfigArgs encryptionConfig) {
+            return encryptionConfig(Output.of(encryptionConfig));
         }
 
         /**

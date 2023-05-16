@@ -72,7 +72,7 @@ import (
 //				return err
 //			}
 //			_, err = workstations.NewWorkstation(ctx, "defaultWorkstation", &workstations.WorkstationArgs{
-//				WorkstationId:        pulumi.String("workstation"),
+//				WorkstationId:        pulumi.String("work-station"),
 //				WorkstationConfigId:  defaultWorkstationConfig.WorkstationConfigId,
 //				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
 //				Location:             pulumi.String("us-central1"),
@@ -118,7 +118,7 @@ type Workstation struct {
 
 	// Client-specified annotations. This is distinct from labels.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -128,20 +128,20 @@ type Workstation struct {
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The location where the workstation cluster config should reside.
+	// The location where the workstation parent resources reside.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the cluster resource.
+	// Full name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Current state of the workstation.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The system-generated UID of the resource.
+	// A system-assigned unique identified for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
-	// The ID of the workstation cluster config.
+	// The ID of the parent workstation cluster config.
 	WorkstationConfigId pulumi.StringOutput `pulumi:"workstationConfigId"`
 	// ID to use for the workstation.
 	WorkstationId pulumi.StringOutput `pulumi:"workstationId"`
@@ -190,7 +190,7 @@ func GetWorkstation(ctx *pulumi.Context,
 type workstationState struct {
 	// Client-specified annotations. This is distinct from labels.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
@@ -200,20 +200,20 @@ type workstationState struct {
 	Host *string `pulumi:"host"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
-	// The location where the workstation cluster config should reside.
+	// The location where the workstation parent resources reside.
 	Location *string `pulumi:"location"`
-	// The name of the cluster resource.
+	// Full name of this resource.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Current state of the workstation.
 	State *string `pulumi:"state"`
-	// The system-generated UID of the resource.
+	// A system-assigned unique identified for this resource.
 	Uid *string `pulumi:"uid"`
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId *string `pulumi:"workstationClusterId"`
-	// The ID of the workstation cluster config.
+	// The ID of the parent workstation cluster config.
 	WorkstationConfigId *string `pulumi:"workstationConfigId"`
 	// ID to use for the workstation.
 	WorkstationId *string `pulumi:"workstationId"`
@@ -222,7 +222,7 @@ type workstationState struct {
 type WorkstationState struct {
 	// Client-specified annotations. This is distinct from labels.
 	Annotations pulumi.StringMapInput
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime pulumi.StringPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
@@ -232,20 +232,20 @@ type WorkstationState struct {
 	Host pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
-	// The location where the workstation cluster config should reside.
+	// The location where the workstation parent resources reside.
 	Location pulumi.StringPtrInput
-	// The name of the cluster resource.
+	// Full name of this resource.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Current state of the workstation.
 	State pulumi.StringPtrInput
-	// The system-generated UID of the resource.
+	// A system-assigned unique identified for this resource.
 	Uid pulumi.StringPtrInput
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringPtrInput
-	// The ID of the workstation cluster config.
+	// The ID of the parent workstation cluster config.
 	WorkstationConfigId pulumi.StringPtrInput
 	// ID to use for the workstation.
 	WorkstationId pulumi.StringPtrInput
@@ -262,14 +262,14 @@ type workstationArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
-	// The location where the workstation cluster config should reside.
+	// The location where the workstation parent resources reside.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
-	// The ID of the workstation cluster config.
+	// The ID of the parent workstation cluster config.
 	WorkstationConfigId string `pulumi:"workstationConfigId"`
 	// ID to use for the workstation.
 	WorkstationId string `pulumi:"workstationId"`
@@ -283,14 +283,14 @@ type WorkstationArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
-	// The location where the workstation cluster config should reside.
+	// The location where the workstation parent resources reside.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringInput
-	// The ID of the workstation cluster config.
+	// The ID of the parent workstation cluster config.
 	WorkstationConfigId pulumi.StringInput
 	// ID to use for the workstation.
 	WorkstationId pulumi.StringInput
@@ -388,7 +388,7 @@ func (o WorkstationOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Time the Instance was created in UTC.
+// Time when this resource was created.
 func (o WorkstationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -410,12 +410,12 @@ func (o WorkstationOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The location where the workstation cluster config should reside.
+// The location where the workstation parent resources reside.
 func (o WorkstationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the cluster resource.
+// Full name of this resource.
 func (o WorkstationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -431,17 +431,17 @@ func (o WorkstationOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The system-generated UID of the resource.
+// A system-assigned unique identified for this resource.
 func (o WorkstationOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The name of the workstation cluster.
+// The ID of the parent workstation cluster.
 func (o WorkstationOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }
 
-// The ID of the workstation cluster config.
+// The ID of the parent workstation cluster config.
 func (o WorkstationOutput) WorkstationConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.WorkstationConfigId }).(pulumi.StringOutput)
 }

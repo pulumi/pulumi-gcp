@@ -66,14 +66,14 @@ public final class WorkstationConfigContainerArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Docker image defining the container. This image must be accessible by the config&#34;s service account.
+     * Docker image defining the container. This image must be accessible by the config&#39;s service account.
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return Docker image defining the container. This image must be accessible by the config&#34;s service account.
+     * @return Docker image defining the container. This image must be accessible by the config&#39;s service account.
      * 
      */
     public Optional<Output<String>> image() {
@@ -225,7 +225,7 @@ public final class WorkstationConfigContainerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param image Docker image defining the container. This image must be accessible by the config&#34;s service account.
+         * @param image Docker image defining the container. This image must be accessible by the config&#39;s service account.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class WorkstationConfigContainerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param image Docker image defining the container. This image must be accessible by the config&#34;s service account.
+         * @param image Docker image defining the container. This image must be accessible by the config&#39;s service account.
          * 
          * @return builder
          * 

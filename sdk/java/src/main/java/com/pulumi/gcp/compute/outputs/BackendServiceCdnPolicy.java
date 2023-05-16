@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.BackendServiceCdnPolicyBypassCacheOnRequestHeader;
 import com.pulumi.gcp.compute.outputs.BackendServiceCdnPolicyCacheKeyPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceCdnPolicyNegativeCachingPolicy;
 import java.lang.Boolean;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BackendServiceCdnPolicy {
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+     * The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<BackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
     /**
      * @return The CacheKeyPolicy for this CdnPolicy.
      * Structure is documented below.
@@ -77,6 +85,15 @@ public final class BackendServiceCdnPolicy {
     private @Nullable Integer signedUrlCacheMaxAgeSec;
 
     private BackendServiceCdnPolicy() {}
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+     * The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    public List<BackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders() {
+        return this.bypassCacheOnRequestHeaders == null ? List.of() : this.bypassCacheOnRequestHeaders;
+    }
     /**
      * @return The CacheKeyPolicy for this CdnPolicy.
      * Structure is documented below.
@@ -164,6 +181,7 @@ public final class BackendServiceCdnPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<BackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
         private @Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy;
         private @Nullable String cacheMode;
         private @Nullable Integer clientTtl;
@@ -176,6 +194,7 @@ public final class BackendServiceCdnPolicy {
         public Builder() {}
         public Builder(BackendServiceCdnPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bypassCacheOnRequestHeaders = defaults.bypassCacheOnRequestHeaders;
     	      this.cacheKeyPolicy = defaults.cacheKeyPolicy;
     	      this.cacheMode = defaults.cacheMode;
     	      this.clientTtl = defaults.clientTtl;
@@ -187,6 +206,14 @@ public final class BackendServiceCdnPolicy {
     	      this.signedUrlCacheMaxAgeSec = defaults.signedUrlCacheMaxAgeSec;
         }
 
+        @CustomType.Setter
+        public Builder bypassCacheOnRequestHeaders(@Nullable List<BackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders) {
+            this.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
+            return this;
+        }
+        public Builder bypassCacheOnRequestHeaders(BackendServiceCdnPolicyBypassCacheOnRequestHeader... bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(List.of(bypassCacheOnRequestHeaders));
+        }
         @CustomType.Setter
         public Builder cacheKeyPolicy(@Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy) {
             this.cacheKeyPolicy = cacheKeyPolicy;
@@ -237,6 +264,7 @@ public final class BackendServiceCdnPolicy {
         }
         public BackendServiceCdnPolicy build() {
             final var o = new BackendServiceCdnPolicy();
+            o.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             o.cacheKeyPolicy = cacheKeyPolicy;
             o.cacheMode = cacheMode;
             o.clientTtl = clientTtl;

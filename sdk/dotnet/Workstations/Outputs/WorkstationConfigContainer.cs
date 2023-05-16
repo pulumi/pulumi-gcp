@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Env;
         /// <summary>
-        /// Docker image defining the container. This image must be accessible by the config"s service account.
+        /// Docker image defining the container. This image must be accessible by the config's service account.
         /// </summary>
         public readonly string? Image;
         /// <summary>

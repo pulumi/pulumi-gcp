@@ -115,6 +115,8 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetGlobalForwardingRuleResult
     {
+        public readonly bool AllowPscGlobalAccess;
+        public readonly string BaseForwardingRule;
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -134,10 +136,15 @@ namespace Pulumi.Gcp.Compute
         public readonly string PscConnectionId;
         public readonly string PscConnectionStatus;
         public readonly string SelfLink;
+        public readonly ImmutableArray<string> SourceIpRanges;
         public readonly string Target;
 
         [OutputConstructor]
         private GetGlobalForwardingRuleResult(
+            bool allowPscGlobalAccess,
+
+            string baseForwardingRule,
+
             string description,
 
             string id,
@@ -170,8 +177,12 @@ namespace Pulumi.Gcp.Compute
 
             string selfLink,
 
+            ImmutableArray<string> sourceIpRanges,
+
             string target)
         {
+            AllowPscGlobalAccess = allowPscGlobalAccess;
+            BaseForwardingRule = baseForwardingRule;
             Description = description;
             Id = id;
             IpAddress = ipAddress;
@@ -188,6 +199,7 @@ namespace Pulumi.Gcp.Compute
             PscConnectionId = pscConnectionId;
             PscConnectionStatus = pscConnectionStatus;
             SelfLink = selfLink;
+            SourceIpRanges = sourceIpRanges;
             Target = target;
         }
     }

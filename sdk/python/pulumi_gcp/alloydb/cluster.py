@@ -21,6 +21,7 @@ class ClusterArgs:
                  network: pulumi.Input[str],
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -34,6 +35,8 @@ class ClusterArgs:
                If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+               Structure is documented below.
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
@@ -47,6 +50,8 @@ class ClusterArgs:
             pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if initial_user is not None:
             pulumi.set(__self__, "initial_user", initial_user)
         if labels is not None:
@@ -118,6 +123,19 @@ class ClusterArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterEncryptionConfigArgs']]:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @property
     @pulumi.getter(name="initialUser")
     def initial_user(self) -> Optional[pulumi.Input['ClusterInitialUserArgs']]:
         """
@@ -164,6 +182,8 @@ class _ClusterState:
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
+                 encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]]] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -182,6 +202,10 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+               Structure is documented below.
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
@@ -205,6 +229,10 @@ class _ClusterState:
             pulumi.set(__self__, "database_version", database_version)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
+        if encryption_infos is not None:
+            pulumi.set(__self__, "encryption_infos", encryption_infos)
         if initial_user is not None:
             pulumi.set(__self__, "initial_user", initial_user)
         if labels is not None:
@@ -284,6 +312,32 @@ class _ClusterState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterEncryptionConfigArgs']]:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @property
+    @pulumi.getter(name="encryptionInfos")
+    def encryption_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]]]:
+        """
+        EncryptionInfo describes the encryption information of a cluster or a backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_infos")
+
+    @encryption_infos.setter
+    def encryption_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]]]):
+        pulumi.set(self, "encryption_infos", value)
 
     @property
     @pulumi.getter(name="initialUser")
@@ -394,6 +448,7 @@ class Cluster(pulumi.CustomResource):
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -443,6 +498,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
@@ -512,6 +569,7 @@ class Cluster(pulumi.CustomResource):
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -531,6 +589,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["initial_user"] = initial_user
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -542,6 +601,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["database_version"] = None
+            __props__.__dict__["encryption_infos"] = None
             __props__.__dict__["migration_sources"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["uid"] = None
@@ -560,6 +620,8 @@ class Cluster(pulumi.CustomResource):
             cluster_id: Optional[pulumi.Input[str]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
+            encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]]] = None,
             initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -583,6 +645,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
@@ -605,6 +671,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["encryption_config"] = encryption_config
+        __props__.__dict__["encryption_infos"] = encryption_infos
         __props__.__dict__["initial_user"] = initial_user
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -657,6 +725,24 @@ class Cluster(pulumi.CustomResource):
         User-settable and human-readable display name for the Cluster.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output[Optional['outputs.ClusterEncryptionConfig']]:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @property
+    @pulumi.getter(name="encryptionInfos")
+    def encryption_infos(self) -> pulumi.Output[Sequence['outputs.ClusterEncryptionInfo']]:
+        """
+        EncryptionInfo describes the encryption information of a cluster or a backup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_infos")
 
     @property
     @pulumi.getter(name="initialUser")

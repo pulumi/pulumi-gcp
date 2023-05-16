@@ -34,6 +34,29 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
+    /// ### Sql Source Representation Instance Postgres
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new()
+    ///     {
+    ///         DatabaseVersion = "POSTGRES_9_6",
+    ///         DumpFilePath = "gs://replica-bucket/source-database.sql.gz",
+    ///         Host = "10.20.30.40",
+    ///         Password = "password-for-the-user",
+    ///         Port = 3306,
+    ///         Region = "us-central1",
+    ///         Username = "some-user",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -74,7 +97,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The MySQL version running on your source database server.
-        /// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+        /// Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -201,7 +224,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The MySQL version running on your source database server.
-        /// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+        /// Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         /// </summary>
         [Input("databaseVersion", required: true)]
         public Input<string> DatabaseVersion { get; set; } = null!;
@@ -296,7 +319,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The MySQL version running on your source database server.
-        /// Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+        /// Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }

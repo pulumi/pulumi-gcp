@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.Vertex
     ///         DisplayName = "sample-endpoint",
     ///         Description = "A sample vertex endpoint",
     ///         Location = "us-central1",
+    ///         Region = "us-central1",
     ///         Labels = 
     ///         {
     ///             { "label-one", "value-one" },
@@ -187,6 +188,12 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The region for the resource
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Timestamp when this Endpoint was last updated.
         /// </summary>
         [Output("updateTime")]
@@ -294,6 +301,12 @@ namespace Pulumi.Gcp.Vertex
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The region for the resource
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public AiEndpointArgs()
         {
         }
@@ -389,6 +402,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The region for the resource
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Output only. Timestamp when this Endpoint was last updated.

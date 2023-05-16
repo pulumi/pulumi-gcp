@@ -6,10 +6,13 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,6 +34,23 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
      */
     public Output<List<PreventionJobTriggerInspectJobActionArgs>> actions() {
         return this.actions;
+    }
+
+    /**
+     * The core content of the template.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="inspectConfig")
+    private @Nullable Output<PreventionJobTriggerInspectJobInspectConfigArgs> inspectConfig;
+
+    /**
+     * @return The core content of the template.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobInspectConfigArgs>> inspectConfig() {
+        return Optional.ofNullable(this.inspectConfig);
     }
 
     /**
@@ -69,6 +89,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
 
     private PreventionJobTriggerInspectJobArgs(PreventionJobTriggerInspectJobArgs $) {
         this.actions = $.actions;
+        this.inspectConfig = $.inspectConfig;
         this.inspectTemplateName = $.inspectTemplateName;
         this.storageConfig = $.storageConfig;
     }
@@ -123,6 +144,29 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
          */
         public Builder actions(PreventionJobTriggerInspectJobActionArgs... actions) {
             return actions(List.of(actions));
+        }
+
+        /**
+         * @param inspectConfig The core content of the template.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspectConfig(@Nullable Output<PreventionJobTriggerInspectJobInspectConfigArgs> inspectConfig) {
+            $.inspectConfig = inspectConfig;
+            return this;
+        }
+
+        /**
+         * @param inspectConfig The core content of the template.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspectConfig(PreventionJobTriggerInspectJobInspectConfigArgs inspectConfig) {
+            return inspectConfig(Output.of(inspectConfig));
         }
 
         /**

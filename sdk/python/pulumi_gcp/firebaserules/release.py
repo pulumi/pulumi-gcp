@@ -183,51 +183,51 @@ class Release(pulumi.CustomResource):
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
-        ### Basic_release
-        Creates a basic Firebase Rules Release
+        ### Firestore_release
+        Creates a Firebase Rules Release to Cloud Firestore
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.firebaserules.Ruleset("basic",
-            project="my-project-name",
+        firestore = gcp.firebaserules.Ruleset("firestore",
             source=gcp.firebaserules.RulesetSourceArgs(
                 files=[gcp.firebaserules.RulesetSourceFileArgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    fingerprint="",
                     name="firestore.rules",
                 )],
-                language="",
-            ))
+            ),
+            project="my-project-name")
         primary = gcp.firebaserules.Release("primary",
-            project="my-project-name",
-            ruleset_name=basic.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
-        minimal = gcp.firebaserules.Ruleset("minimal",
-            project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                )],
-            ))
+            ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
+            project="my-project-name")
         ```
-        ### Minimal_release
-        Creates a minimal Firebase Rules Release
+        ### Storage_release
+        Creates a Firebase Rules Release for a Storage bucket
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        minimal = gcp.firebaserules.Ruleset("minimal",
+        # Provision a non-default Cloud Storage bucket.
+        bucket_bucket = gcp.storage.Bucket("bucketBucket",
+            project="my-project-name",
+            location="us-west1")
+        # Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+        bucket_storage_bucket = gcp.firebase.StorageBucket("bucketStorageBucket",
+            project="my-project-name",
+            bucket_id=bucket_bucket.name)
+        # Create a ruleset of Firebase Security Rules from a local file.
+        storage = gcp.firebaserules.Ruleset("storage",
             project="my-project-name",
             source=gcp.firebaserules.RulesetSourceArgs(
                 files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
+                    name="storage.rules",
+                    content="service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
                 )],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[bucket_storage_bucket]))
         primary = gcp.firebaserules.Release("primary",
-            project="my-project-name",
-            ruleset_name=minimal.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
+            ruleset_name=storage.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
+            project="my-project-name")
         ```
 
         ## Import
@@ -254,51 +254,51 @@ class Release(pulumi.CustomResource):
         For more information, see:
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
-        ### Basic_release
-        Creates a basic Firebase Rules Release
+        ### Firestore_release
+        Creates a Firebase Rules Release to Cloud Firestore
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.firebaserules.Ruleset("basic",
-            project="my-project-name",
+        firestore = gcp.firebaserules.Ruleset("firestore",
             source=gcp.firebaserules.RulesetSourceArgs(
                 files=[gcp.firebaserules.RulesetSourceFileArgs(
                     content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    fingerprint="",
                     name="firestore.rules",
                 )],
-                language="",
-            ))
+            ),
+            project="my-project-name")
         primary = gcp.firebaserules.Release("primary",
-            project="my-project-name",
-            ruleset_name=basic.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
-        minimal = gcp.firebaserules.Ruleset("minimal",
-            project="my-project-name",
-            source=gcp.firebaserules.RulesetSourceArgs(
-                files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
-                )],
-            ))
+            ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
+            project="my-project-name")
         ```
-        ### Minimal_release
-        Creates a minimal Firebase Rules Release
+        ### Storage_release
+        Creates a Firebase Rules Release for a Storage bucket
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        minimal = gcp.firebaserules.Ruleset("minimal",
+        # Provision a non-default Cloud Storage bucket.
+        bucket_bucket = gcp.storage.Bucket("bucketBucket",
+            project="my-project-name",
+            location="us-west1")
+        # Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+        bucket_storage_bucket = gcp.firebase.StorageBucket("bucketStorageBucket",
+            project="my-project-name",
+            bucket_id=bucket_bucket.name)
+        # Create a ruleset of Firebase Security Rules from a local file.
+        storage = gcp.firebaserules.Ruleset("storage",
             project="my-project-name",
             source=gcp.firebaserules.RulesetSourceArgs(
                 files=[gcp.firebaserules.RulesetSourceFileArgs(
-                    content="service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-                    name="firestore.rules",
+                    name="storage.rules",
+                    content="service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
                 )],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[bucket_storage_bucket]))
         primary = gcp.firebaserules.Release("primary",
-            project="my-project-name",
-            ruleset_name=minimal.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
+            ruleset_name=storage.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"),
+            project="my-project-name")
         ```
 
         ## Import

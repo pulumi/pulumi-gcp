@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// The IP Stack Type of the cluster. 
         /// Default value is `IPV4`.
-        /// Possible values are `IPV4` and `PV4_IPV6`.
+        /// Possible values are `IPV4` and `IPV4_IPV6`.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }

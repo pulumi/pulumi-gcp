@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Firebase
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
         /// </summary>
         [Output("bundleId")]
-        public Output<string?> BundleId { get; private set; } = null!;
+        public Output<string> BundleId { get; private set; } = null!;
 
         /// <summary>
         /// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
@@ -189,8 +189,8 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
         /// </summary>
-        [Input("bundleId")]
-        public Input<string>? BundleId { get; set; }
+        [Input("bundleId", required: true)]
+        public Input<string> BundleId { get; set; } = null!;
 
         /// <summary>
         /// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform

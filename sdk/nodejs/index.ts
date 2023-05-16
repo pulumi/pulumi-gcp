@@ -48,6 +48,7 @@ import * as compute from "./compute";
 import * as config from "./config";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
+import * as databasemigrationservice from "./databasemigrationservice";
 import * as datacatalog from "./datacatalog";
 import * as dataflow from "./dataflow";
 import * as dataform from "./dataform";
@@ -71,6 +72,7 @@ import * as folder from "./folder";
 import * as gameservices from "./gameservices";
 import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
+import * as gkeonprem from "./gkeonprem";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as iap from "./iap";
@@ -150,6 +152,7 @@ export {
     config,
     container,
     containeranalysis,
+    databasemigrationservice,
     datacatalog,
     dataflow,
     dataform,
@@ -173,6 +176,7 @@ export {
     gameservices,
     gkebackup,
     gkehub,
+    gkeonprem,
     healthcare,
     iam,
     iap,

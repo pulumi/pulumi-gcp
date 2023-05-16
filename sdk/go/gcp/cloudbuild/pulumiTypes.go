@@ -3516,6 +3516,16 @@ func (o TriggerBuildSourceStorageSourcePtrOutput) Object() pulumi.StringPtrOutpu
 }
 
 type TriggerBuildStep struct {
+	// Allow this build step to fail without failing the entire build if and
+	// only if the exit code is one of the specified codes.
+	// If `allowFailure` is also specified, this field will take precedence.
+	AllowExitCodes []int `pulumi:"allowExitCodes"`
+	// Allow this build step to fail without failing the entire build.
+	// If false, the entire build will fail if this step fails. Otherwise, the
+	// build will succeed, but this step will still have a failure status.
+	// Error information will be reported in the `failureDetail` field.
+	// `allowExitCodes` takes precedence over this field.
+	AllowFailure *bool `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started.
 	// If the image used to run the step's container has an entrypoint, the args
 	// are used as arguments to that entrypoint. If the image does not define an
@@ -3602,6 +3612,16 @@ type TriggerBuildStepInput interface {
 }
 
 type TriggerBuildStepArgs struct {
+	// Allow this build step to fail without failing the entire build if and
+	// only if the exit code is one of the specified codes.
+	// If `allowFailure` is also specified, this field will take precedence.
+	AllowExitCodes pulumi.IntArrayInput `pulumi:"allowExitCodes"`
+	// Allow this build step to fail without failing the entire build.
+	// If false, the entire build will fail if this step fails. Otherwise, the
+	// build will succeed, but this step will still have a failure status.
+	// Error information will be reported in the `failureDetail` field.
+	// `allowExitCodes` takes precedence over this field.
+	AllowFailure pulumi.BoolPtrInput `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started.
 	// If the image used to run the step's container has an entrypoint, the args
 	// are used as arguments to that entrypoint. If the image does not define an
@@ -3725,6 +3745,22 @@ func (o TriggerBuildStepOutput) ToTriggerBuildStepOutput() TriggerBuildStepOutpu
 
 func (o TriggerBuildStepOutput) ToTriggerBuildStepOutputWithContext(ctx context.Context) TriggerBuildStepOutput {
 	return o
+}
+
+// Allow this build step to fail without failing the entire build if and
+// only if the exit code is one of the specified codes.
+// If `allowFailure` is also specified, this field will take precedence.
+func (o TriggerBuildStepOutput) AllowExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v TriggerBuildStep) []int { return v.AllowExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// Allow this build step to fail without failing the entire build.
+// If false, the entire build will fail if this step fails. Otherwise, the
+// build will succeed, but this step will still have a failure status.
+// Error information will be reported in the `failureDetail` field.
+// `allowExitCodes` takes precedence over this field.
+func (o TriggerBuildStepOutput) AllowFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TriggerBuildStep) *bool { return v.AllowFailure }).(pulumi.BoolPtrOutput)
 }
 
 // A list of arguments that will be presented to the step when it is started.
@@ -3982,7 +4018,8 @@ type TriggerGitFileSource struct {
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
 	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
-	RepoType string `pulumi:"repoType"`
+	RepoType   string  `pulumi:"repoType"`
+	Repository *string `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
 	// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
@@ -4012,7 +4049,8 @@ type TriggerGitFileSourceArgs struct {
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
 	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
-	RepoType pulumi.StringInput `pulumi:"repoType"`
+	RepoType   pulumi.StringInput    `pulumi:"repoType"`
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
 	// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
 	// If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
@@ -4117,6 +4155,10 @@ func (o TriggerGitFileSourceOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerGitFileSource) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
+func (o TriggerGitFileSourceOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerGitFileSource) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
 // The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
 // filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
 // If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
@@ -4184,6 +4226,15 @@ func (o TriggerGitFileSourcePtrOutput) RepoType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.RepoType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TriggerGitFileSourcePtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5557,9 +5608,10 @@ type TriggerSourceToBuild struct {
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
 	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
-	RepoType string `pulumi:"repoType"`
-	// The URI of the repo (required).
-	Uri string `pulumi:"uri"`
+	RepoType   string  `pulumi:"repoType"`
+	Repository *string `pulumi:"repository"`
+	// The URI of the repo.
+	Uri *string `pulumi:"uri"`
 }
 
 // TriggerSourceToBuildInput is an input type that accepts TriggerSourceToBuildArgs and TriggerSourceToBuildOutput values.
@@ -5582,9 +5634,10 @@ type TriggerSourceToBuildArgs struct {
 	// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
 	// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
 	// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
-	RepoType pulumi.StringInput `pulumi:"repoType"`
-	// The URI of the repo (required).
-	Uri pulumi.StringInput `pulumi:"uri"`
+	RepoType   pulumi.StringInput    `pulumi:"repoType"`
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+	// The URI of the repo.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
 func (TriggerSourceToBuildArgs) ElementType() reflect.Type {
@@ -5682,9 +5735,13 @@ func (o TriggerSourceToBuildOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
-// The URI of the repo (required).
-func (o TriggerSourceToBuildOutput) Uri() pulumi.StringOutput {
-	return o.ApplyT(func(v TriggerSourceToBuild) string { return v.Uri }).(pulumi.StringOutput)
+func (o TriggerSourceToBuildOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerSourceToBuild) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo.
+func (o TriggerSourceToBuildOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerSourceToBuild) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
 
 type TriggerSourceToBuildPtrOutput struct{ *pulumi.OutputState }
@@ -5744,13 +5801,22 @@ func (o TriggerSourceToBuildPtrOutput) RepoType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URI of the repo (required).
+func (o TriggerSourceToBuildPtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the repo.
 func (o TriggerSourceToBuildPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Uri
+		return v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8320,18 +8386,20 @@ func (o GetTriggerBuildSourceStorageSourceArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetTriggerBuildStep struct {
-	Args       []string                    `pulumi:"args"`
-	Dir        string                      `pulumi:"dir"`
-	Entrypoint string                      `pulumi:"entrypoint"`
-	Envs       []string                    `pulumi:"envs"`
-	Id         string                      `pulumi:"id"`
-	Name       string                      `pulumi:"name"`
-	Script     string                      `pulumi:"script"`
-	SecretEnvs []string                    `pulumi:"secretEnvs"`
-	Timeout    string                      `pulumi:"timeout"`
-	Timing     string                      `pulumi:"timing"`
-	Volumes    []GetTriggerBuildStepVolume `pulumi:"volumes"`
-	WaitFors   []string                    `pulumi:"waitFors"`
+	AllowExitCodes []int                       `pulumi:"allowExitCodes"`
+	AllowFailure   bool                        `pulumi:"allowFailure"`
+	Args           []string                    `pulumi:"args"`
+	Dir            string                      `pulumi:"dir"`
+	Entrypoint     string                      `pulumi:"entrypoint"`
+	Envs           []string                    `pulumi:"envs"`
+	Id             string                      `pulumi:"id"`
+	Name           string                      `pulumi:"name"`
+	Script         string                      `pulumi:"script"`
+	SecretEnvs     []string                    `pulumi:"secretEnvs"`
+	Timeout        string                      `pulumi:"timeout"`
+	Timing         string                      `pulumi:"timing"`
+	Volumes        []GetTriggerBuildStepVolume `pulumi:"volumes"`
+	WaitFors       []string                    `pulumi:"waitFors"`
 }
 
 // GetTriggerBuildStepInput is an input type that accepts GetTriggerBuildStepArgs and GetTriggerBuildStepOutput values.
@@ -8346,18 +8414,20 @@ type GetTriggerBuildStepInput interface {
 }
 
 type GetTriggerBuildStepArgs struct {
-	Args       pulumi.StringArrayInput             `pulumi:"args"`
-	Dir        pulumi.StringInput                  `pulumi:"dir"`
-	Entrypoint pulumi.StringInput                  `pulumi:"entrypoint"`
-	Envs       pulumi.StringArrayInput             `pulumi:"envs"`
-	Id         pulumi.StringInput                  `pulumi:"id"`
-	Name       pulumi.StringInput                  `pulumi:"name"`
-	Script     pulumi.StringInput                  `pulumi:"script"`
-	SecretEnvs pulumi.StringArrayInput             `pulumi:"secretEnvs"`
-	Timeout    pulumi.StringInput                  `pulumi:"timeout"`
-	Timing     pulumi.StringInput                  `pulumi:"timing"`
-	Volumes    GetTriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
-	WaitFors   pulumi.StringArrayInput             `pulumi:"waitFors"`
+	AllowExitCodes pulumi.IntArrayInput                `pulumi:"allowExitCodes"`
+	AllowFailure   pulumi.BoolInput                    `pulumi:"allowFailure"`
+	Args           pulumi.StringArrayInput             `pulumi:"args"`
+	Dir            pulumi.StringInput                  `pulumi:"dir"`
+	Entrypoint     pulumi.StringInput                  `pulumi:"entrypoint"`
+	Envs           pulumi.StringArrayInput             `pulumi:"envs"`
+	Id             pulumi.StringInput                  `pulumi:"id"`
+	Name           pulumi.StringInput                  `pulumi:"name"`
+	Script         pulumi.StringInput                  `pulumi:"script"`
+	SecretEnvs     pulumi.StringArrayInput             `pulumi:"secretEnvs"`
+	Timeout        pulumi.StringInput                  `pulumi:"timeout"`
+	Timing         pulumi.StringInput                  `pulumi:"timing"`
+	Volumes        GetTriggerBuildStepVolumeArrayInput `pulumi:"volumes"`
+	WaitFors       pulumi.StringArrayInput             `pulumi:"waitFors"`
 }
 
 func (GetTriggerBuildStepArgs) ElementType() reflect.Type {
@@ -8409,6 +8479,14 @@ func (o GetTriggerBuildStepOutput) ToGetTriggerBuildStepOutput() GetTriggerBuild
 
 func (o GetTriggerBuildStepOutput) ToGetTriggerBuildStepOutputWithContext(ctx context.Context) GetTriggerBuildStepOutput {
 	return o
+}
+
+func (o GetTriggerBuildStepOutput) AllowExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) []int { return v.AllowExitCodes }).(pulumi.IntArrayOutput)
+}
+
+func (o GetTriggerBuildStepOutput) AllowFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTriggerBuildStep) bool { return v.AllowFailure }).(pulumi.BoolOutput)
 }
 
 func (o GetTriggerBuildStepOutput) Args() pulumi.StringArrayOutput {
@@ -8583,6 +8661,7 @@ type GetTriggerGitFileSource struct {
 	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
 	Path                   string `pulumi:"path"`
 	RepoType               string `pulumi:"repoType"`
+	Repository             string `pulumi:"repository"`
 	Revision               string `pulumi:"revision"`
 	Uri                    string `pulumi:"uri"`
 }
@@ -8602,6 +8681,7 @@ type GetTriggerGitFileSourceArgs struct {
 	GithubEnterpriseConfig pulumi.StringInput `pulumi:"githubEnterpriseConfig"`
 	Path                   pulumi.StringInput `pulumi:"path"`
 	RepoType               pulumi.StringInput `pulumi:"repoType"`
+	Repository             pulumi.StringInput `pulumi:"repository"`
 	Revision               pulumi.StringInput `pulumi:"revision"`
 	Uri                    pulumi.StringInput `pulumi:"uri"`
 }
@@ -8667,6 +8747,10 @@ func (o GetTriggerGitFileSourceOutput) Path() pulumi.StringOutput {
 
 func (o GetTriggerGitFileSourceOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerGitFileSourceOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.Repository }).(pulumi.StringOutput)
 }
 
 func (o GetTriggerGitFileSourceOutput) Revision() pulumi.StringOutput {
@@ -9463,6 +9547,7 @@ type GetTriggerSourceToBuild struct {
 	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
 	Ref                    string `pulumi:"ref"`
 	RepoType               string `pulumi:"repoType"`
+	Repository             string `pulumi:"repository"`
 	Uri                    string `pulumi:"uri"`
 }
 
@@ -9481,6 +9566,7 @@ type GetTriggerSourceToBuildArgs struct {
 	GithubEnterpriseConfig pulumi.StringInput `pulumi:"githubEnterpriseConfig"`
 	Ref                    pulumi.StringInput `pulumi:"ref"`
 	RepoType               pulumi.StringInput `pulumi:"repoType"`
+	Repository             pulumi.StringInput `pulumi:"repository"`
 	Uri                    pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -9545,6 +9631,10 @@ func (o GetTriggerSourceToBuildOutput) Ref() pulumi.StringOutput {
 
 func (o GetTriggerSourceToBuildOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTriggerSourceToBuild) string { return v.RepoType }).(pulumi.StringOutput)
+}
+
+func (o GetTriggerSourceToBuildOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerSourceToBuild) string { return v.Repository }).(pulumi.StringOutput)
 }
 
 func (o GetTriggerSourceToBuildOutput) Uri() pulumi.StringOutput {

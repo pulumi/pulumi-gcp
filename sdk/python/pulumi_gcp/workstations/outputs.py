@@ -20,8 +20,12 @@ __all__ = [
     'WorkstationConfigHostGceInstance',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfig',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfig',
+    'WorkstationConfigIamBindingCondition',
+    'WorkstationConfigIamMemberCondition',
     'WorkstationConfigPersistentDirectory',
     'WorkstationConfigPersistentDirectoryGcePd',
+    'WorkstationIamBindingCondition',
+    'WorkstationIamMemberCondition',
 ]
 
 @pulumi.output_type
@@ -108,7 +112,7 @@ class WorkstationClusterPrivateClusterConfig(dict):
                To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
         :param str service_attachment_uri: (Output)
                Service attachment URI for the workstation cluster.
-               The service attachemnt is created when private endpoint is enabled.
+               The service attachment is created when private endpoint is enabled.
                To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
         pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
@@ -142,7 +146,7 @@ class WorkstationClusterPrivateClusterConfig(dict):
         """
         (Output)
         Service attachment URI for the workstation cluster.
-        The service attachemnt is created when private endpoint is enabled.
+        The service attachment is created when private endpoint is enabled.
         To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
         return pulumi.get(self, "service_attachment_uri")
@@ -230,7 +234,7 @@ class WorkstationConfigContainer(dict):
         :param Sequence[str] commands: If set, overrides the default ENTRYPOINT specified by the image.
         :param Mapping[str, str] env: Environment variables passed to the container.
                The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
-        :param str image: Docker image defining the container. This image must be accessible by the config"s service account.
+        :param str image: Docker image defining the container. This image must be accessible by the config's service account.
         :param int run_as_user: If set, overrides the USER specified in the image with the given uid.
         :param str working_dir: If set, overrides the default DIR specified by the image.
         """
@@ -276,7 +280,7 @@ class WorkstationConfigContainer(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        Docker image defining the container. This image must be accessible by the config"s service account.
+        Docker image defining the container. This image must be accessible by the config's service account.
         """
         return pulumi.get(self, "image")
 
@@ -367,7 +371,7 @@ class WorkstationConfigHost(dict):
     def __init__(__self__, *,
                  gce_instance: Optional['outputs.WorkstationConfigHostGceInstance'] = None):
         """
-        :param 'WorkstationConfigHostGceInstanceArgs' gce_instance: Specifies a Compute Engine instance as the host.
+        :param 'WorkstationConfigHostGceInstanceArgs' gce_instance: A runtime using a Compute Engine instance.
                Structure is documented below.
         """
         if gce_instance is not None:
@@ -377,7 +381,7 @@ class WorkstationConfigHost(dict):
     @pulumi.getter(name="gceInstance")
     def gce_instance(self) -> Optional['outputs.WorkstationConfigHostGceInstance']:
         """
-        Specifies a Compute Engine instance as the host.
+        A runtime using a Compute Engine instance.
         Structure is documented below.
         """
         return pulumi.get(self, "gce_instance")
@@ -620,6 +624,60 @@ class WorkstationConfigHostGceInstanceShieldedInstanceConfig(dict):
 
 
 @pulumi.output_type
+class WorkstationConfigIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class WorkstationConfigIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class WorkstationConfigPersistentDirectory(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -705,7 +763,7 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
         :param str disk_type: Type of the disk to use.
         :param str fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
         :param str reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-               Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+               Possible values are: `DELETE`, `RETAIN`.
         :param int size_gb: Size of the disk in GB. Must be empty if sourceSnapshot is set.
         """
         if disk_type is not None:
@@ -738,7 +796,7 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
     def reclaim_policy(self) -> Optional[str]:
         """
         What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-        Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+        Possible values are: `DELETE`, `RETAIN`.
         """
         return pulumi.get(self, "reclaim_policy")
 
@@ -749,5 +807,59 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
         Size of the disk in GB. Must be empty if sourceSnapshot is set.
         """
         return pulumi.get(self, "size_gb")
+
+
+@pulumi.output_type
+class WorkstationIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class WorkstationIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 

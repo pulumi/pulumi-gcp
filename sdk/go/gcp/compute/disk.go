@@ -64,6 +64,44 @@ import (
 //	}
 //
 // ```
+// ### Disk Async
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			primary, err := compute.NewDisk(ctx, "primary", &compute.DiskArgs{
+//				Type:                   pulumi.String("pd-ssd"),
+//				Zone:                   pulumi.String("us-central1-a"),
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewDisk(ctx, "secondary", &compute.DiskArgs{
+//				Type: pulumi.String("pd-ssd"),
+//				Zone: pulumi.String("us-east1-c"),
+//				AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
+//					Disk: primary.ID(),
+//				},
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -95,6 +133,8 @@ import (
 type Disk struct {
 	pulumi.CustomResourceState
 
+	// A nested object resource
+	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -255,6 +295,8 @@ func GetDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Disk resources.
 type diskState struct {
+	// A nested object resource
+	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when
@@ -387,6 +429,8 @@ type diskState struct {
 }
 
 type DiskState struct {
+	// A nested object resource
+	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
@@ -523,6 +567,8 @@ func (DiskState) ElementType() reflect.Type {
 }
 
 type diskArgs struct {
+	// A nested object resource
+	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
@@ -625,6 +671,8 @@ type diskArgs struct {
 
 // The set of arguments for constructing a Disk resource.
 type DiskArgs struct {
+	// A nested object resource
+	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
@@ -810,6 +858,11 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+// A nested object resource
+func (o DiskOutput) AsyncPrimaryDisk() DiskAsyncPrimaryDiskPtrOutput {
+	return o.ApplyT(func(v *Disk) DiskAsyncPrimaryDiskPtrOutput { return v.AsyncPrimaryDisk }).(DiskAsyncPrimaryDiskPtrOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.bigquery.outputs.JobLoadDestinationEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.JobLoadDestinationTable;
+import com.pulumi.gcp.bigquery.outputs.JobLoadParquetOptions;
 import com.pulumi.gcp.bigquery.outputs.JobLoadTimePartitioning;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -104,6 +105,12 @@ public final class JobLoad {
      * 
      */
     private @Nullable String nullMarker;
+    /**
+     * @return Parquet Options for load and make external tables.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable JobLoadParquetOptions parquetOptions;
     /**
      * @return If sourceFormat is set to &#34;DATASTORE_BACKUP&#34;, indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
      * Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
@@ -291,6 +298,14 @@ public final class JobLoad {
         return Optional.ofNullable(this.nullMarker);
     }
     /**
+     * @return Parquet Options for load and make external tables.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<JobLoadParquetOptions> parquetOptions() {
+        return Optional.ofNullable(this.parquetOptions);
+    }
+    /**
      * @return If sourceFormat is set to &#34;DATASTORE_BACKUP&#34;, indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
      * Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
      * If any named property isn&#39;t found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -401,6 +416,7 @@ public final class JobLoad {
         private @Nullable String jsonExtension;
         private @Nullable Integer maxBadRecords;
         private @Nullable String nullMarker;
+        private @Nullable JobLoadParquetOptions parquetOptions;
         private @Nullable List<String> projectionFields;
         private @Nullable String quote;
         private @Nullable List<String> schemaUpdateOptions;
@@ -424,6 +440,7 @@ public final class JobLoad {
     	      this.jsonExtension = defaults.jsonExtension;
     	      this.maxBadRecords = defaults.maxBadRecords;
     	      this.nullMarker = defaults.nullMarker;
+    	      this.parquetOptions = defaults.parquetOptions;
     	      this.projectionFields = defaults.projectionFields;
     	      this.quote = defaults.quote;
     	      this.schemaUpdateOptions = defaults.schemaUpdateOptions;
@@ -495,6 +512,11 @@ public final class JobLoad {
             return this;
         }
         @CustomType.Setter
+        public Builder parquetOptions(@Nullable JobLoadParquetOptions parquetOptions) {
+            this.parquetOptions = parquetOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectionFields(@Nullable List<String> projectionFields) {
             this.projectionFields = projectionFields;
             return this;
@@ -557,6 +579,7 @@ public final class JobLoad {
             o.jsonExtension = jsonExtension;
             o.maxBadRecords = maxBadRecords;
             o.nullMarker = nullMarker;
+            o.parquetOptions = parquetOptions;
             o.projectionFields = projectionFields;
             o.quote = quote;
             o.schemaUpdateOptions = schemaUpdateOptions;

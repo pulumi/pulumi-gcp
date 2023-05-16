@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -38,7 +39,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Holds the single container that defines the unit of execution for this task.
+     * Holds the containers that define the unit of execution for this Service.
      * Structure is documented below.
      * 
      */
@@ -46,7 +47,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<List<ServiceTemplateContainerArgs>> containers;
 
     /**
-     * @return Holds the single container that defines the unit of execution for this task.
+     * @return Holds the containers that define the unit of execution for this Service.
      * Structure is documented below.
      * 
      */
@@ -164,6 +165,21 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * 
+     */
+    @Import(name="sessionAffinity")
+    private @Nullable Output<Boolean> sessionAffinity;
+
+    /**
+     * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * 
+     */
+    public Optional<Output<Boolean>> sessionAffinity() {
+        return Optional.ofNullable(this.sessionAffinity);
+    }
+
+    /**
      * Max allowed time for an instance to respond to a request.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
@@ -226,6 +242,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.revision = $.revision;
         this.scaling = $.scaling;
         this.serviceAccount = $.serviceAccount;
+        this.sessionAffinity = $.sessionAffinity;
         this.timeout = $.timeout;
         this.volumes = $.volumes;
         this.vpcAccess = $.vpcAccess;
@@ -271,7 +288,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param containers Holds the single container that defines the unit of execution for this task.
+         * @param containers Holds the containers that define the unit of execution for this Service.
          * Structure is documented below.
          * 
          * @return builder
@@ -283,7 +300,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param containers Holds the single container that defines the unit of execution for this task.
+         * @param containers Holds the containers that define the unit of execution for this Service.
          * Structure is documented below.
          * 
          * @return builder
@@ -294,7 +311,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param containers Holds the single container that defines the unit of execution for this task.
+         * @param containers Holds the containers that define the unit of execution for this Service.
          * Structure is documented below.
          * 
          * @return builder
@@ -453,6 +470,27 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param sessionAffinity Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionAffinity(@Nullable Output<Boolean> sessionAffinity) {
+            $.sessionAffinity = sessionAffinity;
+            return this;
+        }
+
+        /**
+         * @param sessionAffinity Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionAffinity(Boolean sessionAffinity) {
+            return sessionAffinity(Output.of(sessionAffinity));
         }
 
         /**

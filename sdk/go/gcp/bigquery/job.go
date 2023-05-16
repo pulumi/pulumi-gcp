@@ -200,6 +200,93 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Job Load Parquet
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testBucket, err := storage.NewBucket(ctx, "testBucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testBucketObject, err := storage.NewBucketObject(ctx, "testBucketObject", &storage.BucketObjectArgs{
+//				Source: pulumi.NewFileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+//				Bucket: testBucket.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("job_load_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testTable, err := bigquery.NewTable(ctx, "testTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				TableId:            pulumi.String("job_load_table"),
+//				DatasetId:          testDataset.DatasetId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+//				JobId: pulumi.String("job_load"),
+//				Labels: pulumi.StringMap{
+//					"my_job": pulumi.String("load"),
+//				},
+//				Load: &bigquery.JobLoadArgs{
+//					SourceUris: pulumi.StringArray{
+//						pulumi.All(testBucketObject.Bucket, testBucketObject.Name).ApplyT(func(_args []interface{}) (string, error) {
+//							bucket := _args[0].(string)
+//							name := _args[1].(string)
+//							return fmt.Sprintf("gs://%v/%v", bucket, name), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					DestinationTable: &bigquery.JobLoadDestinationTableArgs{
+//						ProjectId: testTable.Project,
+//						DatasetId: testTable.DatasetId,
+//						TableId:   testTable.TableId,
+//					},
+//					SchemaUpdateOptions: pulumi.StringArray{
+//						pulumi.String("ALLOW_FIELD_RELAXATION"),
+//						pulumi.String("ALLOW_FIELD_ADDITION"),
+//					},
+//					WriteDisposition: pulumi.String("WRITE_APPEND"),
+//					SourceFormat:     pulumi.String("PARQUET"),
+//					Autodetect:       pulumi.Bool(true),
+//					ParquetOptions: &bigquery.JobLoadParquetOptionsArgs{
+//						EnumAsString:        pulumi.Bool(true),
+//						EnableListInference: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Bigquery Job Extract
 //
 // ```go

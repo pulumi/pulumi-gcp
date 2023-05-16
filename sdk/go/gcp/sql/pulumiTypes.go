@@ -9066,6 +9066,130 @@ func (o GetDatabasesDatabaseArrayOutput) Index(i pulumi.IntInput) GetDatabasesDa
 	}).(GetDatabasesDatabaseOutput)
 }
 
+type GetTiersTier struct {
+	// The maximum disk size of this tier in bytes.
+	DiskQuota int `pulumi:"diskQuota"`
+	// The maximum ram usage of this tier in bytes.
+	Ram int `pulumi:"ram"`
+	// The applicable regions for this tier.
+	Regions []string `pulumi:"regions"`
+	// An identifier for the machine type, for example, db-custom-1-3840.
+	Tier string `pulumi:"tier"`
+}
+
+// GetTiersTierInput is an input type that accepts GetTiersTierArgs and GetTiersTierOutput values.
+// You can construct a concrete instance of `GetTiersTierInput` via:
+//
+//	GetTiersTierArgs{...}
+type GetTiersTierInput interface {
+	pulumi.Input
+
+	ToGetTiersTierOutput() GetTiersTierOutput
+	ToGetTiersTierOutputWithContext(context.Context) GetTiersTierOutput
+}
+
+type GetTiersTierArgs struct {
+	// The maximum disk size of this tier in bytes.
+	DiskQuota pulumi.IntInput `pulumi:"diskQuota"`
+	// The maximum ram usage of this tier in bytes.
+	Ram pulumi.IntInput `pulumi:"ram"`
+	// The applicable regions for this tier.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// An identifier for the machine type, for example, db-custom-1-3840.
+	Tier pulumi.StringInput `pulumi:"tier"`
+}
+
+func (GetTiersTierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTiersTier)(nil)).Elem()
+}
+
+func (i GetTiersTierArgs) ToGetTiersTierOutput() GetTiersTierOutput {
+	return i.ToGetTiersTierOutputWithContext(context.Background())
+}
+
+func (i GetTiersTierArgs) ToGetTiersTierOutputWithContext(ctx context.Context) GetTiersTierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTiersTierOutput)
+}
+
+// GetTiersTierArrayInput is an input type that accepts GetTiersTierArray and GetTiersTierArrayOutput values.
+// You can construct a concrete instance of `GetTiersTierArrayInput` via:
+//
+//	GetTiersTierArray{ GetTiersTierArgs{...} }
+type GetTiersTierArrayInput interface {
+	pulumi.Input
+
+	ToGetTiersTierArrayOutput() GetTiersTierArrayOutput
+	ToGetTiersTierArrayOutputWithContext(context.Context) GetTiersTierArrayOutput
+}
+
+type GetTiersTierArray []GetTiersTierInput
+
+func (GetTiersTierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTiersTier)(nil)).Elem()
+}
+
+func (i GetTiersTierArray) ToGetTiersTierArrayOutput() GetTiersTierArrayOutput {
+	return i.ToGetTiersTierArrayOutputWithContext(context.Background())
+}
+
+func (i GetTiersTierArray) ToGetTiersTierArrayOutputWithContext(ctx context.Context) GetTiersTierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTiersTierArrayOutput)
+}
+
+type GetTiersTierOutput struct{ *pulumi.OutputState }
+
+func (GetTiersTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTiersTier)(nil)).Elem()
+}
+
+func (o GetTiersTierOutput) ToGetTiersTierOutput() GetTiersTierOutput {
+	return o
+}
+
+func (o GetTiersTierOutput) ToGetTiersTierOutputWithContext(ctx context.Context) GetTiersTierOutput {
+	return o
+}
+
+// The maximum disk size of this tier in bytes.
+func (o GetTiersTierOutput) DiskQuota() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTiersTier) int { return v.DiskQuota }).(pulumi.IntOutput)
+}
+
+// The maximum ram usage of this tier in bytes.
+func (o GetTiersTierOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v GetTiersTier) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+// The applicable regions for this tier.
+func (o GetTiersTierOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTiersTier) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// An identifier for the machine type, for example, db-custom-1-3840.
+func (o GetTiersTierOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTiersTier) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+type GetTiersTierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTiersTierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTiersTier)(nil)).Elem()
+}
+
+func (o GetTiersTierArrayOutput) ToGetTiersTierArrayOutput() GetTiersTierArrayOutput {
+	return o
+}
+
+func (o GetTiersTierArrayOutput) ToGetTiersTierArrayOutputWithContext(ctx context.Context) GetTiersTierArrayOutput {
+	return o
+}
+
+func (o GetTiersTierArrayOutput) Index(i pulumi.IntInput) GetTiersTierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTiersTier {
+		return vs[0].([]GetTiersTier)[vs[1].(int)]
+	}).(GetTiersTierOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceCloneInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceClonePtrInput)(nil)).Elem(), DatabaseInstanceCloneArgs{})
@@ -9187,6 +9311,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseInput)(nil)).Elem(), GetDatabasesDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabasesDatabaseArrayInput)(nil)).Elem(), GetDatabasesDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTiersTierInput)(nil)).Elem(), GetTiersTierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTiersTierArrayInput)(nil)).Elem(), GetTiersTierArray{})
 	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
@@ -9307,4 +9433,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingSqlServerAuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseOutput{})
 	pulumi.RegisterOutputType(GetDatabasesDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetTiersTierOutput{})
+	pulumi.RegisterOutputType(GetTiersTierArrayOutput{})
 }

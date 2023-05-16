@@ -131,7 +131,9 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly bool AllPorts;
         public readonly bool AllowGlobalAccess;
+        public readonly bool AllowPscGlobalAccess;
         public readonly string BackendService;
+        public readonly string BaseForwardingRule;
         public readonly string CreationTimestamp;
         public readonly string Description;
         /// <summary>
@@ -157,6 +159,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetForwardingRuleServiceDirectoryRegistrationResult> ServiceDirectoryRegistrations;
         public readonly string ServiceLabel;
         public readonly string ServiceName;
+        public readonly ImmutableArray<string> SourceIpRanges;
         public readonly string Subnetwork;
         public readonly string Target;
 
@@ -166,7 +169,11 @@ namespace Pulumi.Gcp.Compute
 
             bool allowGlobalAccess,
 
+            bool allowPscGlobalAccess,
+
             string backendService,
+
+            string baseForwardingRule,
 
             string creationTimestamp,
 
@@ -212,13 +219,17 @@ namespace Pulumi.Gcp.Compute
 
             string serviceName,
 
+            ImmutableArray<string> sourceIpRanges,
+
             string subnetwork,
 
             string target)
         {
             AllPorts = allPorts;
             AllowGlobalAccess = allowGlobalAccess;
+            AllowPscGlobalAccess = allowPscGlobalAccess;
             BackendService = backendService;
+            BaseForwardingRule = baseForwardingRule;
             CreationTimestamp = creationTimestamp;
             Description = description;
             Id = id;
@@ -241,6 +252,7 @@ namespace Pulumi.Gcp.Compute
             ServiceDirectoryRegistrations = serviceDirectoryRegistrations;
             ServiceLabel = serviceLabel;
             ServiceName = serviceName;
+            SourceIpRanges = sourceIpRanges;
             Subnetwork = subnetwork;
             Target = target;
         }

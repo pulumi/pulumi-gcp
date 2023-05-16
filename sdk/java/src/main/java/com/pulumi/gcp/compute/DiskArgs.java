@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.DiskDiskEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.DiskSourceImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.DiskSourceSnapshotEncryptionKeyArgs;
@@ -21,6 +22,21 @@ import javax.annotation.Nullable;
 public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DiskArgs Empty = new DiskArgs();
+
+    /**
+     * A nested object resource
+     * 
+     */
+    @Import(name="asyncPrimaryDisk")
+    private @Nullable Output<DiskAsyncPrimaryDiskArgs> asyncPrimaryDisk;
+
+    /**
+     * @return A nested object resource
+     * 
+     */
+    public Optional<Output<DiskAsyncPrimaryDiskArgs>> asyncPrimaryDisk() {
+        return Optional.ofNullable(this.asyncPrimaryDisk);
+    }
 
     /**
      * An optional description of this resource. Provide this property when
@@ -423,6 +439,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     private DiskArgs() {}
 
     private DiskArgs(DiskArgs $) {
+        this.asyncPrimaryDisk = $.asyncPrimaryDisk;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
         this.image = $.image;
@@ -459,6 +476,27 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DiskArgs defaults) {
             $ = new DiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param asyncPrimaryDisk A nested object resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncPrimaryDisk(@Nullable Output<DiskAsyncPrimaryDiskArgs> asyncPrimaryDisk) {
+            $.asyncPrimaryDisk = asyncPrimaryDisk;
+            return this;
+        }
+
+        /**
+         * @param asyncPrimaryDisk A nested object resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs asyncPrimaryDisk) {
+            return asyncPrimaryDisk(Output.of(asyncPrimaryDisk));
         }
 
         /**

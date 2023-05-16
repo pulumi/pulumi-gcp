@@ -89,6 +89,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly string? NullMarker;
         /// <summary>
+        /// Parquet Options for load and make external tables.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.JobLoadParquetOptions? ParquetOptions;
+        /// <summary>
         /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
         /// Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
         /// If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -180,6 +185,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string? nullMarker,
 
+            Outputs.JobLoadParquetOptions? parquetOptions,
+
             ImmutableArray<string> projectionFields,
 
             string? quote,
@@ -208,6 +215,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             JsonExtension = jsonExtension;
             MaxBadRecords = maxBadRecords;
             NullMarker = nullMarker;
+            ParquetOptions = parquetOptions;
             ProjectionFields = projectionFields;
             Quote = quote;
             SchemaUpdateOptions = schemaUpdateOptions;

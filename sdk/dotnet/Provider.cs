@@ -168,6 +168,9 @@ namespace Pulumi.Gcp
         [Output("dataLossPreventionCustomEndpoint")]
         public Output<string?> DataLossPreventionCustomEndpoint { get; private set; } = null!;
 
+        [Output("databaseMigrationServiceCustomEndpoint")]
+        public Output<string?> DatabaseMigrationServiceCustomEndpoint { get; private set; } = null!;
+
         [Output("dataflowCustomEndpoint")]
         public Output<string?> DataflowCustomEndpoint { get; private set; } = null!;
 
@@ -242,6 +245,9 @@ namespace Pulumi.Gcp
 
         [Output("gkehubFeatureCustomEndpoint")]
         public Output<string?> GkehubFeatureCustomEndpoint { get; private set; } = null!;
+
+        [Output("gkeonpremCustomEndpoint")]
+        public Output<string?> GkeonpremCustomEndpoint { get; private set; } = null!;
 
         [Output("googlePartnerName")]
         public Output<string?> GooglePartnerName { get; private set; } = null!;
@@ -592,6 +598,9 @@ namespace Pulumi.Gcp
         [Input("dataLossPreventionCustomEndpoint")]
         public Input<string>? DataLossPreventionCustomEndpoint { get; set; }
 
+        [Input("databaseMigrationServiceCustomEndpoint")]
+        public Input<string>? DatabaseMigrationServiceCustomEndpoint { get; set; }
+
         [Input("dataflowCustomEndpoint")]
         public Input<string>? DataflowCustomEndpoint { get; set; }
 
@@ -669,6 +678,9 @@ namespace Pulumi.Gcp
 
         [Input("gkehubFeatureCustomEndpoint")]
         public Input<string>? GkehubFeatureCustomEndpoint { get; set; }
+
+        [Input("gkeonpremCustomEndpoint")]
+        public Input<string>? GkeonpremCustomEndpoint { get; set; }
 
         [Input("googlePartnerName")]
         public Input<string>? GooglePartnerName { get; set; }

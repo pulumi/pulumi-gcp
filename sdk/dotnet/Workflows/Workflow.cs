@@ -85,6 +85,13 @@ namespace Pulumi.Gcp.Workflows
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The KMS key used to encrypt workflow and execution data.
+        /// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        /// </summary>
+        [Output("cryptoKeyName")]
+        public Output<string?> CryptoKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         /// </summary>
         [Output("description")]
@@ -131,7 +138,11 @@ namespace Pulumi.Gcp.Workflows
         /// <summary>
         /// Name of the service account associated with the latest workflow version. This service
         /// account represents the identity of the workflow and determines what permissions the workflow has.
-        /// Format: projects/{project}/serviceAccounts/{account}.
+        /// Format: projects/{project}/serviceAccounts/{account} or {account}.
+        /// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+        /// The {account} value can be the email address or the unique_id of the service account.
+        /// If not provided, workflow will use the project's default service account.
+        /// Modifying this field for an existing workflow results in a new workflow revision.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
@@ -201,6 +212,13 @@ namespace Pulumi.Gcp.Workflows
     public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The KMS key used to encrypt workflow and execution data.
+        /// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        /// </summary>
+        [Input("cryptoKeyName")]
+        public Input<string>? CryptoKeyName { get; set; }
+
+        /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         /// </summary>
         [Input("description")]
@@ -247,7 +265,11 @@ namespace Pulumi.Gcp.Workflows
         /// <summary>
         /// Name of the service account associated with the latest workflow version. This service
         /// account represents the identity of the workflow and determines what permissions the workflow has.
-        /// Format: projects/{project}/serviceAccounts/{account}.
+        /// Format: projects/{project}/serviceAccounts/{account} or {account}.
+        /// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+        /// The {account} value can be the email address or the unique_id of the service account.
+        /// If not provided, workflow will use the project's default service account.
+        /// Modifying this field for an existing workflow results in a new workflow revision.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
@@ -271,6 +293,13 @@ namespace Pulumi.Gcp.Workflows
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The KMS key used to encrypt workflow and execution data.
+        /// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        /// </summary>
+        [Input("cryptoKeyName")]
+        public Input<string>? CryptoKeyName { get; set; }
 
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -325,7 +354,11 @@ namespace Pulumi.Gcp.Workflows
         /// <summary>
         /// Name of the service account associated with the latest workflow version. This service
         /// account represents the identity of the workflow and determines what permissions the workflow has.
-        /// Format: projects/{project}/serviceAccounts/{account}.
+        /// Format: projects/{project}/serviceAccounts/{account} or {account}.
+        /// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+        /// The {account} value can be the email address or the unique_id of the service account.
+        /// If not provided, workflow will use the project's default service account.
+        /// Modifying this field for an existing workflow results in a new workflow revision.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

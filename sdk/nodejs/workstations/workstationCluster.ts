@@ -130,7 +130,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.workstations.WorkstationClusterCondition[]>;
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -184,7 +184,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * The ID of the workstation cluster.
+     * ID to use for the workstation cluster.
      */
     public readonly workstationClusterId!: pulumi.Output<string>;
 
@@ -262,7 +262,7 @@ export interface WorkstationClusterState {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationClusterCondition>[]>;
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -316,7 +316,7 @@ export interface WorkstationClusterState {
      */
     uid?: pulumi.Input<string>;
     /**
-     * The ID of the workstation cluster.
+     * ID to use for the workstation cluster.
      */
     workstationClusterId?: pulumi.Input<string>;
 }
@@ -362,7 +362,7 @@ export interface WorkstationClusterArgs {
      */
     subnetwork: pulumi.Input<string>;
     /**
-     * The ID of the workstation cluster.
+     * ID to use for the workstation cluster.
      */
     workstationClusterId: pulumi.Input<string>;
 }

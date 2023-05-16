@@ -33,6 +33,9 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("repoType", required: true)]
         public Input<string> RepoType { get; set; } = null!;
 
+        [Input("repository")]
+        public Input<string>? Repository { get; set; }
+
         /// <summary>
         /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
         /// filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions

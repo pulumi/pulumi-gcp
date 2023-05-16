@@ -41,6 +41,56 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Forwarding Rule Regional Steering
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Compute.Address("basic", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var externalRegionBackendService = new Gcp.Compute.RegionBackendService("externalRegionBackendService", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///     });
+    /// 
+    ///     var externalForwardingRule = new Gcp.Compute.ForwardingRule("externalForwardingRule", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         IpAddress = basic.SelfLink,
+    ///         BackendService = externalRegionBackendService.SelfLink,
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///     });
+    /// 
+    ///     var steering = new Gcp.Compute.ForwardingRule("steering", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         IpAddress = basic.SelfLink,
+    ///         BackendService = externalRegionBackendService.SelfLink,
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///         SourceIpRanges = new[]
+    ///         {
+    ///             "34.121.88.0/24",
+    ///             "35.187.239.137",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             externalForwardingRule,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -66,30 +116,45 @@ namespace Pulumi.Gcp.Compute
     public partial class ForwardingRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// This field can be used with internal load balancer or network load balancer
-        /// when the forwarding rule references a backend service, or with the target
-        /// field when it references a TargetInstance. Set this to true to
-        /// allow packets addressed to any ports to be forwarded to the backends configured
-        /// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
-        /// must be set to true when the protocol is set to L3_DEFAULT.
-        /// Cannot be set if port or portRange are set.
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By internal TCP/UDP load balancers, backend service-based network load
+        /// balancers, and internal and external protocol forwarding.
         /// </summary>
         [Output("allPorts")]
         public Output<bool?> AllPorts { get; private set; } = null!;
 
         /// <summary>
-        /// If true, clients can access ILB from all regions.
-        /// Otherwise only allows from the local region the ILB is located at.
+        /// This field is used along with the `backend_service` field for
+        /// internal load balancing or with the `target` field for internal
+        /// TargetInstance.
+        /// If the field is set to `TRUE`, clients can access ILB from all
+        /// regions.
+        /// Otherwise only allows access from clients in the same region as the
+        /// internal load balancer.
         /// </summary>
         [Output("allowGlobalAccess")]
         public Output<bool?> AllowGlobalAccess { get; private set; } = null!;
 
         /// <summary>
-        /// A BackendService to receive the matched traffic. This is used only
-        /// for INTERNAL load balancing.
+        /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        /// </summary>
+        [Output("allowPscGlobalAccess")]
+        public Output<bool?> AllowPscGlobalAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Identifies the backend service to which the forwarding rule sends traffic.
+        /// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+        /// must be omitted for all other load balancer types.
         /// </summary>
         [Output("backendService")]
         public Output<string?> BackendService { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+        /// </summary>
+        [Output("baseForwardingRule")]
+        public Output<string> BaseForwardingRule { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -105,45 +170,48 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address that this forwarding rule serves. When a client sends
-        /// traffic to this IP address, the forwarding rule directs the traffic to
-        /// the target that you specify in the forwarding rule. The
-        /// loadBalancingScheme and the forwarding rule's target determine the
-        /// type of IP address that you can use. For detailed information, refer
-        /// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// An address can be specified either by a literal IP address or a
-        /// reference to an existing Address resource. If you don't specify a
-        /// reserved IP address, an ephemeral IP address is assigned.
-        /// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-        /// that has validateForProxyless field set to true.
-        /// For Private Service Connect forwarding rules that forward traffic to
-        /// Google APIs, IP address must be provided.
+        /// IP address for which this forwarding rule accepts traffic. When a client
+        /// sends traffic to this IP address, the forwarding rule directs the traffic
+        /// to the referenced `target` or `backendService`.
+        /// While creating a forwarding rule, specifying an `IPAddress` is
+        /// required under the following circumstances:
+        /// * When the `target` is set to `targetGrpcProxy` and
+        /// `validateForProxyless` is set to `true`, the
+        /// `IPAddress` should be set to `0.0.0.0`.
+        /// * When the `target` is a Private Service Connect Google APIs
+        /// bundle, you must specify an `IPAddress`.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
         /// The IP protocol to which this rule applies.
-        /// When the load balancing scheme is INTERNAL, only TCP and UDP are
-        /// valid.
+        /// For protocol forwarding, valid
+        /// options are `TCP`, `UDP`, `ESP`,
+        /// `AH`, `SCTP`, `ICMP` and
+        /// `L3_DEFAULT`.
+        /// The valid IP protocols are different for different load balancing products
+        /// as described in [Load balancing
+        /// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
         /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether or not this load balancer can be used
-        /// as a collector for packet mirroring. To prevent mirroring loops,
-        /// instances behind this load balancer will not have their traffic
-        /// mirrored even if a PacketMirroring rule applies to them. This
-        /// can only be set to true for load balancers that have their
-        /// loadBalancingScheme set to INTERNAL.
+        /// Indicates whether or not this load balancer can be used as a collector for
+        /// packet mirroring. To prevent mirroring loops, instances behind this
+        /// load balancer will not have their traffic mirrored even if a
+        /// `PacketMirroring` rule applies to them.
+        /// This can only be set to true for load balancers that have their
+        /// `loadBalancingScheme` set to `INTERNAL`.
         /// </summary>
         [Output("isMirroringCollector")]
         public Output<bool?> IsMirroringCollector { get; private set; } = null!;
 
         /// <summary>
-        /// Used internally during label updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -155,77 +223,77 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+        /// Specifies the forwarding rule type.
+        /// For more information about forwarding rules, refer to
+        /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
+        /// Default value is `EXTERNAL`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the resource; provided by the client when the resource is
-        /// created. The name must be 1-63 characters long, and comply with
-        /// RFC1035. Specifically, the name must be 1-63 characters long and match
-        /// the regular expression `a-z?` which means the
-        /// first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource; provided by the client when the resource is created.
+        /// The name must be 1-63 characters long, and comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        /// Specifically, the name must be 1-63 characters long and match the regular
+        /// expression `a-z?` which means the first
+        /// character must be a lowercase letter, and all following characters must
+        /// be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.
+        /// For Private Service Connect forwarding rules that forward traffic to Google
+        /// APIs, the forwarding rule name must be a 1-20 characters string with
+        /// lowercase letters and numbers and must start with a letter.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// For internal load balancing, this field identifies the network that
-        /// the load balanced IP should belong to for this Forwarding Rule. If
-        /// this field is not specified, the default network will be used.
-        /// This field is only used for INTERNAL load balancing.
+        /// This field is not used for external load balancing.
+        /// For Internal TCP/UDP Load Balancing, this field identifies the network that
+        /// the load balanced IP should belong to for this Forwarding Rule.
+        /// If the subnetwork is specified, the network of the subnetwork will be used.
+        /// If neither subnetwork nor this field is specified, the default network will
+        /// be used.
+        /// For Private Service Connect forwarding rules that forward traffic to Google
+        /// APIs, a network must be provided.
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// The networking tier used for configuring this address. If this field is not
-        /// specified, it is assumed to be PREMIUM.
+        /// This signifies the networking tier used for configuring
+        /// this load balancer and can only take the following values:
+        /// `PREMIUM`, `STANDARD`.
+        /// For regional ForwardingRule, the valid values are `PREMIUM` and
+        /// `STANDARD`. For GlobalForwardingRule, the valid value is
+        /// `PREMIUM`.
+        /// If this field is not specified, it is assumed to be `PREMIUM`.
+        /// If `IPAddress` is specified, this value must be equal to the
+        /// networkTier of the Address.
         /// Possible values are: `PREMIUM`, `STANDARD`.
         /// </summary>
         [Output("networkTier")]
         public Output<string> NetworkTier { get; private set; } = null!;
 
         /// <summary>
-        /// This field is used along with the target field for TargetHttpProxy,
-        /// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-        /// TargetPool, TargetInstance.
-        /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-        /// addressed to ports in the specified range will be forwarded to target.
-        /// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-        /// disjoint port ranges.
-        /// Some types of forwarding target have constraints on the acceptable
-        /// ports:
-        /// * TargetHttpProxy: 80, 8080
-        /// * TargetHttpsProxy: 443
-        /// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-        /// 1883, 5222
-        /// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-        /// 1883, 5222
-        /// * TargetVpnGateway: 500, 4500
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By backend service-based network load balancers, target pool-based
+        /// network load balancers, internal proxy load balancers, external proxy load
+        /// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+        /// Some products have restrictions on what ports can be used. See
+        /// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+        /// for details.
         /// </summary>
         [Output("portRange")]
-        public Output<string?> PortRange { get; private set; } = null!;
+        public Output<string> PortRange { get; private set; } = null!;
 
         /// <summary>
-        /// This field is used along with internal load balancing and network
-        /// load balancer when the forwarding rule references a backend service
-        /// and when protocol is not L3_DEFAULT.
-        /// A single port or a comma separated list of ports can be configured.
-        /// Only packets addressed to these ports will be forwarded to the backends
-        /// configured with this forwarding rule.
-        /// You can only use one of ports and portRange, or allPorts.
-        /// The three are mutually exclusive.
-        /// You may specify a maximum of up to 5 ports, which can be non-contiguous.
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By internal TCP/UDP load balancers, backend service-based network load
+        /// balancers, and internal protocol forwarding.
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
@@ -244,7 +312,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> PscConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
+        /// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
         /// </summary>
         [Output("pscConnectionStatus")]
         public Output<string> PscConnectionStatus { get; private set; } = null!;
@@ -263,12 +331,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Service Directory resources to register this forwarding rule with. Currently,
-        /// only supports a single Service Directory resource.
+        /// Service Directory resources to register this forwarding rule with.
+        /// Currently, only supports a single Service Directory resource.
         /// Structure is documented below.
         /// </summary>
         [Output("serviceDirectoryRegistrations")]
-        public Output<ImmutableArray<Outputs.ForwardingRuleServiceDirectoryRegistration>> ServiceDirectoryRegistrations { get; private set; } = null!;
+        public Output<Outputs.ForwardingRuleServiceDirectoryRegistrations> ServiceDirectoryRegistrations { get; private set; } = null!;
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
@@ -293,20 +361,32 @@ namespace Pulumi.Gcp.Compute
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The subnetwork that the load balanced IP should belong to for this
-        /// Forwarding Rule.  This field is only used for INTERNAL load balancing.
-        /// If the network specified is in auto subnet mode, this field is
-        /// optional. However, if the network is in custom subnet mode, a
-        /// subnetwork must be specified.
+        /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        /// </summary>
+        [Output("sourceIpRanges")]
+        public Output<ImmutableArray<string>> SourceIpRanges { get; private set; } = null!;
+
+        /// <summary>
+        /// This field identifies the subnetwork that the load balanced IP should
+        /// belong to for this Forwarding Rule, used in internal load balancing and
+        /// network load balancing with IPv6.
+        /// If the network specified is in auto subnet mode, this field is optional.
+        /// However, a subnetwork must be specified if the network is in custom subnet
+        /// mode or when creating external forwarding rule with IPv6.
         /// </summary>
         [Output("subnetwork")]
         public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The target must live in the same region as the forwarding rule.
-        /// The forwarded traffic must be of a type appropriate to the target
-        /// object.
+        /// The URL of the target resource to receive the matched traffic.  For
+        /// regional forwarding rules, this target must be in the same region as the
+        /// forwarding rule. For global forwarding rules, this target must be a global
+        /// load balancing resource.
+        /// The forwarded traffic must be of a type appropriate to the target object.
+        /// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        /// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+        /// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+        /// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         /// </summary>
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
@@ -358,27 +438,36 @@ namespace Pulumi.Gcp.Compute
     public sealed class ForwardingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field can be used with internal load balancer or network load balancer
-        /// when the forwarding rule references a backend service, or with the target
-        /// field when it references a TargetInstance. Set this to true to
-        /// allow packets addressed to any ports to be forwarded to the backends configured
-        /// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
-        /// must be set to true when the protocol is set to L3_DEFAULT.
-        /// Cannot be set if port or portRange are set.
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By internal TCP/UDP load balancers, backend service-based network load
+        /// balancers, and internal and external protocol forwarding.
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
 
         /// <summary>
-        /// If true, clients can access ILB from all regions.
-        /// Otherwise only allows from the local region the ILB is located at.
+        /// This field is used along with the `backend_service` field for
+        /// internal load balancing or with the `target` field for internal
+        /// TargetInstance.
+        /// If the field is set to `TRUE`, clients can access ILB from all
+        /// regions.
+        /// Otherwise only allows access from clients in the same region as the
+        /// internal load balancer.
         /// </summary>
         [Input("allowGlobalAccess")]
         public Input<bool>? AllowGlobalAccess { get; set; }
 
         /// <summary>
-        /// A BackendService to receive the matched traffic. This is used only
-        /// for INTERNAL load balancing.
+        /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        /// </summary>
+        [Input("allowPscGlobalAccess")]
+        public Input<bool>? AllowPscGlobalAccess { get; set; }
+
+        /// <summary>
+        /// Identifies the backend service to which the forwarding rule sends traffic.
+        /// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+        /// must be omitted for all other load balancer types.
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
@@ -391,39 +480,41 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IP address that this forwarding rule serves. When a client sends
-        /// traffic to this IP address, the forwarding rule directs the traffic to
-        /// the target that you specify in the forwarding rule. The
-        /// loadBalancingScheme and the forwarding rule's target determine the
-        /// type of IP address that you can use. For detailed information, refer
-        /// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// An address can be specified either by a literal IP address or a
-        /// reference to an existing Address resource. If you don't specify a
-        /// reserved IP address, an ephemeral IP address is assigned.
-        /// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-        /// that has validateForProxyless field set to true.
-        /// For Private Service Connect forwarding rules that forward traffic to
-        /// Google APIs, IP address must be provided.
+        /// IP address for which this forwarding rule accepts traffic. When a client
+        /// sends traffic to this IP address, the forwarding rule directs the traffic
+        /// to the referenced `target` or `backendService`.
+        /// While creating a forwarding rule, specifying an `IPAddress` is
+        /// required under the following circumstances:
+        /// * When the `target` is set to `targetGrpcProxy` and
+        /// `validateForProxyless` is set to `true`, the
+        /// `IPAddress` should be set to `0.0.0.0`.
+        /// * When the `target` is a Private Service Connect Google APIs
+        /// bundle, you must specify an `IPAddress`.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
         /// The IP protocol to which this rule applies.
-        /// When the load balancing scheme is INTERNAL, only TCP and UDP are
-        /// valid.
+        /// For protocol forwarding, valid
+        /// options are `TCP`, `UDP`, `ESP`,
+        /// `AH`, `SCTP`, `ICMP` and
+        /// `L3_DEFAULT`.
+        /// The valid IP protocols are different for different load balancing products
+        /// as described in [Load balancing
+        /// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
         /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// Indicates whether or not this load balancer can be used
-        /// as a collector for packet mirroring. To prevent mirroring loops,
-        /// instances behind this load balancer will not have their traffic
-        /// mirrored even if a PacketMirroring rule applies to them. This
-        /// can only be set to true for load balancers that have their
-        /// loadBalancingScheme set to INTERNAL.
+        /// Indicates whether or not this load balancer can be used as a collector for
+        /// packet mirroring. To prevent mirroring loops, instances behind this
+        /// load balancer will not have their traffic mirrored even if a
+        /// `PacketMirroring` rule applies to them.
+        /// This can only be set to true for load balancers that have their
+        /// `loadBalancingScheme` set to `INTERNAL`.
         /// </summary>
         [Input("isMirroringCollector")]
         public Input<bool>? IsMirroringCollector { get; set; }
@@ -441,63 +532,68 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+        /// Specifies the forwarding rule type.
+        /// For more information about forwarding rules, refer to
+        /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
+        /// Default value is `EXTERNAL`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// Name of the resource; provided by the client when the resource is
-        /// created. The name must be 1-63 characters long, and comply with
-        /// RFC1035. Specifically, the name must be 1-63 characters long and match
-        /// the regular expression `a-z?` which means the
-        /// first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource; provided by the client when the resource is created.
+        /// The name must be 1-63 characters long, and comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        /// Specifically, the name must be 1-63 characters long and match the regular
+        /// expression `a-z?` which means the first
+        /// character must be a lowercase letter, and all following characters must
+        /// be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.
+        /// For Private Service Connect forwarding rules that forward traffic to Google
+        /// APIs, the forwarding rule name must be a 1-20 characters string with
+        /// lowercase letters and numbers and must start with a letter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// For internal load balancing, this field identifies the network that
-        /// the load balanced IP should belong to for this Forwarding Rule. If
-        /// this field is not specified, the default network will be used.
-        /// This field is only used for INTERNAL load balancing.
+        /// This field is not used for external load balancing.
+        /// For Internal TCP/UDP Load Balancing, this field identifies the network that
+        /// the load balanced IP should belong to for this Forwarding Rule.
+        /// If the subnetwork is specified, the network of the subnetwork will be used.
+        /// If neither subnetwork nor this field is specified, the default network will
+        /// be used.
+        /// For Private Service Connect forwarding rules that forward traffic to Google
+        /// APIs, a network must be provided.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. If this field is not
-        /// specified, it is assumed to be PREMIUM.
+        /// This signifies the networking tier used for configuring
+        /// this load balancer and can only take the following values:
+        /// `PREMIUM`, `STANDARD`.
+        /// For regional ForwardingRule, the valid values are `PREMIUM` and
+        /// `STANDARD`. For GlobalForwardingRule, the valid value is
+        /// `PREMIUM`.
+        /// If this field is not specified, it is assumed to be `PREMIUM`.
+        /// If `IPAddress` is specified, this value must be equal to the
+        /// networkTier of the Address.
         /// Possible values are: `PREMIUM`, `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
         /// <summary>
-        /// This field is used along with the target field for TargetHttpProxy,
-        /// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-        /// TargetPool, TargetInstance.
-        /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-        /// addressed to ports in the specified range will be forwarded to target.
-        /// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-        /// disjoint port ranges.
-        /// Some types of forwarding target have constraints on the acceptable
-        /// ports:
-        /// * TargetHttpProxy: 80, 8080
-        /// * TargetHttpsProxy: 443
-        /// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-        /// 1883, 5222
-        /// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-        /// 1883, 5222
-        /// * TargetVpnGateway: 500, 4500
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By backend service-based network load balancers, target pool-based
+        /// network load balancers, internal proxy load balancers, external proxy load
+        /// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+        /// Some products have restrictions on what ports can be used. See
+        /// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+        /// for details.
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -506,15 +602,10 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _ports;
 
         /// <summary>
-        /// This field is used along with internal load balancing and network
-        /// load balancer when the forwarding rule references a backend service
-        /// and when protocol is not L3_DEFAULT.
-        /// A single port or a comma separated list of ports can be configured.
-        /// Only packets addressed to these ports will be forwarded to the backends
-        /// configured with this forwarding rule.
-        /// You can only use one of ports and portRange, or allPorts.
-        /// The three are mutually exclusive.
-        /// You may specify a maximum of up to 5 ports, which can be non-contiguous.
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By internal TCP/UDP load balancers, backend service-based network load
+        /// balancers, and internal protocol forwarding.
         /// </summary>
         public InputList<string> Ports
         {
@@ -536,19 +627,13 @@ namespace Pulumi.Gcp.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        [Input("serviceDirectoryRegistrations")]
-        private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>? _serviceDirectoryRegistrations;
-
         /// <summary>
-        /// Service Directory resources to register this forwarding rule with. Currently,
-        /// only supports a single Service Directory resource.
+        /// Service Directory resources to register this forwarding rule with.
+        /// Currently, only supports a single Service Directory resource.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs> ServiceDirectoryRegistrations
-        {
-            get => _serviceDirectoryRegistrations ?? (_serviceDirectoryRegistrations = new InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>());
-            set => _serviceDirectoryRegistrations = value;
-        }
+        [Input("serviceDirectoryRegistrations")]
+        public Input<Inputs.ForwardingRuleServiceDirectoryRegistrationsArgs>? ServiceDirectoryRegistrations { get; set; }
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
@@ -565,21 +650,39 @@ namespace Pulumi.Gcp.Compute
         [Input("serviceLabel")]
         public Input<string>? ServiceLabel { get; set; }
 
+        [Input("sourceIpRanges")]
+        private InputList<string>? _sourceIpRanges;
+
         /// <summary>
-        /// The subnetwork that the load balanced IP should belong to for this
-        /// Forwarding Rule.  This field is only used for INTERNAL load balancing.
-        /// If the network specified is in auto subnet mode, this field is
-        /// optional. However, if the network is in custom subnet mode, a
-        /// subnetwork must be specified.
+        /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        /// </summary>
+        public InputList<string> SourceIpRanges
+        {
+            get => _sourceIpRanges ?? (_sourceIpRanges = new InputList<string>());
+            set => _sourceIpRanges = value;
+        }
+
+        /// <summary>
+        /// This field identifies the subnetwork that the load balanced IP should
+        /// belong to for this Forwarding Rule, used in internal load balancing and
+        /// network load balancing with IPv6.
+        /// If the network specified is in auto subnet mode, this field is optional.
+        /// However, a subnetwork must be specified if the network is in custom subnet
+        /// mode or when creating external forwarding rule with IPv6.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The target must live in the same region as the forwarding rule.
-        /// The forwarded traffic must be of a type appropriate to the target
-        /// object.
+        /// The URL of the target resource to receive the matched traffic.  For
+        /// regional forwarding rules, this target must be in the same region as the
+        /// forwarding rule. For global forwarding rules, this target must be a global
+        /// load balancing resource.
+        /// The forwarded traffic must be of a type appropriate to the target object.
+        /// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        /// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+        /// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+        /// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
@@ -593,30 +696,45 @@ namespace Pulumi.Gcp.Compute
     public sealed class ForwardingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This field can be used with internal load balancer or network load balancer
-        /// when the forwarding rule references a backend service, or with the target
-        /// field when it references a TargetInstance. Set this to true to
-        /// allow packets addressed to any ports to be forwarded to the backends configured
-        /// with this forwarding rule. This can be used when the protocol is TCP/UDP, and it
-        /// must be set to true when the protocol is set to L3_DEFAULT.
-        /// Cannot be set if port or portRange are set.
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By internal TCP/UDP load balancers, backend service-based network load
+        /// balancers, and internal and external protocol forwarding.
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
 
         /// <summary>
-        /// If true, clients can access ILB from all regions.
-        /// Otherwise only allows from the local region the ILB is located at.
+        /// This field is used along with the `backend_service` field for
+        /// internal load balancing or with the `target` field for internal
+        /// TargetInstance.
+        /// If the field is set to `TRUE`, clients can access ILB from all
+        /// regions.
+        /// Otherwise only allows access from clients in the same region as the
+        /// internal load balancer.
         /// </summary>
         [Input("allowGlobalAccess")]
         public Input<bool>? AllowGlobalAccess { get; set; }
 
         /// <summary>
-        /// A BackendService to receive the matched traffic. This is used only
-        /// for INTERNAL load balancing.
+        /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        /// </summary>
+        [Input("allowPscGlobalAccess")]
+        public Input<bool>? AllowPscGlobalAccess { get; set; }
+
+        /// <summary>
+        /// Identifies the backend service to which the forwarding rule sends traffic.
+        /// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+        /// must be omitted for all other load balancer types.
         /// </summary>
         [Input("backendService")]
         public Input<string>? BackendService { get; set; }
+
+        /// <summary>
+        /// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+        /// </summary>
+        [Input("baseForwardingRule")]
+        public Input<string>? BaseForwardingRule { get; set; }
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -632,45 +750,48 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The IP address that this forwarding rule serves. When a client sends
-        /// traffic to this IP address, the forwarding rule directs the traffic to
-        /// the target that you specify in the forwarding rule. The
-        /// loadBalancingScheme and the forwarding rule's target determine the
-        /// type of IP address that you can use. For detailed information, refer
-        /// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// An address can be specified either by a literal IP address or a
-        /// reference to an existing Address resource. If you don't specify a
-        /// reserved IP address, an ephemeral IP address is assigned.
-        /// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-        /// that has validateForProxyless field set to true.
-        /// For Private Service Connect forwarding rules that forward traffic to
-        /// Google APIs, IP address must be provided.
+        /// IP address for which this forwarding rule accepts traffic. When a client
+        /// sends traffic to this IP address, the forwarding rule directs the traffic
+        /// to the referenced `target` or `backendService`.
+        /// While creating a forwarding rule, specifying an `IPAddress` is
+        /// required under the following circumstances:
+        /// * When the `target` is set to `targetGrpcProxy` and
+        /// `validateForProxyless` is set to `true`, the
+        /// `IPAddress` should be set to `0.0.0.0`.
+        /// * When the `target` is a Private Service Connect Google APIs
+        /// bundle, you must specify an `IPAddress`.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
         /// The IP protocol to which this rule applies.
-        /// When the load balancing scheme is INTERNAL, only TCP and UDP are
-        /// valid.
+        /// For protocol forwarding, valid
+        /// options are `TCP`, `UDP`, `ESP`,
+        /// `AH`, `SCTP`, `ICMP` and
+        /// `L3_DEFAULT`.
+        /// The valid IP protocols are different for different load balancing products
+        /// as described in [Load balancing
+        /// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
         /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
 
         /// <summary>
-        /// Indicates whether or not this load balancer can be used
-        /// as a collector for packet mirroring. To prevent mirroring loops,
-        /// instances behind this load balancer will not have their traffic
-        /// mirrored even if a PacketMirroring rule applies to them. This
-        /// can only be set to true for load balancers that have their
-        /// loadBalancingScheme set to INTERNAL.
+        /// Indicates whether or not this load balancer can be used as a collector for
+        /// packet mirroring. To prevent mirroring loops, instances behind this
+        /// load balancer will not have their traffic mirrored even if a
+        /// `PacketMirroring` rule applies to them.
+        /// This can only be set to true for load balancers that have their
+        /// `loadBalancingScheme` set to `INTERNAL`.
         /// </summary>
         [Input("isMirroringCollector")]
         public Input<bool>? IsMirroringCollector { get; set; }
 
         /// <summary>
-        /// Used internally during label updates.
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
@@ -688,63 +809,68 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Specifies the forwarding rule type. * `EXTERNAL` is used for: * Classic Cloud VPN gateways * Protocol forwarding to VMs
-        /// from an external IP address * The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP *
-        /// `INTERNAL` is used for: * Protocol forwarding to VMs from an internal IP address * Internal TCP/UDP load balancers *
-        /// `INTERNAL_MANAGED` is used for: * Internal HTTP(S) load balancers * `INTERNAL_SELF_MANAGED` is used for: * Traffic
-        /// Director * `EXTERNAL_MANAGED` is used for: * Global external HTTP(S) load balancers For more information about
-        /// forwarding rules, refer to [Forwarding rule concepts](/load-balancing/docs/forwarding-rule-concepts). Possible values:
-        /// INVALID, INTERNAL, INTERNAL_MANAGED, INTERNAL_SELF_MANAGED, EXTERNAL, EXTERNAL_MANAGED
+        /// Specifies the forwarding rule type.
+        /// For more information about forwarding rules, refer to
+        /// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
+        /// Default value is `EXTERNAL`.
+        /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`.
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// Name of the resource; provided by the client when the resource is
-        /// created. The name must be 1-63 characters long, and comply with
-        /// RFC1035. Specifically, the name must be 1-63 characters long and match
-        /// the regular expression `a-z?` which means the
-        /// first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the last
-        /// character, which cannot be a dash.
+        /// Name of the resource; provided by the client when the resource is created.
+        /// The name must be 1-63 characters long, and comply with
+        /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+        /// Specifically, the name must be 1-63 characters long and match the regular
+        /// expression `a-z?` which means the first
+        /// character must be a lowercase letter, and all following characters must
+        /// be a dash, lowercase letter, or digit, except the last character, which
+        /// cannot be a dash.
+        /// For Private Service Connect forwarding rules that forward traffic to Google
+        /// APIs, the forwarding rule name must be a 1-20 characters string with
+        /// lowercase letters and numbers and must start with a letter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// For internal load balancing, this field identifies the network that
-        /// the load balanced IP should belong to for this Forwarding Rule. If
-        /// this field is not specified, the default network will be used.
-        /// This field is only used for INTERNAL load balancing.
+        /// This field is not used for external load balancing.
+        /// For Internal TCP/UDP Load Balancing, this field identifies the network that
+        /// the load balanced IP should belong to for this Forwarding Rule.
+        /// If the subnetwork is specified, the network of the subnetwork will be used.
+        /// If neither subnetwork nor this field is specified, the default network will
+        /// be used.
+        /// For Private Service Connect forwarding rules that forward traffic to Google
+        /// APIs, a network must be provided.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The networking tier used for configuring this address. If this field is not
-        /// specified, it is assumed to be PREMIUM.
+        /// This signifies the networking tier used for configuring
+        /// this load balancer and can only take the following values:
+        /// `PREMIUM`, `STANDARD`.
+        /// For regional ForwardingRule, the valid values are `PREMIUM` and
+        /// `STANDARD`. For GlobalForwardingRule, the valid value is
+        /// `PREMIUM`.
+        /// If this field is not specified, it is assumed to be `PREMIUM`.
+        /// If `IPAddress` is specified, this value must be equal to the
+        /// networkTier of the Address.
         /// Possible values are: `PREMIUM`, `STANDARD`.
         /// </summary>
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
         /// <summary>
-        /// This field is used along with the target field for TargetHttpProxy,
-        /// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-        /// TargetPool, TargetInstance.
-        /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-        /// addressed to ports in the specified range will be forwarded to target.
-        /// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-        /// disjoint port ranges.
-        /// Some types of forwarding target have constraints on the acceptable
-        /// ports:
-        /// * TargetHttpProxy: 80, 8080
-        /// * TargetHttpsProxy: 443
-        /// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-        /// 1883, 5222
-        /// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-        /// 1883, 5222
-        /// * TargetVpnGateway: 500, 4500
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By backend service-based network load balancers, target pool-based
+        /// network load balancers, internal proxy load balancers, external proxy load
+        /// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+        /// Some products have restrictions on what ports can be used. See
+        /// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+        /// for details.
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }
@@ -753,15 +879,10 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _ports;
 
         /// <summary>
-        /// This field is used along with internal load balancing and network
-        /// load balancer when the forwarding rule references a backend service
-        /// and when protocol is not L3_DEFAULT.
-        /// A single port or a comma separated list of ports can be configured.
-        /// Only packets addressed to these ports will be forwarded to the backends
-        /// configured with this forwarding rule.
-        /// You can only use one of ports and portRange, or allPorts.
-        /// The three are mutually exclusive.
-        /// You may specify a maximum of up to 5 ports, which can be non-contiguous.
+        /// This field can only be used:
+        /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+        /// * By internal TCP/UDP load balancers, backend service-based network load
+        /// balancers, and internal protocol forwarding.
         /// </summary>
         public InputList<string> Ports
         {
@@ -783,7 +904,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? PscConnectionId { get; set; }
 
         /// <summary>
-        /// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED, CLOSED
+        /// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
         /// </summary>
         [Input("pscConnectionStatus")]
         public Input<string>? PscConnectionStatus { get; set; }
@@ -801,19 +922,13 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
-        [Input("serviceDirectoryRegistrations")]
-        private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs>? _serviceDirectoryRegistrations;
-
         /// <summary>
-        /// Service Directory resources to register this forwarding rule with. Currently,
-        /// only supports a single Service Directory resource.
+        /// Service Directory resources to register this forwarding rule with.
+        /// Currently, only supports a single Service Directory resource.
         /// Structure is documented below.
         /// </summary>
-        public InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs> ServiceDirectoryRegistrations
-        {
-            get => _serviceDirectoryRegistrations ?? (_serviceDirectoryRegistrations = new InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs>());
-            set => _serviceDirectoryRegistrations = value;
-        }
+        [Input("serviceDirectoryRegistrations")]
+        public Input<Inputs.ForwardingRuleServiceDirectoryRegistrationsGetArgs>? ServiceDirectoryRegistrations { get; set; }
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
@@ -837,21 +952,39 @@ namespace Pulumi.Gcp.Compute
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("sourceIpRanges")]
+        private InputList<string>? _sourceIpRanges;
+
         /// <summary>
-        /// The subnetwork that the load balanced IP should belong to for this
-        /// Forwarding Rule.  This field is only used for INTERNAL load balancing.
-        /// If the network specified is in auto subnet mode, this field is
-        /// optional. However, if the network is in custom subnet mode, a
-        /// subnetwork must be specified.
+        /// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        /// </summary>
+        public InputList<string> SourceIpRanges
+        {
+            get => _sourceIpRanges ?? (_sourceIpRanges = new InputList<string>());
+            set => _sourceIpRanges = value;
+        }
+
+        /// <summary>
+        /// This field identifies the subnetwork that the load balanced IP should
+        /// belong to for this Forwarding Rule, used in internal load balancing and
+        /// network load balancing with IPv6.
+        /// If the network specified is in auto subnet mode, this field is optional.
+        /// However, a subnetwork must be specified if the network is in custom subnet
+        /// mode or when creating external forwarding rule with IPv6.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The target must live in the same region as the forwarding rule.
-        /// The forwarded traffic must be of a type appropriate to the target
-        /// object.
+        /// The URL of the target resource to receive the matched traffic.  For
+        /// regional forwarding rules, this target must be in the same region as the
+        /// forwarding rule. For global forwarding rules, this target must be a global
+        /// load balancing resource.
+        /// The forwarded traffic must be of a type appropriate to the target object.
+        /// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        /// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+        /// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+        /// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

@@ -35,6 +35,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig? ReplaceConfig;
         /// <summary>
+        /// Replace with a value randomly drawn (with replacement) from a dictionary.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig? ReplaceDictionaryConfig;
+        /// <summary>
         /// Replace each matching finding with the name of the info type.
         /// </summary>
         public readonly bool? ReplaceWithInfoTypeConfig;
@@ -49,12 +54,15 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig? replaceConfig,
 
+            Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig? replaceDictionaryConfig,
+
             bool? replaceWithInfoTypeConfig)
         {
             CharacterMaskConfig = characterMaskConfig;
             CryptoDeterministicConfig = cryptoDeterministicConfig;
             CryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
             ReplaceConfig = replaceConfig;
+            ReplaceDictionaryConfig = replaceDictionaryConfig;
             ReplaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
         }
     }

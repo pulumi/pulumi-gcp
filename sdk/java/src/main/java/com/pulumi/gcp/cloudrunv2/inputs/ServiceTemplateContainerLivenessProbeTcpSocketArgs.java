@@ -16,14 +16,16 @@ public final class ServiceTemplateContainerLivenessProbeTcpSocketArgs extends co
     public static final ServiceTemplateContainerLivenessProbeTcpSocketArgs Empty = new ServiceTemplateContainerLivenessProbeTcpSocketArgs();
 
     /**
-     * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+     * Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -55,7 +57,8 @@ public final class ServiceTemplateContainerLivenessProbeTcpSocketArgs extends co
         }
 
         /**
-         * @param port Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         * @param port Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class ServiceTemplateContainerLivenessProbeTcpSocketArgs extends co
         }
 
         /**
-         * @param port Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         * @param port Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          * 
          * @return builder
          * 

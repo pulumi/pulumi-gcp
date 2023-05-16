@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskSourceSnapshotEncryptionKeyArgs;
 import java.lang.Integer;
@@ -19,6 +20,21 @@ import javax.annotation.Nullable;
 public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RegionDiskArgs Empty = new RegionDiskArgs();
+
+    /**
+     * A nested object resource
+     * 
+     */
+    @Import(name="asyncPrimaryDisk")
+    private @Nullable Output<RegionDiskAsyncPrimaryDiskArgs> asyncPrimaryDisk;
+
+    /**
+     * @return A nested object resource
+     * 
+     */
+    public Optional<Output<RegionDiskAsyncPrimaryDiskArgs>> asyncPrimaryDisk() {
+        return Optional.ofNullable(this.asyncPrimaryDisk);
+    }
 
     /**
      * An optional description of this resource. Provide this property when
@@ -323,6 +339,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     private RegionDiskArgs() {}
 
     private RegionDiskArgs(RegionDiskArgs $) {
+        this.asyncPrimaryDisk = $.asyncPrimaryDisk;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
         this.interface_ = $.interface_;
@@ -355,6 +372,27 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RegionDiskArgs defaults) {
             $ = new RegionDiskArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param asyncPrimaryDisk A nested object resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncPrimaryDisk(@Nullable Output<RegionDiskAsyncPrimaryDiskArgs> asyncPrimaryDisk) {
+            $.asyncPrimaryDisk = asyncPrimaryDisk;
+            return this;
+        }
+
+        /**
+         * @param asyncPrimaryDisk A nested object resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asyncPrimaryDisk(RegionDiskAsyncPrimaryDiskArgs asyncPrimaryDisk) {
+            return asyncPrimaryDisk(Output.of(asyncPrimaryDisk));
         }
 
         /**

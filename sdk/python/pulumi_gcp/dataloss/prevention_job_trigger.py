@@ -132,6 +132,7 @@ class PreventionJobTriggerArgs:
 @pulumi.input_type
 class _PreventionJobTriggerState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
@@ -139,9 +140,12 @@ class _PreventionJobTriggerState:
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None):
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PreventionJobTrigger resources.
+        :param pulumi.Input[str] create_time: (Output)
+               The creation timestamp of an inspectTemplate. Set by the server.
         :param pulumi.Input[str] description: A description of the job trigger.
                (Optional)
                A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -149,7 +153,25 @@ class _PreventionJobTriggerState:
         :param pulumi.Input['PreventionJobTriggerInspectJobArgs'] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
+               (Required)
+               Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
                For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
                modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
                field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
@@ -168,7 +190,10 @@ class _PreventionJobTriggerState:
                Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
+        :param pulumi.Input[str] update_time: The last update timestamp of an inspectTemplate. Set by the server.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -185,6 +210,21 @@ class _PreventionJobTriggerState:
             pulumi.set(__self__, "status", status)
         if triggers is not None:
             pulumi.set(__self__, "triggers", triggers)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The creation timestamp of an inspectTemplate. Set by the server.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter
@@ -241,6 +281,24 @@ class _PreventionJobTriggerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
+        (Required)
         Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
         For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
         modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -299,6 +357,18 @@ class _PreventionJobTriggerState:
     @triggers.setter
     def triggers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]]):
         pulumi.set(self, "triggers", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last update timestamp of an inspectTemplate. Set by the server.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class PreventionJobTrigger(pulumi.CustomResource):
@@ -468,6 +538,87 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 ),
             )])
         ```
+        ### Dlp Job Trigger Deidentify
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+            dataset_id="tf_test",
+            friendly_name="terraform-test",
+            description="Description for the dataset created by terraform",
+            location="US",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            })
+        default_table = gcp.bigquery.Table("defaultTable",
+            dataset_id=default_dataset.dataset_id,
+            table_id="tf_test",
+            deletion_protection=False,
+            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
+                type="DAY",
+            ),
+            labels={
+                "env": "default",
+            },
+            schema=\"\"\"    [
+            {
+              "name": "quantity",
+              "type": "NUMERIC",
+              "mode": "NULLABLE",
+              "description": "The quantity"
+            },
+            {
+              "name": "name",
+              "type": "STRING",
+              "mode": "NULLABLE",
+              "description": "Name of the object"
+            }
+            ]
+        \"\"\")
+        deidentify = gcp.dataloss.PreventionJobTrigger("deidentify",
+            parent="projects/my-project-name",
+            description="Description for the job_trigger created by terraform",
+            display_name="TerraformDisplayName",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )],
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                inspect_template_name="sample-inspect-template",
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    deidentify=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyArgs(
+                        cloud_storage_output="gs://samplebucket/dir/",
+                        file_types_to_transforms=[
+                            "CSV",
+                            "TSV",
+                        ],
+                        transformation_details_storage_config=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs(
+                            table=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs(
+                                project_id="my-project-name",
+                                dataset_id=default_dataset.dataset_id,
+                                table_id=default_table.table_id,
+                            ),
+                        ),
+                        transformation_config=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs(
+                            deidentify_template="sample-deidentify-template",
+                            image_redact_template="sample-image-redact-template",
+                            structured_deidentify_template="sample-structured-deidentify-template",
+                        ),
+                    ),
+                )],
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ))
+        ```
         ### Dlp Job Trigger Hybrid
 
         ```python
@@ -505,6 +656,35 @@ class PreventionJobTrigger(pulumi.CustomResource):
             parent="projects/my-project-name",
             triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
                 manual=gcp.dataloss.PreventionJobTriggerTriggerManualArgs(),
+            )])
+        ```
+        ### Dlp Job Trigger Publish To Stackdriver
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        publish_to_stackdriver = gcp.dataloss.PreventionJobTrigger("publishToStackdriver",
+            description="Description for the job_trigger created by terraform",
+            display_name="TerraformDisplayName",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    publish_to_stackdriver=gcp.dataloss.PreventionJobTriggerInspectJobActionPublishToStackdriverArgs(),
+                )],
+                inspect_template_name="sample-inspect-template",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
             )])
         ```
 
@@ -697,6 +877,87 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 ),
             )])
         ```
+        ### Dlp Job Trigger Deidentify
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+            dataset_id="tf_test",
+            friendly_name="terraform-test",
+            description="Description for the dataset created by terraform",
+            location="US",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            })
+        default_table = gcp.bigquery.Table("defaultTable",
+            dataset_id=default_dataset.dataset_id,
+            table_id="tf_test",
+            deletion_protection=False,
+            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
+                type="DAY",
+            ),
+            labels={
+                "env": "default",
+            },
+            schema=\"\"\"    [
+            {
+              "name": "quantity",
+              "type": "NUMERIC",
+              "mode": "NULLABLE",
+              "description": "The quantity"
+            },
+            {
+              "name": "name",
+              "type": "STRING",
+              "mode": "NULLABLE",
+              "description": "Name of the object"
+            }
+            ]
+        \"\"\")
+        deidentify = gcp.dataloss.PreventionJobTrigger("deidentify",
+            parent="projects/my-project-name",
+            description="Description for the job_trigger created by terraform",
+            display_name="TerraformDisplayName",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )],
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                inspect_template_name="sample-inspect-template",
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    deidentify=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyArgs(
+                        cloud_storage_output="gs://samplebucket/dir/",
+                        file_types_to_transforms=[
+                            "CSV",
+                            "TSV",
+                        ],
+                        transformation_details_storage_config=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs(
+                            table=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs(
+                                project_id="my-project-name",
+                                dataset_id=default_dataset.dataset_id,
+                                table_id=default_table.table_id,
+                            ),
+                        ),
+                        transformation_config=gcp.dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs(
+                            deidentify_template="sample-deidentify-template",
+                            image_redact_template="sample-image-redact-template",
+                            structured_deidentify_template="sample-structured-deidentify-template",
+                        ),
+                    ),
+                )],
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ))
+        ```
         ### Dlp Job Trigger Hybrid
 
         ```python
@@ -734,6 +995,35 @@ class PreventionJobTrigger(pulumi.CustomResource):
             parent="projects/my-project-name",
             triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
                 manual=gcp.dataloss.PreventionJobTriggerTriggerManualArgs(),
+            )])
+        ```
+        ### Dlp Job Trigger Publish To Stackdriver
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        publish_to_stackdriver = gcp.dataloss.PreventionJobTrigger("publishToStackdriver",
+            description="Description for the job_trigger created by terraform",
+            display_name="TerraformDisplayName",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    publish_to_stackdriver=gcp.dataloss.PreventionJobTriggerInspectJobActionPublishToStackdriverArgs(),
+                )],
+                inspect_template_name="sample-inspect-template",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
             )])
         ```
 
@@ -789,8 +1079,10 @@ class PreventionJobTrigger(pulumi.CustomResource):
             if triggers is None and not opts.urn:
                 raise TypeError("Missing required property 'triggers'")
             __props__.__dict__["triggers"] = triggers
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["last_run_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["update_time"] = None
         super(PreventionJobTrigger, __self__).__init__(
             'gcp:dataloss/preventionJobTrigger:PreventionJobTrigger',
             resource_name,
@@ -801,6 +1093,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             inspect_job: Optional[pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']]] = None,
@@ -808,7 +1101,8 @@ class PreventionJobTrigger(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
-            triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None) -> 'PreventionJobTrigger':
+            triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'PreventionJobTrigger':
         """
         Get an existing PreventionJobTrigger resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -816,6 +1110,8 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: (Output)
+               The creation timestamp of an inspectTemplate. Set by the server.
         :param pulumi.Input[str] description: A description of the job trigger.
                (Optional)
                A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -823,7 +1119,25 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']] inspect_job: Controls what and how to inspect for findings.
                Structure is documented below.
         :param pulumi.Input[str] last_run_time: The timestamp of the last time this trigger executed.
-        :param pulumi.Input[str] name: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+               at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+               (Required)
+               Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+               or `projects/project-id/storedInfoTypes/432452342`.
+               (Required)
+               Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
                For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
                modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
                field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
@@ -842,11 +1156,13 @@ class PreventionJobTrigger(pulumi.CustomResource):
                Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
+        :param pulumi.Input[str] update_time: The last update timestamp of an inspectTemplate. Set by the server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PreventionJobTriggerState.__new__(_PreventionJobTriggerState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["inspect_job"] = inspect_job
@@ -855,7 +1171,17 @@ class PreventionJobTrigger(pulumi.CustomResource):
         __props__.__dict__["parent"] = parent
         __props__.__dict__["status"] = status
         __props__.__dict__["triggers"] = triggers
+        __props__.__dict__["update_time"] = update_time
         return PreventionJobTrigger(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Output)
+        The creation timestamp of an inspectTemplate. Set by the server.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -896,6 +1222,24 @@ class PreventionJobTrigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        (Required)
+        Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        or `projects/project-id/storedInfoTypes/432452342`.
+        (Required)
         Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
         For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
         modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -938,4 +1282,12 @@ class PreventionJobTrigger(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "triggers")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last update timestamp of an inspectTemplate. Set by the server.
+        """
+        return pulumi.get(self, "update_time")
 

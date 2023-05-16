@@ -16,6 +16,43 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
  *
  * ## Example Usage
+ * ### Dlp Deidentify Template Image Transformations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionDeidentifyTemplate("basic", {
+ *     deidentifyConfig: {
+ *         imageTransformations: {
+ *             transforms: [
+ *                 {
+ *                     redactionColor: {
+ *                         blue: 1,
+ *                         green: 0.2,
+ *                         red: 0.5,
+ *                     },
+ *                     selectedInfoTypes: {
+ *                         infoTypes: [{
+ *                             name: "COLOR_INFO",
+ *                             version: "latest",
+ *                         }],
+ *                     },
+ *                 },
+ *                 {
+ *                     allInfoTypes: {},
+ *                 },
+ *                 {
+ *                     allText: {},
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     parent: "projects/my-project-name",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -58,6 +95,10 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     }
 
     /**
+     * The creation timestamp of an deidentifyTemplate. Set by the server.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Configuration of the deidentify template
      * Structure is documented below.
      */
@@ -71,6 +112,8 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * Name of the information type.
+     * (Required)
      * Name of the information type.
      * (Required)
      * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -118,6 +161,10 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
     public readonly parent!: pulumi.Output<string>;
+    /**
+     * The last update timestamp of an deidentifyTemplate. Set by the server.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a PreventionDeidentifyTemplate resource with the given unique name, arguments, and options.
@@ -132,11 +179,13 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionDeidentifyTemplateState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deidentifyConfig"] = state ? state.deidentifyConfig : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as PreventionDeidentifyTemplateArgs | undefined;
             if ((!args || args.deidentifyConfig === undefined) && !opts.urn) {
@@ -149,7 +198,9 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PreventionDeidentifyTemplate.__pulumiType, name, resourceInputs, opts);
@@ -160,6 +211,10 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PreventionDeidentifyTemplate resources.
  */
 export interface PreventionDeidentifyTemplateState {
+    /**
+     * The creation timestamp of an deidentifyTemplate. Set by the server.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * Configuration of the deidentify template
      * Structure is documented below.
@@ -174,6 +229,8 @@ export interface PreventionDeidentifyTemplateState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * Name of the information type.
+     * (Required)
      * Name of the information type.
      * (Required)
      * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -221,6 +278,10 @@ export interface PreventionDeidentifyTemplateState {
      * * `organizations/{{organization_id}}/locations/{{location}}`
      */
     parent?: pulumi.Input<string>;
+    /**
+     * The last update timestamp of an deidentifyTemplate. Set by the server.
+     */
+    updateTime?: pulumi.Input<string>;
 }
 
 /**

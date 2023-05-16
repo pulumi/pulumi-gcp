@@ -20,10 +20,20 @@ export type EdgeCacheService = import("./edgeCacheService").EdgeCacheService;
 export const EdgeCacheService: typeof import("./edgeCacheService").EdgeCacheService = null as any;
 utilities.lazyLoad(exports, ["EdgeCacheService"], () => require("./edgeCacheService"));
 
+export { EndpointPolicyArgs, EndpointPolicyState } from "./endpointPolicy";
+export type EndpointPolicy = import("./endpointPolicy").EndpointPolicy;
+export const EndpointPolicy: typeof import("./endpointPolicy").EndpointPolicy = null as any;
+utilities.lazyLoad(exports, ["EndpointPolicy"], () => require("./endpointPolicy"));
+
 export { GatewayArgs, GatewayState } from "./gateway";
 export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+
+export { GrpcRouteArgs, GrpcRouteState } from "./grpcRoute";
+export type GrpcRoute = import("./grpcRoute").GrpcRoute;
+export const GrpcRoute: typeof import("./grpcRoute").GrpcRoute = null as any;
+utilities.lazyLoad(exports, ["GrpcRoute"], () => require("./grpcRoute"));
 
 export { HttpRouteArgs, HttpRouteState } from "./httpRoute";
 export type HttpRoute = import("./httpRoute").HttpRoute;
@@ -35,10 +45,20 @@ export type Mesh = import("./mesh").Mesh;
 export const Mesh: typeof import("./mesh").Mesh = null as any;
 utilities.lazyLoad(exports, ["Mesh"], () => require("./mesh"));
 
+export { ServiceBindingArgs, ServiceBindingState } from "./serviceBinding";
+export type ServiceBinding = import("./serviceBinding").ServiceBinding;
+export const ServiceBinding: typeof import("./serviceBinding").ServiceBinding = null as any;
+utilities.lazyLoad(exports, ["ServiceBinding"], () => require("./serviceBinding"));
+
 export { TcpRouteArgs, TcpRouteState } from "./tcpRoute";
 export type TcpRoute = import("./tcpRoute").TcpRoute;
 export const TcpRoute: typeof import("./tcpRoute").TcpRoute = null as any;
 utilities.lazyLoad(exports, ["TcpRoute"], () => require("./tcpRoute"));
+
+export { TlsRouteArgs, TlsRouteState } from "./tlsRoute";
+export type TlsRoute = import("./tlsRoute").TlsRoute;
+export const TlsRoute: typeof import("./tlsRoute").TlsRoute = null as any;
+utilities.lazyLoad(exports, ["TlsRoute"], () => require("./tlsRoute"));
 
 
 const _module = {
@@ -51,14 +71,22 @@ const _module = {
                 return new EdgeCacheOrigin(name, <any>undefined, { urn })
             case "gcp:networkservices/edgeCacheService:EdgeCacheService":
                 return new EdgeCacheService(name, <any>undefined, { urn })
+            case "gcp:networkservices/endpointPolicy:EndpointPolicy":
+                return new EndpointPolicy(name, <any>undefined, { urn })
             case "gcp:networkservices/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "gcp:networkservices/grpcRoute:GrpcRoute":
+                return new GrpcRoute(name, <any>undefined, { urn })
             case "gcp:networkservices/httpRoute:HttpRoute":
                 return new HttpRoute(name, <any>undefined, { urn })
             case "gcp:networkservices/mesh:Mesh":
                 return new Mesh(name, <any>undefined, { urn })
+            case "gcp:networkservices/serviceBinding:ServiceBinding":
+                return new ServiceBinding(name, <any>undefined, { urn })
             case "gcp:networkservices/tcpRoute:TcpRoute":
                 return new TcpRoute(name, <any>undefined, { urn })
+            case "gcp:networkservices/tlsRoute:TlsRoute":
+                return new TlsRoute(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -67,7 +95,11 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheKeyset", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheOrigin", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheService", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/endpointPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/gateway", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/grpcRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/httpRoute", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/mesh", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/serviceBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/tcpRoute", _module)
+pulumi.runtime.registerResourceModule("gcp", "networkservices/tlsRoute", _module)

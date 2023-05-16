@@ -32,6 +32,128 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Gateway Security Policy Tls Inspection Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultCaPool = new Gcp.CertificateAuthority.CaPool("defaultCaPool", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Tier = "DEVOPS",
+    ///         PublishingOptions = new Gcp.CertificateAuthority.Inputs.CaPoolPublishingOptionsArgs
+    ///         {
+    ///             PublishCaCert = false,
+    ///             PublishCrl = false,
+    ///         },
+    ///         IssuancePolicy = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyArgs
+    ///         {
+    ///             MaximumLifetime = "1209600s",
+    ///             BaselineValues = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs
+    ///                 {
+    ///                     IsCa = false,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = null,
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultAuthority = new Gcp.CertificateAuthority.Authority("defaultAuthority", new()
+    ///     {
+    ///         Pool = defaultCaPool.Name,
+    ///         CertificateAuthorityId = "my-basic-certificate-authority",
+    ///         Location = "us-central1",
+    ///         Lifetime = "86400s",
+    ///         Type = "SELF_SIGNED",
+    ///         DeletionProtection = false,
+    ///         SkipGracePeriod = true,
+    ///         IgnoreActiveCertificatesOnDeletion = true,
+    ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///         {
+    ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///             {
+    ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                 {
+    ///                     Organization = "Test LLC",
+    ///                     CommonName = "my-ca",
+    ///                 },
+    ///             },
+    ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
+    ///             {
+    ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
+    ///                 {
+    ///                     IsCa = true,
+    ///                 },
+    ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
+    ///                 {
+    ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
+    ///                     {
+    ///                         CertSign = true,
+    ///                         CrlSign = true,
+    ///                     },
+    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
+    ///                     {
+    ///                         ServerAuth = false,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///         {
+    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultTlsInspectionPolicy = new Gcp.NetworkSecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         CaPool = defaultCaPool.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultCaPool,
+    ///             defaultAuthority,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Description = "my description",
+    ///         TlsInspectionPolicy = defaultTlsInspectionPolicy.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             defaultTlsInspectionPolicy,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -92,6 +214,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        /// </summary>
+        [Output("tlsInspectionPolicy")]
+        public Output<string?> TlsInspectionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp when the resource was updated.
@@ -174,6 +302,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        /// </summary>
+        [Input("tlsInspectionPolicy")]
+        public Input<string>? TlsInspectionPolicy { get; set; }
+
         public GatewaySecurityPolicyArgs()
         {
         }
@@ -222,6 +356,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        /// </summary>
+        [Input("tlsInspectionPolicy")]
+        public Input<string>? TlsInspectionPolicy { get; set; }
 
         /// <summary>
         /// The timestamp when the resource was updated.

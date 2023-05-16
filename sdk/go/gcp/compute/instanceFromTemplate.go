@@ -96,7 +96,9 @@ type InstanceFromTemplate struct {
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
-	// Current status of the instance.
+	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
@@ -214,7 +216,9 @@ type instanceFromTemplateState struct {
 	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
-	// Current status of the instance.
+	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus *string `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -301,7 +305,9 @@ type InstanceFromTemplateState struct {
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
-	// Current status of the instance.
+	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringPtrInput
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection pulumi.BoolPtrInput
@@ -650,7 +656,9 @@ func (o InstanceFromTemplateOutput) CpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.CpuPlatform }).(pulumi.StringOutput)
 }
 
-// Current status of the instance.
+// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 func (o InstanceFromTemplateOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.CurrentStatus }).(pulumi.StringOutput)
 }

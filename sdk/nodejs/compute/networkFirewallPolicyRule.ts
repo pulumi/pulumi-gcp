@@ -15,6 +15,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", {
+ *     parent: "projects/my-project-name",
+ *     description: "Sample global networksecurity_address_group",
+ *     location: "global",
+ *     items: ["208.80.154.224/32"],
+ *     type: "IPV4",
+ *     capacity: 100,
+ * });
  * const basicNetworkFirewallPolicy = new gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy", {
  *     description: "Sample global network firewall policy",
  *     project: "my-project-name",
@@ -46,12 +54,16 @@ import * as utilities from "../utilities";
  *     targetServiceAccounts: ["my@service-account.com"],
  *     match: {
  *         srcIpRanges: ["10.100.0.1/32"],
+ *         srcFqdns: ["google.com"],
+ *         srcRegionCodes: ["US"],
+ *         srcThreatIntelligences: ["iplist-known-malicious-ips"],
  *         srcSecureTags: [{
  *             name: pulumi.interpolate`tagValues/${basicValue.name}`,
  *         }],
  *         layer4Configs: [{
  *             ipProtocol: "all",
  *         }],
+ *         srcAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
  *     },
  * });
  * ```

@@ -24,7 +24,7 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
     private @Nullable String fsType;
     /**
      * @return What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-     * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+     * Possible values are: `DELETE`, `RETAIN`.
      * 
      */
     private @Nullable String reclaimPolicy;
@@ -51,7 +51,7 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
     }
     /**
      * @return What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-     * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+     * Possible values are: `DELETE`, `RETAIN`.
      * 
      */
     public Optional<String> reclaimPolicy() {

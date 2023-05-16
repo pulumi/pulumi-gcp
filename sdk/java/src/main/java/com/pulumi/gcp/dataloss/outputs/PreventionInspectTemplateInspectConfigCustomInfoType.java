@@ -8,6 +8,7 @@ import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCus
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType;
+import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -56,6 +57,11 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
      * 
      */
     private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType;
+    /**
+     * @return Message for detecting output from deidentification transformations that support reversing.
+     * 
+     */
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType surrogateType;
 
     private PreventionInspectTemplateInspectConfigCustomInfoType() {}
     /**
@@ -111,6 +117,13 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
     public Optional<PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType> storedType() {
         return Optional.ofNullable(this.storedType);
     }
+    /**
+     * @return Message for detecting output from deidentification transformations that support reversing.
+     * 
+     */
+    public Optional<PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType> surrogateType() {
+        return Optional.ofNullable(this.surrogateType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -127,6 +140,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
         private @Nullable String likelihood;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType;
+        private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType surrogateType;
         public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfigCustomInfoType defaults) {
     	      Objects.requireNonNull(defaults);
@@ -136,6 +150,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
     	      this.likelihood = defaults.likelihood;
     	      this.regex = defaults.regex;
     	      this.storedType = defaults.storedType;
+    	      this.surrogateType = defaults.surrogateType;
         }
 
         @CustomType.Setter
@@ -168,6 +183,11 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
             this.storedType = storedType;
             return this;
         }
+        @CustomType.Setter
+        public Builder surrogateType(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType surrogateType) {
+            this.surrogateType = surrogateType;
+            return this;
+        }
         public PreventionInspectTemplateInspectConfigCustomInfoType build() {
             final var o = new PreventionInspectTemplateInspectConfigCustomInfoType();
             o.dictionary = dictionary;
@@ -176,6 +196,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
             o.likelihood = likelihood;
             o.regex = regex;
             o.storedType = storedType;
+            o.surrogateType = surrogateType;
             return o;
         }
     }

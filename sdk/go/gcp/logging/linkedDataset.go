@@ -38,13 +38,13 @@ import (
 //				Location:        pulumi.String("global"),
 //				Project:         pulumi.String("my-project-name"),
 //				EnableAnalytics: pulumi.Bool(true),
-//				BucketId:        pulumi.String("mybucket"),
+//				BucketId:        pulumi.String("my-bucket"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = logging.NewLinkedDataset(ctx, "loggingLinkedDatasetLinkedDataset", &logging.LinkedDatasetArgs{
-//				LinkId:      pulumi.String("mybucket"),
+//				LinkId:      pulumi.String("mylink"),
 //				Bucket:      loggingLinkedDatasetProjectBucketConfig.ID(),
 //				Description: pulumi.String("Linked dataset test"),
 //			})
@@ -71,7 +71,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := logging.NewProjectBucketConfig(ctx, "loggingLinkedDatasetProjectBucketConfig", &logging.ProjectBucketConfigArgs{
-//				BucketId:        pulumi.String("mybucket"),
+//				BucketId:        pulumi.String("my-bucket"),
 //				EnableAnalytics: pulumi.Bool(true),
 //				Location:        pulumi.String("global"),
 //				Project:         pulumi.String("my-project-name"),
@@ -80,9 +80,9 @@ import (
 //				return err
 //			}
 //			_, err = logging.NewLinkedDataset(ctx, "loggingLinkedDatasetLinkedDataset", &logging.LinkedDatasetArgs{
-//				Bucket:      pulumi.String("mybucket"),
+//				Bucket:      pulumi.String("my-bucket"),
 //				Description: pulumi.String("Linked dataset test"),
-//				LinkId:      pulumi.String("mybucket"),
+//				LinkId:      pulumi.String("mylink"),
 //				Location:    pulumi.String("global"),
 //				Parent:      pulumi.String("projects/my-project-name"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
