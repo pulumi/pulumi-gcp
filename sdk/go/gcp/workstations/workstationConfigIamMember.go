@@ -11,17 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}} * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}} * {{workstation_config_id}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Workstations workstationconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
+//
+// ```
+//
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
+//
+// ```
+//
+//	IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
+//
+// ```
+//
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type WorkstationConfigIamMember struct {
 	pulumi.CustomResourceState
 
-	Condition            WorkstationConfigIamMemberConditionPtrOutput `pulumi:"condition"`
-	Etag                 pulumi.StringOutput                          `pulumi:"etag"`
-	Location             pulumi.StringOutput                          `pulumi:"location"`
-	Member               pulumi.StringOutput                          `pulumi:"member"`
-	Project              pulumi.StringOutput                          `pulumi:"project"`
-	Role                 pulumi.StringOutput                          `pulumi:"role"`
-	WorkstationClusterId pulumi.StringOutput                          `pulumi:"workstationClusterId"`
-	WorkstationConfigId  pulumi.StringOutput                          `pulumi:"workstationConfigId"`
+	Condition WorkstationConfigIamMemberConditionPtrOutput `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The location where the workstation cluster config should reside.
+	// Used to find the parent resource to bind the IAM policy to
+	Location pulumi.StringOutput `pulumi:"location"`
+	Member   pulumi.StringOutput `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role                 pulumi.StringOutput `pulumi:"role"`
+	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
+	WorkstationConfigId  pulumi.StringOutput `pulumi:"workstationConfigId"`
 }
 
 // NewWorkstationConfigIamMember registers a new resource with the given unique name, arguments, and options.
@@ -65,22 +102,38 @@ func GetWorkstationConfigIamMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkstationConfigIamMember resources.
 type workstationConfigIamMemberState struct {
-	Condition            *WorkstationConfigIamMemberCondition `pulumi:"condition"`
-	Etag                 *string                              `pulumi:"etag"`
-	Location             *string                              `pulumi:"location"`
-	Member               *string                              `pulumi:"member"`
-	Project              *string                              `pulumi:"project"`
-	Role                 *string                              `pulumi:"role"`
-	WorkstationClusterId *string                              `pulumi:"workstationClusterId"`
-	WorkstationConfigId  *string                              `pulumi:"workstationConfigId"`
+	Condition *WorkstationConfigIamMemberCondition `pulumi:"condition"`
+	// (Computed) The etag of the IAM policy.
+	Etag *string `pulumi:"etag"`
+	// The location where the workstation cluster config should reside.
+	// Used to find the parent resource to bind the IAM policy to
+	Location *string `pulumi:"location"`
+	Member   *string `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role                 *string `pulumi:"role"`
+	WorkstationClusterId *string `pulumi:"workstationClusterId"`
+	WorkstationConfigId  *string `pulumi:"workstationConfigId"`
 }
 
 type WorkstationConfigIamMemberState struct {
-	Condition            WorkstationConfigIamMemberConditionPtrInput
-	Etag                 pulumi.StringPtrInput
-	Location             pulumi.StringPtrInput
-	Member               pulumi.StringPtrInput
-	Project              pulumi.StringPtrInput
+	Condition WorkstationConfigIamMemberConditionPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag pulumi.StringPtrInput
+	// The location where the workstation cluster config should reside.
+	// Used to find the parent resource to bind the IAM policy to
+	Location pulumi.StringPtrInput
+	Member   pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role                 pulumi.StringPtrInput
 	WorkstationClusterId pulumi.StringPtrInput
 	WorkstationConfigId  pulumi.StringPtrInput
@@ -91,21 +144,35 @@ func (WorkstationConfigIamMemberState) ElementType() reflect.Type {
 }
 
 type workstationConfigIamMemberArgs struct {
-	Condition            *WorkstationConfigIamMemberCondition `pulumi:"condition"`
-	Location             *string                              `pulumi:"location"`
-	Member               string                               `pulumi:"member"`
-	Project              *string                              `pulumi:"project"`
-	Role                 string                               `pulumi:"role"`
-	WorkstationClusterId string                               `pulumi:"workstationClusterId"`
-	WorkstationConfigId  string                               `pulumi:"workstationConfigId"`
+	Condition *WorkstationConfigIamMemberCondition `pulumi:"condition"`
+	// The location where the workstation cluster config should reside.
+	// Used to find the parent resource to bind the IAM policy to
+	Location *string `pulumi:"location"`
+	Member   string  `pulumi:"member"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role                 string `pulumi:"role"`
+	WorkstationClusterId string `pulumi:"workstationClusterId"`
+	WorkstationConfigId  string `pulumi:"workstationConfigId"`
 }
 
 // The set of arguments for constructing a WorkstationConfigIamMember resource.
 type WorkstationConfigIamMemberArgs struct {
-	Condition            WorkstationConfigIamMemberConditionPtrInput
-	Location             pulumi.StringPtrInput
-	Member               pulumi.StringInput
-	Project              pulumi.StringPtrInput
+	Condition WorkstationConfigIamMemberConditionPtrInput
+	// The location where the workstation cluster config should reside.
+	// Used to find the parent resource to bind the IAM policy to
+	Location pulumi.StringPtrInput
+	Member   pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role                 pulumi.StringInput
 	WorkstationClusterId pulumi.StringInput
 	WorkstationConfigId  pulumi.StringInput
@@ -202,10 +269,13 @@ func (o WorkstationConfigIamMemberOutput) Condition() WorkstationConfigIamMember
 	return o.ApplyT(func(v *WorkstationConfigIamMember) WorkstationConfigIamMemberConditionPtrOutput { return v.Condition }).(WorkstationConfigIamMemberConditionPtrOutput)
 }
 
+// (Computed) The etag of the IAM policy.
 func (o WorkstationConfigIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The location where the workstation cluster config should reside.
+// Used to find the parent resource to bind the IAM policy to
 func (o WorkstationConfigIamMemberOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamMember) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -214,10 +284,15 @@ func (o WorkstationConfigIamMemberOutput) Member() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 func (o WorkstationConfigIamMemberOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The role that should be applied. Only one
+// `workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o WorkstationConfigIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfigIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

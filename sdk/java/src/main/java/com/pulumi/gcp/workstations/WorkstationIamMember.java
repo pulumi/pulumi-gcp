@@ -15,6 +15,32 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Import
+ * 
+ * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}} * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}} * {{workstation_id}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Workstations workstation IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import gcp:workstations/workstationIamMember:WorkstationIamMember editor &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer user:jane@example.com&#34;
+ * ```
+ * 
+ *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import gcp:workstations/workstationIamMember:WorkstationIamMember editor &#34;projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}} roles/viewer&#34;
+ * ```
+ * 
+ *  IAM policy imports use the identifier of the resource in question, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import gcp:workstations/workstationIamMember:WorkstationIamMember editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
+ * ```
+ * 
+ *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * 
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ * 
+ */
 @ResourceType(type="gcp:workstations/workstationIamMember:WorkstationIamMember")
 public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
     @Export(name="condition", type=WorkstationIamMemberCondition.class, parameters={})
@@ -23,15 +49,33 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
     public Output<Optional<WorkstationIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
+    /**
+     * (Computed) The etag of the IAM policy.
+     * 
+     */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
+    /**
+     * @return (Computed) The etag of the IAM policy.
+     * 
+     */
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * The location where the workstation parent resources reside.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
+    /**
+     * @return The location where the workstation parent resources reside.
+     * Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
@@ -41,15 +85,37 @@ public class WorkstationIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> member() {
         return this.member;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
+    /**
+     * The role that should be applied. Only one
+     * `gcp.workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
 
+    /**
+     * @return The role that should be applied. Only one
+     * `gcp.workstations.WorkstationIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     */
     public Output<String> role() {
         return this.role;
     }

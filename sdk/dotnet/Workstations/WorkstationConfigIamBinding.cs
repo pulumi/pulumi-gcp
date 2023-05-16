@@ -9,24 +9,65 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Workstations
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} * {{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}} * {{location}}/{{workstation_cluster_id}}/{{workstation_config_id}} * {{workstation_config_id}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Workstations workstationconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer user:jane@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding editor "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}} roles/viewer"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding editor projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// </summary>
     [GcpResourceType("gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding")]
     public partial class WorkstationConfigIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.WorkstationConfigIamBindingCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The location where the workstation cluster config should reside.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -85,6 +126,10 @@ namespace Pulumi.Gcp.Workstations
         [Input("condition")]
         public Input<Inputs.WorkstationConfigIamBindingConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// The location where the workstation cluster config should reside.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -96,9 +141,18 @@ namespace Pulumi.Gcp.Workstations
             set => _members = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -119,9 +173,16 @@ namespace Pulumi.Gcp.Workstations
         [Input("condition")]
         public Input<Inputs.WorkstationConfigIamBindingConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The location where the workstation cluster config should reside.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -133,9 +194,18 @@ namespace Pulumi.Gcp.Workstations
             set => _members = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.workstations.WorkstationConfigIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
