@@ -3427,7 +3427,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_storage_transfer_project_service_account": {
 				Tok: gcpDataSource(gcpStorage, "getTransferProjectServieAccount"),
 				Docs: &tfbridge.DocInfo{
-					Source: "google_storage_transfer_project_service_account.html.markdown",
+					Source: "storage_transfer_project_service_account.html.markdown",
 				},
 			},
 			"google_storage_bucket_object_content": {
@@ -3676,6 +3676,13 @@ func Provider() tfbridge.ProviderInfo {
 		gcpDataSource(gcpCompute, "getRouterStatus"), gcpCompute, gcpCompute, &tfbridge.DataSourceInfo{
 			Docs: &tfbridge.DocInfo{
 				Source: "compute_router_status.html.markdown",
+			},
+		})
+
+	prov.RenameDataSource("google_storage_transfer_project_service_account", gcpDataSource(gcpStorage, "getTransferProjectServieAccount"),
+		gcpDataSource(gcpStorage, "getTransferProjectServiceAccount"), gcpStorage, gcpStorage, &tfbridge.DataSourceInfo{
+			Docs: &tfbridge.DocInfo{
+				Source: "storage_transfer_project_service_account.html.markdown",
 			},
 		})
 

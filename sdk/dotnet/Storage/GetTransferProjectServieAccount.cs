@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Storage
 {
+    [Obsolete(@"gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount")]
     public static class GetTransferProjectServieAccount
     {
         /// <summary>
@@ -26,11 +27,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Gcp.Storage.GetTransferProjectServieAccount.Invoke();
+        ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
+        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)),
         ///     };
         /// });
         /// ```
@@ -55,11 +56,11 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = Gcp.Storage.GetTransferProjectServieAccount.Invoke();
+        ///     var @default = Gcp.Storage.GetTransferProjectServiceAccount.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServieAccountResult =&gt; getTransferProjectServieAccountResult.Email)),
+        ///         ["defaultAccount"] = @default.Apply(@default =&gt; @default.Apply(getTransferProjectServiceAccountResult =&gt; getTransferProjectServiceAccountResult.Email)),
         ///     };
         /// });
         /// ```

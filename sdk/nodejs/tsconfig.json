@@ -935,6 +935,7 @@
         "storage/getBucketObjectContent.ts",
         "storage/getObjectSignedUrl.ts",
         "storage/getProjectServiceAccount.ts",
+        "storage/getTransferProjectServiceAccount.ts",
         "storage/getTransferProjectServieAccount.ts",
         "storage/hmacKey.ts",
         "storage/index.ts",

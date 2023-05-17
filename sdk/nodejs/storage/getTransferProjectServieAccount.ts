@@ -13,11 +13,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.storage.getTransferProjectServieAccount({});
+ * const default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
+/** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccount(args?: GetTransferProjectServieAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferProjectServieAccountResult> {
+    pulumi.log.warn("getTransferProjectServieAccount is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount")
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -67,10 +69,11 @@ export interface GetTransferProjectServieAccountResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.storage.getTransferProjectServieAccount({});
+ * const default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
+/** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
 export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {
     return pulumi.output(args).apply((a: any) => getTransferProjectServieAccount(a, opts))
 }

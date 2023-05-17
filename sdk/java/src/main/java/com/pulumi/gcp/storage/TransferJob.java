@@ -37,7 +37,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.storage.StorageFunctions;
- * import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
+ * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketIAMMember;
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var default = StorageFunctions.getTransferProjectServieAccount(GetTransferProjectServieAccountArgs.builder()
+ *         final var default = StorageFunctions.getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs.builder()
  *             .project(var_.project())
  *             .build());
  * 
