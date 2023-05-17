@@ -864,6 +864,7 @@
             "gcp:storage/getBucketObjectContent:getBucketObjectContent": 0,
             "gcp:storage/getObjectSignedUrl:getObjectSignedUrl": 0,
             "gcp:storage/getProjectServiceAccount:getProjectServiceAccount": 0,
+            "gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount": 0,
             "gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount": 0,
             "gcp:tags/getTagKey:getTagKey": 0,
             "gcp:tags/getTagValue:getTagValue": 0,
@@ -1736,7 +1737,8 @@
             "gcp:storage/getBucketObjectContent:getBucketObjectContent": "google_storage_bucket_object_content",
             "gcp:storage/getObjectSignedUrl:getObjectSignedUrl": "google_storage_object_signed_url",
             "gcp:storage/getProjectServiceAccount:getProjectServiceAccount": "google_storage_project_service_account",
-            "gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount": "google_storage_transfer_project_service_account",
+            "gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount": "google_storage_transfer_project_service_account",
+            "gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount": "google_storage_transfer_project_service_account_legacy",
             "gcp:tags/getTagKey:getTagKey": "google_tags_tag_key",
             "gcp:tags/getTagValue:getTagValue": "google_tags_tag_value",
             "gcp:tpu/getTensorflowVersions:getTensorflowVersions": "google_tpu_tensorflow_versions",
@@ -15890,6 +15892,9 @@
             "gcp:storage/getProjectServiceAccount:getProjectServiceAccount": {
                 "emailAddress": "email_address",
                 "userProject": "user_project"
+            },
+            "gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount": {
+                "subjectId": "subject_id"
             },
             "gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount": {
                 "subjectId": "subject_id"
