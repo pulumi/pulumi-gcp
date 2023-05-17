@@ -79,7 +79,7 @@ import (
 //				return err
 //			}
 //			cloudbuildServiceAccount, err := serviceAccount.NewAccount(ctx, "cloudbuildServiceAccount", &serviceAccount.AccountArgs{
-//				AccountId: pulumi.String("tf-test-my-service-account"),
+//				AccountId: pulumi.String("cloud-sa"),
 //			})
 //			if err != nil {
 //				return err
@@ -520,6 +520,70 @@ import (
 //				},
 //				Location: pulumi.String("us-central1"),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuild Trigger Pubsub With Repo
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//				Location: pulumi.String("us-central1"),
+//				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
+//					AppInstallationId: pulumi.Int(123123),
+//					AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{
+//						OauthTokenSecretVersion: pulumi.String("projects/my-project/secrets/github-pat-secret/versions/latest"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
+//				ParentConnection: my_connection.ID(),
+//				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			mytopic, err := pubsub.NewTopic(ctx, "mytopic", nil, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudbuild.NewTrigger(ctx, "pubsub-with-repo-trigger", &cloudbuild.TriggerArgs{
+//				Location: pulumi.String("us-central1"),
+//				PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
+//					Topic: mytopic.ID(),
+//				},
+//				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
+//					Repository: my_repository.ID(),
+//					Ref:        pulumi.String("refs/heads/main"),
+//					RepoType:   pulumi.String("GITHUB"),
+//				},
+//				GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
+//					Path:       pulumi.String("cloudbuild.yaml"),
+//					Repository: my_repository.ID(),
+//					Revision:   pulumi.String("refs/heads/main"),
+//					RepoType:   pulumi.String("GITHUB"),
+//				},
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}

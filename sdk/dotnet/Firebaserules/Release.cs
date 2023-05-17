@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.Firebaserules
     /// For more information, see:
     /// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
     /// ## Example Usage
-    /// ### Basic_release
-    /// Creates a basic Firebase Rules Release
+    /// ### Firestore_release
+    /// Creates a Firebase Rules Release to Cloud Firestore
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,9 +23,8 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basic = new Gcp.Firebaserules.Ruleset("basic", new()
+    ///     var firestore = new Gcp.Firebaserules.Ruleset("firestore", new()
     ///     {
-    ///         Project = "my-project-name",
     ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
     ///         {
     ///             Files = new[]
@@ -33,40 +32,23 @@ namespace Pulumi.Gcp.Firebaserules
     ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
     ///                 {
     ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                     Fingerprint = "",
     ///                     Name = "firestore.rules",
     ///                 },
     ///             },
-    ///             Language = "",
     ///         },
+    ///         Project = "my-project-name",
     ///     });
     /// 
     ///     var primary = new Gcp.Firebaserules.Release("primary", new()
     ///     {
+    ///         RulesetName = firestore.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
     ///         Project = "my-project-name",
-    ///         RulesetName = basic.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
-    ///     });
-    /// 
-    ///     var minimal = new Gcp.Firebaserules.Ruleset("minimal", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
-    ///         {
-    ///             Files = new[]
-    ///             {
-    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
-    ///                 {
-    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                     Name = "firestore.rules",
-    ///                 },
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });
     /// ```
-    /// ### Minimal_release
-    /// Creates a minimal Firebase Rules Release
+    /// ### Storage_release
+    /// Creates a Firebase Rules Release for a Storage bucket
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -75,7 +57,22 @@ namespace Pulumi.Gcp.Firebaserules
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var minimal = new Gcp.Firebaserules.Ruleset("minimal", new()
+    ///     // Provision a non-default Cloud Storage bucket.
+    ///     var bucketBucket = new Gcp.Storage.Bucket("bucketBucket", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-west1",
+    ///     });
+    /// 
+    ///     // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
+    ///     var bucketStorageBucket = new Gcp.Firebase.StorageBucket("bucketStorageBucket", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         BucketId = bucketBucket.Name,
+    ///     });
+    /// 
+    ///     // Create a ruleset of Firebase Security Rules from a local file.
+    ///     var storage = new Gcp.Firebaserules.Ruleset("storage", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
@@ -84,17 +81,23 @@ namespace Pulumi.Gcp.Firebaserules
     ///             {
     ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
     ///                 {
-    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
-    ///                     Name = "firestore.rules",
+    ///                     Name = "storage.rules",
+    ///                     Content = "service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}",
     ///                 },
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             bucketStorageBucket,
     ///         },
     ///     });
     /// 
     ///     var primary = new Gcp.Firebaserules.Release("primary", new()
     ///     {
+    ///         RulesetName = storage.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
     ///         Project = "my-project-name",
-    ///         RulesetName = minimal.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
     ///     });
     /// 
     /// });

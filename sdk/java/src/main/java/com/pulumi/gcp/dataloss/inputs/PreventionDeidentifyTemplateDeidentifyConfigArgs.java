@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionDeidentifyTemplateDeidentifyConfigArgs Empty = new PreventionDeidentifyTemplateDeidentifyConfigArgs();
+
+    /**
+     * Treat the dataset as an image and redact.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="imageTransformations")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs> imageTransformations;
+
+    /**
+     * @return Treat the dataset as an image and redact.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs>> imageTransformations() {
+        return Optional.ofNullable(this.imageTransformations);
+    }
 
     /**
      * Treat the dataset as free-form text and apply the same free text transformation everywhere
@@ -53,6 +71,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.
     private PreventionDeidentifyTemplateDeidentifyConfigArgs() {}
 
     private PreventionDeidentifyTemplateDeidentifyConfigArgs(PreventionDeidentifyTemplateDeidentifyConfigArgs $) {
+        this.imageTransformations = $.imageTransformations;
         this.infoTypeTransformations = $.infoTypeTransformations;
         this.recordTransformations = $.recordTransformations;
     }
@@ -73,6 +92,29 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigArgs extends com.
 
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigArgs defaults) {
             $ = new PreventionDeidentifyTemplateDeidentifyConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param imageTransformations Treat the dataset as an image and redact.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageTransformations(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs> imageTransformations) {
+            $.imageTransformations = imageTransformations;
+            return this;
+        }
+
+        /**
+         * @param imageTransformations Treat the dataset as an image and redact.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageTransformations(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs imageTransformations) {
+            return imageTransformations(Output.of(imageTransformations));
         }
 
         /**

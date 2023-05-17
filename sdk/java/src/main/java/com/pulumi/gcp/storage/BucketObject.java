@@ -61,6 +61,37 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * Example creating an empty folder in an existing `image-store` bucket.
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var emptyFolder = new BucketObject(&#34;emptyFolder&#34;, BucketObjectArgs.builder()        
+ *             .bucket(&#34;image-store&#34;)
+ *             .content(&#34; &#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * This resource does not support import.

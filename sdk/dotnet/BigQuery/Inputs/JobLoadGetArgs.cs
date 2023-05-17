@@ -111,6 +111,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         [Input("nullMarker")]
         public Input<string>? NullMarker { get; set; }
 
+        /// <summary>
+        /// Parquet Options for load and make external tables.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("parquetOptions")]
+        public Input<Inputs.JobLoadParquetOptionsGetArgs>? ParquetOptions { get; set; }
+
         [Input("projectionFields")]
         private InputList<string>? _projectionFields;
 

@@ -110,6 +110,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> PeerNetwork { get; private set; } = null!;
 
         /// <summary>
+        /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        /// </summary>
+        [Output("stackType")]
+        public Output<string?> StackType { get; private set; } = null!;
+
+        /// <summary>
         /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
         /// `ACTIVE` when there's a matching configuration in the peer network.
         /// </summary>
@@ -211,6 +217,12 @@ namespace Pulumi.Gcp.Compute
         [Input("peerNetwork", required: true)]
         public Input<string> PeerNetwork { get; set; } = null!;
 
+        /// <summary>
+        /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
+
         public NetworkPeeringArgs()
         {
         }
@@ -261,6 +273,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("peerNetwork")]
         public Input<string>? PeerNetwork { get; set; }
+
+        /// <summary>
+        /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
 
         /// <summary>
         /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is

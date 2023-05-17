@@ -22,7 +22,10 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, creation_timestamp=None, description=None, disk_encryption_keys=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+        if async_primary_disks and not isinstance(async_primary_disks, list):
+            raise TypeError("Expected argument 'async_primary_disks' to be a list")
+        pulumi.set(__self__, "async_primary_disks", async_primary_disks)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -107,6 +110,11 @@ class GetDiskResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisks")
+    def async_primary_disks(self) -> Sequence['outputs.GetDiskAsyncPrimaryDiskResult']:
+        return pulumi.get(self, "async_primary_disks")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -324,6 +332,7 @@ class AwaitableGetDiskResult(GetDiskResult):
         if False:
             yield self
         return GetDiskResult(
+            async_primary_disks=self.async_primary_disks,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
@@ -392,6 +401,7 @@ def get_disk(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getDisk:getDisk', __args__, opts=opts, typ=GetDiskResult).value
 
     return AwaitableGetDiskResult(
+        async_primary_disks=__ret__.async_primary_disks,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_encryption_keys=__ret__.disk_encryption_keys,

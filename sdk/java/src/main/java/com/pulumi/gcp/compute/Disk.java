@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.DiskArgs;
 import com.pulumi.gcp.compute.inputs.DiskState;
+import com.pulumi.gcp.compute.outputs.DiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.DiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.DiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.DiskSourceSnapshotEncryptionKey;
@@ -78,6 +79,52 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Disk Async
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Disk(&#34;primary&#34;, DiskArgs.builder()        
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .physicalBlockSizeBytes(4096)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var secondary = new Disk(&#34;secondary&#34;, DiskArgs.builder()        
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-east1-c&#34;)
+ *             .asyncPrimaryDisk(DiskAsyncPrimaryDiskArgs.builder()
+ *                 .disk(primary.id())
+ *                 .build())
+ *             .physicalBlockSizeBytes(4096)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -102,6 +149,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:compute/disk:Disk")
 public class Disk extends com.pulumi.resources.CustomResource {
+    /**
+     * A nested object resource
+     * 
+     */
+    @Export(name="asyncPrimaryDisk", type=DiskAsyncPrimaryDisk.class, parameters={})
+    private Output</* @Nullable */ DiskAsyncPrimaryDisk> asyncPrimaryDisk;
+
+    /**
+     * @return A nested object resource
+     * 
+     */
+    public Output<Optional<DiskAsyncPrimaryDisk>> asyncPrimaryDisk() {
+        return Codegen.optional(this.asyncPrimaryDisk);
+    }
     /**
      * Creation timestamp in RFC3339 text format.
      * 

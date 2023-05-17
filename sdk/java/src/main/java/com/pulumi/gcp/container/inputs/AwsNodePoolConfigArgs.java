@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.inputs.AwsNodePoolConfigConfigEncryptionArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigInstancePlacementArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigRootVolumeArgs;
+import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSpotConfigArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigTaintArgs;
 import java.lang.String;
@@ -175,6 +176,21 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * 
+     */
+    @Import(name="spotConfig")
+    private @Nullable Output<AwsNodePoolConfigSpotConfigArgs> spotConfig;
+
+    /**
+     * @return (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * 
+     */
+    public Optional<Output<AwsNodePoolConfigSpotConfigArgs>> spotConfig() {
+        return Optional.ofNullable(this.spotConfig);
+    }
+
+    /**
      * Optional. The SSH configuration.
      * 
      */
@@ -232,6 +248,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         this.proxyConfig = $.proxyConfig;
         this.rootVolume = $.rootVolume;
         this.securityGroupIds = $.securityGroupIds;
+        this.spotConfig = $.spotConfig;
         this.sshConfig = $.sshConfig;
         this.tags = $.tags;
         this.taints = $.taints;
@@ -473,6 +490,27 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        /**
+         * @param spotConfig (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotConfig(@Nullable Output<AwsNodePoolConfigSpotConfigArgs> spotConfig) {
+            $.spotConfig = spotConfig;
+            return this;
+        }
+
+        /**
+         * @param spotConfig (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotConfig(AwsNodePoolConfigSpotConfigArgs spotConfig) {
+            return spotConfig(Output.of(spotConfig));
         }
 
         /**

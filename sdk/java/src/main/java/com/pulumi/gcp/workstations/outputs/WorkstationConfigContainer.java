@@ -31,7 +31,7 @@ public final class WorkstationConfigContainer {
      */
     private @Nullable Map<String,String> env;
     /**
-     * @return Docker image defining the container. This image must be accessible by the config&#34;s service account.
+     * @return Docker image defining the container. This image must be accessible by the config&#39;s service account.
      * 
      */
     private @Nullable String image;
@@ -70,7 +70,7 @@ public final class WorkstationConfigContainer {
         return this.env == null ? Map.of() : this.env;
     }
     /**
-     * @return Docker image defining the container. This image must be accessible by the config&#34;s service account.
+     * @return Docker image defining the container. This image must be accessible by the config&#39;s service account.
      * 
      */
     public Optional<String> image() {

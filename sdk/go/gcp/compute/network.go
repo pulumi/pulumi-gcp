@@ -159,7 +159,7 @@ type Network struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
@@ -244,7 +244,7 @@ type networkState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
@@ -301,7 +301,7 @@ type NetworkState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
@@ -359,7 +359,7 @@ type networkArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
@@ -412,7 +412,7 @@ type NetworkArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
@@ -577,7 +577,7 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+// Set the order that Firewall Rules and Firewall Policies are evaluated.
 // Default value is `AFTER_CLASSIC_FIREWALL`.
 // Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringPtrOutput {

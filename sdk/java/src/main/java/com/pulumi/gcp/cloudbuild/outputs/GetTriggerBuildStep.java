@@ -5,12 +5,16 @@ package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildStepVolume;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildStep {
+    private List<Integer> allowExitCodes;
+    private Boolean allowFailure;
     private List<String> args;
     private String dir;
     private String entrypoint;
@@ -25,6 +29,12 @@ public final class GetTriggerBuildStep {
     private List<String> waitFors;
 
     private GetTriggerBuildStep() {}
+    public List<Integer> allowExitCodes() {
+        return this.allowExitCodes;
+    }
+    public Boolean allowFailure() {
+        return this.allowFailure;
+    }
     public List<String> args() {
         return this.args;
     }
@@ -71,6 +81,8 @@ public final class GetTriggerBuildStep {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<Integer> allowExitCodes;
+        private Boolean allowFailure;
         private List<String> args;
         private String dir;
         private String entrypoint;
@@ -86,6 +98,8 @@ public final class GetTriggerBuildStep {
         public Builder() {}
         public Builder(GetTriggerBuildStep defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowExitCodes = defaults.allowExitCodes;
+    	      this.allowFailure = defaults.allowFailure;
     	      this.args = defaults.args;
     	      this.dir = defaults.dir;
     	      this.entrypoint = defaults.entrypoint;
@@ -100,6 +114,19 @@ public final class GetTriggerBuildStep {
     	      this.waitFors = defaults.waitFors;
         }
 
+        @CustomType.Setter
+        public Builder allowExitCodes(List<Integer> allowExitCodes) {
+            this.allowExitCodes = Objects.requireNonNull(allowExitCodes);
+            return this;
+        }
+        public Builder allowExitCodes(Integer... allowExitCodes) {
+            return allowExitCodes(List.of(allowExitCodes));
+        }
+        @CustomType.Setter
+        public Builder allowFailure(Boolean allowFailure) {
+            this.allowFailure = Objects.requireNonNull(allowFailure);
+            return this;
+        }
         @CustomType.Setter
         public Builder args(List<String> args) {
             this.args = Objects.requireNonNull(args);
@@ -177,6 +204,8 @@ public final class GetTriggerBuildStep {
         }
         public GetTriggerBuildStep build() {
             final var o = new GetTriggerBuildStep();
+            o.allowExitCodes = allowExitCodes;
+            o.allowFailure = allowFailure;
             o.args = args;
             o.dir = dir;
             o.entrypoint = entrypoint;

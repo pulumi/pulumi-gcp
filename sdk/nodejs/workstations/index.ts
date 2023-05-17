@@ -20,6 +20,36 @@ export type WorkstationConfig = import("./workstationConfig").WorkstationConfig;
 export const WorkstationConfig: typeof import("./workstationConfig").WorkstationConfig = null as any;
 utilities.lazyLoad(exports, ["WorkstationConfig"], () => require("./workstationConfig"));
 
+export { WorkstationConfigIamBindingArgs, WorkstationConfigIamBindingState } from "./workstationConfigIamBinding";
+export type WorkstationConfigIamBinding = import("./workstationConfigIamBinding").WorkstationConfigIamBinding;
+export const WorkstationConfigIamBinding: typeof import("./workstationConfigIamBinding").WorkstationConfigIamBinding = null as any;
+utilities.lazyLoad(exports, ["WorkstationConfigIamBinding"], () => require("./workstationConfigIamBinding"));
+
+export { WorkstationConfigIamMemberArgs, WorkstationConfigIamMemberState } from "./workstationConfigIamMember";
+export type WorkstationConfigIamMember = import("./workstationConfigIamMember").WorkstationConfigIamMember;
+export const WorkstationConfigIamMember: typeof import("./workstationConfigIamMember").WorkstationConfigIamMember = null as any;
+utilities.lazyLoad(exports, ["WorkstationConfigIamMember"], () => require("./workstationConfigIamMember"));
+
+export { WorkstationConfigIamPolicyArgs, WorkstationConfigIamPolicyState } from "./workstationConfigIamPolicy";
+export type WorkstationConfigIamPolicy = import("./workstationConfigIamPolicy").WorkstationConfigIamPolicy;
+export const WorkstationConfigIamPolicy: typeof import("./workstationConfigIamPolicy").WorkstationConfigIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WorkstationConfigIamPolicy"], () => require("./workstationConfigIamPolicy"));
+
+export { WorkstationIamBindingArgs, WorkstationIamBindingState } from "./workstationIamBinding";
+export type WorkstationIamBinding = import("./workstationIamBinding").WorkstationIamBinding;
+export const WorkstationIamBinding: typeof import("./workstationIamBinding").WorkstationIamBinding = null as any;
+utilities.lazyLoad(exports, ["WorkstationIamBinding"], () => require("./workstationIamBinding"));
+
+export { WorkstationIamMemberArgs, WorkstationIamMemberState } from "./workstationIamMember";
+export type WorkstationIamMember = import("./workstationIamMember").WorkstationIamMember;
+export const WorkstationIamMember: typeof import("./workstationIamMember").WorkstationIamMember = null as any;
+utilities.lazyLoad(exports, ["WorkstationIamMember"], () => require("./workstationIamMember"));
+
+export { WorkstationIamPolicyArgs, WorkstationIamPolicyState } from "./workstationIamPolicy";
+export type WorkstationIamPolicy = import("./workstationIamPolicy").WorkstationIamPolicy;
+export const WorkstationIamPolicy: typeof import("./workstationIamPolicy").WorkstationIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WorkstationIamPolicy"], () => require("./workstationIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -31,6 +61,18 @@ const _module = {
                 return new WorkstationCluster(name, <any>undefined, { urn })
             case "gcp:workstations/workstationConfig:WorkstationConfig":
                 return new WorkstationConfig(name, <any>undefined, { urn })
+            case "gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding":
+                return new WorkstationConfigIamBinding(name, <any>undefined, { urn })
+            case "gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember":
+                return new WorkstationConfigIamMember(name, <any>undefined, { urn })
+            case "gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy":
+                return new WorkstationConfigIamPolicy(name, <any>undefined, { urn })
+            case "gcp:workstations/workstationIamBinding:WorkstationIamBinding":
+                return new WorkstationIamBinding(name, <any>undefined, { urn })
+            case "gcp:workstations/workstationIamMember:WorkstationIamMember":
+                return new WorkstationIamMember(name, <any>undefined, { urn })
+            case "gcp:workstations/workstationIamPolicy:WorkstationIamPolicy":
+                return new WorkstationIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -39,3 +81,9 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "workstations/workstation", _module)
 pulumi.runtime.registerResourceModule("gcp", "workstations/workstationCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "workstations/workstationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstationConfigIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstationConfigIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstationConfigIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstationIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstationIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "workstations/workstationIamPolicy", _module)

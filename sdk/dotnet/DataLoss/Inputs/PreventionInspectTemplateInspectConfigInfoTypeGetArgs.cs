@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Version of the information type to use. By default, the version is set to stable
+        /// Version name for this InfoType.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.GetDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.GetDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetDiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetDiskSourceSnapshotEncryptionKey;
@@ -18,6 +19,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDiskResult {
+    private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
     /**
      * @return Creation timestamp in RFC3339 text format.
      * 
@@ -136,6 +138,9 @@ public final class GetDiskResult {
     private @Nullable String zone;
 
     private GetDiskResult() {}
+    public List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks() {
+        return this.asyncPrimaryDisks;
+    }
     /**
      * @return Creation timestamp in RFC3339 text format.
      * 
@@ -318,6 +323,7 @@ public final class GetDiskResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks;
         private String creationTimestamp;
         private String description;
         private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
@@ -349,6 +355,7 @@ public final class GetDiskResult {
         public Builder() {}
         public Builder(GetDiskResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.asyncPrimaryDisks = defaults.asyncPrimaryDisks;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
@@ -379,6 +386,14 @@ public final class GetDiskResult {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder asyncPrimaryDisks(List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks) {
+            this.asyncPrimaryDisks = Objects.requireNonNull(asyncPrimaryDisks);
+            return this;
+        }
+        public Builder asyncPrimaryDisks(GetDiskAsyncPrimaryDisk... asyncPrimaryDisks) {
+            return asyncPrimaryDisks(List.of(asyncPrimaryDisks));
+        }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
             this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
@@ -536,6 +551,7 @@ public final class GetDiskResult {
         }
         public GetDiskResult build() {
             final var o = new GetDiskResult();
+            o.asyncPrimaryDisks = asyncPrimaryDisks;
             o.creationTimestamp = creationTimestamp;
             o.description = description;
             o.diskEncryptionKeys = diskEncryptionKeys;

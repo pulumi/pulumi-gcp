@@ -18,7 +18,7 @@ public final class PreventionInspectTemplateInspectConfigInfoType {
      */
     private String name;
     /**
-     * @return Version of the information type to use. By default, the version is set to stable
+     * @return Version name for this InfoType.
      * 
      */
     private @Nullable String version;
@@ -33,7 +33,7 @@ public final class PreventionInspectTemplateInspectConfigInfoType {
         return this.name;
     }
     /**
-     * @return Version of the information type to use. By default, the version is set to stable
+     * @return Version name for this InfoType.
      * 
      */
     public Optional<String> version() {

@@ -28,10 +28,11 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
         /// </summary>
         public readonly string RepoType;
+        public readonly string? Repository;
         /// <summary>
-        /// The URI of the repo (required).
+        /// The URI of the repo.
         /// </summary>
-        public readonly string Uri;
+        public readonly string? Uri;
 
         [OutputConstructor]
         private TriggerSourceToBuild(
@@ -41,11 +42,14 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string repoType,
 
-            string uri)
+            string? repository,
+
+            string? uri)
         {
             GithubEnterpriseConfig = githubEnterpriseConfig;
             Ref = @ref;
             RepoType = repoType;
+            Repository = repository;
             Uri = uri;
         }
     }

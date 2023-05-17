@@ -257,6 +257,122 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Job Trigger Deidentify
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultDataset = new Gcp.BigQuery.Dataset("defaultDataset", new()
+    ///     {
+    ///         DatasetId = "tf_test",
+    ///         FriendlyName = "terraform-test",
+    ///         Description = "Description for the dataset created by terraform",
+    ///         Location = "US",
+    ///         DefaultTableExpirationMs = 3600000,
+    ///         Labels = 
+    ///         {
+    ///             { "env", "default" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultTable = new Gcp.BigQuery.Table("defaultTable", new()
+    ///     {
+    ///         DatasetId = defaultDataset.DatasetId,
+    ///         TableId = "tf_test",
+    ///         DeletionProtection = false,
+    ///         TimePartitioning = new Gcp.BigQuery.Inputs.TableTimePartitioningArgs
+    ///         {
+    ///             Type = "DAY",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "env", "default" },
+    ///         },
+    ///         Schema = @"    [
+    ///     {
+    ///       ""name"": ""quantity"",
+    ///       ""type"": ""NUMERIC"",
+    ///       ""mode"": ""NULLABLE"",
+    ///       ""description"": ""The quantity""
+    ///     },
+    ///     {
+    ///       ""name"": ""name"",
+    ///       ""type"": ""STRING"",
+    ///       ""mode"": ""NULLABLE"",
+    ///       ""description"": ""Name of the object""
+    ///     }
+    ///     ]
+    /// ",
+    ///     });
+    /// 
+    ///     var deidentify = new Gcp.DataLoss.PreventionJobTrigger("deidentify", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Description for the job_trigger created by terraform",
+    ///         DisplayName = "TerraformDisplayName",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             InspectTemplateName = "sample-inspect-template",
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     Deidentify = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyArgs
+    ///                     {
+    ///                         CloudStorageOutput = "gs://samplebucket/dir/",
+    ///                         FileTypesToTransforms = new[]
+    ///                         {
+    ///                             "CSV",
+    ///                             "TSV",
+    ///                         },
+    ///                         TransformationDetailsStorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs
+    ///                             {
+    ///                                 ProjectId = "my-project-name",
+    ///                                 DatasetId = defaultDataset.DatasetId,
+    ///                                 TableId = defaultTable.TableId,
+    ///                             },
+    ///                         },
+    ///                         TransformationConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs
+    ///                         {
+    ///                             DeidentifyTemplate = "sample-deidentify-template",
+    ///                             ImageRedactTemplate = "sample-image-redact-template",
+    ///                             StructuredDeidentifyTemplate = "sample-structured-deidentify-template",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dlp Job Trigger Hybrid
     /// 
     /// ```csharp
@@ -327,6 +443,56 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Job Trigger Publish To Stackdriver
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var publishToStackdriver = new Gcp.DataLoss.PreventionJobTrigger("publishToStackdriver", new()
+    ///     {
+    ///         Description = "Description for the job_trigger created by terraform",
+    ///         DisplayName = "TerraformDisplayName",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     PublishToStackdriver = null,
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "sample-inspect-template",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -343,6 +509,13 @@ namespace Pulumi.Gcp.DataLoss
     [GcpResourceType("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger")]
     public partial class PreventionJobTrigger : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// (Output)
+        /// The creation timestamp of an inspectTemplate. Set by the server.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// A description of the job trigger.
         /// (Optional)
@@ -371,6 +544,24 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> LastRunTime { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        /// or `projects/project-id/storedInfoTypes/432452342`.
+        /// (Required)
         /// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
         /// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
         /// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -408,6 +599,12 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Output("triggers")]
         public Output<ImmutableArray<Outputs.PreventionJobTriggerTrigger>> Triggers { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of an inspectTemplate. Set by the server.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -513,6 +710,13 @@ namespace Pulumi.Gcp.DataLoss
     public sealed class PreventionJobTriggerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
+        /// The creation timestamp of an inspectTemplate. Set by the server.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// A description of the job trigger.
         /// (Optional)
         /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -540,6 +744,24 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? LastRunTime { get; set; }
 
         /// <summary>
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+        /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// (Required)
+        /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+        /// or `projects/project-id/storedInfoTypes/432452342`.
+        /// (Required)
         /// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
         /// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
         /// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -583,6 +805,12 @@ namespace Pulumi.Gcp.DataLoss
             get => _triggers ?? (_triggers = new InputList<Inputs.PreventionJobTriggerTriggerGetArgs>());
             set => _triggers = value;
         }
+
+        /// <summary>
+        /// The last update timestamp of an inspectTemplate. Set by the server.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public PreventionJobTriggerState()
         {

@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "tf-test-my-service-account"});
+ * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "cloud-sa"});
  * const actAs = new gcp.projects.IAMMember("actAs", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/iam.serviceAccountUser",
@@ -307,6 +307,52 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     location: "us-central1",
+ * });
+ * ```
+ * ### Cloudbuild Trigger Pubsub With Repo
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
+ *     location: "us-central1",
+ *     githubConfig: {
+ *         appInstallationId: 123123,
+ *         authorizerCredential: {
+ *             oauthTokenSecretVersion: "projects/my-project/secrets/github-pat-secret/versions/latest",
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
+ *     parentConnection: my_connection.id,
+ *     remoteUri: "https://github.com/myuser/my-repo.git",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const mytopic = new gcp.pubsub.Topic("mytopic", {}, {
+ *     provider: google_beta,
+ * });
+ * const pubsub_with_repo_trigger = new gcp.cloudbuild.Trigger("pubsub-with-repo-trigger", {
+ *     location: "us-central1",
+ *     pubsubConfig: {
+ *         topic: mytopic.id,
+ *     },
+ *     sourceToBuild: {
+ *         repository: my_repository.id,
+ *         ref: "refs/heads/main",
+ *         repoType: "GITHUB",
+ *     },
+ *     gitFileSource: {
+ *         path: "cloudbuild.yaml",
+ *         repository: my_repository.id,
+ *         revision: "refs/heads/main",
+ *         repoType: "GITHUB",
+ *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

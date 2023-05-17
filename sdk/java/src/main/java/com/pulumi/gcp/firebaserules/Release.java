@@ -18,8 +18,8 @@ import javax.annotation.Nullable;
  * For more information, see:
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
- * ### Basic_release
- * Creates a basic Firebase Rules Release
+ * ### Firestore_release
+ * Creates a Firebase Rules Release to Cloud Firestore
  * ```java
  * package generated_program;
  * 
@@ -44,49 +44,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new Ruleset(&#34;basic&#34;, RulesetArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
+ *         var firestore = new Ruleset(&#34;firestore&#34;, RulesetArgs.builder()        
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
  *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
- *                     .fingerprint(&#34;&#34;)
  *                     .name(&#34;firestore.rules&#34;)
  *                     .build())
- *                 .language(&#34;&#34;)
  *                 .build())
+ *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
  *         var primary = new Release(&#34;primary&#34;, ReleaseArgs.builder()        
+ *             .rulesetName(firestore.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
  *             .project(&#34;my-project-name&#34;)
- *             .rulesetName(basic.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
- *             .build());
- * 
- *         var minimal = new Ruleset(&#34;minimal&#34;, RulesetArgs.builder()        
- *             .project(&#34;my-project-name&#34;)
- *             .source(RulesetSourceArgs.builder()
- *                 .files(RulesetSourceFileArgs.builder()
- *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
- *                     .name(&#34;firestore.rules&#34;)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }
  * }
  * ```
- * ### Minimal_release
- * Creates a minimal Firebase Rules Release
+ * ### Storage_release
+ * Creates a Firebase Rules Release for a Storage bucket
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.firebase.StorageBucket;
+ * import com.pulumi.gcp.firebase.StorageBucketArgs;
  * import com.pulumi.gcp.firebaserules.Ruleset;
  * import com.pulumi.gcp.firebaserules.RulesetArgs;
  * import com.pulumi.gcp.firebaserules.inputs.RulesetSourceArgs;
  * import com.pulumi.gcp.firebaserules.Release;
  * import com.pulumi.gcp.firebaserules.ReleaseArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -100,19 +93,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var minimal = new Ruleset(&#34;minimal&#34;, RulesetArgs.builder()        
+ *         var bucketBucket = new Bucket(&#34;bucketBucket&#34;, BucketArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .location(&#34;us-west1&#34;)
+ *             .build());
+ * 
+ *         var bucketStorageBucket = new StorageBucket(&#34;bucketStorageBucket&#34;, StorageBucketArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .bucketId(bucketBucket.name())
+ *             .build());
+ * 
+ *         var storage = new Ruleset(&#34;storage&#34;, RulesetArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .source(RulesetSourceArgs.builder()
  *                 .files(RulesetSourceFileArgs.builder()
- *                     .content(&#34;service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }&#34;)
- *                     .name(&#34;firestore.rules&#34;)
+ *                     .name(&#34;storage.rules&#34;)
+ *                     .content(&#34;service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}&#34;)
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(bucketStorageBucket)
+ *                 .build());
  * 
  *         var primary = new Release(&#34;primary&#34;, ReleaseArgs.builder()        
+ *             .rulesetName(storage.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
  *             .project(&#34;my-project-name&#34;)
- *             .rulesetName(minimal.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
  *             .build());
  * 
  *     }

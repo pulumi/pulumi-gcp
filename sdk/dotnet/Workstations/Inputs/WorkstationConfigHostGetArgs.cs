@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
     public sealed class WorkstationConfigHostGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a Compute Engine instance as the host.
+        /// A runtime using a Compute Engine instance.
         /// Structure is documented below.
         /// </summary>
         [Input("gceInstance")]

@@ -22,10 +22,13 @@ class GetResourcePolicyResult:
     """
     A collection of values returned by getResourcePolicy.
     """
-    def __init__(__self__, description=None, group_placement_policies=None, id=None, instance_schedule_policies=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None):
+    def __init__(__self__, description=None, disk_consistency_group_policies=None, group_placement_policies=None, id=None, instance_schedule_policies=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if disk_consistency_group_policies and not isinstance(disk_consistency_group_policies, list):
+            raise TypeError("Expected argument 'disk_consistency_group_policies' to be a list")
+        pulumi.set(__self__, "disk_consistency_group_policies", disk_consistency_group_policies)
         if group_placement_policies and not isinstance(group_placement_policies, list):
             raise TypeError("Expected argument 'group_placement_policies' to be a list")
         pulumi.set(__self__, "group_placement_policies", group_placement_policies)
@@ -58,6 +61,11 @@ class GetResourcePolicyResult:
         Description of this Resource Policy.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskConsistencyGroupPolicies")
+    def disk_consistency_group_policies(self) -> Sequence['outputs.GetResourcePolicyDiskConsistencyGroupPolicyResult']:
+        return pulumi.get(self, "disk_consistency_group_policies")
 
     @property
     @pulumi.getter(name="groupPlacementPolicies")
@@ -113,6 +121,7 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
             yield self
         return GetResourcePolicyResult(
             description=self.description,
+            disk_consistency_group_policies=self.disk_consistency_group_policies,
             group_placement_policies=self.group_placement_policies,
             id=self.id,
             instance_schedule_policies=self.instance_schedule_policies,
@@ -152,6 +161,7 @@ def get_resource_policy(name: Optional[str] = None,
 
     return AwaitableGetResourcePolicyResult(
         description=__ret__.description,
+        disk_consistency_group_policies=__ret__.disk_consistency_group_policies,
         group_placement_policies=__ret__.group_placement_policies,
         id=__ret__.id,
         instance_schedule_policies=__ret__.instance_schedule_policies,

@@ -116,6 +116,21 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
     }
 
     /**
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * 
+     */
+    @Import(name="tlsInspectionPolicy")
+    private @Nullable Output<String> tlsInspectionPolicy;
+
+    /**
+     * @return Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * 
+     */
+    public Optional<Output<String>> tlsInspectionPolicy() {
+        return Optional.ofNullable(this.tlsInspectionPolicy);
+    }
+
+    /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
@@ -143,6 +158,7 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
         this.name = $.name;
         this.project = $.project;
         this.selfLink = $.selfLink;
+        this.tlsInspectionPolicy = $.tlsInspectionPolicy;
         this.updateTime = $.updateTime;
     }
 
@@ -298,6 +314,27 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsInspectionPolicy(@Nullable Output<String> tlsInspectionPolicy) {
+            $.tlsInspectionPolicy = tlsInspectionPolicy;
+            return this;
+        }
+
+        /**
+         * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsInspectionPolicy(String tlsInspectionPolicy) {
+            return tlsInspectionPolicy(Output.of(tlsInspectionPolicy));
         }
 
         /**

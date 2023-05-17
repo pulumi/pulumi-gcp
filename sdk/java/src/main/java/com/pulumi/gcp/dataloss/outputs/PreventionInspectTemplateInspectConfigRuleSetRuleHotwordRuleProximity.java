@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
     /**
-     * @return Number of characters after the finding to consider. Either this or window_before must be specified
+     * @return Number of characters after the finding to consider.
      * 
      */
     private @Nullable Integer windowAfter;
     /**
-     * @return Number of characters before the finding to consider. Either this or window_after must be specified
+     * @return Number of characters before the finding to consider.
      * 
      */
     private @Nullable Integer windowBefore;
 
     private PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity() {}
     /**
-     * @return Number of characters after the finding to consider. Either this or window_before must be specified
+     * @return Number of characters after the finding to consider.
      * 
      */
     public Optional<Integer> windowAfter() {
         return Optional.ofNullable(this.windowAfter);
     }
     /**
-     * @return Number of characters before the finding to consider. Either this or window_after must be specified
+     * @return Number of characters before the finding to consider.
      * 
      */
     public Optional<Integer> windowBefore() {

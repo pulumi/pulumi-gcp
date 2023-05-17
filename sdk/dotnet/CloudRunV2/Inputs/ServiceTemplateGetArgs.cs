@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         private InputList<Inputs.ServiceTemplateContainerGetArgs>? _containers;
 
         /// <summary>
-        /// Holds the single container that defines the unit of execution for this task.
+        /// Holds the containers that define the unit of execution for this Service.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTemplateContainerGetArgs> Containers
@@ -86,6 +86,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        /// </summary>
+        [Input("sessionAffinity")]
+        public Input<bool>? SessionAffinity { get; set; }
 
         /// <summary>
         /// Max allowed time for an instance to respond to a request.

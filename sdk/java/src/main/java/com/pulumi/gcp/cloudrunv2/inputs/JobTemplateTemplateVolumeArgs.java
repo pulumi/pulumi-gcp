@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeCloudSqlInstanceArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeEmptyDirArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeSecretArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -32,6 +33,13 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<JobTemplateTemplateVolumeCloudSqlInstanceArgs>> cloudSqlInstance() {
         return Optional.ofNullable(this.cloudSqlInstance);
+    }
+
+    @Import(name="emptyDir")
+    private @Nullable Output<JobTemplateTemplateVolumeEmptyDirArgs> emptyDir;
+
+    public Optional<Output<JobTemplateTemplateVolumeEmptyDirArgs>> emptyDir() {
+        return Optional.ofNullable(this.emptyDir);
     }
 
     /**
@@ -70,6 +78,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
 
     private JobTemplateTemplateVolumeArgs(JobTemplateTemplateVolumeArgs $) {
         this.cloudSqlInstance = $.cloudSqlInstance;
+        this.emptyDir = $.emptyDir;
         this.name = $.name;
         this.secret = $.secret;
     }
@@ -113,6 +122,15 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
          */
         public Builder cloudSqlInstance(JobTemplateTemplateVolumeCloudSqlInstanceArgs cloudSqlInstance) {
             return cloudSqlInstance(Output.of(cloudSqlInstance));
+        }
+
+        public Builder emptyDir(@Nullable Output<JobTemplateTemplateVolumeEmptyDirArgs> emptyDir) {
+            $.emptyDir = emptyDir;
+            return this;
+        }
+
+        public Builder emptyDir(JobTemplateTemplateVolumeEmptyDirArgs emptyDir) {
+            return emptyDir(Output.of(emptyDir));
         }
 
         /**

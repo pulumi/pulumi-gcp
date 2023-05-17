@@ -94,6 +94,11 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The KMS key used to encrypt workflow and execution data.
+     * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+     */
+    public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
+    /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
     public readonly description!: pulumi.Output<string>;
@@ -126,7 +131,11 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
-     * Format: projects/{project}/serviceAccounts/{account}.
+     * Format: projects/{project}/serviceAccounts/{account} or {account}.
+     * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+     * The {account} value can be the email address or the uniqueId of the service account.
+     * If not provided, workflow will use the project's default service account.
+     * Modifying this field for an existing workflow results in a new workflow revision.
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
@@ -156,6 +165,7 @@ export class Workflow extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["cryptoKeyName"] = state ? state.cryptoKeyName : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -169,6 +179,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
+            resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -195,6 +206,11 @@ export interface WorkflowState {
      * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The KMS key used to encrypt workflow and execution data.
+     * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+     */
+    cryptoKeyName?: pulumi.Input<string>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
@@ -228,7 +244,11 @@ export interface WorkflowState {
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
-     * Format: projects/{project}/serviceAccounts/{account}.
+     * Format: projects/{project}/serviceAccounts/{account} or {account}.
+     * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+     * The {account} value can be the email address or the uniqueId of the service account.
+     * If not provided, workflow will use the project's default service account.
+     * Modifying this field for an existing workflow results in a new workflow revision.
      */
     serviceAccount?: pulumi.Input<string>;
     /**
@@ -249,6 +269,11 @@ export interface WorkflowState {
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
+    /**
+     * The KMS key used to encrypt workflow and execution data.
+     * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+     */
+    cryptoKeyName?: pulumi.Input<string>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
@@ -278,7 +303,11 @@ export interface WorkflowArgs {
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
-     * Format: projects/{project}/serviceAccounts/{account}.
+     * Format: projects/{project}/serviceAccounts/{account} or {account}.
+     * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+     * The {account} value can be the email address or the uniqueId of the service account.
+     * If not provided, workflow will use the project's default service account.
+     * Modifying this field for an existing workflow results in a new workflow revision.
      */
     serviceAccount?: pulumi.Input<string>;
     /**

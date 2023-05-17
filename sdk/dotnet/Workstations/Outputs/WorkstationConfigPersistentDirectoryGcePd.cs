@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
         public readonly string? FsType;
         /// <summary>
         /// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-        /// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+        /// Possible values are: `DELETE`, `RETAIN`.
         /// </summary>
         public readonly string? ReclaimPolicy;
         /// <summary>

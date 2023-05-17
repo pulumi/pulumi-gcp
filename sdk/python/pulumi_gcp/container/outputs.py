@@ -43,6 +43,7 @@ __all__ = [
     'AwsNodePoolConfigInstancePlacement',
     'AwsNodePoolConfigProxyConfig',
     'AwsNodePoolConfigRootVolume',
+    'AwsNodePoolConfigSpotConfig',
     'AwsNodePoolConfigSshConfig',
     'AwsNodePoolConfigTaint',
     'AwsNodePoolMaxPodsConstraint',
@@ -73,6 +74,7 @@ __all__ = [
     'ClusterAddonsConfigDnsCacheConfig',
     'ClusterAddonsConfigGcePersistentDiskCsiDriverConfig',
     'ClusterAddonsConfigGcpFilestoreCsiDriverConfig',
+    'ClusterAddonsConfigGcsFuseCsiDriverConfig',
     'ClusterAddonsConfigGkeBackupAgentConfig',
     'ClusterAddonsConfigHorizontalPodAutoscaling',
     'ClusterAddonsConfigHttpLoadBalancing',
@@ -205,6 +207,7 @@ __all__ = [
     'GetClusterAddonsConfigDnsCacheConfigResult',
     'GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult',
     'GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult',
+    'GetClusterAddonsConfigGcsFuseCsiDriverConfigResult',
     'GetClusterAddonsConfigGkeBackupAgentConfigResult',
     'GetClusterAddonsConfigHorizontalPodAutoscalingResult',
     'GetClusterAddonsConfigHttpLoadBalancingResult',
@@ -1575,6 +1578,8 @@ class AwsNodePoolConfig(dict):
             suggest = "root_volume"
         elif key == "securityGroupIds":
             suggest = "security_group_ids"
+        elif key == "spotConfig":
+            suggest = "spot_config"
         elif key == "sshConfig":
             suggest = "ssh_config"
 
@@ -1600,6 +1605,7 @@ class AwsNodePoolConfig(dict):
                  proxy_config: Optional['outputs.AwsNodePoolConfigProxyConfig'] = None,
                  root_volume: Optional['outputs.AwsNodePoolConfigRootVolume'] = None,
                  security_group_ids: Optional[Sequence[str]] = None,
+                 spot_config: Optional['outputs.AwsNodePoolConfigSpotConfig'] = None,
                  ssh_config: Optional['outputs.AwsNodePoolConfigSshConfig'] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  taints: Optional[Sequence['outputs.AwsNodePoolConfigTaint']] = None):
@@ -1614,6 +1620,7 @@ class AwsNodePoolConfig(dict):
         :param 'AwsNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param 'AwsNodePoolConfigRootVolumeArgs' root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param Sequence[str] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
+        :param 'AwsNodePoolConfigSpotConfigArgs' spot_config: (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
         :param 'AwsNodePoolConfigSshConfigArgs' ssh_config: Optional. The SSH configuration.
         :param Mapping[str, str] tags: Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         :param Sequence['AwsNodePoolConfigTaintArgs'] taints: Optional. The initial taints assigned to nodes of this node pool.
@@ -1636,6 +1643,8 @@ class AwsNodePoolConfig(dict):
             pulumi.set(__self__, "root_volume", root_volume)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_config is not None:
+            pulumi.set(__self__, "spot_config", spot_config)
         if ssh_config is not None:
             pulumi.set(__self__, "ssh_config", ssh_config)
         if tags is not None:
@@ -1722,6 +1731,14 @@ class AwsNodePoolConfig(dict):
         Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
         """
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="spotConfig")
+    def spot_config(self) -> Optional['outputs.AwsNodePoolConfigSpotConfig']:
+        """
+        (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        """
+        return pulumi.get(self, "spot_config")
 
     @property
     @pulumi.getter(name="sshConfig")
@@ -1954,6 +1971,41 @@ class AwsNodePoolConfigRootVolume(dict):
         Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         """
         return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class AwsNodePoolConfigSpotConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceTypes":
+            suggest = "instance_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsNodePoolConfigSpotConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsNodePoolConfigSpotConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsNodePoolConfigSpotConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_types: Sequence[str]):
+        """
+        :param Sequence[str] instance_types: List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+        """
+        pulumi.set(__self__, "instance_types", instance_types)
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Sequence[str]:
+        """
+        List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+        """
+        return pulumi.get(self, "instance_types")
 
 
 @pulumi.output_type
@@ -3094,6 +3146,8 @@ class ClusterAddonsConfig(dict):
             suggest = "gce_persistent_disk_csi_driver_config"
         elif key == "gcpFilestoreCsiDriverConfig":
             suggest = "gcp_filestore_csi_driver_config"
+        elif key == "gcsFuseCsiDriverConfig":
+            suggest = "gcs_fuse_csi_driver_config"
         elif key == "gkeBackupAgentConfig":
             suggest = "gke_backup_agent_config"
         elif key == "horizontalPodAutoscaling":
@@ -3124,6 +3178,7 @@ class ClusterAddonsConfig(dict):
                  dns_cache_config: Optional['outputs.ClusterAddonsConfigDnsCacheConfig'] = None,
                  gce_persistent_disk_csi_driver_config: Optional['outputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfig'] = None,
                  gcp_filestore_csi_driver_config: Optional['outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig'] = None,
+                 gcs_fuse_csi_driver_config: Optional['outputs.ClusterAddonsConfigGcsFuseCsiDriverConfig'] = None,
                  gke_backup_agent_config: Optional['outputs.ClusterAddonsConfigGkeBackupAgentConfig'] = None,
                  horizontal_pod_autoscaling: Optional['outputs.ClusterAddonsConfigHorizontalPodAutoscaling'] = None,
                  http_load_balancing: Optional['outputs.ClusterAddonsConfigHttpLoadBalancing'] = None,
@@ -3141,6 +3196,9 @@ class ClusterAddonsConfig(dict):
                Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
         :param 'ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs' gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
+               It is disabled by default; set `enabled = true` to enable.
+        :param 'ClusterAddonsConfigGcsFuseCsiDriverConfigArgs' gcs_fuse_csi_driver_config: )) The status of the GCSFuse CSI driver addon,
+               which allows the usage of a gcs bucket as volumes.
                It is disabled by default; set `enabled = true` to enable.
         :param 'ClusterAddonsConfigGkeBackupAgentConfigArgs' gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
@@ -3173,6 +3231,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "gce_persistent_disk_csi_driver_config", gce_persistent_disk_csi_driver_config)
         if gcp_filestore_csi_driver_config is not None:
             pulumi.set(__self__, "gcp_filestore_csi_driver_config", gcp_filestore_csi_driver_config)
+        if gcs_fuse_csi_driver_config is not None:
+            pulumi.set(__self__, "gcs_fuse_csi_driver_config", gcs_fuse_csi_driver_config)
         if gke_backup_agent_config is not None:
             pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
         if horizontal_pod_autoscaling is not None:
@@ -3231,6 +3291,16 @@ class ClusterAddonsConfig(dict):
         It is disabled by default; set `enabled = true` to enable.
         """
         return pulumi.get(self, "gcp_filestore_csi_driver_config")
+
+    @property
+    @pulumi.getter(name="gcsFuseCsiDriverConfig")
+    def gcs_fuse_csi_driver_config(self) -> Optional['outputs.ClusterAddonsConfigGcsFuseCsiDriverConfig']:
+        """
+        )) The status of the GCSFuse CSI driver addon,
+        which allows the usage of a gcs bucket as volumes.
+        It is disabled by default; set `enabled = true` to enable.
+        """
+        return pulumi.get(self, "gcs_fuse_csi_driver_config")
 
     @property
     @pulumi.getter(name="gkeBackupAgentConfig")
@@ -3418,6 +3488,30 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig(dict):
 
 @pulumi.output_type
 class ClusterAddonsConfigGcpFilestoreCsiDriverConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+               for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+               If enabled, pods must be valid under a PodSecurityPolicy to be created.
+               not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+        If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigGcsFuseCsiDriverConfig(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
@@ -4604,7 +4698,7 @@ class ClusterIpAllocationPolicy(dict):
                GKE-managed one.
         :param str stack_type: The IP Stack Type of the cluster. 
                Default value is `IPV4`.
-               Possible values are `IPV4` and `PV4_IPV6`.
+               Possible values are `IPV4` and `IPV4_IPV6`.
         """
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
@@ -4675,7 +4769,7 @@ class ClusterIpAllocationPolicy(dict):
         """
         The IP Stack Type of the cluster. 
         Default value is `IPV4`.
-        Possible values are `IPV4` and `PV4_IPV6`.
+        Possible values are `IPV4` and `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
 
@@ -10349,6 +10443,7 @@ class GetClusterAddonsConfigResult(dict):
                  dns_cache_configs: Sequence['outputs.GetClusterAddonsConfigDnsCacheConfigResult'],
                  gce_persistent_disk_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult'],
                  gcp_filestore_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult'],
+                 gcs_fuse_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigGcsFuseCsiDriverConfigResult'],
                  gke_backup_agent_configs: Sequence['outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult'],
                  horizontal_pod_autoscalings: Sequence['outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult'],
                  http_load_balancings: Sequence['outputs.GetClusterAddonsConfigHttpLoadBalancingResult'],
@@ -10360,6 +10455,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "dns_cache_configs", dns_cache_configs)
         pulumi.set(__self__, "gce_persistent_disk_csi_driver_configs", gce_persistent_disk_csi_driver_configs)
         pulumi.set(__self__, "gcp_filestore_csi_driver_configs", gcp_filestore_csi_driver_configs)
+        pulumi.set(__self__, "gcs_fuse_csi_driver_configs", gcs_fuse_csi_driver_configs)
         pulumi.set(__self__, "gke_backup_agent_configs", gke_backup_agent_configs)
         pulumi.set(__self__, "horizontal_pod_autoscalings", horizontal_pod_autoscalings)
         pulumi.set(__self__, "http_load_balancings", http_load_balancings)
@@ -10391,6 +10487,11 @@ class GetClusterAddonsConfigResult(dict):
     @pulumi.getter(name="gcpFilestoreCsiDriverConfigs")
     def gcp_filestore_csi_driver_configs(self) -> Sequence['outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult']:
         return pulumi.get(self, "gcp_filestore_csi_driver_configs")
+
+    @property
+    @pulumi.getter(name="gcsFuseCsiDriverConfigs")
+    def gcs_fuse_csi_driver_configs(self) -> Sequence['outputs.GetClusterAddonsConfigGcsFuseCsiDriverConfigResult']:
+        return pulumi.get(self, "gcs_fuse_csi_driver_configs")
 
     @property
     @pulumi.getter(name="gkeBackupAgentConfigs")
@@ -10480,6 +10581,18 @@ class GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult(dict):
 
 @pulumi.output_type
 class GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigGcsFuseCsiDriverConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         pulumi.set(__self__, "enabled", enabled)

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicyBypassCacheOnRequestHeader;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicyCacheKeyPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicyNegativeCachingPolicy;
 import java.lang.Boolean;
@@ -14,6 +15,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceCdnPolicy {
+    private List<GetBackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
     private List<GetBackendServiceCdnPolicyCacheKeyPolicy> cacheKeyPolicies;
     private String cacheMode;
     private Integer clientTtl;
@@ -25,6 +27,9 @@ public final class GetBackendServiceCdnPolicy {
     private Integer signedUrlCacheMaxAgeSec;
 
     private GetBackendServiceCdnPolicy() {}
+    public List<GetBackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders() {
+        return this.bypassCacheOnRequestHeaders;
+    }
     public List<GetBackendServiceCdnPolicyCacheKeyPolicy> cacheKeyPolicies() {
         return this.cacheKeyPolicies;
     }
@@ -62,6 +67,7 @@ public final class GetBackendServiceCdnPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetBackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
         private List<GetBackendServiceCdnPolicyCacheKeyPolicy> cacheKeyPolicies;
         private String cacheMode;
         private Integer clientTtl;
@@ -74,6 +80,7 @@ public final class GetBackendServiceCdnPolicy {
         public Builder() {}
         public Builder(GetBackendServiceCdnPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bypassCacheOnRequestHeaders = defaults.bypassCacheOnRequestHeaders;
     	      this.cacheKeyPolicies = defaults.cacheKeyPolicies;
     	      this.cacheMode = defaults.cacheMode;
     	      this.clientTtl = defaults.clientTtl;
@@ -85,6 +92,14 @@ public final class GetBackendServiceCdnPolicy {
     	      this.signedUrlCacheMaxAgeSec = defaults.signedUrlCacheMaxAgeSec;
         }
 
+        @CustomType.Setter
+        public Builder bypassCacheOnRequestHeaders(List<GetBackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders) {
+            this.bypassCacheOnRequestHeaders = Objects.requireNonNull(bypassCacheOnRequestHeaders);
+            return this;
+        }
+        public Builder bypassCacheOnRequestHeaders(GetBackendServiceCdnPolicyBypassCacheOnRequestHeader... bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(List.of(bypassCacheOnRequestHeaders));
+        }
         @CustomType.Setter
         public Builder cacheKeyPolicies(List<GetBackendServiceCdnPolicyCacheKeyPolicy> cacheKeyPolicies) {
             this.cacheKeyPolicies = Objects.requireNonNull(cacheKeyPolicies);
@@ -138,6 +153,7 @@ public final class GetBackendServiceCdnPolicy {
         }
         public GetBackendServiceCdnPolicy build() {
             final var o = new GetBackendServiceCdnPolicy();
+            o.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             o.cacheKeyPolicies = cacheKeyPolicies;
             o.cacheMode = cacheMode;
             o.clientTtl = clientTtl;

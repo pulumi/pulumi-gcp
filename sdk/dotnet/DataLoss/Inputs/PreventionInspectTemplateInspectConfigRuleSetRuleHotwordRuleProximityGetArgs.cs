@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Number of characters after the finding to consider. Either this or window_before must be specified
+        /// Number of characters after the finding to consider.
         /// </summary>
         [Input("windowAfter")]
         public Input<int>? WindowAfter { get; set; }
 
         /// <summary>
-        /// Number of characters before the finding to consider. Either this or window_after must be specified
+        /// Number of characters before the finding to consider.
         /// </summary>
         [Input("windowBefore")]
         public Input<int>? WindowBefore { get; set; }

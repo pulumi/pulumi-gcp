@@ -38,6 +38,26 @@ namespace Pulumi.Gcp.Storage
     /// });
     /// ```
     /// 
+    /// Example creating an empty folder in an existing `image-store` bucket.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var emptyFolder = new Gcp.Storage.BucketObject("emptyFolder", new()
+    ///     {
+    ///         Bucket = "image-store",
+    ///         Content = " ",
+    ///     });
+    /// 
+    ///     // folder name should end with '/'
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support import.

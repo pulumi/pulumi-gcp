@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
     public sealed class WorkstationConfigHost
     {
         /// <summary>
-        /// Specifies a Compute Engine instance as the host.
+        /// A runtime using a Compute Engine instance.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkstationConfigHostGceInstance? GceInstance;

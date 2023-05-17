@@ -80,6 +80,8 @@ if typing.TYPE_CHECKING:
     container = __container
     import pulumi_gcp.containeranalysis as __containeranalysis
     containeranalysis = __containeranalysis
+    import pulumi_gcp.databasemigrationservice as __databasemigrationservice
+    databasemigrationservice = __databasemigrationservice
     import pulumi_gcp.datacatalog as __datacatalog
     datacatalog = __datacatalog
     import pulumi_gcp.dataflow as __dataflow
@@ -126,6 +128,8 @@ if typing.TYPE_CHECKING:
     gkebackup = __gkebackup
     import pulumi_gcp.gkehub as __gkehub
     gkehub = __gkehub
+    import pulumi_gcp.gkeonprem as __gkeonprem
+    gkeonprem = __gkeonprem
     import pulumi_gcp.healthcare as __healthcare
     healthcare = __healthcare
     import pulumi_gcp.iam as __iam
@@ -244,6 +248,7 @@ else:
     config = _utilities.lazy_import('pulumi_gcp.config')
     container = _utilities.lazy_import('pulumi_gcp.container')
     containeranalysis = _utilities.lazy_import('pulumi_gcp.containeranalysis')
+    databasemigrationservice = _utilities.lazy_import('pulumi_gcp.databasemigrationservice')
     datacatalog = _utilities.lazy_import('pulumi_gcp.datacatalog')
     dataflow = _utilities.lazy_import('pulumi_gcp.dataflow')
     dataform = _utilities.lazy_import('pulumi_gcp.dataform')
@@ -267,6 +272,7 @@ else:
     gameservices = _utilities.lazy_import('pulumi_gcp.gameservices')
     gkebackup = _utilities.lazy_import('pulumi_gcp.gkebackup')
     gkehub = _utilities.lazy_import('pulumi_gcp.gkehub')
+    gkeonprem = _utilities.lazy_import('pulumi_gcp.gkeonprem')
     healthcare = _utilities.lazy_import('pulumi_gcp.healthcare')
     iam = _utilities.lazy_import('pulumi_gcp.iam')
     iap = _utilities.lazy_import('pulumi_gcp.iap')
@@ -374,6 +380,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {
    "gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc": "AuthorizedOrgsDesc"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/egressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/egressPolicy:EgressPolicy": "EgressPolicy"
   }
  },
  {
@@ -1842,6 +1856,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/diskAsyncReplication",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/diskAsyncReplication:DiskAsyncReplication": "DiskAsyncReplication"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/diskIamBinding",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -2858,6 +2880,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "databasemigrationservice/connectionProfile",
+  "fqn": "pulumi_gcp.databasemigrationservice",
+  "classes": {
+   "gcp:databasemigrationservice/connectionProfile:ConnectionProfile": "ConnectionProfile"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "datacatalog/entry",
   "fqn": "pulumi_gcp.datacatalog",
   "classes": {
@@ -3778,6 +3808,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firestore/field",
+  "fqn": "pulumi_gcp.firestore",
+  "classes": {
+   "gcp:firestore/field:Field": "Field"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firestore/index",
   "fqn": "pulumi_gcp.firestore",
   "classes": {
@@ -3950,6 +3988,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkehub",
   "classes": {
    "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy": "MembershipIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkeonprem/bareMetalCluster",
+  "fqn": "pulumi_gcp.gkeonprem",
+  "classes": {
+   "gcp:gkeonprem/bareMetalCluster:BareMetalCluster": "BareMetalCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkeonprem/bareMetalNodePool",
+  "fqn": "pulumi_gcp.gkeonprem",
+  "classes": {
+   "gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool": "BareMetalNodePool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkeonprem/vMwareCluster",
+  "fqn": "pulumi_gcp.gkeonprem",
+  "classes": {
+   "gcp:gkeonprem/vMwareCluster:VMwareCluster": "VMwareCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkeonprem/vMwareNodePool",
+  "fqn": "pulumi_gcp.gkeonprem",
+  "classes": {
+   "gcp:gkeonprem/vMwareNodePool:VMwareNodePool": "VMwareNodePool"
   }
  },
  {
@@ -4818,6 +4888,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/addressGroup",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/addressGroup:AddressGroup": "AddressGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/authorizationPolicy",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": "AuthorizationPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/clientTlsPolicy",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": "ClientTlsPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/gatewaySecurityPolicy",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -4830,6 +4924,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": "GatewaySecurityPolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/tlsInspectionPolicy",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": "TlsInspectionPolicy"
   }
  },
  {
@@ -4866,10 +4968,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/endpointPolicy",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/endpointPolicy:EndpointPolicy": "EndpointPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/gateway",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/gateway:Gateway": "Gateway"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/grpcRoute",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/grpcRoute:GrpcRoute": "GrpcRoute"
   }
  },
  {
@@ -4890,10 +5008,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkservices/serviceBinding",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/serviceBinding:ServiceBinding": "ServiceBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkservices/tcpRoute",
   "fqn": "pulumi_gcp.networkservices",
   "classes": {
    "gcp:networkservices/tcpRoute:TcpRoute": "TcpRoute"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkservices/tlsRoute",
+  "fqn": "pulumi_gcp.networkservices",
+  "classes": {
+   "gcp:networkservices/tlsRoute:TlsRoute": "TlsRoute"
   }
  },
  {
@@ -6094,6 +6228,54 @@ _utilities.register(
   "fqn": "pulumi_gcp.workstations",
   "classes": {
    "gcp:workstations/workstationConfig:WorkstationConfig": "WorkstationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationConfigIamBinding",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding": "WorkstationConfigIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationConfigIamMember",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember": "WorkstationConfigIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationConfigIamPolicy",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy": "WorkstationConfigIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationIamBinding",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationIamBinding:WorkstationIamBinding": "WorkstationIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationIamMember",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationIamMember:WorkstationIamMember": "WorkstationIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workstations/workstationIamPolicy",
+  "fqn": "pulumi_gcp.workstations",
+  "classes": {
+   "gcp:workstations/workstationIamPolicy:WorkstationIamPolicy": "WorkstationIamPolicy"
   }
  }
 ]

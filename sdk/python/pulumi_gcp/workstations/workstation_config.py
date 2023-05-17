@@ -30,8 +30,8 @@ class WorkstationConfigArgs:
         """
         The set of arguments for constructing a WorkstationConfig resource.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
-        :param pulumi.Input[str] workstation_cluster_id: The name of the workstation cluster.
-        :param pulumi.Input[str] workstation_config_id: The ID of the workstation cluster config.
+        :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
+        :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
@@ -85,7 +85,7 @@ class WorkstationConfigArgs:
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Input[str]:
         """
-        The name of the workstation cluster.
+        The ID of the parent workstation cluster.
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -97,7 +97,7 @@ class WorkstationConfigArgs:
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> pulumi.Input[str]:
         """
-        The ID of the workstation cluster config.
+        The ID to be assigned to the workstation cluster config.
         """
         return pulumi.get(self, "workstation_config_id")
 
@@ -237,7 +237,7 @@ class _WorkstationConfigState:
                Structure is documented below.
         :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
+        :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -257,8 +257,8 @@ class _WorkstationConfigState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
-        :param pulumi.Input[str] workstation_cluster_id: The name of the workstation cluster.
-        :param pulumi.Input[str] workstation_config_id: The ID of the workstation cluster config.
+        :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
+        :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -337,7 +337,7 @@ class _WorkstationConfigState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the Instance was created in UTC.
+        Time when this resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -489,7 +489,7 @@ class _WorkstationConfigState:
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the workstation cluster.
+        The ID of the parent workstation cluster.
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -501,7 +501,7 @@ class _WorkstationConfigState:
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the workstation cluster config.
+        The ID to be assigned to the workstation cluster config.
         """
         return pulumi.get(self, "workstation_config_id")
 
@@ -793,8 +793,8 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] workstation_cluster_id: The name of the workstation cluster.
-        :param pulumi.Input[str] workstation_config_id: The ID of the workstation cluster config.
+        :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
+        :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         """
         ...
     @overload
@@ -1146,7 +1146,7 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
+        :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -1166,8 +1166,8 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
-        :param pulumi.Input[str] workstation_cluster_id: The name of the workstation cluster.
-        :param pulumi.Input[str] workstation_config_id: The ID of the workstation cluster config.
+        :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
+        :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1222,7 +1222,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time the Instance was created in UTC.
+        Time when this resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -1326,7 +1326,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Output[str]:
         """
-        The name of the workstation cluster.
+        The ID of the parent workstation cluster.
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -1334,7 +1334,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @pulumi.getter(name="workstationConfigId")
     def workstation_config_id(self) -> pulumi.Output[str]:
         """
-        The ID of the workstation cluster config.
+        The ID to be assigned to the workstation cluster config.
         """
         return pulumi.get(self, "workstation_config_id")
 

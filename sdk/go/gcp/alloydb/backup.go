@@ -205,6 +205,12 @@ type Backup struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-provided description of the backup.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig BackupEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
+	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// Structure is documented below.
+	EncryptionInfos BackupEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
 	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// User-defined labels for the alloydb backup.
@@ -272,6 +278,12 @@ type backupState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// User-provided description of the backup.
 	Description *string `pulumi:"description"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig *BackupEncryptionConfig `pulumi:"encryptionConfig"`
+	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// Structure is documented below.
+	EncryptionInfos []BackupEncryptionInfo `pulumi:"encryptionInfos"`
 	// A hash of the resource.
 	Etag *string `pulumi:"etag"`
 	// User-defined labels for the alloydb backup.
@@ -302,6 +314,12 @@ type BackupState struct {
 	CreateTime pulumi.StringPtrInput
 	// User-provided description of the backup.
 	Description pulumi.StringPtrInput
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig BackupEncryptionConfigPtrInput
+	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// Structure is documented below.
+	EncryptionInfos BackupEncryptionInfoArrayInput
 	// A hash of the resource.
 	Etag pulumi.StringPtrInput
 	// User-defined labels for the alloydb backup.
@@ -334,6 +352,9 @@ type backupArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// User-provided description of the backup.
 	Description *string `pulumi:"description"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig *BackupEncryptionConfig `pulumi:"encryptionConfig"`
 	// User-defined labels for the alloydb backup.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb backup should reside.
@@ -351,6 +372,9 @@ type BackupArgs struct {
 	ClusterName pulumi.StringInput
 	// User-provided description of the backup.
 	Description pulumi.StringPtrInput
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig BackupEncryptionConfigPtrInput
 	// User-defined labels for the alloydb backup.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb backup should reside.
@@ -465,6 +489,18 @@ func (o BackupOutput) CreateTime() pulumi.StringOutput {
 // User-provided description of the backup.
 func (o BackupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+// Structure is documented below.
+func (o BackupOutput) EncryptionConfig() BackupEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *Backup) BackupEncryptionConfigPtrOutput { return v.EncryptionConfig }).(BackupEncryptionConfigPtrOutput)
+}
+
+// EncryptionInfo describes the encryption information of a cluster or a backup.
+// Structure is documented below.
+func (o BackupOutput) EncryptionInfos() BackupEncryptionInfoArrayOutput {
+	return o.ApplyT(func(v *Backup) BackupEncryptionInfoArrayOutput { return v.EncryptionInfos }).(BackupEncryptionInfoArrayOutput)
 }
 
 // A hash of the resource.

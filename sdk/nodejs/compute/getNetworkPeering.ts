@@ -70,6 +70,7 @@ export interface GetNetworkPeeringResult {
     readonly name: string;
     readonly network: string;
     readonly peerNetwork: string;
+    readonly stackType: string;
     readonly state: string;
     readonly stateDetails: string;
 }

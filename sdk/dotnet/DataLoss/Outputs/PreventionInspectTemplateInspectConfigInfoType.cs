@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Version of the information type to use. By default, the version is set to stable
+        /// Version name for this InfoType.
         /// </summary>
         public readonly string? Version;
 

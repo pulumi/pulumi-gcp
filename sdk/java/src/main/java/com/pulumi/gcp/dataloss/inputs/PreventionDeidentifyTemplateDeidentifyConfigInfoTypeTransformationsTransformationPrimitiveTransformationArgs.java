@@ -9,6 +9,7 @@ import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConf
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,6 +91,23 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
 
     /**
+     * Replace with a value randomly drawn (with replacement) from a dictionary.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="replaceDictionaryConfig")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs> replaceDictionaryConfig;
+
+    /**
+     * @return Replace with a value randomly drawn (with replacement) from a dictionary.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs>> replaceDictionaryConfig() {
+        return Optional.ofNullable(this.replaceDictionaryConfig);
+    }
+
+    /**
      * Replace each matching finding with the name of the info type.
      * 
      */
@@ -111,6 +129,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         this.cryptoDeterministicConfig = $.cryptoDeterministicConfig;
         this.cryptoReplaceFfxFpeConfig = $.cryptoReplaceFfxFpeConfig;
         this.replaceConfig = $.replaceConfig;
+        this.replaceDictionaryConfig = $.replaceDictionaryConfig;
         this.replaceWithInfoTypeConfig = $.replaceWithInfoTypeConfig;
     }
 
@@ -224,6 +243,29 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
          */
         public Builder replaceConfig(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs replaceConfig) {
             return replaceConfig(Output.of(replaceConfig));
+        }
+
+        /**
+         * @param replaceDictionaryConfig Replace with a value randomly drawn (with replacement) from a dictionary.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replaceDictionaryConfig(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs> replaceDictionaryConfig) {
+            $.replaceDictionaryConfig = replaceDictionaryConfig;
+            return this;
+        }
+
+        /**
+         * @param replaceDictionaryConfig Replace with a value randomly drawn (with replacement) from a dictionary.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replaceDictionaryConfig(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs replaceDictionaryConfig) {
+            return replaceDictionaryConfig(Output.of(replaceDictionaryConfig));
         }
 
         /**

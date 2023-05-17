@@ -165,6 +165,90 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Dlp Job Trigger Deidentify
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDataset = new gcp.bigquery.Dataset("defaultDataset", {
+ *     datasetId: "tf_test",
+ *     friendlyName: "terraform-test",
+ *     description: "Description for the dataset created by terraform",
+ *     location: "US",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ * });
+ * const defaultTable = new gcp.bigquery.Table("defaultTable", {
+ *     datasetId: defaultDataset.datasetId,
+ *     tableId: "tf_test",
+ *     deletionProtection: false,
+ *     timePartitioning: {
+ *         type: "DAY",
+ *     },
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     schema: `    [
+ *     {
+ *       "name": "quantity",
+ *       "type": "NUMERIC",
+ *       "mode": "NULLABLE",
+ *       "description": "The quantity"
+ *     },
+ *     {
+ *       "name": "name",
+ *       "type": "STRING",
+ *       "mode": "NULLABLE",
+ *       "description": "Name of the object"
+ *     }
+ *     ]
+ * `,
+ * });
+ * const deidentify = new gcp.dataloss.PreventionJobTrigger("deidentify", {
+ *     parent: "projects/my-project-name",
+ *     description: "Description for the job_trigger created by terraform",
+ *     displayName: "TerraformDisplayName",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ *     inspectJob: {
+ *         inspectTemplateName: "sample-inspect-template",
+ *         actions: [{
+ *             deidentify: {
+ *                 cloudStorageOutput: "gs://samplebucket/dir/",
+ *                 fileTypesToTransforms: [
+ *                     "CSV",
+ *                     "TSV",
+ *                 ],
+ *                 transformationDetailsStorageConfig: {
+ *                     table: {
+ *                         projectId: "my-project-name",
+ *                         datasetId: defaultDataset.datasetId,
+ *                         tableId: defaultTable.tableId,
+ *                     },
+ *                 },
+ *                 transformationConfig: {
+ *                     deidentifyTemplate: "sample-deidentify-template",
+ *                     imageRedactTemplate: "sample-image-redact-template",
+ *                     structuredDeidentifyTemplate: "sample-structured-deidentify-template",
+ *                 },
+ *             },
+ *         }],
+ *         storageConfig: {
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  * ### Dlp Job Trigger Hybrid
  *
  * ```typescript
@@ -202,6 +286,36 @@ import * as utilities from "../utilities";
  *     parent: "projects/my-project-name",
  *     triggers: [{
  *         manual: {},
+ *     }],
+ * });
+ * ```
+ * ### Dlp Job Trigger Publish To Stackdriver
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const publishToStackdriver = new gcp.dataloss.PreventionJobTrigger("publishToStackdriver", {
+ *     description: "Description for the job_trigger created by terraform",
+ *     displayName: "TerraformDisplayName",
+ *     inspectJob: {
+ *         actions: [{
+ *             publishToStackdriver: {},
+ *         }],
+ *         inspectTemplateName: "sample-inspect-template",
+ *         storageConfig: {
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
  *     }],
  * });
  * ```
@@ -247,6 +361,11 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
     }
 
     /**
+     * (Output)
+     * The creation timestamp of an inspectTemplate. Set by the server.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * A description of the job trigger.
      * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -266,6 +385,24 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastRunTime!: pulumi.Output<string>;
     /**
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
+     * (Required)
      * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
      * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -296,6 +433,10 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly triggers!: pulumi.Output<outputs.dataloss.PreventionJobTriggerTrigger[]>;
+    /**
+     * The last update timestamp of an inspectTemplate. Set by the server.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a PreventionJobTrigger resource with the given unique name, arguments, and options.
@@ -310,6 +451,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PreventionJobTriggerState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["inspectJob"] = state ? state.inspectJob : undefined;
@@ -318,6 +460,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["triggers"] = state ? state.triggers : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as PreventionJobTriggerArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -332,8 +475,10 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["triggers"] = args ? args.triggers : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastRunTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PreventionJobTrigger.__pulumiType, name, resourceInputs, opts);
@@ -344,6 +489,11 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PreventionJobTrigger resources.
  */
 export interface PreventionJobTriggerState {
+    /**
+     * (Output)
+     * The creation timestamp of an inspectTemplate. Set by the server.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * A description of the job trigger.
      * (Optional)
@@ -364,6 +514,24 @@ export interface PreventionJobTriggerState {
      */
     lastRunTime?: pulumi.Input<string>;
     /**
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
+     * (Required)
      * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
      * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -394,6 +562,10 @@ export interface PreventionJobTriggerState {
      * Structure is documented below.
      */
     triggers?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionJobTriggerTrigger>[]>;
+    /**
+     * The last update timestamp of an inspectTemplate. Set by the server.
+     */
+    updateTime?: pulumi.Input<string>;
 }
 
 /**

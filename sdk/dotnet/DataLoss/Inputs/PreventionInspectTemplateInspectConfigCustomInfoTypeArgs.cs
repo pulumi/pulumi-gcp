@@ -59,6 +59,12 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("storedType")]
         public Input<Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs>? StoredType { get; set; }
 
+        /// <summary>
+        /// Message for detecting output from deidentification transformations that support reversing.
+        /// </summary>
+        [Input("surrogateType")]
+        public Input<Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs>? SurrogateType { get; set; }
+
         public PreventionInspectTemplateInspectConfigCustomInfoTypeArgs()
         {
         }

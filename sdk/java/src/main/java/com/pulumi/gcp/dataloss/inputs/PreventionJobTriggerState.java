@@ -19,6 +19,23 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
     public static final PreventionJobTriggerState Empty = new PreventionJobTriggerState();
 
     /**
+     * (Output)
+     * The creation timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Output)
+     * The creation timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * A description of the job trigger.
      * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -85,6 +102,24 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
+     * (Required)
      * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
      * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -103,7 +138,25 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
     private @Nullable Output<String> name;
 
     /**
-     * @return Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * (Required)
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
+     * (Required)
+     * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
      * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
      * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
@@ -174,9 +227,25 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.triggers);
     }
 
+    /**
+     * The last update timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return The last update timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
     private PreventionJobTriggerState() {}
 
     private PreventionJobTriggerState(PreventionJobTriggerState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
         this.displayName = $.displayName;
         this.inspectJob = $.inspectJob;
@@ -185,6 +254,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         this.parent = $.parent;
         this.status = $.status;
         this.triggers = $.triggers;
+        this.updateTime = $.updateTime;
     }
 
     public static Builder builder() {
@@ -203,6 +273,29 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
 
         public Builder(PreventionJobTriggerState defaults) {
             $ = new PreventionJobTriggerState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime (Output)
+         * The creation timestamp of an inspectTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Output)
+         * The creation timestamp of an inspectTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -296,7 +389,25 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
+         * (Required)
+         * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
          * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
          * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
          * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
@@ -318,7 +429,25 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+         * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * (Required)
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
+         * (Required)
+         * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
          * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
          * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
          * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
@@ -418,6 +547,27 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
          */
         public Builder triggers(PreventionJobTriggerTriggerArgs... triggers) {
             return triggers(List.of(triggers));
+        }
+
+        /**
+         * @param updateTime The last update timestamp of an inspectTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime The last update timestamp of an inspectTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         public PreventionJobTriggerState build() {

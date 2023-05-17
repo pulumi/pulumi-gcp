@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformations;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfig {
+    /**
+     * @return Treat the dataset as an image and redact.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformations imageTransformations;
     /**
      * @return Treat the dataset as free-form text and apply the same free text transformation everywhere
      * Structure is documented below.
@@ -26,6 +33,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations;
 
     private PreventionDeidentifyTemplateDeidentifyConfig() {}
+    /**
+     * @return Treat the dataset as an image and redact.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigImageTransformations> imageTransformations() {
+        return Optional.ofNullable(this.imageTransformations);
+    }
     /**
      * @return Treat the dataset as free-form text and apply the same free text transformation everywhere
      * Structure is documented below.
@@ -52,15 +67,22 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformations imageTransformations;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.imageTransformations = defaults.imageTransformations;
     	      this.infoTypeTransformations = defaults.infoTypeTransformations;
     	      this.recordTransformations = defaults.recordTransformations;
         }
 
+        @CustomType.Setter
+        public Builder imageTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformations imageTransformations) {
+            this.imageTransformations = imageTransformations;
+            return this;
+        }
         @CustomType.Setter
         public Builder infoTypeTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations) {
             this.infoTypeTransformations = infoTypeTransformations;
@@ -73,6 +95,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
         }
         public PreventionDeidentifyTemplateDeidentifyConfig build() {
             final var o = new PreventionDeidentifyTemplateDeidentifyConfig();
+            o.imageTransformations = imageTransformations;
             o.infoTypeTransformations = infoTypeTransformations;
             o.recordTransformations = recordTransformations;
             return o;

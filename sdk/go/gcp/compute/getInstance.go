@@ -78,14 +78,15 @@ type LookupInstanceResult struct {
 	CanIpForward                bool                                    `pulumi:"canIpForward"`
 	ConfidentialInstanceConfigs []GetInstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfigs"`
 	// The CPU platform used by this instance.
-	CpuPlatform   string `pulumi:"cpuPlatform"`
+	CpuPlatform string `pulumi:"cpuPlatform"`
+	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
 	CurrentStatus string `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
 	Description   string `pulumi:"description"`
 	DesiredStatus string `pulumi:"desiredStatus"`
-	// - Whether the instance has virtual displays enabled.
+	// Whether the instance has virtual displays enabled.
 	EnableDisplay bool `pulumi:"enableDisplay"`
 	// List of the type and count of accelerator cards attached to the instance. Structure is documented below.
 	GuestAccelerators []GetInstanceGuestAccelerator `pulumi:"guestAccelerators"`
@@ -214,6 +215,7 @@ func (o LookupInstanceResultOutput) CpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CpuPlatform }).(pulumi.StringOutput)
 }
 
+// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
 func (o LookupInstanceResultOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentStatus }).(pulumi.StringOutput)
 }
@@ -232,7 +234,7 @@ func (o LookupInstanceResultOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DesiredStatus }).(pulumi.StringOutput)
 }
 
-// - Whether the instance has virtual displays enabled.
+// Whether the instance has virtual displays enabled.
 func (o LookupInstanceResultOutput) EnableDisplay() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstanceResult) bool { return v.EnableDisplay }).(pulumi.BoolOutput)
 }

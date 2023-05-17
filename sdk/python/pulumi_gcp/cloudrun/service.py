@@ -519,11 +519,6 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                annotations={
-                    "run.googleapis.com/launch-stage": "BETA",
-                },
-            ),
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
@@ -548,8 +543,7 @@ class Service(pulumi.CustomResource):
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
                 percent=100,
                 latest_revision=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -748,11 +742,6 @@ class Service(pulumi.CustomResource):
 
         default = gcp.cloudrun.Service("default",
             location="us-central1",
-            metadata=gcp.cloudrun.ServiceMetadataArgs(
-                annotations={
-                    "run.googleapis.com/launch-stage": "BETA",
-                },
-            ),
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
@@ -777,8 +766,7 @@ class Service(pulumi.CustomResource):
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
                 percent=100,
                 latest_revision=True,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.GetResourcePolicyDiskConsistencyGroupPolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyGroupPlacementPolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyInstanceSchedulePolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicy;
@@ -20,6 +21,7 @@ public final class GetResourcePolicyResult {
      * 
      */
     private String description;
+    private List<GetResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicies;
     private List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -44,6 +46,9 @@ public final class GetResourcePolicyResult {
      */
     public String description() {
         return this.description;
+    }
+    public List<GetResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicies() {
+        return this.diskConsistencyGroupPolicies;
     }
     public List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies() {
         return this.groupPlacementPolicies;
@@ -88,6 +93,7 @@ public final class GetResourcePolicyResult {
     @CustomType.Builder
     public static final class Builder {
         private String description;
+        private List<GetResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicies;
         private List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies;
         private String id;
         private List<GetResourcePolicyInstanceSchedulePolicy> instanceSchedulePolicies;
@@ -100,6 +106,7 @@ public final class GetResourcePolicyResult {
         public Builder(GetResourcePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
+    	      this.diskConsistencyGroupPolicies = defaults.diskConsistencyGroupPolicies;
     	      this.groupPlacementPolicies = defaults.groupPlacementPolicies;
     	      this.id = defaults.id;
     	      this.instanceSchedulePolicies = defaults.instanceSchedulePolicies;
@@ -114,6 +121,14 @@ public final class GetResourcePolicyResult {
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
+        }
+        @CustomType.Setter
+        public Builder diskConsistencyGroupPolicies(List<GetResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicies) {
+            this.diskConsistencyGroupPolicies = Objects.requireNonNull(diskConsistencyGroupPolicies);
+            return this;
+        }
+        public Builder diskConsistencyGroupPolicies(GetResourcePolicyDiskConsistencyGroupPolicy... diskConsistencyGroupPolicies) {
+            return diskConsistencyGroupPolicies(List.of(diskConsistencyGroupPolicies));
         }
         @CustomType.Setter
         public Builder groupPlacementPolicies(List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies) {
@@ -167,6 +182,7 @@ public final class GetResourcePolicyResult {
         public GetResourcePolicyResult build() {
             final var o = new GetResourcePolicyResult();
             o.description = description;
+            o.diskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
             o.groupPlacementPolicies = groupPlacementPolicies;
             o.id = id;
             o.instanceSchedulePolicies = instanceSchedulePolicies;

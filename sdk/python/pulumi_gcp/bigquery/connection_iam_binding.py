@@ -24,7 +24,7 @@ class ConnectionIamBindingArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionIamBinding resource.
-        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection. 
+        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigquery.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
@@ -53,7 +53,7 @@ class ConnectionIamBindingArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[str]:
         """
-        Optional connection id that should be assigned to the created connection. 
+        Optional connection id that should be assigned to the created connection.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "connection_id")
@@ -138,7 +138,7 @@ class _ConnectionIamBindingState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConnectionIamBinding resources.
-        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection. 
+        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
@@ -182,7 +182,7 @@ class _ConnectionIamBindingState:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional connection id that should be assigned to the created connection. 
+        Optional connection id that should be assigned to the created connection.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "connection_id")
@@ -352,7 +352,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection. 
+        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
                Cloud SQL instance must be in the same location as the connection
@@ -520,7 +520,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection. 
+        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
                Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] location: The geographic location where the connection should reside.
@@ -558,7 +558,7 @@ class ConnectionIamBinding(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[str]:
         """
-        Optional connection id that should be assigned to the created connection. 
+        Optional connection id that should be assigned to the created connection.
         Used to find the parent resource to bind the IAM policy to
         """
         return pulumi.get(self, "connection_id")

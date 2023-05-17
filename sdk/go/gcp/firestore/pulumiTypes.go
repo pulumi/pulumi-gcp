@@ -10,6 +10,427 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type FieldIndexConfig struct {
+	// The indexes to configure on the field. Order or array contains must be specified.
+	// Structure is documented below.
+	Indexes []FieldIndexConfigIndex `pulumi:"indexes"`
+}
+
+// FieldIndexConfigInput is an input type that accepts FieldIndexConfigArgs and FieldIndexConfigOutput values.
+// You can construct a concrete instance of `FieldIndexConfigInput` via:
+//
+//	FieldIndexConfigArgs{...}
+type FieldIndexConfigInput interface {
+	pulumi.Input
+
+	ToFieldIndexConfigOutput() FieldIndexConfigOutput
+	ToFieldIndexConfigOutputWithContext(context.Context) FieldIndexConfigOutput
+}
+
+type FieldIndexConfigArgs struct {
+	// The indexes to configure on the field. Order or array contains must be specified.
+	// Structure is documented below.
+	Indexes FieldIndexConfigIndexArrayInput `pulumi:"indexes"`
+}
+
+func (FieldIndexConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldIndexConfig)(nil)).Elem()
+}
+
+func (i FieldIndexConfigArgs) ToFieldIndexConfigOutput() FieldIndexConfigOutput {
+	return i.ToFieldIndexConfigOutputWithContext(context.Background())
+}
+
+func (i FieldIndexConfigArgs) ToFieldIndexConfigOutputWithContext(ctx context.Context) FieldIndexConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigOutput)
+}
+
+func (i FieldIndexConfigArgs) ToFieldIndexConfigPtrOutput() FieldIndexConfigPtrOutput {
+	return i.ToFieldIndexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FieldIndexConfigArgs) ToFieldIndexConfigPtrOutputWithContext(ctx context.Context) FieldIndexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigOutput).ToFieldIndexConfigPtrOutputWithContext(ctx)
+}
+
+// FieldIndexConfigPtrInput is an input type that accepts FieldIndexConfigArgs, FieldIndexConfigPtr and FieldIndexConfigPtrOutput values.
+// You can construct a concrete instance of `FieldIndexConfigPtrInput` via:
+//
+//	        FieldIndexConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FieldIndexConfigPtrInput interface {
+	pulumi.Input
+
+	ToFieldIndexConfigPtrOutput() FieldIndexConfigPtrOutput
+	ToFieldIndexConfigPtrOutputWithContext(context.Context) FieldIndexConfigPtrOutput
+}
+
+type fieldIndexConfigPtrType FieldIndexConfigArgs
+
+func FieldIndexConfigPtr(v *FieldIndexConfigArgs) FieldIndexConfigPtrInput {
+	return (*fieldIndexConfigPtrType)(v)
+}
+
+func (*fieldIndexConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FieldIndexConfig)(nil)).Elem()
+}
+
+func (i *fieldIndexConfigPtrType) ToFieldIndexConfigPtrOutput() FieldIndexConfigPtrOutput {
+	return i.ToFieldIndexConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fieldIndexConfigPtrType) ToFieldIndexConfigPtrOutputWithContext(ctx context.Context) FieldIndexConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigPtrOutput)
+}
+
+type FieldIndexConfigOutput struct{ *pulumi.OutputState }
+
+func (FieldIndexConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldIndexConfig)(nil)).Elem()
+}
+
+func (o FieldIndexConfigOutput) ToFieldIndexConfigOutput() FieldIndexConfigOutput {
+	return o
+}
+
+func (o FieldIndexConfigOutput) ToFieldIndexConfigOutputWithContext(ctx context.Context) FieldIndexConfigOutput {
+	return o
+}
+
+func (o FieldIndexConfigOutput) ToFieldIndexConfigPtrOutput() FieldIndexConfigPtrOutput {
+	return o.ToFieldIndexConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FieldIndexConfigOutput) ToFieldIndexConfigPtrOutputWithContext(ctx context.Context) FieldIndexConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FieldIndexConfig) *FieldIndexConfig {
+		return &v
+	}).(FieldIndexConfigPtrOutput)
+}
+
+// The indexes to configure on the field. Order or array contains must be specified.
+// Structure is documented below.
+func (o FieldIndexConfigOutput) Indexes() FieldIndexConfigIndexArrayOutput {
+	return o.ApplyT(func(v FieldIndexConfig) []FieldIndexConfigIndex { return v.Indexes }).(FieldIndexConfigIndexArrayOutput)
+}
+
+type FieldIndexConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FieldIndexConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FieldIndexConfig)(nil)).Elem()
+}
+
+func (o FieldIndexConfigPtrOutput) ToFieldIndexConfigPtrOutput() FieldIndexConfigPtrOutput {
+	return o
+}
+
+func (o FieldIndexConfigPtrOutput) ToFieldIndexConfigPtrOutputWithContext(ctx context.Context) FieldIndexConfigPtrOutput {
+	return o
+}
+
+func (o FieldIndexConfigPtrOutput) Elem() FieldIndexConfigOutput {
+	return o.ApplyT(func(v *FieldIndexConfig) FieldIndexConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FieldIndexConfig
+		return ret
+	}).(FieldIndexConfigOutput)
+}
+
+// The indexes to configure on the field. Order or array contains must be specified.
+// Structure is documented below.
+func (o FieldIndexConfigPtrOutput) Indexes() FieldIndexConfigIndexArrayOutput {
+	return o.ApplyT(func(v *FieldIndexConfig) []FieldIndexConfigIndex {
+		if v == nil {
+			return nil
+		}
+		return v.Indexes
+	}).(FieldIndexConfigIndexArrayOutput)
+}
+
+type FieldIndexConfigIndex struct {
+	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+	// be specified.
+	// Possible values are: `CONTAINS`.
+	ArrayConfig *string `pulumi:"arrayConfig"`
+	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+	// Only one of `order` and `arrayConfig` can be specified.
+	// Possible values are: `ASCENDING`, `DESCENDING`.
+	Order *string `pulumi:"order"`
+	// The scope at which a query is run. Collection scoped queries require you specify
+	// the collection at query time. Collection group scope allows queries across all
+	// collections with the same id.
+	// Default value is `COLLECTION`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+	QueryScope *string `pulumi:"queryScope"`
+}
+
+// FieldIndexConfigIndexInput is an input type that accepts FieldIndexConfigIndexArgs and FieldIndexConfigIndexOutput values.
+// You can construct a concrete instance of `FieldIndexConfigIndexInput` via:
+//
+//	FieldIndexConfigIndexArgs{...}
+type FieldIndexConfigIndexInput interface {
+	pulumi.Input
+
+	ToFieldIndexConfigIndexOutput() FieldIndexConfigIndexOutput
+	ToFieldIndexConfigIndexOutputWithContext(context.Context) FieldIndexConfigIndexOutput
+}
+
+type FieldIndexConfigIndexArgs struct {
+	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+	// be specified.
+	// Possible values are: `CONTAINS`.
+	ArrayConfig pulumi.StringPtrInput `pulumi:"arrayConfig"`
+	// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+	// Only one of `order` and `arrayConfig` can be specified.
+	// Possible values are: `ASCENDING`, `DESCENDING`.
+	Order pulumi.StringPtrInput `pulumi:"order"`
+	// The scope at which a query is run. Collection scoped queries require you specify
+	// the collection at query time. Collection group scope allows queries across all
+	// collections with the same id.
+	// Default value is `COLLECTION`.
+	// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+	QueryScope pulumi.StringPtrInput `pulumi:"queryScope"`
+}
+
+func (FieldIndexConfigIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldIndexConfigIndex)(nil)).Elem()
+}
+
+func (i FieldIndexConfigIndexArgs) ToFieldIndexConfigIndexOutput() FieldIndexConfigIndexOutput {
+	return i.ToFieldIndexConfigIndexOutputWithContext(context.Background())
+}
+
+func (i FieldIndexConfigIndexArgs) ToFieldIndexConfigIndexOutputWithContext(ctx context.Context) FieldIndexConfigIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigIndexOutput)
+}
+
+// FieldIndexConfigIndexArrayInput is an input type that accepts FieldIndexConfigIndexArray and FieldIndexConfigIndexArrayOutput values.
+// You can construct a concrete instance of `FieldIndexConfigIndexArrayInput` via:
+//
+//	FieldIndexConfigIndexArray{ FieldIndexConfigIndexArgs{...} }
+type FieldIndexConfigIndexArrayInput interface {
+	pulumi.Input
+
+	ToFieldIndexConfigIndexArrayOutput() FieldIndexConfigIndexArrayOutput
+	ToFieldIndexConfigIndexArrayOutputWithContext(context.Context) FieldIndexConfigIndexArrayOutput
+}
+
+type FieldIndexConfigIndexArray []FieldIndexConfigIndexInput
+
+func (FieldIndexConfigIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldIndexConfigIndex)(nil)).Elem()
+}
+
+func (i FieldIndexConfigIndexArray) ToFieldIndexConfigIndexArrayOutput() FieldIndexConfigIndexArrayOutput {
+	return i.ToFieldIndexConfigIndexArrayOutputWithContext(context.Background())
+}
+
+func (i FieldIndexConfigIndexArray) ToFieldIndexConfigIndexArrayOutputWithContext(ctx context.Context) FieldIndexConfigIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldIndexConfigIndexArrayOutput)
+}
+
+type FieldIndexConfigIndexOutput struct{ *pulumi.OutputState }
+
+func (FieldIndexConfigIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldIndexConfigIndex)(nil)).Elem()
+}
+
+func (o FieldIndexConfigIndexOutput) ToFieldIndexConfigIndexOutput() FieldIndexConfigIndexOutput {
+	return o
+}
+
+func (o FieldIndexConfigIndexOutput) ToFieldIndexConfigIndexOutputWithContext(ctx context.Context) FieldIndexConfigIndexOutput {
+	return o
+}
+
+// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+// be specified.
+// Possible values are: `CONTAINS`.
+func (o FieldIndexConfigIndexOutput) ArrayConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldIndexConfigIndex) *string { return v.ArrayConfig }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+// Only one of `order` and `arrayConfig` can be specified.
+// Possible values are: `ASCENDING`, `DESCENDING`.
+func (o FieldIndexConfigIndexOutput) Order() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldIndexConfigIndex) *string { return v.Order }).(pulumi.StringPtrOutput)
+}
+
+// The scope at which a query is run. Collection scoped queries require you specify
+// the collection at query time. Collection group scope allows queries across all
+// collections with the same id.
+// Default value is `COLLECTION`.
+// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+func (o FieldIndexConfigIndexOutput) QueryScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldIndexConfigIndex) *string { return v.QueryScope }).(pulumi.StringPtrOutput)
+}
+
+type FieldIndexConfigIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (FieldIndexConfigIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FieldIndexConfigIndex)(nil)).Elem()
+}
+
+func (o FieldIndexConfigIndexArrayOutput) ToFieldIndexConfigIndexArrayOutput() FieldIndexConfigIndexArrayOutput {
+	return o
+}
+
+func (o FieldIndexConfigIndexArrayOutput) ToFieldIndexConfigIndexArrayOutputWithContext(ctx context.Context) FieldIndexConfigIndexArrayOutput {
+	return o
+}
+
+func (o FieldIndexConfigIndexArrayOutput) Index(i pulumi.IntInput) FieldIndexConfigIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FieldIndexConfigIndex {
+		return vs[0].([]FieldIndexConfigIndex)[vs[1].(int)]
+	}).(FieldIndexConfigIndexOutput)
+}
+
+type FieldTtlConfig struct {
+	// (Output)
+	// The state of the TTL configuration.
+	State *string `pulumi:"state"`
+}
+
+// FieldTtlConfigInput is an input type that accepts FieldTtlConfigArgs and FieldTtlConfigOutput values.
+// You can construct a concrete instance of `FieldTtlConfigInput` via:
+//
+//	FieldTtlConfigArgs{...}
+type FieldTtlConfigInput interface {
+	pulumi.Input
+
+	ToFieldTtlConfigOutput() FieldTtlConfigOutput
+	ToFieldTtlConfigOutputWithContext(context.Context) FieldTtlConfigOutput
+}
+
+type FieldTtlConfigArgs struct {
+	// (Output)
+	// The state of the TTL configuration.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (FieldTtlConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldTtlConfig)(nil)).Elem()
+}
+
+func (i FieldTtlConfigArgs) ToFieldTtlConfigOutput() FieldTtlConfigOutput {
+	return i.ToFieldTtlConfigOutputWithContext(context.Background())
+}
+
+func (i FieldTtlConfigArgs) ToFieldTtlConfigOutputWithContext(ctx context.Context) FieldTtlConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldTtlConfigOutput)
+}
+
+func (i FieldTtlConfigArgs) ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOutput {
+	return i.ToFieldTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FieldTtlConfigArgs) ToFieldTtlConfigPtrOutputWithContext(ctx context.Context) FieldTtlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldTtlConfigOutput).ToFieldTtlConfigPtrOutputWithContext(ctx)
+}
+
+// FieldTtlConfigPtrInput is an input type that accepts FieldTtlConfigArgs, FieldTtlConfigPtr and FieldTtlConfigPtrOutput values.
+// You can construct a concrete instance of `FieldTtlConfigPtrInput` via:
+//
+//	        FieldTtlConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FieldTtlConfigPtrInput interface {
+	pulumi.Input
+
+	ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOutput
+	ToFieldTtlConfigPtrOutputWithContext(context.Context) FieldTtlConfigPtrOutput
+}
+
+type fieldTtlConfigPtrType FieldTtlConfigArgs
+
+func FieldTtlConfigPtr(v *FieldTtlConfigArgs) FieldTtlConfigPtrInput {
+	return (*fieldTtlConfigPtrType)(v)
+}
+
+func (*fieldTtlConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FieldTtlConfig)(nil)).Elem()
+}
+
+func (i *fieldTtlConfigPtrType) ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOutput {
+	return i.ToFieldTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fieldTtlConfigPtrType) ToFieldTtlConfigPtrOutputWithContext(ctx context.Context) FieldTtlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FieldTtlConfigPtrOutput)
+}
+
+type FieldTtlConfigOutput struct{ *pulumi.OutputState }
+
+func (FieldTtlConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FieldTtlConfig)(nil)).Elem()
+}
+
+func (o FieldTtlConfigOutput) ToFieldTtlConfigOutput() FieldTtlConfigOutput {
+	return o
+}
+
+func (o FieldTtlConfigOutput) ToFieldTtlConfigOutputWithContext(ctx context.Context) FieldTtlConfigOutput {
+	return o
+}
+
+func (o FieldTtlConfigOutput) ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOutput {
+	return o.ToFieldTtlConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FieldTtlConfigOutput) ToFieldTtlConfigPtrOutputWithContext(ctx context.Context) FieldTtlConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FieldTtlConfig) *FieldTtlConfig {
+		return &v
+	}).(FieldTtlConfigPtrOutput)
+}
+
+// (Output)
+// The state of the TTL configuration.
+func (o FieldTtlConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FieldTtlConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type FieldTtlConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FieldTtlConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FieldTtlConfig)(nil)).Elem()
+}
+
+func (o FieldTtlConfigPtrOutput) ToFieldTtlConfigPtrOutput() FieldTtlConfigPtrOutput {
+	return o
+}
+
+func (o FieldTtlConfigPtrOutput) ToFieldTtlConfigPtrOutputWithContext(ctx context.Context) FieldTtlConfigPtrOutput {
+	return o
+}
+
+func (o FieldTtlConfigPtrOutput) Elem() FieldTtlConfigOutput {
+	return o.ApplyT(func(v *FieldTtlConfig) FieldTtlConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FieldTtlConfig
+		return ret
+	}).(FieldTtlConfigOutput)
+}
+
+// (Output)
+// The state of the TTL configuration.
+func (o FieldTtlConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FieldTtlConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 type IndexField struct {
 	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
 	// be specified.
@@ -138,8 +559,20 @@ func (o IndexFieldArrayOutput) Index(i pulumi.IntInput) IndexFieldOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigInput)(nil)).Elem(), FieldIndexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigPtrInput)(nil)).Elem(), FieldIndexConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigIndexInput)(nil)).Elem(), FieldIndexConfigIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigIndexArrayInput)(nil)).Elem(), FieldIndexConfigIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldTtlConfigInput)(nil)).Elem(), FieldTtlConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FieldTtlConfigPtrInput)(nil)).Elem(), FieldTtlConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldInput)(nil)).Elem(), IndexFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexFieldArrayInput)(nil)).Elem(), IndexFieldArray{})
+	pulumi.RegisterOutputType(FieldIndexConfigOutput{})
+	pulumi.RegisterOutputType(FieldIndexConfigPtrOutput{})
+	pulumi.RegisterOutputType(FieldIndexConfigIndexOutput{})
+	pulumi.RegisterOutputType(FieldIndexConfigIndexArrayOutput{})
+	pulumi.RegisterOutputType(FieldTtlConfigOutput{})
+	pulumi.RegisterOutputType(FieldTtlConfigPtrOutput{})
 	pulumi.RegisterOutputType(IndexFieldOutput{})
 	pulumi.RegisterOutputType(IndexFieldArrayOutput{})
 }

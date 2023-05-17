@@ -16,6 +16,7 @@ __all__ = ['DiskArgs', 'Disk']
 @pulumi.input_type
 class DiskArgs:
     def __init__(__self__, *,
+                 async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -36,6 +37,7 @@ class DiskArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Disk resource.
+        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -115,6 +117,8 @@ class DiskArgs:
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
         """
+        if async_primary_disk is not None:
+            pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
@@ -154,6 +158,18 @@ class DiskArgs:
             pulumi.set(__self__, "type", type)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
+        """
+        A nested object resource
+        """
+        return pulumi.get(self, "async_primary_disk")
+
+    @async_primary_disk.setter
+    def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]):
+        pulumi.set(self, "async_primary_disk", value)
 
     @property
     @pulumi.getter
@@ -435,6 +451,7 @@ class DiskArgs:
 @pulumi.input_type
 class _DiskState:
     def __init__(__self__, *,
+                 async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
@@ -464,6 +481,7 @@ class _DiskState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Disk resources.
+        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -565,6 +583,8 @@ class _DiskState:
                project/zones/zone/instances/instance
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
         """
+        if async_primary_disk is not None:
+            pulumi.set(__self__, "async_primary_disk", async_primary_disk)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -622,6 +642,18 @@ class _DiskState:
             pulumi.set(__self__, "users", users)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
+        """
+        A nested object resource
+        """
+        return pulumi.get(self, "async_primary_disk")
+
+    @async_primary_disk.setter
+    def async_primary_disk(self, value: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]):
+        pulumi.set(self, "async_primary_disk", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -1026,6 +1058,7 @@ class Disk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -1084,6 +1117,26 @@ class Disk(pulumi.CustomResource):
             type="pd-ssd",
             zone="us-central1-a")
         ```
+        ### Disk Async
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.Disk("primary",
+            type="pd-ssd",
+            zone="us-central1-a",
+            physical_block_size_bytes=4096,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secondary = gcp.compute.Disk("secondary",
+            type="pd-ssd",
+            zone="us-east1-c",
+            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
+                disk=primary.id,
+            ),
+            physical_block_size_bytes=4096,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1107,6 +1160,7 @@ class Disk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -1231,6 +1285,26 @@ class Disk(pulumi.CustomResource):
             type="pd-ssd",
             zone="us-central1-a")
         ```
+        ### Disk Async
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.compute.Disk("primary",
+            type="pd-ssd",
+            zone="us-central1-a",
+            physical_block_size_bytes=4096,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        secondary = gcp.compute.Disk("secondary",
+            type="pd-ssd",
+            zone="us-east1-c",
+            async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
+                disk=primary.id,
+            ),
+            physical_block_size_bytes=4096,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1267,6 +1341,7 @@ class Disk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -1294,6 +1369,7 @@ class Disk(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DiskArgs.__new__(DiskArgs)
 
+            __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["image"] = image
@@ -1334,6 +1410,7 @@ class Disk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
@@ -1368,6 +1445,7 @@ class Disk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -1473,6 +1551,7 @@ class Disk(pulumi.CustomResource):
 
         __props__ = _DiskState.__new__(_DiskState)
 
+        __props__.__dict__["async_primary_disk"] = async_primary_disk
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
@@ -1501,6 +1580,14 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["users"] = users
         __props__.__dict__["zone"] = zone
         return Disk(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> pulumi.Output[Optional['outputs.DiskAsyncPrimaryDisk']]:
+        """
+        A nested object resource
+        """
+        return pulumi.get(self, "async_primary_disk")
 
     @property
     @pulumi.getter(name="creationTimestamp")

@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
         }
 
         /// <summary>
-        /// Docker image defining the container. This image must be accessible by the config"s service account.
+        /// Docker image defining the container. This image must be accessible by the config's service account.
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }

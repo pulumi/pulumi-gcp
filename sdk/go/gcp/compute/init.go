@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendServiceSignedUrlKey{}
 	case "gcp:compute/disk:Disk":
 		r = &Disk{}
+	case "gcp:compute/diskAsyncReplication:DiskAsyncReplication":
+		r = &DiskAsyncReplication{}
 	case "gcp:compute/diskIamBinding:DiskIamBinding":
 		r = &DiskIamBinding{}
 	case "gcp:compute/diskIamMember:DiskIamMember":
@@ -369,6 +371,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/disk",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/diskAsyncReplication",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

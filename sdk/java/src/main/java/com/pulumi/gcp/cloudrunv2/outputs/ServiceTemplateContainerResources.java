@@ -23,6 +23,11 @@ public final class ServiceTemplateContainerResources {
      * 
      */
     private @Nullable Map<String,String> limits;
+    /**
+     * @return Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+     * 
+     */
+    private @Nullable Boolean startupCpuBoost;
 
     private ServiceTemplateContainerResources() {}
     /**
@@ -39,6 +44,13 @@ public final class ServiceTemplateContainerResources {
     public Map<String,String> limits() {
         return this.limits == null ? Map.of() : this.limits;
     }
+    /**
+     * @return Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+     * 
+     */
+    public Optional<Boolean> startupCpuBoost() {
+        return Optional.ofNullable(this.startupCpuBoost);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -51,11 +63,13 @@ public final class ServiceTemplateContainerResources {
     public static final class Builder {
         private @Nullable Boolean cpuIdle;
         private @Nullable Map<String,String> limits;
+        private @Nullable Boolean startupCpuBoost;
         public Builder() {}
         public Builder(ServiceTemplateContainerResources defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpuIdle = defaults.cpuIdle;
     	      this.limits = defaults.limits;
+    	      this.startupCpuBoost = defaults.startupCpuBoost;
         }
 
         @CustomType.Setter
@@ -68,10 +82,16 @@ public final class ServiceTemplateContainerResources {
             this.limits = limits;
             return this;
         }
+        @CustomType.Setter
+        public Builder startupCpuBoost(@Nullable Boolean startupCpuBoost) {
+            this.startupCpuBoost = startupCpuBoost;
+            return this;
+        }
         public ServiceTemplateContainerResources build() {
             final var o = new ServiceTemplateContainerResources();
             o.cpuIdle = cpuIdle;
             o.limits = limits;
+            o.startupCpuBoost = startupCpuBoost;
             return o;
         }
     }

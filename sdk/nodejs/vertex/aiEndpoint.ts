@@ -41,6 +41,7 @@ import * as utilities from "../utilities";
  *     displayName: "sample-endpoint",
  *     description: "A sample vertex endpoint",
  *     location: "us-central1",
+ *     region: "us-central1",
  *     labels: {
  *         "label-one": "value-one",
  *     },
@@ -155,6 +156,10 @@ export class AiEndpoint extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The region for the resource
+     */
+    public readonly region!: pulumi.Output<string | undefined>;
+    /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -184,6 +189,7 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiEndpointArgs | undefined;
@@ -201,6 +207,7 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deployedModels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -269,6 +276,10 @@ export interface AiEndpointState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The region for the resource
+     */
+    region?: pulumi.Input<string>;
+    /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
     updateTime?: pulumi.Input<string>;
@@ -312,4 +323,8 @@ export interface AiEndpointArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The region for the resource
+     */
+    region?: pulumi.Input<string>;
 }

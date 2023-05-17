@@ -99,6 +99,10 @@ export class NetworkPeering extends pulumi.CustomResource {
      */
     public readonly peerNetwork!: pulumi.Output<string>;
     /**
+     * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+     */
+    public readonly stackType!: pulumi.Output<string | undefined>;
+    /**
      * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
      * `ACTIVE` when there's a matching configuration in the peer network.
      */
@@ -128,6 +132,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["peerNetwork"] = state ? state.peerNetwork : undefined;
+            resourceInputs["stackType"] = state ? state.stackType : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
         } else {
@@ -145,6 +150,7 @@ export class NetworkPeering extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["peerNetwork"] = args ? args.peerNetwork : undefined;
+            resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateDetails"] = undefined /*out*/;
         }
@@ -186,6 +192,10 @@ export interface NetworkPeeringState {
      * may belong to a different project.
      */
     peerNetwork?: pulumi.Input<string>;
+    /**
+     * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+     */
+    stackType?: pulumi.Input<string>;
     /**
      * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
      * `ACTIVE` when there's a matching configuration in the peer network.
@@ -230,4 +240,8 @@ export interface NetworkPeeringArgs {
      * may belong to a different project.
      */
     peerNetwork: pulumi.Input<string>;
+    /**
+     * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+     */
+    stackType?: pulumi.Input<string>;
 }

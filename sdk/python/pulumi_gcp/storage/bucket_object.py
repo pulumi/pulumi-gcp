@@ -677,6 +677,18 @@ class BucketObject(pulumi.CustomResource):
             source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
         ```
 
+        Example creating an empty folder in an existing `image-store` bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        empty_folder = gcp.storage.BucketObject("emptyFolder",
+            bucket="image-store",
+            content=" ")
+        # folder name should end with '/'
+        ```
+
         ## Import
 
         This resource does not support import.
@@ -729,6 +741,18 @@ class BucketObject(pulumi.CustomResource):
         picture = gcp.storage.BucketObject("picture",
             bucket="image-store",
             source=pulumi.FileAsset("/images/nature/garden-tiger-moth.jpg"))
+        ```
+
+        Example creating an empty folder in an existing `image-store` bucket.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        empty_folder = gcp.storage.BucketObject("emptyFolder",
+            bucket="image-store",
+            content=" ")
+        # folder name should end with '/'
         ```
 
         ## Import

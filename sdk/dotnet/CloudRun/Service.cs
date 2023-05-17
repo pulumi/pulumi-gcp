@@ -260,13 +260,6 @@ namespace Pulumi.Gcp.CloudRun
     ///     var @default = new Gcp.CloudRun.Service("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-    ///         {
-    ///             Annotations = 
-    ///             {
-    ///                 { "run.googleapis.com/launch-stage", "BETA" },
-    ///             },
-    ///         },
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
     ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
@@ -306,9 +299,6 @@ namespace Pulumi.Gcp.CloudRun
     ///                 LatestRevision = true,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

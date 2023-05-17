@@ -22,7 +22,13 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, self_link=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, self_link=None, source_ip_ranges=None, target=None):
+        if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
+            raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
+        pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
+        if base_forwarding_rule and not isinstance(base_forwarding_rule, str):
+            raise TypeError("Expected argument 'base_forwarding_rule' to be a str")
+        pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -71,9 +77,22 @@ class GetGlobalForwardingRuleResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if source_ip_ranges and not isinstance(source_ip_ranges, list):
+            raise TypeError("Expected argument 'source_ip_ranges' to be a list")
+        pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
         if target and not isinstance(target, str):
             raise TypeError("Expected argument 'target' to be a str")
         pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter(name="allowPscGlobalAccess")
+    def allow_psc_global_access(self) -> bool:
+        return pulumi.get(self, "allow_psc_global_access")
+
+    @property
+    @pulumi.getter(name="baseForwardingRule")
+    def base_forwarding_rule(self) -> str:
+        return pulumi.get(self, "base_forwarding_rule")
 
     @property
     @pulumi.getter
@@ -159,6 +178,11 @@ class GetGlobalForwardingRuleResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="sourceIpRanges")
+    def source_ip_ranges(self) -> Sequence[str]:
+        return pulumi.get(self, "source_ip_ranges")
+
+    @property
     @pulumi.getter
     def target(self) -> str:
         return pulumi.get(self, "target")
@@ -170,6 +194,8 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
         if False:
             yield self
         return GetGlobalForwardingRuleResult(
+            allow_psc_global_access=self.allow_psc_global_access,
+            base_forwarding_rule=self.base_forwarding_rule,
             description=self.description,
             id=self.id,
             ip_address=self.ip_address,
@@ -186,6 +212,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             psc_connection_id=self.psc_connection_id,
             psc_connection_status=self.psc_connection_status,
             self_link=self.self_link,
+            source_ip_ranges=self.source_ip_ranges,
             target=self.target)
 
 
@@ -216,6 +243,8 @@ def get_global_forwarding_rule(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule', __args__, opts=opts, typ=GetGlobalForwardingRuleResult).value
 
     return AwaitableGetGlobalForwardingRuleResult(
+        allow_psc_global_access=__ret__.allow_psc_global_access,
+        base_forwarding_rule=__ret__.base_forwarding_rule,
         description=__ret__.description,
         id=__ret__.id,
         ip_address=__ret__.ip_address,
@@ -232,6 +261,7 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         psc_connection_id=__ret__.psc_connection_id,
         psc_connection_status=__ret__.psc_connection_status,
         self_link=__ret__.self_link,
+        source_ip_ranges=__ret__.source_ip_ranges,
         target=__ret__.target)
 
 

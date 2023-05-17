@@ -10,6 +10,11 @@ export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
 export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
 utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
 
+export { GetStaticIpsArgs, GetStaticIpsResult, GetStaticIpsOutputArgs } from "./getStaticIps";
+export const getStaticIps: typeof import("./getStaticIps").getStaticIps = null as any;
+export const getStaticIpsOutput: typeof import("./getStaticIps").getStaticIpsOutput = null as any;
+utilities.lazyLoad(exports, ["getStaticIps","getStaticIpsOutput"], () => require("./getStaticIps"));
+
 export { PrivateConnectionArgs, PrivateConnectionState } from "./privateConnection";
 export type PrivateConnection = import("./privateConnection").PrivateConnection;
 export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;

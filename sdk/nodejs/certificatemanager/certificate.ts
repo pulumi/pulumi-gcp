@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *     domain: "subdomain2.hashicorptest.com",
  * });
  * const _default = new gcp.certificatemanager.Certificate("default", {
- *     description: "The default cert",
+ *     description: "Global cert",
  *     scope: "EDGE_CACHE",
  *     managed: {
  *         domains: [
@@ -66,21 +66,37 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Certificate Manager Self Managed Certificate Regional
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     description: "Regional cert",
+ *     location: "us-central1",
+ *     selfManaged: {
+ *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
  * Certificate can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+ *  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+ *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+ *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
  * ```
  */
 export class Certificate extends pulumi.CustomResource {
@@ -119,6 +135,10 @@ export class Certificate extends pulumi.CustomResource {
      * Set of label tags associated with the Certificate resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * The Certificate Manager location. If not specified, "global" is used.
+     */
+    public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Configuration and state of a Managed Certificate.
      * Certificate Manager provisions and renews Managed Certificates
@@ -169,6 +189,7 @@ export class Certificate extends pulumi.CustomResource {
             const state = argsOrState as CertificateState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["managed"] = state ? state.managed : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -178,6 +199,7 @@ export class Certificate extends pulumi.CustomResource {
             const args = argsOrState as CertificateArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managed"] = args ? args.managed : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -201,6 +223,10 @@ export interface CertificateState {
      * Set of label tags associated with the Certificate resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The Certificate Manager location. If not specified, "global" is used.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Configuration and state of a Managed Certificate.
      * Certificate Manager provisions and renews Managed Certificates
@@ -249,6 +275,10 @@ export interface CertificateArgs {
      * Set of label tags associated with the Certificate resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The Certificate Manager location. If not specified, "global" is used.
+     */
+    location?: pulumi.Input<string>;
     /**
      * Configuration and state of a Managed Certificate.
      * Certificate Manager provisions and renews Managed Certificates

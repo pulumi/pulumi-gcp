@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicyGroupPlacementPolicyArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
@@ -31,6 +32,21 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Replication consistency group for asynchronous disk replication.
+     * 
+     */
+    @Import(name="diskConsistencyGroupPolicy")
+    private @Nullable Output<ResourcePolicyDiskConsistencyGroupPolicyArgs> diskConsistencyGroupPolicy;
+
+    /**
+     * @return Replication consistency group for asynchronous disk replication.
+     * 
+     */
+    public Optional<Output<ResourcePolicyDiskConsistencyGroupPolicyArgs>> diskConsistencyGroupPolicy() {
+        return Optional.ofNullable(this.diskConsistencyGroupPolicy);
     }
 
     /**
@@ -147,6 +163,7 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     private ResourcePolicyArgs(ResourcePolicyArgs $) {
         this.description = $.description;
+        this.diskConsistencyGroupPolicy = $.diskConsistencyGroupPolicy;
         this.groupPlacementPolicy = $.groupPlacementPolicy;
         this.instanceSchedulePolicy = $.instanceSchedulePolicy;
         this.name = $.name;
@@ -192,6 +209,27 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param diskConsistencyGroupPolicy Replication consistency group for asynchronous disk replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskConsistencyGroupPolicy(@Nullable Output<ResourcePolicyDiskConsistencyGroupPolicyArgs> diskConsistencyGroupPolicy) {
+            $.diskConsistencyGroupPolicy = diskConsistencyGroupPolicy;
+            return this;
+        }
+
+        /**
+         * @param diskConsistencyGroupPolicy Replication consistency group for asynchronous disk replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskConsistencyGroupPolicy(ResourcePolicyDiskConsistencyGroupPolicyArgs diskConsistencyGroupPolicy) {
+            return diskConsistencyGroupPolicy(Output.of(diskConsistencyGroupPolicy));
         }
 
         /**

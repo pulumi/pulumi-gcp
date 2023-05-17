@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateContainerStartupProbeTcpSocket {
     /**
-     * @return Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     private @Nullable Integer port;
 
     private ServiceTemplateContainerStartupProbeTcpSocket() {}
     /**
-     * @return Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     public Optional<Integer> port() {

@@ -47,11 +47,27 @@ public final class ServiceTemplateContainerResourcesArgs extends com.pulumi.reso
         return Optional.ofNullable(this.limits);
     }
 
+    /**
+     * Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+     * 
+     */
+    @Import(name="startupCpuBoost")
+    private @Nullable Output<Boolean> startupCpuBoost;
+
+    /**
+     * @return Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+     * 
+     */
+    public Optional<Output<Boolean>> startupCpuBoost() {
+        return Optional.ofNullable(this.startupCpuBoost);
+    }
+
     private ServiceTemplateContainerResourcesArgs() {}
 
     private ServiceTemplateContainerResourcesArgs(ServiceTemplateContainerResourcesArgs $) {
         this.cpuIdle = $.cpuIdle;
         this.limits = $.limits;
+        this.startupCpuBoost = $.startupCpuBoost;
     }
 
     public static Builder builder() {
@@ -112,6 +128,27 @@ public final class ServiceTemplateContainerResourcesArgs extends com.pulumi.reso
          */
         public Builder limits(Map<String,String> limits) {
             return limits(Output.of(limits));
+        }
+
+        /**
+         * @param startupCpuBoost Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupCpuBoost(@Nullable Output<Boolean> startupCpuBoost) {
+            $.startupCpuBoost = startupCpuBoost;
+            return this;
+        }
+
+        /**
+         * @param startupCpuBoost Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startupCpuBoost(Boolean startupCpuBoost) {
+            return startupCpuBoost(Output.of(startupCpuBoost));
         }
 
         public ServiceTemplateContainerResourcesArgs build() {

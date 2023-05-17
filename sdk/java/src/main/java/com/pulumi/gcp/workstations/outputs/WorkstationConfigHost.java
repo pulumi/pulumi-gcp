@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkstationConfigHost {
     /**
-     * @return Specifies a Compute Engine instance as the host.
+     * @return A runtime using a Compute Engine instance.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class WorkstationConfigHost {
 
     private WorkstationConfigHost() {}
     /**
-     * @return Specifies a Compute Engine instance as the host.
+     * @return A runtime using a Compute Engine instance.
      * Structure is documented below.
      * 
      */

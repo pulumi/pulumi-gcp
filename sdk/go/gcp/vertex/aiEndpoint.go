@@ -73,6 +73,7 @@ import (
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -152,6 +153,8 @@ type AiEndpoint struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The region for the resource
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Output only. Timestamp when this Endpoint was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -219,6 +222,8 @@ type aiEndpointState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The region for the resource
+	Region *string `pulumi:"region"`
 	// Output only. Timestamp when this Endpoint was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -252,6 +257,8 @@ type AiEndpointState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The region for the resource
+	Region pulumi.StringPtrInput
 	// Output only. Timestamp when this Endpoint was last updated.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -279,6 +286,8 @@ type aiEndpointArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The region for the resource
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a AiEndpoint resource.
@@ -301,6 +310,8 @@ type AiEndpointArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The region for the resource
+	Region pulumi.StringPtrInput
 }
 
 func (AiEndpointArgs) ElementType() reflect.Type {
@@ -452,6 +463,11 @@ func (o AiEndpointOutput) Network() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o AiEndpointOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiEndpoint) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region for the resource
+func (o AiEndpointOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpoint) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // Output only. Timestamp when this Endpoint was last updated.

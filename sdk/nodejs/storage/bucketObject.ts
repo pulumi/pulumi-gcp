@@ -28,6 +28,19 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Example creating an empty folder in an existing `image-store` bucket.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const emptyFolder = new gcp.storage.BucketObject("emptyFolder", {
+ *     bucket: "image-store",
+ *     content: " ",
+ * });
+ * // folder name should end with '/'
+ * ```
+ *
  * ## Import
  *
  * This resource does not support import.

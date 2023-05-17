@@ -21,7 +21,7 @@ class GetNetworkPeeringResult:
     """
     A collection of values returned by getNetworkPeering.
     """
-    def __init__(__self__, export_custom_routes=None, export_subnet_routes_with_public_ip=None, id=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, state=None, state_details=None):
+    def __init__(__self__, export_custom_routes=None, export_subnet_routes_with_public_ip=None, id=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, stack_type=None, state=None, state_details=None):
         if export_custom_routes and not isinstance(export_custom_routes, bool):
             raise TypeError("Expected argument 'export_custom_routes' to be a bool")
         pulumi.set(__self__, "export_custom_routes", export_custom_routes)
@@ -46,6 +46,9 @@ class GetNetworkPeeringResult:
         if peer_network and not isinstance(peer_network, str):
             raise TypeError("Expected argument 'peer_network' to be a str")
         pulumi.set(__self__, "peer_network", peer_network)
+        if stack_type and not isinstance(stack_type, str):
+            raise TypeError("Expected argument 'stack_type' to be a str")
+        pulumi.set(__self__, "stack_type", stack_type)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -97,6 +100,11 @@ class GetNetworkPeeringResult:
         return pulumi.get(self, "peer_network")
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        return pulumi.get(self, "stack_type")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
@@ -121,6 +129,7 @@ class AwaitableGetNetworkPeeringResult(GetNetworkPeeringResult):
             name=self.name,
             network=self.network,
             peer_network=self.peer_network,
+            stack_type=self.stack_type,
             state=self.state,
             state_details=self.state_details)
 
@@ -171,6 +180,7 @@ def get_network_peering(name: Optional[str] = None,
         name=__ret__.name,
         network=__ret__.network,
         peer_network=__ret__.peer_network,
+        stack_type=__ret__.stack_type,
         state=__ret__.state,
         state_details=__ret__.state_details)
 

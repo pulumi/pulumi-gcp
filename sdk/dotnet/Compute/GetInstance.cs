@@ -172,6 +172,9 @@ namespace Pulumi.Gcp.Compute
         /// The CPU platform used by this instance.
         /// </summary>
         public readonly string CpuPlatform;
+        /// <summary>
+        /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+        /// </summary>
         public readonly string CurrentStatus;
         /// <summary>
         /// Whether deletion protection is enabled on this instance.
@@ -183,7 +186,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Description;
         public readonly string DesiredStatus;
         /// <summary>
-        /// - Whether the instance has virtual displays enabled.
+        /// Whether the instance has virtual displays enabled.
         /// </summary>
         public readonly bool EnableDisplay;
         /// <summary>

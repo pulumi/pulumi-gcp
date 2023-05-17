@@ -386,6 +386,67 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudrunv2 Service Multicontainer
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .launchStage(&#34;BETA&#34;)
+ *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(                
+ *                     ServiceTemplateContainerArgs.builder()
+ *                         .name(&#34;hello-1&#34;)
+ *                         .ports(ServiceTemplateContainerPortArgs.builder()
+ *                             .containerPort(8080)
+ *                             .build())
+ *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .dependsOns(&#34;hello-2&#34;)
+ *                         .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
+ *                             .name(&#34;empty-dir-volume&#34;)
+ *                             .mountPath(&#34;/mnt&#34;)
+ *                             .build())
+ *                         .build(),
+ *                     ServiceTemplateContainerArgs.builder()
+ *                         .name(&#34;hello-2&#34;)
+ *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .build())
+ *                 .volumes(ServiceTemplateVolumeArgs.builder()
+ *                     .name(&#34;empty-dir-volume&#34;)
+ *                     .emptyDir(ServiceTemplateVolumeEmptyDirArgs.builder()
+ *                         .medium(&#34;MEMORY&#34;)
+ *                         .sizeLimit(&#34;256Mi&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -589,7 +650,9 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.latestReadyRevision;
     }
     /**
-     * The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+     * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
@@ -597,7 +660,9 @@ public class Service extends com.pulumi.resources.CustomResource {
     private Output<String> launchStage;
 
     /**
-     * @return The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+     * @return The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */

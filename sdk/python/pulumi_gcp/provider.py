@@ -66,6 +66,7 @@ class ProviderArgs:
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 database_migration_service_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -92,6 +93,7 @@ class ProviderArgs:
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gkeonprem_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -256,6 +258,8 @@ class ProviderArgs:
             pulumi.set(__self__, "data_fusion_custom_endpoint", data_fusion_custom_endpoint)
         if data_loss_prevention_custom_endpoint is not None:
             pulumi.set(__self__, "data_loss_prevention_custom_endpoint", data_loss_prevention_custom_endpoint)
+        if database_migration_service_custom_endpoint is not None:
+            pulumi.set(__self__, "database_migration_service_custom_endpoint", database_migration_service_custom_endpoint)
         if dataflow_custom_endpoint is not None:
             pulumi.set(__self__, "dataflow_custom_endpoint", dataflow_custom_endpoint)
         if dataform_custom_endpoint is not None:
@@ -308,6 +312,8 @@ class ProviderArgs:
             pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
         if gkehub_feature_custom_endpoint is not None:
             pulumi.set(__self__, "gkehub_feature_custom_endpoint", gkehub_feature_custom_endpoint)
+        if gkeonprem_custom_endpoint is not None:
+            pulumi.set(__self__, "gkeonprem_custom_endpoint", gkeonprem_custom_endpoint)
         if google_partner_name is not None:
             pulumi.set(__self__, "google_partner_name", google_partner_name)
         if healthcare_custom_endpoint is not None:
@@ -893,6 +899,15 @@ class ProviderArgs:
         pulumi.set(self, "data_loss_prevention_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="databaseMigrationServiceCustomEndpoint")
+    def database_migration_service_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "database_migration_service_custom_endpoint")
+
+    @database_migration_service_custom_endpoint.setter
+    def database_migration_service_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_migration_service_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="dataflowCustomEndpoint")
     def dataflow_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dataflow_custom_endpoint")
@@ -1125,6 +1140,15 @@ class ProviderArgs:
     @gkehub_feature_custom_endpoint.setter
     def gkehub_feature_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gkehub_feature_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="gkeonpremCustomEndpoint")
+    def gkeonprem_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gkeonprem_custom_endpoint")
+
+    @gkeonprem_custom_endpoint.setter
+    def gkeonprem_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gkeonprem_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="googlePartnerName")
@@ -1714,6 +1738,7 @@ class Provider(pulumi.ProviderResource):
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 database_migration_service_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1740,6 +1765,7 @@ class Provider(pulumi.ProviderResource):
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gkeonprem_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1887,6 +1913,7 @@ class Provider(pulumi.ProviderResource):
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_loss_prevention_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 database_migration_service_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1913,6 +1940,7 @@ class Provider(pulumi.ProviderResource):
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gkeonprem_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2032,6 +2060,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["data_catalog_custom_endpoint"] = data_catalog_custom_endpoint
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
             __props__.__dict__["data_loss_prevention_custom_endpoint"] = data_loss_prevention_custom_endpoint
+            __props__.__dict__["database_migration_service_custom_endpoint"] = database_migration_service_custom_endpoint
             __props__.__dict__["dataflow_custom_endpoint"] = dataflow_custom_endpoint
             __props__.__dict__["dataform_custom_endpoint"] = dataform_custom_endpoint
             __props__.__dict__["dataplex_custom_endpoint"] = dataplex_custom_endpoint
@@ -2058,6 +2087,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["gke_backup_custom_endpoint"] = gke_backup_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
             __props__.__dict__["gkehub_feature_custom_endpoint"] = gkehub_feature_custom_endpoint
+            __props__.__dict__["gkeonprem_custom_endpoint"] = gkeonprem_custom_endpoint
             __props__.__dict__["google_partner_name"] = google_partner_name
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
             __props__.__dict__["iam2_custom_endpoint"] = iam2_custom_endpoint
@@ -2380,6 +2410,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "data_loss_prevention_custom_endpoint")
 
     @property
+    @pulumi.getter(name="databaseMigrationServiceCustomEndpoint")
+    def database_migration_service_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "database_migration_service_custom_endpoint")
+
+    @property
     @pulumi.getter(name="dataflowCustomEndpoint")
     def dataflow_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dataflow_custom_endpoint")
@@ -2503,6 +2538,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="gkehubFeatureCustomEndpoint")
     def gkehub_feature_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "gkehub_feature_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="gkeonpremCustomEndpoint")
+    def gkeonprem_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "gkeonprem_custom_endpoint")
 
     @property
     @pulumi.getter(name="googlePartnerName")

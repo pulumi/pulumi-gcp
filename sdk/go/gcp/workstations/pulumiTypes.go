@@ -144,7 +144,7 @@ type WorkstationClusterPrivateClusterConfig struct {
 	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
 	// (Output)
 	// Service attachment URI for the workstation cluster.
-	// The service attachemnt is created when private endpoint is enabled.
+	// The service attachment is created when private endpoint is enabled.
 	// To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
 	ServiceAttachmentUri *string `pulumi:"serviceAttachmentUri"`
 }
@@ -170,7 +170,7 @@ type WorkstationClusterPrivateClusterConfigArgs struct {
 	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
 	// (Output)
 	// Service attachment URI for the workstation cluster.
-	// The service attachemnt is created when private endpoint is enabled.
+	// The service attachment is created when private endpoint is enabled.
 	// To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
 	ServiceAttachmentUri pulumi.StringPtrInput `pulumi:"serviceAttachmentUri"`
 }
@@ -267,7 +267,7 @@ func (o WorkstationClusterPrivateClusterConfigOutput) EnablePrivateEndpoint() pu
 
 // (Output)
 // Service attachment URI for the workstation cluster.
-// The service attachemnt is created when private endpoint is enabled.
+// The service attachment is created when private endpoint is enabled.
 // To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
 func (o WorkstationClusterPrivateClusterConfigOutput) ServiceAttachmentUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationClusterPrivateClusterConfig) *string { return v.ServiceAttachmentUri }).(pulumi.StringPtrOutput)
@@ -322,7 +322,7 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) EnablePrivateEndpoint()
 
 // (Output)
 // Service attachment URI for the workstation cluster.
-// The service attachemnt is created when private endpoint is enabled.
+// The service attachment is created when private endpoint is enabled.
 // To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
 func (o WorkstationClusterPrivateClusterConfigPtrOutput) ServiceAttachmentUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationClusterPrivateClusterConfig) *string {
@@ -465,7 +465,7 @@ type WorkstationConfigContainer struct {
 	// Environment variables passed to the container.
 	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env map[string]string `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the config"s service account.
+	// Docker image defining the container. This image must be accessible by the config's service account.
 	Image *string `pulumi:"image"`
 	// If set, overrides the USER specified in the image with the given uid.
 	RunAsUser *int `pulumi:"runAsUser"`
@@ -492,7 +492,7 @@ type WorkstationConfigContainerArgs struct {
 	// Environment variables passed to the container.
 	// The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env pulumi.StringMapInput `pulumi:"env"`
-	// Docker image defining the container. This image must be accessible by the config"s service account.
+	// Docker image defining the container. This image must be accessible by the config's service account.
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// If set, overrides the USER specified in the image with the given uid.
 	RunAsUser pulumi.IntPtrInput `pulumi:"runAsUser"`
@@ -593,7 +593,7 @@ func (o WorkstationConfigContainerOutput) Env() pulumi.StringMapOutput {
 	return o.ApplyT(func(v WorkstationConfigContainer) map[string]string { return v.Env }).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the config"s service account.
+// Docker image defining the container. This image must be accessible by the config's service account.
 func (o WorkstationConfigContainerOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigContainer) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -663,7 +663,7 @@ func (o WorkstationConfigContainerPtrOutput) Env() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Docker image defining the container. This image must be accessible by the config"s service account.
+// Docker image defining the container. This image must be accessible by the config's service account.
 func (o WorkstationConfigContainerPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigContainer) *string {
 		if v == nil {
@@ -850,7 +850,7 @@ func (o WorkstationConfigEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.S
 }
 
 type WorkstationConfigHost struct {
-	// Specifies a Compute Engine instance as the host.
+	// A runtime using a Compute Engine instance.
 	// Structure is documented below.
 	GceInstance *WorkstationConfigHostGceInstance `pulumi:"gceInstance"`
 }
@@ -867,7 +867,7 @@ type WorkstationConfigHostInput interface {
 }
 
 type WorkstationConfigHostArgs struct {
-	// Specifies a Compute Engine instance as the host.
+	// A runtime using a Compute Engine instance.
 	// Structure is documented below.
 	GceInstance WorkstationConfigHostGceInstancePtrInput `pulumi:"gceInstance"`
 }
@@ -949,7 +949,7 @@ func (o WorkstationConfigHostOutput) ToWorkstationConfigHostPtrOutputWithContext
 	}).(WorkstationConfigHostPtrOutput)
 }
 
-// Specifies a Compute Engine instance as the host.
+// A runtime using a Compute Engine instance.
 // Structure is documented below.
 func (o WorkstationConfigHostOutput) GceInstance() WorkstationConfigHostGceInstancePtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHost) *WorkstationConfigHostGceInstance { return v.GceInstance }).(WorkstationConfigHostGceInstancePtrOutput)
@@ -979,7 +979,7 @@ func (o WorkstationConfigHostPtrOutput) Elem() WorkstationConfigHostOutput {
 	}).(WorkstationConfigHostOutput)
 }
 
-// Specifies a Compute Engine instance as the host.
+// A runtime using a Compute Engine instance.
 // Structure is documented below.
 func (o WorkstationConfigHostPtrOutput) GceInstance() WorkstationConfigHostGceInstancePtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigHost) *WorkstationConfigHostGceInstance {
@@ -1588,6 +1588,332 @@ func (o WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput) EnableV
 	}).(pulumi.BoolPtrOutput)
 }
 
+type WorkstationConfigIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WorkstationConfigIamBindingConditionInput is an input type that accepts WorkstationConfigIamBindingConditionArgs and WorkstationConfigIamBindingConditionOutput values.
+// You can construct a concrete instance of `WorkstationConfigIamBindingConditionInput` via:
+//
+//	WorkstationConfigIamBindingConditionArgs{...}
+type WorkstationConfigIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigIamBindingConditionOutput() WorkstationConfigIamBindingConditionOutput
+	ToWorkstationConfigIamBindingConditionOutputWithContext(context.Context) WorkstationConfigIamBindingConditionOutput
+}
+
+type WorkstationConfigIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkstationConfigIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigIamBindingCondition)(nil)).Elem()
+}
+
+func (i WorkstationConfigIamBindingConditionArgs) ToWorkstationConfigIamBindingConditionOutput() WorkstationConfigIamBindingConditionOutput {
+	return i.ToWorkstationConfigIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigIamBindingConditionArgs) ToWorkstationConfigIamBindingConditionOutputWithContext(ctx context.Context) WorkstationConfigIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingConditionOutput)
+}
+
+func (i WorkstationConfigIamBindingConditionArgs) ToWorkstationConfigIamBindingConditionPtrOutput() WorkstationConfigIamBindingConditionPtrOutput {
+	return i.ToWorkstationConfigIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigIamBindingConditionArgs) ToWorkstationConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingConditionOutput).ToWorkstationConfigIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigIamBindingConditionPtrInput is an input type that accepts WorkstationConfigIamBindingConditionArgs, WorkstationConfigIamBindingConditionPtr and WorkstationConfigIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigIamBindingConditionPtrInput` via:
+//
+//	        WorkstationConfigIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigIamBindingConditionPtrOutput() WorkstationConfigIamBindingConditionPtrOutput
+	ToWorkstationConfigIamBindingConditionPtrOutputWithContext(context.Context) WorkstationConfigIamBindingConditionPtrOutput
+}
+
+type workstationConfigIamBindingConditionPtrType WorkstationConfigIamBindingConditionArgs
+
+func WorkstationConfigIamBindingConditionPtr(v *WorkstationConfigIamBindingConditionArgs) WorkstationConfigIamBindingConditionPtrInput {
+	return (*workstationConfigIamBindingConditionPtrType)(v)
+}
+
+func (*workstationConfigIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigIamBindingCondition)(nil)).Elem()
+}
+
+func (i *workstationConfigIamBindingConditionPtrType) ToWorkstationConfigIamBindingConditionPtrOutput() WorkstationConfigIamBindingConditionPtrOutput {
+	return i.ToWorkstationConfigIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigIamBindingConditionPtrType) ToWorkstationConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamBindingConditionPtrOutput)
+}
+
+type WorkstationConfigIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigIamBindingCondition)(nil)).Elem()
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) ToWorkstationConfigIamBindingConditionOutput() WorkstationConfigIamBindingConditionOutput {
+	return o
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) ToWorkstationConfigIamBindingConditionOutputWithContext(ctx context.Context) WorkstationConfigIamBindingConditionOutput {
+	return o
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) ToWorkstationConfigIamBindingConditionPtrOutput() WorkstationConfigIamBindingConditionPtrOutput {
+	return o.ToWorkstationConfigIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) ToWorkstationConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigIamBindingCondition) *WorkstationConfigIamBindingCondition {
+		return &v
+	}).(WorkstationConfigIamBindingConditionPtrOutput)
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WorkstationConfigIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkstationConfigIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigIamBindingCondition)(nil)).Elem()
+}
+
+func (o WorkstationConfigIamBindingConditionPtrOutput) ToWorkstationConfigIamBindingConditionPtrOutput() WorkstationConfigIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigIamBindingConditionPtrOutput) ToWorkstationConfigIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigIamBindingConditionPtrOutput) Elem() WorkstationConfigIamBindingConditionOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamBindingCondition) WorkstationConfigIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigIamBindingCondition
+		return ret
+	}).(WorkstationConfigIamBindingConditionOutput)
+}
+
+func (o WorkstationConfigIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationConfigIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationConfigIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkstationConfigIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WorkstationConfigIamMemberConditionInput is an input type that accepts WorkstationConfigIamMemberConditionArgs and WorkstationConfigIamMemberConditionOutput values.
+// You can construct a concrete instance of `WorkstationConfigIamMemberConditionInput` via:
+//
+//	WorkstationConfigIamMemberConditionArgs{...}
+type WorkstationConfigIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigIamMemberConditionOutput() WorkstationConfigIamMemberConditionOutput
+	ToWorkstationConfigIamMemberConditionOutputWithContext(context.Context) WorkstationConfigIamMemberConditionOutput
+}
+
+type WorkstationConfigIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkstationConfigIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigIamMemberCondition)(nil)).Elem()
+}
+
+func (i WorkstationConfigIamMemberConditionArgs) ToWorkstationConfigIamMemberConditionOutput() WorkstationConfigIamMemberConditionOutput {
+	return i.ToWorkstationConfigIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigIamMemberConditionArgs) ToWorkstationConfigIamMemberConditionOutputWithContext(ctx context.Context) WorkstationConfigIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamMemberConditionOutput)
+}
+
+func (i WorkstationConfigIamMemberConditionArgs) ToWorkstationConfigIamMemberConditionPtrOutput() WorkstationConfigIamMemberConditionPtrOutput {
+	return i.ToWorkstationConfigIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigIamMemberConditionArgs) ToWorkstationConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamMemberConditionOutput).ToWorkstationConfigIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// WorkstationConfigIamMemberConditionPtrInput is an input type that accepts WorkstationConfigIamMemberConditionArgs, WorkstationConfigIamMemberConditionPtr and WorkstationConfigIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `WorkstationConfigIamMemberConditionPtrInput` via:
+//
+//	        WorkstationConfigIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationConfigIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigIamMemberConditionPtrOutput() WorkstationConfigIamMemberConditionPtrOutput
+	ToWorkstationConfigIamMemberConditionPtrOutputWithContext(context.Context) WorkstationConfigIamMemberConditionPtrOutput
+}
+
+type workstationConfigIamMemberConditionPtrType WorkstationConfigIamMemberConditionArgs
+
+func WorkstationConfigIamMemberConditionPtr(v *WorkstationConfigIamMemberConditionArgs) WorkstationConfigIamMemberConditionPtrInput {
+	return (*workstationConfigIamMemberConditionPtrType)(v)
+}
+
+func (*workstationConfigIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigIamMemberCondition)(nil)).Elem()
+}
+
+func (i *workstationConfigIamMemberConditionPtrType) ToWorkstationConfigIamMemberConditionPtrOutput() WorkstationConfigIamMemberConditionPtrOutput {
+	return i.ToWorkstationConfigIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationConfigIamMemberConditionPtrType) ToWorkstationConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigIamMemberConditionPtrOutput)
+}
+
+type WorkstationConfigIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigIamMemberCondition)(nil)).Elem()
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) ToWorkstationConfigIamMemberConditionOutput() WorkstationConfigIamMemberConditionOutput {
+	return o
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) ToWorkstationConfigIamMemberConditionOutputWithContext(ctx context.Context) WorkstationConfigIamMemberConditionOutput {
+	return o
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) ToWorkstationConfigIamMemberConditionPtrOutput() WorkstationConfigIamMemberConditionPtrOutput {
+	return o.ToWorkstationConfigIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) ToWorkstationConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationConfigIamMemberCondition) *WorkstationConfigIamMemberCondition {
+		return &v
+	}).(WorkstationConfigIamMemberConditionPtrOutput)
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WorkstationConfigIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkstationConfigIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationConfigIamMemberCondition)(nil)).Elem()
+}
+
+func (o WorkstationConfigIamMemberConditionPtrOutput) ToWorkstationConfigIamMemberConditionPtrOutput() WorkstationConfigIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigIamMemberConditionPtrOutput) ToWorkstationConfigIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationConfigIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationConfigIamMemberConditionPtrOutput) Elem() WorkstationConfigIamMemberConditionOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamMemberCondition) WorkstationConfigIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationConfigIamMemberCondition
+		return ret
+	}).(WorkstationConfigIamMemberConditionOutput)
+}
+
+func (o WorkstationConfigIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationConfigIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationConfigIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkstationConfigPersistentDirectory struct {
 	// PersistentDirectory backed by a Compute Engine regional persistent disk.
 	// Structure is documented below.
@@ -1705,7 +2031,7 @@ type WorkstationConfigPersistentDirectoryGcePd struct {
 	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
 	FsType *string `pulumi:"fsType"`
 	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-	// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+	// Possible values are: `DELETE`, `RETAIN`.
 	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
 	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
 	SizeGb *int `pulumi:"sizeGb"`
@@ -1728,7 +2054,7 @@ type WorkstationConfigPersistentDirectoryGcePdArgs struct {
 	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
 	FsType pulumi.StringPtrInput `pulumi:"fsType"`
 	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-	// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+	// Possible values are: `DELETE`, `RETAIN`.
 	ReclaimPolicy pulumi.StringPtrInput `pulumi:"reclaimPolicy"`
 	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
@@ -1822,7 +2148,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdOutput) FsType() pulumi.StringP
 }
 
 // What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+// Possible values are: `DELETE`, `RETAIN`.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) ReclaimPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
 }
@@ -1877,7 +2203,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) FsType() pulumi.Stri
 }
 
 // What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-// Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+// Possible values are: `DELETE`, `RETAIN`.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ReclaimPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
 		if v == nil {
@@ -1895,6 +2221,332 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SizeGb() pulumi.IntP
 		}
 		return v.SizeGb
 	}).(pulumi.IntPtrOutput)
+}
+
+type WorkstationIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WorkstationIamBindingConditionInput is an input type that accepts WorkstationIamBindingConditionArgs and WorkstationIamBindingConditionOutput values.
+// You can construct a concrete instance of `WorkstationIamBindingConditionInput` via:
+//
+//	WorkstationIamBindingConditionArgs{...}
+type WorkstationIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToWorkstationIamBindingConditionOutput() WorkstationIamBindingConditionOutput
+	ToWorkstationIamBindingConditionOutputWithContext(context.Context) WorkstationIamBindingConditionOutput
+}
+
+type WorkstationIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkstationIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationIamBindingCondition)(nil)).Elem()
+}
+
+func (i WorkstationIamBindingConditionArgs) ToWorkstationIamBindingConditionOutput() WorkstationIamBindingConditionOutput {
+	return i.ToWorkstationIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i WorkstationIamBindingConditionArgs) ToWorkstationIamBindingConditionOutputWithContext(ctx context.Context) WorkstationIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamBindingConditionOutput)
+}
+
+func (i WorkstationIamBindingConditionArgs) ToWorkstationIamBindingConditionPtrOutput() WorkstationIamBindingConditionPtrOutput {
+	return i.ToWorkstationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationIamBindingConditionArgs) ToWorkstationIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamBindingConditionOutput).ToWorkstationIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// WorkstationIamBindingConditionPtrInput is an input type that accepts WorkstationIamBindingConditionArgs, WorkstationIamBindingConditionPtr and WorkstationIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `WorkstationIamBindingConditionPtrInput` via:
+//
+//	        WorkstationIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationIamBindingConditionPtrOutput() WorkstationIamBindingConditionPtrOutput
+	ToWorkstationIamBindingConditionPtrOutputWithContext(context.Context) WorkstationIamBindingConditionPtrOutput
+}
+
+type workstationIamBindingConditionPtrType WorkstationIamBindingConditionArgs
+
+func WorkstationIamBindingConditionPtr(v *WorkstationIamBindingConditionArgs) WorkstationIamBindingConditionPtrInput {
+	return (*workstationIamBindingConditionPtrType)(v)
+}
+
+func (*workstationIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationIamBindingCondition)(nil)).Elem()
+}
+
+func (i *workstationIamBindingConditionPtrType) ToWorkstationIamBindingConditionPtrOutput() WorkstationIamBindingConditionPtrOutput {
+	return i.ToWorkstationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationIamBindingConditionPtrType) ToWorkstationIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamBindingConditionPtrOutput)
+}
+
+type WorkstationIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkstationIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationIamBindingCondition)(nil)).Elem()
+}
+
+func (o WorkstationIamBindingConditionOutput) ToWorkstationIamBindingConditionOutput() WorkstationIamBindingConditionOutput {
+	return o
+}
+
+func (o WorkstationIamBindingConditionOutput) ToWorkstationIamBindingConditionOutputWithContext(ctx context.Context) WorkstationIamBindingConditionOutput {
+	return o
+}
+
+func (o WorkstationIamBindingConditionOutput) ToWorkstationIamBindingConditionPtrOutput() WorkstationIamBindingConditionPtrOutput {
+	return o.ToWorkstationIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationIamBindingConditionOutput) ToWorkstationIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationIamBindingCondition) *WorkstationIamBindingCondition {
+		return &v
+	}).(WorkstationIamBindingConditionPtrOutput)
+}
+
+func (o WorkstationIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WorkstationIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkstationIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationIamBindingCondition)(nil)).Elem()
+}
+
+func (o WorkstationIamBindingConditionPtrOutput) ToWorkstationIamBindingConditionPtrOutput() WorkstationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationIamBindingConditionPtrOutput) ToWorkstationIamBindingConditionPtrOutputWithContext(ctx context.Context) WorkstationIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationIamBindingConditionPtrOutput) Elem() WorkstationIamBindingConditionOutput {
+	return o.ApplyT(func(v *WorkstationIamBindingCondition) WorkstationIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationIamBindingCondition
+		return ret
+	}).(WorkstationIamBindingConditionOutput)
+}
+
+func (o WorkstationIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkstationIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WorkstationIamMemberConditionInput is an input type that accepts WorkstationIamMemberConditionArgs and WorkstationIamMemberConditionOutput values.
+// You can construct a concrete instance of `WorkstationIamMemberConditionInput` via:
+//
+//	WorkstationIamMemberConditionArgs{...}
+type WorkstationIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToWorkstationIamMemberConditionOutput() WorkstationIamMemberConditionOutput
+	ToWorkstationIamMemberConditionOutputWithContext(context.Context) WorkstationIamMemberConditionOutput
+}
+
+type WorkstationIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WorkstationIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationIamMemberCondition)(nil)).Elem()
+}
+
+func (i WorkstationIamMemberConditionArgs) ToWorkstationIamMemberConditionOutput() WorkstationIamMemberConditionOutput {
+	return i.ToWorkstationIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i WorkstationIamMemberConditionArgs) ToWorkstationIamMemberConditionOutputWithContext(ctx context.Context) WorkstationIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberConditionOutput)
+}
+
+func (i WorkstationIamMemberConditionArgs) ToWorkstationIamMemberConditionPtrOutput() WorkstationIamMemberConditionPtrOutput {
+	return i.ToWorkstationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WorkstationIamMemberConditionArgs) ToWorkstationIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberConditionOutput).ToWorkstationIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// WorkstationIamMemberConditionPtrInput is an input type that accepts WorkstationIamMemberConditionArgs, WorkstationIamMemberConditionPtr and WorkstationIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `WorkstationIamMemberConditionPtrInput` via:
+//
+//	        WorkstationIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkstationIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToWorkstationIamMemberConditionPtrOutput() WorkstationIamMemberConditionPtrOutput
+	ToWorkstationIamMemberConditionPtrOutputWithContext(context.Context) WorkstationIamMemberConditionPtrOutput
+}
+
+type workstationIamMemberConditionPtrType WorkstationIamMemberConditionArgs
+
+func WorkstationIamMemberConditionPtr(v *WorkstationIamMemberConditionArgs) WorkstationIamMemberConditionPtrInput {
+	return (*workstationIamMemberConditionPtrType)(v)
+}
+
+func (*workstationIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationIamMemberCondition)(nil)).Elem()
+}
+
+func (i *workstationIamMemberConditionPtrType) ToWorkstationIamMemberConditionPtrOutput() WorkstationIamMemberConditionPtrOutput {
+	return i.ToWorkstationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *workstationIamMemberConditionPtrType) ToWorkstationIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationIamMemberConditionPtrOutput)
+}
+
+type WorkstationIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (WorkstationIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationIamMemberCondition)(nil)).Elem()
+}
+
+func (o WorkstationIamMemberConditionOutput) ToWorkstationIamMemberConditionOutput() WorkstationIamMemberConditionOutput {
+	return o
+}
+
+func (o WorkstationIamMemberConditionOutput) ToWorkstationIamMemberConditionOutputWithContext(ctx context.Context) WorkstationIamMemberConditionOutput {
+	return o
+}
+
+func (o WorkstationIamMemberConditionOutput) ToWorkstationIamMemberConditionPtrOutput() WorkstationIamMemberConditionPtrOutput {
+	return o.ToWorkstationIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WorkstationIamMemberConditionOutput) ToWorkstationIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkstationIamMemberCondition) *WorkstationIamMemberCondition {
+		return &v
+	}).(WorkstationIamMemberConditionPtrOutput)
+}
+
+func (o WorkstationIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WorkstationIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WorkstationIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkstationIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkstationIamMemberCondition)(nil)).Elem()
+}
+
+func (o WorkstationIamMemberConditionPtrOutput) ToWorkstationIamMemberConditionPtrOutput() WorkstationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationIamMemberConditionPtrOutput) ToWorkstationIamMemberConditionPtrOutputWithContext(ctx context.Context) WorkstationIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WorkstationIamMemberConditionPtrOutput) Elem() WorkstationIamMemberConditionOutput {
+	return o.ApplyT(func(v *WorkstationIamMemberCondition) WorkstationIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WorkstationIamMemberCondition
+		return ret
+	}).(WorkstationIamMemberConditionOutput)
+}
+
+func (o WorkstationIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkstationIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 func init() {
@@ -1916,10 +2568,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfigInput)(nil)).Elem(), WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigIamBindingConditionInput)(nil)).Elem(), WorkstationConfigIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigIamBindingConditionPtrInput)(nil)).Elem(), WorkstationConfigIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigIamMemberConditionInput)(nil)).Elem(), WorkstationConfigIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigIamMemberConditionPtrInput)(nil)).Elem(), WorkstationConfigIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryArrayInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdPtrInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationIamBindingConditionInput)(nil)).Elem(), WorkstationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationIamBindingConditionPtrInput)(nil)).Elem(), WorkstationIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationIamMemberConditionInput)(nil)).Elem(), WorkstationIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationIamMemberConditionPtrInput)(nil)).Elem(), WorkstationIamMemberConditionArgs{})
 	pulumi.RegisterOutputType(WorkstationClusterConditionOutput{})
 	pulumi.RegisterOutputType(WorkstationClusterConditionArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationClusterPrivateClusterConfigOutput{})
@@ -1938,8 +2598,16 @@ func init() {
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(WorkstationIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(WorkstationIamMemberConditionPtrOutput{})
 }

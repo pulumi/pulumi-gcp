@@ -36,6 +36,14 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
             set => _commands = value;
         }
 
+        [Input("dependsOns")]
+        private InputList<string>? _dependsOns;
+        public InputList<string> DependsOns
+        {
+            get => _dependsOns ?? (_dependsOns = new InputList<string>());
+            set => _dependsOns = value;
+        }
+
         [Input("envs")]
         private InputList<Inputs.ServiceTemplateContainerEnvArgs>? _envs;
 

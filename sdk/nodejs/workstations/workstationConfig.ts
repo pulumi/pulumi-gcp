@@ -335,7 +335,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public readonly container!: pulumi.Output<outputs.workstations.WorkstationConfigContainer>;
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -391,11 +391,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      */
     public readonly workstationClusterId!: pulumi.Output<string>;
     /**
-     * The ID of the workstation cluster config.
+     * The ID to be assigned to the workstation cluster config.
      */
     public readonly workstationConfigId!: pulumi.Output<string>;
 
@@ -482,7 +482,7 @@ export interface WorkstationConfigState {
      */
     container?: pulumi.Input<inputs.workstations.WorkstationConfigContainer>;
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -538,11 +538,11 @@ export interface WorkstationConfigState {
      */
     uid?: pulumi.Input<string>;
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      */
     workstationClusterId?: pulumi.Input<string>;
     /**
-     * The ID of the workstation cluster config.
+     * The ID to be assigned to the workstation cluster config.
      */
     workstationConfigId?: pulumi.Input<string>;
 }
@@ -596,11 +596,11 @@ export interface WorkstationConfigArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      */
     workstationClusterId: pulumi.Input<string>;
     /**
-     * The ID of the workstation cluster config.
+     * The ID to be assigned to the workstation cluster config.
      */
     workstationConfigId: pulumi.Input<string>;
 }

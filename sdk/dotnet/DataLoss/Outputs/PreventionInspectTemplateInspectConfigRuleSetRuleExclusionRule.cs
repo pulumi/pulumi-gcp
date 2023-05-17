@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary? Dictionary;
         /// <summary>
+        /// Drop if the hotword rule is contained in the proximate context.
+        /// For tabular data, the context includes the column name.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword? ExcludeByHotword;
+        /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// Structure is documented below.
         /// </summary>
@@ -38,6 +44,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(
             Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary? dictionary,
 
+            Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword? excludeByHotword,
+
             Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes? excludeInfoTypes,
 
             string matchingType,
@@ -45,6 +53,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             Outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex? regex)
         {
             Dictionary = dictionary;
+            ExcludeByHotword = excludeByHotword;
             ExcludeInfoTypes = excludeInfoTypes;
             MatchingType = matchingType;
             Regex = regex;

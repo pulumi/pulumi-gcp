@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfig
     {
         /// <summary>
+        /// Treat the dataset as an image and redact.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformations? ImageTransformations;
+        /// <summary>
         /// Treat the dataset as free-form text and apply the same free text transformation everywhere
         /// Structure is documented below.
         /// </summary>
@@ -26,10 +31,13 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionDeidentifyTemplateDeidentifyConfig(
+            Outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformations? imageTransformations,
+
             Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations? infoTypeTransformations,
 
             Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations? recordTransformations)
         {
+            ImageTransformations = imageTransformations;
             InfoTypeTransformations = infoTypeTransformations;
             RecordTransformations = recordTransformations;
         }

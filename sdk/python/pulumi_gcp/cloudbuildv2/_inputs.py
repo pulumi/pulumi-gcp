@@ -65,7 +65,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] oauth_token_secret_version: A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-        :param pulumi.Input[str] username: The username associated to this token.
+        :param pulumi.Input[str] username: Output only. The username associated to this token.
         """
         if oauth_token_secret_version is not None:
             pulumi.set(__self__, "oauth_token_secret_version", oauth_token_secret_version)
@@ -88,7 +88,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        The username associated to this token.
+        Output only. The username associated to this token.
         """
         return pulumi.get(self, "username")
 

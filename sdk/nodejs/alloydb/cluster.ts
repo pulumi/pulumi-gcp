@@ -95,6 +95,16 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.alloydb.ClusterEncryptionConfig | undefined>;
+    /**
+     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.ClusterEncryptionInfo[]>;
+    /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.
      */
@@ -149,6 +159,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
+            resourceInputs["encryptionInfos"] = state ? state.encryptionInfos : undefined;
             resourceInputs["initialUser"] = state ? state.initialUser : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -171,6 +183,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["initialUser"] = args ? args.initialUser : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -178,6 +191,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["databaseVersion"] = undefined /*out*/;
+            resourceInputs["encryptionInfos"] = undefined /*out*/;
             resourceInputs["migrationSources"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -214,6 +228,16 @@ export interface ClusterState {
      * User-settable and human-readable display name for the Cluster.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig>;
+    /**
+     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     */
+    encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterEncryptionInfo>[]>;
     /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.
@@ -270,6 +294,11 @@ export interface ClusterArgs {
      * User-settable and human-readable display name for the Cluster.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig>;
     /**
      * Initial user to setup during cluster creation.
      * Structure is documented below.

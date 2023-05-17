@@ -19,7 +19,8 @@ namespace Pulumi.Gcp.Tags
     ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
     /// 
     /// ## Example Usage
-    /// ### Location Tag Binding Basic
+    /// 
+    /// To bind a tag to a Cloud Run instance:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -53,6 +54,46 @@ namespace Pulumi.Gcp.Tags
     ///     {
     ///         Location = "us-central1",
     ///         Parent = project.Number.Apply(number =&gt; $"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service.Default.Location}/services/{google_cloud_run_service.Default.Name}"),
+    ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// To bind a (firewall) tag to compute instance:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         OrgId = "123456789",
+    ///         ProjectId = "project_id",
+    ///     });
+    /// 
+    ///     var key = new Gcp.Tags.TagKey("key", new()
+    ///     {
+    ///         Description = "For keyname resources.",
+    ///         Parent = "organizations/123456789",
+    ///         ShortName = "keyname",
+    ///     });
+    /// 
+    ///     var @value = new Gcp.Tags.TagValue("value", new()
+    ///     {
+    ///         Description = "For valuename resources.",
+    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         ShortName = "valuename",
+    ///     });
+    /// 
+    ///     var binding = new Gcp.Tags.LocationTagBinding("binding", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Parent = project.Number.Apply(number =&gt; $"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance.Instance.Instance_id}"),
     ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
     ///     });
     /// 

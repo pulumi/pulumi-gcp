@@ -56,7 +56,9 @@ export interface GetForwardingRuleArgs {
 export interface GetForwardingRuleResult {
     readonly allPorts: boolean;
     readonly allowGlobalAccess: boolean;
+    readonly allowPscGlobalAccess: boolean;
     readonly backendService: string;
+    readonly baseForwardingRule: string;
     readonly creationTimestamp: string;
     readonly description: string;
     /**
@@ -82,6 +84,7 @@ export interface GetForwardingRuleResult {
     readonly serviceDirectoryRegistrations: outputs.compute.GetForwardingRuleServiceDirectoryRegistration[];
     readonly serviceLabel: string;
     readonly serviceName: string;
+    readonly sourceIpRanges: string[];
     readonly subnetwork: string;
     readonly target: string;
 }

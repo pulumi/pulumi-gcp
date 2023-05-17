@@ -10,6 +10,7 @@ import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionJobNot
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPubSubArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionPublishToStackdriverArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,6 +101,21 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
     }
 
     /**
+     * Enable Stackdriver metric dlp.googleapis.com/findingCount.
+     * 
+     */
+    @Import(name="publishToStackdriver")
+    private @Nullable Output<PreventionJobTriggerInspectJobActionPublishToStackdriverArgs> publishToStackdriver;
+
+    /**
+     * @return Enable Stackdriver metric dlp.googleapis.com/findingCount.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobActionPublishToStackdriverArgs>> publishToStackdriver() {
+        return Optional.ofNullable(this.publishToStackdriver);
+    }
+
+    /**
      * If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
      * Structure is documented below.
      * 
@@ -124,6 +140,7 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
         this.pubSub = $.pubSub;
         this.publishFindingsToCloudDataCatalog = $.publishFindingsToCloudDataCatalog;
         this.publishSummaryToCscc = $.publishSummaryToCscc;
+        this.publishToStackdriver = $.publishToStackdriver;
         this.saveFindings = $.saveFindings;
     }
 
@@ -252,6 +269,27 @@ public final class PreventionJobTriggerInspectJobActionArgs extends com.pulumi.r
          */
         public Builder publishSummaryToCscc(PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs publishSummaryToCscc) {
             return publishSummaryToCscc(Output.of(publishSummaryToCscc));
+        }
+
+        /**
+         * @param publishToStackdriver Enable Stackdriver metric dlp.googleapis.com/findingCount.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToStackdriver(@Nullable Output<PreventionJobTriggerInspectJobActionPublishToStackdriverArgs> publishToStackdriver) {
+            $.publishToStackdriver = publishToStackdriver;
+            return this;
+        }
+
+        /**
+         * @param publishToStackdriver Enable Stackdriver metric dlp.googleapis.com/findingCount.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publishToStackdriver(PreventionJobTriggerInspectJobActionPublishToStackdriverArgs publishToStackdriver) {
+            return publishToStackdriver(Output.of(publishToStackdriver));
         }
 
         /**
