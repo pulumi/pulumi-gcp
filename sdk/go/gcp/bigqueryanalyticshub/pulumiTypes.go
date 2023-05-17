@@ -338,6 +338,8 @@ func (o DataExchangeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 
 type ListingBigqueryDataset struct {
 	// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+	//
+	// ***
 	Dataset string `pulumi:"dataset"`
 }
 
@@ -354,6 +356,8 @@ type ListingBigqueryDatasetInput interface {
 
 type ListingBigqueryDatasetArgs struct {
 	// Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+	//
+	// ***
 	Dataset pulumi.StringInput `pulumi:"dataset"`
 }
 
@@ -435,6 +439,8 @@ func (o ListingBigqueryDatasetOutput) ToListingBigqueryDatasetPtrOutputWithConte
 }
 
 // Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+//
+// ***
 func (o ListingBigqueryDatasetOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v ListingBigqueryDataset) string { return v.Dataset }).(pulumi.StringOutput)
 }
@@ -464,6 +470,8 @@ func (o ListingBigqueryDatasetPtrOutput) Elem() ListingBigqueryDatasetOutput {
 }
 
 // Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+//
+// ***
 func (o ListingBigqueryDatasetPtrOutput) Dataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListingBigqueryDataset) *string {
 		if v == nil {

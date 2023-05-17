@@ -391,6 +391,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only &#34;all-apis&#34; and &#34;vpc-sc&#34; are valid.
      * 
+     * ***
+     * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
@@ -402,6 +404,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      * are valid.
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only &#34;all-apis&#34; and &#34;vpc-sc&#34; are valid.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> target() {
@@ -934,6 +938,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
          * addressType of INTERNAL, only &#34;all-apis&#34; and &#34;vpc-sc&#34; are valid.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -949,6 +955,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          * are valid.
          * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
          * addressType of INTERNAL, only &#34;all-apis&#34; and &#34;vpc-sc&#34; are valid.
+         * 
+         * ***
          * 
          * @return builder
          * 

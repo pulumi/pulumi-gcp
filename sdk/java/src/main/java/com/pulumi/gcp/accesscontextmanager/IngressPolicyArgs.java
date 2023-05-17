@@ -16,12 +16,16 @@ public final class IngressPolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
+     * ***
+     * 
      */
     @Import(name="ingressPolicyName", required=true)
     private Output<String> ingressPolicyName;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
+     * 
+     * ***
      * 
      */
     public Output<String> ingressPolicyName() {
@@ -71,6 +75,8 @@ public final class IngressPolicyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ingressPolicyName The name of the Service Perimeter to add this resource to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -81,6 +87,8 @@ public final class IngressPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ingressPolicyName The name of the Service Perimeter to add this resource to.
+         * 
+         * ***
          * 
          * @return builder
          * 

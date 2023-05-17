@@ -166,6 +166,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the primary network for the peering.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -243,6 +246,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the primary network for the peering.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -282,6 +288,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the primary network for the peering.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

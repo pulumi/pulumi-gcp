@@ -70,6 +70,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// The external IP address of this cluster's master endpoint.
+        /// 
+        /// !&gt; The Google provider is unable to validate certain configurations of
+        /// `private_cluster_config` when `enable_private_nodes` is `false`. It's
+        /// recommended that you omit the block entirely if the field is not set to `true`.
         /// </summary>
         [Input("publicEndpoint")]
         public Input<string>? PublicEndpoint { get; set; }

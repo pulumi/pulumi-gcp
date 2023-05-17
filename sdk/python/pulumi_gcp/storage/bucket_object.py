@@ -47,9 +47,13 @@ class BucketObjectArgs:
         :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
+               
+               One of the following is required:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
+               
+               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -223,6 +227,8 @@ class BucketObjectArgs:
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-provided metadata, in key/value pairs.
+
+        One of the following is required:
         """
         return pulumi.get(self, "metadata")
 
@@ -248,6 +254,8 @@ class BucketObjectArgs:
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
+
+        - - -
         """
         return pulumi.get(self, "source")
 
@@ -324,12 +332,16 @@ class _BucketObjectState:
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
         :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
+               
+               One of the following is required:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
                `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
         :param pulumi.Input[str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
+               
+               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -550,6 +562,8 @@ class _BucketObjectState:
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         User-provided metadata, in key/value pairs.
+
+        One of the following is required:
         """
         return pulumi.get(self, "metadata")
 
@@ -600,6 +614,8 @@ class _BucketObjectState:
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
+
+        - - -
         """
         return pulumi.get(self, "source")
 
@@ -696,9 +712,13 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[bool] event_based_hold: Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
         :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
+               
+               One of the following is required:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
+               
+               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -854,12 +874,16 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
         :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
+               
+               One of the following is required:
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[str] output_name: (Computed) The name of the object. Use this field in interpolations with `storage.ObjectACL` to recreate
                `storage.ObjectACL` resources when your `storage.BucketObject` is recreated.
         :param pulumi.Input[str] self_link: (Computed) A url reference to this object.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
+               
+               - - -
         :param pulumi.Input[str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
                storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
@@ -1008,6 +1032,8 @@ class BucketObject(pulumi.CustomResource):
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         User-provided metadata, in key/value pairs.
+
+        One of the following is required:
         """
         return pulumi.get(self, "metadata")
 
@@ -1042,6 +1068,8 @@ class BucketObject(pulumi.CustomResource):
         """
         A path to the data you want to upload. Must be defined
         if `content` is not.
+
+        - - -
         """
         return pulumi.get(self, "source")
 

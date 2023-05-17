@@ -216,8 +216,10 @@ type StandardAppVersion struct {
 	// Structure is documented below.
 	ManualScaling StandardAppVersionManualScalingPtrOutput `pulumi:"manualScaling"`
 	// The identifier for this object. Format specified above.
+	//
 	// (Optional)
 	// Name of the library. Example "django".
+	//
 	// (Required)
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -323,8 +325,10 @@ type standardAppVersionState struct {
 	// Structure is documented below.
 	ManualScaling *StandardAppVersionManualScaling `pulumi:"manualScaling"`
 	// The identifier for this object. Format specified above.
+	//
 	// (Optional)
 	// Name of the library. Example "django".
+	//
 	// (Required)
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name *string `pulumi:"name"`
@@ -390,8 +394,10 @@ type StandardAppVersionState struct {
 	// Structure is documented below.
 	ManualScaling StandardAppVersionManualScalingPtrInput
 	// The identifier for this object. Format specified above.
+	//
 	// (Optional)
 	// Name of the library. Example "django".
+	//
 	// (Required)
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringPtrInput
@@ -706,8 +712,10 @@ func (o StandardAppVersionOutput) ManualScaling() StandardAppVersionManualScalin
 }
 
 // The identifier for this object. Format specified above.
+//
 // (Optional)
 // Name of the library. Example "django".
+//
 // (Required)
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o StandardAppVersionOutput) Name() pulumi.StringOutput {

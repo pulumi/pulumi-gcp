@@ -177,12 +177,16 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     /**
      * Human readable title. Does not affect behavior.
      * 
+     * ***
+     * 
      */
     @Export(name="title", type=String.class, parameters={})
     private Output<String> title;
 
     /**
      * @return Human readable title. Does not affect behavior.
+     * 
+     * ***
      * 
      */
     public Output<String> title() {

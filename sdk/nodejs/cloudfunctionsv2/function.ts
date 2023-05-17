@@ -296,6 +296,9 @@ export class Function extends pulumi.CustomResource {
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -395,6 +398,9 @@ export interface FunctionState {
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -448,6 +454,9 @@ export interface FunctionArgs {
     /**
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*&#47;locations/*&#47;functions/*`.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

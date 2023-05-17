@@ -10,6 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Certificate represents a HTTP-reachable backend for a Certificate.
+//
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `self_managed.certificate_pem`, `self_managed.private_key_pem`, `self_managed.pem_private_key`.
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 // ### Certificate Manager Google Managed Certificate
 //
@@ -148,6 +154,8 @@ type Certificate struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -207,6 +215,8 @@ type certificateState struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -238,6 +248,8 @@ type CertificateState struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -273,6 +285,8 @@ type certificateArgs struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -305,6 +319,8 @@ type CertificateArgs struct {
 	// A user-defined name of the certificate. Certificate names must be unique
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -431,6 +447,8 @@ func (o CertificateOutput) Managed() CertificateManagedPtrOutput {
 // A user-defined name of the certificate. Certificate names must be unique
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
+//
+// ***
 func (o CertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

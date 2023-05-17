@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Storage.Outputs
     {
         /// <summary>
         /// Day of month. Must be from 1 to 31 and valid for the year and month.
+        /// 
+        /// &lt;a name="nested_start_time_of_day"&gt;&lt;/a&gt;The `start_time_of_day` blocks support:
         /// </summary>
         public readonly int Day;
         /// <summary>

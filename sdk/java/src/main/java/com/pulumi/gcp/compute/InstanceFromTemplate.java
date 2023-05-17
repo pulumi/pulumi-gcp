@@ -578,6 +578,8 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`self_link_unique` attribute).
      * 
+     * ***
+     * 
      */
     @Export(name="sourceInstanceTemplate", type=String.class, parameters={})
     private Output<String> sourceInstanceTemplate;
@@ -586,6 +588,8 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * @return Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`self_link_unique` attribute).
+     * 
+     * ***
      * 
      */
     public Output<String> sourceInstanceTemplate() {
@@ -623,6 +627,10 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
+     * In addition to these, all arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the template. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     * 
      */
     @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
@@ -630,6 +638,10 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
     /**
      * @return The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     * 
+     * In addition to these, all arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the template. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
      * 
      */
     public Output<String> zone() {

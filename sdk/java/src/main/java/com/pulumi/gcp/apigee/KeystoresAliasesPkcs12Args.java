@@ -48,12 +48,16 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
     /**
      * PKCS12 file content
      * 
+     * ***
+     * 
      */
     @Import(name="file", required=true)
     private Output<String> file;
 
     /**
      * @return PKCS12 file content
+     * 
+     * ***
      * 
      */
     public Output<String> file() {
@@ -195,6 +199,8 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         /**
          * @param file PKCS12 file content
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -205,6 +211,8 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
 
         /**
          * @param file PKCS12 file content
+         * 
+         * ***
          * 
          * @return builder
          * 

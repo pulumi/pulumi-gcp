@@ -242,12 +242,16 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
     /**
      * Optional. The Compute Engine config settings for additional worker instances in a cluster.
      * 
+     * ***
+     * 
      */
     @Import(name="workerConfig")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs> workerConfig;
 
     /**
      * @return Optional. The Compute Engine config settings for additional worker instances in a cluster.
+     * 
+     * ***
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs>> workerConfig() {
@@ -599,6 +603,8 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
         /**
          * @param workerConfig Optional. The Compute Engine config settings for additional worker instances in a cluster.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -609,6 +615,8 @@ public final class WorkflowTemplatePlacementManagedClusterConfigArgs extends com
 
         /**
          * @param workerConfig Optional. The Compute Engine config settings for additional worker instances in a cluster.
+         * 
+         * ***
          * 
          * @return builder
          * 

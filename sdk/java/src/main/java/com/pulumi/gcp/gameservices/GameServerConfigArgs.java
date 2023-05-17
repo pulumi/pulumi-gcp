@@ -86,6 +86,7 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
     /**
      * The labels associated with this game server config. Each label is a
      * key-value pair.
+     * 
      * (Optional)
      * Set of labels to group by.
      * 
@@ -96,6 +97,7 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The labels associated with this game server config. Each label is a
      * key-value pair.
+     * 
      * (Optional)
      * Set of labels to group by.
      * 
@@ -287,6 +289,7 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param labels The labels associated with this game server config. Each label is a
          * key-value pair.
+         * 
          * (Optional)
          * Set of labels to group by.
          * 
@@ -301,6 +304,7 @@ public final class GameServerConfigArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param labels The labels associated with this game server config. Each label is a
          * key-value pair.
+         * 
          * (Optional)
          * Set of labels to group by.
          * 

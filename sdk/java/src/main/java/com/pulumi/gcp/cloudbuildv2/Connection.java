@@ -345,12 +345,16 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

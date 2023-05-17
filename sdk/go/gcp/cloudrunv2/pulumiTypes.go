@@ -4153,6 +4153,8 @@ type JobTemplateTemplateVpcAccess struct {
 	Connector *string `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+	//
+	// ***
 	Egress *string `pulumi:"egress"`
 }
 
@@ -4172,6 +4174,8 @@ type JobTemplateTemplateVpcAccessArgs struct {
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+	//
+	// ***
 	Egress pulumi.StringPtrInput `pulumi:"egress"`
 }
 
@@ -4259,6 +4263,8 @@ func (o JobTemplateTemplateVpcAccessOutput) Connector() pulumi.StringPtrOutput {
 
 // Traffic VPC egress settings.
 // Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+//
+// ***
 func (o JobTemplateTemplateVpcAccessOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVpcAccess) *string { return v.Egress }).(pulumi.StringPtrOutput)
 }
@@ -4299,6 +4305,8 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) Connector() pulumi.StringPtrOutpu
 
 // Traffic VPC egress settings.
 // Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+//
+// ***
 func (o JobTemplateTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateVpcAccess) *string {
 		if v == nil {
@@ -8492,6 +8500,8 @@ func (o ServiceTemplateVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTempla
 
 type ServiceTemplateVolumeCloudSqlInstance struct {
 	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	//
+	// ***
 	Instances []string `pulumi:"instances"`
 }
 
@@ -8508,6 +8518,8 @@ type ServiceTemplateVolumeCloudSqlInstanceInput interface {
 
 type ServiceTemplateVolumeCloudSqlInstanceArgs struct {
 	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+	//
+	// ***
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
 }
 
@@ -8589,6 +8601,8 @@ func (o ServiceTemplateVolumeCloudSqlInstanceOutput) ToServiceTemplateVolumeClou
 }
 
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+//
+// ***
 func (o ServiceTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
@@ -8618,6 +8632,8 @@ func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Elem() ServiceTemplateVo
 }
 
 // The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+//
+// ***
 func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeCloudSqlInstance) []string {
 		if v == nil {
@@ -9399,6 +9415,7 @@ type ServiceTrafficStatus struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	//
 	// (Optional)
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision *string `pulumi:"revision"`
@@ -9427,6 +9444,7 @@ type ServiceTrafficStatusArgs struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	//
 	// (Optional)
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
@@ -9497,6 +9515,7 @@ func (o ServiceTrafficStatusOutput) Percent() pulumi.IntPtrOutput {
 }
 
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+//
 // (Optional)
 // Revision to which to send this portion of traffic, if traffic allocation is by revision.
 func (o ServiceTrafficStatusOutput) Revision() pulumi.StringPtrOutput {

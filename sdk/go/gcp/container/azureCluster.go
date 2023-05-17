@@ -147,6 +147,7 @@ type AzureCluster struct {
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingOutput `pulumi:"networking"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -245,6 +246,7 @@ type azureClusterState struct {
 	// Cluster-wide networking configuration.
 	Networking *AzureClusterNetworking `pulumi:"networking"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -294,6 +296,7 @@ type AzureClusterState struct {
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingPtrInput
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -341,6 +344,7 @@ type azureClusterArgs struct {
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworking `pulumi:"networking"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -375,6 +379,7 @@ type AzureClusterArgs struct {
 	// Cluster-wide networking configuration.
 	Networking AzureClusterNetworkingInput
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -547,6 +552,7 @@ func (o AzureClusterOutput) Networking() AzureClusterNetworkingOutput {
 }
 
 // The number of the Fleet host project where this cluster will be registered.
+//
 // (Optional)
 // The project for the resource
 func (o AzureClusterOutput) Project() pulumi.StringOutput {

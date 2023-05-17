@@ -25,6 +25,10 @@ class HubArgs:
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         if description is not None:
@@ -65,6 +69,10 @@ class HubArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -103,6 +111,10 @@ class _HubState:
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Sequence[pulumi.Input['HubRoutingVpcArgs']]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
@@ -169,6 +181,10 @@ class _HubState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -286,6 +302,10 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -395,6 +415,10 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of the hub.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         :param pulumi.Input[str] name: Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HubRoutingVpcArgs']]]] routing_vpcs: The VPC network associated with this hub's spokes. All of the VPN tunnels, VLAN attachments, and router appliance instances referenced by this hub's spokes must belong to this VPC network. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
         :param pulumi.Input[str] state: Output only. The current lifecycle state of this hub. Possible values: STATE_UNSPECIFIED, CREATING, ACTIVE, DELETING
@@ -445,6 +469,10 @@ class Hub(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

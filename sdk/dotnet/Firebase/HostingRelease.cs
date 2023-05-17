@@ -207,6 +207,9 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Required. The ID of the site to which the release belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("siteId")]
         public Output<string> SiteId { get; private set; } = null!;
@@ -292,6 +295,9 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Required. The ID of the site to which the release belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
@@ -353,6 +359,9 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// Required. The ID of the site to which the release belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("siteId")]
         public Input<string>? SiteId { get; set; }

@@ -34,6 +34,8 @@ class GroupGroupKeyArgs:
                If specified, the EntityKey represents an external-identity-mapped group.
                The namespace must correspond to an identity source created in Admin Console
                and must be in the form of `identitysources/{identity_source_id}`.
+               
+               - - -
         """
         pulumi.set(__self__, "id", id)
         if namespace is not None:
@@ -66,6 +68,8 @@ class GroupGroupKeyArgs:
         If specified, the EntityKey represents an external-identity-mapped group.
         The namespace must correspond to an identity source created in Admin Console
         and must be in the form of `identitysources/{identity_source_id}`.
+
+        - - -
         """
         return pulumi.get(self, "namespace")
 
@@ -197,6 +201,8 @@ class GroupMembershipRoleArgs:
         """
         :param pulumi.Input[str] name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
                Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+               
+               - - -
         """
         pulumi.set(__self__, "name", name)
 
@@ -206,6 +212,8 @@ class GroupMembershipRoleArgs:
         """
         The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+
+        - - -
         """
         return pulumi.get(self, "name")
 

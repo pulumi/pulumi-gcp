@@ -131,6 +131,8 @@ type GameServerDeploymentRollout struct {
 	// This field points to the game server config that is
 	// applied by default to all realms and clusters. For example,
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	//
+	// ***
 	DefaultGameServerConfig pulumi.StringOutput `pulumi:"defaultGameServerConfig"`
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
@@ -186,6 +188,8 @@ type gameServerDeploymentRolloutState struct {
 	// This field points to the game server config that is
 	// applied by default to all realms and clusters. For example,
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	//
+	// ***
 	DefaultGameServerConfig *string `pulumi:"defaultGameServerConfig"`
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId *string `pulumi:"deploymentId"`
@@ -207,6 +211,8 @@ type GameServerDeploymentRolloutState struct {
 	// This field points to the game server config that is
 	// applied by default to all realms and clusters. For example,
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	//
+	// ***
 	DefaultGameServerConfig pulumi.StringPtrInput
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId pulumi.StringPtrInput
@@ -232,6 +238,8 @@ type gameServerDeploymentRolloutArgs struct {
 	// This field points to the game server config that is
 	// applied by default to all realms and clusters. For example,
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	//
+	// ***
 	DefaultGameServerConfig string `pulumi:"defaultGameServerConfig"`
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId string `pulumi:"deploymentId"`
@@ -251,6 +259,8 @@ type GameServerDeploymentRolloutArgs struct {
 	// This field points to the game server config that is
 	// applied by default to all realms and clusters. For example,
 	// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	//
+	// ***
 	DefaultGameServerConfig pulumi.StringInput
 	// The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
 	DeploymentId pulumi.StringInput
@@ -355,6 +365,8 @@ func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutOutputWi
 // This field points to the game server config that is
 // applied by default to all realms and clusters. For example,
 // `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+//
+// ***
 func (o GameServerDeploymentRolloutOutput) DefaultGameServerConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *GameServerDeploymentRollout) pulumi.StringOutput { return v.DefaultGameServerConfig }).(pulumi.StringOutput)
 }

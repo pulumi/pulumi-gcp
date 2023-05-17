@@ -65,6 +65,8 @@ type TargetPool struct {
 	Instances pulumi.StringArrayOutput `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -128,6 +130,8 @@ type targetPoolState struct {
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -163,6 +167,8 @@ type TargetPoolState struct {
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -202,6 +208,8 @@ type targetPoolArgs struct {
 	Instances []string `pulumi:"instances"`
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -236,6 +244,8 @@ type TargetPoolArgs struct {
 	Instances pulumi.StringArrayInput
 	// A unique name for the resource, required by GCE. Changing
 	// this forces a new resource to be created.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -370,6 +380,8 @@ func (o TargetPoolOutput) Instances() pulumi.StringArrayOutput {
 
 // A unique name for the resource, required by GCE. Changing
 // this forces a new resource to be created.
+//
+// ***
 func (o TargetPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

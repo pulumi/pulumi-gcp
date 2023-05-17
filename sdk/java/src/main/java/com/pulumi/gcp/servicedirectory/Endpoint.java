@@ -189,6 +189,8 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      * 
+     * ***
+     * 
      */
     @Export(name="endpointId", type=String.class, parameters={})
     private Output<String> endpointId;
@@ -196,6 +198,8 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     /**
      * @return The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
+     * 
+     * ***
      * 
      */
     public Output<String> endpointId() {

@@ -39,6 +39,8 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs ex
      * publicKeyPem (i.e. this algorithm must match that of the
      * public key).
      * 
+     * ***
+     * 
      */
     @Import(name="signatureAlgorithm")
     private @Nullable Output<String> signatureAlgorithm;
@@ -49,6 +51,8 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs ex
      * match the structure and any object identifiers encoded in
      * publicKeyPem (i.e. this algorithm must match that of the
      * public key).
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> signatureAlgorithm() {
@@ -110,6 +114,8 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs ex
          * publicKeyPem (i.e. this algorithm must match that of the
          * public key).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -124,6 +130,8 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs ex
          * match the structure and any object identifiers encoded in
          * publicKeyPem (i.e. this algorithm must match that of the
          * public key).
+         * 
+         * ***
          * 
          * @return builder
          * 

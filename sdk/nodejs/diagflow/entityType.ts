@@ -107,6 +107,9 @@ export class EntityType extends pulumi.CustomResource {
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+     *
+     *
+     * - - -
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -183,6 +186,9 @@ export interface EntityTypeState {
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+     *
+     *
+     * - - -
      */
     kind?: pulumi.Input<string>;
     /**
@@ -221,6 +227,9 @@ export interface EntityTypeArgs {
      * types can contain references to other entity types (with or without aliases).
      * * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
      * Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+     *
+     *
+     * - - -
      */
     kind: pulumi.Input<string>;
     /**

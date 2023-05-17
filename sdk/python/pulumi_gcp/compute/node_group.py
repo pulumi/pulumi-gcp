@@ -30,6 +30,9 @@ class NodeGroupArgs:
         """
         The set of arguments for constructing a NodeGroup resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
+               
+               
+               - - -
         :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: If you use sole-tenant nodes for your workloads, you can use the node
                group autoscaler to automatically manage the sizes of your node groups.
                Structure is documented below.
@@ -73,6 +76,9 @@ class NodeGroupArgs:
     def node_template(self) -> pulumi.Input[str]:
         """
         The URL of the node template to which this node group belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "node_template")
 
@@ -235,6 +241,9 @@ class _NodeGroupState:
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -362,6 +371,9 @@ class _NodeGroupState:
     def node_template(self) -> Optional[pulumi.Input[str]]:
         """
         The URL of the node template to which this node group belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "node_template")
 
@@ -561,6 +573,9 @@ class NodeGroup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['NodeGroupShareSettingsArgs']] share_settings: Share settings for the node group.
@@ -765,6 +780,9 @@ class NodeGroup(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[str] node_template: The URL of the node template to which this node group belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -856,6 +874,9 @@ class NodeGroup(pulumi.CustomResource):
     def node_template(self) -> pulumi.Output[str]:
         """
         The URL of the node template to which this node group belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "node_template")
 

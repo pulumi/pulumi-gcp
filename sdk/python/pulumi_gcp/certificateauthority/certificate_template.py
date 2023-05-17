@@ -28,6 +28,7 @@ class CertificateTemplateArgs:
         The set of arguments for constructing a CertificateTemplate resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
+               
                (Optional)
                Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
@@ -70,6 +71,7 @@ class CertificateTemplateArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. A human-readable description of scenarios this template is intended for.
+
         (Optional)
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
@@ -169,6 +171,7 @@ class _CertificateTemplateState:
         Input properties used for looking up and filtering CertificateTemplate resources.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
+               
                (Optional)
                Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input['CertificateTemplateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
@@ -218,6 +221,7 @@ class _CertificateTemplateState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. A human-readable description of scenarios this template is intended for.
+
         (Optional)
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
@@ -365,6 +369,7 @@ class CertificateTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
+               
                (Optional)
                Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
@@ -478,6 +483,7 @@ class CertificateTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time at which this CertificateTemplate was created.
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
+               
                (Optional)
                Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         :param pulumi.Input[pulumi.InputType['CertificateTemplateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
@@ -518,6 +524,7 @@ class CertificateTemplate(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         Optional. A human-readable description of scenarios this template is intended for.
+
         (Optional)
         Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """

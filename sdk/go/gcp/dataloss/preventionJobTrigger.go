@@ -328,6 +328,7 @@ type PreventionJobTrigger struct {
 	pulumi.CustomResourceState
 
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -344,10 +345,13 @@ type PreventionJobTrigger struct {
 	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 	// timestamp property does not exist or its value is empty or invalid.
+	//
 	// (Required)
 	// The name of the Datastore kind.
+	//
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	//
 	// (Required)
 	// Name describing the field.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -399,6 +403,7 @@ func GetPreventionJobTrigger(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PreventionJobTrigger resources.
 type preventionJobTriggerState struct {
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description *string `pulumi:"description"`
@@ -415,10 +420,13 @@ type preventionJobTriggerState struct {
 	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 	// timestamp property does not exist or its value is empty or invalid.
+	//
 	// (Required)
 	// The name of the Datastore kind.
+	//
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	//
 	// (Required)
 	// Name describing the field.
 	Name *string `pulumi:"name"`
@@ -436,6 +444,7 @@ type preventionJobTriggerState struct {
 
 type PreventionJobTriggerState struct {
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrInput
@@ -452,10 +461,13 @@ type PreventionJobTriggerState struct {
 	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 	// timestamp property does not exist or its value is empty or invalid.
+	//
 	// (Required)
 	// The name of the Datastore kind.
+	//
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	//
 	// (Required)
 	// Name describing the field.
 	Name pulumi.StringPtrInput
@@ -477,6 +489,7 @@ func (PreventionJobTriggerState) ElementType() reflect.Type {
 
 type preventionJobTriggerArgs struct {
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description *string `pulumi:"description"`
@@ -500,6 +513,7 @@ type preventionJobTriggerArgs struct {
 // The set of arguments for constructing a PreventionJobTrigger resource.
 type PreventionJobTriggerArgs struct {
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrInput
@@ -608,6 +622,7 @@ func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutputWithContext(ctx 
 }
 
 // A description of the job trigger.
+//
 // (Optional)
 // A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 func (o PreventionJobTriggerOutput) Description() pulumi.StringPtrOutput {
@@ -636,10 +651,13 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 // field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 // For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 // timestamp property does not exist or its value is empty or invalid.
+//
 // (Required)
 // The name of the Datastore kind.
+//
 // (Required)
 // Name of a BigQuery field to be returned with the findings.
+//
 // (Required)
 // Name describing the field.
 func (o PreventionJobTriggerOutput) Name() pulumi.StringOutput {

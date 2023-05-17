@@ -181,12 +181,16 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     /**
      * The name of the reservation. This field must only contain alphanumeric characters or dash.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The name of the reservation. This field must only contain alphanumeric characters or dash.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

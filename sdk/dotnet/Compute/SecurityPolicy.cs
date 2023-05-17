@@ -266,6 +266,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy.
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -377,6 +379,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -456,6 +460,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the security policy.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

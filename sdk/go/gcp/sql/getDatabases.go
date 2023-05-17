@@ -50,6 +50,8 @@ type GetDatabasesArgs struct {
 	// The name of the Cloud SQL database instance in which the database belongs.
 	Instance string `pulumi:"instance"`
 	// The ID of the project in which the instance belongs.
+	//
+	// > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
 	Project *string `pulumi:"project"`
 }
 
@@ -80,6 +82,8 @@ type GetDatabasesOutputArgs struct {
 	// The name of the Cloud SQL database instance in which the database belongs.
 	Instance pulumi.StringInput `pulumi:"instance"`
 	// The ID of the project in which the instance belongs.
+	//
+	// > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 

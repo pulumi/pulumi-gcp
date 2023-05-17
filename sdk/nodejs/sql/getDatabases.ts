@@ -38,6 +38,8 @@ export interface GetDatabasesArgs {
     instance: string;
     /**
      * The ID of the project in which the instance belongs.
+     *
+     * > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
      */
     project?: string;
 }
@@ -81,6 +83,8 @@ export interface GetDatabasesOutputArgs {
     instance: pulumi.Input<string>;
     /**
      * The ID of the project in which the instance belongs.
+     *
+     * > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
      */
     project?: pulumi.Input<string>;
 }

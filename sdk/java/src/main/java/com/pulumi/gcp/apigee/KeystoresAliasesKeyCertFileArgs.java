@@ -34,12 +34,16 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
     /**
      * Cert content
      * 
+     * ***
+     * 
      */
     @Import(name="cert", required=true)
     private Output<String> cert;
 
     /**
      * @return Cert content
+     * 
+     * ***
      * 
      */
     public Output<String> cert() {
@@ -193,6 +197,8 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
         /**
          * @param cert Cert content
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -203,6 +209,8 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
 
         /**
          * @param cert Cert content
+         * 
+         * ***
          * 
          * @return builder
          * 

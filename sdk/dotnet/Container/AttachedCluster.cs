@@ -236,6 +236,10 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of the Fleet host project where this cluster will be registered.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
@@ -420,6 +424,10 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of the Fleet host project where this cluster will be registered.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
@@ -566,6 +574,10 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of the Fleet host project where this cluster will be registered.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]

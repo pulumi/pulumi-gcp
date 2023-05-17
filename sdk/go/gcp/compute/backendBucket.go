@@ -235,6 +235,8 @@ type BackendBucket struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -301,6 +303,8 @@ type backendBucketState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -336,6 +340,8 @@ type BackendBucketState struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -373,6 +379,8 @@ type backendBucketArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -405,6 +413,8 @@ type BackendBucketArgs struct {
 	// the first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the
 	// last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -548,6 +558,8 @@ func (o BackendBucketOutput) EnableCdn() pulumi.BoolPtrOutput {
 // the first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the
 // last character, which cannot be a dash.
+//
+// ***
 func (o BackendBucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendBucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

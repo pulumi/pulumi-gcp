@@ -85,6 +85,8 @@ type ReservationAssignment struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The reservation for the resource
+	//
+	// ***
 	Reservation pulumi.StringOutput `pulumi:"reservation"`
 	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringOutput `pulumi:"state"`
@@ -139,6 +141,8 @@ type reservationAssignmentState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The reservation for the resource
+	//
+	// ***
 	Reservation *string `pulumi:"reservation"`
 	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State *string `pulumi:"state"`
@@ -156,6 +160,8 @@ type ReservationAssignmentState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The reservation for the resource
+	//
+	// ***
 	Reservation pulumi.StringPtrInput
 	// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
 	State pulumi.StringPtrInput
@@ -175,6 +181,8 @@ type reservationAssignmentArgs struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// The reservation for the resource
+	//
+	// ***
 	Reservation string `pulumi:"reservation"`
 }
 
@@ -189,6 +197,8 @@ type ReservationAssignmentArgs struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// The reservation for the resource
+	//
+	// ***
 	Reservation pulumi.StringInput
 }
 
@@ -305,6 +315,8 @@ func (o ReservationAssignmentOutput) Project() pulumi.StringOutput {
 }
 
 // The reservation for the resource
+//
+// ***
 func (o ReservationAssignmentOutput) Reservation() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservationAssignment) pulumi.StringOutput { return v.Reservation }).(pulumi.StringOutput)
 }

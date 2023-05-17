@@ -81,6 +81,10 @@ export interface GetNotificationChannelArgs {
     project?: string;
     /**
      * The type of the notification channel.
+     *
+     * - - -
+     *
+     * Other optional fields include:
      */
     type?: string;
     /**
@@ -194,6 +198,10 @@ export interface GetNotificationChannelOutputArgs {
     project?: pulumi.Input<string>;
     /**
      * The type of the notification channel.
+     *
+     * - - -
+     *
+     * Other optional fields include:
      */
     type?: pulumi.Input<string>;
     /**

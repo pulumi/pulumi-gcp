@@ -205,6 +205,8 @@ type DatabaseInstance struct {
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
+	//
+	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -322,6 +324,8 @@ type databaseInstanceState struct {
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
+	//
+	// ***
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -401,6 +405,8 @@ type DatabaseInstanceState struct {
 	PublicIpAddress pulumi.StringPtrInput
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
+	//
+	// ***
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -472,6 +478,8 @@ type databaseInstanceArgs struct {
 	Project *string `pulumi:"project"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
+	//
+	// ***
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -534,6 +542,8 @@ type DatabaseInstanceArgs struct {
 	Project pulumi.StringPtrInput
 	// The region the instance will sit in. If a region is not provided in the resource definition,
 	// the provider region will be used instead.
+	//
+	// ***
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
 	// configuration is detailed below. Valid only for MySQL instances.
@@ -738,6 +748,8 @@ func (o DatabaseInstanceOutput) PublicIpAddress() pulumi.StringOutput {
 
 // The region the instance will sit in. If a region is not provided in the resource definition,
 // the provider region will be used instead.
+//
+// ***
 func (o DatabaseInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

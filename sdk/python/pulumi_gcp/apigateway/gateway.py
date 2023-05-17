@@ -25,6 +25,9 @@ class GatewayArgs:
         :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
                When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+               
+               
+               - - -
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -60,6 +63,9 @@ class GatewayArgs:
     def gateway_id(self) -> pulumi.Input[str]:
         """
         Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+
+
+        - - -
         """
         return pulumi.get(self, "gateway_id")
 
@@ -135,6 +141,9 @@ class _GatewayState:
         :param pulumi.Input[str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -200,6 +209,9 @@ class _GatewayState:
     def gateway_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+
+
+        - - -
         """
         return pulumi.get(self, "gateway_id")
 
@@ -330,6 +342,9 @@ class Gateway(pulumi.CustomResource):
                When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -468,6 +483,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] name: Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -518,6 +536,9 @@ class Gateway(pulumi.CustomResource):
     def gateway_id(self) -> pulumi.Output[str]:
         """
         Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+
+
+        - - -
         """
         return pulumi.get(self, "gateway_id")
 

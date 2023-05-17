@@ -89,6 +89,9 @@ class ForwardingRuleArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: For internal load balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule. If
                this field is not specified, the default network will be used.
@@ -343,6 +346,9 @@ class ForwardingRuleArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -603,6 +609,9 @@ class _ForwardingRuleState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: For internal load balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule. If
                this field is not specified, the default network will be used.
@@ -898,6 +907,9 @@ class _ForwardingRuleState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1246,6 +1258,9 @@ class ForwardingRule(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: For internal load balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule. If
                this field is not specified, the default network will be used.
@@ -1521,6 +1536,9 @@ class ForwardingRule(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: For internal load balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule. If
                this field is not specified, the default network will be used.
@@ -1751,6 +1769,9 @@ class ForwardingRule(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

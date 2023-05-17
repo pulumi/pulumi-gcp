@@ -50,8 +50,16 @@ class InstanceArgs:
         :param pulumi.Input['InstanceBootDiskArgs'] boot_disk: The boot disk for the instance.
                Structure is documented below.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+               
+               [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
+               
+               - - -
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -77,6 +85,15 @@ class InstanceArgs:
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               
+               > Depending on the OS you choose for your instance, some metadata keys have
+               special functionality.  Most linux-based images will run the content of
+               `metadata.startup-script` in a shell on every boot.  At a minimum,
+               Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+               support this key.  Windows instances require other keys depending on the format
+               of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+               For the convenience of the users of `metadata.startup-script`,
+               we provide a special attribute, `metadata_startup_script`, which is documented below.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
                (thus re-running the script) if it is changed. This replaces the startup-script
@@ -189,6 +206,12 @@ class InstanceArgs:
     def machine_type(self) -> pulumi.Input[str]:
         """
         The machine type to create.
+
+        **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+
+        [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         """
         return pulumi.get(self, "machine_type")
 
@@ -202,6 +225,8 @@ class InstanceArgs:
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
+
+        - - -
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -370,6 +395,15 @@ class InstanceArgs:
         within the instance. Ssh keys attached in the Cloud Console will be removed.
         Add them to your config in order to keep them attached to your instance. A
         list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+
+        > Depending on the OS you choose for your instance, some metadata keys have
+        special functionality.  Most linux-based images will run the content of
+        `metadata.startup-script` in a shell on every boot.  At a minimum,
+        Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+        support this key.  Windows instances require other keys depending on the format
+        of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+        For the convenience of the users of `metadata.startup-script`,
+        we provide a special attribute, `metadata_startup_script`, which is documented below.
         """
         return pulumi.get(self, "metadata")
 
@@ -627,10 +661,25 @@ class _InstanceState:
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+               
+               [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               
+               > Depending on the OS you choose for your instance, some metadata keys have
+               special functionality.  Most linux-based images will run the content of
+               `metadata.startup-script` in a shell on every boot.  At a minimum,
+               Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+               support this key.  Windows instances require other keys depending on the format
+               of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+               For the convenience of the users of `metadata.startup-script`,
+               we provide a special attribute, `metadata_startup_script`, which is documented below.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
@@ -649,6 +698,8 @@ class _InstanceState:
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
+               
+               - - -
         :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -966,6 +1017,12 @@ class _InstanceState:
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
         The machine type to create.
+
+        **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+
+        [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         """
         return pulumi.get(self, "machine_type")
 
@@ -981,6 +1038,15 @@ class _InstanceState:
         within the instance. Ssh keys attached in the Cloud Console will be removed.
         Add them to your config in order to keep them attached to your instance. A
         list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+
+        > Depending on the OS you choose for your instance, some metadata keys have
+        special functionality.  Most linux-based images will run the content of
+        `metadata.startup-script` in a shell on every boot.  At a minimum,
+        Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+        support this key.  Windows instances require other keys depending on the format
+        of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+        For the convenience of the users of `metadata.startup-script`,
+        we provide a special attribute, `metadata_startup_script`, which is documented below.
         """
         return pulumi.get(self, "metadata")
 
@@ -1054,6 +1120,8 @@ class _InstanceState:
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
+
+        - - -
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1344,10 +1412,25 @@ class Instance(pulumi.CustomResource):
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+               
+               [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               
+               > Depending on the OS you choose for your instance, some metadata keys have
+               special functionality.  Most linux-based images will run the content of
+               `metadata.startup-script` in a shell on every boot.  At a minimum,
+               Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+               support this key.  Windows instances require other keys depending on the format
+               of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+               For the convenience of the users of `metadata.startup-script`,
+               we provide a special attribute, `metadata_startup_script`, which is documented below.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
                (thus re-running the script) if it is changed. This replaces the startup-script
@@ -1365,6 +1448,8 @@ class Instance(pulumi.CustomResource):
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1635,10 +1720,25 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+               
+               [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
                within the instance. Ssh keys attached in the Cloud Console will be removed.
                Add them to your config in order to keep them attached to your instance. A
                list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+               
+               > Depending on the OS you choose for your instance, some metadata keys have
+               special functionality.  Most linux-based images will run the content of
+               `metadata.startup-script` in a shell on every boot.  At a minimum,
+               Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+               support this key.  Windows instances require other keys depending on the format
+               of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+               For the convenience of the users of `metadata.startup-script`,
+               we provide a special attribute, `metadata_startup_script`, which is documented below.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
                startup-script metadata key, except this one forces the instance to be recreated
@@ -1657,6 +1757,8 @@ class Instance(pulumi.CustomResource):
                Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1875,6 +1977,12 @@ class Instance(pulumi.CustomResource):
     def machine_type(self) -> pulumi.Output[str]:
         """
         The machine type to create.
+
+        **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+
+        [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         """
         return pulumi.get(self, "machine_type")
 
@@ -1886,6 +1994,15 @@ class Instance(pulumi.CustomResource):
         within the instance. Ssh keys attached in the Cloud Console will be removed.
         Add them to your config in order to keep them attached to your instance. A
         list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+
+        > Depending on the OS you choose for your instance, some metadata keys have
+        special functionality.  Most linux-based images will run the content of
+        `metadata.startup-script` in a shell on every boot.  At a minimum,
+        Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+        support this key.  Windows instances require other keys depending on the format
+        of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+        For the convenience of the users of `metadata.startup-script`,
+        we provide a special attribute, `metadata_startup_script`, which is documented below.
         """
         return pulumi.get(self, "metadata")
 
@@ -1939,6 +2056,8 @@ class Instance(pulumi.CustomResource):
         """
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
+
+        - - -
         """
         return pulumi.get(self, "network_interfaces")
 

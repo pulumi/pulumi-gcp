@@ -155,6 +155,8 @@ type WorkerPool struct {
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrOutput `pulumi:"networkConfig"`
@@ -214,6 +216,8 @@ type workerPoolState struct {
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
@@ -242,6 +246,8 @@ type WorkerPoolState struct {
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// User-defined name of the `WorkerPool`.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
@@ -270,6 +276,8 @@ type workerPoolArgs struct {
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// User-defined name of the `WorkerPool`.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
@@ -289,6 +297,8 @@ type WorkerPoolArgs struct {
 	// The location for the resource
 	Location pulumi.StringInput
 	// User-defined name of the `WorkerPool`.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
@@ -412,6 +422,8 @@ func (o WorkerPoolOutput) Location() pulumi.StringOutput {
 }
 
 // User-defined name of the `WorkerPool`.
+//
+// ***
 func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

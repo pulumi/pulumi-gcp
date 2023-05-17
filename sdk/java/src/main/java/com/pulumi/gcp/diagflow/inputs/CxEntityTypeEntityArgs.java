@@ -20,6 +20,8 @@ public final class CxEntityTypeEntityArgs extends com.pulumi.resources.ResourceA
      * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
      * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
      * 
+     * ***
+     * 
      */
     @Import(name="synonyms")
     private @Nullable Output<List<String>> synonyms;
@@ -27,6 +29,8 @@ public final class CxEntityTypeEntityArgs extends com.pulumi.resources.ResourceA
     /**
      * @return A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
      * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+     * 
+     * ***
      * 
      */
     public Optional<Output<List<String>>> synonyms() {
@@ -81,6 +85,8 @@ public final class CxEntityTypeEntityArgs extends com.pulumi.resources.ResourceA
          * @param synonyms A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
          * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -93,6 +99,8 @@ public final class CxEntityTypeEntityArgs extends com.pulumi.resources.ResourceA
          * @param synonyms A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
          * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -103,6 +111,8 @@ public final class CxEntityTypeEntityArgs extends com.pulumi.resources.ResourceA
         /**
          * @param synonyms A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
          * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+         * 
+         * ***
          * 
          * @return builder
          * 

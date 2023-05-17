@@ -151,6 +151,8 @@ type Feature struct {
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The full, unique name of this Feature resource
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -205,6 +207,8 @@ type featureState struct {
 	// GCP labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// The full, unique name of this Feature resource
 	Name *string `pulumi:"name"`
@@ -228,6 +232,8 @@ type FeatureState struct {
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapInput
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// The full, unique name of this Feature resource
 	Name pulumi.StringPtrInput
@@ -251,6 +257,8 @@ type featureArgs struct {
 	// GCP labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The full, unique name of this Feature resource
 	Name *string `pulumi:"name"`
@@ -265,6 +273,8 @@ type FeatureArgs struct {
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapInput
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringInput
 	// The full, unique name of this Feature resource
 	Name pulumi.StringPtrInput
@@ -377,6 +387,8 @@ func (o FeatureOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location for the resource
+//
+// ***
 func (o FeatureOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

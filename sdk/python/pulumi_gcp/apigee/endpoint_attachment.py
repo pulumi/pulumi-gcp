@@ -21,6 +21,9 @@ class EndpointAttachmentArgs:
         """
         The set of arguments for constructing a EndpointAttachment resource.
         :param pulumi.Input[str] endpoint_attachment_id: ID of the endpoint attachment.
+               
+               
+               - - -
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
@@ -36,6 +39,9 @@ class EndpointAttachmentArgs:
     def endpoint_attachment_id(self) -> pulumi.Input[str]:
         """
         ID of the endpoint attachment.
+
+
+        - - -
         """
         return pulumi.get(self, "endpoint_attachment_id")
 
@@ -95,6 +101,9 @@ class _EndpointAttachmentState:
         Input properties used for looking up and filtering EndpointAttachment resources.
         :param pulumi.Input[str] connection_state: State of the endpoint attachment connection to the service attachment.
         :param pulumi.Input[str] endpoint_attachment_id: ID of the endpoint attachment.
+               
+               
+               - - -
         :param pulumi.Input[str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] name: Name of the Endpoint Attachment in the following format:
@@ -135,6 +144,9 @@ class _EndpointAttachmentState:
     def endpoint_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the endpoint attachment.
+
+
+        - - -
         """
         return pulumi.get(self, "endpoint_attachment_id")
 
@@ -269,6 +281,9 @@ class EndpointAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint_attachment_id: ID of the endpoint attachment.
+               
+               
+               - - -
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee instance,
                in the format `organizations/{{org_name}}`.
@@ -400,6 +415,9 @@ class EndpointAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_state: State of the endpoint attachment connection to the service attachment.
         :param pulumi.Input[str] endpoint_attachment_id: ID of the endpoint attachment.
+               
+               
+               - - -
         :param pulumi.Input[str] host: Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] name: Name of the Endpoint Attachment in the following format:
@@ -434,6 +452,9 @@ class EndpointAttachment(pulumi.CustomResource):
     def endpoint_attachment_id(self) -> pulumi.Output[str]:
         """
         ID of the endpoint attachment.
+
+
+        - - -
         """
         return pulumi.get(self, "endpoint_attachment_id")
 

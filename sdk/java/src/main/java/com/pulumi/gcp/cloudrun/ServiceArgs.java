@@ -67,6 +67,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * connections for the revision, use the &#34;run.googleapis.com/cloudsql-instances&#34;
      * annotation key.
      * Structure is documented below.
+     * 
      * (Optional)
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
@@ -85,6 +86,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * connections for the revision, use the &#34;run.googleapis.com/cloudsql-instances&#34;
      * annotation key.
      * Structure is documented below.
+     * 
      * (Optional)
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
@@ -262,6 +264,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * connections for the revision, use the &#34;run.googleapis.com/cloudsql-instances&#34;
          * annotation key.
          * Structure is documented below.
+         * 
          * (Optional)
          * Metadata associated with this Service, including name, namespace, labels,
          * and annotations.
@@ -284,6 +287,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * connections for the revision, use the &#34;run.googleapis.com/cloudsql-instances&#34;
          * annotation key.
          * Structure is documented below.
+         * 
          * (Optional)
          * Metadata associated with this Service, including name, namespace, labels,
          * and annotations.

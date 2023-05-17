@@ -19,12 +19,16 @@ public final class InstanceGroupNamedPortArgs extends com.pulumi.resources.Resou
     /**
      * The name of the instance group.
      * 
+     * ***
+     * 
      */
     @Import(name="group", required=true)
     private Output<String> group;
 
     /**
      * @return The name of the instance group.
+     * 
+     * ***
      * 
      */
     public Output<String> group() {
@@ -126,6 +130,8 @@ public final class InstanceGroupNamedPortArgs extends com.pulumi.resources.Resou
         /**
          * @param group The name of the instance group.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -136,6 +142,8 @@ public final class InstanceGroupNamedPortArgs extends com.pulumi.resources.Resou
 
         /**
          * @param group The name of the instance group.
+         * 
+         * ***
          * 
          * @return builder
          * 

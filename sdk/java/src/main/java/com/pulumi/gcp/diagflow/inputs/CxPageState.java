@@ -23,12 +23,16 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
     /**
      * The human-readable name of the page, unique within the agent.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The human-readable name of the page, unique within the agent.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -126,6 +130,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
     /**
      * (Output)
      * The unique identifier of this transition route.
+     * 
      * (Output)
      * The unique identifier of this event handler.
      * 
@@ -136,6 +141,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return (Output)
      * The unique identifier of this transition route.
+     * 
      * (Output)
      * The unique identifier of this event handler.
      * 
@@ -248,6 +254,8 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The human-readable name of the page, unique within the agent.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -258,6 +266,8 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The human-readable name of the page, unique within the agent.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -392,6 +402,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name (Output)
          * The unique identifier of this transition route.
+         * 
          * (Output)
          * The unique identifier of this event handler.
          * 
@@ -406,6 +417,7 @@ public final class CxPageState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name (Output)
          * The unique identifier of this transition route.
+         * 
          * (Output)
          * The unique identifier of this event handler.
          * 

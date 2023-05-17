@@ -635,12 +635,16 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
     /**
      * The location where the workstation cluster config should reside.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location where the workstation cluster config should reside.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

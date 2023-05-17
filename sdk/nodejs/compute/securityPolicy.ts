@@ -197,6 +197,8 @@ export class SecurityPolicy extends pulumi.CustomResource {
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * The name of the security policy.
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -294,6 +296,8 @@ export interface SecurityPolicyState {
     fingerprint?: pulumi.Input<string>;
     /**
      * The name of the security policy.
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -347,6 +351,8 @@ export interface SecurityPolicyArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the security policy.
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -47,6 +47,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
@@ -54,6 +56,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -99,6 +103,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
      * 
+     * If not provided, a random string starting with `tf-` will be selected.
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -107,6 +113,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
+     * 
+     * If not provided, a random string starting with `tf-` will be selected.
      * 
      */
     public Optional<Output<String>> name() {
@@ -246,6 +254,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param displayName The descriptive name for this instance as it appears in UIs. Must be
          * unique per project and between 4 and 30 characters in length.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -257,6 +267,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The descriptive name for this instance as it appears in UIs. Must be
          * unique per project and between 4 and 30 characters in length.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -316,6 +328,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * the instance is created. The name must be between 6 and 30 characters
          * in length.
          * 
+         * If not provided, a random string starting with `tf-` will be selected.
+         * 
          * @return builder
          * 
          */
@@ -328,6 +342,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param name A unique identifier for the instance, which cannot be changed after
          * the instance is created. The name must be between 6 and 30 characters
          * in length.
+         * 
+         * If not provided, a random string starting with `tf-` will be selected.
          * 
          * @return builder
          * 

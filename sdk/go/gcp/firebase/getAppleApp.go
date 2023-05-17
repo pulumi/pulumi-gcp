@@ -22,6 +22,8 @@ func LookupAppleApp(ctx *pulumi.Context, args *LookupAppleAppArgs, opts ...pulum
 // A collection of arguments for invoking getAppleApp.
 type LookupAppleAppArgs struct {
 	// The appId of name of the Firebase iosApp.
+	//
+	// ***
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -66,6 +68,8 @@ func LookupAppleAppOutput(ctx *pulumi.Context, args LookupAppleAppOutputArgs, op
 // A collection of arguments for invoking getAppleApp.
 type LookupAppleAppOutputArgs struct {
 	// The appId of name of the Firebase iosApp.
+	//
+	// ***
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

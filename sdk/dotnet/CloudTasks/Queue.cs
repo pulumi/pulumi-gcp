@@ -105,6 +105,9 @@ namespace Pulumi.Gcp.CloudTasks
 
         /// <summary>
         /// The location of the queue
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -205,6 +208,9 @@ namespace Pulumi.Gcp.CloudTasks
 
         /// <summary>
         /// The location of the queue
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -267,6 +273,9 @@ namespace Pulumi.Gcp.CloudTasks
 
         /// <summary>
         /// The location of the queue
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

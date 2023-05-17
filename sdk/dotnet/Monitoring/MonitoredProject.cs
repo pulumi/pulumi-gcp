@@ -69,6 +69,10 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -127,6 +131,10 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -153,6 +161,10 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

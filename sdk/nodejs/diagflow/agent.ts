@@ -154,6 +154,9 @@ export class Agent extends pulumi.CustomResource {
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
+     *
+     *
+     * - - -
      */
     public readonly timeZone!: pulumi.Output<string>;
 
@@ -293,6 +296,9 @@ export interface AgentState {
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
+     *
+     *
+     * - - -
      */
     timeZone?: pulumi.Input<string>;
 }
@@ -372,6 +378,9 @@ export interface AgentArgs {
     /**
      * The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
      * Europe/Paris.
+     *
+     *
+     * - - -
      */
     timeZone: pulumi.Input<string>;
 }

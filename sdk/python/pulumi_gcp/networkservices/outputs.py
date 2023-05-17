@@ -516,6 +516,8 @@ class EdgeCacheOriginTimeout(dict):
                Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
                The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
                If the response headers have already been written to the connection, the response will be truncated and logged.
+               
+               <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         :param str response_timeout: The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
                Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
                The responseTimeout starts after the connection has been established.
@@ -559,6 +561,8 @@ class EdgeCacheOriginTimeout(dict):
         Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
         The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
         If the response headers have already been written to the connection, the response will be truncated and logged.
+
+        <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         """
         return pulumi.get(self, "read_timeout")
 
@@ -2453,6 +2457,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
         :param str redirect_response_code: The HTTP Status code to use for this RedirectAction.
                The supported values are:
         :param bool strip_query: If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+               
+               - - -
         """
         if host_redirect is not None:
             pulumi.set(__self__, "host_redirect", host_redirect)
@@ -2517,6 +2523,8 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
     def strip_query(self) -> Optional[bool]:
         """
         If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+
+        - - -
         """
         return pulumi.get(self, "strip_query")
 
@@ -2781,6 +2789,8 @@ class HttpRouteRuleActionCorsPolicy(dict):
         :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
         :param bool disabled: If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+               
+               - - -
         :param Sequence[str] expose_headers: Specifies the content for Access-Control-Expose-Headers header.
         :param str max_age: Specifies how long result of a preflight request can be cached in seconds.
         """
@@ -2846,6 +2856,8 @@ class HttpRouteRuleActionCorsPolicy(dict):
     def disabled(self) -> Optional[bool]:
         """
         If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+
+        - - -
         """
         return pulumi.get(self, "disabled")
 
@@ -3909,6 +3921,8 @@ class TcpRouteRuleActionDestination(dict):
                If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
                If weights are specified for any one service name, they need to be specified for all of them.
                If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+               
+               - - -
         """
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
@@ -3931,6 +3945,8 @@ class TcpRouteRuleActionDestination(dict):
         If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
         If weights are specified for any one service name, they need to be specified for all of them.
         If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+
+        - - -
         """
         return pulumi.get(self, "weight")
 

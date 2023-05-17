@@ -137,6 +137,9 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
     /**
      * The network to which all network endpoints in the NEG belong.
      * Uses "default" project network if unspecified.
+     *
+     *
+     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -245,6 +248,9 @@ export interface NetworkEndpointGroupState {
     /**
      * The network to which all network endpoints in the NEG belong.
      * Uses "default" project network if unspecified.
+     *
+     *
+     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -310,6 +316,9 @@ export interface NetworkEndpointGroupArgs {
     /**
      * The network to which all network endpoints in the NEG belong.
      * Uses "default" project network if unspecified.
+     *
+     *
+     * - - -
      */
     network: pulumi.Input<string>;
     /**

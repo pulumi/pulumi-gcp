@@ -14,7 +14,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RouterStatusResult {
+    /**
+     * @return List of best `compute#routes` configurations for this router&#39;s network. See gcp.compute.Route resource for available attributes.
+     * 
+     */
     private List<RouterStatusBestRoute> bestRoutes;
+    /**
+     * @return List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
+     * 
+     */
     private List<RouterStatusBestRoutesForRouter> bestRoutesForRouters;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -32,9 +40,17 @@ public final class RouterStatusResult {
     private String region;
 
     private RouterStatusResult() {}
+    /**
+     * @return List of best `compute#routes` configurations for this router&#39;s network. See gcp.compute.Route resource for available attributes.
+     * 
+     */
     public List<RouterStatusBestRoute> bestRoutes() {
         return this.bestRoutes;
     }
+    /**
+     * @return List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
+     * 
+     */
     public List<RouterStatusBestRoutesForRouter> bestRoutesForRouters() {
         return this.bestRoutesForRouters;
     }

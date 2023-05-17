@@ -128,6 +128,8 @@ type InstanceFromMachineImage struct {
 	ShieldedInstanceConfig InstanceFromMachineImageShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of a machine
 	// image to create the instance based on.
+	//
+	// ***
 	SourceMachineImage pulumi.StringOutput `pulumi:"sourceMachineImage"`
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -135,6 +137,12 @@ type InstanceFromMachineImage struct {
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, most* arguments from `compute.Instance` are supported
+	// as a way to override the properties in the machine image. All exported attributes
+	// from `compute.Instance` are likewise exported here.
+	//
+	// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -245,6 +253,8 @@ type instanceFromMachineImageState struct {
 	ShieldedInstanceConfig *InstanceFromMachineImageShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of a machine
 	// image to create the instance based on.
+	//
+	// ***
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -252,6 +262,12 @@ type instanceFromMachineImageState struct {
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, most* arguments from `compute.Instance` are supported
+	// as a way to override the properties in the machine image. All exported attributes
+	// from `compute.Instance` are likewise exported here.
+	//
+	// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -331,6 +347,8 @@ type InstanceFromMachineImageState struct {
 	ShieldedInstanceConfig InstanceFromMachineImageShieldedInstanceConfigPtrInput
 	// Name or self link of a machine
 	// image to create the instance based on.
+	//
+	// ***
 	SourceMachineImage pulumi.StringPtrInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -338,6 +356,12 @@ type InstanceFromMachineImageState struct {
 	TagsFingerprint pulumi.StringPtrInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, most* arguments from `compute.Instance` are supported
+	// as a way to override the properties in the machine image. All exported attributes
+	// from `compute.Instance` are likewise exported here.
+	//
+	// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
 	Zone pulumi.StringPtrInput
 }
 
@@ -403,11 +427,19 @@ type instanceFromMachineImageArgs struct {
 	ShieldedInstanceConfig *InstanceFromMachineImageShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Name or self link of a machine
 	// image to create the instance based on.
+	//
+	// ***
 	SourceMachineImage string `pulumi:"sourceMachineImage"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, most* arguments from `compute.Instance` are supported
+	// as a way to override the properties in the machine image. All exported attributes
+	// from `compute.Instance` are likewise exported here.
+	//
+	// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -470,11 +502,19 @@ type InstanceFromMachineImageArgs struct {
 	ShieldedInstanceConfig InstanceFromMachineImageShieldedInstanceConfigPtrInput
 	// Name or self link of a machine
 	// image to create the instance based on.
+	//
+	// ***
 	SourceMachineImage pulumi.StringInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, most* arguments from `compute.Instance` are supported
+	// as a way to override the properties in the machine image. All exported attributes
+	// from `compute.Instance` are likewise exported here.
+	//
+	// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
 	Zone pulumi.StringPtrInput
 }
 
@@ -759,6 +799,8 @@ func (o InstanceFromMachineImageOutput) ShieldedInstanceConfig() InstanceFromMac
 
 // Name or self link of a machine
 // image to create the instance based on.
+//
+// ***
 func (o InstanceFromMachineImageOutput) SourceMachineImage() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.SourceMachineImage }).(pulumi.StringOutput)
 }
@@ -775,6 +817,12 @@ func (o InstanceFromMachineImageOutput) TagsFingerprint() pulumi.StringOutput {
 
 // The zone that the machine should be created in. If not
 // set, the provider zone is used.
+//
+// In addition to these, most* arguments from `compute.Instance` are supported
+// as a way to override the properties in the machine image. All exported attributes
+// from `compute.Instance` are likewise exported here.
+//
+// > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
 func (o InstanceFromMachineImageOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromMachineImage) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

@@ -31,6 +31,9 @@ class FhirStoreArgs:
         The set of arguments for constructing a FhirStore resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
+               
+               
+               - - -
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -107,6 +110,9 @@ class FhirStoreArgs:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
+
+
+        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -291,6 +297,9 @@ class _FhirStoreState:
         Input properties used for looking up and filtering FhirStore resources.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
+               
+               
+               - - -
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -371,6 +380,9 @@ class _FhirStoreState:
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
+
+
+        - - -
         """
         return pulumi.get(self, "dataset")
 
@@ -696,6 +708,9 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
+               
+               
+               - - -
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -957,6 +972,9 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
+               
+               
+               - - -
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -1030,6 +1048,9 @@ class FhirStore(pulumi.CustomResource):
         """
         Identifies the dataset addressed by this request. Must be in the format
         'projects/{project}/locations/{location}/datasets/{dataset}'
+
+
+        - - -
         """
         return pulumi.get(self, "dataset")
 

@@ -106,6 +106,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
+     * These are in the same namespace as the managed SSL certificates.
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -118,6 +120,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     * 
+     * These are in the same namespace as the managed SSL certificates.
      * 
      */
     public Optional<Output<String>> name() {
@@ -145,6 +149,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * ***
+     * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
@@ -152,6 +158,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
     /**
      * @return The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -361,6 +369,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
+         * These are in the same namespace as the managed SSL certificates.
+         * 
          * @return builder
          * 
          */
@@ -377,6 +387,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
          * first character must be a lowercase letter, and all following
          * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
+         * 
+         * These are in the same namespace as the managed SSL certificates.
          * 
          * @return builder
          * 
@@ -412,6 +424,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
          * @param privateKey The write-only private key in PEM format.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -423,6 +437,8 @@ public final class RegionSslCertificateState extends com.pulumi.resources.Resour
         /**
          * @param privateKey The write-only private key in PEM format.
          * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * ***
          * 
          * @return builder
          * 

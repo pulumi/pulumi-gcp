@@ -255,12 +255,16 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * URLs of the zones where the disk should be replicated to.
      * 
+     * ***
+     * 
      */
     @Import(name="replicaZones")
     private @Nullable Output<List<String>> replicaZones;
 
     /**
      * @return URLs of the zones where the disk should be replicated to.
+     * 
+     * ***
      * 
      */
     public Optional<Output<List<String>>> replicaZones() {
@@ -810,6 +814,8 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -821,6 +827,8 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -830,6 +838,8 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param replicaZones URLs of the zones where the disk should be replicated to.
+         * 
+         * ***
          * 
          * @return builder
          * 

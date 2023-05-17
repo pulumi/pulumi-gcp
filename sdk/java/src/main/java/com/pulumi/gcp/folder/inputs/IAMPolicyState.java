@@ -50,6 +50,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
      * 
+     * Changing this updates the policy.
+     * 
+     * Deleting this removes all policies from the folder, locking out users without
+     * folder-level access.
+     * 
      */
     @Import(name="policyData")
     private @Nullable Output<String> policyData;
@@ -58,6 +63,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
      * @return The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
+     * 
+     * Changing this updates the policy.
+     * 
+     * Deleting this removes all policies from the folder, locking out users without
+     * folder-level access.
      * 
      */
     public Optional<Output<String>> policyData() {
@@ -137,6 +147,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
          * the IAM policy that will be applied to the folder. The policy will be
          * merged with any existing policy applied to the folder.
          * 
+         * Changing this updates the policy.
+         * 
+         * Deleting this removes all policies from the folder, locking out users without
+         * folder-level access.
+         * 
          * @return builder
          * 
          */
@@ -149,6 +164,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
          * @param policyData The `gcp.organizations.getIAMPolicy` data source that represents
          * the IAM policy that will be applied to the folder. The policy will be
          * merged with any existing policy applied to the folder.
+         * 
+         * Changing this updates the policy.
+         * 
+         * Deleting this removes all policies from the folder, locking out users without
+         * folder-level access.
          * 
          * @return builder
          * 

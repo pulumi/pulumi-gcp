@@ -86,12 +86,16 @@ public class KeystoresAliasesPkcs12 extends com.pulumi.resources.CustomResource 
     /**
      * PKCS12 file content
      * 
+     * ***
+     * 
      */
     @Export(name="file", type=String.class, parameters={})
     private Output<String> file;
 
     /**
      * @return PKCS12 file content
+     * 
+     * ***
      * 
      */
     public Output<String> file() {

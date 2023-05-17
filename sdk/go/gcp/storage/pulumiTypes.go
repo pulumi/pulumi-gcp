@@ -412,6 +412,17 @@ type BucketEncryption struct {
 	// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 	// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 	// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+	//
+	// > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+	// specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+	// project to use the specified key for encryption and decryption operations.
+	// Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+	// until a relevant action has occurred which triggers its creation.
+	// You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+	// address for the service account when configuring IAM policy on the Cloud KMS key.
+	// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+	// state of the project.
+	// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
 }
 
@@ -430,6 +441,17 @@ type BucketEncryptionArgs struct {
 	// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 	// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 	// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+	//
+	// > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+	// specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+	// project to use the specified key for encryption and decryption operations.
+	// Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+	// until a relevant action has occurred which triggers its creation.
+	// You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+	// address for the service account when configuring IAM policy on the Cloud KMS key.
+	// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+	// state of the project.
+	// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
 }
 
@@ -513,6 +535,17 @@ func (o BucketEncryptionOutput) ToBucketEncryptionPtrOutputWithContext(ctx conte
 // The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 // You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 // See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+//
+// > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+// specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+// project to use the specified key for encryption and decryption operations.
+// Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+// until a relevant action has occurred which triggers its creation.
+// You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+// address for the service account when configuring IAM policy on the Cloud KMS key.
+// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+// state of the project.
+// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 func (o BucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
@@ -544,6 +577,17 @@ func (o BucketEncryptionPtrOutput) Elem() BucketEncryptionOutput {
 // The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
 // You must pay attention to whether the crypto key is available in the location that this bucket is created in.
 // See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+//
+// > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+// specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+// project to use the specified key for encryption and decryption operations.
+// Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+// until a relevant action has occurred which triggers its creation.
+// You should use the [`storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+// address for the service account when configuring IAM policy on the Cloud KMS key.
+// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+// state of the project.
+// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
 func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketEncryption) *string {
 		if v == nil {
@@ -555,6 +599,10 @@ func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 
 type BucketIAMBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -575,6 +623,10 @@ type BucketIAMBindingConditionInput interface {
 
 type BucketIAMBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -660,6 +712,10 @@ func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutputWit
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -699,6 +755,10 @@ func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutp
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
 		if v == nil {
@@ -730,6 +790,10 @@ func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type BucketIAMMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -750,6 +814,10 @@ type BucketIAMMemberConditionInput interface {
 
 type BucketIAMMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -835,6 +903,10 @@ func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutputWithC
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -874,6 +946,10 @@ func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o BucketIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {
 		if v == nil {
@@ -2711,6 +2787,8 @@ func (o TransferJobSchedulePtrOutput) StartTimeOfDay() TransferJobScheduleStartT
 
 type TransferJobScheduleScheduleEndDate struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	//
+	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day int `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month int `pulumi:"month"`
@@ -2731,6 +2809,8 @@ type TransferJobScheduleScheduleEndDateInput interface {
 
 type TransferJobScheduleScheduleEndDateArgs struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	//
+	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day pulumi.IntInput `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month pulumi.IntInput `pulumi:"month"`
@@ -2816,6 +2896,8 @@ func (o TransferJobScheduleScheduleEndDateOutput) ToTransferJobScheduleScheduleE
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
+//
+// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleEndDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleEndDate) int { return v.Day }).(pulumi.IntOutput)
 }
@@ -2855,6 +2937,8 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) Elem() TransferJobScheduleS
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
+//
+// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleEndDatePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TransferJobScheduleScheduleEndDate) *int {
 		if v == nil {
@@ -2886,6 +2970,8 @@ func (o TransferJobScheduleScheduleEndDatePtrOutput) Year() pulumi.IntPtrOutput 
 
 type TransferJobScheduleScheduleStartDate struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	//
+	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day int `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month int `pulumi:"month"`
@@ -2906,6 +2992,8 @@ type TransferJobScheduleScheduleStartDateInput interface {
 
 type TransferJobScheduleScheduleStartDateArgs struct {
 	// Day of month. Must be from 1 to 31 and valid for the year and month.
+	//
+	// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 	Day pulumi.IntInput `pulumi:"day"`
 	// Month of year. Must be from 1 to 12.
 	Month pulumi.IntInput `pulumi:"month"`
@@ -2991,6 +3079,8 @@ func (o TransferJobScheduleScheduleStartDateOutput) ToTransferJobScheduleSchedul
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
+//
+// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleStartDateOutput) Day() pulumi.IntOutput {
 	return o.ApplyT(func(v TransferJobScheduleScheduleStartDate) int { return v.Day }).(pulumi.IntOutput)
 }
@@ -3030,6 +3120,8 @@ func (o TransferJobScheduleScheduleStartDatePtrOutput) Elem() TransferJobSchedul
 }
 
 // Day of month. Must be from 1 to 31 and valid for the year and month.
+//
+// <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
 func (o TransferJobScheduleScheduleStartDatePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TransferJobScheduleScheduleStartDate) *int {
 		if v == nil {
@@ -4113,6 +4205,8 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) StorageAccou
 
 type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials struct {
 	// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	//
+	// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 	SasToken string `pulumi:"sasToken"`
 }
 
@@ -4129,6 +4223,8 @@ type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsInput inte
 
 type TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs struct {
 	// Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+	//
+	// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 	SasToken pulumi.StringInput `pulumi:"sasToken"`
 }
 
@@ -4210,6 +4306,8 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput)
 }
 
 // Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+//
+// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) string { return v.SasToken }).(pulumi.StringOutput)
 }
@@ -4239,6 +4337,8 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutp
 }
 
 // Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+//
+// <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials) *string {
 		if v == nil {
@@ -5068,6 +5168,8 @@ func (o TransferJobTransferSpecPosixDataSinkPtrOutput) RootDirectory() pulumi.St
 
 type TransferJobTransferSpecPosixDataSource struct {
 	// Root directory path to the filesystem.
+	//
+	// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 	RootDirectory string `pulumi:"rootDirectory"`
 }
 
@@ -5084,6 +5186,8 @@ type TransferJobTransferSpecPosixDataSourceInput interface {
 
 type TransferJobTransferSpecPosixDataSourceArgs struct {
 	// Root directory path to the filesystem.
+	//
+	// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 	RootDirectory pulumi.StringInput `pulumi:"rootDirectory"`
 }
 
@@ -5165,6 +5269,8 @@ func (o TransferJobTransferSpecPosixDataSourceOutput) ToTransferJobTransferSpecP
 }
 
 // Root directory path to the filesystem.
+//
+// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 func (o TransferJobTransferSpecPosixDataSourceOutput) RootDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecPosixDataSource) string { return v.RootDirectory }).(pulumi.StringOutput)
 }
@@ -5194,6 +5300,8 @@ func (o TransferJobTransferSpecPosixDataSourcePtrOutput) Elem() TransferJobTrans
 }
 
 // Root directory path to the filesystem.
+//
+// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 func (o TransferJobTransferSpecPosixDataSourcePtrOutput) RootDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecPosixDataSource) *string {
 		if v == nil {

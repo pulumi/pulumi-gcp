@@ -38,6 +38,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
     /**
      * A description of the rule.
+     * 
      * (Optional)
      * A description of the rule.
      * 
@@ -47,6 +48,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
     /**
      * @return A description of the rule.
+     * 
      * (Optional)
      * A description of the rule.
      * 
@@ -253,6 +255,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
         /**
          * @param description A description of the rule.
+         * 
          * (Optional)
          * A description of the rule.
          * 
@@ -266,6 +269,7 @@ public final class OrganizationSecurityPolicyRuleState extends com.pulumi.resour
 
         /**
          * @param description A description of the rule.
+         * 
          * (Optional)
          * A description of the rule.
          * 

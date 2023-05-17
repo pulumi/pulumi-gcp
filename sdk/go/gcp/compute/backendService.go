@@ -275,6 +275,8 @@ type BackendService struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the loadBalancingScheme is set
@@ -431,6 +433,8 @@ type backendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the loadBalancingScheme is set
@@ -559,6 +563,8 @@ type BackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the loadBalancingScheme is set
@@ -684,6 +690,8 @@ type backendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the loadBalancingScheme is set
@@ -804,6 +812,8 @@ type BackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Settings controlling eviction of unhealthy hosts from the load balancing pool.
 	// This field is applicable only when the loadBalancingScheme is set
@@ -1079,6 +1089,8 @@ func (o BackendServiceOutput) LogConfig() BackendServiceLogConfigOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
+//
+// ***
 func (o BackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

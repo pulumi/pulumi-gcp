@@ -237,6 +237,9 @@ export class Subnetwork extends pulumi.CustomResource {
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
+     *
+     *
+     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -427,6 +430,9 @@ export interface SubnetworkState {
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
+     *
+     *
+     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -528,6 +534,9 @@ export interface SubnetworkArgs {
     /**
      * The network this subnet belongs to.
      * Only networks that are in the distributed mode can have subnetworks.
+     *
+     *
+     * - - -
      */
     network: pulumi.Input<string>;
     /**

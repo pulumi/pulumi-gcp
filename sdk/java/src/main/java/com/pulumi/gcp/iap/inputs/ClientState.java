@@ -20,6 +20,8 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
      * 
+     * ***
+     * 
      */
     @Import(name="brand")
     private @Nullable Output<String> brand;
@@ -28,6 +30,8 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
      * @return Identifier of the brand to which this client
      * is attached to. The format is
      * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> brand() {
@@ -113,6 +117,8 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          * is attached to. The format is
          * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -125,6 +131,8 @@ public final class ClientState extends com.pulumi.resources.ResourceArgs {
          * @param brand Identifier of the brand to which this client
          * is attached to. The format is
          * `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+         * 
+         * ***
          * 
          * @return builder
          * 

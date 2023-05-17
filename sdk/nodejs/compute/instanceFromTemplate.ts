@@ -223,6 +223,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
+     *
+     * - - -
      */
     public readonly sourceInstanceTemplate!: pulumi.Output<string>;
     /**
@@ -236,6 +238,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     *
+     * In addition to these, all arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the template. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -484,6 +490,8 @@ export interface InstanceFromTemplateState {
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
+     *
+     * - - -
      */
     sourceInstanceTemplate?: pulumi.Input<string>;
     /**
@@ -497,6 +505,10 @@ export interface InstanceFromTemplateState {
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     *
+     * In addition to these, all arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the template. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
      */
     zone?: pulumi.Input<string>;
 }
@@ -624,6 +636,8 @@ export interface InstanceFromTemplateArgs {
      * Name or self link of an instance
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
+     *
+     * - - -
      */
     sourceInstanceTemplate: pulumi.Input<string>;
     /**
@@ -633,6 +647,10 @@ export interface InstanceFromTemplateArgs {
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     *
+     * In addition to these, all arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the template. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
      */
     zone?: pulumi.Input<string>;
 }

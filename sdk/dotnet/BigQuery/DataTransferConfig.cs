@@ -10,6 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
+    /// Represents a data transfer configuration. A transfer configuration
+    /// contains all metadata needed to perform a data transfer.
+    /// 
+    /// To get more information about Config, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+    /// 
+    /// &gt; **Warning:** All arguments including the following potentially sensitive
+    /// values will be stored in the raw state as plain text: `sensitive_params.secret_access_key`.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// ### Bigquerydatatransfer Config Scheduled Query
     /// 
@@ -145,11 +158,13 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string?> NotificationPubsubTopic { get; private set; } = null!;
 
         /// <summary>
-        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-        /// for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-        /// parameter that cannot be updated (due to api limitations) [please force recreation of the
-        /// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("params")]
         public Output<ImmutableDictionary<string, string>> Params { get; private set; } = null!;
@@ -307,11 +322,13 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _params;
 
         /// <summary>
-        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-        /// for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-        /// parameter that cannot be updated (due to api limitations) [please force recreation of the
-        /// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         public InputMap<string> Params
         {
@@ -443,11 +460,13 @@ namespace Pulumi.Gcp.BigQuery
         private InputMap<string>? _params;
 
         /// <summary>
-        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-        /// for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-        /// parameter that cannot be updated (due to api limitations) [please force recreation of the
-        /// resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        /// **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         public InputMap<string> Params
         {

@@ -130,6 +130,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// User-provided metadata, in key/value pairs.
+        /// 
+        /// One of the following is required:
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
@@ -156,6 +158,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// A path to the data you want to upload. Must be defined
         /// if `content` is not.
+        /// 
+        /// - - -
         /// </summary>
         [Output("source")]
         public Output<AssetOrArchive?> Source { get; private set; } = null!;
@@ -315,6 +319,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// User-provided metadata, in key/value pairs.
+        /// 
+        /// One of the following is required:
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -331,6 +337,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// A path to the data you want to upload. Must be defined
         /// if `content` is not.
+        /// 
+        /// - - -
         /// </summary>
         [Input("source")]
         public Input<AssetOrArchive>? Source { get; set; }
@@ -465,6 +473,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// User-provided metadata, in key/value pairs.
+        /// 
+        /// One of the following is required:
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -494,6 +504,8 @@ namespace Pulumi.Gcp.Storage
         /// <summary>
         /// A path to the data you want to upload. Must be defined
         /// if `content` is not.
+        /// 
+        /// - - -
         /// </summary>
         [Input("source")]
         public Input<AssetOrArchive>? Source { get; set; }

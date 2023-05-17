@@ -114,6 +114,8 @@ namespace Pulumi.Gcp.Compute
         /// the corresponding image. If `family` is specified, it will return the latest image
         /// that is part of an image family and is not deprecated. If you specify `filter`, your
         /// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -149,6 +151,8 @@ namespace Pulumi.Gcp.Compute
         /// the corresponding image. If `family` is specified, it will return the latest image
         /// that is part of an image family and is not deprecated. If you specify `filter`, your
         /// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

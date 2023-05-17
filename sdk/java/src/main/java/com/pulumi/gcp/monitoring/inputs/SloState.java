@@ -182,12 +182,16 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
     /**
      * ID of the service to which this SLO belongs.
      * 
+     * ***
+     * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
      * @return ID of the service to which this SLO belongs.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> service() {
@@ -507,6 +511,8 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param service ID of the service to which this SLO belongs.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -517,6 +523,8 @@ public final class SloState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param service ID of the service to which this SLO belongs.
+         * 
+         * ***
          * 
          * @return builder
          * 

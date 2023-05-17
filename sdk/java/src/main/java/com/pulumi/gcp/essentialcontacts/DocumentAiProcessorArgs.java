@@ -48,12 +48,16 @@ public final class DocumentAiProcessorArgs extends com.pulumi.resources.Resource
     /**
      * The location of the resource.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location of the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -165,6 +169,8 @@ public final class DocumentAiProcessorArgs extends com.pulumi.resources.Resource
         /**
          * @param location The location of the resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -175,6 +181,8 @@ public final class DocumentAiProcessorArgs extends com.pulumi.resources.Resource
 
         /**
          * @param location The location of the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

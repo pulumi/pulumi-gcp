@@ -56,6 +56,8 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      * 
+     * ***
+     * 
      */
     @Export(name="envId", type=String.class, parameters={})
     private Output<String> envId;
@@ -63,6 +65,8 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+     * 
+     * ***
      * 
      */
     public Output<String> envId() {

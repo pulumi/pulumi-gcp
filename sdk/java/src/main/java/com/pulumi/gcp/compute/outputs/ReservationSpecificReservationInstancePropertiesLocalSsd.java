@@ -15,6 +15,8 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsd {
     /**
      * @return The size of the disk in base-2 GB.
      * 
+     * ***
+     * 
      */
     private Integer diskSizeGb;
     /**
@@ -28,6 +30,8 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsd {
     private ReservationSpecificReservationInstancePropertiesLocalSsd() {}
     /**
      * @return The size of the disk in base-2 GB.
+     * 
+     * ***
      * 
      */
     public Integer diskSizeGb() {

@@ -28,6 +28,10 @@ class RouterInterfaceArgs:
         The set of arguments for constructing a RouterInterface resource.
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
+               
+               In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+               
+               - - -
         :param pulumi.Input[str] interconnect_attachment: The name or resource link to the
                VLAN interconnect for this interface. Changing this forces a new interface to
                be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -75,6 +79,10 @@ class RouterInterfaceArgs:
         """
         The name of the router this interface will be attached to.
         Changing this forces a new interface to be created.
+
+        In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+
+        - - -
         """
         return pulumi.get(self, "router")
 
@@ -234,6 +242,10 @@ class _RouterInterfaceState:
                If not specified, the project region will be used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
+               
+               In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+               
+               - - -
         :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface
                belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
@@ -359,6 +371,10 @@ class _RouterInterfaceState:
         """
         The name of the router this interface will be attached to.
         Changing this forces a new interface to be created.
+
+        In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+
+        - - -
         """
         return pulumi.get(self, "router")
 
@@ -456,6 +472,10 @@ class RouterInterface(pulumi.CustomResource):
                If not specified, the project region will be used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
+               
+               In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+               
+               - - -
         :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface
                belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
@@ -585,6 +605,10 @@ class RouterInterface(pulumi.CustomResource):
                If not specified, the project region will be used. Changing this forces a new interface to be created.
         :param pulumi.Input[str] router: The name of the router this interface will be attached to.
                Changing this forces a new interface to be created.
+               
+               In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+               
+               - - -
         :param pulumi.Input[str] subnetwork: The URI of the subnetwork resource that this interface
                belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[str] vpn_tunnel: The name or resource link to the VPN tunnel this
@@ -677,6 +701,10 @@ class RouterInterface(pulumi.CustomResource):
         """
         The name of the router this interface will be attached to.
         Changing this forces a new interface to be created.
+
+        In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+
+        - - -
         """
         return pulumi.get(self, "router")
 

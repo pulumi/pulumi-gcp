@@ -61,6 +61,9 @@ export class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     public readonly alias!: pulumi.Output<string>;
     /**
      * Cert content
+     *
+     *
+     * - - -
      */
     public readonly cert!: pulumi.Output<string>;
     /**
@@ -159,6 +162,9 @@ export interface KeystoresAliasesKeyCertFileState {
     alias?: pulumi.Input<string>;
     /**
      * Cert content
+     *
+     *
+     * - - -
      */
     cert?: pulumi.Input<string>;
     /**
@@ -202,6 +208,9 @@ export interface KeystoresAliasesKeyCertFileArgs {
     alias: pulumi.Input<string>;
     /**
      * Cert content
+     *
+     *
+     * - - -
      */
     cert: pulumi.Input<string>;
     /**

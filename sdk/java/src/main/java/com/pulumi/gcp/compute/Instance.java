@@ -382,12 +382,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The machine type to create.
      * 
+     * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+     * 
+     * [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * 
+     * There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
+     * 
      */
     @Export(name="machineType", type=String.class, parameters={})
     private Output<String> machineType;
 
     /**
      * @return The machine type to create.
+     * 
+     * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+     * 
+     * [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * 
+     * There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      * 
      */
     public Output<String> machineType() {
@@ -399,6 +411,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Add them to your config in order to keep them attached to your instance. A
      * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
      * 
+     * &gt; Depending on the OS you choose for your instance, some metadata keys have
+     * special functionality.  Most linux-based images will run the content of
+     * `metadata.startup-script` in a shell on every boot.  At a minimum,
+     * Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+     * support this key.  Windows instances require other keys depending on the format
+     * of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+     * For the convenience of the users of `metadata.startup-script`,
+     * we provide a special attribute, `metadata_startup_script`, which is documented below.
+     * 
      */
     @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> metadata;
@@ -408,6 +429,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * within the instance. Ssh keys attached in the Cloud Console will be removed.
      * Add them to your config in order to keep them attached to your instance. A
      * list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+     * 
+     * &gt; Depending on the OS you choose for your instance, some metadata keys have
+     * special functionality.  Most linux-based images will run the content of
+     * `metadata.startup-script` in a shell on every boot.  At a minimum,
+     * Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+     * support this key.  Windows instances require other keys depending on the format
+     * of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+     * For the convenience of the users of `metadata.startup-script`,
+     * we provide a special attribute, `metadata_startup_script`, which is documented below.
      * 
      */
     public Output<Optional<Map<String,String>>> metadata() {
@@ -497,6 +527,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      * 
+     * ***
+     * 
      */
     @Export(name="networkInterfaces", type=List.class, parameters={InstanceNetworkInterface.class})
     private Output<List<InstanceNetworkInterface>> networkInterfaces;
@@ -504,6 +536,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
+     * 
+     * ***
      * 
      */
     public Output<List<InstanceNetworkInterface>> networkInterfaces() {

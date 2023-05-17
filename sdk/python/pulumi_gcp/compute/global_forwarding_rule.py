@@ -36,6 +36,9 @@ class GlobalForwardingRuleArgs:
                are valid.
                For global address with a purpose of PRIVATE_SERVICE_CONNECT and
                addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[str] ip_address: The IP address that this forwarding rule serves. When a client sends
@@ -151,6 +154,9 @@ class GlobalForwardingRuleArgs:
         are valid.
         For global address with a purpose of PRIVATE_SERVICE_CONNECT and
         addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+
+
+        - - -
         """
         return pulumi.get(self, "target")
 
@@ -472,6 +478,9 @@ class _GlobalForwardingRuleState:
                are valid.
                For global address with a purpose of PRIVATE_SERVICE_CONNECT and
                addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+               
+               
+               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -766,6 +775,9 @@ class _GlobalForwardingRuleState:
         are valid.
         For global address with a purpose of PRIVATE_SERVICE_CONNECT and
         addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+
+
+        - - -
         """
         return pulumi.get(self, "target")
 
@@ -973,6 +985,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                are valid.
                For global address with a purpose of PRIVATE_SERVICE_CONNECT and
                addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -1251,6 +1266,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                are valid.
                For global address with a purpose of PRIVATE_SERVICE_CONNECT and
                addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1474,6 +1492,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
         are valid.
         For global address with a purpose of PRIVATE_SERVICE_CONNECT and
         addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+
+
+        - - -
         """
         return pulumi.get(self, "target")
 

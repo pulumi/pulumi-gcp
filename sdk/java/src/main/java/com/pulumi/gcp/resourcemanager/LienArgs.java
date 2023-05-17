@@ -78,6 +78,8 @@ public final class LienArgs extends com.pulumi.resources.ResourceArgs {
      * list is meaningless and will be rejected.
      * e.g. [&#39;resourcemanager.projects.delete&#39;]
      * 
+     * ***
+     * 
      */
     @Import(name="restrictions", required=true)
     private Output<List<String>> restrictions;
@@ -88,6 +90,8 @@ public final class LienArgs extends com.pulumi.resources.ResourceArgs {
      * the permissions against those for which Liens are supported.  An empty
      * list is meaningless and will be rejected.
      * e.g. [&#39;resourcemanager.projects.delete&#39;]
+     * 
+     * ***
      * 
      */
     public Output<List<String>> restrictions() {
@@ -203,6 +207,8 @@ public final class LienArgs extends com.pulumi.resources.ResourceArgs {
          * list is meaningless and will be rejected.
          * e.g. [&#39;resourcemanager.projects.delete&#39;]
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -218,6 +224,8 @@ public final class LienArgs extends com.pulumi.resources.ResourceArgs {
          * list is meaningless and will be rejected.
          * e.g. [&#39;resourcemanager.projects.delete&#39;]
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -231,6 +239,8 @@ public final class LienArgs extends com.pulumi.resources.ResourceArgs {
          * the permissions against those for which Liens are supported.  An empty
          * list is meaningless and will be rejected.
          * e.g. [&#39;resourcemanager.projects.delete&#39;]
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -62,6 +62,8 @@ type Config struct {
 	// config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the runtime config.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -101,6 +103,8 @@ type configState struct {
 	// config.
 	Description *string `pulumi:"description"`
 	// The name of the runtime config.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -112,6 +116,8 @@ type ConfigState struct {
 	// config.
 	Description pulumi.StringPtrInput
 	// The name of the runtime config.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -127,6 +133,8 @@ type configArgs struct {
 	// config.
 	Description *string `pulumi:"description"`
 	// The name of the runtime config.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -139,6 +147,8 @@ type ConfigArgs struct {
 	// config.
 	Description pulumi.StringPtrInput
 	// The name of the runtime config.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -239,6 +249,8 @@ func (o ConfigOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The name of the runtime config.
+//
+// ***
 func (o ConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

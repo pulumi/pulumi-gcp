@@ -17,12 +17,16 @@ public final class GetGlobalAddressPlainArgs extends com.pulumi.resources.Invoke
     /**
      * A unique name for the resource, required by GCE.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return A unique name for the resource, required by GCE.
+     * 
+     * ***
      * 
      */
     public String name() {
@@ -73,6 +77,8 @@ public final class GetGlobalAddressPlainArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param name A unique name for the resource, required by GCE.
+         * 
+         * ***
          * 
          * @return builder
          * 

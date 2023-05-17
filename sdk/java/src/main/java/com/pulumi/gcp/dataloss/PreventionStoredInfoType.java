@@ -261,6 +261,8 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
+     * ***
+     * 
      */
     @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
@@ -271,6 +273,8 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {

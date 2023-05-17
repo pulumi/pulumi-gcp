@@ -169,12 +169,16 @@ public class Document extends com.pulumi.resources.CustomResource {
     /**
      * The client-assigned document ID to use for this document during creation.
      * 
+     * ***
+     * 
      */
     @Export(name="documentId", type=String.class, parameters={})
     private Output<String> documentId;
 
     /**
      * @return The client-assigned document ID to use for this document during creation.
+     * 
+     * ***
      * 
      */
     public Output<String> documentId() {

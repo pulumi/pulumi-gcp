@@ -346,12 +346,16 @@ public class Target extends com.pulumi.resources.CustomResource {
     /**
      * Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

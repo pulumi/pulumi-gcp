@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Firebaserules.Outputs
         public readonly string? Fingerprint;
         /// <summary>
         /// File name.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Name;
 

@@ -109,6 +109,9 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the database on.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -228,6 +231,9 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the database on.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -303,6 +309,9 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The instance to create the database on.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

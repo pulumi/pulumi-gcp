@@ -24,12 +24,16 @@ public final class ApiConfigState extends com.pulumi.resources.ResourceArgs {
     /**
      * The API to attach the config to.
      * 
+     * ***
+     * 
      */
     @Import(name="api")
     private @Nullable Output<String> api;
 
     /**
      * @return The API to attach the config to.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> api() {
@@ -255,6 +259,8 @@ public final class ApiConfigState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param api The API to attach the config to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -265,6 +271,8 @@ public final class ApiConfigState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param api The API to attach the config to.
+         * 
+         * ***
          * 
          * @return builder
          * 

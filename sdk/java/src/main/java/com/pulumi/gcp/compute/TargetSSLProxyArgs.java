@@ -19,12 +19,16 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * A reference to the BackendService resource.
      * 
+     * ***
+     * 
      */
     @Import(name="backendService", required=true)
     private Output<String> backendService;
 
     /**
      * @return A reference to the BackendService resource.
+     * 
+     * ***
      * 
      */
     public Output<String> backendService() {
@@ -202,6 +206,8 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param backendService A reference to the BackendService resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -212,6 +218,8 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param backendService A reference to the BackendService resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

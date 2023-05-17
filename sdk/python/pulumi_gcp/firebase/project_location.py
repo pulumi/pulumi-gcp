@@ -20,6 +20,9 @@ class ProjectLocationArgs:
         The set of arguments for constructing a ProjectLocation resource.
         :param pulumi.Input[str] location_id: The ID of the default GCP resource location for the Project. The location must be one of the available GCP
                resource locations.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -33,6 +36,9 @@ class ProjectLocationArgs:
         """
         The ID of the default GCP resource location for the Project. The location must be one of the available GCP
         resource locations.
+
+
+        - - -
         """
         return pulumi.get(self, "location_id")
 
@@ -63,6 +69,9 @@ class _ProjectLocationState:
         Input properties used for looking up and filtering ProjectLocation resources.
         :param pulumi.Input[str] location_id: The ID of the default GCP resource location for the Project. The location must be one of the available GCP
                resource locations.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -77,6 +86,9 @@ class _ProjectLocationState:
         """
         The ID of the default GCP resource location for the Project. The location must be one of the available GCP
         resource locations.
+
+
+        - - -
         """
         return pulumi.get(self, "location_id")
 
@@ -160,6 +172,9 @@ class ProjectLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location_id: The ID of the default GCP resource location for the Project. The location must be one of the available GCP
                resource locations.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -270,6 +285,9 @@ class ProjectLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location_id: The ID of the default GCP resource location for the Project. The location must be one of the available GCP
                resource locations.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -287,6 +305,9 @@ class ProjectLocation(pulumi.CustomResource):
         """
         The ID of the default GCP resource location for the Project. The location must be one of the available GCP
         resource locations.
+
+
+        - - -
         """
         return pulumi.get(self, "location_id")
 

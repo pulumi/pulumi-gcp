@@ -66,12 +66,16 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     /**
      * Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -251,6 +255,8 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -261,6 +267,8 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -22,6 +22,8 @@ public final class TenantInboundSamlConfigSpConfig {
      * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_sp_certificates&#34;&gt;&lt;/a&gt;The `sp_certificates` block contains:
+     * 
      */
     private @Nullable List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates;
     /**
@@ -42,6 +44,8 @@ public final class TenantInboundSamlConfigSpConfig {
      * @return (Output)
      * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_sp_certificates&#34;&gt;&lt;/a&gt;The `sp_certificates` block contains:
      * 
      */
     public List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates() {

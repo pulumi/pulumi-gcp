@@ -26,6 +26,9 @@ class DeviceArgs:
         """
         The set of arguments for constructing a Device resource.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
+               
+               
+               - - -
         :param pulumi.Input[bool] blocked: If a device is blocked, connections or requests from this device will fail.
         :param pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]] credentials: The credentials used to authenticate this device.
                Structure is documented below.
@@ -55,6 +58,9 @@ class DeviceArgs:
     def registry(self) -> pulumi.Input[str]:
         """
         The name of the device registry where this device should be created.
+
+
+        - - -
         """
         return pulumi.get(self, "registry")
 
@@ -182,6 +188,9 @@ class _DeviceState:
         :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device.
                This is a more compact way to identify devices, and it is globally unique.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input['DeviceStateArgs']]] states: The state most recently received from the device.
                Structure is documented below.
         """
@@ -411,6 +420,9 @@ class _DeviceState:
     def registry(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the device registry where this device should be created.
+
+
+        - - -
         """
         return pulumi.get(self, "registry")
 
@@ -509,6 +521,9 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs assigned to the device.
         :param pulumi.Input[str] name: A unique name for the resource.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -674,6 +689,9 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] num_id: A server-defined unique numeric ID for the device.
                This is a more compact way to identify devices, and it is globally unique.
         :param pulumi.Input[str] registry: The name of the device registry where this device should be created.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceStateArgs']]]] states: The state most recently received from the device.
                Structure is documented below.
         """
@@ -831,6 +849,9 @@ class Device(pulumi.CustomResource):
     def registry(self) -> pulumi.Output[str]:
         """
         The name of the device registry where this device should be created.
+
+
+        - - -
         """
         return pulumi.get(self, "registry")
 

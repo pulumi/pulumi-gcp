@@ -168,6 +168,7 @@ type AwsCluster struct {
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingOutput `pulumi:"networking"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -257,6 +258,7 @@ type awsClusterState struct {
 	// Cluster-wide networking configuration.
 	Networking *AwsClusterNetworking `pulumi:"networking"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -300,6 +302,7 @@ type AwsClusterState struct {
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingPtrInput
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -341,6 +344,7 @@ type awsClusterArgs struct {
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworking `pulumi:"networking"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -369,6 +373,7 @@ type AwsClusterArgs struct {
 	// Cluster-wide networking configuration.
 	Networking AwsClusterNetworkingInput
 	// The number of the Fleet host project where this cluster will be registered.
+	//
 	// (Optional)
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -527,6 +532,7 @@ func (o AwsClusterOutput) Networking() AwsClusterNetworkingOutput {
 }
 
 // The number of the Fleet host project where this cluster will be registered.
+//
 // (Optional)
 // The project for the resource
 func (o AwsClusterOutput) Project() pulumi.StringOutput {

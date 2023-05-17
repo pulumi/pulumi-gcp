@@ -33,12 +33,16 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
     /**
      * ID of the endpoint attachment.
      * 
+     * ***
+     * 
      */
     @Import(name="endpointAttachmentId")
     private @Nullable Output<String> endpointAttachmentId;
 
     /**
      * @return ID of the endpoint attachment.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> endpointAttachmentId() {
@@ -178,6 +182,8 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
         /**
          * @param endpointAttachmentId ID of the endpoint attachment.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -188,6 +194,8 @@ public final class EndpointAttachmentState extends com.pulumi.resources.Resource
 
         /**
          * @param endpointAttachmentId ID of the endpoint attachment.
+         * 
+         * ***
          * 
          * @return builder
          * 

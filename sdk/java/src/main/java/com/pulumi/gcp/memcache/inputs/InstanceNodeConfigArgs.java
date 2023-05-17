@@ -31,12 +31,16 @@ public final class InstanceNodeConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * Memory size in Mebibytes for each memcache node.
      * 
+     * ***
+     * 
      */
     @Import(name="memorySizeMb", required=true)
     private Output<Integer> memorySizeMb;
 
     /**
      * @return Memory size in Mebibytes for each memcache node.
+     * 
+     * ***
      * 
      */
     public Output<Integer> memorySizeMb() {
@@ -92,6 +96,8 @@ public final class InstanceNodeConfigArgs extends com.pulumi.resources.ResourceA
         /**
          * @param memorySizeMb Memory size in Mebibytes for each memcache node.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -102,6 +108,8 @@ public final class InstanceNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param memorySizeMb Memory size in Mebibytes for each memcache node.
+         * 
+         * ***
          * 
          * @return builder
          * 

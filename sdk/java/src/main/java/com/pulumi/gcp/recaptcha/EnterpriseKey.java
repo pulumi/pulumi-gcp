@@ -280,12 +280,16 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
     /**
      * Human-readable display name of this key. Modifiable by user.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return Human-readable display name of this key. Modifiable by user.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {

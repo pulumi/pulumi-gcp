@@ -39,6 +39,8 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
 export interface GetServiceArgs {
     /**
      * The location of the cloud run instance. eg us-central1
+     *
+     * - - -
      */
     location: string;
     /**
@@ -96,6 +98,8 @@ export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.Invok
 export interface GetServiceOutputArgs {
     /**
      * The location of the cloud run instance. eg us-central1
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

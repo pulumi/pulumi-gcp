@@ -221,6 +221,9 @@ export class Dataset extends pulumi.CustomResource {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
+     *
+     *
+     * - - -
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
@@ -245,11 +248,33 @@ export class Dataset extends pulumi.CustomResource {
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
+     *
+     * Once this property is set, all newly-created partitioned tables in
+     * the dataset will have an `expirationMs` property in the `timePartitioning`
+     * settings set to this value, and changing the value will only
+     * affect new tables, not existing ones. The storage in a partition will
+     * have an expiration time of its partition time plus this value.
+     * Setting this property overrides the use of `defaultTableExpirationMs`
+     * for partitioned tables: only one of `defaultTableExpirationMs` and
+     * `defaultPartitionExpirationMs` will be used for any new partitioned
+     * table. If you provide an explicit `timePartitioning.expirationMs` when
+     * creating or updating a partitioned table, that value takes precedence
+     * over the default partition expiration time indicated by this property.
      */
     public readonly defaultPartitionExpirationMs!: pulumi.Output<number | undefined>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
+     *
+     * Once this property is set, all newly-created tables in the dataset
+     * will have an `expirationTime` property set to the creation time plus
+     * the value in this property, and changing the value will only affect
+     * new tables, not existing ones. When the `expirationTime` for a given
+     * table is reached, that table will be deleted automatically.
+     * If a table's `expirationTime` is modified or removed before the
+     * table expires, or if you provide an explicit `expirationTime` when
+     * creating a table, that value takes precedence over the default
+     * expiration time indicated by this property.
      */
     public readonly defaultTableExpirationMs!: pulumi.Output<number | undefined>;
     /**
@@ -289,6 +314,14 @@ export class Dataset extends pulumi.CustomResource {
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+     *
+     * There are two types of locations, regional or multi-regional. A regional
+     * location is a specific geographic place, such as Tokyo, and a multi-regional
+     * location is a large geographic area, such as the United States, that
+     * contains at least two geographic places.
+     *
+     * The default value is multi-regional location `US`.
+     * Changing this forces a new resource to be created.
      */
     public readonly location!: pulumi.Output<string | undefined>;
     /**
@@ -383,6 +416,9 @@ export interface DatasetState {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
+     *
+     *
+     * - - -
      */
     datasetId?: pulumi.Input<string>;
     /**
@@ -407,11 +443,33 @@ export interface DatasetState {
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
+     *
+     * Once this property is set, all newly-created partitioned tables in
+     * the dataset will have an `expirationMs` property in the `timePartitioning`
+     * settings set to this value, and changing the value will only
+     * affect new tables, not existing ones. The storage in a partition will
+     * have an expiration time of its partition time plus this value.
+     * Setting this property overrides the use of `defaultTableExpirationMs`
+     * for partitioned tables: only one of `defaultTableExpirationMs` and
+     * `defaultPartitionExpirationMs` will be used for any new partitioned
+     * table. If you provide an explicit `timePartitioning.expirationMs` when
+     * creating or updating a partitioned table, that value takes precedence
+     * over the default partition expiration time indicated by this property.
      */
     defaultPartitionExpirationMs?: pulumi.Input<number>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
+     *
+     * Once this property is set, all newly-created tables in the dataset
+     * will have an `expirationTime` property set to the creation time plus
+     * the value in this property, and changing the value will only affect
+     * new tables, not existing ones. When the `expirationTime` for a given
+     * table is reached, that table will be deleted automatically.
+     * If a table's `expirationTime` is modified or removed before the
+     * table expires, or if you provide an explicit `expirationTime` when
+     * creating a table, that value takes precedence over the default
+     * expiration time indicated by this property.
      */
     defaultTableExpirationMs?: pulumi.Input<number>;
     /**
@@ -451,6 +509,14 @@ export interface DatasetState {
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+     *
+     * There are two types of locations, regional or multi-regional. A regional
+     * location is a specific geographic place, such as Tokyo, and a multi-regional
+     * location is a large geographic area, such as the United States, that
+     * contains at least two geographic places.
+     *
+     * The default value is multi-regional location `US`.
+     * Changing this forces a new resource to be created.
      */
     location?: pulumi.Input<string>;
     /**
@@ -481,6 +547,9 @@ export interface DatasetArgs {
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
+     *
+     *
+     * - - -
      */
     datasetId: pulumi.Input<string>;
     /**
@@ -505,11 +574,33 @@ export interface DatasetArgs {
     /**
      * The default partition expiration for all partitioned tables in
      * the dataset, in milliseconds.
+     *
+     * Once this property is set, all newly-created partitioned tables in
+     * the dataset will have an `expirationMs` property in the `timePartitioning`
+     * settings set to this value, and changing the value will only
+     * affect new tables, not existing ones. The storage in a partition will
+     * have an expiration time of its partition time plus this value.
+     * Setting this property overrides the use of `defaultTableExpirationMs`
+     * for partitioned tables: only one of `defaultTableExpirationMs` and
+     * `defaultPartitionExpirationMs` will be used for any new partitioned
+     * table. If you provide an explicit `timePartitioning.expirationMs` when
+     * creating or updating a partitioned table, that value takes precedence
+     * over the default partition expiration time indicated by this property.
      */
     defaultPartitionExpirationMs?: pulumi.Input<number>;
     /**
      * The default lifetime of all tables in the dataset, in milliseconds.
      * The minimum value is 3600000 milliseconds (one hour).
+     *
+     * Once this property is set, all newly-created tables in the dataset
+     * will have an `expirationTime` property set to the creation time plus
+     * the value in this property, and changing the value will only affect
+     * new tables, not existing ones. When the `expirationTime` for a given
+     * table is reached, that table will be deleted automatically.
+     * If a table's `expirationTime` is modified or removed before the
+     * table expires, or if you provide an explicit `expirationTime` when
+     * creating a table, that value takes precedence over the default
+     * expiration time indicated by this property.
      */
     defaultTableExpirationMs?: pulumi.Input<number>;
     /**
@@ -540,6 +631,14 @@ export interface DatasetArgs {
     /**
      * The geographic location where the dataset should reside.
      * See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+     *
+     * There are two types of locations, regional or multi-regional. A regional
+     * location is a specific geographic place, such as Tokyo, and a multi-regional
+     * location is a large geographic area, such as the United States, that
+     * contains at least two geographic places.
+     *
+     * The default value is multi-regional location `US`.
+     * Changing this forces a new resource to be created.
      */
     location?: pulumi.Input<string>;
     /**

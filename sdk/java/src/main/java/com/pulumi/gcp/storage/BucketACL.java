@@ -78,12 +78,16 @@ public class BucketACL extends com.pulumi.resources.CustomResource {
     /**
      * The name of the bucket it applies to.
      * 
+     * ***
+     * 
      */
     @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 
     /**
      * @return The name of the bucket it applies to.
+     * 
+     * ***
      * 
      */
     public Output<String> bucket() {

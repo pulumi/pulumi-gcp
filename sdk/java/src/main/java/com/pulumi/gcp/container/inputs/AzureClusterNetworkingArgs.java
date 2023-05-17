@@ -47,12 +47,16 @@ public final class AzureClusterNetworkingArgs extends com.pulumi.resources.Resou
     /**
      * The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*{@literal /}resourceGroups/*{@literal /}providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
      * 
+     * ***
+     * 
      */
     @Import(name="virtualNetworkId", required=true)
     private Output<String> virtualNetworkId;
 
     /**
      * @return The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*{@literal /}resourceGroups/*{@literal /}providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+     * 
+     * ***
      * 
      */
     public Output<String> virtualNetworkId() {
@@ -150,6 +154,8 @@ public final class AzureClusterNetworkingArgs extends com.pulumi.resources.Resou
         /**
          * @param virtualNetworkId The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*{@literal /}resourceGroups/*{@literal /}providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -160,6 +166,8 @@ public final class AzureClusterNetworkingArgs extends com.pulumi.resources.Resou
 
         /**
          * @param virtualNetworkId The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*{@literal /}resourceGroups/*{@literal /}providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+         * 
+         * ***
          * 
          * @return builder
          * 

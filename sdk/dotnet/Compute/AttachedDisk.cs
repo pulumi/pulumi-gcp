@@ -84,12 +84,19 @@ namespace Pulumi.Gcp.Compute
         /// system running within the instance. This name can be used to
         /// reference the device for mounting, resizing, and so on, from within
         /// the instance.
+        /// 
+        /// If not specified, the server chooses a default device name to apply
+        /// to this disk, in the form persistent-disks-x, where x is a number
+        /// assigned by Google Compute Engine.
         /// </summary>
         [Output("deviceName")]
         public Output<string> DeviceName { get; private set; } = null!;
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("disk")]
         public Output<string> Disk { get; private set; } = null!;
@@ -107,6 +114,10 @@ namespace Pulumi.Gcp.Compute
         /// The mode in which to attach this disk, either READ_WRITE or
         /// READ_ONLY. If not specified, the default is to attach the disk in
         /// READ_WRITE mode.
+        /// 
+        /// Possible values:
+        /// "READ_ONLY"
+        /// "READ_WRITE"
         /// </summary>
         [Output("mode")]
         public Output<string?> Mode { get; private set; } = null!;
@@ -177,12 +188,19 @@ namespace Pulumi.Gcp.Compute
         /// system running within the instance. This name can be used to
         /// reference the device for mounting, resizing, and so on, from within
         /// the instance.
+        /// 
+        /// If not specified, the server chooses a default device name to apply
+        /// to this disk, in the form persistent-disks-x, where x is a number
+        /// assigned by Google Compute Engine.
         /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("disk", required: true)]
         public Input<string> Disk { get; set; } = null!;
@@ -200,6 +218,10 @@ namespace Pulumi.Gcp.Compute
         /// The mode in which to attach this disk, either READ_WRITE or
         /// READ_ONLY. If not specified, the default is to attach the disk in
         /// READ_WRITE mode.
+        /// 
+        /// Possible values:
+        /// "READ_ONLY"
+        /// "READ_WRITE"
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -232,12 +254,19 @@ namespace Pulumi.Gcp.Compute
         /// system running within the instance. This name can be used to
         /// reference the device for mounting, resizing, and so on, from within
         /// the instance.
+        /// 
+        /// If not specified, the server chooses a default device name to apply
+        /// to this disk, in the form persistent-disks-x, where x is a number
+        /// assigned by Google Compute Engine.
         /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
         /// <summary>
         /// `name` or `self_link` of the disk that will be attached.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("disk")]
         public Input<string>? Disk { get; set; }
@@ -255,6 +284,10 @@ namespace Pulumi.Gcp.Compute
         /// The mode in which to attach this disk, either READ_WRITE or
         /// READ_ONLY. If not specified, the default is to attach the disk in
         /// READ_WRITE mode.
+        /// 
+        /// Possible values:
+        /// "READ_ONLY"
+        /// "READ_WRITE"
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

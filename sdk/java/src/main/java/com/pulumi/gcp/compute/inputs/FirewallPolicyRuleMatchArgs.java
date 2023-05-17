@@ -50,12 +50,16 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     /**
      * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
      * 
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
      */
     @Import(name="srcIpRanges")
     private @Nullable Output<List<String>> srcIpRanges;
 
     /**
      * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+     * 
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     public Optional<Output<List<String>>> srcIpRanges() {
@@ -153,6 +157,8 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         /**
          * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
          * 
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
          * @return builder
          * 
          */
@@ -164,6 +170,8 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         /**
          * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
          * 
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
          * @return builder
          * 
          */
@@ -173,6 +181,8 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
         /**
          * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+         * 
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 

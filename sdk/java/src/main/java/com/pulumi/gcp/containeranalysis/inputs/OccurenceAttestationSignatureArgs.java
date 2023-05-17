@@ -27,6 +27,8 @@ public final class OccurenceAttestationSignatureArgs extends com.pulumi.resource
      * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
      * * &#34;ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU&#34;
      * 
+     * ***
+     * 
      */
     @Import(name="publicKeyId", required=true)
     private Output<String> publicKeyId;
@@ -42,6 +44,8 @@ public final class OccurenceAttestationSignatureArgs extends com.pulumi.resource
      * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
      * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
      * * &#34;ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU&#34;
+     * 
+     * ***
      * 
      */
     public Output<String> publicKeyId() {
@@ -112,6 +116,8 @@ public final class OccurenceAttestationSignatureArgs extends com.pulumi.resource
          * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
          * * &#34;ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU&#34;
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -131,6 +137,8 @@ public final class OccurenceAttestationSignatureArgs extends com.pulumi.resource
          * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
          * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
          * * &#34;ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU&#34;
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -129,6 +129,8 @@ export class Policy extends pulumi.CustomResource {
     public readonly booleanPolicy!: pulumi.Output<outputs.organizations.PolicyBooleanPolicy | undefined>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     *
+     * - - -
      */
     public readonly constraint!: pulumi.Output<string>;
     /**
@@ -145,6 +147,11 @@ export class Policy extends pulumi.CustomResource {
     public readonly orgId!: pulumi.Output<string>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
+     *
+     * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+     * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+     *
+     * - - -
      */
     public readonly restorePolicy!: pulumi.Output<outputs.organizations.PolicyRestorePolicy | undefined>;
     /**
@@ -210,6 +217,8 @@ export interface PolicyState {
     booleanPolicy?: pulumi.Input<inputs.organizations.PolicyBooleanPolicy>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     *
+     * - - -
      */
     constraint?: pulumi.Input<string>;
     /**
@@ -226,6 +235,11 @@ export interface PolicyState {
     orgId?: pulumi.Input<string>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
+     *
+     * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+     * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+     *
+     * - - -
      */
     restorePolicy?: pulumi.Input<inputs.organizations.PolicyRestorePolicy>;
     /**
@@ -249,6 +263,8 @@ export interface PolicyArgs {
     booleanPolicy?: pulumi.Input<inputs.organizations.PolicyBooleanPolicy>;
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     *
+     * - - -
      */
     constraint: pulumi.Input<string>;
     /**
@@ -261,6 +277,11 @@ export interface PolicyArgs {
     orgId: pulumi.Input<string>;
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
+     *
+     * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+     * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+     *
+     * - - -
      */
     restorePolicy?: pulumi.Input<inputs.organizations.PolicyRestorePolicy>;
     /**

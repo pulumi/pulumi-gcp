@@ -133,6 +133,9 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("responsePolicy")]
         public Output<string> ResponsePolicy { get; private set; } = null!;
@@ -218,6 +221,9 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("responsePolicy", required: true)]
         public Input<string> ResponsePolicy { get; set; } = null!;
@@ -265,6 +271,9 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// Identifies the response policy addressed by this request.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("responsePolicy")]
         public Input<string>? ResponsePolicy { get; set; }

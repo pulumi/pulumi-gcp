@@ -165,6 +165,8 @@ def get_function(location: Optional[str] = None,
 
 
     :param str location: The location in which the resource belongs.
+           
+           - - -
     :param str name: The name of a Cloud Function (2nd gen).
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -213,6 +215,8 @@ def get_function_output(location: Optional[pulumi.Input[str]] = None,
 
 
     :param str location: The location in which the resource belongs.
+           
+           - - -
     :param str name: The name of a Cloud Function (2nd gen).
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly int? Fixed;
         /// <summary>
         /// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+        /// 
+        /// - - -
         /// </summary>
         public readonly int? Percent;
 

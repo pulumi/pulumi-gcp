@@ -38,6 +38,8 @@ type AccessApprovalSettingsEnrolledService struct {
 	// The enrollment level of the service.
 	// Default value is `BLOCK_ALL`.
 	// Possible values are: `BLOCK_ALL`.
+	//
+	// ***
 	EnrollmentLevel *string `pulumi:"enrollmentLevel"`
 }
 
@@ -80,6 +82,8 @@ type AccessApprovalSettingsEnrolledServiceArgs struct {
 	// The enrollment level of the service.
 	// Default value is `BLOCK_ALL`.
 	// Possible values are: `BLOCK_ALL`.
+	//
+	// ***
 	EnrollmentLevel pulumi.StringPtrInput `pulumi:"enrollmentLevel"`
 }
 
@@ -164,6 +168,8 @@ func (o AccessApprovalSettingsEnrolledServiceOutput) CloudProduct() pulumi.Strin
 // The enrollment level of the service.
 // Default value is `BLOCK_ALL`.
 // Possible values are: `BLOCK_ALL`.
+//
+// ***
 func (o AccessApprovalSettingsEnrolledServiceOutput) EnrollmentLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) *string { return v.EnrollmentLevel }).(pulumi.StringPtrOutput)
 }
@@ -353,6 +359,10 @@ func (o IAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type IAMMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -373,6 +383,10 @@ type IAMMemberConditionInput interface {
 
 type IAMMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -458,6 +472,10 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -497,6 +515,10 @@ func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMMemberCondition) *string {
 		if v == nil {
@@ -775,6 +797,8 @@ type OrganizationPolicyListPolicy struct {
 	Deny  *OrganizationPolicyListPolicyDeny  `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	//
+	// The `allow` or `deny` blocks support:
 	InheritFromParent *bool `pulumi:"inheritFromParent"`
 	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 	SuggestedValue *string `pulumi:"suggestedValue"`
@@ -797,6 +821,8 @@ type OrganizationPolicyListPolicyArgs struct {
 	Deny  OrganizationPolicyListPolicyDenyPtrInput  `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	//
+	// The `allow` or `deny` blocks support:
 	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
 	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 	SuggestedValue pulumi.StringPtrInput `pulumi:"suggestedValue"`
@@ -890,6 +916,8 @@ func (o OrganizationPolicyListPolicyOutput) Deny() OrganizationPolicyListPolicyD
 
 // If set to true, the values from the effective Policy of the parent resource
 // are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+//
+// The `allow` or `deny` blocks support:
 func (o OrganizationPolicyListPolicyOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationPolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
 }
@@ -944,6 +972,8 @@ func (o OrganizationPolicyListPolicyPtrOutput) Deny() OrganizationPolicyListPoli
 
 // If set to true, the values from the effective Policy of the parent resource
 // are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+//
+// The `allow` or `deny` blocks support:
 func (o OrganizationPolicyListPolicyPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrganizationPolicyListPolicy) *bool {
 		if v == nil {

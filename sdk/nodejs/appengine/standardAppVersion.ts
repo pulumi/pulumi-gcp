@@ -205,8 +205,10 @@ export class StandardAppVersion extends pulumi.CustomResource {
     public readonly manualScaling!: pulumi.Output<outputs.appengine.StandardAppVersionManualScaling | undefined>;
     /**
      * The identifier for this object. Format specified above.
+     *
      * (Optional)
      * Name of the library. Example "django".
+     *
      * (Required)
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      */
@@ -395,8 +397,10 @@ export interface StandardAppVersionState {
     manualScaling?: pulumi.Input<inputs.appengine.StandardAppVersionManualScaling>;
     /**
      * The identifier for this object. Format specified above.
+     *
      * (Optional)
      * Name of the library. Example "django".
+     *
      * (Required)
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      */

@@ -18,12 +18,16 @@ public final class GuestPoliciesAssignmentOsTypeArgs extends com.pulumi.resource
     /**
      * Targets VM instances with OS Inventory enabled and having the following OS architecture.
      * 
+     * ***
+     * 
      */
     @Import(name="osArchitecture")
     private @Nullable Output<String> osArchitecture;
 
     /**
      * @return Targets VM instances with OS Inventory enabled and having the following OS architecture.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> osArchitecture() {
@@ -89,6 +93,8 @@ public final class GuestPoliciesAssignmentOsTypeArgs extends com.pulumi.resource
         /**
          * @param osArchitecture Targets VM instances with OS Inventory enabled and having the following OS architecture.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -99,6 +105,8 @@ public final class GuestPoliciesAssignmentOsTypeArgs extends com.pulumi.resource
 
         /**
          * @param osArchitecture Targets VM instances with OS Inventory enabled and having the following OS architecture.
+         * 
+         * ***
          * 
          * @return builder
          * 

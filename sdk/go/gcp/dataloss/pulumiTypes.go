@@ -3874,6 +3874,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -3894,6 +3896,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -3979,6 +3983,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		return v.Day
@@ -4024,6 +4030,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		if v == nil {
@@ -5510,6 +5518,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -5530,6 +5540,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -5615,6 +5627,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
 		return v.Day
@@ -5660,6 +5674,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue) *int {
 		if v == nil {
@@ -6803,6 +6819,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -6823,6 +6841,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -6908,6 +6928,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue) *int {
 		return v.Day
@@ -6953,6 +6975,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue) *int {
 		if v == nil {
@@ -7484,6 +7508,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -7504,6 +7530,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -7589,6 +7617,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue) *int {
 		return v.Day
@@ -7634,6 +7664,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue) *int {
 		if v == nil {
@@ -8007,6 +8039,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -8027,6 +8061,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -8112,6 +8148,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue) *int {
 		return v.Day
@@ -8157,6 +8195,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue) *int {
 		if v == nil {
@@ -13475,6 +13515,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -13495,6 +13537,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -13580,6 +13624,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue) *int {
 		return v.Day
@@ -13625,6 +13671,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue) *int {
 		if v == nil {
@@ -14156,6 +14204,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -14176,6 +14226,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -14261,6 +14313,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue) *int {
 		return v.Day
@@ -14306,6 +14360,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue) *int {
 		if v == nil {
@@ -15102,6 +15158,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -15122,6 +15180,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTrans
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -15207,6 +15267,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		return v.Day
@@ -15252,6 +15314,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTr
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue) *int {
 		if v == nil {
@@ -16952,6 +17016,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day *int `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month *int `pulumi:"month"`
@@ -16972,6 +17038,8 @@ type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSupp
 
 type PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs struct {
 	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	//
+	// ***
 	Day pulumi.IntPtrInput `pulumi:"day"`
 	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
 	Month pulumi.IntPtrInput `pulumi:"month"`
@@ -17057,6 +17125,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
 		return v.Day
@@ -17102,6 +17172,8 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordS
 }
 
 // Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+//
+// ***
 func (o PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValuePtrOutput) Day() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue) *int {
 		if v == nil {
@@ -26323,6 +26395,8 @@ type PreventionJobTriggerTriggerSchedule struct {
 	// A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
 	// This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	//
+	// ***
 	RecurrencePeriodDuration *string `pulumi:"recurrencePeriodDuration"`
 }
 
@@ -26342,6 +26416,8 @@ type PreventionJobTriggerTriggerScheduleArgs struct {
 	// A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
 	// This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	//
+	// ***
 	RecurrencePeriodDuration pulumi.StringPtrInput `pulumi:"recurrencePeriodDuration"`
 }
 
@@ -26426,6 +26502,8 @@ func (o PreventionJobTriggerTriggerScheduleOutput) ToPreventionJobTriggerTrigger
 // A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
 // This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+//
+// ***
 func (o PreventionJobTriggerTriggerScheduleOutput) RecurrencePeriodDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PreventionJobTriggerTriggerSchedule) *string { return v.RecurrencePeriodDuration }).(pulumi.StringPtrOutput)
 }
@@ -26458,6 +26536,8 @@ func (o PreventionJobTriggerTriggerSchedulePtrOutput) Elem() PreventionJobTrigge
 // A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
 // This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+//
+// ***
 func (o PreventionJobTriggerTriggerSchedulePtrOutput) RecurrencePeriodDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTriggerTriggerSchedule) *string {
 		if v == nil {

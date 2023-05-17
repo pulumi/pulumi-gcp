@@ -74,6 +74,8 @@ type DefaultSupportedIdpConfig struct {
 	// OAuth client ID
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// OAuth client secret
+	//
+	// ***
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -137,6 +139,8 @@ type defaultSupportedIdpConfigState struct {
 	// OAuth client ID
 	ClientId *string `pulumi:"clientId"`
 	// OAuth client secret
+	//
+	// ***
 	ClientSecret *string `pulumi:"clientSecret"`
 	// If this IDP allows the user to sign in
 	Enabled *bool `pulumi:"enabled"`
@@ -163,6 +167,8 @@ type DefaultSupportedIdpConfigState struct {
 	// OAuth client ID
 	ClientId pulumi.StringPtrInput
 	// OAuth client secret
+	//
+	// ***
 	ClientSecret pulumi.StringPtrInput
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrInput
@@ -193,6 +199,8 @@ type defaultSupportedIdpConfigArgs struct {
 	// OAuth client ID
 	ClientId string `pulumi:"clientId"`
 	// OAuth client secret
+	//
+	// ***
 	ClientSecret string `pulumi:"clientSecret"`
 	// If this IDP allows the user to sign in
 	Enabled *bool `pulumi:"enabled"`
@@ -218,6 +226,8 @@ type DefaultSupportedIdpConfigArgs struct {
 	// OAuth client ID
 	ClientId pulumi.StringInput
 	// OAuth client secret
+	//
+	// ***
 	ClientSecret pulumi.StringInput
 	// If this IDP allows the user to sign in
 	Enabled pulumi.BoolPtrInput
@@ -331,6 +341,8 @@ func (o DefaultSupportedIdpConfigOutput) ClientId() pulumi.StringOutput {
 }
 
 // OAuth client secret
+//
+// ***
 func (o DefaultSupportedIdpConfigOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *DefaultSupportedIdpConfig) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }

@@ -81,12 +81,16 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     /**
      * The network that this route applies to.
      * 
+     * ***
+     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
      * @return The network that this route applies to.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -440,6 +444,8 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network The network that this route applies to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -450,6 +456,8 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network The network that this route applies to.
+         * 
+         * ***
          * 
          * @return builder
          * 

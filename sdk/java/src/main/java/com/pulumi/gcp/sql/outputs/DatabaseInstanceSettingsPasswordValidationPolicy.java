@@ -26,6 +26,9 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
     /**
      * @return Enables or disable the password validation policy.
      * 
+     * The optional `replica_configuration` block must have `master_instance_name` set
+     * to work, cannot be updated, and supports:
+     * 
      */
     private Boolean enablePasswordPolicy;
     /**
@@ -61,6 +64,9 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
     }
     /**
      * @return Enables or disable the password validation policy.
+     * 
+     * The optional `replica_configuration` block must have `master_instance_name` set
+     * to work, cannot be updated, and supports:
      * 
      */
     public Boolean enablePasswordPolicy() {

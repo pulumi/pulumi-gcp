@@ -155,6 +155,9 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -319,6 +322,9 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -434,6 +440,9 @@ namespace Pulumi.Gcp.Diagflow
 
         /// <summary>
         /// The name of this intent to be displayed on the console.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

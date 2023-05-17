@@ -58,6 +58,9 @@ namespace Pulumi.Gcp.ServiceUsage
         /// The limit on the metric, e.g. `/project/region`.
         /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("limit")]
         public Output<string> Limit { get; private set; } = null!;
@@ -162,6 +165,9 @@ namespace Pulumi.Gcp.ServiceUsage
         /// The limit on the metric, e.g. `/project/region`.
         /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("limit", required: true)]
         public Input<string> Limit { get; set; } = null!;
@@ -222,6 +228,9 @@ namespace Pulumi.Gcp.ServiceUsage
         /// The limit on the metric, e.g. `/project/region`.
         /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
         /// E.g. use `/project/user` instead of `1/{project}/{user}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("limit")]
         public Input<string>? Limit { get; set; }

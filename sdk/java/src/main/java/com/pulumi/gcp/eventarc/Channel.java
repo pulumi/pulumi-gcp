@@ -159,12 +159,16 @@ public class Channel extends com.pulumi.resources.CustomResource {
     /**
      * Required. The resource name of the channel. Must be unique within the location on the project.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Required. The resource name of the channel. Must be unique within the location on the project.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

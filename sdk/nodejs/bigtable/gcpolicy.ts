@@ -169,6 +169,10 @@ export class GCPolicy extends pulumi.CustomResource {
     /**
      * The deletion policy for the GC policy.
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     *
+     * Possible values are: `ABANDON`.
+     *
+     * -----
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -259,6 +263,10 @@ export interface GCPolicyState {
     /**
      * The deletion policy for the GC policy.
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     *
+     * Possible values are: `ABANDON`.
+     *
+     * -----
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -302,6 +310,10 @@ export interface GCPolicyArgs {
     /**
      * The deletion policy for the GC policy.
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     *
+     * Possible values are: `ABANDON`.
+     *
+     * -----
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

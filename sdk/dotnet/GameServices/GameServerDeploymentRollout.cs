@@ -122,6 +122,9 @@ namespace Pulumi.Gcp.GameServices
         /// This field points to the game server config that is
         /// applied by default to all realms and clusters. For example,
         /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("defaultGameServerConfig")]
         public Output<string> DefaultGameServerConfig { get; private set; } = null!;
@@ -206,6 +209,9 @@ namespace Pulumi.Gcp.GameServices
         /// This field points to the game server config that is
         /// applied by default to all realms and clusters. For example,
         /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("defaultGameServerConfig", required: true)]
         public Input<string> DefaultGameServerConfig { get; set; } = null!;
@@ -251,6 +257,9 @@ namespace Pulumi.Gcp.GameServices
         /// This field points to the game server config that is
         /// applied by default to all realms and clusters. For example,
         /// `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("defaultGameServerConfig")]
         public Input<string>? DefaultGameServerConfig { get; set; }

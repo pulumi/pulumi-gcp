@@ -35,6 +35,8 @@ export function getHealthCheck(args: GetHealthCheckArgs, opts?: pulumi.InvokeOpt
 export interface GetHealthCheckArgs {
     /**
      * Name of the resource.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -94,6 +96,8 @@ export function getHealthCheckOutput(args: GetHealthCheckOutputArgs, opts?: pulu
 export interface GetHealthCheckOutputArgs {
     /**
      * Name of the resource.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

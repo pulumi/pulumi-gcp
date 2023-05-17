@@ -122,6 +122,9 @@ export class AiTensorboard extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * User provided name of this Tensorboard.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -219,6 +222,9 @@ export interface AiTensorboardState {
     description?: pulumi.Input<string>;
     /**
      * User provided name of this Tensorboard.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -263,6 +269,9 @@ export interface AiTensorboardArgs {
     description?: pulumi.Input<string>;
     /**
      * User provided name of this Tensorboard.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

@@ -71,6 +71,9 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
 
     /**
      * The backend bucket this signed URL key belongs.
+     *
+     *
+     * - - -
      */
     public readonly backendBucket!: pulumi.Output<string>;
     /**
@@ -132,6 +135,9 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
 export interface BackendBucketSignedUrlKeyState {
     /**
      * The backend bucket this signed URL key belongs.
+     *
+     *
+     * - - -
      */
     backendBucket?: pulumi.Input<string>;
     /**
@@ -157,6 +163,9 @@ export interface BackendBucketSignedUrlKeyState {
 export interface BackendBucketSignedUrlKeyArgs {
     /**
      * The backend bucket this signed URL key belongs.
+     *
+     *
+     * - - -
      */
     backendBucket: pulumi.Input<string>;
     /**

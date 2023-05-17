@@ -248,6 +248,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
 
     /**
      * A description of the job trigger.
+     *
      * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      */
@@ -272,10 +273,13 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
      * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
      * timestamp property does not exist or its value is empty or invalid.
+     *
      * (Required)
      * The name of the Datastore kind.
+     *
      * (Required)
      * Name of a BigQuery field to be returned with the findings.
+     *
      * (Required)
      * Name describing the field.
      */
@@ -346,6 +350,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
 export interface PreventionJobTriggerState {
     /**
      * A description of the job trigger.
+     *
      * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      */
@@ -370,10 +375,13 @@ export interface PreventionJobTriggerState {
      * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
      * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
      * timestamp property does not exist or its value is empty or invalid.
+     *
      * (Required)
      * The name of the Datastore kind.
+     *
      * (Required)
      * Name of a BigQuery field to be returned with the findings.
+     *
      * (Required)
      * Name describing the field.
      */
@@ -402,6 +410,7 @@ export interface PreventionJobTriggerState {
 export interface PreventionJobTriggerArgs {
     /**
      * A description of the job trigger.
+     *
      * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      */

@@ -241,6 +241,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
+        /// 
+        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -258,13 +260,15 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
 
         /// <summary>
-        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Output("statefulExternalIps")]
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulExternalIp>> StatefulExternalIps { get; private set; } = null!;
 
         /// <summary>
-        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         [Output("statefulInternalIps")]
         public Output<ImmutableArray<Outputs.RegionInstanceGroupManagerStatefulInternalIp>> StatefulInternalIps { get; private set; } = null!;
@@ -469,6 +473,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
+        /// 
+        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -489,7 +495,9 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpArgs>? _statefulExternalIps;
 
         /// <summary>
-        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpArgs> StatefulExternalIps
         {
@@ -501,7 +509,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpArgs>? _statefulInternalIps;
 
         /// <summary>
-        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpArgs> StatefulInternalIps
         {
@@ -689,6 +697,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the managed instance group resides. If not provided, the provider region is used.
+        /// 
+        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -715,7 +725,9 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpGetArgs>? _statefulExternalIps;
 
         /// <summary>
-        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulExternalIpGetArgs> StatefulExternalIps
         {
@@ -727,7 +739,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpGetArgs>? _statefulInternalIps;
 
         /// <summary>
-        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         public InputList<Inputs.RegionInstanceGroupManagerStatefulInternalIpGetArgs> StatefulInternalIps
         {

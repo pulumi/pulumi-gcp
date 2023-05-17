@@ -268,6 +268,8 @@ type UptimeCheckConfig struct {
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrOutput `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	//
+	// ***
 	Timeout pulumi.StringOutput `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringOutput `pulumi:"uptimeCheckId"`
@@ -338,6 +340,8 @@ type uptimeCheckConfigState struct {
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	//
+	// ***
 	Timeout *string `pulumi:"timeout"`
 	// The id of the uptime check
 	UptimeCheckId *string `pulumi:"uptimeCheckId"`
@@ -374,6 +378,8 @@ type UptimeCheckConfigState struct {
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	//
+	// ***
 	Timeout pulumi.StringPtrInput
 	// The id of the uptime check
 	UptimeCheckId pulumi.StringPtrInput
@@ -412,6 +418,8 @@ type uptimeCheckConfigArgs struct {
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	//
+	// ***
 	Timeout string `pulumi:"timeout"`
 }
 
@@ -445,6 +453,8 @@ type UptimeCheckConfigArgs struct {
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+	//
+	// ***
 	Timeout pulumi.StringInput
 }
 
@@ -598,6 +608,8 @@ func (o UptimeCheckConfigOutput) TcpCheck() UptimeCheckConfigTcpCheckPtrOutput {
 }
 
 // The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+//
+// ***
 func (o UptimeCheckConfigOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
 }

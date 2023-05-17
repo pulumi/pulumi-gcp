@@ -98,6 +98,9 @@ class InterconnectAttachmentArgs:
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
@@ -316,6 +319,9 @@ class InterconnectAttachmentArgs:
         `a-z?` which means the first character must be a
         lowercase letter, and all following characters must be a dash, lowercase
         letter, or digit, except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -473,6 +479,9 @@ class _InterconnectAttachmentState:
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
                identifier of an PARTNER attachment used to initiate provisioning with
                a selected partner. Of the form "XXXXX/region/domain"
@@ -761,6 +770,9 @@ class _InterconnectAttachmentState:
         `a-z?` which means the first character must be a
         lowercase letter, and all following characters must be a dash, lowercase
         letter, or digit, except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1056,6 +1068,9 @@ class InterconnectAttachment(pulumi.CustomResource):
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
@@ -1319,6 +1334,9 @@ class InterconnectAttachment(pulumi.CustomResource):
                `a-z?` which means the first character must be a
                lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] pairing_key: [Output only for type PARTNER. Not present for DEDICATED]. The opaque
                identifier of an PARTNER attachment used to initiate provisioning with
                a selected partner. Of the form "XXXXX/region/domain"
@@ -1536,6 +1554,9 @@ class InterconnectAttachment(pulumi.CustomResource):
         `a-z?` which means the first character must be a
         lowercase letter, and all following characters must be a dash, lowercase
         letter, or digit, except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

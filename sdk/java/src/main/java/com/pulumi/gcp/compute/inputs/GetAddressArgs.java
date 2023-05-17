@@ -18,12 +18,16 @@ public final class GetAddressArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * A unique name for the resource, required by GCE.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return A unique name for the resource, required by GCE.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -93,6 +97,8 @@ public final class GetAddressArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name A unique name for the resource, required by GCE.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -103,6 +109,8 @@ public final class GetAddressArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name A unique name for the resource, required by GCE.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -19,12 +19,16 @@ public final class InstanceGroupNamedPortState extends com.pulumi.resources.Reso
     /**
      * The name of the instance group.
      * 
+     * ***
+     * 
      */
     @Import(name="group")
     private @Nullable Output<String> group;
 
     /**
      * @return The name of the instance group.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> group() {
@@ -126,6 +130,8 @@ public final class InstanceGroupNamedPortState extends com.pulumi.resources.Reso
         /**
          * @param group The name of the instance group.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -136,6 +142,8 @@ public final class InstanceGroupNamedPortState extends com.pulumi.resources.Reso
 
         /**
          * @param group The name of the instance group.
+         * 
+         * ***
          * 
          * @return builder
          * 

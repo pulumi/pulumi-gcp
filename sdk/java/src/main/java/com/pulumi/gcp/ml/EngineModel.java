@@ -162,12 +162,16 @@ public class EngineModel extends com.pulumi.resources.CustomResource {
     /**
      * The name specified for the model.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The name specified for the model.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

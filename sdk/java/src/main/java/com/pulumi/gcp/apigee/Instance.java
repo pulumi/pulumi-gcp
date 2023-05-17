@@ -472,6 +472,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      * 
+     * ***
+     * 
      */
     @Export(name="orgId", type=String.class, parameters={})
     private Output<String> orgId;
@@ -479,6 +481,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
+     * 
+     * ***
      * 
      */
     public Output<String> orgId() {

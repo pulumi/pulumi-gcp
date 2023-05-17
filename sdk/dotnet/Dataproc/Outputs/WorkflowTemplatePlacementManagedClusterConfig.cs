@@ -71,6 +71,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly string? TempBucket;
         /// <summary>
         /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        /// 
+        /// - - -
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig? WorkerConfig;
 

@@ -332,6 +332,9 @@ namespace Pulumi.Gcp.Compute
         /// are valid.
         /// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
         /// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -536,6 +539,9 @@ namespace Pulumi.Gcp.Compute
         /// are valid.
         /// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
         /// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -727,6 +733,9 @@ namespace Pulumi.Gcp.Compute
         /// are valid.
         /// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
         /// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

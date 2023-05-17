@@ -212,12 +212,16 @@ public class Membership extends com.pulumi.resources.CustomResource {
     /**
      * The client-provided identifier of the membership.
      * 
+     * ***
+     * 
      */
     @Export(name="membershipId", type=String.class, parameters={})
     private Output<String> membershipId;
 
     /**
      * @return The client-provided identifier of the membership.
+     * 
+     * ***
      * 
      */
     public Output<String> membershipId() {

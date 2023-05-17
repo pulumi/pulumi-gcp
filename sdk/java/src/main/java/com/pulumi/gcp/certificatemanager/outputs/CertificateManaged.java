@@ -20,6 +20,8 @@ public final class CertificateManaged {
      * specified for this Managed Certificate.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+     * 
      */
     private @Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos;
     /**
@@ -53,6 +55,8 @@ public final class CertificateManaged {
      * Detailed state of the latest authorization attempt for each domain
      * specified for this Managed Certificate.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
      * 
      */
     public List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos() {

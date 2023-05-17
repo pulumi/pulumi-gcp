@@ -16,6 +16,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The type of reservation consumption
         /// Accepted values are:
+        /// 
+        /// * `"UNSPECIFIED"`: Default value. This should not be used.
+        /// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+        /// * `"ANY_RESERVATION"`: Consume any reservation available.
+        /// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
         /// </summary>
         public readonly string ConsumeReservationType;
         /// <summary>

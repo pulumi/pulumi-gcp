@@ -51,6 +51,9 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
+               
+               
+               - - -
         :param pulumi.Input[str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input['InstanceAcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators,
                make sure that your configuration has enough vCPUs and memory to support the
@@ -190,6 +193,9 @@ class InstanceArgs:
     def location(self) -> pulumi.Input[str]:
         """
         A reference to the zone where the machine resides.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -683,6 +689,9 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
+               
+               
+               - - -
         :param pulumi.Input[str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -699,8 +708,10 @@ class _InstanceState:
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-               state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
+               Only returned when the resource is in a `PROVISIONED` state. If
+               needed you can utilize `pulumi up -refresh-only` to await
+               the population of this value.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -974,6 +985,9 @@ class _InstanceState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the zone where the machine resides.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -1111,8 +1125,10 @@ class _InstanceState:
     @pulumi.getter(name="proxyUri")
     def proxy_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-        state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+        The proxy endpoint that is used to access the Jupyter notebook.
+        Only returned when the resource is in a `PROVISIONED` state. If
+        needed you can utilize `pulumi up -refresh-only` to await
+        the population of this value.
         """
         return pulumi.get(self, "proxy_uri")
 
@@ -1426,6 +1442,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
+               
+               
+               - - -
         :param pulumi.Input[str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1759,6 +1778,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
+               
+               
+               - - -
         :param pulumi.Input[str] machine_type: A reference to a machine type which defines VM kind.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1775,8 +1797,10 @@ class Instance(pulumi.CustomResource):
                or Cloud Storage path (gs://path-to-file/file-name).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-               state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+        :param pulumi.Input[str] proxy_uri: The proxy endpoint that is used to access the Jupyter notebook.
+               Only returned when the resource is in a `PROVISIONED` state. If
+               needed you can utilize `pulumi up -refresh-only` to await
+               the population of this value.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Reservation Affinity for consuming Zonal reservation.
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account on this instance, giving access to other
@@ -1969,6 +1993,9 @@ class Instance(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         A reference to the zone where the machine resides.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -2062,8 +2089,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="proxyUri")
     def proxy_uri(self) -> pulumi.Output[str]:
         """
-        The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-        state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+        The proxy endpoint that is used to access the Jupyter notebook.
+        Only returned when the resource is in a `PROVISIONED` state. If
+        needed you can utilize `pulumi up -refresh-only` to await
+        the population of this value.
         """
         return pulumi.get(self, "proxy_uri")
 

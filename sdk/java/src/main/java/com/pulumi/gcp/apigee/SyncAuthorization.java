@@ -151,12 +151,16 @@ public class SyncAuthorization extends com.pulumi.resources.CustomResource {
     /**
      * Name of the Apigee organization.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Name of the Apigee organization.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

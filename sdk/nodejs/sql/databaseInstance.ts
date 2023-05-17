@@ -209,6 +209,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
+     *
+     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -404,6 +406,8 @@ export interface DatabaseInstanceState {
     /**
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
+     *
+     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -506,6 +510,8 @@ export interface DatabaseInstanceArgs {
     /**
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
+     *
+     * - - -
      */
     region?: pulumi.Input<string>;
     /**

@@ -44,6 +44,8 @@ export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise
 export interface GetDiskArgs {
     /**
      * The name of a specific disk.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -191,6 +193,8 @@ export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptio
 export interface GetDiskOutputArgs {
     /**
      * The name of a specific disk.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

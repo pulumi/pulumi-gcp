@@ -351,6 +351,8 @@ type Function struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -411,6 +413,8 @@ type functionState struct {
 	Location *string `pulumi:"location"`
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -443,6 +447,8 @@ type FunctionState struct {
 	Location pulumi.StringPtrInput
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -477,6 +483,8 @@ type functionArgs struct {
 	Location *string `pulumi:"location"`
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -504,6 +512,8 @@ type FunctionArgs struct {
 	Location pulumi.StringPtrInput
 	// A user-defined name of the function. Function names must
 	// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -636,6 +646,8 @@ func (o FunctionOutput) Location() pulumi.StringPtrOutput {
 
 // A user-defined name of the function. Function names must
 // be unique globally and match pattern `projects/*/locations/*/functions/*`.
+//
+// ***
 func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

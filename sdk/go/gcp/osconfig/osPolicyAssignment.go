@@ -129,6 +129,7 @@ type OsPolicyAssignment struct {
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
 	// Policy description. Length of the description is limited to 1024 characters.
+	//
 	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -206,6 +207,7 @@ type osPolicyAssignmentState struct {
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted *bool `pulumi:"deleted"`
 	// Policy description. Length of the description is limited to 1024 characters.
+	//
 	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
@@ -243,6 +245,7 @@ type OsPolicyAssignmentState struct {
 	// Output only. Indicates that this revision deletes the OS policy assignment.
 	Deleted pulumi.BoolPtrInput
 	// Policy description. Length of the description is limited to 1024 characters.
+	//
 	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
@@ -280,6 +283,7 @@ func (OsPolicyAssignmentState) ElementType() reflect.Type {
 
 type osPolicyAssignmentArgs struct {
 	// Policy description. Length of the description is limited to 1024 characters.
+	//
 	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
@@ -302,6 +306,7 @@ type osPolicyAssignmentArgs struct {
 // The set of arguments for constructing a OsPolicyAssignment resource.
 type OsPolicyAssignmentArgs struct {
 	// Policy description. Length of the description is limited to 1024 characters.
+	//
 	// (Optional)
 	// OS policy assignment description. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
@@ -419,6 +424,7 @@ func (o OsPolicyAssignmentOutput) Deleted() pulumi.BoolOutput {
 }
 
 // Policy description. Length of the description is limited to 1024 characters.
+//
 // (Optional)
 // OS policy assignment description. Length of the description is limited to 1024 characters.
 func (o OsPolicyAssignmentOutput) Description() pulumi.StringPtrOutput {

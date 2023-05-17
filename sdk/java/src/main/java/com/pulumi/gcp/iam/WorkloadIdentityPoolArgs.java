@@ -87,6 +87,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
      * 
+     * ***
+     * 
      */
     @Import(name="workloadIdentityPoolId", required=true)
     private Output<String> workloadIdentityPoolId;
@@ -95,6 +97,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
      * @return The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
+     * 
+     * ***
      * 
      */
     public Output<String> workloadIdentityPoolId() {
@@ -224,6 +228,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
          * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
          * `gcp-` is reserved for use by Google, and may not be specified.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -236,6 +242,8 @@ public final class WorkloadIdentityPoolArgs extends com.pulumi.resources.Resourc
          * @param workloadIdentityPoolId The ID to use for the pool, which becomes the final component of the resource name. This
          * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
          * `gcp-` is reserved for use by Google, and may not be specified.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -160,6 +160,8 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
      * 
+     * ***
+     * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
@@ -167,6 +169,8 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
     /**
      * @return The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> role() {
@@ -406,6 +410,8 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
          * @param role The access permission for the entity.
          * Possible values are: `OWNER`, `READER`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -417,6 +423,8 @@ public final class DefaultObjectAccessControlState extends com.pulumi.resources.
         /**
          * @param role The access permission for the entity.
          * Possible values are: `OWNER`, `READER`.
+         * 
+         * ***
          * 
          * @return builder
          * 

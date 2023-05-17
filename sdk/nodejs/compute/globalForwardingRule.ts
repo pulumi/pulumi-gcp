@@ -276,6 +276,9 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * are valid.
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+     *
+     *
+     * - - -
      */
     public readonly target!: pulumi.Output<string>;
 
@@ -476,6 +479,9 @@ export interface GlobalForwardingRuleState {
      * are valid.
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+     *
+     *
+     * - - -
      */
     target?: pulumi.Input<string>;
 }
@@ -604,6 +610,9 @@ export interface GlobalForwardingRuleArgs {
      * are valid.
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+     *
+     *
+     * - - -
      */
     target: pulumi.Input<string>;
 }

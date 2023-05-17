@@ -105,6 +105,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
+     * ***
+     * 
      */
     @Export(name="domainName", type=String.class, parameters={})
     private Output<String> domainName;
@@ -112,6 +114,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * 
+     * ***
      * 
      */
     public Output<String> domainName() {

@@ -18,12 +18,16 @@ public final class DiskResourcePolicyAttachmentState extends com.pulumi.resource
     /**
      * The name of the disk in which the resource policies are attached to.
      * 
+     * ***
+     * 
      */
     @Import(name="disk")
     private @Nullable Output<String> disk;
 
     /**
      * @return The name of the disk in which the resource policies are attached to.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> disk() {
@@ -109,6 +113,8 @@ public final class DiskResourcePolicyAttachmentState extends com.pulumi.resource
         /**
          * @param disk The name of the disk in which the resource policies are attached to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -119,6 +125,8 @@ public final class DiskResourcePolicyAttachmentState extends com.pulumi.resource
 
         /**
          * @param disk The name of the disk in which the resource policies are attached to.
+         * 
+         * ***
          * 
          * @return builder
          * 

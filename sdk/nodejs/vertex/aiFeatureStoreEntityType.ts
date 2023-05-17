@@ -152,6 +152,9 @@ export class AiFeatureStoreEntityType extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+     *
+     *
+     * - - -
      */
     public readonly featurestore!: pulumi.Output<string>;
     /**
@@ -245,6 +248,9 @@ export interface AiFeatureStoreEntityTypeState {
     etag?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+     *
+     *
+     * - - -
      */
     featurestore?: pulumi.Input<string>;
     /**
@@ -287,6 +293,9 @@ export interface AiFeatureStoreEntityTypeArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+     *
+     *
+     * - - -
      */
     featurestore: pulumi.Input<string>;
     /**

@@ -84,6 +84,9 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
     public readonly fqdn!: pulumi.Output<string | undefined>;
     /**
      * The global network endpoint group this endpoint is part of.
+     *
+     *
+     * - - -
      */
     public readonly globalNetworkEndpointGroup!: pulumi.Output<string>;
     /**
@@ -148,6 +151,9 @@ export interface GlobalNetworkEndpointState {
     fqdn?: pulumi.Input<string>;
     /**
      * The global network endpoint group this endpoint is part of.
+     *
+     *
+     * - - -
      */
     globalNetworkEndpointGroup?: pulumi.Input<string>;
     /**
@@ -176,6 +182,9 @@ export interface GlobalNetworkEndpointArgs {
     fqdn?: pulumi.Input<string>;
     /**
      * The global network endpoint group this endpoint is part of.
+     *
+     *
+     * - - -
      */
     globalNetworkEndpointGroup: pulumi.Input<string>;
     /**

@@ -29,6 +29,9 @@ class PreventionStoredInfoTypeArgs:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+               
+               
+               - - -
         :param pulumi.Input[str] description: A description of the info type.
         :param pulumi.Input['PreventionStoredInfoTypeDictionaryArgs'] dictionary: Dictionary which defines the rule.
                Structure is documented below.
@@ -59,6 +62,9 @@ class PreventionStoredInfoTypeArgs:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
+
+
+        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -154,6 +160,9 @@ class _PreventionStoredInfoTypeState:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+               
+               
+               - - -
         :param pulumi.Input['PreventionStoredInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
         """
@@ -243,6 +252,9 @@ class _PreventionStoredInfoTypeState:
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
+
+
+        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -371,6 +383,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
         """
@@ -537,6 +552,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
         """
@@ -604,6 +622,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         * `projects/{{project}}/locations/{{location}}`
         * `organizations/{{organization_id}}`
         * `organizations/{{organization_id}}/locations/{{location}}`
+
+
+        - - -
         """
         return pulumi.get(self, "parent")
 

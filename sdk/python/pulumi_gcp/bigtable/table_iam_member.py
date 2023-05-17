@@ -28,7 +28,20 @@ class TableIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+               
+               `bigtable.TableIamPolicy` only:
         :param pulumi.Input[str] table: The name or relative resource id of the table to manage IAM policies for.
+               
+               For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
+               
+               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] project: The project in which the table belongs. If it
                is not provided, this provider will use the provider default.
         """
@@ -69,6 +82,8 @@ class TableIamMemberArgs:
         The role that should be applied. Only one
         `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+
+        `bigtable.TableIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -81,6 +96,17 @@ class TableIamMemberArgs:
     def table(self) -> pulumi.Input[str]:
         """
         The name or relative resource id of the table to manage IAM policies for.
+
+        For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
+
+        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "table")
 
@@ -130,7 +156,20 @@ class _TableIamMemberState:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+               
+               `bigtable.TableIamPolicy` only:
         :param pulumi.Input[str] table: The name or relative resource id of the table to manage IAM policies for.
+               
+               For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
+               
+               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -209,6 +248,8 @@ class _TableIamMemberState:
         The role that should be applied. Only one
         `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+
+        `bigtable.TableIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -221,6 +262,17 @@ class _TableIamMemberState:
     def table(self) -> Optional[pulumi.Input[str]]:
         """
         The name or relative resource id of the table to manage IAM policies for.
+
+        For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
+
+        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "table")
 
@@ -323,7 +375,20 @@ class TableIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+               
+               `bigtable.TableIamPolicy` only:
         :param pulumi.Input[str] table: The name or relative resource id of the table to manage IAM policies for.
+               
+               For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
+               
+               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         ...
     @overload
@@ -481,7 +546,20 @@ class TableIamMember(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+               
+               `bigtable.TableIamPolicy` only:
         :param pulumi.Input[str] table: The name or relative resource id of the table to manage IAM policies for.
+               
+               For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
+               
+               * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+               Each entry can have one of the following values:
+               * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+               * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -538,6 +616,8 @@ class TableIamMember(pulumi.CustomResource):
         The role that should be applied. Only one
         `bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+
+        `bigtable.TableIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -546,6 +626,17 @@ class TableIamMember(pulumi.CustomResource):
     def table(self) -> pulumi.Output[str]:
         """
         The name or relative resource id of the table to manage IAM policies for.
+
+        For `bigtable.TableIamMember` or `bigtable.TableIamBinding`:
+
+        * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        Each entry can have one of the following values:
+        * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "table")
 

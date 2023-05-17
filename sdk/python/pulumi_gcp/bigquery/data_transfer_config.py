@@ -34,11 +34,13 @@ class DataTransferConfigArgs:
         The set of arguments for constructing a DataTransferConfig resource.
         :param pulumi.Input[str] data_source_id: The data source id. Cannot be changed once the transfer config is created.
         :param pulumi.Input[str] display_name: The user specified display name for the transfer config.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-               for each data source. For example the parameters for Cloud Storage transfers are listed here:
-               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-               parameter that cannot be updated (due to api limitations) [please force recreation of the
-               resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+               section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+               **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+               
+               
+               - - -
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data.
                For example, if dataRefreshWindowDays = 10, then every day BigQuery
                reingests data for [today-10, today-1], rather than ingesting data for
@@ -130,11 +132,13 @@ class DataTransferConfigArgs:
     @pulumi.getter
     def params(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
-        Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-        for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-        parameter that cannot be updated (due to api limitations) [please force recreation of the
-        resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "params")
 
@@ -340,11 +344,13 @@ class _DataTransferConfigState:
                The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
                associated with this transfer config finish.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-               for each data source. For example the parameters for Cloud Storage transfers are listed here:
-               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-               parameter that cannot be updated (due to api limitations) [please force recreation of the
-               resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+               section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+               **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom
@@ -522,11 +528,13 @@ class _DataTransferConfigState:
     @pulumi.getter
     def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-        for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-        parameter that cannot be updated (due to api limitations) [please force recreation of the
-        resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "params")
 
@@ -633,6 +641,19 @@ class DataTransferConfig(pulumi.CustomResource):
                  service_account_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Represents a data transfer configuration. A transfer configuration
+        contains all metadata needed to perform a data transfer.
+
+        To get more information about Config, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `sensitive_params.secret_access_key`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Bigquerydatatransfer Config Scheduled Query
 
@@ -691,11 +712,13 @@ class DataTransferConfig(pulumi.CustomResource):
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
                associated with this transfer config finish.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-               for each data source. For example the parameters for Cloud Storage transfers are listed here:
-               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-               parameter that cannot be updated (due to api limitations) [please force recreation of the
-               resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+               section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+               **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom
@@ -726,6 +749,19 @@ class DataTransferConfig(pulumi.CustomResource):
                  args: DataTransferConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a data transfer configuration. A transfer configuration
+        contains all metadata needed to perform a data transfer.
+
+        To get more information about Config, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `sensitive_params.secret_access_key`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Bigquerydatatransfer Config Scheduled Query
 
@@ -877,11 +913,13 @@ class DataTransferConfig(pulumi.CustomResource):
                The name is ignored when creating a transfer config.
         :param pulumi.Input[str] notification_pubsub_topic: Pub/Sub topic where notifications will be sent after transfer runs
                associated with this transfer config finish.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-               for each data source. For example the parameters for Cloud Storage transfers are listed here:
-               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-               parameter that cannot be updated (due to api limitations) [please force recreation of the
-               resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+               section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+               https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+               **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom
@@ -1013,11 +1051,13 @@ class DataTransferConfig(pulumi.CustomResource):
     @pulumi.getter
     def params(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-        for each data source. For example the parameters for Cloud Storage transfers are listed here:
-        https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-        parameter that cannot be updated (due to api limitations) [please force recreation of the
-        resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+        Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+        section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+        https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+        **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "params")
 

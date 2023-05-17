@@ -205,6 +205,8 @@ type RouterPeer struct {
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
+	//
+	// ***
 	Router pulumi.StringOutput `pulumi:"router"`
 	// The URI of the VM instance that is used as third-party router appliances
 	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -308,6 +310,8 @@ type routerPeerState struct {
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
+	//
+	// ***
 	Router *string `pulumi:"router"`
 	// The URI of the VM instance that is used as third-party router appliances
 	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -371,6 +375,8 @@ type RouterPeerState struct {
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
+	//
+	// ***
 	Router pulumi.StringPtrInput
 	// The URI of the VM instance that is used as third-party router appliances
 	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -436,6 +442,8 @@ type routerPeerArgs struct {
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this BgpPeer will be configured.
+	//
+	// ***
 	Router string `pulumi:"router"`
 	// The URI of the VM instance that is used as third-party router appliances
 	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -498,6 +506,8 @@ type RouterPeerArgs struct {
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this BgpPeer will be configured.
+	//
+	// ***
 	Router pulumi.StringInput
 	// The URI of the VM instance that is used as third-party router appliances
 	// such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
@@ -689,6 +699,8 @@ func (o RouterPeerOutput) Region() pulumi.StringOutput {
 }
 
 // The name of the Cloud Router in which this BgpPeer will be configured.
+//
+// ***
 func (o RouterPeerOutput) Router() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.Router }).(pulumi.StringOutput)
 }

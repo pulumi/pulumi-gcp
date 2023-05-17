@@ -45,8 +45,10 @@ class ListingArgs:
         :param pulumi.Input[str] documentation: Documentation describing the listing.
         :param pulumi.Input[str] icon: Base64 encoded image representing the listing.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
+               
                (Optional)
                Email or URL of the data provider.
+               
                (Optional)
                Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -206,8 +208,10 @@ class ListingArgs:
     def primary_contact(self) -> Optional[pulumi.Input[str]]:
         """
         Email or URL of the primary point of contact of the listing.
+
         (Optional)
         Email or URL of the data provider.
+
         (Optional)
         Email or URL of the listing publisher.
         """
@@ -289,11 +293,14 @@ class _ListingState:
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] name: Name of the data provider.
+               
                (Required)
                Name of the listing publisher.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
+               
                (Optional)
                Email or URL of the data provider.
+               
                (Optional)
                Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -460,6 +467,7 @@ class _ListingState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the data provider.
+
         (Required)
         Name of the listing publisher.
         """
@@ -474,8 +482,10 @@ class _ListingState:
     def primary_contact(self) -> Optional[pulumi.Input[str]]:
         """
         Email or URL of the primary point of contact of the listing.
+
         (Optional)
         Email or URL of the data provider.
+
         (Optional)
         Email or URL of the listing publisher.
         """
@@ -612,8 +622,10 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
+               
                (Optional)
                Email or URL of the data provider.
+               
                (Optional)
                Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -789,11 +801,14 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[str] listing_id: The ID of the listing. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[str] location: The name of the location this data exchange listing.
         :param pulumi.Input[str] name: Name of the data provider.
+               
                (Required)
                Name of the listing publisher.
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the listing.
+               
                (Optional)
                Email or URL of the data provider.
+               
                (Optional)
                Email or URL of the listing publisher.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -910,6 +925,7 @@ class Listing(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the data provider.
+
         (Required)
         Name of the listing publisher.
         """
@@ -920,8 +936,10 @@ class Listing(pulumi.CustomResource):
     def primary_contact(self) -> pulumi.Output[Optional[str]]:
         """
         Email or URL of the primary point of contact of the listing.
+
         (Optional)
         Email or URL of the data provider.
+
         (Optional)
         Email or URL of the listing publisher.
         """

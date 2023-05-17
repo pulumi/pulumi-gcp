@@ -399,6 +399,8 @@ type InstanceNetwork struct {
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
+	//
+	// ***
 	ConnectMode *string `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
@@ -432,6 +434,8 @@ type InstanceNetworkArgs struct {
 	// DIRECT_PEERING.
 	// Default value is `DIRECT_PEERING`.
 	// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
+	//
+	// ***
 	ConnectMode pulumi.StringPtrInput `pulumi:"connectMode"`
 	// (Output)
 	// A list of IPv4 or IPv6 addresses.
@@ -504,6 +508,8 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 // DIRECT_PEERING.
 // Default value is `DIRECT_PEERING`.
 // Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
+//
+// ***
 func (o InstanceNetworkOutput) ConnectMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.ConnectMode }).(pulumi.StringPtrOutput)
 }

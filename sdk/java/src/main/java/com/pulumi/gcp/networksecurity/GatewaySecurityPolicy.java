@@ -121,6 +121,8 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -128,6 +130,8 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

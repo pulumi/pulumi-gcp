@@ -247,12 +247,16 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     /**
      * The ID of the workstation cluster.
      * 
+     * ***
+     * 
      */
     @Import(name="workstationClusterId")
     private @Nullable Output<String> workstationClusterId;
 
     /**
      * @return The ID of the workstation cluster.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> workstationClusterId() {
@@ -619,6 +623,8 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         /**
          * @param workstationClusterId The ID of the workstation cluster.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -629,6 +635,8 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
 
         /**
          * @param workstationClusterId The ID of the workstation cluster.
+         * 
+         * ***
          * 
          * @return builder
          * 

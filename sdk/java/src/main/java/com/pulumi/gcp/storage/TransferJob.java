@@ -271,12 +271,16 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      * 
+     * ***
+     * 
      */
     @Export(name="schedule", type=TransferJobSchedule.class, parameters={})
     private Output</* @Nullable */ TransferJobSchedule> schedule;
 
     /**
      * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+     * 
+     * ***
      * 
      */
     public Output<Optional<TransferJobSchedule>> schedule() {

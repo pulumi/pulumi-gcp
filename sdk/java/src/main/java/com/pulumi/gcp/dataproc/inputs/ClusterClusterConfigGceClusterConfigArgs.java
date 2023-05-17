@@ -121,12 +121,16 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     /**
      * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
      * 
+     * ***
+     * 
      */
     @Import(name="shieldedInstanceConfig")
     private @Nullable Output<ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs> shieldedInstanceConfig;
 
     /**
      * @return Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+     * 
+     * ***
      * 
      */
     public Optional<Output<ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
@@ -372,6 +376,8 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
         /**
          * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -382,6 +388,8 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
         /**
          * @param shieldedInstanceConfig Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+         * 
+         * ***
          * 
          * @return builder
          * 

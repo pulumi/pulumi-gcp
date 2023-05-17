@@ -79,12 +79,16 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The location where the alloydb backup should reside.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location where the alloydb backup should reside.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -224,6 +228,8 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location where the alloydb backup should reside.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -234,6 +240,8 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location where the alloydb backup should reside.
+         * 
+         * ***
          * 
          * @return builder
          * 

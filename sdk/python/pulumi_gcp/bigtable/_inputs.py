@@ -29,6 +29,8 @@ class GCPolicyMaxAgeArgs:
         """
         :param pulumi.Input[int] days: Number of days before applying GC policy.
         :param pulumi.Input[str] duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+               
+               -----
         """
         if days is not None:
             warnings.warn("""Deprecated in favor of duration""", DeprecationWarning)
@@ -55,6 +57,8 @@ class GCPolicyMaxAgeArgs:
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
         Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+
+        -----
         """
         return pulumi.get(self, "duration")
 
@@ -69,6 +73,9 @@ class GCPolicyMaxVersionArgs:
                  number: pulumi.Input[int]):
         """
         :param pulumi.Input[int] number: Number of version before applying the GC policy.
+               
+               -----
+               `gc_rules` include 2 fields:
         """
         pulumi.set(__self__, "number", number)
 
@@ -77,6 +84,9 @@ class GCPolicyMaxVersionArgs:
     def number(self) -> pulumi.Input[int]:
         """
         Number of version before applying the GC policy.
+
+        -----
+        `gc_rules` include 2 fields:
         """
         return pulumi.get(self, "number")
 
@@ -98,6 +108,15 @@ class InstanceClusterArgs:
         :param pulumi.Input[str] cluster_id: The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
         :param pulumi.Input['InstanceClusterAutoscalingConfigArgs'] autoscaling_config: [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
         :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+               
+               > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+               
+               !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+               
+               !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
+               `cluster_id`) will cause the provider to delete/recreate the entire
+               `bigtable.Instance` resource. If these values are changing, use a new
+               `cluster_id`.
         :param pulumi.Input[int] num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for each cluster in an instance.
         :param pulumi.Input[str] storage_type: The storage type to use. One of `"SSD"` or
@@ -147,6 +166,15 @@ class InstanceClusterArgs:
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
         Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+
+        > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+
+        !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+
+        !> **Warning:** Modifying the `storage_type`, `zone` or `kms_key_name` of an existing cluster (by
+        `cluster_id`) will cause the provider to delete/recreate the entire
+        `bigtable.Instance` resource. If these values are changing, use a new
+        `cluster_id`.
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -207,6 +235,8 @@ class InstanceClusterAutoscalingConfigArgs:
         :param pulumi.Input[int] max_nodes: The maximum number of nodes for autoscaling.
         :param pulumi.Input[int] min_nodes: The minimum number of nodes for autoscaling.
         :param pulumi.Input[int] storage_target: The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+               
+               !> **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         """
         pulumi.set(__self__, "cpu_target", cpu_target)
         pulumi.set(__self__, "max_nodes", max_nodes)
@@ -255,6 +285,8 @@ class InstanceClusterAutoscalingConfigArgs:
     def storage_target(self) -> Optional[pulumi.Input[int]]:
         """
         The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+
+        !> **Warning**: Only one of `autoscaling_config` or `num_nodes` should be set for a cluster. If both are set, `num_nodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
         """
         return pulumi.get(self, "storage_target")
 

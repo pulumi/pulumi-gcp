@@ -321,12 +321,16 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The name of the security policy.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The name of the security policy.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

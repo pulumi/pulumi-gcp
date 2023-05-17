@@ -1486,6 +1486,8 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only &#34;all-apis&#34; and &#34;vpc-sc&#34; are valid.
      * 
+     * ***
+     * 
      */
     @Export(name="target", type=String.class, parameters={})
     private Output<String> target;
@@ -1497,6 +1499,8 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * are valid.
      * For global address with a purpose of PRIVATE_SERVICE_CONNECT and
      * addressType of INTERNAL, only &#34;all-apis&#34; and &#34;vpc-sc&#34; are valid.
+     * 
+     * ***
      * 
      */
     public Output<String> target() {

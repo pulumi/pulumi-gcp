@@ -437,8 +437,10 @@ class _StandardAppVersionState:
         :param pulumi.Input['StandardAppVersionManualScalingArgs'] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+               
                (Optional)
                Name of the library. Example "django".
+               
                (Required)
                Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
@@ -661,8 +663,10 @@ class _StandardAppVersionState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The identifier for this object. Format specified above.
+
         (Optional)
         Name of the library. Example "django".
+
         (Required)
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
@@ -1203,8 +1207,10 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StandardAppVersionManualScalingArgs']] manual_scaling: A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
                Structure is documented below.
         :param pulumi.Input[str] name: The identifier for this object. Format specified above.
+               
                (Optional)
                Name of the library. Example "django".
+               
                (Required)
                Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         :param pulumi.Input[bool] noop_on_destroy: If set to `true`, the application version will not be deleted.
@@ -1362,8 +1368,10 @@ class StandardAppVersion(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The identifier for this object. Format specified above.
+
         (Optional)
         Name of the library. Example "django".
+
         (Required)
         Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """

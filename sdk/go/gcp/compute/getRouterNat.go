@@ -62,6 +62,8 @@ type LookupRouterNatArgs struct {
 	// Region where the router and NAT reside.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
+	//
+	// ***
 	Router string `pulumi:"router"`
 }
 
@@ -115,6 +117,8 @@ type LookupRouterNatOutputArgs struct {
 	// Region where the router and NAT reside.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
+	//
+	// ***
 	Router pulumi.StringInput `pulumi:"router"`
 }
 

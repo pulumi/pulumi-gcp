@@ -212,12 +212,16 @@ public class AddonsConfig extends com.pulumi.resources.CustomResource {
     /**
      * Name of the Apigee organization.
      * 
+     * ***
+     * 
      */
     @Export(name="org", type=String.class, parameters={})
     private Output<String> org;
 
     /**
      * @return Name of the Apigee organization.
+     * 
+     * ***
      * 
      */
     public Output<String> org() {

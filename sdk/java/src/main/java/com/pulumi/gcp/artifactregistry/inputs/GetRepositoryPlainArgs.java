@@ -17,12 +17,16 @@ public final class GetRepositoryPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * The location of the artifact registry repository. eg us-central1
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private String location;
 
     /**
      * @return The location of the artifact registry repository. eg us-central1
+     * 
+     * ***
      * 
      */
     public String location() {
@@ -89,6 +93,8 @@ public final class GetRepositoryPlainArgs extends com.pulumi.resources.InvokeArg
 
         /**
          * @param location The location of the artifact registry repository. eg us-central1
+         * 
+         * ***
          * 
          * @return builder
          * 

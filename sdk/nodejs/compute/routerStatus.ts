@@ -61,7 +61,13 @@ export interface RouterStatusArgs {
  * A collection of values returned by RouterStatus.
  */
 export interface RouterStatusResult {
+    /**
+     * List of best `compute#routes` configurations for this router's network. See gcp.compute.Route resource for available attributes.
+     */
     readonly bestRoutes: outputs.compute.RouterStatusBestRoute[];
+    /**
+     * List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
+     */
     readonly bestRoutesForRouters: outputs.compute.RouterStatusBestRoutesForRouter[];
     /**
      * The provider-assigned unique ID for this managed resource.

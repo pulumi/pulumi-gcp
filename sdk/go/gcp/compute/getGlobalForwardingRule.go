@@ -49,6 +49,8 @@ func LookupGlobalForwardingRule(ctx *pulumi.Context, args *LookupGlobalForwardin
 // A collection of arguments for invoking getGlobalForwardingRule.
 type LookupGlobalForwardingRuleArgs struct {
 	// The name of the global forwarding rule.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -93,6 +95,8 @@ func LookupGlobalForwardingRuleOutput(ctx *pulumi.Context, args LookupGlobalForw
 // A collection of arguments for invoking getGlobalForwardingRule.
 type LookupGlobalForwardingRuleOutputArgs struct {
 	// The name of the global forwarding rule.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

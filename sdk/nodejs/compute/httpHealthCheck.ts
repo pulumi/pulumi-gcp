@@ -111,6 +111,9 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -226,6 +229,9 @@ export interface HttpHealthCheckState {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -293,6 +299,9 @@ export interface HttpHealthCheckArgs {
      * the first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the
      * last character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

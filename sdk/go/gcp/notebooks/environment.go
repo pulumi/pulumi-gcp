@@ -83,6 +83,8 @@ type Environment struct {
 	// Display name of this environment for the UI.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name specified for the Environment instance.
 	// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -140,6 +142,8 @@ type environmentState struct {
 	// Display name of this environment for the UI.
 	DisplayName *string `pulumi:"displayName"`
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// The name specified for the Environment instance.
 	// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -166,6 +170,8 @@ type EnvironmentState struct {
 	// Display name of this environment for the UI.
 	DisplayName pulumi.StringPtrInput
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// The name specified for the Environment instance.
 	// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -194,6 +200,8 @@ type environmentArgs struct {
 	// Display name of this environment for the UI.
 	DisplayName *string `pulumi:"displayName"`
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The name specified for the Environment instance.
 	// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -219,6 +227,8 @@ type EnvironmentArgs struct {
 	// Display name of this environment for the UI.
 	DisplayName pulumi.StringPtrInput
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location pulumi.StringInput
 	// The name specified for the Environment instance.
 	// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
@@ -343,6 +353,8 @@ func (o EnvironmentOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // A reference to the zone where the machine resides.
+//
+// ***
 func (o EnvironmentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

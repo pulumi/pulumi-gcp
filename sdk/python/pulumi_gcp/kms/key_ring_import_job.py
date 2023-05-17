@@ -23,6 +23,9 @@ class KeyRingImportJobArgs:
         """
         The set of arguments for constructing a KeyRingImportJob resource.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+               
+               
+               - - -
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
                Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
         :param pulumi.Input[str] key_ring: The KeyRing that this import job belongs to.
@@ -41,6 +44,9 @@ class KeyRingImportJobArgs:
     def import_job_id(self) -> pulumi.Input[str]:
         """
         It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+
+
+        - - -
         """
         return pulumi.get(self, "import_job_id")
 
@@ -110,6 +116,9 @@ class _KeyRingImportJobState:
         :param pulumi.Input[str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used.
                This is in RFC3339 text format.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+               
+               
+               - - -
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
                Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
         :param pulumi.Input[str] key_ring: The KeyRing that this import job belongs to.
@@ -174,6 +183,9 @@ class _KeyRingImportJobState:
     def import_job_id(self) -> Optional[pulumi.Input[str]]:
         """
         It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+
+
+        - - -
         """
         return pulumi.get(self, "import_job_id")
 
@@ -298,6 +310,9 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+               
+               
+               - - -
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
                Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
         :param pulumi.Input[str] key_ring: The KeyRing that this import job belongs to.
@@ -416,6 +431,9 @@ class KeyRingImportJob(pulumi.CustomResource):
         :param pulumi.Input[str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used.
                This is in RFC3339 text format.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+               
+               
+               - - -
         :param pulumi.Input[str] import_method: The wrapping method to be used for incoming key material.
                Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
         :param pulumi.Input[str] key_ring: The KeyRing that this import job belongs to.
@@ -468,6 +486,9 @@ class KeyRingImportJob(pulumi.CustomResource):
     def import_job_id(self) -> pulumi.Output[str]:
         """
         It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+
+
+        - - -
         """
         return pulumi.get(self, "import_job_id")
 

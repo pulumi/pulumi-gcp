@@ -117,6 +117,9 @@ export class AppGateway extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * ID of the AppGateway.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -209,6 +212,9 @@ export interface AppGatewayState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the AppGateway.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -256,6 +262,9 @@ export interface AppGatewayArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * ID of the AppGateway.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

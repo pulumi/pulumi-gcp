@@ -70,6 +70,8 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -77,6 +79,8 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
     /**
      * @return Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -237,6 +241,8 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
          * @param name Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
          * gatewaySecurityPolicy should match the pattern:(^a-z?$).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -248,6 +254,8 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
         /**
          * @param name Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
          * gatewaySecurityPolicy should match the pattern:(^a-z?$).
+         * 
+         * ***
          * 
          * @return builder
          * 

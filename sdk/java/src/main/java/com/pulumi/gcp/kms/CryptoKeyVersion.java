@@ -117,6 +117,8 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
      * 
+     * ***
+     * 
      */
     @Export(name="cryptoKey", type=String.class, parameters={})
     private Output<String> cryptoKey;
@@ -124,6 +126,8 @@ public class CryptoKeyVersion extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}&#39;`
+     * 
+     * ***
      * 
      */
     public Output<String> cryptoKey() {

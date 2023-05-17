@@ -107,6 +107,9 @@ export class Gateway extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+     *
+     *
+     * - - -
      */
     public readonly gatewayId!: pulumi.Output<string>;
     /**
@@ -189,6 +192,9 @@ export interface GatewayState {
     displayName?: pulumi.Input<string>;
     /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+     *
+     *
+     * - - -
      */
     gatewayId?: pulumi.Input<string>;
     /**
@@ -225,6 +231,9 @@ export interface GatewayArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+     *
+     *
+     * - - -
      */
     gatewayId: pulumi.Input<string>;
     /**

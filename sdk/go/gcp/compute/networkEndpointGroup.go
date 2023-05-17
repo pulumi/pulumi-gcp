@@ -162,6 +162,8 @@ type NetworkEndpointGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
+	//
+	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
 	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -235,6 +237,8 @@ type networkEndpointGroupState struct {
 	Name *string `pulumi:"name"`
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
+	//
+	// ***
 	Network *string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
 	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -277,6 +281,8 @@ type NetworkEndpointGroupState struct {
 	Name pulumi.StringPtrInput
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
+	//
+	// ***
 	Network pulumi.StringPtrInput
 	// Type of network endpoints in this network endpoint group.
 	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -323,6 +329,8 @@ type networkEndpointGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
+	//
+	// ***
 	Network string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
 	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -362,6 +370,8 @@ type NetworkEndpointGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The network to which all network endpoints in the NEG belong.
 	// Uses "default" project network if unspecified.
+	//
+	// ***
 	Network pulumi.StringInput
 	// Type of network endpoints in this network endpoint group.
 	// NON_GCP_PRIVATE_IP_PORT is used for hybrid connectivity network
@@ -495,6 +505,8 @@ func (o NetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 
 // The network to which all network endpoints in the NEG belong.
 // Uses "default" project network if unspecified.
+//
+// ***
 func (o NetworkEndpointGroupOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

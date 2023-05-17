@@ -192,6 +192,11 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * or that all pod creations will be denied. There can be at most one
      * admission rule per cluster spec.
      * 
+     * Identifier format: `{{location}}.{{clusterId}}`.
+     * A location is either a compute zone (e.g. `us-central1-a`) or a region
+     * (e.g. `us-central1`).
+     * Structure is documented below.
+     * 
      */
     @Export(name="clusterAdmissionRules", type=List.class, parameters={PolicyClusterAdmissionRule.class})
     private Output</* @Nullable */ List<PolicyClusterAdmissionRule>> clusterAdmissionRules;
@@ -202,6 +207,11 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * to by one or more attestors, that all pod creations will be allowed,
      * or that all pod creations will be denied. There can be at most one
      * admission rule per cluster spec.
+     * 
+     * Identifier format: `{{location}}.{{clusterId}}`.
+     * A location is either a compute zone (e.g. `us-central1-a`) or a region
+     * (e.g. `us-central1`).
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<PolicyClusterAdmissionRule>>> clusterAdmissionRules() {

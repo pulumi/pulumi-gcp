@@ -106,12 +106,16 @@ public class ProjectMetadata extends com.pulumi.resources.CustomResource {
     /**
      * A series of key value pairs.
      * 
+     * ***
+     * 
      */
     @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> metadata;
 
     /**
      * @return A series of key value pairs.
+     * 
+     * ***
      * 
      */
     public Output<Map<String,String>> metadata() {

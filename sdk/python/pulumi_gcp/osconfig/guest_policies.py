@@ -219,8 +219,10 @@ class _GuestPoliciesState:
                * Must be unique within the project.
         :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation
                by checking the package name and the manager(s) that the package targets.
+               
                (Required)
                The name of the repository.
+               
                (Required)
                Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -341,8 +343,10 @@ class _GuestPoliciesState:
         """
         The name of the package. A package is uniquely identified for conflict validation
         by checking the package name and the manager(s) that the package targets.
+
         (Required)
         The name of the repository.
+
         (Required)
         Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
         Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -893,8 +897,10 @@ class GuestPolicies(pulumi.CustomResource):
                * Must be unique within the project.
         :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation
                by checking the package name and the manager(s) that the package targets.
+               
                (Required)
                The name of the repository.
+               
                (Required)
                Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
                Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -989,8 +995,10 @@ class GuestPolicies(pulumi.CustomResource):
         """
         The name of the package. A package is uniquely identified for conflict validation
         by checking the package name and the manager(s) that the package targets.
+
         (Required)
         The name of the repository.
+
         (Required)
         Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
         Names are also used to identify resources which helps to determine whether guest policies have conflicts.

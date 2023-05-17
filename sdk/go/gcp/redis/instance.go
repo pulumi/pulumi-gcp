@@ -380,6 +380,8 @@ type Instance struct {
 	// Structure is documented below.
 	MaintenanceSchedule InstanceMaintenanceSchedulePtrOutput `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
+	//
+	// ***
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -545,6 +547,8 @@ type instanceState struct {
 	// Structure is documented below.
 	MaintenanceSchedule *InstanceMaintenanceSchedule `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
+	//
+	// ***
 	MemorySizeGb *int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -675,6 +679,8 @@ type InstanceState struct {
 	// Structure is documented below.
 	MaintenanceSchedule InstanceMaintenanceSchedulePtrInput
 	// Redis memory size in GiB.
+	//
+	// ***
 	MemorySizeGb pulumi.IntPtrInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -793,6 +799,8 @@ type instanceArgs struct {
 	// Structure is documented below.
 	MaintenanceSchedule *InstanceMaintenanceSchedule `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
+	//
+	// ***
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name *string `pulumi:"name"`
@@ -888,6 +896,8 @@ type InstanceArgs struct {
 	// Structure is documented below.
 	MaintenanceSchedule InstanceMaintenanceSchedulePtrInput
 	// Redis memory size in GiB.
+	//
+	// ***
 	MemorySizeGb pulumi.IntInput
 	// The ID of the instance or a fully qualified identifier for the instance.
 	Name pulumi.StringPtrInput
@@ -1126,6 +1136,8 @@ func (o InstanceOutput) MaintenanceSchedule() InstanceMaintenanceSchedulePtrOutp
 }
 
 // Redis memory size in GiB.
+//
+// ***
 func (o InstanceOutput) MemorySizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.MemorySizeGb }).(pulumi.IntOutput)
 }

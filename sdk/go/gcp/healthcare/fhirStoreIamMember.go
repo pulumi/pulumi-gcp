@@ -161,6 +161,15 @@ type FhirStoreIamMember struct {
 	// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	FhirStoreId pulumi.StringOutput `pulumi:"fhirStoreId"`
 	Member      pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
@@ -214,6 +223,15 @@ type fhirStoreIamMemberState struct {
 	// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	FhirStoreId *string `pulumi:"fhirStoreId"`
 	Member      *string `pulumi:"member"`
 	// The role that should be applied. Only one
@@ -230,6 +248,15 @@ type FhirStoreIamMemberState struct {
 	// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	FhirStoreId pulumi.StringPtrInput
 	Member      pulumi.StringPtrInput
 	// The role that should be applied. Only one
@@ -248,6 +275,15 @@ type fhirStoreIamMemberArgs struct {
 	// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	FhirStoreId string `pulumi:"fhirStoreId"`
 	Member      string `pulumi:"member"`
 	// The role that should be applied. Only one
@@ -263,6 +299,15 @@ type FhirStoreIamMemberArgs struct {
 	// `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 	// `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 	// project setting will be used as a fallback.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	FhirStoreId pulumi.StringInput
 	Member      pulumi.StringInput
 	// The role that should be applied. Only one
@@ -371,6 +416,15 @@ func (o FhirStoreIamMemberOutput) Etag() pulumi.StringOutput {
 // `{project_id}/{location_name}/{dataset_name}/{fhir_store_name}` or
 // `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
 // project setting will be used as a fallback.
+//
+//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
+//     Each entry can have one of the following values:
+//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o FhirStoreIamMemberOutput) FhirStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStoreIamMember) pulumi.StringOutput { return v.FhirStoreId }).(pulumi.StringOutput)
 }

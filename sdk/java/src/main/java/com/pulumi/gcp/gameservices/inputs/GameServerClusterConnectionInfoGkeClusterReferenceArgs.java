@@ -23,6 +23,8 @@ public final class GameServerClusterConnectionInfoGkeClusterReferenceArgs extend
      *   GameServerCluster resource are used to generate the full name of the
      *   GKE cluster.
      * 
+     * ***
+     * 
      */
     @Import(name="cluster", required=true)
     private Output<String> cluster;
@@ -36,6 +38,8 @@ public final class GameServerClusterConnectionInfoGkeClusterReferenceArgs extend
      *   If project and location are not specified, the project and location of the
      *   GameServerCluster resource are used to generate the full name of the
      *   GKE cluster.
+     * 
+     * ***
      * 
      */
     public Output<String> cluster() {
@@ -76,6 +80,8 @@ public final class GameServerClusterConnectionInfoGkeClusterReferenceArgs extend
          *   GameServerCluster resource are used to generate the full name of the
          *   GKE cluster.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -93,6 +99,8 @@ public final class GameServerClusterConnectionInfoGkeClusterReferenceArgs extend
          *   If project and location are not specified, the project and location of the
          *   GameServerCluster resource are used to generate the full name of the
          *   GKE cluster.
+         * 
+         * ***
          * 
          * @return builder
          * 

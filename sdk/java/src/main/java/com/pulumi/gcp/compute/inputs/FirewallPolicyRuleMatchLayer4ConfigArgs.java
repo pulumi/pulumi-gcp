@@ -34,12 +34,16 @@ public final class FirewallPolicyRuleMatchLayer4ConfigArgs extends com.pulumi.re
     /**
      * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
      * 
+     * ***
+     * 
      */
     @Import(name="ports")
     private @Nullable Output<List<String>> ports;
 
     /**
      * @return An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+     * 
+     * ***
      * 
      */
     public Optional<Output<List<String>>> ports() {
@@ -95,6 +99,8 @@ public final class FirewallPolicyRuleMatchLayer4ConfigArgs extends com.pulumi.re
         /**
          * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -106,6 +112,8 @@ public final class FirewallPolicyRuleMatchLayer4ConfigArgs extends com.pulumi.re
         /**
          * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -115,6 +123,8 @@ public final class FirewallPolicyRuleMatchLayer4ConfigArgs extends com.pulumi.re
 
         /**
          * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         * 
+         * ***
          * 
          * @return builder
          * 

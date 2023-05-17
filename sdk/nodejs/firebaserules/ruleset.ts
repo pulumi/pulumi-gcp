@@ -99,6 +99,8 @@ export class Ruleset extends pulumi.CustomResource {
     public /*out*/ readonly metadatas!: pulumi.Output<outputs.firebaserules.RulesetMetadata[]>;
     /**
      * File name.
+     *
+     * - - -
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -158,6 +160,8 @@ export interface RulesetState {
     metadatas?: pulumi.Input<pulumi.Input<inputs.firebaserules.RulesetMetadata>[]>;
     /**
      * File name.
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

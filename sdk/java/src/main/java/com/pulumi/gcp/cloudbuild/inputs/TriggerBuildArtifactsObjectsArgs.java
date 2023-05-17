@@ -56,6 +56,8 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
      * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_timing&#34;&gt;&lt;/a&gt;The `timing` block contains:
+     * 
      */
     @Import(name="timings")
     private @Nullable Output<List<TriggerBuildArtifactsObjectsTimingArgs>> timings;
@@ -64,6 +66,8 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
      * @return (Output)
      * Output only. Stores timing information for pushing all artifact objects.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_timing&#34;&gt;&lt;/a&gt;The `timing` block contains:
      * 
      */
     public Optional<Output<List<TriggerBuildArtifactsObjectsTimingArgs>>> timings() {
@@ -157,6 +161,8 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_timing&#34;&gt;&lt;/a&gt;The `timing` block contains:
+         * 
          * @return builder
          * 
          */
@@ -170,6 +176,8 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_timing&#34;&gt;&lt;/a&gt;The `timing` block contains:
+         * 
          * @return builder
          * 
          */
@@ -181,6 +189,8 @@ public final class TriggerBuildArtifactsObjectsArgs extends com.pulumi.resources
          * @param timings (Output)
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_timing&#34;&gt;&lt;/a&gt;The `timing` block contains:
          * 
          * @return builder
          * 

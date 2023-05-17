@@ -33,6 +33,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
      * The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM,
      * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
+     * 
      * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
      * 
      */
@@ -43,6 +46,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
      * @return The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM,
      * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+     * 
+     * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
+     * 
      * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
      * 
      */
@@ -106,6 +112,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
          * @param networkTier The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
          * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         * 
+         * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
+         * 
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          * 
          * @return builder
@@ -120,6 +129,9 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
          * @param networkTier The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
          * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         * 
+         * &lt;a name=&#34;nested_ipv6_access_config&#34;&gt;&lt;/a&gt;The `ipv6_access_config` block supports:
+         * 
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          * 
          * @return builder

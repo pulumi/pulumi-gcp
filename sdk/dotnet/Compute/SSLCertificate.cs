@@ -147,6 +147,8 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
+        /// 
+        /// These are in the same namespace as the managed SSL certificates.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -161,6 +163,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("privateKey")]
         public Output<string> PrivateKey { get; private set; } = null!;
@@ -262,6 +267,8 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
+        /// 
+        /// These are in the same namespace as the managed SSL certificates.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -279,6 +286,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         public Input<string>? PrivateKey
         {
@@ -356,6 +366,8 @@ namespace Pulumi.Gcp.Compute
         /// first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
+        /// 
+        /// These are in the same namespace as the managed SSL certificates.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -373,6 +385,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The write-only private key in PEM format.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         public Input<string>? PrivateKey
         {

@@ -249,6 +249,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
     }
     /**
      * Name of the data provider.
+     * 
      * (Required)
      * Name of the listing publisher.
      * 
@@ -258,6 +259,7 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Name of the data provider.
+     * 
      * (Required)
      * Name of the listing publisher.
      * 
@@ -267,8 +269,10 @@ public class Listing extends com.pulumi.resources.CustomResource {
     }
     /**
      * Email or URL of the primary point of contact of the listing.
+     * 
      * (Optional)
      * Email or URL of the data provider.
+     * 
      * (Optional)
      * Email or URL of the listing publisher.
      * 
@@ -278,8 +282,10 @@ public class Listing extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Email or URL of the primary point of contact of the listing.
+     * 
      * (Optional)
      * Email or URL of the data provider.
+     * 
      * (Optional)
      * Email or URL of the listing publisher.
      * 

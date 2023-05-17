@@ -28,6 +28,8 @@ class KeystoresAliasesPkcs12Args:
         :param pulumi.Input[str] alias: Alias Name
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] file: PKCS12 file content
+               
+               - - -
         :param pulumi.Input[str] filehash: Hash of the pkcs file
         :param pulumi.Input[str] keystore: Keystore Name
         :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -71,6 +73,8 @@ class KeystoresAliasesPkcs12Args:
     def file(self) -> pulumi.Input[str]:
         """
         PKCS12 file content
+
+        - - -
         """
         return pulumi.get(self, "file")
 
@@ -146,6 +150,8 @@ class _KeystoresAliasesPkcs12State:
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] file: PKCS12 file content
+               
+               - - -
         :param pulumi.Input[str] filehash: Hash of the pkcs file
         :param pulumi.Input[str] keystore: Keystore Name
         :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -213,6 +219,8 @@ class _KeystoresAliasesPkcs12State:
     def file(self) -> Optional[pulumi.Input[str]]:
         """
         PKCS12 file content
+
+        - - -
         """
         return pulumi.get(self, "file")
 
@@ -320,6 +328,8 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         :param pulumi.Input[str] alias: Alias Name
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] file: PKCS12 file content
+               
+               - - -
         :param pulumi.Input[str] filehash: Hash of the pkcs file
         :param pulumi.Input[str] keystore: Keystore Name
         :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -435,6 +445,8 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] environment: Environment associated with the alias
         :param pulumi.Input[str] file: PKCS12 file content
+               
+               - - -
         :param pulumi.Input[str] filehash: Hash of the pkcs file
         :param pulumi.Input[str] keystore: Keystore Name
         :param pulumi.Input[str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -486,6 +498,8 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
     def file(self) -> pulumi.Output[str]:
         """
         PKCS12 file content
+
+        - - -
         """
         return pulumi.get(self, "file")
 

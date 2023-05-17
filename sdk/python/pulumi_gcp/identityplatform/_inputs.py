@@ -129,6 +129,9 @@ class InboundSamlConfigSpConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
+               
+               
+               <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         :param pulumi.Input[str] sp_entity_id: Unique identifier for all SAML entities.
         """
         if callback_uri is not None:
@@ -157,6 +160,9 @@ class InboundSamlConfigSpConfigArgs:
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
+
+
+        <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
 
@@ -183,8 +189,11 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] x509_certificate: The IdP's x509 certificate.
+               
                (Output)
                The x509 certificate
+               
+               - - -
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -194,8 +203,11 @@ class InboundSamlConfigSpConfigSpCertificateArgs:
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
         The IdP's x509 certificate.
+
         (Output)
         The x509 certificate
+
+        - - -
         """
         return pulumi.get(self, "x509_certificate")
 
@@ -307,6 +319,8 @@ class ProjectDefaultConfigSignInAnonymousArgs:
                  enabled: pulumi.Input[bool]):
         """
         :param pulumi.Input[bool] enabled: Whether anonymous user auth is enabled for the project or not.
+               
+               <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -315,6 +329,8 @@ class ProjectDefaultConfigSignInAnonymousArgs:
     def enabled(self) -> pulumi.Input[bool]:
         """
         Whether anonymous user auth is enabled for the project or not.
+
+        <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
         return pulumi.get(self, "enabled")
 
@@ -607,6 +623,9 @@ class TenantInboundSamlConfigSpConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
+               
+               
+               <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
@@ -644,6 +663,9 @@ class TenantInboundSamlConfigSpConfigArgs:
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
+
+
+        <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
 
@@ -658,8 +680,11 @@ class TenantInboundSamlConfigSpConfigSpCertificateArgs:
                  x509_certificate: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] x509_certificate: The x509 certificate
+               
                (Output)
                The x509 certificate
+               
+               - - -
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -669,8 +694,11 @@ class TenantInboundSamlConfigSpConfigSpCertificateArgs:
     def x509_certificate(self) -> Optional[pulumi.Input[str]]:
         """
         The x509 certificate
+
         (Output)
         The x509 certificate
+
+        - - -
         """
         return pulumi.get(self, "x509_certificate")
 

@@ -23,6 +23,9 @@ class FirewallRuleArgs:
         The set of arguments for constructing a FirewallRule resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.
                Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
+               
+               
+               - - -
         :param pulumi.Input[str] source_range: IP address or range, defined using CIDR notation, of requests that this rule applies to.
         :param pulumi.Input[str] description: An optional string description of this rule.
         :param pulumi.Input[int] priority: A positive integer that defines the order of rule evaluation.
@@ -48,6 +51,9 @@ class FirewallRuleArgs:
         """
         The action to take if this rule matches.
         Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
+
+
+        - - -
         """
         return pulumi.get(self, "action")
 
@@ -121,6 +127,9 @@ class _FirewallRuleState:
         Input properties used for looking up and filtering FirewallRule resources.
         :param pulumi.Input[str] action: The action to take if this rule matches.
                Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional string description of this rule.
         :param pulumi.Input[int] priority: A positive integer that defines the order of rule evaluation.
                Rules with the lowest priority are evaluated first.
@@ -148,6 +157,9 @@ class _FirewallRuleState:
         """
         The action to take if this rule matches.
         Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
+
+
+        - - -
         """
         return pulumi.get(self, "action")
 
@@ -270,6 +282,9 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.
                Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional string description of this rule.
         :param pulumi.Input[int] priority: A positive integer that defines the order of rule evaluation.
                Rules with the lowest priority are evaluated first.
@@ -394,6 +409,9 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to take if this rule matches.
                Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional string description of this rule.
         :param pulumi.Input[int] priority: A positive integer that defines the order of rule evaluation.
                Rules with the lowest priority are evaluated first.
@@ -421,6 +439,9 @@ class FirewallRule(pulumi.CustomResource):
         """
         The action to take if this rule matches.
         Possible values are: `UNSPECIFIED_ACTION`, `ALLOW`, `DENY`.
+
+
+        - - -
         """
         return pulumi.get(self, "action")
 

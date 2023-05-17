@@ -37,6 +37,9 @@ class ResourcePolicyArgs:
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -107,6 +110,9 @@ class ResourcePolicyArgs:
         first character must be a lowercase letter, and all following characters
         must be a dash, lowercase letter, or digit, except the last character,
         which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -178,6 +184,9 @@ class _ResourcePolicyState:
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -251,6 +260,9 @@ class _ResourcePolicyState:
         first character must be a lowercase letter, and all following characters
         must be a dash, lowercase letter, or digit, except the last character,
         which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -483,6 +495,9 @@ class ResourcePolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -718,6 +733,9 @@ class ResourcePolicy(pulumi.CustomResource):
                first character must be a lowercase letter, and all following characters
                must be a dash, lowercase letter, or digit, except the last character,
                which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where resource policy resides.
@@ -776,6 +794,9 @@ class ResourcePolicy(pulumi.CustomResource):
         first character must be a lowercase letter, and all following characters
         must be a dash, lowercase letter, or digit, except the last character,
         which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

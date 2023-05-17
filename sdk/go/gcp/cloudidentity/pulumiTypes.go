@@ -24,6 +24,8 @@ type GroupGroupKey struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
+	//
+	// ***
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -52,6 +54,8 @@ type GroupGroupKeyArgs struct {
 	// If specified, the EntityKey represents an external-identity-mapped group.
 	// The namespace must correspond to an identity source created in Admin Console
 	// and must be in the form of `identitysources/{identity_source_id}`.
+	//
+	// ***
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -148,6 +152,8 @@ func (o GroupGroupKeyOutput) Id() pulumi.StringOutput {
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
+//
+// ***
 func (o GroupGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupGroupKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -197,6 +203,8 @@ func (o GroupGroupKeyPtrOutput) Id() pulumi.StringPtrOutput {
 // If specified, the EntityKey represents an external-identity-mapped group.
 // The namespace must correspond to an identity source created in Admin Console
 // and must be in the form of `identitysources/{identity_source_id}`.
+//
+// ***
 func (o GroupGroupKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupGroupKey) *string {
 		if v == nil {
@@ -601,6 +609,8 @@ func (o GroupMembershipPreferredMemberKeyPtrOutput) Namespace() pulumi.StringPtr
 type GroupMembershipRole struct {
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+	//
+	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -618,6 +628,8 @@ type GroupMembershipRoleInput interface {
 type GroupMembershipRoleArgs struct {
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -674,6 +686,8 @@ func (o GroupMembershipRoleOutput) ToGroupMembershipRoleOutputWithContext(ctx co
 
 // The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 // Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+//
+// ***
 func (o GroupMembershipRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupMembershipRole) string { return v.Name }).(pulumi.StringOutput)
 }

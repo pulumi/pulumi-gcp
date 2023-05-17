@@ -16,10 +16,12 @@ public final class RegionHealthCheckHttp2HealthCheck {
      * @return The value of the host header in the HTTP health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
+     * 
      * (Optional)
      * The value of the host header in the HTTPS health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
+     * 
      * (Optional)
      * The value of the host header in the HTTP2 health check request.
      * If left empty (default value), the public IP on behalf of which this health
@@ -30,18 +32,23 @@ public final class RegionHealthCheckHttp2HealthCheck {
     /**
      * @return The TCP port number for the HTTP health check request.
      * The default value is 80.
+     * 
      * (Optional)
      * The TCP port number for the HTTPS health check request.
      * The default value is 443.
+     * 
      * (Optional)
      * The TCP port number for the TCP health check request.
      * The default value is 80.
+     * 
      * (Optional)
      * The TCP port number for the SSL health check request.
      * The default value is 443.
+     * 
      * (Optional)
      * The TCP port number for the HTTP2 health check request.
      * The default value is 443.
+     * 
      * (Optional)
      * The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
@@ -52,18 +59,23 @@ public final class RegionHealthCheckHttp2HealthCheck {
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
@@ -96,21 +108,25 @@ public final class RegionHealthCheckHttp2HealthCheck {
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
@@ -122,9 +138,11 @@ public final class RegionHealthCheckHttp2HealthCheck {
     /**
      * @return The request path of the HTTP health check request.
      * The default value is /.
+     * 
      * (Optional)
      * The request path of the HTTPS health check request.
      * The default value is /.
+     * 
      * (Optional)
      * The request path of the HTTP2 health check request.
      * The default value is /.
@@ -135,18 +153,22 @@ public final class RegionHealthCheckHttp2HealthCheck {
      * @return The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
@@ -160,10 +182,12 @@ public final class RegionHealthCheckHttp2HealthCheck {
      * @return The value of the host header in the HTTP health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
+     * 
      * (Optional)
      * The value of the host header in the HTTPS health check request.
      * If left empty (default value), the public IP on behalf of which this health
      * check is performed will be used.
+     * 
      * (Optional)
      * The value of the host header in the HTTP2 health check request.
      * If left empty (default value), the public IP on behalf of which this health
@@ -176,18 +200,23 @@ public final class RegionHealthCheckHttp2HealthCheck {
     /**
      * @return The TCP port number for the HTTP health check request.
      * The default value is 80.
+     * 
      * (Optional)
      * The TCP port number for the HTTPS health check request.
      * The default value is 443.
+     * 
      * (Optional)
      * The TCP port number for the TCP health check request.
      * The default value is 80.
+     * 
      * (Optional)
      * The TCP port number for the SSL health check request.
      * The default value is 443.
+     * 
      * (Optional)
      * The TCP port number for the HTTP2 health check request.
      * The default value is 443.
+     * 
      * (Optional)
      * The port number for the health check request.
      * Must be specified if portName and portSpecification are not set
@@ -200,18 +229,23 @@ public final class RegionHealthCheckHttp2HealthCheck {
     /**
      * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
+     * 
      * (Optional)
      * Port name as defined in InstanceGroup#NamedPort#name. If both port and
      * port_name are defined, port takes precedence.
@@ -248,21 +282,25 @@ public final class RegionHealthCheckHttp2HealthCheck {
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
      * Default value is `NONE`.
      * Possible values are: `NONE`, `PROXY_V1`.
+     * 
      * (Optional)
      * Specifies the type of proxy header to append before sending data to the
      * backend.
@@ -276,9 +314,11 @@ public final class RegionHealthCheckHttp2HealthCheck {
     /**
      * @return The request path of the HTTP health check request.
      * The default value is /.
+     * 
      * (Optional)
      * The request path of the HTTPS health check request.
      * The default value is /.
+     * 
      * (Optional)
      * The request path of the HTTP2 health check request.
      * The default value is /.
@@ -291,18 +331,22 @@ public final class RegionHealthCheckHttp2HealthCheck {
      * @return The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data
      * can only be ASCII.
+     * 
      * (Optional)
      * The bytes to match against the beginning of the response data. If left empty
      * (the default value), any response will indicate health. The response data

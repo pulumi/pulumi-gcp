@@ -54,6 +54,9 @@ class NetworkArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -185,6 +188,9 @@ class NetworkArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -284,6 +290,9 @@ class _NetworkState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -433,6 +442,9 @@ class _NetworkState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -600,6 +612,9 @@ class Network(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -780,6 +795,9 @@ class Network(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
@@ -894,6 +912,9 @@ class Network(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

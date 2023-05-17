@@ -74,6 +74,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The name of the object to apply the acl to.
+        /// 
+        /// - - -
         /// </summary>
         [Output("object")]
         public Output<string> Object { get; private set; } = null!;
@@ -145,6 +147,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The name of the object to apply the acl to.
+        /// 
+        /// - - -
         /// </summary>
         [Input("object", required: true)]
         public Input<string> Object { get; set; } = null!;
@@ -184,6 +188,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The name of the object to apply the acl to.
+        /// 
+        /// - - -
         /// </summary>
         [Input("object")]
         public Input<string>? Object { get; set; }

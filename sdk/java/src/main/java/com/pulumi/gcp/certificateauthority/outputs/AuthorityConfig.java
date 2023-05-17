@@ -14,6 +14,8 @@ public final class AuthorityConfig {
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * 
      */
     private AuthorityConfigSubjectConfig subjectConfig;
     /**
@@ -27,6 +29,8 @@ public final class AuthorityConfig {
     /**
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
      */
     public AuthorityConfigSubjectConfig subjectConfig() {

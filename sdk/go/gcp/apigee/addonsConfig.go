@@ -187,6 +187,8 @@ type AddonsConfig struct {
 	// Structure is documented below.
 	AddonsConfig AddonsConfigAddonsConfigPtrOutput `pulumi:"addonsConfig"`
 	// Name of the Apigee organization.
+	//
+	// ***
 	Org pulumi.StringOutput `pulumi:"org"`
 }
 
@@ -226,6 +228,8 @@ type addonsConfigState struct {
 	// Structure is documented below.
 	AddonsConfig *AddonsConfigAddonsConfig `pulumi:"addonsConfig"`
 	// Name of the Apigee organization.
+	//
+	// ***
 	Org *string `pulumi:"org"`
 }
 
@@ -234,6 +238,8 @@ type AddonsConfigState struct {
 	// Structure is documented below.
 	AddonsConfig AddonsConfigAddonsConfigPtrInput
 	// Name of the Apigee organization.
+	//
+	// ***
 	Org pulumi.StringPtrInput
 }
 
@@ -246,6 +252,8 @@ type addonsConfigArgs struct {
 	// Structure is documented below.
 	AddonsConfig *AddonsConfigAddonsConfig `pulumi:"addonsConfig"`
 	// Name of the Apigee organization.
+	//
+	// ***
 	Org string `pulumi:"org"`
 }
 
@@ -255,6 +263,8 @@ type AddonsConfigArgs struct {
 	// Structure is documented below.
 	AddonsConfig AddonsConfigAddonsConfigPtrInput
 	// Name of the Apigee organization.
+	//
+	// ***
 	Org pulumi.StringInput
 }
 
@@ -352,6 +362,8 @@ func (o AddonsConfigOutput) AddonsConfig() AddonsConfigAddonsConfigPtrOutput {
 }
 
 // Name of the Apigee organization.
+//
+// ***
 func (o AddonsConfigOutput) Org() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddonsConfig) pulumi.StringOutput { return v.Org }).(pulumi.StringOutput)
 }

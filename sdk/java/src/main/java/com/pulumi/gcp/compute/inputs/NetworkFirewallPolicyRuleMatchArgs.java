@@ -66,12 +66,16 @@ public final class NetworkFirewallPolicyRuleMatchArgs extends com.pulumi.resourc
     /**
      * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
      * 
+     * The `layer4_configs` block supports:
+     * 
      */
     @Import(name="srcSecureTags")
     private @Nullable Output<List<NetworkFirewallPolicyRuleMatchSrcSecureTagArgs>> srcSecureTags;
 
     /**
      * @return List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * 
+     * The `layer4_configs` block supports:
      * 
      */
     public Optional<Output<List<NetworkFirewallPolicyRuleMatchSrcSecureTagArgs>>> srcSecureTags() {
@@ -201,6 +205,8 @@ public final class NetworkFirewallPolicyRuleMatchArgs extends com.pulumi.resourc
         /**
          * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
          * 
+         * The `layer4_configs` block supports:
+         * 
          * @return builder
          * 
          */
@@ -212,6 +218,8 @@ public final class NetworkFirewallPolicyRuleMatchArgs extends com.pulumi.resourc
         /**
          * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
          * 
+         * The `layer4_configs` block supports:
+         * 
          * @return builder
          * 
          */
@@ -221,6 +229,8 @@ public final class NetworkFirewallPolicyRuleMatchArgs extends com.pulumi.resourc
 
         /**
          * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * 
+         * The `layer4_configs` block supports:
          * 
          * @return builder
          * 

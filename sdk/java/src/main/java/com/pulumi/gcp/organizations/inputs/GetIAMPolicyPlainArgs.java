@@ -36,6 +36,9 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
      * 
+     * Each document configuration must have one or more `binding` blocks, which
+     * each accept the following arguments:
+     * 
      */
     @Import(name="bindings")
     private @Nullable List<GetIAMPolicyBinding> bindings;
@@ -44,6 +47,9 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
      * @return A nested configuration block (described below)
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
+     * 
+     * Each document configuration must have one or more `binding` blocks, which
+     * each accept the following arguments:
      * 
      */
     public Optional<List<GetIAMPolicyBinding>> bindings() {
@@ -101,6 +107,9 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
          * defining a binding to be included in the policy document. Multiple
          * `binding` arguments are supported.
          * 
+         * Each document configuration must have one or more `binding` blocks, which
+         * each accept the following arguments:
+         * 
          * @return builder
          * 
          */
@@ -113,6 +122,9 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
          * @param bindings A nested configuration block (described below)
          * defining a binding to be included in the policy document. Multiple
          * `binding` arguments are supported.
+         * 
+         * Each document configuration must have one or more `binding` blocks, which
+         * each accept the following arguments:
          * 
          * @return builder
          * 

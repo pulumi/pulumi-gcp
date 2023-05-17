@@ -94,6 +94,10 @@ type LookupNotificationChannelArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The type of the notification channel.
+	//
+	// ***
+	//
+	// Other optional fields include:
 	Type *string `pulumi:"type"`
 	// User-provided key-value labels to filter by.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -147,6 +151,10 @@ type LookupNotificationChannelOutputArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The type of the notification channel.
+	//
+	// ***
+	//
+	// Other optional fields include:
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// User-provided key-value labels to filter by.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`

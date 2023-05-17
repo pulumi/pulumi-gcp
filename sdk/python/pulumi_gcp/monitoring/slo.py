@@ -32,6 +32,9 @@ class SloArgs:
         :param pulumi.Input[float] goal: The fraction of service that must be good in order for this objective
                to be met. 0 < goal <= 0.999
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
+               
+               
+               - - -
         :param pulumi.Input['SloBasicSliArgs'] basic_sli: Basic Service-Level Indicator (SLI) on a well-known service type.
                Performance will be computed on the basis of pre-defined metrics.
                SLIs are used to measure and calculate the quality of the Service's
@@ -110,6 +113,9 @@ class SloArgs:
     def service(self) -> pulumi.Input[str]:
         """
         ID of the service to which this SLO belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "service")
 
@@ -300,6 +306,9 @@ class _SloState:
         :param pulumi.Input[int] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
                objects.The field can contain up to 64 entries. Each key and value is limited
@@ -461,6 +470,9 @@ class _SloState:
     def service(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the service to which this SLO belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "service")
 
@@ -635,6 +647,9 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[int] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
                objects.The field can contain up to 64 entries. Each key and value is limited
@@ -838,6 +853,9 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[int] rolling_period_days: A rolling time period, semantically "in the past X days".
                Must be between 1 to 30 days, inclusive.
         :param pulumi.Input[str] service: ID of the service to which this SLO belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] slo_id: The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
                objects.The field can contain up to 64 entries. Each key and value is limited
@@ -960,6 +978,9 @@ class Slo(pulumi.CustomResource):
     def service(self) -> pulumi.Output[str]:
         """
         ID of the service to which this SLO belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "service")
 

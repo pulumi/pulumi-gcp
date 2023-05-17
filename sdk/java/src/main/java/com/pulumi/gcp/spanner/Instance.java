@@ -172,6 +172,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
@@ -179,6 +181,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -221,6 +225,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
      * 
+     * If not provided, a random string starting with `tf-` will be selected.
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -229,6 +235,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
+     * 
+     * If not provided, a random string starting with `tf-` will be selected.
      * 
      */
     public Output<String> name() {

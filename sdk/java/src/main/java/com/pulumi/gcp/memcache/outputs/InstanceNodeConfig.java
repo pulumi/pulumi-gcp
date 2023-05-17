@@ -17,6 +17,8 @@ public final class InstanceNodeConfig {
     /**
      * @return Memory size in Mebibytes for each memcache node.
      * 
+     * ***
+     * 
      */
     private Integer memorySizeMb;
 
@@ -30,6 +32,8 @@ public final class InstanceNodeConfig {
     }
     /**
      * @return Memory size in Mebibytes for each memcache node.
+     * 
+     * ***
      * 
      */
     public Integer memorySizeMb() {

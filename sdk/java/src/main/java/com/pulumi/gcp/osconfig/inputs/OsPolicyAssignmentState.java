@@ -52,6 +52,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
     /**
      * Policy description. Length of the description is limited to 1024 characters.
+     * 
      * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
@@ -61,6 +62,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
     /**
      * @return Policy description. Length of the description is limited to 1024 characters.
+     * 
      * (Optional)
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      * 
@@ -347,6 +349,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
         /**
          * @param description Policy description. Length of the description is limited to 1024 characters.
+         * 
          * (Optional)
          * OS policy assignment description. Length of the description is limited to 1024 characters.
          * 
@@ -360,6 +363,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
 
         /**
          * @param description Policy description. Length of the description is limited to 1024 characters.
+         * 
          * (Optional)
          * OS policy assignment description. Length of the description is limited to 1024 characters.
          * 

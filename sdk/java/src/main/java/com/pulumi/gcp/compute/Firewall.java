@@ -340,12 +340,16 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     /**
      * The name or self_link of the network to attach this firewall to.
      * 
+     * ***
+     * 
      */
     @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
      * @return The name or self_link of the network to attach this firewall to.
+     * 
+     * ***
      * 
      */
     public Output<String> network() {

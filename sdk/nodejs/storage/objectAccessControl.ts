@@ -126,6 +126,9 @@ export class ObjectAccessControl extends pulumi.CustomResource {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
+     *
+     *
+     * - - -
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -228,6 +231,9 @@ export interface ObjectAccessControlState {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
+     *
+     *
+     * - - -
      */
     role?: pulumi.Input<string>;
 }
@@ -259,6 +265,9 @@ export interface ObjectAccessControlArgs {
     /**
      * The access permission for the entity.
      * Possible values are: `OWNER`, `READER`.
+     *
+     *
+     * - - -
      */
     role: pulumi.Input<string>;
 }

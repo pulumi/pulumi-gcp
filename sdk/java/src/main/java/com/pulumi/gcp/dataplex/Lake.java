@@ -192,12 +192,16 @@ public class Lake extends com.pulumi.resources.CustomResource {
     /**
      * The name of the lake.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The name of the lake.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

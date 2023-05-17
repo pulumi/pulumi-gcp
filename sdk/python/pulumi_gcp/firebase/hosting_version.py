@@ -21,6 +21,9 @@ class HostingVersionArgs:
         """
         The set of arguments for constructing a HostingVersion resource.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this Version.
+               
+               
+               - - -
         :param pulumi.Input['HostingVersionConfigArgs'] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         """
@@ -33,6 +36,9 @@ class HostingVersionArgs:
     def site_id(self) -> pulumi.Input[str]:
         """
         Required. The ID of the site in which to create this Version.
+
+
+        - - -
         """
         return pulumi.get(self, "site_id")
 
@@ -68,6 +74,9 @@ class _HostingVersionState:
         :param pulumi.Input[str] name: The fully-qualified resource name for the version, in the format:
                sites/SITE_ID/versions/VERSION_ID
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this Version.
+               
+               
+               - - -
         :param pulumi.Input[str] version_id: The ID for the version as in sites/SITE_ID/versions/VERSION_ID
         """
         if config is not None:
@@ -110,6 +119,9 @@ class _HostingVersionState:
     def site_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The ID of the site in which to create this Version.
+
+
+        - - -
         """
         return pulumi.get(self, "site_id")
 
@@ -267,6 +279,9 @@ class HostingVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['HostingVersionConfigArgs']] config: The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
                Structure is documented below.
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this Version.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -456,6 +471,9 @@ class HostingVersion(pulumi.CustomResource):
         :param pulumi.Input[str] name: The fully-qualified resource name for the version, in the format:
                sites/SITE_ID/versions/VERSION_ID
         :param pulumi.Input[str] site_id: Required. The ID of the site in which to create this Version.
+               
+               
+               - - -
         :param pulumi.Input[str] version_id: The ID for the version as in sites/SITE_ID/versions/VERSION_ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -491,6 +509,9 @@ class HostingVersion(pulumi.CustomResource):
     def site_id(self) -> pulumi.Output[str]:
         """
         Required. The ID of the site in which to create this Version.
+
+
+        - - -
         """
         return pulumi.get(self, "site_id")
 

@@ -161,6 +161,16 @@ type Table struct {
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrOutput `pulumi:"rangePartitioning"`
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  When setting `schema` for `externalDataConfiguration`, please use
+	// `external_data_configuration.schema` documented below.
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -267,6 +277,16 @@ type tableState struct {
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  When setting `schema` for `externalDataConfiguration`, please use
+	// `external_data_configuration.schema` documented below.
 	Schema *string `pulumi:"schema"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -339,6 +359,16 @@ type TableState struct {
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  When setting `schema` for `externalDataConfiguration`, please use
+	// `external_data_configuration.schema` documented below.
 	Schema pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -401,6 +431,16 @@ type tableArgs struct {
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning *TableRangePartitioning `pulumi:"rangePartitioning"`
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  When setting `schema` for `externalDataConfiguration`, please use
+	// `external_data_configuration.schema` documented below.
 	Schema *string `pulumi:"schema"`
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
@@ -455,6 +495,16 @@ type TableArgs struct {
 	// partitioning for this table. Structure is documented below.
 	RangePartitioning TableRangePartitioningPtrInput
 	// A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced `STRUCT` field type with `RECORD`
+	// field type, we currently cannot suppress the recurring diff this causes.
+	// As a workaround, we recommend using the schema as returned by the API.
+	//
+	// ~>**NOTE:**  When setting `schema` for `externalDataConfiguration`, please use
+	// `external_data_configuration.schema` documented below.
 	Schema pulumi.StringPtrInput
 	// A unique ID for the resource.
 	// Changing this forces a new resource to be created.
@@ -665,6 +715,16 @@ func (o TableOutput) RangePartitioning() TableRangePartitioningPtrOutput {
 }
 
 // A JSON schema for the table.
+//
+// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+// string will create a diff, even if the JSON itself hasn't changed.
+// If the API returns a different value for the same schema, e.g. it
+// switched the order of values or replaced `STRUCT` field type with `RECORD`
+// field type, we currently cannot suppress the recurring diff this causes.
+// As a workaround, we recommend using the schema as returned by the API.
+//
+// ~>**NOTE:**  When setting `schema` for `externalDataConfiguration`, please use
+// `external_data_configuration.schema` documented below.
 func (o TableOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Schema }).(pulumi.StringOutput)
 }

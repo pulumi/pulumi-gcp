@@ -3254,6 +3254,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupPtrOutput) TrickleRatio() pulumi.Floa
 type RecordSetRoutingPolicyPrimaryBackupBackupGeo struct {
 	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
 	// Structure is document below.
+	//
 	// Structure is document below.
 	HealthCheckedTargets *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
@@ -3275,6 +3276,7 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoInput interface {
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs struct {
 	// The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
 	// Structure is document below.
+	//
 	// Structure is document below.
 	HealthCheckedTargets RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrInput `pulumi:"healthCheckedTargets"`
 	// The location name defined in Google Cloud.
@@ -3335,6 +3337,7 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) ToRecordSetRoutingPo
 
 // The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
 // Structure is document below.
+//
 // Structure is document below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoOutput) HealthCheckedTargets() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeo) *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {

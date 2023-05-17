@@ -23,6 +23,9 @@ class AttachedDiskArgs:
         """
         The set of arguments for constructing a AttachedDisk resource.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
+               
+               
+               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -32,9 +35,17 @@ class AttachedDiskArgs:
                system running within the instance. This name can be used to
                reference the device for mounting, resizing, and so on, from within
                the instance.
+               
+               If not specified, the server chooses a default device name to apply
+               to this disk, in the form persistent-disks-x, where x is a number
+               assigned by Google Compute Engine.
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
+               
+               Possible values:
+               "READ_ONLY"
+               "READ_WRITE"
         :param pulumi.Input[str] project: The project that the referenced compute instance is a part of. If `instance` is referenced by its
                `self_link` the project defined in the link will take precedence.
         :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
@@ -56,6 +67,9 @@ class AttachedDiskArgs:
     def disk(self) -> pulumi.Input[str]:
         """
         `name` or `self_link` of the disk that will be attached.
+
+
+        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -87,6 +101,10 @@ class AttachedDiskArgs:
         system running within the instance. This name can be used to
         reference the device for mounting, resizing, and so on, from within
         the instance.
+
+        If not specified, the server chooses a default device name to apply
+        to this disk, in the form persistent-disks-x, where x is a number
+        assigned by Google Compute Engine.
         """
         return pulumi.get(self, "device_name")
 
@@ -101,6 +119,10 @@ class AttachedDiskArgs:
         The mode in which to attach this disk, either READ_WRITE or
         READ_ONLY. If not specified, the default is to attach the disk in
         READ_WRITE mode.
+
+        Possible values:
+        "READ_ONLY"
+        "READ_WRITE"
         """
         return pulumi.get(self, "mode")
 
@@ -151,7 +173,14 @@ class _AttachedDiskState:
                system running within the instance. This name can be used to
                reference the device for mounting, resizing, and so on, from within
                the instance.
+               
+               If not specified, the server chooses a default device name to apply
+               to this disk, in the form persistent-disks-x, where x is a number
+               assigned by Google Compute Engine.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
+               
+               
+               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -159,6 +188,10 @@ class _AttachedDiskState:
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
+               
+               Possible values:
+               "READ_ONLY"
+               "READ_WRITE"
         :param pulumi.Input[str] project: The project that the referenced compute instance is a part of. If `instance` is referenced by its
                `self_link` the project defined in the link will take precedence.
         :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
@@ -186,6 +219,10 @@ class _AttachedDiskState:
         system running within the instance. This name can be used to
         reference the device for mounting, resizing, and so on, from within
         the instance.
+
+        If not specified, the server chooses a default device name to apply
+        to this disk, in the form persistent-disks-x, where x is a number
+        assigned by Google Compute Engine.
         """
         return pulumi.get(self, "device_name")
 
@@ -198,6 +235,9 @@ class _AttachedDiskState:
     def disk(self) -> Optional[pulumi.Input[str]]:
         """
         `name` or `self_link` of the disk that will be attached.
+
+
+        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -227,6 +267,10 @@ class _AttachedDiskState:
         The mode in which to attach this disk, either READ_WRITE or
         READ_ONLY. If not specified, the default is to attach the disk in
         READ_WRITE mode.
+
+        Possible values:
+        "READ_ONLY"
+        "READ_WRITE"
         """
         return pulumi.get(self, "mode")
 
@@ -329,7 +373,14 @@ class AttachedDisk(pulumi.CustomResource):
                system running within the instance. This name can be used to
                reference the device for mounting, resizing, and so on, from within
                the instance.
+               
+               If not specified, the server chooses a default device name to apply
+               to this disk, in the form persistent-disks-x, where x is a number
+               assigned by Google Compute Engine.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
+               
+               
+               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -337,6 +388,10 @@ class AttachedDisk(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
+               
+               Possible values:
+               "READ_ONLY"
+               "READ_WRITE"
         :param pulumi.Input[str] project: The project that the referenced compute instance is a part of. If `instance` is referenced by its
                `self_link` the project defined in the link will take precedence.
         :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
@@ -465,7 +520,14 @@ class AttachedDisk(pulumi.CustomResource):
                system running within the instance. This name can be used to
                reference the device for mounting, resizing, and so on, from within
                the instance.
+               
+               If not specified, the server chooses a default device name to apply
+               to this disk, in the form persistent-disks-x, where x is a number
+               assigned by Google Compute Engine.
         :param pulumi.Input[str] disk: `name` or `self_link` of the disk that will be attached.
+               
+               
+               - - -
         :param pulumi.Input[str] instance: `name` or `self_link` of the compute instance that the disk will be attached to.
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
@@ -473,6 +535,10 @@ class AttachedDisk(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
+               
+               Possible values:
+               "READ_ONLY"
+               "READ_WRITE"
         :param pulumi.Input[str] project: The project that the referenced compute instance is a part of. If `instance` is referenced by its
                `self_link` the project defined in the link will take precedence.
         :param pulumi.Input[str] zone: The zone that the referenced compute instance is located within. If `instance` is referenced by its
@@ -499,6 +565,10 @@ class AttachedDisk(pulumi.CustomResource):
         system running within the instance. This name can be used to
         reference the device for mounting, resizing, and so on, from within
         the instance.
+
+        If not specified, the server chooses a default device name to apply
+        to this disk, in the form persistent-disks-x, where x is a number
+        assigned by Google Compute Engine.
         """
         return pulumi.get(self, "device_name")
 
@@ -507,6 +577,9 @@ class AttachedDisk(pulumi.CustomResource):
     def disk(self) -> pulumi.Output[str]:
         """
         `name` or `self_link` of the disk that will be attached.
+
+
+        - - -
         """
         return pulumi.get(self, "disk")
 
@@ -528,6 +601,10 @@ class AttachedDisk(pulumi.CustomResource):
         The mode in which to attach this disk, either READ_WRITE or
         READ_ONLY. If not specified, the default is to attach the disk in
         READ_WRITE mode.
+
+        Possible values:
+        "READ_ONLY"
+        "READ_WRITE"
         """
         return pulumi.get(self, "mode")
 

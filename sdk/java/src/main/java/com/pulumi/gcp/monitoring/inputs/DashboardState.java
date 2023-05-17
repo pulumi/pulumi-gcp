@@ -19,6 +19,8 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
      * The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
      * 
+     * ***
+     * 
      */
     @Import(name="dashboardJson")
     private @Nullable Output<String> dashboardJson;
@@ -26,6 +28,8 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
      * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> dashboardJson() {
@@ -78,6 +82,8 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
          * @param dashboardJson The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
          * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -89,6 +95,8 @@ public final class DashboardState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dashboardJson The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
          * The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+         * 
+         * ***
          * 
          * @return builder
          * 

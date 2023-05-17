@@ -29,6 +29,8 @@ public final class GroupGroupKey {
      * The namespace must correspond to an identity source created in Admin Console
      * and must be in the form of `identitysources/{identity_source_id}`.
      * 
+     * ***
+     * 
      */
     private @Nullable String namespace;
 
@@ -52,6 +54,8 @@ public final class GroupGroupKey {
      * If specified, the EntityKey represents an external-identity-mapped group.
      * The namespace must correspond to an identity source created in Admin Console
      * and must be in the form of `identitysources/{identity_source_id}`.
+     * 
+     * ***
      * 
      */
     public Optional<String> namespace() {

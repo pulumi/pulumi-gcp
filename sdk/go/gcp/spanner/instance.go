@@ -145,6 +145,8 @@ type Instance struct {
 	Config pulumi.StringOutput `pulumi:"config"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
@@ -155,6 +157,8 @@ type Instance struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
+	//
+	// If not provided, a random string starting with `tf-` will be selected.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
@@ -213,6 +217,8 @@ type instanceState struct {
 	Config *string `pulumi:"config"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
@@ -223,6 +229,8 @@ type instanceState struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
+	//
+	// If not provided, a random string starting with `tf-` will be selected.
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
@@ -247,6 +255,8 @@ type InstanceState struct {
 	Config pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
@@ -257,6 +267,8 @@ type InstanceState struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
+	//
+	// If not provided, a random string starting with `tf-` will be selected.
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
@@ -285,6 +297,8 @@ type instanceArgs struct {
 	Config string `pulumi:"config"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
@@ -295,6 +309,8 @@ type instanceArgs struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
+	//
+	// If not provided, a random string starting with `tf-` will be selected.
 	Name *string `pulumi:"name"`
 	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
@@ -318,6 +334,8 @@ type InstanceArgs struct {
 	Config pulumi.StringInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
@@ -328,6 +346,8 @@ type InstanceArgs struct {
 	// A unique identifier for the instance, which cannot be changed after
 	// the instance is created. The name must be between 6 and 30 characters
 	// in length.
+	//
+	// If not provided, a random string starting with `tf-` will be selected.
 	Name pulumi.StringPtrInput
 	// The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
 	// terraform.
@@ -439,6 +459,8 @@ func (o InstanceOutput) Config() pulumi.StringOutput {
 
 // The descriptive name for this instance as it appears in UIs. Must be
 // unique per project and between 4 and 30 characters in length.
+//
+// ***
 func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -458,6 +480,8 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 // A unique identifier for the instance, which cannot be changed after
 // the instance is created. The name must be between 6 and 30 characters
 // in length.
+//
+// If not provided, a random string starting with `tf-` will be selected.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

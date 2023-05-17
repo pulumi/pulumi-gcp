@@ -52,6 +52,8 @@ func GetCertificate(ctx *pulumi.Context, args *GetCertificateArgs, opts ...pulum
 // A collection of arguments for invoking getCertificate.
 type GetCertificateArgs struct {
 	// The name of the certificate.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -90,6 +92,8 @@ func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, op
 // A collection of arguments for invoking getCertificate.
 type GetCertificateOutputArgs struct {
 	// The name of the certificate.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

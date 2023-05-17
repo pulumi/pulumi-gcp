@@ -86,12 +86,16 @@ public class TenantOauthIdpConfig extends com.pulumi.resources.CustomResource {
     /**
      * The client id of an OAuth client.
      * 
+     * ***
+     * 
      */
     @Export(name="clientId", type=String.class, parameters={})
     private Output<String> clientId;
 
     /**
      * @return The client id of an OAuth client.
+     * 
+     * ***
      * 
      */
     public Output<String> clientId() {

@@ -189,12 +189,16 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
      * 
+     * ***
+     * 
      */
     @Export(name="entitytype", type=String.class, parameters={})
     private Output<String> entitytype;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
+     * 
+     * ***
      * 
      */
     public Output<String> entitytype() {

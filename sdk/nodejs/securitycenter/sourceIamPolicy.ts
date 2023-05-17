@@ -74,6 +74,9 @@ export class SourceIamPolicy extends pulumi.CustomResource {
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
+     *
+     *
+     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     public readonly policyData!: pulumi.Output<string>;
@@ -125,6 +128,9 @@ export interface SourceIamPolicyState {
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
+     *
+     *
+     * - - -
      */
     organization?: pulumi.Input<string>;
     policyData?: pulumi.Input<string>;
@@ -138,6 +144,9 @@ export interface SourceIamPolicyArgs {
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
+     *
+     *
+     * - - -
      */
     organization: pulumi.Input<string>;
     policyData: pulumi.Input<string>;

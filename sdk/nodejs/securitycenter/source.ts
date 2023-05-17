@@ -90,6 +90,9 @@ export class Source extends pulumi.CustomResource {
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
+     *
+     *
+     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
 
@@ -152,6 +155,9 @@ export interface SourceState {
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
+     *
+     *
+     * - - -
      */
     organization?: pulumi.Input<string>;
 }
@@ -175,6 +181,9 @@ export interface SourceArgs {
     /**
      * The organization whose Cloud Security Command Center the Source
      * lives in.
+     *
+     *
+     * - - -
      */
     organization: pulumi.Input<string>;
 }

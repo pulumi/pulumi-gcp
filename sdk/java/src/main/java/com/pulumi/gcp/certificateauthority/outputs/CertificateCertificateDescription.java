@@ -59,6 +59,8 @@ public final class CertificateCertificateDescription {
      * @return A PublicKey describes a public key.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * 
      */
     private @Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys;
     /**
@@ -134,6 +136,8 @@ public final class CertificateCertificateDescription {
     /**
      * @return A PublicKey describes a public key.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
      */
     public List<CertificateCertificateDescriptionPublicKey> publicKeys() {

@@ -37,12 +37,16 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The human-readable name of the flow.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the flow.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -236,6 +240,8 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The human-readable name of the flow.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -246,6 +252,8 @@ public final class CxFlowArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The human-readable name of the flow.
+         * 
+         * ***
          * 
          * @return builder
          * 

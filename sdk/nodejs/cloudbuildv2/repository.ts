@@ -212,6 +212,10 @@ export class Repository extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Required. Git Clone HTTPS URI.
+     *
+     *
+     *
+     * - - -
      */
     public readonly remoteUri!: pulumi.Output<string>;
     /**
@@ -298,6 +302,10 @@ export interface RepositoryState {
     project?: pulumi.Input<string>;
     /**
      * Required. Git Clone HTTPS URI.
+     *
+     *
+     *
+     * - - -
      */
     remoteUri?: pulumi.Input<string>;
     /**
@@ -332,6 +340,10 @@ export interface RepositoryArgs {
     project?: pulumi.Input<string>;
     /**
      * Required. Git Clone HTTPS URI.
+     *
+     *
+     *
+     * - - -
      */
     remoteUri: pulumi.Input<string>;
 }

@@ -138,6 +138,9 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee Organization associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("orgId")]
         public Output<string> OrgId { get; private set; } = null!;
@@ -237,6 +240,9 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee Organization associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("orgId", required: true)]
         public Input<string> OrgId { get; set; } = null!;
@@ -298,6 +304,9 @@ namespace Pulumi.Gcp.Apigee
         /// <summary>
         /// The Apigee Organization associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }

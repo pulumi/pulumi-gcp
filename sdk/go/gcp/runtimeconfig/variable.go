@@ -126,6 +126,8 @@ type Variable struct {
 	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
 	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
 	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	//
+	// ***
 	Text pulumi.StringPtrOutput `pulumi:"text"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
@@ -190,6 +192,8 @@ type variableState struct {
 	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
 	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
 	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	//
+	// ***
 	Text *string `pulumi:"text"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
@@ -212,6 +216,8 @@ type VariableState struct {
 	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
 	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
 	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	//
+	// ***
 	Text pulumi.StringPtrInput
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
 	// accurate to nanoseconds, representing when the variable was last updated.
@@ -238,6 +244,8 @@ type variableArgs struct {
 	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
 	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
 	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	//
+	// ***
 	Text  *string `pulumi:"text"`
 	Value *string `pulumi:"value"`
 }
@@ -257,6 +265,8 @@ type VariableArgs struct {
 	// Exactly one of `text` or `variable` must be specified. If `text` is specified,
 	// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
 	// is specified, it must be base64 encoded and less than 4096 bytes in length.
+	//
+	// ***
 	Text  pulumi.StringPtrInput
 	Value pulumi.StringPtrInput
 }
@@ -370,6 +380,8 @@ func (o VariableOutput) Project() pulumi.StringOutput {
 // Exactly one of `text` or `variable` must be specified. If `text` is specified,
 // it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
 // is specified, it must be base64 encoded and less than 4096 bytes in length.
+//
+// ***
 func (o VariableOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Variable) pulumi.StringPtrOutput { return v.Text }).(pulumi.StringPtrOutput)
 }

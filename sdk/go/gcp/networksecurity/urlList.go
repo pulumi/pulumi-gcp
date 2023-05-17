@@ -103,6 +103,8 @@ type UrlList struct {
 	// Free-text description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The location of the url lists.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Short name of the UrlList resource to be created.
 	// This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
@@ -160,6 +162,8 @@ type urlListState struct {
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// The location of the url lists.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Short name of the UrlList resource to be created.
 	// This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
@@ -183,6 +187,8 @@ type UrlListState struct {
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
 	// The location of the url lists.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// Short name of the UrlList resource to be created.
 	// This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
@@ -206,6 +212,8 @@ type urlListArgs struct {
 	// Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// The location of the url lists.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// Short name of the UrlList resource to be created.
 	// This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
@@ -222,6 +230,8 @@ type UrlListArgs struct {
 	// Free-text description of the resource.
 	Description pulumi.StringPtrInput
 	// The location of the url lists.
+	//
+	// ***
 	Location pulumi.StringInput
 	// Short name of the UrlList resource to be created.
 	// This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. 'urlList'.
@@ -333,6 +343,8 @@ func (o UrlListOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The location of the url lists.
+//
+// ***
 func (o UrlListOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *UrlList) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

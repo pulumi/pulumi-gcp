@@ -27,6 +27,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
         /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        /// 
+        /// The `layer4_configs` block supports:
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag> SrcSecureTags;
 

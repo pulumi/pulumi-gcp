@@ -156,6 +156,9 @@ export class NotificationChannel extends pulumi.CustomResource {
     public readonly sensitiveLabels!: pulumi.Output<outputs.monitoring.NotificationChannelSensitiveLabels | undefined>;
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+     *
+     *
+     * - - -
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -269,6 +272,9 @@ export interface NotificationChannelState {
     sensitiveLabels?: pulumi.Input<inputs.monitoring.NotificationChannelSensitiveLabels>;
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+     *
+     *
+     * - - -
      */
     type?: pulumi.Input<string>;
     /**
@@ -331,6 +337,9 @@ export interface NotificationChannelArgs {
     sensitiveLabels?: pulumi.Input<inputs.monitoring.NotificationChannelSensitiveLabels>;
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+     *
+     *
+     * - - -
      */
     type: pulumi.Input<string>;
     /**

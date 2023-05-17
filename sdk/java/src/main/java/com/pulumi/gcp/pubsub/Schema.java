@@ -162,12 +162,16 @@ public class Schema extends com.pulumi.resources.CustomResource {
     /**
      * The ID to use for the schema, which will become the final component of the schema&#39;s resource name.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The ID to use for the schema, which will become the final component of the schema&#39;s resource name.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

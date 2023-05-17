@@ -51,12 +51,16 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
     /**
      * File name.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return File name.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -176,6 +180,8 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name File name.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -186,6 +192,8 @@ public final class RulesetState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name File name.
+         * 
+         * ***
          * 
          * @return builder
          * 

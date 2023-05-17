@@ -95,6 +95,9 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
         /// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("shortName")]
         public Output<string> ShortName { get; private set; } = null!;
@@ -167,6 +170,9 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
         /// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("shortName", required: true)]
         public Input<string> ShortName { get; set; } = null!;
@@ -213,6 +219,9 @@ namespace Pulumi.Gcp.Tags
         /// <summary>
         /// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
         /// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("shortName")]
         public Input<string>? ShortName { get; set; }

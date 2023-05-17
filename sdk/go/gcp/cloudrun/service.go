@@ -371,6 +371,7 @@ type Service struct {
 	// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
 	// annotation key.
 	// Structure is documented below.
+	//
 	// (Optional)
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.
@@ -446,6 +447,7 @@ type serviceState struct {
 	// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
 	// annotation key.
 	// Structure is documented below.
+	//
 	// (Optional)
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.
@@ -490,6 +492,7 @@ type ServiceState struct {
 	// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
 	// annotation key.
 	// Structure is documented below.
+	//
 	// (Optional)
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.
@@ -538,6 +541,7 @@ type serviceArgs struct {
 	// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
 	// annotation key.
 	// Structure is documented below.
+	//
 	// (Optional)
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.
@@ -580,6 +584,7 @@ type ServiceArgs struct {
 	// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
 	// annotation key.
 	// Structure is documented below.
+	//
 	// (Optional)
 	// Metadata associated with this Service, including name, namespace, labels,
 	// and annotations.
@@ -713,6 +718,7 @@ func (o ServiceOutput) Location() pulumi.StringOutput {
 // connections for the revision, use the "run.googleapis.com/cloudsql-instances"
 // annotation key.
 // Structure is documented below.
+//
 // (Optional)
 // Metadata associated with this Service, including name, namespace, labels,
 // and annotations.

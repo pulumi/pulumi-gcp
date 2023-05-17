@@ -21,6 +21,9 @@ class DatasetArgs:
         """
         The set of arguments for constructing a Dataset resource.
         :param pulumi.Input[str] location: The location for the Dataset.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -41,6 +44,9 @@ class DatasetArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the Dataset.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -99,6 +105,9 @@ class _DatasetState:
         """
         Input properties used for looking up and filtering Dataset resources.
         :param pulumi.Input[str] location: The location for the Dataset.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -123,6 +132,9 @@ class _DatasetState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the Dataset.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -232,6 +244,9 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the Dataset.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -340,6 +355,9 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: The location for the Dataset.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -364,6 +382,9 @@ class Dataset(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the Dataset.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 

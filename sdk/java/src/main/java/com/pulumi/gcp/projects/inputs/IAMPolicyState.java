@@ -35,6 +35,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
      * the IAM policy that will be applied to the project. The policy will be
      * merged with any existing policy applied to the project.
      * 
+     * Changing this updates the policy.
+     * 
+     * Deleting this removes all policies from the project, locking out users without
+     * organization-level access.
+     * 
      */
     @Import(name="policyData")
     private @Nullable Output<String> policyData;
@@ -43,6 +48,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
      * @return The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the project. The policy will be
      * merged with any existing policy applied to the project.
+     * 
+     * Changing this updates the policy.
+     * 
+     * Deleting this removes all policies from the project, locking out users without
+     * organization-level access.
      * 
      */
     public Optional<Output<String>> policyData() {
@@ -118,6 +128,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
          * the IAM policy that will be applied to the project. The policy will be
          * merged with any existing policy applied to the project.
          * 
+         * Changing this updates the policy.
+         * 
+         * Deleting this removes all policies from the project, locking out users without
+         * organization-level access.
+         * 
          * @return builder
          * 
          */
@@ -130,6 +145,11 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
          * @param policyData The `gcp.organizations.getIAMPolicy` data source that represents
          * the IAM policy that will be applied to the project. The policy will be
          * merged with any existing policy applied to the project.
+         * 
+         * Changing this updates the policy.
+         * 
+         * Deleting this removes all policies from the project, locking out users without
+         * organization-level access.
          * 
          * @return builder
          * 

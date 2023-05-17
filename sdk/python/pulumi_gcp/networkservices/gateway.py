@@ -39,6 +39,9 @@ class GatewayArgs:
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
@@ -144,6 +147,9 @@ class GatewayArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Gateway resource to be created.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -201,6 +207,9 @@ class _GatewayState:
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -296,6 +305,9 @@ class _GatewayState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Gateway resource to be created.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -465,6 +477,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -618,6 +633,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
         :param pulumi.Input[str] name: Short name of the Gateway resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -690,6 +708,9 @@ class Gateway(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Short name of the Gateway resource to be created.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

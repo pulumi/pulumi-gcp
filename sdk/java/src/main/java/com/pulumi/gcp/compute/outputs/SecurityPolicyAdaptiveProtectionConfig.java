@@ -15,6 +15,8 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
     /**
      * @return ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_layer_7_ddos_defense_config&#34;&gt;&lt;/a&gt;The `layer_7_ddos_defense_config` block supports:
+     * 
      */
     private @Nullable SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig autoDeployConfig;
     /**
@@ -26,6 +28,8 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
     private SecurityPolicyAdaptiveProtectionConfig() {}
     /**
      * @return ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_layer_7_ddos_defense_config&#34;&gt;&lt;/a&gt;The `layer_7_ddos_defense_config` block supports:
      * 
      */
     public Optional<SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig> autoDeployConfig() {

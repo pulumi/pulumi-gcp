@@ -11,6 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A source representation instance is a Cloud SQL instance that represents
+// the source database server to the Cloud SQL replica. It is visible in the
+// Cloud Console and appears the same as a regular Cloud SQL instance, but it
+// contains no data, requires no configuration or maintenance, and does not
+// affect billing. You cannot update the source representation instance.
+//
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `on_premises_configuration.password`.
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 // ### Sql Source Representation Instance Basic
 //
@@ -80,6 +90,8 @@ type SourceRepresentationInstance struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrOutput `pulumi:"dumpFilePath"`
 	// The externally accessible IPv4 address for the source database server.
+	//
+	// ***
 	Host pulumi.StringOutput `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -153,6 +165,8 @@ type sourceRepresentationInstanceState struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The externally accessible IPv4 address for the source database server.
+	//
+	// ***
 	Host *string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
@@ -185,6 +199,8 @@ type SourceRepresentationInstanceState struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
 	// The externally accessible IPv4 address for the source database server.
+	//
+	// ***
 	Host pulumi.StringPtrInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
@@ -221,6 +237,8 @@ type sourceRepresentationInstanceArgs struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// The externally accessible IPv4 address for the source database server.
+	//
+	// ***
 	Host string `pulumi:"host"`
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name *string `pulumi:"name"`
@@ -254,6 +272,8 @@ type SourceRepresentationInstanceArgs struct {
 	// A file in the bucket that contains the data from the external server.
 	DumpFilePath pulumi.StringPtrInput
 	// The externally accessible IPv4 address for the source database server.
+	//
+	// ***
 	Host pulumi.StringInput
 	// The name of the source representation instance. Use any valid Cloud SQL instance name.
 	Name pulumi.StringPtrInput
@@ -387,6 +407,8 @@ func (o SourceRepresentationInstanceOutput) DumpFilePath() pulumi.StringPtrOutpu
 }
 
 // The externally accessible IPv4 address for the source database server.
+//
+// ***
 func (o SourceRepresentationInstanceOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceRepresentationInstance) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }

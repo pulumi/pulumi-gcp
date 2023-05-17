@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         /// <summary>
         /// Defines whether instances have integrity monitoring enabled.
+        /// 
+        /// - - -
         /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }

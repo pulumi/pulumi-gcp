@@ -97,12 +97,16 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     /**
      * The client-provided identifier of the membership.
      * 
+     * ***
+     * 
      */
     @Import(name="membershipId")
     private @Nullable Output<String> membershipId;
 
     /**
      * @return The client-provided identifier of the membership.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> membershipId() {
@@ -274,6 +278,8 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param membershipId The client-provided identifier of the membership.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -284,6 +290,8 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param membershipId The client-provided identifier of the membership.
+         * 
+         * ***
          * 
          * @return builder
          * 

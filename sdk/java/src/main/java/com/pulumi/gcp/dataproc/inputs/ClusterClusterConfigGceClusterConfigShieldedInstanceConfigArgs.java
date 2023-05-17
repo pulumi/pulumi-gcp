@@ -18,12 +18,16 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArg
     /**
      * Defines whether instances have integrity monitoring enabled.
      * 
+     * ***
+     * 
      */
     @Import(name="enableIntegrityMonitoring")
     private @Nullable Output<Boolean> enableIntegrityMonitoring;
 
     /**
      * @return Defines whether instances have integrity monitoring enabled.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Boolean>> enableIntegrityMonitoring() {
@@ -89,6 +93,8 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArg
         /**
          * @param enableIntegrityMonitoring Defines whether instances have integrity monitoring enabled.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -99,6 +105,8 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArg
 
         /**
          * @param enableIntegrityMonitoring Defines whether instances have integrity monitoring enabled.
+         * 
+         * ***
          * 
          * @return builder
          * 

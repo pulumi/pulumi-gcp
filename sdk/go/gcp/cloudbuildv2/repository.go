@@ -255,6 +255,8 @@ type Repository struct {
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Required. Git Clone HTTPS URI.
+	//
+	// ***
 	RemoteUri pulumi.StringOutput `pulumi:"remoteUri"`
 	// Output only. Server assigned timestamp for when the connection was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -310,6 +312,8 @@ type repositoryState struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Required. Git Clone HTTPS URI.
+	//
+	// ***
 	RemoteUri *string `pulumi:"remoteUri"`
 	// Output only. Server assigned timestamp for when the connection was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -331,6 +335,8 @@ type RepositoryState struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Required. Git Clone HTTPS URI.
+	//
+	// ***
 	RemoteUri pulumi.StringPtrInput
 	// Output only. Server assigned timestamp for when the connection was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -352,6 +358,8 @@ type repositoryArgs struct {
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Required. Git Clone HTTPS URI.
+	//
+	// ***
 	RemoteUri string `pulumi:"remoteUri"`
 }
 
@@ -368,6 +376,8 @@ type RepositoryArgs struct {
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Required. Git Clone HTTPS URI.
+	//
+	// ***
 	RemoteUri pulumi.StringInput
 }
 
@@ -494,6 +504,8 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 }
 
 // Required. Git Clone HTTPS URI.
+//
+// ***
 func (o RepositoryOutput) RemoteUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RemoteUri }).(pulumi.StringOutput)
 }

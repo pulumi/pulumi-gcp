@@ -114,12 +114,16 @@ public class AndroidApp extends com.pulumi.resources.CustomResource {
     /**
      * The user-assigned display name of the AndroidApp.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the AndroidApp.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {

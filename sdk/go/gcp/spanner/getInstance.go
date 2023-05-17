@@ -51,6 +51,8 @@ type LookupInstanceArgs struct {
 	Config      *string `pulumi:"config"`
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the spanner instance.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -90,6 +92,8 @@ type LookupInstanceOutputArgs struct {
 	Config      pulumi.StringPtrInput `pulumi:"config"`
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The name of the spanner instance.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

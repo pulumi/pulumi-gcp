@@ -306,10 +306,13 @@ export class EdgeCacheService extends pulumi.CustomResource {
 
     /**
      * A human-readable description of the hostRule.
+     *
      * (Optional)
      * A human-readable description of the resource.
+     *
      * (Optional)
      * A human-readable description of the routeRule.
+     *
      * (Optional)
      * A human-readable description of the resource.
      */
@@ -436,10 +439,13 @@ export class EdgeCacheService extends pulumi.CustomResource {
 export interface EdgeCacheServiceState {
     /**
      * A human-readable description of the hostRule.
+     *
      * (Optional)
      * A human-readable description of the resource.
+     *
      * (Optional)
      * A human-readable description of the routeRule.
+     *
      * (Optional)
      * A human-readable description of the resource.
      */
@@ -515,10 +521,13 @@ export interface EdgeCacheServiceState {
 export interface EdgeCacheServiceArgs {
     /**
      * A human-readable description of the hostRule.
+     *
      * (Optional)
      * A human-readable description of the resource.
+     *
      * (Optional)
      * A human-readable description of the routeRule.
+     *
      * (Optional)
      * A human-readable description of the resource.
      */

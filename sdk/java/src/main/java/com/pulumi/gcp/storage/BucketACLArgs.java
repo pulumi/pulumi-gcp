@@ -19,12 +19,16 @@ public final class BucketACLArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the bucket it applies to.
      * 
+     * ***
+     * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
      * @return The name of the bucket it applies to.
+     * 
+     * ***
      * 
      */
     public Output<String> bucket() {
@@ -106,6 +110,8 @@ public final class BucketACLArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bucket The name of the bucket it applies to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -116,6 +122,8 @@ public final class BucketACLArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bucket The name of the bucket it applies to.
+         * 
+         * ***
          * 
          * @return builder
          * 

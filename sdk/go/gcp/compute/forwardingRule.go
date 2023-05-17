@@ -146,6 +146,8 @@ type ForwardingRule struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// For internal load balancing, this field identifies the network that
 	// the load balanced IP should belong to for this Forwarding Rule. If
@@ -319,6 +321,8 @@ type forwardingRuleState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// For internal load balancing, this field identifies the network that
 	// the load balanced IP should belong to for this Forwarding Rule. If
@@ -464,6 +468,8 @@ type ForwardingRuleState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// For internal load balancing, this field identifies the network that
 	// the load balanced IP should belong to for this Forwarding Rule. If
@@ -609,6 +615,8 @@ type forwardingRuleArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// For internal load balancing, this field identifies the network that
 	// the load balanced IP should belong to for this Forwarding Rule. If
@@ -742,6 +750,8 @@ type ForwardingRuleArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// For internal load balancing, this field identifies the network that
 	// the load balanced IP should belong to for this Forwarding Rule. If
@@ -997,6 +1007,8 @@ func (o ForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
+//
+// ***
 func (o ForwardingRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

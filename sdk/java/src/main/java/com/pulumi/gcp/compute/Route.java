@@ -364,12 +364,16 @@ public class Route extends com.pulumi.resources.CustomResource {
     /**
      * The network that this route applies to.
      * 
+     * ***
+     * 
      */
     @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
 
     /**
      * @return The network that this route applies to.
+     * 
+     * ***
      * 
      */
     public Output<String> network() {

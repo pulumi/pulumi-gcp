@@ -310,6 +310,8 @@ type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition struct {
 	Expression string `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -335,6 +337,8 @@ type AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs struct 
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
+	//
+	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -431,6 +435,8 @@ func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) E
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
+//
+// ***
 func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -488,6 +494,8 @@ func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
+//
+// ***
 func (o AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition) *string {
 		if v == nil {
@@ -858,6 +866,8 @@ type DenyPolicyRuleDenyRuleDenialCondition struct {
 	Expression string `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -883,6 +893,8 @@ type DenyPolicyRuleDenyRuleDenialConditionArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// String indicating the location of the expression for error reporting,
 	// e.g. a file name and a position in the file.
+	//
+	// ***
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Title for the expression, i.e. a short string describing its purpose.
 	// This can be used e.g. in UIs which allow to enter the expression.
@@ -979,6 +991,8 @@ func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Expression() pulumi.StringO
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
+//
+// ***
 func (o DenyPolicyRuleDenyRuleDenialConditionOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DenyPolicyRuleDenyRuleDenialCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -1036,6 +1050,8 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Expression() pulumi.Stri
 
 // String indicating the location of the expression for error reporting,
 // e.g. a file name and a position in the file.
+//
+// ***
 func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DenyPolicyRuleDenyRuleDenialCondition) *string {
 		if v == nil {

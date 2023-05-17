@@ -279,6 +279,8 @@ type GlobalForwardingRule struct {
 	// are valid.
 	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
 	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	//
+	// ***
 	Target pulumi.StringOutput `pulumi:"target"`
 }
 
@@ -420,6 +422,8 @@ type globalForwardingRuleState struct {
 	// are valid.
 	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
 	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	//
+	// ***
 	Target *string `pulumi:"target"`
 }
 
@@ -530,6 +534,8 @@ type GlobalForwardingRuleState struct {
 	// are valid.
 	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
 	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	//
+	// ***
 	Target pulumi.StringPtrInput
 }
 
@@ -635,6 +641,8 @@ type globalForwardingRuleArgs struct {
 	// are valid.
 	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
 	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	//
+	// ***
 	Target string `pulumi:"target"`
 }
 
@@ -737,6 +745,8 @@ type GlobalForwardingRuleArgs struct {
 	// are valid.
 	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
 	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	//
+	// ***
 	Target pulumi.StringInput
 }
 
@@ -978,6 +988,8 @@ func (o GlobalForwardingRuleOutput) SelfLink() pulumi.StringOutput {
 // are valid.
 // For global address with a purpose of PRIVATE_SERVICE_CONNECT and
 // addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+//
+// ***
 func (o GlobalForwardingRuleOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
 }

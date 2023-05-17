@@ -117,6 +117,8 @@ type CxIntent struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The human-readable name of the intent, unique within the agent.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -182,6 +184,8 @@ type cxIntentState struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the intent, unique within the agent.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -216,6 +220,8 @@ type CxIntentState struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the intent, unique within the agent.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -254,6 +260,8 @@ type cxIntentArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the intent, unique within the agent.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -286,6 +294,8 @@ type CxIntentArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the intent, unique within the agent.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
 	// Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -406,6 +416,8 @@ func (o CxIntentOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The human-readable name of the intent, unique within the agent.
+//
+// ***
 func (o CxIntentOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxIntent) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

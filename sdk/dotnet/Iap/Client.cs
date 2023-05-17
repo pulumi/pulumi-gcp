@@ -83,6 +83,9 @@ namespace Pulumi.Gcp.Iap
         /// Identifier of the brand to which this client
         /// is attached to. The format is
         /// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("brand")]
         public Output<string> Brand { get; private set; } = null!;
@@ -160,6 +163,9 @@ namespace Pulumi.Gcp.Iap
         /// Identifier of the brand to which this client
         /// is attached to. The format is
         /// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("brand", required: true)]
         public Input<string> Brand { get; set; } = null!;
@@ -182,6 +188,9 @@ namespace Pulumi.Gcp.Iap
         /// Identifier of the brand to which this client
         /// is attached to. The format is
         /// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("brand")]
         public Input<string>? Brand { get; set; }

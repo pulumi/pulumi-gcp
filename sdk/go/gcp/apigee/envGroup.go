@@ -113,6 +113,8 @@ type EnvGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee environment group,
 	// in the format `organizations/{{org_name}}`.
+	//
+	// ***
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 }
 
@@ -154,6 +156,8 @@ type envGroupState struct {
 	Name *string `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee environment group,
 	// in the format `organizations/{{org_name}}`.
+	//
+	// ***
 	OrgId *string `pulumi:"orgId"`
 }
 
@@ -164,6 +168,8 @@ type EnvGroupState struct {
 	Name pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee environment group,
 	// in the format `organizations/{{org_name}}`.
+	//
+	// ***
 	OrgId pulumi.StringPtrInput
 }
 
@@ -178,6 +184,8 @@ type envGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// The Apigee Organization associated with the Apigee environment group,
 	// in the format `organizations/{{org_name}}`.
+	//
+	// ***
 	OrgId string `pulumi:"orgId"`
 }
 
@@ -189,6 +197,8 @@ type EnvGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee environment group,
 	// in the format `organizations/{{org_name}}`.
+	//
+	// ***
 	OrgId pulumi.StringInput
 }
 
@@ -291,6 +301,8 @@ func (o EnvGroupOutput) Name() pulumi.StringOutput {
 
 // The Apigee Organization associated with the Apigee environment group,
 // in the format `organizations/{{org_name}}`.
+//
+// ***
 func (o EnvGroupOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvGroup) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }

@@ -18,12 +18,16 @@ public final class GetGlobalForwardingRuleArgs extends com.pulumi.resources.Invo
     /**
      * The name of the global forwarding rule.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of the global forwarding rule.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -75,6 +79,8 @@ public final class GetGlobalForwardingRuleArgs extends com.pulumi.resources.Invo
         /**
          * @param name The name of the global forwarding rule.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -85,6 +91,8 @@ public final class GetGlobalForwardingRuleArgs extends com.pulumi.resources.Invo
 
         /**
          * @param name The name of the global forwarding rule.
+         * 
+         * ***
          * 
          * @return builder
          * 

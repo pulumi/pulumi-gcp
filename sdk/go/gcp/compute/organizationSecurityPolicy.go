@@ -74,6 +74,8 @@ type OrganizationSecurityPolicy struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
+	//
+	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	PolicyId pulumi.StringOutput `pulumi:"policyId"`
@@ -129,6 +131,8 @@ type organizationSecurityPolicyState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
+	//
+	// ***
 	Parent *string `pulumi:"parent"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	PolicyId *string `pulumi:"policyId"`
@@ -150,6 +154,8 @@ type OrganizationSecurityPolicyState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
+	//
+	// ***
 	Parent pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	PolicyId pulumi.StringPtrInput
@@ -172,6 +178,8 @@ type organizationSecurityPolicyArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
+	//
+	// ***
 	Parent string `pulumi:"parent"`
 	// The type indicates the intended use of the security policy.
 	// For organization security policies, the only supported type
@@ -189,6 +197,8 @@ type OrganizationSecurityPolicyArgs struct {
 	DisplayName pulumi.StringInput
 	// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 	// Format: organizations/{organization_id} or folders/{folder_id}
+	//
+	// ***
 	Parent pulumi.StringInput
 	// The type indicates the intended use of the security policy.
 	// For organization security policies, the only supported type
@@ -303,6 +313,8 @@ func (o OrganizationSecurityPolicyOutput) Fingerprint() pulumi.StringOutput {
 
 // The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
 // Format: organizations/{organization_id} or folders/{folder_id}
+//
+// ***
 func (o OrganizationSecurityPolicyOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

@@ -91,6 +91,9 @@ namespace Pulumi.Gcp.Datastore
 
         /// <summary>
         /// The entity kind which the index applies to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -165,6 +168,9 @@ namespace Pulumi.Gcp.Datastore
 
         /// <summary>
         /// The entity kind which the index applies to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -213,6 +219,9 @@ namespace Pulumi.Gcp.Datastore
 
         /// <summary>
         /// The entity kind which the index applies to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

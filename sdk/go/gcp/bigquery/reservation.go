@@ -95,6 +95,8 @@ type Reservation struct {
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary pulumi.BoolPtrOutput `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -154,6 +156,8 @@ type reservationState struct {
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -182,6 +186,8 @@ type ReservationState struct {
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -214,6 +220,8 @@ type reservationArgs struct {
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -243,6 +251,8 @@ type ReservationArgs struct {
 	// If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The name of the reservation. This field must only contain alphanumeric characters or dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -375,6 +385,8 @@ func (o ReservationOutput) MultiRegionAuxiliary() pulumi.BoolPtrOutput {
 }
 
 // The name of the reservation. This field must only contain alphanumeric characters or dash.
+//
+// ***
 func (o ReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

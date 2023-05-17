@@ -15,6 +15,8 @@ type CertificateManaged struct {
 	// Detailed state of the latest authorization attempt for each domain
 	// specified for this Managed Certificate.
 	// Structure is documented below.
+	//
+	// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
 	AuthorizationAttemptInfos []CertificateManagedAuthorizationAttemptInfo `pulumi:"authorizationAttemptInfos"`
 	// Authorizations that will be used for performing domain authorization
 	DnsAuthorizations []string `pulumi:"dnsAuthorizations"`
@@ -46,6 +48,8 @@ type CertificateManagedArgs struct {
 	// Detailed state of the latest authorization attempt for each domain
 	// specified for this Managed Certificate.
 	// Structure is documented below.
+	//
+	// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
 	AuthorizationAttemptInfos CertificateManagedAuthorizationAttemptInfoArrayInput `pulumi:"authorizationAttemptInfos"`
 	// Authorizations that will be used for performing domain authorization
 	DnsAuthorizations pulumi.StringArrayInput `pulumi:"dnsAuthorizations"`
@@ -142,6 +146,8 @@ func (o CertificateManagedOutput) ToCertificateManagedPtrOutputWithContext(ctx c
 // Detailed state of the latest authorization attempt for each domain
 // specified for this Managed Certificate.
 // Structure is documented below.
+//
+// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
 func (o CertificateManagedOutput) AuthorizationAttemptInfos() CertificateManagedAuthorizationAttemptInfoArrayOutput {
 	return o.ApplyT(func(v CertificateManaged) []CertificateManagedAuthorizationAttemptInfo {
 		return v.AuthorizationAttemptInfos
@@ -200,6 +206,8 @@ func (o CertificateManagedPtrOutput) Elem() CertificateManagedOutput {
 // Detailed state of the latest authorization attempt for each domain
 // specified for this Managed Certificate.
 // Structure is documented below.
+//
+// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
 func (o CertificateManagedPtrOutput) AuthorizationAttemptInfos() CertificateManagedAuthorizationAttemptInfoArrayOutput {
 	return o.ApplyT(func(v *CertificateManaged) []CertificateManagedAuthorizationAttemptInfo {
 		if v == nil {
@@ -258,6 +266,9 @@ type CertificateManagedAuthorizationAttemptInfo struct {
 	// Human readable explanation about the issue. Provided to help address
 	// the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `reason` field.
+	//
+	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+	//
 	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
@@ -271,6 +282,7 @@ type CertificateManagedAuthorizationAttemptInfo struct {
 	FailureReason *string `pulumi:"failureReason"`
 	// (Output)
 	// A state of this Managed Certificate.
+	//
 	// (Output)
 	// State of the domain for managed certificate issuance.
 	State *string `pulumi:"state"`
@@ -292,6 +304,9 @@ type CertificateManagedAuthorizationAttemptInfoArgs struct {
 	// Human readable explanation about the issue. Provided to help address
 	// the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `reason` field.
+	//
+	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+	//
 	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
@@ -305,6 +320,7 @@ type CertificateManagedAuthorizationAttemptInfoArgs struct {
 	FailureReason pulumi.StringPtrInput `pulumi:"failureReason"`
 	// (Output)
 	// A state of this Managed Certificate.
+	//
 	// (Output)
 	// State of the domain for managed certificate issuance.
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -365,6 +381,9 @@ func (o CertificateManagedAuthorizationAttemptInfoOutput) ToCertificateManagedAu
 // Human readable explanation about the issue. Provided to help address
 // the configuration issues.
 // Not guaranteed to be stable. For programmatic access use `reason` field.
+//
+// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+//
 // (Output)
 // Human readable explanation for reaching the state. Provided to help
 // address the configuration issues.
@@ -387,6 +406,7 @@ func (o CertificateManagedAuthorizationAttemptInfoOutput) FailureReason() pulumi
 
 // (Output)
 // A state of this Managed Certificate.
+//
 // (Output)
 // State of the domain for managed certificate issuance.
 func (o CertificateManagedAuthorizationAttemptInfoOutput) State() pulumi.StringPtrOutput {
@@ -418,6 +438,9 @@ type CertificateManagedProvisioningIssue struct {
 	// Human readable explanation about the issue. Provided to help address
 	// the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `reason` field.
+	//
+	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+	//
 	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
@@ -444,6 +467,9 @@ type CertificateManagedProvisioningIssueArgs struct {
 	// Human readable explanation about the issue. Provided to help address
 	// the configuration issues.
 	// Not guaranteed to be stable. For programmatic access use `reason` field.
+	//
+	// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+	//
 	// (Output)
 	// Human readable explanation for reaching the state. Provided to help
 	// address the configuration issues.
@@ -509,6 +535,9 @@ func (o CertificateManagedProvisioningIssueOutput) ToCertificateManagedProvision
 // Human readable explanation about the issue. Provided to help address
 // the configuration issues.
 // Not guaranteed to be stable. For programmatic access use `reason` field.
+//
+// <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+//
 // (Output)
 // Human readable explanation for reaching the state. Provided to help
 // address the configuration issues.
@@ -1028,6 +1057,8 @@ type DnsAuthorizationDnsResourceRecord struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// (Output)
 	// Type of the DNS Resource Record.
@@ -1052,6 +1083,8 @@ type DnsAuthorizationDnsResourceRecordArgs struct {
 	// Name of the resource; provided by the client when the resource is created.
 	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 	// and all following characters must be a dash, underscore, letter or digit.
+	//
+	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (Output)
 	// Type of the DNS Resource Record.
@@ -1118,6 +1151,8 @@ func (o DnsAuthorizationDnsResourceRecordOutput) Data() pulumi.StringPtrOutput {
 // Name of the resource; provided by the client when the resource is created.
 // The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
 // and all following characters must be a dash, underscore, letter or digit.
+//
+// ***
 func (o DnsAuthorizationDnsResourceRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DnsAuthorizationDnsResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

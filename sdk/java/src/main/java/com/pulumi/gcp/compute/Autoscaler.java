@@ -284,6 +284,9 @@ public class Autoscaler extends com.pulumi.resources.CustomResource {
     }
     /**
      * A description of a scaling schedule.
+     * 
+     * ***
+     * 
      * (Optional)
      * An optional description of this resource.
      * 
@@ -293,6 +296,9 @@ public class Autoscaler extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A description of a scaling schedule.
+     * 
+     * ***
+     * 
      * (Optional)
      * An optional description of this resource.
      * 

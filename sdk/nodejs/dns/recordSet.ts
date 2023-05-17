@@ -261,6 +261,8 @@ export class RecordSet extends pulumi.CustomResource {
     public readonly ttl!: pulumi.Output<number | undefined>;
     /**
      * The DNS record set type.
+     *
+     * - - -
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -345,6 +347,8 @@ export interface RecordSetState {
     ttl?: pulumi.Input<number>;
     /**
      * The DNS record set type.
+     *
+     * - - -
      */
     type?: pulumi.Input<string>;
 }
@@ -386,6 +390,8 @@ export interface RecordSetArgs {
     ttl?: pulumi.Input<number>;
     /**
      * The DNS record set type.
+     *
+     * - - -
      */
     type: pulumi.Input<string>;
 }

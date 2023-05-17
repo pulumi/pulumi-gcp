@@ -267,12 +267,16 @@ public class Registry extends com.pulumi.resources.CustomResource {
     /**
      * A unique name for the resource, required by device registry.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return A unique name for the resource, required by device registry.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

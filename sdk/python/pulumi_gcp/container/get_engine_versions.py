@@ -168,6 +168,22 @@ def get_engine_versions(location: Optional[str] = None,
     its component zones, and not all zones in a region are guaranteed to
     support the same version.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    central1b = gcp.container.get_engine_versions(location="us-central1-b",
+        version_prefix="1.12.")
+    foo = gcp.container.Cluster("foo",
+        location="us-central1-b",
+        node_version=central1b.latest_node_version,
+        initial_node_count=1)
+    pulumi.export("stableChannelDefaultVersion", central1b.release_channel_default_version["STABLE"])
+    pulumi.export("stableChannelLatestVersion", central1b.release_channel_latest_version["STABLE"])
+    ```
+
 
     :param str location: The location (region or zone) to list versions for.
            Must exactly match the location the cluster will be deployed in, or listed
@@ -216,6 +232,22 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
     the datasource. A region can have a different set of supported versions than
     its component zones, and not all zones in a region are guaranteed to
     support the same version.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    central1b = gcp.container.get_engine_versions(location="us-central1-b",
+        version_prefix="1.12.")
+    foo = gcp.container.Cluster("foo",
+        location="us-central1-b",
+        node_version=central1b.latest_node_version,
+        initial_node_count=1)
+    pulumi.export("stableChannelDefaultVersion", central1b.release_channel_default_version["STABLE"])
+    pulumi.export("stableChannelLatestVersion", central1b.release_channel_latest_version["STABLE"])
+    ```
 
 
     :param str location: The location (region or zone) to list versions for.

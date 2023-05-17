@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.AppEngine.Outputs
     {
         /// <summary>
         /// The format should be a shell command that can be fed to bash -c.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Shell;
 

@@ -88,6 +88,8 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
      * A user-defined name of the Certificate Map. Certificate Map names must be unique
      * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -95,6 +97,8 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
     /**
      * @return A user-defined name of the Certificate Map. Certificate Map names must be unique
      * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -272,6 +276,8 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
          * @param name A user-defined name of the Certificate Map. Certificate Map names must be unique
          * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -283,6 +289,8 @@ public final class CertificateMapState extends com.pulumi.resources.ResourceArgs
         /**
          * @param name A user-defined name of the Certificate Map. Certificate Map names must be unique
          * globally and match the pattern `projects/*{@literal /}locations/*{@literal /}certificateMaps/*`.
+         * 
+         * ***
          * 
          * @return builder
          * 

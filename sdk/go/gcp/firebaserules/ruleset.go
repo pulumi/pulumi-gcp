@@ -112,6 +112,8 @@ type Ruleset struct {
 	// Output only. The metadata for this ruleset.
 	Metadatas RulesetMetadataArrayOutput `pulumi:"metadatas"`
 	// File name.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -156,6 +158,8 @@ type rulesetState struct {
 	// Output only. The metadata for this ruleset.
 	Metadatas []RulesetMetadata `pulumi:"metadatas"`
 	// File name.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -169,6 +173,8 @@ type RulesetState struct {
 	// Output only. The metadata for this ruleset.
 	Metadatas RulesetMetadataArrayInput
 	// File name.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -293,6 +299,8 @@ func (o RulesetOutput) Metadatas() RulesetMetadataArrayOutput {
 }
 
 // File name.
+//
+// ***
 func (o RulesetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

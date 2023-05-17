@@ -64,12 +64,16 @@ public final class FlexibleAppVersionLivenessCheckArgs extends com.pulumi.resour
     /**
      * The initial delay before starting to execute the checks. Default: &#34;300s&#34;
      * 
+     * ***
+     * 
      */
     @Import(name="initialDelay")
     private @Nullable Output<String> initialDelay;
 
     /**
      * @return The initial delay before starting to execute the checks. Default: &#34;300s&#34;
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> initialDelay() {
@@ -217,6 +221,8 @@ public final class FlexibleAppVersionLivenessCheckArgs extends com.pulumi.resour
         /**
          * @param initialDelay The initial delay before starting to execute the checks. Default: &#34;300s&#34;
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -227,6 +233,8 @@ public final class FlexibleAppVersionLivenessCheckArgs extends com.pulumi.resour
 
         /**
          * @param initialDelay The initial delay before starting to execute the checks. Default: &#34;300s&#34;
+         * 
+         * ***
          * 
          * @return builder
          * 

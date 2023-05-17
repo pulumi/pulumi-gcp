@@ -83,6 +83,8 @@ type RegionTargetHttpsProxy struct {
 	SslPolicy pulumi.StringPtrOutput `pulumi:"sslPolicy"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
+	//
+	// ***
 	UrlMap pulumi.StringOutput `pulumi:"urlMap"`
 }
 
@@ -152,6 +154,8 @@ type regionTargetHttpsProxyState struct {
 	SslPolicy *string `pulumi:"sslPolicy"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
+	//
+	// ***
 	UrlMap *string `pulumi:"urlMap"`
 }
 
@@ -187,6 +191,8 @@ type RegionTargetHttpsProxyState struct {
 	SslPolicy pulumi.StringPtrInput
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
+	//
+	// ***
 	UrlMap pulumi.StringPtrInput
 }
 
@@ -220,6 +226,8 @@ type regionTargetHttpsProxyArgs struct {
 	SslPolicy *string `pulumi:"sslPolicy"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
+	//
+	// ***
 	UrlMap string `pulumi:"urlMap"`
 }
 
@@ -250,6 +258,8 @@ type RegionTargetHttpsProxyArgs struct {
 	SslPolicy pulumi.StringPtrInput
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
+	//
+	// ***
 	UrlMap pulumi.StringInput
 }
 
@@ -398,6 +408,8 @@ func (o RegionTargetHttpsProxyOutput) SslPolicy() pulumi.StringPtrOutput {
 
 // A reference to the RegionUrlMap resource that defines the mapping from URL
 // to the RegionBackendService.
+//
+// ***
 func (o RegionTargetHttpsProxyOutput) UrlMap() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringOutput { return v.UrlMap }).(pulumi.StringOutput)
 }

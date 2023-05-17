@@ -70,6 +70,8 @@ type Domain struct {
 	AuthorizedNetworks pulumi.StringArrayOutput `pulumi:"authorizedNetworks"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	//
+	// ***
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -135,6 +137,8 @@ type domainState struct {
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	//
+	// ***
 	DomainName *string `pulumi:"domainName"`
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -163,6 +167,8 @@ type DomainState struct {
 	AuthorizedNetworks pulumi.StringArrayInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	//
+	// ***
 	DomainName pulumi.StringPtrInput
 	// The fully-qualified domain name of the exposed domain used by clients to connect to the service.
 	// Similar to what would be chosen for an Active Directory set up on an internal network.
@@ -195,6 +201,8 @@ type domainArgs struct {
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	//
+	// ***
 	DomainName string `pulumi:"domainName"`
 	// Resource labels that can contain user-provided metadata
 	Labels map[string]string `pulumi:"labels"`
@@ -219,6 +227,8 @@ type DomainArgs struct {
 	AuthorizedNetworks pulumi.StringArrayInput
 	// The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 	// https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+	//
+	// ***
 	DomainName pulumi.StringInput
 	// Resource labels that can contain user-provided metadata
 	Labels pulumi.StringMapInput
@@ -334,6 +344,8 @@ func (o DomainOutput) AuthorizedNetworks() pulumi.StringArrayOutput {
 
 // The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
 // https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+//
+// ***
 func (o DomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
 }

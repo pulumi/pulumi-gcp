@@ -154,12 +154,16 @@ public final class FirewallPolicyState extends com.pulumi.resources.ResourceArgs
     /**
      * User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Import(name="shortName")
     private @Nullable Output<String> shortName;
 
     /**
      * @return User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> shortName() {
@@ -391,6 +395,8 @@ public final class FirewallPolicyState extends com.pulumi.resources.ResourceArgs
         /**
          * @param shortName User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -401,6 +407,8 @@ public final class FirewallPolicyState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param shortName User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+         * 
+         * ***
          * 
          * @return builder
          * 

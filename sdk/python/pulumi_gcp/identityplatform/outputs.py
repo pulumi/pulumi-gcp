@@ -171,6 +171,9 @@ class InboundSamlConfigSpConfig(dict):
         :param Sequence['InboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
+               
+               
+               <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         :param str sp_entity_id: Unique identifier for all SAML entities.
         """
         if callback_uri is not None:
@@ -195,6 +198,9 @@ class InboundSamlConfigSpConfig(dict):
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
+
+
+        <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
 
@@ -230,8 +236,11 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
                  x509_certificate: Optional[str] = None):
         """
         :param str x509_certificate: The IdP's x509 certificate.
+               
                (Output)
                The x509 certificate
+               
+               - - -
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -241,8 +250,11 @@ class InboundSamlConfigSpConfigSpCertificate(dict):
     def x509_certificate(self) -> Optional[str]:
         """
         The IdP's x509 certificate.
+
         (Output)
         The x509 certificate
+
+        - - -
         """
         return pulumi.get(self, "x509_certificate")
 
@@ -351,6 +363,8 @@ class ProjectDefaultConfigSignInAnonymous(dict):
                  enabled: bool):
         """
         :param bool enabled: Whether anonymous user auth is enabled for the project or not.
+               
+               <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -359,6 +373,8 @@ class ProjectDefaultConfigSignInAnonymous(dict):
     def enabled(self) -> bool:
         """
         Whether anonymous user auth is enabled for the project or not.
+
+        <a name="nested_hash_config"></a>The `hash_config` block contains:
         """
         return pulumi.get(self, "enabled")
 
@@ -707,6 +723,9 @@ class TenantInboundSamlConfigSpConfig(dict):
         :param Sequence['TenantInboundSamlConfigSpConfigSpCertificateArgs'] sp_certificates: (Output)
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
+               
+               
+               <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
@@ -736,6 +755,9 @@ class TenantInboundSamlConfigSpConfig(dict):
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
+
+
+        <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
 
@@ -763,8 +785,11 @@ class TenantInboundSamlConfigSpConfigSpCertificate(dict):
                  x509_certificate: Optional[str] = None):
         """
         :param str x509_certificate: The x509 certificate
+               
                (Output)
                The x509 certificate
+               
+               - - -
         """
         if x509_certificate is not None:
             pulumi.set(__self__, "x509_certificate", x509_certificate)
@@ -774,8 +799,11 @@ class TenantInboundSamlConfigSpConfigSpCertificate(dict):
     def x509_certificate(self) -> Optional[str]:
         """
         The x509 certificate
+
         (Output)
         The x509 certificate
+
+        - - -
         """
         return pulumi.get(self, "x509_certificate")
 

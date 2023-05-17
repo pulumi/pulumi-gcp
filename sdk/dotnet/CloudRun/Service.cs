@@ -358,6 +358,7 @@ namespace Pulumi.Gcp.CloudRun
         /// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
         /// annotation key.
         /// Structure is documented below.
+        /// 
         /// (Optional)
         /// Metadata associated with this Service, including name, namespace, labels,
         /// and annotations.
@@ -477,6 +478,7 @@ namespace Pulumi.Gcp.CloudRun
         /// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
         /// annotation key.
         /// Structure is documented below.
+        /// 
         /// (Optional)
         /// Metadata associated with this Service, including name, namespace, labels,
         /// and annotations.
@@ -557,6 +559,7 @@ namespace Pulumi.Gcp.CloudRun
         /// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
         /// annotation key.
         /// Structure is documented below.
+        /// 
         /// (Optional)
         /// Metadata associated with this Service, including name, namespace, labels,
         /// and annotations.

@@ -59,12 +59,16 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to the zone where the machine resides.
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -254,6 +258,8 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location A reference to the zone where the machine resides.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -264,6 +270,8 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location A reference to the zone where the machine resides.
+         * 
+         * ***
          * 
          * @return builder
          * 

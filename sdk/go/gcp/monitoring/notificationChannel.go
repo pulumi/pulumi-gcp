@@ -149,6 +149,8 @@ type NotificationChannel struct {
 	// Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrOutput `pulumi:"sensitiveLabels"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+	//
+	// ***
 	Type pulumi.StringOutput `pulumi:"type"`
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
@@ -223,6 +225,8 @@ type notificationChannelState struct {
 	// Structure is documented below.
 	SensitiveLabels *NotificationChannelSensitiveLabels `pulumi:"sensitiveLabels"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+	//
+	// ***
 	Type *string `pulumi:"type"`
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -266,6 +270,8 @@ type NotificationChannelState struct {
 	// Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrInput
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+	//
+	// ***
 	Type pulumi.StringPtrInput
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
@@ -309,6 +315,8 @@ type notificationChannelArgs struct {
 	// Structure is documented below.
 	SensitiveLabels *NotificationChannelSensitiveLabels `pulumi:"sensitiveLabels"`
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+	//
+	// ***
 	Type string `pulumi:"type"`
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels map[string]string `pulumi:"userLabels"`
@@ -347,6 +355,8 @@ type NotificationChannelArgs struct {
 	// Structure is documented below.
 	SensitiveLabels NotificationChannelSensitiveLabelsPtrInput
 	// The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+	//
+	// ***
 	Type pulumi.StringInput
 	// User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
 	UserLabels pulumi.StringMapInput
@@ -498,6 +508,8 @@ func (o NotificationChannelOutput) SensitiveLabels() NotificationChannelSensitiv
 }
 
 // The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
+//
+// ***
 func (o NotificationChannelOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationChannel) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

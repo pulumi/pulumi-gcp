@@ -10,6 +10,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Region Backend Service defines a regionally-scoped group of virtual
+// machines that will serve traffic for load balancing.
+//
+// To get more information about RegionBackendService, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+// * How-to Guides
+//   - [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+//
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 //
 // ## Import
@@ -117,6 +130,8 @@ type RegionBackendService struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -263,6 +278,8 @@ type regionBackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -381,6 +398,8 @@ type RegionBackendServiceState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -498,6 +517,8 @@ type regionBackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -610,6 +631,8 @@ type RegionBackendServiceArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network to which this backend service belongs.
 	// This field can only be specified when the load balancing scheme is set to INTERNAL.
@@ -865,6 +888,8 @@ func (o RegionBackendServiceOutput) LogConfig() RegionBackendServiceLogConfigOut
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
+//
+// ***
 func (o RegionBackendServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

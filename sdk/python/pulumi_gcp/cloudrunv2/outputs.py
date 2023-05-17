@@ -1633,6 +1633,8 @@ class JobTemplateTemplateVpcAccess(dict):
         :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param str egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+               
+               - - -
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -1653,6 +1655,8 @@ class JobTemplateTemplateVpcAccess(dict):
         """
         Traffic VPC egress settings.
         Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+
+        - - -
         """
         return pulumi.get(self, "egress")
 
@@ -3316,6 +3320,8 @@ class ServiceTemplateVolumeCloudSqlInstance(dict):
                  instances: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+               
+               - - -
         """
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
@@ -3325,6 +3331,8 @@ class ServiceTemplateVolumeCloudSqlInstance(dict):
     def instances(self) -> Optional[Sequence[str]]:
         """
         The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+
+        - - -
         """
         return pulumi.get(self, "instances")
 
@@ -3674,6 +3682,7 @@ class ServiceTrafficStatus(dict):
         """
         :param int percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+               
                (Optional)
                Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param str tag: Indicates a string to be part of the URI to exclusively reference this target.
@@ -3706,6 +3715,7 @@ class ServiceTrafficStatus(dict):
     def revision(self) -> Optional[str]:
         """
         The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+
         (Optional)
         Revision to which to send this portion of traffic, if traffic allocation is by revision.
         """

@@ -33,6 +33,9 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
+               
+               
+               - - -
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
@@ -101,6 +104,9 @@ class ConnectionProfileArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The name of the location this connection profile is located in.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -251,6 +257,9 @@ class _ConnectionProfileState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
+               
+               
+               - - -
         :param pulumi.Input['ConnectionProfileMysqlProfileArgs'] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
@@ -369,6 +378,9 @@ class _ConnectionProfileState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the location this connection profile is located in.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -473,6 +485,18 @@ class ConnectionProfile(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A set of reusable connection configurations to be used as a source or destination for a stream.
+
+        To get more information about ConnectionProfile, see:
+
+        * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.connectionProfiles)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `oracle_profile.password`, `mysql_profile.password`, `mysql_profile.ssl_config.client_key`, `mysql_profile.ssl_config.client_certificate`, `mysql_profile.ssl_config.ca_certificate`, `postgresql_profile.password`, `forward_ssh_connectivity.password`, `forward_ssh_connectivity.private_key`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Datastream Connection Profile Basic
 
@@ -619,6 +643,9 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionProfileOracleProfileArgs']] oracle_profile: Oracle database profile.
@@ -637,6 +664,18 @@ class ConnectionProfile(pulumi.CustomResource):
                  args: ConnectionProfileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A set of reusable connection configurations to be used as a source or destination for a stream.
+
+        To get more information about ConnectionProfile, see:
+
+        * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.connectionProfiles)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `oracle_profile.password`, `mysql_profile.password`, `mysql_profile.ssl_config.client_key`, `mysql_profile.ssl_config.client_certificate`, `mysql_profile.ssl_config.ca_certificate`, `postgresql_profile.password`, `forward_ssh_connectivity.password`, `forward_ssh_connectivity.private_key`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Datastream Connection Profile Basic
 
@@ -866,6 +905,9 @@ class ConnectionProfile(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] location: The name of the location this connection profile is located in.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['ConnectionProfileMysqlProfileArgs']] mysql_profile: MySQL database profile.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource's name.
@@ -952,6 +994,9 @@ class ConnectionProfile(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The name of the location this connection profile is located in.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 

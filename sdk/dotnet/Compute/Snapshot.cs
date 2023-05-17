@@ -234,6 +234,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("sourceDisk")]
         public Output<string> SourceDisk { get; private set; } = null!;
@@ -379,6 +382,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceDisk", required: true)]
         public Input<string> SourceDisk { get; set; } = null!;
@@ -530,6 +536,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A reference to the disk used to create this snapshot.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceDisk")]
         public Input<string>? SourceDisk { get; set; }

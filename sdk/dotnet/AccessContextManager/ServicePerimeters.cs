@@ -122,6 +122,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// The AccessPolicy this ServicePerimeter lives in.
         /// Format: accessPolicies/{policy_id}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -182,6 +185,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// The AccessPolicy this ServicePerimeter lives in.
         /// Format: accessPolicies/{policy_id}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -210,6 +216,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// <summary>
         /// The AccessPolicy this ServicePerimeter lives in.
         /// Format: accessPolicies/{policy_id}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

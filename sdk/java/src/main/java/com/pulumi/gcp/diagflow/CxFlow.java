@@ -154,12 +154,16 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the flow.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the flow.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -214,6 +218,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
     /**
      * (Output)
      * The unique identifier of this transition route.
+     * 
      * (Output)
      * The unique identifier of this event handler.
      * 
@@ -224,6 +229,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
     /**
      * @return (Output)
      * The unique identifier of this transition route.
+     * 
      * (Output)
      * The unique identifier of this event handler.
      * 

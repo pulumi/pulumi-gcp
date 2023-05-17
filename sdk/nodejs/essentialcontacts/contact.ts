@@ -89,6 +89,9 @@ export class Contact extends pulumi.CustomResource {
     public readonly notificationCategorySubscriptions!: pulumi.Output<string[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+     *
+     *
+     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
 
@@ -157,6 +160,9 @@ export interface ContactState {
     notificationCategorySubscriptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+     *
+     *
+     * - - -
      */
     parent?: pulumi.Input<string>;
 }
@@ -179,6 +185,9 @@ export interface ContactArgs {
     notificationCategorySubscriptions: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+     *
+     *
+     * - - -
      */
     parent: pulumi.Input<string>;
 }

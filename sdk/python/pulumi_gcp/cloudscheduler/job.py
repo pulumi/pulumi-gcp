@@ -49,6 +49,9 @@ class JobArgs:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+               
+               
+               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -157,6 +160,9 @@ class JobArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the job.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -294,6 +300,9 @@ class _JobState:
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+               
+               
+               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -405,6 +414,9 @@ class _JobState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the job.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -655,6 +667,9 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+               
+               
+               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -874,6 +889,9 @@ class Job(pulumi.CustomResource):
                send a request to the targeted url
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the job.
+               
+               
+               - - -
         :param pulumi.Input[bool] paused: Sets the job to a paused state. Jobs default to being enabled when this property is not set.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -961,6 +979,9 @@ class Job(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the job.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

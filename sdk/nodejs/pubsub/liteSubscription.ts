@@ -100,6 +100,9 @@ export class LiteSubscription extends pulumi.CustomResource {
     public readonly deliveryConfig!: pulumi.Output<outputs.pubsub.LiteSubscriptionDeliveryConfig | undefined>;
     /**
      * Name of the subscription.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -167,6 +170,9 @@ export interface LiteSubscriptionState {
     deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
     /**
      * Name of the subscription.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -199,6 +205,9 @@ export interface LiteSubscriptionArgs {
     deliveryConfig?: pulumi.Input<inputs.pubsub.LiteSubscriptionDeliveryConfig>;
     /**
      * Name of the subscription.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

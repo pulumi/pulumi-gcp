@@ -19,12 +19,16 @@ public final class GameServerDeploymentState extends com.pulumi.resources.Resour
     /**
      * A unique id for the deployment.
      * 
+     * ***
+     * 
      */
     @Import(name="deploymentId")
     private @Nullable Output<String> deploymentId;
 
     /**
      * @return A unique id for the deployment.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> deploymentId() {
@@ -148,6 +152,8 @@ public final class GameServerDeploymentState extends com.pulumi.resources.Resour
         /**
          * @param deploymentId A unique id for the deployment.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -158,6 +164,8 @@ public final class GameServerDeploymentState extends com.pulumi.resources.Resour
 
         /**
          * @param deploymentId A unique id for the deployment.
+         * 
+         * ***
          * 
          * @return builder
          * 

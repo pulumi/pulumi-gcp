@@ -54,6 +54,8 @@ func GetOrganization(ctx *pulumi.Context, args *GetOrganizationArgs, opts ...pul
 // A collection of arguments for invoking getOrganization.
 type GetOrganizationArgs struct {
 	// The domain name of the Organization.
+	//
+	// > **NOTE:** One of `organization` or `domain` must be specified.
 	Domain *string `pulumi:"domain"`
 	// The Organization's numeric ID, including an optional `organizations/` prefix.
 	Organization *string `pulumi:"organization"`
@@ -93,6 +95,8 @@ func GetOrganizationOutput(ctx *pulumi.Context, args GetOrganizationOutputArgs, 
 // A collection of arguments for invoking getOrganization.
 type GetOrganizationOutputArgs struct {
 	// The domain name of the Organization.
+	//
+	// > **NOTE:** One of `organization` or `domain` must be specified.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// The Organization's numeric ID, including an optional `organizations/` prefix.
 	Organization pulumi.StringPtrInput `pulumi:"organization"`

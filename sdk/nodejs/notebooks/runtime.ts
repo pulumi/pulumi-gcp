@@ -229,6 +229,9 @@ export class Runtime extends pulumi.CustomResource {
     public /*out*/ readonly healthState!: pulumi.Output<string>;
     /**
      * A reference to the zone where the machine resides.
+     *
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -320,6 +323,9 @@ export interface RuntimeState {
     healthState?: pulumi.Input<string>;
     /**
      * A reference to the zone where the machine resides.
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -364,6 +370,9 @@ export interface RuntimeArgs {
     accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig>;
     /**
      * A reference to the zone where the machine resides.
+     *
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

@@ -25,6 +25,8 @@ func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, o
 // A collection of arguments for invoking getBackendService.
 type LookupBackendServiceArgs struct {
 	// The name of the Backend Service.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -95,6 +97,8 @@ func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOu
 // A collection of arguments for invoking getBackendService.
 type LookupBackendServiceOutputArgs struct {
 	// The name of the Backend Service.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`

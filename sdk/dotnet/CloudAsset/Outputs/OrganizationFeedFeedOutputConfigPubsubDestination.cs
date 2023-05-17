@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.CloudAsset.Outputs
     {
         /// <summary>
         /// Destination on Cloud Pubsub topic.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Topic;
 

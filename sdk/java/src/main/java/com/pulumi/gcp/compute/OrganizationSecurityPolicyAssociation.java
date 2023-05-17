@@ -160,12 +160,16 @@ public class OrganizationSecurityPolicyAssociation extends com.pulumi.resources.
     /**
      * The security policy ID of the association.
      * 
+     * ***
+     * 
      */
     @Export(name="policyId", type=String.class, parameters={})
     private Output<String> policyId;
 
     /**
      * @return The security policy ID of the association.
+     * 
+     * ***
      * 
      */
     public Output<String> policyId() {

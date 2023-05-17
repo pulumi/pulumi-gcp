@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// 
+        /// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
         /// </summary>
         public InputList<string> JarFileUris
         {

@@ -215,6 +215,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name or self_link of the network to attach this firewall to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -452,6 +455,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name or self_link of the network to attach this firewall to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -681,6 +687,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name or self_link of the network to attach this firewall to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

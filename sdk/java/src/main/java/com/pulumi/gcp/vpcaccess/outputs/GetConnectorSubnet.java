@@ -12,6 +12,8 @@ public final class GetConnectorSubnet {
     /**
      * @return Name of the resource.
      * 
+     * ***
+     * 
      */
     private String name;
     private String projectId;
@@ -19,6 +21,8 @@ public final class GetConnectorSubnet {
     private GetConnectorSubnet() {}
     /**
      * @return Name of the resource.
+     * 
+     * ***
      * 
      */
     public String name() {

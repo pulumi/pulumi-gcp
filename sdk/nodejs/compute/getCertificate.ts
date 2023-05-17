@@ -36,6 +36,8 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
 export interface GetCertificateArgs {
     /**
      * The name of the certificate.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -91,6 +93,8 @@ export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulu
 export interface GetCertificateOutputArgs {
     /**
      * The name of the certificate.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

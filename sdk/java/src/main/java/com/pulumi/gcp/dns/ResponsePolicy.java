@@ -216,12 +216,16 @@ public class ResponsePolicy extends com.pulumi.resources.CustomResource {
     /**
      * The user assigned name for this Response Policy, such as `myresponsepolicy`.
      * 
+     * ***
+     * 
      */
     @Export(name="responsePolicyName", type=String.class, parameters={})
     private Output<String> responsePolicyName;
 
     /**
      * @return The user assigned name for this Response Policy, such as `myresponsepolicy`.
+     * 
+     * ***
      * 
      */
     public Output<String> responsePolicyName() {

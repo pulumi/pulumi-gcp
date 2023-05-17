@@ -159,6 +159,15 @@ type InstanceIAMBinding struct {
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the instance.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringOutput      `pulumi:"instance"`
 	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
@@ -212,6 +221,15 @@ type instanceIAMBindingState struct {
 	// (Computed) The etag of the instance's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the instance.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance *string  `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
@@ -228,6 +246,15 @@ type InstanceIAMBindingState struct {
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The name of the instance.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringPtrInput
 	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
@@ -246,6 +273,15 @@ func (InstanceIAMBindingState) ElementType() reflect.Type {
 type instanceIAMBindingArgs struct {
 	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
 	// The name of the instance.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance string   `pulumi:"instance"`
 	Members  []string `pulumi:"members"`
 	// The ID of the project in which the resource belongs. If it
@@ -261,6 +297,15 @@ type instanceIAMBindingArgs struct {
 type InstanceIAMBindingArgs struct {
 	Condition InstanceIAMBindingConditionPtrInput
 	// The name of the instance.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringInput
 	Members  pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs. If it
@@ -369,6 +414,15 @@ func (o InstanceIAMBindingOutput) Etag() pulumi.StringOutput {
 }
 
 // The name of the instance.
+//
+//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
+//     Each entry can have one of the following values:
+//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o InstanceIAMBindingOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }

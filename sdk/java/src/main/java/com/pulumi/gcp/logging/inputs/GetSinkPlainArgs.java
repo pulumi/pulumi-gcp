@@ -16,6 +16,11 @@ public final class GetSinkPlainArgs extends com.pulumi.resources.InvokeArgs {
      * The identifier for the resource.
      * Examples:
      * 
+     * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
+     * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
+     * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+     * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
+     * 
      */
     @Import(name="id", required=true)
     private String id;
@@ -23,6 +28,11 @@ public final class GetSinkPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The identifier for the resource.
      * Examples:
+     * 
+     * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
+     * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
+     * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+     * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
      * 
      */
     public String id() {
@@ -56,6 +66,11 @@ public final class GetSinkPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param id The identifier for the resource.
          * Examples:
+         * 
+         * - `projects/[PROJECT_ID]/sinks/[SINK_NAME]`
+         * - `organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME]`
+         * -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
+         * - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
          * 
          * @return builder
          * 

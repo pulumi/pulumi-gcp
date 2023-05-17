@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         public readonly string? IpAddress;
         /// <summary>
         /// The URI of the virtual machine resource
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? VirtualMachine;
 

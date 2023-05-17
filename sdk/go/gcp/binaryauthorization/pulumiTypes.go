@@ -464,6 +464,8 @@ type AttestorAttestationAuthorityNotePublicKeyPkixPublicKey struct {
 	// match the structure and any object identifiers encoded in
 	// publicKeyPem (i.e. this algorithm must match that of the
 	// public key).
+	//
+	// ***
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
 }
 
@@ -487,6 +489,8 @@ type AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs struct {
 	// match the structure and any object identifiers encoded in
 	// publicKeyPem (i.e. this algorithm must match that of the
 	// public key).
+	//
+	// ***
 	SignatureAlgorithm pulumi.StringPtrInput `pulumi:"signatureAlgorithm"`
 }
 
@@ -578,6 +582,8 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) PublicKeyP
 // match the structure and any object identifiers encoded in
 // publicKeyPem (i.e. this algorithm must match that of the
 // public key).
+//
+// ***
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
 }
@@ -622,6 +628,8 @@ func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) PublicK
 // match the structure and any object identifiers encoded in
 // publicKeyPem (i.e. this algorithm must match that of the
 // public key).
+//
+// ***
 func (o AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttestorAttestationAuthorityNotePublicKeyPkixPublicKey) *string {
 		if v == nil {
@@ -1217,6 +1225,8 @@ func (o PolicyClusterAdmissionRuleArrayOutput) Index(i pulumi.IntInput) PolicyCl
 type PolicyDefaultAdmissionRule struct {
 	// The action when a pod creation is denied by the admission rule.
 	// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+	//
+	// ***
 	EnforcementMode string `pulumi:"enforcementMode"`
 	// How this admission rule will be evaluated.
 	// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
@@ -1246,6 +1256,8 @@ type PolicyDefaultAdmissionRuleInput interface {
 type PolicyDefaultAdmissionRuleArgs struct {
 	// The action when a pod creation is denied by the admission rule.
 	// Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+	//
+	// ***
 	EnforcementMode pulumi.StringInput `pulumi:"enforcementMode"`
 	// How this admission rule will be evaluated.
 	// Possible values are: `ALWAYS_ALLOW`, `REQUIRE_ATTESTATION`, `ALWAYS_DENY`.
@@ -1340,6 +1352,8 @@ func (o PolicyDefaultAdmissionRuleOutput) ToPolicyDefaultAdmissionRulePtrOutputW
 
 // The action when a pod creation is denied by the admission rule.
 // Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+//
+// ***
 func (o PolicyDefaultAdmissionRuleOutput) EnforcementMode() pulumi.StringOutput {
 	return o.ApplyT(func(v PolicyDefaultAdmissionRule) string { return v.EnforcementMode }).(pulumi.StringOutput)
 }
@@ -1388,6 +1402,8 @@ func (o PolicyDefaultAdmissionRulePtrOutput) Elem() PolicyDefaultAdmissionRuleOu
 
 // The action when a pod creation is denied by the admission rule.
 // Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+//
+// ***
 func (o PolicyDefaultAdmissionRulePtrOutput) EnforcementMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyDefaultAdmissionRule) *string {
 		if v == nil {

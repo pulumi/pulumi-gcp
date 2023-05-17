@@ -81,6 +81,8 @@ type URLMap struct {
 	// `a-z?` which means the first character must be a lowercase
 	// letter, and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -164,6 +166,8 @@ type urlmapState struct {
 	// `a-z?` which means the first character must be a lowercase
 	// letter, and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -219,6 +223,8 @@ type URLMapState struct {
 	// `a-z?` which means the first character must be a lowercase
 	// letter, and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -271,6 +277,8 @@ type urlmapArgs struct {
 	// `a-z?` which means the first character must be a lowercase
 	// letter, and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -318,6 +326,8 @@ type URLMapArgs struct {
 	// `a-z?` which means the first character must be a lowercase
 	// letter, and all following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The list of named PathMatchers to use against the URL.
 	// Structure is documented below.
@@ -484,6 +494,8 @@ func (o URLMapOutput) MapId() pulumi.IntOutput {
 // `a-z?` which means the first character must be a lowercase
 // letter, and all following characters must be a dash, lowercase letter, or digit,
 // except the last character, which cannot be a dash.
+//
+// ***
 func (o URLMapOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *URLMap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

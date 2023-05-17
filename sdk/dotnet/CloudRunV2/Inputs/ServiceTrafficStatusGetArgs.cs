@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
 
         /// <summary>
         /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        /// 
         /// (Optional)
         /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
         /// </summary>

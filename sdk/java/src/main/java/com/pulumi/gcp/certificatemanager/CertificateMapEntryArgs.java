@@ -92,12 +92,16 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
     /**
      * A map entry that is inputted into the cetrificate map
      * 
+     * ***
+     * 
      */
     @Import(name="map", required=true)
     private Output<String> map;
 
     /**
      * @return A map entry that is inputted into the cetrificate map
+     * 
+     * ***
      * 
      */
     public Output<String> map() {
@@ -297,6 +301,8 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         /**
          * @param map A map entry that is inputted into the cetrificate map
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -307,6 +313,8 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
 
         /**
          * @param map A map entry that is inputted into the cetrificate map
+         * 
+         * ***
          * 
          * @return builder
          * 

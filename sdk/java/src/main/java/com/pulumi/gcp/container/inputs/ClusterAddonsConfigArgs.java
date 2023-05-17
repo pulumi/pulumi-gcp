@@ -44,6 +44,31 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * .
      * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
      * 
+     * This example `addons_config` disables two addons:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
+     * 
      */
     @Import(name="configConnectorConfig")
     private @Nullable Output<ClusterAddonsConfigConfigConnectorConfigArgs> configConnectorConfig;
@@ -51,6 +76,31 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     /**
      * @return .
      * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+     * 
+     * This example `addons_config` disables two addons:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
      * 
      */
     public Optional<Output<ClusterAddonsConfigConfigConnectorConfigArgs>> configConnectorConfig() {
@@ -62,6 +112,9 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * The status of the NodeLocal DNSCache addon. It is disabled by default.
      * Set `enabled = true` to enable.
      * 
+     * **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+     * All cluster nodes running GKE 1.15 and higher are recreated.**
+     * 
      */
     @Import(name="dnsCacheConfig")
     private @Nullable Output<ClusterAddonsConfigDnsCacheConfigArgs> dnsCacheConfig;
@@ -70,6 +123,9 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * @return .
      * The status of the NodeLocal DNSCache addon. It is disabled by default.
      * Set `enabled = true` to enable.
+     * 
+     * **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+     * All cluster nodes running GKE 1.15 and higher are recreated.**
      * 
      */
     public Optional<Output<ClusterAddonsConfigDnsCacheConfigArgs>> dnsCacheConfig() {
@@ -289,6 +345,31 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * @param configConnectorConfig .
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
          * 
+         * This example `addons_config` disables two addons:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
+         * 
          * @return builder
          * 
          */
@@ -300,6 +381,31 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param configConnectorConfig .
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+         * 
+         * This example `addons_config` disables two addons:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * &lt;a name=&#34;nested_binary_authorization&#34;&gt;&lt;/a&gt;The `binary_authorization` block supports:
          * 
          * @return builder
          * 
@@ -313,6 +419,9 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * The status of the NodeLocal DNSCache addon. It is disabled by default.
          * Set `enabled = true` to enable.
          * 
+         * **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+         * All cluster nodes running GKE 1.15 and higher are recreated.**
+         * 
          * @return builder
          * 
          */
@@ -325,6 +434,9 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * @param dnsCacheConfig .
          * The status of the NodeLocal DNSCache addon. It is disabled by default.
          * Set `enabled = true` to enable.
+         * 
+         * **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+         * All cluster nodes running GKE 1.15 and higher are recreated.**
          * 
          * @return builder
          * 

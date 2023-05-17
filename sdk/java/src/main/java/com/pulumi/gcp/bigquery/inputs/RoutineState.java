@@ -71,6 +71,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
      * The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      * 
+     * ***
+     * 
      */
     @Import(name="definitionBody")
     private @Nullable Output<String> definitionBody;
@@ -78,6 +80,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The body of the routine. For functions, this is the expression in the AS clause.
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> definitionBody() {
@@ -387,6 +391,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
          * @param definitionBody The body of the routine. For functions, this is the expression in the AS clause.
          * If language=SQL, it is the substring inside (but excluding) the parentheses.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -398,6 +404,8 @@ public final class RoutineState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param definitionBody The body of the routine. For functions, this is the expression in the AS clause.
          * If language=SQL, it is the substring inside (but excluding) the parentheses.
+         * 
+         * ***
          * 
          * @return builder
          * 

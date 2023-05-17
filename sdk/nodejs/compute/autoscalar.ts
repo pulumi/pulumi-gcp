@@ -211,6 +211,10 @@ export class Autoscalar extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * A description of a scaling schedule.
+     *
+     * - - -
+     *
+     *
      * (Optional)
      * An optional description of this resource.
      */
@@ -306,6 +310,10 @@ export interface AutoscalarState {
     creationTimestamp?: pulumi.Input<string>;
     /**
      * A description of a scaling schedule.
+     *
+     * - - -
+     *
+     *
      * (Optional)
      * An optional description of this resource.
      */
@@ -352,6 +360,10 @@ export interface AutoscalarArgs {
     autoscalingPolicy: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicy>;
     /**
      * A description of a scaling schedule.
+     *
+     * - - -
+     *
+     *
      * (Optional)
      * An optional description of this resource.
      */

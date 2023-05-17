@@ -109,6 +109,8 @@ type Gateway struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Short name of the Gateway resource to be created.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -182,6 +184,8 @@ type gatewayState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Short name of the Gateway resource to be created.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -218,6 +222,8 @@ type GatewayState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Short name of the Gateway resource to be created.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -256,6 +262,8 @@ type gatewayArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Short name of the Gateway resource to be created.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -287,6 +295,8 @@ type GatewayArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Short name of the Gateway resource to be created.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -417,6 +427,8 @@ func (o GatewayOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Short name of the Gateway resource to be created.
+//
+// ***
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -48,6 +48,8 @@ export interface GetWorkloadIdentityPoolProviderArgs {
     /**
      * The id of the provider which is the
      * final component of the resource name.
+     *
+     * - - -
      */
     workloadIdentityPoolProviderId: string;
 }
@@ -109,6 +111,8 @@ export interface GetWorkloadIdentityPoolProviderOutputArgs {
     /**
      * The id of the provider which is the
      * final component of the resource name.
+     *
+     * - - -
      */
     workloadIdentityPoolProviderId: pulumi.Input<string>;
 }

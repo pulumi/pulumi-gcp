@@ -210,12 +210,16 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
      * 
+     * ***
+     * 
      */
     @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
      * @return The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {

@@ -22,9 +22,11 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
      * smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
+     * 
      * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
+     * 
      * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
@@ -39,9 +41,11 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
      * smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
+     * 
      * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
+     * 
      * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
      * computed value if not set (currently 500GB). Note: If SSDs are not
      * attached, it also contains the HDFS data blocks and Hadoop working directories.
@@ -54,7 +58,9 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
     /**
      * The disk type of the primary disk attached to each node.
      * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+     * 
      * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+     * 
      * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
      * 
      */
@@ -64,7 +70,9 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
     /**
      * @return The disk type of the primary disk attached to each node.
      * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+     * 
      * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+     * 
      * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
      * 
      */
@@ -75,8 +83,12 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
     /**
      * The amount of local SSD disks that will be
      * attached to each master cluster node. Defaults to 0.
+     * 
      * attached to each worker cluster node. Defaults to 0.
+     * 
      * attached to each preemptible worker node. Defaults to 0.
+     * 
+     * ***
      * 
      */
     @Import(name="numLocalSsds")
@@ -85,8 +97,12 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
     /**
      * @return The amount of local SSD disks that will be
      * attached to each master cluster node. Defaults to 0.
+     * 
      * attached to each worker cluster node. Defaults to 0.
+     * 
      * attached to each preemptible worker node. Defaults to 0.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Integer>> numLocalSsds() {
@@ -125,9 +141,11 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
          * smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         * 
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         * 
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
@@ -146,9 +164,11 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
          * smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         * 
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         * 
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
@@ -163,7 +183,9 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
         /**
          * @param bootDiskType The disk type of the primary disk attached to each node.
          * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+         * 
          * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+         * 
          * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
          * 
          * @return builder
@@ -177,7 +199,9 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
         /**
          * @param bootDiskType The disk type of the primary disk attached to each node.
          * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+         * 
          * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
+         * 
          * One of `&#34;pd-ssd&#34;` or `&#34;pd-standard&#34;`. Defaults to `&#34;pd-standard&#34;`.
          * 
          * @return builder
@@ -190,8 +214,12 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
         /**
          * @param numLocalSsds The amount of local SSD disks that will be
          * attached to each master cluster node. Defaults to 0.
+         * 
          * attached to each worker cluster node. Defaults to 0.
+         * 
          * attached to each preemptible worker node. Defaults to 0.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -204,8 +232,12 @@ public final class ClusterClusterConfigMasterConfigDiskConfigArgs extends com.pu
         /**
          * @param numLocalSsds The amount of local SSD disks that will be
          * attached to each master cluster node. Defaults to 0.
+         * 
          * attached to each worker cluster node. Defaults to 0.
+         * 
          * attached to each preemptible worker node. Defaults to 0.
+         * 
+         * ***
          * 
          * @return builder
          * 

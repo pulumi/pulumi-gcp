@@ -110,6 +110,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -285,6 +288,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -416,6 +422,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The network that this route applies to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

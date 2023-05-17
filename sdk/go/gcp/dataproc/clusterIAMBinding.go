@@ -151,6 +151,17 @@ type ClusterIAMBinding struct {
 	pulumi.CustomResourceState
 
 	// The name or relative resource id of the cluster to manage IAM policies for.
+	//
+	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringOutput                 `pulumi:"cluster"`
 	Condition ClusterIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
@@ -165,6 +176,8 @@ type ClusterIAMBinding struct {
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.ClusterIAMPolicy` only:
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -207,6 +220,17 @@ func GetClusterIAMBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ClusterIAMBinding resources.
 type clusterIAMBindingState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
+	//
+	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   *string                     `pulumi:"cluster"`
 	Condition *ClusterIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
@@ -221,11 +245,24 @@ type clusterIAMBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.ClusterIAMPolicy` only:
 	Role *string `pulumi:"role"`
 }
 
 type ClusterIAMBindingState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
+	//
+	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringPtrInput
 	Condition ClusterIAMBindingConditionPtrInput
 	// (Computed) The etag of the clusters's IAM policy.
@@ -240,6 +277,8 @@ type ClusterIAMBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.ClusterIAMPolicy` only:
 	Role pulumi.StringPtrInput
 }
 
@@ -249,6 +288,17 @@ func (ClusterIAMBindingState) ElementType() reflect.Type {
 
 type clusterIAMBindingArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
+	//
+	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   string                      `pulumi:"cluster"`
 	Condition *ClusterIAMBindingCondition `pulumi:"condition"`
 	Members   []string                    `pulumi:"members"`
@@ -261,12 +311,25 @@ type clusterIAMBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.ClusterIAMPolicy` only:
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a ClusterIAMBinding resource.
 type ClusterIAMBindingArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
+	//
+	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringInput
 	Condition ClusterIAMBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
@@ -279,6 +342,8 @@ type ClusterIAMBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.ClusterIAMPolicy` only:
 	Role pulumi.StringInput
 }
 
@@ -370,6 +435,17 @@ func (o ClusterIAMBindingOutput) ToClusterIAMBindingOutputWithContext(ctx contex
 }
 
 // The name or relative resource id of the cluster to manage IAM policies for.
+//
+// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+//
+//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
+//     Each entry can have one of the following values:
+//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o ClusterIAMBindingOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMBinding) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -402,6 +478,8 @@ func (o ClusterIAMBindingOutput) Region() pulumi.StringOutput {
 // The role that should be applied. Only one
 // `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
+//
+// `dataproc.ClusterIAMPolicy` only:
 func (o ClusterIAMBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClusterIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

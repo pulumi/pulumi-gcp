@@ -21,6 +21,8 @@ namespace Pulumi.Gcp.GameServices.Inputs
         /// If project and location are not specified, the project and location of the
         /// GameServerCluster resource are used to generate the full name of the
         /// GKE cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;

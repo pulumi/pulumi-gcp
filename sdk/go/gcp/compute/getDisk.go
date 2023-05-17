@@ -61,6 +61,8 @@ func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getDisk.
 type LookupDiskArgs struct {
 	// The name of a specific disk.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -148,6 +150,8 @@ func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pu
 // A collection of arguments for invoking getDisk.
 type LookupDiskOutputArgs struct {
 	// The name of a specific disk.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

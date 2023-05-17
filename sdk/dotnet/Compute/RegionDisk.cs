@@ -195,6 +195,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("replicaZones")]
         public Output<ImmutableArray<string>> ReplicaZones { get; private set; } = null!;
@@ -407,6 +410,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         public InputList<string> ReplicaZones
         {
@@ -577,6 +583,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URLs of the zones where the disk should be replicated to.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         public InputList<string> ReplicaZones
         {

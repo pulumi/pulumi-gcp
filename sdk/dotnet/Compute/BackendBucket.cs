@@ -227,6 +227,9 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -349,6 +352,9 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -433,6 +439,9 @@ namespace Pulumi.Gcp.Compute
         /// the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the
         /// last character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

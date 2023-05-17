@@ -48,12 +48,16 @@ public final class GoogleChannelConfigArgs extends com.pulumi.resources.Resource
     /**
      * Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -147,6 +151,8 @@ public final class GoogleChannelConfigArgs extends com.pulumi.resources.Resource
         /**
          * @param name Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -157,6 +163,8 @@ public final class GoogleChannelConfigArgs extends com.pulumi.resources.Resource
 
         /**
          * @param name Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -254,6 +254,8 @@ class GuestPoliciesAssignmentOsTypeArgs:
                  os_version: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
+               
+               - - -
         :param pulumi.Input[str] os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         :param pulumi.Input[str] os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
@@ -269,6 +271,8 @@ class GuestPoliciesAssignmentOsTypeArgs:
     def os_architecture(self) -> Optional[pulumi.Input[str]]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
+
+        - - -
         """
         return pulumi.get(self, "os_architecture")
 
@@ -4403,6 +4407,8 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
         """
         :param pulumi.Input[int] fixed: Specifies a fixed value.
         :param pulumi.Input[int] percent: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+               
+               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -4426,6 +4432,8 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
     def percent(self) -> Optional[pulumi.Input[int]]:
         """
         Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+
+        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -4535,6 +4543,8 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+               
+               - - -
         """
         pulumi.set(__self__, "labels", labels)
 
@@ -4543,6 +4553,8 @@ class PatchDeploymentInstanceFilterGroupLabelArgs:
     def labels(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+
+        - - -
         """
         return pulumi.get(self, "labels")
 

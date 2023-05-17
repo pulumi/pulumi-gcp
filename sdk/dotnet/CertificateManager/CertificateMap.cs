@@ -86,6 +86,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// <summary>
         /// A user-defined name of the Certificate Map. Certificate Map names must be unique
         /// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -172,6 +175,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// <summary>
         /// A user-defined name of the Certificate Map. Certificate Map names must be unique
         /// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -233,6 +239,9 @@ namespace Pulumi.Gcp.CertificateManager
         /// <summary>
         /// A user-defined name of the Certificate Map. Certificate Map names must be unique
         /// globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

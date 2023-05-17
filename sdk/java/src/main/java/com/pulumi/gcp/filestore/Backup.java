@@ -187,12 +187,16 @@ public class Backup extends com.pulumi.resources.CustomResource {
     /**
      * The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

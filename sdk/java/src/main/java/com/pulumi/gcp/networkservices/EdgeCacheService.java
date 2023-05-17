@@ -494,10 +494,13 @@ import javax.annotation.Nullable;
 public class EdgeCacheService extends com.pulumi.resources.CustomResource {
     /**
      * A human-readable description of the hostRule.
+     * 
      * (Optional)
      * A human-readable description of the resource.
+     * 
      * (Optional)
      * A human-readable description of the routeRule.
+     * 
      * (Optional)
      * A human-readable description of the resource.
      * 
@@ -507,10 +510,13 @@ public class EdgeCacheService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A human-readable description of the hostRule.
+     * 
      * (Optional)
      * A human-readable description of the resource.
+     * 
      * (Optional)
      * A human-readable description of the routeRule.
+     * 
      * (Optional)
      * A human-readable description of the resource.
      * 

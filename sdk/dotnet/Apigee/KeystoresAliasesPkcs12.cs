@@ -54,6 +54,8 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// PKCS12 file content
+        /// 
+        /// - - -
         /// </summary>
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
@@ -148,6 +150,8 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// PKCS12 file content
+        /// 
+        /// - - -
         /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
@@ -211,6 +215,8 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// PKCS12 file content
+        /// 
+        /// - - -
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }

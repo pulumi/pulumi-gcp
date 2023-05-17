@@ -293,6 +293,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly maintenanceSchedule!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule | undefined>;
     /**
      * Redis memory size in GiB.
+     *
+     *
+     * - - -
      */
     public readonly memorySizeGb!: pulumi.Output<number>;
     /**
@@ -583,6 +586,9 @@ export interface InstanceState {
     maintenanceSchedule?: pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>;
     /**
      * Redis memory size in GiB.
+     *
+     *
+     * - - -
      */
     memorySizeGb?: pulumi.Input<number>;
     /**
@@ -758,6 +764,9 @@ export interface InstanceArgs {
     maintenanceSchedule?: pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>;
     /**
      * Redis memory size in GiB.
+     *
+     *
+     * - - -
      */
     memorySizeGb: pulumi.Input<number>;
     /**

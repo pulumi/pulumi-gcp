@@ -34,6 +34,9 @@ class LienArgs:
                the permissions against those for which Liens are supported.  An empty
                list is meaningless and will be rejected.
                e.g. ['resourcemanager.projects.delete']
+               
+               
+               - - -
         """
         pulumi.set(__self__, "origin", origin)
         pulumi.set(__self__, "parent", parent)
@@ -91,6 +94,9 @@ class LienArgs:
         the permissions against those for which Liens are supported.  An empty
         list is meaningless and will be rejected.
         e.g. ['resourcemanager.projects.delete']
+
+
+        - - -
         """
         return pulumi.get(self, "restrictions")
 
@@ -126,6 +132,9 @@ class _LienState:
                the permissions against those for which Liens are supported.  An empty
                list is meaningless and will be rejected.
                e.g. ['resourcemanager.projects.delete']
+               
+               
+               - - -
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -215,6 +224,9 @@ class _LienState:
         the permissions against those for which Liens are supported.  An empty
         list is meaningless and will be rejected.
         e.g. ['resourcemanager.projects.delete']
+
+
+        - - -
         """
         return pulumi.get(self, "restrictions")
 
@@ -275,6 +287,9 @@ class Lien(pulumi.CustomResource):
                the permissions against those for which Liens are supported.  An empty
                list is meaningless and will be rejected.
                e.g. ['resourcemanager.projects.delete']
+               
+               
+               - - -
         """
         ...
     @overload
@@ -389,6 +404,9 @@ class Lien(pulumi.CustomResource):
                the permissions against those for which Liens are supported.  An empty
                list is meaningless and will be rejected.
                e.g. ['resourcemanager.projects.delete']
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -457,6 +475,9 @@ class Lien(pulumi.CustomResource):
         the permissions against those for which Liens are supported.  An empty
         list is meaningless and will be rejected.
         e.g. ['resourcemanager.projects.delete']
+
+
+        - - -
         """
         return pulumi.get(self, "restrictions")
 

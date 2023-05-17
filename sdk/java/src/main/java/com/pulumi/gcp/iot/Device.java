@@ -347,12 +347,16 @@ public class Device extends com.pulumi.resources.CustomResource {
     /**
      * The name of the device registry where this device should be created.
      * 
+     * ***
+     * 
      */
     @Export(name="registry", type=String.class, parameters={})
     private Output<String> registry;
 
     /**
      * @return The name of the device registry where this device should be created.
+     * 
+     * ***
      * 
      */
     public Output<String> registry() {

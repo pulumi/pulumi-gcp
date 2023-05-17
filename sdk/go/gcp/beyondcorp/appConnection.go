@@ -190,6 +190,7 @@ type AppConnection struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
+	//
 	// (Optional)
 	// The type of hosting used by the gateway. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
@@ -251,6 +252,7 @@ type appConnectionState struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
+	//
 	// (Optional)
 	// The type of hosting used by the gateway. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
@@ -281,6 +283,7 @@ type AppConnectionState struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
+	//
 	// (Optional)
 	// The type of hosting used by the gateway. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
@@ -315,6 +318,7 @@ type appConnectionArgs struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
+	//
 	// (Optional)
 	// The type of hosting used by the gateway. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
@@ -346,6 +350,7 @@ type AppConnectionArgs struct {
 	// The type of network connectivity used by the AppConnection. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 	// for a list of possible values.
+	//
 	// (Optional)
 	// The type of hosting used by the gateway. Refer to
 	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
@@ -486,6 +491,7 @@ func (o AppConnectionOutput) Region() pulumi.StringPtrOutput {
 // The type of network connectivity used by the AppConnection. Refer to
 // https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
 // for a list of possible values.
+//
 // (Optional)
 // The type of hosting used by the gateway. Refer to
 // https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1

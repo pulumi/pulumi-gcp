@@ -380,6 +380,11 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * the IAM policy that will be applied to the organization. The policy will be
      * merged with any existing policy applied to the organization.
      * 
+     * Changing this updates the policy.
+     * 
+     * Deleting this removes all policies from the organization, locking out users without
+     * organization-level access.
+     * 
      */
     @Export(name="policyData", type=String.class, parameters={})
     private Output<String> policyData;
@@ -388,6 +393,11 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * @return The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the organization. The policy will be
      * merged with any existing policy applied to the organization.
+     * 
+     * Changing this updates the policy.
+     * 
+     * Deleting this removes all policies from the organization, locking out users without
+     * organization-level access.
      * 
      */
     public Output<String> policyData() {

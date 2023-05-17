@@ -64,6 +64,10 @@ class AttachedClusterArgs:
                Structure is documented below.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
+               - - -
+               
+               
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "distribution", distribution)
@@ -257,6 +261,10 @@ class AttachedClusterArgs:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The number of the Fleet host project where this cluster will be registered.
+
+        - - -
+
+
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -333,6 +341,10 @@ class _AttachedClusterState:
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
+               - - -
+               
+               
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
@@ -608,6 +620,10 @@ class _AttachedClusterState:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The number of the Fleet host project where this cluster will be registered.
+
+        - - -
+
+
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
@@ -807,6 +823,10 @@ class AttachedCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
+               - - -
+               
+               
                If it is not provided, the provider project is used.
         """
         ...
@@ -1036,6 +1056,10 @@ class AttachedCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
+               - - -
+               
+               
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
@@ -1230,6 +1254,10 @@ class AttachedCluster(pulumi.CustomResource):
     def project(self) -> pulumi.Output[str]:
         """
         The number of the Fleet host project where this cluster will be registered.
+
+        - - -
+
+
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")

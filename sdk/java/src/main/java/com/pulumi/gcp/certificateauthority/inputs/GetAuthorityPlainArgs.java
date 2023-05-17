@@ -17,12 +17,16 @@ public final class GetAuthorityPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * ID of the certificate authority.
      * 
+     * ***
+     * 
      */
     @Import(name="certificateAuthorityId")
     private @Nullable String certificateAuthorityId;
 
     /**
      * @return ID of the certificate authority.
+     * 
+     * ***
      * 
      */
     public Optional<String> certificateAuthorityId() {
@@ -105,6 +109,8 @@ public final class GetAuthorityPlainArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param certificateAuthorityId ID of the certificate authority.
+         * 
+         * ***
          * 
          * @return builder
          * 

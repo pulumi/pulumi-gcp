@@ -128,6 +128,8 @@ type SyncAuthorization struct {
 	// The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
 	Identities pulumi.StringArrayOutput `pulumi:"identities"`
 	// Name of the Apigee organization.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -172,6 +174,8 @@ type syncAuthorizationState struct {
 	// The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
 	Identities []string `pulumi:"identities"`
 	// Name of the Apigee organization.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -185,6 +189,8 @@ type SyncAuthorizationState struct {
 	// The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
 	Identities pulumi.StringArrayInput
 	// Name of the Apigee organization.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -199,6 +205,8 @@ type syncAuthorizationArgs struct {
 	// The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
 	Identities []string `pulumi:"identities"`
 	// Name of the Apigee organization.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -210,6 +218,8 @@ type SyncAuthorizationArgs struct {
 	// The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
 	Identities pulumi.StringArrayInput
 	// Name of the Apigee organization.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -315,6 +325,8 @@ func (o SyncAuthorizationOutput) Identities() pulumi.StringArrayOutput {
 }
 
 // Name of the Apigee organization.
+//
+// ***
 func (o SyncAuthorizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SyncAuthorization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

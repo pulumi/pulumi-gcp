@@ -48,6 +48,8 @@ public final class GroupGroupKeyArgs extends com.pulumi.resources.ResourceArgs {
      * The namespace must correspond to an identity source created in Admin Console
      * and must be in the form of `identitysources/{identity_source_id}`.
      * 
+     * ***
+     * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
@@ -59,6 +61,8 @@ public final class GroupGroupKeyArgs extends com.pulumi.resources.ResourceArgs {
      * If specified, the EntityKey represents an external-identity-mapped group.
      * The namespace must correspond to an identity source created in Admin Console
      * and must be in the form of `identitysources/{identity_source_id}`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -129,6 +133,8 @@ public final class GroupGroupKeyArgs extends com.pulumi.resources.ResourceArgs {
          * The namespace must correspond to an identity source created in Admin Console
          * and must be in the form of `identitysources/{identity_source_id}`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -144,6 +150,8 @@ public final class GroupGroupKeyArgs extends com.pulumi.resources.ResourceArgs {
          * If specified, the EntityKey represents an external-identity-mapped group.
          * The namespace must correspond to an identity source created in Admin Console
          * and must be in the form of `identitysources/{identity_source_id}`.
+         * 
+         * ***
          * 
          * @return builder
          * 

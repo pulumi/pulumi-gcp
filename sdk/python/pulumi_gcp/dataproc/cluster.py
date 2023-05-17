@@ -34,6 +34,8 @@ class ClusterArgs:
                which is the name of the cluster.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
@@ -102,6 +104,8 @@ class ClusterArgs:
         """
         The name of the cluster, unique within the project and
         zone.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -170,6 +174,8 @@ class _ClusterState:
                which is the name of the cluster.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
@@ -238,6 +244,8 @@ class _ClusterState:
         """
         The name of the cluster, unique within the project and
         zone.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -411,6 +419,8 @@ class Cluster(pulumi.CustomResource):
                which is the name of the cluster.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
@@ -597,6 +607,8 @@ class Cluster(pulumi.CustomResource):
                which is the name of the cluster.
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                zone.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the cluster and associated nodes will be created in.
@@ -651,6 +663,8 @@ class Cluster(pulumi.CustomResource):
         """
         The name of the cluster, unique within the project and
         zone.
+
+        - - -
         """
         return pulumi.get(self, "name")
 

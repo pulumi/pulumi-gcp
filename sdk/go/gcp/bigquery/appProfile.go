@@ -204,6 +204,8 @@ type AppProfile struct {
 	pulumi.CustomResourceState
 
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+	//
+	// ***
 	AppProfileId pulumi.StringOutput `pulumi:"appProfileId"`
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -261,6 +263,8 @@ func GetAppProfile(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AppProfile resources.
 type appProfileState struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+	//
+	// ***
 	AppProfileId *string `pulumi:"appProfileId"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
@@ -287,6 +291,8 @@ type appProfileState struct {
 
 type AppProfileState struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+	//
+	// ***
 	AppProfileId pulumi.StringPtrInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
@@ -317,6 +323,8 @@ func (AppProfileState) ElementType() reflect.Type {
 
 type appProfileArgs struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+	//
+	// ***
 	AppProfileId string `pulumi:"appProfileId"`
 	// Long form description of the use case for this app profile.
 	Description *string `pulumi:"description"`
@@ -342,6 +350,8 @@ type appProfileArgs struct {
 // The set of arguments for constructing a AppProfile resource.
 type AppProfileArgs struct {
 	// The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+	//
+	// ***
 	AppProfileId pulumi.StringInput
 	// Long form description of the use case for this app profile.
 	Description pulumi.StringPtrInput
@@ -452,6 +462,8 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 }
 
 // The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+//
+// ***
 func (o AppProfileOutput) AppProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.AppProfileId }).(pulumi.StringOutput)
 }

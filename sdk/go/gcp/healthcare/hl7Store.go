@@ -158,6 +158,8 @@ type Hl7Store struct {
 
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -223,6 +225,8 @@ func GetHl7Store(ctx *pulumi.Context,
 type hl7StoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset *string `pulumi:"dataset"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -257,6 +261,8 @@ type hl7StoreState struct {
 type Hl7StoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset pulumi.StringPtrInput
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -295,6 +301,8 @@ func (Hl7StoreState) ElementType() reflect.Type {
 type hl7StoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset string `pulumi:"dataset"`
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -328,6 +336,8 @@ type hl7StoreArgs struct {
 type Hl7StoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset pulumi.StringInput
 	// User-supplied key-value pairs used to organize HL7v2 stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -446,6 +456,8 @@ func (o Hl7StoreOutput) ToHl7StoreOutputWithContext(ctx context.Context) Hl7Stor
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
+//
+// ***
 func (o Hl7StoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

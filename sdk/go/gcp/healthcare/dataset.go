@@ -72,6 +72,8 @@ type Dataset struct {
 	pulumi.CustomResourceState
 
 	// The location for the Dataset.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the Dataset.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -119,6 +121,8 @@ func GetDataset(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
 	// The location for the Dataset.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// The resource name for the Dataset.
 	Name *string `pulumi:"name"`
@@ -135,6 +139,8 @@ type datasetState struct {
 
 type DatasetState struct {
 	// The location for the Dataset.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// The resource name for the Dataset.
 	Name pulumi.StringPtrInput
@@ -155,6 +161,8 @@ func (DatasetState) ElementType() reflect.Type {
 
 type datasetArgs struct {
 	// The location for the Dataset.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The resource name for the Dataset.
 	Name *string `pulumi:"name"`
@@ -170,6 +178,8 @@ type datasetArgs struct {
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
 	// The location for the Dataset.
+	//
+	// ***
 	Location pulumi.StringInput
 	// The resource name for the Dataset.
 	Name pulumi.StringPtrInput
@@ -270,6 +280,8 @@ func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOu
 }
 
 // The location for the Dataset.
+//
+// ***
 func (o DatasetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

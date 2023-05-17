@@ -79,6 +79,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     {
         /// <summary>
         /// The location in which the resource belongs.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -106,6 +108,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     {
         /// <summary>
         /// The location in which the resource belongs.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

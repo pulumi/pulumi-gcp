@@ -16,6 +16,11 @@ public final class ClusterNodeConfigReservationAffinity {
      * @return The type of reservation consumption
      * Accepted values are:
      * 
+     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+     * 
      */
     private String consumeReservationType;
     /**
@@ -33,6 +38,11 @@ public final class ClusterNodeConfigReservationAffinity {
     /**
      * @return The type of reservation consumption
      * Accepted values are:
+     * 
+     * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
+     * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
      * 
      */
     public String consumeReservationType() {

@@ -97,12 +97,16 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -262,6 +266,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -272,6 +278,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+         * 
+         * ***
          * 
          * @return builder
          * 

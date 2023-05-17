@@ -22,6 +22,8 @@ namespace Pulumi.Gcp.GameServices.Outputs
         /// If project and location are not specified, the project and location of the
         /// GameServerCluster resource are used to generate the full name of the
         /// GKE cluster.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Cluster;
 

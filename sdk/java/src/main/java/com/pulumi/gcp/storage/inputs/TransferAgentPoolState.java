@@ -58,6 +58,8 @@ public final class TransferAgentPoolState extends com.pulumi.resources.ResourceA
      * * One or more numerals or lowercase ASCII characters.
      *   As expressed by the regular expression: ^(?!goog)a-z?$.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -71,6 +73,8 @@ public final class TransferAgentPoolState extends com.pulumi.resources.ResourceA
      * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
      * * One or more numerals or lowercase ASCII characters.
      *   As expressed by the regular expression: ^(?!goog)a-z?$.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -191,6 +195,8 @@ public final class TransferAgentPoolState extends com.pulumi.resources.ResourceA
          * * One or more numerals or lowercase ASCII characters.
          *   As expressed by the regular expression: ^(?!goog)a-z?$.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -208,6 +214,8 @@ public final class TransferAgentPoolState extends com.pulumi.resources.ResourceA
          * * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (-), periods (.), underscores (_), or tildes (~).
          * * One or more numerals or lowercase ASCII characters.
          *   As expressed by the regular expression: ^(?!goog)a-z?$.
+         * 
+         * ***
          * 
          * @return builder
          * 

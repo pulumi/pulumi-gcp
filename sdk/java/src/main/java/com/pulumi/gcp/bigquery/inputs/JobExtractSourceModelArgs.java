@@ -31,12 +31,16 @@ public final class JobExtractSourceModelArgs extends com.pulumi.resources.Resour
     /**
      * The ID of the model.
      * 
+     * ***
+     * 
      */
     @Import(name="modelId", required=true)
     private Output<String> modelId;
 
     /**
      * @return The ID of the model.
+     * 
+     * ***
      * 
      */
     public Output<String> modelId() {
@@ -108,6 +112,8 @@ public final class JobExtractSourceModelArgs extends com.pulumi.resources.Resour
         /**
          * @param modelId The ID of the model.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -118,6 +124,8 @@ public final class JobExtractSourceModelArgs extends com.pulumi.resources.Resour
 
         /**
          * @param modelId The ID of the model.
+         * 
+         * ***
          * 
          * @return builder
          * 

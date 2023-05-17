@@ -11,10 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BackendServiceIamBindingCondition {
-    /**
-     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     private @Nullable String description;
     /**
      * @return Textual representation of an expression in Common Expression Language syntax.
@@ -28,10 +24,6 @@ public final class BackendServiceIamBindingCondition {
     private String title;
 
     private BackendServiceIamBindingCondition() {}
-    /**
-     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }

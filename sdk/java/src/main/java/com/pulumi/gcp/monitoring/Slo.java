@@ -303,12 +303,16 @@ public class Slo extends com.pulumi.resources.CustomResource {
     /**
      * ID of the service to which this SLO belongs.
      * 
+     * ***
+     * 
      */
     @Export(name="service", type=String.class, parameters={})
     private Output<String> service;
 
     /**
      * @return ID of the service to which this SLO belongs.
+     * 
+     * ***
      * 
      */
     public Output<String> service() {

@@ -117,6 +117,9 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -133,6 +136,8 @@ export class Instance extends pulumi.CustomResource {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
+     *
+     * If not provided, a random string starting with `tf-` will be selected.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -216,6 +221,9 @@ export interface InstanceState {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -232,6 +240,8 @@ export interface InstanceState {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
+     *
+     * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;
     /**
@@ -271,6 +281,9 @@ export interface InstanceArgs {
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**
@@ -287,6 +300,8 @@ export interface InstanceArgs {
      * A unique identifier for the instance, which cannot be changed after
      * the instance is created. The name must be between 6 and 30 characters
      * in length.
+     *
+     * If not provided, a random string starting with `tf-` will be selected.
      */
     name?: pulumi.Input<string>;
     /**

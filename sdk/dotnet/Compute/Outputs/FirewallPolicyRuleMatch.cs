@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatchLayer4Config> Layer4Configs;
         /// <summary>
         /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        /// 
+        /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
 

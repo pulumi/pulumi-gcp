@@ -94,6 +94,10 @@ export class AzureClient extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The Azure Active Directory Tenant ID.
+     *
+     *
+     *
+     * - - -
      */
     public readonly tenantId!: pulumi.Output<string>;
     /**
@@ -177,6 +181,10 @@ export interface AzureClientState {
     project?: pulumi.Input<string>;
     /**
      * The Azure Active Directory Tenant ID.
+     *
+     *
+     *
+     * - - -
      */
     tenantId?: pulumi.Input<string>;
     /**
@@ -207,6 +215,10 @@ export interface AzureClientArgs {
     project?: pulumi.Input<string>;
     /**
      * The Azure Active Directory Tenant ID.
+     *
+     *
+     *
+     * - - -
      */
     tenantId: pulumi.Input<string>;
 }

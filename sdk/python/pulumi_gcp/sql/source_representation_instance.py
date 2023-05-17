@@ -31,6 +31,9 @@ class SourceRepresentationInstanceArgs:
         :param pulumi.Input[str] database_version: The MySQL version running on your source database server.
                Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+               
+               
+               - - -
         :param pulumi.Input[str] ca_certificate: The CA certificate on the external server. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_certificate: The client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
         :param pulumi.Input[str] client_key: The private key file for the client certificate on the external server. Required only for server-client authentication. Include only if SSL/TLS is used on the external server.
@@ -87,6 +90,9 @@ class SourceRepresentationInstanceArgs:
     def host(self) -> pulumi.Input[str]:
         """
         The externally accessible IPv4 address for the source database server.
+
+
+        - - -
         """
         return pulumi.get(self, "host")
 
@@ -243,6 +249,9 @@ class _SourceRepresentationInstanceState:
                Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -345,6 +354,9 @@ class _SourceRepresentationInstanceState:
     def host(self) -> Optional[pulumi.Input[str]]:
         """
         The externally accessible IPv4 address for the source database server.
+
+
+        - - -
         """
         return pulumi.get(self, "host")
 
@@ -448,6 +460,16 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A source representation instance is a Cloud SQL instance that represents
+        the source database server to the Cloud SQL replica. It is visible in the
+        Cloud Console and appears the same as a regular Cloud SQL instance, but it
+        contains no data, requires no configuration or maintenance, and does not
+        affect billing. You cannot update the source representation instance.
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `on_premises_configuration.password`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Sql Source Representation Instance Basic
 
@@ -490,6 +512,9 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -508,6 +533,16 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                  args: SourceRepresentationInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A source representation instance is a Cloud SQL instance that represents
+        the source database server to the Cloud SQL replica. It is visible in the
+        Cloud Console and appears the same as a regular Cloud SQL instance, but it
+        contains no data, requires no configuration or maintenance, and does not
+        affect billing. You cannot update the source representation instance.
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `on_premises_configuration.password`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Sql Source Representation Instance Basic
 
@@ -631,6 +666,9 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
         :param pulumi.Input[str] dump_file_path: A file in the bucket that contains the data from the external server.
         :param pulumi.Input[str] host: The externally accessible IPv4 address for the source database server.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The name of the source representation instance. Use any valid Cloud SQL instance name.
         :param pulumi.Input[str] password: The password for the replication user account.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -706,6 +744,9 @@ class SourceRepresentationInstance(pulumi.CustomResource):
     def host(self) -> pulumi.Output[str]:
         """
         The externally accessible IPv4 address for the source database server.
+
+
+        - - -
         """
         return pulumi.get(self, "host")
 

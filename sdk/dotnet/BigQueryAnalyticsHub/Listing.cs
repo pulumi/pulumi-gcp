@@ -144,6 +144,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Name of the data provider.
+        /// 
         /// (Required)
         /// Name of the listing publisher.
         /// </summary>
@@ -152,8 +153,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Email or URL of the primary point of contact of the listing.
+        /// 
         /// (Optional)
         /// Email or URL of the data provider.
+        /// 
         /// (Optional)
         /// Email or URL of the listing publisher.
         /// </summary>
@@ -296,8 +299,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Email or URL of the primary point of contact of the listing.
+        /// 
         /// (Optional)
         /// Email or URL of the data provider.
+        /// 
         /// (Optional)
         /// Email or URL of the listing publisher.
         /// </summary>
@@ -402,6 +407,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Name of the data provider.
+        /// 
         /// (Required)
         /// Name of the listing publisher.
         /// </summary>
@@ -410,8 +416,10 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
 
         /// <summary>
         /// Email or URL of the primary point of contact of the listing.
+        /// 
         /// (Optional)
         /// Email or URL of the data provider.
+        /// 
         /// (Optional)
         /// Email or URL of the listing publisher.
         /// </summary>

@@ -77,6 +77,14 @@ namespace Pulumi.Gcp.ServiceAccount
     {
         /// <summary>
         /// The Google service account ID. This be one of:
+        /// 
+        /// * The name of the service account within the project (e.g. `my-service`)
+        /// 
+        /// * The fully-qualified path to a service account resource (e.g.
+        /// `projects/my-project/serviceAccounts/...`)
+        /// 
+        /// * The email address of the service account (e.g.
+        /// `my-service@my-project.iam.gserviceaccount.com`)
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -98,6 +106,14 @@ namespace Pulumi.Gcp.ServiceAccount
     {
         /// <summary>
         /// The Google service account ID. This be one of:
+        /// 
+        /// * The name of the service account within the project (e.g. `my-service`)
+        /// 
+        /// * The fully-qualified path to a service account resource (e.g.
+        /// `projects/my-project/serviceAccounts/...`)
+        /// 
+        /// * The email address of the service account (e.g.
+        /// `my-service@my-project.iam.gserviceaccount.com`)
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;

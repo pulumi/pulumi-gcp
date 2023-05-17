@@ -1664,6 +1664,8 @@ class JobTemplateTemplateVpcAccessArgs:
         :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param pulumi.Input[str] egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+               
+               - - -
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -1688,6 +1690,8 @@ class JobTemplateTemplateVpcAccessArgs:
         """
         Traffic VPC egress settings.
         Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+
+        - - -
         """
         return pulumi.get(self, "egress")
 
@@ -3408,6 +3412,8 @@ class ServiceTemplateVolumeCloudSqlInstanceArgs:
                  instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+               
+               - - -
         """
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
@@ -3417,6 +3423,8 @@ class ServiceTemplateVolumeCloudSqlInstanceArgs:
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+
+        - - -
         """
         return pulumi.get(self, "instances")
 
@@ -3812,6 +3820,7 @@ class ServiceTrafficStatusArgs:
         """
         :param pulumi.Input[int] percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+               
                (Optional)
                Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param pulumi.Input[str] tag: Indicates a string to be part of the URI to exclusively reference this target.
@@ -3848,6 +3857,7 @@ class ServiceTrafficStatusArgs:
     def revision(self) -> Optional[pulumi.Input[str]]:
         """
         The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+
         (Optional)
         Revision to which to send this portion of traffic, if traffic allocation is by revision.
         """

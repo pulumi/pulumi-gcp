@@ -157,6 +157,9 @@ export class Registry extends pulumi.CustomResource {
     public readonly mqttConfig!: pulumi.Output<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -253,6 +256,9 @@ export interface RegistryState {
     mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -309,6 +315,9 @@ export interface RegistryArgs {
     mqttConfig?: pulumi.Input<{[key: string]: any}>;
     /**
      * A unique name for the resource, required by device registry.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

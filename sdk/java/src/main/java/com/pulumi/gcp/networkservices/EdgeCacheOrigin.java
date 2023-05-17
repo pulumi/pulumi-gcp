@@ -305,6 +305,8 @@ public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -313,6 +315,8 @@ public class EdgeCacheOrigin extends com.pulumi.resources.CustomResource {
      * @return Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

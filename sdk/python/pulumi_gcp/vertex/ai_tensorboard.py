@@ -25,6 +25,9 @@ class AiTensorboardArgs:
         """
         The set of arguments for constructing a AiTensorboard resource.
         :param pulumi.Input[str] display_name: User provided name of this Tensorboard.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Description of this Tensorboard.
         :param pulumi.Input['AiTensorboardEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
@@ -50,6 +53,9 @@ class AiTensorboardArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         User provided name of this Tensorboard.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -140,6 +146,9 @@ class _AiTensorboardState:
         :param pulumi.Input[str] create_time: The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of this Tensorboard.
         :param pulumi.Input[str] display_name: User provided name of this Tensorboard.
+               
+               
+               - - -
         :param pulumi.Input['AiTensorboardEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
@@ -214,6 +223,9 @@ class _AiTensorboardState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         User provided name of this Tensorboard.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -394,6 +406,9 @@ class AiTensorboard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of this Tensorboard.
         :param pulumi.Input[str] display_name: User provided name of this Tensorboard.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
@@ -552,6 +567,9 @@ class AiTensorboard(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp of when the Tensorboard was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] description: Description of this Tensorboard.
         :param pulumi.Input[str] display_name: User provided name of this Tensorboard.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['AiTensorboardEncryptionSpecArgs']] encryption_spec: Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels with user-defined metadata to organize your Tensorboards.
@@ -608,6 +626,9 @@ class AiTensorboard(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         User provided name of this Tensorboard.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 

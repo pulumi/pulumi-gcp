@@ -229,12 +229,16 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * The parent of the resource.
      * 
+     * ***
+     * 
      */
     @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
      * @return The parent of the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {

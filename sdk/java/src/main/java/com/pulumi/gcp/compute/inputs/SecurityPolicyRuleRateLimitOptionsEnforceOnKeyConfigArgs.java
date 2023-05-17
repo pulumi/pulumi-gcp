@@ -33,12 +33,30 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs exte
     /**
      * Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
      * 
+     * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+     * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+     * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+     * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+     * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+     * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+     * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+     * * REGION_CODE: The country/region from which the request originates.
+     * 
      */
     @Import(name="enforceOnKeyType")
     private @Nullable Output<String> enforceOnKeyType;
 
     /**
      * @return Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
+     * 
+     * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+     * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+     * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+     * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+     * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+     * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+     * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+     * * REGION_CODE: The country/region from which the request originates.
      * 
      */
     public Optional<Output<String>> enforceOnKeyType() {
@@ -94,6 +112,15 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs exte
         /**
          * @param enforceOnKeyType Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
          * 
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
+         * 
          * @return builder
          * 
          */
@@ -104,6 +131,15 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs exte
 
         /**
          * @param enforceOnKeyType Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to &#34;ALL&#34;.
+         * 
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under &#34;enforceOnKeyName&#34;. The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
          * 
          * @return builder
          * 

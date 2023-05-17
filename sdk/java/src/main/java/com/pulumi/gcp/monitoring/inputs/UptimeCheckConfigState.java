@@ -203,12 +203,16 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
      * 
+     * ***
+     * 
      */
     @Import(name="timeout")
     private @Nullable Output<String> timeout;
 
     /**
      * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> timeout() {
@@ -535,6 +539,8 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         /**
          * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -545,6 +551,8 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
 
         /**
          * @param timeout The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+         * 
+         * ***
          * 
          * @return builder
          * 

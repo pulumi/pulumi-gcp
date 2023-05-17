@@ -19,12 +19,16 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
      * 
+     * ***
+     * 
      */
     @Import(name="apiId", required=true)
     private Output<String> apiId;
 
     /**
      * @return Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+     * 
+     * ***
      * 
      */
     public Output<String> apiId() {
@@ -126,6 +130,8 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param apiId Identifier to assign to the API. Must be unique within scope of the parent resource(project)
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -136,6 +142,8 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param apiId Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+         * 
+         * ***
          * 
          * @return builder
          * 

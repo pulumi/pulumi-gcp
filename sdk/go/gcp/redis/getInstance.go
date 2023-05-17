@@ -52,6 +52,8 @@ func LookupInstance(ctx *pulumi.Context, args *LookupInstanceArgs, opts ...pulum
 // A collection of arguments for invoking getInstance.
 type LookupInstanceArgs struct {
 	// The name of a Redis instance.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -116,6 +118,8 @@ func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, op
 // A collection of arguments for invoking getInstance.
 type LookupInstanceOutputArgs struct {
 	// The name of a Redis instance.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

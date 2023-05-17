@@ -273,6 +273,8 @@ class GuestPoliciesAssignmentOsType(dict):
                  os_version: Optional[str] = None):
         """
         :param str os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
+               
+               - - -
         :param str os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
         :param str os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
         """
@@ -288,6 +290,8 @@ class GuestPoliciesAssignmentOsType(dict):
     def os_architecture(self) -> Optional[str]:
         """
         Targets VM instances with OS Inventory enabled and having the following OS architecture.
+
+        - - -
         """
         return pulumi.get(self, "os_architecture")
 
@@ -4458,6 +4462,8 @@ class OsPolicyAssignmentRolloutDisruptionBudget(dict):
         """
         :param int fixed: Specifies a fixed value.
         :param int percent: Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+               
+               - - -
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -4477,6 +4483,8 @@ class OsPolicyAssignmentRolloutDisruptionBudget(dict):
     def percent(self) -> Optional[int]:
         """
         Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+
+        - - -
         """
         return pulumi.get(self, "percent")
 
@@ -4581,6 +4589,8 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
                  labels: Mapping[str, str]):
         """
         :param Mapping[str, str] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+               
+               - - -
         """
         pulumi.set(__self__, "labels", labels)
 
@@ -4589,6 +4599,8 @@ class PatchDeploymentInstanceFilterGroupLabel(dict):
     def labels(self) -> Mapping[str, str]:
         """
         Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+
+        - - -
         """
         return pulumi.get(self, "labels")
 

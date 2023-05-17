@@ -28,6 +28,9 @@ class RegionTargetHttpsProxyArgs:
                one SSL certificate must be specified.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -76,6 +79,9 @@ class RegionTargetHttpsProxyArgs:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the RegionBackendService.
+
+
+        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -190,6 +196,9 @@ class _RegionTargetHttpsProxyState:
                TargetHttpsProxy resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
+               
+               
+               - - -
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -337,6 +346,9 @@ class _RegionTargetHttpsProxyState:
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the RegionBackendService.
+
+
+        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -411,6 +423,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                TargetHttpsProxy resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -544,6 +559,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                TargetHttpsProxy resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -650,6 +668,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         """
         A reference to the RegionUrlMap resource that defines the mapping from URL
         to the RegionBackendService.
+
+
+        - - -
         """
         return pulumi.get(self, "url_map")
 

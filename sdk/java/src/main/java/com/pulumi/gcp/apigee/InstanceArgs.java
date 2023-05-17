@@ -145,6 +145,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
      * 
+     * ***
+     * 
      */
     @Import(name="orgId", required=true)
     private Output<String> orgId;
@@ -152,6 +154,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Apigee Organization associated with the Apigee instance,
      * in the format `organizations/{{org_name}}`.
+     * 
+     * ***
      * 
      */
     public Output<String> orgId() {
@@ -391,6 +395,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param orgId The Apigee Organization associated with the Apigee instance,
          * in the format `organizations/{{org_name}}`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -402,6 +408,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param orgId The Apigee Organization associated with the Apigee instance,
          * in the format `organizations/{{org_name}}`.
+         * 
+         * ***
          * 
          * @return builder
          * 

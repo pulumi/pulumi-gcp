@@ -218,6 +218,9 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb backup should reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -337,6 +340,9 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb backup should reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -400,6 +406,9 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb backup should reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

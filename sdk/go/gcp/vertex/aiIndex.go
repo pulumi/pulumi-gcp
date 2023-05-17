@@ -182,6 +182,8 @@ type AiIndex struct {
 	// The description of the Index.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -250,6 +252,8 @@ type aiIndexState struct {
 	// The description of the Index.
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
@@ -287,6 +291,8 @@ type AiIndexState struct {
 	// The description of the Index.
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
@@ -323,6 +329,8 @@ type aiIndexArgs struct {
 	// The description of the Index.
 	Description *string `pulumi:"description"`
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
 	// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -345,6 +353,8 @@ type AiIndexArgs struct {
 	// The description of the Index.
 	Description pulumi.StringPtrInput
 	// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
 	// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
@@ -466,6 +476,8 @@ func (o AiIndexOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+//
+// ***
 func (o AiIndexOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiIndex) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

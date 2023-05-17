@@ -543,6 +543,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
      * Name or self link of a machine
      * image to create the instance based on.
      * 
+     * ***
+     * 
      */
     @Import(name="sourceMachineImage")
     private @Nullable Output<String> sourceMachineImage;
@@ -550,6 +552,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     /**
      * @return Name or self link of a machine
      * image to create the instance based on.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> sourceMachineImage() {
@@ -590,6 +594,12 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
+     * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the machine image. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     * 
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
@@ -597,6 +607,12 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     /**
      * @return The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     * 
+     * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the machine image. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     * 
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -1424,6 +1440,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          * @param sourceMachineImage Name or self link of a machine
          * image to create the instance based on.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -1435,6 +1453,8 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         /**
          * @param sourceMachineImage Name or self link of a machine
          * image to create the instance based on.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -1499,6 +1519,12 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          * @param zone The zone that the machine should be created in. If not
          * set, the provider zone is used.
          * 
+         * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+         * as a way to override the properties in the machine image. All exported attributes
+         * from `gcp.compute.Instance` are likewise exported here.
+         * 
+         * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+         * 
          * @return builder
          * 
          */
@@ -1510,6 +1536,12 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         /**
          * @param zone The zone that the machine should be created in. If not
          * set, the provider zone is used.
+         * 
+         * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+         * as a way to override the properties in the machine image. All exported attributes
+         * from `gcp.compute.Instance` are likewise exported here.
+         * 
+         * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
          * 
          * @return builder
          * 

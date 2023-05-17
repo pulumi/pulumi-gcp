@@ -1159,6 +1159,8 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
         :param str common_name: Common name of the organization. Maximum length is 64 characters.
         :param str country_code: Two-letter country code. Example, IN for India, US for United States of America.
         :param str email: Email address. Max 255 characters.
+               
+               - - -
         :param str locality: City or town name. Maximum length is 128 characters.
         :param str org: Organization name. Maximum length is 64 characters.
         :param str org_unit: Organization team name. Maximum length is 64 characters.
@@ -1200,6 +1202,8 @@ class KeystoresAliasesSelfSignedCertSubject(dict):
     def email(self) -> Optional[str]:
         """
         Email address. Max 255 characters.
+
+        - - -
         """
         return pulumi.get(self, "email")
 

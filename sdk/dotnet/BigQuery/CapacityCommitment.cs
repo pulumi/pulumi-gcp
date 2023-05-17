@@ -110,6 +110,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -215,6 +218,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
@@ -294,6 +300,9 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

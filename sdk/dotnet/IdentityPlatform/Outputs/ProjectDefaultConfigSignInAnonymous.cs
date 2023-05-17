@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     {
         /// <summary>
         /// Whether anonymous user auth is enabled for the project or not.
+        /// 
+        /// &lt;a name="nested_hash_config"&gt;&lt;/a&gt;The `hash_config` block contains:
         /// </summary>
         public readonly bool Enabled;
 

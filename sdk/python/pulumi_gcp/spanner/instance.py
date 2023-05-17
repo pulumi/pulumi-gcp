@@ -32,6 +32,9 @@ class InstanceArgs:
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+               
+               
+               - - -
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
@@ -39,6 +42,8 @@ class InstanceArgs:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
+               
+               If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
         :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
@@ -84,6 +89,9 @@ class InstanceArgs:
         """
         The descriptive name for this instance as it appears in UIs. Must be
         unique per project and between 4 and 30 characters in length.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -124,6 +132,8 @@ class InstanceArgs:
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
+
+        If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")
 
@@ -193,6 +203,9 @@ class _InstanceState:
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+               
+               
+               - - -
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
@@ -200,6 +213,8 @@ class _InstanceState:
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
+               
+               If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
         :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
@@ -250,6 +265,9 @@ class _InstanceState:
         """
         The descriptive name for this instance as it appears in UIs. Must be
         unique per project and between 4 and 30 characters in length.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -290,6 +308,8 @@ class _InstanceState:
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
+
+        If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")
 
@@ -443,6 +463,9 @@ class Instance(pulumi.CustomResource):
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+               
+               
+               - - -
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
@@ -450,6 +473,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
+               
+               If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
         :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
@@ -612,6 +637,9 @@ class Instance(pulumi.CustomResource):
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
+               
+               
+               - - -
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
@@ -619,6 +647,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after
                the instance is created. The name must be between 6 and 30 characters
                in length.
+               
+               If not provided, a random string starting with `tf-` will be selected.
         :param pulumi.Input[int] num_nodes: The number of nodes allocated to this instance. Exactly one of either node_count or processing_units must be present in
                terraform.
         :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. Exactly one of processing_units or node_count must be present
@@ -661,6 +691,9 @@ class Instance(pulumi.CustomResource):
         """
         The descriptive name for this instance as it appears in UIs. Must be
         unique per project and between 4 and 30 characters in length.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -689,6 +722,8 @@ class Instance(pulumi.CustomResource):
         A unique identifier for the instance, which cannot be changed after
         the instance is created. The name must be between 6 and 30 characters
         in length.
+
+        If not provided, a random string starting with `tf-` will be selected.
         """
         return pulumi.get(self, "name")
 

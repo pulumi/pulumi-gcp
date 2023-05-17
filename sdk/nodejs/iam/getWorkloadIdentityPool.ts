@@ -39,6 +39,8 @@ export interface GetWorkloadIdentityPoolArgs {
     /**
      * The id of the pool which is the
      * final component of the resource name.
+     *
+     * - - -
      */
     workloadIdentityPoolId: string;
 }
@@ -89,6 +91,8 @@ export interface GetWorkloadIdentityPoolOutputArgs {
     /**
      * The id of the pool which is the
      * final component of the resource name.
+     *
+     * - - -
      */
     workloadIdentityPoolId: pulumi.Input<string>;
 }

@@ -447,6 +447,8 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
      * 
+     * ***
+     * 
      */
     @Export(name="runtime", type=String.class, parameters={})
     private Output<String> runtime;
@@ -454,6 +456,8 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * @return The runtime in which the function is going to run.
      * Eg. `&#34;nodejs16&#34;`, `&#34;python39&#34;`, `&#34;dotnet3&#34;`, `&#34;go116&#34;`, `&#34;java11&#34;`, `&#34;ruby30&#34;`, `&#34;php74&#34;`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+     * 
+     * ***
      * 
      */
     public Output<String> runtime() {

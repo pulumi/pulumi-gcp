@@ -17,12 +17,16 @@ public final class GetFunctionPlainArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The location in which the resource belongs.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private String location;
 
     /**
      * @return The location in which the resource belongs.
+     * 
+     * ***
      * 
      */
     public String location() {
@@ -89,6 +93,8 @@ public final class GetFunctionPlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param location The location in which the resource belongs.
+         * 
+         * ***
          * 
          * @return builder
          * 

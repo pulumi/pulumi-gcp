@@ -441,12 +441,16 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
     /**
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
      * 
+     * ***
+     * 
      */
     @Export(name="timeout", type=String.class, parameters={})
     private Output<String> timeout;
 
     /**
      * @return The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+     * 
+     * ***
      * 
      */
     public Output<String> timeout() {

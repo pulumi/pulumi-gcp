@@ -132,6 +132,8 @@ export class JobIAMBinding extends pulumi.CustomResource {
      * The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     *
+     * `gcp.dataproc.JobIAMPolicy` only:
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -204,6 +206,8 @@ export interface JobIAMBindingState {
      * The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     *
+     * `gcp.dataproc.JobIAMPolicy` only:
      */
     role?: pulumi.Input<string>;
 }
@@ -229,6 +233,8 @@ export interface JobIAMBindingArgs {
      * The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     *
+     * `gcp.dataproc.JobIAMPolicy` only:
      */
     role: pulumi.Input<string>;
 }

@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
         /// <summary>
         /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        /// 
+        /// Use either `git` or `oci` config option.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncOci? Oci;
         /// <summary>

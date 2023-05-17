@@ -135,6 +135,9 @@ export class AiEndpoint extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -249,6 +252,9 @@ export interface AiEndpointState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -297,6 +303,9 @@ export interface AiEndpointArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

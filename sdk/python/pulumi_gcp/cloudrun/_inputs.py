@@ -69,6 +69,8 @@ class DomainMappingMetadataArgs:
                **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
                If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
                or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+               
+               - - -
         :param pulumi.Input[int] generation: (Output)
                A sequence number representing a specific generation of the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize
@@ -127,6 +129,8 @@ class DomainMappingMetadataArgs:
         **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+
+        - - -
         """
         return pulumi.get(self, "annotations")
 
@@ -2687,6 +2691,8 @@ class ServiceTemplateSpecVolumeSecretItemArgs:
                not specified, the volume defaultMode will be used. This might be in
                conflict with other options that affect the file mode, like fsGroup, and
                the result can be other mode bits set.
+               
+               - - -
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "path", path)
@@ -2729,6 +2735,8 @@ class ServiceTemplateSpecVolumeSecretItemArgs:
         not specified, the volume defaultMode will be used. This might be in
         conflict with other options that affect the file mode, like fsGroup, and
         the result can be other mode bits set.
+
+        - - -
         """
         return pulumi.get(self, "mode")
 

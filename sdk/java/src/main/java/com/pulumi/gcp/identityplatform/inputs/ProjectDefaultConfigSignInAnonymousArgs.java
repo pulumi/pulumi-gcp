@@ -16,12 +16,16 @@ public final class ProjectDefaultConfigSignInAnonymousArgs extends com.pulumi.re
     /**
      * Whether anonymous user auth is enabled for the project or not.
      * 
+     * &lt;a name=&#34;nested_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
+     * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
      * @return Whether anonymous user auth is enabled for the project or not.
+     * 
+     * &lt;a name=&#34;nested_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
      * 
      */
     public Output<Boolean> enabled() {
@@ -55,6 +59,8 @@ public final class ProjectDefaultConfigSignInAnonymousArgs extends com.pulumi.re
         /**
          * @param enabled Whether anonymous user auth is enabled for the project or not.
          * 
+         * &lt;a name=&#34;nested_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class ProjectDefaultConfigSignInAnonymousArgs extends com.pulumi.re
 
         /**
          * @param enabled Whether anonymous user auth is enabled for the project or not.
+         * 
+         * &lt;a name=&#34;nested_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
          * 
          * @return builder
          * 

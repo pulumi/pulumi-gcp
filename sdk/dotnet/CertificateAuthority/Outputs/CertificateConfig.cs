@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// <summary>
         /// A PublicKey describes a public key.
         /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
         /// </summary>
         public readonly Outputs.CertificateConfigPublicKey PublicKey;
         /// <summary>

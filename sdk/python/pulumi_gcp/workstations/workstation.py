@@ -25,6 +25,9 @@ class WorkstationArgs:
         """
         The set of arguments for constructing a Workstation resource.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] workstation_cluster_id: The name of the workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID of the workstation cluster config.
         :param pulumi.Input[str] workstation_id: ID to use for the workstation.
@@ -52,6 +55,9 @@ class WorkstationArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the workstation cluster config should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -171,6 +177,9 @@ class _WorkstationState:
                To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The name of the cluster resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -274,6 +283,9 @@ class _WorkstationState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the workstation cluster config should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -456,6 +468,9 @@ class Workstation(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] workstation_cluster_id: The name of the workstation cluster.
@@ -628,6 +643,9 @@ class Workstation(pulumi.CustomResource):
                To send traffic to a different port, clients may prefix the host with the destination port in the format "{port}-{host}".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The name of the cluster resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -703,6 +721,9 @@ class Workstation(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the workstation cluster config should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 

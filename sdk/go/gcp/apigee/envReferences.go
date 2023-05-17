@@ -41,6 +41,8 @@ type EnvReferences struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+	//
+	// ***
 	EnvId pulumi.StringOutput `pulumi:"envId"`
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -92,6 +94,8 @@ type envReferencesState struct {
 	Description *string `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+	//
+	// ***
 	EnvId *string `pulumi:"envId"`
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
 	Name *string `pulumi:"name"`
@@ -106,6 +110,8 @@ type EnvReferencesState struct {
 	Description pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+	//
+	// ***
 	EnvId pulumi.StringPtrInput
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
 	Name pulumi.StringPtrInput
@@ -124,6 +130,8 @@ type envReferencesArgs struct {
 	Description *string `pulumi:"description"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+	//
+	// ***
 	EnvId string `pulumi:"envId"`
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
 	Name *string `pulumi:"name"`
@@ -139,6 +147,8 @@ type EnvReferencesArgs struct {
 	Description pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+	//
+	// ***
 	EnvId pulumi.StringInput
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
 	Name pulumi.StringPtrInput
@@ -242,6 +252,8 @@ func (o EnvReferencesOutput) Description() pulumi.StringPtrOutput {
 
 // The Apigee environment group associated with the Apigee environment,
 // in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+//
+// ***
 func (o EnvReferencesOutput) EnvId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvReferences) pulumi.StringOutput { return v.EnvId }).(pulumi.StringOutput)
 }

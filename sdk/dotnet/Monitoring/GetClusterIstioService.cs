@@ -131,6 +131,10 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The name of the Istio service underlying this service.
         /// Corresponds to the destination_service_name metric label in Istio metrics.
+        /// 
+        /// - - -
+        /// 
+        /// Other optional fields include:
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -174,6 +178,10 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The name of the Istio service underlying this service.
         /// Corresponds to the destination_service_name metric label in Istio metrics.
+        /// 
+        /// - - -
+        /// 
+        /// Other optional fields include:
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;

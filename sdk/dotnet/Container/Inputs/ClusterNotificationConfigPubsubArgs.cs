@@ -20,6 +20,16 @@ namespace Pulumi.Gcp.Container.Inputs
 
         /// <summary>
         /// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         [Input("filter")]
         public Input<Inputs.ClusterNotificationConfigPubsubFilterArgs>? Filter { get; set; }

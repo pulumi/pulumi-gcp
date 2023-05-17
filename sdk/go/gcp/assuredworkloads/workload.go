@@ -99,6 +99,8 @@ type Workload struct {
 	// Output only. The resource name of the workload.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The organization for the resource
+	//
+	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrOutput `pulumi:"provisionedResourcesParent"`
@@ -169,6 +171,8 @@ type workloadState struct {
 	// Output only. The resource name of the workload.
 	Name *string `pulumi:"name"`
 	// The organization for the resource
+	//
+	// ***
 	Organization *string `pulumi:"organization"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
@@ -196,6 +200,8 @@ type WorkloadState struct {
 	// Output only. The resource name of the workload.
 	Name pulumi.StringPtrInput
 	// The organization for the resource
+	//
+	// ***
 	Organization pulumi.StringPtrInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
@@ -223,6 +229,8 @@ type workloadArgs struct {
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// The organization for the resource
+	//
+	// ***
 	Organization string `pulumi:"organization"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
@@ -245,6 +253,8 @@ type WorkloadArgs struct {
 	// The location for the resource
 	Location pulumi.StringInput
 	// The organization for the resource
+	//
+	// ***
 	Organization pulumi.StringInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
@@ -380,6 +390,8 @@ func (o WorkloadOutput) Name() pulumi.StringOutput {
 }
 
 // The organization for the resource
+//
+// ***
 func (o WorkloadOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

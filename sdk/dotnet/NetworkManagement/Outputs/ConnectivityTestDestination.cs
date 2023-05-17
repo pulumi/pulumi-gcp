@@ -41,6 +41,8 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         /// that you provide is from the service project. In this case, the
         /// network that the IP address resides in is defined in the host
         /// project.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? ProjectId;
 

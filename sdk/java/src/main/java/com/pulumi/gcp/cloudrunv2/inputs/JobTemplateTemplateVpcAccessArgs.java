@@ -34,6 +34,8 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
      * Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
      * 
+     * ***
+     * 
      */
     @Import(name="egress")
     private @Nullable Output<String> egress;
@@ -41,6 +43,8 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
     /**
      * @return Traffic VPC egress settings.
      * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> egress() {
@@ -97,6 +101,8 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
          * @param egress Traffic VPC egress settings.
          * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -108,6 +114,8 @@ public final class JobTemplateTemplateVpcAccessArgs extends com.pulumi.resources
         /**
          * @param egress Traffic VPC egress settings.
          * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+         * 
+         * ***
          * 
          * @return builder
          * 

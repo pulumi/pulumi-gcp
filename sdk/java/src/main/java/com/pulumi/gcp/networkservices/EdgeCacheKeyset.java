@@ -19,6 +19,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
+ * 
+ * &gt; **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `public_key.public_key.value`.
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ### Network Services Edge Cache Keyset Basic
  * ```java
@@ -167,6 +173,8 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -175,6 +183,8 @@ public class EdgeCacheKeyset extends com.pulumi.resources.CustomResource {
      * @return Name of the resource; provided by the client when the resource is created.
      * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
      * and all following characters must be a dash, underscore, letter or digit.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

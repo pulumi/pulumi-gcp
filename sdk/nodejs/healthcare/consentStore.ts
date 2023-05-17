@@ -98,6 +98,9 @@ export class ConsentStore extends pulumi.CustomResource {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
+     *
+     *
+     * - - -
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -167,6 +170,9 @@ export interface ConsentStoreState {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
+     *
+     *
+     * - - -
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -203,6 +209,9 @@ export interface ConsentStoreArgs {
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
+     *
+     *
+     * - - -
      */
     dataset: pulumi.Input<string>;
     /**

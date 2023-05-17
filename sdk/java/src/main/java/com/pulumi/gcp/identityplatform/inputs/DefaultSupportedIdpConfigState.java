@@ -34,12 +34,16 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
     /**
      * OAuth client secret
      * 
+     * ***
+     * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
      * @return OAuth client secret
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -181,6 +185,8 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
         /**
          * @param clientSecret OAuth client secret
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -191,6 +197,8 @@ public final class DefaultSupportedIdpConfigState extends com.pulumi.resources.R
 
         /**
          * @param clientSecret OAuth client secret
+         * 
+         * ***
          * 
          * @return builder
          * 

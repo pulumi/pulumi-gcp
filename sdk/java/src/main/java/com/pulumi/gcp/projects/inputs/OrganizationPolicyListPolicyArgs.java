@@ -44,6 +44,8 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
      * If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
      * 
+     * The `allow` or `deny` blocks support:
+     * 
      */
     @Import(name="inheritFromParent")
     private @Nullable Output<Boolean> inheritFromParent;
@@ -51,6 +53,8 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
     /**
      * @return If set to true, the values from the effective Policy of the parent resource
      * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+     * 
+     * The `allow` or `deny` blocks support:
      * 
      */
     public Optional<Output<Boolean>> inheritFromParent() {
@@ -133,6 +137,8 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
          * @param inheritFromParent If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
          * 
+         * The `allow` or `deny` blocks support:
+         * 
          * @return builder
          * 
          */
@@ -144,6 +150,8 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
         /**
          * @param inheritFromParent If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+         * 
+         * The `allow` or `deny` blocks support:
          * 
          * @return builder
          * 

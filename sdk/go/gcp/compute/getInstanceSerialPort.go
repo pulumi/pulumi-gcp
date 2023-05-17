@@ -131,6 +131,8 @@ type GetInstanceSerialPortArgs struct {
 	// The name of the Compute Instance to read output from.
 	Instance string `pulumi:"instance"`
 	// The number of the serial port to read output from. Possible values are 1-4.
+	//
+	// ***
 	Port int `pulumi:"port"`
 	// The project in which the Compute Instance exists. If it
 	// is not provided, the provider project is used.
@@ -170,6 +172,8 @@ type GetInstanceSerialPortOutputArgs struct {
 	// The name of the Compute Instance to read output from.
 	Instance pulumi.StringInput `pulumi:"instance"`
 	// The number of the serial port to read output from. Possible values are 1-4.
+	//
+	// ***
 	Port pulumi.IntInput `pulumi:"port"`
 	// The project in which the Compute Instance exists. If it
 	// is not provided, the provider project is used.

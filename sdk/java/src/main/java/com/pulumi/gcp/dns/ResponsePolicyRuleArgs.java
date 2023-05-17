@@ -85,12 +85,16 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
     /**
      * Identifies the response policy addressed by this request.
      * 
+     * ***
+     * 
      */
     @Import(name="responsePolicy", required=true)
     private Output<String> responsePolicy;
 
     /**
      * @return Identifies the response policy addressed by this request.
+     * 
+     * ***
      * 
      */
     public Output<String> responsePolicy() {
@@ -234,6 +238,8 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
         /**
          * @param responsePolicy Identifies the response policy addressed by this request.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -244,6 +250,8 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param responsePolicy Identifies the response policy addressed by this request.
+         * 
+         * ***
          * 
          * @return builder
          * 

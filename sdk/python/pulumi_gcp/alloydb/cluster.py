@@ -28,6 +28,9 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster.
@@ -71,6 +74,9 @@ class ClusterArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the alloydb cluster should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -186,6 +192,9 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMigrationSourceArgs']]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
@@ -315,6 +324,9 @@ class _ClusterState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the alloydb cluster should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -401,6 +413,18 @@ class Cluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A managed alloydb cluster.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+        * How-to Guides
+            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `initial_user.password`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Alloydb Cluster Basic
 
@@ -447,6 +471,9 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -459,6 +486,18 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A managed alloydb cluster.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+        * How-to Guides
+            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `initial_user.password`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Alloydb Cluster Basic
 
@@ -587,6 +626,9 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
         :param pulumi.Input[str] location: The location where the alloydb cluster should reside.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterMigrationSourceArgs']]]] migration_sources: Cluster created via DMS migration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the cluster resource.
@@ -680,6 +722,9 @@ class Cluster(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the alloydb cluster should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 

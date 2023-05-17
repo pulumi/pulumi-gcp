@@ -109,6 +109,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string> NetworkEndpointType { get; private set; } = null!;
@@ -201,6 +204,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("networkEndpointType", required: true)]
         public Input<string> NetworkEndpointType { get; set; } = null!;
@@ -249,6 +255,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of network endpoints in this network endpoint group.
         /// Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }

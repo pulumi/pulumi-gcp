@@ -128,6 +128,9 @@ export class Intent extends pulumi.CustomResource {
     public readonly defaultResponsePlatforms!: pulumi.Output<string[] | undefined>;
     /**
      * The name of this intent to be displayed on the console.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -269,6 +272,9 @@ export interface IntentState {
     defaultResponsePlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of this intent to be displayed on the console.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -357,6 +363,9 @@ export interface IntentArgs {
     defaultResponsePlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of this intent to be displayed on the console.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

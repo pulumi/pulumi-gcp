@@ -189,6 +189,8 @@ type GameServerClusterConnectionInfoGkeClusterReference struct {
 	//   If project and location are not specified, the project and location of the
 	//   GameServerCluster resource are used to generate the full name of the
 	//   GKE cluster.
+	//
+	// ***
 	Cluster string `pulumi:"cluster"`
 }
 
@@ -212,6 +214,8 @@ type GameServerClusterConnectionInfoGkeClusterReferenceArgs struct {
 	//   If project and location are not specified, the project and location of the
 	//   GameServerCluster resource are used to generate the full name of the
 	//   GKE cluster.
+	//
+	// ***
 	Cluster pulumi.StringInput `pulumi:"cluster"`
 }
 
@@ -300,6 +304,8 @@ func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) ToGameServerCl
 //     If project and location are not specified, the project and location of the
 //     GameServerCluster resource are used to generate the full name of the
 //     GKE cluster.
+//
+// ***
 func (o GameServerClusterConnectionInfoGkeClusterReferenceOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GameServerClusterConnectionInfoGkeClusterReference) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -336,6 +342,8 @@ func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Elem() Game
 //     If project and location are not specified, the project and location of the
 //     GameServerCluster resource are used to generate the full name of the
 //     GKE cluster.
+//
+// ***
 func (o GameServerClusterConnectionInfoGkeClusterReferencePtrOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GameServerClusterConnectionInfoGkeClusterReference) *string {
 		if v == nil {
@@ -355,6 +363,8 @@ type GameServerConfigFleetConfig struct {
 	//   `https://agones.dev/site/docs/reference/fleet/`.
 	FleetSpec string `pulumi:"fleetSpec"`
 	// The name of the FleetConfig.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -379,6 +389,8 @@ type GameServerConfigFleetConfigArgs struct {
 	//   `https://agones.dev/site/docs/reference/fleet/`.
 	FleetSpec pulumi.StringInput `pulumi:"fleetSpec"`
 	// The name of the FleetConfig.
+	//
+	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -445,6 +457,8 @@ func (o GameServerConfigFleetConfigOutput) FleetSpec() pulumi.StringOutput {
 }
 
 // The name of the FleetConfig.
+//
+// ***
 func (o GameServerConfigFleetConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GameServerConfigFleetConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

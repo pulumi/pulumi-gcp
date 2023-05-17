@@ -108,12 +108,16 @@ public final class AzureClientState extends com.pulumi.resources.ResourceArgs {
     /**
      * The Azure Active Directory Tenant ID.
      * 
+     * ***
+     * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
      * @return The Azure Active Directory Tenant ID.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -295,6 +299,8 @@ public final class AzureClientState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tenantId The Azure Active Directory Tenant ID.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -305,6 +311,8 @@ public final class AzureClientState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tenantId The Azure Active Directory Tenant ID.
+         * 
+         * ***
          * 
          * @return builder
          * 

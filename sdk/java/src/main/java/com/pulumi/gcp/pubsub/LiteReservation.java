@@ -86,12 +86,16 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
     /**
      * Name of the reservation.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Name of the reservation.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

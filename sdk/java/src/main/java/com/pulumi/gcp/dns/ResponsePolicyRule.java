@@ -175,12 +175,16 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     /**
      * Identifies the response policy addressed by this request.
      * 
+     * ***
+     * 
      */
     @Export(name="responsePolicy", type=String.class, parameters={})
     private Output<String> responsePolicy;
 
     /**
      * @return Identifies the response policy addressed by this request.
+     * 
+     * ***
      * 
      */
     public Output<String> responsePolicy() {

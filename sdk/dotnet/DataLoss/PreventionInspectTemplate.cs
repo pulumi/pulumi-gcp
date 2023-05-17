@@ -165,18 +165,23 @@ namespace Pulumi.Gcp.DataLoss
         /// <summary>
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
         /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
         /// or `projects/project-id/storedInfoTypes/432452342`.
@@ -190,6 +195,9 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -265,6 +273,9 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -299,18 +310,23 @@ namespace Pulumi.Gcp.DataLoss
         /// <summary>
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
         /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        /// 
         /// (Required)
         /// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
         /// or `projects/project-id/storedInfoTypes/432452342`.
@@ -324,6 +340,9 @@ namespace Pulumi.Gcp.DataLoss
         /// * `projects/{{project}}/locations/{{location}}`
         /// * `organizations/{{organization_id}}`
         /// * `organizations/{{organization_id}}/locations/{{location}}`
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

@@ -138,6 +138,8 @@ def get_service(location: Optional[str] = None,
 
 
     :param str location: The location of the cloud run instance. eg us-central1
+           
+           - - -
     :param str name: The name of the Cloud Run Service.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -183,6 +185,8 @@ def get_service_output(location: Optional[pulumi.Input[str]] = None,
 
 
     :param str location: The location of the cloud run instance. eg us-central1
+           
+           - - -
     :param str name: The name of the Cloud Run Service.
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

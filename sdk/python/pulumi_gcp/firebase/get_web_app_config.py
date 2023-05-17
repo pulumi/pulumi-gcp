@@ -171,6 +171,8 @@ def get_web_app_config(project: Optional[str] = None,
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str web_app_id: the id of the firebase web app
+           
+           - - -
     """
     __args__ = dict()
     __args__['project'] = project
@@ -208,5 +210,7 @@ def get_web_app_config_output(project: Optional[pulumi.Input[Optional[str]]] = N
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str web_app_id: the id of the firebase web app
+           
+           - - -
     """
     ...

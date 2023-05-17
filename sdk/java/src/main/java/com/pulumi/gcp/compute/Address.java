@@ -360,6 +360,8 @@ public class Address extends com.pulumi.resources.CustomResource {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -371,6 +373,8 @@ public class Address extends com.pulumi.resources.CustomResource {
      * which means the first character must be a lowercase letter, and all
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -458,6 +462,8 @@ public class Address extends com.pulumi.resources.CustomResource {
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
      * 
+     * This should only be set when using an Internal address.
+     * 
      */
     @Export(name="purpose", type=String.class, parameters={})
     private Output<String> purpose;
@@ -475,6 +481,8 @@ public class Address extends com.pulumi.resources.CustomResource {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
+     * 
+     * This should only be set when using an Internal address.
      * 
      */
     public Output<String> purpose() {

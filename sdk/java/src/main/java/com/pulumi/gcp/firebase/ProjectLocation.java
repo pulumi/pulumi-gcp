@@ -101,6 +101,8 @@ public class ProjectLocation extends com.pulumi.resources.CustomResource {
      * The ID of the default GCP resource location for the Project. The location must be one of the available GCP
      * resource locations.
      * 
+     * ***
+     * 
      */
     @Export(name="locationId", type=String.class, parameters={})
     private Output<String> locationId;
@@ -108,6 +110,8 @@ public class ProjectLocation extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the default GCP resource location for the Project. The location must be one of the available GCP
      * resource locations.
+     * 
+     * ***
      * 
      */
     public Output<String> locationId() {

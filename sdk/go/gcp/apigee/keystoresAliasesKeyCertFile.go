@@ -40,6 +40,8 @@ type KeystoresAliasesKeyCertFile struct {
 	// Alias Name
 	Alias pulumi.StringOutput `pulumi:"alias"`
 	// Cert content
+	//
+	// ***
 	Cert pulumi.StringOutput `pulumi:"cert"`
 	// Chain of certificates under this alias.
 	// Structure is documented below.
@@ -116,6 +118,8 @@ type keystoresAliasesKeyCertFileState struct {
 	// Alias Name
 	Alias *string `pulumi:"alias"`
 	// Cert content
+	//
+	// ***
 	Cert *string `pulumi:"cert"`
 	// Chain of certificates under this alias.
 	// Structure is documented below.
@@ -138,6 +142,8 @@ type KeystoresAliasesKeyCertFileState struct {
 	// Alias Name
 	Alias pulumi.StringPtrInput
 	// Cert content
+	//
+	// ***
 	Cert pulumi.StringPtrInput
 	// Chain of certificates under this alias.
 	// Structure is documented below.
@@ -164,6 +170,8 @@ type keystoresAliasesKeyCertFileArgs struct {
 	// Alias Name
 	Alias string `pulumi:"alias"`
 	// Cert content
+	//
+	// ***
 	Cert string `pulumi:"cert"`
 	// Chain of certificates under this alias.
 	// Structure is documented below.
@@ -185,6 +193,8 @@ type KeystoresAliasesKeyCertFileArgs struct {
 	// Alias Name
 	Alias pulumi.StringInput
 	// Cert content
+	//
+	// ***
 	Cert pulumi.StringInput
 	// Chain of certificates under this alias.
 	// Structure is documented below.
@@ -294,6 +304,8 @@ func (o KeystoresAliasesKeyCertFileOutput) Alias() pulumi.StringOutput {
 }
 
 // Cert content
+//
+// ***
 func (o KeystoresAliasesKeyCertFileOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeystoresAliasesKeyCertFile) pulumi.StringOutput { return v.Cert }).(pulumi.StringOutput)
 }

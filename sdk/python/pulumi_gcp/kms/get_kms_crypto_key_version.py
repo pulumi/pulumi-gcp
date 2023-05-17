@@ -144,7 +144,7 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
-    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_crypto_key"]["my_key"]["id"])
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
 
@@ -191,7 +191,7 @@ def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = 
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
-    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_crypto_key"]["my_key"]["id"])
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
 

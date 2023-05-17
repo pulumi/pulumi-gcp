@@ -154,6 +154,8 @@ type Device struct {
 	// This is a more compact way to identify devices, and it is globally unique.
 	NumId pulumi.StringOutput `pulumi:"numId"`
 	// The name of the device registry where this device should be created.
+	//
+	// ***
 	Registry pulumi.StringOutput `pulumi:"registry"`
 	// The state most recently received from the device.
 	// Structure is documented below.
@@ -229,6 +231,8 @@ type deviceState struct {
 	// This is a more compact way to identify devices, and it is globally unique.
 	NumId *string `pulumi:"numId"`
 	// The name of the device registry where this device should be created.
+	//
+	// ***
 	Registry *string `pulumi:"registry"`
 	// The state most recently received from the device.
 	// Structure is documented below.
@@ -273,6 +277,8 @@ type DeviceState struct {
 	// This is a more compact way to identify devices, and it is globally unique.
 	NumId pulumi.StringPtrInput
 	// The name of the device registry where this device should be created.
+	//
+	// ***
 	Registry pulumi.StringPtrInput
 	// The state most recently received from the device.
 	// Structure is documented below.
@@ -300,6 +306,8 @@ type deviceArgs struct {
 	// A unique name for the resource.
 	Name *string `pulumi:"name"`
 	// The name of the device registry where this device should be created.
+	//
+	// ***
 	Registry string `pulumi:"registry"`
 }
 
@@ -321,6 +329,8 @@ type DeviceArgs struct {
 	// A unique name for the resource.
 	Name pulumi.StringPtrInput
 	// The name of the device registry where this device should be created.
+	//
+	// ***
 	Registry pulumi.StringInput
 }
 
@@ -493,6 +503,8 @@ func (o DeviceOutput) NumId() pulumi.StringOutput {
 }
 
 // The name of the device registry where this device should be created.
+//
+// ***
 func (o DeviceOutput) Registry() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Registry }).(pulumi.StringOutput)
 }

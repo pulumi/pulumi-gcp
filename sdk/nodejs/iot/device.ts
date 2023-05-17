@@ -156,6 +156,9 @@ export class Device extends pulumi.CustomResource {
     public /*out*/ readonly numId!: pulumi.Output<string>;
     /**
      * The name of the device registry where this device should be created.
+     *
+     *
+     * - - -
      */
     public readonly registry!: pulumi.Output<string>;
     /**
@@ -294,6 +297,9 @@ export interface DeviceState {
     numId?: pulumi.Input<string>;
     /**
      * The name of the device registry where this device should be created.
+     *
+     *
+     * - - -
      */
     registry?: pulumi.Input<string>;
     /**
@@ -336,6 +342,9 @@ export interface DeviceArgs {
     name?: pulumi.Input<string>;
     /**
      * The name of the device registry where this device should be created.
+     *
+     *
+     * - - -
      */
     registry: pulumi.Input<string>;
 }

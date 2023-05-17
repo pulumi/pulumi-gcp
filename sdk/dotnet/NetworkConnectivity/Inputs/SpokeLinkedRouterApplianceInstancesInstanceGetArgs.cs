@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 
         /// <summary>
         /// The URI of the virtual machine resource
+        /// 
+        /// - - -
         /// </summary>
         [Input("virtualMachine")]
         public Input<string>? VirtualMachine { get; set; }

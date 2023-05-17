@@ -120,6 +120,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The `authorized_orgs_desc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
         /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -232,6 +235,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The `authorized_orgs_desc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
         /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -312,6 +318,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// The `authorized_orgs_desc` component must begin with a letter, followed by
         /// alphanumeric characters or `_`.
         /// After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

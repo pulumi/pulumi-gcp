@@ -92,6 +92,7 @@ type OrganizationSecurityPolicyRule struct {
 	// "allow", "deny" or "gotoNext".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// A description of the rule.
+	//
 	// (Optional)
 	// A description of the rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -168,6 +169,7 @@ type organizationSecurityPolicyRuleState struct {
 	// "allow", "deny" or "gotoNext".
 	Action *string `pulumi:"action"`
 	// A description of the rule.
+	//
 	// (Optional)
 	// A description of the rule.
 	Description *string `pulumi:"description"`
@@ -204,6 +206,7 @@ type OrganizationSecurityPolicyRuleState struct {
 	// "allow", "deny" or "gotoNext".
 	Action pulumi.StringPtrInput
 	// A description of the rule.
+	//
 	// (Optional)
 	// A description of the rule.
 	Description pulumi.StringPtrInput
@@ -244,6 +247,7 @@ type organizationSecurityPolicyRuleArgs struct {
 	// "allow", "deny" or "gotoNext".
 	Action string `pulumi:"action"`
 	// A description of the rule.
+	//
 	// (Optional)
 	// A description of the rule.
 	Description *string `pulumi:"description"`
@@ -281,6 +285,7 @@ type OrganizationSecurityPolicyRuleArgs struct {
 	// "allow", "deny" or "gotoNext".
 	Action pulumi.StringInput
 	// A description of the rule.
+	//
 	// (Optional)
 	// A description of the rule.
 	Description pulumi.StringPtrInput
@@ -406,6 +411,7 @@ func (o OrganizationSecurityPolicyRuleOutput) Action() pulumi.StringOutput {
 }
 
 // A description of the rule.
+//
 // (Optional)
 // A description of the rule.
 func (o OrganizationSecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {

@@ -111,6 +111,8 @@ type AppleApp struct {
 	// 'DELETE'.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/iosApps/appId
@@ -166,6 +168,8 @@ type appleAppState struct {
 	// 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/iosApps/appId
@@ -190,6 +194,8 @@ type AppleAppState struct {
 	// 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// The fully qualified resource name of the App, for example:
 	// projects/projectId/iosApps/appId
@@ -215,6 +221,8 @@ type appleAppArgs struct {
 	// 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the App.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -234,6 +242,8 @@ type AppleAppArgs struct {
 	// 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the App.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -353,6 +363,8 @@ func (o AppleAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 }
 
 // The user-assigned display name of the App.
+//
+// ***
 func (o AppleAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
         public readonly string Host;
         /// <summary>
         /// Port of the remote application endpoint.
+        /// 
+        /// - - -
         /// </summary>
         public readonly int Port;
 

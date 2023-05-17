@@ -343,6 +343,11 @@ type IAMPolicy struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the project, locking out users without
+	// organization-level access.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -389,6 +394,11 @@ type iampolicyState struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the project, locking out users without
+	// organization-level access.
 	PolicyData *string `pulumi:"policyData"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -401,6 +411,11 @@ type IAMPolicyState struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the project, locking out users without
+	// organization-level access.
 	PolicyData pulumi.StringPtrInput
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -415,6 +430,11 @@ type iampolicyArgs struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the project, locking out users without
+	// organization-level access.
 	PolicyData string `pulumi:"policyData"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -426,6 +446,11 @@ type IAMPolicyArgs struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the project. The policy will be
 	// merged with any existing policy applied to the project.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the project, locking out users without
+	// organization-level access.
 	PolicyData pulumi.StringInput
 	// The project id of the target project. This is not
 	// inferred from the provider.
@@ -527,6 +552,11 @@ func (o IAMPolicyOutput) Etag() pulumi.StringOutput {
 // The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the project. The policy will be
 // merged with any existing policy applied to the project.
+//
+// Changing this updates the policy.
+//
+// Deleting this removes all policies from the project, locking out users without
+// organization-level access.
 func (o IAMPolicyOutput) PolicyData() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }

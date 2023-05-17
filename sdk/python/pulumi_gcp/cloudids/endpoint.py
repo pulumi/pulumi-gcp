@@ -24,6 +24,9 @@ class EndpointArgs:
         """
         The set of arguments for constructing a Endpoint resource.
         :param pulumi.Input[str] location: The location for the endpoint.
+               
+               
+               - - -
         :param pulumi.Input[str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
         :param pulumi.Input[str] severity: The minimum alert severity level that is reported by the endpoint.
                Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
@@ -50,6 +53,9 @@ class EndpointArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the endpoint.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -153,6 +159,9 @@ class _EndpointState:
         :param pulumi.Input[str] endpoint_forwarding_rule: URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
         :param pulumi.Input[str] endpoint_ip: Internal IP address of the endpoint's network entry point.
         :param pulumi.Input[str] location: The location for the endpoint.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
         :param pulumi.Input[str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -238,6 +247,9 @@ class _EndpointState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the endpoint.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -384,6 +396,9 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the endpoint.
         :param pulumi.Input[str] location: The location for the endpoint.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
         :param pulumi.Input[str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -526,6 +541,9 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] endpoint_forwarding_rule: URL of the endpoint's network address to which traffic is to be sent by Packet Mirroring.
         :param pulumi.Input[str] endpoint_ip: Internal IP address of the endpoint's network entry point.
         :param pulumi.Input[str] location: The location for the endpoint.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
         :param pulumi.Input[str] network: Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like "src-net") or the full URL to the network (like "projects/{project_id}/global/networks/src-net").
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -589,6 +607,9 @@ class Endpoint(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the endpoint.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 

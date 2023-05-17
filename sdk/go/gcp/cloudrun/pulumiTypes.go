@@ -17,6 +17,8 @@ type DomainMappingMetadata struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	//
+	// ***
 	Annotations map[string]string `pulumi:"annotations"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
@@ -66,6 +68,8 @@ type DomainMappingMetadataArgs struct {
 	// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 	// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 	// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+	//
+	// ***
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// (Output)
 	// A sequence number representing a specific generation of the desired state.
@@ -180,6 +184,8 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+//
+// ***
 func (o DomainMappingMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -260,6 +266,8 @@ func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
 // **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 // If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
 // or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+//
+// ***
 func (o DomainMappingMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
 		if v == nil {
@@ -6454,6 +6462,8 @@ type ServiceTemplateSpecVolumeSecretItem struct {
 	// not specified, the volume defaultMode will be used. This might be in
 	// conflict with other options that affect the file mode, like fsGroup, and
 	// the result can be other mode bits set.
+	//
+	// ***
 	Mode *int `pulumi:"mode"`
 	// The relative path of the file to map the key to.
 	// May not be an absolute path.
@@ -6481,6 +6491,8 @@ type ServiceTemplateSpecVolumeSecretItemArgs struct {
 	// not specified, the volume defaultMode will be used. This might be in
 	// conflict with other options that affect the file mode, like fsGroup, and
 	// the result can be other mode bits set.
+	//
+	// ***
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
 	// The relative path of the file to map the key to.
 	// May not be an absolute path.
@@ -6550,6 +6562,8 @@ func (o ServiceTemplateSpecVolumeSecretItemOutput) Key() pulumi.StringOutput {
 // not specified, the volume defaultMode will be used. This might be in
 // conflict with other options that affect the file mode, like fsGroup, and
 // the result can be other mode bits set.
+//
+// ***
 func (o ServiceTemplateSpecVolumeSecretItemOutput) Mode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeSecretItem) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }

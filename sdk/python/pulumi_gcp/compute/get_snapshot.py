@@ -243,7 +243,9 @@ def get_snapshot(filter: Optional[str] = None,
     :param str filter: A filter to retrieve the compute snapshot.
            See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
            If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
-    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+           
+           - - -
     :param str name: The name of the compute snapshot. One of `name` or `filter` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
@@ -307,7 +309,9 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     :param str filter: A filter to retrieve the compute snapshot.
            See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
            If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
-    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+    :param bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+           
+           - - -
     :param str name: The name of the compute snapshot. One of `name` or `filter` must be provided.
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.

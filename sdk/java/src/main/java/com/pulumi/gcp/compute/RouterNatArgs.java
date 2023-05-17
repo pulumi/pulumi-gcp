@@ -234,12 +234,16 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the Cloud Router in which this NAT will be configured.
      * 
+     * ***
+     * 
      */
     @Import(name="router", required=true)
     private Output<String> router;
 
     /**
      * @return The name of the Cloud Router in which this NAT will be configured.
+     * 
+     * ***
      * 
      */
     public Output<String> router() {
@@ -733,6 +737,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param router The name of the Cloud Router in which this NAT will be configured.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -743,6 +749,8 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param router The name of the Cloud Router in which this NAT will be configured.
+         * 
+         * ***
          * 
          * @return builder
          * 

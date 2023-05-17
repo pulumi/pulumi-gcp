@@ -12,12 +12,16 @@ public final class FolderFeedFeedOutputConfigPubsubDestination {
     /**
      * @return Destination on Cloud Pubsub topic.
      * 
+     * ***
+     * 
      */
     private String topic;
 
     private FolderFeedFeedOutputConfigPubsubDestination() {}
     /**
      * @return Destination on Cloud Pubsub topic.
+     * 
+     * ***
      * 
      */
     public String topic() {

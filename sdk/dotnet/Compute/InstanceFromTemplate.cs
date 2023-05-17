@@ -286,6 +286,8 @@ namespace Pulumi.Gcp.Compute
         /// Name or self link of an instance
         /// template to create the instance based on. It is recommended to reference
         /// instance templates through their unique id (`self_link_unique` attribute).
+        /// 
+        /// - - -
         /// </summary>
         [Output("sourceInstanceTemplate")]
         public Output<string> SourceInstanceTemplate { get; private set; } = null!;
@@ -305,6 +307,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// In addition to these, all arguments from `gcp.compute.Instance` are supported
+        /// as a way to override the properties in the template. All exported attributes
+        /// from `gcp.compute.Instance` are likewise exported here.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -564,6 +570,8 @@ namespace Pulumi.Gcp.Compute
         /// Name or self link of an instance
         /// template to create the instance based on. It is recommended to reference
         /// instance templates through their unique id (`self_link_unique` attribute).
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceInstanceTemplate", required: true)]
         public Input<string> SourceInstanceTemplate { get; set; } = null!;
@@ -583,6 +591,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// In addition to these, all arguments from `gcp.compute.Instance` are supported
+        /// as a way to override the properties in the template. All exported attributes
+        /// from `gcp.compute.Instance` are likewise exported here.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -840,6 +852,8 @@ namespace Pulumi.Gcp.Compute
         /// Name or self link of an instance
         /// template to create the instance based on. It is recommended to reference
         /// instance templates through their unique id (`self_link_unique` attribute).
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceInstanceTemplate")]
         public Input<string>? SourceInstanceTemplate { get; set; }
@@ -865,6 +879,10 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// In addition to these, all arguments from `gcp.compute.Instance` are supported
+        /// as a way to override the properties in the template. All exported attributes
+        /// from `gcp.compute.Instance` are likewise exported here.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

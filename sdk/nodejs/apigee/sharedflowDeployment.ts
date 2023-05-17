@@ -63,6 +63,9 @@ export class SharedflowDeployment extends pulumi.CustomResource {
     public readonly orgId!: pulumi.Output<string>;
     /**
      * Revision of the Sharedflow to be deployed.
+     *
+     *
+     * - - -
      */
     public readonly revision!: pulumi.Output<string>;
     /**
@@ -131,6 +134,9 @@ export interface SharedflowDeploymentState {
     orgId?: pulumi.Input<string>;
     /**
      * Revision of the Sharedflow to be deployed.
+     *
+     *
+     * - - -
      */
     revision?: pulumi.Input<string>;
     /**
@@ -157,6 +163,9 @@ export interface SharedflowDeploymentArgs {
     orgId: pulumi.Input<string>;
     /**
      * Revision of the Sharedflow to be deployed.
+     *
+     *
+     * - - -
      */
     revision: pulumi.Input<string>;
     /**

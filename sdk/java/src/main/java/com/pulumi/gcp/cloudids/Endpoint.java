@@ -156,12 +156,16 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     /**
      * The location for the endpoint.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location for the endpoint.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

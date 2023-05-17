@@ -23,6 +23,9 @@ class EnvReferencesArgs:
         The set of arguments for constructing a EnvReferences resource.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+               
+               
+               - - -
         :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
@@ -42,6 +45,9 @@ class EnvReferencesArgs:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+
+
+        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -111,6 +117,9 @@ class _EnvReferencesState:
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Required. The resource id of this reference. Values must match the regular expression [\\w\\s-.]+.
         :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
@@ -144,6 +153,9 @@ class _EnvReferencesState:
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+
+
+        - - -
         """
         return pulumi.get(self, "env_id")
 
@@ -225,6 +237,9 @@ class EnvReferences(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Required. The resource id of this reference. Values must match the regular expression [\\w\\s-.]+.
         :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
@@ -321,6 +336,9 @@ class EnvReferences(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
         :param pulumi.Input[str] env_id: The Apigee environment group associated with the Apigee environment,
                in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Required. The resource id of this reference. Values must match the regular expression [\\w\\s-.]+.
         :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
@@ -350,6 +368,9 @@ class EnvReferences(pulumi.CustomResource):
         """
         The Apigee environment group associated with the Apigee environment,
         in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+
+
+        - - -
         """
         return pulumi.get(self, "env_id")
 

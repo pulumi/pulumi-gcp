@@ -224,6 +224,8 @@ type EnterpriseKey struct {
 	// The timestamp corresponding to the creation of this Key.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human-readable display name of this key. Modifiable by user.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrOutput `pulumi:"iosSettings"`
@@ -276,6 +278,8 @@ type enterpriseKeyState struct {
 	// The timestamp corresponding to the creation of this Key.
 	CreateTime *string `pulumi:"createTime"`
 	// Human-readable display name of this key. Modifiable by user.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
@@ -297,6 +301,8 @@ type EnterpriseKeyState struct {
 	// The timestamp corresponding to the creation of this Key.
 	CreateTime pulumi.StringPtrInput
 	// Human-readable display name of this key. Modifiable by user.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
@@ -320,6 +326,8 @@ type enterpriseKeyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings *EnterpriseKeyAndroidSettings `pulumi:"androidSettings"`
 	// Human-readable display name of this key. Modifiable by user.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Settings for keys that can be used by iOS apps.
 	IosSettings *EnterpriseKeyIosSettings `pulumi:"iosSettings"`
@@ -338,6 +346,8 @@ type EnterpriseKeyArgs struct {
 	// Settings for keys that can be used by Android apps.
 	AndroidSettings EnterpriseKeyAndroidSettingsPtrInput
 	// Human-readable display name of this key. Modifiable by user.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// Settings for keys that can be used by iOS apps.
 	IosSettings EnterpriseKeyIosSettingsPtrInput
@@ -449,6 +459,8 @@ func (o EnterpriseKeyOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Human-readable display name of this key. Modifiable by user.
+//
+// ***
 func (o EnterpriseKeyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

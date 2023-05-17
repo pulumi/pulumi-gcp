@@ -16,12 +16,20 @@ public final class ClusterClusterConfigMetastoreConfigArgs extends com.pulumi.re
     /**
      * Resource name of an existing Dataproc Metastore service.
      * 
+     * Only resource names including projectid and location (region) are valid. Examples:
+     * 
+     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+     * 
      */
     @Import(name="dataprocMetastoreService", required=true)
     private Output<String> dataprocMetastoreService;
 
     /**
      * @return Resource name of an existing Dataproc Metastore service.
+     * 
+     * Only resource names including projectid and location (region) are valid. Examples:
+     * 
+     * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
      * 
      */
     public Output<String> dataprocMetastoreService() {
@@ -55,6 +63,10 @@ public final class ClusterClusterConfigMetastoreConfigArgs extends com.pulumi.re
         /**
          * @param dataprocMetastoreService Resource name of an existing Dataproc Metastore service.
          * 
+         * Only resource names including projectid and location (region) are valid. Examples:
+         * 
+         * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
+         * 
          * @return builder
          * 
          */
@@ -65,6 +77,10 @@ public final class ClusterClusterConfigMetastoreConfigArgs extends com.pulumi.re
 
         /**
          * @param dataprocMetastoreService Resource name of an existing Dataproc Metastore service.
+         * 
+         * Only resource names including projectid and location (region) are valid. Examples:
+         * 
+         * `projects/[projectId]/locations/[dataproc_region]/services/[service-name]`
          * 
          * @return builder
          * 

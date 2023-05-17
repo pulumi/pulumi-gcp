@@ -13,8 +13,10 @@ import javax.annotation.Nullable;
 public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId {
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * 
      * (Required)
      * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * 
      * (Required)
      * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 
@@ -24,8 +26,10 @@ public final class CertificateCertificateDescriptionConfigValueKeyUsageUnknownEx
     private CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId() {}
     /**
      * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * 
      * (Required)
      * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * 
      * (Required)
      * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
      * 

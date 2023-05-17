@@ -38,6 +38,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
     /**
      * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
      * 
+     * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
+     * 
      */
     private @Nullable List<String> targetRuleIds;
     /**
@@ -77,6 +79,8 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
     }
     /**
      * @return A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+     * 
+     * &lt;a name=&#34;nested_field_params&#34;&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
      * 
      */
     public List<String> targetRuleIds() {

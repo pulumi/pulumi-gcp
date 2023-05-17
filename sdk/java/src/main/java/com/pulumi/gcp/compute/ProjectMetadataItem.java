@@ -94,12 +94,16 @@ public class ProjectMetadataItem extends com.pulumi.resources.CustomResource {
     /**
      * The value to set for the given metadata key.
      * 
+     * ***
+     * 
      */
     @Export(name="value", type=String.class, parameters={})
     private Output<String> value;
 
     /**
      * @return The value to set for the given metadata key.
+     * 
+     * ***
      * 
      */
     public Output<String> value() {

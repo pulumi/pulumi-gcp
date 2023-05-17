@@ -43,12 +43,16 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
     /**
      * Path to the config zip bundle.
      * 
+     * ***
+     * 
      */
     @Export(name="configBundle", type=String.class, parameters={})
     private Output<String> configBundle;
 
     /**
      * @return Path to the config zip bundle.
+     * 
+     * ***
      * 
      */
     public Output<String> configBundle() {
