@@ -4,11 +4,11 @@ go 1.19
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.8.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.45.0
-	github.com/pulumi/pulumi/pkg/v3 v3.64.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.9.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.2
+	github.com/pulumi/pulumi/pkg/v3 v3.67.1
 	github.com/pulumi/pulumi/sdk v1.14.1
-	github.com/pulumi/pulumi/sdk/v3 v3.64.0
+	github.com/pulumi/pulumi/sdk/v3 v3.67.1
 )
 
 replace (
@@ -16,8 +16,6 @@ replace (
 	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v1.20.1-0.20230504034140-e03b9895b934
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
-
-replace github.com/pulumi/pulumi-terraform-bridge/pf => github.com/pulumi/pulumi-terraform-bridge/pf v0.8.2-0.20230501175449-f0001b7b10a1
 
 require (
 	bitbucket.org/creachadair/stringset v0.0.8 // indirect
@@ -88,7 +86,7 @@ require (
 	github.com/census-instrumentation/opencensus-proto v0.4.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
-	github.com/cloudflare/circl v1.1.0 // indirect
+	github.com/cloudflare/circl v1.3.3 // indirect
 	github.com/cncf/udpa/go v0.0.0-20220112060539-c52dc94e7fbe // indirect
 	github.com/cncf/xds/go v0.0.0-20230105202645-06c439db220b // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -244,7 +242,7 @@ require (
 	gocloud.dev v0.27.0 // indirect
 	gocloud.dev/secrets/hashivault v0.27.0 // indirect
 	golang.org/x/crypto v0.5.0 // indirect
-	golang.org/x/mod v0.8.0 // indirect
+	golang.org/x/mod v0.10.0 // indirect
 	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/oauth2 v0.7.0 // indirect
 	golang.org/x/sync v0.1.0 // indirect
