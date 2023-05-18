@@ -112,7 +112,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * The IP Stack Type of the cluster.
      * Default value is `IPV4`.
-     * Possible values are `IPV4` and `PV4_IPV6`.
+     * Possible values are `IPV4` and `IPV4_IPV6`.
      * 
      */
     @Import(name="stackType")
@@ -121,7 +121,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     /**
      * @return The IP Stack Type of the cluster.
      * Default value is `IPV4`.
-     * Possible values are `IPV4` and `PV4_IPV6`.
+     * Possible values are `IPV4` and `IPV4_IPV6`.
      * 
      */
     public Optional<Output<String>> stackType() {
@@ -279,7 +279,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param stackType The IP Stack Type of the cluster.
          * Default value is `IPV4`.
-         * Possible values are `IPV4` and `PV4_IPV6`.
+         * Possible values are `IPV4` and `IPV4_IPV6`.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         /**
          * @param stackType The IP Stack Type of the cluster.
          * Default value is `IPV4`.
-         * Possible values are `IPV4` and `PV4_IPV6`.
+         * Possible values are `IPV4` and `IPV4_IPV6`.
          * 
          * @return builder
          * 

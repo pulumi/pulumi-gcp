@@ -1503,6 +1503,26 @@ export namespace accesscontextmanager {
 }
 
 export namespace alloydb {
+    export interface BackupEncryptionConfig {
+        /**
+         * The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+         */
+        kmsKeyName?: string;
+    }
+
+    export interface BackupEncryptionInfo {
+        /**
+         * (Output)
+         * Output only. Type of encryption.
+         */
+        encryptionType: string;
+        /**
+         * (Output)
+         * Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+         */
+        kmsKeyVersions: string[];
+    }
+
     export interface ClusterAutomatedBackupPolicy {
         /**
          * The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
@@ -1515,6 +1535,11 @@ export namespace alloydb {
          */
         enabled?: boolean;
         /**
+         * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         */
+        encryptionConfig?: outputs.alloydb.ClusterAutomatedBackupPolicyEncryptionConfig;
+        /**
          * Labels to apply to backups created using this configuration.
          */
         labels?: {[key: string]: string};
@@ -1523,12 +1548,12 @@ export namespace alloydb {
          */
         location?: string;
         /**
-         * Quantity-based Backup retention policy to retain recent backups.
+         * Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
          * Structure is documented below.
          */
         quantityBasedRetention?: outputs.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetention;
         /**
-         * Time-based Backup retention policy.
+         * Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
          * Structure is documented below.
          */
         timeBasedRetention?: outputs.alloydb.ClusterAutomatedBackupPolicyTimeBasedRetention;
@@ -1537,6 +1562,13 @@ export namespace alloydb {
          * Structure is documented below.
          */
         weeklySchedule: outputs.alloydb.ClusterAutomatedBackupPolicyWeeklySchedule;
+    }
+
+    export interface ClusterAutomatedBackupPolicyEncryptionConfig {
+        /**
+         * The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+         */
+        kmsKeyName?: string;
     }
 
     export interface ClusterAutomatedBackupPolicyQuantityBasedRetention {
@@ -1573,15 +1605,15 @@ export namespace alloydb {
          */
         hours?: number;
         /**
-         * Minutes of hour of day. Must be from 0 to 59.
+         * Minutes of hour of day. Currently, only the value 0 is supported.
          */
         minutes?: number;
         /**
-         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         * Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
          */
         nanos?: number;
         /**
-         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         * Seconds of minutes of the time. Currently, only the value 0 is supported.
          */
         seconds?: number;
     }
@@ -1591,6 +1623,26 @@ export namespace alloydb {
          * The name of the backup resource.
          */
         backupName?: string;
+    }
+
+    export interface ClusterEncryptionConfig {
+        /**
+         * The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+         */
+        kmsKeyName?: string;
+    }
+
+    export interface ClusterEncryptionInfo {
+        /**
+         * (Output)
+         * Output only. Type of encryption.
+         */
+        encryptionType: string;
+        /**
+         * (Output)
+         * Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+         */
+        kmsKeyVersions: string[];
     }
 
     export interface ClusterInitialUser {
@@ -1618,6 +1670,73 @@ export namespace alloydb {
          * Type of migration source.
          */
         sourceType?: string;
+    }
+
+    export interface GetLocationsLocation {
+        /**
+         * The friendly name for this location, typically a nearby city name. For example, "Tokyo".
+         */
+        displayName: string;
+        /**
+         * Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The canonical id for this location. For example: "us-east1"..
+         */
+        locationId: string;
+        /**
+         * Service-specific metadata. For example the available capacity at the given location.
+         */
+        metadata: {[key: string]: string};
+        /**
+         * Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
+         */
+        name: string;
+    }
+
+    export interface GetSupportedDatabaseFlagsSupportedDatabaseFlag {
+        /**
+         * Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
+         */
+        acceptsMultipleValues: boolean;
+        /**
+         * The name of the database flag, e.g. "maxAllowedPackets". The is a possibly key for the Instance.database_flags map field.
+         */
+        flagName: string;
+        /**
+         * Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
+         */
+        integerRestrictions: outputs.alloydb.GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions;
+        /**
+         * The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
+         */
+        name: string;
+        /**
+         * Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
+         */
+        requiresDbRestart: boolean;
+        /**
+         * Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+         */
+        stringRestrictions: outputs.alloydb.GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions;
+        /**
+         * Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
+         */
+        supportedDbVersions: string[];
+        /**
+         * ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
+         */
+        valueType: string;
+    }
+
+    export interface GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions {
+        maxValue: string;
+        minValue: string;
+    }
+
+    export interface GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions {
+        allowedValues: string[];
     }
 
     export interface InstanceMachineConfig {
@@ -3852,6 +3971,11 @@ export namespace bigquery {
          */
         nullMarker?: string;
         /**
+         * Parquet Options for load and make external tables.
+         * Structure is documented below.
+         */
+        parquetOptions?: outputs.bigquery.JobLoadParquetOptions;
+        /**
          * If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
          * Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
          * If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -3945,6 +4069,17 @@ export namespace bigquery {
          * or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
          */
         tableId: string;
+    }
+
+    export interface JobLoadParquetOptions {
+        /**
+         * If sourceFormat is set to PARQUET, indicates whether to use schema inference specifically for Parquet LIST logical type.
+         */
+        enableListInference?: boolean;
+        /**
+         * If sourceFormat is set to PARQUET, indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+         */
+        enumAsString?: boolean;
     }
 
     export interface JobLoadTimePartitioning {
@@ -7586,6 +7721,8 @@ export namespace cloudbuild {
     }
 
     export interface GetTriggerBuildStep {
+        allowExitCodes: number[];
+        allowFailure: boolean;
         args: string[];
         dir: string;
         entrypoint: string;
@@ -7609,6 +7746,7 @@ export namespace cloudbuild {
         githubEnterpriseConfig: string;
         path: string;
         repoType: string;
+        repository: string;
         revision: string;
         uri: string;
     }
@@ -7662,6 +7800,7 @@ export namespace cloudbuild {
         githubEnterpriseConfig: string;
         ref: string;
         repoType: string;
+        repository: string;
         uri: string;
     }
 
@@ -8068,6 +8207,20 @@ export namespace cloudbuild {
 
     export interface TriggerBuildStep {
         /**
+         * Allow this build step to fail without failing the entire build if and
+         * only if the exit code is one of the specified codes.
+         * If `allowFailure` is also specified, this field will take precedence.
+         */
+        allowExitCodes?: number[];
+        /**
+         * Allow this build step to fail without failing the entire build.
+         * If false, the entire build will fail if this step fails. Otherwise, the
+         * build will succeed, but this step will still have a failure status.
+         * Error information will be reported in the `failureDetail` field.
+         * `allowExitCodes` takes precedence over this field.
+         */
+        allowFailure?: boolean;
+        /**
          * A list of arguments that will be presented to the step when it is started.
          * If the image used to run the step's container has an entrypoint, the args
          * are used as arguments to that entrypoint. If the image does not define an
@@ -8196,6 +8349,7 @@ export namespace cloudbuild {
          * Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
          */
         repoType: string;
+        repository?: string;
         /**
          * The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
          * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -8356,10 +8510,11 @@ export namespace cloudbuild {
          * Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
          */
         repoType: string;
+        repository?: string;
         /**
-         * The URI of the repo (required).
+         * The URI of the repo.
          */
-        uri: string;
+        uri?: string;
     }
 
     export interface TriggerTriggerTemplate {
@@ -8458,7 +8613,7 @@ export namespace cloudbuildv2 {
          */
         oauthTokenSecretVersion?: string;
         /**
-         * The username associated to this token.
+         * Output only. The username associated to this token.
          */
         username: string;
     }
@@ -9771,6 +9926,7 @@ export namespace cloudrun {
     export interface GetServiceTemplateSpecContainerLivenessProbeHttpGet {
         httpHeaders: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
         path: string;
+        port: number;
     }
 
     export interface GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
@@ -9813,6 +9969,7 @@ export namespace cloudrun {
     export interface GetServiceTemplateSpecContainerStartupProbeHttpGet {
         httpHeaders: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
         path: string;
+        port: number;
     }
 
     export interface GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
@@ -10171,6 +10328,12 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         resources: outputs.cloudrun.ServiceTemplateSpecContainerResources;
+        /**
+         * Startup probe of application within the container.
+         * All other probes are disabled if a startup probe is provided, until it
+         * succeeds. Container will not be added to service endpoints if the probe fails.
+         * Structure is documented below.
+         */
         startupProbe: outputs.cloudrun.ServiceTemplateSpecContainerStartupProbe;
         /**
          * Volume to mount into the container's filesystem.
@@ -10322,6 +10485,7 @@ export namespace cloudrun {
     export interface ServiceTemplateSpecContainerLivenessProbeGrpc {
         /**
          * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          */
         port: number;
         /**
@@ -10342,6 +10506,11 @@ export namespace cloudrun {
          * Path to access on the HTTP server. If set, it should not be empty string.
          */
         path?: string;
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port: number;
     }
 
     export interface ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
@@ -10430,6 +10599,7 @@ export namespace cloudrun {
     export interface ServiceTemplateSpecContainerStartupProbeGrpc {
         /**
          * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          */
         port: number;
         /**
@@ -10450,6 +10620,11 @@ export namespace cloudrun {
          * Path to access on the HTTP server. If set, it should not be empty string.
          */
         path?: string;
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port: number;
     }
 
     export interface ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader {
@@ -10466,6 +10641,7 @@ export namespace cloudrun {
     export interface ServiceTemplateSpecContainerStartupProbeTcpSocket {
         /**
          * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          */
         port: number;
     }
@@ -10977,6 +11153,7 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         cloudSqlInstance?: outputs.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstance;
+        emptyDir?: outputs.cloudrunv2.JobTemplateTemplateVolumeEmptyDir;
         /**
          * Volume's name.
          */
@@ -10993,6 +11170,19 @@ export namespace cloudrunv2 {
          * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          */
         instances?: string[];
+    }
+
+    export interface JobTemplateTemplateVolumeEmptyDir {
+        /**
+         * The different types of medium supported for EmptyDir.
+         * Default value is `MEMORY`.
+         * Possible values are: `MEMORY`.
+         */
+        medium?: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+         */
+        sizeLimit?: string;
     }
 
     export interface JobTemplateTemplateVolumeSecret {
@@ -11155,7 +11345,7 @@ export namespace cloudrunv2 {
          */
         annotations?: {[key: string]: string};
         /**
-         * Holds the single container that defines the unit of execution for this task.
+         * Holds the containers that define the unit of execution for this Service.
          * Structure is documented below.
          */
         containers?: outputs.cloudrunv2.ServiceTemplateContainer[];
@@ -11190,6 +11380,10 @@ export namespace cloudrunv2 {
          */
         serviceAccount: string;
         /**
+         * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+         */
+        sessionAffinity?: boolean;
+        /**
          * Max allowed time for an instance to respond to a request.
          * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
          */
@@ -11215,6 +11409,7 @@ export namespace cloudrunv2 {
          * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          */
         commands?: string[];
+        dependsOns?: string[];
         /**
          * List of environment variables to set in the container.
          * Structure is documented below.
@@ -11334,7 +11529,8 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainerLivenessProbeGrpc {
         /**
-         * Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          */
         port: number;
         /**
@@ -11355,6 +11551,11 @@ export namespace cloudrunv2 {
          * Path to access on the HTTP server. Defaults to '/'.
          */
         path?: string;
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port: number;
     }
 
     export interface ServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
@@ -11370,7 +11571,8 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainerLivenessProbeTcpSocket {
         /**
-         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          */
         port?: number;
     }
@@ -11395,6 +11597,10 @@ export namespace cloudrunv2 {
          * Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         limits: {[key: string]: string};
+        /**
+         * Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+         */
+        startupCpuBoost?: boolean;
     }
 
     export interface ServiceTemplateContainerStartupProbe {
@@ -11433,7 +11639,8 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainerStartupProbeGrpc {
         /**
-         * Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          */
         port: number;
         /**
@@ -11454,6 +11661,11 @@ export namespace cloudrunv2 {
          * Path to access on the HTTP server. Defaults to '/'.
          */
         path?: string;
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port: number;
     }
 
     export interface ServiceTemplateContainerStartupProbeHttpGetHttpHeader {
@@ -11469,7 +11681,8 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateContainerStartupProbeTcpSocket {
         /**
-         * Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          */
         port: number;
     }
@@ -11502,6 +11715,7 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         cloudSqlInstance?: outputs.cloudrunv2.ServiceTemplateVolumeCloudSqlInstance;
+        emptyDir?: outputs.cloudrunv2.ServiceTemplateVolumeEmptyDir;
         /**
          * Volume's name.
          */
@@ -11518,6 +11732,19 @@ export namespace cloudrunv2 {
          * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          */
         instances?: string[];
+    }
+
+    export interface ServiceTemplateVolumeEmptyDir {
+        /**
+         * The different types of medium supported for EmptyDir.
+         * Default value is `MEMORY`.
+         * Possible values are: `MEMORY`.
+         */
+        medium?: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+         */
+        sizeLimit?: string;
     }
 
     export interface ServiceTemplateVolumeSecret {
@@ -12966,6 +13193,12 @@ export namespace compute {
 
     export interface BackendServiceCdnPolicy {
         /**
+         * Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+         * The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         */
+        bypassCacheOnRequestHeaders?: outputs.compute.BackendServiceCdnPolicyBypassCacheOnRequestHeader[];
+        /**
          * The CacheKeyPolicy for this CdnPolicy.
          * Structure is documented below.
          */
@@ -13015,6 +13248,13 @@ export namespace compute {
          * responses will not be altered.
          */
         signedUrlCacheMaxAgeSec?: number;
+    }
+
+    export interface BackendServiceCdnPolicyBypassCacheOnRequestHeader {
+        /**
+         * The header field name to match on when bypassing cache. Values are case-insensitive.
+         */
+        headerName: string;
     }
 
     export interface BackendServiceCdnPolicyCacheKeyPolicy {
@@ -13407,6 +13647,24 @@ export namespace compute {
         subjectAltNames: string[];
     }
 
+    export interface DiskAsyncPrimaryDisk {
+        /**
+         * Primary disk for asynchronous disk replication.
+         */
+        disk: string;
+    }
+
+    export interface DiskAsyncReplicationSecondaryDisk {
+        /**
+         * The secondary disk.
+         */
+        disk: string;
+        /**
+         * Output-only. Status of replication on the secondary disk.
+         */
+        state: string;
+    }
+
     export interface DiskDiskEncryptionKey {
         /**
          * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
@@ -13573,18 +13831,26 @@ export namespace compute {
     }
 
     export interface FirewallPolicyRuleMatch {
+        destAddressGroups?: string[];
+        destFqdns?: string[];
         /**
          * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
          */
         destIpRanges?: string[];
+        destRegionCodes?: string[];
+        destThreatIntelligences?: string[];
         /**
          * Pairs of IP protocols and ports that the rule should match. Structure is documented below.
          */
         layer4Configs: outputs.compute.FirewallPolicyRuleMatchLayer4Config[];
+        srcAddressGroups?: string[];
+        srcFqdns?: string[];
         /**
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
          */
         srcIpRanges?: string[];
+        srcRegionCodes?: string[];
+        srcThreatIntelligences?: string[];
     }
 
     export interface FirewallPolicyRuleMatchLayer4Config {
@@ -13691,6 +13957,7 @@ export namespace compute {
     }
 
     export interface GetBackendServiceCdnPolicy {
+        bypassCacheOnRequestHeaders: outputs.compute.GetBackendServiceCdnPolicyBypassCacheOnRequestHeader[];
         cacheKeyPolicies: outputs.compute.GetBackendServiceCdnPolicyCacheKeyPolicy[];
         cacheMode: string;
         clientTtl: number;
@@ -13700,6 +13967,10 @@ export namespace compute {
         negativeCachingPolicies: outputs.compute.GetBackendServiceCdnPolicyNegativeCachingPolicy[];
         serveWhileStale: number;
         signedUrlCacheMaxAgeSec: number;
+    }
+
+    export interface GetBackendServiceCdnPolicyBypassCacheOnRequestHeader {
+        headerName: string;
     }
 
     export interface GetBackendServiceCdnPolicyCacheKeyPolicy {
@@ -13809,6 +14080,10 @@ export namespace compute {
     export interface GetBackendServiceSecuritySetting {
         clientTlsPolicy: string;
         subjectAltNames: string[];
+    }
+
+    export interface GetDiskAsyncPrimaryDisk {
+        disk: string;
     }
 
     export interface GetDiskDiskEncryptionKey {
@@ -14981,6 +15256,10 @@ export namespace compute {
         version: string;
     }
 
+    export interface GetResourcePolicyDiskConsistencyGroupPolicy {
+        enabled: boolean;
+    }
+
     export interface GetResourcePolicyGroupPlacementPolicy {
         availabilityDomainCount: number;
         collocation: string;
@@ -15560,7 +15839,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
          */
         type: string;
     }
@@ -16511,8 +16790,7 @@ export namespace compute {
 
     export interface InstanceServiceAccount {
         /**
-         * The service account e-mail address. If not given, the
-         * default Google Compute Engine service account is used.
+         * The service account e-mail address.
          * **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
          */
         email: string;
@@ -17035,21 +17313,53 @@ export namespace compute {
 
     export interface NetworkFirewallPolicyRuleMatch {
         /**
+         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         */
+        destAddressGroups?: string[];
+        /**
+         * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         */
+        destFqdns?: string[];
+        /**
          * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          */
         destIpRanges?: string[];
+        /**
+         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         */
+        destRegionCodes?: string[];
+        /**
+         * Name of the Google Cloud Threat Intelligence list.
+         */
+        destThreatIntelligences?: string[];
         /**
          * Pairs of IP protocols and ports that the rule should match.
          */
         layer4Configs: outputs.compute.NetworkFirewallPolicyRuleMatchLayer4Config[];
         /**
+         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         */
+        srcAddressGroups?: string[];
+        /**
+         * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         */
+        srcFqdns?: string[];
+        /**
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: string[];
         /**
+         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         */
+        srcRegionCodes?: string[];
+        /**
          * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
          */
         srcSecureTags?: outputs.compute.NetworkFirewallPolicyRuleMatchSrcSecureTag[];
+        /**
+         * Name of the Google Cloud Threat Intelligence list.
+         */
+        srcThreatIntelligences?: string[];
     }
 
     export interface NetworkFirewallPolicyRuleMatchLayer4Config {
@@ -18242,6 +18552,13 @@ export namespace compute {
         type?: string;
     }
 
+    export interface RegionDiskAsyncPrimaryDisk {
+        /**
+         * Primary disk for asynchronous disk replication.
+         */
+        disk: string;
+    }
+
     export interface RegionDiskDiskEncryptionKey {
         /**
          * The name of the encryption key that is stored in Google Cloud KMS.
@@ -19320,21 +19637,53 @@ export namespace compute {
 
     export interface RegionNetworkFirewallPolicyRuleMatch {
         /**
+         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         */
+        destAddressGroups?: string[];
+        /**
+         * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         */
+        destFqdns?: string[];
+        /**
          * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          */
         destIpRanges?: string[];
+        /**
+         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         */
+        destRegionCodes?: string[];
+        /**
+         * Name of the Google Cloud Threat Intelligence list.
+         */
+        destThreatIntelligences?: string[];
         /**
          * Pairs of IP protocols and ports that the rule should match.
          */
         layer4Configs: outputs.compute.RegionNetworkFirewallPolicyRuleMatchLayer4Config[];
         /**
+         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         */
+        srcAddressGroups?: string[];
+        /**
+         * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         */
+        srcFqdns?: string[];
+        /**
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: string[];
         /**
+         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         */
+        srcRegionCodes?: string[];
+        /**
          * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
          */
         srcSecureTags?: outputs.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag[];
+        /**
+         * Name of the Google Cloud Threat Intelligence list.
+         */
+        srcThreatIntelligences?: string[];
     }
 
     export interface RegionNetworkFirewallPolicyRuleMatchLayer4Config {
@@ -21069,6 +21418,13 @@ export namespace compute {
          * Possible values are: `SCSI`, `NVME`.
          */
         interface?: string;
+    }
+
+    export interface ResourcePolicyDiskConsistencyGroupPolicy {
+        /**
+         * Enable disk consistency on the resource policy.
+         */
+        enabled: boolean;
     }
 
     export interface ResourcePolicyGroupPlacementPolicy {
@@ -24388,6 +24744,10 @@ export namespace container {
          */
         securityGroupIds?: string[];
         /**
+         * (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+         */
+        spotConfig?: outputs.container.AwsNodePoolConfigSpotConfig;
+        /**
          * Optional. The SSH configuration.
          */
         sshConfig?: outputs.container.AwsNodePoolConfigSshConfig;
@@ -24454,6 +24814,13 @@ export namespace container {
          * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
          */
         volumeType: string;
+    }
+
+    export interface AwsNodePoolConfigSpotConfig {
+        /**
+         * List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+         */
+        instanceTypes: string[];
     }
 
     export interface AwsNodePoolConfigSshConfig {
@@ -24747,6 +25114,12 @@ export namespace container {
          */
         gcpFilestoreCsiDriverConfig: outputs.container.ClusterAddonsConfigGcpFilestoreCsiDriverConfig;
         /**
+         * )) The status of the GCSFuse CSI driver addon,
+         * which allows the usage of a gcs bucket as volumes.
+         * It is disabled by default; set `enabled = true` to enable.
+         */
+        gcsFuseCsiDriverConfig: outputs.container.ClusterAddonsConfigGcsFuseCsiDriverConfig;
+        /**
          * .
          * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
          */
@@ -24829,6 +25202,16 @@ export namespace container {
     }
 
     export interface ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+        /**
+         * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * not.
+         */
+        enabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigGcsFuseCsiDriverConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
@@ -25182,7 +25565,7 @@ export namespace container {
         /**
          * The IP Stack Type of the cluster. 
          * Default value is `IPV4`.
-         * Possible values are `IPV4` and `PV4_IPV6`.
+         * Possible values are `IPV4` and `IPV4_IPV6`.
          */
         stackType?: string;
     }
@@ -26383,6 +26766,7 @@ export namespace container {
         dnsCacheConfigs: outputs.container.GetClusterAddonsConfigDnsCacheConfig[];
         gcePersistentDiskCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig[];
         gcpFilestoreCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcpFilestoreCsiDriverConfig[];
+        gcsFuseCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcsFuseCsiDriverConfig[];
         gkeBackupAgentConfigs: outputs.container.GetClusterAddonsConfigGkeBackupAgentConfig[];
         horizontalPodAutoscalings: outputs.container.GetClusterAddonsConfigHorizontalPodAutoscaling[];
         httpLoadBalancings: outputs.container.GetClusterAddonsConfigHttpLoadBalancing[];
@@ -26409,6 +26793,10 @@ export namespace container {
     }
 
     export interface GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
+        enabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigGcsFuseCsiDriverConfig {
         enabled: boolean;
     }
 
@@ -27321,6 +27709,375 @@ export namespace containeranalysis {
 
 }
 
+export namespace databasemigrationservice {
+    export interface ConnectionProfileAlloydb {
+        /**
+         * Required. The AlloyDB cluster ID that this connection profile is associated with.
+         */
+        clusterId: string;
+        /**
+         * Immutable. Metadata used to create the destination AlloyDB cluster.
+         * Structure is documented below.
+         */
+        settings?: outputs.databasemigrationservice.ConnectionProfileAlloydbSettings;
+    }
+
+    export interface ConnectionProfileAlloydbSettings {
+        /**
+         * Required. Input only. Initial user to setup during cluster creation.
+         * Structure is documented below.
+         */
+        initialUser: outputs.databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUser;
+        /**
+         * Labels for the AlloyDB cluster created by DMS.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Settings for the cluster's primary instance
+         * Structure is documented below.
+         */
+        primaryInstanceSettings?: outputs.databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettings;
+        /**
+         * Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
+         * It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
+         */
+        vpcNetwork: string;
+    }
+
+    export interface ConnectionProfileAlloydbSettingsInitialUser {
+        /**
+         * The initial password for the user.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * (Output)
+         * Output only. Indicates if the initialUser.password field has been set.
+         */
+        passwordSet: boolean;
+        /**
+         * The database username.
+         */
+        user: string;
+    }
+
+    export interface ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
+        /**
+         * Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+         */
+        databaseFlags?: {[key: string]: string};
+        /**
+         * The database username.
+         */
+        id: string;
+        /**
+         * Labels for the AlloyDB primary instance created by DMS.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * Configuration for the machines that host the underlying database engine.
+         * Structure is documented below.
+         */
+        machineConfig: outputs.databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig;
+        /**
+         * (Output)
+         * Output only. The private IP address for the Instance. This is the connection endpoint for an end-user application.
+         */
+        privateIp: string;
+    }
+
+    export interface ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig {
+        /**
+         * The number of CPU's in the VM instance.
+         */
+        cpuCount: number;
+    }
+
+    export interface ConnectionProfileCloudsql {
+        /**
+         * (Output)
+         * Output only. The Cloud SQL instance ID that this connection profile is associated with.
+         */
+        cloudSqlId: string;
+        /**
+         * (Output)
+         * Output only. The Cloud SQL database instance's private IP.
+         */
+        privateIp: string;
+        /**
+         * (Output)
+         * Output only. The Cloud SQL database instance's public IP.
+         */
+        publicIp: string;
+        /**
+         * Immutable. Metadata used to create the destination Cloud SQL database.
+         * Structure is documented below.
+         */
+        settings?: outputs.databasemigrationservice.ConnectionProfileCloudsqlSettings;
+    }
+
+    export interface ConnectionProfileCloudsqlSettings {
+        /**
+         * The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'.
+         * Possible values are: `ALWAYS`, `NEVER`.
+         */
+        activationPolicy?: string;
+        /**
+         * If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity.
+         * If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
+         */
+        autoStorageIncrease?: boolean;
+        /**
+         * The KMS key name used for the csql instance.
+         */
+        cmekKeyName?: string;
+        /**
+         * The Cloud SQL default instance level collation.
+         */
+        collation?: string;
+        /**
+         * The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
+         */
+        dataDiskSizeGb?: string;
+        /**
+         * The type of storage.
+         * Possible values are: `PD_SSD`, `PD_HDD`.
+         */
+        dataDiskType?: string;
+        /**
+         * The database flags passed to the Cloud SQL instance at startup.
+         */
+        databaseFlags?: {[key: string]: string};
+        /**
+         * The database engine type and version.
+         * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+         */
+        databaseVersion?: string;
+        /**
+         * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
+         * Structure is documented below.
+         */
+        ipConfig?: outputs.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfig;
+        /**
+         * Input only. Initial root password.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        rootPassword?: string;
+        /**
+         * (Output)
+         * Output only. Indicates If this connection profile root password is stored.
+         */
+        rootPasswordSet: boolean;
+        /**
+         * The Database Migration Service source connection profile ID, in the format: projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID
+         */
+        sourceId: string;
+        /**
+         * The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         */
+        storageAutoResizeLimit?: string;
+        /**
+         * The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
+         * For more information, see https://cloud.google.com/sql/docs/mysql/instance-settings
+         */
+        tier?: string;
+        /**
+         * The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
+         */
+        userLabels?: {[key: string]: string};
+        /**
+         * The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
+         */
+        zone?: string;
+    }
+
+    export interface ConnectionProfileCloudsqlSettingsIpConfig {
+        /**
+         * The list of external networks that are allowed to connect to the instance using the IP.
+         * Structure is documented below.
+         */
+        authorizedNetworks?: outputs.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork[];
+        /**
+         * Whether the instance should be assigned an IPv4 address or not.
+         */
+        enableIpv4?: boolean;
+        /**
+         * The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
+         * This setting can be updated, but it cannot be removed after it is set.
+         */
+        privateNetwork?: string;
+        /**
+         * Whether SSL connections over IP should be enforced or not.
+         */
+        requireSsl?: boolean;
+    }
+
+    export interface ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
+        /**
+         * The time when this access control entry expires in RFC 3339 format.
+         */
+        expireTime?: string;
+        /**
+         * A label to identify this entry.
+         */
+        label?: string;
+        /**
+         * Input only. The time-to-leave of this access control entry.
+         */
+        ttl?: string;
+        /**
+         * The allowlisted value for the access control list.
+         */
+        value: string;
+    }
+
+    export interface ConnectionProfileError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details: {[key: string]: any}[];
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message: string;
+    }
+
+    export interface ConnectionProfileMysql {
+        /**
+         * If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+         */
+        cloudSqlId?: string;
+        /**
+         * Required. The IP or hostname of the source MySQL database.
+         */
+        host: string;
+        /**
+         * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+         * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * (Output)
+         * Output only. Indicates If this connection profile password is stored.
+         */
+        passwordSet: boolean;
+        /**
+         * Required. The network port of the source MySQL database.
+         */
+        port: number;
+        /**
+         * SSL configuration for the destination to connect to the source database.
+         * Structure is documented below.
+         */
+        ssl?: outputs.databasemigrationservice.ConnectionProfileMysqlSsl;
+        /**
+         * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+         */
+        username: string;
+    }
+
+    export interface ConnectionProfileMysqlSsl {
+        /**
+         * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+         * The replica will use this certificate to verify it's connecting to the right host.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        caCertificate: string;
+        /**
+         * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+         * If this field is used then the 'clientKey' field is mandatory
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientCertificate?: string;
+        /**
+         * Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+         * If this field is used then the 'clientCertificate' field is mandatory.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientKey?: string;
+        /**
+         * (Output)
+         * The current connection profile state.
+         */
+        type: string;
+    }
+
+    export interface ConnectionProfilePostgresql {
+        /**
+         * If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+         */
+        cloudSqlId?: string;
+        /**
+         * Required. The IP or hostname of the source MySQL database.
+         */
+        host: string;
+        /**
+         * (Output)
+         * Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
+         */
+        networkArchitecture: string;
+        /**
+         * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+         * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        password: string;
+        /**
+         * (Output)
+         * Output only. Indicates If this connection profile password is stored.
+         */
+        passwordSet: boolean;
+        /**
+         * Required. The network port of the source MySQL database.
+         */
+        port: number;
+        /**
+         * SSL configuration for the destination to connect to the source database.
+         * Structure is documented below.
+         */
+        ssl?: outputs.databasemigrationservice.ConnectionProfilePostgresqlSsl;
+        /**
+         * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+         */
+        username: string;
+    }
+
+    export interface ConnectionProfilePostgresqlSsl {
+        /**
+         * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate.
+         * The replica will use this certificate to verify it's connecting to the right host.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        caCertificate: string;
+        /**
+         * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.
+         * If this field is used then the 'clientKey' field is mandatory
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientCertificate?: string;
+        /**
+         * Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate.
+         * If this field is used then the 'clientCertificate' field is mandatory.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientKey?: string;
+        /**
+         * (Output)
+         * The current connection profile state.
+         */
+        type: string;
+    }
+
+}
+
 export namespace datacatalog {
     export interface EntryBigqueryDateShardedSpec {
         /**
@@ -27649,6 +28406,11 @@ export namespace datafusion {
 export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfig {
         /**
+         * Treat the dataset as an image and redact.
+         * Structure is documented below.
+         */
+        imageTransformations?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformations;
+        /**
          * Treat the dataset as free-form text and apply the same free text transformation everywhere
          * Structure is documented below.
          */
@@ -27658,6 +28420,76 @@ export namespace dataloss {
          * Structure is documented below.
          */
         recordTransformations?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
+        /**
+         * For determination of how redaction of images should occur.
+         * Structure is documented below.
+         */
+        transforms: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform[];
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform {
+        /**
+         * Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.
+         */
+        allInfoTypes?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypes;
+        /**
+         * Apply transformation to all text that doesn't match an infoType.
+         */
+        allText?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText;
+        /**
+         * The color to use when redacting content from an image. If not specified, the default is black.
+         * Structure is documented below.
+         */
+        redactionColor?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor;
+        /**
+         * Apply transformation to the selected infoTypes.
+         * Structure is documented below.
+         */
+        selectedInfoTypes?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypes {
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText {
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor {
+        /**
+         * The amount of blue in the color as a value in the interval [0, 1].
+         */
+        blue?: number;
+        /**
+         * The amount of green in the color as a value in the interval [0, 1].
+         */
+        green?: number;
+        /**
+         * The amount of red in the color as a value in the interval [0, 1].
+         */
+        red?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes {
+        /**
+         * InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
+         * all findings that correspond to infoTypes that were requested in InspectConfig.
+         * Structure is documented below.
+         */
+        infoTypes: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType[];
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoType {
+        /**
+         * Name of the information type.
+         */
+        name: string;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
@@ -27688,6 +28520,10 @@ export namespace dataloss {
          * Name of the information type.
          */
         name: string;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation {
@@ -27712,6 +28548,11 @@ export namespace dataloss {
          * Structure is documented below.
          */
         replaceConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig;
+        /**
+         * Replace with a value randomly drawn (with replacement) from a dictionary.
+         * Structure is documented below.
+         */
+        replaceDictionaryConfig?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig;
         /**
          * Replace each matching finding with the name of the info type.
          */
@@ -28035,6 +28876,21 @@ export namespace dataloss {
          * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
          */
         seconds?: number;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig {
+        /**
+         * A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
+         * Structure is documented below.
+         */
+        wordList: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList;
+    }
+
+    export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: string[];
     }
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
@@ -29384,6 +30240,10 @@ export namespace dataloss {
          * Structure is documented below.
          */
         storedType?: outputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType;
+        /**
+         * Message for detecting output from deidentification transformations that support reversing.
+         */
+        surrogateType?: outputs.dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType;
     }
 
     export interface PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary {
@@ -29420,6 +30280,10 @@ export namespace dataloss {
          * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
          */
         name: string;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionInspectTemplateInspectConfigCustomInfoTypeRegex {
@@ -29442,6 +30306,9 @@ export namespace dataloss {
         name: string;
     }
 
+    export interface PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType {
+    }
+
     export interface PreventionInspectTemplateInspectConfigInfoType {
         /**
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
@@ -29449,7 +30316,7 @@ export namespace dataloss {
          */
         name: string;
         /**
-         * Version of the information type to use. By default, the version is set to stable
+         * Version name for this InfoType.
          */
         version?: string;
     }
@@ -29490,6 +30357,10 @@ export namespace dataloss {
          * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
          */
         name: string;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionInspectTemplateInspectConfigRuleSet {
@@ -29511,6 +30382,10 @@ export namespace dataloss {
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
          */
         name: string;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionInspectTemplateInspectConfigRuleSetRule {
@@ -29532,6 +30407,12 @@ export namespace dataloss {
          * Structure is documented below.
          */
         dictionary?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary;
+        /**
+         * Drop if the hotword rule is contained in the proximate context.
+         * For tabular data, the context includes the column name.
+         * Structure is documented below.
+         */
+        excludeByHotword?: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
         /**
          * Set of infoTypes for which findings would affect this rule.
          * Structure is documented below.
@@ -29577,6 +30458,47 @@ export namespace dataloss {
         words: string[];
     }
 
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity: outputs.dataloss.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: string;
+    }
+
+    export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+        /**
+         * Number of characters after the finding to consider.
+         */
+        windowAfter?: number;
+        /**
+         * Number of characters before the finding to consider.
+         */
+        windowBefore?: number;
+    }
+
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
         /**
          * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
@@ -29591,6 +30513,10 @@ export namespace dataloss {
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
          */
         name: string;
+        /**
+         * Version name for this InfoType.
+         */
+        version?: string;
     }
 
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex {
@@ -29659,11 +30585,11 @@ export namespace dataloss {
 
     export interface PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
         /**
-         * Number of characters after the finding to consider. Either this or windowBefore must be specified
+         * Number of characters after the finding to consider.
          */
         windowAfter?: number;
         /**
-         * Number of characters before the finding to consider. Either this or windowAfter must be specified
+         * Number of characters before the finding to consider.
          */
         windowBefore?: number;
     }
@@ -29674,6 +30600,11 @@ export namespace dataloss {
          * Structure is documented below.
          */
         actions: outputs.dataloss.PreventionJobTriggerInspectJobAction[];
+        /**
+         * The core content of the template.
+         * Structure is documented below.
+         */
+        inspectConfig?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfig;
         /**
          * The name of the template to run when this job is triggered.
          */
@@ -29708,6 +30639,10 @@ export namespace dataloss {
          * Publish the result summary of a DlpJob to the Cloud Security Command Center.
          */
         publishSummaryToCscc?: outputs.dataloss.PreventionJobTriggerInspectJobActionPublishSummaryToCscc;
+        /**
+         * Enable Stackdriver metric dlp.googleapis.com/findingCount.
+         */
+        publishToStackdriver?: outputs.dataloss.PreventionJobTriggerInspectJobActionPublishToStackdriver;
         /**
          * If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
          * Structure is documented below.
@@ -29799,6 +30734,9 @@ export namespace dataloss {
     export interface PreventionJobTriggerInspectJobActionPublishSummaryToCscc {
     }
 
+    export interface PreventionJobTriggerInspectJobActionPublishToStackdriver {
+    }
+
     export interface PreventionJobTriggerInspectJobActionSaveFindings {
         /**
          * Information on where to store output
@@ -29841,6 +30779,441 @@ export namespace dataloss {
          * is 1,024 characters.
          */
         tableId?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfig {
+        /**
+         * Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
+         * Structure is documented below.
+         */
+        customInfoTypes?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoType[];
+        /**
+         * When true, excludes type information of the findings.
+         */
+        excludeInfoTypes?: boolean;
+        /**
+         * When true, a contextual quote from the data that triggered a finding is included in the response.
+         */
+        includeQuote?: boolean;
+        /**
+         * Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
+         * or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
+         * When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
+         * By default this may be all types, but may change over time as detectors are updated.
+         * Structure is documented below.
+         */
+        infoTypes?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigInfoType[];
+        /**
+         * Configuration to control the number of findings returned.
+         * Structure is documented below.
+         */
+        limits?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigLimits;
+        /**
+         * Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
+         * Default value is `POSSIBLE`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        minLikelihood?: string;
+        /**
+         * Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
+         * other rules are executed in the order they are specified for each info type.
+         * Structure is documented below.
+         */
+        ruleSets?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSet[];
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary;
+        /**
+         * If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
+         * Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
+         */
+        exclusionType?: string;
+        /**
+         * CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
+         * infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
+         * one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
+         * treated as a custom info type.
+         * Structure is documented below.
+         */
+        infoType: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType;
+        /**
+         * Likelihood to return for this CustomInfoType. This base value can be altered by a detection rule if the finding meets the criteria
+         * specified by the rule.
+         * Default value is `VERY_LIKELY`.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        likelihood?: string;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex;
+        /**
+         * A reference to a StoredInfoType to use with scanning.
+         * Structure is documented below.
+         */
+        storedType?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType;
+        /**
+         * Message for detecting output from deidentification transformations that support reversing.
+         */
+        surrogateType?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: string[];
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Version of the information type to use. By default, the version is set to stable.
+         */
+        version?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType {
+        /**
+         * (Output)
+         * The creation timestamp of an inspectTemplate. Set by the server.
+         */
+        createTime: string;
+        /**
+         * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+         * or `projects/project-id/storedInfoTypes/432452342`.
+         */
+        name: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType {
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Version of the information type to use. By default, the version is set to stable.
+         */
+        version?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigLimits {
+        /**
+         * Configuration of findings limit given for specified infoTypes.
+         * Structure is documented below.
+         */
+        maxFindingsPerInfoTypes?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType[];
+        /**
+         * Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
+         */
+        maxFindingsPerItem?: number;
+        /**
+         * Max number of findings that will be returned per request/job. The maximum returned is 2000.
+         */
+        maxFindingsPerRequest?: number;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
+        /**
+         * Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
+         * not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
+         * specified in another InfoTypeLimit.
+         * Structure is documented below.
+         */
+        infoType?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType;
+        /**
+         * Max findings limit for the given infoType.
+         */
+        maxFindings?: number;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+         * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Version of the information type to use. By default, the version is set to stable.
+         */
+        version?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSet {
+        /**
+         * List of infoTypes this rule set is applied to.
+         * Structure is documented below.
+         */
+        infoTypes?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType[];
+        /**
+         * Set of rules to be applied to infoTypes. The rules are applied in order.
+         * Structure is documented below.
+         */
+        rules: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRule[];
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Version of the information type to use. By default, the version is set to stable.
+         */
+        version?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
+        /**
+         * The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
+         * Structure is documented below.
+         */
+        exclusionRule?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule;
+        /**
+         * Hotword-based detection rule.
+         * Structure is documented below.
+         */
+        hotwordRule?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule {
+        /**
+         * Dictionary which defines the rule.
+         * Structure is documented below.
+         */
+        dictionary?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary;
+        /**
+         * Drop if the hotword rule is contained in the proximate context.
+         * Structure is documented below.
+         */
+        excludeByHotword?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
+        /**
+         * Set of infoTypes for which findings would affect this rule.
+         * Structure is documented below.
+         */
+        excludeInfoTypes?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
+        /**
+         * How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
+         * Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
+         */
+        matchingType: string;
+        /**
+         * Regular expression which defines the rule.
+         * Structure is documented below.
+         */
+        regex?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary {
+        /**
+         * Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
+         * Structure is documented below.
+         */
+        cloudStoragePath?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath;
+        /**
+         * List of words or phrases to search for.
+         * Structure is documented below.
+         */
+        wordList?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath {
+        /**
+         * A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
+         */
+        path: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList {
+        /**
+         * Words or phrases defining the dictionary. The dictionary must contain at least one
+         * phrase and every phrase must contain at least 2 characters that are letters or digits.
+         */
+        words: string[];
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity {
+        /**
+         * Number of characters after the finding to consider. Either this or windowBefore must be specified
+         */
+        windowAfter?: number;
+        /**
+         * Number of characters before the finding to consider. Either this or windowAfter must be specified
+         */
+        windowBefore?: number;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes {
+        /**
+         * If a finding is matched by any of the infoType detectors listed here, the finding will be excluded from the scan results.
+         * Structure is documented below.
+         */
+        infoTypes: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType[];
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType {
+        /**
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+         * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         */
+        name: string;
+        /**
+         * Version of the information type to use. By default, the version is set to stable.
+         */
+        version?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified, the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression.
+         * Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule {
+        /**
+         * Regular expression pattern defining what qualifies as a hotword.
+         * Structure is documented below.
+         */
+        hotwordRegex?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex;
+        /**
+         * Likelihood adjustment to apply to all matching findings.
+         * Structure is documented below.
+         */
+        likelihoodAdjustment?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment;
+        /**
+         * Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
+         * exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
+         * used to match substrings of the finding itself. For example, the certainty of a phone number regex
+         * `(\d{3}) \d{3}-\d{4}` could be adjusted upwards if the area code is known to be the local area code of a company
+         * office using the hotword regex `(xxx)`, where `xxx` is the area code in question.
+         * Structure is documented below.
+         */
+        proximity?: outputs.dataloss.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex {
+        /**
+         * The index of the submatch to extract as findings. When not specified,
+         * the entire match is returned. No more than 3 may be included.
+         */
+        groupIndexes?: number[];
+        /**
+         * Pattern defining the regular expression. Its syntax
+         * (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub.
+         */
+        pattern?: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment {
+        /**
+         * Set the likelihood of a finding to a fixed value. Either this or relativeLikelihood can be set.
+         * Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+         */
+        fixedLikelihood?: string;
+        /**
+         * Increase or decrease the likelihood by the specified number of levels. For example,
+         * if a finding would be POSSIBLE without the detection rule and relativeLikelihood is 1,
+         * then it is upgraded to LIKELY, while a value of -1 would downgrade it to UNLIKELY.
+         * Likelihood may never drop below VERY_UNLIKELY or exceed VERY_LIKELY, so applying an
+         * adjustment of 1 followed by an adjustment of -1 when base likelihood is VERY_LIKELY
+         * will result in a final likelihood of LIKELY. Either this or fixedLikelihood can be set.
+         */
+        relativeLikelihood?: number;
+    }
+
+    export interface PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity {
+        /**
+         * Number of characters after the finding to consider. Either this or windowBefore must be specified
+         */
+        windowAfter?: number;
+        /**
+         * Number of characters before the finding to consider. Either this or windowAfter must be specified
+         */
+        windowBefore?: number;
     }
 
     export interface PreventionJobTriggerInspectJobStorageConfig {
@@ -35567,6 +36940,45 @@ export namespace firebaserules {
 }
 
 export namespace firestore {
+    export interface FieldIndexConfig {
+        /**
+         * The indexes to configure on the field. Order or array contains must be specified.
+         * Structure is documented below.
+         */
+        indexes?: outputs.firestore.FieldIndexConfigIndex[];
+    }
+
+    export interface FieldIndexConfigIndex {
+        /**
+         * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+         * be specified.
+         * Possible values are: `CONTAINS`.
+         */
+        arrayConfig?: string;
+        /**
+         * Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+         * Only one of `order` and `arrayConfig` can be specified.
+         * Possible values are: `ASCENDING`, `DESCENDING`.
+         */
+        order?: string;
+        /**
+         * The scope at which a query is run. Collection scoped queries require you specify
+         * the collection at query time. Collection group scope allows queries across all
+         * collections with the same id.
+         * Default value is `COLLECTION`.
+         * Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+         */
+        queryScope?: string;
+    }
+
+    export interface FieldTtlConfig {
+        /**
+         * (Output)
+         * The state of the TTL configuration.
+         */
+        state: string;
+    }
+
     export interface IndexField {
         /**
          * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
@@ -36235,6 +37647,1502 @@ export namespace gkehub {
         description?: string;
         expression: string;
         title: string;
+    }
+
+}
+
+export namespace gkeonprem {
+    export interface BareMetalClusterClusterOperations {
+        /**
+         * Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+         */
+        enableApplicationLogs?: boolean;
+    }
+
+    export interface BareMetalClusterControlPlane {
+        /**
+         * Customizes the default API server args. Only a subset of
+         * customized flags are supported. Please refer to the API server
+         * documentation below to know the exact format:
+         * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+         * Structure is documented below.
+         */
+        apiServerArgs?: outputs.gkeonprem.BareMetalClusterControlPlaneApiServerArg[];
+        /**
+         * Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+         * Structure is documented below.
+         */
+        controlPlaneNodePoolConfig: outputs.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfig;
+    }
+
+    export interface BareMetalClusterControlPlaneApiServerArg {
+        /**
+         * The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+         */
+        argument: string;
+        /**
+         * The value of the arg as it will be passed to the API Server command line.
+         */
+        value: string;
+    }
+
+    export interface BareMetalClusterControlPlaneControlPlaneNodePoolConfig {
+        /**
+         * The generic configuration for a node pool running the control plane.
+         * Structure is documented below.
+         */
+        nodePoolConfig: outputs.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig;
+    }
+
+    export interface BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The list of machine addresses in the Bare Metal Node Pool.
+         * Structure is documented below.
+         */
+        nodeConfigs?: outputs.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig[];
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         */
+        operatingSystem?: string;
+        /**
+         * The initial taints assigned to nodes of this node pool.
+         * Structure is documented below.
+         */
+        taints: outputs.gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint[];
+    }
+
+    export interface BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The default IPv4 address for SSH access and Kubernetes node.
+         * Example: 192.168.0.1
+         */
+        nodeIp?: string;
+    }
+
+    export interface BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         */
+        effect?: string;
+        /**
+         * Key associated with the effect.
+         */
+        key?: string;
+        /**
+         * Value associated with the effect.
+         */
+        value?: string;
+    }
+
+    export interface BareMetalClusterFleet {
+        /**
+         * (Output)
+         * The name of the managed Hub Membership resource associated to this cluster.
+         * Membership names are formatted as
+         * `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+         */
+        membership: string;
+    }
+
+    export interface BareMetalClusterLoadBalancer {
+        /**
+         * Configuration for BGP typed load balancers.
+         * Structure is documented below.
+         */
+        bgpLbConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfig;
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        manualLbConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerManualLbConfig;
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        metalLbConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfig;
+        /**
+         * Specifies the load balancer ports.
+         * Structure is documented below.
+         */
+        portConfig: outputs.gkeonprem.BareMetalClusterLoadBalancerPortConfig;
+        /**
+         * Specified the Bare Metal Load Balancer Config
+         * Structure is documented below.
+         */
+        vipConfig: outputs.gkeonprem.BareMetalClusterLoadBalancerVipConfig;
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfig {
+        /**
+         * AddressPools is a list of non-overlapping IP pools used by load balancer
+         * typed services. All addresses must be routable to load balancer nodes.
+         * IngressVIP must be included in the pools.
+         * Structure is documented below.
+         */
+        addressPools: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigAddressPool[];
+        /**
+         * BGP autonomous system number (ASN) of the cluster.
+         * This field can be updated after cluster creation.
+         */
+        asn: number;
+        /**
+         * The list of BGP peers that the cluster will connect to.
+         * At least one peer must be configured for each control plane node.
+         * Control plane nodes will connect to these peers to advertise the control
+         * plane VIP. The Services load balancer also uses these peers by default.
+         * This field can be updated after cluster creation.
+         * Structure is documented below.
+         */
+        bgpPeerConfigs: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig[];
+        /**
+         * Specifies the node pool running data plane load balancing. L2 connectivity
+         * is required among nodes in this pool. If missing, the control plane node
+         * pool is used for data plane load balancing.
+         * Structure is documented below.
+         */
+        loadBalancerNodePoolConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig;
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
+        /**
+         * The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
+         */
+        addresses: string[];
+        /**
+         * If true, avoid using IPs ending in .0 or .255.
+         * This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
+         */
+        avoidBuggyIps?: boolean;
+        /**
+         * If true, prevent IP addresses from being automatically assigned.
+         */
+        manualAssign?: string;
+        /**
+         * The name of the address pool.
+         */
+        pool: string;
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig {
+        /**
+         * BGP autonomous system number (ASN) for the network that contains the
+         * external peer device.
+         */
+        asn: number;
+        /**
+         * The IP address of the control plane node that connects to the external
+         * peer.
+         * If you don't specify any control plane nodes, all control plane nodes
+         * can connect to the external peer. If you specify one or more IP addresses,
+         * only the nodes specified participate in peering sessions.
+         */
+        controlPlaneNodes?: string[];
+        /**
+         * The IP address of the external peer device.
+         */
+        ipAddress: string;
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
+        /**
+         * The generic configuration for a node pool running a load balancer.
+         * Structure is documented below.
+         */
+        nodePoolConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig;
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
+        /**
+         * The modifiable kubelet configurations for the baremetal machines.
+         * Structure is documented below.
+         */
+        kubeletConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig;
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The list of machine addresses in the Bare Metal Node Pool.
+         * Structure is documented below.
+         */
+        nodeConfigs?: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig[];
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         */
+        operatingSystem?: string;
+        /**
+         * The initial taints assigned to nodes of this node pool.
+         * Structure is documented below.
+         */
+        taints?: outputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint[];
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig {
+        /**
+         * The maximum size of bursty pulls, temporarily allows pulls to burst to this
+         * number, while still not exceeding registry_pull_qps.
+         * The value must not be a negative number.
+         * Updating this field may impact scalability by changing the amount of
+         * traffic produced by image pulls.
+         * Defaults to 10.
+         */
+        registryBurst?: number;
+        /**
+         * The limit of registry pulls per second.
+         * Setting this value to 0 means no limit.
+         * Updating this field may impact scalability by changing the amount of
+         * traffic produced by image pulls.
+         * Defaults to 5.
+         */
+        registryPullQps?: number;
+        /**
+         * Prevents the Kubelet from pulling multiple images at a time.
+         * We recommend *not* changing the default value on nodes that run docker
+         * daemon with version  < 1.9 or an Another Union File System (Aufs) storage
+         * backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has
+         * more details.
+         */
+        serializeImagePullsDisabled?: boolean;
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The default IPv4 address for SSH access and Kubernetes node.
+         * Example: 192.168.0.1
+         */
+        nodeIp?: string;
+    }
+
+    export interface BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint {
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         */
+        effect?: string;
+        /**
+         * Key associated with the effect.
+         */
+        key?: string;
+        /**
+         * Value associated with the effect.
+         */
+        value?: string;
+    }
+
+    export interface BareMetalClusterLoadBalancerManualLbConfig {
+        /**
+         * Whether manual load balancing is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface BareMetalClusterLoadBalancerMetalLbConfig {
+        /**
+         * AddressPools is a list of non-overlapping IP pools used by load balancer
+         * typed services. All addresses must be routable to load balancer nodes.
+         * IngressVIP must be included in the pools.
+         * Structure is documented below.
+         */
+        addressPools: outputs.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigAddressPool[];
+        /**
+         * Specifies the load balancer's node pool configuration.
+         * Structure is documented below.
+         */
+        loadBalancerNodePoolConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig;
+    }
+
+    export interface BareMetalClusterLoadBalancerMetalLbConfigAddressPool {
+        /**
+         * The addresses that are part of this pool. Each address must be either in the CIDR form (1.2.3.0/24) or range form (1.2.3.1-1.2.3.5).
+         */
+        addresses: string[];
+        /**
+         * If true, avoid using IPs ending in .0 or .255.
+         * This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
+         */
+        avoidBuggyIps?: boolean;
+        /**
+         * If true, prevent IP addresses from being automatically assigned.
+         */
+        manualAssign?: boolean;
+        /**
+         * The name of the address pool.
+         */
+        pool: string;
+    }
+
+    export interface BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig {
+        /**
+         * The generic configuration for a node pool running a load balancer.
+         * Structure is documented below.
+         */
+        nodePoolConfig?: outputs.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig;
+    }
+
+    export interface BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The list of machine addresses in the Bare Metal Node Pool.
+         * Structure is documented below.
+         */
+        nodeConfigs?: outputs.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig[];
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         */
+        operatingSystem: string;
+        /**
+         * The initial taints assigned to nodes of this node pool.
+         * Structure is documented below.
+         */
+        taints: outputs.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint[];
+    }
+
+    export interface BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The default IPv4 address for SSH access and Kubernetes node.
+         * Example: 192.168.0.1
+         */
+        nodeIp?: string;
+    }
+
+    export interface BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint {
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         */
+        effect?: string;
+        /**
+         * Key associated with the effect.
+         */
+        key?: string;
+        /**
+         * Value associated with the effect.
+         */
+        value?: string;
+    }
+
+    export interface BareMetalClusterLoadBalancerPortConfig {
+        /**
+         * The port that control plane hosted load balancers will listen on.
+         */
+        controlPlaneLoadBalancerPort: number;
+    }
+
+    export interface BareMetalClusterLoadBalancerVipConfig {
+        /**
+         * The VIP which you previously set aside for the Kubernetes API of this Bare Metal User Cluster.
+         */
+        controlPlaneVip: string;
+        /**
+         * The VIP which you previously set aside for ingress traffic into this Bare Metal User Cluster.
+         */
+        ingressVip: string;
+    }
+
+    export interface BareMetalClusterMaintenanceConfig {
+        /**
+         * All IPv4 address from these ranges will be placed into maintenance mode.
+         * Nodes in maintenance mode will be cordoned and drained. When both of these
+         * are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+         * on the node resource.
+         */
+        maintenanceAddressCidrBlocks: string[];
+    }
+
+    export interface BareMetalClusterNetworkConfig {
+        /**
+         * Enables the use of advanced Anthos networking features, such as Bundled
+         * Load Balancing with BGP or the egress NAT gateway.
+         * Setting configuration for advanced networking features will automatically
+         * set this flag.
+         */
+        advancedNetworking?: boolean;
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        islandModeCidr?: outputs.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidr;
+        /**
+         * Configuration for multiple network interfaces.
+         * Structure is documented below.
+         */
+        multipleNetworkInterfacesConfig?: outputs.gkeonprem.BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig;
+        /**
+         * Configuration for SR-IOV.
+         * Structure is documented below.
+         */
+        srIovConfig?: outputs.gkeonprem.BareMetalClusterNetworkConfigSrIovConfig;
+    }
+
+    export interface BareMetalClusterNetworkConfigIslandModeCidr {
+        /**
+         * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+         */
+        podAddressCidrBlocks: string[];
+        /**
+         * All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+         */
+        serviceAddressCidrBlocks: string[];
+    }
+
+    export interface BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig {
+        /**
+         * Whether to enable multiple network interfaces for your pods.
+         * When set network_config.advanced_networking is automatically
+         * set to true.
+         */
+        enabled?: boolean;
+    }
+
+    export interface BareMetalClusterNetworkConfigSrIovConfig {
+        /**
+         * Whether to install the SR-IOV operator.
+         */
+        enabled?: boolean;
+    }
+
+    export interface BareMetalClusterNodeAccessConfig {
+        /**
+         * LoginUser is the user name used to access node machines.
+         * It defaults to "root" if not set.
+         */
+        loginUser: string;
+    }
+
+    export interface BareMetalClusterNodeConfig {
+        /**
+         * The available runtimes that can be used to run containers in a Bare Metal User Cluster.
+         * Possible values are: `CONTAINER_RUNTIME_UNSPECIFIED`, `DOCKER`, `CONTAINERD`.
+         */
+        containerRuntime: string;
+        /**
+         * The maximum number of pods a node can run. The size of the CIDR range
+         * assigned to the node will be derived from this parameter.
+         */
+        maxPodsPerNode: number;
+    }
+
+    export interface BareMetalClusterOsEnvironmentConfig {
+        /**
+         * Whether the package repo should not be included when initializing
+         * bare metal machines.
+         */
+        packageRepoExcluded: boolean;
+    }
+
+    export interface BareMetalClusterProxy {
+        /**
+         * A list of IPs, hostnames, and domains that should skip the proxy.
+         * Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+         */
+        noProxies?: string[];
+        /**
+         * Specifies the address of your proxy server.
+         * Examples: http://domain
+         * WARNING: Do not provide credentials in the format
+         * http://(username:password@)domain these will be rejected by the server.
+         */
+        uri: string;
+    }
+
+    export interface BareMetalClusterSecurityConfig {
+        /**
+         * Configures user access to the Bare Metal User cluster.
+         * Structure is documented below.
+         */
+        authorization?: outputs.gkeonprem.BareMetalClusterSecurityConfigAuthorization;
+    }
+
+    export interface BareMetalClusterSecurityConfigAuthorization {
+        /**
+         * Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+         * Structure is documented below.
+         */
+        adminUsers: outputs.gkeonprem.BareMetalClusterSecurityConfigAuthorizationAdminUser[];
+    }
+
+    export interface BareMetalClusterSecurityConfigAuthorizationAdminUser {
+        /**
+         * The name of the user, e.g. `my-gcp-id@gmail.com`.
+         */
+        username: string;
+    }
+
+    export interface BareMetalClusterStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.BareMetalClusterStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the user cluster
+         * controller. The error message can be temporary as the user cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface BareMetalClusterStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * Human-readable message indicating details about last transition.
+         */
+        message?: string;
+        /**
+         * (Output)
+         * A human-readable message of the check failure.
+         */
+        reason?: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type?: string;
+    }
+
+    export interface BareMetalClusterStorage {
+        /**
+         * Specifies the config for local PersistentVolumes backed
+         * by mounted node disks. These disks need to be formatted and mounted by the
+         * user, which can be done before or after cluster creation.
+         * Structure is documented below.
+         */
+        lvpNodeMountsConfig: outputs.gkeonprem.BareMetalClusterStorageLvpNodeMountsConfig;
+        /**
+         * Specifies the config for local PersistentVolumes backed by
+         * subdirectories in a shared filesystem. These subdirectores are
+         * automatically created during cluster creation.
+         * Structure is documented below.
+         */
+        lvpShareConfig: outputs.gkeonprem.BareMetalClusterStorageLvpShareConfig;
+    }
+
+    export interface BareMetalClusterStorageLvpNodeMountsConfig {
+        /**
+         * The host machine path.
+         */
+        path: string;
+        /**
+         * The StorageClass name that PVs will be created with.
+         */
+        storageClass: string;
+    }
+
+    export interface BareMetalClusterStorageLvpShareConfig {
+        /**
+         * Defines the machine path and storage class for the LVP Share.
+         * Structure is documented below.
+         */
+        lvpConfig: outputs.gkeonprem.BareMetalClusterStorageLvpShareConfigLvpConfig;
+        /**
+         * The number of subdirectories to create under path.
+         */
+        sharedPathPvCount?: number;
+    }
+
+    export interface BareMetalClusterStorageLvpShareConfigLvpConfig {
+        /**
+         * The host machine path.
+         */
+        path: string;
+        /**
+         * The StorageClass name that PVs will be created with.
+         */
+        storageClass: string;
+    }
+
+    export interface BareMetalClusterValidationCheck {
+        /**
+         * (Output)
+         * Options used for the validation check.
+         */
+        options: string;
+        /**
+         * (Output)
+         * The scenario when the preflight checks were run..
+         */
+        scenario: string;
+        /**
+         * (Output)
+         * Specifies the detailed validation check status
+         * Structure is documented below.
+         */
+        statuses: outputs.gkeonprem.BareMetalClusterValidationCheckStatus[];
+    }
+
+    export interface BareMetalClusterValidationCheckStatus {
+        /**
+         * (Output)
+         * Individual checks which failed as part of the Preflight check execution.
+         * Structure is documented below.
+         */
+        results: outputs.gkeonprem.BareMetalClusterValidationCheckStatusResult[];
+    }
+
+    export interface BareMetalClusterValidationCheckStatusResult {
+        /**
+         * (Output)
+         * The category of the validation.
+         */
+        category: string;
+        /**
+         * A human readable description of this Bare Metal User Cluster.
+         */
+        description: string;
+        /**
+         * (Output)
+         * Detailed failure information, which might be unformatted.
+         */
+        details: string;
+        /**
+         * (Output)
+         * Options used for the validation check.
+         */
+        options: string;
+        /**
+         * (Output)
+         * A human-readable message of the check failure.
+         */
+        reason: string;
+    }
+
+    export interface BareMetalNodePoolNodePoolConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The list of machine addresses in the Bare Metal Node Pool.
+         * Structure is documented below.
+         */
+        nodeConfigs: outputs.gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfig[];
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         */
+        operatingSystem: string;
+        /**
+         * The initial taints assigned to nodes of this node pool.
+         * Structure is documented below.
+         */
+        taints: outputs.gkeonprem.BareMetalNodePoolNodePoolConfigTaint[];
+    }
+
+    export interface BareMetalNodePoolNodePoolConfigNodeConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The default IPv4 address for SSH access and Kubernetes node.
+         * Example: 192.168.0.1
+         */
+        nodeIp?: string;
+    }
+
+    export interface BareMetalNodePoolNodePoolConfigTaint {
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         */
+        effect?: string;
+        /**
+         * Key associated with the effect.
+         */
+        key?: string;
+        /**
+         * Value associated with the effect.
+         */
+        value?: string;
+    }
+
+    export interface BareMetalNodePoolStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.BareMetalNodePoolStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the user cluster
+         * controller. The error message can be temporary as the user cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface BareMetalNodePoolStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * Human-readable message indicating details about last transition.
+         */
+        message?: string;
+        /**
+         * Machine-readable message indicating details about last transition.
+         */
+        reason?: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type?: string;
+    }
+
+    export interface VMwareClusterAntiAffinityGroups {
+        /**
+         * Spread nodes across at least three physical hosts (requires at least three
+         * hosts).
+         * Enabled by default.
+         */
+        aagConfigDisabled: boolean;
+    }
+
+    export interface VMwareClusterAuthorization {
+        /**
+         * Users that will be granted the cluster-admin role on the cluster, providing
+         * full access to the cluster.
+         * Structure is documented below.
+         */
+        adminUsers?: outputs.gkeonprem.VMwareClusterAuthorizationAdminUser[];
+    }
+
+    export interface VMwareClusterAuthorizationAdminUser {
+        /**
+         * The name of the user, e.g. `my-gcp-id@gmail.com`.
+         */
+        username: string;
+    }
+
+    export interface VMwareClusterAutoRepairConfig {
+        /**
+         * Whether auto repair is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface VMwareClusterControlPlaneNode {
+        /**
+         * AutoResizeConfig provides auto resizing configurations.
+         * Structure is documented below.
+         */
+        autoResizeConfig: outputs.gkeonprem.VMwareClusterControlPlaneNodeAutoResizeConfig;
+        /**
+         * The number of CPUs for each admin cluster node that serve as control planes
+         * for this VMware User Cluster. (default: 4 CPUs)
+         */
+        cpus?: number;
+        /**
+         * The megabytes of memory for each admin cluster node that serves as a
+         * control plane for this VMware User Cluster (default: 8192 MB memory).
+         */
+        memory?: number;
+        /**
+         * The number of control plane nodes for this VMware User Cluster.
+         * (default: 1 replica).
+         */
+        replicas?: number;
+        /**
+         * (Output)
+         * Vsphere-specific config.
+         * Structure is documented below.
+         */
+        vsphereConfigs: outputs.gkeonprem.VMwareClusterControlPlaneNodeVsphereConfig[];
+    }
+
+    export interface VMwareClusterControlPlaneNodeAutoResizeConfig {
+        /**
+         * Whether to enable control plane node auto resizing.
+         */
+        enabled: boolean;
+    }
+
+    export interface VMwareClusterControlPlaneNodeVsphereConfig {
+        /**
+         * (Output)
+         * The Vsphere datastore used by the Control Plane Node.
+         */
+        datastore: string;
+    }
+
+    export interface VMwareClusterDataplaneV2 {
+        /**
+         * Enable advanced networking which requires dataplaneV2Enabled to be set true.
+         */
+        advancedNetworking?: boolean;
+        /**
+         * Enables Dataplane V2.
+         */
+        dataplaneV2Enabled?: boolean;
+        /**
+         * Enable Dataplane V2 for clusters with Windows nodes.
+         */
+        windowsDataplaneV2Enabled?: boolean;
+    }
+
+    export interface VMwareClusterFleet {
+        /**
+         * (Output)
+         * The name of the managed Hub Membership resource associated to this cluster.
+         * Membership names are formatted as
+         * `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+         */
+        membership: string;
+    }
+
+    export interface VMwareClusterLoadBalancer {
+        /**
+         * Configuration for F5 Big IP typed load balancers.
+         * Structure is documented below.
+         */
+        f5Config?: outputs.gkeonprem.VMwareClusterLoadBalancerF5Config;
+        /**
+         * Manually configured load balancers.
+         * Structure is documented below.
+         */
+        manualLbConfig?: outputs.gkeonprem.VMwareClusterLoadBalancerManualLbConfig;
+        /**
+         * Configuration for MetalLB typed load balancers.
+         * Structure is documented below.
+         */
+        metalLbConfig?: outputs.gkeonprem.VMwareClusterLoadBalancerMetalLbConfig;
+        /**
+         * The VIPs used by the load balancer.
+         * Structure is documented below.
+         */
+        vipConfig?: outputs.gkeonprem.VMwareClusterLoadBalancerVipConfig;
+    }
+
+    export interface VMwareClusterLoadBalancerF5Config {
+        /**
+         * The load balancer's IP address.
+         */
+        address?: string;
+        /**
+         * he preexisting partition to be used by the load balancer. T
+         * his partition is usually created for the admin cluster for example:
+         * 'my-f5-admin-partition'.
+         */
+        partition?: string;
+        /**
+         * The pool name. Only necessary, if using SNAT.
+         */
+        snatPool: string;
+    }
+
+    export interface VMwareClusterLoadBalancerManualLbConfig {
+        /**
+         * NodePort for control plane service. The Kubernetes API server in the admin
+         * cluster is implemented as a Service of type NodePort (ex. 30968).
+         */
+        controlPlaneNodePort: number;
+        /**
+         * NodePort for ingress service's http. The ingress service in the admin
+         * cluster is implemented as a Service of type NodePort (ex. 32527).
+         */
+        ingressHttpNodePort: number;
+        /**
+         * NodePort for ingress service's https. The ingress service in the admin
+         * cluster is implemented as a Service of type NodePort (ex. 30139).
+         */
+        ingressHttpsNodePort: number;
+        /**
+         * NodePort for konnectivity server service running as a sidecar in each
+         * kube-apiserver pod (ex. 30564).
+         */
+        konnectivityServerNodePort: number;
+    }
+
+    export interface VMwareClusterLoadBalancerMetalLbConfig {
+        /**
+         * AddressPools is a list of non-overlapping IP pools used by load balancer
+         * typed services. All addresses must be routable to load balancer nodes.
+         * IngressVIP must be included in the pools.
+         * Structure is documented below.
+         */
+        addressPools: outputs.gkeonprem.VMwareClusterLoadBalancerMetalLbConfigAddressPool[];
+    }
+
+    export interface VMwareClusterLoadBalancerMetalLbConfigAddressPool {
+        /**
+         * The addresses that are part of this pool. Each address
+         * must be either in the CIDR form (1.2.3.0/24) or range
+         * form (1.2.3.1-1.2.3.5).
+         */
+        addresses: string[];
+        /**
+         * If true, avoid using IPs ending in .0 or .255.
+         * This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
+         * those special IP addresses.
+         */
+        avoidBuggyIps: boolean;
+        /**
+         * If true, prevent IP addresses from being automatically assigned.
+         */
+        manualAssign: boolean;
+        /**
+         * The name of the address pool.
+         */
+        pool: string;
+    }
+
+    export interface VMwareClusterLoadBalancerVipConfig {
+        /**
+         * The VIP which you previously set aside for the Kubernetes API of this cluster.
+         */
+        controlPlaneVip?: string;
+        /**
+         * The VIP which you previously set aside for ingress traffic into this cluster.
+         */
+        ingressVip?: string;
+    }
+
+    export interface VMwareClusterNetworkConfig {
+        /**
+         * Configuration for control plane V2 mode.
+         * Structure is documented below.
+         */
+        controlPlaneV2Config?: outputs.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2Config;
+        /**
+         * Configuration settings for a DHCP IP configuration.
+         * Structure is documented below.
+         */
+        dhcpIpConfig: outputs.gkeonprem.VMwareClusterNetworkConfigDhcpIpConfig;
+        /**
+         * Represents common network settings irrespective of the host's IP address.
+         * Structure is documented below.
+         */
+        hostConfig: outputs.gkeonprem.VMwareClusterNetworkConfigHostConfig;
+        /**
+         * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+         * Only a single range is supported. This field cannot be changed after creation.
+         */
+        podAddressCidrBlocks: string[];
+        /**
+         * All services in the cluster are assigned an RFC1918 IPv4 address
+         * from these ranges. Only a single range is supported.. This field
+         * cannot be changed after creation.
+         */
+        serviceAddressCidrBlocks: string[];
+        /**
+         * Configuration settings for a static IP configuration.
+         * Structure is documented below.
+         */
+        staticIpConfig?: outputs.gkeonprem.VMwareClusterNetworkConfigStaticIpConfig;
+        /**
+         * (Output)
+         * vcenterNetwork specifies vCenter network name. Inherited from the admin cluster.
+         */
+        vcenterNetwork: string;
+    }
+
+    export interface VMwareClusterNetworkConfigControlPlaneV2Config {
+        /**
+         * Static IP addresses for the control plane nodes.
+         * Structure is documented below.
+         */
+        controlPlaneIpBlock?: outputs.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock;
+    }
+
+    export interface VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
+        /**
+         * The network gateway used by the VMware User Cluster.
+         */
+        gateway?: string;
+        /**
+         * The node's network configurations used by the VMware User Cluster.
+         * Structure is documented below.
+         */
+        ips?: outputs.gkeonprem.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp[];
+        /**
+         * The netmask used by the VMware User Cluster.
+         */
+        netmask?: string;
+    }
+
+    export interface VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp {
+        /**
+         * Hostname of the machine. VM's name will be used if this field is empty.
+         */
+        hostname: string;
+        /**
+         * IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+         */
+        ip?: string;
+    }
+
+    export interface VMwareClusterNetworkConfigDhcpIpConfig {
+        /**
+         * enabled is a flag to mark if DHCP IP allocation is
+         * used for VMware user clusters.
+         */
+        enabled: boolean;
+    }
+
+    export interface VMwareClusterNetworkConfigHostConfig {
+        /**
+         * DNS search domains.
+         */
+        dnsSearchDomains?: string[];
+        /**
+         * DNS servers.
+         */
+        dnsServers?: string[];
+        /**
+         * NTP servers.
+         */
+        ntpServers?: string[];
+    }
+
+    export interface VMwareClusterNetworkConfigStaticIpConfig {
+        /**
+         * Represents the configuration values for static IP allocation to nodes.
+         * Structure is documented below.
+         */
+        ipBlocks: outputs.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlock[];
+    }
+
+    export interface VMwareClusterNetworkConfigStaticIpConfigIpBlock {
+        /**
+         * The network gateway used by the VMware User Cluster.
+         */
+        gateway: string;
+        /**
+         * The node's network configurations used by the VMware User Cluster.
+         * Structure is documented below.
+         */
+        ips: outputs.gkeonprem.VMwareClusterNetworkConfigStaticIpConfigIpBlockIp[];
+        /**
+         * The netmask used by the VMware User Cluster.
+         */
+        netmask: string;
+    }
+
+    export interface VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
+        /**
+         * Hostname of the machine. VM's name will be used if this field is empty.
+         */
+        hostname: string;
+        /**
+         * IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+         */
+        ip: string;
+    }
+
+    export interface VMwareClusterStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.VMwareClusterStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the user cluster
+         * controller. The error message can be temporary as the user cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface VMwareClusterStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human-readable message indicating details about last transition.
+         */
+        message: string;
+        /**
+         * (Output)
+         * Machine-readable message indicating details about last transition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type: string;
+    }
+
+    export interface VMwareClusterStorage {
+        /**
+         * Whether or not to deploy vSphere CSI components in the VMware User Cluster.
+         * Enabled by default.
+         */
+        vsphereCsiDisabled: boolean;
+    }
+
+    export interface VMwareClusterValidationCheck {
+        /**
+         * (Output)
+         * Options used for the validation check.
+         */
+        options: string;
+        /**
+         * (Output)
+         * The scenario when the preflight checks were run..
+         */
+        scenario: string;
+        /**
+         * (Output)
+         * Specifies the detailed validation check status
+         * Structure is documented below.
+         */
+        statuses: outputs.gkeonprem.VMwareClusterValidationCheckStatus[];
+    }
+
+    export interface VMwareClusterValidationCheckStatus {
+        /**
+         * (Output)
+         * Individual checks which failed as part of the Preflight check execution.
+         * Structure is documented below.
+         */
+        results: outputs.gkeonprem.VMwareClusterValidationCheckStatusResult[];
+    }
+
+    export interface VMwareClusterValidationCheckStatusResult {
+        /**
+         * (Output)
+         * The category of the validation.
+         */
+        category: string;
+        /**
+         * A human readable description of this VMware User Cluster.
+         */
+        description: string;
+        /**
+         * (Output)
+         * Detailed failure information, which might be unformatted.
+         */
+        details: string;
+        /**
+         * (Output)
+         * Options used for the validation check.
+         */
+        options: string;
+        /**
+         * (Output)
+         * Machine-readable message indicating details about last transition.
+         */
+        reason: string;
+    }
+
+    export interface VMwareClusterVcenter {
+        /**
+         * The load balancer's IP address.
+         */
+        address: string;
+        /**
+         * (Output)
+         * Contains the vCenter CA certificate public key for SSL verification.
+         */
+        caCertData: string;
+        /**
+         * (Output)
+         * The name of the vCenter cluster for the user cluster.
+         */
+        cluster: string;
+        /**
+         * (Output)
+         * The name of the vCenter datacenter for the user cluster.
+         */
+        datacenter: string;
+        /**
+         * (Output)
+         * The Vsphere datastore used by the Control Plane Node.
+         */
+        datastore: string;
+        /**
+         * (Output)
+         * The name of the vCenter folder for the user cluster.
+         */
+        folder: string;
+        /**
+         * (Output)
+         * The name of the vCenter resource pool for the user cluster.
+         */
+        resourcePool: string;
+    }
+
+    export interface VMwareNodePoolConfig {
+        /**
+         * VMware disk size to be used during creation.
+         */
+        bootDiskSizeGb?: number;
+        /**
+         * The number of CPUs for each node in the node pool.
+         */
+        cpus?: number;
+        /**
+         * Allow node pool traffic to be load balanced. Only works for clusters with
+         * MetalLB load balancers.
+         */
+        enableLoadBalancer?: boolean;
+        /**
+         * The OS image name in vCenter, only valid when using Windows.
+         */
+        image?: string;
+        /**
+         * The OS image to be used for each node in a node pool.
+         * Currently `cos`, `ubuntu`, `ubuntuContainerd` and `windows` are supported.
+         */
+        imageType: string;
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to each node.
+         * These will added in addition to any default label(s) that
+         * Kubernetes may apply to the node.
+         * In case of conflict in label keys, the applied set may differ depending on
+         * the Kubernetes version -- it's best to assume the behavior is undefined
+         * and conflicts should be avoided.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The megabytes of memory for each node in the node pool.
+         */
+        memoryMb?: number;
+        /**
+         * The number of nodes in the node pool.
+         */
+        replicas?: number;
+        /**
+         * The initial taints assigned to nodes of this node pool.
+         * Structure is documented below.
+         */
+        taints?: outputs.gkeonprem.VMwareNodePoolConfigTaint[];
+        /**
+         * (Output)
+         * Specifies the vSphere config for node pool.
+         * Structure is documented below.
+         */
+        vsphereConfigs: outputs.gkeonprem.VMwareNodePoolConfigVsphereConfig[];
+    }
+
+    export interface VMwareNodePoolConfigTaint {
+        /**
+         * Available taint effects.
+         * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         */
+        effect?: string;
+        /**
+         * Key associated with the effect.
+         */
+        key: string;
+        /**
+         * Value associated with the effect.
+         */
+        value: string;
+    }
+
+    export interface VMwareNodePoolConfigVsphereConfig {
+        /**
+         * (Output)
+         * The name of the vCenter datastore. Inherited from the user cluster.
+         */
+        datastore: string;
+        /**
+         * (Output)
+         * Tags to apply to VMs.
+         * Structure is documented below.
+         */
+        tags: outputs.gkeonprem.VMwareNodePoolConfigVsphereConfigTag[];
+    }
+
+    export interface VMwareNodePoolConfigVsphereConfigTag {
+        /**
+         * (Output)
+         * The Vsphere tag category.
+         */
+        category: string;
+        /**
+         * (Output)
+         * The Vsphere tag name.
+         */
+        tag: string;
+    }
+
+    export interface VMwareNodePoolNodePoolAutoscaling {
+        /**
+         * Maximum number of replicas in the NodePool.
+         */
+        maxReplicas: number;
+        /**
+         * Minimum number of replicas in the NodePool.
+         */
+        minReplicas: number;
+    }
+
+    export interface VMwareNodePoolStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.VMwareNodePoolStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the user cluster
+         * controller. The error message can be temporary as the user cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface VMwareNodePoolStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human-readable message indicating details about last transition.
+         */
+        message: string;
+        /**
+         * (Output)
+         * Machine-readable message indicating details about last transition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type: string;
     }
 
 }
@@ -39415,6 +42323,123 @@ export namespace networkmanagement {
 
 }
 
+export namespace networksecurity {
+    export interface AuthorizationPolicyRule {
+        /**
+         * List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
+         * If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
+         * Structure is documented below.
+         */
+        destinations?: outputs.networksecurity.AuthorizationPolicyRuleDestination[];
+        /**
+         * List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
+         * If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
+         * Structure is documented below.
+         */
+        sources?: outputs.networksecurity.AuthorizationPolicyRuleSource[];
+    }
+
+    export interface AuthorizationPolicyRuleDestination {
+        /**
+         * List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
+         */
+        hosts: string[];
+        /**
+         * Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
+         * Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
+         * Structure is documented below.
+         */
+        httpHeaderMatch?: outputs.networksecurity.AuthorizationPolicyRuleDestinationHttpHeaderMatch;
+        /**
+         * A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
+         */
+        methods: string[];
+        /**
+         * List of destination ports to match. At least one port should match.
+         */
+        ports: number[];
+    }
+
+    export interface AuthorizationPolicyRuleDestinationHttpHeaderMatch {
+        /**
+         * The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
+         */
+        headerName: string;
+        /**
+         * The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier.
+         */
+        regexMatch: string;
+    }
+
+    export interface AuthorizationPolicyRuleSource {
+        /**
+         * List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
+         * The IP addresses of any load balancers or proxies should be considered untrusted.
+         */
+        ipBlocks?: string[];
+        /**
+         * List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*&#47;service-account") or a presence match "*".
+         * Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure.
+         */
+        principals?: string[];
+    }
+
+    export interface ClientTlsPolicyClientCertificate {
+        /**
+         * The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+         * Structure is documented below.
+         */
+        certificateProviderInstance?: outputs.networksecurity.ClientTlsPolicyClientCertificateCertificateProviderInstance;
+        /**
+         * gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+         * Structure is documented below.
+         */
+        grpcEndpoint?: outputs.networksecurity.ClientTlsPolicyClientCertificateGrpcEndpoint;
+    }
+
+    export interface ClientTlsPolicyClientCertificateCertificateProviderInstance {
+        /**
+         * Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+         */
+        pluginInstance: string;
+    }
+
+    export interface ClientTlsPolicyClientCertificateGrpcEndpoint {
+        /**
+         * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+         */
+        targetUri: string;
+    }
+
+    export interface ClientTlsPolicyServerValidationCa {
+        /**
+         * The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
+         * Structure is documented below.
+         */
+        certificateProviderInstance?: outputs.networksecurity.ClientTlsPolicyServerValidationCaCertificateProviderInstance;
+        /**
+         * gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+         * Structure is documented below.
+         */
+        grpcEndpoint?: outputs.networksecurity.ClientTlsPolicyServerValidationCaGrpcEndpoint;
+    }
+
+    export interface ClientTlsPolicyServerValidationCaCertificateProviderInstance {
+        /**
+         * Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+         */
+        pluginInstance: string;
+    }
+
+    export interface ClientTlsPolicyServerValidationCaGrpcEndpoint {
+        /**
+         * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+         */
+        targetUri: string;
+    }
+
+}
+
 export namespace networkservices {
     export interface EdgeCacheKeysetPublicKey {
         /**
@@ -40118,6 +43143,183 @@ export namespace networkservices {
         stripQuery: boolean;
     }
 
+    export interface EndpointPolicyEndpointMatcher {
+        /**
+         * The matcher is based on node metadata presented by xDS clients.
+         * Structure is documented below.
+         */
+        metadataLabelMatcher: outputs.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcher;
+    }
+
+    export interface EndpointPolicyEndpointMatcherMetadataLabelMatcher {
+        /**
+         * Specifies how matching should be done.
+         * Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+         */
+        metadataLabelMatchCriteria: string;
+        /**
+         * The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+         * Structure is documented below.
+         */
+        metadataLabels?: outputs.networkservices.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel[];
+    }
+
+    export interface EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel {
+        /**
+         * Required. Label name presented as key in xDS Node Metadata.
+         */
+        labelName: string;
+        /**
+         * Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+         */
+        labelValue: string;
+    }
+
+    export interface EndpointPolicyTrafficPortSelector {
+        /**
+         * List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+         */
+        ports: string[];
+    }
+
+    export interface GrpcRouteRule {
+        /**
+         * Required. A detailed rule defining how to route traffic.
+         * Structure is documented below.
+         */
+        action?: outputs.networkservices.GrpcRouteRuleAction;
+        /**
+         * Matches define conditions used for matching the rule against incoming gRPC requests.
+         * Structure is documented below.
+         */
+        matches?: outputs.networkservices.GrpcRouteRuleMatch[];
+    }
+
+    export interface GrpcRouteRuleAction {
+        /**
+         * The destination to which traffic should be forwarded.
+         * Structure is documented below.
+         */
+        destinations?: outputs.networkservices.GrpcRouteRuleActionDestination[];
+        /**
+         * The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+         * Structure is documented below.
+         */
+        faultInjectionPolicy?: outputs.networkservices.GrpcRouteRuleActionFaultInjectionPolicy;
+        /**
+         * Specifies the retry policy associated with this route.
+         * Structure is documented below.
+         */
+        retryPolicy?: outputs.networkservices.GrpcRouteRuleActionRetryPolicy;
+        /**
+         * Specifies the timeout for selected route.
+         */
+        timeout?: string;
+    }
+
+    export interface GrpcRouteRuleActionDestination {
+        /**
+         * The URL of a BackendService to route traffic to.
+         */
+        serviceName?: string;
+        /**
+         * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+         */
+        weight?: number;
+    }
+
+    export interface GrpcRouteRuleActionFaultInjectionPolicy {
+        /**
+         * Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+         * Structure is documented below.
+         */
+        abort?: outputs.networkservices.GrpcRouteRuleActionFaultInjectionPolicyAbort;
+        /**
+         * Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+         * Structure is documented below.
+         */
+        delay?: outputs.networkservices.GrpcRouteRuleActionFaultInjectionPolicyDelay;
+    }
+
+    export interface GrpcRouteRuleActionFaultInjectionPolicyAbort {
+        /**
+         * The HTTP status code used to abort the request.
+         */
+        httpStatus?: number;
+        /**
+         * The percentage of traffic which will be aborted.
+         */
+        percentage?: number;
+    }
+
+    export interface GrpcRouteRuleActionFaultInjectionPolicyDelay {
+        /**
+         * Specify a fixed delay before forwarding the request.
+         */
+        fixedDelay?: string;
+        /**
+         * The percentage of traffic on which delay will be injected.
+         */
+        percentage?: number;
+    }
+
+    export interface GrpcRouteRuleActionRetryPolicy {
+        /**
+         * Specifies the allowed number of retries.
+         */
+        numRetries?: number;
+        /**
+         * Specifies one or more conditions when this retry policy applies.
+         * Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+         */
+        retryConditions?: string[];
+    }
+
+    export interface GrpcRouteRuleMatch {
+        /**
+         * Specifies a list of HTTP request headers to match against.
+         * Structure is documented below.
+         */
+        headers?: outputs.networkservices.GrpcRouteRuleMatchHeader[];
+        /**
+         * A gRPC method to match against. If this field is empty or omitted, will match all methods.
+         * Structure is documented below.
+         */
+        method?: outputs.networkservices.GrpcRouteRuleMatchMethod;
+    }
+
+    export interface GrpcRouteRuleMatchHeader {
+        /**
+         * Required. The key of the header.
+         */
+        key: string;
+        /**
+         * The type of match.
+         * Default value is `EXACT`.
+         * Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
+         */
+        type?: string;
+        /**
+         * Required. The value of the header.
+         */
+        value: string;
+    }
+
+    export interface GrpcRouteRuleMatchMethod {
+        /**
+         * Specifies that matches are case sensitive. The default value is true.
+         */
+        caseSensitive?: boolean;
+        /**
+         * Required. Name of the method to match against.
+         */
+        grpcMethod: string;
+        /**
+         * Required. Name of the service to match against.
+         */
+        grpcService: string;
+    }
+
     export interface HttpRouteRule {
         /**
          * The detailed rule defining how to route matched traffic.
@@ -40523,6 +43725,50 @@ export namespace networkservices {
          * Specifies the destination port to match against.
          */
         port: string;
+    }
+
+    export interface TlsRouteRule {
+        /**
+         * Required. A detailed rule defining how to route traffic.
+         * Structure is documented below.
+         */
+        action: outputs.networkservices.TlsRouteRuleAction;
+        /**
+         * Matches define the predicate used to match requests to a given action.
+         * Structure is documented below.
+         */
+        matches: outputs.networkservices.TlsRouteRuleMatch[];
+    }
+
+    export interface TlsRouteRuleAction {
+        /**
+         * The destination to which traffic should be forwarded.
+         * Structure is documented below.
+         */
+        destinations?: outputs.networkservices.TlsRouteRuleActionDestination[];
+    }
+
+    export interface TlsRouteRuleActionDestination {
+        /**
+         * The URL of a BackendService to route traffic to.
+         */
+        serviceName?: string;
+        /**
+         * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+         */
+        weight?: number;
+    }
+
+    export interface TlsRouteRuleMatch {
+        /**
+         * ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
+         */
+        alpns?: string[];
+        /**
+         * SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+         * Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
+         */
+        sniHosts?: string[];
     }
 
 }
@@ -45018,6 +48264,25 @@ export namespace sql {
         selfLink: string;
     }
 
+    export interface GetTiersTier {
+        /**
+         * The maximum disk size of this tier in bytes.
+         */
+        diskQuota: number;
+        /**
+         * The maximum ram usage of this tier in bytes.
+         */
+        ram: number;
+        /**
+         * The applicable regions for this tier.
+         */
+        regions: string[];
+        /**
+         * An identifier for the machine type, for example, db-custom-1-3840.
+         */
+        tier: string;
+    }
+
     export interface UserPasswordPolicy {
         /**
          * Number of failed attempts allowed before the user get locked.
@@ -46173,7 +49438,7 @@ export namespace workstations {
         /**
          * (Output)
          * Service attachment URI for the workstation cluster.
-         * The service attachemnt is created when private endpoint is enabled.
+         * The service attachment is created when private endpoint is enabled.
          * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
          */
         serviceAttachmentUri: string;
@@ -46212,7 +49477,7 @@ export namespace workstations {
          */
         env?: {[key: string]: string};
         /**
-         * Docker image defining the container. This image must be accessible by the config"s service account.
+         * Docker image defining the container. This image must be accessible by the config's service account.
          */
         image: string;
         /**
@@ -46238,7 +49503,7 @@ export namespace workstations {
 
     export interface WorkstationConfigHost {
         /**
-         * Specifies a Compute Engine instance as the host.
+         * A runtime using a Compute Engine instance.
          * Structure is documented below.
          */
         gceInstance: outputs.workstations.WorkstationConfigHostGceInstance;
@@ -46253,7 +49518,7 @@ export namespace workstations {
          * A set of Compute Engine Confidential VM instance options.
          * Structure is documented below.
          */
-        confidentialInstanceConfig?: outputs.workstations.WorkstationConfigHostGceInstanceConfidentialInstanceConfig;
+        confidentialInstanceConfig: outputs.workstations.WorkstationConfigHostGceInstanceConfidentialInstanceConfig;
         /**
          * Whether instances have no public IP address.
          */
@@ -46274,7 +49539,7 @@ export namespace workstations {
          * A set of Compute Engine Shielded instance options.
          * Structure is documented below.
          */
-        shieldedInstanceConfig?: outputs.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfig;
+        shieldedInstanceConfig: outputs.workstations.WorkstationConfigHostGceInstanceShieldedInstanceConfig;
         /**
          * Network tags to add to the Compute Engine machines backing the Workstations.
          */
@@ -46303,6 +49568,18 @@ export namespace workstations {
         enableVtpm?: boolean;
     }
 
+    export interface WorkstationConfigIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WorkstationConfigIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface WorkstationConfigPersistentDirectory {
         /**
          * PersistentDirectory backed by a Compute Engine regional persistent disk.
@@ -46312,7 +49589,7 @@ export namespace workstations {
         /**
          * Location of this directory in the running workstation.
          */
-        mountPath?: string;
+        mountPath: string;
     }
 
     export interface WorkstationConfigPersistentDirectoryGcePd {
@@ -46326,13 +49603,25 @@ export namespace workstations {
         fsType: string;
         /**
          * What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-         * Possible values are: `RECLAIM_POLICY_UNSPECIFIED`, `DELETE`, `RETAIN`.
+         * Possible values are: `DELETE`, `RETAIN`.
          */
         reclaimPolicy?: string;
         /**
          * Size of the disk in GB. Must be empty if sourceSnapshot is set.
          */
         sizeGb: number;
+    }
+
+    export interface WorkstationIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface WorkstationIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
 }

@@ -3598,6 +3598,7 @@ type JobTemplateTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *JobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
+	EmptyDir         *JobTemplateTemplateVolumeEmptyDir         `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -3620,6 +3621,7 @@ type JobTemplateTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance JobTemplateTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
+	EmptyDir         JobTemplateTemplateVolumeEmptyDirPtrInput         `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -3684,6 +3686,10 @@ func (o JobTemplateTemplateVolumeOutput) CloudSqlInstance() JobTemplateTemplateV
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeCloudSqlInstance {
 		return v.CloudSqlInstance
 	}).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
+}
+
+func (o JobTemplateTemplateVolumeOutput) EmptyDir() JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeEmptyDir { return v.EmptyDir }).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
 }
 
 // Volume's name.
@@ -3852,6 +3858,170 @@ func (o JobTemplateTemplateVolumeCloudSqlInstancePtrOutput) Instances() pulumi.S
 		}
 		return v.Instances
 	}).(pulumi.StringArrayOutput)
+}
+
+type JobTemplateTemplateVolumeEmptyDir struct {
+	// The different types of medium supported for EmptyDir.
+	// Default value is `MEMORY`.
+	// Possible values are: `MEMORY`.
+	Medium *string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	SizeLimit *string `pulumi:"sizeLimit"`
+}
+
+// JobTemplateTemplateVolumeEmptyDirInput is an input type that accepts JobTemplateTemplateVolumeEmptyDirArgs and JobTemplateTemplateVolumeEmptyDirOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVolumeEmptyDirInput` via:
+//
+//	JobTemplateTemplateVolumeEmptyDirArgs{...}
+type JobTemplateTemplateVolumeEmptyDirInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVolumeEmptyDirOutput() JobTemplateTemplateVolumeEmptyDirOutput
+	ToJobTemplateTemplateVolumeEmptyDirOutputWithContext(context.Context) JobTemplateTemplateVolumeEmptyDirOutput
+}
+
+type JobTemplateTemplateVolumeEmptyDirArgs struct {
+	// The different types of medium supported for EmptyDir.
+	// Default value is `MEMORY`.
+	// Possible values are: `MEMORY`.
+	Medium pulumi.StringPtrInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
+}
+
+func (JobTemplateTemplateVolumeEmptyDirArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyDirOutput() JobTemplateTemplateVolumeEmptyDirOutput {
+	return i.ToJobTemplateTemplateVolumeEmptyDirOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeEmptyDirOutput)
+}
+
+func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyDirPtrOutput() JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return i.ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i JobTemplateTemplateVolumeEmptyDirArgs) ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeEmptyDirOutput).ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx)
+}
+
+// JobTemplateTemplateVolumeEmptyDirPtrInput is an input type that accepts JobTemplateTemplateVolumeEmptyDirArgs, JobTemplateTemplateVolumeEmptyDirPtr and JobTemplateTemplateVolumeEmptyDirPtrOutput values.
+// You can construct a concrete instance of `JobTemplateTemplateVolumeEmptyDirPtrInput` via:
+//
+//	        JobTemplateTemplateVolumeEmptyDirArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobTemplateTemplateVolumeEmptyDirPtrInput interface {
+	pulumi.Input
+
+	ToJobTemplateTemplateVolumeEmptyDirPtrOutput() JobTemplateTemplateVolumeEmptyDirPtrOutput
+	ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(context.Context) JobTemplateTemplateVolumeEmptyDirPtrOutput
+}
+
+type jobTemplateTemplateVolumeEmptyDirPtrType JobTemplateTemplateVolumeEmptyDirArgs
+
+func JobTemplateTemplateVolumeEmptyDirPtr(v *JobTemplateTemplateVolumeEmptyDirArgs) JobTemplateTemplateVolumeEmptyDirPtrInput {
+	return (*jobTemplateTemplateVolumeEmptyDirPtrType)(v)
+}
+
+func (*jobTemplateTemplateVolumeEmptyDirPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i *jobTemplateTemplateVolumeEmptyDirPtrType) ToJobTemplateTemplateVolumeEmptyDirPtrOutput() JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return i.ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i *jobTemplateTemplateVolumeEmptyDirPtrType) ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
+}
+
+type JobTemplateTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirOutput) ToJobTemplateTemplateVolumeEmptyDirOutput() JobTemplateTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirOutput) ToJobTemplateTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirOutput) ToJobTemplateTemplateVolumeEmptyDirPtrOutput() JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return o.ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirOutput) ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobTemplateTemplateVolumeEmptyDir) *JobTemplateTemplateVolumeEmptyDir {
+		return &v
+	}).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
+}
+
+// The different types of medium supported for EmptyDir.
+// Default value is `MEMORY`.
+// Possible values are: `MEMORY`.
+func (o JobTemplateTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeEmptyDir) *string { return v.Medium }).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+func (o JobTemplateTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
+}
+
+type JobTemplateTemplateVolumeEmptyDirPtrOutput struct{ *pulumi.OutputState }
+
+func (JobTemplateTemplateVolumeEmptyDirPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobTemplateTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToJobTemplateTemplateVolumeEmptyDirPtrOutput() JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) ToJobTemplateTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) JobTemplateTemplateVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) Elem() JobTemplateTemplateVolumeEmptyDirOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeEmptyDir) JobTemplateTemplateVolumeEmptyDir {
+		if v != nil {
+			return *v
+		}
+		var ret JobTemplateTemplateVolumeEmptyDir
+		return ret
+	}).(JobTemplateTemplateVolumeEmptyDirOutput)
+}
+
+// The different types of medium supported for EmptyDir.
+// Default value is `MEMORY`.
+// Possible values are: `MEMORY`.
+func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Medium
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
 }
 
 type JobTemplateTemplateVolumeSecret struct {
@@ -5167,7 +5337,7 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type ServiceTemplate struct {
 	// KRM-style annotations for the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Holds the single container that defines the unit of execution for this task.
+	// Holds the containers that define the unit of execution for this Service.
 	// Structure is documented below.
 	Containers []ServiceTemplateContainer `pulumi:"containers"`
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -5186,6 +5356,8 @@ type ServiceTemplate struct {
 	Scaling *ServiceTemplateScaling `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+	SessionAffinity *bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	Timeout *string `pulumi:"timeout"`
@@ -5211,7 +5383,7 @@ type ServiceTemplateInput interface {
 type ServiceTemplateArgs struct {
 	// KRM-style annotations for the resource.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Holds the single container that defines the unit of execution for this task.
+	// Holds the containers that define the unit of execution for this Service.
 	// Structure is documented below.
 	Containers ServiceTemplateContainerArrayInput `pulumi:"containers"`
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -5230,6 +5402,8 @@ type ServiceTemplateArgs struct {
 	Scaling ServiceTemplateScalingPtrInput `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+	SessionAffinity pulumi.BoolPtrInput `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
@@ -5323,7 +5497,7 @@ func (o ServiceTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Holds the single container that defines the unit of execution for this task.
+// Holds the containers that define the unit of execution for this Service.
 // Structure is documented below.
 func (o ServiceTemplateOutput) Containers() ServiceTemplateContainerArrayOutput {
 	return o.ApplyT(func(v ServiceTemplate) []ServiceTemplateContainer { return v.Containers }).(ServiceTemplateContainerArrayOutput)
@@ -5364,6 +5538,11 @@ func (o ServiceTemplateOutput) Scaling() ServiceTemplateScalingPtrOutput {
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 func (o ServiceTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+func (o ServiceTemplateOutput) SessionAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplate) *bool { return v.SessionAffinity }).(pulumi.BoolPtrOutput)
 }
 
 // Max allowed time for an instance to respond to a request.
@@ -5418,7 +5597,7 @@ func (o ServiceTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Holds the single container that defines the unit of execution for this task.
+// Holds the containers that define the unit of execution for this Service.
 // Structure is documented below.
 func (o ServiceTemplatePtrOutput) Containers() ServiceTemplateContainerArrayOutput {
 	return o.ApplyT(func(v *ServiceTemplate) []ServiceTemplateContainer {
@@ -5501,6 +5680,16 @@ func (o ServiceTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+func (o ServiceTemplatePtrOutput) SessionAffinity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SessionAffinity
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Max allowed time for an instance to respond to a request.
 // A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o ServiceTemplatePtrOutput) Timeout() pulumi.StringPtrOutput {
@@ -5538,7 +5727,8 @@ type ServiceTemplateContainer struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands []string `pulumi:"commands"`
+	Commands   []string `pulumi:"commands"`
+	DependsOns []string `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs []ServiceTemplateContainerEnv `pulumi:"envs"`
@@ -5581,7 +5771,8 @@ type ServiceTemplateContainerArgs struct {
 	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	Commands   pulumi.StringArrayInput `pulumi:"commands"`
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
 	Envs ServiceTemplateContainerEnvArrayInput `pulumi:"envs"`
@@ -5668,6 +5859,10 @@ func (o ServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 // Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o ServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+func (o ServiceTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
 // List of environment variables to set in the container.
@@ -6441,7 +6636,8 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) TimeoutSeconds() pulumi.
 }
 
 type ServiceTemplateContainerLivenessProbeGrpc struct {
-	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -6461,7 +6657,8 @@ type ServiceTemplateContainerLivenessProbeGrpcInput interface {
 }
 
 type ServiceTemplateContainerLivenessProbeGrpcArgs struct {
-	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -6546,7 +6743,8 @@ func (o ServiceTemplateContainerLivenessProbeGrpcOutput) ToServiceTemplateContai
 	}).(ServiceTemplateContainerLivenessProbeGrpcPtrOutput)
 }
 
-// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -6582,7 +6780,8 @@ func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Elem() ServiceTempla
 	}).(ServiceTemplateContainerLivenessProbeGrpcOutput)
 }
 
-// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeGrpc) *int {
 		if v == nil {
@@ -6610,6 +6809,9 @@ type ServiceTemplateContainerLivenessProbeHttpGet struct {
 	HttpHeaders []ServiceTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
 }
 
 // ServiceTemplateContainerLivenessProbeHttpGetInput is an input type that accepts ServiceTemplateContainerLivenessProbeHttpGetArgs and ServiceTemplateContainerLivenessProbeHttpGetOutput values.
@@ -6629,6 +6831,9 @@ type ServiceTemplateContainerLivenessProbeHttpGetArgs struct {
 	HttpHeaders ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (ServiceTemplateContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
@@ -6721,6 +6926,12 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) Path() pulumi.String
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerLivenessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 type ServiceTemplateContainerLivenessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) ElementType() reflect.Type {
@@ -6764,6 +6975,17 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) Path() pulumi.Str
 		}
 		return v.Path
 	}).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateContainerLivenessProbeHttpGetHttpHeader struct {
@@ -6873,7 +7095,8 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index
 }
 
 type ServiceTemplateContainerLivenessProbeTcpSocket struct {
-	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 }
 
@@ -6889,7 +7112,8 @@ type ServiceTemplateContainerLivenessProbeTcpSocketInput interface {
 }
 
 type ServiceTemplateContainerLivenessProbeTcpSocketArgs struct {
-	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -6970,7 +7194,8 @@ func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) ToServiceTemplateC
 	}).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
-// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -6999,7 +7224,8 @@ func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) Elem() ServiceT
 	}).(ServiceTemplateContainerLivenessProbeTcpSocketOutput)
 }
 
-// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeTcpSocket) *int {
 		if v == nil {
@@ -7120,6 +7346,8 @@ type ServiceTemplateContainerResources struct {
 	CpuIdle *bool `pulumi:"cpuIdle"`
 	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
+	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+	StartupCpuBoost *bool `pulumi:"startupCpuBoost"`
 }
 
 // ServiceTemplateContainerResourcesInput is an input type that accepts ServiceTemplateContainerResourcesArgs and ServiceTemplateContainerResourcesOutput values.
@@ -7138,6 +7366,8 @@ type ServiceTemplateContainerResourcesArgs struct {
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
 	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+	StartupCpuBoost pulumi.BoolPtrInput `pulumi:"startupCpuBoost"`
 }
 
 func (ServiceTemplateContainerResourcesArgs) ElementType() reflect.Type {
@@ -7227,6 +7457,11 @@ func (o ServiceTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput
 	return o.ApplyT(func(v ServiceTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
+// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+func (o ServiceTemplateContainerResourcesOutput) StartupCpuBoost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerResources) *bool { return v.StartupCpuBoost }).(pulumi.BoolPtrOutput)
+}
+
 type ServiceTemplateContainerResourcesPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerResourcesPtrOutput) ElementType() reflect.Type {
@@ -7269,6 +7504,16 @@ func (o ServiceTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOut
 		}
 		return v.Limits
 	}).(pulumi.StringMapOutput)
+}
+
+// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+func (o ServiceTemplateContainerResourcesPtrOutput) StartupCpuBoost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerResources) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StartupCpuBoost
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServiceTemplateContainerStartupProbe struct {
@@ -7539,7 +7784,8 @@ func (o ServiceTemplateContainerStartupProbePtrOutput) TimeoutSeconds() pulumi.I
 }
 
 type ServiceTemplateContainerStartupProbeGrpc struct {
-	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -7559,7 +7805,8 @@ type ServiceTemplateContainerStartupProbeGrpcInput interface {
 }
 
 type ServiceTemplateContainerStartupProbeGrpcArgs struct {
-	// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -7644,7 +7891,8 @@ func (o ServiceTemplateContainerStartupProbeGrpcOutput) ToServiceTemplateContain
 	}).(ServiceTemplateContainerStartupProbeGrpcPtrOutput)
 }
 
-// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -7680,7 +7928,8 @@ func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Elem() ServiceTemplat
 	}).(ServiceTemplateContainerStartupProbeGrpcOutput)
 }
 
-// Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeGrpc) *int {
 		if v == nil {
@@ -7708,6 +7957,9 @@ type ServiceTemplateContainerStartupProbeHttpGet struct {
 	HttpHeaders []ServiceTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
 }
 
 // ServiceTemplateContainerStartupProbeHttpGetInput is an input type that accepts ServiceTemplateContainerStartupProbeHttpGetArgs and ServiceTemplateContainerStartupProbeHttpGetOutput values.
@@ -7727,6 +7979,9 @@ type ServiceTemplateContainerStartupProbeHttpGetArgs struct {
 	HttpHeaders ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (ServiceTemplateContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
@@ -7819,6 +8074,12 @@ func (o ServiceTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringP
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerStartupProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 type ServiceTemplateContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
@@ -7862,6 +8123,17 @@ func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) Path() pulumi.Stri
 		}
 		return v.Path
 	}).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerStartupProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateContainerStartupProbeHttpGetHttpHeader struct {
@@ -7971,7 +8243,8 @@ func (o ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Index(
 }
 
 type ServiceTemplateContainerStartupProbeTcpSocket struct {
-	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 }
 
@@ -7987,7 +8260,8 @@ type ServiceTemplateContainerStartupProbeTcpSocketInput interface {
 }
 
 type ServiceTemplateContainerStartupProbeTcpSocketArgs struct {
-	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -8068,7 +8342,8 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) ToServiceTemplateCo
 	}).(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput)
 }
 
-// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerStartupProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -8097,7 +8372,8 @@ func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) Elem() ServiceTe
 	}).(ServiceTemplateContainerStartupProbeTcpSocketOutput)
 }
 
-// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerStartupProbeTcpSocket) *int {
 		if v == nil {
@@ -8373,6 +8649,7 @@ type ServiceTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *ServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
+	EmptyDir         *ServiceTemplateVolumeEmptyDir         `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -8395,6 +8672,7 @@ type ServiceTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance ServiceTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
+	EmptyDir         ServiceTemplateVolumeEmptyDirPtrInput         `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -8457,6 +8735,10 @@ func (o ServiceTemplateVolumeOutput) ToServiceTemplateVolumeOutputWithContext(ct
 // Structure is documented below.
 func (o ServiceTemplateVolumeOutput) CloudSqlInstance() ServiceTemplateVolumeCloudSqlInstancePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeCloudSqlInstance { return v.CloudSqlInstance }).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
+}
+
+func (o ServiceTemplateVolumeOutput) EmptyDir() ServiceTemplateVolumeEmptyDirPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeEmptyDir { return v.EmptyDir }).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }
 
 // Volume's name.
@@ -8625,6 +8907,170 @@ func (o ServiceTemplateVolumeCloudSqlInstancePtrOutput) Instances() pulumi.Strin
 		}
 		return v.Instances
 	}).(pulumi.StringArrayOutput)
+}
+
+type ServiceTemplateVolumeEmptyDir struct {
+	// The different types of medium supported for EmptyDir.
+	// Default value is `MEMORY`.
+	// Possible values are: `MEMORY`.
+	Medium *string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	SizeLimit *string `pulumi:"sizeLimit"`
+}
+
+// ServiceTemplateVolumeEmptyDirInput is an input type that accepts ServiceTemplateVolumeEmptyDirArgs and ServiceTemplateVolumeEmptyDirOutput values.
+// You can construct a concrete instance of `ServiceTemplateVolumeEmptyDirInput` via:
+//
+//	ServiceTemplateVolumeEmptyDirArgs{...}
+type ServiceTemplateVolumeEmptyDirInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVolumeEmptyDirOutput() ServiceTemplateVolumeEmptyDirOutput
+	ToServiceTemplateVolumeEmptyDirOutputWithContext(context.Context) ServiceTemplateVolumeEmptyDirOutput
+}
+
+type ServiceTemplateVolumeEmptyDirArgs struct {
+	// The different types of medium supported for EmptyDir.
+	// Default value is `MEMORY`.
+	// Possible values are: `MEMORY`.
+	Medium pulumi.StringPtrInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
+}
+
+func (ServiceTemplateVolumeEmptyDirArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirOutput() ServiceTemplateVolumeEmptyDirOutput {
+	return i.ToServiceTemplateVolumeEmptyDirOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeEmptyDirOutput)
+}
+
+func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirPtrOutput() ServiceTemplateVolumeEmptyDirPtrOutput {
+	return i.ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVolumeEmptyDirArgs) ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeEmptyDirOutput).ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateVolumeEmptyDirPtrInput is an input type that accepts ServiceTemplateVolumeEmptyDirArgs, ServiceTemplateVolumeEmptyDirPtr and ServiceTemplateVolumeEmptyDirPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateVolumeEmptyDirPtrInput` via:
+//
+//	        ServiceTemplateVolumeEmptyDirArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateVolumeEmptyDirPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVolumeEmptyDirPtrOutput() ServiceTemplateVolumeEmptyDirPtrOutput
+	ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(context.Context) ServiceTemplateVolumeEmptyDirPtrOutput
+}
+
+type serviceTemplateVolumeEmptyDirPtrType ServiceTemplateVolumeEmptyDirArgs
+
+func ServiceTemplateVolumeEmptyDirPtr(v *ServiceTemplateVolumeEmptyDirArgs) ServiceTemplateVolumeEmptyDirPtrInput {
+	return (*serviceTemplateVolumeEmptyDirPtrType)(v)
+}
+
+func (*serviceTemplateVolumeEmptyDirPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i *serviceTemplateVolumeEmptyDirPtrType) ToServiceTemplateVolumeEmptyDirPtrOutput() ServiceTemplateVolumeEmptyDirPtrOutput {
+	return i.ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateVolumeEmptyDirPtrType) ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeEmptyDirPtrOutput)
+}
+
+type ServiceTemplateVolumeEmptyDirOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVolumeEmptyDirOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o ServiceTemplateVolumeEmptyDirOutput) ToServiceTemplateVolumeEmptyDirOutput() ServiceTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeEmptyDirOutput) ToServiceTemplateVolumeEmptyDirOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeEmptyDirOutput) ToServiceTemplateVolumeEmptyDirPtrOutput() ServiceTemplateVolumeEmptyDirPtrOutput {
+	return o.ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateVolumeEmptyDirOutput) ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVolumeEmptyDir) *ServiceTemplateVolumeEmptyDir {
+		return &v
+	}).(ServiceTemplateVolumeEmptyDirPtrOutput)
+}
+
+// The different types of medium supported for EmptyDir.
+// Default value is `MEMORY`.
+// Possible values are: `MEMORY`.
+func (o ServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.Medium }).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+func (o ServiceTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateVolumeEmptyDirPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVolumeEmptyDirPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToServiceTemplateVolumeEmptyDirPtrOutput() ServiceTemplateVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeEmptyDirPtrOutput) ToServiceTemplateVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeEmptyDirPtrOutput) Elem() ServiceTemplateVolumeEmptyDirOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) ServiceTemplateVolumeEmptyDir {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateVolumeEmptyDir
+		return ret
+	}).(ServiceTemplateVolumeEmptyDirOutput)
+}
+
+// The different types of medium supported for EmptyDir.
+// Default value is `MEMORY`.
+// Possible values are: `MEMORY`.
+func (o ServiceTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Medium
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+func (o ServiceTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateVolumeSecret struct {
@@ -9589,6 +10035,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeArrayInput)(nil)).Elem(), JobTemplateTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), JobTemplateTemplateVolumeCloudSqlInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeCloudSqlInstancePtrInput)(nil)).Elem(), JobTemplateTemplateVolumeCloudSqlInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeEmptyDirInput)(nil)).Elem(), JobTemplateTemplateVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeEmptyDirPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretPtrInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateTemplateVolumeSecretItemInput)(nil)).Elem(), JobTemplateTemplateVolumeSecretItemArgs{})
@@ -9647,6 +10095,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeArrayInput)(nil)).Elem(), ServiceTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), ServiceTemplateVolumeCloudSqlInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeCloudSqlInstancePtrInput)(nil)).Elem(), ServiceTemplateVolumeCloudSqlInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeEmptyDirInput)(nil)).Elem(), ServiceTemplateVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeEmptyDirPtrInput)(nil)).Elem(), ServiceTemplateVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeSecretInput)(nil)).Elem(), ServiceTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeSecretPtrInput)(nil)).Elem(), ServiceTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeSecretItemInput)(nil)).Elem(), ServiceTemplateVolumeSecretItemArgs{})
@@ -9707,6 +10157,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeCloudSqlInstanceOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVolumeEmptyDirOutput{})
+	pulumi.RegisterOutputType(JobTemplateTemplateVolumeEmptyDirPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretPtrOutput{})
 	pulumi.RegisterOutputType(JobTemplateTemplateVolumeSecretItemOutput{})
@@ -9765,6 +10217,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeCloudSqlInstanceOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeCloudSqlInstancePtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVolumeEmptyDirOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVolumeEmptyDirPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeSecretPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeSecretItemOutput{})

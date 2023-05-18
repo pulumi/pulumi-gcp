@@ -23,6 +23,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,6 +31,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicRegionalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basicRegionalNetworksecurityAddressGroup", &networksecurity.AddressGroupArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("Sample regional networksecurity_address_group"),
+//				Location:    pulumi.String("us-west1"),
+//				Items: pulumi.StringArray{
+//					pulumi.String("208.80.154.224/32"),
+//				},
+//				Type:     pulumi.String("IPV4"),
+//				Capacity: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			basicRegionalNetworkFirewallPolicy, err := compute.NewRegionNetworkFirewallPolicy(ctx, "basicRegionalNetworkFirewallPolicy", &compute.RegionNetworkFirewallPolicyArgs{
 //				Description: pulumi.String("Sample regional network firewall policy"),
 //				Project:     pulumi.String("my-project-name"),
@@ -83,6 +97,15 @@ import (
 //					SrcIpRanges: pulumi.StringArray{
 //						pulumi.String("10.100.0.1/32"),
 //					},
+//					SrcFqdns: pulumi.StringArray{
+//						pulumi.String("example.com"),
+//					},
+//					SrcRegionCodes: pulumi.StringArray{
+//						pulumi.String("US"),
+//					},
+//					SrcThreatIntelligences: pulumi.StringArray{
+//						pulumi.String("iplist-known-malicious-ips"),
+//					},
 //					Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
 //							IpProtocol: pulumi.String("all"),
@@ -94,6 +117,9 @@ import (
 //								return fmt.Sprintf("tagValues/%v", name), nil
 //							}).(pulumi.StringOutput),
 //						},
+//					},
+//					SrcAddressGroups: pulumi.StringArray{
+//						basicRegionalNetworksecurityAddressGroup.ID(),
 //					},
 //				},
 //			})

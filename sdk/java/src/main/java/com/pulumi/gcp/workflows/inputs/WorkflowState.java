@@ -32,6 +32,23 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The KMS key used to encrypt workflow and execution data.
+     * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+     * 
+     */
+    @Import(name="cryptoKeyName")
+    private @Nullable Output<String> cryptoKeyName;
+
+    /**
+     * @return The KMS key used to encrypt workflow and execution data.
+     * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+     * 
+     */
+    public Optional<Output<String>> cryptoKeyName() {
+        return Optional.ofNullable(this.cryptoKeyName);
+    }
+
+    /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      * 
      */
@@ -143,7 +160,11 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
-     * Format: projects/{project}/serviceAccounts/{account}.
+     * Format: projects/{project}/serviceAccounts/{account} or {account}.
+     * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+     * The {account} value can be the email address or the unique_id of the service account.
+     * If not provided, workflow will use the project&#39;s default service account.
+     * Modifying this field for an existing workflow results in a new workflow revision.
      * 
      */
     @Import(name="serviceAccount")
@@ -152,7 +173,11 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
-     * Format: projects/{project}/serviceAccounts/{account}.
+     * Format: projects/{project}/serviceAccounts/{account} or {account}.
+     * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+     * The {account} value can be the email address or the unique_id of the service account.
+     * If not provided, workflow will use the project&#39;s default service account.
+     * Modifying this field for an existing workflow results in a new workflow revision.
      * 
      */
     public Optional<Output<String>> serviceAccount() {
@@ -208,6 +233,7 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
 
     private WorkflowState(WorkflowState $) {
         this.createTime = $.createTime;
+        this.cryptoKeyName = $.cryptoKeyName;
         this.description = $.description;
         this.labels = $.labels;
         this.name = $.name;
@@ -258,6 +284,29 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param cryptoKeyName The KMS key used to encrypt workflow and execution data.
+         * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyName(@Nullable Output<String> cryptoKeyName) {
+            $.cryptoKeyName = cryptoKeyName;
+            return this;
+        }
+
+        /**
+         * @param cryptoKeyName The KMS key used to encrypt workflow and execution data.
+         * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyName(String cryptoKeyName) {
+            return cryptoKeyName(Output.of(cryptoKeyName));
         }
 
         /**
@@ -414,7 +463,11 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceAccount Name of the service account associated with the latest workflow version. This service
          * account represents the identity of the workflow and determines what permissions the workflow has.
-         * Format: projects/{project}/serviceAccounts/{account}.
+         * Format: projects/{project}/serviceAccounts/{account} or {account}.
+         * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+         * The {account} value can be the email address or the unique_id of the service account.
+         * If not provided, workflow will use the project&#39;s default service account.
+         * Modifying this field for an existing workflow results in a new workflow revision.
          * 
          * @return builder
          * 
@@ -427,7 +480,11 @@ public final class WorkflowState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceAccount Name of the service account associated with the latest workflow version. This service
          * account represents the identity of the workflow and determines what permissions the workflow has.
-         * Format: projects/{project}/serviceAccounts/{account}.
+         * Format: projects/{project}/serviceAccounts/{account} or {account}.
+         * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+         * The {account} value can be the email address or the unique_id of the service account.
+         * If not provided, workflow will use the project&#39;s default service account.
+         * Modifying this field for an existing workflow results in a new workflow revision.
          * 
          * @return builder
          * 

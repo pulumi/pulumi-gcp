@@ -55,6 +55,7 @@ export interface GetResourcePolicyResult {
      * Description of this Resource Policy.
      */
     readonly description: string;
+    readonly diskConsistencyGroupPolicies: outputs.compute.GetResourcePolicyDiskConsistencyGroupPolicy[];
     readonly groupPlacementPolicies: outputs.compute.GetResourcePolicyGroupPlacementPolicy[];
     /**
      * The provider-assigned unique ID for this managed resource.

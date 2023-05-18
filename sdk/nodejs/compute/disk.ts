@@ -46,6 +46,30 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  * });
  * ```
+ * ### Disk Async
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.compute.Disk("primary", {
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ *     physicalBlockSizeBytes: 4096,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const secondary = new gcp.compute.Disk("secondary", {
+ *     type: "pd-ssd",
+ *     zone: "us-east1-c",
+ *     asyncPrimaryDisk: {
+ *         disk: primary.id,
+ *     },
+ *     physicalBlockSizeBytes: 4096,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -95,6 +119,10 @@ export class Disk extends pulumi.CustomResource {
         return obj['__pulumiType'] === Disk.__pulumiType;
     }
 
+    /**
+     * A nested object resource
+     */
+    public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.DiskAsyncPrimaryDisk | undefined>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -292,6 +320,7 @@ export class Disk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DiskState | undefined;
+            resourceInputs["asyncPrimaryDisk"] = state ? state.asyncPrimaryDisk : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
@@ -321,6 +350,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DiskArgs | undefined;
+            resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
@@ -358,6 +388,10 @@ export class Disk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Disk resources.
  */
 export interface DiskState {
+    /**
+     * A nested object resource
+     */
+    asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -547,6 +581,10 @@ export interface DiskState {
  * The set of arguments for constructing a Disk resource.
  */
 export interface DiskArgs {
+    /**
+     * A nested object resource
+     */
+    asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

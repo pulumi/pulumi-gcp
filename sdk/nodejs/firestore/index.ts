@@ -15,6 +15,11 @@ export type Document = import("./document").Document;
 export const Document: typeof import("./document").Document = null as any;
 utilities.lazyLoad(exports, ["Document"], () => require("./document"));
 
+export { FieldArgs, FieldState } from "./field";
+export type Field = import("./field").Field;
+export const Field: typeof import("./field").Field = null as any;
+utilities.lazyLoad(exports, ["Field"], () => require("./field"));
+
 export { IndexArgs, IndexState } from "./index_";
 export type Index = import("./index_").Index;
 export const Index: typeof import("./index_").Index = null as any;
@@ -29,6 +34,8 @@ const _module = {
                 return new Database(name, <any>undefined, { urn })
             case "gcp:firestore/document:Document":
                 return new Document(name, <any>undefined, { urn })
+            case "gcp:firestore/field:Field":
+                return new Field(name, <any>undefined, { urn })
             case "gcp:firestore/index:Index":
                 return new Index(name, <any>undefined, { urn })
             default:
@@ -38,4 +45,5 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "firestore/database", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/document", _module)
+pulumi.runtime.registerResourceModule("gcp", "firestore/field", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/index", _module)

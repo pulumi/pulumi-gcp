@@ -48,6 +48,10 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType? StoredType;
+        /// <summary>
+        /// Message for detecting output from deidentification transformations that support reversing.
+        /// </summary>
+        public readonly Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType? SurrogateType;
 
         [OutputConstructor]
         private PreventionInspectTemplateInspectConfigCustomInfoType(
@@ -61,7 +65,9 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex? regex,
 
-            Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType? storedType)
+            Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType? storedType,
+
+            Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType? surrogateType)
         {
             Dictionary = dictionary;
             ExclusionType = exclusionType;
@@ -69,6 +75,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             Likelihood = likelihood;
             Regex = regex;
             StoredType = storedType;
+            SurrogateType = surrogateType;
         }
     }
 }

@@ -34,12 +34,12 @@ namespace Pulumi.Gcp.Logging
     ///         Location = "global",
     ///         Project = "my-project-name",
     ///         EnableAnalytics = true,
-    ///         BucketId = "mybucket",
+    ///         BucketId = "my-bucket",
     ///     });
     /// 
     ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", new()
     ///     {
-    ///         LinkId = "mybucket",
+    ///         LinkId = "mylink",
     ///         Bucket = loggingLinkedDatasetProjectBucketConfig.Id,
     ///         Description = "Linked dataset test",
     ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Logging
     /// {
     ///     var loggingLinkedDatasetProjectBucketConfig = new Gcp.Logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", new()
     ///     {
-    ///         BucketId = "mybucket",
+    ///         BucketId = "my-bucket",
     ///         EnableAnalytics = true,
     ///         Location = "global",
     ///         Project = "my-project-name",
@@ -66,9 +66,9 @@ namespace Pulumi.Gcp.Logging
     /// 
     ///     var loggingLinkedDatasetLinkedDataset = new Gcp.Logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", new()
     ///     {
-    ///         Bucket = "mybucket",
+    ///         Bucket = "my-bucket",
     ///         Description = "Linked dataset test",
-    ///         LinkId = "mybucket",
+    ///         LinkId = "mylink",
     ///         Location = "global",
     ///         Parent = "projects/my-project-name",
     ///     }, new CustomResourceOptions

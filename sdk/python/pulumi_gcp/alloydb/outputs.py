@@ -11,17 +11,116 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BackupEncryptionConfig',
+    'BackupEncryptionInfo',
     'ClusterAutomatedBackupPolicy',
+    'ClusterAutomatedBackupPolicyEncryptionConfig',
     'ClusterAutomatedBackupPolicyQuantityBasedRetention',
     'ClusterAutomatedBackupPolicyTimeBasedRetention',
     'ClusterAutomatedBackupPolicyWeeklySchedule',
     'ClusterAutomatedBackupPolicyWeeklyScheduleStartTime',
     'ClusterBackupSource',
+    'ClusterEncryptionConfig',
+    'ClusterEncryptionInfo',
     'ClusterInitialUser',
     'ClusterMigrationSource',
     'InstanceMachineConfig',
     'InstanceReadPoolConfig',
+    'GetLocationsLocationResult',
+    'GetSupportedDatabaseFlagsSupportedDatabaseFlagResult',
+    'GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult',
+    'GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult',
 ]
+
+@pulumi.output_type
+class BackupEncryptionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupEncryptionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupEncryptionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[str] = None):
+        """
+        :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class BackupEncryptionInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionType":
+            suggest = "encryption_type"
+        elif key == "kmsKeyVersions":
+            suggest = "kms_key_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupEncryptionInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupEncryptionInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupEncryptionInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_type: Optional[str] = None,
+                 kms_key_versions: Optional[Sequence[str]] = None):
+        """
+        :param str encryption_type: (Output)
+               Output only. Type of encryption.
+        :param Sequence[str] kms_key_versions: (Output)
+               Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if kms_key_versions is not None:
+            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersions")
+    def kms_key_versions(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        return pulumi.get(self, "kms_key_versions")
+
 
 @pulumi.output_type
 class ClusterAutomatedBackupPolicy(dict):
@@ -30,6 +129,8 @@ class ClusterAutomatedBackupPolicy(dict):
         suggest = None
         if key == "backupWindow":
             suggest = "backup_window"
+        elif key == "encryptionConfig":
+            suggest = "encryption_config"
         elif key == "quantityBasedRetention":
             suggest = "quantity_based_retention"
         elif key == "timeBasedRetention":
@@ -51,6 +152,7 @@ class ClusterAutomatedBackupPolicy(dict):
     def __init__(__self__, *,
                  backup_window: Optional[str] = None,
                  enabled: Optional[bool] = None,
+                 encryption_config: Optional['outputs.ClusterAutomatedBackupPolicyEncryptionConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  location: Optional[str] = None,
                  quantity_based_retention: Optional['outputs.ClusterAutomatedBackupPolicyQuantityBasedRetention'] = None,
@@ -61,11 +163,13 @@ class ClusterAutomatedBackupPolicy(dict):
                The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param bool enabled: Whether automated backups are enabled.
+        :param 'ClusterAutomatedBackupPolicyEncryptionConfigArgs' encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+               Structure is documented below.
         :param Mapping[str, str] labels: Labels to apply to backups created using this configuration.
         :param str location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
-        :param 'ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs' quantity_based_retention: Quantity-based Backup retention policy to retain recent backups.
+        :param 'ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs' quantity_based_retention: Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
                Structure is documented below.
-        :param 'ClusterAutomatedBackupPolicyTimeBasedRetentionArgs' time_based_retention: Time-based Backup retention policy.
+        :param 'ClusterAutomatedBackupPolicyTimeBasedRetentionArgs' time_based_retention: Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
                Structure is documented below.
         :param 'ClusterAutomatedBackupPolicyWeeklyScheduleArgs' weekly_schedule: Weekly schedule for the Backup.
                Structure is documented below.
@@ -74,6 +178,8 @@ class ClusterAutomatedBackupPolicy(dict):
             pulumi.set(__self__, "backup_window", backup_window)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -104,6 +210,15 @@ class ClusterAutomatedBackupPolicy(dict):
         return pulumi.get(self, "enabled")
 
     @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional['outputs.ClusterAutomatedBackupPolicyEncryptionConfig']:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
@@ -123,7 +238,7 @@ class ClusterAutomatedBackupPolicy(dict):
     @pulumi.getter(name="quantityBasedRetention")
     def quantity_based_retention(self) -> Optional['outputs.ClusterAutomatedBackupPolicyQuantityBasedRetention']:
         """
-        Quantity-based Backup retention policy to retain recent backups.
+        Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "quantity_based_retention")
@@ -132,7 +247,7 @@ class ClusterAutomatedBackupPolicy(dict):
     @pulumi.getter(name="timeBasedRetention")
     def time_based_retention(self) -> Optional['outputs.ClusterAutomatedBackupPolicyTimeBasedRetention']:
         """
-        Time-based Backup retention policy.
+        Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "time_based_retention")
@@ -145,6 +260,42 @@ class ClusterAutomatedBackupPolicy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "weekly_schedule")
+
+
+@pulumi.output_type
+class ClusterAutomatedBackupPolicyEncryptionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterAutomatedBackupPolicyEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterAutomatedBackupPolicyEncryptionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterAutomatedBackupPolicyEncryptionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[str] = None):
+        """
+        :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type
@@ -266,9 +417,9 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
                  seconds: Optional[int] = None):
         """
         :param int hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        :param int minutes: Minutes of hour of day. Must be from 0 to 59.
-        :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        :param int minutes: Minutes of hour of day. Currently, only the value 0 is supported.
+        :param int nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        :param int seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
         """
         if hours is not None:
             pulumi.set(__self__, "hours", hours)
@@ -291,7 +442,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
     @pulumi.getter
     def minutes(self) -> Optional[int]:
         """
-        Minutes of hour of day. Must be from 0 to 59.
+        Minutes of hour of day. Currently, only the value 0 is supported.
         """
         return pulumi.get(self, "minutes")
 
@@ -299,7 +450,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
     @pulumi.getter
     def nanos(self) -> Optional[int]:
         """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
         """
         return pulumi.get(self, "nanos")
 
@@ -307,7 +458,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime(dict):
     @pulumi.getter
     def seconds(self) -> Optional[int]:
         """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        Seconds of minutes of the time. Currently, only the value 0 is supported.
         """
         return pulumi.get(self, "seconds")
 
@@ -346,6 +497,96 @@ class ClusterBackupSource(dict):
         The name of the backup resource.
         """
         return pulumi.get(self, "backup_name")
+
+
+@pulumi.output_type
+class ClusterEncryptionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterEncryptionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterEncryptionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[str] = None):
+        """
+        :param str kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[str]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class ClusterEncryptionInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionType":
+            suggest = "encryption_type"
+        elif key == "kmsKeyVersions":
+            suggest = "kms_key_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterEncryptionInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterEncryptionInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterEncryptionInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_type: Optional[str] = None,
+                 kms_key_versions: Optional[Sequence[str]] = None):
+        """
+        :param str encryption_type: (Output)
+               Output only. Type of encryption.
+        :param Sequence[str] kms_key_versions: (Output)
+               Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if kms_key_versions is not None:
+            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @property
+    @pulumi.getter(name="kmsKeyVersions")
+    def kms_key_versions(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        return pulumi.get(self, "kms_key_versions")
 
 
 @pulumi.output_type
@@ -514,5 +755,193 @@ class InstanceReadPoolConfig(dict):
         Read capacity, i.e. number of nodes in a read pool instance.
         """
         return pulumi.get(self, "node_count")
+
+
+@pulumi.output_type
+class GetLocationsLocationResult(dict):
+    def __init__(__self__, *,
+                 display_name: str,
+                 labels: Mapping[str, str],
+                 location_id: str,
+                 metadata: Mapping[str, str],
+                 name: str):
+        """
+        :param str display_name: The friendly name for this location, typically a nearby city name. For example, "Tokyo".
+        :param Mapping[str, str] labels: Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
+        :param str location_id: The canonical id for this location. For example: "us-east1"..
+        :param Mapping[str, str] metadata: Service-specific metadata. For example the available capacity at the given location.
+        :param str name: Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location_id", location_id)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The friendly name for this location, typically a nearby city name. For example, "Tokyo".
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="locationId")
+    def location_id(self) -> str:
+        """
+        The canonical id for this location. For example: "us-east1"..
+        """
+        return pulumi.get(self, "location_id")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        Service-specific metadata. For example the available capacity at the given location.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetSupportedDatabaseFlagsSupportedDatabaseFlagResult(dict):
+    def __init__(__self__, *,
+                 accepts_multiple_values: bool,
+                 flag_name: str,
+                 integer_restrictions: 'outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult',
+                 name: str,
+                 requires_db_restart: bool,
+                 string_restrictions: 'outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult',
+                 supported_db_versions: Sequence[str],
+                 value_type: str):
+        """
+        :param bool accepts_multiple_values: Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
+        :param str flag_name: The name of the database flag, e.g. "max_allowed_packets". The is a possibly key for the Instance.database_flags map field.
+        :param 'GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs' integer_restrictions: Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
+        :param str name: The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
+        :param bool requires_db_restart: Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
+        :param 'GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs' string_restrictions: Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+        :param Sequence[str] supported_db_versions: Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
+        :param str value_type: ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
+        """
+        pulumi.set(__self__, "accepts_multiple_values", accepts_multiple_values)
+        pulumi.set(__self__, "flag_name", flag_name)
+        pulumi.set(__self__, "integer_restrictions", integer_restrictions)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "requires_db_restart", requires_db_restart)
+        pulumi.set(__self__, "string_restrictions", string_restrictions)
+        pulumi.set(__self__, "supported_db_versions", supported_db_versions)
+        pulumi.set(__self__, "value_type", value_type)
+
+    @property
+    @pulumi.getter(name="acceptsMultipleValues")
+    def accepts_multiple_values(self) -> bool:
+        """
+        Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
+        """
+        return pulumi.get(self, "accepts_multiple_values")
+
+    @property
+    @pulumi.getter(name="flagName")
+    def flag_name(self) -> str:
+        """
+        The name of the database flag, e.g. "max_allowed_packets". The is a possibly key for the Instance.database_flags map field.
+        """
+        return pulumi.get(self, "flag_name")
+
+    @property
+    @pulumi.getter(name="integerRestrictions")
+    def integer_restrictions(self) -> 'outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult':
+        """
+        Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
+        """
+        return pulumi.get(self, "integer_restrictions")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="requiresDbRestart")
+    def requires_db_restart(self) -> bool:
+        """
+        Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
+        """
+        return pulumi.get(self, "requires_db_restart")
+
+    @property
+    @pulumi.getter(name="stringRestrictions")
+    def string_restrictions(self) -> 'outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult':
+        """
+        Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+        """
+        return pulumi.get(self, "string_restrictions")
+
+    @property
+    @pulumi.getter(name="supportedDbVersions")
+    def supported_db_versions(self) -> Sequence[str]:
+        """
+        Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "supported_db_versions")
+
+    @property
+    @pulumi.getter(name="valueType")
+    def value_type(self) -> str:
+        """
+        ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
+        """
+        return pulumi.get(self, "value_type")
+
+
+@pulumi.output_type
+class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(dict):
+    def __init__(__self__, *,
+                 max_value: str,
+                 min_value: str):
+        pulumi.set(__self__, "max_value", max_value)
+        pulumi.set(__self__, "min_value", min_value)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> str:
+        return pulumi.get(self, "max_value")
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> str:
+        return pulumi.get(self, "min_value")
+
+
+@pulumi.output_type
+class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult(dict):
+    def __init__(__self__, *,
+                 allowed_values: Sequence[str]):
+        pulumi.set(__self__, "allowed_values", allowed_values)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_values")
 
 

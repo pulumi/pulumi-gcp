@@ -85,6 +85,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;sample-endpoint&#34;)
  *             .description(&#34;A sample vertex endpoint&#34;)
  *             .location(&#34;us-central1&#34;)
+ *             .region(&#34;us-central1&#34;)
  *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
  *             .network(String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),vertexNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.name())))
  *             .encryptionSpec(AiEndpointEncryptionSpecArgs.builder()
@@ -298,6 +299,20 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The region for the resource
+     * 
+     */
+    @Export(name="region", type=String.class, parameters={})
+    private Output</* @Nullable */ String> region;
+
+    /**
+     * @return The region for the resource
+     * 
+     */
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
     }
     /**
      * Output only. Timestamp when this Endpoint was last updated.

@@ -58,8 +58,9 @@ type LookupResourcePolicyArgs struct {
 // A collection of values returned by getResourcePolicy.
 type LookupResourcePolicyResult struct {
 	// Description of this Resource Policy.
-	Description            string                                  `pulumi:"description"`
-	GroupPlacementPolicies []GetResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicies"`
+	Description                  string                                        `pulumi:"description"`
+	DiskConsistencyGroupPolicies []GetResourcePolicyDiskConsistencyGroupPolicy `pulumi:"diskConsistencyGroupPolicies"`
+	GroupPlacementPolicies       []GetResourcePolicyGroupPlacementPolicy       `pulumi:"groupPlacementPolicies"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                                    `pulumi:"id"`
 	InstanceSchedulePolicies []GetResourcePolicyInstanceSchedulePolicy `pulumi:"instanceSchedulePolicies"`
@@ -116,6 +117,12 @@ func (o LookupResourcePolicyResultOutput) ToLookupResourcePolicyResultOutputWith
 // Description of this Resource Policy.
 func (o LookupResourcePolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcePolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o LookupResourcePolicyResultOutput) DiskConsistencyGroupPolicies() GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return o.ApplyT(func(v LookupResourcePolicyResult) []GetResourcePolicyDiskConsistencyGroupPolicy {
+		return v.DiskConsistencyGroupPolicies
+	}).(GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput)
 }
 
 func (o LookupResourcePolicyResultOutput) GroupPlacementPolicies() GetResourcePolicyGroupPlacementPolicyArrayOutput {

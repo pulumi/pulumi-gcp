@@ -205,6 +205,20 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionConfig")]
+        public Output<Outputs.BackupEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// EncryptionInfo describes the encryption information of a cluster or a backup.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("encryptionInfos")]
+        public Output<ImmutableArray<Outputs.BackupEncryptionInfo>> EncryptionInfos { get; private set; } = null!;
+
+        /// <summary>
         /// A hash of the resource.
         /// </summary>
         [Output("etag")]
@@ -323,6 +337,13 @@ namespace Pulumi.Gcp.Alloydb
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.BackupEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -379,6 +400,26 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.BackupEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
+
+        [Input("encryptionInfos")]
+        private InputList<Inputs.BackupEncryptionInfoGetArgs>? _encryptionInfos;
+
+        /// <summary>
+        /// EncryptionInfo describes the encryption information of a cluster or a backup.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackupEncryptionInfoGetArgs> EncryptionInfos
+        {
+            get => _encryptionInfos ?? (_encryptionInfos = new InputList<Inputs.BackupEncryptionInfoGetArgs>());
+            set => _encryptionInfos = value;
+        }
 
         /// <summary>
         /// A hash of the resource.

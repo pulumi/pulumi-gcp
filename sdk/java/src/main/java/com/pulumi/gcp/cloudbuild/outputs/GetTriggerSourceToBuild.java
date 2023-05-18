@@ -12,6 +12,7 @@ public final class GetTriggerSourceToBuild {
     private String githubEnterpriseConfig;
     private String ref;
     private String repoType;
+    private String repository;
     private String uri;
 
     private GetTriggerSourceToBuild() {}
@@ -23,6 +24,9 @@ public final class GetTriggerSourceToBuild {
     }
     public String repoType() {
         return this.repoType;
+    }
+    public String repository() {
+        return this.repository;
     }
     public String uri() {
         return this.uri;
@@ -40,6 +44,7 @@ public final class GetTriggerSourceToBuild {
         private String githubEnterpriseConfig;
         private String ref;
         private String repoType;
+        private String repository;
         private String uri;
         public Builder() {}
         public Builder(GetTriggerSourceToBuild defaults) {
@@ -47,6 +52,7 @@ public final class GetTriggerSourceToBuild {
     	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.ref = defaults.ref;
     	      this.repoType = defaults.repoType;
+    	      this.repository = defaults.repository;
     	      this.uri = defaults.uri;
         }
 
@@ -66,6 +72,11 @@ public final class GetTriggerSourceToBuild {
             return this;
         }
         @CustomType.Setter
+        public Builder repository(String repository) {
+            this.repository = Objects.requireNonNull(repository);
+            return this;
+        }
+        @CustomType.Setter
         public Builder uri(String uri) {
             this.uri = Objects.requireNonNull(uri);
             return this;
@@ -75,6 +86,7 @@ public final class GetTriggerSourceToBuild {
             o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.ref = ref;
             o.repoType = repoType;
+            o.repository = repository;
             o.uri = uri;
             return o;
         }

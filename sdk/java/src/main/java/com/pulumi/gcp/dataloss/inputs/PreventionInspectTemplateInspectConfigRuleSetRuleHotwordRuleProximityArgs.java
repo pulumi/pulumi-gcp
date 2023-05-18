@@ -16,14 +16,14 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
     public static final PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs Empty = new PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs();
 
     /**
-     * Number of characters after the finding to consider. Either this or window_before must be specified
+     * Number of characters after the finding to consider.
      * 
      */
     @Import(name="windowAfter")
     private @Nullable Output<Integer> windowAfter;
 
     /**
-     * @return Number of characters after the finding to consider. Either this or window_before must be specified
+     * @return Number of characters after the finding to consider.
      * 
      */
     public Optional<Output<Integer>> windowAfter() {
@@ -31,14 +31,14 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
     }
 
     /**
-     * Number of characters before the finding to consider. Either this or window_after must be specified
+     * Number of characters before the finding to consider.
      * 
      */
     @Import(name="windowBefore")
     private @Nullable Output<Integer> windowBefore;
 
     /**
-     * @return Number of characters before the finding to consider. Either this or window_after must be specified
+     * @return Number of characters before the finding to consider.
      * 
      */
     public Optional<Output<Integer>> windowBefore() {
@@ -71,7 +71,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
         }
 
         /**
-         * @param windowAfter Number of characters after the finding to consider. Either this or window_before must be specified
+         * @param windowAfter Number of characters after the finding to consider.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
         }
 
         /**
-         * @param windowAfter Number of characters after the finding to consider. Either this or window_before must be specified
+         * @param windowAfter Number of characters after the finding to consider.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
         }
 
         /**
-         * @param windowBefore Number of characters before the finding to consider. Either this or window_after must be specified
+         * @param windowBefore Number of characters before the finding to consider.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleP
         }
 
         /**
-         * @param windowBefore Number of characters before the finding to consider. Either this or window_after must be specified
+         * @param windowBefore Number of characters before the finding to consider.
          * 
          * @return builder
          * 

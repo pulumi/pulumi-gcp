@@ -45,6 +45,11 @@ export const getDatabases: typeof import("./getDatabases").getDatabases = null a
 export const getDatabasesOutput: typeof import("./getDatabases").getDatabasesOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabases","getDatabasesOutput"], () => require("./getDatabases"));
 
+export { GetTiersArgs, GetTiersResult, GetTiersOutputArgs } from "./getTiers";
+export const getTiers: typeof import("./getTiers").getTiers = null as any;
+export const getTiersOutput: typeof import("./getTiers").getTiersOutput = null as any;
+utilities.lazyLoad(exports, ["getTiers","getTiersOutput"], () => require("./getTiers"));
+
 export { SourceRepresentationInstanceArgs, SourceRepresentationInstanceState } from "./sourceRepresentationInstance";
 export type SourceRepresentationInstance = import("./sourceRepresentationInstance").SourceRepresentationInstance;
 export const SourceRepresentationInstance: typeof import("./sourceRepresentationInstance").SourceRepresentationInstance = null as any;

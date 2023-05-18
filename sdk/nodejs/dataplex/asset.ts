@@ -10,6 +10,48 @@ import * as utilities from "../utilities";
  * The Dataplex Asset resource
  *
  * ## Example Usage
+ * ### Basic_asset
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicBucket = new gcp.storage.Bucket("basicBucket", {
+ *     location: "us-west1",
+ *     uniformBucketLevelAccess: true,
+ *     project: "my-project-name",
+ * });
+ * const basicLake = new gcp.dataplex.Lake("basicLake", {
+ *     location: "us-west1",
+ *     project: "my-project-name",
+ * });
+ * const basicZone = new gcp.dataplex.Zone("basicZone", {
+ *     location: "us-west1",
+ *     lake: basicLake.name,
+ *     type: "RAW",
+ *     discoverySpec: {
+ *         enabled: false,
+ *     },
+ *     resourceSpec: {
+ *         locationType: "SINGLE_REGION",
+ *     },
+ *     project: "my-project-name",
+ * });
+ * const primary = new gcp.dataplex.Asset("primary", {
+ *     location: "us-west1",
+ *     lake: basicLake.name,
+ *     dataplexZone: basicZone.name,
+ *     discoverySpec: {
+ *         enabled: false,
+ *     },
+ *     resourceSpec: {
+ *         name: "projects/my-project-name/buckets/bucket",
+ *         type: "STORAGE_BUCKET",
+ *     },
+ *     project: "my-project-name",
+ * }, {
+ *     dependsOn: [basicBucket],
+ * });
+ * ```
  *
  * ## Import
  *

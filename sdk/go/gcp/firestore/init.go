@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Database{}
 	case "gcp:firestore/document:Document":
 		r = &Document{}
+	case "gcp:firestore/field:Field":
+		r = &Field{}
 	case "gcp:firestore/index:Index":
 		r = &Index{}
 	default:
@@ -48,6 +50,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firestore/document",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firestore/field",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

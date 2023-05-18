@@ -54,6 +54,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
+        /// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        /// </summary>
+        public readonly Outputs.AwsNodePoolConfigSpotConfig? SpotConfig;
+        /// <summary>
         /// Optional. The SSH configuration.
         /// </summary>
         public readonly Outputs.AwsNodePoolConfigSshConfig? SshConfig;
@@ -88,6 +92,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<string> securityGroupIds,
 
+            Outputs.AwsNodePoolConfigSpotConfig? spotConfig,
+
             Outputs.AwsNodePoolConfigSshConfig? sshConfig,
 
             ImmutableDictionary<string, string>? tags,
@@ -104,6 +110,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ProxyConfig = proxyConfig;
             RootVolume = rootVolume;
             SecurityGroupIds = securityGroupIds;
+            SpotConfig = spotConfig;
             SshConfig = sshConfig;
             Tags = tags;
             Taints = taints;

@@ -49,6 +49,10 @@ public final class GetInstanceResult {
      * 
      */
     private String cpuPlatform;
+    /**
+     * @return The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+     * 
+     */
     private String currentStatus;
     /**
      * @return Whether deletion protection is enabled on this instance.
@@ -62,7 +66,7 @@ public final class GetInstanceResult {
     private String description;
     private String desiredStatus;
     /**
-     * @return - Whether the instance has virtual displays enabled.
+     * @return Whether the instance has virtual displays enabled.
      * 
      */
     private Boolean enableDisplay;
@@ -202,6 +206,10 @@ public final class GetInstanceResult {
     public String cpuPlatform() {
         return this.cpuPlatform;
     }
+    /**
+     * @return The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+     * 
+     */
     public String currentStatus() {
         return this.currentStatus;
     }
@@ -223,7 +231,7 @@ public final class GetInstanceResult {
         return this.desiredStatus;
     }
     /**
-     * @return - Whether the instance has virtual displays enabled.
+     * @return Whether the instance has virtual displays enabled.
      * 
      */
     public Boolean enableDisplay() {

@@ -49,7 +49,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return The IP Stack Type of the cluster.
      * Default value is `IPV4`.
-     * Possible values are `IPV4` and `PV4_IPV6`.
+     * Possible values are `IPV4` and `IPV4_IPV6`.
      * 
      */
     private @Nullable String stackType;
@@ -102,7 +102,7 @@ public final class ClusterIpAllocationPolicy {
     /**
      * @return The IP Stack Type of the cluster.
      * Default value is `IPV4`.
-     * Possible values are `IPV4` and `PV4_IPV6`.
+     * Possible values are `IPV4` and `IPV4_IPV6`.
      * 
      */
     public Optional<String> stackType() {

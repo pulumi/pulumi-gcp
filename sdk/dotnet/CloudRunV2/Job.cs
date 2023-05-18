@@ -32,7 +32,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -83,7 +82,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -201,7 +199,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -246,7 +243,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -310,6 +306,60 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         {
     ///             secret,
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Job Emptydir
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "empty-dir-volume",
+    ///                                 MountPath = "/mnt",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Volumes = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeArgs
+    ///                     {
+    ///                         Name = "empty-dir-volume",
+    ///                         EmptyDir = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVolumeEmptyDirArgs
+    ///                         {
+    ///                             Medium = "MEMORY",
+    ///                             SizeLimit = "128Mi",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -394,7 +444,9 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<ImmutableArray<Outputs.JobLatestCreatedExecution>> LatestCreatedExecutions { get; private set; } = null!;
 
         /// <summary>
-        /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Output("launchStage")]
@@ -534,7 +586,9 @@ namespace Pulumi.Gcp.CloudRunV2
         }
 
         /// <summary>
-        /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]
@@ -652,7 +706,9 @@ namespace Pulumi.Gcp.CloudRunV2
         }
 
         /// <summary>
-        /// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        /// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        /// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         /// </summary>
         [Input("launchStage")]

@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
-        /// Holds the single container that defines the unit of execution for this task.
+        /// Holds the containers that define the unit of execution for this Service.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateContainer> Containers;
@@ -52,6 +52,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         /// </summary>
         public readonly string? ServiceAccount;
+        /// <summary>
+        /// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        /// </summary>
+        public readonly bool? SessionAffinity;
         /// <summary>
         /// Max allowed time for an instance to respond to a request.
         /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -88,6 +92,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string? serviceAccount,
 
+            bool? sessionAffinity,
+
             string? timeout,
 
             ImmutableArray<Outputs.ServiceTemplateVolume> volumes,
@@ -103,6 +109,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Revision = revision;
             Scaling = scaling;
             ServiceAccount = serviceAccount;
+            SessionAffinity = sessionAffinity;
             Timeout = timeout;
             Volumes = volumes;
             VpcAccess = vpcAccess;

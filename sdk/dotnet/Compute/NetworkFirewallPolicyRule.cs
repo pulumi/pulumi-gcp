@@ -22,6 +22,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Sample global networksecurity_address_group",
+    ///         Location = "global",
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///         Type = "IPV4",
+    ///         Capacity = 100,
+    ///     });
+    /// 
     ///     var basicNetworkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy", new()
     ///     {
     ///         Description = "Sample global network firewall policy",
@@ -69,6 +82,18 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 "10.100.0.1/32",
     ///             },
+    ///             SrcFqdns = new[]
+    ///             {
+    ///                 "google.com",
+    ///             },
+    ///             SrcRegionCodes = new[]
+    ///             {
+    ///                 "US",
+    ///             },
+    ///             SrcThreatIntelligences = new[]
+    ///             {
+    ///                 "iplist-known-malicious-ips",
+    ///             },
     ///             SrcSecureTags = new[]
     ///             {
     ///                 new Gcp.Compute.Inputs.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs
@@ -82,6 +107,10 @@ namespace Pulumi.Gcp.Compute
     ///                 {
     ///                     IpProtocol = "all",
     ///                 },
+    ///             },
+    ///             SrcAddressGroups = new[]
+    ///             {
+    ///                 basicGlobalNetworksecurityAddressGroup.Id,
     ///             },
     ///         },
     ///     });

@@ -17,6 +17,20 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
     public static final FirewallPolicyRuleMatchArgs Empty = new FirewallPolicyRuleMatchArgs();
 
+    @Import(name="destAddressGroups")
+    private @Nullable Output<List<String>> destAddressGroups;
+
+    public Optional<Output<List<String>>> destAddressGroups() {
+        return Optional.ofNullable(this.destAddressGroups);
+    }
+
+    @Import(name="destFqdns")
+    private @Nullable Output<List<String>> destFqdns;
+
+    public Optional<Output<List<String>>> destFqdns() {
+        return Optional.ofNullable(this.destFqdns);
+    }
+
     /**
      * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
      * 
@@ -30,6 +44,20 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<List<String>>> destIpRanges() {
         return Optional.ofNullable(this.destIpRanges);
+    }
+
+    @Import(name="destRegionCodes")
+    private @Nullable Output<List<String>> destRegionCodes;
+
+    public Optional<Output<List<String>>> destRegionCodes() {
+        return Optional.ofNullable(this.destRegionCodes);
+    }
+
+    @Import(name="destThreatIntelligences")
+    private @Nullable Output<List<String>> destThreatIntelligences;
+
+    public Optional<Output<List<String>>> destThreatIntelligences() {
+        return Optional.ofNullable(this.destThreatIntelligences);
     }
 
     /**
@@ -47,6 +75,20 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         return this.layer4Configs;
     }
 
+    @Import(name="srcAddressGroups")
+    private @Nullable Output<List<String>> srcAddressGroups;
+
+    public Optional<Output<List<String>>> srcAddressGroups() {
+        return Optional.ofNullable(this.srcAddressGroups);
+    }
+
+    @Import(name="srcFqdns")
+    private @Nullable Output<List<String>> srcFqdns;
+
+    public Optional<Output<List<String>>> srcFqdns() {
+        return Optional.ofNullable(this.srcFqdns);
+    }
+
     /**
      * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
      * 
@@ -62,12 +104,34 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.srcIpRanges);
     }
 
+    @Import(name="srcRegionCodes")
+    private @Nullable Output<List<String>> srcRegionCodes;
+
+    public Optional<Output<List<String>>> srcRegionCodes() {
+        return Optional.ofNullable(this.srcRegionCodes);
+    }
+
+    @Import(name="srcThreatIntelligences")
+    private @Nullable Output<List<String>> srcThreatIntelligences;
+
+    public Optional<Output<List<String>>> srcThreatIntelligences() {
+        return Optional.ofNullable(this.srcThreatIntelligences);
+    }
+
     private FirewallPolicyRuleMatchArgs() {}
 
     private FirewallPolicyRuleMatchArgs(FirewallPolicyRuleMatchArgs $) {
+        this.destAddressGroups = $.destAddressGroups;
+        this.destFqdns = $.destFqdns;
         this.destIpRanges = $.destIpRanges;
+        this.destRegionCodes = $.destRegionCodes;
+        this.destThreatIntelligences = $.destThreatIntelligences;
         this.layer4Configs = $.layer4Configs;
+        this.srcAddressGroups = $.srcAddressGroups;
+        this.srcFqdns = $.srcFqdns;
         this.srcIpRanges = $.srcIpRanges;
+        this.srcRegionCodes = $.srcRegionCodes;
+        this.srcThreatIntelligences = $.srcThreatIntelligences;
     }
 
     public static Builder builder() {
@@ -86,6 +150,32 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
         public Builder(FirewallPolicyRuleMatchArgs defaults) {
             $ = new FirewallPolicyRuleMatchArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder destAddressGroups(@Nullable Output<List<String>> destAddressGroups) {
+            $.destAddressGroups = destAddressGroups;
+            return this;
+        }
+
+        public Builder destAddressGroups(List<String> destAddressGroups) {
+            return destAddressGroups(Output.of(destAddressGroups));
+        }
+
+        public Builder destAddressGroups(String... destAddressGroups) {
+            return destAddressGroups(List.of(destAddressGroups));
+        }
+
+        public Builder destFqdns(@Nullable Output<List<String>> destFqdns) {
+            $.destFqdns = destFqdns;
+            return this;
+        }
+
+        public Builder destFqdns(List<String> destFqdns) {
+            return destFqdns(Output.of(destFqdns));
+        }
+
+        public Builder destFqdns(String... destFqdns) {
+            return destFqdns(List.of(destFqdns));
         }
 
         /**
@@ -119,6 +209,32 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
             return destIpRanges(List.of(destIpRanges));
         }
 
+        public Builder destRegionCodes(@Nullable Output<List<String>> destRegionCodes) {
+            $.destRegionCodes = destRegionCodes;
+            return this;
+        }
+
+        public Builder destRegionCodes(List<String> destRegionCodes) {
+            return destRegionCodes(Output.of(destRegionCodes));
+        }
+
+        public Builder destRegionCodes(String... destRegionCodes) {
+            return destRegionCodes(List.of(destRegionCodes));
+        }
+
+        public Builder destThreatIntelligences(@Nullable Output<List<String>> destThreatIntelligences) {
+            $.destThreatIntelligences = destThreatIntelligences;
+            return this;
+        }
+
+        public Builder destThreatIntelligences(List<String> destThreatIntelligences) {
+            return destThreatIntelligences(Output.of(destThreatIntelligences));
+        }
+
+        public Builder destThreatIntelligences(String... destThreatIntelligences) {
+            return destThreatIntelligences(List.of(destThreatIntelligences));
+        }
+
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match. Structure is documented below.
          * 
@@ -150,6 +266,32 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
             return layer4Configs(List.of(layer4Configs));
         }
 
+        public Builder srcAddressGroups(@Nullable Output<List<String>> srcAddressGroups) {
+            $.srcAddressGroups = srcAddressGroups;
+            return this;
+        }
+
+        public Builder srcAddressGroups(List<String> srcAddressGroups) {
+            return srcAddressGroups(Output.of(srcAddressGroups));
+        }
+
+        public Builder srcAddressGroups(String... srcAddressGroups) {
+            return srcAddressGroups(List.of(srcAddressGroups));
+        }
+
+        public Builder srcFqdns(@Nullable Output<List<String>> srcFqdns) {
+            $.srcFqdns = srcFqdns;
+            return this;
+        }
+
+        public Builder srcFqdns(List<String> srcFqdns) {
+            return srcFqdns(Output.of(srcFqdns));
+        }
+
+        public Builder srcFqdns(String... srcFqdns) {
+            return srcFqdns(List.of(srcFqdns));
+        }
+
         /**
          * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
          * 
@@ -179,6 +321,32 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
          */
         public Builder srcIpRanges(String... srcIpRanges) {
             return srcIpRanges(List.of(srcIpRanges));
+        }
+
+        public Builder srcRegionCodes(@Nullable Output<List<String>> srcRegionCodes) {
+            $.srcRegionCodes = srcRegionCodes;
+            return this;
+        }
+
+        public Builder srcRegionCodes(List<String> srcRegionCodes) {
+            return srcRegionCodes(Output.of(srcRegionCodes));
+        }
+
+        public Builder srcRegionCodes(String... srcRegionCodes) {
+            return srcRegionCodes(List.of(srcRegionCodes));
+        }
+
+        public Builder srcThreatIntelligences(@Nullable Output<List<String>> srcThreatIntelligences) {
+            $.srcThreatIntelligences = srcThreatIntelligences;
+            return this;
+        }
+
+        public Builder srcThreatIntelligences(List<String> srcThreatIntelligences) {
+            return srcThreatIntelligences(Output.of(srcThreatIntelligences));
+        }
+
+        public Builder srcThreatIntelligences(String... srcThreatIntelligences) {
+            return srcThreatIntelligences(List.of(srcThreatIntelligences));
         }
 
         public FirewallPolicyRuleMatchArgs build() {

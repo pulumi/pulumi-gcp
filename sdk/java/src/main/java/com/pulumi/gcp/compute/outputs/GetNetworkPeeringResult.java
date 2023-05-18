@@ -22,6 +22,7 @@ public final class GetNetworkPeeringResult {
     private String name;
     private String network;
     private String peerNetwork;
+    private String stackType;
     private String state;
     private String stateDetails;
 
@@ -54,6 +55,9 @@ public final class GetNetworkPeeringResult {
     public String peerNetwork() {
         return this.peerNetwork;
     }
+    public String stackType() {
+        return this.stackType;
+    }
     public String state() {
         return this.state;
     }
@@ -78,6 +82,7 @@ public final class GetNetworkPeeringResult {
         private String name;
         private String network;
         private String peerNetwork;
+        private String stackType;
         private String state;
         private String stateDetails;
         public Builder() {}
@@ -91,6 +96,7 @@ public final class GetNetworkPeeringResult {
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.peerNetwork = defaults.peerNetwork;
+    	      this.stackType = defaults.stackType;
     	      this.state = defaults.state;
     	      this.stateDetails = defaults.stateDetails;
         }
@@ -136,6 +142,11 @@ public final class GetNetworkPeeringResult {
             return this;
         }
         @CustomType.Setter
+        public Builder stackType(String stackType) {
+            this.stackType = Objects.requireNonNull(stackType);
+            return this;
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
@@ -155,6 +166,7 @@ public final class GetNetworkPeeringResult {
             o.name = name;
             o.network = network;
             o.peerNetwork = peerNetwork;
+            o.stackType = stackType;
             o.state = state;
             o.stateDetails = stateDetails;
             return o;

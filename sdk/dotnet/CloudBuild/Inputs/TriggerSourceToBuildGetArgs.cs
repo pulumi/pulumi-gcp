@@ -33,11 +33,14 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("repoType", required: true)]
         public Input<string> RepoType { get; set; } = null!;
 
+        [Input("repository")]
+        public Input<string>? Repository { get; set; }
+
         /// <summary>
-        /// The URI of the repo (required).
+        /// The URI of the repo.
         /// </summary>
-        [Input("uri", required: true)]
-        public Input<string> Uri { get; set; } = null!;
+        [Input("uri")]
+        public Input<string>? Uri { get; set; }
 
         public TriggerSourceToBuildGetArgs()
         {

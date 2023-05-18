@@ -291,7 +291,7 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+     * Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      * 
@@ -300,7 +300,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> networkFirewallPolicyEnforcementOrder;
 
     /**
-     * @return Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either &#39;AFTER_CLASSIC_FIREWALL&#39; or &#39;BEFORE_CLASSIC_FIREWALL&#39; Default &#39;AFTER_CLASSIC_FIREWALL&#39;
+     * @return Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      * 

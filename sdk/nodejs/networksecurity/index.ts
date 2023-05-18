@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AddressGroupArgs, AddressGroupState } from "./addressGroup";
+export type AddressGroup = import("./addressGroup").AddressGroup;
+export const AddressGroup: typeof import("./addressGroup").AddressGroup = null as any;
+utilities.lazyLoad(exports, ["AddressGroup"], () => require("./addressGroup"));
+
+export { AuthorizationPolicyArgs, AuthorizationPolicyState } from "./authorizationPolicy";
+export type AuthorizationPolicy = import("./authorizationPolicy").AuthorizationPolicy;
+export const AuthorizationPolicy: typeof import("./authorizationPolicy").AuthorizationPolicy = null as any;
+utilities.lazyLoad(exports, ["AuthorizationPolicy"], () => require("./authorizationPolicy"));
+
+export { ClientTlsPolicyArgs, ClientTlsPolicyState } from "./clientTlsPolicy";
+export type ClientTlsPolicy = import("./clientTlsPolicy").ClientTlsPolicy;
+export const ClientTlsPolicy: typeof import("./clientTlsPolicy").ClientTlsPolicy = null as any;
+utilities.lazyLoad(exports, ["ClientTlsPolicy"], () => require("./clientTlsPolicy"));
+
 export { GatewaySecurityPolicyArgs, GatewaySecurityPolicyState } from "./gatewaySecurityPolicy";
 export type GatewaySecurityPolicy = import("./gatewaySecurityPolicy").GatewaySecurityPolicy;
 export const GatewaySecurityPolicy: typeof import("./gatewaySecurityPolicy").GatewaySecurityPolicy = null as any;
@@ -14,6 +29,11 @@ export { GatewaySecurityPolicyRuleArgs, GatewaySecurityPolicyRuleState } from ".
 export type GatewaySecurityPolicyRule = import("./gatewaySecurityPolicyRule").GatewaySecurityPolicyRule;
 export const GatewaySecurityPolicyRule: typeof import("./gatewaySecurityPolicyRule").GatewaySecurityPolicyRule = null as any;
 utilities.lazyLoad(exports, ["GatewaySecurityPolicyRule"], () => require("./gatewaySecurityPolicyRule"));
+
+export { TlsInspectionPolicyArgs, TlsInspectionPolicyState } from "./tlsInspectionPolicy";
+export type TlsInspectionPolicy = import("./tlsInspectionPolicy").TlsInspectionPolicy;
+export const TlsInspectionPolicy: typeof import("./tlsInspectionPolicy").TlsInspectionPolicy = null as any;
+utilities.lazyLoad(exports, ["TlsInspectionPolicy"], () => require("./tlsInspectionPolicy"));
 
 export { UrlListArgs, UrlListState } from "./urlList";
 export type UrlList = import("./urlList").UrlList;
@@ -25,10 +45,18 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:networksecurity/addressGroup:AddressGroup":
+                return new AddressGroup(name, <any>undefined, { urn })
+            case "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy":
+                return new AuthorizationPolicy(name, <any>undefined, { urn })
+            case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
+                return new ClientTlsPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy":
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
                 return new GatewaySecurityPolicyRule(name, <any>undefined, { urn })
+            case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
+                return new TlsInspectionPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/urlList:UrlList":
                 return new UrlList(name, <any>undefined, { urn })
             default:
@@ -36,6 +64,10 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/authorizationPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/clientTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicyRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/tlsInspectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/urlList", _module)

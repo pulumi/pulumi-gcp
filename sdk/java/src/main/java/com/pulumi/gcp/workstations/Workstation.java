@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var defaultWorkstation = new Workstation(&#34;defaultWorkstation&#34;, WorkstationArgs.builder()        
- *             .workstationId(&#34;workstation&#34;)
+ *             .workstationId(&#34;work-station&#34;)
  *             .workstationConfigId(defaultWorkstationConfig.workstationConfigId())
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location(&#34;us-central1&#34;)
@@ -139,14 +139,14 @@ public class Workstation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.annotations);
     }
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return Time the Instance was created in UTC.
+     * @return Time when this resource was created.
      * 
      */
     public Output<String> createTime() {
@@ -199,28 +199,28 @@ public class Workstation extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The location where the workstation cluster config should reside.
+     * The location where the workstation parent resources reside.
      * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
-     * @return The location where the workstation cluster config should reside.
+     * @return The location where the workstation parent resources reside.
      * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * The name of the cluster resource.
+     * Full name of this resource.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the cluster resource.
+     * @return Full name of this resource.
      * 
      */
     public Output<String> name() {
@@ -257,42 +257,42 @@ public class Workstation extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * The system-generated UID of the resource.
+     * A system-assigned unique identified for this resource.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return The system-generated UID of the resource.
+     * @return A system-assigned unique identified for this resource.
      * 
      */
     public Output<String> uid() {
         return this.uid;
     }
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      * 
      */
     @Export(name="workstationClusterId", type=String.class, parameters={})
     private Output<String> workstationClusterId;
 
     /**
-     * @return The name of the workstation cluster.
+     * @return The ID of the parent workstation cluster.
      * 
      */
     public Output<String> workstationClusterId() {
         return this.workstationClusterId;
     }
     /**
-     * The ID of the workstation cluster config.
+     * The ID of the parent workstation cluster config.
      * 
      */
     @Export(name="workstationConfigId", type=String.class, parameters={})
     private Output<String> workstationConfigId;
 
     /**
-     * @return The ID of the workstation cluster config.
+     * @return The ID of the parent workstation cluster config.
      * 
      */
     public Output<String> workstationConfigId() {

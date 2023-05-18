@@ -94,6 +94,9 @@ type Workflow struct {
 
 	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The KMS key used to encrypt workflow and execution data.
+	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// A set of key/value label pairs to assign to this Workflow.
@@ -112,7 +115,11 @@ type Workflow struct {
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
 	// Name of the service account associated with the latest workflow version. This service
 	// account represents the identity of the workflow and determines what permissions the workflow has.
-	// Format: projects/{project}/serviceAccounts/{account}.
+	// Format: projects/{project}/serviceAccounts/{account} or {account}.
+	// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+	// The {account} value can be the email address or the uniqueId of the service account.
+	// If not provided, workflow will use the project's default service account.
+	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents pulumi.StringPtrOutput `pulumi:"sourceContents"`
@@ -153,6 +160,9 @@ func GetWorkflow(ctx *pulumi.Context,
 type workflowState struct {
 	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
+	// The KMS key used to encrypt workflow and execution data.
+	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// A set of key/value label pairs to assign to this Workflow.
@@ -171,7 +181,11 @@ type workflowState struct {
 	RevisionId *string `pulumi:"revisionId"`
 	// Name of the service account associated with the latest workflow version. This service
 	// account represents the identity of the workflow and determines what permissions the workflow has.
-	// Format: projects/{project}/serviceAccounts/{account}.
+	// Format: projects/{project}/serviceAccounts/{account} or {account}.
+	// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+	// The {account} value can be the email address or the uniqueId of the service account.
+	// If not provided, workflow will use the project's default service account.
+	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents *string `pulumi:"sourceContents"`
@@ -184,6 +198,9 @@ type workflowState struct {
 type WorkflowState struct {
 	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
+	// The KMS key used to encrypt workflow and execution data.
+	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+	CryptoKeyName pulumi.StringPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
@@ -202,7 +219,11 @@ type WorkflowState struct {
 	RevisionId pulumi.StringPtrInput
 	// Name of the service account associated with the latest workflow version. This service
 	// account represents the identity of the workflow and determines what permissions the workflow has.
-	// Format: projects/{project}/serviceAccounts/{account}.
+	// Format: projects/{project}/serviceAccounts/{account} or {account}.
+	// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+	// The {account} value can be the email address or the uniqueId of the service account.
+	// If not provided, workflow will use the project's default service account.
+	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents pulumi.StringPtrInput
@@ -217,6 +238,9 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
+	// The KMS key used to encrypt workflow and execution data.
+	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+	CryptoKeyName *string `pulumi:"cryptoKeyName"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// A set of key/value label pairs to assign to this Workflow.
@@ -233,7 +257,11 @@ type workflowArgs struct {
 	Region *string `pulumi:"region"`
 	// Name of the service account associated with the latest workflow version. This service
 	// account represents the identity of the workflow and determines what permissions the workflow has.
-	// Format: projects/{project}/serviceAccounts/{account}.
+	// Format: projects/{project}/serviceAccounts/{account} or {account}.
+	// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+	// The {account} value can be the email address or the uniqueId of the service account.
+	// If not provided, workflow will use the project's default service account.
+	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents *string `pulumi:"sourceContents"`
@@ -241,6 +269,9 @@ type workflowArgs struct {
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
+	// The KMS key used to encrypt workflow and execution data.
+	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+	CryptoKeyName pulumi.StringPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
@@ -257,7 +288,11 @@ type WorkflowArgs struct {
 	Region pulumi.StringPtrInput
 	// Name of the service account associated with the latest workflow version. This service
 	// account represents the identity of the workflow and determines what permissions the workflow has.
-	// Format: projects/{project}/serviceAccounts/{account}.
+	// Format: projects/{project}/serviceAccounts/{account} or {account}.
+	// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+	// The {account} value can be the email address or the uniqueId of the service account.
+	// If not provided, workflow will use the project's default service account.
+	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 32KB.
 	SourceContents pulumi.StringPtrInput
@@ -355,6 +390,12 @@ func (o WorkflowOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The KMS key used to encrypt workflow and execution data.
+// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+func (o WorkflowOutput) CryptoKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
+}
+
 // Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 func (o WorkflowOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -394,7 +435,11 @@ func (o WorkflowOutput) RevisionId() pulumi.StringOutput {
 
 // Name of the service account associated with the latest workflow version. This service
 // account represents the identity of the workflow and determines what permissions the workflow has.
-// Format: projects/{project}/serviceAccounts/{account}.
+// Format: projects/{project}/serviceAccounts/{account} or {account}.
+// Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+// The {account} value can be the email address or the uniqueId of the service account.
+// If not provided, workflow will use the project's default service account.
+// Modifying this field for an existing workflow results in a new workflow revision.
 func (o WorkflowOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }

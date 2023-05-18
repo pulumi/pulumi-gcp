@@ -205,6 +205,30 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Resource Policy Consistency Group
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cgroup = new Gcp.Compute.ResourcePolicy("cgroup", new()
+    ///     {
+    ///         Region = "europe-west1",
+    ///         DiskConsistencyGroupPolicy = new Gcp.Compute.Inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -234,6 +258,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Replication consistency group for asynchronous disk replication.
+        /// </summary>
+        [Output("diskConsistencyGroupPolicy")]
+        public Output<Outputs.ResourcePolicyDiskConsistencyGroupPolicy?> DiskConsistencyGroupPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Resource policy for instances used for placement configuration.
@@ -340,6 +370,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Replication consistency group for asynchronous disk replication.
+        /// </summary>
+        [Input("diskConsistencyGroupPolicy")]
+        public Input<Inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs>? DiskConsistencyGroupPolicy { get; set; }
+
+        /// <summary>
         /// Resource policy for instances used for placement configuration.
         /// Structure is documented below.
         /// </summary>
@@ -398,6 +434,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Replication consistency group for asynchronous disk replication.
+        /// </summary>
+        [Input("diskConsistencyGroupPolicy")]
+        public Input<Inputs.ResourcePolicyDiskConsistencyGroupPolicyGetArgs>? DiskConsistencyGroupPolicy { get; set; }
 
         /// <summary>
         /// Resource policy for instances used for placement configuration.

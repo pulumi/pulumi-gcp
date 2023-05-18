@@ -29,11 +29,12 @@ public final class TriggerSourceToBuild {
      * 
      */
     private String repoType;
+    private @Nullable String repository;
     /**
-     * @return The URI of the repo (required).
+     * @return The URI of the repo.
      * 
      */
-    private String uri;
+    private @Nullable String uri;
 
     private TriggerSourceToBuild() {}
     /**
@@ -60,12 +61,15 @@ public final class TriggerSourceToBuild {
     public String repoType() {
         return this.repoType;
     }
+    public Optional<String> repository() {
+        return Optional.ofNullable(this.repository);
+    }
     /**
-     * @return The URI of the repo (required).
+     * @return The URI of the repo.
      * 
      */
-    public String uri() {
-        return this.uri;
+    public Optional<String> uri() {
+        return Optional.ofNullable(this.uri);
     }
 
     public static Builder builder() {
@@ -80,13 +84,15 @@ public final class TriggerSourceToBuild {
         private @Nullable String githubEnterpriseConfig;
         private String ref;
         private String repoType;
-        private String uri;
+        private @Nullable String repository;
+        private @Nullable String uri;
         public Builder() {}
         public Builder(TriggerSourceToBuild defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.ref = defaults.ref;
     	      this.repoType = defaults.repoType;
+    	      this.repository = defaults.repository;
     	      this.uri = defaults.uri;
         }
 
@@ -106,8 +112,13 @@ public final class TriggerSourceToBuild {
             return this;
         }
         @CustomType.Setter
-        public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+        public Builder repository(@Nullable String repository) {
+            this.repository = repository;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uri(@Nullable String uri) {
+            this.uri = uri;
             return this;
         }
         public TriggerSourceToBuild build() {
@@ -115,6 +126,7 @@ public final class TriggerSourceToBuild {
             o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.ref = ref;
             o.repoType = repoType;
+            o.repository = repository;
             o.uri = uri;
             return o;
         }

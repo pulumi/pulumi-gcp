@@ -146,14 +146,14 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the workstation cluster.
+     * ID to use for the workstation cluster.
      * 
      */
     @Import(name="workstationClusterId", required=true)
     private Output<String> workstationClusterId;
 
     /**
-     * @return The ID of the workstation cluster.
+     * @return ID to use for the workstation cluster.
      * 
      */
     public Output<String> workstationClusterId() {
@@ -369,7 +369,7 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workstationClusterId The ID of the workstation cluster.
+         * @param workstationClusterId ID to use for the workstation cluster.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workstationClusterId The ID of the workstation cluster.
+         * @param workstationClusterId ID to use for the workstation cluster.
          * 
          * @return builder
          * 

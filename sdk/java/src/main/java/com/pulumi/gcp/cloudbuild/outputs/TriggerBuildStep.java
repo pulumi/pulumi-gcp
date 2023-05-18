@@ -5,6 +5,8 @@ package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildStepVolume;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +15,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TriggerBuildStep {
+    /**
+     * @return Allow this build step to fail without failing the entire build if and
+     * only if the exit code is one of the specified codes.
+     * If `allowFailure` is also specified, this field will take precedence.
+     * 
+     */
+    private @Nullable List<Integer> allowExitCodes;
+    /**
+     * @return Allow this build step to fail without failing the entire build.
+     * If false, the entire build will fail if this step fails. Otherwise, the
+     * build will succeed, but this step will still have a failure status.
+     * Error information will be reported in the `failureDetail` field.
+     * `allowExitCodes` takes precedence over this field.
+     * 
+     */
+    private @Nullable Boolean allowFailure;
     /**
      * @return A list of arguments that will be presented to the step when it is started.
      * If the image used to run the step&#39;s container has an entrypoint, the args
@@ -123,6 +141,26 @@ public final class TriggerBuildStep {
     private @Nullable List<String> waitFors;
 
     private TriggerBuildStep() {}
+    /**
+     * @return Allow this build step to fail without failing the entire build if and
+     * only if the exit code is one of the specified codes.
+     * If `allowFailure` is also specified, this field will take precedence.
+     * 
+     */
+    public List<Integer> allowExitCodes() {
+        return this.allowExitCodes == null ? List.of() : this.allowExitCodes;
+    }
+    /**
+     * @return Allow this build step to fail without failing the entire build.
+     * If false, the entire build will fail if this step fails. Otherwise, the
+     * build will succeed, but this step will still have a failure status.
+     * Error information will be reported in the `failureDetail` field.
+     * `allowExitCodes` takes precedence over this field.
+     * 
+     */
+    public Optional<Boolean> allowFailure() {
+        return Optional.ofNullable(this.allowFailure);
+    }
     /**
      * @return A list of arguments that will be presented to the step when it is started.
      * If the image used to run the step&#39;s container has an entrypoint, the args
@@ -265,6 +303,8 @@ public final class TriggerBuildStep {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<Integer> allowExitCodes;
+        private @Nullable Boolean allowFailure;
         private @Nullable List<String> args;
         private @Nullable String dir;
         private @Nullable String entrypoint;
@@ -280,6 +320,8 @@ public final class TriggerBuildStep {
         public Builder() {}
         public Builder(TriggerBuildStep defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowExitCodes = defaults.allowExitCodes;
+    	      this.allowFailure = defaults.allowFailure;
     	      this.args = defaults.args;
     	      this.dir = defaults.dir;
     	      this.entrypoint = defaults.entrypoint;
@@ -294,6 +336,19 @@ public final class TriggerBuildStep {
     	      this.waitFors = defaults.waitFors;
         }
 
+        @CustomType.Setter
+        public Builder allowExitCodes(@Nullable List<Integer> allowExitCodes) {
+            this.allowExitCodes = allowExitCodes;
+            return this;
+        }
+        public Builder allowExitCodes(Integer... allowExitCodes) {
+            return allowExitCodes(List.of(allowExitCodes));
+        }
+        @CustomType.Setter
+        public Builder allowFailure(@Nullable Boolean allowFailure) {
+            this.allowFailure = allowFailure;
+            return this;
+        }
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
             this.args = args;
@@ -371,6 +426,8 @@ public final class TriggerBuildStep {
         }
         public TriggerBuildStep build() {
             final var o = new TriggerBuildStep();
+            o.allowExitCodes = allowExitCodes;
+            o.allowFailure = allowFailure;
             o.args = args;
             o.dir = dir;
             o.entrypoint = entrypoint;

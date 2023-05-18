@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeCloudSqlInstance;
+import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeEmptyDir;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeSecret;
 import java.lang.String;
 import java.util.Objects;
@@ -19,6 +20,7 @@ public final class JobTemplateTemplateVolume {
      * 
      */
     private @Nullable JobTemplateTemplateVolumeCloudSqlInstance cloudSqlInstance;
+    private @Nullable JobTemplateTemplateVolumeEmptyDir emptyDir;
     /**
      * @return Volume&#39;s name.
      * 
@@ -39,6 +41,9 @@ public final class JobTemplateTemplateVolume {
      */
     public Optional<JobTemplateTemplateVolumeCloudSqlInstance> cloudSqlInstance() {
         return Optional.ofNullable(this.cloudSqlInstance);
+    }
+    public Optional<JobTemplateTemplateVolumeEmptyDir> emptyDir() {
+        return Optional.ofNullable(this.emptyDir);
     }
     /**
      * @return Volume&#39;s name.
@@ -66,12 +71,14 @@ public final class JobTemplateTemplateVolume {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable JobTemplateTemplateVolumeCloudSqlInstance cloudSqlInstance;
+        private @Nullable JobTemplateTemplateVolumeEmptyDir emptyDir;
         private String name;
         private @Nullable JobTemplateTemplateVolumeSecret secret;
         public Builder() {}
         public Builder(JobTemplateTemplateVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudSqlInstance = defaults.cloudSqlInstance;
+    	      this.emptyDir = defaults.emptyDir;
     	      this.name = defaults.name;
     	      this.secret = defaults.secret;
         }
@@ -79,6 +86,11 @@ public final class JobTemplateTemplateVolume {
         @CustomType.Setter
         public Builder cloudSqlInstance(@Nullable JobTemplateTemplateVolumeCloudSqlInstance cloudSqlInstance) {
             this.cloudSqlInstance = cloudSqlInstance;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emptyDir(@Nullable JobTemplateTemplateVolumeEmptyDir emptyDir) {
+            this.emptyDir = emptyDir;
             return this;
         }
         @CustomType.Setter
@@ -94,6 +106,7 @@ public final class JobTemplateTemplateVolume {
         public JobTemplateTemplateVolume build() {
             final var o = new JobTemplateTemplateVolume();
             o.cloudSqlInstance = cloudSqlInstance;
+            o.emptyDir = emptyDir;
             o.name = name;
             o.secret = secret;
             return o;

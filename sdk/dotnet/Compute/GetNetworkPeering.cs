@@ -176,6 +176,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly string Network;
         public readonly string PeerNetwork;
+        public readonly string StackType;
         public readonly string State;
         public readonly string StateDetails;
 
@@ -197,6 +198,8 @@ namespace Pulumi.Gcp.Compute
 
             string peerNetwork,
 
+            string stackType,
+
             string state,
 
             string stateDetails)
@@ -209,6 +212,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             Network = network;
             PeerNetwork = peerNetwork;
+            StackType = stackType;
             State = state;
             StateDetails = stateDetails;
         }

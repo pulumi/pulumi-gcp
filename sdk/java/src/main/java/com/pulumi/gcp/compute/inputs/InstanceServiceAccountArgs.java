@@ -17,8 +17,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
     public static final InstanceServiceAccountArgs Empty = new InstanceServiceAccountArgs();
 
     /**
-     * The service account e-mail address. If not given, the
-     * default Google Compute Engine service account is used.
+     * The service account e-mail address.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
@@ -26,8 +25,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> email;
 
     /**
-     * @return The service account e-mail address. If not given, the
-     * default Google Compute Engine service account is used.
+     * @return The service account e-mail address.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
@@ -82,8 +80,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param email The service account e-mail address. If not given, the
-         * default Google Compute Engine service account is used.
+         * @param email The service account e-mail address.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder
@@ -95,8 +92,7 @@ public final class InstanceServiceAccountArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param email The service account e-mail address. If not given, the
-         * default Google Compute Engine service account is used.
+         * @param email The service account e-mail address.
          * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
          * 
          * @return builder

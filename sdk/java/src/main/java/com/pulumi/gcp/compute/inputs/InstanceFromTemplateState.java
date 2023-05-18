@@ -140,14 +140,18 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Current status of the instance.
+     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     @Import(name="currentStatus")
     private @Nullable Output<String> currentStatus;
 
     /**
-     * @return Current status of the instance.
+     * @return Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     public Optional<Output<String>> currentStatus() {
@@ -827,7 +831,9 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param currentStatus Current status of the instance.
+         * @param currentStatus Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+         * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+         * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
          * 
          * @return builder
          * 
@@ -838,7 +844,9 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param currentStatus Current status of the instance.
+         * @param currentStatus Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+         * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+         * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
          * 
          * @return builder
          * 

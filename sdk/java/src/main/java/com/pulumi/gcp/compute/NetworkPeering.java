@@ -184,6 +184,20 @@ public class NetworkPeering extends com.pulumi.resources.CustomResource {
         return this.peerNetwork;
     }
     /**
+     * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: [&#34;IPV4_ONLY&#34;, &#34;IPV4_IPV6&#34;].
+     * 
+     */
+    @Export(name="stackType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> stackType;
+
+    /**
+     * @return Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: [&#34;IPV4_ONLY&#34;, &#34;IPV4_IPV6&#34;].
+     * 
+     */
+    public Output<Optional<String>> stackType() {
+        return Codegen.optional(this.stackType);
+    }
+    /**
      * State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
      * `ACTIVE` when there&#39;s a matching configuration in the peer network.
      * 

@@ -296,6 +296,12 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> Enable { get; private set; } = null!;
 
         /// <summary>
+        /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        /// </summary>
+        [Output("enableIpv6")]
+        public Output<bool?> EnableIpv6 { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the interface the BGP peer is associated with.
         /// </summary>
         [Output("interface")]
@@ -307,6 +313,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv6 address of the interface inside Google Cloud Platform.
+        /// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+        /// If you do not specify the next hop addresses, Google Cloud automatically
+        /// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        /// </summary>
+        [Output("ipv6NexthopAddress")]
+        public Output<string> Ipv6NexthopAddress { get; private set; } = null!;
 
         /// <summary>
         /// The resource that configures and manages this BGP peer.
@@ -338,6 +353,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("peerIpAddress")]
         public Output<string> PeerIpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// IPv6 address of the BGP interface outside Google Cloud Platform.
+        /// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+        /// If you do not specify the next hop addresses, Google Cloud automatically
+        /// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        /// </summary>
+        [Output("peerIpv6NexthopAddress")]
+        public Output<string> PeerIpv6NexthopAddress { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -478,6 +502,12 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
+        /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
         /// Name of the interface the BGP peer is associated with.
         /// </summary>
         [Input("interface", required: true)]
@@ -489,6 +519,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address of the interface inside Google Cloud Platform.
+        /// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+        /// If you do not specify the next hop addresses, Google Cloud automatically
+        /// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        /// </summary>
+        [Input("ipv6NexthopAddress")]
+        public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long,
@@ -514,6 +553,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("peerIpAddress", required: true)]
         public Input<string> PeerIpAddress { get; set; } = null!;
+
+        /// <summary>
+        /// IPv6 address of the BGP interface outside Google Cloud Platform.
+        /// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+        /// If you do not specify the next hop addresses, Google Cloud automatically
+        /// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        /// </summary>
+        [Input("peerIpv6NexthopAddress")]
+        public Input<string>? PeerIpv6NexthopAddress { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -616,6 +664,12 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
+        /// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+        /// </summary>
+        [Input("enableIpv6")]
+        public Input<bool>? EnableIpv6 { get; set; }
+
+        /// <summary>
         /// Name of the interface the BGP peer is associated with.
         /// </summary>
         [Input("interface")]
@@ -627,6 +681,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address of the interface inside Google Cloud Platform.
+        /// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+        /// If you do not specify the next hop addresses, Google Cloud automatically
+        /// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        /// </summary>
+        [Input("ipv6NexthopAddress")]
+        public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
         /// The resource that configures and manages this BGP peer.
@@ -658,6 +721,15 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }
+
+        /// <summary>
+        /// IPv6 address of the BGP interface outside Google Cloud Platform.
+        /// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+        /// If you do not specify the next hop addresses, Google Cloud automatically
+        /// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        /// </summary>
+        [Input("peerIpv6NexthopAddress")]
+        public Input<string>? PeerIpv6NexthopAddress { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

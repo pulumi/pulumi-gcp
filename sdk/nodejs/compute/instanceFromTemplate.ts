@@ -111,7 +111,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     /**
-     * Current status of the instance.
+     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     public /*out*/ readonly currentStatus!: pulumi.Output<string>;
     /**
@@ -372,7 +374,9 @@ export interface InstanceFromTemplateState {
      */
     cpuPlatform?: pulumi.Input<string>;
     /**
-     * Current status of the instance.
+     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     currentStatus?: pulumi.Input<string>;
     /**

@@ -20,7 +20,8 @@ class NetworkPeeringArgs:
                  export_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
                  import_custom_routes: Optional[pulumi.Input[bool]] = None,
                  import_subnet_routes_with_public_ip: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NetworkPeering resource.
         :param pulumi.Input[str] network: The primary network of the peering.
@@ -31,6 +32,7 @@ class NetworkPeeringArgs:
         :param pulumi.Input[bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
         :param pulumi.Input[bool] import_subnet_routes_with_public_ip: Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
         :param pulumi.Input[str] name: Name of the peering.
+        :param pulumi.Input[str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "peer_network", peer_network)
@@ -44,6 +46,8 @@ class NetworkPeeringArgs:
             pulumi.set(__self__, "import_subnet_routes_with_public_ip", import_subnet_routes_with_public_ip)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
 
     @property
     @pulumi.getter
@@ -130,6 +134,18 @@ class NetworkPeeringArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
 
 @pulumi.input_type
 class _NetworkPeeringState:
@@ -141,6 +157,7 @@ class _NetworkPeeringState:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  peer_network: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_details: Optional[pulumi.Input[str]] = None):
         """
@@ -153,6 +170,7 @@ class _NetworkPeeringState:
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
+        :param pulumi.Input[str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
         :param pulumi.Input[str] state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
                `ACTIVE` when there's a matching configuration in the peer network.
         :param pulumi.Input[str] state_details: Details about the current state of the peering.
@@ -171,6 +189,8 @@ class _NetworkPeeringState:
             pulumi.set(__self__, "network", network)
         if peer_network is not None:
             pulumi.set(__self__, "peer_network", peer_network)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if state_details is not None:
@@ -262,6 +282,18 @@ class _NetworkPeeringState:
         pulumi.set(self, "peer_network", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -299,6 +331,7 @@ class NetworkPeering(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  peer_network: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Manages a network peering within GCE. For more information see
@@ -345,6 +378,7 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
+        :param pulumi.Input[str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
         """
         ...
     @overload
@@ -409,6 +443,7 @@ class NetworkPeering(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  peer_network: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -429,6 +464,7 @@ class NetworkPeering(pulumi.CustomResource):
             if peer_network is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_network'")
             __props__.__dict__["peer_network"] = peer_network
+            __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["state"] = None
             __props__.__dict__["state_details"] = None
         super(NetworkPeering, __self__).__init__(
@@ -448,6 +484,7 @@ class NetworkPeering(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             peer_network: Optional[pulumi.Input[str]] = None,
+            stack_type: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_details: Optional[pulumi.Input[str]] = None) -> 'NetworkPeering':
         """
@@ -465,6 +502,7 @@ class NetworkPeering(pulumi.CustomResource):
         :param pulumi.Input[str] network: The primary network of the peering.
         :param pulumi.Input[str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
+        :param pulumi.Input[str] stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
         :param pulumi.Input[str] state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
                `ACTIVE` when there's a matching configuration in the peer network.
         :param pulumi.Input[str] state_details: Details about the current state of the peering.
@@ -480,6 +518,7 @@ class NetworkPeering(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["peer_network"] = peer_network
+        __props__.__dict__["stack_type"] = stack_type
         __props__.__dict__["state"] = state
         __props__.__dict__["state_details"] = state_details
         return NetworkPeering(resource_name, opts=opts, __props__=__props__)
@@ -540,6 +579,14 @@ class NetworkPeering(pulumi.CustomResource):
         may belong to a different project.
         """
         return pulumi.get(self, "peer_network")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
+        """
+        return pulumi.get(self, "stack_type")
 
     @property
     @pulumi.getter

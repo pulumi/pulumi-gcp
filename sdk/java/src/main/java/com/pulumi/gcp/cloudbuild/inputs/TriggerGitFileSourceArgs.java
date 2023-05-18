@@ -66,6 +66,13 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
         return this.repoType;
     }
 
+    @Import(name="repository")
+    private @Nullable Output<String> repository;
+
+    public Optional<Output<String>> repository() {
+        return Optional.ofNullable(this.repository);
+    }
+
     /**
      * The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
      * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -108,6 +115,7 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
         this.githubEnterpriseConfig = $.githubEnterpriseConfig;
         this.path = $.path;
         this.repoType = $.repoType;
+        this.repository = $.repository;
         this.revision = $.revision;
         this.uri = $.uri;
     }
@@ -197,6 +205,15 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
          */
         public Builder repoType(String repoType) {
             return repoType(Output.of(repoType));
+        }
+
+        public Builder repository(@Nullable Output<String> repository) {
+            $.repository = repository;
+            return this;
+        }
+
+        public Builder repository(String repository) {
+            return repository(Output.of(repository));
         }
 
         /**

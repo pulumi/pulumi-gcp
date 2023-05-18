@@ -15,15 +15,19 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     {
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult> HttpHeaders;
         public readonly string Path;
+        public readonly int Port;
 
         [OutputConstructor]
         private GetServiceTemplateSpecContainerStartupProbeHttpGetResult(
             ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult> httpHeaders,
 
-            string path)
+            string path,
+
+            int port)
         {
             HttpHeaders = httpHeaders;
             Path = path;
+            Port = port;
         }
     }
 }

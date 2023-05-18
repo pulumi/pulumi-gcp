@@ -105,7 +105,7 @@ type AppleApp struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrOutput `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	BundleId pulumi.StringPtrOutput `pulumi:"bundleId"`
+	BundleId pulumi.StringOutput `pulumi:"bundleId"`
 	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
 	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
 	// 'DELETE'.
@@ -129,6 +129,9 @@ func NewAppleApp(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BundleId == nil {
+		return nil, errors.New("invalid value for required argument 'BundleId'")
+	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
@@ -209,7 +212,7 @@ type appleAppArgs struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	BundleId *string `pulumi:"bundleId"`
+	BundleId string `pulumi:"bundleId"`
 	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
 	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
 	// 'DELETE'.
@@ -228,7 +231,7 @@ type AppleAppArgs struct {
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-	BundleId pulumi.StringPtrInput
+	BundleId pulumi.StringInput
 	// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
 	// destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
 	// 'DELETE'.
@@ -341,8 +344,8 @@ func (o AppleAppOutput) AppStoreId() pulumi.StringPtrOutput {
 }
 
 // The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
-func (o AppleAppOutput) BundleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppleApp) pulumi.StringPtrOutput { return v.BundleId }).(pulumi.StringPtrOutput)
+func (o AppleAppOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.BundleId }).(pulumi.StringOutput)
 }
 
 // (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform

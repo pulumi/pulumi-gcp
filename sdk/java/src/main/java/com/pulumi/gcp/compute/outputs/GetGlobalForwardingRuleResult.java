@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleMetadataFilter;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGlobalForwardingRuleResult {
+    private Boolean allowPscGlobalAccess;
+    private String baseForwardingRule;
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -34,9 +37,16 @@ public final class GetGlobalForwardingRuleResult {
     private String pscConnectionId;
     private String pscConnectionStatus;
     private String selfLink;
+    private List<String> sourceIpRanges;
     private String target;
 
     private GetGlobalForwardingRuleResult() {}
+    public Boolean allowPscGlobalAccess() {
+        return this.allowPscGlobalAccess;
+    }
+    public String baseForwardingRule() {
+        return this.baseForwardingRule;
+    }
     public String description() {
         return this.description;
     }
@@ -89,6 +99,9 @@ public final class GetGlobalForwardingRuleResult {
     public String selfLink() {
         return this.selfLink;
     }
+    public List<String> sourceIpRanges() {
+        return this.sourceIpRanges;
+    }
     public String target() {
         return this.target;
     }
@@ -102,6 +115,8 @@ public final class GetGlobalForwardingRuleResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean allowPscGlobalAccess;
+        private String baseForwardingRule;
         private String description;
         private String id;
         private String ipAddress;
@@ -118,10 +133,13 @@ public final class GetGlobalForwardingRuleResult {
         private String pscConnectionId;
         private String pscConnectionStatus;
         private String selfLink;
+        private List<String> sourceIpRanges;
         private String target;
         public Builder() {}
         public Builder(GetGlobalForwardingRuleResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowPscGlobalAccess = defaults.allowPscGlobalAccess;
+    	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
@@ -138,9 +156,20 @@ public final class GetGlobalForwardingRuleResult {
     	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
     	      this.selfLink = defaults.selfLink;
+    	      this.sourceIpRanges = defaults.sourceIpRanges;
     	      this.target = defaults.target;
         }
 
+        @CustomType.Setter
+        public Builder allowPscGlobalAccess(Boolean allowPscGlobalAccess) {
+            this.allowPscGlobalAccess = Objects.requireNonNull(allowPscGlobalAccess);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder baseForwardingRule(String baseForwardingRule) {
+            this.baseForwardingRule = Objects.requireNonNull(baseForwardingRule);
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
@@ -225,12 +254,22 @@ public final class GetGlobalForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder sourceIpRanges(List<String> sourceIpRanges) {
+            this.sourceIpRanges = Objects.requireNonNull(sourceIpRanges);
+            return this;
+        }
+        public Builder sourceIpRanges(String... sourceIpRanges) {
+            return sourceIpRanges(List.of(sourceIpRanges));
+        }
+        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
         public GetGlobalForwardingRuleResult build() {
             final var o = new GetGlobalForwardingRuleResult();
+            o.allowPscGlobalAccess = allowPscGlobalAccess;
+            o.baseForwardingRule = baseForwardingRule;
             o.description = description;
             o.id = id;
             o.ipAddress = ipAddress;
@@ -247,6 +286,7 @@ public final class GetGlobalForwardingRuleResult {
             o.pscConnectionId = pscConnectionId;
             o.pscConnectionStatus = pscConnectionStatus;
             o.selfLink = selfLink;
+            o.sourceIpRanges = sourceIpRanges;
             o.target = target;
             return o;
         }

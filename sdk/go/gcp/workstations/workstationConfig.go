@@ -418,7 +418,7 @@ type WorkstationConfig struct {
 	// Container that will be run for each workstation using this configuration when that workstation is started.
 	// Structure is documented below.
 	Container WorkstationConfigContainerOutput `pulumi:"container"`
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
@@ -450,9 +450,9 @@ type WorkstationConfig struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringOutput `pulumi:"workstationClusterId"`
-	// The ID of the workstation cluster config.
+	// The ID to be assigned to the workstation cluster config.
 	WorkstationConfigId pulumi.StringOutput `pulumi:"workstationConfigId"`
 }
 
@@ -502,7 +502,7 @@ type workstationConfigState struct {
 	// Container that will be run for each workstation using this configuration when that workstation is started.
 	// Structure is documented below.
 	Container *WorkstationConfigContainer `pulumi:"container"`
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
 	Degraded *bool `pulumi:"degraded"`
@@ -534,9 +534,9 @@ type workstationConfigState struct {
 	Project *string `pulumi:"project"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId *string `pulumi:"workstationClusterId"`
-	// The ID of the workstation cluster config.
+	// The ID to be assigned to the workstation cluster config.
 	WorkstationConfigId *string `pulumi:"workstationConfigId"`
 }
 
@@ -549,7 +549,7 @@ type WorkstationConfigState struct {
 	// Container that will be run for each workstation using this configuration when that workstation is started.
 	// Structure is documented below.
 	Container WorkstationConfigContainerPtrInput
-	// Time the Instance was created in UTC.
+	// Time when this resource was created.
 	CreateTime pulumi.StringPtrInput
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
 	Degraded pulumi.BoolPtrInput
@@ -581,9 +581,9 @@ type WorkstationConfigState struct {
 	Project pulumi.StringPtrInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringPtrInput
-	// The ID of the workstation cluster config.
+	// The ID to be assigned to the workstation cluster config.
 	WorkstationConfigId pulumi.StringPtrInput
 }
 
@@ -618,9 +618,9 @@ type workstationConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
-	// The ID of the workstation cluster config.
+	// The ID to be assigned to the workstation cluster config.
 	WorkstationConfigId string `pulumi:"workstationConfigId"`
 }
 
@@ -652,9 +652,9 @@ type WorkstationConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The name of the workstation cluster.
+	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringInput
-	// The ID of the workstation cluster config.
+	// The ID to be assigned to the workstation cluster config.
 	WorkstationConfigId pulumi.StringInput
 }
 
@@ -762,7 +762,7 @@ func (o WorkstationConfigOutput) Container() WorkstationConfigContainerOutput {
 	return o.ApplyT(func(v *WorkstationConfig) WorkstationConfigContainerOutput { return v.Container }).(WorkstationConfigContainerOutput)
 }
 
-// Time the Instance was created in UTC.
+// Time when this resource was created.
 func (o WorkstationConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -832,12 +832,12 @@ func (o WorkstationConfigOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The name of the workstation cluster.
+// The ID of the parent workstation cluster.
 func (o WorkstationConfigOutput) WorkstationClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.WorkstationClusterId }).(pulumi.StringOutput)
 }
 
-// The ID of the workstation cluster config.
+// The ID to be assigned to the workstation cluster config.
 func (o WorkstationConfigOutput) WorkstationConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.WorkstationConfigId }).(pulumi.StringOutput)
 }

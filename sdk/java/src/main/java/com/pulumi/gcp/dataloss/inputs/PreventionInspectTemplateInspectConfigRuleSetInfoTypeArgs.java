@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,10 +32,26 @@ public final class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs ext
         return this.name;
     }
 
+    /**
+     * Version name for this InfoType.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Version name for this InfoType.
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs() {}
 
     private PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs(PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs $) {
         this.name = $.name;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -75,6 +93,27 @@ public final class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs ext
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param version Version name for this InfoType.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Version name for this InfoType.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs build() {

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Treat the dataset as an image and redact.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("imageTransformations")]
+        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsGetArgs>? ImageTransformations { get; set; }
+
+        /// <summary>
         /// Treat the dataset as free-form text and apply the same free text transformation everywhere
         /// Structure is documented below.
         /// </summary>

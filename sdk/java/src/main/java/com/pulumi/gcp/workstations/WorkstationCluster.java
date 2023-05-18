@@ -194,14 +194,14 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
         return this.conditions;
     }
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      * 
      */
     @Export(name="createTime", type=String.class, parameters={})
     private Output<String> createTime;
 
     /**
-     * @return Time the Instance was created in UTC.
+     * @return Time when this resource was created.
      * 
      */
     public Output<String> createTime() {
@@ -374,14 +374,14 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
         return this.uid;
     }
     /**
-     * The ID of the workstation cluster.
+     * ID to use for the workstation cluster.
      * 
      */
     @Export(name="workstationClusterId", type=String.class, parameters={})
     private Output<String> workstationClusterId;
 
     /**
-     * @return The ID of the workstation cluster.
+     * @return ID to use for the workstation cluster.
      * 
      */
     public Output<String> workstationClusterId() {

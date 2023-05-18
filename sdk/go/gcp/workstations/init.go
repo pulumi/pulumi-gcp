@@ -27,6 +27,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkstationCluster{}
 	case "gcp:workstations/workstationConfig:WorkstationConfig":
 		r = &WorkstationConfig{}
+	case "gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding":
+		r = &WorkstationConfigIamBinding{}
+	case "gcp:workstations/workstationConfigIamMember:WorkstationConfigIamMember":
+		r = &WorkstationConfigIamMember{}
+	case "gcp:workstations/workstationConfigIamPolicy:WorkstationConfigIamPolicy":
+		r = &WorkstationConfigIamPolicy{}
+	case "gcp:workstations/workstationIamBinding:WorkstationIamBinding":
+		r = &WorkstationIamBinding{}
+	case "gcp:workstations/workstationIamMember:WorkstationIamMember":
+		r = &WorkstationIamMember{}
+	case "gcp:workstations/workstationIamPolicy:WorkstationIamPolicy":
+		r = &WorkstationIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +65,36 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"workstations/workstationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"workstations/workstationConfigIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"workstations/workstationConfigIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"workstations/workstationConfigIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"workstations/workstationIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"workstations/workstationIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"workstations/workstationIamPolicy",
 		&module{version},
 	)
 }

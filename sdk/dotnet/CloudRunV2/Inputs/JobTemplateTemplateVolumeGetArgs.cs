@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("cloudSqlInstance")]
         public Input<Inputs.JobTemplateTemplateVolumeCloudSqlInstanceGetArgs>? CloudSqlInstance { get; set; }
 
+        [Input("emptyDir")]
+        public Input<Inputs.JobTemplateTemplateVolumeEmptyDirGetArgs>? EmptyDir { get; set; }
+
         /// <summary>
         /// Volume's name.
         /// </summary>

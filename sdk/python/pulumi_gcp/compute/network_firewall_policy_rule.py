@@ -467,6 +467,13 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+            parent="projects/my-project-name",
+            description="Sample global networksecurity_address_group",
+            location="global",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
         basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
             description="Sample global network firewall policy",
             project="my-project-name")
@@ -495,12 +502,16 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             target_service_accounts=["my@service-account.com"],
             match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
                 src_ip_ranges=["10.100.0.1/32"],
+                src_fqdns=["google.com"],
+                src_region_codes=["US"],
+                src_threat_intelligences=["iplist-known-malicious-ips"],
                 src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
                 layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
                     ip_protocol="all",
                 )],
+                src_address_groups=[basic_global_networksecurity_address_group.id],
             ))
         ```
 
@@ -550,6 +561,13 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+            parent="projects/my-project-name",
+            description="Sample global networksecurity_address_group",
+            location="global",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
         basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
             description="Sample global network firewall policy",
             project="my-project-name")
@@ -578,12 +596,16 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             target_service_accounts=["my@service-account.com"],
             match=gcp.compute.NetworkFirewallPolicyRuleMatchArgs(
                 src_ip_ranges=["10.100.0.1/32"],
+                src_fqdns=["google.com"],
+                src_region_codes=["US"],
+                src_threat_intelligences=["iplist-known-malicious-ips"],
                 src_secure_tags=[gcp.compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
                 layer4_configs=[gcp.compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
                     ip_protocol="all",
                 )],
+                src_address_groups=[basic_global_networksecurity_address_group.id],
             ))
         ```
 

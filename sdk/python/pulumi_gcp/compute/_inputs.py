@@ -36,6 +36,7 @@ __all__ = [
     'BackendBucketIamMemberConditionArgs',
     'BackendServiceBackendArgs',
     'BackendServiceCdnPolicyArgs',
+    'BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs',
     'BackendServiceCdnPolicyCacheKeyPolicyArgs',
     'BackendServiceCdnPolicyNegativeCachingPolicyArgs',
     'BackendServiceCircuitBreakersArgs',
@@ -54,6 +55,8 @@ __all__ = [
     'BackendServiceOutlierDetectionBaseEjectionTimeArgs',
     'BackendServiceOutlierDetectionIntervalArgs',
     'BackendServiceSecuritySettingsArgs',
+    'DiskAsyncPrimaryDiskArgs',
+    'DiskAsyncReplicationSecondaryDiskArgs',
     'DiskDiskEncryptionKeyArgs',
     'DiskIamBindingConditionArgs',
     'DiskIamMemberConditionArgs',
@@ -236,6 +239,7 @@ __all__ = [
     'RegionBackendServiceSubsettingArgs',
     'RegionCommitmentLicenseResourceArgs',
     'RegionCommitmentResourceArgs',
+    'RegionDiskAsyncPrimaryDiskArgs',
     'RegionDiskDiskEncryptionKeyArgs',
     'RegionDiskIamBindingConditionArgs',
     'RegionDiskIamMemberConditionArgs',
@@ -364,6 +368,7 @@ __all__ = [
     'ReservationSpecificReservationInstancePropertiesArgs',
     'ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs',
     'ReservationSpecificReservationInstancePropertiesLocalSsdArgs',
+    'ResourcePolicyDiskConsistencyGroupPolicyArgs',
     'ResourcePolicyGroupPlacementPolicyArgs',
     'ResourcePolicyInstanceSchedulePolicyArgs',
     'ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs',
@@ -2751,6 +2756,7 @@ class BackendServiceBackendArgs:
 @pulumi.input_type
 class BackendServiceCdnPolicyArgs:
     def __init__(__self__, *,
+                 bypass_cache_on_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]] = None,
                  cache_key_policy: Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs']] = None,
                  cache_mode: Optional[pulumi.Input[str]] = None,
                  client_ttl: Optional[pulumi.Input[int]] = None,
@@ -2761,6 +2767,9 @@ class BackendServiceCdnPolicyArgs:
                  serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]] bypass_cache_on_request_headers: Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+               The cache is bypassed for all cdnPolicy.cacheMode settings.
+               Structure is documented below.
         :param pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
         :param pulumi.Input[str] cache_mode: Specifies the cache setting for all responses from this backend.
@@ -2785,6 +2794,8 @@ class BackendServiceCdnPolicyArgs:
                existing Cache-Control header. The actual headers served in
                responses will not be altered.
         """
+        if bypass_cache_on_request_headers is not None:
+            pulumi.set(__self__, "bypass_cache_on_request_headers", bypass_cache_on_request_headers)
         if cache_key_policy is not None:
             pulumi.set(__self__, "cache_key_policy", cache_key_policy)
         if cache_mode is not None:
@@ -2803,6 +2814,20 @@ class BackendServiceCdnPolicyArgs:
             pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="bypassCacheOnRequestHeaders")
+    def bypass_cache_on_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]]:
+        """
+        Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+        The cache is bypassed for all cdnPolicy.cacheMode settings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bypass_cache_on_request_headers")
+
+    @bypass_cache_on_request_headers.setter
+    def bypass_cache_on_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs']]]]):
+        pulumi.set(self, "bypass_cache_on_request_headers", value)
 
     @property
     @pulumi.getter(name="cacheKeyPolicy")
@@ -2925,6 +2950,28 @@ class BackendServiceCdnPolicyArgs:
     @signed_url_cache_max_age_sec.setter
     def signed_url_cache_max_age_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
+
+
+@pulumi.input_type
+class BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs:
+    def __init__(__self__, *,
+                 header_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] header_name: The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> pulumi.Input[str]:
+        """
+        The header field name to match on when bypassing cache. Values are case-insensitive.
+        """
+        return pulumi.get(self, "header_name")
+
+    @header_name.setter
+    def header_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "header_name", value)
 
 
 @pulumi.input_type
@@ -4176,6 +4223,66 @@ class BackendServiceSecuritySettingsArgs:
 
 
 @pulumi.input_type
+class DiskAsyncPrimaryDiskArgs:
+    def __init__(__self__, *,
+                 disk: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] disk: Primary disk for asynchronous disk replication.
+        """
+        pulumi.set(__self__, "disk", disk)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[str]:
+        """
+        Primary disk for asynchronous disk replication.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk", value)
+
+
+@pulumi.input_type
+class DiskAsyncReplicationSecondaryDiskArgs:
+    def __init__(__self__, *,
+                 disk: pulumi.Input[str],
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] disk: The secondary disk.
+        :param pulumi.Input[str] state: Output-only. Status of replication on the secondary disk.
+        """
+        pulumi.set(__self__, "disk", disk)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[str]:
+        """
+        The secondary disk.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output-only. Status of replication on the secondary disk.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
 class DiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
@@ -4727,18 +4834,42 @@ class FirewallLogConfigArgs:
 class FirewallPolicyRuleMatchArgs:
     def __init__(__self__, *,
                  layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]],
+                 dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
     @property
     @pulumi.getter(name="layer4Configs")
@@ -4753,6 +4884,24 @@ class FirewallPolicyRuleMatchArgs:
         pulumi.set(self, "layer4_configs", value)
 
     @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dest_address_groups")
+
+    @dest_address_groups.setter
+    def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_address_groups", value)
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dest_fqdns")
+
+    @dest_fqdns.setter
+    def dest_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_fqdns", value)
+
+    @property
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -4765,6 +4914,42 @@ class FirewallPolicyRuleMatchArgs:
         pulumi.set(self, "dest_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @dest_threat_intelligences.setter
+    def dest_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_threat_intelligences", value)
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "src_address_groups")
+
+    @src_address_groups.setter
+    def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_address_groups", value)
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "src_fqdns")
+
+    @src_fqdns.setter
+    def src_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_fqdns", value)
+
+    @property
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -4775,6 +4960,24 @@ class FirewallPolicyRuleMatchArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "src_threat_intelligences")
+
+    @src_threat_intelligences.setter
+    def src_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_threat_intelligences", value)
 
 
 @pulumi.input_type
@@ -6000,7 +6203,7 @@ class ImageGuestOsFeatureArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -6009,7 +6212,7 @@ class ImageGuestOsFeatureArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
         """
         return pulumi.get(self, "type")
 
@@ -10253,8 +10456,7 @@ class InstanceServiceAccountArgs:
                short names are supported. To allow full access to all Cloud APIs, use the
                `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
-        :param pulumi.Input[str] email: The service account e-mail address. If not given, the
-               default Google Compute Engine service account is used.
+        :param pulumi.Input[str] email: The service account e-mail address.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         pulumi.set(__self__, "scopes", scopes)
@@ -10280,8 +10482,7 @@ class InstanceServiceAccountArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        The service account e-mail address. If not given, the
-        default Google Compute Engine service account is used.
+        The service account e-mail address.
         **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         """
         return pulumi.get(self, "email")
@@ -12040,22 +12241,54 @@ class MangedSslCertificateManagedArgs:
 class NetworkFirewallPolicyRuleMatchArgs:
     def __init__(__self__, *,
                  layer4_configs: pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]],
+                 dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None):
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
+                 src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
             pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
     @property
     @pulumi.getter(name="layer4Configs")
@@ -12070,6 +12303,30 @@ class NetworkFirewallPolicyRuleMatchArgs:
         pulumi.set(self, "layer4_configs", value)
 
     @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @dest_address_groups.setter
+    def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_address_groups", value)
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @dest_fqdns.setter
+    def dest_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_fqdns", value)
+
+    @property
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -12080,6 +12337,54 @@ class NetworkFirewallPolicyRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @dest_threat_intelligences.setter
+    def dest_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_threat_intelligences", value)
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @src_address_groups.setter
+    def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_address_groups", value)
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @src_fqdns.setter
+    def src_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_fqdns", value)
 
     @property
     @pulumi.getter(name="srcIpRanges")
@@ -12094,6 +12399,18 @@ class NetworkFirewallPolicyRuleMatchArgs:
         pulumi.set(self, "src_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
+
+    @property
     @pulumi.getter(name="srcSecureTags")
     def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]:
         """
@@ -12104,6 +12421,18 @@ class NetworkFirewallPolicyRuleMatchArgs:
     @src_secure_tags.setter
     def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]):
         pulumi.set(self, "src_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+    @src_threat_intelligences.setter
+    def src_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_threat_intelligences", value)
 
 
 @pulumi.input_type
@@ -15856,6 +16185,28 @@ class RegionCommitmentResourceArgs:
 
 
 @pulumi.input_type
+class RegionDiskAsyncPrimaryDiskArgs:
+    def __init__(__self__, *,
+                 disk: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] disk: Primary disk for asynchronous disk replication.
+        """
+        pulumi.set(__self__, "disk", disk)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> pulumi.Input[str]:
+        """
+        Primary disk for asynchronous disk replication.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: pulumi.Input[str]):
+        pulumi.set(self, "disk", value)
+
+
+@pulumi.input_type
 class RegionDiskDiskEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -19430,22 +19781,54 @@ class RegionNetworkEndpointGroupServerlessDeploymentArgs:
 class RegionNetworkFirewallPolicyRuleMatchArgs:
     def __init__(__self__, *,
                  layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]],
+                 dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None):
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
+                 src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
             pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
     @property
     @pulumi.getter(name="layer4Configs")
@@ -19460,6 +19843,30 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         pulumi.set(self, "layer4_configs", value)
 
     @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @dest_address_groups.setter
+    def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_address_groups", value)
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @dest_fqdns.setter
+    def dest_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_fqdns", value)
+
+    @property
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -19470,6 +19877,54 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @dest_threat_intelligences.setter
+    def dest_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_threat_intelligences", value)
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @src_address_groups.setter
+    def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_address_groups", value)
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @src_fqdns.setter
+    def src_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_fqdns", value)
 
     @property
     @pulumi.getter(name="srcIpRanges")
@@ -19484,6 +19939,18 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         pulumi.set(self, "src_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
+
+    @property
     @pulumi.getter(name="srcSecureTags")
     def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]:
         """
@@ -19494,6 +19961,18 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
     @src_secure_tags.setter
     def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]]):
         pulumi.set(self, "src_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+    @src_threat_intelligences.setter
+    def src_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_threat_intelligences", value)
 
 
 @pulumi.input_type
@@ -25031,6 +25510,28 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
     @interface.setter
     def interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "interface", value)
+
+
+@pulumi.input_type
+class ResourcePolicyDiskConsistencyGroupPolicyArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable disk consistency on the resource policy.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable disk consistency on the resource policy.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

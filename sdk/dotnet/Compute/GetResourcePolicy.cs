@@ -119,6 +119,7 @@ namespace Pulumi.Gcp.Compute
         /// Description of this Resource Policy.
         /// </summary>
         public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetResourcePolicyDiskConsistencyGroupPolicyResult> DiskConsistencyGroupPolicies;
         public readonly ImmutableArray<Outputs.GetResourcePolicyGroupPlacementPolicyResult> GroupPlacementPolicies;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -138,6 +139,8 @@ namespace Pulumi.Gcp.Compute
         private GetResourcePolicyResult(
             string description,
 
+            ImmutableArray<Outputs.GetResourcePolicyDiskConsistencyGroupPolicyResult> diskConsistencyGroupPolicies,
+
             ImmutableArray<Outputs.GetResourcePolicyGroupPlacementPolicyResult> groupPlacementPolicies,
 
             string id,
@@ -155,6 +158,7 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyResult> snapshotSchedulePolicies)
         {
             Description = description;
+            DiskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
             GroupPlacementPolicies = groupPlacementPolicies;
             Id = id;
             InstanceSchedulePolicies = instanceSchedulePolicies;

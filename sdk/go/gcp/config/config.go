@@ -161,6 +161,9 @@ func GetDataFusionCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataLossPreventionCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataLossPreventionCustomEndpoint")
 }
+func GetDatabaseMigrationServiceCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:databaseMigrationServiceCustomEndpoint")
+}
 func GetDataflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataflowCustomEndpoint")
 }
@@ -238,6 +241,9 @@ func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetGkehubFeatureCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkehubFeatureCustomEndpoint")
+}
+func GetGkeonpremCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:gkeonpremCustomEndpoint")
 }
 func GetGooglePartnerName(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:googlePartnerName")

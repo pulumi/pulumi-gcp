@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .connection_profile import *
+from .get_static_ips import *
 from .private_connection import *
 from .stream import *
 from ._inputs import *

@@ -12,6 +12,7 @@ public final class GetTriggerGitFileSource {
     private String githubEnterpriseConfig;
     private String path;
     private String repoType;
+    private String repository;
     private String revision;
     private String uri;
 
@@ -24,6 +25,9 @@ public final class GetTriggerGitFileSource {
     }
     public String repoType() {
         return this.repoType;
+    }
+    public String repository() {
+        return this.repository;
     }
     public String revision() {
         return this.revision;
@@ -44,6 +48,7 @@ public final class GetTriggerGitFileSource {
         private String githubEnterpriseConfig;
         private String path;
         private String repoType;
+        private String repository;
         private String revision;
         private String uri;
         public Builder() {}
@@ -52,6 +57,7 @@ public final class GetTriggerGitFileSource {
     	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.path = defaults.path;
     	      this.repoType = defaults.repoType;
+    	      this.repository = defaults.repository;
     	      this.revision = defaults.revision;
     	      this.uri = defaults.uri;
         }
@@ -72,6 +78,11 @@ public final class GetTriggerGitFileSource {
             return this;
         }
         @CustomType.Setter
+        public Builder repository(String repository) {
+            this.repository = Objects.requireNonNull(repository);
+            return this;
+        }
+        @CustomType.Setter
         public Builder revision(String revision) {
             this.revision = Objects.requireNonNull(revision);
             return this;
@@ -86,6 +97,7 @@ public final class GetTriggerGitFileSource {
             o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.path = path;
             o.repoType = repoType;
+            o.repository = repository;
             o.revision = revision;
             o.uri = uri;
             return o;

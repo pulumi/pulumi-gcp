@@ -41,6 +41,20 @@ __all__ = [
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite',
     'EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect',
+    'EndpointPolicyEndpointMatcher',
+    'EndpointPolicyEndpointMatcherMetadataLabelMatcher',
+    'EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel',
+    'EndpointPolicyTrafficPortSelector',
+    'GrpcRouteRule',
+    'GrpcRouteRuleAction',
+    'GrpcRouteRuleActionDestination',
+    'GrpcRouteRuleActionFaultInjectionPolicy',
+    'GrpcRouteRuleActionFaultInjectionPolicyAbort',
+    'GrpcRouteRuleActionFaultInjectionPolicyDelay',
+    'GrpcRouteRuleActionRetryPolicy',
+    'GrpcRouteRuleMatch',
+    'GrpcRouteRuleMatchHeader',
+    'GrpcRouteRuleMatchMethod',
     'HttpRouteRule',
     'HttpRouteRuleAction',
     'HttpRouteRuleActionCorsPolicy',
@@ -63,6 +77,10 @@ __all__ = [
     'TcpRouteRuleAction',
     'TcpRouteRuleActionDestination',
     'TcpRouteRuleMatch',
+    'TlsRouteRule',
+    'TlsRouteRuleAction',
+    'TlsRouteRuleActionDestination',
+    'TlsRouteRuleMatch',
 ]
 
 @pulumi.output_type
@@ -2522,6 +2540,650 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect(dict):
 
 
 @pulumi.output_type
+class EndpointPolicyEndpointMatcher(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataLabelMatcher":
+            suggest = "metadata_label_matcher"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointPolicyEndpointMatcher. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointPolicyEndpointMatcher.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointPolicyEndpointMatcher.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metadata_label_matcher: 'outputs.EndpointPolicyEndpointMatcherMetadataLabelMatcher'):
+        """
+        :param 'EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs' metadata_label_matcher: The matcher is based on node metadata presented by xDS clients.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "metadata_label_matcher", metadata_label_matcher)
+
+    @property
+    @pulumi.getter(name="metadataLabelMatcher")
+    def metadata_label_matcher(self) -> 'outputs.EndpointPolicyEndpointMatcherMetadataLabelMatcher':
+        """
+        The matcher is based on node metadata presented by xDS clients.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata_label_matcher")
+
+
+@pulumi.output_type
+class EndpointPolicyEndpointMatcherMetadataLabelMatcher(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataLabelMatchCriteria":
+            suggest = "metadata_label_match_criteria"
+        elif key == "metadataLabels":
+            suggest = "metadata_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointPolicyEndpointMatcherMetadataLabelMatcher. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointPolicyEndpointMatcherMetadataLabelMatcher.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointPolicyEndpointMatcherMetadataLabelMatcher.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metadata_label_match_criteria: str,
+                 metadata_labels: Optional[Sequence['outputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel']] = None):
+        """
+        :param str metadata_label_match_criteria: Specifies how matching should be done.
+               Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+        :param Sequence['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs'] metadata_labels: The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "metadata_label_match_criteria", metadata_label_match_criteria)
+        if metadata_labels is not None:
+            pulumi.set(__self__, "metadata_labels", metadata_labels)
+
+    @property
+    @pulumi.getter(name="metadataLabelMatchCriteria")
+    def metadata_label_match_criteria(self) -> str:
+        """
+        Specifies how matching should be done.
+        Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+        """
+        return pulumi.get(self, "metadata_label_match_criteria")
+
+    @property
+    @pulumi.getter(name="metadataLabels")
+    def metadata_labels(self) -> Optional[Sequence['outputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel']]:
+        """
+        The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metadata_labels")
+
+
+@pulumi.output_type
+class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelName":
+            suggest = "label_name"
+        elif key == "labelValue":
+            suggest = "label_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 label_name: str,
+                 label_value: str):
+        """
+        :param str label_name: Required. Label name presented as key in xDS Node Metadata.
+        :param str label_value: Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        """
+        pulumi.set(__self__, "label_name", label_name)
+        pulumi.set(__self__, "label_value", label_value)
+
+    @property
+    @pulumi.getter(name="labelName")
+    def label_name(self) -> str:
+        """
+        Required. Label name presented as key in xDS Node Metadata.
+        """
+        return pulumi.get(self, "label_name")
+
+    @property
+    @pulumi.getter(name="labelValue")
+    def label_value(self) -> str:
+        """
+        Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        """
+        return pulumi.get(self, "label_value")
+
+
+@pulumi.output_type
+class EndpointPolicyTrafficPortSelector(dict):
+    def __init__(__self__, *,
+                 ports: Sequence[str]):
+        """
+        :param Sequence[str] ports: List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+        """
+        pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence[str]:
+        """
+        List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class GrpcRouteRule(dict):
+    def __init__(__self__, *,
+                 action: Optional['outputs.GrpcRouteRuleAction'] = None,
+                 matches: Optional[Sequence['outputs.GrpcRouteRuleMatch']] = None):
+        """
+        :param 'GrpcRouteRuleActionArgs' action: Required. A detailed rule defining how to route traffic.
+               Structure is documented below.
+        :param Sequence['GrpcRouteRuleMatchArgs'] matches: Matches define conditions used for matching the rule against incoming gRPC requests.
+               Structure is documented below.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional['outputs.GrpcRouteRuleAction']:
+        """
+        Required. A detailed rule defining how to route traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[Sequence['outputs.GrpcRouteRuleMatch']]:
+        """
+        Matches define conditions used for matching the rule against incoming gRPC requests.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matches")
+
+
+@pulumi.output_type
+class GrpcRouteRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "faultInjectionPolicy":
+            suggest = "fault_injection_policy"
+        elif key == "retryPolicy":
+            suggest = "retry_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrpcRouteRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrpcRouteRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrpcRouteRuleAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destinations: Optional[Sequence['outputs.GrpcRouteRuleActionDestination']] = None,
+                 fault_injection_policy: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicy'] = None,
+                 retry_policy: Optional['outputs.GrpcRouteRuleActionRetryPolicy'] = None,
+                 timeout: Optional[str] = None):
+        """
+        :param Sequence['GrpcRouteRuleActionDestinationArgs'] destinations: The destination to which traffic should be forwarded.
+               Structure is documented below.
+        :param 'GrpcRouteRuleActionFaultInjectionPolicyArgs' fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+               Structure is documented below.
+        :param 'GrpcRouteRuleActionRetryPolicyArgs' retry_policy: Specifies the retry policy associated with this route.
+               Structure is documented below.
+        :param str timeout: Specifies the timeout for selected route.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if fault_injection_policy is not None:
+            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['outputs.GrpcRouteRuleActionDestination']]:
+        """
+        The destination to which traffic should be forwarded.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="faultInjectionPolicy")
+    def fault_injection_policy(self) -> Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicy']:
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fault_injection_policy")
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional['outputs.GrpcRouteRuleActionRetryPolicy']:
+        """
+        Specifies the retry policy associated with this route.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[str]:
+        """
+        Specifies the timeout for selected route.
+        """
+        return pulumi.get(self, "timeout")
+
+
+@pulumi.output_type
+class GrpcRouteRuleActionDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrpcRouteRuleActionDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrpcRouteRuleActionDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrpcRouteRuleActionDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: Optional[str] = None,
+                 weight: Optional[int] = None):
+        """
+        :param str service_name: The URL of a BackendService to route traffic to.
+        :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+        """
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GrpcRouteRuleActionFaultInjectionPolicy(dict):
+    def __init__(__self__, *,
+                 abort: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyAbort'] = None,
+                 delay: Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyDelay'] = None):
+        """
+        :param 'GrpcRouteRuleActionFaultInjectionPolicyAbortArgs' abort: Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+               Structure is documented below.
+        :param 'GrpcRouteRuleActionFaultInjectionPolicyDelayArgs' delay: Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+               Structure is documented below.
+        """
+        if abort is not None:
+            pulumi.set(__self__, "abort", abort)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+
+    @property
+    @pulumi.getter
+    def abort(self) -> Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyAbort']:
+        """
+        Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "abort")
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional['outputs.GrpcRouteRuleActionFaultInjectionPolicyDelay']:
+        """
+        Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delay")
+
+
+@pulumi.output_type
+class GrpcRouteRuleActionFaultInjectionPolicyAbort(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpStatus":
+            suggest = "http_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrpcRouteRuleActionFaultInjectionPolicyAbort. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrpcRouteRuleActionFaultInjectionPolicyAbort.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrpcRouteRuleActionFaultInjectionPolicyAbort.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_status: Optional[int] = None,
+                 percentage: Optional[int] = None):
+        """
+        :param int http_status: The HTTP status code used to abort the request.
+        :param int percentage: The percentage of traffic which will be aborted.
+        """
+        if http_status is not None:
+            pulumi.set(__self__, "http_status", http_status)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="httpStatus")
+    def http_status(self) -> Optional[int]:
+        """
+        The HTTP status code used to abort the request.
+        """
+        return pulumi.get(self, "http_status")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[int]:
+        """
+        The percentage of traffic which will be aborted.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class GrpcRouteRuleActionFaultInjectionPolicyDelay(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedDelay":
+            suggest = "fixed_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrpcRouteRuleActionFaultInjectionPolicyDelay. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrpcRouteRuleActionFaultInjectionPolicyDelay.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrpcRouteRuleActionFaultInjectionPolicyDelay.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_delay: Optional[str] = None,
+                 percentage: Optional[int] = None):
+        """
+        :param str fixed_delay: Specify a fixed delay before forwarding the request.
+        :param int percentage: The percentage of traffic on which delay will be injected.
+        """
+        if fixed_delay is not None:
+            pulumi.set(__self__, "fixed_delay", fixed_delay)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="fixedDelay")
+    def fixed_delay(self) -> Optional[str]:
+        """
+        Specify a fixed delay before forwarding the request.
+        """
+        return pulumi.get(self, "fixed_delay")
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[int]:
+        """
+        The percentage of traffic on which delay will be injected.
+        """
+        return pulumi.get(self, "percentage")
+
+
+@pulumi.output_type
+class GrpcRouteRuleActionRetryPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numRetries":
+            suggest = "num_retries"
+        elif key == "retryConditions":
+            suggest = "retry_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrpcRouteRuleActionRetryPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrpcRouteRuleActionRetryPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrpcRouteRuleActionRetryPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 num_retries: Optional[int] = None,
+                 retry_conditions: Optional[Sequence[str]] = None):
+        """
+        :param int num_retries: Specifies the allowed number of retries.
+        :param Sequence[str] retry_conditions: Specifies one or more conditions when this retry policy applies.
+               Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+        """
+        if num_retries is not None:
+            pulumi.set(__self__, "num_retries", num_retries)
+        if retry_conditions is not None:
+            pulumi.set(__self__, "retry_conditions", retry_conditions)
+
+    @property
+    @pulumi.getter(name="numRetries")
+    def num_retries(self) -> Optional[int]:
+        """
+        Specifies the allowed number of retries.
+        """
+        return pulumi.get(self, "num_retries")
+
+    @property
+    @pulumi.getter(name="retryConditions")
+    def retry_conditions(self) -> Optional[Sequence[str]]:
+        """
+        Specifies one or more conditions when this retry policy applies.
+        Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+        """
+        return pulumi.get(self, "retry_conditions")
+
+
+@pulumi.output_type
+class GrpcRouteRuleMatch(dict):
+    def __init__(__self__, *,
+                 headers: Optional[Sequence['outputs.GrpcRouteRuleMatchHeader']] = None,
+                 method: Optional['outputs.GrpcRouteRuleMatchMethod'] = None):
+        """
+        :param Sequence['GrpcRouteRuleMatchHeaderArgs'] headers: Specifies a list of HTTP request headers to match against.
+               Structure is documented below.
+        :param 'GrpcRouteRuleMatchMethodArgs' method: A gRPC method to match against. If this field is empty or omitted, will match all methods.
+               Structure is documented below.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.GrpcRouteRuleMatchHeader']]:
+        """
+        Specifies a list of HTTP request headers to match against.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional['outputs.GrpcRouteRuleMatchMethod']:
+        """
+        A gRPC method to match against. If this field is empty or omitted, will match all methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "method")
+
+
+@pulumi.output_type
+class GrpcRouteRuleMatchHeader(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 type: Optional[str] = None):
+        """
+        :param str key: Required. The key of the header.
+        :param str value: Required. The value of the header.
+        :param str type: The type of match.
+               Default value is `EXACT`.
+               Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Required. The key of the header.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Required. The value of the header.
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of match.
+        Default value is `EXACT`.
+        Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GrpcRouteRuleMatchMethod(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grpcMethod":
+            suggest = "grpc_method"
+        elif key == "grpcService":
+            suggest = "grpc_service"
+        elif key == "caseSensitive":
+            suggest = "case_sensitive"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrpcRouteRuleMatchMethod. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrpcRouteRuleMatchMethod.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrpcRouteRuleMatchMethod.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 grpc_method: str,
+                 grpc_service: str,
+                 case_sensitive: Optional[bool] = None):
+        """
+        :param str grpc_method: Required. Name of the method to match against.
+        :param str grpc_service: Required. Name of the service to match against.
+        :param bool case_sensitive: Specifies that matches are case sensitive. The default value is true.
+        """
+        pulumi.set(__self__, "grpc_method", grpc_method)
+        pulumi.set(__self__, "grpc_service", grpc_service)
+        if case_sensitive is not None:
+            pulumi.set(__self__, "case_sensitive", case_sensitive)
+
+    @property
+    @pulumi.getter(name="grpcMethod")
+    def grpc_method(self) -> str:
+        """
+        Required. Name of the method to match against.
+        """
+        return pulumi.get(self, "grpc_method")
+
+    @property
+    @pulumi.getter(name="grpcService")
+    def grpc_service(self) -> str:
+        """
+        Required. Name of the service to match against.
+        """
+        return pulumi.get(self, "grpc_service")
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> Optional[bool]:
+        """
+        Specifies that matches are case sensitive. The default value is true.
+        """
+        return pulumi.get(self, "case_sensitive")
+
+
+@pulumi.output_type
 class HttpRouteRule(dict):
     def __init__(__self__, *,
                  action: Optional['outputs.HttpRouteRuleAction'] = None,
@@ -3964,5 +4626,157 @@ class TcpRouteRuleMatch(dict):
         Specifies the destination port to match against.
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class TlsRouteRule(dict):
+    def __init__(__self__, *,
+                 action: 'outputs.TlsRouteRuleAction',
+                 matches: Sequence['outputs.TlsRouteRuleMatch']):
+        """
+        :param 'TlsRouteRuleActionArgs' action: Required. A detailed rule defining how to route traffic.
+               Structure is documented below.
+        :param Sequence['TlsRouteRuleMatchArgs'] matches: Matches define the predicate used to match requests to a given action.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> 'outputs.TlsRouteRuleAction':
+        """
+        Required. A detailed rule defining how to route traffic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Sequence['outputs.TlsRouteRuleMatch']:
+        """
+        Matches define the predicate used to match requests to a given action.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matches")
+
+
+@pulumi.output_type
+class TlsRouteRuleAction(dict):
+    def __init__(__self__, *,
+                 destinations: Optional[Sequence['outputs.TlsRouteRuleActionDestination']] = None):
+        """
+        :param Sequence['TlsRouteRuleActionDestinationArgs'] destinations: The destination to which traffic should be forwarded.
+               Structure is documented below.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[Sequence['outputs.TlsRouteRuleActionDestination']]:
+        """
+        The destination to which traffic should be forwarded.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "destinations")
+
+
+@pulumi.output_type
+class TlsRouteRuleActionDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TlsRouteRuleActionDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TlsRouteRuleActionDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TlsRouteRuleActionDestination.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_name: Optional[str] = None,
+                 weight: Optional[int] = None):
+        """
+        :param str service_name: The URL of a BackendService to route traffic to.
+        :param int weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+        """
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[str]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[int]:
+        """
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class TlsRouteRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sniHosts":
+            suggest = "sni_hosts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TlsRouteRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TlsRouteRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TlsRouteRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 alpns: Optional[Sequence[str]] = None,
+                 sni_hosts: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] alpns: ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
+        :param Sequence[str] sni_hosts: SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+               Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
+        """
+        if alpns is not None:
+            pulumi.set(__self__, "alpns", alpns)
+        if sni_hosts is not None:
+            pulumi.set(__self__, "sni_hosts", sni_hosts)
+
+    @property
+    @pulumi.getter
+    def alpns(self) -> Optional[Sequence[str]]:
+        """
+        ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
+        """
+        return pulumi.get(self, "alpns")
+
+    @property
+    @pulumi.getter(name="sniHosts")
+    def sni_hosts(self) -> Optional[Sequence[str]]:
+        """
+        SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+        Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
+        """
+        return pulumi.get(self, "sni_hosts")
 
 

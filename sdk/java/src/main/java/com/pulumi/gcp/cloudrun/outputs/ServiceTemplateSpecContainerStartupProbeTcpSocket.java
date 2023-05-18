@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class ServiceTemplateSpecContainerStartupProbeTcpSocket {
     /**
      * @return Port number to access on the container. Number must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     private @Nullable Integer port;
@@ -20,6 +21,7 @@ public final class ServiceTemplateSpecContainerStartupProbeTcpSocket {
     private ServiceTemplateSpecContainerStartupProbeTcpSocket() {}
     /**
      * @return Port number to access on the container. Number must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     public Optional<Integer> port() {

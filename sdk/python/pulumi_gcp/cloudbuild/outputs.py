@@ -1467,7 +1467,11 @@ class TriggerBuildStep(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "secretEnvs":
+        if key == "allowExitCodes":
+            suggest = "allow_exit_codes"
+        elif key == "allowFailure":
+            suggest = "allow_failure"
+        elif key == "secretEnvs":
             suggest = "secret_envs"
         elif key == "waitFors":
             suggest = "wait_fors"
@@ -1485,6 +1489,8 @@ class TriggerBuildStep(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 allow_exit_codes: Optional[Sequence[int]] = None,
+                 allow_failure: Optional[bool] = None,
                  args: Optional[Sequence[str]] = None,
                  dir: Optional[str] = None,
                  entrypoint: Optional[str] = None,
@@ -1510,6 +1516,14 @@ class TriggerBuildStep(dict):
                If you built an image in a previous build step, it will be stored in the
                host's Docker daemon's cache and is available to use as the name for a
                later build step.
+        :param Sequence[int] allow_exit_codes: Allow this build step to fail without failing the entire build if and
+               only if the exit code is one of the specified codes.
+               If `allowFailure` is also specified, this field will take precedence.
+        :param bool allow_failure: Allow this build step to fail without failing the entire build.
+               If false, the entire build will fail if this step fails. Otherwise, the
+               build will succeed, but this step will still have a failure status.
+               Error information will be reported in the `failureDetail` field.
+               `allowExitCodes` takes precedence over this field.
         :param Sequence[str] args: A list of arguments that will be presented to the step when it is started.
                If the image used to run the step's container has an entrypoint, the args
                are used as arguments to that entrypoint. If the image does not define an
@@ -1559,6 +1573,10 @@ class TriggerBuildStep(dict):
                have completed successfully.
         """
         pulumi.set(__self__, "name", name)
+        if allow_exit_codes is not None:
+            pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
+        if allow_failure is not None:
+            pulumi.set(__self__, "allow_failure", allow_failure)
         if args is not None:
             pulumi.set(__self__, "args", args)
         if dir is not None:
@@ -1601,6 +1619,28 @@ class TriggerBuildStep(dict):
         later build step.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="allowExitCodes")
+    def allow_exit_codes(self) -> Optional[Sequence[int]]:
+        """
+        Allow this build step to fail without failing the entire build if and
+        only if the exit code is one of the specified codes.
+        If `allowFailure` is also specified, this field will take precedence.
+        """
+        return pulumi.get(self, "allow_exit_codes")
+
+    @property
+    @pulumi.getter(name="allowFailure")
+    def allow_failure(self) -> Optional[bool]:
+        """
+        Allow this build step to fail without failing the entire build.
+        If false, the entire build will fail if this step fails. Otherwise, the
+        build will succeed, but this step will still have a failure status.
+        Error information will be reported in the `failureDetail` field.
+        `allowExitCodes` takes precedence over this field.
+        """
+        return pulumi.get(self, "allow_failure")
 
     @property
     @pulumi.getter
@@ -1789,6 +1829,7 @@ class TriggerGitFileSource(dict):
                  path: str,
                  repo_type: str,
                  github_enterprise_config: Optional[str] = None,
+                 repository: Optional[str] = None,
                  revision: Optional[str] = None,
                  uri: Optional[str] = None):
         """
@@ -1808,6 +1849,8 @@ class TriggerGitFileSource(dict):
         pulumi.set(__self__, "repo_type", repo_type)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
         if uri is not None:
@@ -1839,6 +1882,11 @@ class TriggerGitFileSource(dict):
         Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         """
         return pulumi.get(self, "github_enterprise_config")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[str]:
+        return pulumi.get(self, "repository")
 
     @property
     @pulumi.getter
@@ -2372,22 +2420,26 @@ class TriggerSourceToBuild(dict):
     def __init__(__self__, *,
                  ref: str,
                  repo_type: str,
-                 uri: str,
-                 github_enterprise_config: Optional[str] = None):
+                 github_enterprise_config: Optional[str] = None,
+                 repository: Optional[str] = None,
+                 uri: Optional[str] = None):
         """
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
                Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
-        :param str uri: The URI of the repo (required).
         :param str github_enterprise_config: The full resource name of the github enterprise config.
                Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        :param str uri: The URI of the repo.
         """
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
-        pulumi.set(__self__, "uri", uri)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
@@ -2408,14 +2460,6 @@ class TriggerSourceToBuild(dict):
         return pulumi.get(self, "repo_type")
 
     @property
-    @pulumi.getter
-    def uri(self) -> str:
-        """
-        The URI of the repo (required).
-        """
-        return pulumi.get(self, "uri")
-
-    @property
     @pulumi.getter(name="githubEnterpriseConfig")
     def github_enterprise_config(self) -> Optional[str]:
         """
@@ -2423,6 +2467,19 @@ class TriggerSourceToBuild(dict):
         Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         """
         return pulumi.get(self, "github_enterprise_config")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[str]:
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        The URI of the repo.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -3232,6 +3289,8 @@ class GetTriggerBuildSourceStorageSourceResult(dict):
 @pulumi.output_type
 class GetTriggerBuildStepResult(dict):
     def __init__(__self__, *,
+                 allow_exit_codes: Sequence[int],
+                 allow_failure: bool,
                  args: Sequence[str],
                  dir: str,
                  entrypoint: str,
@@ -3244,6 +3303,8 @@ class GetTriggerBuildStepResult(dict):
                  timing: str,
                  volumes: Sequence['outputs.GetTriggerBuildStepVolumeResult'],
                  wait_fors: Sequence[str]):
+        pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
+        pulumi.set(__self__, "allow_failure", allow_failure)
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "entrypoint", entrypoint)
@@ -3256,6 +3317,16 @@ class GetTriggerBuildStepResult(dict):
         pulumi.set(__self__, "timing", timing)
         pulumi.set(__self__, "volumes", volumes)
         pulumi.set(__self__, "wait_fors", wait_fors)
+
+    @property
+    @pulumi.getter(name="allowExitCodes")
+    def allow_exit_codes(self) -> Sequence[int]:
+        return pulumi.get(self, "allow_exit_codes")
+
+    @property
+    @pulumi.getter(name="allowFailure")
+    def allow_failure(self) -> bool:
+        return pulumi.get(self, "allow_failure")
 
     @property
     @pulumi.getter
@@ -3343,11 +3414,13 @@ class GetTriggerGitFileSourceResult(dict):
                  github_enterprise_config: str,
                  path: str,
                  repo_type: str,
+                 repository: str,
                  revision: str,
                  uri: str):
         pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "uri", uri)
 
@@ -3365,6 +3438,11 @@ class GetTriggerGitFileSourceResult(dict):
     @pulumi.getter(name="repoType")
     def repo_type(self) -> str:
         return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        return pulumi.get(self, "repository")
 
     @property
     @pulumi.getter
@@ -3586,10 +3664,12 @@ class GetTriggerSourceToBuildResult(dict):
                  github_enterprise_config: str,
                  ref: str,
                  repo_type: str,
+                 repository: str,
                  uri: str):
         pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
+        pulumi.set(__self__, "repository", repository)
         pulumi.set(__self__, "uri", uri)
 
     @property
@@ -3606,6 +3686,11 @@ class GetTriggerSourceToBuildResult(dict):
     @pulumi.getter(name="repoType")
     def repo_type(self) -> str:
         return pulumi.get(self, "repo_type")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        return pulumi.get(self, "repository")
 
     @property
     @pulumi.getter

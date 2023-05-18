@@ -9,6 +9,7 @@ import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCust
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -131,6 +132,21 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
         return Optional.ofNullable(this.storedType);
     }
 
+    /**
+     * Message for detecting output from deidentification transformations that support reversing.
+     * 
+     */
+    @Import(name="surrogateType")
+    private @Nullable Output<PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs> surrogateType;
+
+    /**
+     * @return Message for detecting output from deidentification transformations that support reversing.
+     * 
+     */
+    public Optional<Output<PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs>> surrogateType() {
+        return Optional.ofNullable(this.surrogateType);
+    }
+
     private PreventionInspectTemplateInspectConfigCustomInfoTypeArgs() {}
 
     private PreventionInspectTemplateInspectConfigCustomInfoTypeArgs(PreventionInspectTemplateInspectConfigCustomInfoTypeArgs $) {
@@ -140,6 +156,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
         this.likelihood = $.likelihood;
         this.regex = $.regex;
         this.storedType = $.storedType;
+        this.surrogateType = $.surrogateType;
     }
 
     public static Builder builder() {
@@ -306,6 +323,27 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
          */
         public Builder storedType(PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs storedType) {
             return storedType(Output.of(storedType));
+        }
+
+        /**
+         * @param surrogateType Message for detecting output from deidentification transformations that support reversing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder surrogateType(@Nullable Output<PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs> surrogateType) {
+            $.surrogateType = surrogateType;
+            return this;
+        }
+
+        /**
+         * @param surrogateType Message for detecting output from deidentification transformations that support reversing.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder surrogateType(PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs surrogateType) {
+            return surrogateType(Output.of(surrogateType));
         }
 
         public PreventionInspectTemplateInspectConfigCustomInfoTypeArgs build() {

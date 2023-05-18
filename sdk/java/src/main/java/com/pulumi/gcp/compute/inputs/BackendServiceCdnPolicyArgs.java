@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs;
 import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyNegativeCachingPolicyArgs;
 import java.lang.Boolean;
@@ -19,6 +20,25 @@ import javax.annotation.Nullable;
 public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BackendServiceCdnPolicyArgs Empty = new BackendServiceCdnPolicyArgs();
+
+    /**
+     * Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+     * The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="bypassCacheOnRequestHeaders")
+    private @Nullable Output<List<BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs>> bypassCacheOnRequestHeaders;
+
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+     * The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs>>> bypassCacheOnRequestHeaders() {
+        return Optional.ofNullable(this.bypassCacheOnRequestHeaders);
+    }
 
     /**
      * The CacheKeyPolicy for this CdnPolicy.
@@ -186,6 +206,7 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
     private BackendServiceCdnPolicyArgs() {}
 
     private BackendServiceCdnPolicyArgs(BackendServiceCdnPolicyArgs $) {
+        this.bypassCacheOnRequestHeaders = $.bypassCacheOnRequestHeaders;
         this.cacheKeyPolicy = $.cacheKeyPolicy;
         this.cacheMode = $.cacheMode;
         this.clientTtl = $.clientTtl;
@@ -213,6 +234,43 @@ public final class BackendServiceCdnPolicyArgs extends com.pulumi.resources.Reso
 
         public Builder(BackendServiceCdnPolicyArgs defaults) {
             $ = new BackendServiceCdnPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bypassCacheOnRequestHeaders Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+         * The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassCacheOnRequestHeaders(@Nullable Output<List<BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs>> bypassCacheOnRequestHeaders) {
+            $.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
+            return this;
+        }
+
+        /**
+         * @param bypassCacheOnRequestHeaders Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+         * The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassCacheOnRequestHeaders(List<BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs> bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(Output.of(bypassCacheOnRequestHeaders));
+        }
+
+        /**
+         * @param bypassCacheOnRequestHeaders Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+         * The cache is bypassed for all cdnPolicy.cacheMode settings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bypassCacheOnRequestHeaders(BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs... bypassCacheOnRequestHeaders) {
+            return bypassCacheOnRequestHeaders(List.of(bypassCacheOnRequestHeaders));
         }
 
         /**

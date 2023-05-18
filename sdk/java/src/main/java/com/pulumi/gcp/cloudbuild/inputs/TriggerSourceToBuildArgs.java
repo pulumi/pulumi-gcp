@@ -66,19 +66,26 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
         return this.repoType;
     }
 
-    /**
-     * The URI of the repo (required).
-     * 
-     */
-    @Import(name="uri", required=true)
-    private Output<String> uri;
+    @Import(name="repository")
+    private @Nullable Output<String> repository;
+
+    public Optional<Output<String>> repository() {
+        return Optional.ofNullable(this.repository);
+    }
 
     /**
-     * @return The URI of the repo (required).
+     * The URI of the repo.
      * 
      */
-    public Output<String> uri() {
-        return this.uri;
+    @Import(name="uri")
+    private @Nullable Output<String> uri;
+
+    /**
+     * @return The URI of the repo.
+     * 
+     */
+    public Optional<Output<String>> uri() {
+        return Optional.ofNullable(this.uri);
     }
 
     private TriggerSourceToBuildArgs() {}
@@ -87,6 +94,7 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
         this.githubEnterpriseConfig = $.githubEnterpriseConfig;
         this.ref = $.ref;
         this.repoType = $.repoType;
+        this.repository = $.repository;
         this.uri = $.uri;
     }
 
@@ -177,19 +185,28 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
             return repoType(Output.of(repoType));
         }
 
+        public Builder repository(@Nullable Output<String> repository) {
+            $.repository = repository;
+            return this;
+        }
+
+        public Builder repository(String repository) {
+            return repository(Output.of(repository));
+        }
+
         /**
-         * @param uri The URI of the repo (required).
+         * @param uri The URI of the repo.
          * 
          * @return builder
          * 
          */
-        public Builder uri(Output<String> uri) {
+        public Builder uri(@Nullable Output<String> uri) {
             $.uri = uri;
             return this;
         }
 
         /**
-         * @param uri The URI of the repo (required).
+         * @param uri The URI of the repo.
          * 
          * @return builder
          * 
@@ -201,7 +218,6 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
         public TriggerSourceToBuildArgs build() {
             $.ref = Objects.requireNonNull($.ref, "expected parameter 'ref' to be non-null");
             $.repoType = Objects.requireNonNull($.repoType, "expected parameter 'repoType' to be non-null");
-            $.uri = Objects.requireNonNull($.uri, "expected parameter 'uri' to be non-null");
             return $;
         }
     }

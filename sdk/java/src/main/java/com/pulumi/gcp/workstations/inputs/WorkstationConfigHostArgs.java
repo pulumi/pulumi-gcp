@@ -16,7 +16,7 @@ public final class WorkstationConfigHostArgs extends com.pulumi.resources.Resour
     public static final WorkstationConfigHostArgs Empty = new WorkstationConfigHostArgs();
 
     /**
-     * Specifies a Compute Engine instance as the host.
+     * A runtime using a Compute Engine instance.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class WorkstationConfigHostArgs extends com.pulumi.resources.Resour
     private @Nullable Output<WorkstationConfigHostGceInstanceArgs> gceInstance;
 
     /**
-     * @return Specifies a Compute Engine instance as the host.
+     * @return A runtime using a Compute Engine instance.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class WorkstationConfigHostArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param gceInstance Specifies a Compute Engine instance as the host.
+         * @param gceInstance A runtime using a Compute Engine instance.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class WorkstationConfigHostArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param gceInstance Specifies a Compute Engine instance as the host.
+         * @param gceInstance A runtime using a Compute Engine instance.
          * Structure is documented below.
          * 
          * @return builder

@@ -17,17 +17,17 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
      */
     private @Nullable Integer hours;
     /**
-     * @return Minutes of hour of day. Must be from 0 to 59.
+     * @return Minutes of hour of day. Currently, only the value 0 is supported.
      * 
      */
     private @Nullable Integer minutes;
     /**
-     * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * @return Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
      * 
      */
     private @Nullable Integer nanos;
     /**
-     * @return Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+     * @return Seconds of minutes of the time. Currently, only the value 0 is supported.
      * 
      */
     private @Nullable Integer seconds;
@@ -41,21 +41,21 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTime {
         return Optional.ofNullable(this.hours);
     }
     /**
-     * @return Minutes of hour of day. Must be from 0 to 59.
+     * @return Minutes of hour of day. Currently, only the value 0 is supported.
      * 
      */
     public Optional<Integer> minutes() {
         return Optional.ofNullable(this.minutes);
     }
     /**
-     * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * @return Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
      * 
      */
     public Optional<Integer> nanos() {
         return Optional.ofNullable(this.nanos);
     }
     /**
-     * @return Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+     * @return Seconds of minutes of the time. Currently, only the value 0 is supported.
      * 
      */
     public Optional<Integer> seconds() {

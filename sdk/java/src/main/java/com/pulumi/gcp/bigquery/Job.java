@@ -223,6 +223,93 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Bigquery Job Load Parquet
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.bigquery.Job;
+ * import com.pulumi.gcp.bigquery.JobArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobLoadArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationTableArgs;
+ * import com.pulumi.gcp.bigquery.inputs.JobLoadParquetOptionsArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testBucket = new Bucket(&#34;testBucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var testBucketObject = new BucketObject(&#34;testBucketObject&#34;, BucketObjectArgs.builder()        
+ *             .source(new FileAsset(&#34;./test-fixtures/bigquerytable/test.parquet.gzip&#34;))
+ *             .bucket(testBucket.name())
+ *             .build());
+ * 
+ *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;job_load_dataset&#34;)
+ *             .friendlyName(&#34;test&#34;)
+ *             .description(&#34;This is a test description&#34;)
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *         var testTable = new Table(&#34;testTable&#34;, TableArgs.builder()        
+ *             .deletionProtection(false)
+ *             .tableId(&#34;job_load_table&#34;)
+ *             .datasetId(testDataset.datasetId())
+ *             .build());
+ * 
+ *         var job = new Job(&#34;job&#34;, JobArgs.builder()        
+ *             .jobId(&#34;job_load&#34;)
+ *             .labels(Map.of(&#34;my_job&#34;, &#34;load&#34;))
+ *             .load(JobLoadArgs.builder()
+ *                 .sourceUris(Output.tuple(testBucketObject.bucket(), testBucketObject.name()).applyValue(values -&gt; {
+ *                     var bucket = values.t1;
+ *                     var name = values.t2;
+ *                     return String.format(&#34;gs://%s/%s&#34;, bucket,name);
+ *                 }))
+ *                 .destinationTable(JobLoadDestinationTableArgs.builder()
+ *                     .projectId(testTable.project())
+ *                     .datasetId(testTable.datasetId())
+ *                     .tableId(testTable.tableId())
+ *                     .build())
+ *                 .schemaUpdateOptions(                
+ *                     &#34;ALLOW_FIELD_RELAXATION&#34;,
+ *                     &#34;ALLOW_FIELD_ADDITION&#34;)
+ *                 .writeDisposition(&#34;WRITE_APPEND&#34;)
+ *                 .sourceFormat(&#34;PARQUET&#34;)
+ *                 .autodetect(true)
+ *                 .parquetOptions(JobLoadParquetOptionsArgs.builder()
+ *                     .enumAsString(true)
+ *                     .enableListInference(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Bigquery Job Extract
  * ```java
  * package generated_program;

@@ -167,6 +167,9 @@ public final class Config {
     public Optional<String> dataLossPreventionCustomEndpoint() {
         return Codegen.stringProp("dataLossPreventionCustomEndpoint").config(config).get();
     }
+    public Optional<String> databaseMigrationServiceCustomEndpoint() {
+        return Codegen.stringProp("databaseMigrationServiceCustomEndpoint").config(config).get();
+    }
     public Optional<String> dataflowCustomEndpoint() {
         return Codegen.stringProp("dataflowCustomEndpoint").config(config).get();
     }
@@ -244,6 +247,9 @@ public final class Config {
     }
     public Optional<String> gkehubFeatureCustomEndpoint() {
         return Codegen.stringProp("gkehubFeatureCustomEndpoint").config(config).get();
+    }
+    public Optional<String> gkeonpremCustomEndpoint() {
+        return Codegen.stringProp("gkeonpremCustomEndpoint").config(config).get();
     }
     public Optional<String> googlePartnerName() {
         return Codegen.stringProp("googlePartnerName").config(config).get();

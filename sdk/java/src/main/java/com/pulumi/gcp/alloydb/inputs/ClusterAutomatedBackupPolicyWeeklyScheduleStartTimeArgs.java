@@ -31,14 +31,14 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
     }
 
     /**
-     * Minutes of hour of day. Must be from 0 to 59.
+     * Minutes of hour of day. Currently, only the value 0 is supported.
      * 
      */
     @Import(name="minutes")
     private @Nullable Output<Integer> minutes;
 
     /**
-     * @return Minutes of hour of day. Must be from 0 to 59.
+     * @return Minutes of hour of day. Currently, only the value 0 is supported.
      * 
      */
     public Optional<Output<Integer>> minutes() {
@@ -46,14 +46,14 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
     }
 
     /**
-     * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
      * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
-     * @return Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+     * @return Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
      * 
      */
     public Optional<Output<Integer>> nanos() {
@@ -61,14 +61,14 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
     }
 
     /**
-     * Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+     * Seconds of minutes of the time. Currently, only the value 0 is supported.
      * 
      */
     @Import(name="seconds")
     private @Nullable Output<Integer> seconds;
 
     /**
-     * @return Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+     * @return Seconds of minutes of the time. Currently, only the value 0 is supported.
      * 
      */
     public Optional<Output<Integer>> seconds() {
@@ -124,7 +124,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
         }
 
         /**
-         * @param minutes Minutes of hour of day. Must be from 0 to 59.
+         * @param minutes Minutes of hour of day. Currently, only the value 0 is supported.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
         }
 
         /**
-         * @param minutes Minutes of hour of day. Must be from 0 to 59.
+         * @param minutes Minutes of hour of day. Currently, only the value 0 is supported.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
         }
 
         /**
-         * @param nanos Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         * @param nanos Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
         }
 
         /**
-         * @param nanos Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         * @param nanos Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
         }
 
         /**
-         * @param seconds Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         * @param seconds Seconds of minutes of the time. Currently, only the value 0 is supported.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs exten
         }
 
         /**
-         * @param seconds Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+         * @param seconds Seconds of minutes of the time. Currently, only the value 0 is supported.
          * 
          * @return builder
          * 

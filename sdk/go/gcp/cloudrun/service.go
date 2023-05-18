@@ -287,11 +287,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 //				Location: pulumi.String("us-central1"),
-//				Metadata: &cloudrun.ServiceMetadataArgs{
-//					Annotations: pulumi.StringMap{
-//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-//					},
-//				},
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Spec: &cloudrun.ServiceTemplateSpecArgs{
 //						Containers: cloudrun.ServiceTemplateSpecContainerArray{
@@ -321,7 +316,7 @@ import (
 //						LatestRevision: pulumi.Bool(true),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -12,6 +12,30 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
 
     public sealed class TriggerBuildStepGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowExitCodes")]
+        private InputList<int>? _allowExitCodes;
+
+        /// <summary>
+        /// Allow this build step to fail without failing the entire build if and
+        /// only if the exit code is one of the specified codes.
+        /// If `allowFailure` is also specified, this field will take precedence.
+        /// </summary>
+        public InputList<int> AllowExitCodes
+        {
+            get => _allowExitCodes ?? (_allowExitCodes = new InputList<int>());
+            set => _allowExitCodes = value;
+        }
+
+        /// <summary>
+        /// Allow this build step to fail without failing the entire build.
+        /// If false, the entire build will fail if this step fails. Otherwise, the
+        /// build will succeed, but this step will still have a failure status.
+        /// Error information will be reported in the `failureDetail` field.
+        /// `allowExitCodes` takes precedence over this field.
+        /// </summary>
+        [Input("allowFailure")]
+        public Input<bool>? AllowFailure { get; set; }
+
         [Input("args")]
         private InputList<string>? _args;
 

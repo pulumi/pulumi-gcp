@@ -141,6 +141,21 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+     * 
+     */
+    @Import(name="enableIpv6")
+    private @Nullable Output<Boolean> enableIpv6;
+
+    /**
+     * @return Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+     * 
+     */
+    public Optional<Output<Boolean>> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
      * Name of the interface the BGP peer is associated with.
      * 
      */
@@ -170,6 +185,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
+    }
+
+    /**
+     * IPv6 address of the interface inside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    @Import(name="ipv6NexthopAddress")
+    private @Nullable Output<String> ipv6NexthopAddress;
+
+    /**
+     * @return IPv6 address of the interface inside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    public Optional<Output<String>> ipv6NexthopAddress() {
+        return Optional.ofNullable(this.ipv6NexthopAddress);
     }
 
     /**
@@ -244,6 +280,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> peerIpAddress() {
         return Optional.ofNullable(this.peerIpAddress);
+    }
+
+    /**
+     * IPv6 address of the BGP interface outside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    @Import(name="peerIpv6NexthopAddress")
+    private @Nullable Output<String> peerIpv6NexthopAddress;
+
+    /**
+     * @return IPv6 address of the BGP interface outside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    public Optional<Output<String>> peerIpv6NexthopAddress() {
+        return Optional.ofNullable(this.peerIpv6NexthopAddress);
     }
 
     /**
@@ -325,12 +382,15 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.advertisedRoutePriority = $.advertisedRoutePriority;
         this.bfd = $.bfd;
         this.enable = $.enable;
+        this.enableIpv6 = $.enableIpv6;
         this.interface_ = $.interface_;
         this.ipAddress = $.ipAddress;
+        this.ipv6NexthopAddress = $.ipv6NexthopAddress;
         this.managementType = $.managementType;
         this.name = $.name;
         this.peerAsn = $.peerAsn;
         this.peerIpAddress = $.peerIpAddress;
+        this.peerIpv6NexthopAddress = $.peerIpv6NexthopAddress;
         this.project = $.project;
         this.region = $.region;
         this.router = $.router;
@@ -538,6 +598,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enableIpv6 Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
+            $.enableIpv6 = enableIpv6;
+            return this;
+        }
+
+        /**
+         * @param enableIpv6 Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(Boolean enableIpv6) {
+            return enableIpv6(Output.of(enableIpv6));
+        }
+
+        /**
          * @param interface_ Name of the interface the BGP peer is associated with.
          * 
          * @return builder
@@ -579,6 +660,33 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param ipv6NexthopAddress IPv6 address of the interface inside Google Cloud Platform.
+         * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+         * If you do not specify the next hop addresses, Google Cloud automatically
+         * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6NexthopAddress(@Nullable Output<String> ipv6NexthopAddress) {
+            $.ipv6NexthopAddress = ipv6NexthopAddress;
+            return this;
+        }
+
+        /**
+         * @param ipv6NexthopAddress IPv6 address of the interface inside Google Cloud Platform.
+         * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+         * If you do not specify the next hop addresses, Google Cloud automatically
+         * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6NexthopAddress(String ipv6NexthopAddress) {
+            return ipv6NexthopAddress(Output.of(ipv6NexthopAddress));
         }
 
         /**
@@ -677,6 +785,33 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder peerIpAddress(String peerIpAddress) {
             return peerIpAddress(Output.of(peerIpAddress));
+        }
+
+        /**
+         * @param peerIpv6NexthopAddress IPv6 address of the BGP interface outside Google Cloud Platform.
+         * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+         * If you do not specify the next hop addresses, Google Cloud automatically
+         * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerIpv6NexthopAddress(@Nullable Output<String> peerIpv6NexthopAddress) {
+            $.peerIpv6NexthopAddress = peerIpv6NexthopAddress;
+            return this;
+        }
+
+        /**
+         * @param peerIpv6NexthopAddress IPv6 address of the BGP interface outside Google Cloud Platform.
+         * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+         * If you do not specify the next hop addresses, Google Cloud automatically
+         * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerIpv6NexthopAddress(String peerIpv6NexthopAddress) {
+            return peerIpv6NexthopAddress(Output.of(peerIpv6NexthopAddress));
         }
 
         /**
