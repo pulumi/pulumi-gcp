@@ -10,7 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.ForwardingRuleArgs;
 import com.pulumi.gcp.compute.inputs.ForwardingRuleState;
-import com.pulumi.gcp.compute.outputs.ForwardingRuleServiceDirectoryRegistrations;
+import com.pulumi.gcp.compute.outputs.ForwardingRuleServiceDirectoryRegistration;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -1936,8 +1936,8 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="serviceDirectoryRegistrations", type=ForwardingRuleServiceDirectoryRegistrations.class, parameters={})
-    private Output<ForwardingRuleServiceDirectoryRegistrations> serviceDirectoryRegistrations;
+    @Export(name="serviceDirectoryRegistrations", type=List.class, parameters={ForwardingRuleServiceDirectoryRegistration.class})
+    private Output<List<ForwardingRuleServiceDirectoryRegistration>> serviceDirectoryRegistrations;
 
     /**
      * @return Service Directory resources to register this forwarding rule with.
@@ -1945,7 +1945,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<ForwardingRuleServiceDirectoryRegistrations> serviceDirectoryRegistrations() {
+    public Output<List<ForwardingRuleServiceDirectoryRegistration>> serviceDirectoryRegistrations() {
         return this.serviceDirectoryRegistrations;
     }
     /**

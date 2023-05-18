@@ -264,7 +264,7 @@ type ForwardingRule struct {
 	// Service Directory resources to register this forwarding rule with.
 	// Currently, only supports a single Service Directory resource.
 	// Structure is documented below.
-	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationsOutput `pulumi:"serviceDirectoryRegistrations"`
+	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationArrayOutput `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -455,7 +455,7 @@ type forwardingRuleState struct {
 	// Service Directory resources to register this forwarding rule with.
 	// Currently, only supports a single Service Directory resource.
 	// Structure is documented below.
-	ServiceDirectoryRegistrations *ForwardingRuleServiceDirectoryRegistrations `pulumi:"serviceDirectoryRegistrations"`
+	ServiceDirectoryRegistrations []ForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -618,7 +618,7 @@ type ForwardingRuleState struct {
 	// Service Directory resources to register this forwarding rule with.
 	// Currently, only supports a single Service Directory resource.
 	// Structure is documented below.
-	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationsPtrInput
+	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationArrayInput
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -772,7 +772,7 @@ type forwardingRuleArgs struct {
 	// Service Directory resources to register this forwarding rule with.
 	// Currently, only supports a single Service Directory resource.
 	// Structure is documented below.
-	ServiceDirectoryRegistrations *ForwardingRuleServiceDirectoryRegistrations `pulumi:"serviceDirectoryRegistrations"`
+	ServiceDirectoryRegistrations []ForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -920,7 +920,7 @@ type ForwardingRuleArgs struct {
 	// Service Directory resources to register this forwarding rule with.
 	// Currently, only supports a single Service Directory resource.
 	// Structure is documented below.
-	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationsPtrInput
+	ServiceDirectoryRegistrations ForwardingRuleServiceDirectoryRegistrationArrayInput
 	// An optional prefix to the service name for this Forwarding Rule.
 	// If specified, will be the first label of the fully qualified service
 	// name.
@@ -1235,10 +1235,10 @@ func (o ForwardingRuleOutput) SelfLink() pulumi.StringOutput {
 // Service Directory resources to register this forwarding rule with.
 // Currently, only supports a single Service Directory resource.
 // Structure is documented below.
-func (o ForwardingRuleOutput) ServiceDirectoryRegistrations() ForwardingRuleServiceDirectoryRegistrationsOutput {
-	return o.ApplyT(func(v *ForwardingRule) ForwardingRuleServiceDirectoryRegistrationsOutput {
+func (o ForwardingRuleOutput) ServiceDirectoryRegistrations() ForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o.ApplyT(func(v *ForwardingRule) ForwardingRuleServiceDirectoryRegistrationArrayOutput {
 		return v.ServiceDirectoryRegistrations
-	}).(ForwardingRuleServiceDirectoryRegistrationsOutput)
+	}).(ForwardingRuleServiceDirectoryRegistrationArrayOutput)
 }
 
 // An optional prefix to the service name for this Forwarding Rule.

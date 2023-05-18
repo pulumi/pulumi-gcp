@@ -7,29 +7,26 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Gcp.Compute.Outputs
+namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    [OutputType]
-    public sealed class ForwardingRuleServiceDirectoryRegistrations
+    public sealed class ForwardingRuleServiceDirectoryRegistrationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Service Directory namespace to register the forwarding rule under.
         /// </summary>
-        public readonly string? Namespace;
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         /// <summary>
         /// Service Directory service to register the forwarding rule under.
         /// </summary>
-        public readonly string? Service;
+        [Input("service")]
+        public Input<string>? Service { get; set; }
 
-        [OutputConstructor]
-        private ForwardingRuleServiceDirectoryRegistrations(
-            string? @namespace,
-
-            string? service)
+        public ForwardingRuleServiceDirectoryRegistrationGetArgs()
         {
-            Namespace = @namespace;
-            Service = service;
         }
+        public static new ForwardingRuleServiceDirectoryRegistrationGetArgs Empty => new ForwardingRuleServiceDirectoryRegistrationGetArgs();
     }
 }

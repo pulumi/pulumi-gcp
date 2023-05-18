@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class ForwardingRuleServiceDirectoryRegistrations {
+public final class ForwardingRuleServiceDirectoryRegistration {
     /**
      * @return Service Directory namespace to register the forwarding rule under.
      * 
@@ -22,7 +22,7 @@ public final class ForwardingRuleServiceDirectoryRegistrations {
      */
     private @Nullable String service;
 
-    private ForwardingRuleServiceDirectoryRegistrations() {}
+    private ForwardingRuleServiceDirectoryRegistration() {}
     /**
      * @return Service Directory namespace to register the forwarding rule under.
      * 
@@ -42,7 +42,7 @@ public final class ForwardingRuleServiceDirectoryRegistrations {
         return new Builder();
     }
 
-    public static Builder builder(ForwardingRuleServiceDirectoryRegistrations defaults) {
+    public static Builder builder(ForwardingRuleServiceDirectoryRegistration defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -50,7 +50,7 @@ public final class ForwardingRuleServiceDirectoryRegistrations {
         private @Nullable String namespace;
         private @Nullable String service;
         public Builder() {}
-        public Builder(ForwardingRuleServiceDirectoryRegistrations defaults) {
+        public Builder(ForwardingRuleServiceDirectoryRegistration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.namespace = defaults.namespace;
     	      this.service = defaults.service;
@@ -66,8 +66,8 @@ public final class ForwardingRuleServiceDirectoryRegistrations {
             this.service = service;
             return this;
         }
-        public ForwardingRuleServiceDirectoryRegistrations build() {
-            final var o = new ForwardingRuleServiceDirectoryRegistrations();
+        public ForwardingRuleServiceDirectoryRegistration build() {
+            final var o = new ForwardingRuleServiceDirectoryRegistration();
             o.namespace = namespace;
             o.service = service;
             return o;

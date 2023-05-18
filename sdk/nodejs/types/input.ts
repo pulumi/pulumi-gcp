@@ -12698,7 +12698,7 @@ export namespace compute {
         ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface ForwardingRuleServiceDirectoryRegistrations {
+    export interface ForwardingRuleServiceDirectoryRegistration {
         /**
          * Service Directory namespace to register the forwarding rule under.
          */

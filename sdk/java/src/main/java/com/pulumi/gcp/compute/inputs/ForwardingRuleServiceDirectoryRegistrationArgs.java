@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ForwardingRuleServiceDirectoryRegistrationsArgs extends com.pulumi.resources.ResourceArgs {
+public final class ForwardingRuleServiceDirectoryRegistrationArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ForwardingRuleServiceDirectoryRegistrationsArgs Empty = new ForwardingRuleServiceDirectoryRegistrationsArgs();
+    public static final ForwardingRuleServiceDirectoryRegistrationArgs Empty = new ForwardingRuleServiceDirectoryRegistrationArgs();
 
     /**
      * Service Directory namespace to register the forwarding rule under.
@@ -45,9 +45,9 @@ public final class ForwardingRuleServiceDirectoryRegistrationsArgs extends com.p
         return Optional.ofNullable(this.service);
     }
 
-    private ForwardingRuleServiceDirectoryRegistrationsArgs() {}
+    private ForwardingRuleServiceDirectoryRegistrationArgs() {}
 
-    private ForwardingRuleServiceDirectoryRegistrationsArgs(ForwardingRuleServiceDirectoryRegistrationsArgs $) {
+    private ForwardingRuleServiceDirectoryRegistrationArgs(ForwardingRuleServiceDirectoryRegistrationArgs $) {
         this.namespace = $.namespace;
         this.service = $.service;
     }
@@ -55,19 +55,19 @@ public final class ForwardingRuleServiceDirectoryRegistrationsArgs extends com.p
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ForwardingRuleServiceDirectoryRegistrationsArgs defaults) {
+    public static Builder builder(ForwardingRuleServiceDirectoryRegistrationArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ForwardingRuleServiceDirectoryRegistrationsArgs $;
+        private ForwardingRuleServiceDirectoryRegistrationArgs $;
 
         public Builder() {
-            $ = new ForwardingRuleServiceDirectoryRegistrationsArgs();
+            $ = new ForwardingRuleServiceDirectoryRegistrationArgs();
         }
 
-        public Builder(ForwardingRuleServiceDirectoryRegistrationsArgs defaults) {
-            $ = new ForwardingRuleServiceDirectoryRegistrationsArgs(Objects.requireNonNull(defaults));
+        public Builder(ForwardingRuleServiceDirectoryRegistrationArgs defaults) {
+            $ = new ForwardingRuleServiceDirectoryRegistrationArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -112,7 +112,7 @@ public final class ForwardingRuleServiceDirectoryRegistrationsArgs extends com.p
             return service(Output.of(service));
         }
 
-        public ForwardingRuleServiceDirectoryRegistrationsArgs build() {
+        public ForwardingRuleServiceDirectoryRegistrationArgs build() {
             return $;
         }
     }

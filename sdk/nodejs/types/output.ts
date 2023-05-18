@@ -13864,7 +13864,7 @@ export namespace compute {
         ports?: string[];
     }
 
-    export interface ForwardingRuleServiceDirectoryRegistrations {
+    export interface ForwardingRuleServiceDirectoryRegistration {
         /**
          * Service Directory namespace to register the forwarding rule under.
          */

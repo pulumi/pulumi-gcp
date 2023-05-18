@@ -33,7 +33,7 @@ class ForwardingRuleArgs:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class ForwardingRuleArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
-        :param pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs'] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -490,7 +490,7 @@ class ForwardingRuleArgs:
 
     @property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]:
+    def service_directory_registrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.
@@ -499,7 +499,7 @@ class ForwardingRuleArgs:
         return pulumi.get(self, "service_directory_registrations")
 
     @service_directory_registrations.setter
-    def service_directory_registrations(self, value: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]):
+    def service_directory_registrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]):
         pulumi.set(self, "service_directory_registrations", value)
 
     @property
@@ -599,7 +599,7 @@ class _ForwardingRuleState:
                  psc_connection_status: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -707,7 +707,7 @@ class _ForwardingRuleState:
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs'] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -1153,7 +1153,7 @@ class _ForwardingRuleState:
 
     @property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]:
+    def service_directory_registrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.
@@ -1162,7 +1162,7 @@ class _ForwardingRuleState:
         return pulumi.get(self, "service_directory_registrations")
 
     @service_directory_registrations.setter
-    def service_directory_registrations(self, value: Optional[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationsArgs']]):
+    def service_directory_registrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]]):
         pulumi.set(self, "service_directory_registrations", value)
 
     @property
@@ -1271,7 +1271,7 @@ class ForwardingRule(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -1442,7 +1442,7 @@ class ForwardingRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
-        :param pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -1580,7 +1580,7 @@ class ForwardingRule(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -1656,7 +1656,7 @@ class ForwardingRule(pulumi.CustomResource):
             psc_connection_status: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
-            service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
+            service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
             service_label: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1769,7 +1769,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
                This field is not applicable to global forwarding rules.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]] service_directory_registrations: Service Directory resources to register this forwarding rule with.
                Currently, only supports a single Service Directory resource.
                Structure is documented below.
         :param pulumi.Input[str] service_label: An optional prefix to the service name for this Forwarding Rule.
@@ -2099,7 +2099,7 @@ class ForwardingRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceDirectoryRegistrations")
-    def service_directory_registrations(self) -> pulumi.Output['outputs.ForwardingRuleServiceDirectoryRegistrations']:
+    def service_directory_registrations(self) -> pulumi.Output[Sequence['outputs.ForwardingRuleServiceDirectoryRegistration']]:
         """
         Service Directory resources to register this forwarding rule with.
         Currently, only supports a single Service Directory resource.

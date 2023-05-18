@@ -68,7 +68,7 @@ __all__ = [
     'FirewallLogConfigArgs',
     'FirewallPolicyRuleMatchArgs',
     'FirewallPolicyRuleMatchLayer4ConfigArgs',
-    'ForwardingRuleServiceDirectoryRegistrationsArgs',
+    'ForwardingRuleServiceDirectoryRegistrationArgs',
     'GlobalForwardingRuleMetadataFilterArgs',
     'GlobalForwardingRuleMetadataFilterFilterLabelArgs',
     'HaVpnGatewayVpnInterfaceArgs',
@@ -5019,7 +5019,7 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
 
 
 @pulumi.input_type
-class ForwardingRuleServiceDirectoryRegistrationsArgs:
+class ForwardingRuleServiceDirectoryRegistrationArgs:
     def __init__(__self__, *,
                  namespace: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):

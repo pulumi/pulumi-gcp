@@ -69,7 +69,7 @@ __all__ = [
     'FirewallLogConfig',
     'FirewallPolicyRuleMatch',
     'FirewallPolicyRuleMatchLayer4Config',
-    'ForwardingRuleServiceDirectoryRegistrations',
+    'ForwardingRuleServiceDirectoryRegistration',
     'GlobalForwardingRuleMetadataFilter',
     'GlobalForwardingRuleMetadataFilterFilterLabel',
     'HaVpnGatewayVpnInterface',
@@ -5052,7 +5052,7 @@ class FirewallPolicyRuleMatchLayer4Config(dict):
 
 
 @pulumi.output_type
-class ForwardingRuleServiceDirectoryRegistrations(dict):
+class ForwardingRuleServiceDirectoryRegistration(dict):
     def __init__(__self__, *,
                  namespace: Optional[str] = None,
                  service: Optional[str] = None):

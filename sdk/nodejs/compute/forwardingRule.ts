@@ -283,7 +283,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * Currently, only supports a single Service Directory resource.
      * Structure is documented below.
      */
-    public readonly serviceDirectoryRegistrations!: pulumi.Output<outputs.compute.ForwardingRuleServiceDirectoryRegistrations>;
+    public readonly serviceDirectoryRegistrations!: pulumi.Output<outputs.compute.ForwardingRuleServiceDirectoryRegistration[]>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service
@@ -585,7 +585,7 @@ export interface ForwardingRuleState {
      * Currently, only supports a single Service Directory resource.
      * Structure is documented below.
      */
-    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.ForwardingRuleServiceDirectoryRegistrations>;
+    serviceDirectoryRegistrations?: pulumi.Input<pulumi.Input<inputs.compute.ForwardingRuleServiceDirectoryRegistration>[]>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service
@@ -784,7 +784,7 @@ export interface ForwardingRuleArgs {
      * Currently, only supports a single Service Directory resource.
      * Structure is documented below.
      */
-    serviceDirectoryRegistrations?: pulumi.Input<inputs.compute.ForwardingRuleServiceDirectoryRegistrations>;
+    serviceDirectoryRegistrations?: pulumi.Input<pulumi.Input<inputs.compute.ForwardingRuleServiceDirectoryRegistration>[]>;
     /**
      * An optional prefix to the service name for this Forwarding Rule.
      * If specified, will be the first label of the fully qualified service

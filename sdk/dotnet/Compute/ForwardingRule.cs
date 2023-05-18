@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("serviceDirectoryRegistrations")]
-        public Output<Outputs.ForwardingRuleServiceDirectoryRegistrations> ServiceDirectoryRegistrations { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ForwardingRuleServiceDirectoryRegistration>> ServiceDirectoryRegistrations { get; private set; } = null!;
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
@@ -627,13 +627,19 @@ namespace Pulumi.Gcp.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("serviceDirectoryRegistrations")]
+        private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>? _serviceDirectoryRegistrations;
+
         /// <summary>
         /// Service Directory resources to register this forwarding rule with.
         /// Currently, only supports a single Service Directory resource.
         /// Structure is documented below.
         /// </summary>
-        [Input("serviceDirectoryRegistrations")]
-        public Input<Inputs.ForwardingRuleServiceDirectoryRegistrationsArgs>? ServiceDirectoryRegistrations { get; set; }
+        public InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs> ServiceDirectoryRegistrations
+        {
+            get => _serviceDirectoryRegistrations ?? (_serviceDirectoryRegistrations = new InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationArgs>());
+            set => _serviceDirectoryRegistrations = value;
+        }
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
@@ -922,13 +928,19 @@ namespace Pulumi.Gcp.Compute
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        [Input("serviceDirectoryRegistrations")]
+        private InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs>? _serviceDirectoryRegistrations;
+
         /// <summary>
         /// Service Directory resources to register this forwarding rule with.
         /// Currently, only supports a single Service Directory resource.
         /// Structure is documented below.
         /// </summary>
-        [Input("serviceDirectoryRegistrations")]
-        public Input<Inputs.ForwardingRuleServiceDirectoryRegistrationsGetArgs>? ServiceDirectoryRegistrations { get; set; }
+        public InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs> ServiceDirectoryRegistrations
+        {
+            get => _serviceDirectoryRegistrations ?? (_serviceDirectoryRegistrations = new InputList<Inputs.ForwardingRuleServiceDirectoryRegistrationGetArgs>());
+            set => _serviceDirectoryRegistrations = value;
+        }
 
         /// <summary>
         /// An optional prefix to the service name for this Forwarding Rule.
