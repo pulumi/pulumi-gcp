@@ -55,7 +55,7 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
     /**
      * (Output)
      * Service attachment URI for the workstation cluster.
-     * The service attachemnt is created when private endpoint is enabled.
+     * The service attachment is created when private endpoint is enabled.
      * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
      * 
      */
@@ -65,7 +65,7 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
     /**
      * @return (Output)
      * Service attachment URI for the workstation cluster.
-     * The service attachemnt is created when private endpoint is enabled.
+     * The service attachment is created when private endpoint is enabled.
      * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
      * 
      */
@@ -150,7 +150,7 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
         /**
          * @param serviceAttachmentUri (Output)
          * Service attachment URI for the workstation cluster.
-         * The service attachemnt is created when private endpoint is enabled.
+         * The service attachment is created when private endpoint is enabled.
          * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
          * 
          * @return builder
@@ -164,7 +164,7 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
         /**
          * @param serviceAttachmentUri (Output)
          * Service attachment URI for the workstation cluster.
-         * The service attachemnt is created when private endpoint is enabled.
+         * The service attachment is created when private endpoint is enabled.
          * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
          * 
          * @return builder

@@ -35,6 +35,7 @@ __all__ = [
     'JobTemplateTemplateContainerVolumeMount',
     'JobTemplateTemplateVolume',
     'JobTemplateTemplateVolumeCloudSqlInstance',
+    'JobTemplateTemplateVolumeEmptyDir',
     'JobTemplateTemplateVolumeSecret',
     'JobTemplateTemplateVolumeSecretItem',
     'JobTemplateTemplateVpcAccess',
@@ -64,6 +65,7 @@ __all__ = [
     'ServiceTemplateScaling',
     'ServiceTemplateVolume',
     'ServiceTemplateVolumeCloudSqlInstance',
+    'ServiceTemplateVolumeEmptyDir',
     'ServiceTemplateVolumeSecret',
     'ServiceTemplateVolumeSecretItem',
     'ServiceTemplateVpcAccess',
@@ -1448,6 +1450,8 @@ class JobTemplateTemplateVolume(dict):
         suggest = None
         if key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
+        elif key == "emptyDir":
+            suggest = "empty_dir"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateVolume. Access the value via the '{suggest}' property getter instead.")
@@ -1463,6 +1467,7 @@ class JobTemplateTemplateVolume(dict):
     def __init__(__self__, *,
                  name: str,
                  cloud_sql_instance: Optional['outputs.JobTemplateTemplateVolumeCloudSqlInstance'] = None,
+                 empty_dir: Optional['outputs.JobTemplateTemplateVolumeEmptyDir'] = None,
                  secret: Optional['outputs.JobTemplateTemplateVolumeSecret'] = None):
         """
         :param str name: Volume's name.
@@ -1474,6 +1479,8 @@ class JobTemplateTemplateVolume(dict):
         pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -1493,6 +1500,11 @@ class JobTemplateTemplateVolume(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_sql_instance")
+
+    @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional['outputs.JobTemplateTemplateVolumeEmptyDir']:
+        return pulumi.get(self, "empty_dir")
 
     @property
     @pulumi.getter
@@ -1521,6 +1533,58 @@ class JobTemplateTemplateVolumeCloudSqlInstance(dict):
         The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         return pulumi.get(self, "instances")
+
+
+@pulumi.output_type
+class JobTemplateTemplateVolumeEmptyDir(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeLimit":
+            suggest = "size_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobTemplateTemplateVolumeEmptyDir. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobTemplateTemplateVolumeEmptyDir.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobTemplateTemplateVolumeEmptyDir.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 medium: Optional[str] = None,
+                 size_limit: Optional[str] = None):
+        """
+        :param str medium: The different types of medium supported for EmptyDir.
+               Default value is `MEMORY`.
+               Possible values are: `MEMORY`.
+        :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> Optional[str]:
+        """
+        The different types of medium supported for EmptyDir.
+        Default value is `MEMORY`.
+        Possible values are: `MEMORY`.
+        """
+        return pulumi.get(self, "medium")
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[str]:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+        """
+        return pulumi.get(self, "size_limit")
 
 
 @pulumi.output_type
@@ -2062,6 +2126,8 @@ class ServiceTemplate(dict):
             suggest = "max_instance_request_concurrency"
         elif key == "serviceAccount":
             suggest = "service_account"
+        elif key == "sessionAffinity":
+            suggest = "session_affinity"
         elif key == "vpcAccess":
             suggest = "vpc_access"
 
@@ -2086,12 +2152,13 @@ class ServiceTemplate(dict):
                  revision: Optional[str] = None,
                  scaling: Optional['outputs.ServiceTemplateScaling'] = None,
                  service_account: Optional[str] = None,
+                 session_affinity: Optional[bool] = None,
                  timeout: Optional[str] = None,
                  volumes: Optional[Sequence['outputs.ServiceTemplateVolume']] = None,
                  vpc_access: Optional['outputs.ServiceTemplateVpcAccess'] = None):
         """
         :param Mapping[str, str] annotations: KRM-style annotations for the resource.
-        :param Sequence['ServiceTemplateContainerArgs'] containers: Holds the single container that defines the unit of execution for this task.
+        :param Sequence['ServiceTemplateContainerArgs'] containers: Holds the containers that define the unit of execution for this Service.
                Structure is documented below.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision.
@@ -2102,6 +2169,7 @@ class ServiceTemplate(dict):
         :param 'ServiceTemplateScalingArgs' scaling: Scaling settings for this Revision.
                Structure is documented below.
         :param str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+        :param bool session_affinity: Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         :param str timeout: Max allowed time for an instance to respond to a request.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param Sequence['ServiceTemplateVolumeArgs'] volumes: A list of Volumes to make available to containers.
@@ -2127,6 +2195,8 @@ class ServiceTemplate(dict):
             pulumi.set(__self__, "scaling", scaling)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if session_affinity is not None:
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
         if volumes is not None:
@@ -2146,7 +2216,7 @@ class ServiceTemplate(dict):
     @pulumi.getter
     def containers(self) -> Optional[Sequence['outputs.ServiceTemplateContainer']]:
         """
-        Holds the single container that defines the unit of execution for this task.
+        Holds the containers that define the unit of execution for this Service.
         Structure is documented below.
         """
         return pulumi.get(self, "containers")
@@ -2210,6 +2280,14 @@ class ServiceTemplate(dict):
         return pulumi.get(self, "service_account")
 
     @property
+    @pulumi.getter(name="sessionAffinity")
+    def session_affinity(self) -> Optional[bool]:
+        """
+        Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        """
+        return pulumi.get(self, "session_affinity")
+
+    @property
     @pulumi.getter
     def timeout(self) -> Optional[str]:
         """
@@ -2242,7 +2320,9 @@ class ServiceTemplateContainer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "livenessProbe":
+        if key == "dependsOns":
+            suggest = "depends_ons"
+        elif key == "livenessProbe":
             suggest = "liveness_probe"
         elif key == "startupProbe":
             suggest = "startup_probe"
@@ -2266,6 +2346,7 @@ class ServiceTemplateContainer(dict):
                  image: str,
                  args: Optional[Sequence[str]] = None,
                  commands: Optional[Sequence[str]] = None,
+                 depends_ons: Optional[Sequence[str]] = None,
                  envs: Optional[Sequence['outputs.ServiceTemplateContainerEnv']] = None,
                  liveness_probe: Optional['outputs.ServiceTemplateContainerLivenessProbe'] = None,
                  name: Optional[str] = None,
@@ -2299,6 +2380,8 @@ class ServiceTemplateContainer(dict):
             pulumi.set(__self__, "args", args)
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
+        if depends_ons is not None:
+            pulumi.set(__self__, "depends_ons", depends_ons)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if liveness_probe is not None:
@@ -2339,6 +2422,11 @@ class ServiceTemplateContainer(dict):
         Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "commands")
+
+    @property
+    @pulumi.getter(name="dependsOns")
+    def depends_ons(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
@@ -2673,7 +2761,8 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
                  port: Optional[int] = None,
                  service: Optional[str] = None):
         """
-        :param int port: Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         :param str service: The name of the service to place in the gRPC HealthCheckRequest
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
@@ -2687,7 +2776,8 @@ class ServiceTemplateContainerLivenessProbeGrpc(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -2723,16 +2813,21 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
 
     def __init__(__self__, *,
                  http_headers: Optional[Sequence['outputs.ServiceTemplateContainerLivenessProbeHttpGetHttpHeader']] = None,
-                 path: Optional[str] = None):
+                 path: Optional[str] = None,
+                 port: Optional[int] = None):
         """
         :param Sequence['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -2750,6 +2845,15 @@ class ServiceTemplateContainerLivenessProbeHttpGet(dict):
         Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -2787,7 +2891,8 @@ class ServiceTemplateContainerLivenessProbeTcpSocket(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None):
         """
-        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -2796,7 +2901,8 @@ class ServiceTemplateContainerLivenessProbeTcpSocket(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -2856,6 +2962,8 @@ class ServiceTemplateContainerResources(dict):
         suggest = None
         if key == "cpuIdle":
             suggest = "cpu_idle"
+        elif key == "startupCpuBoost":
+            suggest = "startup_cpu_boost"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateContainerResources. Access the value via the '{suggest}' property getter instead.")
@@ -2870,15 +2978,19 @@ class ServiceTemplateContainerResources(dict):
 
     def __init__(__self__, *,
                  cpu_idle: Optional[bool] = None,
-                 limits: Optional[Mapping[str, str]] = None):
+                 limits: Optional[Mapping[str, str]] = None,
+                 startup_cpu_boost: Optional[bool] = None):
         """
         :param bool cpu_idle: Determines whether CPU should be throttled or not outside of requests.
         :param Mapping[str, str] limits: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param bool startup_cpu_boost: Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
         if cpu_idle is not None:
             pulumi.set(__self__, "cpu_idle", cpu_idle)
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
+        if startup_cpu_boost is not None:
+            pulumi.set(__self__, "startup_cpu_boost", startup_cpu_boost)
 
     @property
     @pulumi.getter(name="cpuIdle")
@@ -2895,6 +3007,14 @@ class ServiceTemplateContainerResources(dict):
         Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter(name="startupCpuBoost")
+    def startup_cpu_boost(self) -> Optional[bool]:
+        """
+        Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+        """
+        return pulumi.get(self, "startup_cpu_boost")
 
 
 @pulumi.output_type
@@ -3027,7 +3147,8 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
                  port: Optional[int] = None,
                  service: Optional[str] = None):
         """
-        :param int port: Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         :param str service: The name of the service to place in the gRPC HealthCheckRequest
                (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
                If this is not specified, the default behavior is defined by gRPC.
@@ -3041,7 +3162,8 @@ class ServiceTemplateContainerStartupProbeGrpc(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Port number to access on the container. Number must be in the range 1 to 65535. If not specified, defaults to the same value as container.ports[0].containerPort.
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -3077,16 +3199,21 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
 
     def __init__(__self__, *,
                  http_headers: Optional[Sequence['outputs.ServiceTemplateContainerStartupProbeHttpGetHttpHeader']] = None,
-                 path: Optional[str] = None):
+                 path: Optional[str] = None,
+                 port: Optional[int] = None):
         """
         :param Sequence['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
                Structure is documented below.
         :param str path: Path to access on the HTTP server. Defaults to '/'.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if http_headers is not None:
             pulumi.set(__self__, "http_headers", http_headers)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter(name="httpHeaders")
@@ -3104,6 +3231,15 @@ class ServiceTemplateContainerStartupProbeHttpGet(dict):
         Path to access on the HTTP server. Defaults to '/'.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -3141,7 +3277,8 @@ class ServiceTemplateContainerStartupProbeTcpSocket(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None):
         """
-        :param int port: Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         if port is not None:
             pulumi.set(__self__, "port", port)
@@ -3150,7 +3287,8 @@ class ServiceTemplateContainerStartupProbeTcpSocket(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         """
-        Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
         """
         return pulumi.get(self, "port")
 
@@ -3258,6 +3396,8 @@ class ServiceTemplateVolume(dict):
         suggest = None
         if key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
+        elif key == "emptyDir":
+            suggest = "empty_dir"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateVolume. Access the value via the '{suggest}' property getter instead.")
@@ -3273,6 +3413,7 @@ class ServiceTemplateVolume(dict):
     def __init__(__self__, *,
                  name: str,
                  cloud_sql_instance: Optional['outputs.ServiceTemplateVolumeCloudSqlInstance'] = None,
+                 empty_dir: Optional['outputs.ServiceTemplateVolumeEmptyDir'] = None,
                  secret: Optional['outputs.ServiceTemplateVolumeSecret'] = None):
         """
         :param str name: Volume's name.
@@ -3284,6 +3425,8 @@ class ServiceTemplateVolume(dict):
         pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -3305,6 +3448,11 @@ class ServiceTemplateVolume(dict):
         return pulumi.get(self, "cloud_sql_instance")
 
     @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional['outputs.ServiceTemplateVolumeEmptyDir']:
+        return pulumi.get(self, "empty_dir")
+
+    @property
     @pulumi.getter
     def secret(self) -> Optional['outputs.ServiceTemplateVolumeSecret']:
         """
@@ -3320,8 +3468,6 @@ class ServiceTemplateVolumeCloudSqlInstance(dict):
                  instances: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
-               
-               - - -
         """
         if instances is not None:
             pulumi.set(__self__, "instances", instances)
@@ -3331,10 +3477,64 @@ class ServiceTemplateVolumeCloudSqlInstance(dict):
     def instances(self) -> Optional[Sequence[str]]:
         """
         The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
+        return pulumi.get(self, "instances")
+
+
+@pulumi.output_type
+class ServiceTemplateVolumeEmptyDir(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeLimit":
+            suggest = "size_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateVolumeEmptyDir. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateVolumeEmptyDir.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateVolumeEmptyDir.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 medium: Optional[str] = None,
+                 size_limit: Optional[str] = None):
+        """
+        :param str medium: The different types of medium supported for EmptyDir.
+               Default value is `MEMORY`.
+               Possible values are: `MEMORY`.
+        :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+               
+               - - -
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> Optional[str]:
+        """
+        The different types of medium supported for EmptyDir.
+        Default value is `MEMORY`.
+        Possible values are: `MEMORY`.
+        """
+        return pulumi.get(self, "medium")
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[str]:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
 
         - - -
         """
-        return pulumi.get(self, "instances")
+        return pulumi.get(self, "size_limit")
 
 
 @pulumi.output_type

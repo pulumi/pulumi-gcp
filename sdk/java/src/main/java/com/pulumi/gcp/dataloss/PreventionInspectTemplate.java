@@ -232,6 +232,88 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dlp Inspect Template Custom Type Surrogate
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
+ * import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customTypeSurrogate = new PreventionInspectTemplate(&#34;customTypeSurrogate&#34;, PreventionInspectTemplateArgs.builder()        
+ *             .description(&#34;My description&#34;)
+ *             .displayName(&#34;display_name&#34;)
+ *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
+ *                 .customInfoTypes(PreventionInspectTemplateInspectConfigCustomInfoTypeArgs.builder()
+ *                     .infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs.builder()
+ *                         .name(&#34;MY_CUSTOM_TYPE&#34;)
+ *                         .build())
+ *                     .likelihood(&#34;UNLIKELY&#34;)
+ *                     .surrogateType()
+ *                     .build())
+ *                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+ *                     .name(&#34;EMAIL_ADDRESS&#34;)
+ *                     .build())
+ *                 .limits(PreventionInspectTemplateInspectConfigLimitsArgs.builder()
+ *                     .maxFindingsPerItem(10)
+ *                     .maxFindingsPerRequest(50)
+ *                     .build())
+ *                 .minLikelihood(&#34;UNLIKELY&#34;)
+ *                 .ruleSets(                
+ *                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
+ *                         .infoTypes(PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs.builder()
+ *                             .name(&#34;EMAIL_ADDRESS&#34;)
+ *                             .build())
+ *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
+ *                             .exclusionRule(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs.builder()
+ *                                 .matchingType(&#34;MATCHING_TYPE_FULL_MATCH&#34;)
+ *                                 .regex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs.builder()
+ *                                     .pattern(&#34;.+@example.com&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     PreventionInspectTemplateInspectConfigRuleSetArgs.builder()
+ *                         .infoTypes(PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs.builder()
+ *                             .name(&#34;MY_CUSTOM_TYPE&#34;)
+ *                             .build())
+ *                         .rules(PreventionInspectTemplateInspectConfigRuleSetRuleArgs.builder()
+ *                             .hotwordRule(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs.builder()
+ *                                 .hotwordRegex(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs.builder()
+ *                                     .pattern(&#34;example*&#34;)
+ *                                     .build())
+ *                                 .likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs.builder()
+ *                                     .fixedLikelihood(&#34;VERY_LIKELY&#34;)
+ *                                     .build())
+ *                                 .proximity(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs.builder()
+ *                                     .windowBefore(50)
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                 .build())
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

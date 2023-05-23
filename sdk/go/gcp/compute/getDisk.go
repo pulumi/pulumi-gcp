@@ -73,6 +73,7 @@ type LookupDiskArgs struct {
 
 // A collection of values returned by getDisk.
 type LookupDiskResult struct {
+	AsyncPrimaryDisks []GetDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisks"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The optional description of this resource.
@@ -177,6 +178,10 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutput() LookupDiskResultOutpu
 
 func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.Context) LookupDiskResultOutput {
 	return o
+}
+
+func (o LookupDiskResultOutput) AsyncPrimaryDisks() GetDiskAsyncPrimaryDiskArrayOutput {
+	return o.ApplyT(func(v LookupDiskResult) []GetDiskAsyncPrimaryDisk { return v.AsyncPrimaryDisks }).(GetDiskAsyncPrimaryDiskArrayOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

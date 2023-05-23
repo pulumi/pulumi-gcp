@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * const defaultWorkstation = new gcp.workstations.Workstation("defaultWorkstation", {
- *     workstationId: "workstation",
+ *     workstationId: "work-station",
  *     workstationConfigId: defaultWorkstationConfig.workstationConfigId,
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
  *     location: "us-central1",
@@ -115,7 +115,7 @@ export class Workstation extends pulumi.CustomResource {
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -133,14 +133,14 @@ export class Workstation extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The location where the workstation cluster config should reside.
+     * The location where the workstation parent resources reside.
      *
      *
      * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The name of the cluster resource.
+     * Full name of this resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -153,15 +153,15 @@ export class Workstation extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The system-generated UID of the resource.
+     * A system-assigned unique identified for this resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      */
     public readonly workstationClusterId!: pulumi.Output<string>;
     /**
-     * The ID of the workstation cluster config.
+     * The ID of the parent workstation cluster config.
      */
     public readonly workstationConfigId!: pulumi.Output<string>;
     /**
@@ -237,7 +237,7 @@ export interface WorkstationState {
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -255,14 +255,14 @@ export interface WorkstationState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location where the workstation cluster config should reside.
+     * The location where the workstation parent resources reside.
      *
      *
      * - - -
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the cluster resource.
+     * Full name of this resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -275,15 +275,15 @@ export interface WorkstationState {
      */
     state?: pulumi.Input<string>;
     /**
-     * The system-generated UID of the resource.
+     * A system-assigned unique identified for this resource.
      */
     uid?: pulumi.Input<string>;
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      */
     workstationClusterId?: pulumi.Input<string>;
     /**
-     * The ID of the workstation cluster config.
+     * The ID of the parent workstation cluster config.
      */
     workstationConfigId?: pulumi.Input<string>;
     /**
@@ -309,7 +309,7 @@ export interface WorkstationArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The location where the workstation cluster config should reside.
+     * The location where the workstation parent resources reside.
      *
      *
      * - - -
@@ -321,11 +321,11 @@ export interface WorkstationArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      */
     workstationClusterId: pulumi.Input<string>;
     /**
-     * The ID of the workstation cluster config.
+     * The ID of the parent workstation cluster config.
      */
     workstationConfigId: pulumi.Input<string>;
     /**

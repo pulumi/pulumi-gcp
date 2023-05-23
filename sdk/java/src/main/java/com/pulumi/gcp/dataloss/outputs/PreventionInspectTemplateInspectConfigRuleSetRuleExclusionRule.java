@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary;
+import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex;
 import java.lang.String;
@@ -20,6 +21,13 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      * 
      */
     private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary;
+    /**
+     * @return Drop if the hotword rule is contained in the proximate context.
+     * For tabular data, the context includes the column name.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword;
     /**
      * @return Set of infoTypes for which findings would affect this rule.
      * Structure is documented below.
@@ -47,6 +55,15 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      */
     public Optional<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary> dictionary() {
         return Optional.ofNullable(this.dictionary);
+    }
+    /**
+     * @return Drop if the hotword rule is contained in the proximate context.
+     * For tabular data, the context includes the column name.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword> excludeByHotword() {
+        return Optional.ofNullable(this.excludeByHotword);
     }
     /**
      * @return Set of infoTypes for which findings would affect this rule.
@@ -83,6 +100,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
     @CustomType.Builder
     public static final class Builder {
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary;
+        private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes;
         private String matchingType;
         private @Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex;
@@ -90,6 +108,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         public Builder(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.dictionary = defaults.dictionary;
+    	      this.excludeByHotword = defaults.excludeByHotword;
     	      this.excludeInfoTypes = defaults.excludeInfoTypes;
     	      this.matchingType = defaults.matchingType;
     	      this.regex = defaults.regex;
@@ -98,6 +117,11 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         @CustomType.Setter
         public Builder dictionary(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary) {
             this.dictionary = dictionary;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder excludeByHotword(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword) {
+            this.excludeByHotword = excludeByHotword;
             return this;
         }
         @CustomType.Setter
@@ -118,6 +142,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule build() {
             final var o = new PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule();
             o.dictionary = dictionary;
+            o.excludeByHotword = excludeByHotword;
             o.excludeInfoTypes = excludeInfoTypes;
             o.matchingType = matchingType;
             o.regex = regex;

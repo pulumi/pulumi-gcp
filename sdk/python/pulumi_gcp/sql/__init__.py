@@ -13,6 +13,7 @@ from .get_database import *
 from .get_database_instance import *
 from .get_database_instances import *
 from .get_databases import *
+from .get_tiers import *
 from .source_representation_instance import *
 from .ssl_cert import *
 from .user import *

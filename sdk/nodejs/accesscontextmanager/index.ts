@@ -45,6 +45,11 @@ export type AuthorizedOrgsDesc = import("./authorizedOrgsDesc").AuthorizedOrgsDe
 export const AuthorizedOrgsDesc: typeof import("./authorizedOrgsDesc").AuthorizedOrgsDesc = null as any;
 utilities.lazyLoad(exports, ["AuthorizedOrgsDesc"], () => require("./authorizedOrgsDesc"));
 
+export { EgressPolicyArgs, EgressPolicyState } from "./egressPolicy";
+export type EgressPolicy = import("./egressPolicy").EgressPolicy;
+export const EgressPolicy: typeof import("./egressPolicy").EgressPolicy = null as any;
+utilities.lazyLoad(exports, ["EgressPolicy"], () => require("./egressPolicy"));
+
 export { GcpUserAccessBindingArgs, GcpUserAccessBindingState } from "./gcpUserAccessBinding";
 export type GcpUserAccessBinding = import("./gcpUserAccessBinding").GcpUserAccessBinding;
 export const GcpUserAccessBinding: typeof import("./gcpUserAccessBinding").GcpUserAccessBinding = null as any;
@@ -91,6 +96,8 @@ const _module = {
                 return new AccessPolicyIamPolicy(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc":
                 return new AuthorizedOrgsDesc(name, <any>undefined, { urn })
+            case "gcp:accesscontextmanager/egressPolicy:EgressPolicy":
+                return new EgressPolicy(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding":
                 return new GcpUserAccessBinding(name, <any>undefined, { urn })
             case "gcp:accesscontextmanager/ingressPolicy:IngressPolicy":
@@ -114,6 +121,7 @@ pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessPolicyI
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessPolicyIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/accessPolicyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/authorizedOrgsDesc", _module)
+pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/egressPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/gcpUserAccessBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/ingressPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "accesscontextmanager/servicePerimeter", _module)

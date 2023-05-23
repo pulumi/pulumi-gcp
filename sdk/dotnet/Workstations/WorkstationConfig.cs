@@ -458,7 +458,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<Outputs.WorkstationConfigContainer> Container { get; private set; } = null!;
 
         /// <summary>
-        /// Time the Instance was created in UTC.
+        /// Time when this resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -541,13 +541,13 @@ namespace Pulumi.Gcp.Workstations
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the workstation cluster.
+        /// The ID of the parent workstation cluster.
         /// </summary>
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the workstation cluster config.
+        /// The ID to be assigned to the workstation cluster config.
         /// </summary>
         [Output("workstationConfigId")]
         public Output<string> WorkstationConfigId { get; private set; } = null!;
@@ -682,13 +682,13 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the workstation cluster.
+        /// The ID of the parent workstation cluster.
         /// </summary>
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the workstation cluster config.
+        /// The ID to be assigned to the workstation cluster config.
         /// </summary>
         [Input("workstationConfigId", required: true)]
         public Input<string> WorkstationConfigId { get; set; } = null!;
@@ -734,7 +734,7 @@ namespace Pulumi.Gcp.Workstations
         public Input<Inputs.WorkstationConfigContainerGetArgs>? Container { get; set; }
 
         /// <summary>
-        /// Time the Instance was created in UTC.
+        /// Time when this resource was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -829,13 +829,13 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? Uid { get; set; }
 
         /// <summary>
-        /// The name of the workstation cluster.
+        /// The ID of the parent workstation cluster.
         /// </summary>
         [Input("workstationClusterId")]
         public Input<string>? WorkstationClusterId { get; set; }
 
         /// <summary>
-        /// The ID of the workstation cluster config.
+        /// The ID to be assigned to the workstation cluster config.
         /// </summary>
         [Input("workstationConfigId")]
         public Input<string>? WorkstationConfigId { get; set; }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.alloydb.outputs.ClusterAutomatedBackupPolicyEncryptionConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterAutomatedBackupPolicyQuantityBasedRetention;
 import com.pulumi.gcp.alloydb.outputs.ClusterAutomatedBackupPolicyTimeBasedRetention;
 import com.pulumi.gcp.alloydb.outputs.ClusterAutomatedBackupPolicyWeeklySchedule;
@@ -29,6 +30,12 @@ public final class ClusterAutomatedBackupPolicy {
      */
     private @Nullable Boolean enabled;
     /**
+     * @return EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterAutomatedBackupPolicyEncryptionConfig encryptionConfig;
+    /**
      * @return Labels to apply to backups created using this configuration.
      * 
      */
@@ -39,13 +46,13 @@ public final class ClusterAutomatedBackupPolicy {
      */
     private @Nullable String location;
     /**
-     * @return Quantity-based Backup retention policy to retain recent backups.
+     * @return Quantity-based Backup retention policy to retain recent backups. Conflicts with &#39;time_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
     private @Nullable ClusterAutomatedBackupPolicyQuantityBasedRetention quantityBasedRetention;
     /**
-     * @return Time-based Backup retention policy.
+     * @return Time-based Backup retention policy. Conflicts with &#39;quantity_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -75,6 +82,14 @@ public final class ClusterAutomatedBackupPolicy {
         return Optional.ofNullable(this.enabled);
     }
     /**
+     * @return EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ClusterAutomatedBackupPolicyEncryptionConfig> encryptionConfig() {
+        return Optional.ofNullable(this.encryptionConfig);
+    }
+    /**
      * @return Labels to apply to backups created using this configuration.
      * 
      */
@@ -89,7 +104,7 @@ public final class ClusterAutomatedBackupPolicy {
         return Optional.ofNullable(this.location);
     }
     /**
-     * @return Quantity-based Backup retention policy to retain recent backups.
+     * @return Quantity-based Backup retention policy to retain recent backups. Conflicts with &#39;time_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -97,7 +112,7 @@ public final class ClusterAutomatedBackupPolicy {
         return Optional.ofNullable(this.quantityBasedRetention);
     }
     /**
-     * @return Time-based Backup retention policy.
+     * @return Time-based Backup retention policy. Conflicts with &#39;quantity_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -124,6 +139,7 @@ public final class ClusterAutomatedBackupPolicy {
     public static final class Builder {
         private @Nullable String backupWindow;
         private @Nullable Boolean enabled;
+        private @Nullable ClusterAutomatedBackupPolicyEncryptionConfig encryptionConfig;
         private @Nullable Map<String,String> labels;
         private @Nullable String location;
         private @Nullable ClusterAutomatedBackupPolicyQuantityBasedRetention quantityBasedRetention;
@@ -134,6 +150,7 @@ public final class ClusterAutomatedBackupPolicy {
     	      Objects.requireNonNull(defaults);
     	      this.backupWindow = defaults.backupWindow;
     	      this.enabled = defaults.enabled;
+    	      this.encryptionConfig = defaults.encryptionConfig;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.quantityBasedRetention = defaults.quantityBasedRetention;
@@ -149,6 +166,11 @@ public final class ClusterAutomatedBackupPolicy {
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encryptionConfig(@Nullable ClusterAutomatedBackupPolicyEncryptionConfig encryptionConfig) {
+            this.encryptionConfig = encryptionConfig;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +202,7 @@ public final class ClusterAutomatedBackupPolicy {
             final var o = new ClusterAutomatedBackupPolicy();
             o.backupWindow = backupWindow;
             o.enabled = enabled;
+            o.encryptionConfig = encryptionConfig;
             o.labels = labels;
             o.location = location;
             o.quantityBasedRetention = quantityBasedRetention;

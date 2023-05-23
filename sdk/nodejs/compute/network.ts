@@ -149,7 +149,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+     * Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
@@ -280,7 +280,7 @@ export interface NetworkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+     * Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
@@ -362,7 +362,7 @@ export interface NetworkArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+     * Set the order that Firewall Rules and Firewall Policies are evaluated.
      * Default value is `AFTER_CLASSIC_FIREWALL`.
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */

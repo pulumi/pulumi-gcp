@@ -276,6 +276,118 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dlp Job Trigger Deidentify
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.bigquery.inputs.TableTimePartitioningArgs;
+ * import com.pulumi.gcp.dataloss.PreventionJobTrigger;
+ * import com.pulumi.gcp.dataloss.PreventionJobTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultDataset = new Dataset(&#34;defaultDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;tf_test&#34;)
+ *             .friendlyName(&#34;terraform-test&#34;)
+ *             .description(&#34;Description for the dataset created by terraform&#34;)
+ *             .location(&#34;US&#34;)
+ *             .defaultTableExpirationMs(3600000)
+ *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .build());
+ * 
+ *         var defaultTable = new Table(&#34;defaultTable&#34;, TableArgs.builder()        
+ *             .datasetId(defaultDataset.datasetId())
+ *             .tableId(&#34;tf_test&#34;)
+ *             .deletionProtection(false)
+ *             .timePartitioning(TableTimePartitioningArgs.builder()
+ *                 .type(&#34;DAY&#34;)
+ *                 .build())
+ *             .labels(Map.of(&#34;env&#34;, &#34;default&#34;))
+ *             .schema(&#34;&#34;&#34;
+ *     [
+ *     {
+ *       &#34;name&#34;: &#34;quantity&#34;,
+ *       &#34;type&#34;: &#34;NUMERIC&#34;,
+ *       &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *       &#34;description&#34;: &#34;The quantity&#34;
+ *     },
+ *     {
+ *       &#34;name&#34;: &#34;name&#34;,
+ *       &#34;type&#34;: &#34;STRING&#34;,
+ *       &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *       &#34;description&#34;: &#34;Name of the object&#34;
+ *     }
+ *     ]
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var deidentify = new PreventionJobTrigger(&#34;deidentify&#34;, PreventionJobTriggerArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .description(&#34;Description for the job_trigger created by terraform&#34;)
+ *             .displayName(&#34;TerraformDisplayName&#34;)
+ *             .triggers(PreventionJobTriggerTriggerArgs.builder()
+ *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
+ *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .build())
+ *                 .build())
+ *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
+ *                 .inspectTemplateName(&#34;sample-inspect-template&#34;)
+ *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
+ *                     .deidentify(PreventionJobTriggerInspectJobActionDeidentifyArgs.builder()
+ *                         .cloudStorageOutput(&#34;gs://samplebucket/dir/&#34;)
+ *                         .fileTypesToTransforms(                        
+ *                             &#34;CSV&#34;,
+ *                             &#34;TSV&#34;)
+ *                         .transformationDetailsStorageConfig(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs.builder()
+ *                             .table(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs.builder()
+ *                                 .projectId(&#34;my-project-name&#34;)
+ *                                 .datasetId(defaultDataset.datasetId())
+ *                                 .tableId(defaultTable.tableId())
+ *                                 .build())
+ *                             .build())
+ *                         .transformationConfig(PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs.builder()
+ *                             .deidentifyTemplate(&#34;sample-deidentify-template&#34;)
+ *                             .imageRedactTemplate(&#34;sample-image-redact-template&#34;)
+ *                             .structuredDeidentifyTemplate(&#34;sample-structured-deidentify-template&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
+ *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
+ *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
+ *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Dlp Job Trigger Hybrid
  * ```java
  * package generated_program;
@@ -339,6 +451,148 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dlp Job Trigger Inspect
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionJobTrigger;
+ * import com.pulumi.gcp.dataloss.PreventionJobTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigLimitsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var inspect = new PreventionJobTrigger(&#34;inspect&#34;, PreventionJobTriggerArgs.builder()        
+ *             .description(&#34;Description&#34;)
+ *             .displayName(&#34;Displayname&#34;)
+ *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
+ *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
+ *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
+ *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
+ *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
+ *                                 .datasetId(&#34;dataset&#34;)
+ *                                 .projectId(&#34;project&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .inspectConfig(PreventionJobTriggerInspectJobInspectConfigArgs.builder()
+ *                     .customInfoTypes(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs.builder()
+ *                         .infoType(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs.builder()
+ *                             .name(&#34;MY_CUSTOM_TYPE&#34;)
+ *                             .build())
+ *                         .likelihood(&#34;UNLIKELY&#34;)
+ *                         .regex(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs.builder()
+ *                             .pattern(&#34;test*&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .infoTypes(PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs.builder()
+ *                         .name(&#34;EMAIL_ADDRESS&#34;)
+ *                         .build())
+ *                     .limits(PreventionJobTriggerInspectJobInspectConfigLimitsArgs.builder()
+ *                         .maxFindingsPerItem(10)
+ *                         .maxFindingsPerRequest(50)
+ *                         .build())
+ *                     .minLikelihood(&#34;UNLIKELY&#34;)
+ *                     .ruleSet(                    
+ *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+ *                         %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .build())
+ *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
+ *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
+ *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
+ *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .triggers(PreventionJobTriggerTriggerArgs.builder()
+ *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
+ *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Dlp Job Trigger Publish To Stackdriver
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionJobTrigger;
+ * import com.pulumi.gcp.dataloss.PreventionJobTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var publishToStackdriver = new PreventionJobTrigger(&#34;publishToStackdriver&#34;, PreventionJobTriggerArgs.builder()        
+ *             .description(&#34;Description for the job_trigger created by terraform&#34;)
+ *             .displayName(&#34;TerraformDisplayName&#34;)
+ *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
+ *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
+ *                     .publishToStackdriver()
+ *                     .build())
+ *                 .inspectTemplateName(&#34;sample-inspect-template&#34;)
+ *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
+ *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
+ *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
+ *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .triggers(PreventionJobTriggerTriggerArgs.builder()
+ *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
+ *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -355,6 +609,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataloss/preventionJobTrigger:PreventionJobTrigger")
 public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
+    /**
+     * (Output)
+     * The creation timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return (Output)
+     * The creation timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * A description of the job trigger.
      * 
@@ -420,6 +690,30 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
         return this.lastRunTime;
     }
     /**
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
+     * 
+     * (Required)
      * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
      * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -441,7 +735,31 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
+     * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+     * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+     * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
+     * (Required)
+     * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+     * or `projects/project-id/storedInfoTypes/432452342`.
+     * 
+     * (Required)
+     * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
      * modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
      * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
@@ -510,6 +828,20 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      */
     public Output<List<PreventionJobTriggerTrigger>> triggers() {
         return this.triggers;
+    }
+    /**
+     * The last update timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    @Export(name="updateTime", type=String.class, parameters={})
+    private Output<String> updateTime;
+
+    /**
+     * @return The last update timestamp of an inspectTemplate. Set by the server.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
 
     /**

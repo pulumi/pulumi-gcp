@@ -19,6 +19,92 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Network Security Gateway Security Policy Tls Inspection Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultCaPool = new gcp.certificateauthority.CaPool("defaultCaPool", {
+ *     location: "us-central1",
+ *     tier: "DEVOPS",
+ *     publishingOptions: {
+ *         publishCaCert: false,
+ *         publishCrl: false,
+ *     },
+ *     issuancePolicy: {
+ *         maximumLifetime: "1209600s",
+ *         baselineValues: {
+ *             caOptions: {
+ *                 isCa: false,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {},
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultAuthority = new gcp.certificateauthority.Authority("defaultAuthority", {
+ *     pool: defaultCaPool.name,
+ *     certificateAuthorityId: "my-basic-certificate-authority",
+ *     location: "us-central1",
+ *     lifetime: "86400s",
+ *     type: "SELF_SIGNED",
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "Test LLC",
+ *                 commonName: "my-ca",
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: false,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", {
+ *     location: "us-central1",
+ *     caPool: defaultCaPool.id,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [
+ *         defaultCaPool,
+ *         defaultAuthority,
+ *     ],
+ * });
+ * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {
+ *     location: "us-central1",
+ *     description: "my description",
+ *     tlsInspectionPolicy: defaultTlsInspectionPolicy.id,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [defaultTlsInspectionPolicy],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -97,6 +183,10 @@ export class GatewaySecurityPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     */
+    public readonly tlsInspectionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -122,6 +212,7 @@ export class GatewaySecurityPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["tlsInspectionPolicy"] = state ? state.tlsInspectionPolicy : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as GatewaySecurityPolicyArgs | undefined;
@@ -129,6 +220,7 @@ export class GatewaySecurityPolicy extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["tlsInspectionPolicy"] = args ? args.tlsInspectionPolicy : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -175,6 +267,10 @@ export interface GatewaySecurityPolicyState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     */
+    tlsInspectionPolicy?: pulumi.Input<string>;
+    /**
      * The timestamp when the resource was updated.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -208,4 +304,8 @@ export interface GatewaySecurityPolicyArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     */
+    tlsInspectionPolicy?: pulumi.Input<string>;
 }

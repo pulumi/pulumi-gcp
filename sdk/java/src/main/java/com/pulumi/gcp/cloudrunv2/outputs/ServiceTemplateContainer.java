@@ -28,6 +28,7 @@ public final class ServiceTemplateContainer {
      * 
      */
     private @Nullable List<String> commands;
+    private @Nullable List<String> dependsOns;
     /**
      * @return List of environment variables to set in the container.
      * Structure is documented below.
@@ -95,6 +96,9 @@ public final class ServiceTemplateContainer {
      */
     public List<String> commands() {
         return this.commands == null ? List.of() : this.commands;
+    }
+    public List<String> dependsOns() {
+        return this.dependsOns == null ? List.of() : this.dependsOns;
     }
     /**
      * @return List of environment variables to set in the container.
@@ -178,6 +182,7 @@ public final class ServiceTemplateContainer {
     public static final class Builder {
         private @Nullable List<String> args;
         private @Nullable List<String> commands;
+        private @Nullable List<String> dependsOns;
         private @Nullable List<ServiceTemplateContainerEnv> envs;
         private String image;
         private @Nullable ServiceTemplateContainerLivenessProbe livenessProbe;
@@ -192,6 +197,7 @@ public final class ServiceTemplateContainer {
     	      Objects.requireNonNull(defaults);
     	      this.args = defaults.args;
     	      this.commands = defaults.commands;
+    	      this.dependsOns = defaults.dependsOns;
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
     	      this.livenessProbe = defaults.livenessProbe;
@@ -218,6 +224,14 @@ public final class ServiceTemplateContainer {
         }
         public Builder commands(String... commands) {
             return commands(List.of(commands));
+        }
+        @CustomType.Setter
+        public Builder dependsOns(@Nullable List<String> dependsOns) {
+            this.dependsOns = dependsOns;
+            return this;
+        }
+        public Builder dependsOns(String... dependsOns) {
+            return dependsOns(List.of(dependsOns));
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<ServiceTemplateContainerEnv> envs) {
@@ -277,6 +291,7 @@ public final class ServiceTemplateContainer {
             final var o = new ServiceTemplateContainer();
             o.args = args;
             o.commands = commands;
+            o.dependsOns = dependsOns;
             o.envs = envs;
             o.image = image;
             o.livenessProbe = livenessProbe;

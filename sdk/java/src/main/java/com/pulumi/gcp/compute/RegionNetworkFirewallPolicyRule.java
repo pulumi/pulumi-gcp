@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.AddressGroup;
+ * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
  * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
  * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
  * import com.pulumi.gcp.compute.Network;
@@ -53,6 +55,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var basicRegionalNetworksecurityAddressGroup = new AddressGroup(&#34;basicRegionalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .description(&#34;Sample regional networksecurity_address_group&#34;)
+ *             .location(&#34;us-west1&#34;)
+ *             .items(&#34;208.80.154.224/32&#34;)
+ *             .type(&#34;IPV4&#34;)
+ *             .capacity(100)
+ *             .build());
+ * 
  *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy(&#34;basicRegionalNetworkFirewallPolicy&#34;, RegionNetworkFirewallPolicyArgs.builder()        
  *             .description(&#34;Sample regional network firewall policy&#34;)
  *             .project(&#34;my-project-name&#34;)
@@ -88,12 +99,16 @@ import javax.annotation.Nullable;
  *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
  *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
  *                 .srcIpRanges(&#34;10.100.0.1/32&#34;)
+ *                 .srcFqdns(&#34;example.com&#34;)
+ *                 .srcRegionCodes(&#34;US&#34;)
+ *                 .srcThreatIntelligences(&#34;iplist-known-malicious-ips&#34;)
  *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                     .ipProtocol(&#34;all&#34;)
  *                     .build())
  *                 .srcSecureTags(RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
  *                     .name(basicValue.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
  *                     .build())
+ *                 .srcAddressGroups(basicRegionalNetworksecurityAddressGroup.id())
  *                 .build())
  *             .build());
  * 

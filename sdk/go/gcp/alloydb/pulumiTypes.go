@@ -10,6 +10,255 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type BackupEncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// BackupEncryptionConfigInput is an input type that accepts BackupEncryptionConfigArgs and BackupEncryptionConfigOutput values.
+// You can construct a concrete instance of `BackupEncryptionConfigInput` via:
+//
+//	BackupEncryptionConfigArgs{...}
+type BackupEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToBackupEncryptionConfigOutput() BackupEncryptionConfigOutput
+	ToBackupEncryptionConfigOutputWithContext(context.Context) BackupEncryptionConfigOutput
+}
+
+type BackupEncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (BackupEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupEncryptionConfig)(nil)).Elem()
+}
+
+func (i BackupEncryptionConfigArgs) ToBackupEncryptionConfigOutput() BackupEncryptionConfigOutput {
+	return i.ToBackupEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i BackupEncryptionConfigArgs) ToBackupEncryptionConfigOutputWithContext(ctx context.Context) BackupEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupEncryptionConfigOutput)
+}
+
+func (i BackupEncryptionConfigArgs) ToBackupEncryptionConfigPtrOutput() BackupEncryptionConfigPtrOutput {
+	return i.ToBackupEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BackupEncryptionConfigArgs) ToBackupEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupEncryptionConfigOutput).ToBackupEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// BackupEncryptionConfigPtrInput is an input type that accepts BackupEncryptionConfigArgs, BackupEncryptionConfigPtr and BackupEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `BackupEncryptionConfigPtrInput` via:
+//
+//	        BackupEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToBackupEncryptionConfigPtrOutput() BackupEncryptionConfigPtrOutput
+	ToBackupEncryptionConfigPtrOutputWithContext(context.Context) BackupEncryptionConfigPtrOutput
+}
+
+type backupEncryptionConfigPtrType BackupEncryptionConfigArgs
+
+func BackupEncryptionConfigPtr(v *BackupEncryptionConfigArgs) BackupEncryptionConfigPtrInput {
+	return (*backupEncryptionConfigPtrType)(v)
+}
+
+func (*backupEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupEncryptionConfig)(nil)).Elem()
+}
+
+func (i *backupEncryptionConfigPtrType) ToBackupEncryptionConfigPtrOutput() BackupEncryptionConfigPtrOutput {
+	return i.ToBackupEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *backupEncryptionConfigPtrType) ToBackupEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupEncryptionConfigPtrOutput)
+}
+
+type BackupEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (BackupEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupEncryptionConfig)(nil)).Elem()
+}
+
+func (o BackupEncryptionConfigOutput) ToBackupEncryptionConfigOutput() BackupEncryptionConfigOutput {
+	return o
+}
+
+func (o BackupEncryptionConfigOutput) ToBackupEncryptionConfigOutputWithContext(ctx context.Context) BackupEncryptionConfigOutput {
+	return o
+}
+
+func (o BackupEncryptionConfigOutput) ToBackupEncryptionConfigPtrOutput() BackupEncryptionConfigPtrOutput {
+	return o.ToBackupEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BackupEncryptionConfigOutput) ToBackupEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupEncryptionConfig) *BackupEncryptionConfig {
+		return &v
+	}).(BackupEncryptionConfigPtrOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o BackupEncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupEncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type BackupEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupEncryptionConfig)(nil)).Elem()
+}
+
+func (o BackupEncryptionConfigPtrOutput) ToBackupEncryptionConfigPtrOutput() BackupEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o BackupEncryptionConfigPtrOutput) ToBackupEncryptionConfigPtrOutputWithContext(ctx context.Context) BackupEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o BackupEncryptionConfigPtrOutput) Elem() BackupEncryptionConfigOutput {
+	return o.ApplyT(func(v *BackupEncryptionConfig) BackupEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BackupEncryptionConfig
+		return ret
+	}).(BackupEncryptionConfigOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o BackupEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackupEncryptionInfo struct {
+	// (Output)
+	// Output only. Type of encryption.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// (Output)
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions []string `pulumi:"kmsKeyVersions"`
+}
+
+// BackupEncryptionInfoInput is an input type that accepts BackupEncryptionInfoArgs and BackupEncryptionInfoOutput values.
+// You can construct a concrete instance of `BackupEncryptionInfoInput` via:
+//
+//	BackupEncryptionInfoArgs{...}
+type BackupEncryptionInfoInput interface {
+	pulumi.Input
+
+	ToBackupEncryptionInfoOutput() BackupEncryptionInfoOutput
+	ToBackupEncryptionInfoOutputWithContext(context.Context) BackupEncryptionInfoOutput
+}
+
+type BackupEncryptionInfoArgs struct {
+	// (Output)
+	// Output only. Type of encryption.
+	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
+	// (Output)
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions pulumi.StringArrayInput `pulumi:"kmsKeyVersions"`
+}
+
+func (BackupEncryptionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupEncryptionInfo)(nil)).Elem()
+}
+
+func (i BackupEncryptionInfoArgs) ToBackupEncryptionInfoOutput() BackupEncryptionInfoOutput {
+	return i.ToBackupEncryptionInfoOutputWithContext(context.Background())
+}
+
+func (i BackupEncryptionInfoArgs) ToBackupEncryptionInfoOutputWithContext(ctx context.Context) BackupEncryptionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupEncryptionInfoOutput)
+}
+
+// BackupEncryptionInfoArrayInput is an input type that accepts BackupEncryptionInfoArray and BackupEncryptionInfoArrayOutput values.
+// You can construct a concrete instance of `BackupEncryptionInfoArrayInput` via:
+//
+//	BackupEncryptionInfoArray{ BackupEncryptionInfoArgs{...} }
+type BackupEncryptionInfoArrayInput interface {
+	pulumi.Input
+
+	ToBackupEncryptionInfoArrayOutput() BackupEncryptionInfoArrayOutput
+	ToBackupEncryptionInfoArrayOutputWithContext(context.Context) BackupEncryptionInfoArrayOutput
+}
+
+type BackupEncryptionInfoArray []BackupEncryptionInfoInput
+
+func (BackupEncryptionInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupEncryptionInfo)(nil)).Elem()
+}
+
+func (i BackupEncryptionInfoArray) ToBackupEncryptionInfoArrayOutput() BackupEncryptionInfoArrayOutput {
+	return i.ToBackupEncryptionInfoArrayOutputWithContext(context.Background())
+}
+
+func (i BackupEncryptionInfoArray) ToBackupEncryptionInfoArrayOutputWithContext(ctx context.Context) BackupEncryptionInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupEncryptionInfoArrayOutput)
+}
+
+type BackupEncryptionInfoOutput struct{ *pulumi.OutputState }
+
+func (BackupEncryptionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupEncryptionInfo)(nil)).Elem()
+}
+
+func (o BackupEncryptionInfoOutput) ToBackupEncryptionInfoOutput() BackupEncryptionInfoOutput {
+	return o
+}
+
+func (o BackupEncryptionInfoOutput) ToBackupEncryptionInfoOutputWithContext(ctx context.Context) BackupEncryptionInfoOutput {
+	return o
+}
+
+// (Output)
+// Output only. Type of encryption.
+func (o BackupEncryptionInfoOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupEncryptionInfo) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+func (o BackupEncryptionInfoOutput) KmsKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupEncryptionInfo) []string { return v.KmsKeyVersions }).(pulumi.StringArrayOutput)
+}
+
+type BackupEncryptionInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupEncryptionInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupEncryptionInfo)(nil)).Elem()
+}
+
+func (o BackupEncryptionInfoArrayOutput) ToBackupEncryptionInfoArrayOutput() BackupEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o BackupEncryptionInfoArrayOutput) ToBackupEncryptionInfoArrayOutputWithContext(ctx context.Context) BackupEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o BackupEncryptionInfoArrayOutput) Index(i pulumi.IntInput) BackupEncryptionInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupEncryptionInfo {
+		return vs[0].([]BackupEncryptionInfo)[vs[1].(int)]
+	}).(BackupEncryptionInfoOutput)
+}
+
 type ClusterAutomatedBackupPolicy struct {
 	// The length of the time window during which a backup can be taken. If a backup does not succeed within this time window, it will be canceled and considered failed.
 	// The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
@@ -17,14 +266,17 @@ type ClusterAutomatedBackupPolicy struct {
 	BackupWindow *string `pulumi:"backupWindow"`
 	// Whether automated backups are enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig *ClusterAutomatedBackupPolicyEncryptionConfig `pulumi:"encryptionConfig"`
 	// Labels to apply to backups created using this configuration.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
 	Location *string `pulumi:"location"`
-	// Quantity-based Backup retention policy to retain recent backups.
+	// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
 	// Structure is documented below.
 	QuantityBasedRetention *ClusterAutomatedBackupPolicyQuantityBasedRetention `pulumi:"quantityBasedRetention"`
-	// Time-based Backup retention policy.
+	// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
 	// Structure is documented below.
 	TimeBasedRetention *ClusterAutomatedBackupPolicyTimeBasedRetention `pulumi:"timeBasedRetention"`
 	// Weekly schedule for the Backup.
@@ -50,14 +302,17 @@ type ClusterAutomatedBackupPolicyArgs struct {
 	BackupWindow pulumi.StringPtrInput `pulumi:"backupWindow"`
 	// Whether automated backups are enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig ClusterAutomatedBackupPolicyEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Labels to apply to backups created using this configuration.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
 	Location pulumi.StringPtrInput `pulumi:"location"`
-	// Quantity-based Backup retention policy to retain recent backups.
+	// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
 	// Structure is documented below.
 	QuantityBasedRetention ClusterAutomatedBackupPolicyQuantityBasedRetentionPtrInput `pulumi:"quantityBasedRetention"`
-	// Time-based Backup retention policy.
+	// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
 	// Structure is documented below.
 	TimeBasedRetention ClusterAutomatedBackupPolicyTimeBasedRetentionPtrInput `pulumi:"timeBasedRetention"`
 	// Weekly schedule for the Backup.
@@ -154,6 +409,14 @@ func (o ClusterAutomatedBackupPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+// Structure is documented below.
+func (o ClusterAutomatedBackupPolicyOutput) EncryptionConfig() ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *ClusterAutomatedBackupPolicyEncryptionConfig {
+		return v.EncryptionConfig
+	}).(ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput)
+}
+
 // Labels to apply to backups created using this configuration.
 func (o ClusterAutomatedBackupPolicyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -164,7 +427,7 @@ func (o ClusterAutomatedBackupPolicyOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Quantity-based Backup retention policy to retain recent backups.
+// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
 // Structure is documented below.
 func (o ClusterAutomatedBackupPolicyOutput) QuantityBasedRetention() ClusterAutomatedBackupPolicyQuantityBasedRetentionPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *ClusterAutomatedBackupPolicyQuantityBasedRetention {
@@ -172,7 +435,7 @@ func (o ClusterAutomatedBackupPolicyOutput) QuantityBasedRetention() ClusterAuto
 	}).(ClusterAutomatedBackupPolicyQuantityBasedRetentionPtrOutput)
 }
 
-// Time-based Backup retention policy.
+// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
 // Structure is documented below.
 func (o ClusterAutomatedBackupPolicyOutput) TimeBasedRetention() ClusterAutomatedBackupPolicyTimeBasedRetentionPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicy) *ClusterAutomatedBackupPolicyTimeBasedRetention {
@@ -234,6 +497,17 @@ func (o ClusterAutomatedBackupPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+// Structure is documented below.
+func (o ClusterAutomatedBackupPolicyPtrOutput) EncryptionConfig() ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupPolicy) *ClusterAutomatedBackupPolicyEncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfig
+	}).(ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput)
+}
+
 // Labels to apply to backups created using this configuration.
 func (o ClusterAutomatedBackupPolicyPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterAutomatedBackupPolicy) map[string]string {
@@ -254,7 +528,7 @@ func (o ClusterAutomatedBackupPolicyPtrOutput) Location() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Quantity-based Backup retention policy to retain recent backups.
+// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
 // Structure is documented below.
 func (o ClusterAutomatedBackupPolicyPtrOutput) QuantityBasedRetention() ClusterAutomatedBackupPolicyQuantityBasedRetentionPtrOutput {
 	return o.ApplyT(func(v *ClusterAutomatedBackupPolicy) *ClusterAutomatedBackupPolicyQuantityBasedRetention {
@@ -265,7 +539,7 @@ func (o ClusterAutomatedBackupPolicyPtrOutput) QuantityBasedRetention() ClusterA
 	}).(ClusterAutomatedBackupPolicyQuantityBasedRetentionPtrOutput)
 }
 
-// Time-based Backup retention policy.
+// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
 // Structure is documented below.
 func (o ClusterAutomatedBackupPolicyPtrOutput) TimeBasedRetention() ClusterAutomatedBackupPolicyTimeBasedRetentionPtrOutput {
 	return o.ApplyT(func(v *ClusterAutomatedBackupPolicy) *ClusterAutomatedBackupPolicyTimeBasedRetention {
@@ -285,6 +559,143 @@ func (o ClusterAutomatedBackupPolicyPtrOutput) WeeklySchedule() ClusterAutomated
 		}
 		return v.WeeklySchedule
 	}).(ClusterAutomatedBackupPolicyWeeklySchedulePtrOutput)
+}
+
+type ClusterAutomatedBackupPolicyEncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// ClusterAutomatedBackupPolicyEncryptionConfigInput is an input type that accepts ClusterAutomatedBackupPolicyEncryptionConfigArgs and ClusterAutomatedBackupPolicyEncryptionConfigOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupPolicyEncryptionConfigInput` via:
+//
+//	ClusterAutomatedBackupPolicyEncryptionConfigArgs{...}
+type ClusterAutomatedBackupPolicyEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupPolicyEncryptionConfigOutput() ClusterAutomatedBackupPolicyEncryptionConfigOutput
+	ToClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(context.Context) ClusterAutomatedBackupPolicyEncryptionConfigOutput
+}
+
+type ClusterAutomatedBackupPolicyEncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (ClusterAutomatedBackupPolicyEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (i ClusterAutomatedBackupPolicyEncryptionConfigArgs) ToClusterAutomatedBackupPolicyEncryptionConfigOutput() ClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return i.ToClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupPolicyEncryptionConfigArgs) ToClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(ctx context.Context) ClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupPolicyEncryptionConfigOutput)
+}
+
+func (i ClusterAutomatedBackupPolicyEncryptionConfigArgs) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutput() ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return i.ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutomatedBackupPolicyEncryptionConfigArgs) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupPolicyEncryptionConfigOutput).ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAutomatedBackupPolicyEncryptionConfigPtrInput is an input type that accepts ClusterAutomatedBackupPolicyEncryptionConfigArgs, ClusterAutomatedBackupPolicyEncryptionConfigPtr and ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAutomatedBackupPolicyEncryptionConfigPtrInput` via:
+//
+//	        ClusterAutomatedBackupPolicyEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutomatedBackupPolicyEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutput() ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput
+	ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(context.Context) ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput
+}
+
+type clusterAutomatedBackupPolicyEncryptionConfigPtrType ClusterAutomatedBackupPolicyEncryptionConfigArgs
+
+func ClusterAutomatedBackupPolicyEncryptionConfigPtr(v *ClusterAutomatedBackupPolicyEncryptionConfigArgs) ClusterAutomatedBackupPolicyEncryptionConfigPtrInput {
+	return (*clusterAutomatedBackupPolicyEncryptionConfigPtrType)(v)
+}
+
+func (*clusterAutomatedBackupPolicyEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (i *clusterAutomatedBackupPolicyEncryptionConfigPtrType) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutput() ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return i.ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutomatedBackupPolicyEncryptionConfigPtrType) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput)
+}
+
+type ClusterAutomatedBackupPolicyEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupPolicyEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupPolicyEncryptionConfigOutput) ToClusterAutomatedBackupPolicyEncryptionConfigOutput() ClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupPolicyEncryptionConfigOutput) ToClusterAutomatedBackupPolicyEncryptionConfigOutputWithContext(ctx context.Context) ClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupPolicyEncryptionConfigOutput) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutput() ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return o.ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutomatedBackupPolicyEncryptionConfigOutput) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutomatedBackupPolicyEncryptionConfig) *ClusterAutomatedBackupPolicyEncryptionConfig {
+		return &v
+	}).(ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o ClusterAutomatedBackupPolicyEncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAutomatedBackupPolicyEncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutomatedBackupPolicyEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutput() ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput) ToClusterAutomatedBackupPolicyEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput) Elem() ClusterAutomatedBackupPolicyEncryptionConfigOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupPolicyEncryptionConfig) ClusterAutomatedBackupPolicyEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutomatedBackupPolicyEncryptionConfig
+		return ret
+	}).(ClusterAutomatedBackupPolicyEncryptionConfigOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAutomatedBackupPolicyEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterAutomatedBackupPolicyQuantityBasedRetention struct {
@@ -734,11 +1145,11 @@ func (o ClusterAutomatedBackupPolicyWeeklySchedulePtrOutput) StartTimes() Cluste
 type ClusterAutomatedBackupPolicyWeeklyScheduleStartTime struct {
 	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 	Hours *int `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of hour of day. Currently, only the value 0 is supported.
 	Minutes *int `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
 	Nanos *int `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	// Seconds of minutes of the time. Currently, only the value 0 is supported.
 	Seconds *int `pulumi:"seconds"`
 }
 
@@ -756,11 +1167,11 @@ type ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeInput interface {
 type ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs struct {
 	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 	Hours pulumi.IntPtrInput `pulumi:"hours"`
-	// Minutes of hour of day. Must be from 0 to 59.
+	// Minutes of hour of day. Currently, only the value 0 is supported.
 	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
-	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
-	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	// Seconds of minutes of the time. Currently, only the value 0 is supported.
 	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
 }
 
@@ -820,17 +1231,17 @@ func (o ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Hours() pulum
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicyWeeklyScheduleStartTime) *int { return v.Hours }).(pulumi.IntPtrOutput)
 }
 
-// Minutes of hour of day. Must be from 0 to 59.
+// Minutes of hour of day. Currently, only the value 0 is supported.
 func (o ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Minutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicyWeeklyScheduleStartTime) *int { return v.Minutes }).(pulumi.IntPtrOutput)
 }
 
-// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
 func (o ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicyWeeklyScheduleStartTime) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
 
-// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+// Seconds of minutes of the time. Currently, only the value 0 is supported.
 func (o ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeOutput) Seconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterAutomatedBackupPolicyWeeklyScheduleStartTime) *int { return v.Seconds }).(pulumi.IntPtrOutput)
 }
@@ -950,6 +1361,255 @@ func (o ClusterBackupSourceArrayOutput) Index(i pulumi.IntInput) ClusterBackupSo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterBackupSource {
 		return vs[0].([]ClusterBackupSource)[vs[1].(int)]
 	}).(ClusterBackupSourceOutput)
+}
+
+type ClusterEncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// ClusterEncryptionConfigInput is an input type that accepts ClusterEncryptionConfigArgs and ClusterEncryptionConfigOutput values.
+// You can construct a concrete instance of `ClusterEncryptionConfigInput` via:
+//
+//	ClusterEncryptionConfigArgs{...}
+type ClusterEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionConfigOutput() ClusterEncryptionConfigOutput
+	ToClusterEncryptionConfigOutputWithContext(context.Context) ClusterEncryptionConfigOutput
+}
+
+type ClusterEncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (ClusterEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (i ClusterEncryptionConfigArgs) ToClusterEncryptionConfigOutput() ClusterEncryptionConfigOutput {
+	return i.ToClusterEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionConfigArgs) ToClusterEncryptionConfigOutputWithContext(ctx context.Context) ClusterEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigOutput)
+}
+
+func (i ClusterEncryptionConfigArgs) ToClusterEncryptionConfigPtrOutput() ClusterEncryptionConfigPtrOutput {
+	return i.ToClusterEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionConfigArgs) ToClusterEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigOutput).ToClusterEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterEncryptionConfigPtrInput is an input type that accepts ClusterEncryptionConfigArgs, ClusterEncryptionConfigPtr and ClusterEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterEncryptionConfigPtrInput` via:
+//
+//	        ClusterEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionConfigPtrOutput() ClusterEncryptionConfigPtrOutput
+	ToClusterEncryptionConfigPtrOutputWithContext(context.Context) ClusterEncryptionConfigPtrOutput
+}
+
+type clusterEncryptionConfigPtrType ClusterEncryptionConfigArgs
+
+func ClusterEncryptionConfigPtr(v *ClusterEncryptionConfigArgs) ClusterEncryptionConfigPtrInput {
+	return (*clusterEncryptionConfigPtrType)(v)
+}
+
+func (*clusterEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (i *clusterEncryptionConfigPtrType) ToClusterEncryptionConfigPtrOutput() ClusterEncryptionConfigPtrOutput {
+	return i.ToClusterEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterEncryptionConfigPtrType) ToClusterEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionConfigPtrOutput)
+}
+
+type ClusterEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterEncryptionConfigOutput) ToClusterEncryptionConfigOutput() ClusterEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigOutput) ToClusterEncryptionConfigOutputWithContext(ctx context.Context) ClusterEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigOutput) ToClusterEncryptionConfigPtrOutput() ClusterEncryptionConfigPtrOutput {
+	return o.ToClusterEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterEncryptionConfigOutput) ToClusterEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterEncryptionConfig) *ClusterEncryptionConfig {
+		return &v
+	}).(ClusterEncryptionConfigPtrOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o ClusterEncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type ClusterEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterEncryptionConfigPtrOutput) ToClusterEncryptionConfigPtrOutput() ClusterEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigPtrOutput) ToClusterEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterEncryptionConfigPtrOutput) Elem() ClusterEncryptionConfigOutput {
+	return o.ApplyT(func(v *ClusterEncryptionConfig) ClusterEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterEncryptionConfig
+		return ret
+	}).(ClusterEncryptionConfigOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o ClusterEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterEncryptionInfo struct {
+	// (Output)
+	// Output only. Type of encryption.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// (Output)
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions []string `pulumi:"kmsKeyVersions"`
+}
+
+// ClusterEncryptionInfoInput is an input type that accepts ClusterEncryptionInfoArgs and ClusterEncryptionInfoOutput values.
+// You can construct a concrete instance of `ClusterEncryptionInfoInput` via:
+//
+//	ClusterEncryptionInfoArgs{...}
+type ClusterEncryptionInfoInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionInfoOutput() ClusterEncryptionInfoOutput
+	ToClusterEncryptionInfoOutputWithContext(context.Context) ClusterEncryptionInfoOutput
+}
+
+type ClusterEncryptionInfoArgs struct {
+	// (Output)
+	// Output only. Type of encryption.
+	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
+	// (Output)
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions pulumi.StringArrayInput `pulumi:"kmsKeyVersions"`
+}
+
+func (ClusterEncryptionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (i ClusterEncryptionInfoArgs) ToClusterEncryptionInfoOutput() ClusterEncryptionInfoOutput {
+	return i.ToClusterEncryptionInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionInfoArgs) ToClusterEncryptionInfoOutputWithContext(ctx context.Context) ClusterEncryptionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoOutput)
+}
+
+// ClusterEncryptionInfoArrayInput is an input type that accepts ClusterEncryptionInfoArray and ClusterEncryptionInfoArrayOutput values.
+// You can construct a concrete instance of `ClusterEncryptionInfoArrayInput` via:
+//
+//	ClusterEncryptionInfoArray{ ClusterEncryptionInfoArgs{...} }
+type ClusterEncryptionInfoArrayInput interface {
+	pulumi.Input
+
+	ToClusterEncryptionInfoArrayOutput() ClusterEncryptionInfoArrayOutput
+	ToClusterEncryptionInfoArrayOutputWithContext(context.Context) ClusterEncryptionInfoArrayOutput
+}
+
+type ClusterEncryptionInfoArray []ClusterEncryptionInfoInput
+
+func (ClusterEncryptionInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (i ClusterEncryptionInfoArray) ToClusterEncryptionInfoArrayOutput() ClusterEncryptionInfoArrayOutput {
+	return i.ToClusterEncryptionInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterEncryptionInfoArray) ToClusterEncryptionInfoArrayOutputWithContext(ctx context.Context) ClusterEncryptionInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEncryptionInfoArrayOutput)
+}
+
+type ClusterEncryptionInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (o ClusterEncryptionInfoOutput) ToClusterEncryptionInfoOutput() ClusterEncryptionInfoOutput {
+	return o
+}
+
+func (o ClusterEncryptionInfoOutput) ToClusterEncryptionInfoOutputWithContext(ctx context.Context) ClusterEncryptionInfoOutput {
+	return o
+}
+
+// (Output)
+// Output only. Type of encryption.
+func (o ClusterEncryptionInfoOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEncryptionInfo) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+func (o ClusterEncryptionInfoOutput) KmsKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEncryptionInfo) []string { return v.KmsKeyVersions }).(pulumi.StringArrayOutput)
+}
+
+type ClusterEncryptionInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterEncryptionInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterEncryptionInfo)(nil)).Elem()
+}
+
+func (o ClusterEncryptionInfoArrayOutput) ToClusterEncryptionInfoArrayOutput() ClusterEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o ClusterEncryptionInfoArrayOutput) ToClusterEncryptionInfoArrayOutputWithContext(ctx context.Context) ClusterEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o ClusterEncryptionInfoArrayOutput) Index(i pulumi.IntInput) ClusterEncryptionInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterEncryptionInfo {
+		return vs[0].([]ClusterEncryptionInfo)[vs[1].(int)]
+	}).(ClusterEncryptionInfoOutput)
 }
 
 type ClusterInitialUser struct {
@@ -1501,9 +2161,418 @@ func (o InstanceReadPoolConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type GetLocationsLocation struct {
+	// The friendly name for this location, typically a nearby city name. For example, "Tokyo".
+	DisplayName string `pulumi:"displayName"`
+	// Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
+	Labels map[string]string `pulumi:"labels"`
+	// The canonical id for this location. For example: "us-east1"..
+	LocationId string `pulumi:"locationId"`
+	// Service-specific metadata. For example the available capacity at the given location.
+	Metadata map[string]string `pulumi:"metadata"`
+	// Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
+	Name string `pulumi:"name"`
+}
+
+// GetLocationsLocationInput is an input type that accepts GetLocationsLocationArgs and GetLocationsLocationOutput values.
+// You can construct a concrete instance of `GetLocationsLocationInput` via:
+//
+//	GetLocationsLocationArgs{...}
+type GetLocationsLocationInput interface {
+	pulumi.Input
+
+	ToGetLocationsLocationOutput() GetLocationsLocationOutput
+	ToGetLocationsLocationOutputWithContext(context.Context) GetLocationsLocationOutput
+}
+
+type GetLocationsLocationArgs struct {
+	// The friendly name for this location, typically a nearby city name. For example, "Tokyo".
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The canonical id for this location. For example: "us-east1"..
+	LocationId pulumi.StringInput `pulumi:"locationId"`
+	// Service-specific metadata. For example the available capacity at the given location.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetLocationsLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocationsLocation)(nil)).Elem()
+}
+
+func (i GetLocationsLocationArgs) ToGetLocationsLocationOutput() GetLocationsLocationOutput {
+	return i.ToGetLocationsLocationOutputWithContext(context.Background())
+}
+
+func (i GetLocationsLocationArgs) ToGetLocationsLocationOutputWithContext(ctx context.Context) GetLocationsLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocationsLocationOutput)
+}
+
+// GetLocationsLocationArrayInput is an input type that accepts GetLocationsLocationArray and GetLocationsLocationArrayOutput values.
+// You can construct a concrete instance of `GetLocationsLocationArrayInput` via:
+//
+//	GetLocationsLocationArray{ GetLocationsLocationArgs{...} }
+type GetLocationsLocationArrayInput interface {
+	pulumi.Input
+
+	ToGetLocationsLocationArrayOutput() GetLocationsLocationArrayOutput
+	ToGetLocationsLocationArrayOutputWithContext(context.Context) GetLocationsLocationArrayOutput
+}
+
+type GetLocationsLocationArray []GetLocationsLocationInput
+
+func (GetLocationsLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocationsLocation)(nil)).Elem()
+}
+
+func (i GetLocationsLocationArray) ToGetLocationsLocationArrayOutput() GetLocationsLocationArrayOutput {
+	return i.ToGetLocationsLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GetLocationsLocationArray) ToGetLocationsLocationArrayOutputWithContext(ctx context.Context) GetLocationsLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLocationsLocationArrayOutput)
+}
+
+type GetLocationsLocationOutput struct{ *pulumi.OutputState }
+
+func (GetLocationsLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLocationsLocation)(nil)).Elem()
+}
+
+func (o GetLocationsLocationOutput) ToGetLocationsLocationOutput() GetLocationsLocationOutput {
+	return o
+}
+
+func (o GetLocationsLocationOutput) ToGetLocationsLocationOutputWithContext(ctx context.Context) GetLocationsLocationOutput {
+	return o
+}
+
+// The friendly name for this location, typically a nearby city name. For example, "Tokyo".
+func (o GetLocationsLocationOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocationsLocation) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Cross-service attributes for the location. For example `{"cloud.googleapis.com/region": "us-east1"}`.
+func (o GetLocationsLocationOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLocationsLocation) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The canonical id for this location. For example: "us-east1"..
+func (o GetLocationsLocationOutput) LocationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocationsLocation) string { return v.LocationId }).(pulumi.StringOutput)
+}
+
+// Service-specific metadata. For example the available capacity at the given location.
+func (o GetLocationsLocationOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetLocationsLocation) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
+func (o GetLocationsLocationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLocationsLocation) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetLocationsLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLocationsLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLocationsLocation)(nil)).Elem()
+}
+
+func (o GetLocationsLocationArrayOutput) ToGetLocationsLocationArrayOutput() GetLocationsLocationArrayOutput {
+	return o
+}
+
+func (o GetLocationsLocationArrayOutput) ToGetLocationsLocationArrayOutputWithContext(ctx context.Context) GetLocationsLocationArrayOutput {
+	return o
+}
+
+func (o GetLocationsLocationArrayOutput) Index(i pulumi.IntInput) GetLocationsLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLocationsLocation {
+		return vs[0].([]GetLocationsLocation)[vs[1].(int)]
+	}).(GetLocationsLocationOutput)
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlag struct {
+	// Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
+	AcceptsMultipleValues bool `pulumi:"acceptsMultipleValues"`
+	// The name of the database flag, e.g. "maxAllowedPackets". The is a possibly key for the Instance.database_flags map field.
+	FlagName string `pulumi:"flagName"`
+	// Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
+	IntegerRestrictions GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions `pulumi:"integerRestrictions"`
+	// The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
+	Name string `pulumi:"name"`
+	// Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
+	RequiresDbRestart bool `pulumi:"requiresDbRestart"`
+	// Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+	StringRestrictions GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions `pulumi:"stringRestrictions"`
+	// Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
+	SupportedDbVersions []string `pulumi:"supportedDbVersions"`
+	// ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
+	ValueType string `pulumi:"valueType"`
+}
+
+// GetSupportedDatabaseFlagsSupportedDatabaseFlagInput is an input type that accepts GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs and GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput values.
+// You can construct a concrete instance of `GetSupportedDatabaseFlagsSupportedDatabaseFlagInput` via:
+//
+//	GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs{...}
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagInput interface {
+	pulumi.Input
+
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagOutputWithContext(context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs struct {
+	// Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
+	AcceptsMultipleValues pulumi.BoolInput `pulumi:"acceptsMultipleValues"`
+	// The name of the database flag, e.g. "maxAllowedPackets". The is a possibly key for the Instance.database_flags map field.
+	FlagName pulumi.StringInput `pulumi:"flagName"`
+	// Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
+	IntegerRestrictions GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsInput `pulumi:"integerRestrictions"`
+	// The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
+	RequiresDbRestart pulumi.BoolInput `pulumi:"requiresDbRestart"`
+	// Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+	StringRestrictions GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsInput `pulumi:"stringRestrictions"`
+	// Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
+	SupportedDbVersions pulumi.StringArrayInput `pulumi:"supportedDbVersions"`
+	// ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
+	ValueType pulumi.StringInput `pulumi:"valueType"`
+}
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlag)(nil)).Elem()
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput {
+	return i.ToGetSupportedDatabaseFlagsSupportedDatabaseFlagOutputWithContext(context.Background())
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput)
+}
+
+// GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayInput is an input type that accepts GetSupportedDatabaseFlagsSupportedDatabaseFlagArray and GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput values.
+// You can construct a concrete instance of `GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayInput` via:
+//
+//	GetSupportedDatabaseFlagsSupportedDatabaseFlagArray{ GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs{...} }
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayInput interface {
+	pulumi.Input
+
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutputWithContext(context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagArray []GetSupportedDatabaseFlagsSupportedDatabaseFlagInput
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupportedDatabaseFlagsSupportedDatabaseFlag)(nil)).Elem()
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagArray) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput {
+	return i.ToGetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutputWithContext(context.Background())
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagArray) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput)
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlag)(nil)).Elem()
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput {
+	return o
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput {
+	return o
+}
+
+// Whether the database flag accepts multiple values. If true, a comma-separated list of stringified values may be specified.
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) AcceptsMultipleValues() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) bool { return v.AcceptsMultipleValues }).(pulumi.BoolOutput)
+}
+
+// The name of the database flag, e.g. "maxAllowedPackets". The is a possibly key for the Instance.database_flags map field.
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) FlagName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) string { return v.FlagName }).(pulumi.StringOutput)
+}
+
+// Restriction on `INTEGER` type value. Specifies the minimum value and the maximum value that can be specified, if applicable.
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) IntegerRestrictions() GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions {
+		return v.IntegerRestrictions
+	}).(GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput)
+}
+
+// The name of the flag resource, following Google Cloud conventions, e.g.: * projects/{project}/locations/{location}/flags/{flag} This field currently has no semantic meaning.
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether setting or updating this flag on an Instance requires a database restart. If a flag that requires database restart is set, the backend will automatically restart the database (making sure to satisfy any availability SLO's).
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) RequiresDbRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) bool { return v.RequiresDbRestart }).(pulumi.BoolOutput)
+}
+
+// Restriction on `STRING` type value. The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) StringRestrictions() GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions {
+		return v.StringRestrictions
+	}).(GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput)
+}
+
+// Major database engine versions for which this flag is supported. The supported values are `POSTGRES_14` and `DATABASE_VERSION_UNSPECIFIED`.
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) SupportedDbVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) []string { return v.SupportedDbVersions }).(pulumi.StringArrayOutput)
+}
+
+// ValueType describes the semantic type of the value that the flag accepts. Regardless of the ValueType, the Instance.database_flags field accepts the stringified version of the value, i.e. "20" or "3.14". The supported values are `VALUE_TYPE_UNSPECIFIED`, `STRING`, `INTEGER`, `FLOAT` and `NONE`.
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput) ValueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlag) string { return v.ValueType }).(pulumi.StringOutput)
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSupportedDatabaseFlagsSupportedDatabaseFlag)(nil)).Elem()
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput {
+	return o
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput {
+	return o
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput) Index(i pulumi.IntInput) GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSupportedDatabaseFlagsSupportedDatabaseFlag {
+		return vs[0].([]GetSupportedDatabaseFlagsSupportedDatabaseFlag)[vs[1].(int)]
+	}).(GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput)
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions struct {
+	MaxValue string `pulumi:"maxValue"`
+	MinValue string `pulumi:"minValue"`
+}
+
+// GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsInput is an input type that accepts GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs and GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput values.
+// You can construct a concrete instance of `GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsInput` via:
+//
+//	GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs{...}
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsInput interface {
+	pulumi.Input
+
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutputWithContext(context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs struct {
+	MaxValue pulumi.StringInput `pulumi:"maxValue"`
+	MinValue pulumi.StringInput `pulumi:"minValue"`
+}
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions)(nil)).Elem()
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput {
+	return i.ToGetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutputWithContext(context.Background())
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput)
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions)(nil)).Elem()
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput {
+	return o
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput {
+	return o
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput) MaxValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions) string { return v.MaxValue }).(pulumi.StringOutput)
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput) MinValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions) string { return v.MinValue }).(pulumi.StringOutput)
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions struct {
+	AllowedValues []string `pulumi:"allowedValues"`
+}
+
+// GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsInput is an input type that accepts GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs and GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput values.
+// You can construct a concrete instance of `GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsInput` via:
+//
+//	GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs{...}
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsInput interface {
+	pulumi.Input
+
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput
+	ToGetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutputWithContext(context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs struct {
+	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
+}
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions)(nil)).Elem()
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput {
+	return i.ToGetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutputWithContext(context.Background())
+}
+
+func (i GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput)
+}
+
+type GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions)(nil)).Elem()
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput() GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput {
+	return o
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput) ToGetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutputWithContext(ctx context.Context) GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput {
+	return o
+}
+
+func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions) []string {
+		return v.AllowedValues
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupEncryptionConfigInput)(nil)).Elem(), BackupEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupEncryptionConfigPtrInput)(nil)).Elem(), BackupEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupEncryptionInfoInput)(nil)).Elem(), BackupEncryptionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupEncryptionInfoArrayInput)(nil)).Elem(), BackupEncryptionInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyInput)(nil)).Elem(), ClusterAutomatedBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyPtrInput)(nil)).Elem(), ClusterAutomatedBackupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyEncryptionConfigInput)(nil)).Elem(), ClusterAutomatedBackupPolicyEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyEncryptionConfigPtrInput)(nil)).Elem(), ClusterAutomatedBackupPolicyEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyQuantityBasedRetentionInput)(nil)).Elem(), ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyQuantityBasedRetentionPtrInput)(nil)).Elem(), ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyTimeBasedRetentionInput)(nil)).Elem(), ClusterAutomatedBackupPolicyTimeBasedRetentionArgs{})
@@ -1514,6 +2583,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayInput)(nil)).Elem(), ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBackupSourceInput)(nil)).Elem(), ClusterBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBackupSourceArrayInput)(nil)).Elem(), ClusterBackupSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionConfigInput)(nil)).Elem(), ClusterEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionConfigPtrInput)(nil)).Elem(), ClusterEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionInfoInput)(nil)).Elem(), ClusterEncryptionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionInfoArrayInput)(nil)).Elem(), ClusterEncryptionInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitialUserInput)(nil)).Elem(), ClusterInitialUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitialUserPtrInput)(nil)).Elem(), ClusterInitialUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceInput)(nil)).Elem(), ClusterMigrationSourceArgs{})
@@ -1522,8 +2595,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigPtrInput)(nil)).Elem(), InstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigPtrInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocationsLocationInput)(nil)).Elem(), GetLocationsLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLocationsLocationArrayInput)(nil)).Elem(), GetLocationsLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagInput)(nil)).Elem(), GetSupportedDatabaseFlagsSupportedDatabaseFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayInput)(nil)).Elem(), GetSupportedDatabaseFlagsSupportedDatabaseFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsInput)(nil)).Elem(), GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsInput)(nil)).Elem(), GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs{})
+	pulumi.RegisterOutputType(BackupEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(BackupEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(BackupEncryptionInfoOutput{})
+	pulumi.RegisterOutputType(BackupEncryptionInfoArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyQuantityBasedRetentionOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyQuantityBasedRetentionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyTimeBasedRetentionOutput{})
@@ -1534,6 +2619,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput{})
 	pulumi.RegisterOutputType(ClusterBackupSourceOutput{})
 	pulumi.RegisterOutputType(ClusterBackupSourceArrayOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionInfoOutput{})
+	pulumi.RegisterOutputType(ClusterEncryptionInfoArrayOutput{})
 	pulumi.RegisterOutputType(ClusterInitialUserOutput{})
 	pulumi.RegisterOutputType(ClusterInitialUserPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMigrationSourceOutput{})
@@ -1542,4 +2631,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMachineConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetLocationsLocationOutput{})
+	pulumi.RegisterOutputType(GetLocationsLocationArrayOutput{})
+	pulumi.RegisterOutputType(GetSupportedDatabaseFlagsSupportedDatabaseFlagOutput{})
+	pulumi.RegisterOutputType(GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput{})
+	pulumi.RegisterOutputType(GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput{})
+	pulumi.RegisterOutputType(GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput{})
 }

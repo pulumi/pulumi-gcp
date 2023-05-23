@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyTimeBasedRetentionArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs;
@@ -55,6 +56,23 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
     }
 
     /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionConfig")
+    private @Nullable Output<ClusterAutomatedBackupPolicyEncryptionConfigArgs> encryptionConfig;
+
+    /**
+     * @return EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterAutomatedBackupPolicyEncryptionConfigArgs>> encryptionConfig() {
+        return Optional.ofNullable(this.encryptionConfig);
+    }
+
+    /**
      * Labels to apply to backups created using this configuration.
      * 
      */
@@ -85,7 +103,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * Quantity-based Backup retention policy to retain recent backups.
+     * Quantity-based Backup retention policy to retain recent backups. Conflicts with &#39;time_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -93,7 +111,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
     private @Nullable Output<ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs> quantityBasedRetention;
 
     /**
-     * @return Quantity-based Backup retention policy to retain recent backups.
+     * @return Quantity-based Backup retention policy to retain recent backups. Conflicts with &#39;time_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -102,7 +120,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
     }
 
     /**
-     * Time-based Backup retention policy.
+     * Time-based Backup retention policy. Conflicts with &#39;quantity_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -110,7 +128,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
     private @Nullable Output<ClusterAutomatedBackupPolicyTimeBasedRetentionArgs> timeBasedRetention;
 
     /**
-     * @return Time-based Backup retention policy.
+     * @return Time-based Backup retention policy. Conflicts with &#39;quantity_based_retention&#39;, both can&#39;t be set together.
      * Structure is documented below.
      * 
      */
@@ -140,6 +158,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
     private ClusterAutomatedBackupPolicyArgs(ClusterAutomatedBackupPolicyArgs $) {
         this.backupWindow = $.backupWindow;
         this.enabled = $.enabled;
+        this.encryptionConfig = $.encryptionConfig;
         this.labels = $.labels;
         this.location = $.location;
         this.quantityBasedRetention = $.quantityBasedRetention;
@@ -212,6 +231,29 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         /**
+         * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(@Nullable Output<ClusterAutomatedBackupPolicyEncryptionConfigArgs> encryptionConfig) {
+            $.encryptionConfig = encryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(ClusterAutomatedBackupPolicyEncryptionConfigArgs encryptionConfig) {
+            return encryptionConfig(Output.of(encryptionConfig));
+        }
+
+        /**
          * @param labels Labels to apply to backups created using this configuration.
          * 
          * @return builder
@@ -254,7 +296,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param quantityBasedRetention Quantity-based Backup retention policy to retain recent backups.
+         * @param quantityBasedRetention Quantity-based Backup retention policy to retain recent backups. Conflicts with &#39;time_based_retention&#39;, both can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder
@@ -266,7 +308,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param quantityBasedRetention Quantity-based Backup retention policy to retain recent backups.
+         * @param quantityBasedRetention Quantity-based Backup retention policy to retain recent backups. Conflicts with &#39;time_based_retention&#39;, both can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder
@@ -277,7 +319,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param timeBasedRetention Time-based Backup retention policy.
+         * @param timeBasedRetention Time-based Backup retention policy. Conflicts with &#39;quantity_based_retention&#39;, both can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder
@@ -289,7 +331,7 @@ public final class ClusterAutomatedBackupPolicyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param timeBasedRetention Time-based Backup retention policy.
+         * @param timeBasedRetention Time-based Backup retention policy. Conflicts with &#39;quantity_based_retention&#39;, both can&#39;t be set together.
          * Structure is documented below.
          * 
          * @return builder

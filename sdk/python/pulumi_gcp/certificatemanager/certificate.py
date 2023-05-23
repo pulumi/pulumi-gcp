@@ -18,6 +18,7 @@ class CertificateArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class CertificateArgs:
         The set of arguments for constructing a Certificate resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -54,6 +56,8 @@ class CertificateArgs:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if managed is not None:
             pulumi.set(__self__, "managed", managed)
         if name is not None:
@@ -88,6 +92,18 @@ class CertificateArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Manager location. If not specified, "global" is used.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -172,6 +188,7 @@ class _CertificateState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input['CertificateManagedArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -181,6 +198,7 @@ class _CertificateState:
         Input properties used for looking up and filtering Certificate resources.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input['CertificateManagedArgs'] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -208,6 +226,8 @@ class _CertificateState:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if managed is not None:
             pulumi.set(__self__, "managed", managed)
         if name is not None:
@@ -242,6 +262,18 @@ class _CertificateState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Manager location. If not specified, "global" is used.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -328,6 +360,7 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -381,7 +414,7 @@ class Certificate(pulumi.CustomResource):
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
-            description="The default cert",
+            description="Global cert",
             scope="EDGE_CACHE",
             managed=gcp.certificatemanager.CertificateManagedArgs(
                 domains=[
@@ -394,27 +427,42 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Certificate Manager Self Managed Certificate Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.Certificate("default",
+            description="Regional cert",
+            location="us-central1",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            ))
+        ```
 
         ## Import
 
         Certificate can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+         $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -491,7 +539,7 @@ class Certificate(pulumi.CustomResource):
             description="The default dnss",
             domain="subdomain2.hashicorptest.com")
         default = gcp.certificatemanager.Certificate("default",
-            description="The default cert",
+            description="Global cert",
             scope="EDGE_CACHE",
             managed=gcp.certificatemanager.CertificateManagedArgs(
                 domains=[
@@ -504,21 +552,35 @@ class Certificate(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Certificate Manager Self Managed Certificate Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificatemanager.Certificate("default",
+            description="Regional cert",
+            location="us-central1",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            ))
+        ```
 
         ## Import
 
         Certificate can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+         $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+         $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -538,6 +600,7 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -554,6 +617,7 @@ class Certificate(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["location"] = location
             __props__.__dict__["managed"] = managed
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -571,6 +635,7 @@ class Certificate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            location: Optional[pulumi.Input[str]] = None,
             managed: Optional[pulumi.Input[pulumi.InputType['CertificateManagedArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -585,6 +650,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Certificate resource.
+        :param pulumi.Input[str] location: The Certificate Manager location. If not specified, "global" is used.
         :param pulumi.Input[pulumi.InputType['CertificateManagedArgs']] managed: Configuration and state of a Managed Certificate.
                Certificate Manager provisions and renews Managed Certificates
                automatically, for as long as it's authorized to do so.
@@ -614,6 +680,7 @@ class Certificate(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["location"] = location
         __props__.__dict__["managed"] = managed
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -636,6 +703,14 @@ class Certificate(pulumi.CustomResource):
         Set of label tags associated with the Certificate resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Certificate Manager location. If not specified, "global" is used.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter

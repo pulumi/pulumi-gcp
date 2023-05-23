@@ -141,6 +141,63 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dlp Deidentify Template Image Transformations
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplate;
+ * import com.pulumi.gcp.dataloss.PreventionDeidentifyTemplateArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basic = new PreventionDeidentifyTemplate(&#34;basic&#34;, PreventionDeidentifyTemplateArgs.builder()        
+ *             .deidentifyConfig(PreventionDeidentifyTemplateDeidentifyConfigArgs.builder()
+ *                 .imageTransformations(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs.builder()
+ *                     .transforms(                    
+ *                         PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs.builder()
+ *                             .redactionColor(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs.builder()
+ *                                 .blue(1)
+ *                                 .green(0.2)
+ *                                 .red(0.5)
+ *                                 .build())
+ *                             .selectedInfoTypes(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs.builder()
+ *                                 .infoTypes(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs.builder()
+ *                                     .name(&#34;COLOR_INFO&#34;)
+ *                                     .version(&#34;latest&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs.builder()
+ *                             .allInfoTypes()
+ *                             .build(),
+ *                         PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs.builder()
+ *                             .allText()
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .description(&#34;Description&#34;)
+ *             .displayName(&#34;Displayname&#34;)
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -157,6 +214,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate")
 public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomResource {
+    /**
+     * The creation timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     /**
      * Configuration of the deidentify template
      * Structure is documented below.
@@ -202,6 +273,9 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.displayName);
     }
     /**
+     * Name of the information type.
+     * 
+     * (Required)
      * Name of the information type.
      * 
      * (Required)
@@ -264,6 +338,9 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
 
     /**
      * @return Name of the information type.
+     * 
+     * (Required)
+     * Name of the information type.
      * 
      * (Required)
      * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -344,6 +421,20 @@ public class PreventionDeidentifyTemplate extends com.pulumi.resources.CustomRes
      */
     public Output<String> parent() {
         return this.parent;
+    }
+    /**
+     * The last update timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    @Export(name="updateTime", type=String.class, parameters={})
+    private Output<String> updateTime;
+
+    /**
+     * @return The last update timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
 
     /**

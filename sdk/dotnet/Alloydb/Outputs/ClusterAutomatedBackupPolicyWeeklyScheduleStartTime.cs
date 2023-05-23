@@ -18,15 +18,15 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly int? Hours;
         /// <summary>
-        /// Minutes of hour of day. Must be from 0 to 59.
+        /// Minutes of hour of day. Currently, only the value 0 is supported.
         /// </summary>
         public readonly int? Minutes;
         /// <summary>
-        /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        /// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
         /// </summary>
         public readonly int? Nanos;
         /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        /// Seconds of minutes of the time. Currently, only the value 0 is supported.
         /// </summary>
         public readonly int? Seconds;
 

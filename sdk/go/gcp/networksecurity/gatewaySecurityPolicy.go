@@ -37,6 +37,109 @@ import (
 //	}
 //
 // ```
+// ### Network Security Gateway Security Policy Tls Inspection Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCaPool, err := certificateauthority.NewCaPool(ctx, "defaultCaPool", &certificateauthority.CaPoolArgs{
+//				Location: pulumi.String("us-central1"),
+//				Tier:     pulumi.String("DEVOPS"),
+//				PublishingOptions: &certificateauthority.CaPoolPublishingOptionsArgs{
+//					PublishCaCert: pulumi.Bool(false),
+//					PublishCrl:    pulumi.Bool(false),
+//				},
+//				IssuancePolicy: &certificateauthority.CaPoolIssuancePolicyArgs{
+//					MaximumLifetime: pulumi.String("1209600s"),
+//					BaselineValues: &certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs{
+//						CaOptions: &certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs{
+//							IsCa: pulumi.Bool(false),
+//						},
+//						KeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{
+//							BaseKeyUsage: nil,
+//							ExtendedKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultAuthority, err := certificateauthority.NewAuthority(ctx, "defaultAuthority", &certificateauthority.AuthorityArgs{
+//				Pool:                               defaultCaPool.Name,
+//				CertificateAuthorityId:             pulumi.String("my-basic-certificate-authority"),
+//				Location:                           pulumi.String("us-central1"),
+//				Lifetime:                           pulumi.String("86400s"),
+//				Type:                               pulumi.String("SELF_SIGNED"),
+//				DeletionProtection:                 pulumi.Bool(false),
+//				SkipGracePeriod:                    pulumi.Bool(true),
+//				IgnoreActiveCertificatesOnDeletion: pulumi.Bool(true),
+//				Config: &certificateauthority.AuthorityConfigArgs{
+//					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+//						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+//							Organization: pulumi.String("Test LLC"),
+//							CommonName:   pulumi.String("my-ca"),
+//						},
+//					},
+//					X509Config: &certificateauthority.AuthorityConfigX509ConfigArgs{
+//						CaOptions: &certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs{
+//							IsCa: pulumi.Bool(true),
+//						},
+//						KeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs{
+//							BaseKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs{
+//								CertSign: pulumi.Bool(true),
+//								CrlSign:  pulumi.Bool(true),
+//							},
+//							ExtendedKeyUsage: &certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs{
+//								ServerAuth: pulumi.Bool(false),
+//							},
+//						},
+//					},
+//				},
+//				KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+//					Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultTlsInspectionPolicy, err := networksecurity.NewTlsInspectionPolicy(ctx, "defaultTlsInspectionPolicy", &networksecurity.TlsInspectionPolicyArgs{
+//				Location: pulumi.String("us-central1"),
+//				CaPool:   defaultCaPool.ID(),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				defaultCaPool,
+//				defaultAuthority,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//				Location:            pulumi.String("us-central1"),
+//				Description:         pulumi.String("my description"),
+//				TlsInspectionPolicy: defaultTlsInspectionPolicy.ID(),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				defaultTlsInspectionPolicy,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -81,6 +184,8 @@ type GatewaySecurityPolicy struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+	TlsInspectionPolicy pulumi.StringPtrOutput `pulumi:"tlsInspectionPolicy"`
 	// The timestamp when the resource was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -135,6 +240,8 @@ type gatewaySecurityPolicyState struct {
 	Project *string `pulumi:"project"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+	TlsInspectionPolicy *string `pulumi:"tlsInspectionPolicy"`
 	// The timestamp when the resource was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -161,6 +268,8 @@ type GatewaySecurityPolicyState struct {
 	Project pulumi.StringPtrInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
+	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+	TlsInspectionPolicy pulumi.StringPtrInput
 	// The timestamp when the resource was updated.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -185,6 +294,8 @@ type gatewaySecurityPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+	TlsInspectionPolicy *string `pulumi:"tlsInspectionPolicy"`
 }
 
 // The set of arguments for constructing a GatewaySecurityPolicy resource.
@@ -202,6 +313,8 @@ type GatewaySecurityPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+	TlsInspectionPolicy pulumi.StringPtrInput
 }
 
 func (GatewaySecurityPolicyArgs) ElementType() reflect.Type {
@@ -326,6 +439,11 @@ func (o GatewaySecurityPolicyOutput) Project() pulumi.StringOutput {
 // Server-defined URL of this resource.
 func (o GatewaySecurityPolicyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewaySecurityPolicy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+func (o GatewaySecurityPolicyOutput) TlsInspectionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewaySecurityPolicy) pulumi.StringPtrOutput { return v.TlsInspectionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The timestamp when the resource was updated.

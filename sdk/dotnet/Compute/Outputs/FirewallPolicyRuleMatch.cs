@@ -13,32 +13,64 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class FirewallPolicyRuleMatch
     {
+        public readonly ImmutableArray<string> DestAddressGroups;
+        public readonly ImmutableArray<string> DestFqdns;
         /// <summary>
         /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
+        public readonly ImmutableArray<string> DestRegionCodes;
+        public readonly ImmutableArray<string> DestThreatIntelligences;
         /// <summary>
         /// Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatchLayer4Config> Layer4Configs;
+        public readonly ImmutableArray<string> SrcAddressGroups;
+        public readonly ImmutableArray<string> SrcFqdns;
         /// <summary>
         /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         /// 
         /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
+        public readonly ImmutableArray<string> SrcRegionCodes;
+        public readonly ImmutableArray<string> SrcThreatIntelligences;
 
         [OutputConstructor]
         private FirewallPolicyRuleMatch(
+            ImmutableArray<string> destAddressGroups,
+
+            ImmutableArray<string> destFqdns,
+
             ImmutableArray<string> destIpRanges,
+
+            ImmutableArray<string> destRegionCodes,
+
+            ImmutableArray<string> destThreatIntelligences,
 
             ImmutableArray<Outputs.FirewallPolicyRuleMatchLayer4Config> layer4Configs,
 
-            ImmutableArray<string> srcIpRanges)
+            ImmutableArray<string> srcAddressGroups,
+
+            ImmutableArray<string> srcFqdns,
+
+            ImmutableArray<string> srcIpRanges,
+
+            ImmutableArray<string> srcRegionCodes,
+
+            ImmutableArray<string> srcThreatIntelligences)
         {
+            DestAddressGroups = destAddressGroups;
+            DestFqdns = destFqdns;
             DestIpRanges = destIpRanges;
+            DestRegionCodes = destRegionCodes;
+            DestThreatIntelligences = destThreatIntelligences;
             Layer4Configs = layer4Configs;
+            SrcAddressGroups = srcAddressGroups;
+            SrcFqdns = srcFqdns;
             SrcIpRanges = srcIpRanges;
+            SrcRegionCodes = srcRegionCodes;
+            SrcThreatIntelligences = srcThreatIntelligences;
         }
     }
 }

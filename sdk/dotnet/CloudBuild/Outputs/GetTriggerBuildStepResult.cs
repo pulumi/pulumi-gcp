@@ -13,6 +13,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerBuildStepResult
     {
+        public readonly ImmutableArray<int> AllowExitCodes;
+        public readonly bool AllowFailure;
         public readonly ImmutableArray<string> Args;
         public readonly string Dir;
         public readonly string Entrypoint;
@@ -28,6 +30,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private GetTriggerBuildStepResult(
+            ImmutableArray<int> allowExitCodes,
+
+            bool allowFailure,
+
             ImmutableArray<string> args,
 
             string dir,
@@ -52,6 +58,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             ImmutableArray<string> waitFors)
         {
+            AllowExitCodes = allowExitCodes;
+            AllowFailure = allowFailure;
             Args = args;
             Dir = dir;
             Entrypoint = entrypoint;

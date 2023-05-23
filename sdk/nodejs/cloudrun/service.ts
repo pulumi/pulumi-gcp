@@ -158,11 +158,6 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.cloudrun.Service("default", {
  *     location: "us-central1",
- *     metadata: {
- *         annotations: {
- *             "run.googleapis.com/launch-stage": "BETA",
- *         },
- *     },
  *     template: {
  *         spec: {
  *             containers: [{
@@ -188,8 +183,6 @@ import * as utilities from "../utilities";
  *         percent: 100,
  *         latestRevision: true,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

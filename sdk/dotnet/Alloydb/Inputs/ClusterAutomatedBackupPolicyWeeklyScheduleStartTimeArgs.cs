@@ -19,19 +19,19 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         public Input<int>? Hours { get; set; }
 
         /// <summary>
-        /// Minutes of hour of day. Must be from 0 to 59.
+        /// Minutes of hour of day. Currently, only the value 0 is supported.
         /// </summary>
         [Input("minutes")]
         public Input<int>? Minutes { get; set; }
 
         /// <summary>
-        /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        /// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
         /// </summary>
         [Input("nanos")]
         public Input<int>? Nanos { get; set; }
 
         /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        /// Seconds of minutes of the time. Currently, only the value 0 is supported.
         /// </summary>
         [Input("seconds")]
         public Input<int>? Seconds { get; set; }

@@ -200,14 +200,18 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
         return this.cpuPlatform;
     }
     /**
-     * Current status of the instance.
+     * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     @Export(name="currentStatus", type=String.class, parameters={})
     private Output<String> currentStatus;
 
     /**
-     * @return Current status of the instance.
+     * @return Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
+     * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
+     * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     public Output<String> currentStatus() {

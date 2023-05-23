@@ -173,46 +173,68 @@ import (
 type GlobalForwardingRule struct {
 	pulumi.CustomResourceState
 
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess pulumi.BoolPtrOutput `pulumi:"allowPscGlobalAccess"`
+	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule pulumi.StringOutput `pulumi:"baseForwardingRule"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The IP address that this forwarding rule serves. When a client sends
-	// traffic to this IP address, the forwarding rule directs the traffic to
-	// the target that you specify in the forwarding rule. The
-	// loadBalancingScheme and the forwarding rule's target determine the
-	// type of IP address that you can use. For detailed information, refer
-	// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// An address can be specified either by a literal IP address or a
-	// reference to an existing Address resource. If you don't specify a
-	// reserved IP address, an ephemeral IP address is assigned.
-	// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-	// that has validateForProxyless field set to true.
-	// For Private Service Connect forwarding rules that forward traffic to
-	// Google APIs, IP address must be provided.
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced `target`.
+	// While creating a forwarding rule, specifying an `IPAddress` is
+	// required under the following circumstances:
+	// * When the `target` is set to `targetGrpcProxy` and
+	//   `validateForProxyless` is set to `true`, the
+	//   `IPAddress` should be set to `0.0.0.0`.
+	// * When the `target` is a Private Service Connect Google APIs
+	//   bundle, you must specify an `IPAddress`.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	// * IP address number, as in `100.1.2.3`
+	// * IPv6 address range, as in `2600:1234::/96`
+	// * Full resource URL, as in
+	//   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+	// * Partial URL or by name, as in:
+	// * `projects/project_id/regions/region/addresses/address-name`
+	// * `regions/region/addresses/address-name`
+	// * `global/addresses/address-name`
+	// * `address-name`
+	//
+	// The forwarding rule's `target`,
+	// and in most cases, also the `loadBalancingScheme`, determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// When reading an `IPAddress`, the API always returns the IP
+	// address number.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. When the load balancing scheme is
-	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
-	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
-	// and addressType of INTERNAL
+	// The IP protocol to which this rule applies.
+	// For protocol forwarding, valid
+	// options are `TCP`, `UDP`, `ESP`,
+	// `AH`, `SCTP`, `ICMP` and
+	// `L3_DEFAULT`.
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol pulumi.StringOutput `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
-	// Used internally during label updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// This signifies what the GlobalForwardingRule will be used for.
-	// The value of INTERNAL_SELF_MANAGED means that this will be used for
-	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-	// will be used for External Global Load Balancing (HTTP(S) LB,
-	// External TCP/UDP LB, SSL Proxy)
-	// Note: This field must be set "" if the global address is
-	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-	// that this will be used for Global external HTTP(S) load balancers.
-	// Note: This field must be set "" if the global address is
-	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Specifies the forwarding rule type.
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
@@ -232,35 +254,42 @@ type GlobalForwardingRule struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayOutput `pulumi:"metadataFilters"`
-	// Name of the resource; provided by the client when the resource is
-	// created. The name must be 1-63 characters long, and comply with
-	// RFC1035. Specifically, the name must be 1-63 characters long and match
-	// the regular expression `a-z?` which means the
-	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression `a-z?` which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This field is not used for external load balancing.
-	// For INTERNAL_SELF_MANAGED load balancing, this field
-	// identifies the network that the load balanced IP should belong to
-	// for this global forwarding rule. If this field is not specified,
-	// the default network will be used.
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// This field is used along with the target field for TargetHttpProxy,
-	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-	// TargetPool, TargetInstance.
-	// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-	// addressed to ports in the specified range will be forwarded to target.
-	// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-	// disjoint port ranges.
-	// Some types of forwarding target have constraints on the acceptable
-	// ports:
+	// This field can only be used:
+	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+	// * By backend service-based network load balancers, target pool-based
+	// network load balancers, internal proxy load balancers, external proxy load
+	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+	// Some products have restrictions on what ports can be used. See
+	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	// for details.
+	//
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrOutput `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
@@ -268,17 +297,23 @@ type GlobalForwardingRule struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId pulumi.StringOutput `pulumi:"pscConnectionId"`
-	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-	// CLOSED
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The URL of the target resource to receive the matched traffic.
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges pulumi.StringArrayOutput `pulumi:"sourceIpRanges"`
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
 	// The forwarded traffic must be of a type appropriate to the target object.
-	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-	// are valid.
-	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	//
 	// ***
 	Target pulumi.StringOutput `pulumi:"target"`
@@ -316,46 +351,68 @@ func GetGlobalForwardingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalForwardingRule resources.
 type globalForwardingRuleState struct {
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess *bool `pulumi:"allowPscGlobalAccess"`
+	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule *string `pulumi:"baseForwardingRule"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
-	// The IP address that this forwarding rule serves. When a client sends
-	// traffic to this IP address, the forwarding rule directs the traffic to
-	// the target that you specify in the forwarding rule. The
-	// loadBalancingScheme and the forwarding rule's target determine the
-	// type of IP address that you can use. For detailed information, refer
-	// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// An address can be specified either by a literal IP address or a
-	// reference to an existing Address resource. If you don't specify a
-	// reserved IP address, an ephemeral IP address is assigned.
-	// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-	// that has validateForProxyless field set to true.
-	// For Private Service Connect forwarding rules that forward traffic to
-	// Google APIs, IP address must be provided.
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced `target`.
+	// While creating a forwarding rule, specifying an `IPAddress` is
+	// required under the following circumstances:
+	// * When the `target` is set to `targetGrpcProxy` and
+	//   `validateForProxyless` is set to `true`, the
+	//   `IPAddress` should be set to `0.0.0.0`.
+	// * When the `target` is a Private Service Connect Google APIs
+	//   bundle, you must specify an `IPAddress`.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	// * IP address number, as in `100.1.2.3`
+	// * IPv6 address range, as in `2600:1234::/96`
+	// * Full resource URL, as in
+	//   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+	// * Partial URL or by name, as in:
+	// * `projects/project_id/regions/region/addresses/address-name`
+	// * `regions/region/addresses/address-name`
+	// * `global/addresses/address-name`
+	// * `address-name`
+	//
+	// The forwarding rule's `target`,
+	// and in most cases, also the `loadBalancingScheme`, determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// When reading an `IPAddress`, the API always returns the IP
+	// address number.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. When the load balancing scheme is
-	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
-	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
-	// and addressType of INTERNAL
+	// The IP protocol to which this rule applies.
+	// For protocol forwarding, valid
+	// options are `TCP`, `UDP`, `ESP`,
+	// `AH`, `SCTP`, `ICMP` and
+	// `L3_DEFAULT`.
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
-	// Used internally during label updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// This signifies what the GlobalForwardingRule will be used for.
-	// The value of INTERNAL_SELF_MANAGED means that this will be used for
-	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-	// will be used for External Global Load Balancing (HTTP(S) LB,
-	// External TCP/UDP LB, SSL Proxy)
-	// Note: This field must be set "" if the global address is
-	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-	// that this will be used for Global external HTTP(S) load balancers.
-	// Note: This field must be set "" if the global address is
-	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Specifies the forwarding rule type.
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
@@ -375,35 +432,42 @@ type globalForwardingRuleState struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters []GlobalForwardingRuleMetadataFilter `pulumi:"metadataFilters"`
-	// Name of the resource; provided by the client when the resource is
-	// created. The name must be 1-63 characters long, and comply with
-	// RFC1035. Specifically, the name must be 1-63 characters long and match
-	// the regular expression `a-z?` which means the
-	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression `a-z?` which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
 	Name *string `pulumi:"name"`
 	// This field is not used for external load balancing.
-	// For INTERNAL_SELF_MANAGED load balancing, this field
-	// identifies the network that the load balanced IP should belong to
-	// for this global forwarding rule. If this field is not specified,
-	// the default network will be used.
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
 	Network *string `pulumi:"network"`
-	// This field is used along with the target field for TargetHttpProxy,
-	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-	// TargetPool, TargetInstance.
-	// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-	// addressed to ports in the specified range will be forwarded to target.
-	// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-	// disjoint port ranges.
-	// Some types of forwarding target have constraints on the acceptable
-	// ports:
+	// This field can only be used:
+	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+	// * By backend service-based network load balancers, target pool-based
+	// network load balancers, internal proxy load balancers, external proxy load
+	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+	// Some products have restrictions on what ports can be used. See
+	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	// for details.
+	//
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
@@ -411,63 +475,91 @@ type globalForwardingRuleState struct {
 	Project *string `pulumi:"project"`
 	// The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId *string `pulumi:"pscConnectionId"`
-	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-	// CLOSED
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The URL of the target resource to receive the matched traffic.
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges []string `pulumi:"sourceIpRanges"`
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
 	// The forwarded traffic must be of a type appropriate to the target object.
-	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-	// are valid.
-	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	//
 	// ***
 	Target *string `pulumi:"target"`
 }
 
 type GlobalForwardingRuleState struct {
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess pulumi.BoolPtrInput
+	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
-	// The IP address that this forwarding rule serves. When a client sends
-	// traffic to this IP address, the forwarding rule directs the traffic to
-	// the target that you specify in the forwarding rule. The
-	// loadBalancingScheme and the forwarding rule's target determine the
-	// type of IP address that you can use. For detailed information, refer
-	// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// An address can be specified either by a literal IP address or a
-	// reference to an existing Address resource. If you don't specify a
-	// reserved IP address, an ephemeral IP address is assigned.
-	// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-	// that has validateForProxyless field set to true.
-	// For Private Service Connect forwarding rules that forward traffic to
-	// Google APIs, IP address must be provided.
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced `target`.
+	// While creating a forwarding rule, specifying an `IPAddress` is
+	// required under the following circumstances:
+	// * When the `target` is set to `targetGrpcProxy` and
+	//   `validateForProxyless` is set to `true`, the
+	//   `IPAddress` should be set to `0.0.0.0`.
+	// * When the `target` is a Private Service Connect Google APIs
+	//   bundle, you must specify an `IPAddress`.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	// * IP address number, as in `100.1.2.3`
+	// * IPv6 address range, as in `2600:1234::/96`
+	// * Full resource URL, as in
+	//   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+	// * Partial URL or by name, as in:
+	// * `projects/project_id/regions/region/addresses/address-name`
+	// * `regions/region/addresses/address-name`
+	// * `global/addresses/address-name`
+	// * `address-name`
+	//
+	// The forwarding rule's `target`,
+	// and in most cases, also the `loadBalancingScheme`, determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// When reading an `IPAddress`, the API always returns the IP
+	// address number.
 	IpAddress pulumi.StringPtrInput
-	// The IP protocol to which this rule applies. When the load balancing scheme is
-	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
-	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
-	// and addressType of INTERNAL
+	// The IP protocol to which this rule applies.
+	// For protocol forwarding, valid
+	// options are `TCP`, `UDP`, `ESP`,
+	// `AH`, `SCTP`, `ICMP` and
+	// `L3_DEFAULT`.
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
-	// Used internally during label updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// This signifies what the GlobalForwardingRule will be used for.
-	// The value of INTERNAL_SELF_MANAGED means that this will be used for
-	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-	// will be used for External Global Load Balancing (HTTP(S) LB,
-	// External TCP/UDP LB, SSL Proxy)
-	// Note: This field must be set "" if the global address is
-	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-	// that this will be used for Global external HTTP(S) load balancers.
-	// Note: This field must be set "" if the global address is
-	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Specifies the forwarding rule type.
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
@@ -487,35 +579,42 @@ type GlobalForwardingRuleState struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayInput
-	// Name of the resource; provided by the client when the resource is
-	// created. The name must be 1-63 characters long, and comply with
-	// RFC1035. Specifically, the name must be 1-63 characters long and match
-	// the regular expression `a-z?` which means the
-	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression `a-z?` which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
 	Name pulumi.StringPtrInput
 	// This field is not used for external load balancing.
-	// For INTERNAL_SELF_MANAGED load balancing, this field
-	// identifies the network that the load balanced IP should belong to
-	// for this global forwarding rule. If this field is not specified,
-	// the default network will be used.
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
 	Network pulumi.StringPtrInput
-	// This field is used along with the target field for TargetHttpProxy,
-	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-	// TargetPool, TargetInstance.
-	// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-	// addressed to ports in the specified range will be forwarded to target.
-	// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-	// disjoint port ranges.
-	// Some types of forwarding target have constraints on the acceptable
-	// ports:
+	// This field can only be used:
+	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+	// * By backend service-based network load balancers, target pool-based
+	// network load balancers, internal proxy load balancers, external proxy load
+	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+	// Some products have restrictions on what ports can be used. See
+	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	// for details.
+	//
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -523,17 +622,23 @@ type GlobalForwardingRuleState struct {
 	Project pulumi.StringPtrInput
 	// The PSC connection id of the PSC Forwarding Rule.
 	PscConnectionId pulumi.StringPtrInput
-	// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-	// CLOSED
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 	PscConnectionStatus pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The URL of the target resource to receive the matched traffic.
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges pulumi.StringArrayInput
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
 	// The forwarded traffic must be of a type appropriate to the target object.
-	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-	// are valid.
-	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	//
 	// ***
 	Target pulumi.StringPtrInput
@@ -544,27 +649,53 @@ func (GlobalForwardingRuleState) ElementType() reflect.Type {
 }
 
 type globalForwardingRuleArgs struct {
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess *bool `pulumi:"allowPscGlobalAccess"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
-	// The IP address that this forwarding rule serves. When a client sends
-	// traffic to this IP address, the forwarding rule directs the traffic to
-	// the target that you specify in the forwarding rule. The
-	// loadBalancingScheme and the forwarding rule's target determine the
-	// type of IP address that you can use. For detailed information, refer
-	// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// An address can be specified either by a literal IP address or a
-	// reference to an existing Address resource. If you don't specify a
-	// reserved IP address, an ephemeral IP address is assigned.
-	// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-	// that has validateForProxyless field set to true.
-	// For Private Service Connect forwarding rules that forward traffic to
-	// Google APIs, IP address must be provided.
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced `target`.
+	// While creating a forwarding rule, specifying an `IPAddress` is
+	// required under the following circumstances:
+	// * When the `target` is set to `targetGrpcProxy` and
+	//   `validateForProxyless` is set to `true`, the
+	//   `IPAddress` should be set to `0.0.0.0`.
+	// * When the `target` is a Private Service Connect Google APIs
+	//   bundle, you must specify an `IPAddress`.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	// * IP address number, as in `100.1.2.3`
+	// * IPv6 address range, as in `2600:1234::/96`
+	// * Full resource URL, as in
+	//   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+	// * Partial URL or by name, as in:
+	// * `projects/project_id/regions/region/addresses/address-name`
+	// * `regions/region/addresses/address-name`
+	// * `global/addresses/address-name`
+	// * `address-name`
+	//
+	// The forwarding rule's `target`,
+	// and in most cases, also the `loadBalancingScheme`, determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// When reading an `IPAddress`, the API always returns the IP
+	// address number.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The IP protocol to which this rule applies. When the load balancing scheme is
-	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
-	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
-	// and addressType of INTERNAL
+	// The IP protocol to which this rule applies.
+	// For protocol forwarding, valid
+	// options are `TCP`, `UDP`, `ESP`,
+	// `AH`, `SCTP`, `ICMP` and
+	// `L3_DEFAULT`.
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol *string `pulumi:"ipProtocol"`
 	// The IP Version that will be used by this global forwarding rule.
@@ -572,16 +703,9 @@ type globalForwardingRuleArgs struct {
 	IpVersion *string `pulumi:"ipVersion"`
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
-	// This signifies what the GlobalForwardingRule will be used for.
-	// The value of INTERNAL_SELF_MANAGED means that this will be used for
-	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-	// will be used for External Global Load Balancing (HTTP(S) LB,
-	// External TCP/UDP LB, SSL Proxy)
-	// Note: This field must be set "" if the global address is
-	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-	// that this will be used for Global external HTTP(S) load balancers.
-	// Note: This field must be set "" if the global address is
-	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Specifies the forwarding rule type.
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
@@ -601,46 +725,60 @@ type globalForwardingRuleArgs struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters []GlobalForwardingRuleMetadataFilter `pulumi:"metadataFilters"`
-	// Name of the resource; provided by the client when the resource is
-	// created. The name must be 1-63 characters long, and comply with
-	// RFC1035. Specifically, the name must be 1-63 characters long and match
-	// the regular expression `a-z?` which means the
-	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression `a-z?` which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
 	Name *string `pulumi:"name"`
 	// This field is not used for external load balancing.
-	// For INTERNAL_SELF_MANAGED load balancing, this field
-	// identifies the network that the load balanced IP should belong to
-	// for this global forwarding rule. If this field is not specified,
-	// the default network will be used.
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
 	Network *string `pulumi:"network"`
-	// This field is used along with the target field for TargetHttpProxy,
-	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-	// TargetPool, TargetInstance.
-	// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-	// addressed to ports in the specified range will be forwarded to target.
-	// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-	// disjoint port ranges.
-	// Some types of forwarding target have constraints on the acceptable
-	// ports:
+	// This field can only be used:
+	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+	// * By backend service-based network load balancers, target pool-based
+	// network load balancers, internal proxy load balancers, external proxy load
+	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+	// Some products have restrictions on what ports can be used. See
+	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	// for details.
+	//
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange *string `pulumi:"portRange"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The URL of the target resource to receive the matched traffic.
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges []string `pulumi:"sourceIpRanges"`
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
 	// The forwarded traffic must be of a type appropriate to the target object.
-	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-	// are valid.
-	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	//
 	// ***
 	Target string `pulumi:"target"`
@@ -648,27 +786,53 @@ type globalForwardingRuleArgs struct {
 
 // The set of arguments for constructing a GlobalForwardingRule resource.
 type GlobalForwardingRuleArgs struct {
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess pulumi.BoolPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
-	// The IP address that this forwarding rule serves. When a client sends
-	// traffic to this IP address, the forwarding rule directs the traffic to
-	// the target that you specify in the forwarding rule. The
-	// loadBalancingScheme and the forwarding rule's target determine the
-	// type of IP address that you can use. For detailed information, refer
-	// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-	// An address can be specified either by a literal IP address or a
-	// reference to an existing Address resource. If you don't specify a
-	// reserved IP address, an ephemeral IP address is assigned.
-	// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-	// that has validateForProxyless field set to true.
-	// For Private Service Connect forwarding rules that forward traffic to
-	// Google APIs, IP address must be provided.
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced `target`.
+	// While creating a forwarding rule, specifying an `IPAddress` is
+	// required under the following circumstances:
+	// * When the `target` is set to `targetGrpcProxy` and
+	//   `validateForProxyless` is set to `true`, the
+	//   `IPAddress` should be set to `0.0.0.0`.
+	// * When the `target` is a Private Service Connect Google APIs
+	//   bundle, you must specify an `IPAddress`.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	// * IP address number, as in `100.1.2.3`
+	// * IPv6 address range, as in `2600:1234::/96`
+	// * Full resource URL, as in
+	//   `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+	// * Partial URL or by name, as in:
+	// * `projects/project_id/regions/region/addresses/address-name`
+	// * `regions/region/addresses/address-name`
+	// * `global/addresses/address-name`
+	// * `address-name`
+	//
+	// The forwarding rule's `target`,
+	// and in most cases, also the `loadBalancingScheme`, determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// When reading an `IPAddress`, the API always returns the IP
+	// address number.
 	IpAddress pulumi.StringPtrInput
-	// The IP protocol to which this rule applies. When the load balancing scheme is
-	// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
-	// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
-	// and addressType of INTERNAL
+	// The IP protocol to which this rule applies.
+	// For protocol forwarding, valid
+	// options are `TCP`, `UDP`, `ESP`,
+	// `AH`, `SCTP`, `ICMP` and
+	// `L3_DEFAULT`.
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 	// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 	IpProtocol pulumi.StringPtrInput
 	// The IP Version that will be used by this global forwarding rule.
@@ -676,16 +840,9 @@ type GlobalForwardingRuleArgs struct {
 	IpVersion pulumi.StringPtrInput
 	// Labels to apply to this forwarding rule.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
-	// This signifies what the GlobalForwardingRule will be used for.
-	// The value of INTERNAL_SELF_MANAGED means that this will be used for
-	// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-	// will be used for External Global Load Balancing (HTTP(S) LB,
-	// External TCP/UDP LB, SSL Proxy)
-	// Note: This field must be set "" if the global address is
-	// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-	// that this will be used for Global external HTTP(S) load balancers.
-	// Note: This field must be set "" if the global address is
-	// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+	// Specifies the forwarding rule type.
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
 	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
@@ -705,46 +862,60 @@ type GlobalForwardingRuleArgs struct {
 	// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	// Structure is documented below.
 	MetadataFilters GlobalForwardingRuleMetadataFilterArrayInput
-	// Name of the resource; provided by the client when the resource is
-	// created. The name must be 1-63 characters long, and comply with
-	// RFC1035. Specifically, the name must be 1-63 characters long and match
-	// the regular expression `a-z?` which means the
-	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the last
-	// character, which cannot be a dash.
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression `a-z?` which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
 	Name pulumi.StringPtrInput
 	// This field is not used for external load balancing.
-	// For INTERNAL_SELF_MANAGED load balancing, this field
-	// identifies the network that the load balanced IP should belong to
-	// for this global forwarding rule. If this field is not specified,
-	// the default network will be used.
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
 	Network pulumi.StringPtrInput
-	// This field is used along with the target field for TargetHttpProxy,
-	// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-	// TargetPool, TargetInstance.
-	// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-	// addressed to ports in the specified range will be forwarded to target.
-	// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-	// disjoint port ranges.
-	// Some types of forwarding target have constraints on the acceptable
-	// ports:
+	// This field can only be used:
+	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+	// * By backend service-based network load balancers, target pool-based
+	// network load balancers, internal proxy load balancers, external proxy load
+	// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+	// Some products have restrictions on what ports can be used. See
+	// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	// for details.
+	//
 	// * TargetHttpProxy: 80, 8080
 	// * TargetHttpsProxy: 443
 	// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-	//   1883, 5222
+	// 1883, 5222
 	// * TargetVpnGateway: 500, 4500
 	PortRange pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The URL of the target resource to receive the matched traffic.
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges pulumi.StringArrayInput
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
 	// The forwarded traffic must be of a type appropriate to the target object.
-	// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-	// are valid.
-	// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-	// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+	// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+	// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 	//
 	// ***
 	Target pulumi.StringInput
@@ -837,33 +1008,67 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx 
 	return o
 }
 
+// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+func (o GlobalForwardingRuleOutput) AllowPscGlobalAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.BoolPtrOutput { return v.AllowPscGlobalAccess }).(pulumi.BoolPtrOutput)
+}
+
+// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+func (o GlobalForwardingRuleOutput) BaseForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.BaseForwardingRule }).(pulumi.StringOutput)
+}
+
 // An optional description of this resource. Provide this property when
 // you create the resource.
 func (o GlobalForwardingRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The IP address that this forwarding rule serves. When a client sends
-// traffic to this IP address, the forwarding rule directs the traffic to
-// the target that you specify in the forwarding rule. The
-// loadBalancingScheme and the forwarding rule's target determine the
-// type of IP address that you can use. For detailed information, refer
-// to [IP address specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-// An address can be specified either by a literal IP address or a
-// reference to an existing Address resource. If you don't specify a
-// reserved IP address, an ephemeral IP address is assigned.
-// The value must be set to 0.0.0.0 when the target is a targetGrpcProxy
-// that has validateForProxyless field set to true.
-// For Private Service Connect forwarding rules that forward traffic to
-// Google APIs, IP address must be provided.
+// IP address for which this forwarding rule accepts traffic. When a client
+// sends traffic to this IP address, the forwarding rule directs the traffic
+// to the referenced `target`.
+// While creating a forwarding rule, specifying an `IPAddress` is
+// required under the following circumstances:
+//   - When the `target` is set to `targetGrpcProxy` and
+//     `validateForProxyless` is set to `true`, the
+//     `IPAddress` should be set to `0.0.0.0`.
+//   - When the `target` is a Private Service Connect Google APIs
+//     bundle, you must specify an `IPAddress`.
+//
+// Otherwise, you can optionally specify an IP address that references an
+// existing static (reserved) IP address resource. When omitted, Google Cloud
+// assigns an ephemeral IP address.
+// Use one of the following formats to specify an IP address while creating a
+// forwarding rule:
+//   - IP address number, as in `100.1.2.3`
+//   - IPv6 address range, as in `2600:1234::/96`
+//   - Full resource URL, as in
+//     `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+//   - Partial URL or by name, as in:
+//   - `projects/project_id/regions/region/addresses/address-name`
+//   - `regions/region/addresses/address-name`
+//   - `global/addresses/address-name`
+//   - `address-name`
+//
+// The forwarding rule's `target`,
+// and in most cases, also the `loadBalancingScheme`, determine the
+// type of IP address that you can use. For detailed information, see
+// [IP address
+// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+// When reading an `IPAddress`, the API always returns the IP
+// address number.
 func (o GlobalForwardingRuleOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The IP protocol to which this rule applies. When the load balancing scheme is
-// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
-// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
-// and addressType of INTERNAL
+// The IP protocol to which this rule applies.
+// For protocol forwarding, valid
+// options are `TCP`, `UDP`, `ESP`,
+// `AH`, `SCTP`, `ICMP` and
+// `L3_DEFAULT`.
+// The valid IP protocols are different for different load balancing products
+// as described in [Load balancing
+// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
 // Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`.
 func (o GlobalForwardingRuleOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.IpProtocol }).(pulumi.StringOutput)
@@ -875,7 +1080,8 @@ func (o GlobalForwardingRuleOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// Used internally during label updates.
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
 func (o GlobalForwardingRuleOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
@@ -885,16 +1091,9 @@ func (o GlobalForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// This signifies what the GlobalForwardingRule will be used for.
-// The value of INTERNAL_SELF_MANAGED means that this will be used for
-// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-// will be used for External Global Load Balancing (HTTP(S) LB,
-// External TCP/UDP LB, SSL Proxy)
-// Note: This field must be set "" if the global address is
-// External TCP/UDP LB, SSL Proxy). The value of EXTERNAL_MANAGED means
-// that this will be used for Global external HTTP(S) load balancers.
-// Note: This field must be set "" if the global address is
-// configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+// Specifies the forwarding rule type.
+// For more information about forwarding rules, refer to
+// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 // Default value is `EXTERNAL`.
 // Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 func (o GlobalForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
@@ -920,42 +1119,49 @@ func (o GlobalForwardingRuleOutput) MetadataFilters() GlobalForwardingRuleMetada
 	return o.ApplyT(func(v *GlobalForwardingRule) GlobalForwardingRuleMetadataFilterArrayOutput { return v.MetadataFilters }).(GlobalForwardingRuleMetadataFilterArrayOutput)
 }
 
-// Name of the resource; provided by the client when the resource is
-// created. The name must be 1-63 characters long, and comply with
-// RFC1035. Specifically, the name must be 1-63 characters long and match
-// the regular expression `a-z?` which means the
-// first character must be a lowercase letter, and all following
-// characters must be a dash, lowercase letter, or digit, except the last
-// character, which cannot be a dash.
+// Name of the resource; provided by the client when the resource is created.
+// The name must be 1-63 characters long, and comply with
+// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+// Specifically, the name must be 1-63 characters long and match the regular
+// expression `a-z?` which means the first
+// character must be a lowercase letter, and all following characters must
+// be a dash, lowercase letter, or digit, except the last character, which
+// cannot be a dash.
+// For Private Service Connect forwarding rules that forward traffic to Google
+// APIs, the forwarding rule name must be a 1-20 characters string with
+// lowercase letters and numbers and must start with a letter.
 func (o GlobalForwardingRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // This field is not used for external load balancing.
-// For INTERNAL_SELF_MANAGED load balancing, this field
-// identifies the network that the load balanced IP should belong to
-// for this global forwarding rule. If this field is not specified,
-// the default network will be used.
+// For Internal TCP/UDP Load Balancing, this field identifies the network that
+// the load balanced IP should belong to for this Forwarding Rule.
+// If the subnetwork is specified, the network of the subnetwork will be used.
+// If neither subnetwork nor this field is specified, the default network will
+// be used.
+// For Private Service Connect forwarding rules that forward traffic to Google
+// APIs, a network must be provided.
 func (o GlobalForwardingRuleOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }
 
-// This field is used along with the target field for TargetHttpProxy,
-// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway,
-// TargetPool, TargetInstance.
-// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-// addressed to ports in the specified range will be forwarded to target.
-// Forwarding rules with the same [IPAddress, IPProtocol] pair must have
-// disjoint port ranges.
-// Some types of forwarding target have constraints on the acceptable
-// ports:
-//   - TargetHttpProxy: 80, 8080
-//   - TargetHttpsProxy: 443
-//   - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-//     1883, 5222
-//   - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
-//     1883, 5222
-//   - TargetVpnGateway: 500, 4500
+// This field can only be used:
+// * If `IPProtocol` is one of TCP, UDP, or SCTP.
+// * By backend service-based network load balancers, target pool-based
+// network load balancers, internal proxy load balancers, external proxy load
+// balancers, Traffic Director, external protocol forwarding, and Classic VPN.
+// Some products have restrictions on what ports can be used. See
+// [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+// for details.
+//
+// * TargetHttpProxy: 80, 8080
+// * TargetHttpsProxy: 443
+// * TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
+// 1883, 5222
+// * TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
+// 1883, 5222
+// * TargetVpnGateway: 500, 4500
 func (o GlobalForwardingRuleOutput) PortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.PortRange }).(pulumi.StringPtrOutput)
 }
@@ -971,8 +1177,7 @@ func (o GlobalForwardingRuleOutput) PscConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.PscConnectionId }).(pulumi.StringOutput)
 }
 
-// The PSC connection status of the PSC Forwarding Rule. Possible values: STATUS_UNSPECIFIED, PENDING, ACCEPTED, REJECTED,
-// CLOSED
+// The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
 func (o GlobalForwardingRuleOutput) PscConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.PscConnectionStatus }).(pulumi.StringOutput)
 }
@@ -982,12 +1187,22 @@ func (o GlobalForwardingRuleOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The URL of the target resource to receive the matched traffic.
+// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+func (o GlobalForwardingRuleOutput) SourceIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringArrayOutput { return v.SourceIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// The URL of the target resource to receive the matched traffic.  For
+// regional forwarding rules, this target must be in the same region as the
+// forwarding rule. For global forwarding rules, this target must be a global
+// load balancing resource.
 // The forwarded traffic must be of a type appropriate to the target object.
-// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-// are valid.
-// For global address with a purpose of PRIVATE_SERVICE_CONNECT and
-// addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+// *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
+// *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
+// *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+//
+// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
 //
 // ***
 func (o GlobalForwardingRuleOutput) Target() pulumi.StringOutput {

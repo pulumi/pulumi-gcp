@@ -29,6 +29,7 @@ public final class TriggerGitFileSource {
      * 
      */
     private String repoType;
+    private @Nullable String repository;
     /**
      * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
      * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -68,6 +69,9 @@ public final class TriggerGitFileSource {
     public String repoType() {
         return this.repoType;
     }
+    public Optional<String> repository() {
+        return Optional.ofNullable(this.repository);
+    }
     /**
      * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
      * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
@@ -98,6 +102,7 @@ public final class TriggerGitFileSource {
         private @Nullable String githubEnterpriseConfig;
         private String path;
         private String repoType;
+        private @Nullable String repository;
         private @Nullable String revision;
         private @Nullable String uri;
         public Builder() {}
@@ -106,6 +111,7 @@ public final class TriggerGitFileSource {
     	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.path = defaults.path;
     	      this.repoType = defaults.repoType;
+    	      this.repository = defaults.repository;
     	      this.revision = defaults.revision;
     	      this.uri = defaults.uri;
         }
@@ -126,6 +132,11 @@ public final class TriggerGitFileSource {
             return this;
         }
         @CustomType.Setter
+        public Builder repository(@Nullable String repository) {
+            this.repository = repository;
+            return this;
+        }
+        @CustomType.Setter
         public Builder revision(@Nullable String revision) {
             this.revision = revision;
             return this;
@@ -140,6 +151,7 @@ public final class TriggerGitFileSource {
             o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.path = path;
             o.repoType = repoType;
+            o.repository = repository;
             o.revision = revision;
             o.uri = uri;
             return o;

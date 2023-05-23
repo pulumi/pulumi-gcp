@@ -33,14 +33,14 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
     }
 
     /**
-     * Version of the information type to use. By default, the version is set to stable
+     * Version name for this InfoType.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Version of the information type to use. By default, the version is set to stable
+     * @return Version name for this InfoType.
      * 
      */
     public Optional<Output<String>> version() {
@@ -96,7 +96,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param version Version of the information type to use. By default, the version is set to stable
+         * @param version Version name for this InfoType.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
         }
 
         /**
-         * @param version Version of the information type to use. By default, the version is set to stable
+         * @param version Version name for this InfoType.
          * 
          * @return builder
          * 

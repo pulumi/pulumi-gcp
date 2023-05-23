@@ -15,6 +15,16 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { GetLocationsArgs, GetLocationsResult, GetLocationsOutputArgs } from "./getLocations";
+export const getLocations: typeof import("./getLocations").getLocations = null as any;
+export const getLocationsOutput: typeof import("./getLocations").getLocationsOutput = null as any;
+utilities.lazyLoad(exports, ["getLocations","getLocationsOutput"], () => require("./getLocations"));
+
+export { GetSupportedDatabaseFlagsArgs, GetSupportedDatabaseFlagsResult, GetSupportedDatabaseFlagsOutputArgs } from "./getSupportedDatabaseFlags";
+export const getSupportedDatabaseFlags: typeof import("./getSupportedDatabaseFlags").getSupportedDatabaseFlags = null as any;
+export const getSupportedDatabaseFlagsOutput: typeof import("./getSupportedDatabaseFlags").getSupportedDatabaseFlagsOutput = null as any;
+utilities.lazyLoad(exports, ["getSupportedDatabaseFlags","getSupportedDatabaseFlagsOutput"], () => require("./getSupportedDatabaseFlags"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;

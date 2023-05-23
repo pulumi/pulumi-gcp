@@ -14,6 +14,7 @@ __all__ = ['WorkflowArgs', 'Workflow']
 @pulumi.input_type
 class WorkflowArgs:
     def __init__(__self__, *,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -24,6 +25,8 @@ class WorkflowArgs:
                  source_contents: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Workflow resource.
+        :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
+               Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
         :param pulumi.Input[str] name: Name of the Workflow.
@@ -34,9 +37,15 @@ class WorkflowArgs:
         :param pulumi.Input[str] region: The region of the workflow.
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
                account represents the identity of the workflow and determines what permissions the workflow has.
-               Format: projects/{project}/serviceAccounts/{account}.
+               Format: projects/{project}/serviceAccounts/{account} or {account}.
+               Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+               The {account} value can be the email address or the unique_id of the service account.
+               If not provided, workflow will use the project's default service account.
+               Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         """
+        if crypto_key_name is not None:
+            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -53,6 +62,19 @@ class WorkflowArgs:
             pulumi.set(__self__, "service_account", service_account)
         if source_contents is not None:
             pulumi.set(__self__, "source_contents", source_contents)
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The KMS key used to encrypt workflow and execution data.
+        Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        """
+        return pulumi.get(self, "crypto_key_name")
+
+    @crypto_key_name.setter
+    def crypto_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_name", value)
 
     @property
     @pulumi.getter
@@ -134,7 +156,11 @@ class WorkflowArgs:
         """
         Name of the service account associated with the latest workflow version. This service
         account represents the identity of the workflow and determines what permissions the workflow has.
-        Format: projects/{project}/serviceAccounts/{account}.
+        Format: projects/{project}/serviceAccounts/{account} or {account}.
+        Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+        The {account} value can be the email address or the unique_id of the service account.
+        If not provided, workflow will use the project's default service account.
+        Modifying this field for an existing workflow results in a new workflow revision.
         """
         return pulumi.get(self, "service_account")
 
@@ -159,6 +185,7 @@ class WorkflowArgs:
 class _WorkflowState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -173,6 +200,8 @@ class _WorkflowState:
         """
         Input properties used for looking up and filtering Workflow resources.
         :param pulumi.Input[str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
+               Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
         :param pulumi.Input[str] name: Name of the Workflow.
@@ -184,13 +213,19 @@ class _WorkflowState:
         :param pulumi.Input[str] revision_id: The revision of the workflow. A new one is generated if the service account or source contents is changed.
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
                account represents the identity of the workflow and determines what permissions the workflow has.
-               Format: projects/{project}/serviceAccounts/{account}.
+               Format: projects/{project}/serviceAccounts/{account} or {account}.
+               Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+               The {account} value can be the email address or the unique_id of the service account.
+               If not provided, workflow will use the project's default service account.
+               Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if crypto_key_name is not None:
+            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -225,6 +260,19 @@ class _WorkflowState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The KMS key used to encrypt workflow and execution data.
+        Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        """
+        return pulumi.get(self, "crypto_key_name")
+
+    @crypto_key_name.setter
+    def crypto_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_name", value)
 
     @property
     @pulumi.getter
@@ -318,7 +366,11 @@ class _WorkflowState:
         """
         Name of the service account associated with the latest workflow version. This service
         account represents the identity of the workflow and determines what permissions the workflow has.
-        Format: projects/{project}/serviceAccounts/{account}.
+        Format: projects/{project}/serviceAccounts/{account} or {account}.
+        Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+        The {account} value can be the email address or the unique_id of the service account.
+        If not provided, workflow will use the project's default service account.
+        Modifying this field for an existing workflow results in a new workflow revision.
         """
         return pulumi.get(self, "service_account")
 
@@ -368,6 +420,7 @@ class Workflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -434,6 +487,8 @@ class Workflow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
+               Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
         :param pulumi.Input[str] name: Name of the Workflow.
@@ -444,7 +499,11 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region of the workflow.
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
                account represents the identity of the workflow and determines what permissions the workflow has.
-               Format: projects/{project}/serviceAccounts/{account}.
+               Format: projects/{project}/serviceAccounts/{account} or {account}.
+               Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+               The {account} value can be the email address or the unique_id of the service account.
+               If not provided, workflow will use the project's default service account.
+               Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         """
         ...
@@ -523,6 +582,7 @@ class Workflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -540,6 +600,7 @@ class Workflow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
+            __props__.__dict__["crypto_key_name"] = crypto_key_name
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -563,6 +624,7 @@ class Workflow(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            crypto_key_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -582,6 +644,8 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
+               Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
         :param pulumi.Input[str] name: Name of the Workflow.
@@ -593,7 +657,11 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] revision_id: The revision of the workflow. A new one is generated if the service account or source contents is changed.
         :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
                account represents the identity of the workflow and determines what permissions the workflow has.
-               Format: projects/{project}/serviceAccounts/{account}.
+               Format: projects/{project}/serviceAccounts/{account} or {account}.
+               Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+               The {account} value can be the email address or the unique_id of the service account.
+               If not provided, workflow will use the project's default service account.
+               Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
@@ -603,6 +671,7 @@ class Workflow(pulumi.CustomResource):
         __props__ = _WorkflowState.__new__(_WorkflowState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["crypto_key_name"] = crypto_key_name
         __props__.__dict__["description"] = description
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -623,6 +692,15 @@ class Workflow(pulumi.CustomResource):
         The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The KMS key used to encrypt workflow and execution data.
+        Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+        """
+        return pulumi.get(self, "crypto_key_name")
 
     @property
     @pulumi.getter
@@ -688,7 +766,11 @@ class Workflow(pulumi.CustomResource):
         """
         Name of the service account associated with the latest workflow version. This service
         account represents the identity of the workflow and determines what permissions the workflow has.
-        Format: projects/{project}/serviceAccounts/{account}.
+        Format: projects/{project}/serviceAccounts/{account} or {account}.
+        Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+        The {account} value can be the email address or the unique_id of the service account.
+        If not provided, workflow will use the project's default service account.
+        Modifying this field for an existing workflow results in a new workflow revision.
         """
         return pulumi.get(self, "service_account")
 

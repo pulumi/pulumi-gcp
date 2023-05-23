@@ -10,8 +10,132 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'FieldIndexConfigArgs',
+    'FieldIndexConfigIndexArgs',
+    'FieldTtlConfigArgs',
     'IndexFieldArgs',
 ]
+
+@pulumi.input_type
+class FieldIndexConfigArgs:
+    def __init__(__self__, *,
+                 indexes: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]] indexes: The indexes to configure on the field. Order or array contains must be specified.
+               Structure is documented below.
+        """
+        if indexes is not None:
+            pulumi.set(__self__, "indexes", indexes)
+
+    @property
+    @pulumi.getter
+    def indexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]:
+        """
+        The indexes to configure on the field. Order or array contains must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "indexes")
+
+    @indexes.setter
+    def indexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]):
+        pulumi.set(self, "indexes", value)
+
+
+@pulumi.input_type
+class FieldIndexConfigIndexArgs:
+    def __init__(__self__, *,
+                 array_config: Optional[pulumi.Input[str]] = None,
+                 order: Optional[pulumi.Input[str]] = None,
+                 query_scope: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] array_config: Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+               be specified.
+               Possible values are: `CONTAINS`.
+        :param pulumi.Input[str] order: Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+               Only one of `order` and `arrayConfig` can be specified.
+               Possible values are: `ASCENDING`, `DESCENDING`.
+        :param pulumi.Input[str] query_scope: The scope at which a query is run. Collection scoped queries require you specify
+               the collection at query time. Collection group scope allows queries across all
+               collections with the same id.
+               Default value is `COLLECTION`.
+               Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        """
+        if array_config is not None:
+            pulumi.set(__self__, "array_config", array_config)
+        if order is not None:
+            pulumi.set(__self__, "order", order)
+        if query_scope is not None:
+            pulumi.set(__self__, "query_scope", query_scope)
+
+    @property
+    @pulumi.getter(name="arrayConfig")
+    def array_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
+        be specified.
+        Possible values are: `CONTAINS`.
+        """
+        return pulumi.get(self, "array_config")
+
+    @array_config.setter
+    def array_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "array_config", value)
+
+    @property
+    @pulumi.getter
+    def order(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates that this field supports ordering by the specified order or comparing using =, <, <=, >, >=, !=.
+        Only one of `order` and `arrayConfig` can be specified.
+        Possible values are: `ASCENDING`, `DESCENDING`.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "order", value)
+
+    @property
+    @pulumi.getter(name="queryScope")
+    def query_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scope at which a query is run. Collection scoped queries require you specify
+        the collection at query time. Collection group scope allows queries across all
+        collections with the same id.
+        Default value is `COLLECTION`.
+        Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
+        """
+        return pulumi.get(self, "query_scope")
+
+    @query_scope.setter
+    def query_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_scope", value)
+
+
+@pulumi.input_type
+class FieldTtlConfigArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] state: (Output)
+               The state of the TTL configuration.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The state of the TTL configuration.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
 
 @pulumi.input_type
 class IndexFieldArgs:

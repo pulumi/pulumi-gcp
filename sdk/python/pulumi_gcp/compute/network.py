@@ -57,7 +57,7 @@ class NetworkArgs:
                
                
                - - -
-        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -202,7 +202,7 @@ class NetworkArgs:
     @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
     def network_firewall_policy_enforcement_order(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        Set the order that Firewall Rules and Firewall Policies are evaluated.
         Default value is `AFTER_CLASSIC_FIREWALL`.
         Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """
@@ -293,7 +293,7 @@ class _NetworkState:
                
                
                - - -
-        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -456,7 +456,7 @@ class _NetworkState:
     @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
     def network_firewall_policy_enforcement_order(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        Set the order that Firewall Rules and Firewall Policies are evaluated.
         Default value is `AFTER_CLASSIC_FIREWALL`.
         Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """
@@ -615,7 +615,7 @@ class Network(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -798,7 +798,7 @@ class Network(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -922,7 +922,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
     def network_firewall_policy_enforcement_order(self) -> pulumi.Output[Optional[str]]:
         """
-        Set the order that Firewall Rules and Firewall Policies are evaluated. Needs to be either 'AFTER_CLASSIC_FIREWALL' or 'BEFORE_CLASSIC_FIREWALL' Default 'AFTER_CLASSIC_FIREWALL'
+        Set the order that Firewall Rules and Firewall Policies are evaluated.
         Default value is `AFTER_CLASSIC_FIREWALL`.
         Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """

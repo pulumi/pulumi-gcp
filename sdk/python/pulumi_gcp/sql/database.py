@@ -37,7 +37,7 @@ class DatabaseArgs:
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource
                to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
                deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
                values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -110,7 +110,7 @@ class DatabaseArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deletion policy for the database. Setting ABANDON allows the resource 
+        The deletion policy for the database. Setting ABANDON allows the resource
         to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
         deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
         values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -170,7 +170,7 @@ class _DatabaseState:
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource
                to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
                deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
                values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -236,7 +236,7 @@ class _DatabaseState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deletion policy for the database. Setting ABANDON allows the resource 
+        The deletion policy for the database. Setting ABANDON allows the resource
         to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
         deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
         values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -390,7 +390,7 @@ class Database(pulumi.CustomResource):
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource
                to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
                deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
                values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -547,7 +547,7 @@ class Database(pulumi.CustomResource):
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of `en_US.UTF8` at creation time.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource 
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource
                to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
                deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
                values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -603,7 +603,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        The deletion policy for the database. Setting ABANDON allows the resource 
+        The deletion policy for the database. Setting ABANDON allows the resource
         to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
         deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
         values are: "ABANDON", "DELETE". Defaults to "DELETE".

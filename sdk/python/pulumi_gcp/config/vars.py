@@ -221,6 +221,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dataLossPreventionCustomEndpoint')
 
     @property
+    def database_migration_service_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('databaseMigrationServiceCustomEndpoint')
+
+    @property
     def dataflow_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dataflowCustomEndpoint')
 
@@ -323,6 +327,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def gkehub_feature_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gkehubFeatureCustomEndpoint')
+
+    @property
+    def gkeonprem_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('gkeonpremCustomEndpoint')
 
     @property
     def google_partner_name(self) -> Optional[str]:

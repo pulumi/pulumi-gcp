@@ -48,7 +48,9 @@ class ServiceArgs:
                
                (Optional)
                Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input[str] name: Name of the Service.
@@ -192,7 +194,9 @@ class ServiceArgs:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         """
         return pulumi.get(self, "launch_stage")
@@ -302,7 +306,9 @@ class _ServiceState:
                Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[str] latest_created_revision: Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] latest_ready_revision: Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input[str] name: Name of the Service.
@@ -531,7 +537,9 @@ class _ServiceState:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         """
         return pulumi.get(self, "launch_stage")
@@ -900,6 +908,45 @@ class Service(pulumi.CustomResource):
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
             opts=pulumi.ResourceOptions(depends_on=[secret]))
         ```
+        ### Cloudrunv2 Service Multicontainer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            location="us-central1",
+            launch_stage="BETA",
+            ingress="INGRESS_TRAFFIC_ALL",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                containers=[
+                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                        name="hello-1",
+                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
+                            container_port=8080,
+                        )],
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        depends_ons=["hello-2"],
+                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                            name="empty-dir-volume",
+                            mount_path="/mnt",
+                        )],
+                    ),
+                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                        name="hello-2",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    ),
+                ],
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                    name="empty-dir-volume",
+                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArgs(
+                        medium="MEMORY",
+                        size_limit="256Mi",
+                    ),
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -934,7 +981,9 @@ class Service(pulumi.CustomResource):
                
                (Optional)
                Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input[str] name: Name of the Service.
@@ -1150,6 +1199,45 @@ class Service(pulumi.CustomResource):
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
             opts=pulumi.ResourceOptions(depends_on=[secret]))
         ```
+        ### Cloudrunv2 Service Multicontainer
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            location="us-central1",
+            launch_stage="BETA",
+            ingress="INGRESS_TRAFFIC_ALL",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                containers=[
+                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                        name="hello-1",
+                        ports=[gcp.cloudrunv2.ServiceTemplateContainerPortArgs(
+                            container_port=8080,
+                        )],
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        depends_ons=["hello-2"],
+                        volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                            name="empty-dir-volume",
+                            mount_path="/mnt",
+                        )],
+                    ),
+                    gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                        name="hello-2",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                    ),
+                ],
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                    name="empty-dir-volume",
+                    empty_dir=gcp.cloudrunv2.ServiceTemplateVolumeEmptyDirArgs(
+                        medium="MEMORY",
+                        size_limit="256Mi",
+                    ),
+                )],
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1292,7 +1380,9 @@ class Service(pulumi.CustomResource):
                Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[str] latest_created_revision: Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] latest_ready_revision: Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run service
         :param pulumi.Input[str] name: Name of the Service.
@@ -1454,7 +1544,9 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> pulumi.Output[str]:
         """
-        The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         """
         return pulumi.get(self, "launch_stage")

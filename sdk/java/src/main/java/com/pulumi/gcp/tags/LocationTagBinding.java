@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
  * 
  * ## Example Usage
- * ### Location Tag Binding Basic
+ * 
+ * To bind a tag to a Cloud Run instance:
  * ```java
  * package generated_program;
  * 
@@ -72,6 +73,61 @@ import javax.annotation.Nullable;
  *         var binding = new LocationTagBinding(&#34;binding&#34;, LocationTagBindingArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .parent(project.number().applyValue(number -&gt; String.format(&#34;//run.googleapis.com/projects/%s/locations/%s/services/%s&#34;, number,google_cloud_run_service.default().location(),google_cloud_run_service.default().name())))
+ *             .tagValue(value.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * To bind a (firewall) tag to compute instance:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.tags.LocationTagBinding;
+ * import com.pulumi.gcp.tags.LocationTagBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .orgId(&#34;123456789&#34;)
+ *             .projectId(&#34;project_id&#34;)
+ *             .build());
+ * 
+ *         var key = new TagKey(&#34;key&#34;, TagKeyArgs.builder()        
+ *             .description(&#34;For keyname resources.&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .shortName(&#34;keyname&#34;)
+ *             .build());
+ * 
+ *         var value = new TagValue(&#34;value&#34;, TagValueArgs.builder()        
+ *             .description(&#34;For valuename resources.&#34;)
+ *             .parent(key.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
+ *             .shortName(&#34;valuename&#34;)
+ *             .build());
+ * 
+ *         var binding = new LocationTagBinding(&#34;binding&#34;, LocationTagBindingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .parent(project.number().applyValue(number -&gt; String.format(&#34;//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s&#34;, number,google_compute_instance.instance().instance_id())))
  *             .tagValue(value.name().applyValue(name -&gt; String.format(&#34;tagValues/%s&#34;, name)))
  *             .build());
  * 

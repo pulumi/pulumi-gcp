@@ -37,7 +37,9 @@ class JobArgs:
                
                (Optional)
                KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
         :param pulumi.Input[str] name: Name of the Job.
@@ -131,7 +133,9 @@ class JobArgs:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         """
         return pulumi.get(self, "launch_stage")
@@ -216,7 +220,9 @@ class _JobState:
                KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
         :param pulumi.Input[str] name: Name of the Job.
@@ -388,7 +394,9 @@ class _JobState:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input[str]]:
         """
-        The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         """
         return pulumi.get(self, "launch_stage")
@@ -533,7 +541,6 @@ class Job(pulumi.CustomResource):
 
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
@@ -562,7 +569,6 @@ class Job(pulumi.CustomResource):
             deletion_protection=True)
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
@@ -626,7 +632,6 @@ class Job(pulumi.CustomResource):
             region="us-central1")
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
@@ -652,7 +657,6 @@ class Job(pulumi.CustomResource):
             ))
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
@@ -686,6 +690,35 @@ class Job(pulumi.CustomResource):
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
             opts=pulumi.ResourceOptions(depends_on=[secret]))
         ```
+        ### Cloudrunv2 Job Emptydir
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            location="us-central1",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                            name="empty-dir-volume",
+                            mount_path="/mnt",
+                        )],
+                    )],
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+                        name="empty-dir-volume",
+                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArgs(
+                            medium="MEMORY",
+                            size_limit="128Mi",
+                        ),
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -713,7 +746,9 @@ class Job(pulumi.CustomResource):
                
                (Optional)
                KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
         :param pulumi.Input[str] name: Name of the Job.
@@ -746,7 +781,6 @@ class Job(pulumi.CustomResource):
 
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
@@ -775,7 +809,6 @@ class Job(pulumi.CustomResource):
             deletion_protection=True)
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
@@ -839,7 +872,6 @@ class Job(pulumi.CustomResource):
             region="us-central1")
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
@@ -865,7 +897,6 @@ class Job(pulumi.CustomResource):
             ))
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
-            launch_stage="BETA",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
@@ -898,6 +929,35 @@ class Job(pulumi.CustomResource):
             role="roles/secretmanager.secretAccessor",
             member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
             opts=pulumi.ResourceOptions(depends_on=[secret]))
+        ```
+        ### Cloudrunv2 Job Emptydir
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            location="us-central1",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        volume_mounts=[gcp.cloudrunv2.JobTemplateTemplateContainerVolumeMountArgs(
+                            name="empty-dir-volume",
+                            mount_path="/mnt",
+                        )],
+                    )],
+                    volumes=[gcp.cloudrunv2.JobTemplateTemplateVolumeArgs(
+                        name="empty-dir-volume",
+                        empty_dir=gcp.cloudrunv2.JobTemplateTemplateVolumeEmptyDirArgs(
+                            medium="MEMORY",
+                            size_limit="128Mi",
+                        ),
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -1019,7 +1079,9 @@ class Job(pulumi.CustomResource):
                KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArgs']]]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
-        :param pulumi.Input[str] launch_stage: The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+               If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+               For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
                Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         :param pulumi.Input[str] location: The location of the cloud run job
         :param pulumi.Input[str] name: Name of the Job.
@@ -1142,7 +1204,9 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> pulumi.Output[str]:
         """
-        The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+        If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+        For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
         """
         return pulumi.get(self, "launch_stage")

@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetBackendServiceCdnPolicyResult
     {
+        public readonly ImmutableArray<Outputs.GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderResult> BypassCacheOnRequestHeaders;
         public readonly ImmutableArray<Outputs.GetBackendServiceCdnPolicyCacheKeyPolicyResult> CacheKeyPolicies;
         public readonly string CacheMode;
         public readonly int ClientTtl;
@@ -25,6 +26,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private GetBackendServiceCdnPolicyResult(
+            ImmutableArray<Outputs.GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderResult> bypassCacheOnRequestHeaders,
+
             ImmutableArray<Outputs.GetBackendServiceCdnPolicyCacheKeyPolicyResult> cacheKeyPolicies,
 
             string cacheMode,
@@ -43,6 +46,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int signedUrlCacheMaxAgeSec)
         {
+            BypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             CacheKeyPolicies = cacheKeyPolicies;
             CacheMode = cacheMode;
             ClientTtl = clientTtl;

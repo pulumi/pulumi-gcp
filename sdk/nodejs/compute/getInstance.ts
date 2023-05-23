@@ -85,6 +85,9 @@ export interface GetInstanceResult {
      * The CPU platform used by this instance.
      */
     readonly cpuPlatform: string;
+    /**
+     * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+     */
     readonly currentStatus: string;
     /**
      * Whether deletion protection is enabled on this instance.
@@ -96,7 +99,7 @@ export interface GetInstanceResult {
     readonly description: string;
     readonly desiredStatus: string;
     /**
-     * - Whether the instance has virtual displays enabled.
+     * Whether the instance has virtual displays enabled.
      */
     readonly enableDisplay: boolean;
     /**

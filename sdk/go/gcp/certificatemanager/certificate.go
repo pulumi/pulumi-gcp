@@ -96,7 +96,7 @@ import (
 //				return err
 //			}
 //			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-//				Description: pulumi.String("The default cert"),
+//				Description: pulumi.String("Global cert"),
 //				Scope:       pulumi.String("EDGE_CACHE"),
 //				Managed: &certificatemanager.CertificateManagedArgs{
 //					Domains: pulumi.StringArray{
@@ -117,6 +117,46 @@ import (
 //	}
 //
 // ```
+// ### Certificate Manager Self Managed Certificate Regional
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Description: pulumi.String("Regional cert"),
+//				Location:    pulumi.String("us-central1"),
+//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+//					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
+//					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -124,19 +164,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+//	$ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+//	$ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
 //
 // ```
 type Certificate struct {
@@ -146,6 +186,8 @@ type Certificate struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Set of label tags associated with the Certificate resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
 	// automatically, for as long as it's authorized to do so.
@@ -207,6 +249,8 @@ type certificateState struct {
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the Certificate resource.
 	Labels map[string]string `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location *string `pulumi:"location"`
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
 	// automatically, for as long as it's authorized to do so.
@@ -240,6 +284,8 @@ type CertificateState struct {
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the Certificate resource.
 	Labels pulumi.StringMapInput
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location pulumi.StringPtrInput
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
 	// automatically, for as long as it's authorized to do so.
@@ -277,6 +323,8 @@ type certificateArgs struct {
 	Description *string `pulumi:"description"`
 	// Set of label tags associated with the Certificate resource.
 	Labels map[string]string `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location *string `pulumi:"location"`
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
 	// automatically, for as long as it's authorized to do so.
@@ -311,6 +359,8 @@ type CertificateArgs struct {
 	Description pulumi.StringPtrInput
 	// Set of label tags associated with the Certificate resource.
 	Labels pulumi.StringMapInput
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location pulumi.StringPtrInput
 	// Configuration and state of a Managed Certificate.
 	// Certificate Manager provisions and renews Managed Certificates
 	// automatically, for as long as it's authorized to do so.
@@ -434,6 +484,11 @@ func (o CertificateOutput) Description() pulumi.StringPtrOutput {
 // Set of label tags associated with the Certificate resource.
 func (o CertificateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The Certificate Manager location. If not specified, "global" is used.
+func (o CertificateOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Configuration and state of a Managed Certificate.

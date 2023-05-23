@@ -415,6 +415,20 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enable);
     }
     /**
+     * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+     * 
+     */
+    @Export(name="enableIpv6", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableIpv6;
+
+    /**
+     * @return Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+     * 
+     */
+    public Output<Optional<Boolean>> enableIpv6() {
+        return Codegen.optional(this.enableIpv6);
+    }
+    /**
      * Name of the interface the BGP peer is associated with.
      * 
      */
@@ -443,6 +457,26 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ipAddress() {
         return this.ipAddress;
+    }
+    /**
+     * IPv6 address of the interface inside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    @Export(name="ipv6NexthopAddress", type=String.class, parameters={})
+    private Output<String> ipv6NexthopAddress;
+
+    /**
+     * @return IPv6 address of the interface inside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    public Output<String> ipv6NexthopAddress() {
+        return this.ipv6NexthopAddress;
     }
     /**
      * The resource that configures and manages this BGP peer.
@@ -513,6 +547,26 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> peerIpAddress() {
         return this.peerIpAddress;
+    }
+    /**
+     * IPv6 address of the BGP interface outside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    @Export(name="peerIpv6NexthopAddress", type=String.class, parameters={})
+    private Output<String> peerIpv6NexthopAddress;
+
+    /**
+     * @return IPv6 address of the BGP interface outside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     * 
+     */
+    public Output<String> peerIpv6NexthopAddress() {
+        return this.peerIpv6NexthopAddress;
     }
     /**
      * The ID of the project in which the resource belongs.

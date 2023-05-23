@@ -4034,6 +4034,8 @@ type AwsNodePoolConfig struct {
 	RootVolume *AwsNodePoolConfigRootVolume `pulumi:"rootVolume"`
 	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+	SpotConfig *AwsNodePoolConfigSpotConfig `pulumi:"spotConfig"`
 	// Optional. The SSH configuration.
 	SshConfig *AwsNodePoolConfigSshConfig `pulumi:"sshConfig"`
 	// Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
@@ -4074,6 +4076,8 @@ type AwsNodePoolConfigArgs struct {
 	RootVolume AwsNodePoolConfigRootVolumePtrInput `pulumi:"rootVolume"`
 	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+	// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+	SpotConfig AwsNodePoolConfigSpotConfigPtrInput `pulumi:"spotConfig"`
 	// Optional. The SSH configuration.
 	SshConfig AwsNodePoolConfigSshConfigPtrInput `pulumi:"sshConfig"`
 	// Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
@@ -4209,6 +4213,11 @@ func (o AwsNodePoolConfigOutput) RootVolume() AwsNodePoolConfigRootVolumePtrOutp
 // Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
 func (o AwsNodePoolConfigOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+func (o AwsNodePoolConfigOutput) SpotConfig() AwsNodePoolConfigSpotConfigPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigSpotConfig { return v.SpotConfig }).(AwsNodePoolConfigSpotConfigPtrOutput)
 }
 
 // Optional. The SSH configuration.
@@ -4348,6 +4357,16 @@ func (o AwsNodePoolConfigPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 		}
 		return v.SecurityGroupIds
 	}).(pulumi.StringArrayOutput)
+}
+
+// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+func (o AwsNodePoolConfigPtrOutput) SpotConfig() AwsNodePoolConfigSpotConfigPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigSpotConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SpotConfig
+	}).(AwsNodePoolConfigSpotConfigPtrOutput)
 }
 
 // Optional. The SSH configuration.
@@ -5158,6 +5177,143 @@ func (o AwsNodePoolConfigRootVolumePtrOutput) VolumeType() pulumi.StringPtrOutpu
 		}
 		return v.VolumeType
 	}).(pulumi.StringPtrOutput)
+}
+
+type AwsNodePoolConfigSpotConfig struct {
+	// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+	InstanceTypes []string `pulumi:"instanceTypes"`
+}
+
+// AwsNodePoolConfigSpotConfigInput is an input type that accepts AwsNodePoolConfigSpotConfigArgs and AwsNodePoolConfigSpotConfigOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigSpotConfigInput` via:
+//
+//	AwsNodePoolConfigSpotConfigArgs{...}
+type AwsNodePoolConfigSpotConfigInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigSpotConfigOutput() AwsNodePoolConfigSpotConfigOutput
+	ToAwsNodePoolConfigSpotConfigOutputWithContext(context.Context) AwsNodePoolConfigSpotConfigOutput
+}
+
+type AwsNodePoolConfigSpotConfigArgs struct {
+	// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
+}
+
+func (AwsNodePoolConfigSpotConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigSpotConfig)(nil)).Elem()
+}
+
+func (i AwsNodePoolConfigSpotConfigArgs) ToAwsNodePoolConfigSpotConfigOutput() AwsNodePoolConfigSpotConfigOutput {
+	return i.ToAwsNodePoolConfigSpotConfigOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigSpotConfigArgs) ToAwsNodePoolConfigSpotConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigSpotConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigSpotConfigOutput)
+}
+
+func (i AwsNodePoolConfigSpotConfigArgs) ToAwsNodePoolConfigSpotConfigPtrOutput() AwsNodePoolConfigSpotConfigPtrOutput {
+	return i.ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolConfigSpotConfigArgs) ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSpotConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigSpotConfigOutput).ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolConfigSpotConfigPtrInput is an input type that accepts AwsNodePoolConfigSpotConfigArgs, AwsNodePoolConfigSpotConfigPtr and AwsNodePoolConfigSpotConfigPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolConfigSpotConfigPtrInput` via:
+//
+//	        AwsNodePoolConfigSpotConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsNodePoolConfigSpotConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolConfigSpotConfigPtrOutput() AwsNodePoolConfigSpotConfigPtrOutput
+	ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(context.Context) AwsNodePoolConfigSpotConfigPtrOutput
+}
+
+type awsNodePoolConfigSpotConfigPtrType AwsNodePoolConfigSpotConfigArgs
+
+func AwsNodePoolConfigSpotConfigPtr(v *AwsNodePoolConfigSpotConfigArgs) AwsNodePoolConfigSpotConfigPtrInput {
+	return (*awsNodePoolConfigSpotConfigPtrType)(v)
+}
+
+func (*awsNodePoolConfigSpotConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigSpotConfig)(nil)).Elem()
+}
+
+func (i *awsNodePoolConfigSpotConfigPtrType) ToAwsNodePoolConfigSpotConfigPtrOutput() AwsNodePoolConfigSpotConfigPtrOutput {
+	return i.ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolConfigSpotConfigPtrType) ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSpotConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolConfigSpotConfigPtrOutput)
+}
+
+type AwsNodePoolConfigSpotConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigSpotConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolConfigSpotConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigSpotConfigOutput) ToAwsNodePoolConfigSpotConfigOutput() AwsNodePoolConfigSpotConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSpotConfigOutput) ToAwsNodePoolConfigSpotConfigOutputWithContext(ctx context.Context) AwsNodePoolConfigSpotConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSpotConfigOutput) ToAwsNodePoolConfigSpotConfigPtrOutput() AwsNodePoolConfigSpotConfigPtrOutput {
+	return o.ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolConfigSpotConfigOutput) ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSpotConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolConfigSpotConfig) *AwsNodePoolConfigSpotConfig {
+		return &v
+	}).(AwsNodePoolConfigSpotConfigPtrOutput)
+}
+
+// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+func (o AwsNodePoolConfigSpotConfigOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigSpotConfig) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
+}
+
+type AwsNodePoolConfigSpotConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolConfigSpotConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolConfigSpotConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolConfigSpotConfigPtrOutput) ToAwsNodePoolConfigSpotConfigPtrOutput() AwsNodePoolConfigSpotConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSpotConfigPtrOutput) ToAwsNodePoolConfigSpotConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolConfigSpotConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolConfigSpotConfigPtrOutput) Elem() AwsNodePoolConfigSpotConfigOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigSpotConfig) AwsNodePoolConfigSpotConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolConfigSpotConfig
+		return ret
+	}).(AwsNodePoolConfigSpotConfigOutput)
+}
+
+// List of AWS EC2 instance types for creating a spot node pool's nodes. The specified instance types must have the same number of CPUs and memory. You can use the Amazon EC2 Instance Selector tool (https://github.com/aws/amazon-ec2-instance-selector) to choose instance types with matching CPU and memory
+func (o AwsNodePoolConfigSpotConfigPtrOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigSpotConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 type AwsNodePoolConfigSshConfig struct {
@@ -8788,6 +8944,10 @@ type ClusterAddonsConfig struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig *ClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// )) The status of the GCSFuse CSI driver addon,
+	// which allows the usage of a gcs bucket as volumes.
+	// It is disabled by default; set `enabled = true` to enable.
+	GcsFuseCsiDriverConfig *ClusterAddonsConfigGcsFuseCsiDriverConfig `pulumi:"gcsFuseCsiDriverConfig"`
 	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 	GkeBackupAgentConfig *ClusterAddonsConfigGkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
@@ -8864,6 +9024,10 @@ type ClusterAddonsConfigArgs struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
+	// )) The status of the GCSFuse CSI driver addon,
+	// which allows the usage of a gcs bucket as volumes.
+	// It is disabled by default; set `enabled = true` to enable.
+	GcsFuseCsiDriverConfig ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput `pulumi:"gcsFuseCsiDriverConfig"`
 	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 	GkeBackupAgentConfig ClusterAddonsConfigGkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
@@ -9027,6 +9191,15 @@ func (o ClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsCo
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
 }
 
+// )) The status of the GCSFuse CSI driver addon,
+// which allows the usage of a gcs bucket as volumes.
+// It is disabled by default; set `enabled = true` to enable.
+func (o ClusterAddonsConfigOutput) GcsFuseCsiDriverConfig() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGcsFuseCsiDriverConfig {
+		return v.GcsFuseCsiDriverConfig
+	}).(ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput)
+}
+
 // .
 // The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 func (o ClusterAddonsConfigOutput) GkeBackupAgentConfig() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
@@ -9174,6 +9347,18 @@ func (o ClusterAddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() ClusterAddon
 		}
 		return v.GcpFilestoreCsiDriverConfig
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
+}
+
+// )) The status of the GCSFuse CSI driver addon,
+// which allows the usage of a gcs bucket as volumes.
+// It is disabled by default; set `enabled = true` to enable.
+func (o ClusterAddonsConfigPtrOutput) GcsFuseCsiDriverConfig() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigGcsFuseCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GcsFuseCsiDriverConfig
+	}).(ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput)
 }
 
 // .
@@ -10047,6 +10232,167 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Elem() ClusterA
 // not.
 func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcpFilestoreCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigGcsFuseCsiDriverConfig struct {
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
+	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
+	// not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigGcsFuseCsiDriverConfigInput is an input type that accepts ClusterAddonsConfigGcsFuseCsiDriverConfigArgs and ClusterAddonsConfigGcsFuseCsiDriverConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGcsFuseCsiDriverConfigInput` via:
+//
+//	ClusterAddonsConfigGcsFuseCsiDriverConfigArgs{...}
+type ClusterAddonsConfigGcsFuseCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGcsFuseCsiDriverConfigOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigOutput
+	ToClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigOutput
+}
+
+type ClusterAddonsConfigGcsFuseCsiDriverConfigArgs struct {
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
+	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
+	// not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ToClusterAddonsConfigGcsFuseCsiDriverConfigOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return i.ToClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ToClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcsFuseCsiDriverConfigOutput)
+}
+
+func (i ClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcsFuseCsiDriverConfigOutput).ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput is an input type that accepts ClusterAddonsConfigGcsFuseCsiDriverConfigArgs, ClusterAddonsConfigGcsFuseCsiDriverConfigPtr and ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigGcsFuseCsiDriverConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput
+	ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput
+}
+
+type clusterAddonsConfigGcsFuseCsiDriverConfigPtrType ClusterAddonsConfigGcsFuseCsiDriverConfigArgs
+
+func ClusterAddonsConfigGcsFuseCsiDriverConfigPtr(v *ClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput {
+	return (*clusterAddonsConfigGcsFuseCsiDriverConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigGcsFuseCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigGcsFuseCsiDriverConfigPtrType) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigGcsFuseCsiDriverConfigPtrType) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput)
+}
+
+type ClusterAddonsConfigGcsFuseCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToClusterAddonsConfigGcsFuseCsiDriverConfigOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return o.ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigGcsFuseCsiDriverConfig) *ClusterAddonsConfigGcsFuseCsiDriverConfig {
+		return &v
+	}).(ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput)
+}
+
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
+// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
+// not.
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigGcsFuseCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) ToClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Elem() ClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGcsFuseCsiDriverConfig) ClusterAddonsConfigGcsFuseCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigGcsFuseCsiDriverConfig
+		return ret
+	}).(ClusterAddonsConfigGcsFuseCsiDriverConfigOutput)
+}
+
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
+// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
+// not.
+func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigGcsFuseCsiDriverConfig) *bool {
 		if v == nil {
 			return nil
 		}
@@ -14178,7 +14524,7 @@ type ClusterIpAllocationPolicy struct {
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
 	// The IP Stack Type of the cluster.
 	// Default value is `IPV4`.
-	// Possible values are `IPV4` and `PV4_IPV6`.
+	// Possible values are `IPV4` and `IPV4_IPV6`.
 	StackType *string `pulumi:"stackType"`
 }
 
@@ -14218,7 +14564,7 @@ type ClusterIpAllocationPolicyArgs struct {
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
 	// The IP Stack Type of the cluster.
 	// Default value is `IPV4`.
-	// Possible values are `IPV4` and `PV4_IPV6`.
+	// Possible values are `IPV4` and `IPV4_IPV6`.
 	StackType pulumi.StringPtrInput `pulumi:"stackType"`
 }
 
@@ -14340,7 +14686,7 @@ func (o ClusterIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.Str
 
 // The IP Stack Type of the cluster.
 // Default value is `IPV4`.
-// Possible values are `IPV4` and `PV4_IPV6`.
+// Possible values are `IPV4` and `IPV4_IPV6`.
 func (o ClusterIpAllocationPolicyOutput) StackType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicy) *string { return v.StackType }).(pulumi.StringPtrOutput)
 }
@@ -14433,7 +14779,7 @@ func (o ClusterIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.
 
 // The IP Stack Type of the cluster.
 // Default value is `IPV4`.
-// Possible values are `IPV4` and `PV4_IPV6`.
+// Possible values are `IPV4` and `IPV4_IPV6`.
 func (o ClusterIpAllocationPolicyPtrOutput) StackType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *string {
 		if v == nil {
@@ -33366,6 +33712,7 @@ type GetClusterAddonsConfig struct {
 	DnsCacheConfigs                   []GetClusterAddonsConfigDnsCacheConfig                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfigs"`
 	GcpFilestoreCsiDriverConfigs      []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig      `pulumi:"gcpFilestoreCsiDriverConfigs"`
+	GcsFuseCsiDriverConfigs           []GetClusterAddonsConfigGcsFuseCsiDriverConfig           `pulumi:"gcsFuseCsiDriverConfigs"`
 	GkeBackupAgentConfigs             []GetClusterAddonsConfigGkeBackupAgentConfig             `pulumi:"gkeBackupAgentConfigs"`
 	HorizontalPodAutoscalings         []GetClusterAddonsConfigHorizontalPodAutoscaling         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                []GetClusterAddonsConfigHttpLoadBalancing                `pulumi:"httpLoadBalancings"`
@@ -33391,6 +33738,7 @@ type GetClusterAddonsConfigArgs struct {
 	DnsCacheConfigs                   GetClusterAddonsConfigDnsCacheConfigArrayInput                   `pulumi:"dnsCacheConfigs"`
 	GcePersistentDiskCsiDriverConfigs GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput `pulumi:"gcePersistentDiskCsiDriverConfigs"`
 	GcpFilestoreCsiDriverConfigs      GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput      `pulumi:"gcpFilestoreCsiDriverConfigs"`
+	GcsFuseCsiDriverConfigs           GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput           `pulumi:"gcsFuseCsiDriverConfigs"`
 	GkeBackupAgentConfigs             GetClusterAddonsConfigGkeBackupAgentConfigArrayInput             `pulumi:"gkeBackupAgentConfigs"`
 	HorizontalPodAutoscalings         GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput         `pulumi:"horizontalPodAutoscalings"`
 	HttpLoadBalancings                GetClusterAddonsConfigHttpLoadBalancingArrayInput                `pulumi:"httpLoadBalancings"`
@@ -33474,6 +33822,12 @@ func (o GetClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfigs() GetClusterA
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 		return v.GcpFilestoreCsiDriverConfigs
 	}).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput)
+}
+
+func (o GetClusterAddonsConfigOutput) GcsFuseCsiDriverConfigs() GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGcsFuseCsiDriverConfig {
+		return v.GcsFuseCsiDriverConfigs
+	}).(GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput)
 }
 
 func (o GetClusterAddonsConfigOutput) GkeBackupAgentConfigs() GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput {
@@ -34000,6 +34354,100 @@ func (o GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 		return vs[0].([]GetClusterAddonsConfigGcpFilestoreCsiDriverConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput)
+}
+
+type GetClusterAddonsConfigGcsFuseCsiDriverConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigGcsFuseCsiDriverConfigInput is an input type that accepts GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs and GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGcsFuseCsiDriverConfigInput` via:
+//
+//	GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs{...}
+type GetClusterAddonsConfigGcsFuseCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGcsFuseCsiDriverConfigOutput() GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput
+	ToGetClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(context.Context) GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput
+}
+
+type GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigOutput() GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return i.ToGetClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput)
+}
+
+// GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput is an input type that accepts GetClusterAddonsConfigGcsFuseCsiDriverConfigArray and GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigGcsFuseCsiDriverConfigArray{ GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs{...} }
+type GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput
+	ToGetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput
+}
+
+type GetClusterAddonsConfigGcsFuseCsiDriverConfigArray []GetClusterAddonsConfigGcsFuseCsiDriverConfigInput
+
+func (GetClusterAddonsConfigGcsFuseCsiDriverConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigGcsFuseCsiDriverConfigArray) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigGcsFuseCsiDriverConfigArray) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigOutput() GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigGcsFuseCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigGcsFuseCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput() GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGcsFuseCsiDriverConfig {
+		return vs[0].([]GetClusterAddonsConfigGcsFuseCsiDriverConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput)
 }
 
 type GetClusterAddonsConfigGkeBackupAgentConfig struct {
@@ -44832,6 +45280,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigProxyConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigProxyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigRootVolumeInput)(nil)).Elem(), AwsNodePoolConfigRootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigRootVolumePtrInput)(nil)).Elem(), AwsNodePoolConfigRootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSpotConfigInput)(nil)).Elem(), AwsNodePoolConfigSpotConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSpotConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigSpotConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSshConfigInput)(nil)).Elem(), AwsNodePoolConfigSshConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSshConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigSshConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigTaintInput)(nil)).Elem(), AwsNodePoolConfigTaintArgs{})
@@ -44892,6 +45342,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcsFuseCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigGcsFuseCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcsFuseCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfigInput)(nil)).Elem(), ClusterAddonsConfigGkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), ClusterAddonsConfigHorizontalPodAutoscalingArgs{})
@@ -45156,6 +45608,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcsFuseCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcsFuseCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfigInput)(nil)).Elem(), GetClusterAddonsConfigGkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGkeBackupAgentConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), GetClusterAddonsConfigHorizontalPodAutoscalingArgs{})
@@ -45424,6 +45878,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsNodePoolConfigProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigRootVolumeOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigRootVolumePtrOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigSpotConfigOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolConfigSpotConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigSshConfigOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigSshConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigTaintOutput{})
@@ -45484,6 +45940,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGcsFuseCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGkeBackupAgentConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingOutput{})
@@ -45748,6 +46206,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGcsFuseCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGkeBackupAgentConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingOutput{})

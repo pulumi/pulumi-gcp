@@ -63,6 +63,7 @@ export interface GetDiskArgs {
  * A collection of values returned by getDisk.
  */
 export interface GetDiskResult {
+    readonly asyncPrimaryDisks: outputs.compute.GetDiskAsyncPrimaryDisk[];
     /**
      * Creation timestamp in RFC3339 text format.
      */

@@ -10,8 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.alloydb.BackupArgs;
 import com.pulumi.gcp.alloydb.inputs.BackupState;
+import com.pulumi.gcp.alloydb.outputs.BackupEncryptionConfig;
+import com.pulumi.gcp.alloydb.outputs.BackupEncryptionInfo;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -253,6 +256,38 @@ public class Backup extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionConfig", type=BackupEncryptionConfig.class, parameters={})
+    private Output</* @Nullable */ BackupEncryptionConfig> encryptionConfig;
+
+    /**
+     * @return EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackupEncryptionConfig>> encryptionConfig() {
+        return Codegen.optional(this.encryptionConfig);
+    }
+    /**
+     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="encryptionInfos", type=List.class, parameters={BackupEncryptionInfo.class})
+    private Output<List<BackupEncryptionInfo>> encryptionInfos;
+
+    /**
+     * @return EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<BackupEncryptionInfo>> encryptionInfos() {
+        return this.encryptionInfos;
     }
     /**
      * A hash of the resource.

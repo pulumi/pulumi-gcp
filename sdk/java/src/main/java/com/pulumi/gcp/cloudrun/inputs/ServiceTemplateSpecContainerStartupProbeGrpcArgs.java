@@ -18,6 +18,7 @@ public final class ServiceTemplateSpecContainerStartupProbeGrpcArgs extends com.
 
     /**
      * Port number to access on the container. Number must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     @Import(name="port")
@@ -25,6 +26,7 @@ public final class ServiceTemplateSpecContainerStartupProbeGrpcArgs extends com.
 
     /**
      * @return Port number to access on the container. Number must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -77,6 +79,7 @@ public final class ServiceTemplateSpecContainerStartupProbeGrpcArgs extends com.
 
         /**
          * @param port Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          * 
          * @return builder
          * 
@@ -88,6 +91,7 @@ public final class ServiceTemplateSpecContainerStartupProbeGrpcArgs extends com.
 
         /**
          * @param port Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
          * 
          * @return builder
          * 

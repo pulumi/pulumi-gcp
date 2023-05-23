@@ -5587,6 +5587,2044 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) StripQu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type EndpointPolicyEndpointMatcher struct {
+	// The matcher is based on node metadata presented by xDS clients.
+	// Structure is documented below.
+	MetadataLabelMatcher EndpointPolicyEndpointMatcherMetadataLabelMatcher `pulumi:"metadataLabelMatcher"`
+}
+
+// EndpointPolicyEndpointMatcherInput is an input type that accepts EndpointPolicyEndpointMatcherArgs and EndpointPolicyEndpointMatcherOutput values.
+// You can construct a concrete instance of `EndpointPolicyEndpointMatcherInput` via:
+//
+//	EndpointPolicyEndpointMatcherArgs{...}
+type EndpointPolicyEndpointMatcherInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyEndpointMatcherOutput() EndpointPolicyEndpointMatcherOutput
+	ToEndpointPolicyEndpointMatcherOutputWithContext(context.Context) EndpointPolicyEndpointMatcherOutput
+}
+
+type EndpointPolicyEndpointMatcherArgs struct {
+	// The matcher is based on node metadata presented by xDS clients.
+	// Structure is documented below.
+	MetadataLabelMatcher EndpointPolicyEndpointMatcherMetadataLabelMatcherInput `pulumi:"metadataLabelMatcher"`
+}
+
+func (EndpointPolicyEndpointMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyEndpointMatcher)(nil)).Elem()
+}
+
+func (i EndpointPolicyEndpointMatcherArgs) ToEndpointPolicyEndpointMatcherOutput() EndpointPolicyEndpointMatcherOutput {
+	return i.ToEndpointPolicyEndpointMatcherOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyEndpointMatcherArgs) ToEndpointPolicyEndpointMatcherOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherOutput)
+}
+
+func (i EndpointPolicyEndpointMatcherArgs) ToEndpointPolicyEndpointMatcherPtrOutput() EndpointPolicyEndpointMatcherPtrOutput {
+	return i.ToEndpointPolicyEndpointMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyEndpointMatcherArgs) ToEndpointPolicyEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherOutput).ToEndpointPolicyEndpointMatcherPtrOutputWithContext(ctx)
+}
+
+// EndpointPolicyEndpointMatcherPtrInput is an input type that accepts EndpointPolicyEndpointMatcherArgs, EndpointPolicyEndpointMatcherPtr and EndpointPolicyEndpointMatcherPtrOutput values.
+// You can construct a concrete instance of `EndpointPolicyEndpointMatcherPtrInput` via:
+//
+//	        EndpointPolicyEndpointMatcherArgs{...}
+//
+//	or:
+//
+//	        nil
+type EndpointPolicyEndpointMatcherPtrInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyEndpointMatcherPtrOutput() EndpointPolicyEndpointMatcherPtrOutput
+	ToEndpointPolicyEndpointMatcherPtrOutputWithContext(context.Context) EndpointPolicyEndpointMatcherPtrOutput
+}
+
+type endpointPolicyEndpointMatcherPtrType EndpointPolicyEndpointMatcherArgs
+
+func EndpointPolicyEndpointMatcherPtr(v *EndpointPolicyEndpointMatcherArgs) EndpointPolicyEndpointMatcherPtrInput {
+	return (*endpointPolicyEndpointMatcherPtrType)(v)
+}
+
+func (*endpointPolicyEndpointMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPolicyEndpointMatcher)(nil)).Elem()
+}
+
+func (i *endpointPolicyEndpointMatcherPtrType) ToEndpointPolicyEndpointMatcherPtrOutput() EndpointPolicyEndpointMatcherPtrOutput {
+	return i.ToEndpointPolicyEndpointMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointPolicyEndpointMatcherPtrType) ToEndpointPolicyEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherPtrOutput)
+}
+
+type EndpointPolicyEndpointMatcherOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyEndpointMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyEndpointMatcher)(nil)).Elem()
+}
+
+func (o EndpointPolicyEndpointMatcherOutput) ToEndpointPolicyEndpointMatcherOutput() EndpointPolicyEndpointMatcherOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherOutput) ToEndpointPolicyEndpointMatcherOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherOutput) ToEndpointPolicyEndpointMatcherPtrOutput() EndpointPolicyEndpointMatcherPtrOutput {
+	return o.ToEndpointPolicyEndpointMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointPolicyEndpointMatcherOutput) ToEndpointPolicyEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointPolicyEndpointMatcher) *EndpointPolicyEndpointMatcher {
+		return &v
+	}).(EndpointPolicyEndpointMatcherPtrOutput)
+}
+
+// The matcher is based on node metadata presented by xDS clients.
+// Structure is documented below.
+func (o EndpointPolicyEndpointMatcherOutput) MetadataLabelMatcher() EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
+	return o.ApplyT(func(v EndpointPolicyEndpointMatcher) EndpointPolicyEndpointMatcherMetadataLabelMatcher {
+		return v.MetadataLabelMatcher
+	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput)
+}
+
+type EndpointPolicyEndpointMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyEndpointMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPolicyEndpointMatcher)(nil)).Elem()
+}
+
+func (o EndpointPolicyEndpointMatcherPtrOutput) ToEndpointPolicyEndpointMatcherPtrOutput() EndpointPolicyEndpointMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherPtrOutput) ToEndpointPolicyEndpointMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherPtrOutput) Elem() EndpointPolicyEndpointMatcherOutput {
+	return o.ApplyT(func(v *EndpointPolicyEndpointMatcher) EndpointPolicyEndpointMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointPolicyEndpointMatcher
+		return ret
+	}).(EndpointPolicyEndpointMatcherOutput)
+}
+
+// The matcher is based on node metadata presented by xDS clients.
+// Structure is documented below.
+func (o EndpointPolicyEndpointMatcherPtrOutput) MetadataLabelMatcher() EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o.ApplyT(func(v *EndpointPolicyEndpointMatcher) *EndpointPolicyEndpointMatcherMetadataLabelMatcher {
+		if v == nil {
+			return nil
+		}
+		return &v.MetadataLabelMatcher
+	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcher struct {
+	// Specifies how matching should be done.
+	// Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+	MetadataLabelMatchCriteria string `pulumi:"metadataLabelMatchCriteria"`
+	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+	// Structure is documented below.
+	MetadataLabels []EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel `pulumi:"metadataLabels"`
+}
+
+// EndpointPolicyEndpointMatcherMetadataLabelMatcherInput is an input type that accepts EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs and EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput values.
+// You can construct a concrete instance of `EndpointPolicyEndpointMatcherMetadataLabelMatcherInput` via:
+//
+//	EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs{...}
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutputWithContext(context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs struct {
+	// Specifies how matching should be done.
+	// Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+	MetadataLabelMatchCriteria pulumi.StringInput `pulumi:"metadataLabelMatchCriteria"`
+	// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+	// Structure is documented below.
+	MetadataLabels EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayInput `pulumi:"metadataLabels"`
+}
+
+func (EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
+	return i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput)
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput).ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx)
+}
+
+// EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrInput is an input type that accepts EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs, EndpointPolicyEndpointMatcherMetadataLabelMatcherPtr and EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput values.
+// You can construct a concrete instance of `EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrInput` via:
+//
+//	        EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs{...}
+//
+//	or:
+//
+//	        nil
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput
+}
+
+type endpointPolicyEndpointMatcherMetadataLabelMatcherPtrType EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs
+
+func EndpointPolicyEndpointMatcherMetadataLabelMatcherPtr(v *EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs) EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrInput {
+	return (*endpointPolicyEndpointMatcherMetadataLabelMatcherPtrType)(v)
+}
+
+func (*endpointPolicyEndpointMatcherMetadataLabelMatcherPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPolicyEndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (i *endpointPolicyEndpointMatcherMetadataLabelMatcherPtrType) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointPolicyEndpointMatcherMetadataLabelMatcherPtrType) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointPolicyEndpointMatcherMetadataLabelMatcher) *EndpointPolicyEndpointMatcherMetadataLabelMatcher {
+		return &v
+	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput)
+}
+
+// Specifies how matching should be done.
+// Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) MetadataLabelMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointPolicyEndpointMatcherMetadataLabelMatcher) string { return v.MetadataLabelMatchCriteria }).(pulumi.StringOutput)
+}
+
+// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+// Structure is documented below.
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput) MetadataLabels() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput {
+	return o.ApplyT(func(v EndpointPolicyEndpointMatcherMetadataLabelMatcher) []EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel {
+		return v.MetadataLabels
+	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput)
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPolicyEndpointMatcherMetadataLabelMatcher)(nil)).Elem()
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) Elem() EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput {
+	return o.ApplyT(func(v *EndpointPolicyEndpointMatcherMetadataLabelMatcher) EndpointPolicyEndpointMatcherMetadataLabelMatcher {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointPolicyEndpointMatcherMetadataLabelMatcher
+		return ret
+	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput)
+}
+
+// Specifies how matching should be done.
+// Possible values are: `MATCH_ANY`, `MATCH_ALL`.
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) MetadataLabelMatchCriteria() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EndpointPolicyEndpointMatcherMetadataLabelMatcher) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MetadataLabelMatchCriteria
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
+// Structure is documented below.
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput) MetadataLabels() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput {
+	return o.ApplyT(func(v *EndpointPolicyEndpointMatcherMetadataLabelMatcher) []EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataLabels
+	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput)
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel struct {
+	// Required. Label name presented as key in xDS Node Metadata.
+	LabelName string `pulumi:"labelName"`
+	// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	//
+	// ***
+	LabelValue string `pulumi:"labelValue"`
+}
+
+// EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelInput is an input type that accepts EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs and EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput values.
+// You can construct a concrete instance of `EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelInput` via:
+//
+//	EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs{...}
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutputWithContext(context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs struct {
+	// Required. Label name presented as key in xDS Node Metadata.
+	LabelName pulumi.StringInput `pulumi:"labelName"`
+	// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	//
+	// ***
+	LabelValue pulumi.StringInput `pulumi:"labelValue"`
+}
+
+func (EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel)(nil)).Elem()
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput {
+	return i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput)
+}
+
+// EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayInput is an input type that accepts EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray and EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput values.
+// You can construct a concrete instance of `EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayInput` via:
+//
+//	EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray{ EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs{...} }
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput
+	ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutputWithContext(context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray []EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelInput
+
+func (EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel)(nil)).Elem()
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput {
+	return i.ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput)
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel)(nil)).Elem()
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput {
+	return o
+}
+
+// Required. Label name presented as key in xDS Node Metadata.
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) LabelName() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel) string { return v.LabelName }).(pulumi.StringOutput)
+}
+
+// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+//
+// ***
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) LabelValue() pulumi.StringOutput {
+	return o.ApplyT(func(v EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel) string { return v.LabelValue }).(pulumi.StringOutput)
+}
+
+type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel)(nil)).Elem()
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput() EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput) ToEndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutputWithContext(ctx context.Context) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput {
+	return o
+}
+
+func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput) Index(i pulumi.IntInput) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel {
+		return vs[0].([]EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel)[vs[1].(int)]
+	}).(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput)
+}
+
+type EndpointPolicyTrafficPortSelector struct {
+	// List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+	Ports []string `pulumi:"ports"`
+}
+
+// EndpointPolicyTrafficPortSelectorInput is an input type that accepts EndpointPolicyTrafficPortSelectorArgs and EndpointPolicyTrafficPortSelectorOutput values.
+// You can construct a concrete instance of `EndpointPolicyTrafficPortSelectorInput` via:
+//
+//	EndpointPolicyTrafficPortSelectorArgs{...}
+type EndpointPolicyTrafficPortSelectorInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyTrafficPortSelectorOutput() EndpointPolicyTrafficPortSelectorOutput
+	ToEndpointPolicyTrafficPortSelectorOutputWithContext(context.Context) EndpointPolicyTrafficPortSelectorOutput
+}
+
+type EndpointPolicyTrafficPortSelectorArgs struct {
+	// List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (EndpointPolicyTrafficPortSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyTrafficPortSelector)(nil)).Elem()
+}
+
+func (i EndpointPolicyTrafficPortSelectorArgs) ToEndpointPolicyTrafficPortSelectorOutput() EndpointPolicyTrafficPortSelectorOutput {
+	return i.ToEndpointPolicyTrafficPortSelectorOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyTrafficPortSelectorArgs) ToEndpointPolicyTrafficPortSelectorOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyTrafficPortSelectorOutput)
+}
+
+func (i EndpointPolicyTrafficPortSelectorArgs) ToEndpointPolicyTrafficPortSelectorPtrOutput() EndpointPolicyTrafficPortSelectorPtrOutput {
+	return i.ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i EndpointPolicyTrafficPortSelectorArgs) ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyTrafficPortSelectorOutput).ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(ctx)
+}
+
+// EndpointPolicyTrafficPortSelectorPtrInput is an input type that accepts EndpointPolicyTrafficPortSelectorArgs, EndpointPolicyTrafficPortSelectorPtr and EndpointPolicyTrafficPortSelectorPtrOutput values.
+// You can construct a concrete instance of `EndpointPolicyTrafficPortSelectorPtrInput` via:
+//
+//	        EndpointPolicyTrafficPortSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type EndpointPolicyTrafficPortSelectorPtrInput interface {
+	pulumi.Input
+
+	ToEndpointPolicyTrafficPortSelectorPtrOutput() EndpointPolicyTrafficPortSelectorPtrOutput
+	ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(context.Context) EndpointPolicyTrafficPortSelectorPtrOutput
+}
+
+type endpointPolicyTrafficPortSelectorPtrType EndpointPolicyTrafficPortSelectorArgs
+
+func EndpointPolicyTrafficPortSelectorPtr(v *EndpointPolicyTrafficPortSelectorArgs) EndpointPolicyTrafficPortSelectorPtrInput {
+	return (*endpointPolicyTrafficPortSelectorPtrType)(v)
+}
+
+func (*endpointPolicyTrafficPortSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPolicyTrafficPortSelector)(nil)).Elem()
+}
+
+func (i *endpointPolicyTrafficPortSelectorPtrType) ToEndpointPolicyTrafficPortSelectorPtrOutput() EndpointPolicyTrafficPortSelectorPtrOutput {
+	return i.ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *endpointPolicyTrafficPortSelectorPtrType) ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointPolicyTrafficPortSelectorPtrOutput)
+}
+
+type EndpointPolicyTrafficPortSelectorOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyTrafficPortSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointPolicyTrafficPortSelector)(nil)).Elem()
+}
+
+func (o EndpointPolicyTrafficPortSelectorOutput) ToEndpointPolicyTrafficPortSelectorOutput() EndpointPolicyTrafficPortSelectorOutput {
+	return o
+}
+
+func (o EndpointPolicyTrafficPortSelectorOutput) ToEndpointPolicyTrafficPortSelectorOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorOutput {
+	return o
+}
+
+func (o EndpointPolicyTrafficPortSelectorOutput) ToEndpointPolicyTrafficPortSelectorPtrOutput() EndpointPolicyTrafficPortSelectorPtrOutput {
+	return o.ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointPolicyTrafficPortSelectorOutput) ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointPolicyTrafficPortSelector) *EndpointPolicyTrafficPortSelector {
+		return &v
+	}).(EndpointPolicyTrafficPortSelectorPtrOutput)
+}
+
+// List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+func (o EndpointPolicyTrafficPortSelectorOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EndpointPolicyTrafficPortSelector) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type EndpointPolicyTrafficPortSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointPolicyTrafficPortSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EndpointPolicyTrafficPortSelector)(nil)).Elem()
+}
+
+func (o EndpointPolicyTrafficPortSelectorPtrOutput) ToEndpointPolicyTrafficPortSelectorPtrOutput() EndpointPolicyTrafficPortSelectorPtrOutput {
+	return o
+}
+
+func (o EndpointPolicyTrafficPortSelectorPtrOutput) ToEndpointPolicyTrafficPortSelectorPtrOutputWithContext(ctx context.Context) EndpointPolicyTrafficPortSelectorPtrOutput {
+	return o
+}
+
+func (o EndpointPolicyTrafficPortSelectorPtrOutput) Elem() EndpointPolicyTrafficPortSelectorOutput {
+	return o.ApplyT(func(v *EndpointPolicyTrafficPortSelector) EndpointPolicyTrafficPortSelector {
+		if v != nil {
+			return *v
+		}
+		var ret EndpointPolicyTrafficPortSelector
+		return ret
+	}).(EndpointPolicyTrafficPortSelectorOutput)
+}
+
+// List of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected.
+func (o EndpointPolicyTrafficPortSelectorPtrOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EndpointPolicyTrafficPortSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ports
+	}).(pulumi.StringArrayOutput)
+}
+
+type GrpcRouteRule struct {
+	// Required. A detailed rule defining how to route traffic.
+	// Structure is documented below.
+	Action *GrpcRouteRuleAction `pulumi:"action"`
+	// Matches define conditions used for matching the rule against incoming gRPC requests.
+	// Structure is documented below.
+	Matches []GrpcRouteRuleMatch `pulumi:"matches"`
+}
+
+// GrpcRouteRuleInput is an input type that accepts GrpcRouteRuleArgs and GrpcRouteRuleOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleInput` via:
+//
+//	GrpcRouteRuleArgs{...}
+type GrpcRouteRuleInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleOutput() GrpcRouteRuleOutput
+	ToGrpcRouteRuleOutputWithContext(context.Context) GrpcRouteRuleOutput
+}
+
+type GrpcRouteRuleArgs struct {
+	// Required. A detailed rule defining how to route traffic.
+	// Structure is documented below.
+	Action GrpcRouteRuleActionPtrInput `pulumi:"action"`
+	// Matches define conditions used for matching the rule against incoming gRPC requests.
+	// Structure is documented below.
+	Matches GrpcRouteRuleMatchArrayInput `pulumi:"matches"`
+}
+
+func (GrpcRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRule)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleArgs) ToGrpcRouteRuleOutput() GrpcRouteRuleOutput {
+	return i.ToGrpcRouteRuleOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleArgs) ToGrpcRouteRuleOutputWithContext(ctx context.Context) GrpcRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleOutput)
+}
+
+// GrpcRouteRuleArrayInput is an input type that accepts GrpcRouteRuleArray and GrpcRouteRuleArrayOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleArrayInput` via:
+//
+//	GrpcRouteRuleArray{ GrpcRouteRuleArgs{...} }
+type GrpcRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleArrayOutput() GrpcRouteRuleArrayOutput
+	ToGrpcRouteRuleArrayOutputWithContext(context.Context) GrpcRouteRuleArrayOutput
+}
+
+type GrpcRouteRuleArray []GrpcRouteRuleInput
+
+func (GrpcRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRule)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleArray) ToGrpcRouteRuleArrayOutput() GrpcRouteRuleArrayOutput {
+	return i.ToGrpcRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleArray) ToGrpcRouteRuleArrayOutputWithContext(ctx context.Context) GrpcRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleArrayOutput)
+}
+
+type GrpcRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRule)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleOutput) ToGrpcRouteRuleOutput() GrpcRouteRuleOutput {
+	return o
+}
+
+func (o GrpcRouteRuleOutput) ToGrpcRouteRuleOutputWithContext(ctx context.Context) GrpcRouteRuleOutput {
+	return o
+}
+
+// Required. A detailed rule defining how to route traffic.
+// Structure is documented below.
+func (o GrpcRouteRuleOutput) Action() GrpcRouteRuleActionPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRule) *GrpcRouteRuleAction { return v.Action }).(GrpcRouteRuleActionPtrOutput)
+}
+
+// Matches define conditions used for matching the rule against incoming gRPC requests.
+// Structure is documented below.
+func (o GrpcRouteRuleOutput) Matches() GrpcRouteRuleMatchArrayOutput {
+	return o.ApplyT(func(v GrpcRouteRule) []GrpcRouteRuleMatch { return v.Matches }).(GrpcRouteRuleMatchArrayOutput)
+}
+
+type GrpcRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRule)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleArrayOutput) ToGrpcRouteRuleArrayOutput() GrpcRouteRuleArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleArrayOutput) ToGrpcRouteRuleArrayOutputWithContext(ctx context.Context) GrpcRouteRuleArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrpcRouteRule {
+		return vs[0].([]GrpcRouteRule)[vs[1].(int)]
+	}).(GrpcRouteRuleOutput)
+}
+
+type GrpcRouteRuleAction struct {
+	// The destination to which traffic should be forwarded.
+	// Structure is documented below.
+	Destinations []GrpcRouteRuleActionDestination `pulumi:"destinations"`
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+	// Structure is documented below.
+	FaultInjectionPolicy *GrpcRouteRuleActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy *GrpcRouteRuleActionRetryPolicy `pulumi:"retryPolicy"`
+	// Specifies the timeout for selected route.
+	Timeout *string `pulumi:"timeout"`
+}
+
+// GrpcRouteRuleActionInput is an input type that accepts GrpcRouteRuleActionArgs and GrpcRouteRuleActionOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionInput` via:
+//
+//	GrpcRouteRuleActionArgs{...}
+type GrpcRouteRuleActionInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionOutput() GrpcRouteRuleActionOutput
+	ToGrpcRouteRuleActionOutputWithContext(context.Context) GrpcRouteRuleActionOutput
+}
+
+type GrpcRouteRuleActionArgs struct {
+	// The destination to which traffic should be forwarded.
+	// Structure is documented below.
+	Destinations GrpcRouteRuleActionDestinationArrayInput `pulumi:"destinations"`
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+	// Structure is documented below.
+	FaultInjectionPolicy GrpcRouteRuleActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy GrpcRouteRuleActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Specifies the timeout for selected route.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+}
+
+func (GrpcRouteRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleAction)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleActionArgs) ToGrpcRouteRuleActionOutput() GrpcRouteRuleActionOutput {
+	return i.ToGrpcRouteRuleActionOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionArgs) ToGrpcRouteRuleActionOutputWithContext(ctx context.Context) GrpcRouteRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionOutput)
+}
+
+func (i GrpcRouteRuleActionArgs) ToGrpcRouteRuleActionPtrOutput() GrpcRouteRuleActionPtrOutput {
+	return i.ToGrpcRouteRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionArgs) ToGrpcRouteRuleActionPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionOutput).ToGrpcRouteRuleActionPtrOutputWithContext(ctx)
+}
+
+// GrpcRouteRuleActionPtrInput is an input type that accepts GrpcRouteRuleActionArgs, GrpcRouteRuleActionPtr and GrpcRouteRuleActionPtrOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionPtrInput` via:
+//
+//	        GrpcRouteRuleActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrpcRouteRuleActionPtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionPtrOutput() GrpcRouteRuleActionPtrOutput
+	ToGrpcRouteRuleActionPtrOutputWithContext(context.Context) GrpcRouteRuleActionPtrOutput
+}
+
+type grpcRouteRuleActionPtrType GrpcRouteRuleActionArgs
+
+func GrpcRouteRuleActionPtr(v *GrpcRouteRuleActionArgs) GrpcRouteRuleActionPtrInput {
+	return (*grpcRouteRuleActionPtrType)(v)
+}
+
+func (*grpcRouteRuleActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleAction)(nil)).Elem()
+}
+
+func (i *grpcRouteRuleActionPtrType) ToGrpcRouteRuleActionPtrOutput() GrpcRouteRuleActionPtrOutput {
+	return i.ToGrpcRouteRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcRouteRuleActionPtrType) ToGrpcRouteRuleActionPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionPtrOutput)
+}
+
+type GrpcRouteRuleActionOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleAction)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionOutput) ToGrpcRouteRuleActionOutput() GrpcRouteRuleActionOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionOutput) ToGrpcRouteRuleActionOutputWithContext(ctx context.Context) GrpcRouteRuleActionOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionOutput) ToGrpcRouteRuleActionPtrOutput() GrpcRouteRuleActionPtrOutput {
+	return o.ToGrpcRouteRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteRuleActionOutput) ToGrpcRouteRuleActionPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleAction) *GrpcRouteRuleAction {
+		return &v
+	}).(GrpcRouteRuleActionPtrOutput)
+}
+
+// The destination to which traffic should be forwarded.
+// Structure is documented below.
+func (o GrpcRouteRuleActionOutput) Destinations() GrpcRouteRuleActionDestinationArrayOutput {
+	return o.ApplyT(func(v GrpcRouteRuleAction) []GrpcRouteRuleActionDestination { return v.Destinations }).(GrpcRouteRuleActionDestinationArrayOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+// Structure is documented below.
+func (o GrpcRouteRuleActionOutput) FaultInjectionPolicy() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleAction) *GrpcRouteRuleActionFaultInjectionPolicy { return v.FaultInjectionPolicy }).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o GrpcRouteRuleActionOutput) RetryPolicy() GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleAction) *GrpcRouteRuleActionRetryPolicy { return v.RetryPolicy }).(GrpcRouteRuleActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for selected route.
+func (o GrpcRouteRuleActionOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleAction) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+type GrpcRouteRuleActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleAction)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionPtrOutput) ToGrpcRouteRuleActionPtrOutput() GrpcRouteRuleActionPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionPtrOutput) ToGrpcRouteRuleActionPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionPtrOutput) Elem() GrpcRouteRuleActionOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleAction) GrpcRouteRuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteRuleAction
+		return ret
+	}).(GrpcRouteRuleActionOutput)
+}
+
+// The destination to which traffic should be forwarded.
+// Structure is documented below.
+func (o GrpcRouteRuleActionPtrOutput) Destinations() GrpcRouteRuleActionDestinationArrayOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleAction) []GrpcRouteRuleActionDestination {
+		if v == nil {
+			return nil
+		}
+		return v.Destinations
+	}).(GrpcRouteRuleActionDestinationArrayOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+// Structure is documented below.
+func (o GrpcRouteRuleActionPtrOutput) FaultInjectionPolicy() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleAction) *GrpcRouteRuleActionFaultInjectionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.FaultInjectionPolicy
+	}).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o GrpcRouteRuleActionPtrOutput) RetryPolicy() GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleAction) *GrpcRouteRuleActionRetryPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RetryPolicy
+	}).(GrpcRouteRuleActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for selected route.
+func (o GrpcRouteRuleActionPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type GrpcRouteRuleActionDestination struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName *string `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+	Weight *int `pulumi:"weight"`
+}
+
+// GrpcRouteRuleActionDestinationInput is an input type that accepts GrpcRouteRuleActionDestinationArgs and GrpcRouteRuleActionDestinationOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionDestinationInput` via:
+//
+//	GrpcRouteRuleActionDestinationArgs{...}
+type GrpcRouteRuleActionDestinationInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionDestinationOutput() GrpcRouteRuleActionDestinationOutput
+	ToGrpcRouteRuleActionDestinationOutputWithContext(context.Context) GrpcRouteRuleActionDestinationOutput
+}
+
+type GrpcRouteRuleActionDestinationArgs struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (GrpcRouteRuleActionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleActionDestinationArgs) ToGrpcRouteRuleActionDestinationOutput() GrpcRouteRuleActionDestinationOutput {
+	return i.ToGrpcRouteRuleActionDestinationOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionDestinationArgs) ToGrpcRouteRuleActionDestinationOutputWithContext(ctx context.Context) GrpcRouteRuleActionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionDestinationOutput)
+}
+
+// GrpcRouteRuleActionDestinationArrayInput is an input type that accepts GrpcRouteRuleActionDestinationArray and GrpcRouteRuleActionDestinationArrayOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionDestinationArrayInput` via:
+//
+//	GrpcRouteRuleActionDestinationArray{ GrpcRouteRuleActionDestinationArgs{...} }
+type GrpcRouteRuleActionDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionDestinationArrayOutput() GrpcRouteRuleActionDestinationArrayOutput
+	ToGrpcRouteRuleActionDestinationArrayOutputWithContext(context.Context) GrpcRouteRuleActionDestinationArrayOutput
+}
+
+type GrpcRouteRuleActionDestinationArray []GrpcRouteRuleActionDestinationInput
+
+func (GrpcRouteRuleActionDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleActionDestinationArray) ToGrpcRouteRuleActionDestinationArrayOutput() GrpcRouteRuleActionDestinationArrayOutput {
+	return i.ToGrpcRouteRuleActionDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionDestinationArray) ToGrpcRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) GrpcRouteRuleActionDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionDestinationArrayOutput)
+}
+
+type GrpcRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionDestinationOutput) ToGrpcRouteRuleActionDestinationOutput() GrpcRouteRuleActionDestinationOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionDestinationOutput) ToGrpcRouteRuleActionDestinationOutputWithContext(ctx context.Context) GrpcRouteRuleActionDestinationOutput {
+	return o
+}
+
+// The URL of a BackendService to route traffic to.
+func (o GrpcRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+func (o GrpcRouteRuleActionDestinationOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type GrpcRouteRuleActionDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionDestinationArrayOutput) ToGrpcRouteRuleActionDestinationArrayOutput() GrpcRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionDestinationArrayOutput) ToGrpcRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) GrpcRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleActionDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrpcRouteRuleActionDestination {
+		return vs[0].([]GrpcRouteRuleActionDestination)[vs[1].(int)]
+	}).(GrpcRouteRuleActionDestinationOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicy struct {
+	// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Abort *GrpcRouteRuleActionFaultInjectionPolicyAbort `pulumi:"abort"`
+	// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Delay *GrpcRouteRuleActionFaultInjectionPolicyDelay `pulumi:"delay"`
+}
+
+// GrpcRouteRuleActionFaultInjectionPolicyInput is an input type that accepts GrpcRouteRuleActionFaultInjectionPolicyArgs and GrpcRouteRuleActionFaultInjectionPolicyOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionFaultInjectionPolicyInput` via:
+//
+//	GrpcRouteRuleActionFaultInjectionPolicyArgs{...}
+type GrpcRouteRuleActionFaultInjectionPolicyInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionFaultInjectionPolicyOutput() GrpcRouteRuleActionFaultInjectionPolicyOutput
+	ToGrpcRouteRuleActionFaultInjectionPolicyOutputWithContext(context.Context) GrpcRouteRuleActionFaultInjectionPolicyOutput
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyArgs struct {
+	// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Abort GrpcRouteRuleActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
+	// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+	// Structure is documented below.
+	Delay GrpcRouteRuleActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
+}
+
+func (GrpcRouteRuleActionFaultInjectionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyArgs) ToGrpcRouteRuleActionFaultInjectionPolicyOutput() GrpcRouteRuleActionFaultInjectionPolicyOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyArgs) ToGrpcRouteRuleActionFaultInjectionPolicyOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyOutput)
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyArgs) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyArgs) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyOutput).ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx)
+}
+
+// GrpcRouteRuleActionFaultInjectionPolicyPtrInput is an input type that accepts GrpcRouteRuleActionFaultInjectionPolicyArgs, GrpcRouteRuleActionFaultInjectionPolicyPtr and GrpcRouteRuleActionFaultInjectionPolicyPtrOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionFaultInjectionPolicyPtrInput` via:
+//
+//	        GrpcRouteRuleActionFaultInjectionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrpcRouteRuleActionFaultInjectionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput
+	ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Context) GrpcRouteRuleActionFaultInjectionPolicyPtrOutput
+}
+
+type grpcRouteRuleActionFaultInjectionPolicyPtrType GrpcRouteRuleActionFaultInjectionPolicyArgs
+
+func GrpcRouteRuleActionFaultInjectionPolicyPtr(v *GrpcRouteRuleActionFaultInjectionPolicyArgs) GrpcRouteRuleActionFaultInjectionPolicyPtrInput {
+	return (*grpcRouteRuleActionFaultInjectionPolicyPtrType)(v)
+}
+
+func (*grpcRouteRuleActionFaultInjectionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i *grpcRouteRuleActionFaultInjectionPolicyPtrType) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcRouteRuleActionFaultInjectionPolicyPtrType) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionFaultInjectionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) ToGrpcRouteRuleActionFaultInjectionPolicyOutput() GrpcRouteRuleActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) ToGrpcRouteRuleActionFaultInjectionPolicyOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleActionFaultInjectionPolicy) *GrpcRouteRuleActionFaultInjectionPolicy {
+		return &v
+	}).(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) Abort() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicy) *GrpcRouteRuleActionFaultInjectionPolicyAbort {
+		return v.Abort
+	}).(GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o GrpcRouteRuleActionFaultInjectionPolicyOutput) Delay() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicy) *GrpcRouteRuleActionFaultInjectionPolicyDelay {
+		return v.Delay
+	}).(GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) Elem() GrpcRouteRuleActionFaultInjectionPolicyOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicy) GrpcRouteRuleActionFaultInjectionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteRuleActionFaultInjectionPolicy
+		return ret
+	}).(GrpcRouteRuleActionFaultInjectionPolicyOutput)
+}
+
+// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) Abort() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicy) *GrpcRouteRuleActionFaultInjectionPolicyAbort {
+		if v == nil {
+			return nil
+		}
+		return v.Abort
+	}).(GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+// Structure is documented below.
+func (o GrpcRouteRuleActionFaultInjectionPolicyPtrOutput) Delay() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicy) *GrpcRouteRuleActionFaultInjectionPolicyDelay {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyAbort struct {
+	// The HTTP status code used to abort the request.
+	HttpStatus *int `pulumi:"httpStatus"`
+	// The percentage of traffic which will be aborted.
+	Percentage *int `pulumi:"percentage"`
+}
+
+// GrpcRouteRuleActionFaultInjectionPolicyAbortInput is an input type that accepts GrpcRouteRuleActionFaultInjectionPolicyAbortArgs and GrpcRouteRuleActionFaultInjectionPolicyAbortOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionFaultInjectionPolicyAbortInput` via:
+//
+//	GrpcRouteRuleActionFaultInjectionPolicyAbortArgs{...}
+type GrpcRouteRuleActionFaultInjectionPolicyAbortInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortOutput
+	ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortOutput
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyAbortArgs struct {
+	// The HTTP status code used to abort the request.
+	HttpStatus pulumi.IntPtrInput `pulumi:"httpStatus"`
+	// The percentage of traffic which will be aborted.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyAbortOutput)
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyAbortOutput).ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx)
+}
+
+// GrpcRouteRuleActionFaultInjectionPolicyAbortPtrInput is an input type that accepts GrpcRouteRuleActionFaultInjectionPolicyAbortArgs, GrpcRouteRuleActionFaultInjectionPolicyAbortPtr and GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionFaultInjectionPolicyAbortPtrInput` via:
+//
+//	        GrpcRouteRuleActionFaultInjectionPolicyAbortArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrpcRouteRuleActionFaultInjectionPolicyAbortPtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput
+	ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput
+}
+
+type grpcRouteRuleActionFaultInjectionPolicyAbortPtrType GrpcRouteRuleActionFaultInjectionPolicyAbortArgs
+
+func GrpcRouteRuleActionFaultInjectionPolicyAbortPtr(v *GrpcRouteRuleActionFaultInjectionPolicyAbortArgs) GrpcRouteRuleActionFaultInjectionPolicyAbortPtrInput {
+	return (*grpcRouteRuleActionFaultInjectionPolicyAbortPtrType)(v)
+}
+
+func (*grpcRouteRuleActionFaultInjectionPolicyAbortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i *grpcRouteRuleActionFaultInjectionPolicyAbortPtrType) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcRouteRuleActionFaultInjectionPolicyAbortPtrType) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ToGrpcRouteRuleActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleActionFaultInjectionPolicyAbort) *GrpcRouteRuleActionFaultInjectionPolicyAbort {
+		return &v
+	}).(GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The HTTP status code used to abort the request.
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic which will be aborted.
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicyAbort) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) Elem() GrpcRouteRuleActionFaultInjectionPolicyAbortOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicyAbort) GrpcRouteRuleActionFaultInjectionPolicyAbort {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteRuleActionFaultInjectionPolicyAbort
+		return ret
+	}).(GrpcRouteRuleActionFaultInjectionPolicyAbortOutput)
+}
+
+// The HTTP status code used to abort the request.
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicyAbort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic which will be aborted.
+func (o GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicyAbort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.IntPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyDelay struct {
+	// Specify a fixed delay before forwarding the request.
+	FixedDelay *string `pulumi:"fixedDelay"`
+	// The percentage of traffic on which delay will be injected.
+	Percentage *int `pulumi:"percentage"`
+}
+
+// GrpcRouteRuleActionFaultInjectionPolicyDelayInput is an input type that accepts GrpcRouteRuleActionFaultInjectionPolicyDelayArgs and GrpcRouteRuleActionFaultInjectionPolicyDelayOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionFaultInjectionPolicyDelayInput` via:
+//
+//	GrpcRouteRuleActionFaultInjectionPolicyDelayArgs{...}
+type GrpcRouteRuleActionFaultInjectionPolicyDelayInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayOutput
+	ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayOutput
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyDelayArgs struct {
+	// Specify a fixed delay before forwarding the request.
+	FixedDelay pulumi.StringPtrInput `pulumi:"fixedDelay"`
+	// The percentage of traffic on which delay will be injected.
+	Percentage pulumi.IntPtrInput `pulumi:"percentage"`
+}
+
+func (GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyDelayOutput)
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyDelayOutput).ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx)
+}
+
+// GrpcRouteRuleActionFaultInjectionPolicyDelayPtrInput is an input type that accepts GrpcRouteRuleActionFaultInjectionPolicyDelayArgs, GrpcRouteRuleActionFaultInjectionPolicyDelayPtr and GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionFaultInjectionPolicyDelayPtrInput` via:
+//
+//	        GrpcRouteRuleActionFaultInjectionPolicyDelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrpcRouteRuleActionFaultInjectionPolicyDelayPtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput
+	ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput
+}
+
+type grpcRouteRuleActionFaultInjectionPolicyDelayPtrType GrpcRouteRuleActionFaultInjectionPolicyDelayArgs
+
+func GrpcRouteRuleActionFaultInjectionPolicyDelayPtr(v *GrpcRouteRuleActionFaultInjectionPolicyDelayArgs) GrpcRouteRuleActionFaultInjectionPolicyDelayPtrInput {
+	return (*grpcRouteRuleActionFaultInjectionPolicyDelayPtrType)(v)
+}
+
+func (*grpcRouteRuleActionFaultInjectionPolicyDelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i *grpcRouteRuleActionFaultInjectionPolicyDelayPtrType) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcRouteRuleActionFaultInjectionPolicyDelayPtrType) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ToGrpcRouteRuleActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleActionFaultInjectionPolicyDelay) *GrpcRouteRuleActionFaultInjectionPolicyDelay {
+		return &v
+	}).(GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+// Specify a fixed delay before forwarding the request.
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) FixedDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicyDelay) *string { return v.FixedDelay }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of traffic on which delay will be injected.
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionFaultInjectionPolicyDelay) *int { return v.Percentage }).(pulumi.IntPtrOutput)
+}
+
+type GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput() GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) ToGrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) Elem() GrpcRouteRuleActionFaultInjectionPolicyDelayOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicyDelay) GrpcRouteRuleActionFaultInjectionPolicyDelay {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteRuleActionFaultInjectionPolicyDelay
+		return ret
+	}).(GrpcRouteRuleActionFaultInjectionPolicyDelayOutput)
+}
+
+// Specify a fixed delay before forwarding the request.
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicyDelay) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FixedDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of traffic on which delay will be injected.
+func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) Percentage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionFaultInjectionPolicyDelay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.IntPtrOutput)
+}
+
+type GrpcRouteRuleActionRetryPolicy struct {
+	// Specifies the allowed number of retries.
+	//
+	// ***
+	NumRetries *int `pulumi:"numRetries"`
+	// Specifies one or more conditions when this retry policy applies.
+	// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+	RetryConditions []string `pulumi:"retryConditions"`
+}
+
+// GrpcRouteRuleActionRetryPolicyInput is an input type that accepts GrpcRouteRuleActionRetryPolicyArgs and GrpcRouteRuleActionRetryPolicyOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionRetryPolicyInput` via:
+//
+//	GrpcRouteRuleActionRetryPolicyArgs{...}
+type GrpcRouteRuleActionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionRetryPolicyOutput() GrpcRouteRuleActionRetryPolicyOutput
+	ToGrpcRouteRuleActionRetryPolicyOutputWithContext(context.Context) GrpcRouteRuleActionRetryPolicyOutput
+}
+
+type GrpcRouteRuleActionRetryPolicyArgs struct {
+	// Specifies the allowed number of retries.
+	//
+	// ***
+	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
+	// Specifies one or more conditions when this retry policy applies.
+	// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+	RetryConditions pulumi.StringArrayInput `pulumi:"retryConditions"`
+}
+
+func (GrpcRouteRuleActionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleActionRetryPolicyArgs) ToGrpcRouteRuleActionRetryPolicyOutput() GrpcRouteRuleActionRetryPolicyOutput {
+	return i.ToGrpcRouteRuleActionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionRetryPolicyArgs) ToGrpcRouteRuleActionRetryPolicyOutputWithContext(ctx context.Context) GrpcRouteRuleActionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionRetryPolicyOutput)
+}
+
+func (i GrpcRouteRuleActionRetryPolicyArgs) ToGrpcRouteRuleActionRetryPolicyPtrOutput() GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return i.ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleActionRetryPolicyArgs) ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionRetryPolicyOutput).ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// GrpcRouteRuleActionRetryPolicyPtrInput is an input type that accepts GrpcRouteRuleActionRetryPolicyArgs, GrpcRouteRuleActionRetryPolicyPtr and GrpcRouteRuleActionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleActionRetryPolicyPtrInput` via:
+//
+//	        GrpcRouteRuleActionRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrpcRouteRuleActionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleActionRetryPolicyPtrOutput() GrpcRouteRuleActionRetryPolicyPtrOutput
+	ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(context.Context) GrpcRouteRuleActionRetryPolicyPtrOutput
+}
+
+type grpcRouteRuleActionRetryPolicyPtrType GrpcRouteRuleActionRetryPolicyArgs
+
+func GrpcRouteRuleActionRetryPolicyPtr(v *GrpcRouteRuleActionRetryPolicyArgs) GrpcRouteRuleActionRetryPolicyPtrInput {
+	return (*grpcRouteRuleActionRetryPolicyPtrType)(v)
+}
+
+func (*grpcRouteRuleActionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (i *grpcRouteRuleActionRetryPolicyPtrType) ToGrpcRouteRuleActionRetryPolicyPtrOutput() GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return i.ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcRouteRuleActionRetryPolicyPtrType) ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleActionRetryPolicyPtrOutput)
+}
+
+type GrpcRouteRuleActionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionRetryPolicyOutput) ToGrpcRouteRuleActionRetryPolicyOutput() GrpcRouteRuleActionRetryPolicyOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionRetryPolicyOutput) ToGrpcRouteRuleActionRetryPolicyOutputWithContext(ctx context.Context) GrpcRouteRuleActionRetryPolicyOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionRetryPolicyOutput) ToGrpcRouteRuleActionRetryPolicyPtrOutput() GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return o.ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteRuleActionRetryPolicyOutput) ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleActionRetryPolicy) *GrpcRouteRuleActionRetryPolicy {
+		return &v
+	}).(GrpcRouteRuleActionRetryPolicyPtrOutput)
+}
+
+// Specifies the allowed number of retries.
+//
+// ***
+func (o GrpcRouteRuleActionRetryPolicyOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
+}
+
+// Specifies one or more conditions when this retry policy applies.
+// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+func (o GrpcRouteRuleActionRetryPolicyOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GrpcRouteRuleActionRetryPolicy) []string { return v.RetryConditions }).(pulumi.StringArrayOutput)
+}
+
+type GrpcRouteRuleActionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleActionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleActionRetryPolicy)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleActionRetryPolicyPtrOutput) ToGrpcRouteRuleActionRetryPolicyPtrOutput() GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionRetryPolicyPtrOutput) ToGrpcRouteRuleActionRetryPolicyPtrOutputWithContext(ctx context.Context) GrpcRouteRuleActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleActionRetryPolicyPtrOutput) Elem() GrpcRouteRuleActionRetryPolicyOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionRetryPolicy) GrpcRouteRuleActionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteRuleActionRetryPolicy
+		return ret
+	}).(GrpcRouteRuleActionRetryPolicyOutput)
+}
+
+// Specifies the allowed number of retries.
+//
+// ***
+func (o GrpcRouteRuleActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies one or more conditions when this retry policy applies.
+// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
+func (o GrpcRouteRuleActionRetryPolicyPtrOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleActionRetryPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryConditions
+	}).(pulumi.StringArrayOutput)
+}
+
+type GrpcRouteRuleMatch struct {
+	// Specifies a list of HTTP request headers to match against.
+	// Structure is documented below.
+	Headers []GrpcRouteRuleMatchHeader `pulumi:"headers"`
+	// A gRPC method to match against. If this field is empty or omitted, will match all methods.
+	// Structure is documented below.
+	Method *GrpcRouteRuleMatchMethod `pulumi:"method"`
+}
+
+// GrpcRouteRuleMatchInput is an input type that accepts GrpcRouteRuleMatchArgs and GrpcRouteRuleMatchOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleMatchInput` via:
+//
+//	GrpcRouteRuleMatchArgs{...}
+type GrpcRouteRuleMatchInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleMatchOutput() GrpcRouteRuleMatchOutput
+	ToGrpcRouteRuleMatchOutputWithContext(context.Context) GrpcRouteRuleMatchOutput
+}
+
+type GrpcRouteRuleMatchArgs struct {
+	// Specifies a list of HTTP request headers to match against.
+	// Structure is documented below.
+	Headers GrpcRouteRuleMatchHeaderArrayInput `pulumi:"headers"`
+	// A gRPC method to match against. If this field is empty or omitted, will match all methods.
+	// Structure is documented below.
+	Method GrpcRouteRuleMatchMethodPtrInput `pulumi:"method"`
+}
+
+func (GrpcRouteRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleMatch)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleMatchArgs) ToGrpcRouteRuleMatchOutput() GrpcRouteRuleMatchOutput {
+	return i.ToGrpcRouteRuleMatchOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleMatchArgs) ToGrpcRouteRuleMatchOutputWithContext(ctx context.Context) GrpcRouteRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchOutput)
+}
+
+// GrpcRouteRuleMatchArrayInput is an input type that accepts GrpcRouteRuleMatchArray and GrpcRouteRuleMatchArrayOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleMatchArrayInput` via:
+//
+//	GrpcRouteRuleMatchArray{ GrpcRouteRuleMatchArgs{...} }
+type GrpcRouteRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleMatchArrayOutput() GrpcRouteRuleMatchArrayOutput
+	ToGrpcRouteRuleMatchArrayOutputWithContext(context.Context) GrpcRouteRuleMatchArrayOutput
+}
+
+type GrpcRouteRuleMatchArray []GrpcRouteRuleMatchInput
+
+func (GrpcRouteRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRuleMatch)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleMatchArray) ToGrpcRouteRuleMatchArrayOutput() GrpcRouteRuleMatchArrayOutput {
+	return i.ToGrpcRouteRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleMatchArray) ToGrpcRouteRuleMatchArrayOutputWithContext(ctx context.Context) GrpcRouteRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchArrayOutput)
+}
+
+type GrpcRouteRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleMatch)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleMatchOutput) ToGrpcRouteRuleMatchOutput() GrpcRouteRuleMatchOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchOutput) ToGrpcRouteRuleMatchOutputWithContext(ctx context.Context) GrpcRouteRuleMatchOutput {
+	return o
+}
+
+// Specifies a list of HTTP request headers to match against.
+// Structure is documented below.
+func (o GrpcRouteRuleMatchOutput) Headers() GrpcRouteRuleMatchHeaderArrayOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatch) []GrpcRouteRuleMatchHeader { return v.Headers }).(GrpcRouteRuleMatchHeaderArrayOutput)
+}
+
+// A gRPC method to match against. If this field is empty or omitted, will match all methods.
+// Structure is documented below.
+func (o GrpcRouteRuleMatchOutput) Method() GrpcRouteRuleMatchMethodPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatch) *GrpcRouteRuleMatchMethod { return v.Method }).(GrpcRouteRuleMatchMethodPtrOutput)
+}
+
+type GrpcRouteRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRuleMatch)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleMatchArrayOutput) ToGrpcRouteRuleMatchArrayOutput() GrpcRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchArrayOutput) ToGrpcRouteRuleMatchArrayOutputWithContext(ctx context.Context) GrpcRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrpcRouteRuleMatch {
+		return vs[0].([]GrpcRouteRuleMatch)[vs[1].(int)]
+	}).(GrpcRouteRuleMatchOutput)
+}
+
+type GrpcRouteRuleMatchHeader struct {
+	// Required. The key of the header.
+	Key string `pulumi:"key"`
+	// The type of match.
+	// Default value is `EXACT`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
+	Type *string `pulumi:"type"`
+	// Required. The value of the header.
+	Value string `pulumi:"value"`
+}
+
+// GrpcRouteRuleMatchHeaderInput is an input type that accepts GrpcRouteRuleMatchHeaderArgs and GrpcRouteRuleMatchHeaderOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleMatchHeaderInput` via:
+//
+//	GrpcRouteRuleMatchHeaderArgs{...}
+type GrpcRouteRuleMatchHeaderInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleMatchHeaderOutput() GrpcRouteRuleMatchHeaderOutput
+	ToGrpcRouteRuleMatchHeaderOutputWithContext(context.Context) GrpcRouteRuleMatchHeaderOutput
+}
+
+type GrpcRouteRuleMatchHeaderArgs struct {
+	// Required. The key of the header.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The type of match.
+	// Default value is `EXACT`.
+	// Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Required. The value of the header.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GrpcRouteRuleMatchHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleMatchHeaderArgs) ToGrpcRouteRuleMatchHeaderOutput() GrpcRouteRuleMatchHeaderOutput {
+	return i.ToGrpcRouteRuleMatchHeaderOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleMatchHeaderArgs) ToGrpcRouteRuleMatchHeaderOutputWithContext(ctx context.Context) GrpcRouteRuleMatchHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchHeaderOutput)
+}
+
+// GrpcRouteRuleMatchHeaderArrayInput is an input type that accepts GrpcRouteRuleMatchHeaderArray and GrpcRouteRuleMatchHeaderArrayOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleMatchHeaderArrayInput` via:
+//
+//	GrpcRouteRuleMatchHeaderArray{ GrpcRouteRuleMatchHeaderArgs{...} }
+type GrpcRouteRuleMatchHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleMatchHeaderArrayOutput() GrpcRouteRuleMatchHeaderArrayOutput
+	ToGrpcRouteRuleMatchHeaderArrayOutputWithContext(context.Context) GrpcRouteRuleMatchHeaderArrayOutput
+}
+
+type GrpcRouteRuleMatchHeaderArray []GrpcRouteRuleMatchHeaderInput
+
+func (GrpcRouteRuleMatchHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleMatchHeaderArray) ToGrpcRouteRuleMatchHeaderArrayOutput() GrpcRouteRuleMatchHeaderArrayOutput {
+	return i.ToGrpcRouteRuleMatchHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleMatchHeaderArray) ToGrpcRouteRuleMatchHeaderArrayOutputWithContext(ctx context.Context) GrpcRouteRuleMatchHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchHeaderArrayOutput)
+}
+
+type GrpcRouteRuleMatchHeaderOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleMatchHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleMatchHeaderOutput) ToGrpcRouteRuleMatchHeaderOutput() GrpcRouteRuleMatchHeaderOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchHeaderOutput) ToGrpcRouteRuleMatchHeaderOutputWithContext(ctx context.Context) GrpcRouteRuleMatchHeaderOutput {
+	return o
+}
+
+// Required. The key of the header.
+func (o GrpcRouteRuleMatchHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatchHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The type of match.
+// Default value is `EXACT`.
+// Possible values are: `TYPE_UNSPECIFIED`, `EXACT`, `REGULAR_EXPRESSION`.
+func (o GrpcRouteRuleMatchHeaderOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatchHeader) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Required. The value of the header.
+func (o GrpcRouteRuleMatchHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatchHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GrpcRouteRuleMatchHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleMatchHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrpcRouteRuleMatchHeader)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleMatchHeaderArrayOutput) ToGrpcRouteRuleMatchHeaderArrayOutput() GrpcRouteRuleMatchHeaderArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchHeaderArrayOutput) ToGrpcRouteRuleMatchHeaderArrayOutputWithContext(ctx context.Context) GrpcRouteRuleMatchHeaderArrayOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchHeaderArrayOutput) Index(i pulumi.IntInput) GrpcRouteRuleMatchHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrpcRouteRuleMatchHeader {
+		return vs[0].([]GrpcRouteRuleMatchHeader)[vs[1].(int)]
+	}).(GrpcRouteRuleMatchHeaderOutput)
+}
+
+type GrpcRouteRuleMatchMethod struct {
+	// Specifies that matches are case sensitive. The default value is true.
+	CaseSensitive *bool `pulumi:"caseSensitive"`
+	// Required. Name of the method to match against.
+	GrpcMethod string `pulumi:"grpcMethod"`
+	// Required. Name of the service to match against.
+	GrpcService string `pulumi:"grpcService"`
+}
+
+// GrpcRouteRuleMatchMethodInput is an input type that accepts GrpcRouteRuleMatchMethodArgs and GrpcRouteRuleMatchMethodOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleMatchMethodInput` via:
+//
+//	GrpcRouteRuleMatchMethodArgs{...}
+type GrpcRouteRuleMatchMethodInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleMatchMethodOutput() GrpcRouteRuleMatchMethodOutput
+	ToGrpcRouteRuleMatchMethodOutputWithContext(context.Context) GrpcRouteRuleMatchMethodOutput
+}
+
+type GrpcRouteRuleMatchMethodArgs struct {
+	// Specifies that matches are case sensitive. The default value is true.
+	CaseSensitive pulumi.BoolPtrInput `pulumi:"caseSensitive"`
+	// Required. Name of the method to match against.
+	GrpcMethod pulumi.StringInput `pulumi:"grpcMethod"`
+	// Required. Name of the service to match against.
+	GrpcService pulumi.StringInput `pulumi:"grpcService"`
+}
+
+func (GrpcRouteRuleMatchMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleMatchMethod)(nil)).Elem()
+}
+
+func (i GrpcRouteRuleMatchMethodArgs) ToGrpcRouteRuleMatchMethodOutput() GrpcRouteRuleMatchMethodOutput {
+	return i.ToGrpcRouteRuleMatchMethodOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleMatchMethodArgs) ToGrpcRouteRuleMatchMethodOutputWithContext(ctx context.Context) GrpcRouteRuleMatchMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchMethodOutput)
+}
+
+func (i GrpcRouteRuleMatchMethodArgs) ToGrpcRouteRuleMatchMethodPtrOutput() GrpcRouteRuleMatchMethodPtrOutput {
+	return i.ToGrpcRouteRuleMatchMethodPtrOutputWithContext(context.Background())
+}
+
+func (i GrpcRouteRuleMatchMethodArgs) ToGrpcRouteRuleMatchMethodPtrOutputWithContext(ctx context.Context) GrpcRouteRuleMatchMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchMethodOutput).ToGrpcRouteRuleMatchMethodPtrOutputWithContext(ctx)
+}
+
+// GrpcRouteRuleMatchMethodPtrInput is an input type that accepts GrpcRouteRuleMatchMethodArgs, GrpcRouteRuleMatchMethodPtr and GrpcRouteRuleMatchMethodPtrOutput values.
+// You can construct a concrete instance of `GrpcRouteRuleMatchMethodPtrInput` via:
+//
+//	        GrpcRouteRuleMatchMethodArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrpcRouteRuleMatchMethodPtrInput interface {
+	pulumi.Input
+
+	ToGrpcRouteRuleMatchMethodPtrOutput() GrpcRouteRuleMatchMethodPtrOutput
+	ToGrpcRouteRuleMatchMethodPtrOutputWithContext(context.Context) GrpcRouteRuleMatchMethodPtrOutput
+}
+
+type grpcRouteRuleMatchMethodPtrType GrpcRouteRuleMatchMethodArgs
+
+func GrpcRouteRuleMatchMethodPtr(v *GrpcRouteRuleMatchMethodArgs) GrpcRouteRuleMatchMethodPtrInput {
+	return (*grpcRouteRuleMatchMethodPtrType)(v)
+}
+
+func (*grpcRouteRuleMatchMethodPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleMatchMethod)(nil)).Elem()
+}
+
+func (i *grpcRouteRuleMatchMethodPtrType) ToGrpcRouteRuleMatchMethodPtrOutput() GrpcRouteRuleMatchMethodPtrOutput {
+	return i.ToGrpcRouteRuleMatchMethodPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcRouteRuleMatchMethodPtrType) ToGrpcRouteRuleMatchMethodPtrOutputWithContext(ctx context.Context) GrpcRouteRuleMatchMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrpcRouteRuleMatchMethodPtrOutput)
+}
+
+type GrpcRouteRuleMatchMethodOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleMatchMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrpcRouteRuleMatchMethod)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleMatchMethodOutput) ToGrpcRouteRuleMatchMethodOutput() GrpcRouteRuleMatchMethodOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchMethodOutput) ToGrpcRouteRuleMatchMethodOutputWithContext(ctx context.Context) GrpcRouteRuleMatchMethodOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchMethodOutput) ToGrpcRouteRuleMatchMethodPtrOutput() GrpcRouteRuleMatchMethodPtrOutput {
+	return o.ToGrpcRouteRuleMatchMethodPtrOutputWithContext(context.Background())
+}
+
+func (o GrpcRouteRuleMatchMethodOutput) ToGrpcRouteRuleMatchMethodPtrOutputWithContext(ctx context.Context) GrpcRouteRuleMatchMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrpcRouteRuleMatchMethod) *GrpcRouteRuleMatchMethod {
+		return &v
+	}).(GrpcRouteRuleMatchMethodPtrOutput)
+}
+
+// Specifies that matches are case sensitive. The default value is true.
+func (o GrpcRouteRuleMatchMethodOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatchMethod) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
+}
+
+// Required. Name of the method to match against.
+func (o GrpcRouteRuleMatchMethodOutput) GrpcMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatchMethod) string { return v.GrpcMethod }).(pulumi.StringOutput)
+}
+
+// Required. Name of the service to match against.
+func (o GrpcRouteRuleMatchMethodOutput) GrpcService() pulumi.StringOutput {
+	return o.ApplyT(func(v GrpcRouteRuleMatchMethod) string { return v.GrpcService }).(pulumi.StringOutput)
+}
+
+type GrpcRouteRuleMatchMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (GrpcRouteRuleMatchMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrpcRouteRuleMatchMethod)(nil)).Elem()
+}
+
+func (o GrpcRouteRuleMatchMethodPtrOutput) ToGrpcRouteRuleMatchMethodPtrOutput() GrpcRouteRuleMatchMethodPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchMethodPtrOutput) ToGrpcRouteRuleMatchMethodPtrOutputWithContext(ctx context.Context) GrpcRouteRuleMatchMethodPtrOutput {
+	return o
+}
+
+func (o GrpcRouteRuleMatchMethodPtrOutput) Elem() GrpcRouteRuleMatchMethodOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleMatchMethod) GrpcRouteRuleMatchMethod {
+		if v != nil {
+			return *v
+		}
+		var ret GrpcRouteRuleMatchMethod
+		return ret
+	}).(GrpcRouteRuleMatchMethodOutput)
+}
+
+// Specifies that matches are case sensitive. The default value is true.
+func (o GrpcRouteRuleMatchMethodPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleMatchMethod) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CaseSensitive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required. Name of the method to match against.
+func (o GrpcRouteRuleMatchMethodPtrOutput) GrpcMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleMatchMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GrpcMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Name of the service to match against.
+func (o GrpcRouteRuleMatchMethodPtrOutput) GrpcService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GrpcRouteRuleMatchMethod) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GrpcService
+	}).(pulumi.StringPtrOutput)
+}
+
 type HttpRouteRule struct {
 	// The detailed rule defining how to route matched traffic.
 	// Structure is documented below.
@@ -9167,6 +11205,394 @@ func (o TcpRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) TcpRouteRuleMatch
 	}).(TcpRouteRuleMatchOutput)
 }
 
+type TlsRouteRule struct {
+	// Required. A detailed rule defining how to route traffic.
+	// Structure is documented below.
+	Action TlsRouteRuleAction `pulumi:"action"`
+	// Matches define the predicate used to match requests to a given action.
+	// Structure is documented below.
+	Matches []TlsRouteRuleMatch `pulumi:"matches"`
+}
+
+// TlsRouteRuleInput is an input type that accepts TlsRouteRuleArgs and TlsRouteRuleOutput values.
+// You can construct a concrete instance of `TlsRouteRuleInput` via:
+//
+//	TlsRouteRuleArgs{...}
+type TlsRouteRuleInput interface {
+	pulumi.Input
+
+	ToTlsRouteRuleOutput() TlsRouteRuleOutput
+	ToTlsRouteRuleOutputWithContext(context.Context) TlsRouteRuleOutput
+}
+
+type TlsRouteRuleArgs struct {
+	// Required. A detailed rule defining how to route traffic.
+	// Structure is documented below.
+	Action TlsRouteRuleActionInput `pulumi:"action"`
+	// Matches define the predicate used to match requests to a given action.
+	// Structure is documented below.
+	Matches TlsRouteRuleMatchArrayInput `pulumi:"matches"`
+}
+
+func (TlsRouteRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRule)(nil)).Elem()
+}
+
+func (i TlsRouteRuleArgs) ToTlsRouteRuleOutput() TlsRouteRuleOutput {
+	return i.ToTlsRouteRuleOutputWithContext(context.Background())
+}
+
+func (i TlsRouteRuleArgs) ToTlsRouteRuleOutputWithContext(ctx context.Context) TlsRouteRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleOutput)
+}
+
+// TlsRouteRuleArrayInput is an input type that accepts TlsRouteRuleArray and TlsRouteRuleArrayOutput values.
+// You can construct a concrete instance of `TlsRouteRuleArrayInput` via:
+//
+//	TlsRouteRuleArray{ TlsRouteRuleArgs{...} }
+type TlsRouteRuleArrayInput interface {
+	pulumi.Input
+
+	ToTlsRouteRuleArrayOutput() TlsRouteRuleArrayOutput
+	ToTlsRouteRuleArrayOutputWithContext(context.Context) TlsRouteRuleArrayOutput
+}
+
+type TlsRouteRuleArray []TlsRouteRuleInput
+
+func (TlsRouteRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsRouteRule)(nil)).Elem()
+}
+
+func (i TlsRouteRuleArray) ToTlsRouteRuleArrayOutput() TlsRouteRuleArrayOutput {
+	return i.ToTlsRouteRuleArrayOutputWithContext(context.Background())
+}
+
+func (i TlsRouteRuleArray) ToTlsRouteRuleArrayOutputWithContext(ctx context.Context) TlsRouteRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleArrayOutput)
+}
+
+type TlsRouteRuleOutput struct{ *pulumi.OutputState }
+
+func (TlsRouteRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRule)(nil)).Elem()
+}
+
+func (o TlsRouteRuleOutput) ToTlsRouteRuleOutput() TlsRouteRuleOutput {
+	return o
+}
+
+func (o TlsRouteRuleOutput) ToTlsRouteRuleOutputWithContext(ctx context.Context) TlsRouteRuleOutput {
+	return o
+}
+
+// Required. A detailed rule defining how to route traffic.
+// Structure is documented below.
+func (o TlsRouteRuleOutput) Action() TlsRouteRuleActionOutput {
+	return o.ApplyT(func(v TlsRouteRule) TlsRouteRuleAction { return v.Action }).(TlsRouteRuleActionOutput)
+}
+
+// Matches define the predicate used to match requests to a given action.
+// Structure is documented below.
+func (o TlsRouteRuleOutput) Matches() TlsRouteRuleMatchArrayOutput {
+	return o.ApplyT(func(v TlsRouteRule) []TlsRouteRuleMatch { return v.Matches }).(TlsRouteRuleMatchArrayOutput)
+}
+
+type TlsRouteRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (TlsRouteRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsRouteRule)(nil)).Elem()
+}
+
+func (o TlsRouteRuleArrayOutput) ToTlsRouteRuleArrayOutput() TlsRouteRuleArrayOutput {
+	return o
+}
+
+func (o TlsRouteRuleArrayOutput) ToTlsRouteRuleArrayOutputWithContext(ctx context.Context) TlsRouteRuleArrayOutput {
+	return o
+}
+
+func (o TlsRouteRuleArrayOutput) Index(i pulumi.IntInput) TlsRouteRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TlsRouteRule {
+		return vs[0].([]TlsRouteRule)[vs[1].(int)]
+	}).(TlsRouteRuleOutput)
+}
+
+type TlsRouteRuleAction struct {
+	// The destination to which traffic should be forwarded.
+	// Structure is documented below.
+	Destinations []TlsRouteRuleActionDestination `pulumi:"destinations"`
+}
+
+// TlsRouteRuleActionInput is an input type that accepts TlsRouteRuleActionArgs and TlsRouteRuleActionOutput values.
+// You can construct a concrete instance of `TlsRouteRuleActionInput` via:
+//
+//	TlsRouteRuleActionArgs{...}
+type TlsRouteRuleActionInput interface {
+	pulumi.Input
+
+	ToTlsRouteRuleActionOutput() TlsRouteRuleActionOutput
+	ToTlsRouteRuleActionOutputWithContext(context.Context) TlsRouteRuleActionOutput
+}
+
+type TlsRouteRuleActionArgs struct {
+	// The destination to which traffic should be forwarded.
+	// Structure is documented below.
+	Destinations TlsRouteRuleActionDestinationArrayInput `pulumi:"destinations"`
+}
+
+func (TlsRouteRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRuleAction)(nil)).Elem()
+}
+
+func (i TlsRouteRuleActionArgs) ToTlsRouteRuleActionOutput() TlsRouteRuleActionOutput {
+	return i.ToTlsRouteRuleActionOutputWithContext(context.Background())
+}
+
+func (i TlsRouteRuleActionArgs) ToTlsRouteRuleActionOutputWithContext(ctx context.Context) TlsRouteRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleActionOutput)
+}
+
+type TlsRouteRuleActionOutput struct{ *pulumi.OutputState }
+
+func (TlsRouteRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRuleAction)(nil)).Elem()
+}
+
+func (o TlsRouteRuleActionOutput) ToTlsRouteRuleActionOutput() TlsRouteRuleActionOutput {
+	return o
+}
+
+func (o TlsRouteRuleActionOutput) ToTlsRouteRuleActionOutputWithContext(ctx context.Context) TlsRouteRuleActionOutput {
+	return o
+}
+
+// The destination to which traffic should be forwarded.
+// Structure is documented below.
+func (o TlsRouteRuleActionOutput) Destinations() TlsRouteRuleActionDestinationArrayOutput {
+	return o.ApplyT(func(v TlsRouteRuleAction) []TlsRouteRuleActionDestination { return v.Destinations }).(TlsRouteRuleActionDestinationArrayOutput)
+}
+
+type TlsRouteRuleActionDestination struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName *string `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+	//
+	// ***
+	Weight *int `pulumi:"weight"`
+}
+
+// TlsRouteRuleActionDestinationInput is an input type that accepts TlsRouteRuleActionDestinationArgs and TlsRouteRuleActionDestinationOutput values.
+// You can construct a concrete instance of `TlsRouteRuleActionDestinationInput` via:
+//
+//	TlsRouteRuleActionDestinationArgs{...}
+type TlsRouteRuleActionDestinationInput interface {
+	pulumi.Input
+
+	ToTlsRouteRuleActionDestinationOutput() TlsRouteRuleActionDestinationOutput
+	ToTlsRouteRuleActionDestinationOutputWithContext(context.Context) TlsRouteRuleActionDestinationOutput
+}
+
+type TlsRouteRuleActionDestinationArgs struct {
+	// The URL of a BackendService to route traffic to.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+	//
+	// ***
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (TlsRouteRuleActionDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i TlsRouteRuleActionDestinationArgs) ToTlsRouteRuleActionDestinationOutput() TlsRouteRuleActionDestinationOutput {
+	return i.ToTlsRouteRuleActionDestinationOutputWithContext(context.Background())
+}
+
+func (i TlsRouteRuleActionDestinationArgs) ToTlsRouteRuleActionDestinationOutputWithContext(ctx context.Context) TlsRouteRuleActionDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleActionDestinationOutput)
+}
+
+// TlsRouteRuleActionDestinationArrayInput is an input type that accepts TlsRouteRuleActionDestinationArray and TlsRouteRuleActionDestinationArrayOutput values.
+// You can construct a concrete instance of `TlsRouteRuleActionDestinationArrayInput` via:
+//
+//	TlsRouteRuleActionDestinationArray{ TlsRouteRuleActionDestinationArgs{...} }
+type TlsRouteRuleActionDestinationArrayInput interface {
+	pulumi.Input
+
+	ToTlsRouteRuleActionDestinationArrayOutput() TlsRouteRuleActionDestinationArrayOutput
+	ToTlsRouteRuleActionDestinationArrayOutputWithContext(context.Context) TlsRouteRuleActionDestinationArrayOutput
+}
+
+type TlsRouteRuleActionDestinationArray []TlsRouteRuleActionDestinationInput
+
+func (TlsRouteRuleActionDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (i TlsRouteRuleActionDestinationArray) ToTlsRouteRuleActionDestinationArrayOutput() TlsRouteRuleActionDestinationArrayOutput {
+	return i.ToTlsRouteRuleActionDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i TlsRouteRuleActionDestinationArray) ToTlsRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) TlsRouteRuleActionDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleActionDestinationArrayOutput)
+}
+
+type TlsRouteRuleActionDestinationOutput struct{ *pulumi.OutputState }
+
+func (TlsRouteRuleActionDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o TlsRouteRuleActionDestinationOutput) ToTlsRouteRuleActionDestinationOutput() TlsRouteRuleActionDestinationOutput {
+	return o
+}
+
+func (o TlsRouteRuleActionDestinationOutput) ToTlsRouteRuleActionDestinationOutputWithContext(ctx context.Context) TlsRouteRuleActionDestinationOutput {
+	return o
+}
+
+// The URL of a BackendService to route traffic to.
+func (o TlsRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TlsRouteRuleActionDestination) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+//
+// ***
+func (o TlsRouteRuleActionDestinationOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TlsRouteRuleActionDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type TlsRouteRuleActionDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (TlsRouteRuleActionDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsRouteRuleActionDestination)(nil)).Elem()
+}
+
+func (o TlsRouteRuleActionDestinationArrayOutput) ToTlsRouteRuleActionDestinationArrayOutput() TlsRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o TlsRouteRuleActionDestinationArrayOutput) ToTlsRouteRuleActionDestinationArrayOutputWithContext(ctx context.Context) TlsRouteRuleActionDestinationArrayOutput {
+	return o
+}
+
+func (o TlsRouteRuleActionDestinationArrayOutput) Index(i pulumi.IntInput) TlsRouteRuleActionDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TlsRouteRuleActionDestination {
+		return vs[0].([]TlsRouteRuleActionDestination)[vs[1].(int)]
+	}).(TlsRouteRuleActionDestinationOutput)
+}
+
+type TlsRouteRuleMatch struct {
+	// ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
+	Alpns []string `pulumi:"alpns"`
+	// SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+	// Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
+	SniHosts []string `pulumi:"sniHosts"`
+}
+
+// TlsRouteRuleMatchInput is an input type that accepts TlsRouteRuleMatchArgs and TlsRouteRuleMatchOutput values.
+// You can construct a concrete instance of `TlsRouteRuleMatchInput` via:
+//
+//	TlsRouteRuleMatchArgs{...}
+type TlsRouteRuleMatchInput interface {
+	pulumi.Input
+
+	ToTlsRouteRuleMatchOutput() TlsRouteRuleMatchOutput
+	ToTlsRouteRuleMatchOutputWithContext(context.Context) TlsRouteRuleMatchOutput
+}
+
+type TlsRouteRuleMatchArgs struct {
+	// ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
+	Alpns pulumi.StringArrayInput `pulumi:"alpns"`
+	// SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+	// Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
+	SniHosts pulumi.StringArrayInput `pulumi:"sniHosts"`
+}
+
+func (TlsRouteRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRuleMatch)(nil)).Elem()
+}
+
+func (i TlsRouteRuleMatchArgs) ToTlsRouteRuleMatchOutput() TlsRouteRuleMatchOutput {
+	return i.ToTlsRouteRuleMatchOutputWithContext(context.Background())
+}
+
+func (i TlsRouteRuleMatchArgs) ToTlsRouteRuleMatchOutputWithContext(ctx context.Context) TlsRouteRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleMatchOutput)
+}
+
+// TlsRouteRuleMatchArrayInput is an input type that accepts TlsRouteRuleMatchArray and TlsRouteRuleMatchArrayOutput values.
+// You can construct a concrete instance of `TlsRouteRuleMatchArrayInput` via:
+//
+//	TlsRouteRuleMatchArray{ TlsRouteRuleMatchArgs{...} }
+type TlsRouteRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToTlsRouteRuleMatchArrayOutput() TlsRouteRuleMatchArrayOutput
+	ToTlsRouteRuleMatchArrayOutputWithContext(context.Context) TlsRouteRuleMatchArrayOutput
+}
+
+type TlsRouteRuleMatchArray []TlsRouteRuleMatchInput
+
+func (TlsRouteRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsRouteRuleMatch)(nil)).Elem()
+}
+
+func (i TlsRouteRuleMatchArray) ToTlsRouteRuleMatchArrayOutput() TlsRouteRuleMatchArrayOutput {
+	return i.ToTlsRouteRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i TlsRouteRuleMatchArray) ToTlsRouteRuleMatchArrayOutputWithContext(ctx context.Context) TlsRouteRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TlsRouteRuleMatchArrayOutput)
+}
+
+type TlsRouteRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (TlsRouteRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TlsRouteRuleMatch)(nil)).Elem()
+}
+
+func (o TlsRouteRuleMatchOutput) ToTlsRouteRuleMatchOutput() TlsRouteRuleMatchOutput {
+	return o
+}
+
+func (o TlsRouteRuleMatchOutput) ToTlsRouteRuleMatchOutputWithContext(ctx context.Context) TlsRouteRuleMatchOutput {
+	return o
+}
+
+// ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sniHost and alpn is required. Up to 5 alpns across all matches can be set.
+func (o TlsRouteRuleMatchOutput) Alpns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TlsRouteRuleMatch) []string { return v.Alpns }).(pulumi.StringArrayOutput)
+}
+
+// SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com.
+// Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sniHost and alpn is required. Up to 5 sni hosts across all matches can be set.
+func (o TlsRouteRuleMatchOutput) SniHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TlsRouteRuleMatch) []string { return v.SniHosts }).(pulumi.StringArrayOutput)
+}
+
+type TlsRouteRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (TlsRouteRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TlsRouteRuleMatch)(nil)).Elem()
+}
+
+func (o TlsRouteRuleMatchArrayOutput) ToTlsRouteRuleMatchArrayOutput() TlsRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o TlsRouteRuleMatchArrayOutput) ToTlsRouteRuleMatchArrayOutputWithContext(ctx context.Context) TlsRouteRuleMatchArrayOutput {
+	return o
+}
+
+func (o TlsRouteRuleMatchArrayOutput) Index(i pulumi.IntInput) TlsRouteRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TlsRouteRuleMatch {
+		return vs[0].([]TlsRouteRuleMatch)[vs[1].(int)]
+	}).(TlsRouteRuleMatchOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheKeysetPublicKeyArrayInput)(nil)).Elem(), EdgeCacheKeysetPublicKeyArray{})
@@ -9228,6 +11654,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrInput)(nil)).Elem(), EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyEndpointMatcherInput)(nil)).Elem(), EndpointPolicyEndpointMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyEndpointMatcherPtrInput)(nil)).Elem(), EndpointPolicyEndpointMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcherInput)(nil)).Elem(), EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrInput)(nil)).Elem(), EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelInput)(nil)).Elem(), EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayInput)(nil)).Elem(), EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTrafficPortSelectorInput)(nil)).Elem(), EndpointPolicyTrafficPortSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EndpointPolicyTrafficPortSelectorPtrInput)(nil)).Elem(), EndpointPolicyTrafficPortSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleInput)(nil)).Elem(), GrpcRouteRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleArrayInput)(nil)).Elem(), GrpcRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionInput)(nil)).Elem(), GrpcRouteRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionPtrInput)(nil)).Elem(), GrpcRouteRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionDestinationInput)(nil)).Elem(), GrpcRouteRuleActionDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionDestinationArrayInput)(nil)).Elem(), GrpcRouteRuleActionDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyInput)(nil)).Elem(), GrpcRouteRuleActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyPtrInput)(nil)).Elem(), GrpcRouteRuleActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyAbortInput)(nil)).Elem(), GrpcRouteRuleActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyAbortPtrInput)(nil)).Elem(), GrpcRouteRuleActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyDelayInput)(nil)).Elem(), GrpcRouteRuleActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), GrpcRouteRuleActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionRetryPolicyInput)(nil)).Elem(), GrpcRouteRuleActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleActionRetryPolicyPtrInput)(nil)).Elem(), GrpcRouteRuleActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleMatchInput)(nil)).Elem(), GrpcRouteRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleMatchArrayInput)(nil)).Elem(), GrpcRouteRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleMatchHeaderInput)(nil)).Elem(), GrpcRouteRuleMatchHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleMatchHeaderArrayInput)(nil)).Elem(), GrpcRouteRuleMatchHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleMatchMethodInput)(nil)).Elem(), GrpcRouteRuleMatchMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrpcRouteRuleMatchMethodPtrInput)(nil)).Elem(), GrpcRouteRuleMatchMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleInput)(nil)).Elem(), HttpRouteRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleArrayInput)(nil)).Elem(), HttpRouteRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRouteRuleActionInput)(nil)).Elem(), HttpRouteRuleActionArgs{})
@@ -9271,6 +11725,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleActionDestinationArrayInput)(nil)).Elem(), TcpRouteRuleActionDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleMatchInput)(nil)).Elem(), TcpRouteRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteRuleMatchArrayInput)(nil)).Elem(), TcpRouteRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleInput)(nil)).Elem(), TlsRouteRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleArrayInput)(nil)).Elem(), TlsRouteRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleActionInput)(nil)).Elem(), TlsRouteRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleActionDestinationInput)(nil)).Elem(), TlsRouteRuleActionDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleActionDestinationArrayInput)(nil)).Elem(), TlsRouteRuleActionDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleMatchInput)(nil)).Elem(), TlsRouteRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteRuleMatchArrayInput)(nil)).Elem(), TlsRouteRuleMatchArray{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(EdgeCacheKeysetValidationSharedKeyOutput{})
@@ -9331,6 +11792,34 @@ func init() {
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewritePtrOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput{})
 	pulumi.RegisterOutputType(EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyEndpointMatcherOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyEndpointMatcherPtrOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyEndpointMatcherMetadataLabelMatcherOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyEndpointMatcherMetadataLabelMatcherPtrOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArrayOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyTrafficPortSelectorOutput{})
+	pulumi.RegisterOutputType(EndpointPolicyTrafficPortSelectorPtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionDestinationOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionFaultInjectionPolicyOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionFaultInjectionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionFaultInjectionPolicyAbortOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionFaultInjectionPolicyAbortPtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionFaultInjectionPolicyDelayOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleActionRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleMatchOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleMatchHeaderOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleMatchHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleMatchMethodOutput{})
+	pulumi.RegisterOutputType(GrpcRouteRuleMatchMethodPtrOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleArrayOutput{})
 	pulumi.RegisterOutputType(HttpRouteRuleActionOutput{})
@@ -9374,4 +11863,11 @@ func init() {
 	pulumi.RegisterOutputType(TcpRouteRuleActionDestinationArrayOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleMatchOutput{})
 	pulumi.RegisterOutputType(TcpRouteRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(TlsRouteRuleOutput{})
+	pulumi.RegisterOutputType(TlsRouteRuleArrayOutput{})
+	pulumi.RegisterOutputType(TlsRouteRuleActionOutput{})
+	pulumi.RegisterOutputType(TlsRouteRuleActionDestinationOutput{})
+	pulumi.RegisterOutputType(TlsRouteRuleActionDestinationArrayOutput{})
+	pulumi.RegisterOutputType(TlsRouteRuleMatchOutput{})
+	pulumi.RegisterOutputType(TlsRouteRuleMatchArrayOutput{})
 }

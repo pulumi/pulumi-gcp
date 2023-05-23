@@ -212,6 +212,21 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The region for the resource
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region for the resource
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * Output only. Timestamp when this Endpoint was last updated.
      * 
      */
@@ -241,6 +256,7 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
+        this.region = $.region;
         this.updateTime = $.updateTime;
     }
 
@@ -535,6 +551,27 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param region The region for the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region for the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

@@ -92,6 +92,7 @@ type LookupNetworkPeeringResult struct {
 	Name                           string `pulumi:"name"`
 	Network                        string `pulumi:"network"`
 	PeerNetwork                    string `pulumi:"peerNetwork"`
+	StackType                      string `pulumi:"stackType"`
 	State                          string `pulumi:"state"`
 	StateDetails                   string `pulumi:"stateDetails"`
 }
@@ -167,6 +168,10 @@ func (o LookupNetworkPeeringResultOutput) Network() pulumi.StringOutput {
 
 func (o LookupNetworkPeeringResultOutput) PeerNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.PeerNetwork }).(pulumi.StringOutput)
+}
+
+func (o LookupNetworkPeeringResultOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkPeeringResult) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkPeeringResultOutput) State() pulumi.StringOutput {

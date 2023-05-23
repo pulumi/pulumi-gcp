@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Collation { get; private set; } = null!;
 
         /// <summary>
-        /// The deletion policy for the database. Setting ABANDON allows the resource 
+        /// The deletion policy for the database. Setting ABANDON allows the resource
         /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
         /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
         /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Collation { get; set; }
 
         /// <summary>
-        /// The deletion policy for the database. Setting ABANDON allows the resource 
+        /// The deletion policy for the database. Setting ABANDON allows the resource
         /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
         /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
         /// values are: "ABANDON", "DELETE". Defaults to "DELETE".
@@ -288,7 +288,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Collation { get; set; }
 
         /// <summary>
-        /// The deletion policy for the database. Setting ABANDON allows the resource 
+        /// The deletion policy for the database. Setting ABANDON allows the resource
         /// to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
         /// deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
         /// values are: "ABANDON", "DELETE". Defaults to "DELETE".

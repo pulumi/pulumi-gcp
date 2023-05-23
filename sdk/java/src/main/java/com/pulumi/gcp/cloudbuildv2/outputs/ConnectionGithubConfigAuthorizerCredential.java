@@ -17,7 +17,7 @@ public final class ConnectionGithubConfigAuthorizerCredential {
      */
     private @Nullable String oauthTokenSecretVersion;
     /**
-     * @return The username associated to this token.
+     * @return Output only. The username associated to this token.
      * 
      */
     private @Nullable String username;
@@ -31,7 +31,7 @@ public final class ConnectionGithubConfigAuthorizerCredential {
         return Optional.ofNullable(this.oauthTokenSecretVersion);
     }
     /**
-     * @return The username associated to this token.
+     * @return Output only. The username associated to this token.
      * 
      */
     public Optional<String> username() {

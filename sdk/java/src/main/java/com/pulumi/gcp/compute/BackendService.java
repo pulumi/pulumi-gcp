@@ -258,6 +258,61 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Backend Service Cache Bypass Cache On Request Headers
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceCdnPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .requestPath(&#34;/&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .enableCdn(true)
+ *             .cdnPolicy(BackendServiceCdnPolicyArgs.builder()
+ *                 .cacheMode(&#34;CACHE_ALL_STATIC&#34;)
+ *                 .defaultTtl(3600)
+ *                 .clientTtl(7200)
+ *                 .maxTtl(10800)
+ *                 .negativeCaching(true)
+ *                 .signedUrlCacheMaxAgeSec(7200)
+ *                 .bypassCacheOnRequestHeaders(                
+ *                     BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs.builder()
+ *                         .headerName(&#34;Authorization&#34;)
+ *                         .build(),
+ *                     BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs.builder()
+ *                         .headerName(&#34;Proxy-Authorization&#34;)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Backend Service Traffic Director Round Robin
  * 
  * ```java

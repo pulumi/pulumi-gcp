@@ -10,12 +10,17 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'BackupEncryptionConfigArgs',
+    'BackupEncryptionInfoArgs',
     'ClusterAutomatedBackupPolicyArgs',
+    'ClusterAutomatedBackupPolicyEncryptionConfigArgs',
     'ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs',
     'ClusterAutomatedBackupPolicyTimeBasedRetentionArgs',
     'ClusterAutomatedBackupPolicyWeeklyScheduleArgs',
     'ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs',
     'ClusterBackupSourceArgs',
+    'ClusterEncryptionConfigArgs',
+    'ClusterEncryptionInfoArgs',
     'ClusterInitialUserArgs',
     'ClusterMigrationSourceArgs',
     'InstanceMachineConfigArgs',
@@ -23,10 +28,77 @@ __all__ = [
 ]
 
 @pulumi.input_type
+class BackupEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class BackupEncryptionInfoArgs:
+    def __init__(__self__, *,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
+                 kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] encryption_type: (Output)
+               Output only. Type of encryption.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kms_key_versions: (Output)
+               Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if kms_key_versions is not None:
+            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersions")
+    def kms_key_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        return pulumi.get(self, "kms_key_versions")
+
+    @kms_key_versions.setter
+    def kms_key_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "kms_key_versions", value)
+
+
+@pulumi.input_type
 class ClusterAutomatedBackupPolicyArgs:
     def __init__(__self__, *,
                  backup_window: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  quantity_based_retention: Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']] = None,
@@ -37,11 +109,13 @@ class ClusterAutomatedBackupPolicyArgs:
                The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         :param pulumi.Input[bool] enabled: Whether automated backups are enabled.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to backups created using this configuration.
         :param pulumi.Input[str] location: The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
-        :param pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs'] quantity_based_retention: Quantity-based Backup retention policy to retain recent backups.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs'] quantity_based_retention: Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
                Structure is documented below.
-        :param pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs'] time_based_retention: Time-based Backup retention policy.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs'] time_based_retention: Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
                Structure is documented below.
         :param pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs'] weekly_schedule: Weekly schedule for the Backup.
                Structure is documented below.
@@ -50,6 +124,8 @@ class ClusterAutomatedBackupPolicyArgs:
             pulumi.set(__self__, "backup_window", backup_window)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -88,6 +164,19 @@ class ClusterAutomatedBackupPolicyArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs']]:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -115,7 +204,7 @@ class ClusterAutomatedBackupPolicyArgs:
     @pulumi.getter(name="quantityBasedRetention")
     def quantity_based_retention(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']]:
         """
-        Quantity-based Backup retention policy to retain recent backups.
+        Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "quantity_based_retention")
@@ -128,7 +217,7 @@ class ClusterAutomatedBackupPolicyArgs:
     @pulumi.getter(name="timeBasedRetention")
     def time_based_retention(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']]:
         """
-        Time-based Backup retention policy.
+        Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
         Structure is documented below.
         """
         return pulumi.get(self, "time_based_retention")
@@ -149,6 +238,29 @@ class ClusterAutomatedBackupPolicyArgs:
     @weekly_schedule.setter
     def weekly_schedule(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']]):
         pulumi.set(self, "weekly_schedule", value)
+
+
+@pulumi.input_type
+class ClusterAutomatedBackupPolicyEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 @pulumi.input_type
@@ -250,9 +362,9 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
                  seconds: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] hours: Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
-        :param pulumi.Input[int] minutes: Minutes of hour of day. Must be from 0 to 59.
-        :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
-        :param pulumi.Input[int] seconds: Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        :param pulumi.Input[int] minutes: Minutes of hour of day. Currently, only the value 0 is supported.
+        :param pulumi.Input[int] nanos: Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
+        :param pulumi.Input[int] seconds: Seconds of minutes of the time. Currently, only the value 0 is supported.
         """
         if hours is not None:
             pulumi.set(__self__, "hours", hours)
@@ -279,7 +391,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
     @pulumi.getter
     def minutes(self) -> Optional[pulumi.Input[int]]:
         """
-        Minutes of hour of day. Must be from 0 to 59.
+        Minutes of hour of day. Currently, only the value 0 is supported.
         """
         return pulumi.get(self, "minutes")
 
@@ -291,7 +403,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
     @pulumi.getter
     def nanos(self) -> Optional[pulumi.Input[int]]:
         """
-        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
         """
         return pulumi.get(self, "nanos")
 
@@ -303,7 +415,7 @@ class ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs:
     @pulumi.getter
     def seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+        Seconds of minutes of the time. Currently, only the value 0 is supported.
         """
         return pulumi.get(self, "seconds")
 
@@ -333,6 +445,72 @@ class ClusterBackupSourceArgs:
     @backup_name.setter
     def backup_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_name", value)
+
+
+@pulumi.input_type
+class ClusterEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class ClusterEncryptionInfoArgs:
+    def __init__(__self__, *,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
+                 kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] encryption_type: (Output)
+               Output only. Type of encryption.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kms_key_versions: (Output)
+               Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if kms_key_versions is not None:
+            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersions")
+    def kms_key_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        return pulumi.get(self, "kms_key_versions")
+
+    @kms_key_versions.setter
+    def kms_key_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "kms_key_versions", value)
 
 
 @pulumi.input_type

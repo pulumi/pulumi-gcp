@@ -73,14 +73,14 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time the Instance was created in UTC.
+     * @return Time when this resource was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -273,14 +273,14 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      * 
      */
     @Import(name="workstationClusterId")
     private @Nullable Output<String> workstationClusterId;
 
     /**
-     * @return The name of the workstation cluster.
+     * @return The ID of the parent workstation cluster.
      * 
      */
     public Optional<Output<String>> workstationClusterId() {
@@ -288,14 +288,14 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the workstation cluster config.
+     * The ID to be assigned to the workstation cluster config.
      * 
      */
     @Import(name="workstationConfigId")
     private @Nullable Output<String> workstationConfigId;
 
     /**
-     * @return The ID of the workstation cluster config.
+     * @return The ID to be assigned to the workstation cluster config.
      * 
      */
     public Optional<Output<String>> workstationConfigId() {
@@ -421,7 +421,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createTime Time the Instance was created in UTC.
+         * @param createTime Time when this resource was created.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param createTime Time the Instance was created in UTC.
+         * @param createTime Time when this resource was created.
          * 
          * @return builder
          * 
@@ -704,7 +704,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workstationClusterId The name of the workstation cluster.
+         * @param workstationClusterId The ID of the parent workstation cluster.
          * 
          * @return builder
          * 
@@ -715,7 +715,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workstationClusterId The name of the workstation cluster.
+         * @param workstationClusterId The ID of the parent workstation cluster.
          * 
          * @return builder
          * 
@@ -725,7 +725,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workstationConfigId The ID of the workstation cluster config.
+         * @param workstationConfigId The ID to be assigned to the workstation cluster config.
          * 
          * @return builder
          * 
@@ -736,7 +736,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param workstationConfigId The ID of the workstation cluster config.
+         * @param workstationConfigId The ID to be assigned to the workstation cluster config.
          * 
          * @return builder
          * 

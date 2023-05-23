@@ -53,14 +53,14 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Time the Instance was created in UTC.
+     * Time when this resource was created.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time the Instance was created in UTC.
+     * @return Time when this resource was created.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -245,7 +245,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID of the workstation cluster.
+     * ID to use for the workstation cluster.
      * 
      * ***
      * 
@@ -254,7 +254,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
     private @Nullable Output<String> workstationClusterId;
 
     /**
-     * @return The ID of the workstation cluster.
+     * @return ID to use for the workstation cluster.
      * 
      * ***
      * 
@@ -357,7 +357,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime Time the Instance was created in UTC.
+         * @param createTime Time when this resource was created.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime Time the Instance was created in UTC.
+         * @param createTime Time when this resource was created.
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param workstationClusterId The ID of the workstation cluster.
+         * @param workstationClusterId ID to use for the workstation cluster.
          * 
          * ***
          * 
@@ -634,7 +634,7 @@ public final class WorkstationClusterState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param workstationClusterId The ID of the workstation cluster.
+         * @param workstationClusterId ID to use for the workstation cluster.
          * 
          * ***
          * 

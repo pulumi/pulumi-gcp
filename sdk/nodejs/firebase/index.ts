@@ -25,11 +25,6 @@ export const getAndroidApp: typeof import("./getAndroidApp").getAndroidApp = nul
 export const getAndroidAppOutput: typeof import("./getAndroidApp").getAndroidAppOutput = null as any;
 utilities.lazyLoad(exports, ["getAndroidApp","getAndroidAppOutput"], () => require("./getAndroidApp"));
 
-export { GetAndroidAppConfigArgs, GetAndroidAppConfigResult, GetAndroidAppConfigOutputArgs } from "./getAndroidAppConfig";
-export const getAndroidAppConfig: typeof import("./getAndroidAppConfig").getAndroidAppConfig = null as any;
-export const getAndroidAppConfigOutput: typeof import("./getAndroidAppConfig").getAndroidAppConfigOutput = null as any;
-utilities.lazyLoad(exports, ["getAndroidAppConfig","getAndroidAppConfigOutput"], () => require("./getAndroidAppConfig"));
-
 export { GetAppleAppArgs, GetAppleAppResult, GetAppleAppOutputArgs } from "./getAppleApp";
 export const getAppleApp: typeof import("./getAppleApp").getAppleApp = null as any;
 export const getAppleAppOutput: typeof import("./getAppleApp").getAppleAppOutput = null as any;

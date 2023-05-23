@@ -26,10 +26,10 @@ import * as utilities from "../utilities";
  *     location: "global",
  *     project: "my-project-name",
  *     enableAnalytics: true,
- *     bucketId: "mybucket",
+ *     bucketId: "my-bucket",
  * });
  * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", {
- *     linkId: "mybucket",
+ *     linkId: "mylink",
  *     bucket: loggingLinkedDatasetProjectBucketConfig.id,
  *     description: "Linked dataset test",
  * });
@@ -41,15 +41,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const loggingLinkedDatasetProjectBucketConfig = new gcp.logging.ProjectBucketConfig("loggingLinkedDatasetProjectBucketConfig", {
- *     bucketId: "mybucket",
+ *     bucketId: "my-bucket",
  *     enableAnalytics: true,
  *     location: "global",
  *     project: "my-project-name",
  * });
  * const loggingLinkedDatasetLinkedDataset = new gcp.logging.LinkedDataset("loggingLinkedDatasetLinkedDataset", {
- *     bucket: "mybucket",
+ *     bucket: "my-bucket",
  *     description: "Linked dataset test",
- *     linkId: "mybucket",
+ *     linkId: "mylink",
  *     location: "global",
  *     parent: "projects/my-project-name",
  * }, {

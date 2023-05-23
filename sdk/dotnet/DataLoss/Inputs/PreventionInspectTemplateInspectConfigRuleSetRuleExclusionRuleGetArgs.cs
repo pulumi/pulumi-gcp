@@ -20,6 +20,14 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryGetArgs>? Dictionary { get; set; }
 
         /// <summary>
+        /// Drop if the hotword rule is contained in the proximate context.
+        /// For tabular data, the context includes the column name.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("excludeByHotword")]
+        public Input<Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordGetArgs>? ExcludeByHotword { get; set; }
+
+        /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// Structure is documented below.
         /// </summary>

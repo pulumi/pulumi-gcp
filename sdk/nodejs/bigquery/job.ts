@@ -131,6 +131,57 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Job Load Parquet
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testBucket = new gcp.storage.Bucket("testBucket", {
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const testBucketObject = new gcp.storage.BucketObject("testBucketObject", {
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+ *     bucket: testBucket.name,
+ * });
+ * const testDataset = new gcp.bigquery.Dataset("testDataset", {
+ *     datasetId: "job_load_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const testTable = new gcp.bigquery.Table("testTable", {
+ *     deletionProtection: false,
+ *     tableId: "job_load_table",
+ *     datasetId: testDataset.datasetId,
+ * });
+ * const job = new gcp.bigquery.Job("job", {
+ *     jobId: "job_load",
+ *     labels: {
+ *         my_job: "load",
+ *     },
+ *     load: {
+ *         sourceUris: [pulumi.interpolate`gs://${testBucketObject.bucket}/${testBucketObject.name}`],
+ *         destinationTable: {
+ *             projectId: testTable.project,
+ *             datasetId: testTable.datasetId,
+ *             tableId: testTable.tableId,
+ *         },
+ *         schemaUpdateOptions: [
+ *             "ALLOW_FIELD_RELAXATION",
+ *             "ALLOW_FIELD_ADDITION",
+ *         ],
+ *         writeDisposition: "WRITE_APPEND",
+ *         sourceFormat: "PARQUET",
+ *         autodetect: true,
+ *         parquetOptions: {
+ *             enumAsString: true,
+ *             enableListInference: true,
+ *         },
+ *     },
+ * });
+ * ```
  * ### Bigquery Job Extract
  *
  * ```typescript

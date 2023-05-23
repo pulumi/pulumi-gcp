@@ -245,6 +245,102 @@ import (
 //	}
 //
 // ```
+// ### Dlp Job Trigger Deidentify
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultDataset, err := bigquery.NewDataset(ctx, "defaultDataset", &bigquery.DatasetArgs{
+//				DatasetId:                pulumi.String("tf_test"),
+//				FriendlyName:             pulumi.String("terraform-test"),
+//				Description:              pulumi.String("Description for the dataset created by terraform"),
+//				Location:                 pulumi.String("US"),
+//				DefaultTableExpirationMs: pulumi.Int(3600000),
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("default"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTable, err := bigquery.NewTable(ctx, "defaultTable", &bigquery.TableArgs{
+//				DatasetId:          defaultDataset.DatasetId,
+//				TableId:            pulumi.String("tf_test"),
+//				DeletionProtection: pulumi.Bool(false),
+//				TimePartitioning: &bigquery.TableTimePartitioningArgs{
+//					Type: pulumi.String("DAY"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("default"),
+//				},
+//				Schema: pulumi.String("    [\n    {\n      \"name\": \"quantity\",\n      \"type\": \"NUMERIC\",\n      \"mode\": \"NULLABLE\",\n      \"description\": \"The quantity\"\n    },\n    {\n      \"name\": \"name\",\n      \"type\": \"STRING\",\n      \"mode\": \"NULLABLE\",\n      \"description\": \"Name of the object\"\n    }\n    ]\n"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataloss.NewPreventionJobTrigger(ctx, "deidentify", &dataloss.PreventionJobTriggerArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("Description for the job_trigger created by terraform"),
+//				DisplayName: pulumi.String("TerraformDisplayName"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					InspectTemplateName: pulumi.String("sample-inspect-template"),
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							Deidentify: &dataloss.PreventionJobTriggerInspectJobActionDeidentifyArgs{
+//								CloudStorageOutput: pulumi.String("gs://samplebucket/dir/"),
+//								FileTypesToTransforms: pulumi.StringArray{
+//									pulumi.String("CSV"),
+//									pulumi.String("TSV"),
+//								},
+//								TransformationDetailsStorageConfig: &dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs{
+//										ProjectId: pulumi.String("my-project-name"),
+//										DatasetId: defaultDataset.DatasetId,
+//										TableId:   defaultTable.TableId,
+//									},
+//								},
+//								TransformationConfig: &dataloss.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs{
+//									DeidentifyTemplate:           pulumi.String("sample-deidentify-template"),
+//									ImageRedactTemplate:          pulumi.String("sample-image-redact-template"),
+//									StructuredDeidentifyTemplate: pulumi.String("sample-structured-deidentify-template"),
+//								},
+//							},
+//						},
+//					},
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+//							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+//								Url: pulumi.String("gs://mybucket/directory/"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dlp Job Trigger Hybrid
 //
 // ```go
@@ -308,6 +404,55 @@ import (
 //	}
 //
 // ```
+// ### Dlp Job Trigger Publish To Stackdriver
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "publishToStackdriver", &dataloss.PreventionJobTriggerArgs{
+//				Description: pulumi.String("Description for the job_trigger created by terraform"),
+//				DisplayName: pulumi.String("TerraformDisplayName"),
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							PublishToStackdriver: nil,
+//						},
+//					},
+//					InspectTemplateName: pulumi.String("sample-inspect-template"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+//							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+//								Url: pulumi.String("gs://mybucket/directory/"),
+//							},
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("projects/my-project-name"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -327,6 +472,9 @@ import (
 type PreventionJobTrigger struct {
 	pulumi.CustomResourceState
 
+	// (Output)
+	// The creation timestamp of an inspectTemplate. Set by the server.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of the job trigger.
 	//
 	// (Optional)
@@ -339,6 +487,30 @@ type PreventionJobTrigger struct {
 	InspectJob PreventionJobTriggerInspectJobPtrOutput `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	//
+	// (Required)
 	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
 	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -365,6 +537,8 @@ type PreventionJobTrigger struct {
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers PreventionJobTriggerTriggerArrayOutput `pulumi:"triggers"`
+	// The last update timestamp of an inspectTemplate. Set by the server.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewPreventionJobTrigger registers a new resource with the given unique name, arguments, and options.
@@ -402,6 +576,9 @@ func GetPreventionJobTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PreventionJobTrigger resources.
 type preventionJobTriggerState struct {
+	// (Output)
+	// The creation timestamp of an inspectTemplate. Set by the server.
+	CreateTime *string `pulumi:"createTime"`
 	// A description of the job trigger.
 	//
 	// (Optional)
@@ -414,6 +591,30 @@ type preventionJobTriggerState struct {
 	InspectJob *PreventionJobTriggerInspectJob `pulumi:"inspectJob"`
 	// The timestamp of the last time this trigger executed.
 	LastRunTime *string `pulumi:"lastRunTime"`
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	//
+	// (Required)
 	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
 	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -440,9 +641,14 @@ type preventionJobTriggerState struct {
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers []PreventionJobTriggerTrigger `pulumi:"triggers"`
+	// The last update timestamp of an inspectTemplate. Set by the server.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type PreventionJobTriggerState struct {
+	// (Output)
+	// The creation timestamp of an inspectTemplate. Set by the server.
+	CreateTime pulumi.StringPtrInput
 	// A description of the job trigger.
 	//
 	// (Optional)
@@ -455,6 +661,30 @@ type PreventionJobTriggerState struct {
 	InspectJob PreventionJobTriggerInspectJobPtrInput
 	// The timestamp of the last time this trigger executed.
 	LastRunTime pulumi.StringPtrInput
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
+	// (Required)
+	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+	// or `projects/project-id/storedInfoTypes/432452342`.
+	//
+	// (Required)
 	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
 	// modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -481,6 +711,8 @@ type PreventionJobTriggerState struct {
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers PreventionJobTriggerTriggerArrayInput
+	// The last update timestamp of an inspectTemplate. Set by the server.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (PreventionJobTriggerState) ElementType() reflect.Type {
@@ -621,6 +853,12 @@ func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutputWithContext(ctx 
 	return o
 }
 
+// (Output)
+// The creation timestamp of an inspectTemplate. Set by the server.
+func (o PreventionJobTriggerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // A description of the job trigger.
 //
 // (Optional)
@@ -645,6 +883,30 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.LastRunTime }).(pulumi.StringOutput)
 }
 
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
+// (Required)
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
+// (Required)
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
+// (Required)
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
+// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
+// (Required)
+// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
+// (Required)
+// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
+// or `projects/project-id/storedInfoTypes/432452342`.
+//
+// (Required)
 // Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 // For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
 // modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp
@@ -681,6 +943,11 @@ func (o PreventionJobTriggerOutput) Status() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o PreventionJobTriggerOutput) Triggers() PreventionJobTriggerTriggerArrayOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) PreventionJobTriggerTriggerArrayOutput { return v.Triggers }).(PreventionJobTriggerTriggerArrayOutput)
+}
+
+// The last update timestamp of an inspectTemplate. Set by the server.
+func (o PreventionJobTriggerOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type PreventionJobTriggerArrayOutput struct{ *pulumi.OutputState }

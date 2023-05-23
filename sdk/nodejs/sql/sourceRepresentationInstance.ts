@@ -32,6 +32,22 @@ import * as utilities from "../utilities";
  *     username: "some-user",
  * });
  * ```
+ * ### Sql Source Representation Instance Postgres
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.SourceRepresentationInstance("instance", {
+ *     databaseVersion: "POSTGRES_9_6",
+ *     dumpFilePath: "gs://replica-bucket/source-database.sql.gz",
+ *     host: "10.20.30.40",
+ *     password: "password-for-the-user",
+ *     port: 3306,
+ *     region: "us-central1",
+ *     username: "some-user",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -91,7 +107,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
     public readonly clientKey!: pulumi.Output<string | undefined>;
     /**
      * The MySQL version running on your source database server.
-     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
@@ -205,7 +221,7 @@ export interface SourceRepresentationInstanceState {
     clientKey?: pulumi.Input<string>;
     /**
      * The MySQL version running on your source database server.
-     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      */
     databaseVersion?: pulumi.Input<string>;
     /**
@@ -267,7 +283,7 @@ export interface SourceRepresentationInstanceArgs {
     clientKey?: pulumi.Input<string>;
     /**
      * The MySQL version running on your source database server.
-     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      */
     databaseVersion: pulumi.Input<string>;
     /**

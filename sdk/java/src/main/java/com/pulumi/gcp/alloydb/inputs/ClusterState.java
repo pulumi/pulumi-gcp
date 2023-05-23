@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterBackupSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionInfoArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterMigrationSourceArgs;
 import java.lang.String;
@@ -100,6 +102,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionConfig")
+    private @Nullable Output<ClusterEncryptionConfigArgs> encryptionConfig;
+
+    /**
+     * @return EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterEncryptionConfigArgs>> encryptionConfig() {
+        return Optional.ofNullable(this.encryptionConfig);
+    }
+
+    /**
+     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionInfos")
+    private @Nullable Output<List<ClusterEncryptionInfoArgs>> encryptionInfos;
+
+    /**
+     * @return EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterEncryptionInfoArgs>>> encryptionInfos() {
+        return Optional.ofNullable(this.encryptionInfos);
     }
 
     /**
@@ -242,6 +278,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.clusterId = $.clusterId;
         this.databaseVersion = $.databaseVersion;
         this.displayName = $.displayName;
+        this.encryptionConfig = $.encryptionConfig;
+        this.encryptionInfos = $.encryptionInfos;
         this.initialUser = $.initialUser;
         this.labels = $.labels;
         this.location = $.location;
@@ -390,6 +428,63 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(@Nullable Output<ClusterEncryptionConfigArgs> encryptionConfig) {
+            $.encryptionConfig = encryptionConfig;
+            return this;
+        }
+
+        /**
+         * @param encryptionConfig EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionConfig(ClusterEncryptionConfigArgs encryptionConfig) {
+            return encryptionConfig(Output.of(encryptionConfig));
+        }
+
+        /**
+         * @param encryptionInfos EncryptionInfo describes the encryption information of a cluster or a backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionInfos(@Nullable Output<List<ClusterEncryptionInfoArgs>> encryptionInfos) {
+            $.encryptionInfos = encryptionInfos;
+            return this;
+        }
+
+        /**
+         * @param encryptionInfos EncryptionInfo describes the encryption information of a cluster or a backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionInfos(List<ClusterEncryptionInfoArgs> encryptionInfos) {
+            return encryptionInfos(Output.of(encryptionInfos));
+        }
+
+        /**
+         * @param encryptionInfos EncryptionInfo describes the encryption information of a cluster or a backup.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionInfos(ClusterEncryptionInfoArgs... encryptionInfos) {
+            return encryptionInfos(List.of(encryptionInfos));
         }
 
         /**

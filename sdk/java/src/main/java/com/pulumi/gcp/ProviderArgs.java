@@ -376,6 +376,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataLossPreventionCustomEndpoint);
     }
 
+    @Import(name="databaseMigrationServiceCustomEndpoint")
+    private @Nullable Output<String> databaseMigrationServiceCustomEndpoint;
+
+    public Optional<Output<String>> databaseMigrationServiceCustomEndpoint() {
+        return Optional.ofNullable(this.databaseMigrationServiceCustomEndpoint);
+    }
+
     @Import(name="dataflowCustomEndpoint")
     private @Nullable Output<String> dataflowCustomEndpoint;
 
@@ -556,6 +563,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> gkehubFeatureCustomEndpoint() {
         return Optional.ofNullable(this.gkehubFeatureCustomEndpoint);
+    }
+
+    @Import(name="gkeonpremCustomEndpoint")
+    private @Nullable Output<String> gkeonpremCustomEndpoint;
+
+    public Optional<Output<String>> gkeonpremCustomEndpoint() {
+        return Optional.ofNullable(this.gkeonpremCustomEndpoint);
     }
 
     @Import(name="googlePartnerName")
@@ -1025,6 +1039,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataCatalogCustomEndpoint = $.dataCatalogCustomEndpoint;
         this.dataFusionCustomEndpoint = $.dataFusionCustomEndpoint;
         this.dataLossPreventionCustomEndpoint = $.dataLossPreventionCustomEndpoint;
+        this.databaseMigrationServiceCustomEndpoint = $.databaseMigrationServiceCustomEndpoint;
         this.dataflowCustomEndpoint = $.dataflowCustomEndpoint;
         this.dataformCustomEndpoint = $.dataformCustomEndpoint;
         this.dataplexCustomEndpoint = $.dataplexCustomEndpoint;
@@ -1051,6 +1066,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.gkeBackupCustomEndpoint = $.gkeBackupCustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
         this.gkehubFeatureCustomEndpoint = $.gkehubFeatureCustomEndpoint;
+        this.gkeonpremCustomEndpoint = $.gkeonpremCustomEndpoint;
         this.googlePartnerName = $.googlePartnerName;
         this.healthcareCustomEndpoint = $.healthcareCustomEndpoint;
         this.iam2CustomEndpoint = $.iam2CustomEndpoint;
@@ -1589,6 +1605,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dataLossPreventionCustomEndpoint(Output.of(dataLossPreventionCustomEndpoint));
         }
 
+        public Builder databaseMigrationServiceCustomEndpoint(@Nullable Output<String> databaseMigrationServiceCustomEndpoint) {
+            $.databaseMigrationServiceCustomEndpoint = databaseMigrationServiceCustomEndpoint;
+            return this;
+        }
+
+        public Builder databaseMigrationServiceCustomEndpoint(String databaseMigrationServiceCustomEndpoint) {
+            return databaseMigrationServiceCustomEndpoint(Output.of(databaseMigrationServiceCustomEndpoint));
+        }
+
         public Builder dataflowCustomEndpoint(@Nullable Output<String> dataflowCustomEndpoint) {
             $.dataflowCustomEndpoint = dataflowCustomEndpoint;
             return this;
@@ -1821,6 +1846,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder gkehubFeatureCustomEndpoint(String gkehubFeatureCustomEndpoint) {
             return gkehubFeatureCustomEndpoint(Output.of(gkehubFeatureCustomEndpoint));
+        }
+
+        public Builder gkeonpremCustomEndpoint(@Nullable Output<String> gkeonpremCustomEndpoint) {
+            $.gkeonpremCustomEndpoint = gkeonpremCustomEndpoint;
+            return this;
+        }
+
+        public Builder gkeonpremCustomEndpoint(String gkeonpremCustomEndpoint) {
+            return gkeonpremCustomEndpoint(Output.of(gkeonpremCustomEndpoint));
         }
 
         public Builder googlePartnerName(@Nullable Output<String> googlePartnerName) {

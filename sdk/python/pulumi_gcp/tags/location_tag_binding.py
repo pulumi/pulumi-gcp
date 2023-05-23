@@ -164,7 +164,8 @@ class LocationTagBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
-        ### Location Tag Binding Basic
+
+        To bind a tag to a Cloud Run instance:
 
         ```python
         import pulumi
@@ -184,6 +185,29 @@ class LocationTagBinding(pulumi.CustomResource):
         binding = gcp.tags.LocationTagBinding("binding",
             location="us-central1",
             parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+        ```
+
+        To bind a (firewall) tag to compute instance:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            org_id="123456789",
+            project_id="project_id")
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        binding = gcp.tags.LocationTagBinding("binding",
+            location="us-central1",
+            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance['instance']['instance_id']}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
         ```
 
@@ -219,7 +243,8 @@ class LocationTagBinding(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing)
 
         ## Example Usage
-        ### Location Tag Binding Basic
+
+        To bind a tag to a Cloud Run instance:
 
         ```python
         import pulumi
@@ -239,6 +264,29 @@ class LocationTagBinding(pulumi.CustomResource):
         binding = gcp.tags.LocationTagBinding("binding",
             location="us-central1",
             parent=project.number.apply(lambda number: f"//run.googleapis.com/projects/{number}/locations/{google_cloud_run_service['default']['location']}/services/{google_cloud_run_service['default']['name']}"),
+            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+        ```
+
+        To bind a (firewall) tag to compute instance:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project",
+            org_id="123456789",
+            project_id="project_id")
+        key = gcp.tags.TagKey("key",
+            description="For keyname resources.",
+            parent="organizations/123456789",
+            short_name="keyname")
+        value = gcp.tags.TagValue("value",
+            description="For valuename resources.",
+            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            short_name="valuename")
+        binding = gcp.tags.LocationTagBinding("binding",
+            location="us-central1",
+            parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance['instance']['instance_id']}"),
             tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
         ```
 

@@ -17,6 +17,21 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
     public static final PreventionDeidentifyTemplateState Empty = new PreventionDeidentifyTemplateState();
 
     /**
+     * The creation timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * Configuration of the deidentify template
      * Structure is documented below.
      * 
@@ -64,6 +79,9 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
     }
 
     /**
+     * Name of the information type.
+     * 
+     * (Required)
      * Name of the information type.
      * 
      * (Required)
@@ -126,6 +144,9 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
 
     /**
      * @return Name of the information type.
+     * 
+     * (Required)
+     * Name of the information type.
      * 
      * (Required)
      * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -209,14 +230,31 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         return Optional.ofNullable(this.parent);
     }
 
+    /**
+     * The last update timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return The last update timestamp of an deidentifyTemplate. Set by the server.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
     private PreventionDeidentifyTemplateState() {}
 
     private PreventionDeidentifyTemplateState(PreventionDeidentifyTemplateState $) {
+        this.createTime = $.createTime;
         this.deidentifyConfig = $.deidentifyConfig;
         this.description = $.description;
         this.displayName = $.displayName;
         this.name = $.name;
         this.parent = $.parent;
+        this.updateTime = $.updateTime;
     }
 
     public static Builder builder() {
@@ -235,6 +273,27 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
 
         public Builder(PreventionDeidentifyTemplateState defaults) {
             $ = new PreventionDeidentifyTemplateState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime The creation timestamp of an deidentifyTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation timestamp of an deidentifyTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -306,6 +365,9 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
          * @param name Name of the information type.
          * 
          * (Required)
+         * Name of the information type.
+         * 
+         * (Required)
          * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
          * 
          * (Optional)
@@ -369,6 +431,9 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
 
         /**
          * @param name Name of the information type.
+         * 
+         * (Required)
+         * Name of the information type.
          * 
          * (Required)
          * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -458,6 +523,27 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param updateTime The last update timestamp of an deidentifyTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime The last update timestamp of an deidentifyTemplate. Set by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         public PreventionDeidentifyTemplateState build() {

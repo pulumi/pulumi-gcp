@@ -80,6 +80,11 @@ export type Disk = import("./disk").Disk;
 export const Disk: typeof import("./disk").Disk = null as any;
 utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
 
+export { DiskAsyncReplicationArgs, DiskAsyncReplicationState } from "./diskAsyncReplication";
+export type DiskAsyncReplication = import("./diskAsyncReplication").DiskAsyncReplication;
+export const DiskAsyncReplication: typeof import("./diskAsyncReplication").DiskAsyncReplication = null as any;
+utilities.lazyLoad(exports, ["DiskAsyncReplication"], () => require("./diskAsyncReplication"));
+
 export { DiskIamBindingArgs, DiskIamBindingState } from "./diskIamBinding";
 export type DiskIamBinding = import("./diskIamBinding").DiskIamBinding;
 export const DiskIamBinding: typeof import("./diskIamBinding").DiskIamBinding = null as any;
@@ -889,6 +894,8 @@ const _module = {
                 return new BackendServiceSignedUrlKey(name, <any>undefined, { urn })
             case "gcp:compute/disk:Disk":
                 return new Disk(name, <any>undefined, { urn })
+            case "gcp:compute/diskAsyncReplication:DiskAsyncReplication":
+                return new DiskAsyncReplication(name, <any>undefined, { urn })
             case "gcp:compute/diskIamBinding:DiskIamBinding":
                 return new DiskIamBinding(name, <any>undefined, { urn })
             case "gcp:compute/diskIamMember:DiskIamMember":
@@ -1141,6 +1148,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamMember", 
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/backendServiceSignedUrlKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/disk", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/diskAsyncReplication", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/diskIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/diskIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/diskIamPolicy", _module)

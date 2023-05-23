@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.ClusterAutomatedBackupPolicyEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -45,14 +52,14 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Quantity-based Backup retention policy to retain recent backups.
+        /// Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Input("quantityBasedRetention")]
         public Input<Inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs>? QuantityBasedRetention { get; set; }
 
         /// <summary>
-        /// Time-based Backup retention policy.
+        /// Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
         /// Structure is documented below.
         /// </summary>
         [Input("timeBasedRetention")]

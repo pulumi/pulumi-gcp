@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs;
 import java.lang.String;
@@ -33,6 +34,25 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
      */
     public Optional<Output<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs>> dictionary() {
         return Optional.ofNullable(this.dictionary);
+    }
+
+    /**
+     * Drop if the hotword rule is contained in the proximate context.
+     * For tabular data, the context includes the column name.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="excludeByHotword")
+    private @Nullable Output<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs> excludeByHotword;
+
+    /**
+     * @return Drop if the hotword rule is contained in the proximate context.
+     * For tabular data, the context includes the column name.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs>> excludeByHotword() {
+        return Optional.ofNullable(this.excludeByHotword);
     }
 
     /**
@@ -90,6 +110,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
     private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs $) {
         this.dictionary = $.dictionary;
+        this.excludeByHotword = $.excludeByHotword;
         this.excludeInfoTypes = $.excludeInfoTypes;
         this.matchingType = $.matchingType;
         this.regex = $.regex;
@@ -134,6 +155,31 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
          */
         public Builder dictionary(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs dictionary) {
             return dictionary(Output.of(dictionary));
+        }
+
+        /**
+         * @param excludeByHotword Drop if the hotword rule is contained in the proximate context.
+         * For tabular data, the context includes the column name.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeByHotword(@Nullable Output<PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs> excludeByHotword) {
+            $.excludeByHotword = excludeByHotword;
+            return this;
+        }
+
+        /**
+         * @param excludeByHotword Drop if the hotword rule is contained in the proximate context.
+         * For tabular data, the context includes the column name.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludeByHotword(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs excludeByHotword) {
+            return excludeByHotword(Output.of(excludeByHotword));
         }
 
         /**

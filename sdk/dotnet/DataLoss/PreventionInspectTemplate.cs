@@ -127,6 +127,111 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Inspect Template Custom Type Surrogate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customTypeSurrogate = new Gcp.DataLoss.PreventionInspectTemplate("customTypeSurrogate", new()
+    ///     {
+    ///         Description = "My description",
+    ///         DisplayName = "display_name",
+    ///         InspectConfig = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigArgs
+    ///         {
+    ///             CustomInfoTypes = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs
+    ///                 {
+    ///                     InfoType = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs
+    ///                     {
+    ///                         Name = "MY_CUSTOM_TYPE",
+    ///                     },
+    ///                     Likelihood = "UNLIKELY",
+    ///                     SurrogateType = null,
+    ///                 },
+    ///             },
+    ///             InfoTypes = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+    ///                 {
+    ///                     Name = "EMAIL_ADDRESS",
+    ///                 },
+    ///             },
+    ///             Limits = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigLimitsArgs
+    ///             {
+    ///                 MaxFindingsPerItem = 10,
+    ///                 MaxFindingsPerRequest = 50,
+    ///             },
+    ///             MinLikelihood = "UNLIKELY",
+    ///             RuleSets = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetArgs
+    ///                 {
+    ///                     InfoTypes = new[]
+    ///                     {
+    ///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs
+    ///                         {
+    ///                             Name = "EMAIL_ADDRESS",
+    ///                         },
+    ///                     },
+    ///                     Rules = new[]
+    ///                     {
+    ///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs
+    ///                         {
+    ///                             ExclusionRule = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs
+    ///                             {
+    ///                                 MatchingType = "MATCHING_TYPE_FULL_MATCH",
+    ///                                 Regex = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs
+    ///                                 {
+    ///                                     Pattern = ".+@example.com",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetArgs
+    ///                 {
+    ///                     InfoTypes = new[]
+    ///                     {
+    ///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs
+    ///                         {
+    ///                             Name = "MY_CUSTOM_TYPE",
+    ///                         },
+    ///                     },
+    ///                     Rules = new[]
+    ///                     {
+    ///                         new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleArgs
+    ///                         {
+    ///                             HotwordRule = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs
+    ///                             {
+    ///                                 HotwordRegex = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs
+    ///                                 {
+    ///                                     Pattern = "example*",
+    ///                                 },
+    ///                                 LikelihoodAdjustment = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs
+    ///                                 {
+    ///                                     FixedLikelihood = "VERY_LIKELY",
+    ///                                 },
+    ///                                 Proximity = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs
+    ///                                 {
+    ///                                     WindowBefore = 50,
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

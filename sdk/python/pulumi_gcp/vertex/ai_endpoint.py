@@ -23,7 +23,8 @@ class AiEndpointArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AiEndpoint resource.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -39,6 +40,7 @@ class AiEndpointArgs:
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region for the resource
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
@@ -54,6 +56,8 @@ class AiEndpointArgs:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter(name="displayName")
@@ -156,6 +160,18 @@ class AiEndpointArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region for the resource
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _AiEndpointState:
@@ -172,6 +188,7 @@ class _AiEndpointState:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiEndpoint resources.
@@ -194,6 +211,7 @@ class _AiEndpointState:
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region for the resource
         :param pulumi.Input[str] update_time: Output only. Timestamp when this Endpoint was last updated.
         """
         if create_time is not None:
@@ -220,6 +238,8 @@ class _AiEndpointState:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -375,6 +395,18 @@ class _AiEndpointState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region for the resource
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -400,6 +432,7 @@ class AiEndpoint(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Models are deployed into it, and afterwards Endpoint is called to obtain predictions and explanations.
@@ -432,6 +465,7 @@ class AiEndpoint(pulumi.CustomResource):
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
+            region="us-central1",
             labels={
                 "label-one": "value-one",
             },
@@ -477,6 +511,7 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region for the resource
         """
         ...
     @overload
@@ -515,6 +550,7 @@ class AiEndpoint(pulumi.CustomResource):
             display_name="sample-endpoint",
             description="A sample vertex endpoint",
             location="us-central1",
+            region="us-central1",
             labels={
                 "label-one": "value-one",
             },
@@ -568,6 +604,7 @@ class AiEndpoint(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -589,6 +626,7 @@ class AiEndpoint(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             __props__.__dict__["create_time"] = None
             __props__.__dict__["deployed_models"] = None
             __props__.__dict__["etag"] = None
@@ -616,6 +654,7 @@ class AiEndpoint(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiEndpoint':
         """
         Get an existing AiEndpoint resource's state with the given name, id, and optional extra
@@ -643,6 +682,7 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region for the resource
         :param pulumi.Input[str] update_time: Output only. Timestamp when this Endpoint was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -661,6 +701,7 @@ class AiEndpoint(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
         __props__.__dict__["update_time"] = update_time
         return AiEndpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -766,6 +807,14 @@ class AiEndpoint(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The region for the resource
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="updateTime")

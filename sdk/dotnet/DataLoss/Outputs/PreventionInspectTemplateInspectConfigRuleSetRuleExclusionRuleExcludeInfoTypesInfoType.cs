@@ -18,11 +18,19 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Version name for this InfoType.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
-        private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType(string name)
+        private PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType(
+            string name,
+
+            string? version)
         {
             Name = name;
+            Version = version;
         }
     }
 }

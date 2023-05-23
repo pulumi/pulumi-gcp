@@ -113,6 +113,22 @@ public class Workflow extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The KMS key used to encrypt workflow and execution data.
+     * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+     * 
+     */
+    @Export(name="cryptoKeyName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> cryptoKeyName;
+
+    /**
+     * @return The KMS key used to encrypt workflow and execution data.
+     * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
+     * 
+     */
+    public Output<Optional<String>> cryptoKeyName() {
+        return Codegen.optional(this.cryptoKeyName);
+    }
+    /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      * 
      */
@@ -217,7 +233,11 @@ public class Workflow extends com.pulumi.resources.CustomResource {
     /**
      * Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
-     * Format: projects/{project}/serviceAccounts/{account}.
+     * Format: projects/{project}/serviceAccounts/{account} or {account}.
+     * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+     * The {account} value can be the email address or the unique_id of the service account.
+     * If not provided, workflow will use the project&#39;s default service account.
+     * Modifying this field for an existing workflow results in a new workflow revision.
      * 
      */
     @Export(name="serviceAccount", type=String.class, parameters={})
@@ -226,7 +246,11 @@ public class Workflow extends com.pulumi.resources.CustomResource {
     /**
      * @return Name of the service account associated with the latest workflow version. This service
      * account represents the identity of the workflow and determines what permissions the workflow has.
-     * Format: projects/{project}/serviceAccounts/{account}.
+     * Format: projects/{project}/serviceAccounts/{account} or {account}.
+     * Using - as a wildcard for the {project} or not providing one at all will infer the project from the account.
+     * The {account} value can be the email address or the unique_id of the service account.
+     * If not provided, workflow will use the project&#39;s default service account.
+     * Modifying this field for an existing workflow results in a new workflow revision.
      * 
      */
     public Output<String> serviceAccount() {

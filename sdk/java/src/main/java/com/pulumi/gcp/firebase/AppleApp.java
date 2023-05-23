@@ -143,16 +143,20 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      * 
+     * ***
+     * 
      */
     @Export(name="bundleId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> bundleId;
+    private Output<String> bundleId;
 
     /**
      * @return The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      * 
+     * ***
+     * 
      */
-    public Output<Optional<String>> bundleId() {
-        return Codegen.optional(this.bundleId);
+    public Output<String> bundleId() {
+        return this.bundleId;
     }
     /**
      * (Optional) Set to &#39;ABANDON&#39; to allow the Apple to be untracked from terraform state rather than deleted upon &#39;terraform
@@ -175,16 +179,12 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
     /**
      * The user-assigned display name of the App.
      * 
-     * ***
-     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the App.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {

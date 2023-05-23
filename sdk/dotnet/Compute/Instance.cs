@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CpuPlatform { get; private set; } = null!;
 
         /// <summary>
-        /// Current status of the instance.
+        /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         /// </summary>
         [Output("currentStatus")]
         public Output<string> CurrentStatus { get; private set; } = null!;
@@ -757,7 +757,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CpuPlatform { get; set; }
 
         /// <summary>
-        /// Current status of the instance.
+        /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         /// </summary>
         [Input("currentStatus")]
         public Input<string>? CurrentStatus { get; set; }

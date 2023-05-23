@@ -23,6 +23,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -30,6 +31,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basicGlobalNetworksecurityAddressGroup", &networksecurity.AddressGroupArgs{
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Description: pulumi.String("Sample global networksecurity_address_group"),
+//				Location:    pulumi.String("global"),
+//				Items: pulumi.StringArray{
+//					pulumi.String("208.80.154.224/32"),
+//				},
+//				Type:     pulumi.String("IPV4"),
+//				Capacity: pulumi.Int(100),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			basicNetworkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "basicNetworkFirewallPolicy", &compute.NetworkFirewallPolicyArgs{
 //				Description: pulumi.String("Sample global network firewall policy"),
 //				Project:     pulumi.String("my-project-name"),
@@ -81,6 +95,15 @@ import (
 //					SrcIpRanges: pulumi.StringArray{
 //						pulumi.String("10.100.0.1/32"),
 //					},
+//					SrcFqdns: pulumi.StringArray{
+//						pulumi.String("google.com"),
+//					},
+//					SrcRegionCodes: pulumi.StringArray{
+//						pulumi.String("US"),
+//					},
+//					SrcThreatIntelligences: pulumi.StringArray{
+//						pulumi.String("iplist-known-malicious-ips"),
+//					},
 //					SrcSecureTags: compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArray{
 //						&compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs{
 //							Name: basicValue.Name.ApplyT(func(name string) (string, error) {
@@ -92,6 +115,9 @@ import (
 //						&compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
 //							IpProtocol: pulumi.String("all"),
 //						},
+//					},
+//					SrcAddressGroups: pulumi.StringArray{
+//						basicGlobalNetworksecurityAddressGroup.ID(),
 //					},
 //				},
 //			})

@@ -177,14 +177,14 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the workstation cluster.
+     * The ID of the parent workstation cluster.
      * 
      */
     @Import(name="workstationClusterId", required=true)
     private Output<String> workstationClusterId;
 
     /**
-     * @return The name of the workstation cluster.
+     * @return The ID of the parent workstation cluster.
      * 
      */
     public Output<String> workstationClusterId() {
@@ -192,14 +192,14 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the workstation cluster config.
+     * The ID to be assigned to the workstation cluster config.
      * 
      */
     @Import(name="workstationConfigId", required=true)
     private Output<String> workstationConfigId;
 
     /**
-     * @return The ID of the workstation cluster config.
+     * @return The ID to be assigned to the workstation cluster config.
      * 
      */
     public Output<String> workstationConfigId() {
@@ -461,7 +461,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workstationClusterId The name of the workstation cluster.
+         * @param workstationClusterId The ID of the parent workstation cluster.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workstationClusterId The name of the workstation cluster.
+         * @param workstationClusterId The ID of the parent workstation cluster.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workstationConfigId The ID of the workstation cluster config.
+         * @param workstationConfigId The ID to be assigned to the workstation cluster config.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workstationConfigId The ID of the workstation cluster config.
+         * @param workstationConfigId The ID to be assigned to the workstation cluster config.
          * 
          * @return builder
          * 

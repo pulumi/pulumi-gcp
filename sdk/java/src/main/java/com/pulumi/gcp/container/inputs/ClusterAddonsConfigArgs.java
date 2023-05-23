@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigConfigConnectorConfigA
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigDnsCacheConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGcsFuseCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHorizontalPodAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHttpLoadBalancingArgs;
@@ -169,6 +170,25 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * )) The status of the GCSFuse CSI driver addon,
+     * which allows the usage of a gcs bucket as volumes.
+     * It is disabled by default; set `enabled = true` to enable.
+     * 
+     */
+    @Import(name="gcsFuseCsiDriverConfig")
+    private @Nullable Output<ClusterAddonsConfigGcsFuseCsiDriverConfigArgs> gcsFuseCsiDriverConfig;
+
+    /**
+     * @return )) The status of the GCSFuse CSI driver addon,
+     * which allows the usage of a gcs bucket as volumes.
+     * It is disabled by default; set `enabled = true` to enable.
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigGcsFuseCsiDriverConfigArgs>> gcsFuseCsiDriverConfig() {
+        return Optional.ofNullable(this.gcsFuseCsiDriverConfig);
+    }
+
+    /**
      * .
      * The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
      * 
@@ -294,6 +314,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.dnsCacheConfig = $.dnsCacheConfig;
         this.gcePersistentDiskCsiDriverConfig = $.gcePersistentDiskCsiDriverConfig;
         this.gcpFilestoreCsiDriverConfig = $.gcpFilestoreCsiDriverConfig;
+        this.gcsFuseCsiDriverConfig = $.gcsFuseCsiDriverConfig;
         this.gkeBackupAgentConfig = $.gkeBackupAgentConfig;
         this.horizontalPodAutoscaling = $.horizontalPodAutoscaling;
         this.httpLoadBalancing = $.httpLoadBalancing;
@@ -491,6 +512,31 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder gcpFilestoreCsiDriverConfig(ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs gcpFilestoreCsiDriverConfig) {
             return gcpFilestoreCsiDriverConfig(Output.of(gcpFilestoreCsiDriverConfig));
+        }
+
+        /**
+         * @param gcsFuseCsiDriverConfig )) The status of the GCSFuse CSI driver addon,
+         * which allows the usage of a gcs bucket as volumes.
+         * It is disabled by default; set `enabled = true` to enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsFuseCsiDriverConfig(@Nullable Output<ClusterAddonsConfigGcsFuseCsiDriverConfigArgs> gcsFuseCsiDriverConfig) {
+            $.gcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
+            return this;
+        }
+
+        /**
+         * @param gcsFuseCsiDriverConfig )) The status of the GCSFuse CSI driver addon,
+         * which allows the usage of a gcs bucket as volumes.
+         * It is disabled by default; set `enabled = true` to enable.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcsFuseCsiDriverConfig(ClusterAddonsConfigGcsFuseCsiDriverConfigArgs gcsFuseCsiDriverConfig) {
+            return gcsFuseCsiDriverConfig(Output.of(gcsFuseCsiDriverConfig));
         }
 
         /**

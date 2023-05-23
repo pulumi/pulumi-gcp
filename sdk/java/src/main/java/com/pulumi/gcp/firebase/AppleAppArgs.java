@@ -33,16 +33,20 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      * 
+     * ***
+     * 
      */
-    @Import(name="bundleId")
-    private @Nullable Output<String> bundleId;
+    @Import(name="bundleId", required=true)
+    private Output<String> bundleId;
 
     /**
      * @return The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      * 
+     * ***
+     * 
      */
-    public Optional<Output<String>> bundleId() {
-        return Optional.ofNullable(this.bundleId);
+    public Output<String> bundleId() {
+        return this.bundleId;
     }
 
     /**
@@ -67,16 +71,12 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-assigned display name of the App.
      * 
-     * ***
-     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the App.
-     * 
-     * ***
      * 
      */
     public Output<String> displayName() {
@@ -168,16 +168,20 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bundleId The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
-        public Builder bundleId(@Nullable Output<String> bundleId) {
+        public Builder bundleId(Output<String> bundleId) {
             $.bundleId = bundleId;
             return this;
         }
 
         /**
          * @param bundleId The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -214,8 +218,6 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The user-assigned display name of the App.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -226,8 +228,6 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The user-assigned display name of the App.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -281,6 +281,7 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppleAppArgs build() {
+            $.bundleId = Objects.requireNonNull($.bundleId, "expected parameter 'bundleId' to be non-null");
             $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
             return $;
         }

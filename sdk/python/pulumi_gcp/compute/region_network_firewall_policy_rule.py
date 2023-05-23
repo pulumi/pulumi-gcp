@@ -500,6 +500,13 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup",
+            parent="projects/my-project-name",
+            description="Sample regional networksecurity_address_group",
+            location="us-west1",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
         basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
             description="Sample regional network firewall policy",
             project="my-project-name",
@@ -530,12 +537,16 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             target_service_accounts=["my@service-account.com"],
             match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
                 src_ip_ranges=["10.100.0.1/32"],
+                src_fqdns=["example.com"],
+                src_region_codes=["US"],
+                src_threat_intelligences=["iplist-known-malicious-ips"],
                 layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
                     ip_protocol="all",
                 )],
                 src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
+                src_address_groups=[basic_regional_networksecurity_address_group.id],
             ))
         ```
 
@@ -590,6 +601,13 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        basic_regional_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup",
+            parent="projects/my-project-name",
+            description="Sample regional networksecurity_address_group",
+            location="us-west1",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100)
         basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
             description="Sample regional network firewall policy",
             project="my-project-name",
@@ -620,12 +638,16 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             target_service_accounts=["my@service-account.com"],
             match=gcp.compute.RegionNetworkFirewallPolicyRuleMatchArgs(
                 src_ip_ranges=["10.100.0.1/32"],
+                src_fqdns=["example.com"],
+                src_region_codes=["US"],
+                src_threat_intelligences=["iplist-known-malicious-ips"],
                 layer4_configs=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs(
                     ip_protocol="all",
                 )],
                 src_secure_tags=[gcp.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs(
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
+                src_address_groups=[basic_regional_networksecurity_address_group.id],
             ))
         ```
 

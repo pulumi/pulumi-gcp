@@ -13,6 +13,20 @@ JAVA_GEN_VERSION := v0.5.4
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
 
+# Download local copy of schema-tools based on the version in .schema-tools.version
+bin/schema-tools: SCHEMA_TOOLS_VERSION := $(shell cat .schema-tools.version)
+bin/schema-tools: PLAT := $(shell go version | sed -En "s/go version go.* (.*)\/(.*)/\1-\2/p")
+bin/schema-tools: SCHEMA_TOOLS_URL := "https://github.com/pulumi/schema-tools/releases/download/v$(SCHEMA_TOOLS_VERSION)/schema-tools-v$(SCHEMA_TOOLS_VERSION)-$(PLAT).tar.gz"
+bin/schema-tools: .schema-tools.version
+	@echo "Installing schema-tools"
+	@mkdir -p bin
+	wget -q -O - "$(SCHEMA_TOOLS_URL)" | tar -xzf - -C $(WORKING_DIR)/bin schema-tools
+	@touch bin/schema-tools
+	@echo "schema-tools" $$(./bin/schema-tools version)
+
+check_schema: bin/schema-tools
+	./bin/schema-tools compare -p $(PACK) -o master -n --local-path=provider/cmd/pulumi-resource-$(PACK)/schema.json
+
 development: install_plugins provider build_sdks install_sdks
 
 build: install_plugins provider build_sdks install_sdks

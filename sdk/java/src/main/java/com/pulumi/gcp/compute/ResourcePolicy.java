@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.ResourcePolicyArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicyState;
+import com.pulumi.gcp.compute.outputs.ResourcePolicyDiskConsistencyGroupPolicy;
 import com.pulumi.gcp.compute.outputs.ResourcePolicyGroupPlacementPolicy;
 import com.pulumi.gcp.compute.outputs.ResourcePolicyInstanceSchedulePolicy;
 import com.pulumi.gcp.compute.outputs.ResourcePolicySnapshotSchedulePolicy;
@@ -279,6 +280,42 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Resource Policy Consistency Group
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cgroup = new ResourcePolicy(&#34;cgroup&#34;, ResourcePolicyArgs.builder()        
+ *             .region(&#34;europe-west1&#34;)
+ *             .diskConsistencyGroupPolicy(ResourcePolicyDiskConsistencyGroupPolicyArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -316,6 +353,20 @@ public class ResourcePolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Replication consistency group for asynchronous disk replication.
+     * 
+     */
+    @Export(name="diskConsistencyGroupPolicy", type=ResourcePolicyDiskConsistencyGroupPolicy.class, parameters={})
+    private Output</* @Nullable */ ResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicy;
+
+    /**
+     * @return Replication consistency group for asynchronous disk replication.
+     * 
+     */
+    public Output<Optional<ResourcePolicyDiskConsistencyGroupPolicy>> diskConsistencyGroupPolicy() {
+        return Codegen.optional(this.diskConsistencyGroupPolicy);
     }
     /**
      * Resource policy for instances used for placement configuration.

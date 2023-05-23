@@ -322,6 +322,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> dataLossPreventionCustomEndpoint() {
         return Codegen.optional(this.dataLossPreventionCustomEndpoint);
     }
+    @Export(name="databaseMigrationServiceCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> databaseMigrationServiceCustomEndpoint;
+
+    public Output<Optional<String>> databaseMigrationServiceCustomEndpoint() {
+        return Codegen.optional(this.databaseMigrationServiceCustomEndpoint);
+    }
     @Export(name="dataflowCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> dataflowCustomEndpoint;
 
@@ -471,6 +477,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> gkehubFeatureCustomEndpoint() {
         return Codegen.optional(this.gkehubFeatureCustomEndpoint);
+    }
+    @Export(name="gkeonpremCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> gkeonpremCustomEndpoint;
+
+    public Output<Optional<String>> gkeonpremCustomEndpoint() {
+        return Codegen.optional(this.gkeonpremCustomEndpoint);
     }
     @Export(name="googlePartnerName", type=String.class, parameters={})
     private Output</* @Nullable */ String> googlePartnerName;

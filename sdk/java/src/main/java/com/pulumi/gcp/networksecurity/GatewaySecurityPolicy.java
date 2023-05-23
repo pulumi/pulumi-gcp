@@ -49,6 +49,136 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Network Security Gateway Security Policy Tls Inspection Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
+ * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultCaPool = new CaPool(&#34;defaultCaPool&#34;, CaPoolArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .tier(&#34;DEVOPS&#34;)
+ *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .publishCaCert(false)
+ *                 .publishCrl(false)
+ *                 .build())
+ *             .issuancePolicy(CaPoolIssuancePolicyArgs.builder()
+ *                 .maximumLifetime(&#34;1209600s&#34;)
+ *                 .baselineValues(CaPoolIssuancePolicyBaselineValuesArgs.builder()
+ *                     .caOptions(CaPoolIssuancePolicyBaselineValuesCaOptionsArgs.builder()
+ *                         .isCa(false)
+ *                         .build())
+ *                     .keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageArgs.builder()
+ *                         .baseKeyUsage()
+ *                         .extendedKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultAuthority = new Authority(&#34;defaultAuthority&#34;, AuthorityArgs.builder()        
+ *             .pool(defaultCaPool.name())
+ *             .certificateAuthorityId(&#34;my-basic-certificate-authority&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .lifetime(&#34;86400s&#34;)
+ *             .type(&#34;SELF_SIGNED&#34;)
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .organization(&#34;Test LLC&#34;)
+ *                         .commonName(&#34;my-ca&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(false)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm(&#34;RSA_PKCS1_4096_SHA256&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy(&#34;defaultTlsInspectionPolicy&#34;, TlsInspectionPolicyArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .caPool(defaultCaPool.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(                
+ *                     defaultCaPool,
+ *                     defaultAuthority)
+ *                 .build());
+ * 
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;my description&#34;)
+ *             .tlsInspectionPolicy(defaultTlsInspectionPolicy.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(defaultTlsInspectionPolicy)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -166,6 +296,20 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> selfLink() {
         return this.selfLink;
+    }
+    /**
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * 
+     */
+    @Export(name="tlsInspectionPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> tlsInspectionPolicy;
+
+    /**
+     * @return Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * 
+     */
+    public Output<Optional<String>> tlsInspectionPolicy() {
+        return Codegen.optional(this.tlsInspectionPolicy);
     }
     /**
      * The timestamp when the resource was updated.

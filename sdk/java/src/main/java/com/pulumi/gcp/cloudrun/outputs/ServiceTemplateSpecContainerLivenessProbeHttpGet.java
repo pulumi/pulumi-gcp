@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,12 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGet {
      * 
      */
     private @Nullable String path;
+    /**
+     * @return Port number to access on the container. Number must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
+     * 
+     */
+    private @Nullable Integer port;
 
     private ServiceTemplateSpecContainerLivenessProbeHttpGet() {}
     /**
@@ -41,6 +48,14 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGet {
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
+    /**
+     * @return Port number to access on the container. Number must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
+     * 
+     */
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -53,11 +68,13 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGet {
     public static final class Builder {
         private @Nullable List<ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader> httpHeaders;
         private @Nullable String path;
+        private @Nullable Integer port;
         public Builder() {}
         public Builder(ServiceTemplateSpecContainerLivenessProbeHttpGet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.httpHeaders = defaults.httpHeaders;
     	      this.path = defaults.path;
+    	      this.port = defaults.port;
         }
 
         @CustomType.Setter
@@ -73,10 +90,16 @@ public final class ServiceTemplateSpecContainerLivenessProbeHttpGet {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+            this.port = port;
+            return this;
+        }
         public ServiceTemplateSpecContainerLivenessProbeHttpGet build() {
             final var o = new ServiceTemplateSpecContainerLivenessProbeHttpGet();
             o.httpHeaders = httpHeaders;
             o.path = path;
+            o.port = port;
             return o;
         }
     }

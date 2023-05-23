@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -160,6 +162,16 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     */
+    public readonly encryptionConfig!: pulumi.Output<outputs.alloydb.BackupEncryptionConfig | undefined>;
+    /**
+     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.BackupEncryptionInfo[]>;
+    /**
      * A hash of the resource.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -217,6 +229,8 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
+            resourceInputs["encryptionInfos"] = state ? state.encryptionInfos : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -240,10 +254,12 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["backupId"] = args ? args.backupId : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["encryptionInfos"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -276,6 +292,16 @@ export interface BackupState {
      * User-provided description of the backup.
      */
     description?: pulumi.Input<string>;
+    /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.alloydb.BackupEncryptionConfig>;
+    /**
+     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * Structure is documented below.
+     */
+    encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.BackupEncryptionInfo>[]>;
     /**
      * A hash of the resource.
      */
@@ -334,6 +360,11 @@ export interface BackupArgs {
      * User-provided description of the backup.
      */
     description?: pulumi.Input<string>;
+    /**
+     * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+     * Structure is documented below.
+     */
+    encryptionConfig?: pulumi.Input<inputs.alloydb.BackupEncryptionConfig>;
     /**
      * User-defined labels for the alloydb backup.
      */

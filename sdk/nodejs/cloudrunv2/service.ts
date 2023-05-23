@@ -223,6 +223,47 @@ import * as utilities from "../utilities";
  *     dependsOn: [secret],
  * });
  * ```
+ * ### Cloudrunv2 Service Multicontainer
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         containers: [
+ *             {
+ *                 name: "hello-1",
+ *                 ports: [{
+ *                     containerPort: 8080,
+ *                 }],
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 dependsOns: ["hello-2"],
+ *                 volumeMounts: [{
+ *                     name: "empty-dir-volume",
+ *                     mountPath: "/mnt",
+ *                 }],
+ *             },
+ *             {
+ *                 name: "hello-2",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             },
+ *         ],
+ *         volumes: [{
+ *             name: "empty-dir-volume",
+ *             emptyDir: {
+ *                 medium: "MEMORY",
+ *                 sizeLimit: "256Mi",
+ *             },
+ *         }],
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -326,7 +367,9 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly latestReadyRevision!: pulumi.Output<string>;
     /**
-     * The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+     * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
     public readonly launchStage!: pulumi.Output<string>;
@@ -518,7 +561,9 @@ export interface ServiceState {
      */
     latestReadyRevision?: pulumi.Input<string>;
     /**
-     * The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+     * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
     launchStage?: pulumi.Input<string>;
@@ -618,7 +663,9 @@ export interface ServiceArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+     * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      */
     launchStage?: pulumi.Input<string>;

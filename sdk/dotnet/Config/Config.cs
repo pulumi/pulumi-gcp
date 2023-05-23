@@ -389,6 +389,13 @@ namespace Pulumi.Gcp
             set => _dataLossPreventionCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _databaseMigrationServiceCustomEndpoint = new __Value<string?>(() => __config.Get("databaseMigrationServiceCustomEndpoint"));
+        public static string? DatabaseMigrationServiceCustomEndpoint
+        {
+            get => _databaseMigrationServiceCustomEndpoint.Get();
+            set => _databaseMigrationServiceCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _dataflowCustomEndpoint = new __Value<string?>(() => __config.Get("dataflowCustomEndpoint"));
         public static string? DataflowCustomEndpoint
         {
@@ -569,6 +576,13 @@ namespace Pulumi.Gcp
         {
             get => _gkehubFeatureCustomEndpoint.Get();
             set => _gkehubFeatureCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _gkeonpremCustomEndpoint = new __Value<string?>(() => __config.Get("gkeonpremCustomEndpoint"));
+        public static string? GkeonpremCustomEndpoint
+        {
+            get => _gkeonpremCustomEndpoint.Get();
+            set => _gkeonpremCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _googlePartnerName = new __Value<string?>(() => __config.Get("googlePartnerName"));

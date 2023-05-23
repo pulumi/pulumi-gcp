@@ -62,11 +62,13 @@ type LookupForwardingRuleArgs struct {
 
 // A collection of values returned by getForwardingRule.
 type LookupForwardingRuleResult struct {
-	AllPorts          bool   `pulumi:"allPorts"`
-	AllowGlobalAccess bool   `pulumi:"allowGlobalAccess"`
-	BackendService    string `pulumi:"backendService"`
-	CreationTimestamp string `pulumi:"creationTimestamp"`
-	Description       string `pulumi:"description"`
+	AllPorts             bool   `pulumi:"allPorts"`
+	AllowGlobalAccess    bool   `pulumi:"allowGlobalAccess"`
+	AllowPscGlobalAccess bool   `pulumi:"allowPscGlobalAccess"`
+	BackendService       string `pulumi:"backendService"`
+	BaseForwardingRule   string `pulumi:"baseForwardingRule"`
+	CreationTimestamp    string `pulumi:"creationTimestamp"`
+	Description          string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                                          `pulumi:"id"`
 	IpAddress                     string                                          `pulumi:"ipAddress"`
@@ -88,6 +90,7 @@ type LookupForwardingRuleResult struct {
 	ServiceDirectoryRegistrations []GetForwardingRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
 	ServiceLabel                  string                                          `pulumi:"serviceLabel"`
 	ServiceName                   string                                          `pulumi:"serviceName"`
+	SourceIpRanges                []string                                        `pulumi:"sourceIpRanges"`
 	Subnetwork                    string                                          `pulumi:"subnetwork"`
 	Target                        string                                          `pulumi:"target"`
 }
@@ -146,8 +149,16 @@ func (o LookupForwardingRuleResultOutput) AllowGlobalAccess() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
 }
 
+func (o LookupForwardingRuleResultOutput) AllowPscGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.AllowPscGlobalAccess }).(pulumi.BoolOutput)
+}
+
 func (o LookupForwardingRuleResultOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) BaseForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.BaseForwardingRule }).(pulumi.StringOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) CreationTimestamp() pulumi.StringOutput {
@@ -239,6 +250,10 @@ func (o LookupForwardingRuleResultOutput) ServiceLabel() pulumi.StringOutput {
 
 func (o LookupForwardingRuleResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) SourceIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) []string { return v.SourceIpRanges }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) Subnetwork() pulumi.StringOutput {

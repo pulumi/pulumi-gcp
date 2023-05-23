@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ServiceTemplateVolumeCloudSqlInstance? CloudSqlInstance;
+        public readonly Outputs.ServiceTemplateVolumeEmptyDir? EmptyDir;
         /// <summary>
         /// Volume's name.
         /// </summary>
@@ -32,11 +33,14 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private ServiceTemplateVolume(
             Outputs.ServiceTemplateVolumeCloudSqlInstance? cloudSqlInstance,
 
+            Outputs.ServiceTemplateVolumeEmptyDir? emptyDir,
+
             string name,
 
             Outputs.ServiceTemplateVolumeSecret? secret)
         {
             CloudSqlInstance = cloudSqlInstance;
+            EmptyDir = emptyDir;
             Name = name;
             Secret = secret;
         }

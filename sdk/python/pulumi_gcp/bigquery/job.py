@@ -503,6 +503,52 @@ class Job(pulumi.CustomResource):
                 autodetect=True,
             ))
         ```
+        ### Bigquery Job Load Parquet
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_bucket = gcp.storage.Bucket("testBucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        test_bucket_object = gcp.storage.BucketObject("testBucketObject",
+            source=pulumi.FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+            bucket=test_bucket.name)
+        test_dataset = gcp.bigquery.Dataset("testDataset",
+            dataset_id="job_load_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        test_table = gcp.bigquery.Table("testTable",
+            deletion_protection=False,
+            table_id="job_load_table",
+            dataset_id=test_dataset.dataset_id)
+        job = gcp.bigquery.Job("job",
+            job_id="job_load",
+            labels={
+                "my_job": "load",
+            },
+            load=gcp.bigquery.JobLoadArgs(
+                source_uris=[pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
+                    project_id=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id,
+                ),
+                schema_update_options=[
+                    "ALLOW_FIELD_RELAXATION",
+                    "ALLOW_FIELD_ADDITION",
+                ],
+                write_disposition="WRITE_APPEND",
+                source_format="PARQUET",
+                autodetect=True,
+                parquet_options=gcp.bigquery.JobLoadParquetOptionsArgs(
+                    enum_as_string=True,
+                    enable_list_inference=True,
+                ),
+            ))
+        ```
         ### Bigquery Job Extract
 
         ```python
@@ -714,6 +760,52 @@ class Job(pulumi.CustomResource):
                 ],
                 write_disposition="WRITE_APPEND",
                 autodetect=True,
+            ))
+        ```
+        ### Bigquery Job Load Parquet
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_bucket = gcp.storage.Bucket("testBucket",
+            location="US",
+            uniform_bucket_level_access=True)
+        test_bucket_object = gcp.storage.BucketObject("testBucketObject",
+            source=pulumi.FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+            bucket=test_bucket.name)
+        test_dataset = gcp.bigquery.Dataset("testDataset",
+            dataset_id="job_load_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        test_table = gcp.bigquery.Table("testTable",
+            deletion_protection=False,
+            table_id="job_load_table",
+            dataset_id=test_dataset.dataset_id)
+        job = gcp.bigquery.Job("job",
+            job_id="job_load",
+            labels={
+                "my_job": "load",
+            },
+            load=gcp.bigquery.JobLoadArgs(
+                source_uris=[pulumi.Output.all(test_bucket_object.bucket, test_bucket_object.name).apply(lambda bucket, name: f"gs://{bucket}/{name}")],
+                destination_table=gcp.bigquery.JobLoadDestinationTableArgs(
+                    project_id=test_table.project,
+                    dataset_id=test_table.dataset_id,
+                    table_id=test_table.table_id,
+                ),
+                schema_update_options=[
+                    "ALLOW_FIELD_RELAXATION",
+                    "ALLOW_FIELD_ADDITION",
+                ],
+                write_disposition="WRITE_APPEND",
+                source_format="PARQUET",
+                autodetect=True,
+                parquet_options=gcp.bigquery.JobLoadParquetOptionsArgs(
+                    enum_as_string=True,
+                    enable_list_inference=True,
+                ),
             ))
         ```
         ### Bigquery Job Extract

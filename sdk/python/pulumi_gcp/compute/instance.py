@@ -644,7 +644,7 @@ class _InstanceState:
                This defaults to false.
         :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
-        :param pulumi.Input[str] current_status: Current status of the instance.
+        :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -890,7 +890,7 @@ class _InstanceState:
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Current status of the instance.
+        The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         """
         return pulumi.get(self, "current_status")
 
@@ -1703,7 +1703,7 @@ class Instance(pulumi.CustomResource):
                This defaults to false.
         :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
-        :param pulumi.Input[str] current_status: Current status of the instance.
+        :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -1890,7 +1890,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> pulumi.Output[str]:
         """
-        Current status of the instance.
+        The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
         """
         return pulumi.get(self, "current_status")
 

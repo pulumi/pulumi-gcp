@@ -1059,7 +1059,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="tf-test-my-service-account")
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
         act_as = gcp.projects.IAMMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
@@ -1300,6 +1300,44 @@ class Trigger(pulumi.CustomResource):
                 ),
             ),
             location="us-central1")
+        ```
+        ### Cloudbuild Trigger Pubsub With Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        mytopic = gcp.pubsub.Topic("mytopic", opts=pulumi.ResourceOptions(provider=google_beta))
+        pubsub_with_repo_trigger = gcp.cloudbuild.Trigger("pubsub-with-repo-trigger",
+            location="us-central1",
+            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
+                topic=mytopic.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                repository=my_repository.id,
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                repository=my_repository.id,
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -1440,7 +1478,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="tf-test-my-service-account")
+        cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
         act_as = gcp.projects.IAMMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
@@ -1681,6 +1719,44 @@ class Trigger(pulumi.CustomResource):
                 ),
             ),
             location="us-central1")
+        ```
+        ### Cloudbuild Trigger Pubsub With Repo
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            location="us-central1",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=123123,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/my-project/secrets/github-pat-secret/versions/latest",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_repository = gcp.cloudbuildv2.Repository("my-repository",
+            parent_connection=my_connection.id,
+            remote_uri="https://github.com/myuser/my-repo.git",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        mytopic = gcp.pubsub.Topic("mytopic", opts=pulumi.ResourceOptions(provider=google_beta))
+        pubsub_with_repo_trigger = gcp.cloudbuild.Trigger("pubsub-with-repo-trigger",
+            location="us-central1",
+            pubsub_config=gcp.cloudbuild.TriggerPubsubConfigArgs(
+                topic=mytopic.id,
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                repository=my_repository.id,
+                ref="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                path="cloudbuild.yaml",
+                repository=my_repository.id,
+                revision="refs/heads/main",
+                repo_type="GITHUB",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

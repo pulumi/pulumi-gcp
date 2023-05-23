@@ -417,6 +417,14 @@ Object.defineProperty(exports, "dataLossPreventionCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const databaseMigrationServiceCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "databaseMigrationServiceCustomEndpoint", {
+    get() {
+        return __config.get("databaseMigrationServiceCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const dataflowCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dataflowCustomEndpoint", {
     get() {
@@ -621,6 +629,14 @@ export declare const gkehubFeatureCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkehubFeatureCustomEndpoint", {
     get() {
         return __config.get("gkehubFeatureCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const gkeonpremCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "gkeonpremCustomEndpoint", {
+    get() {
+        return __config.get("gkeonpremCustomEndpoint");
     },
     enumerable: true,
 });

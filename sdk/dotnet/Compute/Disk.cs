@@ -57,6 +57,42 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Disk Async
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Compute.Disk("primary", new()
+    ///     {
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var secondary = new Gcp.Compute.Disk("secondary", new()
+    ///     {
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-east1-c",
+    ///         AsyncPrimaryDisk = new Gcp.Compute.Inputs.DiskAsyncPrimaryDiskArgs
+    ///         {
+    ///             Disk = primary.Id,
+    ///         },
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -81,6 +117,12 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/disk:Disk")]
     public partial class Disk : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
+        [Output("asyncPrimaryDisk")]
+        public Output<Outputs.DiskAsyncPrimaryDisk?> AsyncPrimaryDisk { get; private set; } = null!;
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -366,6 +408,12 @@ namespace Pulumi.Gcp.Compute
     public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A nested object resource
+        /// </summary>
+        [Input("asyncPrimaryDisk")]
+        public Input<Inputs.DiskAsyncPrimaryDiskArgs>? AsyncPrimaryDisk { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when
         /// you create the resource.
         /// </summary>
@@ -556,6 +604,12 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class DiskState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A nested object resource
+        /// </summary>
+        [Input("asyncPrimaryDisk")]
+        public Input<Inputs.DiskAsyncPrimaryDiskGetArgs>? AsyncPrimaryDisk { get; set; }
+
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>

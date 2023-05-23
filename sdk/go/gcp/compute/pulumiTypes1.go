@@ -10,6 +10,863 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace bool `pulumi:"replace"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolInput `pulumi:"replace"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{ URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{...} }
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) string {
+		return v.HeaderName
+	}).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) string {
+		return v.HeaderValue
+	}).(pulumi.StringOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) Replace() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) bool {
+		return v.Replace
+	}).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		return vs[0].([]URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput)
+}
+
+type URLMapPathMatcherRouteRuleUrlRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set
+	// to false, the URL scheme of the redirected request will remain the same as that
+	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+	// specified. The value must be between 1 and 1024 characters.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	PrefixRedirect *string `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed
+	// prior to redirecting the request. If set to false, the query portion of the
+	// original URL is retained. Defaults to false.
+	StripQuery *bool `pulumi:"stripQuery"`
+}
+
+// URLMapPathMatcherRouteRuleUrlRedirectInput is an input type that accepts URLMapPathMatcherRouteRuleUrlRedirectArgs and URLMapPathMatcherRouteRuleUrlRedirectOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleUrlRedirectInput` via:
+//
+//	URLMapPathMatcherRouteRuleUrlRedirectArgs{...}
+type URLMapPathMatcherRouteRuleUrlRedirectInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleUrlRedirectOutput() URLMapPathMatcherRouteRuleUrlRedirectOutput
+	ToURLMapPathMatcherRouteRuleUrlRedirectOutputWithContext(context.Context) URLMapPathMatcherRouteRuleUrlRedirectOutput
+}
+
+type URLMapPathMatcherRouteRuleUrlRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set
+	// to false, the URL scheme of the redirected request will remain the same as that
+	// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+	// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+	// specified. The value must be between 1 and 1024 characters.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed
+	// prior to redirecting the request. If set to false, the query portion of the
+	// original URL is retained. Defaults to false.
+	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
+}
+
+func (URLMapPathMatcherRouteRuleUrlRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleUrlRedirect)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleUrlRedirectArgs) ToURLMapPathMatcherRouteRuleUrlRedirectOutput() URLMapPathMatcherRouteRuleUrlRedirectOutput {
+	return i.ToURLMapPathMatcherRouteRuleUrlRedirectOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleUrlRedirectArgs) ToURLMapPathMatcherRouteRuleUrlRedirectOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleUrlRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleUrlRedirectOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleUrlRedirectArgs) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutput() URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleUrlRedirectArgs) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleUrlRedirectOutput).ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleUrlRedirectPtrInput is an input type that accepts URLMapPathMatcherRouteRuleUrlRedirectArgs, URLMapPathMatcherRouteRuleUrlRedirectPtr and URLMapPathMatcherRouteRuleUrlRedirectPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleUrlRedirectPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleUrlRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleUrlRedirectPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutput() URLMapPathMatcherRouteRuleUrlRedirectPtrOutput
+	ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleUrlRedirectPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleUrlRedirectPtrType URLMapPathMatcherRouteRuleUrlRedirectArgs
+
+func URLMapPathMatcherRouteRuleUrlRedirectPtr(v *URLMapPathMatcherRouteRuleUrlRedirectArgs) URLMapPathMatcherRouteRuleUrlRedirectPtrInput {
+	return (*urlmapPathMatcherRouteRuleUrlRedirectPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleUrlRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleUrlRedirect)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleUrlRedirectPtrType) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutput() URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleUrlRedirectPtrType) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleUrlRedirectPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleUrlRedirectOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleUrlRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) ToURLMapPathMatcherRouteRuleUrlRedirectOutput() URLMapPathMatcherRouteRuleUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) ToURLMapPathMatcherRouteRuleUrlRedirectOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutput() URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleUrlRedirect) *URLMapPathMatcherRouteRuleUrlRedirect {
+		return &v
+	}).(URLMapPathMatcherRouteRuleUrlRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set
+// to false, the URL scheme of the redirected request will remain the same as that
+// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+// specified. The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed
+// prior to redirecting the request. If set to false, the query portion of the
+// original URL is retained. Defaults to false.
+func (o URLMapPathMatcherRouteRuleUrlRedirectOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleUrlRedirect) *bool { return v.StripQuery }).(pulumi.BoolPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleUrlRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutput() URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) ToURLMapPathMatcherRouteRuleUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) Elem() URLMapPathMatcherRouteRuleUrlRedirectOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) URLMapPathMatcherRouteRuleUrlRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleUrlRedirect
+		return ret
+	}).(URLMapPathMatcherRouteRuleUrlRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set
+// to false, the URL scheme of the redirected request will remain the same as that
+// of the request. This must only be set for UrlMaps used in TargetHttpProxys.
+// Setting this true for TargetHttpsProxy is not permitted. Defaults to false.
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. Only one of pathRedirect or prefixRedirect must be
+// specified. The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+// * FOUND, which corresponds to 302.
+// * SEE_OTHER which corresponds to 303.
+// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method will be retained.
+// * PERMANENT_REDIRECT, which corresponds to 308. In this case, the request method will be retained.
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed
+// prior to redirecting the request. If set to false, the query portion of the
+// original URL is retained. Defaults to false.
+func (o URLMapPathMatcherRouteRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StripQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
+type URLMapTest struct {
+	// Description of this test case.
+	Description *string `pulumi:"description"`
+	// Host portion of the URL.
+	Host string `pulumi:"host"`
+	// Path portion of the URL.
+	Path string `pulumi:"path"`
+	// The backend service or backend bucket link that should be matched by this test.
+	Service string `pulumi:"service"`
+}
+
+// URLMapTestInput is an input type that accepts URLMapTestArgs and URLMapTestOutput values.
+// You can construct a concrete instance of `URLMapTestInput` via:
+//
+//	URLMapTestArgs{...}
+type URLMapTestInput interface {
+	pulumi.Input
+
+	ToURLMapTestOutput() URLMapTestOutput
+	ToURLMapTestOutputWithContext(context.Context) URLMapTestOutput
+}
+
+type URLMapTestArgs struct {
+	// Description of this test case.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Host portion of the URL.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Path portion of the URL.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The backend service or backend bucket link that should be matched by this test.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (URLMapTestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapTest)(nil)).Elem()
+}
+
+func (i URLMapTestArgs) ToURLMapTestOutput() URLMapTestOutput {
+	return i.ToURLMapTestOutputWithContext(context.Background())
+}
+
+func (i URLMapTestArgs) ToURLMapTestOutputWithContext(ctx context.Context) URLMapTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapTestOutput)
+}
+
+// URLMapTestArrayInput is an input type that accepts URLMapTestArray and URLMapTestArrayOutput values.
+// You can construct a concrete instance of `URLMapTestArrayInput` via:
+//
+//	URLMapTestArray{ URLMapTestArgs{...} }
+type URLMapTestArrayInput interface {
+	pulumi.Input
+
+	ToURLMapTestArrayOutput() URLMapTestArrayOutput
+	ToURLMapTestArrayOutputWithContext(context.Context) URLMapTestArrayOutput
+}
+
+type URLMapTestArray []URLMapTestInput
+
+func (URLMapTestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapTest)(nil)).Elem()
+}
+
+func (i URLMapTestArray) ToURLMapTestArrayOutput() URLMapTestArrayOutput {
+	return i.ToURLMapTestArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapTestArray) ToURLMapTestArrayOutputWithContext(ctx context.Context) URLMapTestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapTestArrayOutput)
+}
+
+type URLMapTestOutput struct{ *pulumi.OutputState }
+
+func (URLMapTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapTest)(nil)).Elem()
+}
+
+func (o URLMapTestOutput) ToURLMapTestOutput() URLMapTestOutput {
+	return o
+}
+
+func (o URLMapTestOutput) ToURLMapTestOutputWithContext(ctx context.Context) URLMapTestOutput {
+	return o
+}
+
+// Description of this test case.
+func (o URLMapTestOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapTest) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Host portion of the URL.
+func (o URLMapTestOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapTest) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Path portion of the URL.
+func (o URLMapTestOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapTest) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The backend service or backend bucket link that should be matched by this test.
+func (o URLMapTestOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapTest) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type URLMapTestArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapTestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapTest)(nil)).Elem()
+}
+
+func (o URLMapTestArrayOutput) ToURLMapTestArrayOutput() URLMapTestArrayOutput {
+	return o
+}
+
+func (o URLMapTestArrayOutput) ToURLMapTestArrayOutputWithContext(ctx context.Context) URLMapTestArrayOutput {
+	return o
+}
+
+func (o URLMapTestArrayOutput) Index(i pulumi.IntInput) URLMapTestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapTest {
+		return vs[0].([]URLMapTest)[vs[1].(int)]
+	}).(URLMapTestOutput)
+}
+
+type GetAddressesAddress struct {
+	// The IP address (for example `1.2.3.4`).
+	Address string `pulumi:"address"`
+	// The IP address type, can be `EXTERNAL` or `INTERNAL`.
+	AddressType string `pulumi:"addressType"`
+	// The IP address description.
+	Description string `pulumi:"description"`
+	// (Beta only) A map containing IP labels.
+	Labels map[string]string `pulumi:"labels"`
+	// The IP address name.
+	Name string `pulumi:"name"`
+	// Region that should be considered to search addresses.
+	// All regions are considered if missing.
+	Region string `pulumi:"region"`
+	// The URI of the created resource.
+	SelfLink string `pulumi:"selfLink"`
+	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+	Status string `pulumi:"status"`
+}
+
+// GetAddressesAddressInput is an input type that accepts GetAddressesAddressArgs and GetAddressesAddressOutput values.
+// You can construct a concrete instance of `GetAddressesAddressInput` via:
+//
+//	GetAddressesAddressArgs{...}
+type GetAddressesAddressInput interface {
+	pulumi.Input
+
+	ToGetAddressesAddressOutput() GetAddressesAddressOutput
+	ToGetAddressesAddressOutputWithContext(context.Context) GetAddressesAddressOutput
+}
+
+type GetAddressesAddressArgs struct {
+	// The IP address (for example `1.2.3.4`).
+	Address pulumi.StringInput `pulumi:"address"`
+	// The IP address type, can be `EXTERNAL` or `INTERNAL`.
+	AddressType pulumi.StringInput `pulumi:"addressType"`
+	// The IP address description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// (Beta only) A map containing IP labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The IP address name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Region that should be considered to search addresses.
+	// All regions are considered if missing.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The URI of the created resource.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAddressesAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressesAddress)(nil)).Elem()
+}
+
+func (i GetAddressesAddressArgs) ToGetAddressesAddressOutput() GetAddressesAddressOutput {
+	return i.ToGetAddressesAddressOutputWithContext(context.Background())
+}
+
+func (i GetAddressesAddressArgs) ToGetAddressesAddressOutputWithContext(ctx context.Context) GetAddressesAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressesAddressOutput)
+}
+
+// GetAddressesAddressArrayInput is an input type that accepts GetAddressesAddressArray and GetAddressesAddressArrayOutput values.
+// You can construct a concrete instance of `GetAddressesAddressArrayInput` via:
+//
+//	GetAddressesAddressArray{ GetAddressesAddressArgs{...} }
+type GetAddressesAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetAddressesAddressArrayOutput() GetAddressesAddressArrayOutput
+	ToGetAddressesAddressArrayOutputWithContext(context.Context) GetAddressesAddressArrayOutput
+}
+
+type GetAddressesAddressArray []GetAddressesAddressInput
+
+func (GetAddressesAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressesAddress)(nil)).Elem()
+}
+
+func (i GetAddressesAddressArray) ToGetAddressesAddressArrayOutput() GetAddressesAddressArrayOutput {
+	return i.ToGetAddressesAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetAddressesAddressArray) ToGetAddressesAddressArrayOutputWithContext(ctx context.Context) GetAddressesAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAddressesAddressArrayOutput)
+}
+
+type GetAddressesAddressOutput struct{ *pulumi.OutputState }
+
+func (GetAddressesAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAddressesAddress)(nil)).Elem()
+}
+
+func (o GetAddressesAddressOutput) ToGetAddressesAddressOutput() GetAddressesAddressOutput {
+	return o
+}
+
+func (o GetAddressesAddressOutput) ToGetAddressesAddressOutputWithContext(ctx context.Context) GetAddressesAddressOutput {
+	return o
+}
+
+// The IP address (for example `1.2.3.4`).
+func (o GetAddressesAddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressesAddress) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The IP address type, can be `EXTERNAL` or `INTERNAL`.
+func (o GetAddressesAddressOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressesAddress) string { return v.AddressType }).(pulumi.StringOutput)
+}
+
+// The IP address description.
+func (o GetAddressesAddressOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressesAddress) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// (Beta only) A map containing IP labels.
+func (o GetAddressesAddressOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAddressesAddress) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The IP address name.
+func (o GetAddressesAddressOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressesAddress) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Region that should be considered to search addresses.
+// All regions are considered if missing.
+func (o GetAddressesAddressOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressesAddress) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The URI of the created resource.
+func (o GetAddressesAddressOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressesAddress) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Indicates if the address is used. Possible values are: RESERVED or IN_USE.
+func (o GetAddressesAddressOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAddressesAddress) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAddressesAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAddressesAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAddressesAddress)(nil)).Elem()
+}
+
+func (o GetAddressesAddressArrayOutput) ToGetAddressesAddressArrayOutput() GetAddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetAddressesAddressArrayOutput) ToGetAddressesAddressArrayOutputWithContext(ctx context.Context) GetAddressesAddressArrayOutput {
+	return o
+}
+
+func (o GetAddressesAddressArrayOutput) Index(i pulumi.IntInput) GetAddressesAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAddressesAddress {
+		return vs[0].([]GetAddressesAddress)[vs[1].(int)]
+	}).(GetAddressesAddressOutput)
+}
+
+type GetBackendBucketCdnPolicy struct {
+	BypassCacheOnRequestHeaders []GetBackendBucketCdnPolicyBypassCacheOnRequestHeader `pulumi:"bypassCacheOnRequestHeaders"`
+	CacheKeyPolicies            []GetBackendBucketCdnPolicyCacheKeyPolicy             `pulumi:"cacheKeyPolicies"`
+	CacheMode                   string                                                `pulumi:"cacheMode"`
+	ClientTtl                   int                                                   `pulumi:"clientTtl"`
+	DefaultTtl                  int                                                   `pulumi:"defaultTtl"`
+	MaxTtl                      int                                                   `pulumi:"maxTtl"`
+	NegativeCaching             bool                                                  `pulumi:"negativeCaching"`
+	NegativeCachingPolicies     []GetBackendBucketCdnPolicyNegativeCachingPolicy      `pulumi:"negativeCachingPolicies"`
+	RequestCoalescing           bool                                                  `pulumi:"requestCoalescing"`
+	ServeWhileStale             int                                                   `pulumi:"serveWhileStale"`
+	SignedUrlCacheMaxAgeSec     int                                                   `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+// GetBackendBucketCdnPolicyInput is an input type that accepts GetBackendBucketCdnPolicyArgs and GetBackendBucketCdnPolicyOutput values.
+// You can construct a concrete instance of `GetBackendBucketCdnPolicyInput` via:
+//
+//	GetBackendBucketCdnPolicyArgs{...}
+type GetBackendBucketCdnPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendBucketCdnPolicyOutput() GetBackendBucketCdnPolicyOutput
+	ToGetBackendBucketCdnPolicyOutputWithContext(context.Context) GetBackendBucketCdnPolicyOutput
+}
+
+type GetBackendBucketCdnPolicyArgs struct {
+	BypassCacheOnRequestHeaders GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput `pulumi:"bypassCacheOnRequestHeaders"`
+	CacheKeyPolicies            GetBackendBucketCdnPolicyCacheKeyPolicyArrayInput             `pulumi:"cacheKeyPolicies"`
+	CacheMode                   pulumi.StringInput                                            `pulumi:"cacheMode"`
+	ClientTtl                   pulumi.IntInput                                               `pulumi:"clientTtl"`
+	DefaultTtl                  pulumi.IntInput                                               `pulumi:"defaultTtl"`
+	MaxTtl                      pulumi.IntInput                                               `pulumi:"maxTtl"`
+	NegativeCaching             pulumi.BoolInput                                              `pulumi:"negativeCaching"`
+	NegativeCachingPolicies     GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput      `pulumi:"negativeCachingPolicies"`
+	RequestCoalescing           pulumi.BoolInput                                              `pulumi:"requestCoalescing"`
+	ServeWhileStale             pulumi.IntInput                                               `pulumi:"serveWhileStale"`
+	SignedUrlCacheMaxAgeSec     pulumi.IntInput                                               `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+func (GetBackendBucketCdnPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (i GetBackendBucketCdnPolicyArgs) ToGetBackendBucketCdnPolicyOutput() GetBackendBucketCdnPolicyOutput {
+	return i.ToGetBackendBucketCdnPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendBucketCdnPolicyArgs) ToGetBackendBucketCdnPolicyOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendBucketCdnPolicyOutput)
+}
+
+// GetBackendBucketCdnPolicyArrayInput is an input type that accepts GetBackendBucketCdnPolicyArray and GetBackendBucketCdnPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackendBucketCdnPolicyArrayInput` via:
+//
+//	GetBackendBucketCdnPolicyArray{ GetBackendBucketCdnPolicyArgs{...} }
+type GetBackendBucketCdnPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendBucketCdnPolicyArrayOutput() GetBackendBucketCdnPolicyArrayOutput
+	ToGetBackendBucketCdnPolicyArrayOutputWithContext(context.Context) GetBackendBucketCdnPolicyArrayOutput
+}
+
+type GetBackendBucketCdnPolicyArray []GetBackendBucketCdnPolicyInput
+
+func (GetBackendBucketCdnPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (i GetBackendBucketCdnPolicyArray) ToGetBackendBucketCdnPolicyArrayOutput() GetBackendBucketCdnPolicyArrayOutput {
+	return i.ToGetBackendBucketCdnPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendBucketCdnPolicyArray) ToGetBackendBucketCdnPolicyArrayOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendBucketCdnPolicyArrayOutput)
+}
+
+type GetBackendBucketCdnPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendBucketCdnPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ToGetBackendBucketCdnPolicyOutput() GetBackendBucketCdnPolicyOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ToGetBackendBucketCdnPolicyOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyOutput) BypassCacheOnRequestHeaders() GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) []GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
+		return v.BypassCacheOnRequestHeaders
+	}).(GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) CacheKeyPolicies() GetBackendBucketCdnPolicyCacheKeyPolicyArrayOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) []GetBackendBucketCdnPolicyCacheKeyPolicy { return v.CacheKeyPolicies }).(GetBackendBucketCdnPolicyCacheKeyPolicyArrayOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) string { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ClientTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.ClientTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) DefaultTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.DefaultTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) MaxTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.MaxTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) NegativeCaching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) bool { return v.NegativeCaching }).(pulumi.BoolOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) NegativeCachingPolicies() GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) []GetBackendBucketCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicies
+	}).(GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) RequestCoalescing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) bool { return v.RequestCoalescing }).(pulumi.BoolOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.ServeWhileStale }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
+}
+
+type GetBackendBucketCdnPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendBucketCdnPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendBucketCdnPolicy)(nil)).Elem()
+}
+
+func (o GetBackendBucketCdnPolicyArrayOutput) ToGetBackendBucketCdnPolicyArrayOutput() GetBackendBucketCdnPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyArrayOutput) ToGetBackendBucketCdnPolicyArrayOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendBucketCdnPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendBucketCdnPolicy {
+		return vs[0].([]GetBackendBucketCdnPolicy)[vs[1].(int)]
+	}).(GetBackendBucketCdnPolicyOutput)
+}
+
 type GetBackendBucketCdnPolicyBypassCacheOnRequestHeader struct {
 	HeaderName string `pulumi:"headerName"`
 }
@@ -462,15 +1319,16 @@ func (o GetBackendServiceBackendArrayOutput) Index(i pulumi.IntInput) GetBackend
 }
 
 type GetBackendServiceCdnPolicy struct {
-	CacheKeyPolicies        []GetBackendServiceCdnPolicyCacheKeyPolicy        `pulumi:"cacheKeyPolicies"`
-	CacheMode               string                                            `pulumi:"cacheMode"`
-	ClientTtl               int                                               `pulumi:"clientTtl"`
-	DefaultTtl              int                                               `pulumi:"defaultTtl"`
-	MaxTtl                  int                                               `pulumi:"maxTtl"`
-	NegativeCaching         bool                                              `pulumi:"negativeCaching"`
-	NegativeCachingPolicies []GetBackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         int                                               `pulumi:"serveWhileStale"`
-	SignedUrlCacheMaxAgeSec int                                               `pulumi:"signedUrlCacheMaxAgeSec"`
+	BypassCacheOnRequestHeaders []GetBackendServiceCdnPolicyBypassCacheOnRequestHeader `pulumi:"bypassCacheOnRequestHeaders"`
+	CacheKeyPolicies            []GetBackendServiceCdnPolicyCacheKeyPolicy             `pulumi:"cacheKeyPolicies"`
+	CacheMode                   string                                                 `pulumi:"cacheMode"`
+	ClientTtl                   int                                                    `pulumi:"clientTtl"`
+	DefaultTtl                  int                                                    `pulumi:"defaultTtl"`
+	MaxTtl                      int                                                    `pulumi:"maxTtl"`
+	NegativeCaching             bool                                                   `pulumi:"negativeCaching"`
+	NegativeCachingPolicies     []GetBackendServiceCdnPolicyNegativeCachingPolicy      `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale             int                                                    `pulumi:"serveWhileStale"`
+	SignedUrlCacheMaxAgeSec     int                                                    `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 // GetBackendServiceCdnPolicyInput is an input type that accepts GetBackendServiceCdnPolicyArgs and GetBackendServiceCdnPolicyOutput values.
@@ -485,15 +1343,16 @@ type GetBackendServiceCdnPolicyInput interface {
 }
 
 type GetBackendServiceCdnPolicyArgs struct {
-	CacheKeyPolicies        GetBackendServiceCdnPolicyCacheKeyPolicyArrayInput        `pulumi:"cacheKeyPolicies"`
-	CacheMode               pulumi.StringInput                                        `pulumi:"cacheMode"`
-	ClientTtl               pulumi.IntInput                                           `pulumi:"clientTtl"`
-	DefaultTtl              pulumi.IntInput                                           `pulumi:"defaultTtl"`
-	MaxTtl                  pulumi.IntInput                                           `pulumi:"maxTtl"`
-	NegativeCaching         pulumi.BoolInput                                          `pulumi:"negativeCaching"`
-	NegativeCachingPolicies GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         pulumi.IntInput                                           `pulumi:"serveWhileStale"`
-	SignedUrlCacheMaxAgeSec pulumi.IntInput                                           `pulumi:"signedUrlCacheMaxAgeSec"`
+	BypassCacheOnRequestHeaders GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput `pulumi:"bypassCacheOnRequestHeaders"`
+	CacheKeyPolicies            GetBackendServiceCdnPolicyCacheKeyPolicyArrayInput             `pulumi:"cacheKeyPolicies"`
+	CacheMode                   pulumi.StringInput                                             `pulumi:"cacheMode"`
+	ClientTtl                   pulumi.IntInput                                                `pulumi:"clientTtl"`
+	DefaultTtl                  pulumi.IntInput                                                `pulumi:"defaultTtl"`
+	MaxTtl                      pulumi.IntInput                                                `pulumi:"maxTtl"`
+	NegativeCaching             pulumi.BoolInput                                               `pulumi:"negativeCaching"`
+	NegativeCachingPolicies     GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput      `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale             pulumi.IntInput                                                `pulumi:"serveWhileStale"`
+	SignedUrlCacheMaxAgeSec     pulumi.IntInput                                                `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 func (GetBackendServiceCdnPolicyArgs) ElementType() reflect.Type {
@@ -545,6 +1404,12 @@ func (o GetBackendServiceCdnPolicyOutput) ToGetBackendServiceCdnPolicyOutput() G
 
 func (o GetBackendServiceCdnPolicyOutput) ToGetBackendServiceCdnPolicyOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyOutput {
 	return o
+}
+
+func (o GetBackendServiceCdnPolicyOutput) BypassCacheOnRequestHeaders() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) []GetBackendServiceCdnPolicyBypassCacheOnRequestHeader {
+		return v.BypassCacheOnRequestHeaders
+	}).(GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
 }
 
 func (o GetBackendServiceCdnPolicyOutput) CacheKeyPolicies() GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput {
@@ -605,6 +1470,100 @@ func (o GetBackendServiceCdnPolicyArrayOutput) Index(i pulumi.IntInput) GetBacke
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceCdnPolicy {
 		return vs[0].([]GetBackendServiceCdnPolicy)[vs[1].(int)]
 	}).(GetBackendServiceCdnPolicyOutput)
+}
+
+type GetBackendServiceCdnPolicyBypassCacheOnRequestHeader struct {
+	HeaderName string `pulumi:"headerName"`
+}
+
+// GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderInput is an input type that accepts GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs and GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput values.
+// You can construct a concrete instance of `GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderInput` via:
+//
+//	GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{...}
+type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput
+	ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(context.Context) GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput
+}
+
+type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs struct {
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return i.ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput)
+}
+
+// GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput is an input type that accepts GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArray and GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput` via:
+//
+//	GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArray{ GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{...} }
+type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput
+	ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(context.Context) GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput
+}
+
+type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArray []GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderInput
+
+func (GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArray) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return i.ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArray) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
+}
+
+type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicyBypassCacheOnRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceCdnPolicyBypassCacheOnRequestHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) ToGetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceCdnPolicyBypassCacheOnRequestHeader {
+		return vs[0].([]GetBackendServiceCdnPolicyBypassCacheOnRequestHeader)[vs[1].(int)]
+	}).(GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput)
 }
 
 type GetBackendServiceCdnPolicyCacheKeyPolicy struct {
@@ -2364,6 +3323,100 @@ func (o GetBackendServiceSecuritySettingArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceSecuritySetting {
 		return vs[0].([]GetBackendServiceSecuritySetting)[vs[1].(int)]
 	}).(GetBackendServiceSecuritySettingOutput)
+}
+
+type GetDiskAsyncPrimaryDisk struct {
+	Disk string `pulumi:"disk"`
+}
+
+// GetDiskAsyncPrimaryDiskInput is an input type that accepts GetDiskAsyncPrimaryDiskArgs and GetDiskAsyncPrimaryDiskOutput values.
+// You can construct a concrete instance of `GetDiskAsyncPrimaryDiskInput` via:
+//
+//	GetDiskAsyncPrimaryDiskArgs{...}
+type GetDiskAsyncPrimaryDiskInput interface {
+	pulumi.Input
+
+	ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput
+	ToGetDiskAsyncPrimaryDiskOutputWithContext(context.Context) GetDiskAsyncPrimaryDiskOutput
+}
+
+type GetDiskAsyncPrimaryDiskArgs struct {
+	Disk pulumi.StringInput `pulumi:"disk"`
+}
+
+func (GetDiskAsyncPrimaryDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetDiskAsyncPrimaryDiskArgs) ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput {
+	return i.ToGetDiskAsyncPrimaryDiskOutputWithContext(context.Background())
+}
+
+func (i GetDiskAsyncPrimaryDiskArgs) ToGetDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskAsyncPrimaryDiskOutput)
+}
+
+// GetDiskAsyncPrimaryDiskArrayInput is an input type that accepts GetDiskAsyncPrimaryDiskArray and GetDiskAsyncPrimaryDiskArrayOutput values.
+// You can construct a concrete instance of `GetDiskAsyncPrimaryDiskArrayInput` via:
+//
+//	GetDiskAsyncPrimaryDiskArray{ GetDiskAsyncPrimaryDiskArgs{...} }
+type GetDiskAsyncPrimaryDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput
+	ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(context.Context) GetDiskAsyncPrimaryDiskArrayOutput
+}
+
+type GetDiskAsyncPrimaryDiskArray []GetDiskAsyncPrimaryDiskInput
+
+func (GetDiskAsyncPrimaryDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetDiskAsyncPrimaryDiskArray) ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput {
+	return i.ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiskAsyncPrimaryDiskArray) ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskAsyncPrimaryDiskArrayOutput)
+}
+
+type GetDiskAsyncPrimaryDiskOutput struct{ *pulumi.OutputState }
+
+func (GetDiskAsyncPrimaryDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetDiskAsyncPrimaryDiskOutput) ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+func (o GetDiskAsyncPrimaryDiskOutput) ToGetDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+func (o GetDiskAsyncPrimaryDiskOutput) Disk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskAsyncPrimaryDisk) string { return v.Disk }).(pulumi.StringOutput)
+}
+
+type GetDiskAsyncPrimaryDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiskAsyncPrimaryDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetDiskAsyncPrimaryDiskArrayOutput) ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetDiskAsyncPrimaryDiskArrayOutput) ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetDiskAsyncPrimaryDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskAsyncPrimaryDisk {
+		return vs[0].([]GetDiskAsyncPrimaryDisk)[vs[1].(int)]
+	}).(GetDiskAsyncPrimaryDiskOutput)
 }
 
 type GetDiskDiskEncryptionKey struct {
@@ -13401,6 +14454,100 @@ func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) Index(i pu
 	}).(GetRegionNetworkEndpointGroupServerlessDeploymentOutput)
 }
 
+type GetResourcePolicyDiskConsistencyGroupPolicy struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetResourcePolicyDiskConsistencyGroupPolicyInput is an input type that accepts GetResourcePolicyDiskConsistencyGroupPolicyArgs and GetResourcePolicyDiskConsistencyGroupPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyDiskConsistencyGroupPolicyInput` via:
+//
+//	GetResourcePolicyDiskConsistencyGroupPolicyArgs{...}
+type GetResourcePolicyDiskConsistencyGroupPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyDiskConsistencyGroupPolicyOutput() GetResourcePolicyDiskConsistencyGroupPolicyOutput
+	ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Context) GetResourcePolicyDiskConsistencyGroupPolicyOutput
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArgs) ToGetResourcePolicyDiskConsistencyGroupPolicyOutput() GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return i.ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArgs) ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
+// GetResourcePolicyDiskConsistencyGroupPolicyArrayInput is an input type that accepts GetResourcePolicyDiskConsistencyGroupPolicyArray and GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyDiskConsistencyGroupPolicyArrayInput` via:
+//
+//	GetResourcePolicyDiskConsistencyGroupPolicyArray{ GetResourcePolicyDiskConsistencyGroupPolicyArgs{...} }
+type GetResourcePolicyDiskConsistencyGroupPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutput() GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput
+	ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(context.Context) GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyArray []GetResourcePolicyDiskConsistencyGroupPolicyInput
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArray) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutput() GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return i.ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyDiskConsistencyGroupPolicyArray) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput)
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyOutput() GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourcePolicyDiskConsistencyGroupPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutput() GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) ToGetResourcePolicyDiskConsistencyGroupPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyDiskConsistencyGroupPolicy {
+		return vs[0].([]GetResourcePolicyDiskConsistencyGroupPolicy)[vs[1].(int)]
+	}).(GetResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
 type GetResourcePolicyGroupPlacementPolicy struct {
 	AvailabilityDomainCount int    `pulumi:"availabilityDomainCount"`
 	Collocation             string `pulumi:"collocation"`
@@ -16010,6 +17157,16 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleUrlRedirectInput)(nil)).Elem(), URLMapPathMatcherRouteRuleUrlRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleUrlRedirectPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleUrlRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapTestInput)(nil)).Elem(), URLMapTestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapTestArrayInput)(nil)).Elem(), URLMapTestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressesAddressInput)(nil)).Elem(), GetAddressesAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAddressesAddressArrayInput)(nil)).Elem(), GetAddressesAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendBucketCdnPolicyInput)(nil)).Elem(), GetBackendBucketCdnPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendBucketCdnPolicyArrayInput)(nil)).Elem(), GetBackendBucketCdnPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderInput)(nil)).Elem(), GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput)(nil)).Elem(), GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendBucketCdnPolicyCacheKeyPolicyInput)(nil)).Elem(), GetBackendBucketCdnPolicyCacheKeyPolicyArgs{})
@@ -16020,6 +17177,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceBackendArrayInput)(nil)).Elem(), GetBackendServiceBackendArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCdnPolicyInput)(nil)).Elem(), GetBackendServiceCdnPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCdnPolicyArrayInput)(nil)).Elem(), GetBackendServiceCdnPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderInput)(nil)).Elem(), GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput)(nil)).Elem(), GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCdnPolicyCacheKeyPolicyInput)(nil)).Elem(), GetBackendServiceCdnPolicyCacheKeyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCdnPolicyCacheKeyPolicyArrayInput)(nil)).Elem(), GetBackendServiceCdnPolicyCacheKeyPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceCdnPolicyNegativeCachingPolicyInput)(nil)).Elem(), GetBackendServiceCdnPolicyNegativeCachingPolicyArgs{})
@@ -16052,6 +17211,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceOutlierDetectionIntervalArrayInput)(nil)).Elem(), GetBackendServiceOutlierDetectionIntervalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingInput)(nil)).Elem(), GetBackendServiceSecuritySettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArgs{})
@@ -16238,6 +17399,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyArrayInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicyInput)(nil)).Elem(), GetResourcePolicyGroupPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicyArrayInput)(nil)).Elem(), GetResourcePolicyGroupPlacementPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyInstanceSchedulePolicyInput)(nil)).Elem(), GetResourcePolicyInstanceSchedulePolicyArgs{})
@@ -16284,6 +17447,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleUrlRedirectOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleUrlRedirectPtrOutput{})
+	pulumi.RegisterOutputType(URLMapTestOutput{})
+	pulumi.RegisterOutputType(URLMapTestArrayOutput{})
+	pulumi.RegisterOutputType(GetAddressesAddressOutput{})
+	pulumi.RegisterOutputType(GetAddressesAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput{})
 	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyCacheKeyPolicyOutput{})
@@ -16294,6 +17467,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceBackendArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyCacheKeyPolicyOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyNegativeCachingPolicyOutput{})
@@ -16326,6 +17501,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceOutlierDetectionIntervalArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskOutput{})
+	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyOutput{})
@@ -16512,6 +17689,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyInstanceSchedulePolicyOutput{})

@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class BackendServiceCdnPolicyGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("bypassCacheOnRequestHeaders")]
+        private InputList<Inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderGetArgs>? _bypassCacheOnRequestHeaders;
+
+        /// <summary>
+        /// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+        /// The cache is bypassed for all cdnPolicy.cacheMode settings.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderGetArgs> BypassCacheOnRequestHeaders
+        {
+            get => _bypassCacheOnRequestHeaders ?? (_bypassCacheOnRequestHeaders = new InputList<Inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderGetArgs>());
+            set => _bypassCacheOnRequestHeaders = value;
+        }
+
         /// <summary>
         /// The CacheKeyPolicy for this CdnPolicy.
         /// Structure is documented below.

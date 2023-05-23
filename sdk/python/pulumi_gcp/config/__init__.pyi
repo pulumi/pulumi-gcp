@@ -112,6 +112,8 @@ dataFusionCustomEndpoint: Optional[str]
 
 dataLossPreventionCustomEndpoint: Optional[str]
 
+databaseMigrationServiceCustomEndpoint: Optional[str]
+
 dataflowCustomEndpoint: Optional[str]
 
 dataformCustomEndpoint: Optional[str]
@@ -163,6 +165,8 @@ gkeBackupCustomEndpoint: Optional[str]
 gkeHubCustomEndpoint: Optional[str]
 
 gkehubFeatureCustomEndpoint: Optional[str]
+
+gkeonpremCustomEndpoint: Optional[str]
 
 googlePartnerName: Optional[str]
 

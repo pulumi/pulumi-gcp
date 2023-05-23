@@ -17,7 +17,8 @@ class GatewaySecurityPolicyArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 tls_inspection_policy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GatewaySecurityPolicy resource.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
@@ -30,6 +31,7 @@ class GatewaySecurityPolicyArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -39,6 +41,8 @@ class GatewaySecurityPolicyArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tls_inspection_policy is not None:
+            pulumi.set(__self__, "tls_inspection_policy", tls_inspection_policy)
 
     @property
     @pulumi.getter
@@ -94,6 +98,18 @@ class GatewaySecurityPolicyArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="tlsInspectionPolicy")
+    def tls_inspection_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        """
+        return pulumi.get(self, "tls_inspection_policy")
+
+    @tls_inspection_policy.setter
+    def tls_inspection_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_inspection_policy", value)
+
 
 @pulumi.input_type
 class _GatewaySecurityPolicyState:
@@ -104,6 +120,7 @@ class _GatewaySecurityPolicyState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 tls_inspection_policy: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GatewaySecurityPolicy resources.
@@ -121,6 +138,7 @@ class _GatewaySecurityPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -137,6 +155,8 @@ class _GatewaySecurityPolicyState:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if tls_inspection_policy is not None:
+            pulumi.set(__self__, "tls_inspection_policy", tls_inspection_policy)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -221,6 +241,18 @@ class _GatewaySecurityPolicyState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="tlsInspectionPolicy")
+    def tls_inspection_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        """
+        return pulumi.get(self, "tls_inspection_policy")
+
+    @tls_inspection_policy.setter
+    def tls_inspection_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls_inspection_policy", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -244,6 +276,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tls_inspection_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -257,6 +290,84 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description",
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Gateway Security Policy Tls Inspection Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="DEVOPS",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=False,
+                publish_crl=False,
+            ),
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                maximum_lifetime="1209600s",
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=False,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-basic-certificate-authority",
+            location="us-central1",
+            lifetime="86400s",
+            type="SELF_SIGNED",
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True,
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="Test LLC",
+                        common_name="my-ca",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
+            location="us-central1",
+            ca_pool=default_ca_pool.id,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[
+                    default_ca_pool,
+                    default_authority,
+                ]))
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+            location="us-central1",
+            description="my description",
+            tls_inspection_policy=default_tls_inspection_policy.id,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[default_tls_inspection_policy]))
         ```
 
         ## Import
@@ -287,6 +398,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
         ...
     @overload
@@ -306,6 +418,84 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             location="us-central1",
             description="my description",
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Network Security Gateway Security Policy Tls Inspection Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_ca_pool = gcp.certificateauthority.CaPool("defaultCaPool",
+            location="us-central1",
+            tier="DEVOPS",
+            publishing_options=gcp.certificateauthority.CaPoolPublishingOptionsArgs(
+                publish_ca_cert=False,
+                publish_crl=False,
+            ),
+            issuance_policy=gcp.certificateauthority.CaPoolIssuancePolicyArgs(
+                maximum_lifetime="1209600s",
+                baseline_values=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesArgs(
+                    ca_options=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs(
+                        is_ca=False,
+                    ),
+                    key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs(),
+                        extended_key_usage=gcp.certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs(
+                            server_auth=True,
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_authority = gcp.certificateauthority.Authority("defaultAuthority",
+            pool=default_ca_pool.name,
+            certificate_authority_id="my-basic-certificate-authority",
+            location="us-central1",
+            lifetime="86400s",
+            type="SELF_SIGNED",
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True,
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="Test LLC",
+                        common_name="my-ca",
+                    ),
+                ),
+                x509_config=gcp.certificateauthority.AuthorityConfigX509ConfigArgs(
+                    ca_options=gcp.certificateauthority.AuthorityConfigX509ConfigCaOptionsArgs(
+                        is_ca=True,
+                    ),
+                    key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageArgs(
+                        base_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs(
+                            cert_sign=True,
+                            crl_sign=True,
+                        ),
+                        extended_key_usage=gcp.certificateauthority.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs(
+                            server_auth=False,
+                        ),
+                    ),
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
+            location="us-central1",
+            ca_pool=default_ca_pool.id,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[
+                    default_ca_pool,
+                    default_authority,
+                ]))
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
+            location="us-central1",
+            description="my description",
+            tls_inspection_policy=default_tls_inspection_policy.id,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[default_tls_inspection_policy]))
         ```
 
         ## Import
@@ -343,6 +533,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 tls_inspection_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -356,6 +547,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["tls_inspection_policy"] = tls_inspection_policy
             __props__.__dict__["create_time"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["update_time"] = None
@@ -375,6 +567,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            tls_inspection_policy: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'GatewaySecurityPolicy':
         """
         Get an existing GatewaySecurityPolicy resource's state with the given name, id, and optional extra
@@ -397,6 +590,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
+        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -411,6 +605,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["tls_inspection_policy"] = tls_inspection_policy
         __props__.__dict__["update_time"] = update_time
         return GatewaySecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -469,6 +664,14 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         Server-defined URL of this resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="tlsInspectionPolicy")
+    def tls_inspection_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        """
+        return pulumi.get(self, "tls_inspection_policy")
 
     @property
     @pulumi.getter(name="updateTime")

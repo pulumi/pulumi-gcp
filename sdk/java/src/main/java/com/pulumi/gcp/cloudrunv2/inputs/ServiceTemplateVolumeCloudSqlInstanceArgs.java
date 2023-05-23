@@ -19,16 +19,12 @@ public final class ServiceTemplateVolumeCloudSqlInstanceArgs extends com.pulumi.
     /**
      * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
      * 
-     * ***
-     * 
      */
     @Import(name="instances")
     private @Nullable Output<List<String>> instances;
 
     /**
      * @return The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
-     * 
-     * ***
      * 
      */
     public Optional<Output<List<String>>> instances() {
@@ -62,8 +58,6 @@ public final class ServiceTemplateVolumeCloudSqlInstanceArgs extends com.pulumi.
         /**
          * @param instances The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -75,8 +69,6 @@ public final class ServiceTemplateVolumeCloudSqlInstanceArgs extends com.pulumi.
         /**
          * @param instances The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -86,8 +78,6 @@ public final class ServiceTemplateVolumeCloudSqlInstanceArgs extends com.pulumi.
 
         /**
          * @param instances The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
-         * 
-         * ***
          * 
          * @return builder
          * 

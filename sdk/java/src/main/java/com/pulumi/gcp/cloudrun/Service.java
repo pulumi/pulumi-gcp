@@ -284,11 +284,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.cloudrun.Service;
  * import com.pulumi.gcp.cloudrun.ServiceArgs;
- * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -304,9 +302,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .metadata(ServiceMetadataArgs.builder()
- *                 .annotations(Map.of(&#34;run.googleapis.com/launch-stage&#34;, &#34;BETA&#34;))
- *                 .build())
  *             .template(ServiceTemplateArgs.builder()
  *                 .spec(ServiceTemplateSpecArgs.builder()
  *                     .containers(ServiceTemplateSpecContainerArgs.builder()
@@ -332,9 +327,7 @@ import javax.annotation.Nullable;
  *                 .percent(100)
  *                 .latestRevision(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

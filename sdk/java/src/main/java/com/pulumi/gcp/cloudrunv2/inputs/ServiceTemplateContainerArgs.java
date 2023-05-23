@@ -52,6 +52,13 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.commands);
     }
 
+    @Import(name="dependsOns")
+    private @Nullable Output<List<String>> dependsOns;
+
+    public Optional<Output<List<String>>> dependsOns() {
+        return Optional.ofNullable(this.dependsOns);
+    }
+
     /**
      * List of environment variables to set in the container.
      * Structure is documented below.
@@ -206,6 +213,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     private ServiceTemplateContainerArgs(ServiceTemplateContainerArgs $) {
         this.args = $.args;
         this.commands = $.commands;
+        this.dependsOns = $.dependsOns;
         this.envs = $.envs;
         this.image = $.image;
         this.livenessProbe = $.livenessProbe;
@@ -295,6 +303,19 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
          */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
+        }
+
+        public Builder dependsOns(@Nullable Output<List<String>> dependsOns) {
+            $.dependsOns = dependsOns;
+            return this;
+        }
+
+        public Builder dependsOns(List<String> dependsOns) {
+            return dependsOns(Output.of(dependsOns));
+        }
+
+        public Builder dependsOns(String... dependsOns) {
+            return dependsOns(List.of(dependsOns));
         }
 
         /**

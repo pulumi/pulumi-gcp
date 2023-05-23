@@ -71,6 +71,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult',
     'GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult',
     'GetDatabasesDatabaseResult',
+    'GetTiersTierResult',
 ]
 
 @pulumi.output_type
@@ -3725,5 +3726,56 @@ class GetDatabasesDatabaseResult(dict):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
+
+
+@pulumi.output_type
+class GetTiersTierResult(dict):
+    def __init__(__self__, *,
+                 disk_quota: int,
+                 ram: int,
+                 regions: Sequence[str],
+                 tier: str):
+        """
+        :param int disk_quota: The maximum disk size of this tier in bytes.
+        :param int ram: The maximum ram usage of this tier in bytes.
+        :param Sequence[str] regions: The applicable regions for this tier.
+        :param str tier: An identifier for the machine type, for example, db-custom-1-3840.
+        """
+        pulumi.set(__self__, "disk_quota", disk_quota)
+        pulumi.set(__self__, "ram", ram)
+        pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "tier", tier)
+
+    @property
+    @pulumi.getter(name="diskQuota")
+    def disk_quota(self) -> int:
+        """
+        The maximum disk size of this tier in bytes.
+        """
+        return pulumi.get(self, "disk_quota")
+
+    @property
+    @pulumi.getter
+    def ram(self) -> int:
+        """
+        The maximum ram usage of this tier in bytes.
+        """
+        return pulumi.get(self, "ram")
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Sequence[str]:
+        """
+        The applicable regions for this tier.
+        """
+        return pulumi.get(self, "regions")
+
+    @property
+    @pulumi.getter
+    def tier(self) -> str:
+        """
+        An identifier for the machine type, for example, db-custom-1-3840.
+        """
+        return pulumi.get(self, "tier")
 
 

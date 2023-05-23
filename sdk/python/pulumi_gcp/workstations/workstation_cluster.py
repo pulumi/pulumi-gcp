@@ -31,7 +31,7 @@ class WorkstationClusterArgs:
                It is specified in the following form: "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
-        :param pulumi.Input[str] workstation_cluster_id: The ID of the workstation cluster.
+        :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
                
                - - -
@@ -90,7 +90,7 @@ class WorkstationClusterArgs:
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Input[str]:
         """
-        The ID of the workstation cluster.
+        ID to use for the workstation cluster.
 
 
         - - -
@@ -199,7 +199,7 @@ class _WorkstationClusterState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationClusterConditionArgs']]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
+        :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
@@ -217,7 +217,7 @@ class _WorkstationClusterState:
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
-        :param pulumi.Input[str] workstation_cluster_id: The ID of the workstation cluster.
+        :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
                
                - - -
@@ -282,7 +282,7 @@ class _WorkstationClusterState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time the Instance was created in UTC.
+        Time when this resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -432,7 +432,7 @@ class _WorkstationClusterState:
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the workstation cluster.
+        ID to use for the workstation cluster.
 
 
         - - -
@@ -549,7 +549,7 @@ class WorkstationCluster(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
-        :param pulumi.Input[str] workstation_cluster_id: The ID of the workstation cluster.
+        :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
                
                - - -
@@ -725,7 +725,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationClusterConditionArgs']]]] conditions: Status conditions describing the current resource state.
                Structure is documented below.
-        :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
+        :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
@@ -743,7 +743,7 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
-        :param pulumi.Input[str] workstation_cluster_id: The ID of the workstation cluster.
+        :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
                
                
                - - -
@@ -790,7 +790,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time the Instance was created in UTC.
+        Time when this resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -892,7 +892,7 @@ class WorkstationCluster(pulumi.CustomResource):
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Output[str]:
         """
-        The ID of the workstation cluster.
+        ID to use for the workstation cluster.
 
 
         - - -

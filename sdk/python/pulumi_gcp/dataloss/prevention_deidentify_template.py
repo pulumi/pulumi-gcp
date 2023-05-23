@@ -96,18 +96,24 @@ class PreventionDeidentifyTemplateArgs:
 @pulumi.input_type
 class _PreventionDeidentifyTemplateState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  deidentify_config: Optional[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None):
+                 parent: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PreventionDeidentifyTemplate resources.
+        :param pulumi.Input[str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
         :param pulumi.Input[str] name: Name of the information type.
+               
+               (Required)
+               Name of the information type.
                
                (Required)
                Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -167,7 +173,10 @@ class _PreventionDeidentifyTemplateState:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+        :param pulumi.Input[str] update_time: The last update timestamp of an deidentifyTemplate. Set by the server.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if deidentify_config is not None:
             pulumi.set(__self__, "deidentify_config", deidentify_config)
         if description is not None:
@@ -178,6 +187,20 @@ class _PreventionDeidentifyTemplateState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation timestamp of an deidentifyTemplate. Set by the server.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="deidentifyConfig")
@@ -220,6 +243,9 @@ class _PreventionDeidentifyTemplateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
+        Name of the information type.
+
+        (Required)
         Name of the information type.
 
         (Required)
@@ -298,6 +324,18 @@ class _PreventionDeidentifyTemplateState:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last update timestamp of an deidentifyTemplate. Set by the server.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
 
 class PreventionDeidentifyTemplate(pulumi.CustomResource):
     @overload
@@ -319,6 +357,42 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 
         ## Example Usage
+        ### Dlp Deidentify Template Image Transformations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
+                    transforms=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                                blue=1,
+                                green=0.2,
+                                red=0.5,
+                            ),
+                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
+                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
+                                    name="COLOR_INFO",
+                                    version="latest",
+                                )],
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
+                        ),
+                    ],
+                ),
+            ),
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name")
+        ```
 
         ## Import
 
@@ -360,6 +434,42 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 
         ## Example Usage
+        ### Dlp Deidentify Template Image Transformations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionDeidentifyTemplate("basic",
+            deidentify_config=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs(
+                image_transformations=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs(
+                    transforms=[
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            redaction_color=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs(
+                                blue=1,
+                                green=0.2,
+                                red=0.5,
+                            ),
+                            selected_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs(
+                                info_types=[gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs(
+                                    name="COLOR_INFO",
+                                    version="latest",
+                                )],
+                            ),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_info_types=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs(),
+                        ),
+                        gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs(
+                            all_text=gcp.dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs(),
+                        ),
+                    ],
+                ),
+            ),
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name")
+        ```
 
         ## Import
 
@@ -409,7 +519,9 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["update_time"] = None
         super(PreventionDeidentifyTemplate, __self__).__init__(
             'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
             resource_name,
@@ -420,11 +532,13 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             deidentify_config: Optional[pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parent: Optional[pulumi.Input[str]] = None) -> 'PreventionDeidentifyTemplate':
+            parent: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'PreventionDeidentifyTemplate':
         """
         Get an existing PreventionDeidentifyTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -432,11 +546,15 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
         :param pulumi.Input[pulumi.InputType['PreventionDeidentifyTemplateDeidentifyConfigArgs']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
         :param pulumi.Input[str] description: A description of the template.
         :param pulumi.Input[str] display_name: User set display name of the template.
         :param pulumi.Input[str] name: Name of the information type.
+               
+               (Required)
+               Name of the information type.
                
                (Required)
                Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -496,17 +614,28 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+        :param pulumi.Input[str] update_time: The last update timestamp of an deidentifyTemplate. Set by the server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PreventionDeidentifyTemplateState.__new__(_PreventionDeidentifyTemplateState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deidentify_config"] = deidentify_config
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["update_time"] = update_time
         return PreventionDeidentifyTemplate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation timestamp of an deidentifyTemplate. Set by the server.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deidentifyConfig")
@@ -537,6 +666,9 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
+        Name of the information type.
+
+        (Required)
         Name of the information type.
 
         (Required)
@@ -606,4 +738,12 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         * `organizations/{{organization_id}}/locations/{{location}}`
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last update timestamp of an deidentifyTemplate. Set by the server.
+        """
+        return pulumi.get(self, "update_time")
 

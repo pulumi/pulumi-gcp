@@ -96,9 +96,12 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("bundleId")]
-        public Output<string?> BundleId { get; private set; } = null!;
+        public Output<string> BundleId { get; private set; } = null!;
 
         /// <summary>
         /// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
@@ -110,9 +113,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the App.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -191,9 +191,12 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
-        [Input("bundleId")]
-        public Input<string>? BundleId { get; set; }
+        [Input("bundleId", required: true)]
+        public Input<string> BundleId { get; set; } = null!;
 
         /// <summary>
         /// (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
@@ -205,9 +208,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the App.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -248,6 +248,9 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("bundleId")]
         public Input<string>? BundleId { get; set; }
@@ -262,9 +265,6 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// The user-assigned display name of the App.
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

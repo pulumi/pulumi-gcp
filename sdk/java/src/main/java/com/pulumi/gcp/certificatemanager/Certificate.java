@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .description(&#34;The default cert&#34;)
+ *             .description(&#34;Global cert&#34;)
  *             .scope(&#34;EDGE_CACHE&#34;)
  *             .managed(CertificateManagedArgs.builder()
  *                 .domains(                
@@ -127,21 +127,56 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Certificate Manager Self Managed Certificate Regional
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
+ *             .description(&#34;Regional cert&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
+ *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
  * Certificate can be imported using any of these accepted formats
  * 
  * ```sh
- *  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+ *  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+ *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+ *  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
  * ```
  * 
  */
@@ -174,6 +209,20 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * The Certificate Manager location. If not specified, &#34;global&#34; is used.
+     * 
+     */
+    @Export(name="location", type=String.class, parameters={})
+    private Output</* @Nullable */ String> location;
+
+    /**
+     * @return The Certificate Manager location. If not specified, &#34;global&#34; is used.
+     * 
+     */
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * Configuration and state of a Managed Certificate.

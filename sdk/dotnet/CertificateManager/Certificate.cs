@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
     ///     {
-    ///         Description = "The default cert",
+    ///         Description = "Global cert",
     ///         Scope = "EDGE_CACHE",
     ///         Managed = new Gcp.CertificateManager.Inputs.CertificateManagedArgs
     ///         {
@@ -103,21 +103,45 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
+    /// ### Certificate Manager Self Managed Certificate Regional
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Description = "Regional cert",
+    ///         Location = "us-central1",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         {
+    ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
+    ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
     /// Certificate can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/global/certificates/{{name}}
+    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{name}}
+    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{name}}
+    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:certificatemanager/certificate:Certificate")]
@@ -134,6 +158,12 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// The Certificate Manager location. If not specified, "global" is used.
+        /// </summary>
+        [Output("location")]
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Configuration and state of a Managed Certificate.
@@ -247,6 +277,12 @@ namespace Pulumi.Gcp.CertificateManager
         }
 
         /// <summary>
+        /// The Certificate Manager location. If not specified, "global" is used.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
+
+        /// <summary>
         /// Configuration and state of a Managed Certificate.
         /// Certificate Manager provisions and renews Managed Certificates
         /// automatically, for as long as it's authorized to do so.
@@ -318,6 +354,12 @@ namespace Pulumi.Gcp.CertificateManager
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// The Certificate Manager location. If not specified, "global" is used.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Configuration and state of a Managed Certificate.

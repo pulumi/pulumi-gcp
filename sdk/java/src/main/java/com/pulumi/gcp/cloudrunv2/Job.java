@@ -59,7 +59,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
@@ -127,7 +126,6 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
@@ -233,7 +231,6 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
@@ -293,7 +290,6 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .launchStage(&#34;BETA&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
@@ -332,6 +328,59 @@ import javax.annotation.Nullable;
  *             .member(String.format(&#34;serviceAccount:%s-compute@developer.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(secret)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloudrunv2 Job Emptydir
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Job;
+ * import com.pulumi.gcp.cloudrunv2.JobArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .launchStage(&#34;BETA&#34;)
+ *             .template(JobTemplateArgs.builder()
+ *                 .template(JobTemplateTemplateArgs.builder()
+ *                     .containers(JobTemplateTemplateContainerArgs.builder()
+ *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                         .volumeMounts(JobTemplateTemplateContainerVolumeMountArgs.builder()
+ *                             .name(&#34;empty-dir-volume&#34;)
+ *                             .mountPath(&#34;/mnt&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .volumes(JobTemplateTemplateVolumeArgs.builder()
+ *                         .name(&#34;empty-dir-volume&#34;)
+ *                         .emptyDir(JobTemplateTemplateVolumeEmptyDirArgs.builder()
+ *                             .medium(&#34;MEMORY&#34;)
+ *                             .sizeLimit(&#34;128Mi&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .build());
  * 
  *     }
@@ -496,7 +545,9 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.latestCreatedExecutions;
     }
     /**
-     * The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+     * The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
@@ -504,7 +555,9 @@ public class Job extends com.pulumi.resources.CustomResource {
     private Output<String> launchStage;
 
     /**
-     * @return The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+     * @return The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+     * If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+     * For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */

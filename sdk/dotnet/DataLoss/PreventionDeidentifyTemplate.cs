@@ -19,6 +19,62 @@ namespace Pulumi.Gcp.DataLoss
     ///     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
     /// 
     /// ## Example Usage
+    /// ### Dlp Deidentify Template Image Transformations
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.DataLoss.PreventionDeidentifyTemplate("basic", new()
+    ///     {
+    ///         DeidentifyConfig = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs
+    ///         {
+    ///             ImageTransformations = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs
+    ///             {
+    ///                 Transforms = new[]
+    ///                 {
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs
+    ///                     {
+    ///                         RedactionColor = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs
+    ///                         {
+    ///                             Blue = 1,
+    ///                             Green = 0.2,
+    ///                             Red = 0.5,
+    ///                         },
+    ///                         SelectedInfoTypes = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs
+    ///                         {
+    ///                             InfoTypes = new[]
+    ///                             {
+    ///                                 new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeArgs
+    ///                                 {
+    ///                                     Name = "COLOR_INFO",
+    ///                                     Version = "latest",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs
+    ///                     {
+    ///                         AllInfoTypes = null,
+    ///                     },
+    ///                     new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs
+    ///                     {
+    ///                         AllText = null,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -35,6 +91,12 @@ namespace Pulumi.Gcp.DataLoss
     [GcpResourceType("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate")]
     public partial class PreventionDeidentifyTemplate : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The creation timestamp of an deidentifyTemplate. Set by the server.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         /// <summary>
         /// Configuration of the deidentify template
         /// Structure is documented below.
@@ -55,6 +117,9 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the information type.
+        /// 
+        /// (Required)
         /// Name of the information type.
         /// 
         /// (Required)
@@ -123,6 +188,12 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
+
+        /// <summary>
+        /// The last update timestamp of an deidentifyTemplate. Set by the server.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -208,6 +279,12 @@ namespace Pulumi.Gcp.DataLoss
     public sealed class PreventionDeidentifyTemplateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The creation timestamp of an deidentifyTemplate. Set by the server.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// Configuration of the deidentify template
         /// Structure is documented below.
         /// </summary>
@@ -227,6 +304,9 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Name of the information type.
+        /// 
+        /// (Required)
         /// Name of the information type.
         /// 
         /// (Required)
@@ -295,6 +375,12 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// The last update timestamp of an deidentifyTemplate. Set by the server.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public PreventionDeidentifyTemplateState()
         {

@@ -20,12 +20,15 @@ import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesPlainArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabasePlainArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabasesPlainArgs;
+import com.pulumi.gcp.sql.inputs.GetTiersArgs;
+import com.pulumi.gcp.sql.inputs.GetTiersPlainArgs;
 import com.pulumi.gcp.sql.outputs.GetBackupRunResult;
 import com.pulumi.gcp.sql.outputs.GetCaCertsResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseResult;
 import com.pulumi.gcp.sql.outputs.GetDatabasesResult;
+import com.pulumi.gcp.sql.outputs.GetTiersResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SqlFunctions {
@@ -886,5 +889,77 @@ public final class SqlFunctions {
      */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTiersResult> getTiers() {
+        return getTiers(GetTiersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetTiersResult> getTiersPlain() {
+        return getTiersPlain(GetTiersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTiersResult> getTiers(GetTiersArgs args) {
+        return getTiers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetTiersResult> getTiersPlain(GetTiersPlainArgs args) {
+        return getTiersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetTiersResult> getTiers(GetTiersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getTiers:getTiers", TypeShape.of(GetTiersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetTiersResult> getTiersPlain(GetTiersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:sql/getTiers:getTiers", TypeShape.of(GetTiersResult.class), args, Utilities.withVersion(options));
     }
 }

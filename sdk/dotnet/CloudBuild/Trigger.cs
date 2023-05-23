@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     ///     var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuildServiceAccount", new()
     ///     {
-    ///         AccountId = "tf-test-my-service-account",
+    ///         AccountId = "cloud-sa",
     ///     });
     /// 
     ///     var actAs = new Gcp.Projects.IAMMember("actAs", new()
@@ -453,6 +453,75 @@ namespace Pulumi.Gcp.CloudBuild
     ///             },
     ///         },
     ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudbuild Trigger Pubsub With Repo
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         GithubConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             AppInstallationId = 123123,
+    ///             AuthorizerCredential = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = "projects/my-project/secrets/github-pat-secret/versions/latest",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
+    ///     {
+    ///         ParentConnection = my_connection.Id,
+    ///         RemoteUri = "https://github.com/myuser/my-repo.git",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var mytopic = new Gcp.PubSub.Topic("mytopic", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var pubsub_with_repo_trigger = new Gcp.CloudBuild.Trigger("pubsub-with-repo-trigger", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         PubsubConfig = new Gcp.CloudBuild.Inputs.TriggerPubsubConfigArgs
+    ///         {
+    ///             Topic = mytopic.Id,
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             Repository = my_repository.Id,
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             Path = "cloudbuild.yaml",
+    ///             Repository = my_repository.Id,
+    ///             Revision = "refs/heads/main",
+    ///             RepoType = "GITHUB",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

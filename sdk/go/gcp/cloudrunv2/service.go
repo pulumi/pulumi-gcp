@@ -375,6 +375,68 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Multicontainer
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Location:    pulumi.String("us-central1"),
+//				LaunchStage: pulumi.String("BETA"),
+//				Ingress:     pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Name: pulumi.String("hello-1"),
+//							Ports: cloudrunv2.ServiceTemplateContainerPortArray{
+//								&cloudrunv2.ServiceTemplateContainerPortArgs{
+//									ContainerPort: pulumi.Int(8080),
+//								},
+//							},
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							DependsOns: pulumi.StringArray{
+//								pulumi.String("hello-2"),
+//							},
+//							VolumeMounts: cloudrunv2.ServiceTemplateContainerVolumeMountArray{
+//								&cloudrunv2.ServiceTemplateContainerVolumeMountArgs{
+//									Name:      pulumi.String("empty-dir-volume"),
+//									MountPath: pulumi.String("/mnt"),
+//								},
+//							},
+//						},
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Name:  pulumi.String("hello-2"),
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//					Volumes: cloudrunv2.ServiceTemplateVolumeArray{
+//						&cloudrunv2.ServiceTemplateVolumeArgs{
+//							Name: pulumi.String("empty-dir-volume"),
+//							EmptyDir: &cloudrunv2.ServiceTemplateVolumeEmptyDirArgs{
+//								Medium:    pulumi.String("MEMORY"),
+//								SizeLimit: pulumi.String("256Mi"),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -433,7 +495,9 @@ type Service struct {
 	LatestCreatedRevision pulumi.StringOutput `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringOutput `pulumi:"latestReadyRevision"`
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	// The location of the cloud run service
@@ -534,7 +598,9 @@ type serviceState struct {
 	LatestCreatedRevision *string `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision *string `pulumi:"latestReadyRevision"`
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
@@ -604,7 +670,9 @@ type ServiceState struct {
 	LatestCreatedRevision pulumi.StringPtrInput
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision pulumi.StringPtrInput
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
@@ -667,7 +735,9 @@ type serviceArgs struct {
 	// (Optional)
 	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels map[string]string `pulumi:"labels"`
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage *string `pulumi:"launchStage"`
 	// The location of the cloud run service
@@ -709,7 +779,9 @@ type ServiceArgs struct {
 	// (Optional)
 	// Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
 	Labels pulumi.StringMapInput
-	// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+	// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+	// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	// Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 	LaunchStage pulumi.StringPtrInput
 	// The location of the cloud run service
@@ -883,7 +955,9 @@ func (o ServiceOutput) LatestReadyRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LatestReadyRevision }).(pulumi.StringOutput)
 }
 
-// The launch stage as defined by Google Cloud Platform Launch Stages. Cloud Run supports ALPHA, BETA, and GA. If no value is specified, GA is assumed.
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
+// If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features.
+// For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 // Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
 func (o ServiceOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)

@@ -1430,6 +1430,8 @@ class TriggerBuildSourceStorageSourceArgs:
 class TriggerBuildStepArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 allow_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 allow_failure: Optional[pulumi.Input[bool]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
                  entrypoint: Optional[pulumi.Input[str]] = None,
@@ -1455,6 +1457,14 @@ class TriggerBuildStepArgs:
                If you built an image in a previous build step, it will be stored in the
                host's Docker daemon's cache and is available to use as the name for a
                later build step.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allow_exit_codes: Allow this build step to fail without failing the entire build if and
+               only if the exit code is one of the specified codes.
+               If `allowFailure` is also specified, this field will take precedence.
+        :param pulumi.Input[bool] allow_failure: Allow this build step to fail without failing the entire build.
+               If false, the entire build will fail if this step fails. Otherwise, the
+               build will succeed, but this step will still have a failure status.
+               Error information will be reported in the `failureDetail` field.
+               `allowExitCodes` takes precedence over this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: A list of arguments that will be presented to the step when it is started.
                If the image used to run the step's container has an entrypoint, the args
                are used as arguments to that entrypoint. If the image does not define an
@@ -1504,6 +1514,10 @@ class TriggerBuildStepArgs:
                have completed successfully.
         """
         pulumi.set(__self__, "name", name)
+        if allow_exit_codes is not None:
+            pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
+        if allow_failure is not None:
+            pulumi.set(__self__, "allow_failure", allow_failure)
         if args is not None:
             pulumi.set(__self__, "args", args)
         if dir is not None:
@@ -1550,6 +1564,36 @@ class TriggerBuildStepArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="allowExitCodes")
+    def allow_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        Allow this build step to fail without failing the entire build if and
+        only if the exit code is one of the specified codes.
+        If `allowFailure` is also specified, this field will take precedence.
+        """
+        return pulumi.get(self, "allow_exit_codes")
+
+    @allow_exit_codes.setter
+    def allow_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "allow_exit_codes", value)
+
+    @property
+    @pulumi.getter(name="allowFailure")
+    def allow_failure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow this build step to fail without failing the entire build.
+        If false, the entire build will fail if this step fails. Otherwise, the
+        build will succeed, but this step will still have a failure status.
+        Error information will be reported in the `failureDetail` field.
+        `allowExitCodes` takes precedence over this field.
+        """
+        return pulumi.get(self, "allow_failure")
+
+    @allow_failure.setter
+    def allow_failure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_failure", value)
 
     @property
     @pulumi.getter
@@ -1771,6 +1815,7 @@ class TriggerGitFileSourceArgs:
                  path: pulumi.Input[str],
                  repo_type: pulumi.Input[str],
                  github_enterprise_config: Optional[pulumi.Input[str]] = None,
+                 repository: Optional[pulumi.Input[str]] = None,
                  revision: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
@@ -1790,6 +1835,8 @@ class TriggerGitFileSourceArgs:
         pulumi.set(__self__, "repo_type", repo_type)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
         if uri is not None:
@@ -1833,6 +1880,15 @@ class TriggerGitFileSourceArgs:
     @github_enterprise_config.setter
     def github_enterprise_config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "github_enterprise_config", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
 
     @property
     @pulumi.getter
@@ -2326,22 +2382,26 @@ class TriggerSourceToBuildArgs:
     def __init__(__self__, *,
                  ref: pulumi.Input[str],
                  repo_type: pulumi.Input[str],
-                 uri: pulumi.Input[str],
-                 github_enterprise_config: Optional[pulumi.Input[str]] = None):
+                 github_enterprise_config: Optional[pulumi.Input[str]] = None,
+                 repository: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ref: The branch or tag to use. Must start with "refs/" (required).
         :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
                Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
-        :param pulumi.Input[str] uri: The URI of the repo (required).
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config.
                Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        :param pulumi.Input[str] uri: The URI of the repo.
         """
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
-        pulumi.set(__self__, "uri", uri)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
@@ -2370,18 +2430,6 @@ class TriggerSourceToBuildArgs:
         pulumi.set(self, "repo_type", value)
 
     @property
-    @pulumi.getter
-    def uri(self) -> pulumi.Input[str]:
-        """
-        The URI of the repo (required).
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: pulumi.Input[str]):
-        pulumi.set(self, "uri", value)
-
-    @property
     @pulumi.getter(name="githubEnterpriseConfig")
     def github_enterprise_config(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2393,6 +2441,27 @@ class TriggerSourceToBuildArgs:
     @github_enterprise_config.setter
     def github_enterprise_config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "github_enterprise_config", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the repo.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
 
 
 @pulumi.input_type

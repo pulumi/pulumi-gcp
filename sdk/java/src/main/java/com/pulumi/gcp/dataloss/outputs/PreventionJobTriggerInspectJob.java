@@ -5,10 +5,13 @@ package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobAction;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionJobTriggerInspectJob {
@@ -18,6 +21,12 @@ public final class PreventionJobTriggerInspectJob {
      * 
      */
     private List<PreventionJobTriggerInspectJobAction> actions;
+    /**
+     * @return The core content of the template.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobInspectConfig inspectConfig;
     /**
      * @return The name of the template to run when this job is triggered.
      * 
@@ -38,6 +47,14 @@ public final class PreventionJobTriggerInspectJob {
      */
     public List<PreventionJobTriggerInspectJobAction> actions() {
         return this.actions;
+    }
+    /**
+     * @return The core content of the template.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobInspectConfig> inspectConfig() {
+        return Optional.ofNullable(this.inspectConfig);
     }
     /**
      * @return The name of the template to run when this job is triggered.
@@ -65,12 +82,14 @@ public final class PreventionJobTriggerInspectJob {
     @CustomType.Builder
     public static final class Builder {
         private List<PreventionJobTriggerInspectJobAction> actions;
+        private @Nullable PreventionJobTriggerInspectJobInspectConfig inspectConfig;
         private String inspectTemplateName;
         private PreventionJobTriggerInspectJobStorageConfig storageConfig;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
+    	      this.inspectConfig = defaults.inspectConfig;
     	      this.inspectTemplateName = defaults.inspectTemplateName;
     	      this.storageConfig = defaults.storageConfig;
         }
@@ -82,6 +101,11 @@ public final class PreventionJobTriggerInspectJob {
         }
         public Builder actions(PreventionJobTriggerInspectJobAction... actions) {
             return actions(List.of(actions));
+        }
+        @CustomType.Setter
+        public Builder inspectConfig(@Nullable PreventionJobTriggerInspectJobInspectConfig inspectConfig) {
+            this.inspectConfig = inspectConfig;
+            return this;
         }
         @CustomType.Setter
         public Builder inspectTemplateName(String inspectTemplateName) {
@@ -96,6 +120,7 @@ public final class PreventionJobTriggerInspectJob {
         public PreventionJobTriggerInspectJob build() {
             final var o = new PreventionJobTriggerInspectJob();
             o.actions = actions;
+            o.inspectConfig = inspectConfig;
             o.inspectTemplateName = inspectTemplateName;
             o.storageConfig = storageConfig;
             return o;

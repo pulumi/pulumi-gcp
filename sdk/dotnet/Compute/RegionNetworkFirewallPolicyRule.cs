@@ -22,6 +22,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var basicRegionalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicRegionalNetworksecurityAddressGroup", new()
+    ///     {
+    ///         Parent = "projects/my-project-name",
+    ///         Description = "Sample regional networksecurity_address_group",
+    ///         Location = "us-west1",
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///         Type = "IPV4",
+    ///         Capacity = 100,
+    ///     });
+    /// 
     ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", new()
     ///     {
     ///         Description = "Sample regional network firewall policy",
@@ -71,6 +84,18 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 "10.100.0.1/32",
     ///             },
+    ///             SrcFqdns = new[]
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///             SrcRegionCodes = new[]
+    ///             {
+    ///                 "US",
+    ///             },
+    ///             SrcThreatIntelligences = new[]
+    ///             {
+    ///                 "iplist-known-malicious-ips",
+    ///             },
     ///             Layer4Configs = new[]
     ///             {
     ///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs
@@ -84,6 +109,10 @@ namespace Pulumi.Gcp.Compute
     ///                 {
     ///                     Name = basicValue.Name.Apply(name =&gt; $"tagValues/{name}"),
     ///                 },
+    ///             },
+    ///             SrcAddressGroups = new[]
+    ///             {
+    ///                 basicRegionalNetworksecurityAddressGroup.Id,
     ///             },
     ///         },
     ///     });

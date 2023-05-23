@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Version name for this InfoType.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeGetArgs()
         {
         }

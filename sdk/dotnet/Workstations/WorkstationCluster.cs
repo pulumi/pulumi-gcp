@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<ImmutableArray<Outputs.WorkstationClusterCondition>> Conditions { get; private set; } = null!;
 
         /// <summary>
-        /// Time the Instance was created in UTC.
+        /// Time when this resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the workstation cluster.
+        /// ID to use for the workstation cluster.
         /// 
         /// 
         /// - - -
@@ -348,7 +348,7 @@ namespace Pulumi.Gcp.Workstations
         public Input<string> Subnetwork { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the workstation cluster.
+        /// ID to use for the workstation cluster.
         /// 
         /// 
         /// - - -
@@ -390,7 +390,7 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
-        /// Time the Instance was created in UTC.
+        /// Time when this resource was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? Uid { get; set; }
 
         /// <summary>
-        /// The ID of the workstation cluster.
+        /// ID to use for the workstation cluster.
         /// 
         /// 
         /// - - -

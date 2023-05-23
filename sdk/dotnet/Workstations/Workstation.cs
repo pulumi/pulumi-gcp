@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     ///     var defaultWorkstation = new Gcp.Workstations.Workstation("defaultWorkstation", new()
     ///     {
-    ///         WorkstationId = "workstation",
+    ///         WorkstationId = "work-station",
     ///         WorkstationConfigId = defaultWorkstationConfig.WorkstationConfigId,
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
     ///         Location = "us-central1",
@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Time the Instance was created in UTC.
+        /// Time when this resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The location where the workstation cluster config should reside.
+        /// The location where the workstation parent resources reside.
         /// 
         /// 
         /// - - -
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Workstations
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the cluster resource.
+        /// Full name of this resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -179,19 +179,19 @@ namespace Pulumi.Gcp.Workstations
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The system-generated UID of the resource.
+        /// A system-assigned unique identified for this resource.
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the workstation cluster.
+        /// The ID of the parent workstation cluster.
         /// </summary>
         [Output("workstationClusterId")]
         public Output<string> WorkstationClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the workstation cluster config.
+        /// The ID of the parent workstation cluster config.
         /// </summary>
         [Output("workstationConfigId")]
         public Output<string> WorkstationConfigId { get; private set; } = null!;
@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
-        /// The location where the workstation cluster config should reside.
+        /// The location where the workstation parent resources reside.
         /// 
         /// 
         /// - - -
@@ -295,13 +295,13 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the workstation cluster.
+        /// The ID of the parent workstation cluster.
         /// </summary>
         [Input("workstationClusterId", required: true)]
         public Input<string> WorkstationClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the workstation cluster config.
+        /// The ID of the parent workstation cluster config.
         /// </summary>
         [Input("workstationConfigId", required: true)]
         public Input<string> WorkstationConfigId { get; set; } = null!;
@@ -333,7 +333,7 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
-        /// Time the Instance was created in UTC.
+        /// Time when this resource was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -365,7 +365,7 @@ namespace Pulumi.Gcp.Workstations
         }
 
         /// <summary>
-        /// The location where the workstation cluster config should reside.
+        /// The location where the workstation parent resources reside.
         /// 
         /// 
         /// - - -
@@ -374,7 +374,7 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the cluster resource.
+        /// Full name of this resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -393,19 +393,19 @@ namespace Pulumi.Gcp.Workstations
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The system-generated UID of the resource.
+        /// A system-assigned unique identified for this resource.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
 
         /// <summary>
-        /// The name of the workstation cluster.
+        /// The ID of the parent workstation cluster.
         /// </summary>
         [Input("workstationClusterId")]
         public Input<string>? WorkstationClusterId { get; set; }
 
         /// <summary>
-        /// The ID of the workstation cluster config.
+        /// The ID of the parent workstation cluster config.
         /// </summary>
         [Input("workstationConfigId")]
         public Input<string>? WorkstationConfigId { get; set; }

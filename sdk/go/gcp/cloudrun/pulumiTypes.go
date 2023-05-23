@@ -2872,7 +2872,11 @@ type ServiceTemplateSpecContainer struct {
 	Ports []ServiceTemplateSpecContainerPort `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// Structure is documented below.
-	Resources    *ServiceTemplateSpecContainerResources    `pulumi:"resources"`
+	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
+	// Startup probe of application within the container.
+	// All other probes are disabled if a startup probe is provided, until it
+	// succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
 	StartupProbe *ServiceTemplateSpecContainerStartupProbe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Only supports SecretVolumeSources.
@@ -2930,7 +2934,11 @@ type ServiceTemplateSpecContainerArgs struct {
 	Ports ServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	// Structure is documented below.
-	Resources    ServiceTemplateSpecContainerResourcesPtrInput    `pulumi:"resources"`
+	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
+	// Startup probe of application within the container.
+	// All other probes are disabled if a startup probe is provided, until it
+	// succeeds. Container will not be added to service endpoints if the probe fails.
+	// Structure is documented below.
 	StartupProbe ServiceTemplateSpecContainerStartupProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Only supports SecretVolumeSources.
@@ -3054,6 +3062,10 @@ func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecConta
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)
 }
 
+// Startup probe of application within the container.
+// All other probes are disabled if a startup probe is provided, until it
+// succeeds. Container will not be added to service endpoints if the probe fails.
+// Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) StartupProbe() ServiceTemplateSpecContainerStartupProbePtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerStartupProbe { return v.StartupProbe }).(ServiceTemplateSpecContainerStartupProbePtrOutput)
 }
@@ -4525,6 +4537,7 @@ func (o ServiceTemplateSpecContainerLivenessProbePtrOutput) TimeoutSeconds() pul
 
 type ServiceTemplateSpecContainerLivenessProbeGrpc struct {
 	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -4545,6 +4558,7 @@ type ServiceTemplateSpecContainerLivenessProbeGrpcInput interface {
 
 type ServiceTemplateSpecContainerLivenessProbeGrpcArgs struct {
 	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -4630,6 +4644,7 @@ func (o ServiceTemplateSpecContainerLivenessProbeGrpcOutput) ToServiceTemplateSp
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateSpecContainerLivenessProbeGrpcOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerLivenessProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -4666,6 +4681,7 @@ func (o ServiceTemplateSpecContainerLivenessProbeGrpcPtrOutput) Elem() ServiceTe
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateSpecContainerLivenessProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerLivenessProbeGrpc) *int {
 		if v == nil {
@@ -4693,6 +4709,9 @@ type ServiceTemplateSpecContainerLivenessProbeHttpGet struct {
 	HttpHeaders []ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. If set, it should not be empty string.
 	Path *string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
 }
 
 // ServiceTemplateSpecContainerLivenessProbeHttpGetInput is an input type that accepts ServiceTemplateSpecContainerLivenessProbeHttpGetArgs and ServiceTemplateSpecContainerLivenessProbeHttpGetOutput values.
@@ -4712,6 +4731,9 @@ type ServiceTemplateSpecContainerLivenessProbeHttpGetArgs struct {
 	HttpHeaders ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. If set, it should not be empty string.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (ServiceTemplateSpecContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
@@ -4804,6 +4826,12 @@ func (o ServiceTemplateSpecContainerLivenessProbeHttpGetOutput) Path() pulumi.St
 	return o.ApplyT(func(v ServiceTemplateSpecContainerLivenessProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerLivenessProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerLivenessProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 type ServiceTemplateSpecContainerLivenessProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerLivenessProbeHttpGetPtrOutput) ElementType() reflect.Type {
@@ -4847,6 +4875,17 @@ func (o ServiceTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Path() pulumi
 		}
 		return v.Path
 	}).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerLivenessProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerLivenessProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader struct {
@@ -5545,6 +5584,7 @@ func (o ServiceTemplateSpecContainerStartupProbePtrOutput) TimeoutSeconds() pulu
 
 type ServiceTemplateSpecContainerStartupProbeGrpc struct {
 	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -5565,6 +5605,7 @@ type ServiceTemplateSpecContainerStartupProbeGrpcInput interface {
 
 type ServiceTemplateSpecContainerStartupProbeGrpcArgs struct {
 	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The name of the service to place in the gRPC HealthCheckRequest
 	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
@@ -5650,6 +5691,7 @@ func (o ServiceTemplateSpecContainerStartupProbeGrpcOutput) ToServiceTemplateSpe
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateSpecContainerStartupProbeGrpcOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeGrpc) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -5686,6 +5728,7 @@ func (o ServiceTemplateSpecContainerStartupProbeGrpcPtrOutput) Elem() ServiceTem
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateSpecContainerStartupProbeGrpcPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeGrpc) *int {
 		if v == nil {
@@ -5713,6 +5756,9 @@ type ServiceTemplateSpecContainerStartupProbeHttpGet struct {
 	HttpHeaders []ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. If set, it should not be empty string.
 	Path *string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
 }
 
 // ServiceTemplateSpecContainerStartupProbeHttpGetInput is an input type that accepts ServiceTemplateSpecContainerStartupProbeHttpGetArgs and ServiceTemplateSpecContainerStartupProbeHttpGetOutput values.
@@ -5732,6 +5778,9 @@ type ServiceTemplateSpecContainerStartupProbeHttpGetArgs struct {
 	HttpHeaders ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. If set, it should not be empty string.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (ServiceTemplateSpecContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
@@ -5824,6 +5873,12 @@ func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) Path() pulumi.Str
 	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeHttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 type ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) ElementType() reflect.Type {
@@ -5867,6 +5922,17 @@ func (o ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) Path() pulumi.
 		}
 		return v.Path
 	}).(pulumi.StringPtrOutput)
+}
+
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateSpecContainerStartupProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader struct {
@@ -5977,6 +6043,7 @@ func (o ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayOutput) In
 
 type ServiceTemplateSpecContainerStartupProbeTcpSocket struct {
 	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 }
 
@@ -5993,6 +6060,7 @@ type ServiceTemplateSpecContainerStartupProbeTcpSocketInput interface {
 
 type ServiceTemplateSpecContainerStartupProbeTcpSocketArgs struct {
 	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -6074,6 +6142,7 @@ func (o ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) ToServiceTempla
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateSpecContainerStartupProbeTcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainerStartupProbeTcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -6103,6 +6172,7 @@ func (o ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput) Elem() Servi
 }
 
 // Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o ServiceTemplateSpecContainerStartupProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecContainerStartupProbeTcpSocket) *int {
 		if v == nil {
@@ -8679,6 +8749,7 @@ func (o GetServiceTemplateSpecContainerLivenessProbeGrpcArrayOutput) Index(i pul
 type GetServiceTemplateSpecContainerLivenessProbeHttpGet struct {
 	HttpHeaders []GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	Path        string                                                          `pulumi:"path"`
+	Port        int                                                             `pulumi:"port"`
 }
 
 // GetServiceTemplateSpecContainerLivenessProbeHttpGetInput is an input type that accepts GetServiceTemplateSpecContainerLivenessProbeHttpGetArgs and GetServiceTemplateSpecContainerLivenessProbeHttpGetOutput values.
@@ -8695,6 +8766,7 @@ type GetServiceTemplateSpecContainerLivenessProbeHttpGetInput interface {
 type GetServiceTemplateSpecContainerLivenessProbeHttpGetArgs struct {
 	HttpHeaders GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	Path        pulumi.StringInput                                                      `pulumi:"path"`
+	Port        pulumi.IntInput                                                         `pulumi:"port"`
 }
 
 func (GetServiceTemplateSpecContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
@@ -8756,6 +8828,10 @@ func (o GetServiceTemplateSpecContainerLivenessProbeHttpGetOutput) HttpHeaders()
 
 func (o GetServiceTemplateSpecContainerLivenessProbeHttpGetOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerLivenessProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateSpecContainerLivenessProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerLivenessProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
 }
 
 type GetServiceTemplateSpecContainerLivenessProbeHttpGetArrayOutput struct{ *pulumi.OutputState }
@@ -9329,6 +9405,7 @@ func (o GetServiceTemplateSpecContainerStartupProbeGrpcArrayOutput) Index(i pulu
 type GetServiceTemplateSpecContainerStartupProbeHttpGet struct {
 	HttpHeaders []GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
 	Path        string                                                         `pulumi:"path"`
+	Port        int                                                            `pulumi:"port"`
 }
 
 // GetServiceTemplateSpecContainerStartupProbeHttpGetInput is an input type that accepts GetServiceTemplateSpecContainerStartupProbeHttpGetArgs and GetServiceTemplateSpecContainerStartupProbeHttpGetOutput values.
@@ -9345,6 +9422,7 @@ type GetServiceTemplateSpecContainerStartupProbeHttpGetInput interface {
 type GetServiceTemplateSpecContainerStartupProbeHttpGetArgs struct {
 	HttpHeaders GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
 	Path        pulumi.StringInput                                                     `pulumi:"path"`
+	Port        pulumi.IntInput                                                        `pulumi:"port"`
 }
 
 func (GetServiceTemplateSpecContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
@@ -9406,6 +9484,10 @@ func (o GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) HttpHeaders() 
 
 func (o GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateSpecContainerStartupProbeHttpGetOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
 }
 
 type GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput struct{ *pulumi.OutputState }

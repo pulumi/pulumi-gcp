@@ -14,8 +14,8 @@ import (
 // For more information, see:
 // * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
 // ## Example Usage
-// ### Basic_release
-// Creates a basic Firebase Rules Release
+// ### Firestore_release
+// Creates a Firebase Rules Release to Cloud Firestore
 // ```go
 // package main
 //
@@ -30,33 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			basic, err := firebaserules.NewRuleset(ctx, "basic", &firebaserules.RulesetArgs{
-//				Project: pulumi.String("my-project-name"),
-//				Source: &firebaserules.RulesetSourceArgs{
-//					Files: firebaserules.RulesetSourceFileArray{
-//						&firebaserules.RulesetSourceFileArgs{
-//							Content:     pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
-//							Fingerprint: pulumi.String(""),
-//							Name:        pulumi.String("firestore.rules"),
-//						},
-//					},
-//					Language: pulumi.String(""),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
-//				Project: pulumi.String("my-project-name"),
-//				RulesetName: basic.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
-//				}).(pulumi.StringOutput),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebaserules.NewRuleset(ctx, "minimal", &firebaserules.RulesetArgs{
-//				Project: pulumi.String("my-project-name"),
+//			firestore, err := firebaserules.NewRuleset(ctx, "firestore", &firebaserules.RulesetArgs{
 //				Source: &firebaserules.RulesetSourceArgs{
 //					Files: firebaserules.RulesetSourceFileArray{
 //						&firebaserules.RulesetSourceFileArgs{
@@ -65,6 +39,16 @@ import (
 //						},
 //					},
 //				},
+//				Project: pulumi.String("my-project-name"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
+//				RulesetName: firestore.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,8 +58,8 @@ import (
 //	}
 //
 // ```
-// ### Minimal_release
-// Creates a minimal Firebase Rules Release
+// ### Storage_release
+// Creates a Firebase Rules Release for a Storage bucket
 // ```go
 // package main
 //
@@ -83,32 +67,50 @@ import (
 //
 //	"fmt"
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebaserules"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			minimal, err := firebaserules.NewRuleset(ctx, "minimal", &firebaserules.RulesetArgs{
-//				Project: pulumi.String("my-project-name"),
-//				Source: &firebaserules.RulesetSourceArgs{
-//					Files: firebaserules.RulesetSourceFileArray{
-//						&firebaserules.RulesetSourceFileArgs{
-//							Content: pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
-//							Name:    pulumi.String("firestore.rules"),
-//						},
-//					},
-//				},
+//			bucketBucket, err := storage.NewBucket(ctx, "bucketBucket", &storage.BucketArgs{
+//				Project:  pulumi.String("my-project-name"),
+//				Location: pulumi.String("us-west1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
+//			bucketStorageBucket, err := firebase.NewStorageBucket(ctx, "bucketStorageBucket", &firebase.StorageBucketArgs{
+//				Project:  pulumi.String("my-project-name"),
+//				BucketId: bucketBucket.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			storage, err := firebaserules.NewRuleset(ctx, "storage", &firebaserules.RulesetArgs{
 //				Project: pulumi.String("my-project-name"),
-//				RulesetName: minimal.Name.ApplyT(func(name string) (string, error) {
+//				Source: &firebaserules.RulesetSourceArgs{
+//					Files: firebaserules.RulesetSourceFileArray{
+//						&firebaserules.RulesetSourceFileArgs{
+//							Name:    pulumi.String("storage.rules"),
+//							Content: pulumi.String("service firebase.storage {match /b/{bucket}/o {match /{allPaths=**} {allow read, write: if request.auth != null;}}}"),
+//						},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bucketStorageBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
+//				RulesetName: storage.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
 //				}).(pulumi.StringOutput),
+//				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err

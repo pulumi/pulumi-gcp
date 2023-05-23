@@ -63,6 +63,41 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Sql Source Representation Instance Postgres
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.SourceRepresentationInstance;
+ * import com.pulumi.gcp.sql.SourceRepresentationInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new SourceRepresentationInstance(&#34;instance&#34;, SourceRepresentationInstanceArgs.builder()        
+ *             .databaseVersion(&#34;POSTGRES_9_6&#34;)
+ *             .dumpFilePath(&#34;gs://replica-bucket/source-database.sql.gz&#34;)
+ *             .host(&#34;10.20.30.40&#34;)
+ *             .password(&#34;password-for-the-user&#34;)
+ *             .port(3306)
+ *             .region(&#34;us-central1&#34;)
+ *             .username(&#34;some-user&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -127,7 +162,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
     }
     /**
      * The MySQL version running on your source database server.
-     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      * 
      */
     @Export(name="databaseVersion", type=String.class, parameters={})
@@ -135,7 +170,7 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
 
     /**
      * @return The MySQL version running on your source database server.
-     * Possible values are: `MYSQL_5_5`, `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`.
+     * Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
      * 
      */
     public Output<String> databaseVersion() {

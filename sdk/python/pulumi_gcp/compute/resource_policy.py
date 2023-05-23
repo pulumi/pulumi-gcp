@@ -17,6 +17,7 @@ __all__ = ['ResourcePolicyArgs', 'ResourcePolicy']
 class ResourcePolicyArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
                  instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,7 @@ class ResourcePolicyArgs:
         """
         The set of arguments for constructing a ResourcePolicy resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs'] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs'] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs'] instance_schedule_policy: Resource policy for scheduling instance operations.
@@ -48,6 +50,8 @@ class ResourcePolicyArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_consistency_group_policy is not None:
+            pulumi.set(__self__, "disk_consistency_group_policy", disk_consistency_group_policy)
         if group_placement_policy is not None:
             pulumi.set(__self__, "group_placement_policy", group_placement_policy)
         if instance_schedule_policy is not None:
@@ -72,6 +76,18 @@ class ResourcePolicyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskConsistencyGroupPolicy")
+    def disk_consistency_group_policy(self) -> Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]:
+        """
+        Replication consistency group for asynchronous disk replication.
+        """
+        return pulumi.get(self, "disk_consistency_group_policy")
+
+    @disk_consistency_group_policy.setter
+    def disk_consistency_group_policy(self, value: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]):
+        pulumi.set(self, "disk_consistency_group_policy", value)
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
@@ -163,6 +179,7 @@ class ResourcePolicyArgs:
 class _ResourcePolicyState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']] = None,
                  group_placement_policy: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs']] = None,
                  instance_schedule_policy: Optional[pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -173,6 +190,7 @@ class _ResourcePolicyState:
         """
         Input properties used for looking up and filtering ResourcePolicy resources.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs'] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyArgs'] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyArgs'] instance_schedule_policy: Resource policy for scheduling instance operations.
@@ -196,6 +214,8 @@ class _ResourcePolicyState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disk_consistency_group_policy is not None:
+            pulumi.set(__self__, "disk_consistency_group_policy", disk_consistency_group_policy)
         if group_placement_policy is not None:
             pulumi.set(__self__, "group_placement_policy", group_placement_policy)
         if instance_schedule_policy is not None:
@@ -222,6 +242,18 @@ class _ResourcePolicyState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="diskConsistencyGroupPolicy")
+    def disk_consistency_group_policy(self) -> Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]:
+        """
+        Replication consistency group for asynchronous disk replication.
+        """
+        return pulumi.get(self, "disk_consistency_group_policy")
+
+    @disk_consistency_group_policy.setter
+    def disk_consistency_group_policy(self, value: Optional[pulumi.Input['ResourcePolicyDiskConsistencyGroupPolicyArgs']]):
+        pulumi.set(self, "disk_consistency_group_policy", value)
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")
@@ -327,6 +359,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
                  instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -460,6 +493,19 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Resource Policy Consistency Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cgroup = gcp.compute.ResourcePolicy("cgroup",
+            region="europe-west1",
+            disk_consistency_group_policy=gcp.compute.ResourcePolicyDiskConsistencyGroupPolicyArgs(
+                enabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -484,6 +530,7 @@ class ResourcePolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
@@ -636,6 +683,19 @@ class ResourcePolicy(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Resource Policy Consistency Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cgroup = gcp.compute.ResourcePolicy("cgroup",
+            region="europe-west1",
+            disk_consistency_group_policy=gcp.compute.ResourcePolicyDiskConsistencyGroupPolicyArgs(
+                enabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -673,6 +733,7 @@ class ResourcePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
                  group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
                  instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -689,6 +750,7 @@ class ResourcePolicy(pulumi.CustomResource):
             __props__ = ResourcePolicyArgs.__new__(ResourcePolicyArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["disk_consistency_group_policy"] = disk_consistency_group_policy
             __props__.__dict__["group_placement_policy"] = group_placement_policy
             __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
             __props__.__dict__["name"] = name
@@ -707,6 +769,7 @@ class ResourcePolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disk_consistency_group_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']]] = None,
             group_placement_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']]] = None,
             instance_schedule_policy: Optional[pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -722,6 +785,7 @@ class ResourcePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[pulumi.InputType['ResourcePolicyDiskConsistencyGroupPolicyArgs']] disk_consistency_group_policy: Replication consistency group for asynchronous disk replication.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ResourcePolicyInstanceSchedulePolicyArgs']] instance_schedule_policy: Resource policy for scheduling instance operations.
@@ -748,6 +812,7 @@ class ResourcePolicy(pulumi.CustomResource):
         __props__ = _ResourcePolicyState.__new__(_ResourcePolicyState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["disk_consistency_group_policy"] = disk_consistency_group_policy
         __props__.__dict__["group_placement_policy"] = group_placement_policy
         __props__.__dict__["instance_schedule_policy"] = instance_schedule_policy
         __props__.__dict__["name"] = name
@@ -764,6 +829,14 @@ class ResourcePolicy(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="diskConsistencyGroupPolicy")
+    def disk_consistency_group_policy(self) -> pulumi.Output[Optional['outputs.ResourcePolicyDiskConsistencyGroupPolicy']]:
+        """
+        Replication consistency group for asynchronous disk replication.
+        """
+        return pulumi.get(self, "disk_consistency_group_policy")
 
     @property
     @pulumi.getter(name="groupPlacementPolicy")

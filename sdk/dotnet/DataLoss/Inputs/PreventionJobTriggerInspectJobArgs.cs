@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         }
 
         /// <summary>
+        /// The core content of the template.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("inspectConfig")]
+        public Input<Inputs.PreventionJobTriggerInspectJobInspectConfigArgs>? InspectConfig { get; set; }
+
+        /// <summary>
         /// The name of the template to run when this job is triggered.
         /// </summary>
         [Input("inspectTemplateName", required: true)]

@@ -22,15 +22,23 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// Path to access on the HTTP server. Defaults to '/'.
         /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// Port number to access on the container. Must be in the range 1 to 65535.
+        /// If not specified, defaults to the same value as container.ports[0].containerPort.
+        /// </summary>
+        public readonly int? Port;
 
         [OutputConstructor]
         private ServiceTemplateContainerStartupProbeHttpGet(
             ImmutableArray<Outputs.ServiceTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders,
 
-            string? path)
+            string? path,
+
+            int? port)
         {
             HttpHeaders = httpHeaders;
             Path = path;
+            Port = port;
         }
     }
 }

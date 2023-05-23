@@ -242,6 +242,10 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly enable!: pulumi.Output<boolean | undefined>;
     /**
+     * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+     */
+    public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    /**
      * Name of the interface the BGP peer is associated with.
      */
     public readonly interface!: pulumi.Output<string>;
@@ -250,6 +254,13 @@ export class RouterPeer extends pulumi.CustomResource {
      * Only IPv4 is supported.
      */
     public readonly ipAddress!: pulumi.Output<string>;
+    /**
+     * IPv6 address of the interface inside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     */
+    public readonly ipv6NexthopAddress!: pulumi.Output<string>;
     /**
      * The resource that configures and manages this BGP peer.
      */
@@ -273,6 +284,13 @@ export class RouterPeer extends pulumi.CustomResource {
      * Only IPv4 is supported.
      */
     public readonly peerIpAddress!: pulumi.Output<string>;
+    /**
+     * IPv6 address of the BGP interface outside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     */
+    public readonly peerIpv6NexthopAddress!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -317,12 +335,15 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["advertisedRoutePriority"] = state ? state.advertisedRoutePriority : undefined;
             resourceInputs["bfd"] = state ? state.bfd : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
             resourceInputs["interface"] = state ? state.interface : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["ipv6NexthopAddress"] = state ? state.ipv6NexthopAddress : undefined;
             resourceInputs["managementType"] = state ? state.managementType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["peerAsn"] = state ? state.peerAsn : undefined;
             resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
+            resourceInputs["peerIpv6NexthopAddress"] = state ? state.peerIpv6NexthopAddress : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
@@ -347,11 +368,14 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["advertisedRoutePriority"] = args ? args.advertisedRoutePriority : undefined;
             resourceInputs["bfd"] = args ? args.bfd : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["ipv6NexthopAddress"] = args ? args.ipv6NexthopAddress : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
             resourceInputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
+            resourceInputs["peerIpv6NexthopAddress"] = args ? args.peerIpv6NexthopAddress : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
@@ -407,6 +431,10 @@ export interface RouterPeerState {
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+     */
+    enableIpv6?: pulumi.Input<boolean>;
+    /**
      * Name of the interface the BGP peer is associated with.
      */
     interface?: pulumi.Input<string>;
@@ -415,6 +443,13 @@ export interface RouterPeerState {
      * Only IPv4 is supported.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * IPv6 address of the interface inside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     */
+    ipv6NexthopAddress?: pulumi.Input<string>;
     /**
      * The resource that configures and manages this BGP peer.
      */
@@ -438,6 +473,13 @@ export interface RouterPeerState {
      * Only IPv4 is supported.
      */
     peerIpAddress?: pulumi.Input<string>;
+    /**
+     * IPv6 address of the BGP interface outside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     */
+    peerIpv6NexthopAddress?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -508,6 +550,10 @@ export interface RouterPeerArgs {
      */
     enable?: pulumi.Input<boolean>;
     /**
+     * Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
+     */
+    enableIpv6?: pulumi.Input<boolean>;
+    /**
      * Name of the interface the BGP peer is associated with.
      */
     interface: pulumi.Input<string>;
@@ -516,6 +562,13 @@ export interface RouterPeerArgs {
      * Only IPv4 is supported.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * IPv6 address of the interface inside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     */
+    ipv6NexthopAddress?: pulumi.Input<string>;
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -535,6 +588,13 @@ export interface RouterPeerArgs {
      * Only IPv4 is supported.
      */
     peerIpAddress: pulumi.Input<string>;
+    /**
+     * IPv6 address of the BGP interface outside Google Cloud Platform.
+     * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
+     * If you do not specify the next hop addresses, Google Cloud automatically
+     * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+     */
+    peerIpv6NexthopAddress?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

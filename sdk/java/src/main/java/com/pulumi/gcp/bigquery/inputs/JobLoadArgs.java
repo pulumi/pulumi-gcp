@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.JobLoadDestinationTableArgs;
+import com.pulumi.gcp.bigquery.inputs.JobLoadParquetOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.JobLoadTimePartitioningArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -256,6 +257,23 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Parquet Options for load and make external tables.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="parquetOptions")
+    private @Nullable Output<JobLoadParquetOptionsArgs> parquetOptions;
+
+    /**
+     * @return Parquet Options for load and make external tables.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<JobLoadParquetOptionsArgs>> parquetOptions() {
+        return Optional.ofNullable(this.parquetOptions);
+    }
+
+    /**
      * If sourceFormat is set to &#34;DATASTORE_BACKUP&#34;, indicates which entity properties to load into BigQuery from a Cloud Datastore backup.
      * Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties.
      * If any named property isn&#39;t found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -456,6 +474,7 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
         this.jsonExtension = $.jsonExtension;
         this.maxBadRecords = $.maxBadRecords;
         this.nullMarker = $.nullMarker;
+        this.parquetOptions = $.parquetOptions;
         this.projectionFields = $.projectionFields;
         this.quote = $.quote;
         this.schemaUpdateOptions = $.schemaUpdateOptions;
@@ -788,6 +807,29 @@ public final class JobLoadArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nullMarker(String nullMarker) {
             return nullMarker(Output.of(nullMarker));
+        }
+
+        /**
+         * @param parquetOptions Parquet Options for load and make external tables.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(@Nullable Output<JobLoadParquetOptionsArgs> parquetOptions) {
+            $.parquetOptions = parquetOptions;
+            return this;
+        }
+
+        /**
+         * @param parquetOptions Parquet Options for load and make external tables.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(JobLoadParquetOptionsArgs parquetOptions) {
+            return parquetOptions(Output.of(parquetOptions));
         }
 
         /**

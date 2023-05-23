@@ -50,6 +50,8 @@ export interface GetGlobalForwardingRuleArgs {
  * A collection of values returned by getGlobalForwardingRule.
  */
 export interface GetGlobalForwardingRuleResult {
+    readonly allowPscGlobalAccess: boolean;
+    readonly baseForwardingRule: string;
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -69,6 +71,7 @@ export interface GetGlobalForwardingRuleResult {
     readonly pscConnectionId: string;
     readonly pscConnectionStatus: string;
     readonly selfLink: string;
+    readonly sourceIpRanges: string[];
     readonly target: string;
 }
 /**

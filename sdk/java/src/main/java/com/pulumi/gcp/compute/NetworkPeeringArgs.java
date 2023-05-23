@@ -123,6 +123,21 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
         return this.peerNetwork;
     }
 
+    /**
+     * Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: [&#34;IPV4_ONLY&#34;, &#34;IPV4_IPV6&#34;].
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: [&#34;IPV4_ONLY&#34;, &#34;IPV4_IPV6&#34;].
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
     private NetworkPeeringArgs() {}
 
     private NetworkPeeringArgs(NetworkPeeringArgs $) {
@@ -133,6 +148,7 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.network = $.network;
         this.peerNetwork = $.peerNetwork;
+        this.stackType = $.stackType;
     }
 
     public static Builder builder() {
@@ -300,6 +316,27 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder peerNetwork(String peerNetwork) {
             return peerNetwork(Output.of(peerNetwork));
+        }
+
+        /**
+         * @param stackType Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: [&#34;IPV4_ONLY&#34;, &#34;IPV4_IPV6&#34;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: [&#34;IPV4_ONLY&#34;, &#34;IPV4_IPV6&#34;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
         }
 
         public NetworkPeeringArgs build() {

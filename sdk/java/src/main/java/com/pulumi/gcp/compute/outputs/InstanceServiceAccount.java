@@ -13,8 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceServiceAccount {
     /**
-     * @return The service account e-mail address. If not given, the
-     * default Google Compute Engine service account is used.
+     * @return The service account e-mail address.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */
@@ -30,8 +29,7 @@ public final class InstanceServiceAccount {
 
     private InstanceServiceAccount() {}
     /**
-     * @return The service account e-mail address. If not given, the
-     * default Google Compute Engine service account is used.
+     * @return The service account e-mail address.
      * **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
      * 
      */

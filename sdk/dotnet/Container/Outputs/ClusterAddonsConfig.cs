@@ -57,6 +57,12 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? GcpFilestoreCsiDriverConfig;
         /// <summary>
+        /// )) The status of the GCSFuse CSI driver addon,
+        /// which allows the usage of a gcs bucket as volumes.
+        /// It is disabled by default; set `enabled = true` to enable.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigGcsFuseCsiDriverConfig? GcsFuseCsiDriverConfig;
+        /// <summary>
         /// .
         /// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         /// </summary>
@@ -107,6 +113,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? gcpFilestoreCsiDriverConfig,
 
+            Outputs.ClusterAddonsConfigGcsFuseCsiDriverConfig? gcsFuseCsiDriverConfig,
+
             Outputs.ClusterAddonsConfigGkeBackupAgentConfig? gkeBackupAgentConfig,
 
             Outputs.ClusterAddonsConfigHorizontalPodAutoscaling? horizontalPodAutoscaling,
@@ -124,6 +132,7 @@ namespace Pulumi.Gcp.Container.Outputs
             DnsCacheConfig = dnsCacheConfig;
             GcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             GcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
+            GcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
             GkeBackupAgentConfig = gkeBackupAgentConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
